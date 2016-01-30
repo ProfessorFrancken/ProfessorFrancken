@@ -20,6 +20,7 @@
             "database"
         ],
         "psr-4": {
+            "Francken\\": "Francken/",
             "App\\": "App/",
             "Http\\": "Http/"
         }
