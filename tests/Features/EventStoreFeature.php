@@ -105,6 +105,45 @@ class EventStoreFeature extends TestCase
         $this->assertEquals($eventStream, $this->store->load('aggregate-1'));
         $this->assertEquals($secondStream, $this->store->load('aggregate-2'));
     }
+
+    /**
+     * @test
+     * @expectedException Broadway\EventStore\EventStreamNotFoundException
+     */
+    public function it_cant_find_a_event_stream_of_a_non_existing_aggregate()
+    {
+        $this->store->load('aggregate-1');
+    }
+
+    /**
+     * @test
+     * @expectedException \App\EventSourcing\IlluminateEventStoreException
+     */
+    public function when_appending_one_event_from_a_event_stream_fails_it_rolls_back_all_changes()
+    {
+        // this test is a bit of an hack, by mocking the DateTime object we make
+        // the append() method of the event store throw an exception
+        $time = $this->prophesize(\Broadway\Domain\DateTime::class);
+        $time->toString()
+            ->willThrow(new \Exception('This is an invalid event'));
+
+        $eventStream = new DomainEventStream([
+            DomainMessage::recordNow(
+                'aggregate-1',
+                0,
+                new Metadata(array()),
+                new ADomainEvent
+            ),
+            new DomainMessage(
+                'aggregate-1',
+                1,
+                new Metadata(array()),
+                new ADomainEvent,
+                $time->reveal()
+            ),
+        ]);
+        $this->store->append('aggregate-1', $eventStream);
+    }
 }
 
 final class ADomainEvent implements SerializableInterface {
