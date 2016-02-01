@@ -20,7 +20,7 @@ final class CommitteeInstantiated extends CommitteeEvent
     public static function deserialize(array $data)
     {
         return new static(
-            $data['committeeId'],
+            new CommitteeId($data['committeeId']),
             $data['name'],
             $data['goal']
         );
@@ -38,15 +38,15 @@ final class CommitteeInstantiated extends CommitteeEvent
 
     public function goal()
     {
-        return $this->goal();
+        return $this->goal;
     }
 
     public function serialize()
     {
         return [
-            'committeeId' => (string) $this->committeeId,
-            'name' => $this->name,
-            'goal' => $this->goal
+            'committeeId' => (string) $this->committeeId(),
+            'name' => $this->name(),
+            'goal' => $this->goal()
         ];
     }
 }

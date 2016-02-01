@@ -18,7 +18,9 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">app/</directory>
+            <directory suffix=".php">App/</directory>
+            <directory suffix=".php">Francken/</directory>
+            <directory suffix=".php">Http/</directory>
         </whitelist>
     </filter>
     <php>
