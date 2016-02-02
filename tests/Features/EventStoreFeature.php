@@ -24,8 +24,6 @@ class EventStoreFeature extends TestCase
     {
         parent::setUp();
 
-        // Let's make sure that the event sourcing provider has been registered
-        $this->app->register(EventSourcingServiceProvider::class);
         $this->store = $this->app->make(EventStoreInterface::class);
     }
 
