@@ -1,4 +1,12 @@
 # T.F.V. Professor Francken
+This is the (not yet public) repository containing code for the new website of
+[T.F.V. Porfessor Francken](http://professorfrancken.nl/).
+We are using the [Laravel v5.2](http://laravel.com/docs/5.2) framework in
+combination with [Broadway](http://github.com/qandidate-labs/broadway), an
+infrastructure library for creating CQRS and Event Sourced applications.
+
+You can find some high quality introductory videos on
+[laravelfromscratch.com](laravelfromscratch.com).
 
 ## Setting up a VM
 You should first install [virtualbox](https://www.virtualbox.org/wiki/Downloads)
