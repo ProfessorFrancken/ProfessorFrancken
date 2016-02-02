@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Config\Repository;
 
 class CreateEventStoreTable extends Migration
 {
@@ -12,7 +13,10 @@ class CreateEventStoreTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_store', function (Blueprint $table) {
+        $table = App::make(Repository::class)
+                    ->get('event_sourcing.event_store_table');
+
+        Schema::create($table, function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('uuid', 36);
