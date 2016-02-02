@@ -11,7 +11,7 @@ final class IlluminateEventStoreException extends EventStoreException
     {
         throw new IlluminateEventStoreException(
             $exception->getMessage(),
-            $exception->getCode(),
+            (int) $exception->getCode(),
             $exception->getPrevious()
         );
     }

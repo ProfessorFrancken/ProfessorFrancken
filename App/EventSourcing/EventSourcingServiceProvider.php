@@ -8,6 +8,8 @@ use Illuminate\Database\Connection;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\Serializer\SerializerInterface;
 use Broadway\Serializer\SimpleInterfaceSerializer;
+use Broadway\EventHandling\EventBusInterface;
+use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
 
@@ -23,6 +25,11 @@ class EventSourcingServiceProvider extends ServiceProvider
         $this->app->bind(
             SerializerInterface::class,
             SimpleInterfaceSerializer::class
+        );
+
+        $this->app->bind(
+            EventBusInterface::class,
+            SimpleEventBus::class
         );
 
         $this->registerEventStore();
