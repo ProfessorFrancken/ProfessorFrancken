@@ -41,8 +41,8 @@ final class IlluminateEventStore implements EventStoreInterface {
         $eventStoreTable
     ) {
         $this->connection = $connection;
-        $this->table = $eventStoreTable;
         $this->serializer = $serializer;
+        $this->table = $eventStoreTable;
     }
 
     /**
@@ -110,7 +110,7 @@ final class IlluminateEventStore implements EventStoreInterface {
      */
     private function appendEvent(DomainMessage $event)
     {
-        $this->connection->table($this->table)->insertGetId([
+        $this->connection->table($this->table)->insert([
             'uuid'        => (string) $event->getId(),
             'playhead'    => $event->getPlayhead(),
             'metadata'    => $this->serialize($event->getMetadata()),

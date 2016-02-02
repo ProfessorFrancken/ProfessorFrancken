@@ -142,6 +142,7 @@ class EventStoreFeature extends TestCase
                 $time->reveal()
             ),
         ]);
+
         $this->store->append('aggregate-1', $eventStream);
     }
 }
