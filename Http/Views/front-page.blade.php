@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">T.F.V. Professor Francken</div>
+                <div class="title">T.F.V. 'Professor Francken'</div>
             </div>
         </div>
     </body>
