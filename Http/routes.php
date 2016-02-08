@@ -12,10 +12,16 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-
     Route::get('/', 'MainContentController@index');
     Route::get('/news', 'MainContentController@news');
     Route::get('/study', 'MainContentController@study');
     Route::get('/career', 'MainContentController@career');
 
+    Route::get('/admin', function(){
+    	return view('dashboard');
+    });
+
+    Route::get('admin/{id}', function ($id) {
+        return "<h1>".$id."</h1>";
+    });
 });
