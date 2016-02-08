@@ -21,6 +21,12 @@ Downloading the box might take a while. While you're waiting you can copy and
 rename the `Homestead.yaml.dist` file to `Homestead.yaml` and make sure that the
 `authorize` key in the yaml file points to your public ssh key.
 
+You will now need to download Homestead, e.g. by cloning the repository:
+```
+git clone https://github.com/laravel/homestead.git Homestead
+```
+you may need to alter `Vagrantfile` line 12 to point `Homestead/scripts/homestead.rb`, in this newly cloned Homstead folder
+
 Next you *should* be able to run `vagrant up`, which starts the VM,
 ```
 vagrant up
