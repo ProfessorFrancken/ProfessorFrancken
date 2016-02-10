@@ -14,6 +14,6 @@ class FrontPageFeature extends TestCase
     public function the_front_page_shows_our_name()
     {
         $this->visit('/')
-             ->see('T.F.V. Professor Francken');
+             ->see("T.F.V. 'Professor Francken'");
     }
 }
