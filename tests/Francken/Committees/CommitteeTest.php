@@ -45,6 +45,8 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function a_committee_has_members()
     {
+        $this->markTestSkipped("This is a draft test");
+
         $id = new CommitteeId($this->generator->generate());
         $memberId = $this->generator->generate();
 
