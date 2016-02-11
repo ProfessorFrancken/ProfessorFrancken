@@ -41,7 +41,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><a href="#overview">Overview </a></li>
-            <li><a href="#reports">Reports</a></li>
+            <li><a href="#committee">Committee</a></li>
             <li><a href="#analytics">Analytics</a></li>
             <li><a href="#export">Export</a></li>
           </ul>
