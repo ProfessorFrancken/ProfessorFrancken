@@ -9,6 +9,7 @@ use Francken\Committees\Committee;
 use Francken\Committees\CommitteeId;
 use Francken\Committees\Events\CommitteeInstantiated;
 
+use Francken\Committees\CommitteeRepository;
 
 class CommitteeController extends Controller
 {
@@ -17,12 +18,14 @@ class CommitteeController extends Controller
         return view('admin.committee');
     }
 
-    public function create_committee(Request $req)
+    public function create_committee(Request $req, CommitteeRepository $repo)
     {
     	$generator = new Version4Generator();
     	$id = new CommitteeId($generator->generate());
     	$committee = Committee::instantiate($id, $req->input('inputName'), $req->input('inputGoal'));
-    	
-    	$committee
+
+        $repo->save($committee);
+
+        return redirect('/admin');
     }
 }

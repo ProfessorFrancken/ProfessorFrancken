@@ -29,4 +29,8 @@ class Committee extends EventSourcedAggregateRoot
         return $this->id;
     }
 
+    public function applyCommitteeInstantiated(CommitteeInstantiated $event)
+    {
+        $this->id = $event->committeeId();
+    }
 }
