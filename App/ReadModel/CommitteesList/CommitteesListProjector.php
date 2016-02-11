@@ -27,4 +27,9 @@ final class CommitteesListProjector extends Projector
             'goal' => $event->goal()
         ]);
     }
+
+    public function all()
+    {
+        return $this->db->table(self::TABLE)->get();
+    }
 }

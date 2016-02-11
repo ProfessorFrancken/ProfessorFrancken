@@ -1,3 +1,4 @@
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -7,10 +8,10 @@
     <title>T.F.V. admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
   </head>
 
   <body>
@@ -61,6 +62,7 @@
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          @yield('content')
         </div>
       </div>
     </div>
@@ -69,8 +71,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/dashboard.js"></script>
-  
+    <script src="/js/bootstrap.min.js"></script>
 
 </body></html>

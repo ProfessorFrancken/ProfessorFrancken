@@ -20,14 +20,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/career', 'MainContentController@career');
 
     Route::get('/admin', function(){
-    	return view('dashboard');
+    	return redirect('/admin/overview');
     });
 
     Route::get('/admin/committee', 'CommitteeController@index');
+    Route::get('/admin/committee/create-committee', 'CommitteeController@create_committee');
+    Route::post('/admin/committee/create-committee', 'CommitteeController@post_create_committee');
 
-    Route::post('/admin/committee', 'CommitteeController@create_committee');
-
-    Route::get('admin/{id}', function ($id) {
-        return "<h1>".$id."</h1>";
-    });
+    // Route::get('admin/{id}', function ($id) {
+    //     return "<h1>".$id."</h1>";
+    // });
 });
