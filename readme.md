@@ -12,20 +12,30 @@ You can find some high quality introductory videos on
 You should first install [virtualbox](https://www.virtualbox.org/wiki/Downloads)
 and [vagrant](https://www.vagrantup.com/).
 Vagrant is used to provision our VM.
-Once virtualbox and thereafter vagrant have been installed you should install
-the `homestead` box:
-```
-vagrant box add laravel/homestead
-```
-Downloading the box might take a while. While you're waiting you can copy and
-rename the `Homestead.yaml.dist` file to `Homestead.yaml` and make sure that the
-`authorize` key in the yaml file points to your public ssh key.
-
 You will now need to download Homestead, e.g. by cloning the repository:
 ```
 git clone https://github.com/laravel/homestead.git Homestead
 ```
-you may need to alter `Vagrantfile` line 12 to point `Homestead/scripts/homestead.rb`, in this newly cloned Homstead folder
+
+### Generate a ssh key
+If you do not yet have an ssh key (if you've installed
+[Github Desktop](https://desktop.github.com/) then you can skip this step) then
+you should generate a new, see
+[generating a new ssh key](https://help.github.com/articles/generating-a-new-ssh-key/).
+
+Next copy and rename the `Homestead.yaml.dist` file to `Homestead.yaml`, also
+copy and rename the `.env.example` file to `.env`.
+If you are on windows, then change the `authorize` property in `Homestead.yaml` to point to your
+public ssh key.
+
+### Setup homestead
+Once virtualbox and thereafter vagrant have been installed and you've correctly
+cloned Homestead and configured your sshkey, then you should install the
+`homestead` box:
+```
+vagrant box add laravel/homestead
+```
+Downloading the box might take a while.
 
 Next you *should* be able to run `vagrant up`, which starts the VM,
 ```
@@ -35,17 +45,21 @@ Once vagrant has finished you can ssh into the VM by using `vagrant ssh`. The VM
 is automatically configured with nginx and MYSQL database. See the
 [homestead documentation](https://laravel.com/docs/5.2/homestead) for some
 additional info.
+
+### Verify that everything is working
 Once you've successfully ssh'd into your VM you'll need to install some
-dependencies using [composer](http://getcomposer.org/) first `cd` into the
-`francken` directory and then run `composer install`.
+dependencies using [composer](http://getcomposer.org/).
+Next `cd` into the `francken` directory and then run `composer install`.
 Once that's finished you should be able to run the unit and integration tests,
 ```
 vendor/bin/phpunit
 ```
 
 Next if you want to visit the website you should run some migrations (these will
-configure your MYSQL database),
+configure your MYSQL database) and setup an random application key (this is used
+for security stuff),
 ```
+php artisan key:generate
 php artisan migrate
 ```
 
@@ -60,10 +74,7 @@ sudo echo "192.168.10.10  francken.app" >> /etc/hosts
 
 #### Another option is to use the xip.io service
 Instead of configuring your host file you should also be able to open the
-website by visiting:
-```
-http://francken.192.168.10.10.xip.io/
-```
+website by visiting [francken.192.168.10.10.xip.io/](http://francken.192.168.10.10.xip.io/).
 
 ## Testing
 Once your VM has been setup you should be able to run the unit and integration
@@ -73,4 +84,3 @@ Run the tests from your VM in the root directory:
 ```
 vendor/bin/phpunit
 ```
-
