@@ -25,8 +25,8 @@ you should generate a new, see
 
 Next copy and rename the `Homestead.yaml.dist` file to `Homestead.yaml`, also
 copy and rename the `.env.example` file to `.env`.
-If you are on windows, then change the `authorize` property in `Homestead.yaml` to point to your
-public ssh key.
+If you are on windows, then change the `authorize` as well as the `keys` property in `Homestead.yaml` to point to your
+public ssh key. 
 
 ### Setup homestead
 Once virtualbox and thereafter vagrant have been installed and you've correctly
