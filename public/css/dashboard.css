@@ -11,7 +11,6 @@ body {
 /*
  * Global add-ons
  */
-
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
@@ -28,7 +27,6 @@ body {
 /*
  * Sidebar
  */
-
 /* Hide for mobile, show later */
 .sidebar {
   display: none;
@@ -70,7 +68,6 @@ body {
 /*
  * Main content
  */
-
 .main {
   padding: 20px;
 }

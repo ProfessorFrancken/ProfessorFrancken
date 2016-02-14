@@ -28,7 +28,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Mark Boer</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
@@ -41,23 +41,15 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="#overview">Overview </a></li>
-            <li><a href="#committee">Committee</a></li>
-            <li><a href="#analytics">Analytics</a></li>
-            <li><a href="#export">Export</a></li>
+            <li class="active"><a href="/admin/overview">Overview </a></li>
+            <li><a href="/admin/analytics">Analytics</a></li>
+            <li><a href="/admin/export">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li ><strong>Events & Blogs</strong></li>
-            <li><a href="#createblog">Create Blag Post</a></li>
-            <li><a href="#editblog">Edit Blag Post</a></li>
-            <li><a href="#createevent">Create event</a></li>
-            <li><a href="#editevent">Edit event</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li ><strong>Member administration</strong></li>
-            <li><a href="#addmember">Add member</a></li>
-            <li><a href="#removemember">Remove member</a></li>
-            <li><a href="#editmember">Edit member</a></li>
+            <li><a href="/admin/users">Users</a></li>
+            <li><a href="/admin/committees">Committees</a></li>
+            <li><a href="/admin/blog">Blog</a></li>
+            <li><a href="/admin/activities">Activities</a></li>
           </ul>
         </div>
 

@@ -12,11 +12,13 @@ use Francken\Committees\CommitteeRepository;
 
 use App\ReadModel\CommitteesList\CommitteesListProjector;
 
+use DB;
+
 class CommitteeController extends Controller
 {
-    public function index(CommitteesListProjector $project)
+    public function index()
     {
-        $committees = $project->all();
+        $committees = DB::table('committees_list')->get();
 
         return view('committee', [
             'committees' => $committees
@@ -36,6 +38,16 @@ class CommitteeController extends Controller
 
         $repo->save($committee);
 
+        return redirect('/admin/committee');
+    }
+
+    public function add_member()
+    {
+        return view('add-member');
+    }
+
+    public function post_add_member()
+    {
         return redirect('/admin/committee');
     }
 }
