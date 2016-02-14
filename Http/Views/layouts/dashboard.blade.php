@@ -47,7 +47,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="/admin/users">Users</a></li>
-            <li><a href="/admin/committees">Committees</a></li>
+            <li><a href="/admin/committee">Committees</a></li>
             <li><a href="/admin/blog">Blog</a></li>
             <li><a href="/admin/activities">Activities</a></li>
           </ul>

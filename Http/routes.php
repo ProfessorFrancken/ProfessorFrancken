@@ -19,6 +19,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/study', 'MainContentController@study');
     Route::get('/career', 'MainContentController@career');
 
+    Route::get('/admin', function() {
+        return redirect('/admin/overview');
+    });
+
     Route::get('/admin/overview', 'DashboardController@overview');
     Route::get('/admin/analytics', 'DashboardController@analytics');
     Route::get('/admin/export', 'DashboardController@export');
@@ -26,4 +30,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/committee', 'CommitteeController@index');
     Route::get('/admin/committee/create-committee', 'CommitteeController@create_committee');
     Route::post('/admin/committee/create-committee', 'CommitteeController@post_create_committee');
+    Route::get('/admin/committee/add-member/{id}', 'CommitteeController@add_member', 'id');
+
 });

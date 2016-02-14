@@ -41,9 +41,13 @@ class CommitteeController extends Controller
         return redirect('/admin/committee');
     }
 
-    public function add_member()
+    public function add_member($id)
     {
-        return view('add-member');
+        $committee = DB::table('committees_list')->where('uuid', $id)->first();
+
+        return view('add-member', [
+            'committee' => $committee
+        ]);
     }
 
     public function post_add_member()

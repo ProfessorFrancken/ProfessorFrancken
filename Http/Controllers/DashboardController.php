@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function overview()
     {
-    	$events = DB::table('event_store_table')->get();
+    	$events = DB::table('event_store')->get();
 
         return view('overview',[
         	'events' => $events
