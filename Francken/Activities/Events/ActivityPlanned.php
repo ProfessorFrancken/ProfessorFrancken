@@ -3,6 +3,7 @@
 namespace Francken\Activities\Events;
 
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 
 use Francken\Activities\ActivityId;
 use Francken\Activities\Location;
@@ -10,9 +11,11 @@ use DateTime;
 
 final class ActivityPlanned implements SerializableInterface
 {
+    use Serializable;
+
     private $id;
     private $name;
-    private $descriptions;
+    private $description;
     private $time;
     private $location;
     private $type;
@@ -32,16 +35,8 @@ final class ActivityPlanned implements SerializableInterface
         return $this->id;
     }
 
-    public static function deserialize(array $data)
+    protected static function deserializationCallbacks()
     {
-        return new static($data['activityId']);
+        return [];
     }
-
-    public function serialize()
-    {
-        return [
-            'activityId' => (string) $this->activityId
-        ];
-    }
-
 }

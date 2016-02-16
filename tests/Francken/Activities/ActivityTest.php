@@ -55,3 +55,5 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                 Activity::SOCIAL
             )]);
     }
+
+}
