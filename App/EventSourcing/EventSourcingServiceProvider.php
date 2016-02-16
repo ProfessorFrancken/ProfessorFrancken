@@ -13,6 +13,12 @@ use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
 
+
+use BroadwaySerialization\Reconstitution\Reconstitution;
+use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use Doctrine\Instantiator\Instantiator;
+use BroadwaySerialization\Hydration\HydrateUsingReflection;
+
 class EventSourcingServiceProvider extends ServiceProvider
 {
 
@@ -33,6 +39,13 @@ class EventSourcingServiceProvider extends ServiceProvider
                 $this->app->make($projector)
             );
         }
+
+        Reconstitution::reconstituteUsing(
+            new ReconstituteUsingInstantiatorAndHydrator(
+                new Instantiator(),
+                new HydrateUsingReflection()
+            )
+        );
     }
 
 

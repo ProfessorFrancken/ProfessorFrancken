@@ -3,9 +3,15 @@
 namespace Francken\Committees\Events;
 
 use Francken\Committees\CommitteeId;
+use Francken\Base\DomainEvent;
 
-final class CommitteeInstantiated extends CommitteeEvent
+use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
+
+final class CommitteeInstantiated implements SerializableInterface
 {
+    use Serializable;
+
     private $committeeId;
     private $name;
     private $goal;
@@ -15,15 +21,6 @@ final class CommitteeInstantiated extends CommitteeEvent
         $this->committeeId = $committeeId;
         $this->name = $name;
         $this->goal = $goal;
-    }
-
-    public static function deserialize(array $data)
-    {
-        return new static(
-            new CommitteeId($data['committeeId']),
-            $data['name'],
-            $data['goal']
-        );
     }
 
     public function committeeId()
@@ -41,12 +38,8 @@ final class CommitteeInstantiated extends CommitteeEvent
         return $this->goal;
     }
 
-    public function serialize()
+    protected static function deserializationCallbacks()
     {
-        return [
-            'committeeId' => (string) $this->committeeId(),
-            'name' => $this->name(),
-            'goal' => $this->goal()
-        ];
+        return [];
     }
 }

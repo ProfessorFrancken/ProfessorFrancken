@@ -2,6 +2,8 @@
 
 namespace Tests\Francken\Committees\Events;
 
+use Tests\SetupReconstitution;
+
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 
@@ -11,6 +13,7 @@ use Francken\Committees\Events\CommitteeInstantiated;
 
 class CommitteeInstantiatedTest extends \PHPUnit_Framework_TestCase
 {
+    use SetupReconstitution;
 
     private $generator;
 

@@ -8,11 +8,13 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "broadway/broadway": "^0.8.0",
-        "beberlei/assert": "^2.4"
+        "beberlei/assert": "^2.4",
+        "matthiasnoback/broadway-serialization": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
+        "humbug/humbug": "dev-master",
         "phpunit/phpunit": ">=4.8",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*"
