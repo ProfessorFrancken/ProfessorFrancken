@@ -19,6 +19,11 @@ class Committee extends EventSourcedAggregateRoot
         return $committee;
     }
 
+    public function edit($name, $goal)
+    {
+        //TODO: MAKE NEW EVENT
+    }
+
     public function joinByMember(MemberId $memberId)
     {
         $this->apply(new MemberJoinedCommittee($this->id, $memberId));

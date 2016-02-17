@@ -54,4 +54,14 @@ class CommitteeController extends Controller
     {
         return redirect('/admin/committee');
     }
+
+    public function post_edit_committee(Request $req, CommitteeRepository $repo)
+    {
+        $committee = $repo->load($req->input('id'));
+        // $committee->edit($req->input('name'), $req->input('goal'));
+        // $repo->save($committee);
+        echo $committee->getAggregateRootId();
+
+        // return redirect('/admin/committee')
+    }
 }
