@@ -16,6 +16,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'MainContentController@index');
     Route::get('/news', 'MainContentController@news');
     Route::get('/study', 'MainContentController@study');
-    Route::get('/career', 'FrontPageController@index');
+    Route::get('/career', 'MainContentController@career');
 
 });
