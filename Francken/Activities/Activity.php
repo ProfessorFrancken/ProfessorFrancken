@@ -5,6 +5,7 @@ namespace Francken\Activities;
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 
 use Francken\Activities\Events\ActivityPlanned;
+use Francken\Activities\Events\ActivityPublished;
 
 use DateTime;
 
@@ -30,6 +31,11 @@ final class Activity extends EventSourcedAggregateRoot
         $activity->apply(new ActivityPlanned($id, $name, $description, $time, $location, $type));
 
         return $activity;
+    }
+
+    public function publish()
+    {
+        $this->apply(new ActivityPublished($this->id));
     }
 
     public function applyActivityPlanned(ActivityPlanned $event)
