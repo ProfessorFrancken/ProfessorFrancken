@@ -2,28 +2,8 @@
 
 namespace Francken\Activities;
 
-use Assert\Assertion as Assert;
+use Francken\Base\Identifier;
 
-final class ActivityId
+final class ActivityId extends Identifier
 {
-    private $activityId;
-
-    /**
-     * @param string $activityId
-     */
-    public function __construct($activityId)
-    {
-        Assert::string($activityId);
-        Assert::uuid($activityId);
-
-        $this->activityId = $activityId;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->activityId;
-    }
 }
