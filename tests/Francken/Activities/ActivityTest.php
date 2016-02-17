@@ -42,7 +42,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                     'Crash & Compile',
                     'Programming competition',
                     new DateTime('2015-12-04'),
-                    new Location('Francken kamer'),
+                    Location::fromNameAndAddress('Francken kamer'),
                     Activity::SOCIAL
                 );
             })
@@ -51,7 +51,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                 'Crash & Compile',
                 'Programming competition',
                 new DateTime('2015-12-04'),
-                new Location('Francken kamer'),
+                Location::fromNameAndAddress('Francken kamer'),
                 Activity::SOCIAL
             )]);
     }
