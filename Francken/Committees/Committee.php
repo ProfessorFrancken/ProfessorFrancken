@@ -9,6 +9,8 @@ use Francken\Committees\Events\CommitteeInstantiated;
 class Committee extends EventSourcedAggregateRoot
 {
     private $id;
+    private $name;
+    private $goal;
 
     public static function instantiate(CommitteeId $id, $name, $goal)
     {
@@ -19,9 +21,17 @@ class Committee extends EventSourcedAggregateRoot
         return $committee;
     }
 
-    public function edit($name, $goal)
+    public function edit($id, $name, $goal)
     {
-        //TODO: MAKE NEW EVENT
+        if(isset($name) and $name != $this->name)
+        {
+            $committee->apply(new CommitteeNameChanged($id, $name));
+        }
+
+        if(isset($goal) and $goal != $this->goal)
+        {
+            $committee->apply(new CommitteeGoalChanged($id, $goal));
+        }
     }
 
     public function joinByMember(MemberId $memberId)
@@ -37,5 +47,17 @@ class Committee extends EventSourcedAggregateRoot
     public function applyCommitteeInstantiated(CommitteeInstantiated $event)
     {
         $this->id = $event->committeeId();
+        $this->name = $event->name();
+        $this->goal = $event->goal();
+    }
+
+    public function applyCommitteeNameChanged(CommitteeNameChanged $event)
+    {
+        $this->name = $event->name();
+    }
+
+    public function applyCommitteeGoalChanged(CommitteeGoalChanged $goal)
+    {
+        $this->name = $goal->name();
     }
 }
