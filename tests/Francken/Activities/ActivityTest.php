@@ -11,6 +11,7 @@ use Francken\Activities\Location;
 
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
+use Francken\Activities\Events\ActivityRetracted;
 use Francken\Activities\Events\ActivityCategorized;
 
 use DateTime;
@@ -54,7 +55,6 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function once_an_activity_has_been_planned_it_can_be_published()
     {
-
         $id = new ActivityId($this->generator->generate());
 
         $this->givenAPlannedActivity($id)
@@ -62,6 +62,72 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                 return $activity->publish();
             })
             ->then([new ActivityPublished($id)]);
+    }
+
+    /** @test */
+    public function a_published_activity_can_be_retracted()
+    {
+        $id = new ActivityId($this->generator->generate());
+
+        return $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id),
+                new ActivityPublished($id)
+            ])
+            ->when(function ($activity) {
+                return $activity->retract();
+            })
+            ->then([new ActivityRetracted($id)]);
+    }
+
+    /**
+     * @test
+     * @expectedException \Francken\Activities\InvalidActivity
+     */
+    public function a_draft_activity_cant_be_retracted()
+    {
+        $id = new ActivityId($this->generator->generate());
+
+        $this->givenAPlannedActivity($id)
+            ->when(function ($activity) {
+                return $activity->retract();
+            });
+    }
+
+    /**
+     * @test
+     * @expectedException \Francken\Activities\InvalidActivity
+     */
+    public function a_published_activity_cant_be_published_again()
+    {
+        $id = new ActivityId($this->generator->generate());
+
+        return $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id),
+                new ActivityPublished($id)
+            ])
+            ->when(function ($activity) {
+                return $activity->publish();
+            });
+    }
+
+    /**
+     * @test
+     * @expectedException \Francken\Activities\InvalidActivity
+     */
+    public function a_retracted_activity_cant_be_retracted_again()
+    {
+        $id = new ActivityId($this->generator->generate());
+
+        $this->givenAPlannedActivity($id)
+            ->when(function ($activity) {
+                $activity->publish();
+                $activity->retract();
+                return $activity->retract();
+            });
     }
 
     /** @test */

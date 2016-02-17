@@ -6,6 +6,7 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
+use Francken\Activities\Events\ActivityRetracted;
 use Francken\Activities\Events\ActivityCategorized;
 
 use DateTime;
@@ -13,6 +14,7 @@ use DateTime;
 final class Activity extends EventSourcedAggregateRoot
 {
     private $id;
+    private $published = false;
     private $category;
 
     const SOCIAL = 'social';
@@ -37,7 +39,22 @@ final class Activity extends EventSourcedAggregateRoot
 
     public function publish()
     {
+        if ($this->published)
+        {
+            throw InvalidActivity::alreadyPublished();
+        }
+
         $this->apply(new ActivityPublished($this->id));
+    }
+
+    public function retract()
+    {
+        if (! $this->published)
+        {
+            throw InvalidActivity::cantRetractADraft();
+        }
+
+        $this->apply(new ActivityRetracted($this->id));
     }
 
     public function recategorize($category)
@@ -53,6 +70,16 @@ final class Activity extends EventSourcedAggregateRoot
     public function applyActivityPlanned(ActivityPlanned $event)
     {
         $this->id = $event->activityId();
+    }
+
+    public function applyActivityPublished(ActivityPublished $event)
+    {
+        $this->published = true;
+    }
+
+    public function applyActivityRetracted(ActivityRetracted $event)
+    {
+        $this->published = false;
     }
 
     public function applyActivityCategorized(ActivityCategorized $event)
