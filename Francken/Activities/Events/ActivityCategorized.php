@@ -2,21 +2,15 @@
 
 namespace Francken\Activities\Events;
 
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
-
 use Francken\Activities\ActivityId;
 
-final class ActivityCategorized implements SerializableInterface
+final class ActivityCategorized extends ActivityEvent
 {
-    use Serializable;
-
-    private $id;
-    private $category;
+    protected $category;
 
     public function __construct(ActivityId $id, $category)
     {
-        $this->id = $id;
+        parent::__construct($id);
         $this->category = $category;
     }
 
