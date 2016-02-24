@@ -3,9 +3,7 @@
 namespace Francken\Base;
 
 use Assert\Assertion as Assert;
-
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-
 use BroadwaySerialization\Serialization\Serializable;
 use Broadway\Serializer\SerializableInterface;
 
