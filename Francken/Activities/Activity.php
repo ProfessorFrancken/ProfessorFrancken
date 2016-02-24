@@ -9,7 +9,7 @@ use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityRetracted;
 use Francken\Activities\Events\ActivityCategorized;
 
-use DateTime;
+use DateTimeImmutable;
 
 final class Activity extends EventSourcedAggregateRoot
 {
@@ -25,7 +25,7 @@ final class Activity extends EventSourcedAggregateRoot
         ActivityId $id,
         $name,
         $description,
-        DateTime $time,
+        DateTimeImmutable $time,
         Location $location,
         $type
     )

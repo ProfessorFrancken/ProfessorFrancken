@@ -11,7 +11,7 @@ use Francken\Activities\Activity;
 use Francken\Activities\Location;
 use Francken\Activities\Events\ActivityPlanned;
 
-use DateTime;
+use DateTimeImmutable;
 
 class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,7 +36,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
             $id,
             "Crash & Compile",
             "Programming competition",
-            new DateTime("2015-12-04"),
+            new DateTimeImmutable("2015-12-04"),
             Location::fromNameAndAddress("Francken kamer"),
             Activity::SOCIAL
         );
@@ -44,7 +44,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($id, $event->activityId());
         $this->assertEquals("Crash & Compile", $event->name());
         $this->assertEquals("Programming competition", $event->description());
-        $this->assertEquals(new DateTime("2015-12-04"), $event->time());
+        $this->assertEquals(new DateTimeImmutable("2015-12-04"), $event->time());
         $this->assertEquals(Location::fromNameAndAddress("Francken kamer"), $event->location());
         $this->assertEquals(Activity::SOCIAL, $event->category());
     }
@@ -59,7 +59,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
             $id,
             'Crash & Compile',
             'Programming competition',
-            new DateTime('2015-12-04'),
+            new DateTimeImmutable('2015-12-04'),
             Location::fromNameAndAddress('Francken kamer'),
             Activity::SOCIAL
         );
@@ -78,7 +78,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
             $id,
             'Crash & Compile',
             'Programming competition',
-            new DateTime('2015-12-04'),
+            new DateTimeImmutable('2015-12-04'),
             Location::fromNameAndAddress('Francken kamer'),
             Activity::SOCIAL
         );
@@ -88,7 +88,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($id, $event->activityId());
         $this->assertEquals("Crash & Compile", $event->name());
         $this->assertEquals("Programming competition", $event->description());
-        $this->assertEquals(new DateTime("2015-12-04"), $event->time());
+        $this->assertEquals(new DateTimeImmutable("2015-12-04"), $event->time());
         $this->assertEquals(Location::fromNameAndAddress("Francken kamer"), $event->location());
         $this->assertEquals(Activity::SOCIAL, $event->category());
     }

@@ -12,9 +12,11 @@ use Francken\Activities\Location;
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityRetracted;
+
+
 use Francken\Activities\Events\ActivityCategorized;
 
-use DateTime;
+use DateTimeImmutable;
 
 class ActivitiesTest extends AggregateRootScenarioTestCase
 {
@@ -44,7 +46,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                     $id,
                     'Crash & Compile',
                     'Programming competition',
-                    new DateTime('2015-12-04'),
+                    new DateTimeImmutable('2015-12-04'),
                     Location::fromNameAndAddress('Francken kamer'),
                     Activity::SOCIAL
                 );
@@ -186,7 +188,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
             $id,
             'Crash & Compile',
             'Programming competition',
-            new DateTime('2015-12-04'),
+            new DateTimeImmutable('2015-12-04'),
             Location::fromNameAndAddress('Francken kamer'),
             Activity::SOCIAL
         );

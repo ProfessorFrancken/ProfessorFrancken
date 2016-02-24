@@ -45,5 +45,4 @@ class LocationTest extends \PHPUnit_Framework_TestCase
             Location::deserialize($location->serialize())
         );
     }
-    // it can be serialized and deserialized
 }

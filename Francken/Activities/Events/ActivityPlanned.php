@@ -4,7 +4,7 @@ namespace Francken\Activities\Events;
 
 use Francken\Activities\ActivityId;
 use Francken\Activities\Location;
-use DateTime;
+use DateTimeImmutable;
 
 final class ActivityPlanned extends ActivityEvent
 {
@@ -15,7 +15,7 @@ final class ActivityPlanned extends ActivityEvent
     protected $location;
     protected $category;
 
-    public function __construct(ActivityId $id, $name, $description, DateTime $time, Location $location, $category)
+    public function __construct(ActivityId $id, $name, $description, DateTimeImmutable $time, Location $location, $category)
     {
         parent::__construct($id);
 
