@@ -10,18 +10,18 @@ class DashboardController extends Controller
     {
     	$events = DB::table('event_store')->get();
 
-        return view('overview',[
+        return view('admin.overview',[
         	'events' => $events
         ]);
     }
 
     public function analytics()
     {
-    	return view('analytics');
+    	return view('admin.analytics');
     }
 
     public function export()
     {
-    	return view('export');
+    	return view('admin.export');
     }
 }

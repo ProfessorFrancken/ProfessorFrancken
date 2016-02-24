@@ -7,6 +7,8 @@ use Illuminate\Database\ConnectionInterface as Connection;
 use Broadway\ReadModel\Projector;
 
 use Francken\Committees\Events\CommitteeInstantiated;
+use Francken\Committees\Events\CommitteeNameChanged;
+use Francken\Committees\Events\CommitteeGoalChanged;
 
 final class CommitteesListProjector extends Projector
 {
@@ -28,8 +30,13 @@ final class CommitteesListProjector extends Projector
         ]);
     }
 
-    public function all()
+    public function applyCommitteeNameChanged(CommitteeNameChanged $event)
     {
-        return $this->db->table(self::TABLE)->get();
+        $this->db->table(self::TABLE)->where('uuid', $event->committeeId())->update(['name' => $event->name()]);
+    }
+
+    public function applyCommitteeGoalChanged(CommitteeGoalChanged $event)
+    {
+        $this->db->table(self::TABLE)->where('uuid', $event->committeeId())->update(['goal' => $event->goal()]);
     }
 }

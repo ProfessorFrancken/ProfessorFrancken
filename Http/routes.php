@@ -28,8 +28,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/export', 'DashboardController@export');
 
     Route::get('/admin/committee', 'CommitteeController@index');
-    Route::get('/admin/committee/create-committee', 'CommitteeController@create_committee');
-    Route::post('/admin/committee/create-committee', 'CommitteeController@post_create_committee');
-    Route::get('/admin/committee/add-member/{id}', 'CommitteeController@add_member', 'id');
-    Route::post('/admin/committee/edit', 'CommitteeController@post_edit_committee');
+    Route::get('/admin/committee/{id}', 'CommitteeController@show', 'id');
+    Route::post('/admin/committee/create-committee', 'CommitteeController@createCommittee');
+    Route::post('/admin/committee/edit', 'CommitteeController@editCommittee');
 });

@@ -16,52 +16,50 @@ use DB;
 
 class CommitteeController extends Controller
 {
+    //-------GET---------
     public function index()
     {
         $committees = DB::table('committees_list')->get();
 
-        return view('committee', [
+        return view('admin.committee.index', [
             'committees' => $committees
         ]);
     }
 
-    public function create_committee()
+    public function show($id)
     {
-        return view('create-committee');
+        $committee = DB::table('committees_list')->where('uuid', $id)->first();
+
+        return view('admin.committee.show', [
+            'committee' => $committee
+        ]);
     }
 
-    public function post_create_committee(Request $req, CommitteeRepository $repo)
+    //------POST------
+    public function createCommittee(Request $req, CommitteeRepository $repo)
     {
-    	$generator = new Version4Generator();
-    	$id = new CommitteeId($generator->generate());
-    	$committee = Committee::instantiate($id, $req->input('inputName'), $req->input('inputGoal'));
+        $generator = new Version4Generator();
+        $id = new CommitteeId($generator->generate());
+        $committee = Committee::instantiate($id, $req->input('inputName'), $req->input('inputGoal'));
 
         $repo->save($committee);
 
         return redirect('/admin/committee');
     }
 
-    public function add_member($id)
-    {
-        $committee = DB::table('committees_list')->where('uuid', $id)->first();
-
-        return view('add-member', [
-            'committee' => $committee
-        ]);
-    }
-
-    public function post_add_member()
+    public function addMember()
     {
         return redirect('/admin/committee');
     }
 
-    public function post_edit_committee(Request $req, CommitteeRepository $repo)
+    //------PUT-----
+    public function editCommittee(Request $req, CommitteeRepository $repo)
     {
         $committee = $repo->load($req->input('id'));
 
         $committee->edit($req->input('name'), $req->input('goal'));
         $repo->save($committee);
 
-        return redirect('')
+        return redirect('/admin/committee/' . $req->input('id'));
     }
 }

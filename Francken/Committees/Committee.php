@@ -56,8 +56,8 @@ class Committee extends EventSourcedAggregateRoot
         $this->name = $event->name();
     }
 
-    public function applyCommitteeGoalChanged(CommitteeGoalChanged $goal)
+    public function applyCommitteeGoalChanged(CommitteeGoalChanged $event)
     {
-        $this->name = $goal->name();
+        $this->goal = $event->goal();
     }
 }

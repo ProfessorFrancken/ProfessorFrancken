@@ -1,8 +1,28 @@
 @extends('layouts.dashboard')
 
-
 @section('content')
-  <h1>Create committee</h1>
+  <h1 class="page-header">Committees</h1>
+  
+  <table class="table table-hover">
+    <tr>
+      <th>#</th>
+      <th>Committe name</th>
+      <th>Committee goal</th>
+      <th></th>
+    </tr>
+
+    <?php $i = 1 ?>
+    @foreach ($committees as $committee)
+      <tr>
+        <td>{{ $i++ }}</td>
+        <td>{{ $committee->name }}</td>
+        <td>{{ $committee->goal }}</td>
+        <td><a href="/admin/committee/{{ $committee->uuid }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+      </tr>
+    @endforeach
+  </table>
+
+  <h3>Create committee</h3>
 
   <form action="{{ url('admin/committee/create-committee') }}" method="POST" class="form-horizontal">
     {!! csrf_field() !!}
