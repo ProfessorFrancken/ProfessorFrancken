@@ -6,9 +6,9 @@ use Francken\Base\DomainException;
 
 final class InvalidActivity extends DomainException {
 
-    public static function cantRetractADraft()
+    public static function cantCancelADraft()
     {
-        return new static("Can't retract an activity that is a draft or has been retracted.");
+        return new static("Can't cancel an activity that is a draft or has been cancelled.");
     }
 
     public static function alreadyPublished()

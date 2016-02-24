@@ -6,7 +6,7 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
-use Francken\Activities\Events\ActivityRetracted;
+use Francken\Activities\Events\ActivityCancelled;
 use Francken\Activities\Events\ActivityCategorized;
 
 use DateTimeImmutable;
@@ -47,14 +47,14 @@ final class Activity extends EventSourcedAggregateRoot
         $this->apply(new ActivityPublished($this->id));
     }
 
-    public function retract()
+    public function cancel()
     {
         if (! $this->published)
         {
-            throw InvalidActivity::cantRetractADraft();
+            throw InvalidActivity::cantCancelADraft();
         }
 
-        $this->apply(new ActivityRetracted($this->id));
+        $this->apply(new ActivityCancelled($this->id));
     }
 
     public function recategorize($category)
@@ -77,7 +77,7 @@ final class Activity extends EventSourcedAggregateRoot
         $this->published = true;
     }
 
-    public function applyActivityRetracted(ActivityRetracted $event)
+    public function applyActivityCancelled(ActivityCancelled $event)
     {
         $this->published = false;
     }

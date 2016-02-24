@@ -11,7 +11,7 @@ use Francken\Activities\Location;
 
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
-use Francken\Activities\Events\ActivityRetracted;
+use Francken\Activities\Events\ActivityCancelled;
 
 
 use Francken\Activities\Events\ActivityCategorized;
@@ -67,7 +67,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function a_published_activity_can_be_retracted()
+    public function a_published_activity_can_be_cancelled()
     {
         $id = new ActivityId($this->generator->generate());
 
@@ -78,22 +78,22 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                 new ActivityPublished($id)
             ])
             ->when(function ($activity) {
-                return $activity->retract();
+                return $activity->cancel();
             })
-            ->then([new ActivityRetracted($id)]);
+            ->then([new ActivityCancelled($id)]);
     }
 
     /**
      * @test
      * @expectedException \Francken\Activities\InvalidActivity
      */
-    public function a_draft_activity_cant_be_retracted()
+    public function a_draft_activity_cant_be_cancelled()
     {
         $id = new ActivityId($this->generator->generate());
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
-                return $activity->retract();
+                return $activity->cancel();
             });
     }
 
@@ -120,15 +120,15 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
      * @test
      * @expectedException \Francken\Activities\InvalidActivity
      */
-    public function a_retracted_activity_cant_be_retracted_again()
+    public function a_cancelled_activity_cant_be_cancelled_again()
     {
         $id = new ActivityId($this->generator->generate());
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
                 $activity->publish();
-                $activity->retract();
-                return $activity->retract();
+                $activity->cancel();
+                return $activity->cancel();
             });
     }
 
