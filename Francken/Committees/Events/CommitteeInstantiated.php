@@ -40,6 +40,8 @@ final class CommitteeInstantiated implements SerializableInterface
 
     protected static function deserializationCallbacks()
     {
-        return [];
+        return [
+            'committeeId' => [CommitteeId::class, 'deserialize']
+        ];
     }
 }
