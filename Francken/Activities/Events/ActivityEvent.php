@@ -3,7 +3,7 @@
 namespace Francken\Activities\Events;
 
 use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Francken\Base\Serializable;
 
 use Francken\Activities\ActivityId;
 
