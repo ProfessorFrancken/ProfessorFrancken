@@ -8,6 +8,9 @@ use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityCancelled;
 use Francken\Activities\Events\ActivityCategorized;
+use Francken\Activities\Events\MemberRegisteredToParticipate;
+
+use Francken\Members\MemberId;
 
 use DateTimeImmutable;
 
@@ -65,6 +68,11 @@ final class Activity extends EventSourcedAggregateRoot
             return;
 
         $this->apply(new ActivityCategorized($this->id, $category));
+    }
+
+    public function registerParticipant(MemberId $memberId)
+    {
+        $this->apply(new MemberRegisteredToParticipate($this->id, $memberId));
     }
 
     public function applyActivityPlanned(ActivityPlanned $event)

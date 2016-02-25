@@ -26,6 +26,6 @@ final class ActivityCategorized extends ActivityEvent
 
     protected static function deserializationCallbacks()
     {
-        return [];
+        return ['id' => [ActivityId::class, 'deserialize']];
     }
 }

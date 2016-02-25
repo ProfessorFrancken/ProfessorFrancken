@@ -12,9 +12,10 @@ use Francken\Activities\Location;
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityCancelled;
-
-
 use Francken\Activities\Events\ActivityCategorized;
+use Francken\Activities\Events\MemberRegisteredToParticipate;
+
+use Francken\Members\MemberId;
 
 use DateTimeImmutable;
 
@@ -171,6 +172,19 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                 return $activity->recategorize(Activity::EDUCATION);
             })
             ->then([new ActivityCategorized($id, Activity::EDUCATION)]);
+    }
+
+    /** @test */
+    public function a_member_can_register_to_participate_in_an_activity()
+    {
+        $id = new ActivityId($this->generator->generate());
+        $memberId = new MemberId($this->generator->generate());
+
+        $this->givenAPlannedActivity($id)
+            ->when(function ($activity) use ($memberId) {
+                return $activity->registerParticipant($memberId);
+            })
+            ->then([new MemberRegisteredToParticipate($id, $memberId)]);
     }
 
     private function givenAPlannedActivity(ActivityId $id)

@@ -25,6 +25,6 @@ abstract class ActivityEvent implements SerializableInterface
 
     protected static function deserializationCallbacks()
     {
-        return [];
+        return ['id' => [ActivityId::class, 'deserialize']];
     }
 }
