@@ -166,16 +166,23 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     {
         $id = new ActivityId($this->generator->generate());
 
-        $this->givenAPlannedActivity($id)
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id),
+                new ActivityCategorized($id, Activity::EDUCATION)
+            ])
             ->when(function ($activity) {
-                $activity->recategorize(Activity::EDUCATION);
                 return $activity->recategorize(Activity::EDUCATION);
             })
-            ->then([new ActivityCategorized($id, Activity::EDUCATION)]);
+            ->then([]);
     }
 
-    /** @test */
-    public function a_member_can_register_to_participate_in_an_activity()
+    /**
+     * @test
+     * @expectedException \Francken\Activities\InvalidActivity
+     */
+    public function a_member_cant_register_to_participate_in_activity_that_isnt_published()
     {
         $id = new ActivityId($this->generator->generate());
         $memberId = new MemberId($this->generator->generate());
@@ -183,8 +190,44 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) use ($memberId) {
                 return $activity->registerParticipant($memberId);
+            });
+    }
+
+    /** @test */
+    public function a_member_can_register_to_participate_in_a_published_activity()
+    {
+        $id = new ActivityId($this->generator->generate());
+        $memberId = new MemberId($this->generator->generate());
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id),
+                new ActivityPublished($id)
+            ])
+            ->when(function ($activity) use ($memberId) {
+                return $activity->registerParticipant($memberId);
             })
             ->then([new MemberRegisteredToParticipate($id, $memberId)]);
+    }
+
+    /** @test */
+    public function registering_a_member_is_idempotent()
+    {
+        $id = new ActivityId($this->generator->generate());
+        $memberId = new MemberId($this->generator->generate());
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id),
+                new ActivityPublished($id),
+                new MemberRegisteredToParticipate($id, $memberId)
+            ])
+            ->when(function ($activity) use ($memberId) {
+                return $activity->registerParticipant($memberId);
+            })
+            ->then([]);
     }
 
     private function givenAPlannedActivity(ActivityId $id)

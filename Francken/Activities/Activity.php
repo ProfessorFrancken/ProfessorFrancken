@@ -19,6 +19,7 @@ final class Activity extends EventSourcedAggregateRoot
     private $id;
     private $published = false;
     private $category;
+    private $members = [];
 
     const SOCIAL = 'social';
     const CAREER = 'career';
@@ -72,27 +73,42 @@ final class Activity extends EventSourcedAggregateRoot
 
     public function registerParticipant(MemberId $memberId)
     {
+        if (! $this->published)
+        {
+            throw new InvalidActivity("Tried to register member {$memberId}, but activity isn't published");
+        }
+
+        if (in_array($memberId, $this->members))
+        {
+            return;
+        }
+
         $this->apply(new MemberRegisteredToParticipate($this->id, $memberId));
     }
 
-    public function applyActivityPlanned(ActivityPlanned $event)
+    protected function applyActivityPlanned(ActivityPlanned $event)
     {
         $this->id = $event->activityId();
     }
 
-    public function applyActivityPublished(ActivityPublished $event)
+    protected function applyActivityPublished(ActivityPublished $event)
     {
         $this->published = true;
     }
 
-    public function applyActivityCancelled(ActivityCancelled $event)
+    protected function applyActivityCancelled(ActivityCancelled $event)
     {
         $this->published = false;
     }
 
-    public function applyActivityCategorized(ActivityCategorized $event)
+    protected function applyActivityCategorized(ActivityCategorized $event)
     {
         $this->category = $event->category();
+    }
+
+    protected function applyMemberRegisteredToParticipate(MemberRegisteredToParticipate $event)
+    {
+        $this->members[] = $event->memberId();
     }
 
     public function getAggregateRootId()
