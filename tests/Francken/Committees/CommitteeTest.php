@@ -10,6 +10,9 @@ use Francken\Committees\CommitteeId;
 use Francken\Committees\Events\CommitteeInstantiated;
 use Francken\Committees\Events\CommitteeNameChanged;
 use Francken\Committees\Events\CommitteeGoalChanged;
+use Francken\Committees\Events\MemberJoinedCommittee;
+
+use Francken\Members\MemberId;
 
 
 class CommitteeTest extends AggregateRootScenarioTestCase
@@ -94,10 +97,9 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function a_committee_has_members()
     {
-        $this->markTestSkipped("This is a draft test");
 
         $id = new CommitteeId($this->generator->generate());
-        $memberId = $this->generator->generate();
+        $memberId = new MemberId($this->generator->generate());
 
         $this->scenario
             ->withAggregateId($id)
@@ -105,6 +107,25 @@ class CommitteeTest extends AggregateRootScenarioTestCase
             ->when(function ($committee) use ($memberId) {
                 $committee->joinByMember($memberId);
             })
-            ->then([new CommitteeMemberJoined($id, $memberId)]);
+            ->then([new MemberJoinedCommittee($id, $memberId)]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_committee_member_cannot_join_twice()
+    {
+
+        $id = new CommitteeId($this->generator->generate());
+        $memberId = new MemberId($this->generator->generate());
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->when(function ($committee) use ($memberId) {
+                $committee->joinByMember($memberId);
+                $committee->joinByMember($memberId);
+            })
+            ->then([new MemberJoinedCommittee($id, $memberId)]);
     }
 }

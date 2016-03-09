@@ -24,7 +24,7 @@
 
   <h3>Create committee</h3>
 
-  <form action="{{ url('admin/committee/create-committee') }}" method="POST" class="form-horizontal">
+  <form action="{{ url('admin/committee/') }}" method="POST" class="form-horizontal">
     {!! csrf_field() !!}
 
     <div class="form-group">

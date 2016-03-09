@@ -41,12 +41,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="/admin/overview">Overview </a></li>
+            <li><a href="/admin/overview">Overview </a></li>
             <li><a href="/admin/analytics">Analytics</a></li>
             <li><a href="/admin/export">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="/admin/users">Users</a></li>
+            <li><a href="/admin/member">Members</a></li>
             <li><a href="/admin/committee">Committees</a></li>
             <li><a href="/admin/blog">Blog</a></li>
             <li><a href="/admin/activities">Activities</a></li>

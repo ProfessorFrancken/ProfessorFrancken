@@ -4,13 +4,21 @@ namespace Francken\Committees;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 
+use Francken\Members\MemberId;
+
+use Francken\Committees\CommitteeId;
 use Francken\Committees\Events\CommitteeInstantiated;
+use Francken\Committees\Events\CommitteeNameChanged;
+use Francken\Committees\Events\CommitteeGoalChanged;
+use Francken\Committees\Events\MemberJoinedCommittee;
+use Francken\Committees\Events\MemberLeftCommittee;
 
 class Committee extends EventSourcedAggregateRoot
 {
     private $id;
     private $name;
     private $goal;
+    private $members = array();
 
     public static function instantiate(CommitteeId $id, $name, $goal)
     {
@@ -36,7 +44,19 @@ class Committee extends EventSourcedAggregateRoot
 
     public function joinByMember(MemberId $memberId)
     {
-        $this->apply(new MemberJoinedCommittee($this->id, $memberId));
+        //TODO: Check  $memberId is a valid ID
+        if( ! in_array($memberId, $this->members))
+        {
+            $this->apply(new MemberJoinedCommittee($this->id, $memberId));
+        }
+    }
+
+    public function leftByMember(MemberId $memberId)
+    {
+        // if ( in_array($memberId, $this->members) )
+        // {
+            $this->apply(new MemberLeftCommittee($this->id, $memberId));
+        // }
     }
 
     public function getAggregateRootId()
@@ -59,5 +79,15 @@ class Committee extends EventSourcedAggregateRoot
     public function applyCommitteeGoalChanged(CommitteeGoalChanged $event)
     {
         $this->goal = $event->goal();
+    }
+
+    public function applyMemberJoinedCommittee(MemberJoinedCommittee $event)
+    {
+        array_push($this->members, $event->memberId());
+    }
+
+    public function applyMemberLeftCommittee(MemberLeftCommittee $event)
+    {
+        unset($this->members[array_search($event->memberId(), $this->members)]);
     }
 }

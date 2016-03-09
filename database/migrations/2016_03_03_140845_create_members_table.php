@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommitteesListTable extends Migration
+class CreateMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreateCommitteesListTable extends Migration
      */
     public function up()
     {
-        Schema::create('committees_list', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('uuid', 36)->unique();
-            $table->string('name');
-            $table->string('goal');
-            $table->json('committee_members');
+            $table->string('first_name');
+            $table->string('last_name');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateCommitteesListTable extends Migration
      */
     public function down()
     {
-        Schema::drop('committees_list');
+        Schema::drop('members');
     }
 }

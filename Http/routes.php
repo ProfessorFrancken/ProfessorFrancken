@@ -27,8 +27,20 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/analytics', 'DashboardController@analytics');
     Route::get('/admin/export', 'DashboardController@export');
 
-    Route::get('/admin/committee', 'CommitteeController@index');
-    Route::get('/admin/committee/{id}', 'CommitteeController@show', 'id');
-    Route::post('/admin/committee/create-committee', 'CommitteeController@createCommittee');
-    Route::post('/admin/committee/edit', 'CommitteeController@editCommittee');
+    Route::group(['prefix' => 'admin'], function()
+    {
+        Route::resource('committee', 'CommitteeController', ['except' => [
+            'create', 'edit'
+        ]]);
+
+        Route::post('committee/search-member', 'CommitteeController@searchMember');
+
+        Route::post('committee/{committeeId}/member/{memberId}', 'CommitteeController@addMember');
+        Route::delete('committee/{committeeId}/member/{memberId}', 'CommitteeController@removeMember');
+
+    });
+
+
+    Route::get('/admin/member', 'MemberController@index');
+    Route::post('/admin/member/add-member', 'MemberController@addMember');
 });

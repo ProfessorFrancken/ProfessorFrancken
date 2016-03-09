@@ -7,8 +7,9 @@ use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 
 use Francken\Committees\Committee;
 use Francken\Committees\CommitteeId;
-use Francken\Committees\Events\CommitteeInstantiated;
 use Francken\Committees\CommitteeRepository;
+
+use Francken\Members\MemberId;
 
 use App\ReadModel\CommitteesList\CommitteesListProjector;
 
@@ -26,17 +27,7 @@ class CommitteeController extends Controller
         ]);
     }
 
-    public function show($id)
-    {
-        $committee = DB::table('committees_list')->where('uuid', $id)->first();
-
-        return view('admin.committee.show', [
-            'committee' => $committee
-        ]);
-    }
-
-    //------POST------
-    public function createCommittee(Request $req, CommitteeRepository $repo)
+    public function store(Request $req, CommitteeRepository $repo)
     {
         $generator = new Version4Generator();
         $id = new CommitteeId($generator->generate());
@@ -47,19 +38,51 @@ class CommitteeController extends Controller
         return redirect('/admin/committee');
     }
 
-    public function addMember()
+    public function show($id)
     {
-        return redirect('/admin/committee');
+        $committee = DB::table('committees_list')->where('uuid', $id)->first();
+
+        return view('admin.committee.show', [
+            'committee' => $committee
+        ]);
     }
 
-    //------PUT-----
-    public function editCommittee(Request $req, CommitteeRepository $repo)
+    public function update(Request $req, CommitteeRepository $repo, $id)
     {
-        $committee = $repo->load($req->input('id'));
-
+        $committee = $repo->load($id);
         $committee->edit($req->input('name'), $req->input('goal'));
         $repo->save($committee);
 
-        return redirect('/admin/committee/' . $req->input('id'));
+        return redirect('/admin/committee/' . $id);
+    }
+
+    public function addMember(CommitteeRepository $repo, $committeeId, $memberId)
+    {
+        $committee = $repo->load($committeeId);
+        $committee->joinByMember(new MemberId($memberId));
+        $repo->save($committee);
+
+        return back();
+    }
+
+    public function removeMember(CommitteeRepository $repo, $committeeId, $memberId)
+    {
+        $committee = $repo->load($committeeId);
+        $committee->leftByMember(new MemberId($memberId));
+        $repo->save($committee);
+
+        return back();
+    }
+
+    public function searchMember(Request $req)
+    {
+        $members = DB::table('members')
+            ->where('first_name', 'like', $req->input('first_name') . '%')
+            ->where('last_name', 'like', $req->input('last_name') . '%')
+            ->get();
+
+        return back()->with([
+            'searchResults' => $members
+        ]);
     }
 }

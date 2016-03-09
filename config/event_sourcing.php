@@ -5,5 +5,6 @@ return [
 
     'projectors' => [
         \App\ReadModel\CommitteesList\CommitteesListProjector::class,
+        \App\ReadModel\MemberList\MemberListProjector::class,
     ],
 ];
