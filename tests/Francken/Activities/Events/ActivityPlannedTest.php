@@ -4,8 +4,6 @@ namespace Tests\Francken\Activities\Events;
 
 use Tests\SetupReconstitution;
 
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-
 use Francken\Activities\ActivityId;
 use Francken\Activities\Activity;
 use Francken\Activities\Location;
@@ -17,21 +15,12 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
 {
     use SetupReconstitution;
 
-    private $generator;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->generator = new Version4Generator();
-    }
-
     /**
      * @test
      */
     public function it_happend_to_an_activity()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
         $event = new ActivityPlanned(
             $id,
             "Crash & Compile",
@@ -54,7 +43,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
      */
     public function it_is_serializable()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
         $event = new ActivityPlanned(
             $id,
             'Crash & Compile',
@@ -73,7 +62,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function the_deserialized_activity_has_the_same_properties()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
         $event = new ActivityPlanned(
             $id,
             'Crash & Compile',

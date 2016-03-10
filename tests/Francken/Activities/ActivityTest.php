@@ -3,7 +3,6 @@
 namespace Tests\Francken\Activities;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 
 use Francken\Activities\Activity;
 use Francken\Activities\ActivityId;
@@ -21,16 +20,6 @@ use DateTimeImmutable;
 
 class ActivitiesTest extends AggregateRootScenarioTestCase
 {
-    private $generator;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        // We will use this generator to generate valid UUIDs
-        $this->generator = new Version4Generator();
-    }
-
     protected function getAggregateRootClass()
     {
         return Activity::class;
@@ -39,7 +28,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function an_activity_can_be_planned()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         $this->scenario
             ->when(function () use ($id) {
@@ -58,7 +47,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function once_an_activity_has_been_planned_it_can_be_published()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
@@ -70,7 +59,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function a_published_activity_can_be_cancelled()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         return $this->scenario
             ->withAggregateId($id)
@@ -90,7 +79,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
      */
     public function a_draft_activity_cant_be_cancelled()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
@@ -104,7 +93,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
      */
     public function a_published_activity_cant_be_published_again()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         return $this->scenario
             ->withAggregateId($id)
@@ -123,7 +112,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
      */
     public function a_cancelled_activity_cant_be_cancelled_again()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
@@ -136,7 +125,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function an_activity_can_be_recategorized()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
@@ -153,7 +142,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
      */
     public function an_activity_can_only_be_categorized_into_valid_categories()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
@@ -164,7 +153,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function recategorizing_an_activity_is_idempotent()
     {
-        $id = new ActivityId($this->generator->generate());
+        $id = ActivityId::generate();
 
         $this->scenario
             ->withAggregateId($id)
@@ -184,8 +173,8 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
      */
     public function a_member_cant_register_to_participate_in_activity_that_isnt_published()
     {
-        $id = new ActivityId($this->generator->generate());
-        $memberId = new MemberId($this->generator->generate());
+        $id = ActivityId::generate();
+        $memberId = MemberId::generate();
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) use ($memberId) {
@@ -196,8 +185,8 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function a_member_can_register_to_participate_in_a_published_activity()
     {
-        $id = new ActivityId($this->generator->generate());
-        $memberId = new MemberId($this->generator->generate());
+        $id = ActivityId::generate();
+        $memberId = MemberId::generate();
 
         $this->scenario
             ->withAggregateId($id)
@@ -214,8 +203,8 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /** @test */
     public function registering_a_member_is_idempotent()
     {
-        $id = new ActivityId($this->generator->generate());
-        $memberId = new MemberId($this->generator->generate());
+        $id = ActivityId::generate();
+        $memberId = MemberId::generate();
 
         $this->scenario
             ->withAggregateId($id)
