@@ -9,7 +9,6 @@ use Broadway\EventStore\EventStoreInterface;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 
-use Francken\Committees\Committee;
 use Francken\Committees\CommitteeRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerRepository(CommitteeRepository::class, Committee::class);
+        $this->registerRepository(CommitteeRepository::class);
     }
 
     /**
@@ -30,20 +29,18 @@ class AppServiceProvider extends ServiceProvider
      * @param string $repository classname
      * @param string $aggregae classname
      */
-    private function registerRepository($repository, $aggregate)
+    private function registerRepository($repository)
     {
         $this->app->bind(
             $repository,
-            function ($app) use ($aggregate) {
-                // Perhaps at this point we should subscribe all our projectors to the event bus
+            function ($app) use ($repository) {
                 $eventStore = $app->make(EventStoreInterface::class);
                 $eventBus = $app->make(EventBusInterface::class);
                 $factory = $app->make(AggregateFactoryInterface::class);
 
-                return new EventSourcingRepository(
+                return new $repository(
                     $eventStore,
                     $eventBus,
-                    $aggregate,
                     $factory
                 );
             }

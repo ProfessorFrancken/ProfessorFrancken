@@ -8,19 +8,17 @@ use Francken\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class CommitteeInstantiated implements SerializableInterface
+final class MemberLeftCommittee implements SerializableInterface
 {
     use Serializable;
 
     private $committeeId;
-    private $name;
-    private $goal;
+    private $memberId;
 
-    public function __construct(CommitteeId $committeeId, $name, $goal)
+    public function __construct(CommitteeId $committeeId, $memberId)
     {
         $this->committeeId = $committeeId;
-        $this->name = $name;
-        $this->goal = $goal;
+        $this->memberId = $memberId;
     }
 
     public function committeeId()
@@ -28,20 +26,13 @@ final class CommitteeInstantiated implements SerializableInterface
         return $this->committeeId;
     }
 
-    public function name()
+    public function memberId()
     {
-        return $this->name;
-    }
-
-    public function goal()
-    {
-        return $this->goal;
+        return $this->memberId;
     }
 
     protected static function deserializationCallbacks()
     {
-        return [
-            'committeeId' => [CommitteeId::class, 'deserialize']
-        ];
+        return [];
     }
 }

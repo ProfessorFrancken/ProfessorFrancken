@@ -8,6 +8,12 @@ use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Francken\Committees\Committee;
 use Francken\Committees\CommitteeId;
 use Francken\Committees\Events\CommitteeInstantiated;
+use Francken\Committees\Events\CommitteeNameChanged;
+use Francken\Committees\Events\CommitteeGoalChanged;
+use Francken\Committees\Events\MemberJoinedCommittee;
+
+use Francken\Members\MemberId;
+
 
 class CommitteeTest extends AggregateRootScenarioTestCase
 {
@@ -43,12 +49,57 @@ class CommitteeTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
+    public function a_committees_name_can_be_changed()
+    {
+        $id = new CommitteeId($this->generator->generate());
+
+        $this->scenario
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->when(function ($committee) use ($id) {
+                $committee->edit('Borrelcie', 'Digital anarchy');
+            })
+            ->then([new CommitteeNameChanged($id, 'Borrelcie')]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_committees_goal_can_be_changed()
+    {
+        $id = new CommitteeId($this->generator->generate());
+
+        $this->scenario
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->when(function ($committee) use ($id) {
+                $committee->edit('S[ck]rip(t|t?c)ie', 'CenC organiseren');
+            })
+            ->then([new CommitteeGoalChanged($id, 'CenC organiseren')]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_committees_can_be_edited()
+    {
+        $id = new CommitteeId($this->generator->generate());
+
+        $this->scenario
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->when(function ($committee) use ($id) {
+                $committee->edit('Borrelcie', 'bier drinken');
+            })
+            ->then([new CommitteeNameChanged($id, 'Borrelcie'),
+                new CommitteeGoalChanged($id, 'bier drinken')]);
+    }
+
+    /**
+     * @test
+     */
     public function a_committee_has_members()
     {
-        $this->markTestSkipped("This is a draft test");
 
         $id = new CommitteeId($this->generator->generate());
-        $memberId = $this->generator->generate();
+        $memberId = new MemberId($this->generator->generate());
 
         $this->scenario
             ->withAggregateId($id)
@@ -56,6 +107,25 @@ class CommitteeTest extends AggregateRootScenarioTestCase
             ->when(function ($committee) use ($memberId) {
                 $committee->joinByMember($memberId);
             })
-            ->then([new CommitteeMemberJoined($id, $memberId)]);
+            ->then([new MemberJoinedCommittee($id, $memberId)]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_committee_member_cannot_join_twice()
+    {
+
+        $id = new CommitteeId($this->generator->generate());
+        $memberId = new MemberId($this->generator->generate());
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->when(function ($committee) use ($memberId) {
+                $committee->joinByMember($memberId);
+                $committee->joinByMember($memberId);
+            })
+            ->then([new MemberJoinedCommittee($id, $memberId)]);
     }
 }
