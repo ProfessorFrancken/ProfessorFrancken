@@ -7,6 +7,7 @@ use Tests\SetupReconstitution;
 use Francken\Activities\ActivityId;
 use Francken\Activities\Activity;
 use Francken\Activities\Location;
+use Francken\Activities\Schedule;
 use Francken\Activities\Events\ActivityPlanned;
 
 use DateTimeImmutable;
@@ -25,7 +26,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
             $id,
             "Crash & Compile",
             "Programming competition",
-            new DateTimeImmutable("2015-12-04"),
+            Schedule::withStartTime(new DateTimeImmutable('2015-10-01 14:30')),
             Location::fromNameAndAddress("Francken kamer"),
             Activity::SOCIAL
         );
@@ -33,7 +34,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($id, $event->activityId());
         $this->assertEquals("Crash & Compile", $event->name());
         $this->assertEquals("Programming competition", $event->description());
-        $this->assertEquals(new DateTimeImmutable("2015-12-04"), $event->time());
+        $this->assertEquals(new DateTimeImmutable("2015-10-01 14:30"), $event->startTime());
         $this->assertEquals(Location::fromNameAndAddress("Francken kamer"), $event->location());
         $this->assertEquals(Activity::SOCIAL, $event->category());
     }
@@ -48,7 +49,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
             $id,
             'Crash & Compile',
             'Programming competition',
-            new DateTimeImmutable('2015-12-04'),
+            Schedule::withStartTime(new DateTimeImmutable('2015-10-01 14:30')),
             Location::fromNameAndAddress('Francken kamer'),
             Activity::SOCIAL
         );
@@ -67,7 +68,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
             $id,
             'Crash & Compile',
             'Programming competition',
-            new DateTimeImmutable('2015-12-04'),
+            Schedule::withStartTime(new DateTimeImmutable('2015-10-01 14:30')),
             Location::fromNameAndAddress('Francken kamer'),
             Activity::SOCIAL
         );
@@ -77,7 +78,7 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($id, $event->activityId());
         $this->assertEquals("Crash & Compile", $event->name());
         $this->assertEquals("Programming competition", $event->description());
-        $this->assertEquals(new DateTimeImmutable("2015-12-04"), $event->time());
+        $this->assertEquals(new DateTimeImmutable("2015-10-01 14:30"), $event->startTime());
         $this->assertEquals(Location::fromNameAndAddress("Francken kamer"), $event->location());
         $this->assertEquals(Activity::SOCIAL, $event->category());
     }

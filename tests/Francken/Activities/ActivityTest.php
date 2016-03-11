@@ -7,11 +7,13 @@ use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Activities\Activity;
 use Francken\Activities\ActivityId;
 use Francken\Activities\Location;
+use Francken\Activities\Schedule;
 
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityCancelled;
 use Francken\Activities\Events\ActivityCategorized;
+use Francken\Activities\Events\ActivityRescheduled;
 use Francken\Activities\Events\MemberRegisteredToParticipate;
 
 use Francken\Members\MemberId;
@@ -36,7 +38,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
                     $id,
                     'Crash & Compile',
                     'Programming competition',
-                    new DateTimeImmutable('2015-12-04'),
+                    Schedule::withStartTime(new DateTimeImmutable('2015-10-01 14:30')),
                     Location::fromNameAndAddress('Francken kamer'),
                     Activity::SOCIAL
                 );
@@ -158,6 +160,18 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $this->scenario
             ->withAggregateId($id)
             ->given([
+                $this->socialActivityWasPlanned($id, [
+                    'category' => Activity::EDUCATION
+                ]),
+            ])
+            ->when(function ($activity) {
+                return $activity->recategorize(Activity::EDUCATION);
+            })
+            ->then([]);
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityCategorized($id, Activity::EDUCATION)
             ])
@@ -219,6 +233,85 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
             ->then([]);
     }
 
+    /** @test */
+    public function rescheduling_an_activity()
+    {
+        $id = ActivityId::generate();
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id),
+            ])
+            ->when(function ($activity) {
+                return $activity->reschedule(
+                    Schedule::forPeriod(
+                        new DateTimeImmutable('2015-10-03 14:30'),
+                        new DateTimeImmutable('2015-10-03 15:30')
+                    )
+                );
+            })
+            ->then([
+                new ActivityRescheduled(
+                    $id,
+                    Schedule::forPeriod(
+                        new DateTimeImmutable('2015-10-03 14:30'),
+                        new DateTimeImmutable('2015-10-03 15:30')
+                    )
+                )
+            ]);
+    }
+
+    /** @test */
+    public function an_activity_isnt_rescheduled_when_the_same_period_is_given()
+    {
+        $id = ActivityId::generate();
+
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id, [
+                    'schedule' => Schedule::forPeriod(
+                        new DateTimeImmutable('2015-10-03 14:30'),
+                        new DateTimeImmutable('2015-10-03 15:30')
+                    )
+                ]),
+            ])
+            ->when(function ($activity) {
+                return $activity->reschedule(
+                    Schedule::forPeriod(
+                        new DateTimeImmutable('2015-10-03 14:30'),
+                        new DateTimeImmutable('2015-10-03 15:30')
+                    )
+                );
+            })
+            ->then([]);
+
+
+        // It should also be idempotent when repeatedly rescheduling an activity
+        $this->scenario
+            ->withAggregateId($id)
+            ->given([
+                $this->socialActivityWasPlanned($id),
+                new ActivityRescheduled(
+                    $id,
+                    Schedule::forPeriod(
+                        new DateTimeImmutable('2015-10-03 14:30'),
+                        new DateTimeImmutable('2015-10-03 15:30')
+                    )
+                )
+            ])
+            ->when(function ($activity) {
+                return $activity->reschedule(
+                    Schedule::forPeriod(
+                        new DateTimeImmutable('2015-10-03 14:30'),
+                        new DateTimeImmutable('2015-10-03 15:30')
+                    )
+                );
+            })
+            ->then([]);
+    }
+
     private function givenAPlannedActivity(ActivityId $id)
     {
         return $this->scenario
@@ -228,15 +321,24 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
             ]);
     }
 
-    private function socialActivityWasPlanned(ActivityId $id)
+    /**
+     * Creates an ActivityPlanned event given an id and some options.
+     * The options array can override the given default values.
+     */
+    private function socialActivityWasPlanned(ActivityId $id, array $options = []) : ActivityPlanned
     {
+        $options = array_merge([
+            'schedule' => Schedule::withStartTime(new DateTimeImmutable('2015-10-01 14:30')),
+            'category' => Activity::SOCIAL
+        ], $options);
+
         return new ActivityPlanned(
             $id,
             'Crash & Compile',
             'Programming competition',
-            new DateTimeImmutable('2015-12-04'),
+            $options['schedule'],
             Location::fromNameAndAddress('Francken kamer'),
-            Activity::SOCIAL
+            $options['category']
         );
     }
 }
