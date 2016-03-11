@@ -6,9 +6,14 @@ use Assert\Assertion as Assert;
 
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 
-abstract class Identifier
+use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\SerializableInterface;
+
+abstract class Identifier implements SerializableInterface
 {
-    private $id;
+    use Serializable;
+
+    protected $id;
 
     /**
      * @param string $committeeId

@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Committees;
+namespace Francken\Members;
 
 use Francken\Base\Identifier;
 
