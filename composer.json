@@ -17,7 +17,8 @@
         "humbug/humbug": "dev-master",
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*"
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "fabpot/php-cs-fixer": "^1.11"
     },
     "autoload": {
         "classmap": [
