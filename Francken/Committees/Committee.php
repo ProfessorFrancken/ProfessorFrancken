@@ -18,9 +18,9 @@ class Committee extends EventSourcedAggregateRoot
     private $id;
     private $name;
     private $goal;
-    private $members = array();
+    private $members = [];
 
-    public static function instantiate(CommitteeId $id, $name, $goal)
+    public static function instantiate(CommitteeId $id, $name, $goal) : Committee
     {
         $committee = new Committee;
 
@@ -44,50 +44,58 @@ class Committee extends EventSourcedAggregateRoot
 
     public function joinByMember(MemberId $memberId)
     {
-        //TODO: Check  $memberId is a valid ID
-        if( ! in_array($memberId, $this->members))
+        if ($this->memberIsInCommittee($memberId))
         {
-            $this->apply(new MemberJoinedCommittee($this->id, $memberId));
+            return;
         }
+
+        $this->apply(new MemberJoinedCommittee($this->id, $memberId));
     }
 
     public function leftByMember(MemberId $memberId)
     {
-        // if ( in_array($memberId, $this->members) )
-        // {
-            $this->apply(new MemberLeftCommittee($this->id, $memberId));
-        // }
+        if (! $this->memberIsInCommittee($memberId))
+        {
+            return;
+        }
+
+        $this->apply(new MemberLeftCommittee($this->id, $memberId));
     }
 
-    public function getAggregateRootId()
+    public function getAggregateRootId() : CommitteeId
     {
         return $this->id;
     }
 
-    public function applyCommitteeInstantiated(CommitteeInstantiated $event)
+    protected function applyCommitteeInstantiated(CommitteeInstantiated $event)
     {
         $this->id = $event->committeeId();
         $this->name = $event->name();
         $this->goal = $event->goal();
     }
 
-    public function applyCommitteeNameChanged(CommitteeNameChanged $event)
+    protected function applyCommitteeNameChanged(CommitteeNameChanged $event)
     {
         $this->name = $event->name();
     }
 
-    public function applyCommitteeGoalChanged(CommitteeGoalChanged $event)
+    protected function applyCommitteeGoalChanged(CommitteeGoalChanged $event)
     {
         $this->goal = $event->goal();
     }
 
-    public function applyMemberJoinedCommittee(MemberJoinedCommittee $event)
+    protected function applyMemberJoinedCommittee(MemberJoinedCommittee $event)
     {
         $this->members[] =  $event->memberId();
     }
 
-    public function applyMemberLeftCommittee(MemberLeftCommittee $event)
+    protected function applyMemberLeftCommittee(MemberLeftCommittee $event)
     {
         unset($this->members[array_search($event->memberId(), $this->members)]);
+    }
+
+    private function memberIsInCommittee(MemberId $memberId) : bool
+    {
+        return in_array($memberId, $this->members);
     }
 }
