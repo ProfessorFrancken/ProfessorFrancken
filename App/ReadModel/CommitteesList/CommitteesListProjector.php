@@ -24,7 +24,7 @@ final class CommitteesListProjector extends Projector
         $committee->name = $event->name();
         $committee->goal = $event->goal();
         $committee->committee_members = [];
-        
+
         $committee->save();
     }
 
@@ -45,11 +45,11 @@ final class CommitteesListProjector extends Projector
         $committee = CommitteesList::where('uuid', $event->committeeId())->first();
         $members = $committee->committee_members;
 
-        array_push($members, [
+        $members[] = [
             'uuid' => (string) $event->memberId(),
             'first_name' => MemberList::where('uuid', $event->memberId())->first()->first_name,
             'last_name' => MemberList::where('uuid', $event->memberId())->first()->last_name
-        ]);
+        ];
 
         $committee->committee_members = $members;
         $committee->save();

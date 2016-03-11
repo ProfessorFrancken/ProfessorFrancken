@@ -17,7 +17,7 @@ final class MemberListProjector extends Projector
         $member->uuid = $event->memberId();
         $member->first_name = $event->firstName();
         $member->last_name = $event->lastName();
-        
+
         $member->save();
     }
 }

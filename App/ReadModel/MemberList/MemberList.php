@@ -8,5 +8,5 @@ final class MemberList extends Model
 {
     protected $table = "members";
     public $timestamps = false;
-    public $incrementing = false; 
+    public $incrementing = false;
 }

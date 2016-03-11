@@ -29,16 +29,16 @@ class Committee extends EventSourcedAggregateRoot
         return $committee;
     }
 
-    public function edit($id, $name, $goal)
+    public function edit($name, $goal)
     {
         if(isset($name) and $name != $this->name)
         {
-            $committee->apply(new CommitteeNameChanged($id, $name));
+            $this->apply(new CommitteeNameChanged($this->id, $name));
         }
 
         if(isset($goal) and $goal != $this->goal)
         {
-            $committee->apply(new CommitteeGoalChanged($id, $goal));
+            $this->apply(new CommitteeGoalChanged($this->id, $goal));
         }
     }
 
@@ -83,7 +83,7 @@ class Committee extends EventSourcedAggregateRoot
 
     public function applyMemberJoinedCommittee(MemberJoinedCommittee $event)
     {
-        array_push($this->members, $event->memberId());
+        $this->members[] =  $event->memberId();
     }
 
     public function applyMemberLeftCommittee(MemberLeftCommittee $event)
