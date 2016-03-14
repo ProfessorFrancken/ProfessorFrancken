@@ -3,21 +3,17 @@
 namespace Tests\Francken\Activities;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
-
 use Francken\Activities\Activity;
 use Francken\Activities\ActivityId;
 use Francken\Activities\Location;
 use Francken\Activities\Schedule;
-
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityCancelled;
 use Francken\Activities\Events\ActivityCategorized;
 use Francken\Activities\Events\ActivityRescheduled;
 use Francken\Activities\Events\MemberRegisteredToParticipate;
-
 use Francken\Members\MemberId;
-
 use DateTimeImmutable;
 
 class ActivitiesTest extends AggregateRootScenarioTestCase

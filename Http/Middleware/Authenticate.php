@@ -35,8 +35,7 @@ class Authenticate implements Middleware
      */
     public function handle($request, Closure $next)
     {
-        if ($this->guard->check())
-        {
+        if ($this->guard->check()) {
             return $next($request);
         }
 

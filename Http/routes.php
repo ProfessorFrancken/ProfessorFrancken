@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/study', 'MainContentController@study');
     Route::get('/career', 'MainContentController@career');
 
-    Route::get('/admin', function() {
+    Route::get('/admin', function () {
         return redirect('/admin/overview');
     });
 
@@ -27,8 +27,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/analytics', 'DashboardController@analytics');
     Route::get('/admin/export', 'DashboardController@export');
 
-    Route::group(['prefix' => 'admin'], function()
-    {
+    Route::group(['prefix' => 'admin'], function () {
         Route::resource('committee', 'CommitteeController', ['except' => [
             'create', 'edit'
         ]]);

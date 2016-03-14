@@ -3,7 +3,6 @@
 namespace Tests\Francken\Activities;
 
 use Francken\Activities\Schedule;
-
 use DateTimeImmutable;
 
 class ScheduleTest extends \PHPUnit_Framework_TestCase

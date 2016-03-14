@@ -3,9 +3,7 @@
 namespace App\ReadModel\CommitteesList;
 
 use App\ReadModel\ActivityListParticipant;
-
 use Broadway\ReadModel\Projector;
-
 use Francken\Activity\Events\ActivityPlanned;
 use Francken\Activity\Events\ActivityPublished;
 use Francken\Activity\Events\ActivityCategorized;

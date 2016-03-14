@@ -4,16 +4,12 @@ namespace App\ReadModel\CommitteesList;
 
 use App\ReadModel\CommitteesList\CommitteesList;
 use App\ReadModel\MemberList\MemberList;
-
 use Broadway\ReadModel\Projector;
-
 use Francken\Committees\Events\CommitteeInstantiated;
 use Francken\Committees\Events\CommitteeNameChanged;
 use Francken\Committees\Events\CommitteeGoalChanged;
 use Francken\Committees\Events\MemberJoinedCommittee;
 use Francken\Committees\Events\MemberLeftCommittee;
-
-
 
 final class CommitteesListProjector extends Projector
 {
@@ -60,10 +56,8 @@ final class CommitteesListProjector extends Projector
         $committee = CommitteesList::where('uuid', $event->committeeId())->first();
         $members = $committee->committee_members;
 
-        foreach($members as $key => $member)
-        {
-            if( $member['uuid'] === (string) $event->memberId())
-            {
+        foreach ($members as $key => $member) {
+            if ($member['uuid'] === (string) $event->memberId()) {
                 unset($members[$key]);
             }
         }

@@ -60,5 +60,4 @@ final class ActivityPlanned extends ActivityEvent
     {
         return $this->category;
     }
-
 }

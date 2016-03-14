@@ -5,7 +5,6 @@ namespace Tests\Features\ReadModels;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-
 use Francken\Committees\Committee;
 use Francken\Committees\CommitteeId;
 use Francken\Committees\CommitteeRepository;

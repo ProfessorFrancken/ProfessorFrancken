@@ -4,7 +4,6 @@ namespace Francken\Members\Events;
 
 use Francken\Members\MemberId;
 use Francken\Base\DomainEvent;
-
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 

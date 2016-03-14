@@ -3,7 +3,6 @@
 namespace Tests\Francken\Activities\Events;
 
 use Tests\SetupReconstitution;
-
 use Francken\Activities\ActivityId;
 use Francken\Activities\Activity;
 use Francken\Activities\Events\ActivityCategorized;

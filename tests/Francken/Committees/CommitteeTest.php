@@ -4,16 +4,13 @@ namespace Tests\Francken\Committees;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-
 use Francken\Committees\Committee;
 use Francken\Committees\CommitteeId;
 use Francken\Committees\Events\CommitteeInstantiated;
 use Francken\Committees\Events\CommitteeNameChanged;
 use Francken\Committees\Events\CommitteeGoalChanged;
 use Francken\Committees\Events\MemberJoinedCommittee;
-
 use Francken\Members\MemberId;
-
 
 class CommitteeTest extends AggregateRootScenarioTestCase
 {
@@ -97,7 +94,6 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function a_committee_has_members()
     {
-
         $id = new CommitteeId($this->generator->generate());
         $memberId = new MemberId($this->generator->generate());
 
@@ -115,7 +111,6 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function a_committee_member_cannot_join_twice()
     {
-
         $id = new CommitteeId($this->generator->generate());
         $memberId = new MemberId($this->generator->generate());
 
