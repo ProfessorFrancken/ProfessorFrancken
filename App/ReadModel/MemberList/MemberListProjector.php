@@ -3,9 +3,7 @@
 namespace App\ReadModel\MemberList;
 
 use App\ReadModel\MemberList\MemberList;
-
 use Broadway\ReadModel\Projector;
-
 use Francken\Members\Events\MemberJoinedFrancken;
 use Francken\Committees\Events\CommitteeInstantiated;
 

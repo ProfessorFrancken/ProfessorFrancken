@@ -3,9 +3,7 @@
 namespace Francken\Committees;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
-
 use Francken\Members\MemberId;
-
 use Francken\Committees\CommitteeId;
 use Francken\Committees\Events\CommitteeInstantiated;
 use Francken\Committees\Events\CommitteeNameChanged;
@@ -31,21 +29,18 @@ class Committee extends EventSourcedAggregateRoot
 
     public function edit($name, $goal)
     {
-        if(isset($name) and $name != $this->name)
-        {
+        if (isset($name) and $name != $this->name) {
             $this->apply(new CommitteeNameChanged($this->id, $name));
         }
 
-        if(isset($goal) and $goal != $this->goal)
-        {
+        if (isset($goal) and $goal != $this->goal) {
             $this->apply(new CommitteeGoalChanged($this->id, $goal));
         }
     }
 
     public function joinByMember(MemberId $memberId)
     {
-        if ($this->memberIsInCommittee($memberId))
-        {
+        if ($this->memberIsInCommittee($memberId)) {
             return;
         }
 
@@ -54,8 +49,7 @@ class Committee extends EventSourcedAggregateRoot
 
     public function leftByMember(MemberId $memberId)
     {
-        if (! $this->memberIsInCommittee($memberId))
-        {
+        if (! $this->memberIsInCommittee($memberId)) {
             return;
         }
 

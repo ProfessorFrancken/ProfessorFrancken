@@ -4,11 +4,9 @@ namespace Http\Controllers;
 
 use Illuminate\Http\Request;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-
 use Francken\Members\MemberId;
 use Francken\Members\Member;
 use Francken\Members\MemberRepository;
-
 use DB;
 
 class MemberController extends Controller

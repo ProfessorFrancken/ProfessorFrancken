@@ -4,7 +4,6 @@ namespace Francken\Activities\Events;
 
 use Broadway\Serializer\SerializableInterface;
 use Francken\Base\Serializable;
-
 use Francken\Activities\ActivityId;
 
 abstract class ActivityEvent implements SerializableInterface

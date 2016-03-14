@@ -3,7 +3,6 @@
 namespace Francken\Members;
 
 use Francken\Members\Member;
-
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;

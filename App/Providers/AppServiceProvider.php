@@ -3,12 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
-
 use Francken\Committees\CommitteeRepository;
 
 class AppServiceProvider extends ServiceProvider

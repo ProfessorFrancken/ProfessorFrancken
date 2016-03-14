@@ -3,16 +3,13 @@
 namespace Francken\Activities;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
-
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityCancelled;
 use Francken\Activities\Events\ActivityCategorized;
 use Francken\Activities\Events\ActivityRescheduled;
 use Francken\Activities\Events\MemberRegisteredToParticipate;
-
 use Francken\Members\MemberId;
-
 use DateTimeImmutable;
 
 final class Activity extends EventSourcedAggregateRoot
@@ -34,8 +31,7 @@ final class Activity extends EventSourcedAggregateRoot
         Schedule $schedule,
         Location $location,
         $type
-    )
-    {
+    ) {
         $activity = new Activity;
 
         $activity->apply(new ActivityPlanned($id, $name, $description, $schedule, $location, $type));
@@ -45,8 +41,7 @@ final class Activity extends EventSourcedAggregateRoot
 
     public function publish()
     {
-        if ($this->published)
-        {
+        if ($this->published) {
             throw InvalidActivity::alreadyPublished();
         }
 
@@ -55,8 +50,7 @@ final class Activity extends EventSourcedAggregateRoot
 
     public function cancel()
     {
-        if (! $this->published)
-        {
+        if (! $this->published) {
             throw InvalidActivity::cantCancelADraft();
         }
 
@@ -67,16 +61,16 @@ final class Activity extends EventSourcedAggregateRoot
     {
         $this->assertCategoryIsValid($category);
 
-        if ($this->category === $category)
+        if ($this->category === $category) {
             return;
+        }
 
         $this->apply(new ActivityCategorized($this->id, $category));
     }
 
     public function reschedule(Schedule $schedule)
     {
-        if ($this->schedule == $schedule)
-        {
+        if ($this->schedule == $schedule) {
             return;
         }
 
@@ -88,13 +82,11 @@ final class Activity extends EventSourcedAggregateRoot
 
     public function registerParticipant(MemberId $memberId)
     {
-        if (! $this->published)
-        {
+        if (! $this->published) {
             throw new InvalidActivity("Tried to register member {$memberId}, but activity isn't published");
         }
 
-        if (in_array($memberId, $this->members))
-        {
+        if (in_array($memberId, $this->members)) {
             return;
         }
 
@@ -144,8 +136,7 @@ final class Activity extends EventSourcedAggregateRoot
             Activity::SOCIAL,
             Activity::CAREER,
             Activity::EDUCATION
-        ]))
-        {
+        ])) {
             throw InvalidActivity::invalidCategory($category);
         }
     }

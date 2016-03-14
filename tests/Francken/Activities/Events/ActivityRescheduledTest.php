@@ -3,11 +3,9 @@
 namespace Tests\Francken\Activities\Events;
 
 use Tests\SetupReconstitution;
-
 use Francken\Activities\ActivityId;
 use Francken\Activities\Schedule;
 use Francken\Activities\Events\ActivityRescheduled;
-
 use DateTimeImmutable;
 
 class ActivityRescheduledTest extends \PHPUnit_Framework_TestCase

@@ -4,7 +4,6 @@ namespace App\EventSourcing;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Connection;
-
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\Serializer\SerializerInterface;
 use Broadway\Serializer\SimpleInterfaceSerializer;
@@ -12,8 +11,6 @@ use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
-
-
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
 use Doctrine\Instantiator\Instantiator;
@@ -33,8 +30,7 @@ class EventSourcingServiceProvider extends ServiceProvider
         // Each of these projectors will be subscribed to the given event bus.
         $projectors = $this->app->config->get('event_sourcing.projectors');
 
-        foreach ($projectors as $projector)
-        {
+        foreach ($projectors as $projector) {
             $eventBus->subscribe(
                 $this->app->make($projector)
             );

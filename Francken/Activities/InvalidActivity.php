@@ -4,7 +4,8 @@ namespace Francken\Activities;
 
 use Francken\Base\DomainException;
 
-final class InvalidActivity extends DomainException {
+final class InvalidActivity extends DomainException
+{
 
     public static function cantCancelADraft()
     {

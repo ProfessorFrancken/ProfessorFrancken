@@ -3,15 +3,12 @@
 namespace Tests\Features;
 
 use Tests\TestCase;
-
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-
 use Broadway\Serializer\SerializableInterface;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
-
 use App\EventSourcing\EventSourcingServiceProvider;
 
 class EventStoreFeature extends TestCase
@@ -145,7 +142,8 @@ class EventStoreFeature extends TestCase
     }
 }
 
-final class ADomainEvent implements SerializableInterface {
+final class ADomainEvent implements SerializableInterface
+{
 
     public static function deserialize(array $data)
     {

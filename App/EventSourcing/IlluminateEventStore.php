@@ -11,7 +11,8 @@ use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Serializer\SerializerInterface;
 use Illuminate\Database\ConnectionInterface as Connection;
 
-final class IlluminateEventStore implements EventStoreInterface {
+final class IlluminateEventStore implements EventStoreInterface
+{
 
     /**
      * @var Connection
@@ -55,12 +56,12 @@ final class IlluminateEventStore implements EventStoreInterface {
                 ->where('uuid', $id)
                 ->get();
 
-        if(! $events) {
+        if (! $events) {
             throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
         }
 
         return new DomainEventStream(
-            array_map(function($event) {
+            array_map(function ($event) {
                 return $this->deserializeEvent($event);
             }, $events)
         );
@@ -139,5 +140,4 @@ final class IlluminateEventStore implements EventStoreInterface {
             $this->serializer->serialize($property)
         );
     }
-
 }

@@ -4,15 +4,11 @@ namespace Http\Controllers;
 
 use Illuminate\Http\Request;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-
 use Francken\Committees\Committee;
 use Francken\Committees\CommitteeId;
 use Francken\Committees\CommitteeRepository;
-
 use Francken\Members\MemberId;
-
 use App\ReadModel\CommitteesList\CommitteesListProjector;
-
 use DB;
 
 class CommitteeController extends Controller
