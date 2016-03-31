@@ -11,11 +11,12 @@ For more info on Broadway, watch
 [Willem-Jan Zijderveld speak on CQRS and Event Sourcing](https://www.youtube.com/watch?v=d1PDPsxWGqM).
 
 ## Table of Contents
-* [Contributing](#Contributing)
- * [Testing](#Testing)
- * [Code Style](#Code-style)
-* [An introduction to this application's folder and namespace structure](#An-introduction-to-this-application's-folder-and-namespace-structure)
-* [Setting up a VM](#Setting-up-a-VM)
+* [Contributing](#contributing)
+ * [Testing](#testing)
+ * [Code Style](#code-style)
+ * [Git Usage](#git-usage)
+* [An introduction to this application's folder and namespace structure](#an-introduction-to-this-applications-folder-and-namespace-structure)
+* [Setting up a VM](#setting-up-a-vm)
  * [Generate a ssh key](#generate-a-ssh-key)
  * [Setup homestead](#setup-homestead)
  * [Verify that everything is working](#verify-that-everything-is-working)
@@ -57,6 +58,13 @@ that automatically checks whether your PR conforms to the code style guidelines.
 *Note* we omit the `psr0` fixer. This fixer looks at the namespace declarations
 however it is not compatible with PSR-4, which is an improvement over PSR-0.
 
+### Git Usage
+The master branch is a protected branch, meaning you won't be able to force push changes to the master branch and status checks (i.e. tests should be green) are required before merging to master.
+Before sending a pull request with your latest changes you should make sure that your branch is up to date by rebasing your branch onto master.
+This makes it easier to review your pull request since there won't be many merge commits and it gives us a nice linear history.
+
+We generally use a [git flow](http://nvie.com/posts/a-successful-git-branching-model/) ish git model.
+Since this application hasn't been pushed to production yet we won't be very strict about this, however you should try to be consistent with the naming of branching (i.e. using feature and branches and bug fix branches).
 
 ## An introduction to this application's folder and namespace structure
 The architecture of this application is somewhat based on a forum post by
