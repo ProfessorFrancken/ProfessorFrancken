@@ -18,13 +18,12 @@
     </testsuites>
     <filter>
        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">App/</directory>
-            <directory suffix=".php">Francken/</directory>
-            <directory suffix=".php">Http/</directory>
+            <directory suffix=".php">src/</directory>
             <exclude>
-                <file>./Http/routes.php</file>
-                <directory suffix=".blade.php">Http/Views/</directory>
+                <file>.src/Http/routes.php</file>
+                <directory suffix=".blade.php">src/Http/Views/</directory>
             </exclude>
+        <whitelist>
         </whitelist>
     </filter>
     <php>
