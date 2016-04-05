@@ -26,7 +26,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">T.F.V.</a>
+              <a class="navbar-brand" href="/">T.F.V.</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -42,6 +42,8 @@
                       <li><a href="#comittees">Committees</a></li>
                     </ul>
                   </li>
+			</ul>	  
+			<ul class="nav navbar-nav navbar-right">
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
