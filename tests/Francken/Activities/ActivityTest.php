@@ -7,6 +7,7 @@ use Francken\Activities\Activity;
 use Francken\Activities\ActivityId;
 use Francken\Activities\Location;
 use Francken\Activities\Schedule;
+use Francken\Activities\InvalidActivity;
 use Francken\Activities\Events\ActivityPlanned;
 use Francken\Activities\Events\ActivityPublished;
 use Francken\Activities\Events\ActivityCancelled;
@@ -73,10 +74,10 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
     /**
      * @test
-     * @expectedException \Francken\Activities\InvalidActivity
      */
     public function a_draft_activity_cant_be_cancelled()
     {
+        $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
@@ -87,10 +88,10 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
     /**
      * @test
-     * @expectedException \Francken\Activities\InvalidActivity
      */
     public function a_published_activity_cant_be_published_again()
     {
+        $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
 
         return $this->scenario
@@ -106,10 +107,10 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
     /**
      * @test
-     * @expectedException \Francken\Activities\InvalidActivity
      */
     public function a_cancelled_activity_cant_be_cancelled_again()
     {
+        $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
@@ -136,10 +137,10 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
     /**
      * @test
-     * @expectedException \Francken\Activities\InvalidActivity
      */
     public function an_activity_can_only_be_categorized_into_valid_categories()
     {
+        $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
 
         $this->givenAPlannedActivity($id)
@@ -179,10 +180,10 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
     /**
      * @test
-     * @expectedException \Francken\Activities\InvalidActivity
      */
     public function a_member_cant_register_to_participate_in_activity_that_isnt_published()
     {
+        $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
         $memberId = MemberId::generate();
 
