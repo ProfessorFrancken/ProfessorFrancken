@@ -4,6 +4,7 @@ namespace Tests\Francken\Activities;
 
 use Francken\Activities\Schedule;
 use DateTimeImmutable;
+use InvalidArgumentException;
 
 class ScheduleTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,13 +32,23 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
      * @test
      */
     public function the_end_time_is_after_the_start_time()
     {
+        $this->expectException(InvalidArgumentException::class);
         $startTime = new DateTimeImmutable('2015-03-10 10:00');
         $endTime = new DateTimeImmutable('2015-03-10 9:00');
         $schedule = Schedule::forPeriod($startTime, $endTime);
+    }
+
+    /**
+     * @test
+     */
+    public function the_end_time_and_the_start_time_cant_be_identical()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $time = new DateTimeImmutable('2015-03-10 10:00');
+        $schedule = Schedule::forPeriod($time, $time);
     }
 }
