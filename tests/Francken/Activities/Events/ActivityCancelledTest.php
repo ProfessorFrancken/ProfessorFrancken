@@ -3,8 +3,8 @@
 namespace Tests\Francken\Activities\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Activities\ActivityId;
-use Francken\Activities\Events\ActivityCancelled;
+use Francken\Domain\Activities\ActivityId;
+use Francken\Domain\Activities\Events\ActivityCancelled;
 
 class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
 {

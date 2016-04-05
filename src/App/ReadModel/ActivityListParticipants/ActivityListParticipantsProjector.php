@@ -4,10 +4,10 @@ namespace App\ReadModel\CommitteesList;
 
 use App\ReadModel\ActivityListParticipant;
 use Broadway\ReadModel\Projector;
-use Francken\Activity\Events\ActivityPlanned;
-use Francken\Activity\Events\ActivityPublished;
-use Francken\Activity\Events\ActivityCategorized;
-use Francken\Activity\Events\ActivityCancelled;
+use Francken\Domain\Activity\Events\ActivityPlanned;
+use Francken\Domain\Activity\Events\ActivityPublished;
+use Francken\Domain\Activity\Events\ActivityCategorized;
+use Francken\Domain\Activity\Events\ActivityCancelled;
 
 final class ActivitiesListParticipantsProjector extends Projector
 {

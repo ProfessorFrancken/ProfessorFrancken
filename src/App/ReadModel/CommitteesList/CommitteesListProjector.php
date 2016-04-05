@@ -5,11 +5,11 @@ namespace App\ReadModel\CommitteesList;
 use App\ReadModel\CommitteesList\CommitteesList;
 use App\ReadModel\MemberList\MemberList;
 use Broadway\ReadModel\Projector;
-use Francken\Committees\Events\CommitteeInstantiated;
-use Francken\Committees\Events\CommitteeNameChanged;
-use Francken\Committees\Events\CommitteeGoalChanged;
-use Francken\Committees\Events\MemberJoinedCommittee;
-use Francken\Committees\Events\MemberLeftCommittee;
+use Francken\Domain\Committees\Events\CommitteeInstantiated;
+use Francken\Domain\Committees\Events\CommitteeNameChanged;
+use Francken\Domain\Committees\Events\CommitteeGoalChanged;
+use Francken\Domain\Committees\Events\MemberJoinedCommittee;
+use Francken\Domain\Committees\Events\MemberLeftCommittee;
 
 final class CommitteesListProjector extends Projector
 {

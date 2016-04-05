@@ -4,8 +4,8 @@ namespace App\ReadModel\MemberList;
 
 use App\ReadModel\MemberList\MemberList;
 use Broadway\ReadModel\Projector;
-use Francken\Members\Events\MemberJoinedFrancken;
-use Francken\Committees\Events\CommitteeInstantiated;
+use Francken\Domain\Members\Events\MemberJoinedFrancken;
+use Francken\Domain\Committees\Events\CommitteeInstantiated;
 
 final class MemberListProjector extends Projector
 {

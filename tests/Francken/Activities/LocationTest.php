@@ -2,7 +2,7 @@
 
 namespace Tests\Francken\Activities;
 
-use Francken\Activities\Location;
+use Francken\Domain\Activities\Location;
 
 class LocationTest extends \PHPUnit_Framework_TestCase
 {

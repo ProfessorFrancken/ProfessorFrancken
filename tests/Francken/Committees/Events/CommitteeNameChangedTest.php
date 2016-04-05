@@ -3,8 +3,8 @@
 namespace Tests\Francken\Committees\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Committees\CommitteeId;
-use Francken\Committees\Events\CommitteeNameChanged;
+use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeNameChanged;
 
 class CommitteeNameChangedTest extends \PHPUnit_Framework_TestCase
 {

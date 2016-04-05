@@ -23,8 +23,7 @@
                 <file>.src/Http/routes.php</file>
                 <directory suffix=".blade.php">src/Http/Views/</directory>
             </exclude>
-        <whitelist>
-        </whitelist>
+       </whitelist>
     </filter>
     <php>
         <env name="APP_ENV" value="testing"/>

@@ -5,9 +5,9 @@ namespace Tests\Features\ReadModels;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-use Francken\Committees\Committee;
-use Francken\Committees\CommitteeId;
-use Francken\Committees\CommitteeRepository;
+use Francken\Domain\Committees\Committee;
+use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\CommitteeRepository;
 
 class CommitteeListFeature extends TestCase
 {

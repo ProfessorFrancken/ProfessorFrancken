@@ -4,10 +4,10 @@ namespace Http\Controllers;
 
 use Illuminate\Http\Request;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-use Francken\Committees\Committee;
-use Francken\Committees\CommitteeId;
-use Francken\Committees\CommitteeRepository;
-use Francken\Members\MemberId;
+use Francken\Domain\Committees\Committee;
+use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\CommitteeRepository;
+use Francken\Domain\Members\MemberId;
 use App\ReadModel\CommitteesList\CommitteesListProjector;
 use DB;
 
