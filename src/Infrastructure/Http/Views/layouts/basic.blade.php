@@ -35,10 +35,9 @@
                 <li><a href="/study">Study</a></li>
                 <li><a href="/career">Career</a></li>
                 <li class="dropdown">
-                  <a href="#association" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Association <span class="caret"></span></a>
+                  <a href="#association" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"  aria-expanded="false">Association <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="#board">Board</a></li>
-                      <li><a href="#comittees">Committees</a></li>
                       <li><a href="#comittees">Committees</a></li>
                     </ul>
                   </li>
