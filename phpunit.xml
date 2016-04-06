@@ -23,6 +23,7 @@
             <directory suffix=".php">Http/</directory>
             <exclude>
                 <file>./Http/routes.php</file>
+                <directory suffix=".blade.php">Http/Views/</directory>
             </exclude>
         </whitelist>
     </filter>
