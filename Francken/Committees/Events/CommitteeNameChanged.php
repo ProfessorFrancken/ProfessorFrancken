@@ -3,7 +3,6 @@
 namespace Francken\Committees\Events;
 
 use Francken\Committees\CommitteeId;
-use Francken\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
@@ -14,24 +13,24 @@ final class CommitteeNameChanged implements SerializableInterface
     private $committeeId;
     private $name;
 
-    public function __construct(CommitteeId $committeeId, $name)
+    public function __construct(CommitteeId $committeeId, string $name)
     {
         $this->committeeId = $committeeId;
         $this->name = $name;
     }
 
-    public function committeeId()
+    public function committeeId() : CommitteeId
     {
         return $this->committeeId;
     }
 
-    public function name()
+    public function name() : string
     {
         return $this->name;
     }
 
     protected static function deserializationCallbacks()
     {
-        return [];
+        return ['committeeId' => [CommitteeId::class, 'deserialize']];
     }
 }

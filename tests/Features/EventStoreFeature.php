@@ -13,7 +13,6 @@ use Broadway\Domain\Metadata;
 use App\EventSourcing\EventSourcingServiceProvider;
 use App\EventSourcing\IlluminateEventStoreException;
 
-
 class EventStoreFeature extends TestCase
 {
     use DatabaseMigrations;
