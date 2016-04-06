@@ -116,11 +116,13 @@ class CommitteeTest extends AggregateRootScenarioTestCase
 
         $this->scenario
             ->withAggregateId($id)
-            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->given([
+                new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy'),
+                new MemberJoinedCommittee($id, $memberId)
+            ])
             ->when(function ($committee) use ($memberId) {
                 $committee->joinByMember($memberId);
-                $committee->joinByMember($memberId);
             })
-            ->then([new MemberJoinedCommittee($id, $memberId)]);
+            ->then([]);
     }
 }
