@@ -23,4 +23,8 @@ class MainContentController extends Controller
     {
         return view('career');
     }
+    public function association()
+    {
+        return view('association');
+    }
 }

@@ -53,8 +53,42 @@
 
     <div class="container">
       @yield('content')
-    </div><!-- .container -->
 
+
+	<!--Quick-picture-links-->
+	<div class="row">
+	<div class="col-sm-3">
+		<div class="panel panel-default">	
+			<div class="panel-body"><a href="#board"><img src="http://loopgroepnienoord.nl/wp-content/uploads/2015/03/bestuur.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Board</h4></div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+			
+			<div class="panel-body"><a href="/association"><img src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/11/LOGO_KAAL.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Association</h4></div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+			<div class="panel-body"><a href="/study"><img src="http://www.passendestudiekeuze.nl/wp-content/uploads/Student-cap.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Study</h4></div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+			<div class="panel-body"><a href="/career"><img src="http://www.singlish.it/wp-content/uploads/2015/05/nine-to-five-job-149401_640.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Career</h4></div>
+		</div>
+	</div>
+</div>
+</div>	<!-- .container -->
+	
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
