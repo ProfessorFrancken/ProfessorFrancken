@@ -13,62 +13,62 @@
 				<tr>
 					<td><img src="http://www.faketattoo.nl/uploads/big_sterretje5-68-1290096744.jpg" style="width:20px;height:20px;"></td>
 					<td><a href="#">Nieuwe commissie: De Huppeldepupcie</a></td>
-					<td>5 April 2016 20:12</td>
+					<td class="news-date">5 April 2016 20:12</td>
 				</tr>   
 				<tr>
 					<td><img src="https://image.freepik.com/free-icon/election-event-on-a-calendar-with-star-symbol_318-64485.png" style="width:20px;height:20px;">
 					<td><a href="#">Taart voor iedereen</a></td>
-					<td>4 April 2016 15:10</td>
+					<td class="news-date">4 April 2016 15:10</td>
 				</tr>    
 				<tr>
 					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
 					<td><a href="#">Blog van Harry</a></td>
-					<td>4 April 2016 15:10</td>
+					<td class="news-date">4 April 2016 15:10</td>
 				</tr>
 				<tr>
 					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
 					<td><a href="#">Blog van Bert</a></td>
-					<td>1 April 2016 15:10</td>
+					<td class="news-date">1 April 2016 15:10</td>
 				</tr>
 				<tr>
 					<td><img src="http://www.faketattoo.nl/uploads/big_sterretje5-68-1290096744.jpg" style="width:20px;height:20px;"></td>
 					<td><a href="#">Nieuwe commissie: De Huppeldepupcie</a></td>
-					<td>5 April 2016 20:12</td>
+					<td class="news-date">5 April 2016 20:12</td>
 				</tr>   
 				<tr>
 					<td><img src="https://image.freepik.com/free-icon/election-event-on-a-calendar-with-star-symbol_318-64485.png" style="width:20px;height:20px;">
 					<td><a href="#">Taart voor iedereen</a></td>
-					<td>4 April 2016 15:10</td>
+					<td class="news-date">4 April 2016 15:10</td>
 				</tr>    
 				<tr>
 					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
 					<td><a href="#">Blog van Harry</a></td>
-					<td>4 April 2016 15:10</td>
+					<td class="news-date">4 April 2016 15:10</td>
 				</tr>
 				<tr>
 					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
 					<td><a href="#">Blog van Bert</a></td>
-					<td>1 April 2016 15:10</td>
+					<td class="news-date">1 April 2016 15:10</td>
 				</tr>
 				<tr>
 					<td><img src="http://www.faketattoo.nl/uploads/big_sterretje5-68-1290096744.jpg" style="width:20px;height:20px;"></td>
 					<td><a href="#">Nieuwe commissie: De Huppeldepupcie</a></td>
-					<td>5 April 2016 20:12</td>
+					<td class="news-date">5 April 2016 20:12</td>
 				</tr>   
 				<tr>
 					<td><img src="https://image.freepik.com/free-icon/election-event-on-a-calendar-with-star-symbol_318-64485.png" style="width:20px;height:20px;">
 					<td><a href="#">Taart voor iedereen</a></td>
-					<td>4 April 2016 15:10</td>
+					<td class="news-date">4 April 2016 15:10</td>
 				</tr>    
 				<tr>
 					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
 					<td><a href="#">Blog van Harry</a></td>
-					<td>4 April 2016 15:10</td>
+					<td class="news-date">4 April 2016 15:10</td>
 				</tr>
 				<tr>
 					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
 					<td><a href="#">Blog van Bert</a></td>
-					<td>1 April 2016 15:10</td>
+					<td class="news-date">1 April 2016 15:10</td>
 				</tr>
 			</tbody>     
 		</table>
