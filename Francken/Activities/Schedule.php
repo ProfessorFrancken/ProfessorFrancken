@@ -23,7 +23,7 @@ final class Schedule
 
     public static function forPeriod(DateTime $startTime, DateTime $endTime) : Schedule
     {
-        if ($startTime > $endTime) {
+        if ($startTime >= $endTime) {
             throw new InvalidArgumentException("A schedule's end time can't be before the start time");
         }
 

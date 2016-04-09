@@ -6,10 +6,12 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Broadway\Serializer\SerializableInterface;
 use Broadway\EventStore\EventStoreInterface;
+use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
 use App\EventSourcing\EventSourcingServiceProvider;
+use App\EventSourcing\IlluminateEventStoreException;
 
 class EventStoreFeature extends TestCase
 {
@@ -103,19 +105,19 @@ class EventStoreFeature extends TestCase
 
     /**
      * @test
-     * @expectedException Broadway\EventStore\EventStreamNotFoundException
      */
     public function it_cant_find_a_event_stream_of_a_non_existing_aggregate()
     {
+        $this->expectException(EventStreamNotFoundException::class);
         $this->store->load('aggregate-1');
     }
 
     /**
      * @test
-     * @expectedException \App\EventSourcing\IlluminateEventStoreException
      */
     public function when_appending_one_event_from_a_event_stream_fails_it_rolls_back_all_changes()
     {
+        $this->expectException(IlluminateEventStoreException::class);
         // this test is a bit of an hack, by mocking the DateTime object we make
         // the append() method of the event store throw an exception
         $time = $this->prophesize(\Broadway\Domain\DateTime::class);
