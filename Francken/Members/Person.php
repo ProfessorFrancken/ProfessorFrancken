@@ -25,8 +25,7 @@ final class Person
         string $gender,
         DateTimeImmutable $birthdate,
         ContactInfo $contact
-    )
-    {
+    ) {
         $this->firstname = $firstname;
         $this->middlename = $middlename;
         $this->surname = $surname;
@@ -42,8 +41,7 @@ final class Person
         string $gender,
         DateTimeImmutable $birthdate,
         ContactInfo $contact
-    )
-    {
+    ) {
         $person = new Person(
             $firstname,
             $middlename,
