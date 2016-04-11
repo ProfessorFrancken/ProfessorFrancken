@@ -2,7 +2,6 @@
 
 
 @section('content')
-
 <div class="row">
   <div class="col-md-7">
 
@@ -117,62 +116,27 @@
       <img style="width: 100%; border-radius: 5px;" src="http://c2.staticflickr.com/2/1546/25832438345_b7f086c708_h.jpg">
     </div>
 
-		<div class="panel panel-primary">
-			<div class="panel-heading">Upcoming events
-			</div>
-			<div class="panel-body">
-				<table class="table table-striped">
-					<tbody>
-						<tr><td><a href="#">Event1</a></td><td>Date + Time</td></tr>
-						<tr><td><a href="#">Event2</a></td><td>Date + Time</td></tr>
-						<tr><td><a href="#">Event3</a></td><td>Date + Time</td></tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class="panel panel-primary">
-			<div class="panel-heading">Twitter feed
-			</div>
-			<div class="panel-body">
-				<img src="https://g.twimg.com/Twitter_logo_blue.png" style="width:100px">
-			</div>
-		</div>
-		<div class="panel panel-primary">
-			<div class="panel-heading">Social media links
-			</div>
-			<div class="panel-body">
-				<img src="https://www.facebook.com/images/fb_icon_325x325.png" style="width:100px">
-			</div>
-		</div>
-
+    <h3>Upcoming events</h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">Evenement <span class="date">12-09-1989<span></div>
+      <div class="panel-body">
+        Omschrijving evemenet
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Evenement <span class="date">12-09-1989<span></div>
+      <div class="panel-body">
+        Omschrijving evemenet
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Evenement <span class="date">12-09-1989<span></div>
+      <div class="panel-body">
+        Omschrijving evemenet
+      </div>
+    </div>
   </div>
 </div><!--  .row  -->
 
-
-<!--
-<h3>Meet the board</h3>
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" alt="...">
-    </a>
-  </div>
-</div>
--->
 
 @endsection
