@@ -13,89 +13,96 @@
     <link href="/css/home.css" rel="stylesheet">
   </head>
 
-  <!-- NAVBAR -->
-  <body>
-	<div class="hidden-xs">
-	 <div class="navbar-wrapper">
-	  <div class="container">
-	   <a href="/"><img src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/10/Logo.png" width="434" height="46" alt="T.F.V. ‘Professor Francken’ Logo"  /></a>
-	  </div>
-	 </div>
-	</div>
-	
-    <div class="navbar-wrapper">
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">T.F.V.</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <!--<li class="active"><a href="#">Home</a></li> I think we can leave this out, since we already have the navbar brand button-->
-                <li><a href="/news">News</a></li>
-                <li><a href="/study">Study</a></li>
-                <li><a href="/career">Career</a></li>
-                <li class="dropdown">
-                  <a href="#association" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"  aria-expanded="false">Association <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#board">Board</a></li>
-                      <li><a href="#comittees">Committees</a></li>
-                    </ul>
-                  </li>
-			</ul>	  
-			<ul class="nav navbar-nav navbar-right">
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="/">
+            <img style="height: 1em" src="/images/LOGO_KAAL.png">
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/news">News</a>
+            </li>
+            <li>
+              <a href="/study">Study</a>
+            </li>
+            <li>
+              <a href="/career">Carreer</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
       </div>
-    </div>
+      <!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <header style="background-image: url('http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/11/das_header-1080x400.png')">
+      <div style="width:100%; height: 400px; color: white;">
+        <h1 style="padding-top: 200px; text-align: center;  font-size: 50px">T.F.V. 'Professor Francken'</h1>
+        <hr class="small">
+      </div>
+    </header>
+
+    <!-- <img style="width: 100%" src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/11/das_header-1080x400.png"> -->
+
 
     <div class="container">
       @yield('content')
+    </div>
 
+    <div class="container">
+	    <!--Quick-picture-links-->
+	    <div class="row">
+	      <div class="col-xs-3">
+		      <div class="panel panel-default">
+			      <div class="panel-body"><a href="#board"><img src="http://loopgroepnienoord.nl/wp-content/uploads/2015/03/bestuur.png" style="height:100px"></a>
+			      </div>
+			      <div class="panel-footer"><h4>Board</h4></div>
+		      </div>
+	      </div>
+	      <div class="col-xs-3">
+		      <div class="panel panel-default">
 
-	<!--Quick-picture-links-->
-	<div class="row">
-	<div class="col-xs-3">
-		<div class="panel panel-default">	
-			<div class="panel-body"><a href="#board"><img src="http://loopgroepnienoord.nl/wp-content/uploads/2015/03/bestuur.png" style="height:100px"></a>
-			</div>
-			<div class="panel-footer"><h4>Board</h4></div>
-		</div>
-	</div>
-	<div class="col-xs-3">
-		<div class="panel panel-default">
-			
-			<div class="panel-body"><a href="/association"><img src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/11/LOGO_KAAL.png" style="height:100px"></a>
-			</div>
-			<div class="panel-footer"><h4>Association</h4></div>
-		</div>
-	</div>
-	<div class="col-xs-3">
-		<div class="panel panel-default">
-			<div class="panel-body"><a href="/study"><img src="http://www.passendestudiekeuze.nl/wp-content/uploads/Student-cap.png" style="height:100px"></a>
-			</div>
-			<div class="panel-footer"><h4>Study</h4></div>
-		</div>
-	</div>
-	<div class="col-xs-3">
-		<div class="panel panel-default">
-			<div class="panel-body"><a href="/career"><img src="http://www.singlish.it/wp-content/uploads/2015/05/nine-to-five-job-149401_640.png" style="height:100px"></a>
-			</div>
-			<div class="panel-footer"><h4>Career</h4></div>
-		</div>
-	</div>
-</div>
-</div>	<!-- .container -->
-	
+			      <div class="panel-body"><a href="/association"><img src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/11/LOGO_KAAL.png" style="height:100px"></a>
+			      </div>
+			      <div class="panel-footer"><h4>Association</h4></div>
+		      </div>
+	      </div>
+	      <div class="col-xs-3">
+		      <div class="panel panel-default">
+			      <div class="panel-body"><a href="/study"><img src="http://www.passendestudiekeuze.nl/wp-content/uploads/Student-cap.png" style="height:100px"></a>
+			      </div>
+			      <div class="panel-footer"><h4>Study</h4></div>
+		      </div>
+	      </div>
+	      <div class="col-xs-3">
+		      <div class="panel panel-default">
+			      <div class="panel-body"><a href="/career"><img src="http://www.singlish.it/wp-content/uploads/2015/05/nine-to-five-job-149401_640.png" style="height:100px"></a>
+			      </div>
+			      <div class="panel-footer"><h4>Career</h4></div>
+		      </div>
+	      </div>
+      </div>
+
+    </div>
+
     <!-- FOOTER -->
     <footer class="footer" style="color:Gainsboro">
       <div class="container">
@@ -103,7 +110,7 @@
           <address>
             <strong>T.F.V. Professor Francken</strong><br>
             Nijenborgh 4<br>
-            9747AG, Groningen<br> 
+            9747AG, Groningen<br>
             The Netherlands
           </address>
         </div>
@@ -122,15 +129,11 @@
     </footer>
 
 
-
     <!-- Bootstrap core JavaScript
-    ================================================== -->
+         ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-  
-
+    <script src="js/home.js"></script>
   </body>
 </html>
-
-
