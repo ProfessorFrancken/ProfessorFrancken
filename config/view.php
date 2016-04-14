@@ -14,7 +14,7 @@ return [
     */
 
     'paths' => [
-        realpath(base_path('src/Http/Views')),
+        realpath(base_path('src/Infrastructure/Http/Views')),
     ],
 
     /*

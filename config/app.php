@@ -151,11 +151,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        App\EventSourcing\EventSourcingServiceProvider::class,
+        Francken\Infrastructure\Providers\AppServiceProvider::class,
+        Francken\Infrastructure\Providers\AuthServiceProvider::class,
+        Francken\Infrastructure\Providers\EventServiceProvider::class,
+        Francken\Infrastructure\Providers\RouteServiceProvider::class,
+        Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
 
     ],
 

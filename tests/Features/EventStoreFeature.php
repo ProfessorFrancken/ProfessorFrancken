@@ -10,8 +10,8 @@ use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
-use App\EventSourcing\EventSourcingServiceProvider;
-use App\EventSourcing\IlluminateEventStoreException;
+use Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider;
+use Francken\Infrastructure\EventSourcing\IlluminateEventStoreException;
 
 class EventStoreFeature extends TestCase
 {

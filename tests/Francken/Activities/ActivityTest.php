@@ -15,7 +15,6 @@ use Francken\Domain\Activities\Events\ActivityCategorized;
 use Francken\Domain\Activities\Events\ActivityRescheduled;
 use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
 use Francken\Domain\Members\MemberId;
-
 use DateTimeImmutable;
 
 class ActivitiesTest extends AggregateRootScenarioTestCase

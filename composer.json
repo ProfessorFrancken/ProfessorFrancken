@@ -25,9 +25,7 @@
             "database"
         ],
         "psr-4": {
-            "Francken\\Domain\\": "src/Domain/",
-            "App\\": "src/App/",
-            "Http\\": "src/Http/"
+          "Francken\\": "src"
         }
     },
     "autoload-dev": {
