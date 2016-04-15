@@ -10,18 +10,21 @@ You can find some high quality introductory videos on
 For more info on Broadway, watch
 [Willem-Jan Zijderveld speak on CQRS and Event Sourcing](https://www.youtube.com/watch?v=d1PDPsxWGqM).
 
-## Table of Contents
-* [Contributing](#contributing)
- * [Testing](#testing)
- * [Code Style](#code-style)
- * [Git Usage](#git-usage)
-* [An introduction to this application's folder and namespace structure](#an-introduction-to-this-applications-folder-and-namespace-structure)
-* [Setting up a VM](#setting-up-a-vm)
- * [Generate a ssh key](#generate-a-ssh-key)
- * [Setup homestead](#setup-homestead)
- * [Verify that everything is working](#verify-that-everything-is-working)
- * [Configure your hosts file](#configure-your-hosts-file)
-  * [Using the xip.io service](#using-the-xipio-service)
+- [Contributing](#contributing)
+    - [Testing](#testing)
+    - [Code style](#code-style)
+    - [Git Usage](#git-usage)
+- [An introduction to this application's folder and namespace structure](#an-introduction-to-this-applications-folder-and-namespace-structure)
+    - [Domain layer](#domain-layer)
+    - [Application layer](#application-layer)
+        - [Adding projectors](#adding-projectors)
+    - [Infrastructure layer](#infrastructure-layer)
+- [Setting up a VM](#setting-up-a-vm)
+    - [Generate a ssh key](#generate-a-ssh-key)
+    - [Setup homestead](#setup-homestead)
+    - [Verify that everything is working](#verify-that-everything-is-working)
+    - [Configure your hosts file](#configure-your-hosts-file)
+        - [Using the xip.io service](#using-the-xipio-service)
 
 ## Contributing
 Before you push your changes to this repository make sure that the tests are all
@@ -67,23 +70,52 @@ We generally use a [git flow](http://nvie.com/posts/a-successful-git-branching-m
 Since this application hasn't been pushed to production yet we won't be very strict about this, however you should try to be consistent with the naming of branching (i.e. using feature and branches and bug fix branches).
 
 ## An introduction to this application's folder and namespace structure
-The architecture of this application is somewhat based on a forum post by
-[thepsion5](https://laracasts.com/discuss/channels/general-discussion/folder-and-namespace-structure-with-ddd).
-The three most important folders in the root directory are `Fracnken`, `App` and
-`Http`. The eventsourced aggregate roots can be found in the `Francken` folder,
-this is our domain namespace. Each of the events produced of an aggregate root
-can be found in an `Events` sub-directory.
+This application is build upon an hexagonal architecture and is inspired by the
+talk [Hexagonal architecture - message oriented software design](http://www.slideshare.net/matthiasnoback/hexagonal-architecture-messageoriented-software-design-php-benelux-2016)
+by Matthias Noback.
 
-### The domain namespace
-Our domain code, the "Business logic", can be found in the `Francken` namespace.
-You can find more documentation in the [docs](docs/) folder.
+The application is divided by three layers: a Domain layer, Application layer
+and an Infrastructure layer.
+Each layer is only allowed to be dependent on its own layer, or a layer "below"
+it.
+Doing so ensures that we can use dependency inversion and makes our application
+more testable.
 
-### Adding projectors
+### Domain layer
+The domain layer contains all of the business logic. Except for
+[Broadway](https://github.com/qandidate-labs/broadway) this layer should not
+have any external dependencies and *must* be framework agnostic.
+
+The code in the domain layer should have 100% line and mutation coverage and
+should only need unit tests.
+
+The [docs](docs/) folder contains some documentation of important domain concepts.
+
+### Application layer
+The application layer gives us an entry point into the domain layer.
+Inside the application layer we can find use cases of some our domain concepts.
+These use cases can be commands and command handlers, projections, event
+handlers and processors.
+The code inside this layer *should* be framework agnostic and should not need
+acceptance tests, however each class should be unit and integration tested.
+
+#### Adding projectors
 We use projectors to generate read models. Currently these projectors are placed
 in `App\ReadModels`. Once you've created a projector you should add its Fully
 Qualified Classs Name (FQCN) to the `event_sourcing.php` config file.
 The application will then automatically call each of the projectors in the
 config file when an event is published.
+
+### Infrastructure layer
+The infrastructure layer is the only layer that is not framework agnostic and
+could as well be called the "framework layer".
+This layer contains Laravel's service providers and the console and http
+kernels and their commands and controllers.
+It may also contain implementations of repositories, notification services etc.
+
+Code inside the infrastructure layer should be tested using acceptance criteria.
+Unit and integration tests should be written whenever they are useful.
+
 
 ## Setting up a VM
 You should first install [virtualbox](https://www.virtualbox.org/wiki/Downloads)
