@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Infrastructure\Exceptions;
+namespace Francken\Infrastructure;
 
 use Exception;
 use Illuminate\Validation\ValidationException;
@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class Handler extends ExceptionHandler
+class ExceptionsHandler extends ExceptionHandler
 {
     /**
      * A list of the exception types that should not be reported.
