@@ -3,8 +3,8 @@
 namespace Tests\Francken\Activities\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Activities\ActivityId;
-use Francken\Activities\Events\ActivityPublished;
+use Francken\Domain\Activities\ActivityId;
+use Francken\Domain\Activities\Events\ActivityPublished;
 
 class ActivityPublishedTest extends \PHPUnit_Framework_TestCase
 {

@@ -3,9 +3,9 @@
 namespace Tests\Francken\Committees\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Committees\CommitteeId;
-use Francken\Committees\Events\CommitteeGoalChanged;
-use Francken\Members\MemberId;
+use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeGoalChanged;
+use Francken\Domain\Members\MemberId;
 
 class CommitteeGoalChangedTest extends \PHPUnit_Framework_TestCase
 {

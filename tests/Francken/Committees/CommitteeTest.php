@@ -4,13 +4,13 @@ namespace Tests\Francken\Committees;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-use Francken\Committees\Committee;
-use Francken\Committees\CommitteeId;
-use Francken\Committees\Events\CommitteeInstantiated;
-use Francken\Committees\Events\CommitteeNameChanged;
-use Francken\Committees\Events\CommitteeGoalChanged;
-use Francken\Committees\Events\MemberJoinedCommittee;
-use Francken\Members\MemberId;
+use Francken\Domain\Committees\Committee;
+use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeInstantiated;
+use Francken\Domain\Committees\Events\CommitteeNameChanged;
+use Francken\Domain\Committees\Events\CommitteeGoalChanged;
+use Francken\Domain\Committees\Events\MemberJoinedCommittee;
+use Francken\Domain\Members\MemberId;
 
 class CommitteeTest extends AggregateRootScenarioTestCase
 {

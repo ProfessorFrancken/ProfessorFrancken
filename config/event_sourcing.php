@@ -4,7 +4,7 @@ return [
     'event_store_table' => 'event_store',
 
     'projectors' => [
-        \App\ReadModel\CommitteesList\CommitteesListProjector::class,
-        \App\ReadModel\MemberList\MemberListProjector::class,
+        \Francken\Application\ReadModel\CommitteesList\CommitteesListProjector::class,
+        \Francken\Application\ReadModel\MemberList\MemberListProjector::class,
     ],
 ];

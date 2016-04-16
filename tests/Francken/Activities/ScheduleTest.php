@@ -2,7 +2,7 @@
 
 namespace Tests\Francken\Activities;
 
-use Francken\Activities\Schedule;
+use Francken\Domain\Activities\Schedule;
 use DateTimeImmutable;
 use InvalidArgumentException;
 

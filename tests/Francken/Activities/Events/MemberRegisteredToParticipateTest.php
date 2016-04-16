@@ -3,9 +3,9 @@
 namespace Tests\Francken\Activities\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Activities\ActivityId;
-use Francken\Activities\Events\MemberRegisteredToParticipate;
-use Francken\Members\MemberId;
+use Francken\Domain\Activities\ActivityId;
+use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
+use Francken\Domain\Members\MemberId;
 
 class MemberRegisteredToParticipateTest extends \PHPUnit_Framework_TestCase
 {

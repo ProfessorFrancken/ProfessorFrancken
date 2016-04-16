@@ -3,9 +3,9 @@
 namespace Tests\Francken\Activities\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Activities\ActivityId;
-use Francken\Activities\Activity;
-use Francken\Activities\Events\ActivityCategorized;
+use Francken\Domain\Activities\ActivityId;
+use Francken\Domain\Activities\Activity;
+use Francken\Domain\Activities\Events\ActivityCategorized;
 
 class ActivityCategorizedTest extends \PHPUnit_Framework_TestCase
 {

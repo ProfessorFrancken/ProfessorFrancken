@@ -2,10 +2,12 @@
 
 namespace Tests\Francken\Activities;
 
-use Francken\Activities\Location;
+use Tests\SetupReconstitution;
+use Francken\Domain\Activities\Location;
 
 class LocationTest extends \PHPUnit_Framework_TestCase
 {
+    use SetupReconstitution;
 
     /** @test */
     public function an_location_can_be_unspecified()

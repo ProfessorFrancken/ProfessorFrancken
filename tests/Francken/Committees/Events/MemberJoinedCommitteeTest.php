@@ -3,9 +3,9 @@
 namespace Tests\Francken\Committees\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Committees\CommitteeId;
-use Francken\Committees\Events\MemberJoinedCommittee;
-use Francken\Members\MemberId;
+use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\MemberJoinedCommittee;
+use Francken\Domain\Members\MemberId;
 
 class MemberJoinedCommitteeTest extends \PHPUnit_Framework_TestCase
 {
