@@ -21,12 +21,19 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/export', 'DashboardController@export');
 
     Route::group(['prefix' => 'admin'], function () {
+
+        //committees
         Route::resource('committee', 'CommitteeController', ['except' => [
             'create', 'edit'
         ]]);
 
-        Route::post('committee/search-member', 'CommitteeController@searchMember');
+        //posts: NEWS / BLOG
+        Route::resource('post', 'PostController');
 
+        Route::resource('activity', 'ActivityController');
+
+        //dit moet nog beter
+        Route::post('committee/search-member', 'CommitteeController@searchMember');
         Route::post('committee/{committeeId}/member/{memberId}', 'CommitteeController@addMember');
         Route::delete('committee/{committeeId}/member/{memberId}', 'CommitteeController@removeMember');
 
