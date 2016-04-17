@@ -4,77 +4,119 @@
 @section('content')
 
 <div class="row">
-	<div class="col-sm-8">
-		<table class = "table table-hover">
-			<thead>
-				<h3>News</h3>
-			</thead>	  
-			<tbody>       
-				<tr>
-					<td><img src="http://www.faketattoo.nl/uploads/big_sterretje5-68-1290096744.jpg" style="width:20px;height:20px;"></td>
-					<td><a href="#">Nieuwe commissie: De Huppeldepupcie</a></td>
-					<td class="news-date">5 April 2016 20:12</td>
-				</tr>   
-				<tr>
-					<td><img src="https://image.freepik.com/free-icon/election-event-on-a-calendar-with-star-symbol_318-64485.png" style="width:20px;height:20px;">
-					<td><a href="#">Taart voor iedereen</a></td>
-					<td class="news-date">4 April 2016 15:10</td>
-				</tr>    
-				<tr>
-					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
-					<td><a href="#">Blog van Harry</a></td>
-					<td class="news-date">4 April 2016 15:10</td>
-				</tr>
-				<tr>
-					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
-					<td><a href="#">Blog van Bert</a></td>
-					<td class="news-date">1 April 2016 15:10</td>
-				</tr>
-				<tr>
-					<td><img src="http://www.faketattoo.nl/uploads/big_sterretje5-68-1290096744.jpg" style="width:20px;height:20px;"></td>
-					<td><a href="#">Nieuwe commissie: De Huppeldepupcie</a></td>
-					<td class="news-date">5 April 2016 20:12</td>
-				</tr>   
-				<tr>
-					<td><img src="https://image.freepik.com/free-icon/election-event-on-a-calendar-with-star-symbol_318-64485.png" style="width:20px;height:20px;">
-					<td><a href="#">Taart voor iedereen</a></td>
-					<td class="news-date">4 April 2016 15:10</td>
-				</tr>    
-				<tr>
-					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
-					<td><a href="#">Blog van Harry</a></td>
-					<td class="news-date">4 April 2016 15:10</td>
-				</tr>
-				<tr>
-					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
-					<td><a href="#">Blog van Bert</a></td>
-					<td class="news-date">1 April 2016 15:10</td>
-				</tr>
-				<tr>
-					<td><img src="http://www.faketattoo.nl/uploads/big_sterretje5-68-1290096744.jpg" style="width:20px;height:20px;"></td>
-					<td><a href="#">Nieuwe commissie: De Huppeldepupcie</a></td>
-					<td class="news-date">5 April 2016 20:12</td>
-				</tr>   
-				<tr>
-					<td><img src="https://image.freepik.com/free-icon/election-event-on-a-calendar-with-star-symbol_318-64485.png" style="width:20px;height:20px;">
-					<td><a href="#">Taart voor iedereen</a></td>
-					<td class="news-date">4 April 2016 15:10</td>
-				</tr>    
-				<tr>
-					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
-					<td><a href="#">Blog van Harry</a></td>
-					<td class="news-date">4 April 2016 15:10</td>
-				</tr>
-				<tr>
-					<td><img src="http://www.iamhrsinclair.com/wp-content/uploads/2013/02/universal-blog-icon-by-Southpaw.png" style="width:20px;height:20px;"></td>
-					<td><a href="#">Blog van Bert</a></td>
-					<td class="news-date">1 April 2016 15:10</td>
-				</tr>
-			</tbody>     
-		</table>
-	</div>  
+  <div class="col-md-7">
 
-	<div class="col-sm-4"><!-- Section with calendar of upcoming events = Dynamic-->
+
+    <hr>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <div  class="francken-category">
+          <a style="line-height: 64px; font-size: 2em" class="glyphicon glyphicon-leaf"></a>
+        </div>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">From concept to prototype</h4>
+        <i>Posted by <a href="#">Mark Boer</a> on 03-04-2001</i>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <div  class="francken-category">
+          <a style="line-height: 64px; font-size: 2em" class="glyphicon glyphicon-education"></a>
+        </div>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Experiences of a freshmen</h4>
+        <i>Posted by <a href="#">Mark Boer</a> on 03-04-2001</i>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <div  class="francken-category">
+          <a style="line-height: 64px; font-size: 2em" class="glyphicon glyphicon-leaf"></a>
+        </div>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Hitchhiking Competition</h4>
+        <i>Posted by <a href="#">Mark Boer</a> on 03-04-2001</i>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <div  class="francken-category">
+          <a style="line-height: 64px; font-size: 2em" class="glyphicon glyphicon-picture"></a>
+        </div>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Experiences of a freshmen</h4>
+        <i>Posted by <a href="#">Mark Boer</a> on 03-04-2001</i>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <div  class="francken-category">
+          <a style="line-height: 64px; font-size: 2em" class="glyphicon glyphicon-music"></a>
+        </div>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Hitchhiking Competition</h4>
+        <i>Posted by <a href="#">Mark Boer</a> on 03-04-2001</i>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <div  class="francken-category">
+          <a style="line-height: 64px; font-size: 2em" class="glyphicon glyphicon-leaf"></a>
+        </div>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Experiences of a freshmen</h4>
+        <i>Posted by <a href="#">Mark Boer</a> on 03-04-2001</i>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <div  class="francken-category">
+          <a style="line-height: 64px; font-size: 2em" class="glyphicon glyphicon-education"></a>
+        </div>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Hitchhiking Competition</h4>
+        <i>Posted by <a href="#">Mark Boer</a> on 03-04-2001</i>
+      </div>
+    </div>
+
+    <hr>
+
+
+
+  </div>
+
+  <div class="col-md-5">
+    <h3 href="#">Slide show hierzo</h3>
+    <div>
+      <img style="width: 100%; border-radius: 5px;" src="http://c2.staticflickr.com/2/1546/25832438345_b7f086c708_h.jpg">
+    </div>
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">Upcoming events
 			</div>
@@ -84,7 +126,7 @@
 						<tr><td><a href="#">Event1</a></td><td>Date + Time</td></tr>
 						<tr><td><a href="#">Event2</a></td><td>Date + Time</td></tr>
 						<tr><td><a href="#">Event3</a></td><td>Date + Time</td></tr>
-					</tbody>	
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -101,13 +143,10 @@
 			<div class="panel-body">
 				<img src="https://www.facebook.com/images/fb_icon_325x325.png" style="width:100px">
 			</div>
-		</div>	
-	</div>
-	
-	
-	
-</div>	
+		</div>
 
+  </div>
+</div><!--  .row  -->
 
 
 <!--
@@ -135,5 +174,5 @@
   </div>
 </div>
 -->
-		
+
 @endsection
