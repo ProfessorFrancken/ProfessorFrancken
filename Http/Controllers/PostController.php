@@ -4,10 +4,9 @@ namespace Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Francken\Posts\Events\PostWritten;
 use Francken\Posts\Post;
 use Francken\Posts\PostId;
-
-use Francken\Posts\Events\PostWritten;
 use Francken\Posts\PostRepository;
 
 use App\ReadModel\PostList\PostList;
@@ -29,6 +28,14 @@ class PostController extends Controller
 
     public function store(Request $req, PostRepository $repo)
     {
+        //Validate doesn't work?
+        // $this->validate($req, [
+        //     'title' => 'required|max:255',
+        //     'content' => 'required',
+        //     'type' => 'in:blog,news',
+        //     'publishes_at' => 'date',
+        // ]);
+
         $id = PostId::generate();
         $post = Post::create(
             $id,
@@ -50,22 +57,26 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $post = App\ReadModel\PostList\PostList::where('uuid', $id)->first();
+        $post = PostList::where('uuid', $id)->first();
         return view('admin.post.edit', [
             'post' => $post
         ]);
     }
 
-    public function update(Request $req, $id)
+    public function update(Request $req, PostRepository $repo, $id)
     {
         $post = $repo->load($id);
         $post->edit($req->input('name'), $req->input('goal'));
 
+        $repo->save($post);
+
         return redirect('/admin/committee/' . $id);
     }
 
-    public function destroy($id)
+    public function destroy($id, PostRepository $repo)
     {
-
+        $post = $repo->load($id);
+        $post->remove();
+        return redirect('/admin/post')
     }
 }

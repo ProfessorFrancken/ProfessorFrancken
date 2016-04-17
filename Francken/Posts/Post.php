@@ -14,6 +14,7 @@ class Post extends EventSourcedAggregateRoot
     private $content;
     private $type;
     private $authorId;
+    private $publishedAt;
     private $isDraft = true;
 
     // types: PHP needs enums...
@@ -25,6 +26,16 @@ class Post extends EventSourcedAggregateRoot
         $post = new Post;
         $post->apply(new PostWritten($id, $title, $content));
         return $post;
+    }
+
+    public function edit()
+    {
+        
+    }
+
+    public function categorize()
+    {
+        
     }
 
     public function publish()

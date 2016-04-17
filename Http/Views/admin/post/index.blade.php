@@ -11,7 +11,7 @@
     </tr>
 
     @foreach ($posts as $post)
-      <tr onclick="window.document.location='{{ $post->uuid }}';">
+      <tr onclick="window.document.location='/admin/post/{{ $post->uuid }}';">
         <td>{{ $post->title }}</td>
         <td>{{ $post->content }}</td>
         <td>{{ $post->published_at }}</td>
