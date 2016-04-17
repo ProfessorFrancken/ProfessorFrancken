@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->string('type');
-            $table->string('authorId', 36);
+            $table->string('author_id', 36);
             $table->date('publised_at');
         });
     }

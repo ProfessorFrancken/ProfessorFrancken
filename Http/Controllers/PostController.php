@@ -77,6 +77,6 @@ class PostController extends Controller
     {
         $post = $repo->load($id);
         $post->remove();
-        return redirect('/admin/post')
+        return redirect('/admin/post');
     }
 }

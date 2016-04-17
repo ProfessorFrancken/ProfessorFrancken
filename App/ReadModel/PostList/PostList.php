@@ -14,7 +14,7 @@ final class PostList extends Model
         "title",
         "content",
         "type",
-        "authorId",
+        "author_id",
         "published_at"
     ];
 
