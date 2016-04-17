@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Members;
+namespace Francken\Domain\Members;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Francken\Domain\Members\MemberId;

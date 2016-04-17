@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Members;
+namespace Francken\Domain\Members;
 
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventStore\EventStoreInterface;
