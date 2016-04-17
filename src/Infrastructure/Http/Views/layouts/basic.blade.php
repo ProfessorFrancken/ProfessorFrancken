@@ -15,9 +15,16 @@
 
   <!-- NAVBAR -->
   <body>
+	<div class="hidden-xs">
+	 <div class="navbar-wrapper">
+	  <div class="container">
+	   <a href="/"><img src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/10/Logo.png" width="434" height="46" alt="T.F.V. ‘Professor Francken’ Logo"  /></a>
+	  </div>
+	 </div>
+	</div>
+	
     <div class="navbar-wrapper">
       <div class="container">
-
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -26,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">T.F.V.</a>
+              <a class="navbar-brand" href="/">T.F.V.</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -35,13 +42,14 @@
                 <li><a href="/study">Study</a></li>
                 <li><a href="/career">Career</a></li>
                 <li class="dropdown">
-                  <a href="#association" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Association <span class="caret"></span></a>
+                  <a href="#association" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"  aria-expanded="false">Association <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="#board">Board</a></li>
                       <li><a href="#comittees">Committees</a></li>
-                      <li><a href="#comittees">Committees</a></li>
                     </ul>
                   </li>
+			</ul>	  
+			<ul class="nav navbar-nav navbar-right">
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -52,10 +60,44 @@
 
     <div class="container">
       @yield('content')
-    </div><!-- .container -->
 
+
+	<!--Quick-picture-links-->
+	<div class="row">
+	<div class="col-xs-3">
+		<div class="panel panel-default">	
+			<div class="panel-body"><a href="#board"><img src="http://loopgroepnienoord.nl/wp-content/uploads/2015/03/bestuur.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Board</h4></div>
+		</div>
+	</div>
+	<div class="col-xs-3">
+		<div class="panel panel-default">
+			
+			<div class="panel-body"><a href="/association"><img src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/11/LOGO_KAAL.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Association</h4></div>
+		</div>
+	</div>
+	<div class="col-xs-3">
+		<div class="panel panel-default">
+			<div class="panel-body"><a href="/study"><img src="http://www.passendestudiekeuze.nl/wp-content/uploads/Student-cap.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Study</h4></div>
+		</div>
+	</div>
+	<div class="col-xs-3">
+		<div class="panel panel-default">
+			<div class="panel-body"><a href="/career"><img src="http://www.singlish.it/wp-content/uploads/2015/05/nine-to-five-job-149401_640.png" style="height:100px"></a>
+			</div>
+			<div class="panel-footer"><h4>Career</h4></div>
+		</div>
+	</div>
+</div>
+</div>	<!-- .container -->
+	
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" style="color:Gainsboro">
       <div class="container">
         <div class="col-sm-4">
           <address>
@@ -85,7 +127,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   
 
   </body>

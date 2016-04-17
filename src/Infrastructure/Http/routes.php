@@ -18,6 +18,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/news', 'MainContentController@news');
     Route::get('/study', 'MainContentController@study');
     Route::get('/career', 'MainContentController@career');
+    Route::get('/association', 'MainContentController@association');
+	
+	
 
     Route::get('/admin', function () {
         return redirect('/admin/overview');
