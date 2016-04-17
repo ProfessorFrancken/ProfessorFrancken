@@ -1,11 +1,11 @@
 <?php
 
-namespace Francken\Members\Registration\Events;
+namespace Francken\Domain\Members\Registration\Events;
 
 use Broadway\Serializer\SerializableInterface;
-use Francken\Base\Serializable;
-use Francken\Members\Registration\RegistrationRequestId;
-use Francken\Members\Person;
+use Francken\Domain\Base\Serializable;
+use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Person;
 
 final class RegistrationRequestSubmitted implements SerializableInterface
 {

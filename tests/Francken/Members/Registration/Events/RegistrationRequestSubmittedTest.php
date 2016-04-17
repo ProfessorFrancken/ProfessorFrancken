@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests\Francken\Members\Registration\Events;
+namespace Tests\Francken\Domain\Members\Registration\Events;
 
 use Tests\SetupReconstitution;
-use Francken\Members\Registration\RegistrationRequestId;
-use Francken\Members\Registration\Events\RegistrationRequestSubmitted;
-use Francken\Members\Person;
-use Francken\Members\ContactInfo;
-use Francken\Members\Email;
-use Francken\Members\Address;
+use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
+use Francken\Domain\Members\Person;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\Address;
 use DateTimeImmutable;
 
 class ActivityCancelledTest extends \PHPUnit_Framework_TestCase

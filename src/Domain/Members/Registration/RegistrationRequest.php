@@ -1,11 +1,11 @@
 <?php
 
-namespace Francken\Members\Registration;
+namespace Francken\Domain\Members\Registration;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
-use Francken\Members\Registration\Events\RegistrationRequestSubmitted;
-use Francken\Members\Registration\RegistrationRequestId;
-use Francken\Members\Person;
+use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
+use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Person;
 
 final class RegistrationRequest extends EventSourcedAggregateRoot
 {

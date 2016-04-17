@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Francken\Members;
+namespace Tests\Francken\Domain\Members;
 
-use Francken\Members\Email;
+use Francken\Domain\Members\Email;
 
 class EmailTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Francken\Members;
+namespace Francken\Domain\Members;
 
-use Francken\Members\ContactInfo;
-use Francken\Members\Email;
-use Francken\Members\Address;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\Address;
 use DateTimeImmutable;
 
 final class Person

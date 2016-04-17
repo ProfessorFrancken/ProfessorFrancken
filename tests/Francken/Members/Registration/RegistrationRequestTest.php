@@ -1,15 +1,15 @@
 <?php
 
-namespace Tests\Francken\Members\Registration;
+namespace Tests\Francken\Domain\Members\Registration;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
-use Francken\Members\Registration\RegistrationRequest;
-use Francken\Members\Registration\RegistrationRequestId;
-use Francken\Members\Registration\Events\RegistrationRequestSubmitted;
-use Francken\Members\Person;
-use Francken\Members\ContactInfo;
-use Francken\Members\Email;
-use Francken\Members\Address;
+use Francken\Domain\Members\Registration\RegistrationRequest;
+use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
+use Francken\Domain\Members\Person;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\Address;
 use DateTimeImmutable;
 
 class RegistrationRequestTest extends AggregateRootScenarioTestCase

@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Francken\Members;
+namespace Tests\Francken\Domain\Members;
 
-use Francken\Members\ContactInfo;
-use Francken\Members\Email;
-use Francken\Members\Address;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\Address;
 
 class ContactInfoTest extends \PHPUnit_Framework_TestCase
 {

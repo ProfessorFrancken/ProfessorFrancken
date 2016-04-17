@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Francken\Members;
+namespace Tests\Francken\Domain\Members;
 
-use Francken\Members\Address;
+use Francken\Domain\Members\Address;
 
 class AddressTest extends \PHPUnit_Framework_TestCase
 {

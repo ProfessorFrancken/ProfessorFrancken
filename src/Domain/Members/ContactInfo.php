@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Members;
+namespace Francken\Domain\Members;
 
 final class ContactInfo
 {
