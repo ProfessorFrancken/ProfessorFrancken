@@ -4,8 +4,10 @@ namespace Tests\Francken\Domain\Members;
 
 use Francken\Domain\Members\Person;
 use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\Email;
+use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Address;
+use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\Email;
 use DateTimeImmutable;
 
 class PersonTest extends \PHPUnit_Framework_TestCase
@@ -18,16 +20,19 @@ class PersonTest extends \PHPUnit_Framework_TestCase
             new Address(
                 'Groningen',
                 '9742GS',
-                'Plutolaan',
-                '11'
+                'Plutolaan 11'
             )
         );
 
-        $person = Person::describe(
+        $fullName = new FullName(
             'Mark',
-            '',
-            'Redeman', // surname
-            Person::MALE,
+            null,
+            'Redeman'
+        );
+
+        $person = Person::describe(
+            $fullName,
+            Gender::fromString('male'),
             new DateTimeImmutable('1993-04-26'),
             $contact
         );

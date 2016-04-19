@@ -1,0 +1,24 @@
+<?php
+
+namespace Tests\Francken\Domain\Members;
+
+use Francken\Domain\Members\StudyDetails;
+use DateTimeImmutable;
+
+class StudyDetailsTest extends \PHPUnit_Framework_TestCase
+{
+    /** @test */
+    public function it_is_constructed_with_study_details()
+    {
+        $studyDetails = new StudyDetails(
+            'Msc Applied Mathematics',
+            new DateTimeImmutable('01-08-2011'),
+            's2218356'
+        );
+
+        $this->assertEquals('Msc Applied Mathematics', $studyDetails->study());
+        $this->assertEquals(new DateTimeImmutable('01-08-2011'), $studyDetails->startDate());
+        $this->assertEquals('s2218356', $studyDetails->studentNumber());
+
+    }
+}

@@ -3,15 +3,14 @@
 namespace Francken\Domain\Members;
 
 use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Email;
 use Francken\Domain\Members\Address;
 use DateTimeImmutable;
 
 final class Person
 {
-    private $firstname;
-    private $middlename;
-    private $surname;
+    private $fullName;
     private $gender;
     private $birthdate;
     private $contact;
@@ -19,33 +18,25 @@ final class Person
     const MALE = 'male';
 
     private function __construct(
-        string $firstname,
-        string $middlename,
-        string $surname,
-        string $gender,
+        FullName $fullName,
+        Gender $gender,
         DateTimeImmutable $birthdate,
         ContactInfo $contact
     ) {
-        $this->firstname = $firstname;
-        $this->middlename = $middlename;
-        $this->surname = $surname;
+        $this->fullName = $fullName;
         $this->gender = $gender;
         $this->birthdate = $birthdate;
         $this->contact = $contact;
     }
 
     public static function describe(
-        string $firstname,
-        string $middlename,
-        string $surname,
-        string $gender,
+        FullName $fullName,
+        Gender $gender,
         DateTimeImmutable $birthdate,
         ContactInfo $contact
     ) {
         $person = new Person(
-            $firstname,
-            $middlename,
-            $surname,
+            $fullName,
             $gender,
             $birthdate,
             $contact
@@ -56,16 +47,16 @@ final class Person
 
     public function firstname() : string
     {
-        return $this->firstname;
+        return $this->fullName->firstname();
     }
 
     public function surname() : string
     {
-        return $this->surname;
+        return $this->fullName->surname();
     }
 
     public function gender() : string
     {
-        return $this->gender;
+        return (string )$this->gender;
     }
 }
