@@ -5,7 +5,14 @@ namespace Francken\Posts;
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 
 use Francken\Posts\PostId;
+use Francken\Posts\Post;
+use Francken\Posts\PostCategory;
 use Francken\Posts\Events\PostWritten;
+use Francken\Posts\Events\PostTitleChanged;
+use Francken\Posts\Events\PostContentChanged;
+use Francken\Posts\Events\PostCategorized;
+use Francken\Posts\Events\PostPublished;
+use Francken\Posts\Events\PostUnpublished;
 
 class Post extends EventSourcedAggregateRoot
 {
@@ -30,27 +37,27 @@ class Post extends EventSourcedAggregateRoot
 
     public function editTitle(string $title)
     {
-        $this->apply(new PostTitleChanged($id, $title));
+        $this->apply(new PostTitleChanged($this->id, $title));
     }
 
     public function editContent(string $content)
     {
-        $this->apply(new PostContentChanged($id, $content));
+        $this->apply(new PostContentChanged($this->id, $content));
     }
 
     public function categorize(PostCategory $type) 
     {
-        $this->apply(new PostCategorized($id, $type));
+        $this->apply(new PostCategorized($this->id, $type));
     }
 
     public function publish()
     {
-        $this->apply(new PostPublished($id));
+        $this->apply(new PostPublished($this->id));
     }
 
     public function unpublish()
     {
-        $this->apply(new PostRemoved($id));
+        $this->apply(new PostRemoved($this->id));
     }
 
     public function applyPostWritten(PostWritten $event)

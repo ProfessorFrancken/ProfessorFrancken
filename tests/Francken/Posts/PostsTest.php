@@ -4,7 +4,15 @@ namespace Tests\Francken\Posts;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 
-
+use Francken\Posts\PostId;
+use Francken\Posts\Post;
+use Francken\Posts\PostCategory;
+use Francken\Posts\Events\PostWritten;
+use Francken\Posts\Events\PostTitleChanged;
+use Francken\Posts\Events\PostContentChanged;
+use Francken\Posts\Events\PostCategorized;
+use Francken\Posts\Events\PostPublished;
+use Francken\Posts\Events\PostUnpublished;
 
 use DateTimeImmutable;
 
@@ -23,7 +31,7 @@ class PostsTest extends AggregateRootScenarioTestCase
 
         $this->scenario
             ->when(function () use ($id, $type) {
-                Post::createDraft($id, 
+                return Post::createDraft($id, 
                     "Post Title",
                     "Post Content",
                     $type);
@@ -35,25 +43,49 @@ class PostsTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
+    public function a_title_can_be_changed()
+    {
+        $id = PostId::generate();
+
+        $this->givenANewPost($id)
+            ->when(function ($post) {
+                return $post->editTitle("New Title");
+            })
+            ->then([new PostTitleChanged($id, "New Title")]);
+    }
+
+    /** test */
+    public function content_can_be_edited()
+    {
+        $id = PostId::generate();
+
+        $this->givenANewPost($id)
+            ->when(function ($post) {
+                return $post->editContent("New Content");
+            })
+            ->then([new PostContentChanged($id, "New Content")]);
+    }
+
+    /** @test */
     public function once_a_draft_is_created_it_can_be_published()
     {
         $id = PostId::generate();
 
-        $this->givenAPlannedActivity($id)
-            ->when(function ($activity) {
-                return $activity->publish();
+        $this->givenANewPost($id)
+            ->when(function ($post) {
+                return $post->publish();
             })
-            ->then([new ActivityPublished($id)]);
+            ->then([new PostPublished($id)]);
     }
 
     private function givenANewPost(PostId $id)
     {
         return $this->scenario
             ->withAggregateId($id)
-            ->given([new Post::createDraft($id, 
-                    "Post Title",
-                    "Post Content",
-                    $type)]);
-                )]);
+            ->given([new PostWritten($id,
+                    "Title",
+                    "Content",
+                    PostCategory::fromString(PostCategory::NEWSPOST))]);
+
     }
 }

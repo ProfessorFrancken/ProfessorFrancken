@@ -17,6 +17,7 @@ final class PostTitleChanged implements SerializableInterface
     public function __construct(PostId $postId, string $title)
     {
         $this->postId = $postId;
+        $this->title = $title;
     }
 
     public function postId() : PostId

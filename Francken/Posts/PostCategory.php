@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Post;
+namespace Francken\Posts;
 
 class PostCategory
 {
@@ -9,19 +9,19 @@ class PostCategory
 	const BLOGPOST = 'blog';
     const NEWSPOST = 'news';
 
-    private __constructor(string $type)
+    private function __constructor(string $type)
     {
     	$this->type = $type;
     }
 
-    public static fromString(string $type)
+    public static function fromString(string $type)
     {
-    	if (! in_array($type, [BLOGPOST, NEWSPOST]))
+    	if (! in_array($type, [PostCategory::BLOGPOST, PostCategory::NEWSPOST]))
     		throw \InvalidArgumentException("{$type} is not a valied post category");
-    	$this->type = $type;
+    	return new PostCategory($type);
     }
 
-    public __toString()
+    public function __toString()
     {
     	return $type;
     }
