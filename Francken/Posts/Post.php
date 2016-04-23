@@ -13,38 +13,42 @@ class Post extends EventSourcedAggregateRoot
     private $title;
     private $content;
     private $type;
-    private $authorId;
     private $publishedAt;
     private $isDraft = true;
+    // private $authorId;
 
     // types: PHP needs enums...
     const BLOGPOST = 'blog';
     const NEWSPOST = 'news';
 
-    public static function create(PostId $id, string $title, string $content)
+    public static function createDraft(PostId $id, string $title, string $content, PostCategory $type)
     {
         $post = new Post;
-        $post->apply(new PostWritten($id, $title, $content));
+        $post->apply(new PostWritten($id, $title, $content, $type));
         return $post;
     }
 
-    public function edit()
+    public function editTitle(string $title)
     {
-        
+        $this->apply(new PostTitleChanged($id, $title));
     }
 
-    public function categorize()
+    public function editContent(string $content)
     {
-        
+        $this->apply(new PostContentChanged($id, $content));
+    }
+
+    public function categorize(PostCategory $type) 
+    {
+        $this->apply(new PostCategorized($id, $type));
     }
 
     public function publish()
     {
-        //check is not already published
         $this->apply(new PostPublished($id));
     }
 
-    public function remove()
+    public function unpublish()
     {
         $this->apply(new PostRemoved($id));
     }
@@ -54,8 +58,22 @@ class Post extends EventSourcedAggregateRoot
         $this->id = $event->PostId();
         $this->title = $event->title();
         $this->content = $event->content();
-        // $this->type = $event->type();
-        // $this->authorId = $event->authorId();
+        $this->type = $event->type();
+    }
+
+    public function applyPostTitleChanged(PostTitleChanged $event)
+    {
+        $this->title = $event->title();
+    }
+
+    public function applyPostContentChanged(PostContentChanged $event)
+    {
+        $this->content = $event->content;
+    }
+
+    public function applyPostCategorized(PostCategorized $event)
+    {
+        $events->type = $event->type();
     }
 
     public function applyPostPublished(PostPublished $event)
@@ -63,9 +81,9 @@ class Post extends EventSourcedAggregateRoot
         $this->isDraft = false;
     }
 
-    public function applyPostRemoved(PostRemoved $event)
+    public function applyPostUnpublished(PostUnpublished $event)
     {
-        $this->isDraft = true;
+        $this->isDraft = true;        
     }
 
     public function getAggregateRootId()

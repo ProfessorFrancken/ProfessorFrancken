@@ -15,14 +15,14 @@ final class PostWritten implements SerializableInterface
     private $title;
     private $content;
     private $type;
-    private $authorId;
+    // private $authorId;
 
-    public function __construct(PostId $postId, $title, $content/*, $type, $authorId*/)
+    public function __construct(PostId $postId, $title, $content, $type/*, $authorId*/)
     {
         $this->postId = $postId;
         $this->title = $title;
         $this->content = $content;
-        // $this->type = $type;
+        $this->type = $type;
         // $this->authorId = $authorId;
     }
 
@@ -46,10 +46,10 @@ final class PostWritten implements SerializableInterface
         return $this->type;
     }
 
-    public function authorId()
-    {
-        return $this->authorId;
-    }
+    // public function authorId()
+    // {
+    //     return $this->authorId;
+    // }
 
     protected static function deserializationCallbacks()
     {

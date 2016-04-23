@@ -7,7 +7,7 @@ use Francken\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class PostPublishec implements SerializableInterface
+final class PostPublished implements SerializableInterface
 {
     use Serializable;
 
