@@ -14,7 +14,7 @@ use Francken\Domain\Members\Person;
 use Francken\Domain\Members\Email;
 use DateTimeImmutable;
 
-class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
+class RegistrationRequestSubmittedTest extends \PHPUnit_Framework_TestCase
 {
     use SetupReconstitution;
 
@@ -22,36 +22,8 @@ class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
     public function it_is_insttantiable()
     {
         $id = RegistrationRequestId::generate();
-        $person = Person::describe(
-            new FullName(
-                'Mark',
-                '',
-                'Redeman'
-            ),
-            Gender::fromString('male'),
-            new DateTimeImmutable('1993-04-26'),
-            ContactInfo::describe(
-                new Email('markredeman@gmail.com'),
-                new Address(
-                    'Groningen',
-                    '9742GS',
-                    'Plutolaan 11'
-                )
-            )
-        );
-
-        $event = new RegistrationRequestSubmitted(
-            $id,
-            $person,
-            new StudyDetails(
-                'Msc Applied Mathematics',
-                new DateTimeImmutable('2011-09-01'),
-                's2218356'
-            )
-        );
-
+        $event = $this->registrationRequestSubmitted($id);
         $this->assertEquals($id, $event->registrationRequestId());
-        $this->assertEquals($person, $event->requestee());
         $this->assertEquals('s2218356', $event->studentNumber());
         $this->assertEquals('Msc Applied Mathematics', $event->study());
     }
@@ -60,12 +32,25 @@ class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
     public function it_is_serializable()
     {
         $id = RegistrationRequestId::generate();
-        $person = Person::describe(
-            new FullName(
-                'Mark',
-                '',
-                'Redeman'
-            ),
+        $event = $this->registrationRequestSubmitted($id);
+
+        $this->assertEquals(
+            $event,
+            RegistrationRequestSubmitted::deserialize($event->serialize())
+        );
+    }
+
+    private function registrationRequestSubmitted(RegistrationRequestId $id) : RegistrationRequestSubmitted
+    {
+        $fullName = new FullName(
+            'Mark',
+            '',
+            'Redeman'
+        );
+
+        return new RegistrationRequestSubmitted(
+            $id,
+            $fullName,
             Gender::fromString('male'),
             new DateTimeImmutable('1993-04-26'),
             ContactInfo::describe(
@@ -75,22 +60,12 @@ class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
                     '9742GS',
                     'Plutolaan 11'
                 )
-            )
-        );
-
-        $event = new RegistrationRequestSubmitted(
-            $id,
-            $person,
+            ),
             new StudyDetails(
                 'Msc Applied Mathematics',
                 new DateTimeImmutable('2011-09-01'),
                 's2218356'
             )
-        );
-
-        $this->assertEquals(
-            $event,
-            RegistrationRequestSubmitted::deserialize($event->serialize())
         );
     }
 }

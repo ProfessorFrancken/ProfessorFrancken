@@ -5,23 +5,35 @@ namespace Francken\Domain\Members\Registration;
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
-use Francken\Domain\Members\Person;
+use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\StudyDetails;
+use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\ContactInfo;
 use DateTimeImmutable;
 
 final class RegistrationRequest extends EventSourcedAggregateRoot
 {
     private $id;
 
-    public static function submit(RegistrationRequestId $id, Person $requestee, StudyDetails $study) : RegistrationRequest
+    public static function submit(
+        RegistrationRequestId $id,
+        FullName $fullName,
+        Gender $gender,
+        DateTimeImmutable $birthdate,
+        ContactInfo $contact,
+        StudyDetails $studyDetails
+    ) : RegistrationRequest
     {
         $request = new RegistrationRequest;
 
         $request->apply(
             new RegistrationRequestSubmitted(
                 $id,
-                $requestee,
-                $study
+                $fullName,
+                $gender,
+                $birthdate,
+                $contact,
+                $studyDetails
             )
         );
 

@@ -32,21 +32,19 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
             ->when(function () use ($id) {
                 return RegistrationRequest::submit(
                     $id,
-                    Person::describe(
-                        new FullName(
-                            'Mark',
-                            '',
-                            'Redeman'
-                        ),
-                        Gender::fromString('male'),
-                        new DateTimeImmutable('1993-04-26'),
-                        ContactInfo::describe(
-                            new Email('markredeman@gmail.com'),
-                            new Address(
-                                'Groningen',
-                                '9742GS',
-                                'Plutolaan 11'
-                            )
+                    new FullName(
+                        'Mark',
+                        '',
+                        'Redeman'
+                    ),
+                    Gender::fromString('male'),
+                    new DateTimeImmutable('1993-04-26'),
+                    ContactInfo::describe(
+                        new Email('markredeman@gmail.com'),
+                        new Address(
+                            'Groningen',
+                            '9742GS',
+                            'Plutolaan 11'
                         )
                     ),
                     new StudyDetails(
@@ -60,21 +58,19 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
             ->then([
                 new RegistrationRequestSubmitted(
                     $id,
-                    Person::describe(
-                        new FullName(
-                            'Mark',
-                            '',
-                            'Redeman'
-                        ),
-                        Gender::fromString('male'),
-                        new DateTimeImmutable('1993-04-26'),
-                        ContactInfo::describe(
-                            new Email('markredeman@gmail.com'),
-                            new Address(
-                                'Groningen',
-                                '9742GS',
-                                'Plutolaan 11'
-                            )
+                    new FullName(
+                        'Mark',
+                        '',
+                        'Redeman'
+                    ),
+                    Gender::fromString('male'),
+                    new DateTimeImmutable('1993-04-26'),
+                    ContactInfo::describe(
+                        new Email('markredeman@gmail.com'),
+                        new Address(
+                            'Groningen',
+                            '9742GS',
+                            'Plutolaan 11'
                         )
                     ),
                     new StudyDetails(
