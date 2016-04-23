@@ -6,6 +6,7 @@ use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
+use Francken\Domain\Members\StudyDetails;
 use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Address;
@@ -48,8 +49,11 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
                             )
                         )
                     ),
-                    's2218356',
-                    'Msc Applied Mathematics'
+                    new StudyDetails(
+                        'Msc Applied Mathematics',
+                        new DateTimeImmutable('2011-09-01'),
+                        's2218356'
+                    )
                     // note: could add an additional "comment" section where a foreigner could tell the board that he/she lives outside of the Netherlands
                 );
             })
@@ -73,8 +77,11 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
                             )
                         )
                     ),
-                    's2218356',
-                    'Msc Applied Mathematics'
+                    new StudyDetails(
+                        'Msc Applied Mathematics',
+                        new DateTimeImmutable('2011-09-01'),
+                        's2218356'
+                    )
                 )
             ]);
     }

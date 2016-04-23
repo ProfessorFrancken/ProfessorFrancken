@@ -3,8 +3,12 @@
 namespace Francken\Domain\Members;
 
 use DateTimeImmutable;
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Base\Serializable;
 
-final class StudyDetails {
+final class StudyDetails implements SerializableInterface
+{
+    use Serializable;
 
     private $study;
     private $startDate;

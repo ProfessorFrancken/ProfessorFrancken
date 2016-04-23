@@ -5,6 +5,7 @@ namespace Tests\Francken\Domain\Members\Registration\Events;
 use Tests\SetupReconstitution;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
+use Francken\Domain\Members\StudyDetails;
 use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Address;
@@ -42,8 +43,11 @@ class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
         $event = new RegistrationRequestSubmitted(
             $id,
             $person,
-            's2218356',
-            'Msc Applied Mathematics'
+            new StudyDetails(
+                'Msc Applied Mathematics',
+                new DateTimeImmutable('2011-09-01'),
+                's2218356'
+            )
         );
 
         $this->assertEquals($id, $event->registrationRequestId());
@@ -77,8 +81,11 @@ class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
         $event = new RegistrationRequestSubmitted(
             $id,
             $person,
-            's2218356',
-            'Msc Applied Mathematics'
+            new StudyDetails(
+                'Msc Applied Mathematics',
+                new DateTimeImmutable('2011-09-01'),
+                's2218356'
+            )
         );
 
         $this->assertEquals(

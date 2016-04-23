@@ -6,6 +6,7 @@ use Broadway\Serializer\SerializableInterface;
 use Francken\Domain\Base\Serializable;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Person;
+use Francken\Domain\Members\StudyDetails;
 
 final class RegistrationRequestSubmitted implements SerializableInterface
 {
@@ -14,14 +15,13 @@ final class RegistrationRequestSubmitted implements SerializableInterface
     private $id;
     private $requestee;
     private $studentNumber;
-    private $study;
+    private $studyDetails;
 
-    public function __construct(RegistrationRequestId $id, Person $requestee, string $studentNumber, string $study)
+    public function __construct(RegistrationRequestId $id, Person $requestee, StudyDetails $studyDetails)
     {
         $this->id = $id;
         $this->requestee = $requestee;
-        $this->studentNumber = $studentNumber;
-        $this->study = $study;
+        $this->studyDetails = $studyDetails;
     }
 
     public function registrationRequestId() : RegistrationRequestId
@@ -36,12 +36,12 @@ final class RegistrationRequestSubmitted implements SerializableInterface
 
     public function studentNumber() : string
     {
-        return $this->studentNumber;
+        return $this->studyDetails->studentNumber();
     }
 
     public function study() : string
     {
-        return $this->study;
+        return $this->studyDetails->study();
     }
 
     protected static function deserializationCallbacks()

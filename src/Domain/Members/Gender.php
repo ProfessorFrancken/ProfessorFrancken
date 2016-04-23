@@ -2,7 +2,12 @@
 
 namespace Francken\Domain\Members;
 
-final class Gender {
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Base\Serializable;
+
+final class Gender implements SerializableInterface {
+
+    use Serializable;
 
     const FEMALE = 'female';
     const MALE = 'male';

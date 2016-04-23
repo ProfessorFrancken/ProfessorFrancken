@@ -6,12 +6,14 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Person;
+use Francken\Domain\Members\StudyDetails;
+use DateTimeImmutable;
 
 final class RegistrationRequest extends EventSourcedAggregateRoot
 {
     private $id;
 
-    public static function submit(RegistrationRequestId $id, Person $requestee, string $studentNumber, string $study) : RegistrationRequest
+    public static function submit(RegistrationRequestId $id, Person $requestee, StudyDetails $study) : RegistrationRequest
     {
         $request = new RegistrationRequest;
 
@@ -19,7 +21,6 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
             new RegistrationRequestSubmitted(
                 $id,
                 $requestee,
-                $studentNumber,
                 $study
             )
         );

@@ -3,9 +3,12 @@
 namespace Tests\Francken\Domain\Members;
 
 use Francken\Domain\Members\Gender;
+use Tests\SetupReconstitution;
 
 class GenderTest extends \PHPUnit_Framework_TestCase
 {
+    use SetupReconstitution;
+
     /** @test */
     public function it_can_be_constructed_from_a_string()
     {
@@ -36,5 +39,16 @@ class GenderTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         Gender::fromString('foo');
+    }
+
+    /** @test */
+    public function it_is_serializable()
+    {
+        $gender = Gender::fromString('male');
+
+        $this->assertEquals(
+            $gender,
+            Gender::deserialize($gender->serialize())
+        );
     }
 }

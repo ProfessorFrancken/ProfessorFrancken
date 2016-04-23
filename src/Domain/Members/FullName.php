@@ -2,7 +2,12 @@
 
 namespace Francken\Domain\Members;
 
-final class Fullname {
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Base\Serializable;
+
+final class Fullname implements SerializableInterface {
+
+    use Serializable;
 
     private $firstname;
     private $surname;
