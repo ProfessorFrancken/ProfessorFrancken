@@ -2,6 +2,8 @@
 
 namespace Francken\Posts;
 
+use InvalidArgumentException;
+
 class PostCategory
 {
 	private $type;
@@ -9,20 +11,22 @@ class PostCategory
 	const BLOGPOST = 'blog';
     const NEWSPOST = 'news';
 
-    private function __constructor(string $type)
+    private function __construct(string $type)
     {
     	$this->type = $type;
     }
 
-    public static function fromString(string $type)
+    public static function fromString(string $type) : PostCategory
     {
-    	if (! in_array($type, [PostCategory::BLOGPOST, PostCategory::NEWSPOST]))
-    		throw \InvalidArgumentException("{$type} is not a valied post category");
-    	return new PostCategory($type);
+    	if (! in_array($type, [PostCategory::BLOGPOST, PostCategory::NEWSPOST])) 
+        {
+    		throw new InvalidArgumentException("{$type} is not a valied post category");
+    	}
+        return new PostCategory($type);
     }
 
-    public function __toString()
+    public function __toString() : string
     {
-    	return $type;
+    	return $this->type;
     }
 }
