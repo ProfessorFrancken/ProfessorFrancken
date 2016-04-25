@@ -2,12 +2,10 @@
 
 namespace Francken\Domain\Books;
 
-use Francken\Members\Email;
+use Francken\Domain\Members\Email;
 
-class Guest implements SerializableInterface
+class Guest
 {
-	use Serializable;
-
 	private $name;
 	private $email;
 
