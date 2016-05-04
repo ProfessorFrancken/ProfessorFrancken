@@ -16,7 +16,7 @@ class ISBN
 	public static function fromString(string $isbn) : ISBN
 	{
 		if (!isValid($isbn))
-			throw new Exception("Invalid ISBN provided") 
+			throw new Exception("Invalid ISBN provided");
 		return new ISBN($str);	
 	}
 
@@ -30,7 +30,7 @@ class ISBN
 		if(length($isbn) !== 10)
 			return false;
 		$sum = 0;
-		for($i = 0; i < 10; ++i)
+		for($i = 0; $i < 10; $i++)
 		{
 			$sum += ((int) $isbn[i]) * (9 - i);
 		}

@@ -11,13 +11,13 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = AvailableBooks::all();
+        // $books = AvailableBooks::all();
         return view('book.index');
     }
 
     public function show($id)
     {
-        $books = AvailableBooks::findOrFail($id);
+        // $books = AvailableBooks::findOrFail($id);
         return view('book.show');
     }
 

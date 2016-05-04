@@ -49,7 +49,7 @@ final class Book extends EventSourcedAggregateRoot
 		$this->isSold = true;		
 	}	
 
-	public function applyBookSoldToMember(BookSoldToNonMember $event)
+	public function applyBookSoldToNonMember(BookSoldToNonMember $event)
 	{
 		if($this->isSold)
 			throw new Exception("Books cannot be sold twice");
@@ -62,4 +62,9 @@ final class Book extends EventSourcedAggregateRoot
 			throw new Exception("Books cannot be sold twice");
 		$this->isSold = false;
 	}
+	
+    public function getAggregateRootId()
+    {
+        return $this->id;
+    }
 }
