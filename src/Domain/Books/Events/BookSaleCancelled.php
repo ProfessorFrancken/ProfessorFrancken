@@ -2,6 +2,10 @@
 
 namespace Francken\Domain\Books\Events;
 
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Base\Serializable;
+use Francken\Domain\Books\BookId;
+
 final class BookSaleCancelled implements SerializableInterface
 {
     use Serializable;
@@ -20,6 +24,6 @@ final class BookSaleCancelled implements SerializableInterface
     
     protected static function deserializationCallbacks()
     {
-        return ['committeeId' => [CommitteeId::class, 'deserialize']];
+        return ['bookId' => [BookId::class, 'deserialize']];
     }
 }

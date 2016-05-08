@@ -20,9 +20,10 @@ class GuestTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($name, $guest->name());
     }
 
-    //skipped, should it be serializable?
+    /** @test */
     public function it_is_serializable()
     {
+        $this->markTestSkipped('Should i be serializable?');
         $email = new Email("hoi@gmail.com");
         $name = "myname lastname";
         $guest = new Guest($name, $email);

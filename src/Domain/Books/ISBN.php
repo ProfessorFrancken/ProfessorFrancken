@@ -15,9 +15,9 @@ class ISBN
 
 	public static function fromString(string $isbn) : ISBN
 	{
-		if (!isValid($isbn))
-			throw new Exception("Invalid ISBN provided");
-		return new ISBN($str);	
+		if (!ISBN::isValid($isbn))
+			throw new \Exception("Invalid ISBN provided");
+		return new ISBN($isbn);	
 	}
 
 	public function __toString()
@@ -25,14 +25,15 @@ class ISBN
 		return $this->isbn;
 	}
 
-	private function isValid(string $isbn) : bool
+	private static function isValid(string $isbn) : bool
 	{
-		if(length($isbn) !== 10)
+		return true; ///@todo
+		if(strlen($isbn) !== 10)
 			return false;
 		$sum = 0;
 		for($i = 0; $i < 10; $i++)
 		{
-			$sum += ((int) $isbn[i]) * (9 - i);
+			$sum += ((int) $isbn[$i]) * (9 - $i);
 		}
 		if ($sum % 11 === 0)
 			return true;

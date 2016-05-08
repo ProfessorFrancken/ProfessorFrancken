@@ -2,20 +2,26 @@
 
 namespace Francken\Domain\Books\Events;
 
-final class BookWasOffered implements SerializableInterface
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Base\Serializable;
+use Francken\Domain\Books\BookId;
+use Francken\Domain\Books\isbn;
+use Francken\Domain\Members\MemberId;
+
+final class BookOffered implements SerializableInterface
 {
     use Serializable;
 
     private $bookId;
     private $sellersId;
-    private $ISBN;
+    private $isbn;
     private $price;
 
     public function __construct(BookId $id, MemberId $sellersId, ISBN $isbn, int $price)
     {
     	$this->bookId = $id;
     	$this->sellersId = $sellersId;
-    	$this->ISBN = $ISBN;
+    	$this->isbn = $isbn;
     	$this->price = $price;
     }
 
@@ -29,9 +35,9 @@ final class BookWasOffered implements SerializableInterface
     	return $this->sellersId;
     }
 
-    public function ISBN() : ISBN
+    public function isbn() : ISBN
     {
-    	return $this->ISBN;
+    	return $this->isbn;
     }
 
     public function price() : int
@@ -41,6 +47,6 @@ final class BookWasOffered implements SerializableInterface
     
     protected static function deserializationCallbacks()
     {
-        return ['committeeId' => [CommitteeId::class, 'deserialize']];
+        return ['bookId' => [BookId::class, 'deserialize']];
     }
 }

@@ -2,7 +2,12 @@
 
 namespace Francken\Domain\Books\Events;
 
-final class BookWasOffered implements SerializableInterface
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Base\Serializable;
+use Francken\Domain\Books\BookId;
+use Francken\Domain\Books\Guest;
+
+final class BookSoldToNonMember implements SerializableInterface
 {
     use Serializable;
 
@@ -24,10 +29,9 @@ final class BookWasOffered implements SerializableInterface
     {
     	return $this->guest;
     }
-
     
     protected static function deserializationCallbacks()
     {
-        return ['committeeId' => [CommitteeId::class, 'deserialize']];
+        return ['bookId' => [BookId::class, 'deserialize']];
     }
 }
