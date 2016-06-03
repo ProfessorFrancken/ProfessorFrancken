@@ -4,6 +4,8 @@ namespace Tests\Francken\Posts;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 
+use Carbon\Carbon;
+
 use Francken\Posts\PostId;
 use Francken\Posts\Post;
 use Francken\Posts\PostCategory;
@@ -11,8 +13,9 @@ use Francken\Posts\Events\PostWritten;
 use Francken\Posts\Events\PostTitleChanged;
 use Francken\Posts\Events\PostContentChanged;
 use Francken\Posts\Events\PostCategorized;
-use Francken\Posts\Events\PostPublished;
+use Francken\Posts\Events\PostPublishedAt;
 use Francken\Posts\Events\PostUnpublished;
+use Francken\Posts\Events\DraftDeleted;
 
 use DateTimeImmutable;
 
@@ -67,15 +70,41 @@ class PostsTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function once_a_draft_is_created_it_can_be_published()
+    public function once_a_draft_is_created_a_publish_date_can_be_set()
     {
         $id = PostId::generate();
-
+        
         $this->givenANewPost($id)
             ->when(function ($post) {
-                return $post->publish();
+                return $post->setPublishDate(Carbon::createFromDate(2012, 1, 1));
             })
-            ->then([new PostPublished($id)]);
+            ->then([new PostPublishedAt($id, Carbon::createFromDate(2012, 1, 1))]);
+    }
+
+    /** @test */
+    public function a_published_post_can_be_unpublished()
+    { // reset back to draft.
+        $id = PostId::generate();
+        
+        $this->givenANewPost($id)
+            ->when(function ($post) {
+                $post->setPublishDate(Carbon::createFromDate(2012, 1, 1));
+                $post->unpublish();
+            })
+            ->then([new PostPublishedAt($id, Carbon::createFromDate(2012, 1, 1)),
+                new PostUnpublished($id)]);
+    }
+
+    /** @test */
+    public function a_draft_can_be_deleted()
+    {
+        $id = PostId::generate();
+        
+        $this->givenANewPost($id)
+            ->when(function ($post) {
+                $post->delete();
+            })
+            ->then([new DraftDeleted($id)]);
     }
 
     private function givenANewPost(PostId $id)

@@ -7,7 +7,7 @@ use Francken\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class PostPublished implements SerializableInterface
+final class DraftDeleted implements SerializableInterface
 {
     use Serializable;
 
@@ -17,7 +17,7 @@ final class PostPublished implements SerializableInterface
     {
         $this->postId = $postId;
     }
-
+    
     public function postId() : PostId
     {
         return $this->postId;

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Francken\Posts\Events\PostWritten;
 use Francken\Posts\Post;
 use Francken\Posts\PostId;
+use Francken\Posts\PostCategory;
 use Francken\Posts\PostRepository;
 
 use App\ReadModel\PostList\PostList;
@@ -37,10 +38,14 @@ class PostController extends Controller
         // ]);
 
         $id = PostId::generate();
-        $post = Post::create(
+
+        $post = Post::createDraft(
             $id,
             $req->input('title'),
-            $req->input('content'));
+            $req->input('content'),
+            PostCategory::fromString($req->input('type')));
+
+        $post->setPublishDate(\Carbon\Carbon::now()); /// @todo
 
         $repo->save($post);
 

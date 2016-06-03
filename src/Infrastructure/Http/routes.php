@@ -2,7 +2,10 @@
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'MainContentController@index');
+    Route::get('/about', 'MainContentController@about');
+    Route::get('/post', 'MainContentController@post');
     Route::get('/news', 'MainContentController@news');
+    Route::get('/blog', 'MainContentController@blog');
     Route::get('/study', 'MainContentController@study');
     Route::get('/career', 'MainContentController@career');
     Route::get('/association', 'MainContentController@association');

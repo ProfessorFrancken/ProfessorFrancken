@@ -7,17 +7,18 @@
   <div style="height: 100px;"></div>
 
   <ol style="text-align: center;" class="breadcrumb">
-    <li class="active">All</li>
-    <li><a href="/news/news">News</a></li>
-    <li><a href="/news/blog">Blog</a></li>
+    <li><a href="/post">All</a></li>
+    <li><a href="/news">News</a></li>
+    <li><a href="/blog">Blog</a></li>
   </ol>
   
 
   @foreach ($posts as $post)
-    <h2><a href="news/{{ $post->uuid }}">{{ $post->title }}</a></h2>
+    <h2><a href="post/{{ $post->uuid }}">{{ $post->title }}</a> ({{ $post->type }})</h2>
     {{ $post->content }}
   @endforeach
 
+  <!-- paginate -->
   <div style="text-align: center;">
     {{ $posts->render() }}
   </div>

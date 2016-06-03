@@ -14,7 +14,7 @@
       <tr onclick="window.document.location='/admin/post/{{ $post->uuid }}';">
         <td>{{ $post->title }}</td>
         <td>{{ $post->content }}</td>
-        <td>{{ $post->published_at }}</td>
+        <td>{{ $post->published_at->format('d/m/y') }}</td>
       </tr>
     @endforeach
   </table>

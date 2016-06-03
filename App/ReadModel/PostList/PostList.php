@@ -18,17 +18,22 @@ final class PostList extends Model
         "published_at"
     ];
 
-    protected $date = [
+    protected $dates = [
         "published_at"
     ];
 
     public function scopeBlog($query)
     {
-    	return $query->where($type, "blog");
+        return $query->where("type", "blog");
     }
 
     public function scopeNews($query)
     {
-    	return $query->where($type, "news");
+        return $query->where("type", "news");
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where("published_at", "<=", \Carbon::now());
     }
 }

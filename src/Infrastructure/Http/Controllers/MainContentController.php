@@ -11,9 +11,30 @@ class MainContentController extends Controller
         return view('main');
     }
 
-    public function news()
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function post()
     {
         $posts = PostList::paginate(10);
+        return view('news', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function news()
+    {
+        $posts = PostList::news()->paginate(10);
+        return view('news', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function blog()
+    {
+        $posts = PostList::blog()->paginate(10);
         return view('news', [
             'posts' => $posts
         ]);
