@@ -7,10 +7,10 @@ use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Address;
 use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\Person;
 use Francken\Domain\Members\Email;
 use DateTimeImmutable;
 
@@ -61,6 +61,7 @@ class RegistrationRequestSubmittedTest extends \PHPUnit_Framework_TestCase
                     'Plutolaan 11'
                 )
             ),
+            new PaymentInfo(true, true),
             new StudyDetails(
                 'Msc Applied Mathematics',
                 new DateTimeImmutable('2011-09-01'),

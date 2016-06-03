@@ -8,6 +8,7 @@ use Broadway\EventStore\EventStoreInterface;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Francken\Domain\Committees\CommitteeRepository;
+use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerRepository(CommitteeRepository::class);
+        $this->registerRepository(RegistrationRequestRepository::class);
+        $this->app->instance('path','src/Infrastructure');
     }
 
     /**
