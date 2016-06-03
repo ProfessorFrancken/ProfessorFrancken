@@ -2,6 +2,8 @@
 
 namespace Francken\Infrastructure\Http\Controllers;
 
+use Francken\Application\ReadModel\PostList\PostList;
+
 class MainContentController extends Controller
 {
     public function index()
@@ -9,9 +11,33 @@ class MainContentController extends Controller
         return view('main');
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function post()
+    {
+        $posts = PostList::paginate(10);
+        return view('news', [
+            'posts' => $posts
+        ]);
+    }
+
     public function news()
     {
-        return view('news');
+        $posts = PostList::news()->paginate(10);
+        return view('news', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function blog()
+    {
+        $posts = PostList::blog()->paginate(10);
+        return view('news', [
+            'posts' => $posts
+        ]);
     }
 
     public function study()

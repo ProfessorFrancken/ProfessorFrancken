@@ -63,36 +63,6 @@ blockquote {
   font-style: italic;
 }
 
-@media (min-width: 992px) {
-  .featurette-heading {
-    margin-top: 120px;
-  }
-
-}
-/* Added by T. below, since I have no clue to which category this belongs yet.
--------------------------------------------------- */
-.news-date {
-	font-size: 12px;
-}
-
-.footer {
-	background-color: #001841;
-}
-.panel-primary > .panel-heading {
-	background-color:#001841;
-	color:Gainsboro;
-}
-
-a:link {
-    color: Grey;
-}
-a:visited {
-    color: DimGrey;
-}
-a:hover {
-    color: DodgerBlue ;
-}
-
 hr.small {
   max-width: 100px;
   margin: 15px auto;
