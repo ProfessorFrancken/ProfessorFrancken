@@ -6,6 +6,6 @@ return [
     'projectors' => [
         \Francken\Application\ReadModel\CommitteesList\CommitteesListProjector::class,
         \Francken\Application\ReadModel\MemberList\MemberListProjector::class,
-        \App\ReadModel\PostList\PostListProjector::class,
+        \Francken\Application\ReadModel\PostList\PostListProjector::class,
     ],
 ];

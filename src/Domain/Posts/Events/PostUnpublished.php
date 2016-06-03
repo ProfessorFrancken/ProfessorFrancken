@@ -1,20 +1,19 @@
 <?php
 
-namespace Francken\Posts\Events;
+namespace Francken\Domain\Posts\Events;
 
-use Francken\Posts\PostId;
-use Francken\Base\DomainEvent;
+use Francken\Domain\Posts\PostId;
+use Francken\Domain\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class PostContentChanged implements SerializableInterface
+final class PostUnpublished implements SerializableInterface
 {
     use Serializable;
 
     private $postId;
-    private $content;
 
-    public function __construct(PostId $postId, string $content)
+    public function __construct(PostId $postId)
     {
         $this->postId = $postId;
     }
@@ -22,11 +21,6 @@ final class PostContentChanged implements SerializableInterface
     public function postId() : PostId
     {
         return $this->postId;
-    }
-
-    public function content() : string
-    {
-        return $this->content;
     }
 
     protected static function deserializationCallbacks()

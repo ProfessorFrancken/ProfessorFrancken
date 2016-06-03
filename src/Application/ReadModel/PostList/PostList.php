@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ReadModel\PostList;
+namespace Francken\Application\ReadModel\PostList;
 
 use Illuminate\Database\Eloquent\Model;
 

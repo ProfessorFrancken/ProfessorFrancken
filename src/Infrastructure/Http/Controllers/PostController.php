@@ -1,16 +1,16 @@
 <?php
 
-namespace Http\Controllers;
+namespace Francken\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Francken\Posts\Events\PostWritten;
-use Francken\Posts\Post;
-use Francken\Posts\PostId;
-use Francken\Posts\PostCategory;
-use Francken\Posts\PostRepository;
+use Francken\Domain\Posts\Events\PostWritten;
+use Francken\Domain\Posts\Post;
+use Francken\Domain\Posts\PostId;
+use Francken\Domain\Posts\PostCategory;
+use Francken\Domain\Posts\PostRepository;
 
-use App\ReadModel\PostList\PostList;
+use Francken\Application\ReadModel\PostList\PostList;
 
 class PostController extends Controller
 {
@@ -43,7 +43,8 @@ class PostController extends Controller
             $id,
             $req->input('title'),
             $req->input('content'),
-            PostCategory::fromString($req->input('type')));
+            PostCategory::fromString($req->input('type'))
+        );
 
         $post->setPublishDate(\Carbon\Carbon::now()); /// @todo
 

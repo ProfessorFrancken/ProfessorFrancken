@@ -1,9 +1,9 @@
 <?php
 
-namespace Francken\Posts\Events;
+namespace Francken\Domain\Posts\Events;
 
-use Francken\Posts\PostId;
-use Francken\Base\DomainEvent;
+use Francken\Domain\Posts\PostId;
+use Francken\Domain\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 

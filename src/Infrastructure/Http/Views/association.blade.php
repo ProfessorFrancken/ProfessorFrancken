@@ -1,5 +1,4 @@
-@extends('layouts.basic')
-
+@extends('layouts.new')
 
 @section('content')
   <h1>Association</h1>

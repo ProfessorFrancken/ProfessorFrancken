@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Posts;
+namespace Francken\Domain\Posts;
 
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventStore\EventStoreInterface;

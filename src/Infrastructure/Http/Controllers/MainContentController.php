@@ -2,7 +2,7 @@
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use App\ReadModel\PostList\PostList;
+use Francken\Application\ReadModel\PostList\PostList;
 
 class MainContentController extends Controller
 {

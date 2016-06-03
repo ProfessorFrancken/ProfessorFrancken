@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Francken\Posts;
+namespace Tests\Francken\Domain\Posts;
 
-use Francken\Posts\PostCategory;
+use Francken\Domain\Posts\PostCategory;
 use InavlidArgumentException;
 
 class PostCategoryTest extends \PHPUnit_Framework_TestCase

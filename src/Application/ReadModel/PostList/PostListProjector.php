@@ -1,8 +1,8 @@
 <?php
 
-namespace App\ReadModel\PostList;
+namespace Francken\Application\ReadModel\PostList;
 
-use App\ReadModel\PostList\PostList;
+use Francken\Application\ReadModel\PostList\PostList;
 use Broadway\ReadModel\Projector;
 
 use Francken\Posts\Events\PostWritten;

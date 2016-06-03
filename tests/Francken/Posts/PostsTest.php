@@ -1,22 +1,19 @@
 <?php
 
-namespace Tests\Francken\Posts;
+namespace Tests\Francken\Domain\Posts;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
-
 use Carbon\Carbon;
-
-use Francken\Posts\PostId;
-use Francken\Posts\Post;
-use Francken\Posts\PostCategory;
-use Francken\Posts\Events\PostWritten;
-use Francken\Posts\Events\PostTitleChanged;
-use Francken\Posts\Events\PostContentChanged;
-use Francken\Posts\Events\PostCategorized;
-use Francken\Posts\Events\PostPublishedAt;
-use Francken\Posts\Events\PostUnpublished;
-use Francken\Posts\Events\DraftDeleted;
-
+use Francken\Domain\Posts\PostId;
+use Francken\Domain\Posts\Post;
+use Francken\Domain\Posts\PostCategory;
+use Francken\Domain\Posts\Events\PostWritten;
+use Francken\Domain\Posts\Events\PostTitleChanged;
+use Francken\Domain\Posts\Events\PostContentChanged;
+use Francken\Domain\Posts\Events\PostCategorized;
+use Francken\Domain\Posts\Events\PostPublishedAt;
+use Francken\Domain\Posts\Events\PostUnpublished;
+use Francken\Domain\Posts\Events\DraftDeleted;
 use DateTimeImmutable;
 
 class PostsTest extends AggregateRootScenarioTestCase
@@ -34,7 +31,7 @@ class PostsTest extends AggregateRootScenarioTestCase
 
         $this->scenario
             ->when(function () use ($id, $type) {
-                return Post::createDraft($id, 
+                return Post::createDraft($id,
                     "Post Title",
                     "Post Content",
                     $type);
@@ -73,7 +70,7 @@ class PostsTest extends AggregateRootScenarioTestCase
     public function once_a_draft_is_created_a_publish_date_can_be_set()
     {
         $id = PostId::generate();
-        
+
         $this->givenANewPost($id)
             ->when(function ($post) {
                 return $post->setPublishDate(Carbon::createFromDate(2012, 1, 1));
@@ -85,7 +82,7 @@ class PostsTest extends AggregateRootScenarioTestCase
     public function a_published_post_can_be_unpublished()
     { // reset back to draft.
         $id = PostId::generate();
-        
+
         $this->givenANewPost($id)
             ->when(function ($post) {
                 $post->setPublishDate(Carbon::createFromDate(2012, 1, 1));
@@ -99,7 +96,7 @@ class PostsTest extends AggregateRootScenarioTestCase
     public function a_draft_can_be_deleted()
     {
         $id = PostId::generate();
-        
+
         $this->givenANewPost($id)
             ->when(function ($post) {
                 $post->delete();

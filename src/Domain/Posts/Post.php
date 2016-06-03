@@ -1,22 +1,18 @@
 <?php
 
-namespace Francken\Posts;
+namespace Francken\Domain\Posts;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
-
 use Carbon\Carbon;
-
-use Francken\Posts\PostId;
-use Francken\Posts\Post;
-use Francken\Posts\PostCategory;
-use Francken\Posts\Events\PostWritten;
-use Francken\Posts\Events\PostTitleChanged;
-use Francken\Posts\Events\PostContentChanged;
-use Francken\Posts\Events\PostCategorized;
-use Francken\Posts\Events\PostPublishedAt;
-use Francken\Posts\Events\PostUnpublished;
-use Francken\Posts\Events\DraftDeleted;
-
+use Francken\Domain\Posts\PostId;
+use Francken\Domain\Posts\PostCategory;
+use Francken\Domain\Posts\Events\PostWritten;
+use Francken\Domain\Posts\Events\PostTitleChanged;
+use Francken\Domain\Posts\Events\PostContentChanged;
+use Francken\Domain\Posts\Events\PostCategorized;
+use Francken\Domain\Posts\Events\PostPublishedAt;
+use Francken\Domain\Posts\Events\PostUnpublished;
+use Francken\Domain\Posts\Events\DraftDeleted;
 
 /// @todo this class still needs logic..
 class Post extends EventSourcedAggregateRoot
@@ -50,7 +46,7 @@ class Post extends EventSourcedAggregateRoot
         $this->apply(new PostContentChanged($this->id, $content));
     }
 
-    public function categorize(PostCategory $type) 
+    public function categorize(PostCategory $type)
     {
         $this->apply(new PostCategorized($this->id, $type));
     }
@@ -95,7 +91,7 @@ class Post extends EventSourcedAggregateRoot
 
     public function applyPostPublishedAt(PostPublishedAt $event)
     {
-        $this->published_at = $event->date();        
+        $this->published_at = $event->date();
     }
 
     public function applyPostUnpublished(PostUnpublished $event)

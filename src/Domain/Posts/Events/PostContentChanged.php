@@ -1,24 +1,22 @@
 <?php
 
-namespace Francken\Posts\Events;
+namespace Francken\Domain\Posts\Events;
 
-use Francken\Posts\PostId;
-use Francken\Posts\PostCategory;
-use Francken\Base\DomainEvent;
+use Francken\Domain\Posts\PostId;
+use Francken\Domain\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class PostCategorized implements SerializableInterface
+final class PostContentChanged implements SerializableInterface
 {
     use Serializable;
 
     private $postId;
-    private $type;
+    private $content;
 
-    public function __construct(PostId $postId, PostCategory $type)
+    public function __construct(PostId $postId, string $content)
     {
         $this->postId = $postId;
-        $this->type = $type;
     }
 
     public function postId() : PostId
@@ -26,9 +24,9 @@ final class PostCategorized implements SerializableInterface
         return $this->postId;
     }
 
-    public function type() : PostCategory
+    public function content() : string
     {
-        return $this->type;
+        return $this->content;
     }
 
     protected static function deserializationCallbacks()
