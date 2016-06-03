@@ -7,6 +7,7 @@ use Francken\Domain\Base\Serializable;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Address;
 use Francken\Domain\Members\Gender;
@@ -22,6 +23,7 @@ final class RegistrationRequestSubmitted implements SerializableInterface
     private $gender;
     private $birthdate;
     private $contact;
+    private $paymentInfo;
     private $studyDetails;
 
     public function __construct(
@@ -30,6 +32,7 @@ final class RegistrationRequestSubmitted implements SerializableInterface
         Gender $gender,
         DateTimeImmutable $birthdate,
         ContactInfo $contact,
+        PaymentInfo $paymentInfo,
         StudyDetails $studyDetails
     )
     {
@@ -38,6 +41,7 @@ final class RegistrationRequestSubmitted implements SerializableInterface
         $this->gender = $gender;
         $this->birthdate = $birthdate;
         $this->contact = $contact;
+        $this->paymentInfo = $paymentInfo;
         $this->studyDetails = $studyDetails;
     }
 
@@ -68,6 +72,7 @@ final class RegistrationRequestSubmitted implements SerializableInterface
             'fullName' => [FullName::class, 'deserialize'],
             'gender' => [Gender::class, 'deserialize'],
             'contact' => [ContactInfo::class, 'deserialize'],
+            'paymentInfo' => [PaymentInfo::class, 'deserialize'],
             'studyDetails' => [StudyDetails::class, 'deserialize']
         ];
     }

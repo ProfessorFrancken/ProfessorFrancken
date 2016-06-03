@@ -9,6 +9,7 @@ use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\PaymentInfo;
 use DateTimeImmutable;
 
 final class RegistrationRequest extends EventSourcedAggregateRoot
@@ -21,6 +22,7 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
         Gender $gender,
         DateTimeImmutable $birthdate,
         ContactInfo $contact,
+        PaymentInfo $paymentInfo,
         StudyDetails $studyDetails
     ) : RegistrationRequest
     {
@@ -33,6 +35,7 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
                 $gender,
                 $birthdate,
                 $contact,
+                $paymentInfo,
                 $studyDetails
             )
         );
