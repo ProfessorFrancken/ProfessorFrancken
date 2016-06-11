@@ -28,6 +28,9 @@ use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Support\ServiceProvider;
+use Francken\Infrastructure\Http\Controllers\CommitteeController;
+use Francken\Application\Books\BookDetailsRepositoryI;
+use Francken\Infrastructure\Books\BookDetailsRepository;
 use League\CommonMark\CommonMarkConverter;
 
 class AppServiceProvider extends ServiceProvider
@@ -52,6 +55,7 @@ class AppServiceProvider extends ServiceProvider
         $this->registerRepository(MemberRepository::class, Member::class);
         $this->registerRepository(PostRepository::class, Post::class);
         $this->registerRepository(RegistrationRequestRepository::class, RegistrationRequest::class);
+        $this->registerRepository(BookDetailsRepositoryI::class, BookDetailsRepository::class);
     }
 
     private function registerControllers()

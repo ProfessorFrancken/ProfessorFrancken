@@ -9,5 +9,6 @@ return [
         \Francken\Application\ReadModel\PostList\PostListProjector::class,
         \Francken\Application\Members\Registration\RequestStatusProjector::class,
         \Francken\Application\ReadModel\AvailableBooks\AvailableBooksProjector::class,
+        \Francken\Application\Books\AllBooksProjector::class,
     ],
 ];
