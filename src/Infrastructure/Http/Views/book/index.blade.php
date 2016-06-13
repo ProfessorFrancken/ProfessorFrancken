@@ -3,65 +3,34 @@
 
 @section('content')
   
-  <h1>Book marktplaats</h1>
-  <hr>
-  
+  <div class="jumbotron">
+    <h1>Second hand books</h1>
+    <p>
+      On this page you will find all second hand books that are for sale at Francken. If you’re intersted in buying a book you can just come to the boardroom and pick up your books. The fee will be taken from your bankaccount with the next depreciation.
+    </p>
+
+    <p>
+      Questions? mail: <a href="mailto:books@professorfrancken.nl">books@professorfrancken.nl</a>
+    </p>
+
+    <p><a class="btn btn-primary btn-lg" href="/book/create" role="button">Sell your books!</a></p>
+  </div>
+
   <div class="row">
 
+    @foreach($books as $book)
     <div class="col-xs-6 col-sm-4 col-md-3">
       <div class="thumbnail">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/41e-FWfEqsL._SX388_BO1,204,203,200_.jpg" alt="...">
+        <img src="{{ $book->path_to_cover }}" alt="...">
         <div class="caption">
-          <h3>Book Title</h3>
-          <p>Mark & Mark</p>
-          <p>€15,00 <btn class="btn btn-primary">Buy!</btn></p>
+          <h3>{{ $book->title }}</h3>
+          <p>{{ $book->authors  }}</p>
+          <p>€{{ number_format($book->price/100, 2, ",", "") }} <a class="btn btn-primary" href="/book/{{ $book->id }}">Buy!</a></p>
         </div>
       </div>
     </div>
+    @endforeach
 
-    <div class="col-xs-6 col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/41e-FWfEqsL._SX388_BO1,204,203,200_.jpg" alt="...">
-        <div class="caption">
-          <h3>Book Title</h3>
-          <p>Mark & Mark</p>
-          <p>€15,00 <btn class="btn btn-primary">Buy!</btn></p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-xs-6 col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/41e-FWfEqsL._SX388_BO1,204,203,200_.jpg" alt="...">
-        <div class="caption">
-          <h3>Book Title</h3>
-          <p>Mark & Mark</p>
-          <p>€15,00 <btn class="btn btn-primary">Buy!</btn></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/41e-FWfEqsL._SX388_BO1,204,203,200_.jpg" alt="...">
-        <div class="caption">
-          <h3>Book Title</h3>
-          <p>Mark & Mark</p>
-          <p>€15,00 <btn class="btn btn-primary">Buy!</btn></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/41e-FWfEqsL._SX388_BO1,204,203,200_.jpg" alt="...">
-        <div class="caption">
-          <h3>Book Title</h3>
-          <p>Mark & Mark</p>
-          <p>€15,00 <btn class="btn btn-primary">Buy!</btn></p>
-        </div>
-      </div>
-    </div>
 
   </div>
 

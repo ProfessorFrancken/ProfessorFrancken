@@ -10,7 +10,7 @@ class BookDetails
 
 	public function __construct(string $title, string $authors, string $pathToCover) 
 	{
-		$this->string = $string;
+		$this->title = $title;
 		$this->authors = $authors;
 		$this->pathToCover = $pathToCover;
 }

@@ -6,5 +6,5 @@ use Francken\Domain\Books\ISBN;
 
 interface BookDetailsRepositoryI
 {
-	public function getByISBN(ISBN $isbn) : BookDetails;
+	public function getByISBN(string $isbn) : BookDetails;
 }

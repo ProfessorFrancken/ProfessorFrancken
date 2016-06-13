@@ -5,6 +5,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/association', 'MainContentController@association');
 
     Route::resource('book', 'BookController');
+    Route::put('book/{bookId}/buy', 'BookController@buy');
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');

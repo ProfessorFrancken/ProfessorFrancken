@@ -8,11 +8,23 @@ use Francken\Domain\Books\ISBN;
 
 class BookDetailsRepository implements BookDetailsRepositoryI 
 {
-	public function getByISBN(ISBN $isbn) : BookDetails
+	public function getByISBN(string $isbn) : BookDetails
 	{
+		$curl = curl_init('https://www.amazon.com/dp/' . $isbn); 
+		
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+		$subject = curl_exec($curl);
+
+		curl_close($curl);
+
+		$pattern = '/<title>(.*): (.*): [0-9,X]*: Amazon.com: /';
+
+		preg_match($pattern, $subject, $matches);
+
 		return new BookDetails(
-			"Kijk nou!",
-			"Mark & Mark",
-			"https://images-na.ssl-images-amazon.com/images/I/41e-FWfEqsL._SX388_BO1,204,203,200_.jpg");
+			$matches[1],
+			$matches[2],
+			"http://images.amazon.com/images/P/" . $isbn . ".jpg");
 	}
 }

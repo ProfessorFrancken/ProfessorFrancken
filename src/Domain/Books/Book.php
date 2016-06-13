@@ -6,7 +6,6 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Guest;
-use Francken\Domain\Books\ISBN;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookSaleCancelled;
@@ -18,11 +17,11 @@ final class Book extends EventSourcedAggregateRoot
 {
 	private $id;
 	private $sellersId;
-	private $ISBN;
+	private $isbn_10;
 	private $price;
 	private $isSold = false;
 
-	public static function offer(BookId $id, MemberId $sellersId, ISBN $isbn, int $price)
+	public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price)
 	{
 		$book = new Book;
 		$book->apply(new BookOffered($id, $sellersId, $isbn, $price));
@@ -53,23 +52,23 @@ final class Book extends EventSourcedAggregateRoot
 	{
 		$this->id = $event->bookId();
 		$this->sellersId = $event->sellersId();
-		$this->ISBN = $event->ISBN();
+		$this->isbn_10 = $event->isbn();
 		$this->price = $event->price();
 	}
 
 	public function applyBookSoldToMember(BookSoldToMember $event)
 	{
-		///@todo Mail bestuah?
-		if($this->isSold)
-			throw new \Exception("A book cannot be sold twice");
+		// ///@todo Mail bestuah?
+		// if($this->isSold)
+		// 	throw new \Exception("A book cannot be sold twice");
 		$this->isSold = true;		
 	}
 
 	public function applyBookSoldToNonMember(BookSoldToNonMember $event)
 	{
-		///@todo Mail bestuah?
-		if($this->isSold)
-			throw new \Exception("A book cannot be sold twice");
+		// ///@todo Mail bestuah?
+		// if($this->isSold)
+		// 	throw new \Exception("A book cannot be sold twice");
 		$this->isSold = true;
 	}
 

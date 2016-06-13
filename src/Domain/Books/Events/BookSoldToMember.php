@@ -13,7 +13,7 @@ final class BookSoldToMember implements SerializableInterface
     use Serializable;
 
     private $bookId;
-    private $sellersId;
+    private $buyersId;
 
     public function __construct(BookId $id, MemberId $buyersId)
     {
@@ -28,11 +28,12 @@ final class BookSoldToMember implements SerializableInterface
 
     public function buyersId() : MemberId
     {
-    	return $this->sellersId;
+    	return $this->buyersId;
     } 
     
     protected static function deserializationCallbacks()
     {
-        return ['bookId' => [BookId::class, 'deserialize']];
+        return ['bookId' => [BookId::class, 'deserialize'],
+                'buyersId' => [MemberId::class, 'deserialize']];
     }
 }

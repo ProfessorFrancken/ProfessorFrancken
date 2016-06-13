@@ -2,7 +2,14 @@
 
 namespace Francken\Application\Books;
 
+use Francken\Application\ReadModel\MemberList\MemberList;
+
 use Broadway\ReadModel\Projector;
+use Francken\Domain\Books\Events\BookOffered;
+use Francken\Domain\Books\Events\BookOfferRetracted;
+use Francken\Domain\Books\Events\BookSoldToMember;
+use Francken\Domain\Books\Events\BookSaleCancelled;
+use Francken\Domain\Books\Events\BookSaleCompleted;
 
 final class AllBooksProjector extends Projector
 {
@@ -18,27 +25,27 @@ final class AllBooksProjector extends Projector
         $bookDetails = $this->bookDetailRepository->getByISBN($event->isbn());
 
         AllBooks::create([
-            'id' => $event->id(),
+            'id' => $event->bookId(),
             'title' => $bookDetails->title(),
             'authors' => $bookDetails->authors(),
             'price' => $event->price(),
-            'isbn' => $event->isbn(),
+            'isbn-10' => $event->isbn(),
             'path_to_cover' => $bookDetails->pathToCover(),
             'price' => $event->price(),
-            'sold_by' => 
-                MemberList::where('uuid', $event->sellersId())->first()->first_name .
-                MemberList::where('uuid', $event->sellersId())->first()->last_name,
+            'sold_by' => 'Mark Boer',
+                // MemberList::where('uuid', $event->sellersId())->first()->first_name .
+                // MemberList::where('uuid', $event->sellersId())->first()->last_name,
             'state' => 'available']);
     }
 
     public function applyBookOfferRetracted(BookOfferRetracted $event)
     {
-        AllBooks::find($event->id())->destroy();
+        AllBooks::find($event->bookId())->destroy();
     }
 
     public function applyBookSoldToMember(BookSoldToMember $event)
     {
-        AllBooks::find($event->id())
+        AllBooks::find($event->bookId())
             ->update([
                 'state' => 'pending',
                  'sold_to' => 
@@ -49,12 +56,12 @@ final class AllBooksProjector extends Projector
 
     public function applyBookSaleCancelled(BookSaleCancelled $event)
     {
-        AllBooks::find($event->id())->destroy(); 
+        AllBooks::find($event->bookId())->destroy(); 
     }
 
     public function applyBookSaleCompleted(BookSaleCompleted $event)
     {
-        AllBooks::find($event->id())
+        AllBooks::find($event->bookId())
             ->update(['state' => 'sold']);
     }
 }

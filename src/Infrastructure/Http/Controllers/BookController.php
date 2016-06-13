@@ -5,20 +5,27 @@ namespace Francken\Infrastructure\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Francken\Domain\Books\Book;
-use Francken\Application\ReadModel\AvailableBooks;
+use Francken\Domain\Books\BookRepository;
+use Francken\Domain\Books\BookId;
+use Francken\Domain\Books\Isbn\Isbn;
+use Francken\Domain\Members\MemberId;
+use Francken\Application\Books\AllBooks;
 
 class BookController extends Controller
 {
     public function index()
     {
-        // $books = AvailableBooks::all();
-        return view('book.index');
+        $books = AllBooks::all();
+
+        return view('book.index',
+            ['books'=> $books]);
     }
 
     public function show($id)
     {
-        // $books = AvailableBooks::findOrFail($id);
-        return view('book.show');
+        $book = AllBooks::findOrFail($id);
+        return view('book.show',
+            ['book' => $book]);
     }
 
     //-----------------------
@@ -29,16 +36,40 @@ class BookController extends Controller
         return view('book.create');
     }
 
-    public function store($id, Request $req, BookRepository $repo)
+    public function store(Request $req, BookRepository $repo)
     {
+        $isbn = new Isbn();
+
+        ///@todo validation
+        if (!$isbn->check->identify($req->input('isbn')))
+            throw new \Exception('Not an ISBN');
+
+        $isbn_10 = $isbn->hyphens->removeHyphens($req->input('isbn'));
+
+        if ($isbn->check->identify($isbn_10) == 13)
+            $isbn_10 = $isbn->translate->to10($isbn_10);
+
         $book = Book::offer(
-            $id,
+            BookId::generate(),
             MemberId::generate(), //get session ID?
-            $req->input('isbn'),
-            $req->input('price'));
+            $isbn_10,
+            $req->input('price') * 100);
+
+        $repo->save($book);
+
+        return redirect('/book');
     }
 
-    public function edit($id, Request $req, BookRepository $repo)
+    public function buy(Request $req, BookRepository $repo, $id)
+    {
+        $book = $repo->load($id);
+        $book->sellToMember(MemberId::generate()); ///@todo use session memberId
+        $repo->save($book);
+
+        return redirect('/book');
+    }
+
+    public function update(Request $req, BookRepository $repo, $id)
     {
 
     }
