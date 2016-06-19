@@ -21,9 +21,7 @@ class BookDetailsRepository implements BookDetailsRepositoryI
 
 		preg_match($pattern, $subject, $matches);
 
-		///@todo insert placeholder?
-		if (empty($matches))
-			throw \Exception("Could not find title");
+		///@todo error handling?
 
 		return new BookDetails(
 			$matches[1],

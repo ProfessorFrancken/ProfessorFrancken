@@ -3,7 +3,6 @@
 namespace Francken\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Isbn;
 
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
@@ -38,7 +37,7 @@ class BookController extends Controller
 
     public function store(Request $req, BookRepository $repo)
     {
-        $isbn = new Isbn();
+        $isbn = new \Isbn\Isbn();
 
         ///@todo validation
         if (!$isbn->check->identify($req->input('isbn')))
