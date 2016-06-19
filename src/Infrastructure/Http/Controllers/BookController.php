@@ -3,11 +3,11 @@
 namespace Francken\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Isbn;
 
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\Isbn\Isbn;
 use Francken\Domain\Members\MemberId;
 use Francken\Application\Books\AllBooks;
 

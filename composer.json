@@ -13,7 +13,8 @@
         "laravelcollective/html": "^5.2",
         "mattketmo/uuid-2x-bridge": "*@dev",
         "ramsey/uuid": "^3.0",
-        "league/commonmark": "^0.15.0"
+        "league/commonmark": "^0.15.0",
+        "fale/isbn": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

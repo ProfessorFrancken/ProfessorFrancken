@@ -4,7 +4,6 @@ namespace Francken\Infrastructure\Books;
 
 use Francken\Application\Books\BookDetails;
 use Francken\Application\Books\BookDetailsRepositoryI;
-use Francken\Domain\Books\ISBN;
 
 class BookDetailsRepository implements BookDetailsRepositoryI 
 {
@@ -21,6 +20,10 @@ class BookDetailsRepository implements BookDetailsRepositoryI
 		$pattern = '/<title>(.*): (.*): [0-9,X]*: Amazon.com: /';
 
 		preg_match($pattern, $subject, $matches);
+
+		///@todo insert placeholder?
+		if (empty($matches))
+			throw \Exception("Could not find title");
 
 		return new BookDetails(
 			$matches[1],
