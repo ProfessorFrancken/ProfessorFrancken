@@ -9,6 +9,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/study', 'MainContentController@study');
     Route::get('/career', 'MainContentController@career');
     Route::get('/association', 'MainContentController@association');
+    Route::get('/boards', 'MainContentController@boards');
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');

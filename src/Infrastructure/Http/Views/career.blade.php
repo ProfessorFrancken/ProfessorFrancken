@@ -1,4 +1,4 @@
-@extends('layouts.new')
+@extends('layouts.content')
 
 @section('content')
   <!-- lelijk... -->
