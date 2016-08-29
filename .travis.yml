@@ -10,8 +10,9 @@ env:
     - APP_DEBUG=true
     - APP_KEY=SomeRandomStringSomeRandomString
 
-before_install:
-  - composer self-update
+before_script:
+  - composer selfupdate
+  - composer install --prefer-dist
 
-install:
-  - travis_retry composer install --no-interaction --prefer-source
+after_script:
+  - vendor/bin/coveralls
