@@ -1,4 +1,5 @@
-# T.F.V. 'Professor Francken'
+# T.F.V. 'Professor Francken' [![Build Status](https://travis-ci.org/ProfessorFrancken/ProfessorFrancken.svg?branch=master)](https://travis-ci.org/ProfessorFrancken/ProfessorFrancken) [![Coverage Status](https://coveralls.io/repos/github/ProfessorFrancken/ProfessorFrancken/badge.svg?branch=setup-coveralls)](https://coveralls.io/github/ProfessorFrancken/ProfessorFrancken?branch=setup-coveralls)
+
 This is the (not yet public) repository containing code for the new website of
 [T.F.V. Porfessor Francken](http://professorfrancken.nl/).
 We are using the [Laravel v5.2](http://laravel.com/docs/5.2) framework in
