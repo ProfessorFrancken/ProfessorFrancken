@@ -1,8 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-  <!-- lelijk... -->
-  <div style="height: 100px;"></div>
 
   <h1>Boards</h1>
 

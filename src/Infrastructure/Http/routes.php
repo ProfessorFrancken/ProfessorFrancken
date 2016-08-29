@@ -10,6 +10,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/career', 'MainContentController@career');
     Route::get('/association', 'MainContentController@association');
     Route::get('/boards', 'MainContentController@boards');
+    Route::get('/history', 'MainContentController@history');
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');

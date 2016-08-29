@@ -17,7 +17,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="padding-bottom: 0px">
-      <div id="main-menu" class="container" style="padding-bottom: 15px">
+      <div id="main-menu" class="container">
 
         <a style="padding: 0px" class="navbar-brand page-scroll" href="/">
           <img style="height: 100%" src="/images/LOGO_KAAL.png">
@@ -47,17 +47,16 @@
             <li>
               <a href="/career">Carreer</a>
             </li>
+            <li>
+              <a href="/books">Books</a>
+            </li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
       </div>
       <!-- /.container -->
       <div id="sub-menu" style="background-color: #483A78; text-align: center">
-        <ul class="nav navbar-nav navbar-center" style="float: none; display: inline-block; font-size: smaller">
-          <li><a href="#history" style="padding: 10px 30px;">History</a></li>
-          <li><a href="#boards" style="padding: 10px 30px;">Boards</a></li>
-          <li><a href="#committees" style="padding: 10px 30px;">Committees</a></li>
-        </ul>
+        @yield('sub-menu')
       </div>
     </nav>
 
@@ -79,7 +78,7 @@
             </address>
           </div>
           <div class="col-sm-4">
-            <h3>Quick links</h3>
+            <h3>Contact</h3>
             mail: <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
             tel: +31 (0) 50 363 4978 <br>
             Kvk: 400 252 71

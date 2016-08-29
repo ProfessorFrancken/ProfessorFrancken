@@ -60,4 +60,9 @@ class MainContentController extends Controller
         return view('boards');
     }
 
+    public function history()
+    {
+        return view('history');
+    }
+
 }

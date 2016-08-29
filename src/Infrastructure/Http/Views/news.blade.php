@@ -1,19 +1,17 @@
-@extends('layouts.new')
+@extends('layouts.content')
 
-
-@section('content')
-  
-  <!-- lelijk... -->
-  <div style="height: 100px;"></div>
-
-  <ol style="text-align: center;" class="breadcrumb">
+@section('sub-menu')
+<ul class="nav navbar-nav navbar-center">
     <li><a href="/post">All</a></li>
     <li><a href="/news">News</a></li>
     <li><a href="/blog">Blog</a></li>
-  </ol>
-  
+</ul>
+@endsection
 
+@section('content')
+  
   @foreach ($posts as $post)
+    <hr>
     <h2><a href="post/{{ $post->uuid }}">{{ $post->title }}</a> ({{ $post->type }})</h2>
     {{ $post->content }}
   @endforeach
