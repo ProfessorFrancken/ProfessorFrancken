@@ -2,6 +2,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Lora', 'Times New Roman', serif;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 20px;
     color: #404040;
 }
@@ -72,4 +73,108 @@ hr.small {
 
 footer {
   background-color: lightgray;
+}
+
+header {
+  background-color: #31255E;
+  border-bottom: 25px solid #483A78;
+  margin-bottom: 1em;
+}
+
+.about-francken {
+  border-top: thin solid #31255E;
+  border-bottom: thin solid #31255E;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.about-francken div {
+  background-color: #483A78;
+  color: white;
+}
+
+footer {
+  background-color: #31255E;
+  /* background-color: #343538; */
+  color: white;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.sidebar {
+  /* padding: 0 1em; */
+  margin-left: 4em;
+  padding-right: 2em;
+  /* background-color: #f9f9f9; */
+  /* background-color: #343538; */
+  /* color: white; */
+
+  /* border-right: thin solid #eee; */
+  /* padding-left: 2em; */
+  /* margin-left: 1em; */
+}
+
+.sidebar h3, .sidebar h4 {
+  font-family: serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+.sidebar h4 {
+  font-size: 14px;
+  margin-top: 1.5em;
+  line-height: 1.5;
+}
+
+.sidebar i {
+  margin-right: 2px;
+}
+
+.sidebar li {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 0.5em;
+  font-family: serif;
+  font-weight: lighter;
+}
+.sidebar ol {
+  list-style: none;
+  padding-bottom: 1em;
+  border-bottom: thin solid #eee;
+}
+
+.sidebar .show-more {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.main-content {
+  /* border-left: thin solid #eee; */
+  /* padding-left: 2em; */
+  /* margin-left: 1em; */
+}
+
+.main-content article {
+  border-left: 4px solid #bbb;
+  padding-left: 1em;
+}
+
+.sponsors {
+  text-align: center;
+  background-color: #343538;
+  padding: 0;
+}
+
+.sponsors h3 {
+  font-family: serif;
+  font-weight: normal;
+  text-align: center;
+  color: #aaa;
+}
+
+.sponsors img {
+  margin: 1em 0;
+  max-width: 100%;
+}
+
+.sponsors ul {
+  padding: 1em;
 }
