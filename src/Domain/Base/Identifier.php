@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Domain\Base;
 
 use Assert\Assertion as Assert;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure\EventSourcing;
 
 use Broadway\Domain\DomainEventStream;

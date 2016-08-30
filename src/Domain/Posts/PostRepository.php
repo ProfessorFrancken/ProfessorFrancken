@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Domain\Posts;
 
 use Broadway\EventHandling\EventBusInterface;

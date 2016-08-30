@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Francken\Domain\Posts;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;

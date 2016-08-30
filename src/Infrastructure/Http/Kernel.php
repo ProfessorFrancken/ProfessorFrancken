@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
