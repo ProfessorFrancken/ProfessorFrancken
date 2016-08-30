@@ -32,6 +32,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Francken\\Features\\": "tests/Features",
             "Tests\\": "tests/"
         }
     },
