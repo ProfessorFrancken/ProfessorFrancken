@@ -2,18 +2,18 @@
 
 namespace Francken\Application\ReadModel\CommitteesList;
 
+use Francken\Application\Projector;
 use Francken\Application\ReadModel\CommitteesList\CommitteesList;
 use Francken\Application\ReadModel\MemberList\MemberList;
-use Broadway\ReadModel\Projector;
+use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
 
 final class CommitteesListProjector extends Projector
 {
-    public function applyCommitteeInstantiated(CommitteeInstantiated $event)
+    public function whenCommitteeInstantiated(CommitteeInstantiated $event)
     {
         $committee = new CommitteesList;
         $committee->uuid = $event->committeeId();
@@ -24,19 +24,19 @@ final class CommitteesListProjector extends Projector
         $committee->save();
     }
 
-    public function applyCommitteeNameChanged(CommitteeNameChanged $event)
+    public function whenCommitteeNameChanged(CommitteeNameChanged $event)
     {
         CommitteesList::where('uuid', $event->committeeId())
             ->update(['name' => $event->name()]);
     }
 
-    public function applyCommitteeGoalChanged(CommitteeGoalChanged $event)
+    public function whenCommitteeGoalChanged(CommitteeGoalChanged $event)
     {
         CommitteesList::where('uuid', $event->committeeId())
             ->update(['goal' => $event->goal()]);
     }
 
-    public function applyMemberJoinedCommittee(MemberJoinedCommittee $event)
+    public function whenMemberJoinedCommittee(MemberJoinedCommittee $event)
     {
         $committee = CommitteesList::where('uuid', $event->committeeId())->first();
         $members = $committee->committee_members;
@@ -51,7 +51,7 @@ final class CommitteesListProjector extends Projector
         $committee->save();
     }
 
-    public function applyMemberLeftCommittee(MemberLeftCommittee $event)
+    public function whenMemberLeftCommittee(MemberLeftCommittee $event)
     {
         $committee = CommitteesList::where('uuid', $event->committeeId())->first();
         $members = $committee->committee_members;

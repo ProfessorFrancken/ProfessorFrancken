@@ -2,18 +2,17 @@
 
 namespace Francken\Application\ReadModel\PostList;
 
+use Francken\Application\Projector;
 use Francken\Application\ReadModel\PostList\PostList;
-use Broadway\ReadModel\Projector;
-
-use Francken\Posts\Events\PostWritten;
-use Francken\Posts\Events\PostTitleChanged;
-use Francken\Posts\Events\PostContentChanged;
 use Francken\Posts\Events\PostCategorized;
+use Francken\Posts\Events\PostContentChanged;
 use Francken\Posts\Events\PostPublishedAt;
+use Francken\Posts\Events\PostTitleChanged;
+use Francken\Posts\Events\PostWritten;
 
 final class PostListProjector extends Projector
 {
-    public function applyPostWritten(PostWritten $event)
+    public function whenPostWritten(PostWritten $event)
     {
         ///@todo: change authorId to author name
         $post = PostList::create([
@@ -25,25 +24,25 @@ final class PostListProjector extends Projector
             ]);
     }
 
-    public function applyPostTitleChanged(PostTitleChanged $event)
+    public function whenPostTitleChanged(PostTitleChanged $event)
     {
         PostList::where('uuid', $event->postId())
             ->update('title', $event->title());
     }
 
-    public function applyPostContentChanged(PostContentChanged $event)
+    public function whenPostContentChanged(PostContentChanged $event)
     {
         PostList::where('uuid', $event->postId())
             ->update('content', $event->content());
     }
 
-    public function applyPostCategorized(PostCategorized $event)
+    public function whenPostCategorized(PostCategorized $event)
     {
         PostList::where('uuid', $event->postId())
             ->update('type', $event->type());
     }
 
-    public function applyPostPublishedAt(PostPublishedAt $event)
+    public function whenPostPublishedAt(PostPublishedAt $event)
     {
         $post = PostList::where('uuid', $event->postId())->first();
         $post->published_at = $event->date();

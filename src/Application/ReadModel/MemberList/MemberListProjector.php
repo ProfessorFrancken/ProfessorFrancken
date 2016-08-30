@@ -2,14 +2,14 @@
 
 namespace Francken\Application\ReadModel\MemberList;
 
+use Francken\Application\Projector;
 use Francken\Application\ReadModel\MemberList\MemberList;
-use Broadway\ReadModel\Projector;
-use Francken\Domain\Members\Events\MemberJoinedFrancken;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
+use Francken\Domain\Members\Events\MemberJoinedFrancken;
 
 final class MemberListProjector extends Projector
 {
-    public function applyMemberJoinedFrancken(MemberJoinedFrancken $event)
+    public function whenMemberJoinedFrancken(MemberJoinedFrancken $event)
     {
         $member = new MemberList;
         $member->uuid = $event->memberId();

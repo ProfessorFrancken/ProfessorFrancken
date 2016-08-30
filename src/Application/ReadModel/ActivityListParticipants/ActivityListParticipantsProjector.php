@@ -2,16 +2,16 @@
 
 namespace Francken\Application\ReadModel\CommitteesList;
 
+use Francken\Application\Projector;
 use Francken\Application\ReadModel\ActivityListParticipant;
-use Broadway\ReadModel\Projector;
+use Francken\Domain\Activity\Events\ActivityCancelled;
+use Francken\Domain\Activity\Events\ActivityCategorized;
 use Francken\Domain\Activity\Events\ActivityPlanned;
 use Francken\Domain\Activity\Events\ActivityPublished;
-use Francken\Domain\Activity\Events\ActivityCategorized;
-use Francken\Domain\Activity\Events\ActivityCancelled;
 
 final class ActivityListParticipantsProjector extends Projector
 {
-    public function applyActivityPlanned(ActivityPlanned $event)
+    public function whenActivityPlanned(ActivityPlanned $event)
     {
         ActivityListParticipant::create([
             'uuid' => $event->ActivityId(),
@@ -23,7 +23,7 @@ final class ActivityListParticipantsProjector extends Projector
         ]);
     }
 
-    public function applyActivityPublished(ActivityPublished $event)
+    public function whenActivityPublished(ActivityPublished $event)
     {
         ActivityListParticipant::find($event->ActivityId())
             ->update([
@@ -31,7 +31,7 @@ final class ActivityListParticipantsProjector extends Projector
             ]);
     }
 
-    public function applyActivityCategorized(ActivityCategorized $event)
+    public function whenActivityCategorized(ActivityCategorized $event)
     {
         ActivityListParticipant::find($event->ActivityId())
             ->update([
@@ -39,7 +39,7 @@ final class ActivityListParticipantsProjector extends Projector
             ]);
     }
 
-    public function applyActivityCancelled(ActivityCancelled $event)
+    public function whenActivityCancelled(ActivityCancelled $event)
     {
         ActivityListParticipant::find($event->ActivityId())
             ->update([
@@ -47,7 +47,7 @@ final class ActivityListParticipantsProjector extends Projector
             ]);
     }
 
-    public function applyMemberRegisteredToParticipate(MemberRegisteredToParticipate $event)
+    public function whenMemberRegisteredToParticipate(MemberRegisteredToParticipate $event)
     {
         $activity = ActivityListParticipant::find($event->ActivityId());
         $activity->addParticipant($event->memberId());
