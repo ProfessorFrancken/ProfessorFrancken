@@ -79,7 +79,7 @@
           </div>
           <div class="col-sm-4">
             <h3>Contact</h3>
-            mail: <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
+            <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
             tel: +31 (0) 50 363 4978 <br>
             Kvk: 400 252 71
 
