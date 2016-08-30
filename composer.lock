@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "92a8a6118468d7b1bf1c103b6ecb3d88",
-    "content-hash": "e88bab20bd02f40b724ccb0d4c2c986c",
+    "hash": "ec4e1ab7e5d8475dd76f95788d8531b1",
+    "content-hash": "240da7913e9bb06c369d448f455faaef",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -68,16 +68,16 @@
         },
         {
             "name": "broadway/broadway",
-            "version": "0.8.0",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/qandidate-labs/broadway.git",
-                "reference": "c2d095854e5d3a14a68c90b79cfa7aae01a7cf82"
+                "reference": "0ba385ee4e8f21beaaddd9c06564b21a60b57500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qandidate-labs/broadway/zipball/c2d095854e5d3a14a68c90b79cfa7aae01a7cf82",
-                "reference": "c2d095854e5d3a14a68c90b79cfa7aae01a7cf82",
+                "url": "https://api.github.com/repos/qandidate-labs/broadway/zipball/0ba385ee4e8f21beaaddd9c06564b21a60b57500",
+                "reference": "0ba385ee4e8f21beaaddd9c06564b21a60b57500",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
             "require-dev": {
                 "doctrine/dbal": "~2.4",
                 "doctrine/mongodb": "~1.0",
-                "elasticsearch/elasticsearch": "~1.0",
+                "elasticsearch/elasticsearch": "~1.0|^2.0",
                 "instaclick/base-test-bundle": "~0.5",
                 "monolog/monolog": "~1.8",
                 "symfony/console": "~2.4",
@@ -106,7 +106,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.8.x-dev"
+                    "dev-master": "0.9.x-dev"
                 }
             },
             "autoload": {
@@ -151,7 +151,7 @@
                 "domain-driven design",
                 "event sourcing"
             ],
-            "time": "2015-10-22 17:40:34"
+            "time": "2016-04-19 13:31:15"
         },
         {
             "name": "broadway/uuid-generator",
