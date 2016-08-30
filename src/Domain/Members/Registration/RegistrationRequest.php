@@ -2,8 +2,8 @@
 
 namespace Francken\Domain\Members\Registration;
 
-use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use DateTimeImmutable;
+use Francken\Domain\AggregateRoot;
 use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
@@ -13,7 +13,7 @@ use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;
 
-final class RegistrationRequest extends EventSourcedAggregateRoot
+final class RegistrationRequest extends AggregateRoot
 {
     private $id;
 
