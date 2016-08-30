@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Infrastructure\Providers;
+namespace Francken\Infrastructure;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

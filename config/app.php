@@ -151,8 +151,8 @@ return [
         /*
          * Application Service Providers...
          */
-        Francken\Infrastructure\Providers\AppServiceProvider::class,
-        Francken\Infrastructure\Providers\RouteServiceProvider::class,
+        Francken\Infrastructure\AppServiceProvider::class,
+        Francken\Infrastructure\RouteServiceProvider::class,
         Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
 
         /*

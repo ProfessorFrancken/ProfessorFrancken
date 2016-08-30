@@ -1,6 +1,6 @@
 <?php
 
-namespace Francken\Infrastructure\Providers;
+namespace Francken\Infrastructure;
 
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
