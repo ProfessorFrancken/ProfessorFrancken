@@ -85,8 +85,10 @@ class CommitteeTest extends AggregateRootScenarioTestCase
             ->when(function ($committee) use ($id) {
                 $committee->edit('Borrelcie', 'bier drinken');
             })
-            ->then([new CommitteeNameChanged($id, 'Borrelcie'),
-                new CommitteeGoalChanged($id, 'bier drinken')]);
+            ->then([
+                new CommitteeNameChanged($id, 'Borrelcie'),
+                new CommitteeGoalChanged($id, 'bier drinken')
+            ]);
     }
 
     /**
@@ -103,23 +105,10 @@ class CommitteeTest extends AggregateRootScenarioTestCase
             ->when(function ($committee) use ($memberId) {
                 $committee->joinByMember($memberId);
             })
-            ->then([new MemberJoinedCommittee($id, $memberId)]);
-    }
-
-    /**
-     * @test
-     */
-    public function a_committee_member_cannot_join_twice()
-    {
-        $id = new CommitteeId($this->generator->generate());
-        $memberId = new MemberId($this->generator->generate());
-
-        $this->scenario
-            ->withAggregateId($id)
-            ->given([
-                new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy'),
-                new MemberJoinedCommittee($id, $memberId)
-            ])
+            ->then([new MemberJoinedCommittee($id, $memberId)])
+            //
+            // A member can't join a committee twice
+            //
             ->when(function ($committee) use ($memberId) {
                 $committee->joinByMember($memberId);
             })
