@@ -55,7 +55,7 @@
         <!-- /.navbar-collapse -->
       </div>
       <!-- /.container -->
-      <div id="sub-menu" style="background-color: #483A78; text-align: center">
+      <div id="sub-menu" class="container-fluid">
         @yield('sub-menu')
       </div>
     </nav>

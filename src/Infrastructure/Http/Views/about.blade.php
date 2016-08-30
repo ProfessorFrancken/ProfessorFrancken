@@ -1,7 +1,7 @@
 @extends('layouts.content')
 
 @section('sub-menu')
-<ul class="nav navbar-nav navbar-center">
+<ul class="nav navbar-nav">
   <li><a href="/history">History</a></li>
   <li><a href="/honorary-members">Honerary members</a></li>
   <li><a href="/boards">Boards</a></li>
