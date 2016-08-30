@@ -2,8 +2,13 @@
 
 namespace Francken\Domain\Members;
 
-final class ContactInfo
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Base\Serializable;
+
+final class ContactInfo implements SerializableInterface
 {
+    use Serializable;
+
     private $email;
     private $address;
 

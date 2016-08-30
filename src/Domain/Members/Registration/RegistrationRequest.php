@@ -3,26 +3,45 @@
 namespace Francken\Domain\Members\Registration;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
+use DateTimeImmutable;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\FullName;
+use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\PaymentInfo;
+use Francken\Domain\Members\Registration\Events\PaymentInfoProvided;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
-use Francken\Domain\Members\Person;
+use Francken\Domain\Members\StudyDetails;
 
 final class RegistrationRequest extends EventSourcedAggregateRoot
 {
     private $id;
 
-    public static function submit(RegistrationRequestId $id, Person $requestee, string $studentNumber, string $study) : RegistrationRequest
-    {
+    public static function submit(
+        RegistrationRequestId $id,
+        FullName $fullName,
+        Gender $gender,
+        DateTimeImmutable $birthdate,
+        ContactInfo $contact,
+        StudyDetails $studyDetails,
+        PaymentInfo $paymentInfo = null
+    ) : RegistrationRequest {
         $request = new RegistrationRequest;
 
         $request->apply(
             new RegistrationRequestSubmitted(
                 $id,
-                $requestee,
-                $studentNumber,
-                $study
+                $fullName,
+                $gender,
+                $birthdate,
+                $contact,
+                $studyDetails
             )
         );
+
+        if (isset($paymentInfo)) {
+            $request->providePaymentInfo($paymentInfo);
+        }
 
         return $request;
     }
@@ -30,6 +49,14 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
     public function getAggregateRootId()
     {
         return $this->id;
+    }
+
+
+    public function providePaymentInfo(PaymentInfo $paymentInfo)
+    {
+        $this->apply(
+            new PaymentInfoProvided($this->id, $paymentInfo)
+        );
     }
 
     protected function applyRegistrationRequestSubmitted(RegistrationRequestSubmitted $event)

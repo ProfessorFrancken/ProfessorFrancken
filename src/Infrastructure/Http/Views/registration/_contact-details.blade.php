@@ -9,8 +9,8 @@
       </div>
 
       <div class="col-sm-6">
-        <label for="telephone">Telephone</label>
-        {!! Form::tel('telephone', null, ['class' => 'form-control']) !!}
+        <label for="zip-code">ZIP code</label>
+        {!! Form::text('zip-code', null, ['placeholder' => '9742 AG', 'class' => 'form-control']) !!}
       </div>
     </div>
 
@@ -24,13 +24,6 @@
       <div class="col-sm-6">
         <label for="Address">Address</label>
         {!! Form::text('address', null, ['placeholder' => 'Neijenborgh 9', 'class' => 'form-control']) !!}
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-sm-6">
-        <label for="zip-code">ZIP code</label>
-        {!! Form::text('zip-code', null, ['placeholder' => '9742 AG', 'class' => 'form-control']) !!}
       </div>
     </div>
 

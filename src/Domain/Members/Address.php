@@ -6,15 +6,16 @@ final class Address
 {
     private $city;
     private $postalCode;
-    private $street;
-    private $streetNumber;
+    private $address;
 
-    public function __construct(string $city, string $postalCode, string $street, string $streetNumber)
-    {
+    public function __construct(
+        string $city,
+        string $postalCode,
+        string $address
+    ) {
         $this->city = $city;
         $this->postalCode = $postalCode;
-        $this->street = $street;
-        $this->streetNumber = $streetNumber;
+        $this->address = $address;
     }
 
     public function city() : string
@@ -27,13 +28,8 @@ final class Address
         return $this->postalCode;
     }
 
-    public function street() : string
+    public function address() : string
     {
-        return $this->street;
-    }
-
-    public function streetNumber() : string
-    {
-        return $this->streetNumber;
+        return $this->address;
     }
 }

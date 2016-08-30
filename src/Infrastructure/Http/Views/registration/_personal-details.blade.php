@@ -41,10 +41,6 @@
           </label>
           </div>
         </div>
-        <div class="col-sm-6">
-            <label for="birthdate">Profile picture</label>
-            {!! Form::file('photo'); !!}
-        </div>
       </div>
     </div>
 
