@@ -2,6 +2,6 @@
 
 namespace Francken\Domain\Base;
 
-class DomainException extends \LogicException
+abstract class DomainException extends \LogicException
 {
 }
