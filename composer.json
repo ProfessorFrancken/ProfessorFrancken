@@ -8,7 +8,7 @@
         "php": ">=7.0.0",
         "laravel/framework": "5.2.*",
         "broadway/broadway": "^0.8.0",
-        "beberlei/assert": "^2.4",
+        "webmozart/assert": "^1.1",
         "matthiasnoback/broadway-serialization": "^1.0",
         "laravelcollective/html": "^5.2"
     },
