@@ -51,7 +51,7 @@ class RegistrationController extends Controller
 
     private function fullNameFrom(Request $request) : FullName
     {
-        return new Fullname(
+        return new FullName(
             $request->input('firstname'),
             $request->input('middlename'),
             $request->input('surname')
@@ -99,8 +99,6 @@ class RegistrationController extends Controller
 
     private function paymentInfoFrom(Request $request) : PaymentInfo
     {
-        return new PaymentInfo(
-            true, true
-        );
+        return new PaymentInfo(true, true);
     }
 }

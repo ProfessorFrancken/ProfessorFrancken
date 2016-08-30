@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerRepository(CommitteeRepository::class);
         $this->registerRepository(RegistrationRequestRepository::class);
-        $this->app->instance('path','src/Infrastructure');
+        $this->app->instance('path', 'src/Infrastructure');
     }
 
     /**

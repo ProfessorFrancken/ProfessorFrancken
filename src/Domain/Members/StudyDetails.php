@@ -18,8 +18,7 @@ final class StudyDetails implements SerializableInterface
         string $study,
         DateTimeImmutable $studyStartDate,
         string $studentNumber
-    )
-    {
+    ) {
         $this->study = $study;
         $this->startDate = $studyStartDate;
         $this->studentNumber = $studentNumber;

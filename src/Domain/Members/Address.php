@@ -12,8 +12,7 @@ final class Address
         string $city,
         string $postalCode,
         string $address
-    )
-    {
+    ) {
         $this->city = $city;
         $this->postalCode = $postalCode;
         $this->address = $address;

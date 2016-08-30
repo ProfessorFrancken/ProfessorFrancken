@@ -5,8 +5,8 @@ namespace Francken\Domain\Members;
 use Broadway\Serializer\SerializableInterface;
 use Francken\Domain\Base\Serializable;
 
-final class Fullname implements SerializableInterface {
-
+final class FullName implements SerializableInterface
+{
     use Serializable;
 
     private $firstname;
@@ -17,8 +17,7 @@ final class Fullname implements SerializableInterface {
         string $firstname,
         string $middlename = null,
         string $surname
-    )
-    {
+    ) {
         $this->firstname = $firstname;
         $this->surname = $surname;
         $this->middlename = $middlename;

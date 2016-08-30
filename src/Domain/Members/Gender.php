@@ -5,7 +5,8 @@ namespace Francken\Domain\Members;
 use Broadway\Serializer\SerializableInterface;
 use Francken\Domain\Base\Serializable;
 
-final class Gender implements SerializableInterface {
+final class Gender implements SerializableInterface
+{
 
     use Serializable;
 

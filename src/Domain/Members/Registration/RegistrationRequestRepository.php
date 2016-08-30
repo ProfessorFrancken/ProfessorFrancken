@@ -2,7 +2,6 @@
 
 namespace Francken\Domain\Members\Registration;
 
-
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
@@ -14,7 +13,7 @@ class RegistrationRequestRepository extends EventSourcingRepository
         EventStoreInterface $eventStore,
         EventBusInterface $eventBus,
         AggregateFactoryInterface $factory,
-        array $eventStreamDecorators = array()
+        array $eventStreamDecorators = []
     ) {
         parent::__construct(
             $eventStore,

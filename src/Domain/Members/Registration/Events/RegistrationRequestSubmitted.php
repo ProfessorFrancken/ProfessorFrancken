@@ -31,8 +31,7 @@ final class RegistrationRequestSubmitted implements SerializableInterface
         DateTimeImmutable $birthdate,
         ContactInfo $contact,
         StudyDetails $studyDetails
-    )
-    {
+    ) {
         $this->id = $id;
         $this->fullName = $fullName;
         $this->gender = $gender;

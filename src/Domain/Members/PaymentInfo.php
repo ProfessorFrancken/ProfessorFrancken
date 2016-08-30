@@ -38,6 +38,6 @@ final class PaymentInfo implements SerializableInterface
     }
 }
 
-
 final class MemberMustPayForMembership extends DomainException
-{}
+{
+}

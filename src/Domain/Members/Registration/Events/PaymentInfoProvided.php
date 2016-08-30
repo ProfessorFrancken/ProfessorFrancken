@@ -18,8 +18,7 @@ final class PaymentInfoProvided implements SerializableInterface
     public function __construct(
         RegistrationRequestId $id,
         PaymentInfo $payment
-    )
-    {
+    ) {
         $this->id = (string)$id;
         $this->paysForMembership = $payment->payForMembership();
         $this->paysForFoodAndDrinks = $payment->payForFoodAndDrinks();

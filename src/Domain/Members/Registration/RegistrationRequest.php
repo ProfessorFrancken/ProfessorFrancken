@@ -25,8 +25,7 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
         ContactInfo $contact,
         StudyDetails $studyDetails,
         PaymentInfo $paymentInfo = null
-    ) : RegistrationRequest
-    {
+    ) : RegistrationRequest {
         $request = new RegistrationRequest;
 
         $request->apply(

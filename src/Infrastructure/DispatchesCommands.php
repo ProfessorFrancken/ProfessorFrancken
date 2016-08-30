@@ -10,6 +10,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
  * bus, we won't have to change all of the controllers using
  * the DispatchesJobs trait
  */
-trait DispatchesCommands {
+trait DispatchesCommands
+{
     use DispatchesJobs;
 }

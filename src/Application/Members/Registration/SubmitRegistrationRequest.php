@@ -16,7 +16,8 @@ use Francken\Domain\Members\Registration\RegistrationRequestRepository as Reposi
 use Francken\Domain\Members\StudyDetails;
 use Illuminate\Http\Request;
 
-final class SubmitRegistrationRequest extends Command {
+final class SubmitRegistrationRequest extends Command
+{
 
     private $id;
     private $name;
@@ -34,8 +35,7 @@ final class SubmitRegistrationRequest extends Command {
         StudyDetails $study,
         ContactInfo $contactInfo,
         PaymentInfo $paymentInfo
-    )
-    {
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->birthdate = $birthdate;
@@ -63,7 +63,7 @@ final class SubmitRegistrationRequest extends Command {
 
     public static function fromRequest(Request $request)
     {
-        $name = new Fullname(
+        $name = new FullName(
             $request->input('firstname'),
             $request->input('middlename'),
             $request->input('surname')
