@@ -2,20 +2,20 @@
 
 namespace Francken\Domain\Posts;
 
-use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Carbon\Carbon;
-use Francken\Domain\Posts\PostId;
-use Francken\Domain\Posts\PostCategory;
-use Francken\Domain\Posts\Events\PostWritten;
-use Francken\Domain\Posts\Events\PostTitleChanged;
-use Francken\Domain\Posts\Events\PostContentChanged;
-use Francken\Domain\Posts\Events\PostCategorized;
-use Francken\Domain\Posts\Events\PostPublishedAt;
-use Francken\Domain\Posts\Events\PostUnpublished;
+use Francken\Domain\AggregateRoot;
 use Francken\Domain\Posts\Events\DraftDeleted;
+use Francken\Domain\Posts\Events\PostCategorized;
+use Francken\Domain\Posts\Events\PostContentChanged;
+use Francken\Domain\Posts\Events\PostPublishedAt;
+use Francken\Domain\Posts\Events\PostTitleChanged;
+use Francken\Domain\Posts\Events\PostUnpublished;
+use Francken\Domain\Posts\Events\PostWritten;
+use Francken\Domain\Posts\PostCategory;
+use Francken\Domain\Posts\PostId;
 
 /// @todo this class still needs logic..
-class Post extends EventSourcedAggregateRoot
+class Post extends AggregateRoot
 {
     private $id;
     private $title;

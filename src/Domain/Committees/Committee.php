@@ -2,16 +2,16 @@
 
 namespace Francken\Domain\Committees;
 
-use Broadway\EventSourcing\EventSourcedAggregateRoot;
-use Francken\Domain\Members\MemberId;
+use Francken\Domain\AggregateRoot;
 use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
+use Francken\Domain\Members\MemberId;
 
-class Committee extends EventSourcedAggregateRoot
+class Committee extends AggregateRoot
 {
     private $id;
     private $name;

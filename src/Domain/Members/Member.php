@@ -2,11 +2,11 @@
 
 namespace Francken\Domain\Members;
 
-use Broadway\EventSourcing\EventSourcedAggregateRoot;
-use Francken\Domain\Members\MemberId;
+use Francken\Domain\AggregateRoot;
 use Francken\Domain\Members\Events\MemberJoinedFrancken;
+use Francken\Domain\Members\MemberId;
 
-class Member extends EventSourcedAggregateRoot
+class Member extends AggregateRoot
 {
     private $id;
     private $first_name;

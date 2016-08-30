@@ -2,17 +2,17 @@
 
 namespace Francken\Domain\Activities;
 
-use Broadway\EventSourcing\EventSourcedAggregateRoot;
-use Francken\Domain\Activities\Events\ActivityPlanned;
-use Francken\Domain\Activities\Events\ActivityPublished;
+use DateTimeImmutable;
 use Francken\Domain\Activities\Events\ActivityCancelled;
 use Francken\Domain\Activities\Events\ActivityCategorized;
+use Francken\Domain\Activities\Events\ActivityPlanned;
+use Francken\Domain\Activities\Events\ActivityPublished;
 use Francken\Domain\Activities\Events\ActivityRescheduled;
 use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
+use Francken\Domain\AggregateRoot;
 use Francken\Domain\Members\MemberId;
-use DateTimeImmutable;
 
-final class Activity extends EventSourcedAggregateRoot
+final class Activity extends AggregateRoot
 {
     private $id;
     private $published = false;
