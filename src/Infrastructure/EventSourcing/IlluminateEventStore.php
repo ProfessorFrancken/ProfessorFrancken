@@ -39,7 +39,7 @@ final class IlluminateEventStore implements EventStoreInterface
     public function __construct(
         Connection $connection,
         SerializerInterface $serializer,
-        $eventStoreTable
+        string $eventStoreTable
     ) {
         $this->connection = $connection;
         $this->serializer = $serializer;
@@ -99,7 +99,7 @@ final class IlluminateEventStore implements EventStoreInterface
     {
         return new DomainMessage(
             $event->uuid,
-            $event->playhead,
+            (int) $event->playhead,
             $this->deserialize($event->metadata),
             $this->deserialize($event->payload),
             DateTime::fromString($event->recorded_on)
@@ -113,7 +113,7 @@ final class IlluminateEventStore implements EventStoreInterface
     {
         $this->connection->table($this->table)->insert([
             'uuid'        => (string) $event->getId(),
-            'playhead'    => $event->getPlayhead(),
+            'playhead'    => (int) $event->getPlayhead(),
             'metadata'    => $this->serialize($event->getMetadata()),
             'payload'     => $this->serialize($event->getPayload()),
             'recorded_on' => $event->getRecordedOn()->toString(),
