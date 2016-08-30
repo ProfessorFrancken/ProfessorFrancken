@@ -4,25 +4,38 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Members\Registration;
 
-use Broadway\EventHandling\EventBusInterface;
-use Broadway\EventStore\EventStoreInterface;
-use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\EventSourcingRepository;
 
-class RegistrationRequestRepository extends EventSourcingRepository
+final class RegistrationRequestRepository
 {
-    public function __construct(
-        EventStoreInterface $eventStore,
-        EventBusInterface $eventBus,
-        AggregateFactoryInterface $factory,
-        array $eventStreamDecorators = []
-    ) {
-        parent::__construct(
-            $eventStore,
-            $eventBus,
-            RegistrationRequest::class,
-            $factory,
-            $eventStreamDecorators
-        );
+    /**
+     * @var EventSourcingRepository
+     */
+    private $repo;
+
+    /**
+     * RegistrationRequestRepository constructor.
+     * @param $repo
+     */
+    public function __construct(EventSourcingRepository $repo)
+    {
+        $this->repo = $repo;
+    }
+
+    /**
+     * @param RegistrationRequestId $registrationRequestId
+     * @return RegistrationRequest
+     */
+    public function load(RegistrationRequestId $registrationRequestId) : RegistrationRequest
+    {
+        return $this->repo->load((string)$registrationRequestId);
+    }
+
+    /**
+     * @param RegistrationRequest $registrationRequest
+     */
+    public function save(RegistrationRequest $registrationRequest)
+    {
+        $this->repo->save($registrationRequest);
     }
 }

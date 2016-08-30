@@ -4,25 +4,38 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Committees;
 
-use Broadway\EventHandling\EventBusInterface;
-use Broadway\EventStore\EventStoreInterface;
-use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\EventSourcingRepository;
 
-class CommitteeRepository extends EventSourcingRepository
+final class CommitteeRepository
 {
-    public function __construct(
-        EventStoreInterface $eventStore,
-        EventBusInterface $eventBus,
-        AggregateFactoryInterface $factory,
-        array $eventStreamDecorators = array()
-    ) {
-        parent::__construct(
-            $eventStore,
-            $eventBus,
-            Committee::class,
-            $factory,
-            $eventStreamDecorators
-        );
+    /**
+     * @var EventSourcingRepository
+     */
+    private $repo;
+
+    /**
+     * CommitteeRepository constructor.
+     * @param $repo
+     */
+    public function __construct(EventSourcingRepository $repo)
+    {
+        $this->repo = $repo;
+    }
+
+    /**
+     * @param CommitteeId $committeeId
+     * @return Committee
+     */
+    public function load(CommitteeId $committeeId) : Committee
+    {
+return $this->repo->load((string)$committeeId);
+    }
+
+    /**
+     * @param Committee $committee
+     */
+    public function save(Committee $committee)
+    {
+        $this->repo->save($committee);
     }
 }

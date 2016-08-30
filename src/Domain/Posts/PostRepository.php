@@ -4,25 +4,38 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Posts;
 
-use Broadway\EventHandling\EventBusInterface;
-use Broadway\EventStore\EventStoreInterface;
-use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\EventSourcingRepository;
 
-class PostRepository extends EventSourcingRepository
+final class PostRepository
 {
-    public function __construct(
-        EventStoreInterface $eventStore,
-        EventBusInterface $eventBus,
-        AggregateFactoryInterface $factory,
-        array $eventStreamDecorators = array()
-    ) {
-        parent::__construct(
-            $eventStore,
-            $eventBus,
-            Post::class,
-            $factory,
-            $eventStreamDecorators
-        );
+    /**
+     * @var EventSourcingRepository
+     */
+    private $repo;
+
+    /**
+     * PostRepository constructor.
+     * @param $repo
+     */
+    public function __construct(EventSourcingRepository $repo)
+    {
+        $this->repo = $repo;
+    }
+
+    /**
+     * @param PostId $postId
+     * @return Post
+     */
+    public function load(PostId $postId) : Post
+    {
+        return $this->repo->load((string)$postId);
+    }
+
+    /**
+     * @param Post $post
+     */
+    public function save(Post $post)
+    {
+        $this->repo->save($post);
     }
 }
