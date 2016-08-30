@@ -61,7 +61,6 @@ class RegistrationRequestSubmittedTest extends \PHPUnit_Framework_TestCase
                     'Plutolaan 11'
                 )
             ),
-            new PaymentInfo(true, true),
             new StudyDetails(
                 'Msc Applied Mathematics',
                 new DateTimeImmutable('2011-09-01'),

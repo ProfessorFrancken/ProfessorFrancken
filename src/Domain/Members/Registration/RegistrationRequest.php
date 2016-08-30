@@ -3,14 +3,15 @@
 namespace Francken\Domain\Members\Registration;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
+use DateTimeImmutable;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\FullName;
+use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\PaymentInfo;
+use Francken\Domain\Members\Registration\Events\PaymentInfoProvided;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
-use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\StudyDetails;
-use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\PaymentInfo;
-use DateTimeImmutable;
 
 final class RegistrationRequest extends EventSourcedAggregateRoot
 {
@@ -22,8 +23,8 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
         Gender $gender,
         DateTimeImmutable $birthdate,
         ContactInfo $contact,
-        PaymentInfo $paymentInfo,
-        StudyDetails $studyDetails
+        StudyDetails $studyDetails,
+        PaymentInfo $paymentInfo = null
     ) : RegistrationRequest
     {
         $request = new RegistrationRequest;
@@ -35,10 +36,13 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
                 $gender,
                 $birthdate,
                 $contact,
-                $paymentInfo,
                 $studyDetails
             )
         );
+
+        if (isset($paymentInfo)) {
+            $request->providePaymentInfo($paymentInfo);
+        }
 
         return $request;
     }
@@ -46,6 +50,14 @@ final class RegistrationRequest extends EventSourcedAggregateRoot
     public function getAggregateRootId()
     {
         return $this->id;
+    }
+
+
+    public function providePaymentInfo(PaymentInfo $paymentInfo)
+    {
+        $this->apply(
+            new PaymentInfoProvided($this->id, $paymentInfo)
+        );
     }
 
     protected function applyRegistrationRequestSubmitted(RegistrationRequestSubmitted $event)

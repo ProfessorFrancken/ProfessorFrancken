@@ -2,20 +2,19 @@
 
 namespace Francken\Application\Members\Registration;
 
-use Illuminate\Http\Request;
-use Francken\Application\Command;
 use DateTimeImmutable;
-
-use Francken\Domain\Members\StudyDetails;
-use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\PaymentInfo;
-use Francken\Domain\Members\FullName;
+use Francken\Application\Command;
 use Francken\Domain\Members\Address;
-use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
+use Francken\Domain\Members\FullName;
+use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository as Repository;
+use Francken\Domain\Members\StudyDetails;
+use Illuminate\Http\Request;
 
 final class SubmitRegistrationRequest extends Command {
 
@@ -55,8 +54,8 @@ final class SubmitRegistrationRequest extends Command {
             $this->gender,
             $this->birthdate,
             $this->contactInfo,
-            $this->paymentInfo,
-            $this->study
+            $this->study,
+            $this->paymentInfo
         );
 
         $repo->save($registrationRequest);

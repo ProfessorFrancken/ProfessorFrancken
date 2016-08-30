@@ -3,17 +3,18 @@
 namespace Tests\Francken\Domain\Members\Registration;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
+use DateTimeImmutable;
+use Francken\Domain\Members\Address;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\FullName;
+use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\PaymentInfo;
+use Francken\Domain\Members\Registration\Events\PaymentInfoProvided;
+use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
-use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\StudyDetails;
-use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\PaymentInfo;
-use Francken\Domain\Members\FullName;
-use Francken\Domain\Members\Address;
-use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\Email;
-use DateTimeImmutable;
 
 class RegistrationRequestTest extends AggregateRootScenarioTestCase
 {
@@ -46,12 +47,12 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
                             'Plutolaan 11'
                         )
                     ),
-                    new PaymentInfo(true, true),
                     new StudyDetails(
                         'Msc Applied Mathematics',
                         new DateTimeImmutable('2011-09-01'),
                         's2218356'
-                    )
+                    ),
+                    new PaymentInfo(true, true)
                     // note: could add an additional "comment" section where a foreigner could tell the board that he/she lives outside of the Netherlands
                 );
             })
@@ -73,12 +74,15 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
                             'Plutolaan 11'
                         )
                     ),
-                    new PaymentInfo(true, true),
                     new StudyDetails(
                         'Msc Applied Mathematics',
                         new DateTimeImmutable('2011-09-01'),
                         's2218356'
                     )
+                ),
+                new PaymentInfoProvided(
+                    $id,
+                    new PaymentInfo(true, true)
                 )
             ]);
     }
