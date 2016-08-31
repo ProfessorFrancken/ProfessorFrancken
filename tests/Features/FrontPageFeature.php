@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Features;
-
-use Tests\TestCase;
+namespace Francken\Features;
 
 class FrontPageFeature extends TestCase
 {

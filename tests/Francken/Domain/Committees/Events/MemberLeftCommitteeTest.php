@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Committees\Events;
 
-use Tests\SetupReconstitution;
 use Francken\Domain\Committees\CommitteeId;
-use Francken\Domain\Committees\Events\MemberJoinedCommittee;
+use Francken\Domain\Committees\Events\MemberLeftCommittee;
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class MemberJoinedCommitteeTest extends \PHPUnit_Framework_TestCase
+class MemberLeftCommitteeTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -20,14 +18,19 @@ class MemberJoinedCommitteeTest extends \PHPUnit_Framework_TestCase
     {
         $id = CommitteeId::generate();
         $memberId = MemberId::generate();
-        $event = new MemberJoinedCommittee($id, $memberId);
+        $event = new MemberLeftCommittee($id, $memberId);
 
         $this->assertEquals(
             $event,
-            MemberJoinedCommittee::deserialize($event->serialize())
+            MemberLeftCommittee::deserialize($event->serialize())
         );
 
         $this->assertEquals($id, $event->committeeId());
         $this->assertEquals($memberId, $event->memberId());
+    }
+
+    protected function createInstance()
+    {
+        return new MemberLeftCommittee(committeeId::generate(), MemberId::generate());
     }
 }

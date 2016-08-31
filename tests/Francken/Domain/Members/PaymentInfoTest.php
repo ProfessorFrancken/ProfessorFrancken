@@ -6,7 +6,7 @@ namespace Tests\Francken\Domain\Members;
 
 use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\MemberMustPayForMembership;
-use Tests\SetupReconstitution;
+use Francken\Tests\SetupReconstitution;
 
 class PaymentInfoTest extends \PHPUnit_Framework_TestCase
 {

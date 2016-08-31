@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities\Events;
 
-use Tests\SetupReconstitution;
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Events\ActivityCancelled;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
+class ActivityCancelledTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -23,17 +21,8 @@ class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($id, $event->activityId());
     }
 
-    /**
-     * @test
-     */
-    public function it_is_serializable()
+    protected function createInstance()
     {
-        $id = ActivityId::generate();
-        $event = new ActivityCancelled($id);
-
-        $this->assertEquals(
-            $event,
-            ActivityCancelled::deserialize($event->serialize())
-        );
+        return new ActivityCancelled(ActivityId::generate());
     }
 }

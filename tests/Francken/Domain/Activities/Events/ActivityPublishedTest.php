@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities\Events;
 
-use Tests\SetupReconstitution;
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Events\ActivityPublished;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class ActivityPublishedTest extends \PHPUnit_Framework_TestCase
+class ActivityPublishedTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -23,17 +21,8 @@ class ActivityPublishedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($id, $event->activityId());
     }
 
-    /**
-     * @test
-     */
-    public function it_is_serializable()
+    protected function createInstance()
     {
-        $id = ActivityId::generate();
-        $event = new ActivityPublished($id);
-
-        $this->assertEquals(
-            $event,
-            ActivityPublished::deserialize($event->serialize())
-        );
+        return new ActivityPublished(ActivityId::generate());
     }
 }

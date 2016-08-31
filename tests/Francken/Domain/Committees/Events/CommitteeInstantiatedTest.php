@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Committees\Events;
 
-use Tests\SetupReconstitution;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class CommitteeInstantiatedTest extends \PHPUnit_Framework_TestCase
+class CommitteeInstantiatedTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -24,5 +22,10 @@ class CommitteeInstantiatedTest extends \PHPUnit_Framework_TestCase
             $event,
             CommitteeInstantiated::deserialize($event->serialize())
         );
+    }
+
+    protected function createInstance()
+    {
+        return new CommitteeInstantiated(CommitteeId::generate(), 'name', 'goal');
     }
 }

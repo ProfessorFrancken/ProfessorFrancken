@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests;
+namespace Francken\Tests;
 
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;

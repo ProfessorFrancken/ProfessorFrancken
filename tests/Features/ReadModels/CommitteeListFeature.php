@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Features\ReadModels;
+namespace Francken\Features\ReadModels;
 
-use Tests\TestCase;
+use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Francken\Domain\Committees\Committee;
