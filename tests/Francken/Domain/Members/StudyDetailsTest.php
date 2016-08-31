@@ -6,7 +6,7 @@ namespace Tests\Francken\Domain\Members;
 
 use Francken\Domain\Members\StudyDetails;
 use DateTimeImmutable;
-use Tests\SetupReconstitution;
+use Francken\Tests\SetupReconstitution;
 
 class StudyDetailsTest extends \PHPUnit_Framework_TestCase
 {

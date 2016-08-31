@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities\Events;
 
-use Tests\SetupReconstitution;
+use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Activity;
-use Francken\Domain\Activities\Events\ActivityCategorized;
+use Francken\Domain\Activities\Events\ActivityCancelled;
 
-class ActivityCategorizedTest extends \PHPUnit_Framework_TestCase
+class ActivityCancelledTest extends \PHPUnit_Framework_TestCase
 {
     use SetupReconstitution;
 
@@ -19,10 +18,9 @@ class ActivityCategorizedTest extends \PHPUnit_Framework_TestCase
     public function it_happend_to_an_activity()
     {
         $id = ActivityId::generate();
-        $event = new ActivityCategorized($id, Activity::SOCIAL);
+        $event = new ActivityCancelled($id);
 
         $this->assertEquals($id, $event->activityId());
-        $this->assertEquals(Activity::SOCIAL, $event->category());
     }
 
     /**
@@ -31,11 +29,11 @@ class ActivityCategorizedTest extends \PHPUnit_Framework_TestCase
     public function it_is_serializable()
     {
         $id = ActivityId::generate();
-        $event = new ActivityCategorized($id, Activity::EDUCATION);
+        $event = new ActivityCancelled($id);
 
         $this->assertEquals(
             $event,
-            ActivityCategorized::deserialize($event->serialize())
+            ActivityCancelled::deserialize($event->serialize())
         );
     }
 }

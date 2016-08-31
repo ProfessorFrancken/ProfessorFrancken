@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities\Events;
 
-use Tests\SetupReconstitution;
+use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
 use Francken\Domain\Members\MemberId;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests;
+namespace Francken\Features;
 
 use Illuminate\Contracts\Console\Kernel;
 
@@ -22,7 +22,7 @@ class TestCase extends \Illuminate\Foundation\Testing\TestCase
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $app = require __DIR__.'/../../bootstrap/app.php';
 
         $app->make(Kernel::class)->bootstrap();
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Committees\Events;
 
-use Tests\SetupReconstitution;
+use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
 use Francken\Domain\Members\MemberId;

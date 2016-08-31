@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Members\Registration\Events;
 
-use Tests\SetupReconstitution;
+use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\Events\PaymentInfoProvided;
 use Francken\Domain\Members\StudyDetails;

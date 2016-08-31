@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Tests\Features;
+namespace Francken\Features;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;

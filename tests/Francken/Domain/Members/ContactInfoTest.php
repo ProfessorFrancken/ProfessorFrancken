@@ -7,7 +7,7 @@ namespace Tests\Francken\Domain\Members;
 use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
 use Francken\Domain\Members\Address;
-use Tests\SetupReconstitution;
+use Francken\Tests\SetupReconstitution;
 
 class ContactInfoTest extends \PHPUnit_Framework_TestCase
 {
