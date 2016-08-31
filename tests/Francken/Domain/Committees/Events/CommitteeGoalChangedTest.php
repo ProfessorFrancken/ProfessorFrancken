@@ -2,17 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Committees\Events;
+namespace Francken\Tests\Domain\Committees\Events;
 
-use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class CommitteeGoalChangedTest extends \PHPUnit_Framework_TestCase
+class CommitteeGoalChangedTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -28,5 +26,10 @@ class CommitteeGoalChangedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($id, $event->committeeId());
         $this->assertEquals('Websites bouwen', $event->goal());
+    }
+
+    protected function createInstance()
+    {
+        return new CommitteeGoalChanged(CommitteeId::generate(), 'Websites bouwen');
     }
 }

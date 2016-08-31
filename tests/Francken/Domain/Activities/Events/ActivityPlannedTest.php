@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities\Events;
 
-use Francken\Tests\SetupReconstitution;
-use Francken\Domain\Activities\ActivityId;
+use DateTimeImmutable;
 use Francken\Domain\Activities\Activity;
+use Francken\Domain\Activities\ActivityId;
+use Francken\Domain\Activities\Events\ActivityPlanned;
 use Francken\Domain\Activities\Location;
 use Francken\Domain\Activities\Schedule;
-use Francken\Domain\Activities\Events\ActivityPlanned;
-use DateTimeImmutable;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
+class ActivityPlannedTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -39,27 +37,6 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Activity::SOCIAL, $event->category());
     }
 
-    /**
-     * @test
-     */
-    public function it_is_serializable()
-    {
-        $id = ActivityId::generate();
-        $event = new ActivityPlanned(
-            $id,
-            'Crash & Compile',
-            'Programming competition',
-            Schedule::withStartTime(new DateTimeImmutable('2015-10-01 14:30')),
-            Location::fromNameAndAddress('Francken kamer'),
-            Activity::SOCIAL
-        );
-
-        $this->assertEquals(
-            $event,
-            ActivityPlanned::deserialize($event->serialize())
-        );
-    }
-
     /** @test */
     public function the_deserialized_activity_has_the_same_properties()
     {
@@ -81,5 +58,18 @@ class ActivityPlannedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new DateTimeImmutable("2015-10-01 14:30"), $event->startTime());
         $this->assertEquals(Location::fromNameAndAddress("Francken kamer"), $event->location());
         $this->assertEquals(Activity::SOCIAL, $event->category());
+    }
+
+    protected function createInstance()
+    {
+
+        return new ActivityPlanned(
+            ActivityId::generate(),
+            'Crash & Compile',
+            'Programming competition',
+            Schedule::withStartTime(new DateTimeImmutable('2015-10-01 14:30')),
+            Location::fromNameAndAddress('Francken kamer'),
+            Activity::SOCIAL
+        );
     }
 }

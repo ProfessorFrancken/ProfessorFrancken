@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Committees\Events;
 
-use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class MemberJoinedCommitteeTest extends \PHPUnit_Framework_TestCase
+class MemberJoinedCommitteeTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -29,5 +27,10 @@ class MemberJoinedCommitteeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($id, $event->committeeId());
         $this->assertEquals($memberId, $event->memberId());
+    }
+
+    protected function createInstance()
+    {
+        return new MemberJoinedCommittee(committeeId::generate(), MemberId::generate());
     }
 }

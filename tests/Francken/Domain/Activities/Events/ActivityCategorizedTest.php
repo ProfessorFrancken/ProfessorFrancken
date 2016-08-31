@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities\Events;
 
-use Francken\Tests\SetupReconstitution;
-use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Activity;
+use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Events\ActivityCategorized;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class ActivityCategorizedTest extends \PHPUnit_Framework_TestCase
+class ActivityCategorizedTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -25,17 +23,8 @@ class ActivityCategorizedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Activity::SOCIAL, $event->category());
     }
 
-    /**
-     * @test
-     */
-    public function it_is_serializable()
+    protected function createInstance()
     {
-        $id = ActivityId::generate();
-        $event = new ActivityCategorized($id, Activity::EDUCATION);
-
-        $this->assertEquals(
-            $event,
-            ActivityCategorized::deserialize($event->serialize())
-        );
+        return new ActivityCategorized(ActivityId::generate(), Activity::EDUCATION);
     }
 }

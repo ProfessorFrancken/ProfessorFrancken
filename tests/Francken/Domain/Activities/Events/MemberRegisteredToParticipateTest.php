@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities\Events;
 
-use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class MemberRegisteredToParticipateTest extends \PHPUnit_Framework_TestCase
+class MemberRegisteredToParticipateTest extends TestCase
 {
-    use SetupReconstitution;
-
     /**
      * @test
      */
@@ -27,19 +25,8 @@ class MemberRegisteredToParticipateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($memberId, $event->memberId());
     }
 
-    /**
-     * @test
-     */
-    public function it_is_serializable()
+    protected function createInstance()
     {
-        $id = ActivityId::generate();
-        $memberId = MemberId::generate();
-
-        $event = new MemberRegisteredToParticipate($id, $memberId);
-
-        $this->assertEquals(
-            $event,
-            MemberRegisteredToParticipate::deserialize($event->serialize())
-        );
+        return new MemberRegisteredToParticipate(ActivityId::generate(), MemberId::generate());
     }
 }
