@@ -3,13 +3,13 @@
 namespace Francken\Application\ReadModel\CommitteesList;
 
 use Francken\Application\Projector;
+use Francken\Application\ReadModelRepository as Repository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
-use Francken\Application\ReadModelRepository as Repository;
 
 final class CommitteesListProjector extends Projector
 {
@@ -36,7 +36,7 @@ final class CommitteesListProjector extends Projector
     public function whenCommitteeNameChanged(CommitteeNameChanged $event)
     {
         $committee = $this->committees->find((string)$event->committeeId());
-        $committee->changeName($event->name());
+        $committee = $committee->changeName($event->name());
 
         $this->committees->save($committee);
     }
@@ -44,7 +44,7 @@ final class CommitteesListProjector extends Projector
     public function whenCommitteeGoalChanged(CommitteeGoalChanged $event)
     {
         $committee = $this->committees->find((string)$event->committeeId());
-        $committee->changeGoal($event->goal());
+        $committee = $committee->changeGoal($event->goal());
 
         $this->committees->save($committee);
     }
@@ -54,7 +54,7 @@ final class CommitteesListProjector extends Projector
         $committee = $this->committees->find((string)$event->committeeId());
         $member = $this->members->find($event->memberId());
 
-        $committee->addMember(
+        $committee = $committee->addMember(
             $member->memberId(),
             $member->firstName(),
             $member->lastName()
@@ -66,7 +66,7 @@ final class CommitteesListProjector extends Projector
     public function whenMemberLeftCommittee(MemberLeftCommittee $event)
     {
         $committee = $this->committees->find((string)$event->committeeId());
-        $committee->removeMember($event->memberId());
+        $committee = $committee->removeMember($event->memberId());
 
         $this->committees->save($committee);
     }

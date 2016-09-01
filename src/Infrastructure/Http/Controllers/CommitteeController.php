@@ -38,7 +38,7 @@ class CommitteeController extends Controller
 
     public function show($id)
     {
-        $committee = DB::table('committees_list')->where('uuid', $id)->first();
+        $committee = DB::table('committees_list')->where('id', $id)->first();
 
         return view('admin.committee.show', [
             'committee' => $committee

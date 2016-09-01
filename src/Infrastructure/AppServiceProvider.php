@@ -61,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
             CommitteesListProjector::class,
             function (Application $app) {
                 return new CommitteesListProjector(
-                    $this->illuminateRepository('committees_list', CommitteesList::class, 'uuid', ['committee_members']),
+                    $this->illuminateRepository('committees_list', CommitteesList::class, 'id', ['members']),
                     $this->illuminateRepository('members', MemberList::class, 'uuid')
                 );
             }

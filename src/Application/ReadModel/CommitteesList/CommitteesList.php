@@ -2,6 +2,7 @@
 
 namespace Francken\Application\ReadModel\CommitteesList;
 
+use Assert\Assertion;
 use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
@@ -12,22 +13,38 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
 {
     use Serializable;
 
-    private $uuid;
+    private $id;
     private $name;
     private $goal;
-    private $committee_members = [];
+    private $members = [];
 
-    public function __construct(CommitteeId $id, string $name, string $goal, array $members = [])
-    {
-        $this->uuid = (string)$id;
+    public function __construct(
+        CommitteeId $id,
+        string $name,
+        string $goal,
+        array $members = []
+    ) {
+
+        $this->id = (string)$id;
         $this->name = $name;
         $this->goal = $goal;
-        $this->committee_members = $members;
+
+        foreach ($members as $member) {
+            Assertion::keyIsset($member, 'uuid');
+            Assertion::keyIsset($member, 'first_name');
+            Assertion::keyIsset($member, 'last_name');
+        }
+        $this->members = $members;
+    }
+
+    public function committeeId() : CommitteeId
+    {
+        return new CommitteeId($this->id);
     }
 
     public function members() : array
     {
-        return $this->committee_members;
+        return $this->members;
     }
 
     public function name() : string
@@ -40,41 +57,50 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
         return $this->goal;
     }
 
-    public function changeName(string $name)
+    public function getId()
     {
-        $this->name = $name;
+        return $this->id;
     }
 
-    public function changeGoal(string $goal)
+    public function changeName(string $name) : CommitteesList
     {
-        $this->goal = $goal;
+        return new CommitteesList($this->committeeId(), $name, $this->goal, $this->members);
     }
 
-    public function addMember(MemberId $memberId, string $firstName, string $lastName)
+    public function changeGoal(string $goal) : CommitteesList
     {
-        $members = $this->committee_members;
-
-        $members[] = [
-            "uuid" => (string)$memberId,
-            "first_name" => $firstName,
-            "last_name" => $lastName
-        ];
-
-        $this->committee_members = $members;
+        return new CommitteesList($this->committeeId(), $this->name, $goal, $this->members);
     }
 
-    public function removeMember(MemberId $id)
+    public function addMember(MemberId $memberId, string $firstName, string $lastName) : CommitteesList
     {
-        $this->committee_members = array_filter(
-            $this->committee_members,
-            function (array $member) use ($id) {
-                return ! ($member['uuid'] == (string)$id);
-            }
+        return new CommitteesList(
+            $this->committeeId(),
+            $this->name,
+            $this->goal,
+            array_merge(
+                $this->members,
+                [[
+                    "uuid" => (string)$memberId,
+                    "first_name" => $firstName,
+                    "last_name" => $lastName
+                ]]
+            )
         );
     }
 
-    public function getId()
+    public function removeMember(MemberId $id) : CommitteesList
     {
-        return $this->uuid;
+        return new CommitteesList(
+            $this->committeeId(),
+            $this->name,
+            $this->goal,
+            array_filter(
+                $this->members,
+                function (array $member) use ($id) {
+                    return ! ($member['uuid'] == (string)$id);
+                }
+            )
+        );
     }
 }

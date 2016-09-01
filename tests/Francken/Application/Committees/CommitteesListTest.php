@@ -24,7 +24,7 @@ class CommitteesListTest extends TestCase
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
         $member = MemberId::generate();
-        $committee->addMember(
+        $committee = $committee->addMember(
             $member,
             "Mark",
             "Redeman"
@@ -45,12 +45,12 @@ class CommitteesListTest extends TestCase
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
         $member = MemberId::generate();
-        $committee->addMember(
+        $committee = $committee->addMember(
             $member,
             "Mark",
             "Redeman"
         );
-        $committee->removeMember($member);
+        $committee = $committee->removeMember($member);
 
         $this->assertEquals([], $committee->members());
     }
@@ -60,7 +60,7 @@ class CommitteesListTest extends TestCase
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
-        $committee->changeName('compucie');
+        $committee = $committee->changeName('compucie');
         $this->assertEquals('compucie', $committee->name());
     }
 
@@ -69,7 +69,7 @@ class CommitteesListTest extends TestCase
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
-        $committee->changeGoal('Markt verovering');
+        $committee = $committee->changeGoal('Markt verovering');
         $this->assertEquals('Markt verovering', $committee->goal());
     }
 
