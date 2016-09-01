@@ -50,7 +50,7 @@
           {!! csrf_field() !!}
           {{ method_field('DELETE') }}
 
-          <button class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span></button>
+          <button class="btn btn-primary" name="remove-member"><span class="glyphicon glyphicon-trash"></span></button>
         </form>
       </td>
     </tr>
@@ -77,7 +77,7 @@
           <form action="{{ url('admin/committee/' . $committee->uuid . '/member/' . $result->uuid) }}" method="POST">
             {!! csrf_field() !!}
 
-            <button class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+            <button class="btn btn-default" name="add-member"><span class="glyphicon glyphicon-plus"></span></button>
           </form>
         </td>
       </tr>

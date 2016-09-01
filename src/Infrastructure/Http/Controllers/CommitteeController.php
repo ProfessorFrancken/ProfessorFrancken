@@ -56,7 +56,7 @@ class CommitteeController extends Controller
 
     public function addMember(CommitteeRepository $repo, $committeeId, $memberId)
     {
-        $committee = $repo->load($committeeId);
+        $committee = $repo->load(new CommitteeId($committeeId));
         $committee->joinByMember(new MemberId($memberId));
         $repo->save($committee);
 
@@ -65,7 +65,7 @@ class CommitteeController extends Controller
 
     public function removeMember(CommitteeRepository $repo, $committeeId, $memberId)
     {
-        $committee = $repo->load($committeeId);
+        $committee = $repo->load(new CommitteeId($committeeId));
         $committee->leftByMember(new MemberId($memberId));
         $repo->save($committee);
 
