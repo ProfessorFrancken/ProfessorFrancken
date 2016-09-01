@@ -17,6 +17,9 @@ class MemberListTest extends TestCase
         $model = new MemberList($id, "Mark", "Redeman");
 
         $this->assertEquals((string)$id, $model->getId());
+        $this->assertEquals($id, $model->memberId());
+        $this->assertEquals("Mark", $model->firstName());
+        $this->assertEquals("Redeman", $model->lastName());
     }
 
     protected function createInstance()

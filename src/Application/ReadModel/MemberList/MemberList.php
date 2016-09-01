@@ -26,4 +26,19 @@ final class MemberList implements ReadModelInterface, SerializableInterface
     {
         return $this->uuid;
     }
+
+    public function memberId() : MemberId
+    {
+        return new MemberId($this->uuid);
+    }
+
+    public function firstName() : string
+    {
+        return $this->first_name;
+    }
+
+    public function lastName() : string
+    {
+        return $this->last_name;
+    }
 }
