@@ -155,7 +155,13 @@ final class IlluminateRepository implements ReadModelRepository
      */
     private function serialize(SerializableInterface $model) : array
     {
-        return $model->serialize();
+        $array = $model->serialize();
+
+        foreach ($this->stringify as $column) {
+            $array[$column] = json_encode($array[$column]);
+        }
+
+        return $array;
     }
 
     /**
@@ -166,7 +172,13 @@ final class IlluminateRepository implements ReadModelRepository
      */
     private function deserialize(\stdClass $object) : ReadModelInterface
     {
-        return ($this->model)::deserialize((array)$object);
+        $array = (array)$object;
+
+        foreach ($this->stringify as $column) {
+            $array[$column] = json_decode($array[$column], true);
+        }
+
+        return ($this->model)::deserialize($array);
     }
 
 

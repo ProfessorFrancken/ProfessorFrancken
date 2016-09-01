@@ -47,7 +47,7 @@ class CommitteeController extends Controller
 
     public function update(Request $req, CommitteeRepository $repo, $id)
     {
-        $committee = $repo->load($id);
+        $committee = $repo->load(new CommitteeId($id));
         $committee->edit($req->input('name'), $req->input('goal'));
         $repo->save($committee);
 
