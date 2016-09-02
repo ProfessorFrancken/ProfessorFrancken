@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
+use DB;
 use Francken\Application\ReadModel\PostList\PostList;
 
 class MainContentController extends Controller
@@ -20,25 +21,22 @@ class MainContentController extends Controller
 
     public function post()
     {
-        $posts = PostList::paginate(10);
         return view('news', [
-            'posts' => $posts
+            'posts' => []
         ]);
     }
 
     public function news()
     {
-        $posts = PostList::news()->paginate(10);
         return view('news', [
-            'posts' => $posts
+            'posts' => []
         ]);
     }
 
     public function blog()
     {
-        $posts = PostList::blog()->paginate(10);
         return view('news', [
-            'posts' => $posts
+            'posts' => []
         ]);
     }
 

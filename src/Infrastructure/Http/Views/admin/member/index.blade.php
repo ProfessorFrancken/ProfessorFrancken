@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
+@extends('admin.layout')
 
 @section('content')
   <h1 class="page-header">Members</h1>
-  
+
   <table class="table table-hover">
     <tr>
       <th>#</th>

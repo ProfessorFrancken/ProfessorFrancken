@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('admin.layout')
 
 @section('content')
   <h1 class="page-header">Posts</h1>

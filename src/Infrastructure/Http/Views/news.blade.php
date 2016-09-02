@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-  
+
   @foreach ($posts as $post)
     <hr>
     <h2><a href="post/{{ $post->uuid }}">{{ $post->title }}</a> ({{ $post->type }})</h2>
@@ -18,7 +18,7 @@
 
   <!-- paginate -->
   <div style="text-align: center;">
-    {{ $posts->render() }}
+
   </div>
 
 @endsection
