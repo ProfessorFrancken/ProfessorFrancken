@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Domain\Posts\Events;
 
 use Carbon\Carbon;
-
+use DateTimeImmutable;
 use Francken\Domain\Posts\PostId;
 use Francken\Domain\Base\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
@@ -16,12 +16,12 @@ final class PostPublishedAt implements SerializableInterface
     use Serializable;
 
     private $postId;
-    private $date;
+    private $publishedAt;
 
-    public function __construct(PostId $postId, Carbon $date)
+    public function __construct(PostId $postId, Carbon $publishedAt)
     {
         $this->postId = $postId;
-        $this->date = $date;
+        $this->publishedAt = $publishedAt;
     }
 
     public function postId() : PostId
@@ -29,9 +29,12 @@ final class PostPublishedAt implements SerializableInterface
         return $this->postId;
     }
 
-    public function date() : Carbon
+    public function publishedAt() : DateTimeImmutable
     {
-        return $this->date;
+        return DateTimeImmutable::createFromFormat(
+            \DateTime::ISO8601,
+            $this->publishedAt->format(\DateTime::ISO8601)
+        );
     }
 
     protected static function deserializationCallbacks()

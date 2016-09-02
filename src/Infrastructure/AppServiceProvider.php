@@ -8,6 +8,8 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
 use Francken\Application\ReadModel\CommitteesList\CommitteesList;
 use Francken\Application\ReadModel\CommitteesList\CommitteesListProjector;
+use Francken\Application\ReadModel\PostList\PostList;
+use Francken\Application\ReadModel\PostList\PostListProjector;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListProjector;
 use Francken\Domain\Committees\Committee;
@@ -63,6 +65,15 @@ class AppServiceProvider extends ServiceProvider
                 return new CommitteesListProjector(
                     $this->illuminateRepository('committees_list', CommitteesList::class, 'id', ['members']),
                     $this->illuminateRepository('members', MemberList::class, 'uuid')
+                );
+            }
+        );
+
+        $this->app->singleton(
+            PostListProjector::class,
+            function (Application $app) {
+                return new PostListProjector(
+                    $this->illuminateRepository('posts', PostList::class, 'id')
                 );
             }
         );
