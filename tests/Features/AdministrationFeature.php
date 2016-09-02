@@ -73,4 +73,18 @@ class AdministrationFeature extends TestCase
         $this->press('remove-member')
             ->dontSee('Redeman');
     }
+
+    /** @test */
+    function blog_and_news_posts()
+    {
+        $this->visit('/admin/post/create')
+            ->type('My title', 'title')
+            ->type('My content', 'content')
+            ->press('Create!');
+
+        $this->seePageIs('/admin/post')
+            ->see('My title')
+            ->see('My content');
+    }
+
 }
