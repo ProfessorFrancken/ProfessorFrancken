@@ -33,6 +33,12 @@
                 <li>
                     <a href="/books">Books</a>
                 </li>
+                <li>
+                    <a href="https://www.flickr.com/photos/fotocie/sets/">Photos</a>
+                </li>
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
