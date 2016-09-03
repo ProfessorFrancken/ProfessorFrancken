@@ -44,7 +44,7 @@
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
-    <div id="sub-menu" class="container-fluid">
+    <div class="sub-menu" class="container-fluid">
         @yield('sub-menu')
     </div>
 </nav>
