@@ -3,8 +3,6 @@
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'MainContentController@index');
     // Route::get('/about', 'MainContentController@about');
-    Route::get('/post', 'MainContentController@post');
-    Route::get('/blog', 'MainContentController@blog');
     Route::get('/association', 'MainContentController@association');
 
     Route::get('/register', 'RegistrationController@request');
