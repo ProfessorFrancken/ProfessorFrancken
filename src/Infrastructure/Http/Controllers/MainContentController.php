@@ -65,4 +65,19 @@ class MainContentController extends Controller
         return view('history');
     }
 
+    /**
+     * This is a quick and dirty way of making it easy to add new (static pages)
+     * it comes with the disadvantage that you cannot control the data passed to
+     * the views, though you can possibly fix this by using view composers
+     */
+    public function page(string $page)
+    {
+        try {
+            return view('pages.' . $page, [
+                'posts' => []
+            ]);
+        } catch (\InvalidArgumentException $e) {
+            return view('errors.404');
+        }
+    }
 }

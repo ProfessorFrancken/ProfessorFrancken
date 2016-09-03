@@ -1,4 +1,4 @@
-@extends('base-layout')
+@extends('pages.about')
 
 @section('content')
 
