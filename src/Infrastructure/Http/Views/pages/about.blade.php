@@ -1,13 +1,15 @@
 @extends('base-layout')
 
 @section('sub-menu')
-<ul class="nav navbar-nav">
-  <li><a href="/about/history">History</a></li>
-  <li><a href="/about/honorary-members">Honerary members</a></li>
-  <li><a href="/about/boards">Boards</a></li>
-  <li><a href="/about/committees">Committees</a></li>
-  <li><a href="/about/francken-vrij">Francken Vrij</a></li>
-</ul>
+    @include('layout._subnavigation', [
+        'list' => [
+            ['url' => "/about/history", 'title' => 'History'],
+            ['url' => "/about/honorary-members", 'title' => 'Honerary members'],
+            ['url' => "/about/boards", 'title' => 'Boards'],
+            ['url' => "/about/committees", 'title' => 'Committees'],
+            ['url' => "/about/francken-vrij", 'title' => 'Francken Vrij'],
+        ]
+    ])
 @endsection
 
 @section('content')

@@ -1,6 +1,5 @@
 @extends('base-layout')
 
-
 @section('content')
 
   <h1>Study</h1>
