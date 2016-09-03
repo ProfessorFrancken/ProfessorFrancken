@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use DB;
+use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Domain\Posts\Events\PostWritten;
 use Francken\Domain\Posts\Post;
-use Francken\Domain\Posts\PostId;
 use Francken\Domain\Posts\PostCategory;
+use Francken\Domain\Posts\PostId;
 use Francken\Domain\Posts\PostRepository;
-
-use Francken\Application\ReadModel\PostList\PostList;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = PostList::all();
+        $posts = DB::table('posts')->get();
         return view('admin.post.index', [
             'posts' => $posts
         ]);
@@ -57,7 +56,7 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = PostList::where('uuid', $id)->first();
+        $post = DB::table('posts')->where('id', $id)->first();
         return view('admin.post.show', [
             'post' => $post
         ]);
@@ -65,7 +64,7 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $post = PostList::where('uuid', $id)->first();
+        $post = DB::table('posts')->where('id', $id)->first();
         return view('admin.post.edit', [
             'post' => $post
         ]);

@@ -93,7 +93,7 @@ class Post extends AggregateRoot
 
     public function applyPostPublishedAt(PostPublishedAt $event)
     {
-        $this->published_at = $event->date();
+        $this->published_at = $event->publishedAt();
     }
 
     public function applyPostUnpublished(PostUnpublished $event)

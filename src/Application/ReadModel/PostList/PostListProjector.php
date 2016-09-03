@@ -2,50 +2,101 @@
 
 namespace Francken\Application\ReadModel\PostList;
 
+use DateTimeImmutable;
 use Francken\Application\Projector;
+use Francken\Application\ReadModelRepository as Repository;
 use Francken\Application\ReadModel\PostList\PostList;
-use Francken\Posts\Events\PostCategorized;
-use Francken\Posts\Events\PostContentChanged;
-use Francken\Posts\Events\PostPublishedAt;
-use Francken\Posts\Events\PostTitleChanged;
-use Francken\Posts\Events\PostWritten;
+use Francken\Domain\Members\MemberId;
+use Francken\Domain\Posts\Events\PostCategorized;
+use Francken\Domain\Posts\Events\PostContentChanged;
+use Francken\Domain\Posts\Events\PostPublishedAt;
+use Francken\Domain\Posts\Events\PostTitleChanged;
+use Francken\Domain\Posts\Events\PostWritten;
 
 final class PostListProjector extends Projector
 {
+    private $posts;
+
+    public function __construct(Repository $posts)
+    {
+        $this->posts = $posts;
+    }
+
     public function whenPostWritten(PostWritten $event)
     {
-        ///@todo: change authorId to author name
-        $post = PostList::create([
-                "uuid" => $event->PostId(),
-                "title" => $event->title(),
-                "content" => $event->content(),
-                "type" => $event->type()
-                // "authorId" => $event->authorId()
-            ]);
+        $post = new PostList(
+            $event->postId(),
+            new MemberId('6703202d-6556-404d-988c-b76c5a34b97c'),
+            $event->title(),
+            $event->content(),
+            $event->type(),
+            new DateTimeImmutable('2016-09-02T10:14:05')
+        );
+
+        $this->posts->save($post);
     }
 
     public function whenPostTitleChanged(PostTitleChanged $event)
     {
-        PostList::where('uuid', $event->postId())
-            ->update('title', $event->title());
+        $post = $this->posts->find($event->postId());
+
+        $this->posts->save(
+            new PostList(
+                $post->id(),
+                $post->authorId(),
+                $event->title(),
+                $post->content(),
+                $post->type(),
+                $post->publishedAt()
+            )
+        );
     }
 
     public function whenPostContentChanged(PostContentChanged $event)
     {
-        PostList::where('uuid', $event->postId())
-            ->update('content', $event->content());
+        $post = $this->posts->find($event->postId());
+
+        $this->posts->save(
+            new PostList(
+                $post->id(),
+                $post->authorId(),
+                $post->title(),
+                $event->content(),
+                $post->type(),
+                $post->publishedAt()
+            )
+        );
     }
 
     public function whenPostCategorized(PostCategorized $event)
     {
-        PostList::where('uuid', $event->postId())
-            ->update('type', $event->type());
+        $post = $this->posts->find($event->postId());
+
+        $this->posts->save(
+            new PostList(
+                $post->id(),
+                $post->authorId(),
+                $post->title(),
+                $post->content(),
+                $event->type(),
+                $post->publishedAt()
+            )
+        );
     }
 
     public function whenPostPublishedAt(PostPublishedAt $event)
     {
-        $post = PostList::where('uuid', $event->postId())->first();
-        $post->published_at = $event->date();
-        $post->save();
+        $post = $this->posts->find($event->postId());
+
+        $this->posts->save(
+            new PostList(
+                $post->id(),
+                $post->authorId(),
+                $post->title(),
+                $post->content(),
+                $post->type(),
+                $event->publishedAt()
+            )
+        );
     }
 }

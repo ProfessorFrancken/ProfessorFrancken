@@ -3,7 +3,7 @@
 namespace Francken\Application\ReadModel\CommitteesList;
 
 use Francken\Application\Projector;
-use Francken\Application\ReadModel\CommitteesList\CommitteesList;
+use Francken\Application\ReadModelRepository as Repository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
@@ -13,56 +13,61 @@ use Francken\Domain\Committees\Events\MemberLeftCommittee;
 
 final class CommitteesListProjector extends Projector
 {
+    private $members;
+    private $committees;
+
+    public function __construct(Repository $committees, Repository $members)
+    {
+        $this->members = $members;
+        $this->committees = $committees;
+    }
+
     public function whenCommitteeInstantiated(CommitteeInstantiated $event)
     {
-        $committee = new CommitteesList;
-        $committee->uuid = $event->committeeId();
-        $committee->name = $event->name();
-        $committee->goal = $event->goal();
-        $committee->committee_members = [];
+        $committee = new CommitteesList(
+            $event->committeeId(),
+            $event->name(),
+            $event->goal()
+        );
 
-        $committee->save();
+        $this->committees->save($committee);
     }
 
     public function whenCommitteeNameChanged(CommitteeNameChanged $event)
     {
-        CommitteesList::where('uuid', $event->committeeId())
-            ->update(['name' => $event->name()]);
+        $committee = $this->committees->find((string)$event->committeeId());
+        $committee = $committee->changeName($event->name());
+
+        $this->committees->save($committee);
     }
 
     public function whenCommitteeGoalChanged(CommitteeGoalChanged $event)
     {
-        CommitteesList::where('uuid', $event->committeeId())
-            ->update(['goal' => $event->goal()]);
+        $committee = $this->committees->find((string)$event->committeeId());
+        $committee = $committee->changeGoal($event->goal());
+
+        $this->committees->save($committee);
     }
 
     public function whenMemberJoinedCommittee(MemberJoinedCommittee $event)
     {
-        $committee = CommitteesList::where('uuid', $event->committeeId())->first();
-        $members = $committee->committee_members;
+        $committee = $this->committees->find((string)$event->committeeId());
+        $member = $this->members->find($event->memberId());
 
-        $members[] = [
-            'uuid' => (string) $event->memberId(),
-            'first_name' => MemberList::where('uuid', $event->memberId())->first()->first_name,
-            'last_name' => MemberList::where('uuid', $event->memberId())->first()->last_name
-        ];
+        $committee = $committee->addMember(
+            $member->memberId(),
+            $member->firstName(),
+            $member->lastName()
+        );
 
-        $committee->committee_members = $members;
-        $committee->save();
+        $this->committees->save($committee);
     }
 
     public function whenMemberLeftCommittee(MemberLeftCommittee $event)
     {
-        $committee = CommitteesList::where('uuid', $event->committeeId())->first();
-        $members = $committee->committee_members;
+        $committee = $this->committees->find((string)$event->committeeId());
+        $committee = $committee->removeMember($event->memberId());
 
-        foreach ($members as $key => $member) {
-            if ($member['uuid'] === (string) $event->memberId()) {
-                unset($members[$key]);
-            }
-        }
-
-        $committee->committee_members = $members;
-        $committee->save();
+        $this->committees->save($committee);
     }
 }

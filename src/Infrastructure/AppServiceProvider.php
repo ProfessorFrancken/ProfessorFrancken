@@ -6,6 +6,12 @@ use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
+use Francken\Application\ReadModel\CommitteesList\CommitteesList;
+use Francken\Application\ReadModel\CommitteesList\CommitteesListProjector;
+use Francken\Application\ReadModel\PostList\PostList;
+use Francken\Application\ReadModel\PostList\PostListProjector;
+use Francken\Application\ReadModel\MemberList\MemberList;
+use Francken\Application\ReadModel\MemberList\MemberListProjector;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
@@ -14,7 +20,9 @@ use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
+use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,11 +35,59 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerAggregateRepositories();
+        $this->registerReadModels();
+        $this->app->instance('path', 'src/Infrastructure');
+    }
+
+    private function registerAggregateRepositories()
+    {
         $this->registerRepository(CommitteeRepository::class, Committee::class);
         $this->registerRepository(MemberRepository::class, Member::class);
         $this->registerRepository(PostRepository::class, Post::class);
         $this->registerRepository(RegistrationRequestRepository::class, RegistrationRequest::class);
-        $this->app->instance('path', 'src/Infrastructure');
+    }
+
+    private function registerReadModels()
+    {
+        $this->app->singleton(
+            MemberListProjector::class,
+            function (Application $app) {
+                return new MemberListProjector(
+                    $this->illuminateRepository('members', MemberList::class, 'uuid')
+                );
+            }
+        );
+
+        $this->app->singleton(
+            CommitteesListProjector::class,
+            function (Application $app) {
+                return new CommitteesListProjector(
+                    $this->illuminateRepository('committees_list', CommitteesList::class, 'id', ['members']),
+                    $this->illuminateRepository('members', MemberList::class, 'uuid')
+                );
+            }
+        );
+
+        $this->app->singleton(
+            PostListProjector::class,
+            function (Application $app) {
+                return new PostListProjector(
+                    $this->illuminateRepository('posts', PostList::class, 'id')
+                );
+            }
+        );
+    }
+
+    private function illuminateRepository(string $tableName, string $modelName, string $identifier, array $stringify = []) : IlluminateRepository
+    {
+        return new IlluminateRepository(
+            $this->app->make(DatabaseConnection::class),
+            $tableName,
+            $modelName,
+            $identifier,
+            $stringify
+        );
     }
 
     /**
@@ -43,7 +99,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             $repository,
-            function (Application $app) use ($repository, $aggregate) {
+            function () use ($repository, $aggregate) {
                 return new $repository(
                     $this->makeEventSourcingRepository($aggregate)
                 );

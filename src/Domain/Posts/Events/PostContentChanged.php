@@ -19,6 +19,7 @@ final class PostContentChanged implements SerializableInterface
     public function __construct(PostId $postId, string $content)
     {
         $this->postId = $postId;
+        $this->content = $content;
     }
 
     public function postId() : PostId

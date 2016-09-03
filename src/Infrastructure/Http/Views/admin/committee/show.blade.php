@@ -7,7 +7,7 @@
 
 
   <h3>General info</h3>
-  <form action="{{ url('admin/committee', $committee->uuid) }}" method="POST" class="form-horizontal">
+  <form action="{{ url('admin/committee', $committee->id) }}" method="POST" class="form-horizontal">
     {!! csrf_field() !!}
     {{ method_field('PUT') }}
 
@@ -40,17 +40,17 @@
     </tr>
 
     <?php $i = 1 ?>
-    @foreach(json_decode($committee->committee_members) as $member)
+    @foreach(json_decode($committee->members) as $member)
     <tr>
       <td>{{ $i++ }}</td>
       <td>{{ $member->first_name }}</td>
       <td>{{ $member->last_name }}</td>
       <td>
-        <form action="{{ url('admin/committee/' . $committee->uuid . '/member/' . $member->uuid) }}" method="POST">
+        <form action="{{ url('admin/committee/' . $committee->id . '/member/' . $member->uuid) }}" method="POST">
           {!! csrf_field() !!}
           {{ method_field('DELETE') }}
 
-          <button class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span></button>
+          <button class="btn btn-primary" name="remove-member"><span class="glyphicon glyphicon-trash"></span></button>
         </form>
       </td>
     </tr>
@@ -74,10 +74,10 @@
         <td>{{ $result->first_name }}</td>
         <td>{{ $result->last_name }}</td>
         <td>
-          <form action="{{ url('admin/committee/' . $committee->uuid . '/member/' . $result->uuid) }}" method="POST">
+          <form action="{{ url('admin/committee/' . $committee->id . '/member/' . $result->uuid) }}" method="POST">
             {!! csrf_field() !!}
 
-            <button class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+            <button class="btn btn-default" name="add-member"><span class="glyphicon glyphicon-plus"></span></button>
           </form>
         </td>
       </tr>

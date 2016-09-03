@@ -38,7 +38,7 @@ class CommitteeController extends Controller
 
     public function show($id)
     {
-        $committee = DB::table('committees_list')->where('uuid', $id)->first();
+        $committee = DB::table('committees_list')->where('id', $id)->first();
 
         return view('admin.committee.show', [
             'committee' => $committee
@@ -47,7 +47,7 @@ class CommitteeController extends Controller
 
     public function update(Request $req, CommitteeRepository $repo, $id)
     {
-        $committee = $repo->load($id);
+        $committee = $repo->load(new CommitteeId($id));
         $committee->edit($req->input('name'), $req->input('goal'));
         $repo->save($committee);
 
@@ -56,7 +56,7 @@ class CommitteeController extends Controller
 
     public function addMember(CommitteeRepository $repo, $committeeId, $memberId)
     {
-        $committee = $repo->load($committeeId);
+        $committee = $repo->load(new CommitteeId($committeeId));
         $committee->joinByMember(new MemberId($memberId));
         $repo->save($committee);
 
@@ -65,7 +65,7 @@ class CommitteeController extends Controller
 
     public function removeMember(CommitteeRepository $repo, $committeeId, $memberId)
     {
-        $committee = $repo->load($committeeId);
+        $committee = $repo->load(new CommitteeId($committeeId));
         $committee->leftByMember(new MemberId($memberId));
         $repo->save($committee);
 

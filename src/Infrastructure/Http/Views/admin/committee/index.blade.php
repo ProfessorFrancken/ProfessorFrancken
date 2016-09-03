@@ -2,7 +2,7 @@
 
 @section('content')
   <h1 class="page-header">Committees</h1>
-  
+
   <table class="table table-hover">
     <tr>
       <th>#</th>
@@ -17,7 +17,7 @@
         <td>{{ $i++ }}</td>
         <td>{{ $committee->name }}</td>
         <td>{{ $committee->goal }}</td>
-        <td><a href="/admin/committee/{{ $committee->uuid }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        <td><a href="/admin/committee/{{ $committee->id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
       </tr>
     @endforeach
   </table>
