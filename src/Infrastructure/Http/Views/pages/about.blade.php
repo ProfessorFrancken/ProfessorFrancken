@@ -2,11 +2,11 @@
 
 @section('sub-menu')
 <ul class="nav navbar-nav">
-  <li><a href="/history">History</a></li>
-  <li><a href="/honorary-members">Honerary members</a></li>
-  <li><a href="/boards">Boards</a></li>
-  <li><a href="/committees">Committees</a></li>
-  <li><a href="/francken-vrij">Francken Vrij</a></li>
+  <li><a href="/about/history">History</a></li>
+  <li><a href="/about/honorary-members">Honerary members</a></li>
+  <li><a href="/about/boards">Boards</a></li>
+  <li><a href="/about/committees">Committees</a></li>
+  <li><a href="/about/francken-vrij">Francken Vrij</a></li>
 </ul>
 @endsection
 

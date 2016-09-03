@@ -2,9 +2,9 @@
 
 @section('sub-menu')
 <ul class="nav navbar-nav navbar-center">
-    <li><a href="#">Job openings</a></li>
-    <li><a href="#">Company profiles</a></li>
-    <li><a href="#">Excursions</a></li>
+    <li><a href="/career/job-openings">Job openings</a></li>
+    <li><a href="/career/companies">Company profiles</a></li>
+    <li><a href="/career/excursions">Excursions</a></li>
 </ul>
 @endsection
 

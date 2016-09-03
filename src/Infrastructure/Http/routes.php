@@ -39,5 +39,5 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('member/add-member', 'MemberController@addMember');
     });
 
-    Route::get('{page}', 'MainContentController@page');
+    Route::get('{page}', 'MainContentController@page')->where('page', '.+');
 });
