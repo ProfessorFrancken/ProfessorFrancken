@@ -9,6 +9,7 @@ use Broadway\Serializer\SerializableInterface;
 use Francken\Application\ReadModelNotFound;
 use Francken\Application\ReadModelRepository;
 use Illuminate\Database\ConnectionInterface as Connection;
+use Illuminate\Support\Collection;
 
 final class IlluminateRepository implements ReadModelRepository
 {
@@ -181,18 +182,14 @@ final class IlluminateRepository implements ReadModelRepository
         return ($this->model)::deserialize($array);
     }
 
-
     /**
-     * @param array $rows
+     * @param Collection $rows
      * @return array
      */
-    private function deserializeRows(array $rows) : array
+    private function deserializeRows(Collection $rows) : array
     {
-        return array_map(
-            function ($row) {
-                return $this->deserialize($row);
-            },
-            $rows
-        );
+        return $rows->map(function ($row) {
+            return $this->deserialize($row);
+        })->all();
     }
 }

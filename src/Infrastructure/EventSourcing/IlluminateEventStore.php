@@ -53,10 +53,7 @@ final class IlluminateEventStore implements EventStoreInterface
      */
     public function load($id)
     {
-        $events = $this->connection
-                ->table($this->table)
-                ->where('uuid', $id)
-                ->get();
+        $events = $this->loadEvents($id);
 
         if (! $events) {
             throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
@@ -86,6 +83,15 @@ final class IlluminateEventStore implements EventStoreInterface
             $this->connection->rollBack();
             IlluminateEventStoreException::failedToAppend($e);
         }
+    }
+
+    /**
+     * Load all events of an aggregate from our table
+     * Note that since Laravel 5.3 the connection will now return a collection object
+     */
+    private function loadEvents(string $id) : array
+    {
+        return $this->connection->table($this->table)->where('uuid', $id)->get()->all();
     }
 
     /**
