@@ -25,4 +25,4 @@
     </div>
 </footer>
 
-@include('layout.sponsors')
+@include('layout._sponsors')
