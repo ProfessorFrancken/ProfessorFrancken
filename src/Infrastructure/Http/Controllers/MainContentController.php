@@ -21,9 +21,10 @@ class MainContentController extends Controller
 
     public function post()
     {
-        return view('news', [
-            'posts' => []
-        ]);
+        // $posts = PostList::paginate(10);
+        return view('news'); //, [
+            // 'posts' => $posts
+        // ]);
     }
 
     public function news()

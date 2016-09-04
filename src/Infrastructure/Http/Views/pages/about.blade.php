@@ -20,7 +20,7 @@
 
   <p>The association was founded in 1968 as the “Vereniging van Toekomstige Ingenieurs” (Association of Future Engineers). At that time it was uncertain whether applied physics graduates would be granted the qualification ‘ingenieur’. This changed for the Groningen technicians as a result of a Royal Decree of 18 November 1971. The association changed its name to V.K.T.N., or Vereniging voor Kandidaten Technische Natuurkunde (Association for Candidates Applied Physics). In 1984 the association was named after the first professor in applied physics in Groningen: prof. dr. ir. J.C. Francken.</p>
 
-  <a class="btn btn-default" href="/history">Read more history</a>
+  <a class="btn btn-default" href="/about/history">Read more history</a>
 
   <hr>
 
@@ -58,7 +58,7 @@
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="/boards" class="btn btn-default">List of all previous boards</a>
+      <a href="/about/boards" class="btn btn-default">List of all previous boards</a>
     </div>
   </div>
 
@@ -68,7 +68,7 @@
     <div class="col-md-9">
       <h2>Honerary members</h2>
       <p>T.F.V. ‘Professor Francken’ has the honour to have two very much appreciated physicists as honorary members. Of course professor J.C. Francken, after whom we named the association, is an honorary member. And of course professor J.Th.M. De Hosson became an honorary member on basis of his special merit towards the association</p>
-      <a href="/honorary-members" class="btn btn-default">Read more</a>
+      <a href="/about/honorary-members" class="btn btn-default">Read more</a>
     </div>
     <div class="col-md-3">
       <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" alt="figure" width="100%">
