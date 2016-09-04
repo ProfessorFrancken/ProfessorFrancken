@@ -198,3 +198,8 @@ footer {
 .sponsors ul {
   padding: 1em;
 }
+
+.company-summary__logo {
+    max-width: 100%;
+    max-height: 100%;
+}
