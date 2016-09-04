@@ -9,19 +9,19 @@
   <hr>
 
   <div class="row">
-    <div style="text-align: center" class="col-lg-4">
+    <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>Study help</h2>
       <p>Oude tentamens en aantekeningen van hoorcolleges.</p>
     </div>
 
-    <div style="text-align: center" class="col-lg-4">
+    <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>Vakgroepen</h2>
       <p>Informatie over de vakgroepen technische natuurkunde.</p>
     </div>
 
-    <div style="text-align: center" class="col-lg-4">
+    <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>Honours</h2>
       <p>Informatie over het honours college.</p>
