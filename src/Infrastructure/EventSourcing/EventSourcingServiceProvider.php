@@ -26,8 +26,10 @@ class EventSourcingServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(EventBusInterface $eventBus)
+    public function boot()
     {
+        $eventBus = $this->app->make(EventBusInterface::class);
+
         // The projections config contains a list of class names or projectors.
         // Each of these projectors will be subscribed to the given event bus.
         $projectors = $this->app->config->get('event_sourcing.projectors');

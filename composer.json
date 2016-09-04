@@ -6,11 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.2.*",
+        "laravel/framework": "5.3.*",
         "broadway/broadway": "^0.9.0",
         "webmozart/assert": "^1.1",
         "matthiasnoback/broadway-serialization": "^1.0",
-        "laravelcollective/html": "^5.2"
+        "laravelcollective/html": "^5.2",
+        "mattketmo/uuid-2x-bridge": "*@dev",
+        "ramsey/uuid": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -44,10 +46,11 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
         "pre-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
