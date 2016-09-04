@@ -2,15 +2,7 @@
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'MainContentController@index');
-    Route::get('/about', 'MainContentController@about');
-    Route::get('/post', 'MainContentController@post');
-    Route::get('/news', 'MainContentController@news');
-    Route::get('/blog', 'MainContentController@blog');
-    Route::get('/study', 'MainContentController@study');
-    Route::get('/career', 'MainContentController@career');
     Route::get('/association', 'MainContentController@association');
-    Route::get('/boards', 'MainContentController@boards');
-    Route::get('/history', 'MainContentController@history');
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');
@@ -40,9 +32,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('committee/{committeeId}/member/{memberId}', 'CommitteeController@addMember');
         Route::delete('committee/{committeeId}/member/{memberId}', 'CommitteeController@removeMember');
 
+        Route::get('member', 'MemberController@index');
+        Route::post('member/add-member', 'MemberController@addMember');
     });
 
-
-    Route::get('/admin/member', 'MemberController@index');
-    Route::post('/admin/member/add-member', 'MemberController@addMember');
+    Route::get('{page}', 'MainContentController@page')->where('page', '.+');
 });

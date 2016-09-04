@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('admin.layout')
 
 
 

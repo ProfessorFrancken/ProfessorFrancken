@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
+use DB;
 use Francken\Application\ReadModel\PostList\PostList;
 
 class MainContentController extends Controller
@@ -20,25 +21,22 @@ class MainContentController extends Controller
 
     public function post()
     {
-        $posts = PostList::paginate(10);
         return view('news', [
-            'posts' => $posts
+            'posts' => []
         ]);
     }
 
     public function news()
     {
-        $posts = PostList::news()->paginate(10);
         return view('news', [
-            'posts' => $posts
+            'posts' => []
         ]);
     }
 
     public function blog()
     {
-        $posts = PostList::blog()->paginate(10);
         return view('news', [
-            'posts' => $posts
+            'posts' => []
         ]);
     }
 
@@ -67,4 +65,19 @@ class MainContentController extends Controller
         return view('history');
     }
 
+    /**
+     * This is a quick and dirty way of making it easy to add new (static pages)
+     * it comes with the disadvantage that you cannot control the data passed to
+     * the views, though you can possibly fix this by using view composers
+     */
+    public function page(string $page)
+    {
+        try {
+            return view('pages.' . $page, [
+                'posts' => []
+            ]);
+        } catch (\InvalidArgumentException $e) {
+            return view('errors.404');
+        }
+    }
 }

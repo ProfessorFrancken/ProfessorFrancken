@@ -14,36 +14,45 @@ html {
 }
 
 .navbar {
-  background-color: #31255E;
+  /* background-color: #31255E; */
+}
+
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: white;
+  color: #31255E;
 }
 
-.navbar-default .navbar-nav > li > a:hover {
-  color: white;
-  border-bottom: thin solid white;
+.navbar-default a:hover {
+  color: #31255E;
+  text-decoration: underline;
 }
 
-#sub-menu {
-  background-color: #483A78;
-  padding: 0;
-  text-align: center;
+.sub-menu {
+    background-color: #483A78;
+    padding: 0;
+    text-align: center;
 }
 
-#sub-menu ul {
-  display: inline-block;
-  float: none;
+.sub-menu ul {
+    display: inline-block;
+    float: none;
 }
 
-#sub-menu a {
-  padding: 10px 30px;
+.sub-menu a {
+    padding: 10px 30px;
+}
+
+.sub-menu .navbar-nav .sub-menu-item > a {
+    color: white;
 }
 
 
 #main-menu {
-  padding: 15px;
+    padding: 15px;
 }
 
 p {

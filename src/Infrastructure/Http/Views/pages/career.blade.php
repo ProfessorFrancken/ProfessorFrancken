@@ -1,11 +1,13 @@
-@extends('layouts.content')
+@extends('base-layout')
 
 @section('sub-menu')
-<ul class="nav navbar-nav navbar-center">
-    <li><a href="#">Job openings</a></li>
-    <li><a href="#">Company profiles</a></li>
-    <li><a href="#">Excursions</a></li>
-</ul>
+    @include('layout._subnavigation', [
+        'list' => [
+            ['url' => "/career/job-openings", 'title' => 'Job openings'],
+            ['url' => "/career/companies", 'title' => 'Company profiles'],
+            ['url' => "/career/excursions", 'title' => 'Excursions'],
+        ]
+    ])
 @endsection
 
 @section('content')

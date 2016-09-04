@@ -1,10 +1,7 @@
-@extends('layouts.dashboard')
-
-
+@extends('admin.layout')
 
 @section('content')
   <h1 class="page-header">{{ $committee->name }}</h1>
-
 
   <h3>General info</h3>
   <form action="{{ url('admin/committee', $committee->id) }}" method="POST" class="form-horizontal">

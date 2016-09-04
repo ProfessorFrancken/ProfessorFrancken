@@ -1,11 +1,10 @@
-@extends('layouts.content')
-
+@extends('base-layout')
 
 @section('content')
 
   <h1>Study</h1>
 
-  <p>T.F.V. ‘Professor Francken’ organiseert verschillende studiegerelateerde activiteiten zoals symposia, vakgroepexcursies en oefenmiddagen voor tentamens. Daarnaast hebben we regelmatig contact met besturende organen als opleidingscommissies, de faculteitsraad en het opleidingsbestuur.</p>	
+  <p>T.F.V. ‘Professor Francken’ organiseert verschillende studiegerelateerde activiteiten zoals symposia, vakgroepexcursies en oefenmiddagen voor tentamens. Daarnaast hebben we regelmatig contact met besturende organen als opleidingscommissies, de faculteitsraad en het opleidingsbestuur.</p>
 
   <hr>
 

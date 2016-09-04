@@ -1,20 +1,22 @@
-@extends('layouts.content')
+@extends('base-layout')
 
 @section('sub-menu')
-<ul class="nav navbar-nav">
-  <li><a href="/history">History</a></li>
-  <li><a href="/honorary-members">Honerary members</a></li>
-  <li><a href="/boards">Boards</a></li>
-  <li><a href="/committees">Committees</a></li>
-  <li><a href="/francken-vrij">Francken Vrij</a></li>
-</ul>
+    @include('layout._subnavigation', [
+        'list' => [
+            ['url' => "/about/history", 'title' => 'History'],
+            ['url' => "/about/honorary-members", 'title' => 'Honerary members'],
+            ['url' => "/about/boards", 'title' => 'Boards'],
+            ['url' => "/about/committees", 'title' => 'Committees'],
+            ['url' => "/about/francken-vrij", 'title' => 'Francken Vrij'],
+        ]
+    ])
 @endsection
 
 @section('content')
 
   <h1>About</h1>
 
-  <p>The Technisch Fysische Vereniging ‘Professor Francken’ (Applied Physics Association ‘Professor Francken’) is the University of Groningen’s study association for applied physics and it is focused on (graduated) applied physics students. Other students of the faculty can become a donator of the association. They have the same privileges as applied physics students, except the right to vote at the general members assembly (ALV). 
+  <p>The Technisch Fysische Vereniging ‘Professor Francken’ (Applied Physics Association ‘Professor Francken’) is the University of Groningen’s study association for applied physics and it is focused on (graduated) applied physics students. Other students of the faculty can become a donator of the association. They have the same privileges as applied physics students, except the right to vote at the general members assembly (ALV).
 
   <p>The association was founded in 1968 as the “Vereniging van Toekomstige Ingenieurs” (Association of Future Engineers). At that time it was uncertain whether applied physics graduates would be granted the qualification ‘ingenieur’. This changed for the Groningen technicians as a result of a Royal Decree of 18 November 1971. The association changed its name to V.K.T.N., or Vereniging voor Kandidaten Technische Natuurkunde (Association for Candidates Applied Physics). In 1984 the association was named after the first professor in applied physics in Groningen: prof. dr. ir. J.C. Francken.</p>
 
