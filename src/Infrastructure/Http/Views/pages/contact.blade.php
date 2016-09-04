@@ -8,16 +8,16 @@
             <h2>Address</h2>
 
             <address>
-                <strong>Postadres</strong><br>
+                <h4>Postadres</h4>
                 T.F.V. ‘Professor Francken’<br>
                 Nijenborgh 4<br>
                 9747 AG Groningen
             </address>
 
             <address>
-                <strong>Bezoekadres</strong><br>
-                Bestuurskamer: gebouw 13, kamer 5113.0006<br>
-                Ledenkamer: gebouw 13, kamer 5113.0002<br>
+                <h4>Bezoekadres</h4>
+                <strong>Bestuurskamer</strong>: gebouw 13, kamer 5113.0006<br>
+                <strong>Ledenkamer</strong>: gebouw 13, kamer 5113.0002<br>
             </address>
         </div>
         <div class="col-sm-4">
@@ -35,7 +35,6 @@
             <h2>Other information</h2>
 
             <strong>K.v.K.</strong>: 400 252 71<br>
-
             <strong>Bankrekeningnummer</strong>: NL31 ABNA 0510 5771 56
         </div>
     </div>
@@ -68,7 +67,10 @@
             </div>
             <div class="form-group">
                 <label for="message" class="col-sm-2 control-label">Message</label>
-                <textarea class="col-sm-10 form-control" name="message" rows="3"></textarea>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="message" rows="3"></textarea>
+                </div>
             </div>
+        </form>
     </div>
 @endsection
