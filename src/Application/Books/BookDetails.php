@@ -5,13 +5,13 @@ namespace Francken\Application\Books;
 class BookDetails
 {
 	private $title;
-	private $authors;
+	private $author;
 	private $pathToCover;
 
-	public function __construct(string $title, string $authors, string $pathToCover) 
+	public function __construct(string $title, string $author, string $pathToCover)
 	{
 		$this->title = $title;
-		$this->authors = $authors;
+		$this->author = $author;
 		$this->pathToCover = $pathToCover;
 }
 
@@ -20,9 +20,9 @@ class BookDetails
 		return $this->title;
 	}
 
-	public function authors() : string
+	public function author() : string
 	{
-		return $this->authors;
+		return $this->author;
 	}
 
 	public function pathToCover() : string

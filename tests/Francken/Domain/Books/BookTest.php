@@ -5,7 +5,6 @@ namespace Tests\Francken\Books;
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\ISBN;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSoldToMember;
@@ -31,7 +30,7 @@ class BookTest extends AggregateRootScenarioTestCase
                 return Book::offer(
                     $bookId,
                     $memberId,
-                    ISBN::fromString("0534408133"),
+                    "0534408133",
                     1500 //= 15 euro
                 );
             })
@@ -39,7 +38,7 @@ class BookTest extends AggregateRootScenarioTestCase
                 new BookOffered(
                     $bookId,
                     $memberId,
-                    ISBN::fromString("0534408133"),
+                    "0534408133",
                     1500 //= 15 euro
                 )
             ]);
@@ -58,7 +57,7 @@ class BookTest extends AggregateRootScenarioTestCase
                 new BookOffered(
                     $bookId,
                     $memberId,
-                    ISBN::fromString("0534408133"),
+                    "0534408133",
                     1500)
                 ])
             ->when(function ($book) use ($buyersId) {
@@ -67,7 +66,7 @@ class BookTest extends AggregateRootScenarioTestCase
             ->then([new BookSoldToMember($bookId, $buyersId)]);
     }
 
-    /** 
+    /**
     * @test
     */
     public function a_book_cannot_be_sold_twice()
@@ -80,7 +79,7 @@ class BookTest extends AggregateRootScenarioTestCase
         $book = Book::offer(
                     $bookId,
                     $memberId,
-                    ISBN::fromString("0534408133"),
+                    "0534408133",
                     1500); //15 euro
 
         $book->sellToMember($buyersId1);
@@ -99,7 +98,7 @@ class BookTest extends AggregateRootScenarioTestCase
                 new BookOffered(
                     $bookId,
                     $memberId,
-                    ISBN::fromString("0534408133"),
+                    "0534408133",
                     1500)
                 ]);
     }

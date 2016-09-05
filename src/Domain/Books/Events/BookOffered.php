@@ -43,7 +43,7 @@ final class BookOffered implements SerializableInterface
     {
     	return $this->price;
     }
-    
+
     protected static function deserializationCallbacks()
     {
         return ['bookId' => [BookId::class, 'deserialize'],

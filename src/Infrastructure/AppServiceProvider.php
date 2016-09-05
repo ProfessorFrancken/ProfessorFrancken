@@ -55,7 +55,6 @@ class AppServiceProvider extends ServiceProvider
         $this->registerRepository(MemberRepository::class, Member::class);
         $this->registerRepository(PostRepository::class, Post::class);
         $this->registerRepository(RegistrationRequestRepository::class, RegistrationRequest::class);
-        $this->registerRepository(BookDetailsRepositoryI::class, BookDetailsRepository::class);
     }
 
     private function registerControllers()
@@ -80,6 +79,8 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerReadModels()
     {
+        $this->app->bind(BookDetailsRepositoryI::class, BookDetailsRepository::class);
+  
         $this->app->singleton(
             MemberListProjector::class,
             function (Application $app) {
