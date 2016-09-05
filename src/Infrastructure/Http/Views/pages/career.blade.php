@@ -26,7 +26,7 @@
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="#" class="btn btn-default">Read more</a>
+      <a href="/career/job-openings" class="btn btn-default">Read more</a>
     </div>
     <div class="col-md-5">
       <img data-holder-rendered="true" src="" alt="300x300" width="300" height="300">
@@ -62,7 +62,7 @@
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="#" class="btn btn-default">List of all committees</a>
+      <a href="/career/excursions" class="btn btn-default">See planned and previous excursions</a>
     </div>
     <div class="col-md-5">
       <img data-holder-rendered="true" src="" alt="300x300" width="300" height="300">
@@ -83,8 +83,10 @@
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="#" class="btn btn-default">See all boards</a>
+      <a href="http://www.linkedin.com/groups/TFV-Professor-Francken-1524067" class="btn btn-default">Go to our LinkedIn page</a>
     </div>
   </div>
+
+  <hr>
 
 @endsection
