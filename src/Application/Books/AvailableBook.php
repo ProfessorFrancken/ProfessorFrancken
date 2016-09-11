@@ -19,7 +19,7 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
     private $price;
     private $isbn_10;
     private $path_to_cover;
-    private $salePending;
+    private $sale_pending;
 
     public function __construct(
         BookId $id,
@@ -28,7 +28,7 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
         int $price,
         string $isbn_10,
         string $path_to_cover,
-        bool $salePending)
+        bool $sale_pending)
     {
         $this->id = (string)$id;
         $this->title = $title;
@@ -36,7 +36,7 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
         $this->price = $price;
         $this->isbn_10 = $isbn_10;
         $this->path_to_cover = $path_to_cover;
-        $this->salePending= $salePending;
+        $this->sale_pending= $sale_pending;
     }
 
     public function getId()
@@ -76,7 +76,7 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
 
     public function salePending() : bool
     {
-        return $this->salePending;
+        return $this->sale_pending;
     }
 
 }

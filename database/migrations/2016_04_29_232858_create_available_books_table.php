@@ -15,9 +15,11 @@ class CreateAvailableBooksTable extends Migration
         Schema::create('available_books', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('title');
-            $table->string('authors');
-            $table->string('isbn', 10);
+            $table->string('author');
             $table->integer('price'); //in cents
+            $table->string('isbn_10', 10);
+            $table->string('path_to_cover');
+            $table->boolean('sale_pending');
         });
     }
 

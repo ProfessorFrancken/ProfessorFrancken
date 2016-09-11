@@ -2,17 +2,16 @@
 
 namespace Francken\Application\Books;
 
-use Francken\Application\ReadModel\MemberList\MemberList;
-
-use Broadway\ReadModel\Projector;
+use Francken\Application\Projector;
 use Francken\Application\Books\AvailableBook;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
+use Francken\Application\ReadModelRepository as Repository;
 
-final class BooksProjector extends Projector
+final class AvailableBooksProjector extends Projector
 {
     private $books;
     private $bookDetailRepository;

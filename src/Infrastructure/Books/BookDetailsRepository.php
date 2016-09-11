@@ -5,12 +5,12 @@ namespace Francken\Infrastructure\Books;
 use Francken\Application\Books\BookDetails;
 use Francken\Application\Books\BookDetailsRepositoryI;
 
-class BookDetailsRepository implements BookDetailsRepositoryI 
+class BookDetailsRepository implements BookDetailsRepositoryI
 {
 	public function getByISBN(string $isbn) : BookDetails
 	{
-		$curl = curl_init('https://www.amazon.com/dp/' . $isbn); 
-		
+		$curl = curl_init('https://www.amazon.com/dp/' . $isbn);
+
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 		$subject = curl_exec($curl);

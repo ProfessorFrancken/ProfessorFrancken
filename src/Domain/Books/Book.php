@@ -20,8 +20,9 @@ final class Book extends EventSourcedAggregateRoot
     private $isbn_10;
     private $price;
     private $isSold = false;
+    private $isPaid = false;
 
-    public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price)
+    public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price) : Book
     {
         $book = new Book;
         $book->apply(new BookOffered($id, $sellersId, $isbn, $price));
@@ -46,6 +47,16 @@ final class Book extends EventSourcedAggregateRoot
     public function cancelSale()
     {
         $this->apply(new BookSaleCancelled($this->id));
+    }
+
+    public function completeSale()
+    {
+        $this->apply(new BookSaleCompleted($this->id));
+    }
+
+    public function completePayment()
+    {
+        $this->apply(new BookPayedFor($this->id));
     }
 
     public function applyBookOffered(BookOffered $event)

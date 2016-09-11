@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Books;
 
-use Francken\Tests\Application\ReadModelTestCase as TestCase;
-use Francken\Application\Books\Book;
+use Francken\Tests\Application\ReadModelTestCase;
+use Francken\Application\Books\AvailableBook;
 use Francken\Domain\Books\BookId;
 
-class BookTest extends TestCase
+class AvailableBookTest extends ReadModelTestCase
 {
     /** @test */
     function a_book_has_a_title_and_authors()
     {
         $id = BookId::generate();
 
-        $book = new Book(
+        $book = new AvailableBook(
             $id,
             "Domain-driven design",
             "Eric J. Evans",
             1599,
             "0534408133",
-            "www.blabla.jpg");
+            "www.blabla.jpg",
+            false);
 
         $this->assertEquals($book->getId(), (string)$id);
         $this->assertEquals($book->bookId(), $id);
@@ -30,18 +31,20 @@ class BookTest extends TestCase
         $this->assertEquals($book->price(), 1599);
         $this->assertEquals($book->isbn(), "0534408133");
         $this->assertEquals($book->pathToCover(), "www.blabla.jpg");
+        $this->assertEquals($book->salePending(), false);
     }
 
-    protected function createInstance() : Book
+    protected function createInstance() : AvailableBook
     {
         $id = BookId::generate();
 
-        return new Book(
+        return new AvailableBook(
             $id,
             "Domain-driven design",
             "Eric J. Evans",
             1599,
             "0534408133",
-            "www.blabla.jpg");
+            "www.blabla.jpg",
+            false);
     }
 }

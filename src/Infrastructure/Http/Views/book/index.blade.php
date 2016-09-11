@@ -2,7 +2,7 @@
 
 
 @section('content')
-  
+
   <div class="jumbotron">
     <h1>Second hand books</h1>
     <p>
@@ -21,11 +21,11 @@
     @foreach($books as $book)
     <div class="col-xs-6 col-sm-4 col-md-3">
       <div class="thumbnail">
-        <img src="{{ $book->path_to_cover }}" alt="...">
+        <img src="{{ $book->pathToCover() }}" alt="...">
         <div class="caption">
-          <h3>{{ $book->title }}</h3>
-          <p>{{ $book->authors  }}</p>
-          <p>€{{ number_format($book->price/100, 2, ",", "") }} <a class="btn btn-primary" href="/book/{{ $book->id }}">Buy!</a></p>
+          <h3>{{ $book->title() }}</h3>
+          <p>{{ $book->author()  }}</p>
+          <p>€{{ number_format($book->price()/100, 2, ",", "") }} <a class="btn btn-primary" href="/book/{{ $book->bookId() }}">Buy!</a></p>
         </div>
       </div>
     </div>

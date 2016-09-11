@@ -8,13 +8,21 @@ use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Members\MemberId;
-use Francken\Application\Books\AllBooks;
+use Francken\Application\ReadModelRepository;
+
 
 class BookController extends Controller
 {
+    private $books;
+
+    public function __construct(ReadModelRepository $books)
+    {
+        $this->books = $books;
+    }
+
     public function index()
     {
-        $books = AllBooks::all();
+        $books = $this->books->findAll();
 
         return view('book.index',
             ['books'=> $books]);
@@ -22,7 +30,7 @@ class BookController extends Controller
 
     public function show($id)
     {
-        $book = AllBooks::findOrFail($id);
+        $book = $this->books->find($id);
         return view('book.show',
             ['book' => $book]);
     }

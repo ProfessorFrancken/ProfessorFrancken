@@ -8,7 +8,7 @@ use Francken\Tests\Domain\EventTestCase as Testcase;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 
-class BookEventTest extends Testcase
+class BookSaleCancelledTest extends Testcase
 {
     /** @test */
     public function an_event_holds_data()
