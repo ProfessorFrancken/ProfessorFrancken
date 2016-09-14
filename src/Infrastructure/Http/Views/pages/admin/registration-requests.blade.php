@@ -2,8 +2,8 @@
 
 @section('content')
   <h1>Registrations</h1>
-  <table class="table">
-      <caption>Open registration requests, </caption>
+  <table class="table table-hover">
+      <caption>Open registration requests, you can either inspect a request (and possibly complete the registration), or mark it as spam in which case the request will be deleted.</caption>
       <thead>
           <tr>
               <th>Fullname</th>
@@ -38,6 +38,10 @@
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
+                  <button class="btn btn-danger">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      Mark as spam
+                  </button>
               </td>
           </tr>
           <tr>
@@ -62,6 +66,10 @@
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
+                  <button class="btn btn-danger">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      Mark as spam
+                  </button>
               </td>
           </tr>
           <tr>
@@ -86,9 +94,13 @@
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
+                  <button class="btn btn-danger">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      Mark as spam
+                  </button>
               </td>
           </tr>
-          <tr>
+          <tr class="success">
               <th scope="row">Mark Redeman</th>
               <td>
                   <i class="fa fa-check-circle-o" aria-hidden="true"></i>
@@ -110,6 +122,10 @@
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
+                  <button class="btn btn-danger">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      Mark as spam
+                  </button>
               </td>
           </tr>
       </tbody>
