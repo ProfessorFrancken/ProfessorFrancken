@@ -1,5 +1,4 @@
-@extends('home-layout')
-
+@extends('base-layout')
 
 @section('content')
   <h1><strong>You</strong> should become a Francken Member!</h1>
