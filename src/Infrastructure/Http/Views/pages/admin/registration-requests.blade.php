@@ -34,11 +34,11 @@
                   Last thursday
               </td>
               <td>
-                  <a type="button" class="btn btn-default" href="/admin/registration-requests/mark-redeman">
+                  <a type="button" class="btn btn-default btn-xs" href="/admin/registration-requests/mark-redeman">
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
-                  <button class="btn btn-danger">
+                  <button class="btn btn-danger btn-xs">
                       <i class="fa fa-trash-o" aria-hidden="true"></i>
                       Mark as spam
                   </button>
@@ -62,11 +62,11 @@
                   2 weeks ago
               </td>
               <td>
-                  <a type="button" class="btn btn-default" href="/admin/registration-requests/">
+                  <a type="button" class="btn btn-default btn-xs" href="/admin/registration-requests/mark-redeman">
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
-                  <button class="btn btn-danger">
+                  <button class="btn btn-danger btn-xs">
                       <i class="fa fa-trash-o" aria-hidden="true"></i>
                       Mark as spam
                   </button>
@@ -90,11 +90,11 @@
                   Yesterday
               </td>
               <td>
-                  <a type="button" class="btn btn-default" href="/admin/registration-requests/">
+                  <a type="button" class="btn btn-default btn-xs" href="/admin/registration-requests/mark-redeman">
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
-                  <button class="btn btn-danger">
+                  <button class="btn btn-danger btn-xs">
                       <i class="fa fa-trash-o" aria-hidden="true"></i>
                       Mark as spam
                   </button>
@@ -118,11 +118,11 @@
                   Yesterday
               </td>
               <td>
-                  <a type="button" class="btn btn-default" href="/admin/registration-requests/">
+                  <a type="button" class="btn btn-default btn-xs" href="/admin/registration-requests/mark-redeman">
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
-                  <button class="btn btn-danger">
+                  <button class="btn btn-danger btn-xs">
                       <i class="fa fa-trash-o" aria-hidden="true"></i>
                       Mark as spam
                   </button>

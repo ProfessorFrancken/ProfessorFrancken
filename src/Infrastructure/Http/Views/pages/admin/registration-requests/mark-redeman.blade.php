@@ -84,11 +84,11 @@
             Membership payment
         </h3>
         <p class="alert alert-warning">
-            The student's <strong>ISBN</strong> has not yet been provided.
+            The student's <strong>IBAN</strong> has not yet been provided.
         </p>
 
         <dl class="dl-horizontal">
-            <dt>ISBN</dt>
+            <dt>IBAN</dt>
             <dd>
                 <p class="text-warning">
                     Not yet provided
@@ -132,13 +132,13 @@
 
         <form>
             <div class="form-group">
-                <label for="isbn" class="control-label">Isbn</label>
-                <input class="form-control" name="isbn" id="isbn">
+                <label for="iban" class="control-label">iban</label>
+                <input class="form-control" name="iban" id="iban">
             </div>
 
             <div class="form-group">
                 <label for="reason" class="control-label">Reason</label>
-                <textarea class="form-control" name="reason" id="reason" rows="3" placeholder="Student does not yet have a ISBN"></textarea>
+                <textarea class="form-control" name="reason" id="reason" rows="3" placeholder="Student does not yet have a IBAN"></textarea>
             </div>
 
             <div class="btn btn-success btn-block btn-lg">
