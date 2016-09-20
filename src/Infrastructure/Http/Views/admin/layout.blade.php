@@ -1,4 +1,3 @@
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -9,6 +8,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
@@ -44,6 +44,15 @@
             <li><a href="/admin/overview">Overview </a></li>
             <li><a href="/admin/analytics">Analytics</a></li>
             <li><a href="/admin/export">Export</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+              <li>
+                  <strong>
+                      Members
+                  </strong>
+              </li>
+              <li><a href="/admin/registration-requests">Registrations</a></li>
+              <li><a href="/admin/member">Members</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="/admin/member">Members</a></li>
