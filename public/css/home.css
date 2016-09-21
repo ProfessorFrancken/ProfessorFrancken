@@ -1,7 +1,6 @@
 body {
     width: 100%;
     height: 100%;
-    padding-top: 130px;
     font-family: 'Lora', 'Times New Roman', serif;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 20px;
@@ -11,48 +10,6 @@ body {
 html {
     width: 100%;
     height: 100%;
-}
-
-.navbar {
-  /* background-color: #31255E; */
-}
-
-.navbar-default {
-    background-color: #f8f8f8;
-    border-color: #e7e7e7;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: #31255E;
-}
-
-.navbar-default a:hover {
-  color: #31255E;
-  text-decoration: underline;
-}
-
-.sub-menu {
-    background-color: #483A78;
-    padding: 0;
-    text-align: center;
-}
-
-.sub-menu ul {
-    display: inline-block;
-    float: none;
-}
-
-.sub-menu a {
-    padding: 10px 30px;
-}
-
-.sub-menu .navbar-nav .sub-menu-item > a {
-    color: white;
-}
-
-
-#main-menu {
-    padding: 15px;
 }
 
 p {
@@ -93,12 +50,6 @@ footer {
 
 footer {
   background-color: lightgray;
-}
-
-header {
-  background-color: #31255E;
-  border-bottom: 25px solid #483A78;
-  margin-bottom: 1em;
 }
 
 .about-francken {

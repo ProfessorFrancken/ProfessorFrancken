@@ -1,0 +1,328 @@
+ /* COPIED from GSVNet */
+.nav-bar {
+	  /* @include container; */
+	  /* @include clearfix; */
+
+    width: 960px;
+    max-width: 960px;
+    margin-right: auto;
+    padding: 0;
+	  padding: 0;
+	  font-family: serif;  /* $font-family-sans; */
+}
+
+ /* This is the wrapper of the toggle icon for the mobile menu */
+
+.logo {
+	  display: block;
+	  margin: 0;
+	  text-align: center;
+	  float: left;
+
+}
+.logo.active {
+    background: #31255E; /* $darkPurple; */
+}
+
+
+.logo-link {
+	  display: block;
+	  width: 110px;
+	  height: 90px;
+	  padding-right: 14px;
+	  background: url(../images/LOGO_KAAL.png) no-repeat center center;
+    /* background: url(../images/LOGO_KAAL.png) no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.logo-link span {
+	  display: none;
+}
+
+.nav-bar-links {
+	  /* @include clearfix; */
+	  margin: 0;
+	  padding: 0;
+	  list-style-type: none;
+	  z-index: 200; /* $gsvnet-z-index-base; */
+	  transition: transform 0.3s cubic-bezier(.62,.28,.23,.99);
+}
+
+.top-level-link {
+	  text-decoration: none;
+	  padding: 0 .8em;
+	  display: inline-block;
+	  border-left: 1px solid #DDD;
+	  line-height: 90px;
+
+}
+
+.top-level-link:hover {
+		text-decoration: none;
+}
+
+.has-sub-menu .top-level-link {
+	  padding-right: 3px;
+}
+
+.active-menu {
+    background: #31255E; /* $darkPurple; */
+	  color: #FFF;
+}
+
+.active-menu a:link, .active-menu a:visited {
+		                     color: #FFF;
+                     }
+
+.active-menu:after {
+		width: 0;
+		height: 0;
+		content: "";
+		margin-left: -10px;
+		display: block;
+		position: absolute;
+		bottom: -9px;
+		left: 50%;
+		z-index: 1;
+		border-top: 10px solid #2a1443;
+		border-right: 10px solid transparent;
+		border-left: 10px solid transparent;
+}
+
+.top-level-menuitem {
+	  display: block;
+	  float: left;
+	  position: relative;
+}
+
+.top-caret {
+    height: 90px;
+	  display: inline-block;
+	  cursor: pointer;
+	  padding: 0 7px 0 4px;
+	  line-height: 90px;
+	  -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    vertical-align: top; /* lost 1px bug in chrome op */
+}
+
+.active-menu.active-sub-menu .top-caret {
+	  background: #483A78; /* $lightPurple; */
+}
+
+.active-sub-menu .top-caret {
+    background: #CCC; /*$grey;*/
+}
+
+.nav-toggle {
+	  background: #483A78; /* $lightPurple; */
+	  padding: 1em;
+	  border: 0;
+	  display: none;
+	  float: right;
+}
+
+.nav-toggle:hover {
+    background: #483A78; /* $lighterPurple; */
+}
+
+.nav-toggle	.menu-icon-bar + .menu-icon-bar {
+    margin-top: 4px;
+}
+
+.nav-toggle .menu-icon-bar {
+		width: 22px;
+		height: 2px;
+		background: #FFF;
+		display: block;
+}
+
+.nav-profile-image {
+	  vertical-align: -6px;
+	  margin-right: 9px;
+}
+
+/** Top Sub menu **/
+.sub-level-menu {
+    display: none;
+	  position: absolute;
+	  top: 90px;
+	  left: 0;
+	  list-style-type: none;
+	  padding: 0;
+	  background: #FFF;
+	  z-index: 201; /* $gsvnet-z-index-base + 1; */
+	  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	  height: 0;
+	  width: 0;
+	  overflow: hidden;
+}
+
+.active-sub-menu .sub-level-menu{
+	  height: auto;
+	  min-width: 200px;
+	  width: auto;
+	  display: block;
+}
+
+.sub-level-link, a.sub-level-link:link, a.sub-level-link:visited {
+	                                          display: block;
+	                                          padding: 0 .8em;
+	                                          line-height: 3;
+	                                          border: 1px solid #CCC; /* $lightGrey; */
+	                                          border-top: 0;
+	                                          color: #444; /* $body-copy-color; */
+                                        }
+
+.extra-submenu-nav {
+	  background: #FFF;
+	  font-family: sans-serif; /* $font-family-sans; */
+	  padding-top: 1em;
+}
+
+.extra-submenu {
+	  /* @include container; */
+	  /* @include clearfix; */
+
+    width: 960px;
+    max-width: 960px;
+    margin-right: auto;
+    padding: 0;
+
+	  padding: 0;
+	  margin-top: 0;
+	  margin-bottom: 0;
+
+	  border-bottom: 1px solid #DDD;
+
+
+}
+
+.extra-submenu .top-level-link {
+		border: 0;
+		line-height: 45px;
+}
+
+.extra-submenu .active .top-level-link {
+		font-weight: 900;
+}
+
+/** Responsive **/
+@media only screen and (max-width: 1032px /* $firstbreakpoint */){
+    .nav-bar {
+	      width: auto;
+	      padding-left: 36px;
+	      padding-right: 36px;
+	  }
+
+	  .extra-submenu-nav {
+		    display: none;
+	  }
+
+	  .top-caret {
+		    display: block;
+		    float: right;
+		    text-align: center;
+		    padding: 0;
+		    width: 14%;
+
+	  }
+
+	  .top-caret .menu-caret {
+	      border-top-color: #FFF;
+	  }
+
+	  .top-level-link:link,
+	  .top-level-link:visited {
+		    background: #31255E; /* $darkPurple; */
+		    color: #FFF;
+		    border: 0;
+		    display: block;
+		    float: left;
+		    padding: 0 0 0 4%;
+		    width: 82%;
+	  }
+
+	  .sub-level-menu {
+		    width: 100%;
+		    position: static;
+	  }
+
+	  .nav-toggle {
+		    display: block;
+	  }
+
+	  .nav-bar-links {
+		    position: absolute;
+		    bottom: 100%;
+		    left: 0;
+		    width: 100%;
+		    background: #31255E; /* $darkPurple; */
+		    padding-top: 76px;
+	  }
+
+	  .main-menu-active {
+		    transform: translateY(100%);
+		    -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		    -moz-box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+	  }
+
+	  .active-menu:after {
+		    background: 0;
+		    width: auto;
+		    height: 0;
+		    overflow: hidden;
+		    content: "";
+		    display: none;
+		    position: static;
+		    bottom: auto;
+		    left: auto;
+		    right: auto;
+		    z-index: 201; /* $gsvnet-z-index-base + 1; */
+	  }
+
+	  .top-level-menuitem {
+		    /* @include clearfix; */
+		    float: none;
+		    display: block;
+		    height: auto;
+	  }
+}
+
+
+@media only screen and (max-width: 480px){
+	  .nav-bar-extras {
+		    right: 1em;
+	  }
+
+	  .nav-bar {
+		    width: auto;
+		    padding-left: 18px;
+		    padding-right: 18px;
+	  }
+}
+
+.menu-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.nav-bar-extras {
+	  position: absolute;
+	  right: 1em;
+	  top: 14px;
+	  z-index: 202; /* $gsvnet-z-index-base + 2; */
+    display: block ;
+}
