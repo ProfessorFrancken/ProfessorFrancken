@@ -1,68 +1,71 @@
-<header class="top-header container">
-    <nav class="nav-bar clearfix">
-        <div class="nav-bar-extras">
-            <button id="navbar-toggler" class="nav-toggle">
-                <span class="menu-icon-bar"></span>
-                <span class="menu-icon-bar"></span>
-                <span class="menu-icon-bar"></span>
-            </button>
-        </div>
+<div class="header-wrapper">
+    <header class="top-header container">
+        <nav class="nav-bar clearfix">
+            <div class="nav-bar-extras">
+                <button id="navbar-toggler" class="nav-toggle">
+                    <span class="menu-icon-bar"></span>
+                    <span class="menu-icon-bar"></span>
+                    <span class="menu-icon-bar"></span>
+                </button>
+            </div>
 
-        <h1 class="logo">
-            <a class="logo-link i-gsv-top" href="/"><span>T.F.V. 'Professor Francken'</span></a>
-        </h1>
+            <h1 class="logo">
+                <a class="logo-link i-gsv-top" href="/"><span>T.F.V. 'Professor Francken'</span></a>
+            </h1>
 
-        <ul class="nav-bar-links clearfix" id="main-menu">
-            <li class="top-level-menuitem has-sub-menu clearfix">
-                <a class="top-level-link" href="/about">
-                    About
-                </a>
-                <span aria-expanded="false" class="top-caret" role="button">&nbsp;<i class="menu-caret"></i>&nbsp;</span>
-                <ul class="sub-level-menu">
-                    @foreach ([['url' => "/about/history", 'title' => 'History'], ['url' => "/about/honorary-members", 'title' => 'Honerary members'], ['url' => "/about/boards", 'title' => 'Boards'], ['url' => "/about/committees", 'title' => 'Committees'], ['url' => "/about/francken-vrij", 'title' => 'Francken Vrij']] as $item)
-                        <li>
-                            <a class="sub-level-link" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </li>
-            <li class="top-level-menuitem clearfix">
-                <a class="top-level-link" href="/news">News</a>
-                <span aria-expanded="false" class="top-caret" role="button">&nbsp;<i class="menu-caret"></i>&nbsp;</span>
-                <ul class="sub-level-menu">
-                    @foreach ([['url' => "/post", 'title' => 'All'], ['url' => "/news", 'title' => 'News'], ['url' => "/blog", 'title' => 'Blog'],] as $item)
-                        <li>
-                            <a class="sub-level-link" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </li>
-            <li class="top-level-menuitem clearfix">
-                <a class="top-level-link" href="/study">Study</a>
-            </li>
-            <li class="top-level-menuitem clearfix">
-                <a class="top-level-link" href="/career">Career</a>
-                <span aria-expanded="false" class="top-caret" role="button">&nbsp;<i class="menu-caret"></i>&nbsp;</span>
-                <ul class="sub-level-menu">
-                    @foreach ([['url' => "/career/job-openings", 'title' => 'Job openings'], ['url' => "/career/companies", 'title' => 'Company profiles'], ['url' => "/career/excursions", 'title' => 'Excursions'],] as $item)
-                        <li>
-                            <a class="sub-level-link" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </li>
-            <li class="top-level-menuitem clearfix">
-                <a class="top-level-link" href="/books">books</a>
-            </li>
-            <li class="top-level-menuitem clearfix">
-                <a class="top-level-link" href="https://www.flickr.com/photos/fotocie/sets/">Photos</a>
-            </li>
-            <li class="top-level-menuitem clearfix">
-                <a class="top-level-link" href="/contact">Contact</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+            <ul class="nav-bar-links clearfix" id="main-menu">
+                <li class="top-level-menuitem has-sub-menu clearfix">
+                    <a class="top-level-link" href="/about">
+                        About
+                    </a>
+                    <span aria-expanded="false" class="top-caret" role="button">&nbsp;<i class="menu-caret"></i>&nbsp;</span>
+                    <ul class="sub-level-menu">
+                        @foreach ([['url' => "/about/history", 'title' => 'History'], ['url' => "/about/honorary-members", 'title' => 'Honerary members'], ['url' => "/about/boards", 'title' => 'Boards'], ['url' => "/about/committees", 'title' => 'Committees'], ['url' => "/about/francken-vrij", 'title' => 'Francken Vrij']] as $item)
+                            <li>
+                                <a class="sub-level-link" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="top-level-menuitem clearfix">
+                    <a class="top-level-link" href="/news">News</a>
+                    <span aria-expanded="false" class="top-caret" role="button">&nbsp;<i class="menu-caret"></i>&nbsp;</span>
+                    <ul class="sub-level-menu">
+                        @foreach ([['url' => "/post", 'title' => 'All'], ['url' => "/news", 'title' => 'News'], ['url' => "/blog", 'title' => 'Blog'],] as $item)
+                            <li>
+                                <a class="sub-level-link" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="top-level-menuitem clearfix">
+                    <a class="top-level-link" href="/study">Study</a>
+                </li>
+                <li class="top-level-menuitem clearfix">
+                    <a class="top-level-link" href="/career">Career</a>
+                    <span aria-expanded="false" class="top-caret" role="button">&nbsp;<i class="menu-caret"></i>&nbsp;</span>
+                    <ul class="sub-level-menu">
+                        @foreach ([['url' => "/career/job-openings", 'title' => 'Job openings'], ['url' => "/career/companies", 'title' => 'Company profiles'], ['url' => "/career/excursions", 'title' => 'Excursions'],] as $item)
+                            <li>
+                                <a class="sub-level-link" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="top-level-menuitem clearfix">
+                    <a class="top-level-link" href="/books">books</a>
+                </li>
+                <li class="top-level-menuitem clearfix">
+                    <a class="top-level-link" href="https://www.flickr.com/photos/fotocie/sets/">Photos</a>
+                </li>
+                <li class="top-level-menuitem clearfix">
+                    <a class="top-level-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</div>
+
 
 {{--
 <!-- Navigation -->

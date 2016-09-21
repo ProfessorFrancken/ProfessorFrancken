@@ -23,13 +23,25 @@
 .logo.active {
     background: #31255E; /* $darkPurple; */
 }
+.top-level-menuitem > a {
+    color: #31255E;
+}
 
+.header-wrapper {
+    border-bottom: 1px solid #31255E;
+		-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+		-moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+		box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    background: #fff;
+}
 
 .logo-link {
 	  display: block;
-	  width: 110px;
-	  height: 90px;
-	  padding-right: 14px;
+	  width: 100px;
+	  height: 80px;
+    margin-top: 5px;
+	  padding-right: 24px;
+    margin-right: 0.25em;
 	  background: url(../images/LOGO_KAAL.png) no-repeat center center;
     /* background: url(../images/LOGO_KAAL.png) no-repeat center center fixed; */
     -webkit-background-size: cover;
