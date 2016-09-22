@@ -27,7 +27,6 @@
     font-weight: 500;
     font-family:gebouw13;
     color:#000000;
-    font-size:50px;
  }
 @font-face {
     font-family: gebouw13;
@@ -196,7 +195,7 @@ p {
             <h2 class="brouwcie-title text-center">
                 Francken brouwcommissie
             </h2>
-            <img alt="Franckenators" class="aligncenter" src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2015/01/Brouwcie.png" width="720">
+            <img alt="Franckenators" class="img-responsive aligncenter" src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2015/01/Brouwcie.png" width="720">
         </div>
     </div>
     <div class="row">
