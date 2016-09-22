@@ -1,6 +1,6 @@
 // From gsvnet
 Menu = (function(){
-	var activeClass = 'active-sub-menu',
+	var activeClass = 'navigation-list__item--active-sub-list',
 		$mainMenu;
 
 	function collapse(){
@@ -45,7 +45,7 @@ Menu = (function(){
 
 		// Check if event is already handled
         if(e.handled !== true) {
-			      $mainMenu.toggleClass('main-menu-active');
+			      $mainMenu.toggleClass('navigation-list--active');
             e.handled = true;
         } else {
             return false;
@@ -85,7 +85,7 @@ Menu = (function(){
 function overall() {
 	  $mainMenu = $('#main-menu');
 
-	  Menu.init($mainMenu, $('.top-caret'), $('#navbar-toggler'));
+	  Menu.init($mainMenu, $('.navigation-sub-list__toggle'), $('#navbar-toggler'));
 }
 
 overall();

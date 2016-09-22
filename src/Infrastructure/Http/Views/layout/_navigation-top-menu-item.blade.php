@@ -1,16 +1,20 @@
-{{-- add `active-menu-item` to the li tag when visiting the associated page --}}
-<li class="top-level-menuitem active-menu-item clearfix">
-    <a class="top-level-link" href="{{ $url }}">
+{{-- add `navigation-list__item--active` to the li tag when visiting the associated page --}}
+<li class="navigation-list__item clearfix">
+    <a class="navigation-list__link" href="{{ $url }}">
         {{ $title }}
     </a>
     @if (isset($subItems))
-        <span aria-expanded="false" class="top-caret" role="button">
-            &nbsp;<i class="menu-caret"></i>&nbsp;
+        <span aria-expanded="false" class="navigation-sub-list__toggle" role="button">
+            &nbsp;<span class="caret" aria-expanded="false" role="button"></span>&nbsp;
         </span>
-        <ul class="sub-level-menu">
+
+        {{-- may refactored to a horizontal-list --}}
+        <ul class="navigation-sub-list">
             @foreach ($subItems as $item)
                 <li>
-                    <a class="sub-level-link" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
+                    <a class="navigation-sub-list__link" href="{{ $item['url'] }}">
+                        {{ $item['title'] }}
+                    </a>
                 </li>
             @endforeach
         </ul>

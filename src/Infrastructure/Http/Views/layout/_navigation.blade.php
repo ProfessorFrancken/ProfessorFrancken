@@ -6,7 +6,7 @@
         the structure on the menu
 
     --}}
-    <ul class="nav-bar-links clearfix" id="main-menu">
+    <ul class="navigation-list clearfix" id="main-menu">
         @include('layout._navigation-top-menu-item', [
             'url' => '/about',
             'title' => 'About',
@@ -43,27 +43,28 @@
     </ul>
 @endsection
 
-@section('mobile-menu')
+@section('hamburger-menu')
     {{-- This section adds the Hamburger menu --}}
-    <div class="nav-bar-extras">
-        <button id="navbar-toggler" class="nav-toggle">
-            <span class="menu-icon-bar"></span>
-            <span class="menu-icon-bar"></span>
-            <span class="menu-icon-bar"></span>
+    <div class="navigation__mobile-menu">
+        <button id="navbar-toggler" class="hamburger-menu">
+            <span class="hamburger-menu__line"></span>
+            <span class="hamburger-menu__line"></span>
+            <span class="hamburger-menu__line"></span>
         </button>
     </div>
 @endsection
 
-<header class="header-wrapper">
-        <nav class="container nav-bar clearfix">
-            @yield('mobile-menu')
+<header class="francken-header">
+    {{-- Change to : francken-header-container --}}
+    <nav class="clearfix container">
+        @yield('hamburger-menu')
 
-            <h1 class="logo">
-                <a class="logo-link" href="/">
-                    <span>T.F.V. 'Professor Francken'</span>
-                </a>
-            </h1>
+        <h1 class="navigation__logo">
+            <a class="navigation__logo-link" href="/">
+                <span>T.F.V. 'Professor Francken'</span>
+            </a>
+        </h1>
 
-            @yield('menu-items')
-        </nav>
+        @yield('menu-items')
+    </nav>
 </header>
