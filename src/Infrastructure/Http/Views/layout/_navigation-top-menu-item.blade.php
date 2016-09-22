@@ -1,4 +1,5 @@
-<li class="top-level-menuitem clearfix">
+{{-- add `active-menu-item` to the li tag when visiting the associated page --}}
+<li class="top-level-menuitem active-menu-item clearfix">
     <a class="top-level-link" href="{{ $url }}">
         {{ $title }}
     </a>

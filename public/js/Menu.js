@@ -45,7 +45,7 @@ Menu = (function(){
 
 		// Check if event is already handled
         if(e.handled !== true) {
-			$mainMenu.toggleClass('main-menu-active');
+			      $mainMenu.toggleClass('main-menu-active');
             e.handled = true;
         } else {
             return false;
