@@ -1,9 +1,11 @@
-<li class="top-level-menuitem {{ isset($subItems) ? 'has-sub-menu' : ''  }} clearfix">
+<li class="top-level-menuitem clearfix">
     <a class="top-level-link" href="{{ $url }}">
         {{ $title }}
     </a>
     @if (isset($subItems))
-        <span aria-expanded="false" class="top-caret" role="button">&nbsp;<i class="menu-caret"></i>&nbsp;</span>
+        <span aria-expanded="false" class="top-caret" role="button">
+            &nbsp;<i class="menu-caret"></i>&nbsp;
+        </span>
         <ul class="sub-level-menu">
             @foreach ($subItems as $item)
                 <li>

@@ -65,22 +65,13 @@ footer {
 
 footer {
   background-color: #31255E;
-  /* background-color: #343538; */
   color: white;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .sidebar {
-  /* padding: 0 1em; */
   margin-left: 4em;
   padding-right: 2em;
-  /* background-color: #f9f9f9; */
-  /* background-color: #343538; */
-  /* color: white; */
-
-  /* border-right: thin solid #eee; */
-  /* padding-left: 2em; */
-  /* margin-left: 1em; */
 }
 
 .sidebar h3, .sidebar h4 {
@@ -115,12 +106,6 @@ footer {
 .sidebar .show-more {
   text-align: center;
   text-decoration: underline;
-}
-
-.main-content {
-  /* border-left: thin solid #eee; */
-  /* padding-left: 2em; */
-  /* margin-left: 1em; */
 }
 
 .main-content article {
