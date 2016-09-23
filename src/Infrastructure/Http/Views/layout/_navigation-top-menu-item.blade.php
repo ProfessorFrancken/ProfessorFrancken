@@ -1,5 +1,7 @@
-{{-- add `navigation-list__item--active` to the li tag when visiting the associated page --}}
-<li class="navigation-list__item clearfix">
+{{-- Check whether this url or one of its siblings is being visited --}}
+<?php $active = '/' . Request::segment(1) == $url; ?>
+
+<li class="navigation-list__item {{ $active ? 'navigation-list__item--active' : '' }} clearfix">
     <a class="navigation-list__link" href="{{ $url }}">
         {{ $title }}
     </a>
@@ -11,11 +13,11 @@
         {{-- may refactored to a horizontal-list --}}
         <ul class="navigation-sub-list">
             @foreach ($subItems as $item)
-                <li>
-                    <a class="navigation-sub-list__link" href="{{ $item['url'] }}">
-                        {{ $item['title'] }}
-                    </a>
-                </li>
+                @include('layout._navigation-sub-item', [
+                    'url' => $item['url'],
+                    'title' => $item['title'],
+                    'active' => $active,
+                ])
             @endforeach
         </ul>
     @endif

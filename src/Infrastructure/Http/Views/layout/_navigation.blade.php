@@ -67,4 +67,10 @@
 
         @yield('menu-items')
     </nav>
+
+    <ul class="navigation-desktop">
+        <div class="container">
+            @stack('sub-navigation')
+        </div>
+    </ul>
 </header>

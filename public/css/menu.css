@@ -1,6 +1,5 @@
 .francken-header {
 		box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    border-bottom: 25px solid #002E60;
     background: #fff;
 	  font-family: serif;  /* $font-family-sans; */
     font-size: 20px;
@@ -148,6 +147,33 @@
         color: #444; /* $body-copy-color; */
     }
 
+.navigation-desktop {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    border-top: 2px solid #002E60;
+    background: #fafafa;
+}
+
+.navigation-desktop-list__item {
+	  float: left;
+}
+
+.navigation-desktop-list__link {
+    color: #31255e;
+	  text-decoration: none;
+	  padding: 0 .8em;
+	  display: inline-block;
+	  border-left: 1px solid #DDD;
+	  line-height: 50px;
+}
+
+    .navigation-desktop-list__link:hover {
+        color: #6c5ea2;
+		    text-decoration: none;
+    }
+
 /* Wrapper around the Hambuger menu */
 .navigation__mobile-menu {
 	  position: absolute;
@@ -182,7 +208,6 @@
 /** Responsive **/
 @media only screen and (max-width: 1032px /* $firstbreakpoint */){
     .francken-header {
-        border-bottom: none;
 		    box-shadow: none;
     }
 
@@ -254,6 +279,10 @@
 	  .navigation-list__item--active:after {
 		    display: none;
 	  }
+
+    .navigation-desktop {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 480px) {
