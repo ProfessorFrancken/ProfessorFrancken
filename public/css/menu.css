@@ -1,6 +1,6 @@
 .francken-header {
 		box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    border-bottom: 25px solid #483A78;
+    border-bottom: 25px solid #002E60;
     background: #fff;
 	  font-family: serif;  /* $font-family-sans; */
     font-size: 20px;
@@ -27,7 +27,7 @@
 
     .navigation__logo-link span {
     	  display: none;
-        color: #31255E;
+        color: #001841;
         line-height: 90px;
         margin-left: 120px;
         font-size: 20px;
@@ -62,7 +62,7 @@
 
 /* Color the active menu item */
 .navigation-list__item--active {
-    background: #31255E; /* $darkPurple; */
+    background: #001841; /* $darkPurple; */
 	  color: #FFF;
 }
 
@@ -88,7 +88,7 @@
     /* When the associated page is visited we want the background color
      of a selected caret to be somewhat lighter than the item's background */
     .navigation-list__item--active.navigation-list__item--active-sub-list .navigation-sub-list__toggle {
-    	  background: #483A78; /* $lightPurple; */
+    	  background: #002E60; /* $lightPurple; */
     }
 
 .navigation-sub-list__toggle {
@@ -159,14 +159,14 @@
 
     .hamburger-menu {
     	  display: none;
-	      background: #483A78; /* $lightPurple; */
+	      background: #002E60; /* $lightPurple; */
     	  padding: 1em;
 	      border: 0;
 	      float: right;
     }
 
     .hamburger-menu:hover {
-        background: #483A78; /* $lighterPurple; */
+        background: #002E60; /* $lighterPurple; */
     }
     .hamburger-menu .hamburger-menu__line + .hamburger-menu__line {
         margin-top: 4px;
@@ -199,7 +199,7 @@
 
 	  .navigation-list__link:link,
 	  .navigation-list__link:visited {
-		    background: #31255E; /* $darkPurple; */
+		    background: #001841; /* $darkPurple; */
 		    color: #FFF;
 		    border: 0;
 		    display: block;
@@ -222,7 +222,7 @@
 		    bottom: 100%;
 		    left: 0;
 		    width: 100%;
-		    background: #31255E; /* $darkPurple; */
+		    background: #001841; /* $darkPurple; */
 		    padding-top: 76px;
 	  }
 
