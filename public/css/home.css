@@ -1,7 +1,6 @@
 body {
     width: 100%;
     height: 100%;
-    padding-top: 130px;
     font-family: 'Lora', 'Times New Roman', serif;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 20px;
@@ -11,48 +10,6 @@ body {
 html {
     width: 100%;
     height: 100%;
-}
-
-.navbar {
-  /* background-color: #31255E; */
-}
-
-.navbar-default {
-    background-color: #f8f8f8;
-    border-color: #e7e7e7;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: #31255E;
-}
-
-.navbar-default a:hover {
-  color: #31255E;
-  text-decoration: underline;
-}
-
-.sub-menu {
-    background-color: #483A78;
-    padding: 0;
-    text-align: center;
-}
-
-.sub-menu ul {
-    display: inline-block;
-    float: none;
-}
-
-.sub-menu a {
-    padding: 10px 30px;
-}
-
-.sub-menu .navbar-nav .sub-menu-item > a {
-    color: white;
-}
-
-
-#main-menu {
-    padding: 15px;
 }
 
 p {
@@ -85,7 +42,7 @@ blockquote {
 }
 
 footer {
-  background-color: #31255E;
+  background-color: #001841;
   /* background-color: #343538; */
   color: white;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -95,41 +52,49 @@ footer {
   background-color: lightgray;
 }
 
-header {
-  background-color: #31255E;
-  border-bottom: 25px solid #483A78;
-  margin-bottom: 1em;
-}
-
 .about-francken {
-  border-top: thin solid #31255E;
-  border-bottom: thin solid #31255E;
+  border-top: thin solid #001841;
+  border-bottom: thin solid #001841;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .about-francken div {
-  background-color: #483A78;
+  background-color: #002E60;
   color: white;
 }
 
 footer {
-  background-color: #31255E;
-  /* background-color: #343538; */
+  background-color: #001841;
   color: white;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+footer a {
+    color: white;
+}
+
+.front-header {
+    background-color: #001841;
+    margin-bottom: 1em;
+    border-bottom: 25px solid #002E60;
+}
+
+.front-header__internal {
+    width:100%;
+    height: 400px;
+    color: white;
+}
+
+.front-header__header {
+    padding-top: 160px;
+    margin: 0;
+    text-align: center;
+    font-size: 50px
+}
+
 .sidebar {
-  /* padding: 0 1em; */
   margin-left: 4em;
   padding-right: 2em;
-  /* background-color: #f9f9f9; */
-  /* background-color: #343538; */
-  /* color: white; */
-
-  /* border-right: thin solid #eee; */
-  /* padding-left: 2em; */
-  /* margin-left: 1em; */
 }
 
 .sidebar h3, .sidebar h4 {
@@ -164,12 +129,6 @@ footer {
 .sidebar .show-more {
   text-align: center;
   text-decoration: underline;
-}
-
-.main-content {
-  /* border-left: thin solid #eee; */
-  /* padding-left: 2em; */
-  /* margin-left: 1em; */
 }
 
 .main-content article {
