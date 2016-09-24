@@ -10,4 +10,6 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/home.css" rel="stylesheet">
+
+    @stack('css')
 </head>
