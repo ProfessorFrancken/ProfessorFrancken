@@ -18,9 +18,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['prefix' => 'admin'], function () {
 
         //committees
-        Route::resource('committee', 'CommitteeController', ['except' => [
-            'create', 'edit'
-        ]]);
+        Route::resource('committee', 'CommitteeController', ['except' => ['edit']]);
 
         //posts: NEWS / BLOG
         Route::resource('post', 'PostController');

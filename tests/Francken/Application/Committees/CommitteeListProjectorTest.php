@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Committees;
 
 use Francken\Application\Projector;
-use Francken\Application\ReadModel\CommitteesList\CommitteesList;
-use Francken\Application\ReadModel\CommitteesList\CommitteesListProjector as CommitteeListProjector;
+use Francken\Application\Committees\CommitteesList;
+use Francken\Application\Committees\CommitteesListProjector as CommitteeListProjector;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
@@ -71,15 +71,21 @@ class CommitteeListProjectorTest extends TestCase
         ])->when(
             new MemberJoinedCommittee($id, $memberId)
         )->then([
-            new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy', [[
-                'uuid' => '6bd3f9b9-b910-4d4c-89ea-2f9af285c9bf',
-                'first_name' => 'Mark',
-                'last_name' => 'Redeman'
-            ]])
+            new CommitteesList($id,
+                'S[ck]rip(t|t?c)ie',
+                'Digital anarchy',
+                '',
+                '',
+                '',
+                [[
+                    'uuid' => '6bd3f9b9-b910-4d4c-89ea-2f9af285c9bf',
+                    'first_name' => 'Mark',
+                    'last_name' => 'Redeman'
+                ]])
         ])->when(
             new MemberLeftCommittee($id, $memberId)
         )->then([
-            new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy', [])
+            new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy', '', '', '', [])
         ]);
     }
 

@@ -84,3 +84,17 @@ body {
 .main .page-header {
   margin-top: 0;
 }
+
+/*
+ * Forms and inputs
+*/
+
+.edit-btn {
+  float: right;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.edit-field {
+  border-top-right-radius: 0px;
+}

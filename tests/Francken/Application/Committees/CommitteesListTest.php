@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Committees;
 
 use Francken\Tests\Application\ReadModelTestCase as TestCase;
-use Francken\Application\ReadModel\CommitteesList\CommitteesList;
+use Francken\Application\Committees\CommitteesList;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Committees\CommitteeId;
 
@@ -65,12 +65,12 @@ class CommitteesListTest extends TestCase
     }
 
     /** @test */
-    function the_goal_of_a_committee_can_be_changed()
+    function the_summary_of_a_committee_can_be_changed()
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
         $committee = $committee->changeGoal('Markt verovering');
-        $this->assertEquals('Markt verovering', $committee->goal());
+        $this->assertEquals('Markt verovering', $committee->summary());
     }
 
     protected function createInstance()

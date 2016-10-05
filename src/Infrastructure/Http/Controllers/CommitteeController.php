@@ -10,12 +10,12 @@ use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\MemberId;
-use App\ReadModel\CommitteesList\CommitteesListProjector;
+use Francken\Domain\Members\Email;
+use Francken\Application\Committees\CommitteesListProjector;
 use DB;
 
 class CommitteeController extends Controller
 {
-    //-------GET---------
     public function index()
     {
         $committees = DB::table('committees_list')->get();
@@ -25,11 +25,22 @@ class CommitteeController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('admin.committee.create');
+    }
+
     public function store(Request $req, CommitteeRepository $repo)
     {
         $generator = new Version4Generator();
         $id = new CommitteeId($generator->generate());
-        $committee = Committee::instantiate($id, $req->input('inputName'), $req->input('inputGoal'));
+        $committee = Committee::instantiate($id, $req->input('name'), $req->input('summary'));
+        $committee->setCommitteePage($req->input('page'));
+        try {
+            $committee->setEmail(new Email($req->input('email')));
+        } catch (Exception $e) {
+            $committee->setEmail(null);
+        }
 
         $repo->save($committee);
 
@@ -49,6 +60,13 @@ class CommitteeController extends Controller
     {
         $committee = $repo->load(new CommitteeId($id));
         $committee->edit($req->input('name'), $req->input('goal'));
+        $committee->setCommitteePage($req->input('page'));
+        try {
+            $committee->setEmail(new Email($req->input('email')));
+        } catch (Exception $e) {
+            $committee->setEmail(null);
+        }
+
         $repo->save($committee);
 
         return redirect('/admin/committee/' . $id);

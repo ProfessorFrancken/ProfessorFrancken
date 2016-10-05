@@ -1,13 +1,16 @@
 <?php
 
-namespace Francken\Application\ReadModel\CommitteesList;
+namespace Francken\Application\Committees;
 
+use League\CommonMark\CommonMarkConverter;
 use Francken\Application\Projector;
 use Francken\Application\ReadModelRepository as Repository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
+use Francken\Domain\Committees\Events\CommitteeEmailSet;
+use Francken\Domain\Committees\Events\CommitteePageSet;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
 
@@ -15,11 +18,13 @@ final class CommitteesListProjector extends Projector
 {
     private $members;
     private $committees;
+    private $markDownConverter;
 
-    public function __construct(Repository $committees, Repository $members)
+    public function __construct(Repository $committees, Repository $members, CommonMarkConverter $markDownConverter)
     {
         $this->members = $members;
         $this->committees = $committees;
+        $this->markDownConverter = $markDownConverter;
     }
 
     public function whenCommitteeInstantiated(CommitteeInstantiated $event)
@@ -29,6 +34,24 @@ final class CommitteesListProjector extends Projector
             $event->name(),
             $event->goal()
         );
+
+        $this->committees->save($committee);
+    }
+
+    public function whenCommitteeEmailSet(CommitteeEmailSet $event)
+    {
+        $committee = $this->committees->find((string)$event->committeeId());
+        $committee = $committee->changeEmail($event->email());
+
+        $this->committees->save($committee);
+    }
+
+    public function whenCommitteePageSet(CommitteePageSet $event)
+    {
+        $committee = $this->committees->find((string)$event->committeeId());
+        $committee = $committee->changeCommitteePage(
+            $event->page(),
+            $this->markDownConverter->convertToHtml($event->page()));
 
         $this->committees->save($committee);
     }
