@@ -58,8 +58,7 @@ class Committee extends AggregateRoot
 
     public function joinByMember(MemberId $memberId)
     {
-        if ($this->memberIsInCommittee($memberId))
-        {
+        if ($this->memberIsInCommittee($memberId)) {
             return;
         }
         $this->apply(new MemberJoinedCommittee($this->id, $memberId));
@@ -67,8 +66,7 @@ class Committee extends AggregateRoot
 
     public function leftByMember(MemberId $memberId)
     {
-        if (! $this->memberIsInCommittee($memberId))
-        {
+        if (! $this->memberIsInCommittee($memberId)) {
             return;
         }
 

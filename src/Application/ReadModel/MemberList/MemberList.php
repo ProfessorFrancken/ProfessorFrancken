@@ -11,25 +11,25 @@ final class MemberList implements ReadModelInterface, SerializableInterface
 {
     use Serializable;
 
-    private $uuid;
+    private $id;
     private $first_name;
     private $last_name;
 
     public function __construct(MemberId $id, string $firstName, string $lastName)
     {
-        $this->uuid = (string)$id;
+        $this->id = (string)$id;
         $this->first_name = $firstName;
         $this->last_name = $lastName;
     }
 
     public function getId()
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function memberId() : MemberId
     {
-        return new MemberId($this->uuid);
+        return new MemberId($this->id);
     }
 
     public function firstName() : string

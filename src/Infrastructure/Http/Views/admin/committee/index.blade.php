@@ -16,9 +16,10 @@
     @foreach ($committees as $committee)
       <tr>
         <td>{{ $i++ }}</td>
-        <td>{{ $committee->name }}</td>
-        <td>{{ $committee->summary }}</td>
-        <td><a href="/admin/committee/{{ $committee->id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        <td>{{ $committee->name() }}</td>
+        <td>{{ $committee->summary() }}</td>
+        <td>{{ (string)$committee->email() }}</td>
+        <td><a href="/admin/committee/{{ (string)$committee->committeeId() }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
       </tr>
     @endforeach
   </table>

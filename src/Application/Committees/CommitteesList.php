@@ -27,8 +27,8 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
         string $name,
         string $summary,
         Email $email = null,
-        string $markDown = "",
-        string $html = "",
+        string $markDown = '',
+        string $html = '',
         array $members = []
     ) {
         $this->id = (string)$id;
@@ -39,7 +39,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
         $this->html = $html;
 
         foreach ($members as $member) {
-            Assertion::keyIsset($member, 'uuid');
+            Assertion::keyIsset($member, 'id');
             Assertion::keyIsset($member, 'first_name');
             Assertion::keyIsset($member, 'last_name');
         }
@@ -90,7 +90,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
         return $this->id;
     }
 
-    public function changeEmail(Email $email)
+    public function changeEmail(Email $email = null)
     {
         return new CommitteesList($this->committeeId(), $this->name, $this->summary, $email, $this->markDown, $this->html, $this->members);
     }
@@ -122,7 +122,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
             array_merge(
                 $this->members,
                 [[
-                    "uuid" => (string)$memberId,
+                    "id" => (string)$memberId,
                     "first_name" => $firstName,
                     "last_name" => $lastName
                 ]]
@@ -142,7 +142,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
             array_filter(
                 $this->members,
                 function (array $member) use ($id) {
-                    return ! ($member['uuid'] == (string)$id);
+                    return ! ($member['id'] == (string)$id);
                 }
             )
         );

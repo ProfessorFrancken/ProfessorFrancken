@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Committees;
 
+use League\CommonMark\CommonMarkConverter;
 use Francken\Application\Projector;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector as CommitteeListProjector;
@@ -13,11 +14,14 @@ use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeJoinedFrancken;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
+use Francken\Domain\Committees\Events\CommitteeEmailSet;
+use Francken\Domain\Committees\Events\CommitteePageSet;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
 use Francken\Domain\Members\MemberId;
+use Francken\Domain\Members\Email;
 
 class CommitteeListProjectorTest extends TestCase
 {
@@ -50,9 +54,30 @@ class CommitteeListProjectorTest extends TestCase
             new CommitteeGoalChanged($id, 'Markt verovering')
         )->then([
             new CommitteesList($id, 'Compucie', 'Markt verovering')
+        ])->when(
+            new CommitteeEmailSet($id, new Email('scriptcie@professorfrancken.nl'))
+        )->then([
+            new CommitteesList($id, 'Compucie', 'Markt verovering', new Email('scriptcie@professorfrancken.nl'))
+        ])->when(
+            new CommitteeEmailSet($id, null)
+        )->then([
+            new CommitteesList($id, 'Compucie', 'Markt verovering', null)
         ]);
     }
 
+    /** @test */
+    function it_can_store_a_committee_page_using_mark_down()
+    {
+        $id = CommitteeId::generate();
+
+        $this->scenario->given([
+            new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')
+        ])->when(
+            new CommitteePageSet($id, '# Title')
+        )->then([
+            new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy', null, '# Title', "<h1>Title</h1>\n")
+        ]);
+    }
 
     /** @test */
     function it_stores_information_about_members()
@@ -74,18 +99,25 @@ class CommitteeListProjectorTest extends TestCase
             new CommitteesList($id,
                 'S[ck]rip(t|t?c)ie',
                 'Digital anarchy',
-                '',
+                null,
                 '',
                 '',
                 [[
-                    'uuid' => '6bd3f9b9-b910-4d4c-89ea-2f9af285c9bf',
+                    'id' => '6bd3f9b9-b910-4d4c-89ea-2f9af285c9bf',
                     'first_name' => 'Mark',
                     'last_name' => 'Redeman'
                 ]])
         ])->when(
             new MemberLeftCommittee($id, $memberId)
         )->then([
-            new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy', '', '', '', [])
+            new CommitteesList(
+                $id,
+                'S[ck]rip(t|t?c)ie',
+                'Digital anarchy',
+                null,
+                '',
+                '',
+                [])
         ]);
     }
 
@@ -93,6 +125,9 @@ class CommitteeListProjectorTest extends TestCase
     {
         $this->members = new InMemoryRepository;
 
-        return new CommitteeListProjector($repository, $this->members);
+        return new CommitteeListProjector(
+            $repository,
+            $this->members,
+            new CommonMarkConverter());
     }
 }
