@@ -74,11 +74,26 @@ class MainContentController extends Controller
     public function page(string $page)
     {
         try {
+            if ($this->pageCorrespondsToPartialView($page)) {
+                throw new \InvalidArgumentException;
+            }
+
             return view('pages.' . $page, [
                 'posts' => []
             ]);
         } catch (\InvalidArgumentException $e) {
-            return view('errors.404');
+            return response()->view('errors.404', [], 404);
         }
+    }
+
+    /**
+     * By convention all partial views should start with an underscore. Hence we
+     * check that the last part of the page URL starts with an underscore
+     */
+    private function pageCorrespondsToPartialView(string $page) : bool
+    {
+        $parts = explode('/', $page);
+
+        return end($parts)[0] === '_';
     }
 }
