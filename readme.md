@@ -1,4 +1,4 @@
-# T.F.V. 'Professor Francken' [![Build Status](https://travis-ci.org/ProfessorFrancken/ProfessorFrancken.svg?branch=master)](https://travis-ci.org/ProfessorFrancken/ProfessorFrancken) [![Coverage Status](https://coveralls.io/repos/github/ProfessorFrancken/ProfessorFrancken/badge.svg?branch=master)](https://coveralls.io/github/ProfessorFrancken/ProfessorFrancken?branch=setup-coveralls)
+# T.F.V. 'Professor Francken' [![Build Status](https://travis-ci.org/ProfessorFrancken/ProfessorFrancken.svg?branch=master)](https://travis-ci.org/ProfessorFrancken/ProfessorFrancken) [![Coverage Status](https://coveralls.io/repos/github/ProfessorFrancken/ProfessorFrancken/badge.svg?branch=master)](https://coveralls.io/github/ProfessorFrancken/ProfessorFrancken?branch=master)
 
 This is the repository containing code for the new website of
 [T.F.V. Porfessor Francken](http://professorfrancken.nl/).
