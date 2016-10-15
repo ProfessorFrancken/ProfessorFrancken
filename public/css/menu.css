@@ -42,7 +42,7 @@
 
 .navigation-list__item {
 	  float: left;
-	  position: relative;
+	  position: relative; /* couples with navigation-sub-list */
 }
 
 .navigation-list__link {
@@ -158,6 +158,10 @@
 
 .navigation-desktop-list__item {
 	  float: left;
+}
+
+.navigation-desktop-list__item--active {
+    background: #eee; /* $darkPurple; */
 }
 
 .navigation-desktop-list__link {

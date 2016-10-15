@@ -68,6 +68,7 @@
         @yield('menu-items')
     </nav>
 
+    {{-- This menu is used on the desktop so that you don't have to repeatedly click the carets --}}
     <ul class="navigation-desktop">
         <div class="container">
             @stack('sub-navigation')

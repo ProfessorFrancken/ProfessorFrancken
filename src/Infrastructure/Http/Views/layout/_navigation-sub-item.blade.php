@@ -10,7 +10,8 @@
 --}}
 @if ($active)
     @push('sub-navigation')
-    <li class="navigation-desktop-list__item">
+    <?php $active = '/' . Request::segment(1) . '/' . Request::segment(2) == $url; ?>
+    <li class="navigation-desktop-list__item {{ $active ? 'navigation-desktop-list__item--active' : '' }}">
         <a class="navigation-desktop-list__link" href="{{ $url }}">
             {{ $title }}
         </a>
