@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Member;
 use Francken\Domain\Members\MemberRepository;
@@ -25,8 +24,7 @@ class MemberController extends Controller
     //------POST------
     public function addMember(Request $req, MemberRepository $repo)
     {
-        $generator = new Version4Generator();
-        $id = new MemberId($generator->generate());
+        $id = MemberId::generate();
         $member = Member::instantiate($id, $req->input('first_name'), $req->input('last_name'));
 
         $repo->save($member);

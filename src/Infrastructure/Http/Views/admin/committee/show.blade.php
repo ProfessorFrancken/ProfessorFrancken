@@ -1,31 +1,39 @@
 @extends('admin.layout')
 
 @section('content')
-  <h1 class="page-header">{{ $committee->name }}</h1>
+  <h1 class="page-header">{{ $committee->name() }}</h1>
 
   <h3>General info</h3>
-  <form action="{{ url('admin/committee', $committee->id) }}" method="POST" class="form-horizontal">
-    {!! csrf_field() !!}
-    {{ method_field('PUT') }}
+
+  {!! Form::open(['url' => url('admin/committee', (string)$committee->committeeId()), 'method' => 'PUT']) !!}
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Committee name</label>
-      <div class="col-sm-9">
-        <p class="form-control-static">{{ $committee->name }}<a id="editName" href="#"><span class="glyphicon glyphicon-edit"></span></a></p>
-      </div>
+      {!! Form::label('name', 'Name:', ['class' => 'control-label']) !!}
+      <a class="edit-btn btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
+      {!! Form::text('name', $committee->name(), ['class' => 'edit-input form-control', 'readonly']) !!}
     </div>
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Committe goal</label>
-      <div class="col-sm-9">
-        <p class="form-control-static">{{ $committee->goal }}<a id="editGoal" href="#"><span class="glyphicon glyphicon-edit"></span></a></p>
-      </div>
+      {!! Form::label('email', 'Email (optional):', ['class' => 'control-label']) !!}
+      <a class="edit-btn btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
+      {!! Form::text('email', (string)$committee->email(), ['class' => 'edit-input form-control', 'readonly']) !!}
     </div>
 
-    <div class="col-sm-9 col-sm-offset-3">
-      <button type="submit" class="btn btn-default disabled" id="editBtn">Edit</button>
+    <div class="form-group">
+      {!! Form::label('summary', 'Summary:', ['class' => 'control-label']) !!}
+      <a class="edit-btn btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
+      {!! Form::textarea('summary', $committee->summary(), ['class' => 'edit-input form-control', 'rows' => 2, 'readonly']) !!}
     </div>
-  </form>
+
+    <div class="form-group">
+      {!! Form::label('page', 'Commitee page (optional):', ['class' => 'control-label']) !!}
+      <a class="edit-btn btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
+      {!! Form::textarea('page', $committee->markDown(), ['class' => 'edit-input form-control', 'readonly']) !!}
+    </div>
+
+    {!! Form::submit('Edit!', ['class' => 'btn btn-success']) !!}
+
+  {!! Form::close() !!}
 
   <h3>Members</h3>
   <table class="table table-hover">
@@ -37,13 +45,13 @@
     </tr>
 
     <?php $i = 1 ?>
-    @foreach(json_decode($committee->members) as $member)
+    @foreach($committee->members() as $member)
     <tr>
       <td>{{ $i++ }}</td>
-      <td>{{ $member->first_name }}</td>
-      <td>{{ $member->last_name }}</td>
+      <td>{{ $member['first_name'] }}</td>
+      <td>{{ $member['last_name'] }}</td>
       <td>
-        <form action="{{ url('admin/committee/' . $committee->id . '/member/' . $member->uuid) }}" method="POST">
+        <form action="{{ url('admin/committee/' . (string)$committee->committeeId() . '/member/' . $member['id']) }}" method="POST">
           {!! csrf_field() !!}
           {{ method_field('DELETE') }}
 
@@ -71,7 +79,7 @@
         <td>{{ $result->first_name }}</td>
         <td>{{ $result->last_name }}</td>
         <td>
-          <form action="{{ url('admin/committee/' . $committee->id . '/member/' . $result->uuid) }}" method="POST">
+          <form action="{{ url('admin/committee/' . (string)$committee->committeeId() . '/member/' . $result->id) }}" method="POST">
             {!! csrf_field() !!}
 
             <button class="btn btn-default" name="add-member"><span class="glyphicon glyphicon-plus"></span></button>
@@ -82,30 +90,15 @@
     @endif
   </table>
 
-
-  <h3>Committee web page</h3>
-  <textarea class="form-control" row="10"></textarea>
-
 @endsection
 
 @section('script')
   <script type="text/javascript">
     $(function(){
-      $("#editName").click(function(){
-        $("#editBtn").removeClass("disabled");
-        text = $(this).parent().text();
-        $(this).parent().parent().append($("<input type='text' class='form-control' name='name' value='" + text + "'>"));
-        $(this).parent().remove();
-      });
+      $(".edit-btn").click(function(){
+        $(this).next(".edit-input").removeAttr("readonly");
+      })
     });
 
-    $(function(){
-      $("#editGoal").click(function(){
-        $("#editBtn").removeClass("disabled");
-        text = $(this).parent().text();
-        $(this).parent().parent().append($("<input type='text' class='form-control' name='goal' value='" + text + "'>"));
-        $(this).parent().remove();
-      });
-    });
   </script>
 @endsection

@@ -45,10 +45,10 @@ class AdministrationFeature extends TestCase
             ->type('Redeman', 'last_name')
             ->press('Add member');
 
-        $this->visit('/admin/committee')
-            ->type('S[ck]rip(t|t?c)ie', 'inputName')
-            ->type('Digital anarchy', 'inputGoal')
-            ->press('Create committee');
+        $this->visit('/admin/committee/create')
+            ->type('S[ck]rip(t|t?c)ie', 'name')
+            ->type('Digital anarchy', 'summary')
+            ->press('Create!');
 
         // The name should now be listed
         $this->seePageIs('/admin/committee')
@@ -56,7 +56,7 @@ class AdministrationFeature extends TestCase
             ->see('Digital anarchy');
 
         $this->seeInDatabase('committees_list', [
-            'name' => 'S[ck]rip(t|t?c)ie', 'goal' => 'Digital anarchy'
+            'name' => 'S[ck]rip(t|t?c)ie', 'summary' => 'Digital anarchy'
         ]);
 
         // Next let's edit the committee

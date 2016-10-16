@@ -5,31 +5,50 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
+use Francken\Application\ReadModelRepository;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\MemberId;
-use App\ReadModel\CommitteesList\CommitteesListProjector;
+use Francken\Domain\Members\Email;
+use Francken\Application\Committees\CommitteesListProjector;
 use DB;
 
 class CommitteeController extends Controller
 {
-    //-------GET---------
+
+    private $committeeRepo;
+
+    public function __construct(ReadModelRepository $committees)
+    {
+        $this->committeeRepo = $committees;
+    }
+
     public function index()
     {
-        $committees = DB::table('committees_list')->get();
+        $committees = $this->committeeRepo->findAll();
 
         return view('admin.committee.index', [
             'committees' => $committees
         ]);
     }
 
+    public function create()
+    {
+        return view('admin.committee.create');
+    }
+
     public function store(Request $req, CommitteeRepository $repo)
     {
-        $generator = new Version4Generator();
-        $id = new CommitteeId($generator->generate());
-        $committee = Committee::instantiate($id, $req->input('inputName'), $req->input('inputGoal'));
+        $id = CommitteeId::generate();
+        $committee = Committee::instantiate($id, $req->input('name'), $req->input('summary'));
+        $committee->setCommitteePage($req->input('page'));
+        $email = $req->input('email');
+        if (!empty($email)) {
+            $committee->setEmail(new Email($req->input('email')));
+        } else {
+            $committee->setEmail(null);
+        }
 
         $repo->save($committee);
 
@@ -38,7 +57,7 @@ class CommitteeController extends Controller
 
     public function show($id)
     {
-        $committee = DB::table('committees_list')->where('id', $id)->first();
+        $committee = $this->committeeRepo->find($id);
 
         return view('admin.committee.show', [
             'committee' => $committee
@@ -49,6 +68,13 @@ class CommitteeController extends Controller
     {
         $committee = $repo->load(new CommitteeId($id));
         $committee->edit($req->input('name'), $req->input('goal'));
+        $committee->setCommitteePage($req->input('page'));
+        try {
+            $committee->setEmail(new Email($req->input('email')));
+        } catch (Exception $e) {
+            $committee->setEmail(null);
+        }
+
         $repo->save($committee);
 
         return redirect('/admin/committee/' . $id);

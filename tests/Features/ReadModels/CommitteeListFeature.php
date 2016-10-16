@@ -36,6 +36,6 @@ class CommitteeListFeature extends TestCase
 
         $this->repo->save($committee);
 
-        $this->seeInDatabase('committees_list', ['name' => 'S[ck]rip(t|t?c)ie', 'goal' => 'Digital anarchy']);
+        $this->seeInDatabase('committees_list', ['name' => 'S[ck]rip(t|t?c)ie', 'summary' => 'Digital anarchy']);
     }
 }

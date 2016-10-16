@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Committees;
 
 use Francken\Tests\Application\ReadModelTestCase as TestCase;
-use Francken\Application\ReadModel\CommitteesList\CommitteesList;
+use Francken\Application\Committees\CommitteesList;
 use Francken\Domain\Members\MemberId;
+use Francken\Domain\Members\Email;
 use Francken\Domain\Committees\CommitteeId;
 
 class CommitteesListTest extends TestCase
@@ -32,7 +33,7 @@ class CommitteesListTest extends TestCase
 
         $this->assertEquals([
             [
-                "uuid" => (string)$member,
+                "id" => (string)$member,
                 "first_name" => "Mark",
                 "last_name" => "Redeman"
             ]
@@ -65,12 +66,33 @@ class CommitteesListTest extends TestCase
     }
 
     /** @test */
-    function the_goal_of_a_committee_can_be_changed()
+    function the_summary_of_a_committee_can_be_changed()
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
         $committee = $committee->changeGoal('Markt verovering');
-        $this->assertEquals('Markt verovering', $committee->goal());
+        $this->assertEquals('Markt verovering', $committee->summary());
+    }
+
+    /** @test */
+    function the_email_of_a_committee_can_be_changed()
+    {
+        $id = CommitteeId::generate();
+        $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
+        $committee = $committee->changeEmail(new Email('scriptcie@professorfrancken.nl'));
+        $this->assertEquals(new Email('scriptcie@professorfrancken.nl'), $committee->email());
+        $committee = $committee->changeEmail(null);
+        $this->assertEquals(null, $committee->email());
+    }
+
+    /** @test */
+    function the_committee_page_can_be_changed()
+    {
+        $id = CommitteeId::generate();
+        $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
+        $committee = $committee->changeCommitteePage('# Title', '<h1>Title</h1>');
+        $this->assertEquals('# Title', $committee->markDown());
+        $this->assertEquals('<h1>Title</h1>', $committee->html());
     }
 
     protected function createInstance()

@@ -5,27 +5,19 @@ declare(strict_types=1);
 namespace Tests\Francken\Committees;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Members\MemberId;
+use Francken\Domain\Members\Email;
 
 class CommitteeTest extends AggregateRootScenarioTestCase
 {
-    private $generator;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        // We will use this generator to generate valid UUIDs
-        $this->generator = new Version4Generator();
-    }
-
     protected function getAggregateRootClass()
     {
         return Committee::class;
@@ -36,7 +28,7 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function it_is_intantiated_with_a_name_and_a_goal()
     {
-        $id = new CommitteeId($this->generator->generate());
+        $id = CommitteeId::generate();
 
         $this->scenario
             ->when(function () use ($id) {
@@ -48,9 +40,55 @@ class CommitteeTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
+    public function a_committee_email_can_be_set()
+    {
+        $id = CommitteeId::generate();
+
+        $this->scenario
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->when(function ($committee) use ($id) {
+                $committee->setEmail(new Email('scriptcie@professorfrancken.nl'));
+            })
+            ->then([new CommitteeEmailChanged($id, new Email('scriptcie@professorfrancken.nl'))]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_committee_email_can_be_unset()
+    {
+        $id = CommitteeId::generate();
+
+        $this->scenario
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy'),
+                new CommitteeEmailChanged($id, new Email('scriptcie@professorfrancken.nl'))])
+            ->when(function ($committee) use ($id) {
+                $committee->setEmail(null);
+            })
+            ->then([new CommitteeEmailChanged($id, null)]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_committee_web_page_can_be_set()
+    {
+        $id = CommitteeId::generate();
+
+        $this->scenario
+            ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
+            ->when(function ($committee) use ($id) {
+                $committee->setCommitteePage('# Title');
+            })
+            ->then([new CommitteePageChanged($id, '# Title')]);
+    }
+
+    /**
+     * @test
+     */
     public function a_committees_name_can_be_changed()
     {
-        $id = new CommitteeId($this->generator->generate());
+        $id = CommitteeId::generate();
 
         $this->scenario
             ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
@@ -65,7 +103,7 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function a_committees_goal_can_be_changed()
     {
-        $id = new CommitteeId($this->generator->generate());
+        $id = CommitteeId::generate();
 
         $this->scenario
             ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
@@ -80,7 +118,7 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function a_committees_can_be_edited()
     {
-        $id = new CommitteeId($this->generator->generate());
+        $id = CommitteeId::generate();
 
         $this->scenario
             ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
@@ -98,8 +136,8 @@ class CommitteeTest extends AggregateRootScenarioTestCase
      */
     public function a_committee_has_members()
     {
-        $id = new CommitteeId($this->generator->generate());
-        $memberId = new MemberId($this->generator->generate());
+        $id = CommitteeId::generate();
+        $memberId = MemberId::generate();
 
         $this->scenario
             ->withAggregateId($id)

@@ -12,7 +12,8 @@
         "matthiasnoback/broadway-serialization": "^1.0",
         "laravelcollective/html": "^5.2",
         "mattketmo/uuid-2x-bridge": "*@dev",
-        "ramsey/uuid": "^3.0"
+        "ramsey/uuid": "^3.0",
+        "league/commonmark": "^0.15.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

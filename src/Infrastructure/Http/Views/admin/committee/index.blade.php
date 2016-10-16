@@ -6,8 +6,9 @@
   <table class="table table-hover">
     <tr>
       <th>#</th>
-      <th>Committe name</th>
-      <th>Committee goal</th>
+      <th>Name</th>
+      <th>Summary</th>
+      <th>Email</th>
       <th></th>
     </tr>
 
@@ -15,37 +16,13 @@
     @foreach ($committees as $committee)
       <tr>
         <td>{{ $i++ }}</td>
-        <td>{{ $committee->name }}</td>
-        <td>{{ $committee->goal }}</td>
-        <td><a href="/admin/committee/{{ $committee->id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        <td>{{ $committee->name() }}</td>
+        <td>{{ $committee->summary() }}</td>
+        <td>{{ (string)$committee->email() }}</td>
+        <td><a href="/admin/committee/{{ (string)$committee->committeeId() }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
       </tr>
     @endforeach
   </table>
 
-  <h3>Create committee</h3>
-
-  <form action="{{ url('admin/committee/') }}" method="POST" class="form-horizontal">
-    {!! csrf_field() !!}
-
-    <div class="form-group">
-      <label class="col-sm-4 control-label">Committee name</label>
-      <div class="col-sm-8">
-        <input type="text" class="form-control" name="inputName">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-4 control-label">Committee goal</label>
-      <div class="col-sm-8">
-        <input type="text" class="form-control" name="inputGoal">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-4 col-sm-8">
-        <button type="submit" class="btn btn-default">Create committee</button>
-      </div>
-    </div>
-
-  </form>
+  <a href="/admin/committee/create" class="btn btn-default">Create new committee</a>
 @endsection

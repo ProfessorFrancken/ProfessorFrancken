@@ -11,22 +11,39 @@ use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Members\MemberId;
+use Francken\Domain\Members\Email;
 
 class Committee extends AggregateRoot
 {
     private $id;
     private $name;
-    private $goal;
-    private $members = [];
+    private $summary;
+    private $email = null;
+    private $webPage = "";
+    private $members = []; // array of memberId's
 
-    public static function instantiate(CommitteeId $id, $name, $goal) : Committee
+    public static function instantiate(CommitteeId $id, string $name, string $summary) : Committee
     {
         $committee = new Committee;
-
-        $committee->apply(new CommitteeInstantiated($id, $name, $goal));
-
+        $committee->apply(new CommitteeInstantiated($id, $name, $summary));
         return $committee;
+    }
+
+    public function setEmail(Email $email = null)
+    {
+        if ($email != $this->email) {
+            $this->apply(new CommitteeEmailChanged($this->id, $email));
+        }
+    }
+
+    public function setCommitteePage(string $markDown)
+    {
+        if ($markDown != $this->webPage) {
+            $this->apply(new CommitteePageChanged($this->id, $markDown));
+        }
     }
 
     public function edit($name, $goal)
@@ -34,7 +51,6 @@ class Committee extends AggregateRoot
         if (isset($name) and $name != $this->name) {
             $this->apply(new CommitteeNameChanged($this->id, $name));
         }
-
         if (isset($goal) and $goal != $this->goal) {
             $this->apply(new CommitteeGoalChanged($this->id, $goal));
         }
@@ -45,7 +61,6 @@ class Committee extends AggregateRoot
         if ($this->memberIsInCommittee($memberId)) {
             return;
         }
-
         $this->apply(new MemberJoinedCommittee($this->id, $memberId));
     }
 
@@ -68,6 +83,16 @@ class Committee extends AggregateRoot
         $this->id = $event->committeeId();
         $this->name = $event->name();
         $this->goal = $event->goal();
+    }
+
+    protected function applyCommitteeEmailChanged(CommitteeEmailChanged $event)
+    {
+        $this->email = $event->email();
+    }
+
+    protected function applyCommitteePageChanged(CommitteePageChanged $event)
+    {
+        $this->email = $event->page();
     }
 
     protected function applyCommitteeNameChanged(CommitteeNameChanged $event)

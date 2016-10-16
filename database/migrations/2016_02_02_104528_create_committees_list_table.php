@@ -13,12 +13,13 @@ class CreateCommitteesListTable extends Migration
     public function up()
     {
         Schema::create('committees_list', function (Blueprint $table) {
-            $table->string('id', 36)->unique();
+            $table->uuid('id');
             $table->string('name');
-            $table->string('goal');
+            $table->string('summary');
+            $table->string('email');
+            $table->string('markDown');
+            $table->string('html');
             $table->json('members');
-
-            $table->primary('id');
         });
     }
 
