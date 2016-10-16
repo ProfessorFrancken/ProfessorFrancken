@@ -11,8 +11,8 @@ use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
-use Francken\Domain\Committees\Events\CommitteeEmailSet;
-use Francken\Domain\Committees\Events\CommitteePageSet;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
 
@@ -35,14 +35,14 @@ class Committee extends AggregateRoot
     public function setEmail(Email $email = null)
     {
         if ($email != $this->email) {
-            $this->apply(new CommitteeEmailSet($this->id, $email));
+            $this->apply(new CommitteeEmailChanged($this->id, $email));
         }
     }
 
     public function setCommitteePage(string $markDown)
     {
         if ($markDown != $this->webPage) {
-            $this->apply(new CommitteePageSet($this->id, $markDown));
+            $this->apply(new CommitteePageChanged($this->id, $markDown));
         }
     }
 
@@ -85,12 +85,12 @@ class Committee extends AggregateRoot
         $this->goal = $event->goal();
     }
 
-    protected function applyCommitteeEmailSet(CommitteeEmailSet $event)
+    protected function applyCommitteeEmailChanged(CommitteeEmailChanged $event)
     {
         $this->email = $event->email();
     }
 
-    protected function applyCommitteePageSet(CommitteePageSet $event)
+    protected function applyCommitteePageChanged(CommitteePageChanged $event)
     {
         $this->email = $event->page();
     }

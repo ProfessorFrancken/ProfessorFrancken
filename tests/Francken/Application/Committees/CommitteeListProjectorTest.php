@@ -14,8 +14,8 @@ use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeJoinedFrancken;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeEmailSet;
-use Francken\Domain\Committees\Events\CommitteePageSet;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
@@ -55,11 +55,11 @@ class CommitteeListProjectorTest extends TestCase
         )->then([
             new CommitteesList($id, 'Compucie', 'Markt verovering')
         ])->when(
-            new CommitteeEmailSet($id, new Email('scriptcie@professorfrancken.nl'))
+            new CommitteeEmailChanged($id, new Email('scriptcie@professorfrancken.nl'))
         )->then([
             new CommitteesList($id, 'Compucie', 'Markt verovering', new Email('scriptcie@professorfrancken.nl'))
         ])->when(
-            new CommitteeEmailSet($id, null)
+            new CommitteeEmailChanged($id, null)
         )->then([
             new CommitteesList($id, 'Compucie', 'Markt verovering', null)
         ]);
@@ -73,7 +73,7 @@ class CommitteeListProjectorTest extends TestCase
         $this->scenario->given([
             new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')
         ])->when(
-            new CommitteePageSet($id, '# Title')
+            new CommitteePageChanged($id, '# Title')
         )->then([
             new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy', null, '# Title', "<h1>Title</h1>\n")
         ]);

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Francken\Tests\Domain\Committees\Events;
 
 use Francken\Domain\Committees\CommitteeId;
-use Francken\Domain\Committees\Events\CommitteeEmailSet;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Members\Email;
 use Francken\Tests\Domain\EventTestCase as Testcase;
 
-class CommitteeEmailSetTest extends TestCase
+class CommitteeEmailChangedTest extends TestCase
 {
     /**
      * @test
@@ -17,7 +17,7 @@ class CommitteeEmailSetTest extends TestCase
     public function it_holds_an_email_adress()
     {
         $id = CommitteeId::generate();
-        $event = new CommitteeEmailSet($id, new Email("scriptcie@professorfrancken.nl"));
+        $event = new CommitteeEmailChanged($id, new Email("scriptcie@professorfrancken.nl"));
 
         $this->assertEquals($id, $event->committeeId());
         $this->assertEquals(new Email("scriptcie@professorfrancken.nl"), $event->email());
@@ -29,7 +29,7 @@ class CommitteeEmailSetTest extends TestCase
     public function it_an_email_can_be_empty()
     {
         $id = CommitteeId::generate();
-        $event = new CommitteeEmailSet($id, null);
+        $event = new CommitteeEmailChanged($id, null);
 
         $this->assertEquals($id, $event->committeeId());
         $this->assertEquals(null, $event->email());
@@ -37,6 +37,6 @@ class CommitteeEmailSetTest extends TestCase
 
     protected function createInstance()
     {
-        return new CommitteeEmailSet(CommitteeId::generate(), new Email("scriptcie@professorfrancken.nl"));
+        return new CommitteeEmailChanged(CommitteeId::generate(), new Email("scriptcie@professorfrancken.nl"));
     }
 }

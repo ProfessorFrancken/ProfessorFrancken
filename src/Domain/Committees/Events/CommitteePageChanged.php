@@ -8,7 +8,7 @@ use Francken\Domain\Committees\CommitteeId;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class CommitteePageSet implements SerializableInterface
+final class CommitteePageChanged implements SerializableInterface
 {
     use Serializable;
 

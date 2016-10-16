@@ -9,7 +9,7 @@ use Francken\Domain\Members\Email;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class CommitteeEmailSet implements SerializableInterface
+final class CommitteeEmailChanged implements SerializableInterface
 {
     use Serializable;
 

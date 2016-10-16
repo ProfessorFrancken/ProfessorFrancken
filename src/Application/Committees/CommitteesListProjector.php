@@ -9,8 +9,8 @@ use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeEmailSet;
-use Francken\Domain\Committees\Events\CommitteePageSet;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
 
@@ -38,7 +38,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenCommitteeEmailSet(CommitteeEmailSet $event)
+    public function whenCommitteeEmailChanged(CommitteeEmailChanged $event)
     {
         $committee = $this->committees->find((string)$event->committeeId());
         $committee = $committee->changeEmail($event->email());
@@ -46,7 +46,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenCommitteePageSet(CommitteePageSet $event)
+    public function whenCommitteePageChanged(CommitteePageChanged $event)
     {
         $committee = $this->committees->find((string)$event->committeeId());
         $committee = $committee->changeCommitteePage(

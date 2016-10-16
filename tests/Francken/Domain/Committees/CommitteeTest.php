@@ -11,8 +11,8 @@ use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
-use Francken\Domain\Committees\Events\CommitteeEmailSet;
-use Francken\Domain\Committees\Events\CommitteePageSet;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
 
@@ -49,7 +49,7 @@ class CommitteeTest extends AggregateRootScenarioTestCase
             ->when(function ($committee) use ($id) {
                 $committee->setEmail(new Email('scriptcie@professorfrancken.nl'));
             })
-            ->then([new CommitteeEmailSet($id, new Email('scriptcie@professorfrancken.nl'))]);
+            ->then([new CommitteeEmailChanged($id, new Email('scriptcie@professorfrancken.nl'))]);
     }
 
     /**
@@ -61,11 +61,11 @@ class CommitteeTest extends AggregateRootScenarioTestCase
 
         $this->scenario
             ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy'),
-                new CommitteeEmailSet($id, new Email('scriptcie@professorfrancken.nl'))])
+                new CommitteeEmailChanged($id, new Email('scriptcie@professorfrancken.nl'))])
             ->when(function ($committee) use ($id) {
                 $committee->setEmail(null);
             })
-            ->then([new CommitteeEmailSet($id, null)]);
+            ->then([new CommitteeEmailChanged($id, null)]);
     }
 
     /**
@@ -80,7 +80,7 @@ class CommitteeTest extends AggregateRootScenarioTestCase
             ->when(function ($committee) use ($id) {
                 $committee->setCommitteePage('# Title');
             })
-            ->then([new CommitteePageSet($id, '# Title')]);
+            ->then([new CommitteePageChanged($id, '# Title')]);
     }
 
     /**
