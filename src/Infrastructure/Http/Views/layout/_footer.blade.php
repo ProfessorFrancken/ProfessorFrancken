@@ -20,7 +20,9 @@
                 <h3>Social media</h3>
                 <i class="fa fa-facebook" aria-hidden="true"></i> Facebook <br>
                 <i class="fa fa-twitter" aria-hidden="true"></i> Twitter <br>
-                <i class="fa fa-github" aria-hidden="true"></i> Github
+                <a href="https://github.com/ProfessorFrancken/ProfessorFrancken">
+                    <i class="fa fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
         </div>
 
