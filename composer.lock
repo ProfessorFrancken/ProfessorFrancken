@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e378692313d874c6fa27d20f66d38042",
-    "content-hash": "ca56304400c1effc17ec8c4483ee15ba",
+    "hash": "f30848f3fc54f62bf78ae835727345e1",
+    "content-hash": "70a114989e3eba8e4248556b365fcb03",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2360,6 +2360,94 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "davidbadura/faker-markdown-generator",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DavidBadura/FakerMarkdownGenerator.git",
+                "reference": "acfeeedb3d3f2bd9092823818c65733360d71b5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DavidBadura/FakerMarkdownGenerator/zipball/acfeeedb3d3f2bd9092823818c65733360d71b5d",
+                "reference": "acfeeedb3d3f2bd9092823818c65733360d71b5d",
+                "shasum": ""
+            },
+            "require": {
+                "davidbadura/markdown-builder": "^1.0",
+                "fzaninotto/faker": "^1.6",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DavidBadura\\FakerMarkdownGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "DavidBadura",
+                    "email": "d.badura@gmx.de"
+                }
+            ],
+            "description": "Faker Markdown Generator",
+            "keywords": [
+                "faker",
+                "generator",
+                "markdown"
+            ],
+            "time": "2016-06-28 18:33:06"
+        },
+        {
+            "name": "davidbadura/markdown-builder",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DavidBadura/markdown-builder.git",
+                "reference": "1dfaa0cb16480afd2b21dba5002cf960f037d8b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DavidBadura/markdown-builder/zipball/1dfaa0cb16480afd2b21dba5002cf960f037d8b4",
+                "reference": "1dfaa0cb16480afd2b21dba5002cf960f037d8b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DavidBadura\\MarkdownBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "DavidBadura",
+                    "email": "d.badura@gmx.de"
+                }
+            ],
+            "description": "Markdown Builder",
+            "keywords": [
+                "builder",
+                "markdown",
+                "render",
+                "writer"
+            ],
+            "time": "2015-06-10 21:02:53"
+        },
         {
             "name": "fabpot/php-cs-fixer",
             "version": "v1.12.0",

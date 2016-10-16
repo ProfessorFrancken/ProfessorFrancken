@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
-
 use Francken\Domain\Posts\PostId;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +19,7 @@ class DatabaseSeeder extends Seeder
                 'content' => str_random(100)
             ]);
         }
-        //$this->call(PostsTableSeeder::class);
+
+        $this->call(CommitteesSeeder::class);
     }
 }
