@@ -8,10 +8,12 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
-use Francken\Application\ReadModel\PostList\PostList;
-use Francken\Application\ReadModel\PostList\PostListProjector;
+use Francken\Application\Members\Registration\RequestStatus;
+use Francken\Application\Members\Registration\RequestStatusProjector;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListProjector;
+use Francken\Application\ReadModel\PostList\PostList;
+use Francken\Application\ReadModel\PostList\PostListProjector;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
@@ -90,6 +92,15 @@ class AppServiceProvider extends ServiceProvider
             function (Application $app) {
                 return new PostListProjector(
                     $this->illuminateRepository('posts', PostList::class, 'id')
+                );
+            }
+        );
+
+        $this->app->singleton(
+            RequestStatusProjector::class,
+            function (Application $app) {
+                return new RequestStatusProjector(
+                    $this->illuminateRepository('request_status', RequestStatus::class, 'id')
                 );
             }
         );
