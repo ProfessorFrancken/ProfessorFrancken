@@ -23,7 +23,7 @@ class GuestTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_is_serializable()
     {
-        $this->markTestSkipped('Should i be serializable?');
+        $this->markTestSkipped('Should I be serializable?');
         $email = new Email("hoi@gmail.com");
         $name = "myname lastname";
         $guest = new Guest($name, $email);

@@ -2,7 +2,7 @@
 
 
 @section('content')
-  
+
   <h1>Sell your books here</h1>
   <hr>
   <p>
@@ -12,7 +12,7 @@
 
   <div class="row">
     <div class="col-sm-7">
-      {!! Form::open(['url' => 'book']) !!}
+      {!! Form::open(['url' => 'books']) !!}
         @include('book._book')
       {!! Form::close() !!}
     </div>

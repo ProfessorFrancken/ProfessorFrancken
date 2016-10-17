@@ -78,5 +78,4 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
     {
         return $this->sale_pending;
     }
-
 }

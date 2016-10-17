@@ -4,7 +4,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'MainContentController@index');
     Route::get('/association', 'MainContentController@association');
 
-    Route::resource('book', 'BookController');
+    Route::resource('books', 'BookController');
     Route::put('book/{bookId}/buy', 'BookController@buy');
 
     Route::get('/register', 'RegistrationController@request');

@@ -36,11 +36,19 @@ final class Book extends EventSourcedAggregateRoot
 
     public function sellToMember(MemberId $memberId)
     {
+        if ($this->isSold) {
+            throw new \Exception("A book cannot be sold twice");
+        }
+        $this->isSold = true;
         $this->apply(new BookSoldToMember($this->id, $memberId));
     }
 
     public function sellToNonMember(Guest $guest)
     {
+        if ($this->isSold) {
+            throw new \Exception("A book cannot be sold twice");
+        }
+        $this->isSold = true;
         $this->apply(new BookSoldToNonMember($this->id, $guest));
     }
 
