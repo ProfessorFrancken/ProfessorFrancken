@@ -22,13 +22,13 @@ use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
+use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
+use Francken\Infrastructure\Http\Controllers\CommitteeController;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\CommonMarkConverter;
-
-use Francken\Infrastructure\Http\Controllers\CommitteeController;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -61,6 +61,15 @@ class AppServiceProvider extends ServiceProvider
             function (Application $app) {
                 return new CommitteeController(
                     $this->illuminateRepository('committees_list', CommitteesList::class, 'id', ['members']));
+            }
+        );
+
+        $this->app->bind(
+            RegistrationRequestsController::class,
+            function (Application $app) {
+                return new RegistrationRequestsController(
+                    $this->illuminateRepository('request_status', RequestStatus::class, 'id')
+                );
             }
         );
     }

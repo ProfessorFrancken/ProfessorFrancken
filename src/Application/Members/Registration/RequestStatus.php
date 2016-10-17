@@ -59,22 +59,22 @@ final class RequestStatus implements ReadModelInterface, SerializableInterface
 
     public function hasPersonalInfo() : bool
     {
-        return $this->hasPersonalInfo;
+        return (bool)$this->hasPersonalInfo;
     }
 
     public function hasContactInfo() : bool
     {
-        return $this->hasContactInfo;
+        return (bool)$this->hasContactInfo;
     }
 
     public function hasStudyInfo() : bool
     {
-        return $this->hasStudyInfo;
+        return (bool)$this->hasStudyInfo;
     }
 
     public function hasPaymentInfo() : bool
     {
-        return $this->hasPaymentInfo;
+        return (bool)$this->hasPaymentInfo;
     }
 
     public function complete() : bool

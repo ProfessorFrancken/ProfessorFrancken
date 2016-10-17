@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Application\Members\Registration;
 
+use Broadway\Domain\DomainMessage;
+use DateTimeImmutable;
 use Francken\Application\Projector;
 use Francken\Application\ReadModelRepository as Repository;
-use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
-use DateTimeImmutable;
-use Broadway\Domain\DomainMessage;
+use Francken\Domain\Members\Registration\RegistrationRequestId;
 
 final class RequestStatusProjector extends Projector
 {
