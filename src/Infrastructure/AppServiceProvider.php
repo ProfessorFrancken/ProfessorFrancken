@@ -6,6 +6,9 @@ use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
+use Francken\Application\Books\AvailableBook;
+use Francken\Application\Books\AvailableBooksProjector;
+use Francken\Application\Books\BookDetailsRepositoryI;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
 use Francken\Application\Members\Registration\RequestStatus;
@@ -14,8 +17,6 @@ use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListProjector;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListProjector;
-use Francken\Application\Books\AvailableBook;
-use Francken\Application\Books\AvailableBooksProjector;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Committees\Committee;
@@ -26,16 +27,14 @@ use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
+use Francken\Infrastructure\Books\BookDetailsRepository;
 use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
+use Francken\Infrastructure\Http\Controllers\BookController;
 use Francken\Infrastructure\Http\Controllers\CommitteeController;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Support\ServiceProvider;
-use Francken\Infrastructure\Http\Controllers\CommitteeController;
-use Francken\Application\Books\BookDetailsRepositoryI;
-use Francken\Infrastructure\Books\BookDetailsRepository;
-use Francken\Infrastructure\Http\Controllers\BookController;
 use League\CommonMark\CommonMarkConverter;
 
 class AppServiceProvider extends ServiceProvider
@@ -74,7 +73,6 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-<<<<<<< 72668b225f5322f33ff635e93b001a1fc4260219
             RegistrationRequestsController::class,
             function (Application $app) {
                 return new RegistrationRequestsController(
@@ -82,7 +80,7 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
-=======
+        $this->app->bind(
             BookController::class,
             function (Application $app) {
                 return new BookController(
@@ -90,8 +88,6 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
-
->>>>>>> add second book readmodel
     }
 
     private function registerReadModels()
@@ -128,7 +124,6 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(
-<<<<<<< 72668b225f5322f33ff635e93b001a1fc4260219
             RequestStatusProjector::class,
             function (Application $app) {
                 return new RequestStatusProjector(
@@ -136,7 +131,7 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
-=======
+        $this->app->singleton(
             AvailableBooksProjector::class,
             function (Application $app) {
                 return new AvailableBooksProjector(
@@ -145,8 +140,6 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
-
->>>>>>> add second book readmodel
     }
 
     private function illuminateRepository(string $tableName, string $modelName, string $identifier, array $stringify = []) : IlluminateRepository
