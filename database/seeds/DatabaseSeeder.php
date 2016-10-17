@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call(CommitteesSeeder::class);
+        $this->call(RegistrationRequestsSeeder::class);
     }
 }

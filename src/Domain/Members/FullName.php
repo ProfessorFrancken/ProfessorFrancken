@@ -25,13 +25,16 @@ final class FullName implements SerializableInterface
         $this->middlename = $middlename;
     }
 
-    public function fullname() : string
+    public function fullName() : string
     {
-        return implode(' ', [
+        return implode(' ', array_filter([
             $this->firstname,
             $this->middlename,
             $this->surname
-        ]);
+        ], function (string $name = null) {
+            // Don't include additional spaces if for example middlename was empty
+            return ! empty($name);
+        }));
     }
 
     public function firstname() : string

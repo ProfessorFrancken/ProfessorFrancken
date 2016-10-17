@@ -22,6 +22,7 @@ class FullNameTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('Mark', $fullName->firstName());
         $this->assertEquals('Redeman', $fullName->surname());
+        $this->assertEquals('Mark Redeman', $fullName->fullName());
     }
 
     /** @test */
@@ -34,6 +35,7 @@ class FullNameTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals('Sietse', $fullName->middlename());
+        $this->assertEquals('Mark Sietse Redeman', $fullName->fullName());
     }
 
     /** @test */

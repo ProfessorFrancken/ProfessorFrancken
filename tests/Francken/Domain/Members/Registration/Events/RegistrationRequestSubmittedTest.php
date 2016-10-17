@@ -26,6 +26,11 @@ class RegistrationRequestSubmittedTest extends TestCase
         $this->assertEquals($id, $event->registrationRequestId());
         $this->assertEquals('s2218356', $event->studentNumber());
         $this->assertEquals('Msc Applied Mathematics', $event->study());
+        $this->assertEquals(new FullName(
+            'Mark',
+            '',
+            'Redeman'
+        ), $event->fullName());
     }
 
     /** @test */

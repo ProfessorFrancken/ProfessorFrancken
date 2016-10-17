@@ -8,10 +8,12 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
-use Francken\Application\ReadModel\PostList\PostList;
-use Francken\Application\ReadModel\PostList\PostListProjector;
+use Francken\Application\Members\Registration\RequestStatus;
+use Francken\Application\Members\Registration\RequestStatusProjector;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListProjector;
+use Francken\Application\ReadModel\PostList\PostList;
+use Francken\Application\ReadModel\PostList\PostListProjector;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
@@ -20,13 +22,13 @@ use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
+use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
+use Francken\Infrastructure\Http\Controllers\CommitteeController;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\CommonMarkConverter;
-
-use Francken\Infrastructure\Http\Controllers\CommitteeController;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -61,6 +63,15 @@ class AppServiceProvider extends ServiceProvider
                     $this->illuminateRepository('committees_list', CommitteesList::class, 'id', ['members']));
             }
         );
+
+        $this->app->bind(
+            RegistrationRequestsController::class,
+            function (Application $app) {
+                return new RegistrationRequestsController(
+                    $this->illuminateRepository('request_status', RequestStatus::class, 'id')
+                );
+            }
+        );
     }
 
     private function registerReadModels()
@@ -90,6 +101,15 @@ class AppServiceProvider extends ServiceProvider
             function (Application $app) {
                 return new PostListProjector(
                     $this->illuminateRepository('posts', PostList::class, 'id')
+                );
+            }
+        );
+
+        $this->app->singleton(
+            RequestStatusProjector::class,
+            function (Application $app) {
+                return new RequestStatusProjector(
+                    $this->illuminateRepository('request_status', RequestStatus::class, 'id')
                 );
             }
         );

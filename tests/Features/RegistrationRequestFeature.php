@@ -41,5 +41,9 @@ class RegistrationRequestFeature extends TestCase
         $this->seeInDatabase('event_store', [
             'type' => 'Francken.Domain.Members.Registration.Events.RegistrationRequestSubmitted'
         ]);
+
+        $this->seeInDatabase('request_status', [
+            'requestee' => 'Mark Redeman'
+        ]);
     }
 }

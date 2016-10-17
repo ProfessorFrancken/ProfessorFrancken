@@ -32,6 +32,9 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('member', 'MemberController@index');
         Route::post('member/add-member', 'MemberController@addMember');
+
+        Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
+        Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
     });
 
     Route::get('{page}', 'MainContentController@page')->where('page', '.+');
