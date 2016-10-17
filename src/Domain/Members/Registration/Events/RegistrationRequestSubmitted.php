@@ -47,9 +47,9 @@ final class RegistrationRequestSubmitted implements SerializableInterface
         return $this->id;
     }
 
-    public function requestee() : Person
+    public function fullName() : FullName
     {
-        return $this->requestee;
+        return $this->fullName;
     }
 
     public function studentNumber() : string
