@@ -41,4 +41,9 @@ final class MemberList implements ReadModelInterface, SerializableInterface
     {
         return $this->last_name;
     }
+
+    public function fullName() : string
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

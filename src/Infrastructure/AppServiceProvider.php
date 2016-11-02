@@ -6,6 +6,9 @@ use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
+use Francken\Application\Books\AvailableBook;
+use Francken\Application\Books\AvailableBooksProjector;
+use Francken\Application\Books\BookDetailsRepositoryI;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
 use Francken\Application\Members\Registration\RequestStatus;
@@ -14,6 +17,8 @@ use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListProjector;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListProjector;
+use Francken\Domain\Books\Book;
+use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
@@ -22,7 +27,9 @@ use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
+use Francken\Infrastructure\Books\BookDetailsRepository;
 use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
+use Francken\Infrastructure\Http\Controllers\BookController;
 use Francken\Infrastructure\Http\Controllers\CommitteeController;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -48,6 +55,7 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerAggregateRepositories()
     {
+        $this->registerRepository(BookRepository::class, Book::class);
         $this->registerRepository(CommitteeRepository::class, Committee::class);
         $this->registerRepository(MemberRepository::class, Member::class);
         $this->registerRepository(PostRepository::class, Post::class);
@@ -72,10 +80,20 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
+        $this->app->bind(
+            BookController::class,
+            function (Application $app) {
+                return new BookController(
+                    $this->illuminateRepository('available_books', AvailableBook::class, 'id')
+                );
+            }
+        );
     }
 
     private function registerReadModels()
     {
+        $this->app->bind(BookDetailsRepositoryI::class, BookDetailsRepository::class);
+
         $this->app->singleton(
             MemberListProjector::class,
             function (Application $app) {
@@ -110,6 +128,15 @@ class AppServiceProvider extends ServiceProvider
             function (Application $app) {
                 return new RequestStatusProjector(
                     $this->illuminateRepository('request_status', RequestStatus::class, 'id')
+                );
+            }
+        );
+        $this->app->singleton(
+            AvailableBooksProjector::class,
+            function (Application $app) {
+                return new AvailableBooksProjector(
+                    $this->illuminateRepository('available_books', AvailableBook::class, 'id'),
+                    new BookDetailsRepository
                 );
             }
         );
