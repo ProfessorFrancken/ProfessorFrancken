@@ -13,7 +13,7 @@
       Questions? mail: <a href="mailto:books@professorfrancken.nl">books@professorfrancken.nl</a>
     </p>
 
-    <p><a class="btn btn-primary btn-lg" href="/books/create" role="button">Sell your books!</a></p>
+    <p><a class="btn btn-primary btn-lg" href="/study/books/create" role="button">Sell your books!</a></p>
   </div>
 
   <div class="row">
@@ -25,7 +25,7 @@
         <div class="caption">
           <h3>{{ $book->title() }}</h3>
           <p>{{ $book->author()  }}</p>
-          <p>€{{ number_format($book->price()/100, 2, ",", "") }} <a class="btn btn-primary" href="/books/{{ $book->bookId() }}">Buy!</a></p>
+          <p>€{{ number_format($book->price()/100, 2, ",", "") }} <a class="btn btn-primary" href="/study/books/{{ $book->bookId() }}">Buy!</a></p>
         </div>
       </div>
     </div>

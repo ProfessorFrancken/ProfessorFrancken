@@ -3,8 +3,8 @@
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'MainContentController@index');
 
-    Route::resource('books', 'BookController');
-    Route::put('book/{bookId}/buy', 'BookController@buy');
+    Route::resource('study/books', 'BookController');
+    Route::put('study/books/{bookId}/buy', 'BookController@buy');
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');

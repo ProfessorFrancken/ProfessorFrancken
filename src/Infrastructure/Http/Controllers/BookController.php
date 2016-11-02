@@ -74,11 +74,11 @@ class BookController extends Controller
 
     public function buy(Request $req, BookRepository $repo, $id)
     {
-        $book = $repo->load($id);
+        $book = $repo->load(new BookId($id));
         $book->sellToMember(MemberId::generate()); ///@todo use session memberId
         $repo->save($book);
 
-        return redirect('/books');
+        return redirect('/study/books');
     }
 
     public function update(Request $req, BookRepository $repo, $id)

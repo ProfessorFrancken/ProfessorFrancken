@@ -35,7 +35,6 @@
                 ['url' => "/career/excursions", 'title' => 'Excursions']
             ]
         ])
-        @include('layout._navigation-top-menu-item', ['url' => '/books', 'title' => 'Books'])
         @include('layout._navigation-top-menu-item', ['url' => 'https://www.flickr.com/photos/fotocie/sets/', 'title' => 'Photos'])
     </ul>
 @endsection
