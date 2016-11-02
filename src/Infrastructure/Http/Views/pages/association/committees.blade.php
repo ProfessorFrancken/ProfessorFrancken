@@ -1,4 +1,4 @@
-@extends('pages.about')
+@extends('pages.association')
 
 @section('content')
 

@@ -1,4 +1,4 @@
-@extends('pages.about')
+@extends('pages.association')
 
 @section('content')
 
@@ -6,10 +6,10 @@
 
   <div class="row">
     <div class="col-sm-9">
-      
+
       <hr>
 
-      @include("pages.about._board", ['board' => [
+      @include("pages.association._board", ['board' => [
         'year' => '2016-2017',
         'name' => 'Buitengewoon',
         'members' => [
@@ -23,7 +23,7 @@
 
       <hr>
 
-      @include("pages.about._board", ['board' => [
+      @include("pages.association._board", ['board' => [
         'year' => '2015-2016',
         'name' => 'Daadkracht',
         'members' => [
@@ -40,7 +40,7 @@
       <hr>
 
     </div>
-    
+
     <div class="col-sm-3" style="font-size: 14px">
       <ul class="nav">
         <li><a href="#2016">Buitengewoon (2016-2017)</a></li>
@@ -57,5 +57,5 @@
       </ul>
     </div>
   </div>
-  
+
 @endsection
