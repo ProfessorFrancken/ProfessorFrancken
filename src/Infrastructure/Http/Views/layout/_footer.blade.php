@@ -14,7 +14,7 @@
                 <h3>Contact</h3>
                 <i class="fa fa-envelope" aria-hidden="true"></i> <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
                 <i class="fa fa-phone" aria-hidden="true"></i> tel: +31 (0) 50 363 4978 <br>
-                Kvk: 400 252 71
+                <a href="/contact"><u>More contact info</u></a>
             </div>
             <div class="col-sm-3">
                 <h3>Social media</h3>
