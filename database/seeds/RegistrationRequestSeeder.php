@@ -10,7 +10,6 @@ use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\RegistrationRequest;
-use Francken\Domain\Members\Registration\RegistrationRequestCategory;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository as Repository;
 use Illuminate\Database\Seeder;
@@ -33,7 +32,6 @@ final class RegistrationRequestsSeeder extends Seeder
             $id = RegistrationRequestId::generate();
 
             $gender = $faker->randomElement($genders);
-
 
             $request = RegistrationRequest::submit(
                 $id,

@@ -3,7 +3,6 @@
 namespace Francken\Application\Books;
 
 use Francken\Application\Projector;
-use Francken\Application\Books\AvailableBook;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookSoldToMember;
@@ -33,7 +32,8 @@ final class AvailableBooksProjector extends Projector
             $event->price(),
             $event->isbn(),
             $bookDetails->pathToCover(),
-            false); //salePending
+            false
+        ); //salePending
 
         $this->books->save($book);
     }
@@ -54,7 +54,8 @@ final class AvailableBooksProjector extends Projector
             $book->price(),
             $book->isbn(),
             $book->pathToCover(),
-            true);
+            true
+        );
 
         $this->books->save($book);
     }
@@ -70,7 +71,8 @@ final class AvailableBooksProjector extends Projector
             $book->price(),
             $book->isbn(),
             $book->pathToCover(),
-            false);
+            false
+        );
 
         $this->books->save($book);
     }

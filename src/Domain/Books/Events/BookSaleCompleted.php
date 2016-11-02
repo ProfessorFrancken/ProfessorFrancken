@@ -14,12 +14,12 @@ final class BookSaleCompleted implements SerializableInterface
 
     public function __construct(BookId $id)
     {
-    	$this->bookId = $id;
+        $this->bookId = $id;
     }
 
     public function bookId() : BookId
     {
-    	return $this->bookId;
+        return $this->bookId;
     }
 
     protected static function deserializationCallbacks()

@@ -2,7 +2,6 @@
 
 namespace Francken\Application\Books;
 
-use Assert\Assertion;
 use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
@@ -10,7 +9,6 @@ use Francken\Domain\Books\BookId;
 
 final class AvailableBook implements ReadModelInterface, SerializableInterface
 {
-
     use Serializable;
 
     private $id;
@@ -28,8 +26,8 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
         int $price,
         string $isbn_10,
         string $path_to_cover,
-        bool $sale_pending)
-    {
+        bool $sale_pending
+    ) {
         $this->id = (string)$id;
         $this->title = $title;
         $this->author = $author;

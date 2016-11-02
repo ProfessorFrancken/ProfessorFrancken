@@ -16,20 +16,20 @@ final class BookSoldToNonMember implements SerializableInterface
 
     public function __construct(BookId $id, Guest $guest)
     {
-    	$this->id = $id;
-    	$this->guest = $guest;
+        $this->id = $id;
+        $this->guest = $guest;
     }
 
     public function bookId() : BookId
     {
-    	return $this->bookId;
+        return $this->bookId;
     }
 
     public function guest() : Guest
     {
-    	return $this->guest;
+        return $this->guest;
     }
-    
+
     protected static function deserializationCallbacks()
     {
         return ['bookId' => [BookId::class, 'deserialize']];

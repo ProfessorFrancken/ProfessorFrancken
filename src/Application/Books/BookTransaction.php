@@ -2,17 +2,14 @@
 
 namespace Francken\Application\Books;
 
-use Assert\Assertion;
 use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
-
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Members\MemberId;
 
 final class BookTransaction implements ReadModelInterface, SerializableInterface
 {
-
     use Serializable;
 
     private $id;
@@ -34,8 +31,8 @@ final class BookTransaction implements ReadModelInterface, SerializableInterface
         string $buyersName,
         int $price,
         bool $isSold,
-        bool $isPaid)
-    {
+        bool $isPaid
+    ) {
         $this->id = $id;
         $this->title = $title;
         $this->sellersId = $sellersId;
@@ -62,39 +59,38 @@ final class BookTransaction implements ReadModelInterface, SerializableInterface
         return $this->title;
     }
 
-    public function sellersId ()
+    public function sellersId()
     {
         return $this->sellersId;
     }
 
-    public function sellersName ()
+    public function sellersName()
     {
         return $this->sellersName;
     }
 
-    public function buyersId ()
+    public function buyersId()
     {
         return $this->buyersId;
     }
 
-    public function buyersName ()
+    public function buyersName()
     {
         return $this->buyersName;
     }
 
-    public function price ()
+    public function price()
     {
         return $this->price;
     }
 
-    public function isPaid ()
+    public function isPaid()
     {
         return $this->isPaid;
     }
 
-    public function isSold ()
+    public function isSold()
     {
         return $this->isSold;
     }
-
 }

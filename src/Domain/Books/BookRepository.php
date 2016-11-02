@@ -28,7 +28,7 @@ final class BookRepository
      */
     public function load(BookId $BookId) : Book
     {
-return $this->repo->load((string)$BookId);
+        return $this->repo->load((string)$BookId);
     }
 
     /**

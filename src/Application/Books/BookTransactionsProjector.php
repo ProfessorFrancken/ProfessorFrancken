@@ -2,10 +2,7 @@
 
 namespace Francken\Application\Books;
 
-use Francken\Application\ReadModel\MemberList\MemberList;
-
 use Broadway\ReadModel\Projector;
-use Francken\Application\Books\AvailableBook;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookSoldToMember;
@@ -39,7 +36,8 @@ final class BookTransactionsProjector extends Projector
             null,
             $event->price(),
             false,
-            false);
+            false
+        );
 
         $this->books->save($book);
     }
@@ -64,7 +62,8 @@ final class BookTransactionsProjector extends Projector
             $buyer->fullName(),
             $book->price(),
             false,
-            false);
+            false
+        );
 
         $this->books->save($book);
     }
@@ -82,7 +81,8 @@ final class BookTransactionsProjector extends Projector
             null,
             $book->price(),
             false,
-            false);
+            false
+        );
 
         $this->books->save($book);
     }
@@ -100,7 +100,8 @@ final class BookTransactionsProjector extends Projector
             $buyer->fullName(),
             $book->price(),
             true,
-            false);
+            false
+        );
 
         $this->books->save($book);
     }

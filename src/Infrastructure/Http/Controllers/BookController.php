@@ -3,13 +3,11 @@
 namespace Francken\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Members\MemberId;
 use Francken\Application\ReadModelRepository;
-
 
 class BookController extends Controller
 {
@@ -24,15 +22,19 @@ class BookController extends Controller
     {
         $books = $this->books->findAll();
 
-        return view('book.index',
-            ['books'=> $books]);
+        return view(
+            'book.index',
+            ['books'=> $books]
+        );
     }
 
     public function show($id)
     {
         $book = $this->books->find($id);
-        return view('book.show',
-            ['book' => $book]);
+        return view(
+            'book.show',
+            ['book' => $book]
+        );
     }
 
     //-----------------------
@@ -48,19 +50,22 @@ class BookController extends Controller
         $isbn = new \Isbn\Isbn();
 
         ///@todo validation
-        if (!$isbn->check->identify($req->input('isbn')))
+        if (!$isbn->check->identify($req->input('isbn'))) {
             throw new \Exception('Not an ISBN');
+        }
 
         $isbn_10 = $isbn->hyphens->removeHyphens($req->input('isbn'));
 
-        if ($isbn->check->identify($isbn_10) == 13)
+        if ($isbn->check->identify($isbn_10) == 13) {
             $isbn_10 = $isbn->translate->to10($isbn_10);
+        }
 
         $book = Book::offer(
             BookId::generate(),
             MemberId::generate(), //get session ID?
             $isbn_10,
-            $req->input('price') * 100);
+            $req->input('price') * 100
+        );
 
         $repo->save($book);
 
@@ -78,11 +83,9 @@ class BookController extends Controller
 
     public function update(Request $req, BookRepository $repo, $id)
     {
-
     }
 
     public function destroy($id)
     {
-
     }
 }

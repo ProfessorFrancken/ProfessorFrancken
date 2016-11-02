@@ -18,35 +18,35 @@ final class BookOffered implements SerializableInterface
 
     public function __construct(BookId $id, MemberId $sellersId, string $isbn, int $price)
     {
-    	$this->bookId = $id;
-    	$this->sellersId = $sellersId;
-    	$this->isbn = $isbn;
-    	$this->price = $price;
+        $this->bookId = $id;
+        $this->sellersId = $sellersId;
+        $this->isbn = $isbn;
+        $this->price = $price;
     }
 
     public function bookId() : BookId
     {
-    	return $this->bookId;
+        return $this->bookId;
     }
 
     public function sellersId() : MemberId
     {
-    	return $this->sellersId;
+        return $this->sellersId;
     }
 
     public function isbn() : string
     {
-    	return $this->isbn;
+        return $this->isbn;
     }
 
     public function price() : int
     {
-    	return $this->price;
+        return $this->price;
     }
 
     protected static function deserializationCallbacks()
     {
         return ['bookId' => [BookId::class, 'deserialize'],
-                'sellersId' => [MemberId::class, 'deserialize']];
+                'sellersId' => [MemberId::class, 'deserialize'], ];
     }
 }

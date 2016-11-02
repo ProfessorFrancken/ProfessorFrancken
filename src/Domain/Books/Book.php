@@ -3,9 +3,6 @@
 namespace Francken\Domain\Books;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
-
-use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\Guest;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookSaleCancelled;
@@ -24,7 +21,7 @@ final class Book extends EventSourcedAggregateRoot
 
     public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price) : Book
     {
-        $book = new Book;
+        $book = new Book();
         $book->apply(new BookOffered($id, $sellersId, $isbn, $price));
         return $book;
     }
@@ -37,7 +34,7 @@ final class Book extends EventSourcedAggregateRoot
     public function sellToMember(MemberId $memberId)
     {
         if ($this->isSold) {
-            throw new \Exception("A book cannot be sold twice");
+            throw new \Exception('A book cannot be sold twice');
         }
         $this->isSold = true;
         $this->apply(new BookSoldToMember($this->id, $memberId));
@@ -46,7 +43,7 @@ final class Book extends EventSourcedAggregateRoot
     public function sellToNonMember(Guest $guest)
     {
         if ($this->isSold) {
-            throw new \Exception("A book cannot be sold twice");
+            throw new \Exception('A book cannot be sold twice');
         }
         $this->isSold = true;
         $this->apply(new BookSoldToNonMember($this->id, $guest));

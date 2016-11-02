@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 final class BooksSeeder extends Seeder
 {
-    private $isbns = ["0691157243", "1603580557", "0521198119"];
+    private $isbns = ['0691157243', '1603580557', '0521198119'];
 
     /**
      * Run the database seeds.
@@ -20,14 +20,15 @@ final class BooksSeeder extends Seeder
         $repo = App::make(Books\BookRepository::class);
         $faker = App::make(Faker\Generator::class);
 
-        foreach($this->isbns as $isbn) {
+        foreach ($this->isbns as $isbn) {
             $sellersId = MemberId::generate();
             $bookId = Books\BookId::generate();
             $book = Books\Book::offer(
                 $bookId,
                 $sellersId,
                 $isbn,
-                1500);
+                1500
+            );
             $repo->save($book);
         }
     }
