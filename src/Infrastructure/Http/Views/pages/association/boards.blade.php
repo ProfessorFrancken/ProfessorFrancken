@@ -2,7 +2,9 @@
 
 @section('content')
 
-  <h1>Boards</h1>
+  <h1 class="centered-header">
+    Boards
+  </h1>
 
   <div class="row">
     <div class="col-sm-9">

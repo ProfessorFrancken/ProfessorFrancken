@@ -14,7 +14,9 @@
 
 @section('content')
 
-  <h1>About</h1>
+  <h1 class="centered-header">
+    About
+  </h1>
 
   <p>The Technisch Fysische Vereniging ‘Professor Francken’ (Applied Physics Association ‘Professor Francken’) is the University of Groningen’s study association for applied physics and it is focused on (graduated) applied physics students. Other students of the faculty can become a donator of the association. They have the same privileges as applied physics students, except the right to vote at the general members assembly (ALV).
 

@@ -13,7 +13,9 @@
 @section('content')
 
 <div>
-  <h1>The Francken Blog</h1>
+  <h1 class="centered-header">
+      The Francken Blog
+  </h1>
   <p class="lead">The official example template of creating a blog with Bootstrap.</p>
 </div>
 

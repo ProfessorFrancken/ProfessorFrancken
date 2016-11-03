@@ -2,9 +2,9 @@
 
 @section('content')
 
-  <h1>Committees</h1>
-
-  <hr>
+  <h1 class="centered-header">
+    Committees
+  </h1>
 
   <h2>Bincie (Dutch Field Trip Committee)</h2>
 

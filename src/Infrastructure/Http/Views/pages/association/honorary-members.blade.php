@@ -2,7 +2,9 @@
 
 @section('content')
 
-  <h1>History</h1>
+  <h1 class="centered-header">
+    Honorary members
+  </h1>
 
   <p>T.F.V. ‘Professor Francken’ has the honour to have two very much appreciated physicists as honorary members. Of course professor J.C. Francken, after whom we named the association, is an honorary member. And of course professor J.Th.M. De Hosson became an honorary member on basis of his special merit towards the association</p>
 
