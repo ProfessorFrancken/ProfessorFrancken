@@ -1,85 +1,96 @@
 // From gsvnet
 Menu = (function(){
-	var activeClass = 'navigation-list__item--active-sub-list',
-		$mainMenu;
+	  var activeClass = 'navigation-list__item--active-sub-list',
+		    $mainMenu;
 
-	function collapse(){
-		$('.' + activeClass).removeClass(activeClass);
-	}
+	  function collapse(){
+        console.log('collapse menu');
+        collapseSubMenu();
+		    $mainMenu.removeClass('navigation-list--active');
+	  }
 
-	function showSubMenu(e){
+    function collapseSubMenu() {
+        console.log('collapse sub menu');
+	      $('.' + activeClass).removeClass(activeClass);
+    }
 
-		// Stop bubbling up the DOM.
-		e.stopPropagation();
-		e.preventDefault();
 
-		// Check if event is already handled
+	  function showSubMenu(e){
+
+		    // Stop bubbling up the DOM.
+		    e.stopPropagation();
+		    e.preventDefault();
+
+        console.log('event', e);
+		    // Check if event is already handled
         if(e.handled !== true) {
-			// Save jQuery instance of element
+            console.log('show sub menu');
+			      // Save jQuery instance of element
             $this = $(this);
-			$parent = $this.parent();
+			      $parent = $this.parent();
 
-			// Check if current menu is active
-			if($parent.hasClass(activeClass)){
+			      // Check if current menu is active
+			      if($parent.hasClass(activeClass)){
                 $this.attr('aria-expanded', false);
-				$parent.removeClass(activeClass);
-			} else {
-				// Remove active class from other menu
-				collapse();
+				        $parent.removeClass(activeClass);
+			      } else {
+				        // Remove active class from other menu
+                collapseSubMenu();
 
-				// Make menu active
+				        // Make menu active
                 $this.attr('aria-expanded', true);
-				$parent.addClass(activeClass);
-			}
+				        $parent.addClass(activeClass);
+			      }
 
             e.handled = true;
         } else {
             return false;
         }
-	}
+	  }
 
-	function showMenu(e){
-		// Stop bubbling up the DOM.
-		e.stopPropagation();
-		e.preventDefault();
+	  function showMenu(e){
+		    // Stop bubbling up the DOM.
+		    e.stopPropagation();
+		    e.preventDefault();
 
-		// Check if event is already handled
+        console.log('show menu');
+		    // Check if event is already handled
         if(e.handled !== true) {
 			      $mainMenu.toggleClass('navigation-list--active');
             e.handled = true;
         } else {
             return false;
         }
-	}
+	  }
 
-	return {
-		// Initializes the menu
-		init: function(menu, carets, toggler) {
-			$mainMenu = menu;
+	  return {
+		    // Initializes the menu
+		    init: function(menu, carets, toggler) {
+			      $mainMenu = menu;
 
-			if(Modernizr.touch)
-			{
-				carets.on('touchstart', showSubMenu);
-				toggler.on('touchstart', showMenu);
-			} else {
-				carets.on('click', showSubMenu);
-				toggler.on('click', showMenu);
-			}
+			      if (Modernizr.touch)
+			      {
+				        carets.on('touchstart', showSubMenu);
+				        toggler.on('touchstart', showMenu);
+			      } else {
+				        carets.on('click', showSubMenu);
+				        toggler.on('click', showMenu);
+			      }
 
-			menu.click(function(e){
-				e.stopPropagation();
-			});
+			      menu.click(function(e){
+				        e.stopPropagation();
+			      });
 
-			// Remove menu when document clicked or when escape is pressed
-			$('html').on({
-				click: collapse,
-				keyup: function(e) {
-					// Check for escape
-					if (e.keyCode == 27) { collapse(); }
-				}
-			});
-		}
-	}
+			      // Remove menu when document clicked or when escape is pressed
+			      $('html').on({
+				        click: collapse,
+				        keyup: function(e) {
+					          // Check for escape
+					          if (e.keyCode == 27) { collapse(); }
+				        }
+			      });
+		    }
+	  }
 })();
 
 function overall() {
