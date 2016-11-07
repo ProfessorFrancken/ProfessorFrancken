@@ -13,7 +13,7 @@
       <h2>{{ $book->title() }}</h2>
       <h3>{{ $book->author()  }}</h3>
       <p>Price: €{{ number_format($book->price()/100, 2, ",", "") }}</p>
-      {!! Form::open(['url' => ['books', $book->bookId(), 'buy'], 'method' => 'PUT']) !!}
+      {!! Form::open(['url' => ['study/books', $book->bookId(), 'buy'], 'method' => 'PUT']) !!}
 	    {!! Form::submit('Buy!', ['class' => 'btn btn-primary']) !!}
       {!! Form::close() !!}
     </div>

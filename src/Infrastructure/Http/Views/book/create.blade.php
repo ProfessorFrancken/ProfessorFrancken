@@ -12,7 +12,7 @@
 
   <div class="row">
     <div class="col-sm-7">
-      {!! Form::open(['url' => 'books']) !!}
+      {!! Form::open(['url' => 'study/books']) !!}
         @include('book._book')
       {!! Form::close() !!}
     </div>

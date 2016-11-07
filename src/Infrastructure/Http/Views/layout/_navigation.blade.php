@@ -8,26 +8,24 @@
     --}}
     <ul class="navigation-list clearfix" id="main-menu">
         @include('layout._navigation-top-menu-item', [
-            'url' => '/about',
-            'title' => 'About',
+            'url' => '/association',
+            'title' => 'Association',
             'subItems' => [
-                ['url' => "/about/history", 'title' => 'History'],
-                ['url' => "/about/honorary-members", 'title' => 'Honerary members'],
-                ['url' => "/about/boards", 'title' => 'Boards'],
-                ['url' => "/about/committees", 'title' => 'Committees'],
-                ['url' => "/about/francken-vrij", 'title' => 'Francken Vrij']
+                ['url' => "/association/news", 'title' => 'News'],
+                ['url' => "/association/history", 'title' => 'History'],
+                ['url' => "/association/honorary-members", 'title' => 'Honerary members'],
+                ['url' => "/association/boards", 'title' => 'Boards'],
+                ['url' => "/association/committees", 'title' => 'Committees'],
+                ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij']
             ]
         ])
         @include('layout._navigation-top-menu-item', [
-            'url' => '/news',
-            'title' => 'News',
+            'url' => '/study',
+            'title' => 'Study',
             'subItems' => [
-                ['url' => "/post", 'title' => 'All'],
-                ['url' => "/news", 'title' => 'News'],
-                ['url' => "/blog", 'title' => 'Blog']
+                ['url' => "/study/books", 'title' => 'Books'],
             ]
         ])
-        @include('layout._navigation-top-menu-item', ['url' => '/study', 'title' => 'Study'])
         @include('layout._navigation-top-menu-item', [
             'url' => '/career',
             'title' => 'Career',
@@ -37,9 +35,7 @@
                 ['url' => "/career/excursions", 'title' => 'Excursions']
             ]
         ])
-        @include('layout._navigation-top-menu-item', ['url' => '/books', 'title' => 'Books'])
         @include('layout._navigation-top-menu-item', ['url' => 'https://www.flickr.com/photos/fotocie/sets/', 'title' => 'Photos'])
-        @include('layout._navigation-top-menu-item', ['url' => '/contact', 'title' => 'Contact'])
     </ul>
 @endsection
 
