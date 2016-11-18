@@ -34,81 +34,65 @@ use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\CommonMarkConverter;
 
-class AppServiceProvider extends ServiceProvider
+final class AppServiceProvider extends ServiceProvider
 {
+    // This constant contains all the repositories we want to register,
+    // it contains pairs of the repository's class and the associated
+    // aggregate's class name
+    const EventSourcedRepositories = [
+        [BookRepository::class, Book::class],
+        [CommitteeRepository::class, Committee::class],
+        [MemberRepository::class, Member::class],
+        [PostRepository::class, Post::class],
+        [RegistrationRequestRepository::class, RegistrationRequest::class],
+    ];
+
+    // Similarly we can register illuminate read models by again providing a pair
+    // where the first value is the repository's class name and the second value
+    // are the options that should be given to the illuminate repository
+    const IlluminateReadModels = [
+        [
+            MemberListRepository::class,
+            ['members', MemberList::class, 'id']
+        ],
+        [
+            CommitteesListRepository::class,
+            ['committees_list', CommitteesList::class, 'id', ['members']]
+        ],
+        [
+            PostListRepository::class,
+            ['posts', PostList::class, 'id']
+        ],
+        [
+            RequestStatusRepository::class,
+            ['request_status', RequestStatus::class, 'id']
+        ],
+        [
+            AvailableBooksRepository::class,
+            ['available_books', AvailableBook::class, 'id']
+        ],
+    ];
+
     /**
      * Register any application services.
      */
     public function register()
     {
-        $this->registerAggregateRepositories();
+        // Register the event sourced repositories
+        foreach (static::EventSourcedRepositories as $repository) {
+            $this->registerRepository($repository[0], $repository[1]);
+        }
+
+        // Register read model repositories and other associated services
         $this->registerReadModels();
+
         $this->app->instance('path', 'src/Infrastructure');
     }
 
-    private function registerAggregateRepositories()
-    {
-        $this->registerRepository(BookRepository::class, Book::class);
-        $this->registerRepository(CommitteeRepository::class, Committee::class);
-        $this->registerRepository(MemberRepository::class, Member::class);
-        $this->registerRepository(PostRepository::class, Post::class);
-        $this->registerRepository(RegistrationRequestRepository::class, RegistrationRequest::class);
-    }
-
-    private function registerReadModels()
-    {
-        $this->app->when(MemberListRepository::class)
-            ->needs(ReadModelRepository::class)
-            ->give(function () {
-                return $this->illuminateRepository('members', MemberList::class, 'id');
-            });
-
-        $this->app->when(CommitteesListRepository::class)
-            ->needs(ReadModelRepository::class)
-            ->give(function () {
-                return $this->illuminateRepository('committees_list', CommitteesList::class, 'id', ['members']);
-            });
-
-        $this->app->when(PostListRepository::class)
-            ->needs(ReadModelRepository::class)
-            ->give(function () {
-                return $this->illuminateRepository('posts', PostList::class, 'id');
-            });
-
-        $this->app->when(RequestStatusRepository::class)
-            ->needs(ReadModelRepository::class)
-            ->give(function () {
-                return $this->illuminateRepository('request_status', RequestStatus::class, 'id');
-            });
-
-        $this->app->when(AvailableBooksRepository::class)
-            ->needs(ReadModelRepository::class)
-            ->give(function () {
-                return $this->illuminateRepository('available_books', AvailableBook::class, 'id');
-            });
-
-        $this->app->bind(BookDetailsRepositoryI::class, BookDetailsRepository::class);
-
-        $this->app->when(CommitteesListProjector::class)
-            ->needs(CommonMarkConverter::class)
-            ->give(function () {
-                return new CommonMarkConverter();
-            });
-    }
-
-    private function illuminateRepository(string $tableName, string $modelName, string $identifier, array $stringify = []) : IlluminateRepository
-    {
-        return new IlluminateRepository(
-            $this->app->make(DatabaseConnection::class),
-            $tableName,
-            $modelName,
-            $identifier,
-            $stringify
-        );
-    }
-
     /**
-     * Creates a new binding for an event sourced aggregate repository.
+     * Register the repositorie used to store our event sourced aggregate root
+     * Currently all repositories use the same configuration based on the
+     * Francken\Infrastructure\EventSourcing\Factory class
      *
      * @param string $repository classname
      * @param string $aggregate  classname
@@ -121,6 +105,44 @@ class AppServiceProvider extends ServiceProvider
                 $factory = $app->make(Factory::class);
 
                 return $factory->buildForAggregate($aggregate);
+            });
+    }
+
+    /**
+     * Register bindings to get specific Illuminate repositories for our read models
+     */
+    private function registerReadModels()
+    {
+        // Register all read models
+        foreach (static::IlluminateReadModels as $readModel) {
+            $repository = $readModel[0];
+            $options = $readModel[1];
+
+            // Return an illuminate repository when a ReadModelRepository is asked
+            // Pass all options (such as table name, ReadModel class, and primary key)
+            // directly to the illuminate repository
+            $this->app->when($repository)
+                ->needs(ReadModelRepository::class)
+                ->give(
+                    function (Application $app) use ($options) {
+                        return new IlluminateRepository(
+                            $app->make(DatabaseConnection::class),
+                            ...$options
+                        );
+                    }
+                );
+        }
+
+        // Responsible for getting the book cover from Amazon
+        $this->app->bind(BookDetailsRepositoryI::class, BookDetailsRepository::class);
+
+        // In this case we don't want Laravel to resolve the CommonMarkConverter since
+        // this would mean that Laravel would provide the converter with an environment,
+        // instead we want the converter to create its own environment object
+        $this->app->when(CommitteesListProjector::class)
+            ->needs(CommonMarkConverter::class)
+            ->give(function () {
+                return new CommonMarkConverter();
             });
     }
 }
