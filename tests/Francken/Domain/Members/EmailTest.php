@@ -16,6 +16,14 @@ class EmailTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('markredeman@gmail.com', (string) $email);
     }
 
+    /** @test */
+    public function it_accepts_an_email_with_gmail_aliases()
+    {
+        $email = new Email('markredeman+123@gmail.com');
+
+        $this->assertEquals('markredeman+123@gmail.com', (string) $email);
+    }
+
     /**
      * @test
      * @expectedException \InvalidArgumentException
