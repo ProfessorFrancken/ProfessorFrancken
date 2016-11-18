@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Books;
 
-use Francken\Application\Books\BookDetailsRepositoryI;
-use Francken\Application\Books\AvailableBooksProjector;
 use Francken\Application\Books\AvailableBook;
-use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\Events\BookOffered;
-use Francken\Domain\Books\Events\BookOfferRetracted;
-use Francken\Domain\Books\Events\BookSaleCancelled;
-use Francken\Domain\Books\Events\BookSoldToMember;
-use Francken\Domain\Books\Events\BookSaleCompleted;
-use Francken\Domain\Members\MemberId;
+use Francken\Application\Books\AvailableBooksProjector;
+use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\BookDetails;
+use Francken\Application\Books\BookDetailsRepositoryI;
 use Francken\Application\Projector;
+use Francken\Domain\Books\BookId;
+use Francken\Domain\Books\Events\BookOfferRetracted;
+use Francken\Domain\Books\Events\BookOffered;
+use Francken\Domain\Books\Events\BookSaleCancelled;
+use Francken\Domain\Books\Events\BookSaleCompleted;
+use Francken\Domain\Books\Events\BookSoldToMember;
+use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
 
@@ -131,6 +132,11 @@ class AvailableBooksProjectorTest extends TestCase
                 "author",
                 "path_to_cover.jpg"));
 
-        return new AvailableBooksProjector($repository, $this->bookDetailRepo->reveal());
+        return new AvailableBooksProjector(
+            new AvailableBooksRepository(
+                $repository
+            ),
+            $this->bookDetailRepo->reveal()
+        );
     }
 }

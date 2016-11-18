@@ -8,6 +8,7 @@ use Broadway\Domain\DateTime;
 use DateTimeImmutable;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Application\Members\Registration\RequestStatusProjector;
+use Francken\Application\Members\Registration\RequestStatusRepository;
 use Francken\Application\Projector;
 use Francken\Domain\Members\Address;
 use Francken\Domain\Members\ContactInfo;
@@ -64,7 +65,9 @@ class RequestStatusProjectorTest extends TestCase
         $this->requests = new InMemoryRepository;
 
         return new RequestStatusProjector(
-            $repository
+            new RequestStatusRepository(
+                $repository
+            )
         );
     }
 

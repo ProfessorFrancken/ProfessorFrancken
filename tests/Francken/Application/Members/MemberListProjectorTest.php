@@ -7,6 +7,7 @@ namespace Francken\Tests\Application\Members;
 use Francken\Application\Projector;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListProjector;
+use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Domain\Members\Events\MemberJoinedFrancken;
 use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
@@ -28,6 +29,10 @@ class MemberListProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        return new MemberListProjector($repository);
+        return new MemberListProjector(
+            new MemberListRepository(
+                $repository
+            )
+        );
     }
 }

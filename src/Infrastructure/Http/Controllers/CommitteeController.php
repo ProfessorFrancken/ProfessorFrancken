@@ -11,7 +11,7 @@ use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
-use Francken\Application\Committees\CommitteesListProjector;
+use Francken\Application\Committees\CommitteesListRepository;
 use DB;
 
 class CommitteeController extends Controller
@@ -19,7 +19,7 @@ class CommitteeController extends Controller
 
     private $committeeRepo;
 
-    public function __construct(ReadModelRepository $committees)
+    public function __construct(CommitteesListRepository $committees)
     {
         $this->committeeRepo = $committees;
     }
@@ -55,16 +55,16 @@ class CommitteeController extends Controller
         return redirect('/admin/committee');
     }
 
-    public function show($id)
+    public function show(string $id)
     {
-        $committee = $this->committeeRepo->find($id);
+        $committee = $this->committeeRepo->find(new CommitteeId($id));
 
         return view('admin.committee.show', [
             'committee' => $committee
         ]);
     }
 
-    public function update(Request $req, CommitteeRepository $repo, $id)
+    public function update(Request $req, CommitteeRepository $repo, string $id)
     {
         $committee = $repo->load(new CommitteeId($id));
         $committee->edit($req->input('name'), $req->input('goal'));
@@ -80,7 +80,7 @@ class CommitteeController extends Controller
         return redirect('/admin/committee/' . $id);
     }
 
-    public function addMember(CommitteeRepository $repo, $committeeId, $memberId)
+    public function addMember(CommitteeRepository $repo, string $committeeId, string $memberId)
     {
         $committee = $repo->load(new CommitteeId($committeeId));
         $committee->joinByMember(new MemberId($memberId));
@@ -89,7 +89,7 @@ class CommitteeController extends Controller
         return back();
     }
 
-    public function removeMember(CommitteeRepository $repo, $committeeId, $memberId)
+    public function removeMember(CommitteeRepository $repo, string $committeeId, string $memberId)
     {
         $committee = $repo->load(new CommitteeId($committeeId));
         $committee->leftByMember(new MemberId($memberId));

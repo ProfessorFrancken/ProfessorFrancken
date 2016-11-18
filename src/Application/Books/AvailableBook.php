@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Books;
 
 use BroadwaySerialization\Serialization\Serializable;
@@ -57,7 +59,7 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
         return $this->author;
     }
 
-    public function price() : string
+    public function price() : int
     {
         return $this->price;
     }

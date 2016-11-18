@@ -18,7 +18,6 @@ abstract class Projector extends BroadwayProjector
         }
 
         $this->$method($event, $domainMessage);
-
     }
 
     private function getHandleMethod($event)
