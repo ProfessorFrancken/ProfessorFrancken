@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Domain\Activities\Events;
 
 use Broadway\Serializer\SerializableInterface;
-use Francken\Domain\Base\Serializable;
+use Francken\Domain\Serializable;
 use Francken\Domain\Activities\ActivityId;
 
 abstract class ActivityEvent implements SerializableInterface

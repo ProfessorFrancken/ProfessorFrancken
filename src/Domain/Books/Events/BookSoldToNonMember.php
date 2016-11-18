@@ -3,7 +3,7 @@
 namespace Francken\Domain\Books\Events;
 
 use Broadway\Serializer\SerializableInterface;
-use Francken\Domain\Base\Serializable;
+use Francken\Domain\Serializable;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Guest;
 

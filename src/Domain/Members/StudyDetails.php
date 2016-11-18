@@ -6,7 +6,7 @@ namespace Francken\Domain\Members;
 
 use DateTimeImmutable;
 use Broadway\Serializer\SerializableInterface;
-use Francken\Domain\Base\Serializable;
+use Francken\Domain\Serializable;
 
 final class StudyDetails implements SerializableInterface
 {

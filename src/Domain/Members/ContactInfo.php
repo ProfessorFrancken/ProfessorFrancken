@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Domain\Members;
 
 use Broadway\Serializer\SerializableInterface;
-use Francken\Domain\Base\Serializable;
+use Francken\Domain\Serializable;
 
 final class ContactInfo implements SerializableInterface
 {

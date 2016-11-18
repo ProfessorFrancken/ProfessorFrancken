@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain\Base;
+namespace Francken\Domain;
 
 use Assert\Assertion as Assert;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Domain\Members;
 
 use Broadway\Serializer\SerializableInterface;
-use Francken\Domain\Base\DomainException;
-use Francken\Domain\Base\Serializable;
+use Francken\Domain\DomainException;
+use Francken\Domain\Serializable;
 use Francken\Domain\Members;
 
 final class PaymentInfo implements SerializableInterface

@@ -7,7 +7,7 @@ namespace Francken\Domain\Posts\Events;
 use Carbon\Carbon;
 use DateTimeImmutable;
 use Francken\Domain\Posts\PostId;
-use Francken\Domain\Base\DomainEvent;
+use Francken\Domain\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 

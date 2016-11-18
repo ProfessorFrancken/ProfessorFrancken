@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
-use Francken\Domain\Base\DomainException;
+use Francken\Domain\DomainException;
 
 final class InvalidActivity extends DomainException
 {

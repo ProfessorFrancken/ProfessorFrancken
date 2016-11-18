@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Members\Registration;
 
-use Francken\Domain\Base\Identifier;
+use Francken\Domain\Identifier;
 
 final class RegistrationRequestId extends Identifier
 {

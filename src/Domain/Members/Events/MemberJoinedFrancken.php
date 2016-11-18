@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Domain\Members\Events;
 
 use Francken\Domain\Members\MemberId;
-use Francken\Domain\Base\DomainEvent;
+use Francken\Domain\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 

@@ -2,7 +2,7 @@
 
 namespace Francken\Domain\Books;
 
-use Francken\Domain\Base\Identifier;
+use Francken\Domain\Identifier;
 
 final class BookId extends Identifier
 {

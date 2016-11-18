@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain\Base;
+namespace Francken\Domain;
 
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use BroadwaySerialization\Serialization\RecursiveSerializer;
