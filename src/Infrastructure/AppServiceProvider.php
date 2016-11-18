@@ -39,7 +39,7 @@ final class AppServiceProvider extends ServiceProvider
     // This constant contains all the repositories we want to register,
     // it contains pairs of the repository's class and the associated
     // aggregate's class name
-    const EventSourcedRepositories = [
+    const EVENT_SOURCED_REPOSITORIES = [
         [BookRepository::class, Book::class],
         [CommitteeRepository::class, Committee::class],
         [MemberRepository::class, Member::class],
@@ -50,7 +50,7 @@ final class AppServiceProvider extends ServiceProvider
     // Similarly we can register illuminate read models by again providing a pair
     // where the first value is the repository's class name and the second value
     // are the options that should be given to the illuminate repository
-    const IlluminateReadModels = [
+    const ILLUMINATE_READ_MODELS = [
         [
             MemberListRepository::class,
             ['members', MemberList::class, 'id']
@@ -79,7 +79,7 @@ final class AppServiceProvider extends ServiceProvider
     public function register()
     {
         // Register the event sourced repositories
-        foreach (static::EventSourcedRepositories as $repository) {
+        foreach (static::EVENT_SOURCED_REPOSITORIES as $repository) {
             $this->registerRepository($repository[0], $repository[1]);
         }
 
@@ -114,7 +114,7 @@ final class AppServiceProvider extends ServiceProvider
     private function registerReadModels()
     {
         // Register all read models
-        foreach (static::IlluminateReadModels as $readModel) {
+        foreach (static::ILLUMINATE_READ_MODELS as $readModel) {
             $repository = $readModel[0];
             $options = $readModel[1];
 

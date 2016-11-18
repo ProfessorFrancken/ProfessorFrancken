@@ -30,5 +30,4 @@ final class RequestStatusRepository
     {
         return $this->repo->findAll();
     }
-
 }
