@@ -2,10 +2,7 @@
 
 namespace Francken\Infrastructure;
 
-use Broadway\EventHandling\EventBusInterface;
-use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\EventSourcingRepository;
-use Broadway\EventStore\EventStoreInterface;
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksProjector;
 use Francken\Application\Books\BookDetailsRepositoryI;
@@ -28,6 +25,7 @@ use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
 use Francken\Infrastructure\Books\BookDetailsRepository;
+use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Infrastructure\Http\Controllers\BookController;
 use Francken\Infrastructure\Http\Controllers\CommitteeController;
@@ -158,34 +156,14 @@ class AppServiceProvider extends ServiceProvider
      * @param string $repository classname
      * @param string $aggregate classname
      */
-    private function registerRepository($repository, $aggregate)
+    private function registerRepository(string $repository, string $aggregate)
     {
-        $this->app->singleton(
-            $repository,
-            function () use ($repository, $aggregate) {
-                return new $repository(
-                    $this->makeEventSourcingRepository($aggregate)
-                );
-            }
-        );
-    }
+        $this->app->when($repository)
+            ->needs(EventSourcingRepository::class)
+            ->give(function (Application $app) use ($aggregate) {
+                $factory = $app->make(Factory::class);
 
-
-    /**
-     * Make a EventSourcingRepository for the given aggregate class
-     *
-     * Note we might want to replace this method with a factory class, the
-     * advantage being that we can use that class in other service providers
-     *
-     * @param string $aggregate FQCN of the aggregate
-     */
-    private function makeEventSourcingRepository(string $aggregate) : EventSourcingRepository
-    {
-        return new EventSourcingRepository(
-            $this->app->make(EventStoreInterface::class),
-            $this->app->make(EventBusInterface::class),
-            $aggregate,
-            $this->app->make(AggregateFactoryInterface::class)
-        );
+                return $factory->buildForAggregate($aggregate);
+            });
     }
 }
