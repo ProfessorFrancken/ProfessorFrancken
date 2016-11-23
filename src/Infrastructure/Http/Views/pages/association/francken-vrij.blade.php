@@ -1,4 +1,5 @@
 @extends('pages.association')
+@inject('franckenVrij', "Francken\Application\FranckenVrij\FranckenVrijRepository")
 
 @section('content')
 
@@ -24,33 +25,21 @@
         </div>
     </div>
 
-  @foreach(range(20, 1, -1) as $i)
+  @foreach($franckenVrij->volumes() as $volume)
 
-    <hr class="thin-bar"/>
+      <hr class="thin-bar"/>
 
-    <h2>Jaargang {{ $i }}</h2>
+      <h2>Volume {{ $volume->volume() }}</h2>
 
-    <div class="row" style="text-align: center">
-      <div class="col-sm-4">
-          <a href="http://www.professorfrancken.nl/franckenvrij/{{ $i }}.1.pdf">
-              <img src="http://www.professorfrancken.nl/franckenvrij/webplaatjes/{{ $i }}.1.jpg">
-              <h5>Francken Vrij {{ $i }}.1</h5>
-          </a>
+      <div class="row">
+          @foreach($volume->editions() as $edition)
+              <div class="col-sm-4 text-center">
+                  <a href="{{ $edition->pdf() }}">
+                      <img src="{{ $edition->cover() }}" class="img-responsive center-block">
+                      <h5>{{ $edition->title() }}</h5>
+                  </a>
+              </div>
+          @endforeach
       </div>
-      <div class="col-sm-4">
-          <a href="http://www.professorfrancken.nl/franckenvrij/{{ $i }}.2.pdf">
-              <img src="http://www.professorfrancken.nl/franckenvrij/webplaatjes/{{ $i }}.2.jpg">
-              <h5>Francken Vrij {{ $i }}.2</h5>
-          </a>
-      </div>
-      <div class="col-sm-4">
-          <a href="http://www.professorfrancken.nl/franckenvrij/{{ $i }}.3.pdf">
-              <img src="http://www.professorfrancken.nl/franckenvrij/webplaatjes/{{ $i }}.3.jpg">
-              <h5>Francken Vrij {{ $i }}.3</h5>
-          </a>
-      </div>
-    </div>
-
   @endforeach
-
 @endsection

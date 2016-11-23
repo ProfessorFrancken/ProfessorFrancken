@@ -2,7 +2,6 @@
 
 namespace Francken\Infrastructure;
 
-use Francken\Application\ReadModelRepository;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksRepository;
@@ -10,8 +9,11 @@ use Francken\Application\Books\BookDetailsRepositoryI;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
 use Francken\Application\Committees\CommitteesListRepository;
+use Francken\Application\FranckenVrij\FranckenVrijRepository;
+use Francken\Application\FranckenVrij\Edition;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Application\Members\Registration\RequestStatusRepository;
+use Francken\Application\ReadModelRepository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Application\ReadModel\PostList\PostList;
@@ -70,6 +72,10 @@ final class AppServiceProvider extends ServiceProvider
         [
             AvailableBooksRepository::class,
             ['available_books', AvailableBook::class, 'id']
+        ],
+        [
+            FranckenVrijRepository::class,
+            ['francken_vrij', Edition::class, 'id']
         ],
     ];
 
@@ -135,6 +141,8 @@ final class AppServiceProvider extends ServiceProvider
 
         // Responsible for getting the book cover from Amazon
         $this->app->bind(BookDetailsRepositoryI::class, BookDetailsRepository::class);
+
+        $this->app->bind(ReadModelRepository::class, \Francken\Infrastructure\Repositories\InMemoryRepository::class);
 
         // In this case we don't want Laravel to resolve the CommonMarkConverter since
         // this would mean that Laravel would provide the converter with an environment,

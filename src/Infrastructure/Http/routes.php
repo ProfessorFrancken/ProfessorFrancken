@@ -37,6 +37,10 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
         Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
+
+        // Francken Vrij
+        Route::get('francken-vrij', 'Admin\FranckenVrijController@index');
+        Route::post('francken-vrij', 'Admin\FranckenVrijController@store');
     });
 
     Route::get('{page}', 'MainContentController@page')->where('page', '.+');
