@@ -7,7 +7,6 @@ namespace Francken\Application\Members\Registration;
 use Broadway\Domain\DomainMessage;
 use DateTimeImmutable;
 use Francken\Application\Projector;
-use Francken\Application\ReadModelRepository as Repository;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 
@@ -15,7 +14,7 @@ final class RequestStatusProjector extends Projector
 {
     private $statuses;
 
-    public function __construct(Repository $statuses)
+    public function __construct(RequestStatusRepository $statuses)
     {
         $this->statuses = $statuses;
     }

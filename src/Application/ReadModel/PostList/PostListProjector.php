@@ -17,7 +17,7 @@ final class PostListProjector extends Projector
 {
     private $posts;
 
-    public function __construct(Repository $posts)
+    public function __construct(PostListRepository $posts)
     {
         $this->posts = $posts;
     }

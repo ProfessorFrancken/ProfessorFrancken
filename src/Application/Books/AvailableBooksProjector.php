@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Books;
 
 use Francken\Application\Projector;
@@ -15,7 +17,7 @@ final class AvailableBooksProjector extends Projector
     private $books;
     private $bookDetailRepository;
 
-    public function __construct(Repository $books, BookDetailsRepositoryI $repo)
+    public function __construct(AvailableBooksRepository $books, BookDetailsRepositoryI $repo)
     {
         $this->bookDetailRepository = $repo;
         $this->books = $books;
@@ -45,7 +47,7 @@ final class AvailableBooksProjector extends Projector
 
     public function whenBookSoldToMember(BookSoldToMember $event)
     {
-        $book = $this->books->find((string)$event->bookId());
+        $book = $this->books->find($event->bookId());
 
         $book = new AvailableBook(
             $book->bookId(),
@@ -62,7 +64,7 @@ final class AvailableBooksProjector extends Projector
 
     public function whenBookSaleCancelled(BookSaleCancelled $event)
     {
-        $book = $this->books->find((string)$event->bookId());
+        $book = $this->books->find($event->bookId());
 
         $book = new AvailableBook(
             $book->bookId(),

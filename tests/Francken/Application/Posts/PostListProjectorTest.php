@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use Francken\Application\Projector;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListProjector;
+use Francken\Application\ReadModel\PostList\PostListRepository;
 use Francken\Domain\Posts\Events\PostCategorized;
 use Francken\Domain\Posts\Events\PostContentChanged;
 use Francken\Domain\Posts\Events\PostPublishedAt;
@@ -77,6 +78,10 @@ class PostListProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        return new PostListProjector($repository);
+        return new PostListProjector(
+            new PostListRepository(
+                $repository
+            )
+        );
     }
 }

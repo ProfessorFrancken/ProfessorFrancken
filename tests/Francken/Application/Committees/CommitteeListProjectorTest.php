@@ -8,7 +8,9 @@ use League\CommonMark\CommonMarkConverter;
 use Francken\Application\Projector;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector as CommitteeListProjector;
+use Francken\Application\Committees\CommitteesListRepository;
 use Francken\Application\ReadModel\MemberList\MemberList;
+use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
@@ -126,8 +128,12 @@ class CommitteeListProjectorTest extends TestCase
         $this->members = new InMemoryRepository;
 
         return new CommitteeListProjector(
-            $repository,
-            $this->members,
+            new CommitteesListRepository(
+                $repository
+            ),
+            new MemberListRepository(
+                $this->members
+            ),
             new CommonMarkConverter());
     }
 }

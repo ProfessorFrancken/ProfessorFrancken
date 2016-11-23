@@ -17,9 +17,8 @@ abstract class Identifier implements SerializableInterface
     /**
      * @param string $committeeId
      */
-    public function __construct($id)
+    public function __construct(string $id)
     {
-        Assert::string($id);
         Assert::uuid($id);
 
         $this->id = $id;
@@ -28,7 +27,7 @@ abstract class Identifier implements SerializableInterface
     /**
      * Generates a new Identifier instance with a uuid
      */
-    public static function generate()
+    public static function generate() : Identifier
     {
         $generator = new Version4Generator();
 
@@ -38,7 +37,7 @@ abstract class Identifier implements SerializableInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return $this->id;
     }

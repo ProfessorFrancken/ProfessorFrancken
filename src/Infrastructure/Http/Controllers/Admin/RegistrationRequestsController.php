@@ -6,7 +6,7 @@ namespace Francken\Infrastructure\Http\Controllers\Admin;
 
 use DateTimeImmutable;
 use Francken\Application\Members\Registration\RequestStatus;
-use Francken\Application\ReadModelRepository as Repository;
+use Francken\Application\Members\Registration\RequestStatusRepository;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Infrastructure\Http\Controllers\Controller;
 
@@ -14,7 +14,7 @@ final class RegistrationRequestsController extends Controller
 {
     private $requests;
 
-    public function __construct(Repository $requests)
+    public function __construct(RequestStatusRepository $requests)
     {
         $this->requests = $requests;
     }
@@ -27,10 +27,14 @@ final class RegistrationRequestsController extends Controller
         ]);
     }
 
-    public function show($requestId)
+    public function show(string $requestId)
     {
         return view('admin.registration-requests.show', [
-            'request' => $this->requests->find($requestId)
+            'request' => $this->requests->find(
+                new RegistrationRequestId(
+                    $requestId
+                )
+            )
         ]);
     }
 }

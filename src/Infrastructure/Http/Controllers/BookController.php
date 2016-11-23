@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,12 +10,13 @@ use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Members\MemberId;
 use Francken\Application\ReadModelRepository;
+use Francken\Application\Books\AvailableBooksRepository;
 
 class BookController extends Controller
 {
     private $books;
 
-    public function __construct(ReadModelRepository $books)
+    public function __construct(AvailableBooksRepository $books)
     {
         $this->books = $books;
     }
