@@ -11,6 +11,7 @@ env:
     - APP_KEY=SomeRandomStringSomeRandomString
 
 before_script:
+  - pecl install imagick
   - composer selfupdate
   - composer install --prefer-dist
 
