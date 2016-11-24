@@ -11,7 +11,9 @@ final class Url
     public function __construct(string $url)
     {
         if (! filter_var($url, FILTER_VALIDATE_URL)) {
-            throw new \InvalidArgumentException;
+            throw new \InvalidArgumentException(
+                sprintf("[%s] is not a valid URL", $url)
+            );
         }
 
         $this->url = $url;
