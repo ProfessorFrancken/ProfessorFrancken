@@ -50,7 +50,6 @@
 	  text-decoration: none;
 	  padding: 0 .8em;
 	  display: inline-block;
-	  border-left: 1px solid #DDD;
 	  line-height: 90px;
 }
 
@@ -169,7 +168,6 @@
 	  text-decoration: none;
 	  padding: 0 .8em;
 	  display: inline-block;
-	  border-left: 1px solid #DDD;
 	  line-height: 50px;
 }
 
