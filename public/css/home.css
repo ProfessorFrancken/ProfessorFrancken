@@ -216,3 +216,7 @@ footer a {
     margin: 2em 0;
 
 }
+
+.container {
+    max-width: 900px;
+}
