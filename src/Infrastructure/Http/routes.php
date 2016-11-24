@@ -40,6 +40,8 @@ Route::group(['middleware' => ['web']], function () {
 
         // Francken Vrij
         Route::get('francken-vrij', 'Admin\FranckenVrijController@index');
+        Route::get('francken-vrij/{edition}', 'Admin\FranckenVrijController@edit');
+        Route::put('francken-vrij/{edition}', 'Admin\FranckenVrijController@update');
         Route::post('francken-vrij', 'Admin\FranckenVrijController@store');
     });
 

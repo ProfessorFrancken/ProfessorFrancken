@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Application\FranckenVrij;
 
 use Francken\Application\ReadModelRepository;
+use Francken\Domain\FranckenVrij\EditionId;
 
 final class FranckenVrijRepository
 {
@@ -18,6 +19,11 @@ final class FranckenVrijRepository
     public function save(Edition $edition)
     {
         $this->repo->save($edition);
+    }
+
+    public function find(EditionId $id)
+    {
+        return $this->repo->find((string)$id);
     }
 
     public function findAll() : array

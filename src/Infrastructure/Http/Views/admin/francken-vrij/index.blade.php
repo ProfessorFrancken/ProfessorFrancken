@@ -18,7 +18,10 @@
                                 {{ $edition->title() }}
 
                                 <span class="text-right pull-right">
-                                    <small>Edit | Download</small>
+                                    <small>
+                                        <a href="/admin/francken-vrij/{{ $edition->getId() }}">Edit</a> |
+                                        <a href="{{ $edition->pdf() }}">Download</a>
+                                    </small>
                                 </span>
                             </h5>
                         </div>

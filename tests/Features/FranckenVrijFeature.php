@@ -46,4 +46,55 @@ class FranckenVrijFeature extends TestCase
         $this->seePageIs('/admin/francken-vrij')
             ->see('Clinical');
     }
+
+    /** @test */
+    function changing_a_published_francken_vrij()
+    {
+        $franckenVrij = $this->app->make(FranckenVrijRepository::class);
+        $id = EditionId::generate();
+        $franckenVrij->save(
+            Edition::publish(
+                $id,
+                "Francken Vrij 20.1",
+                20,
+                1,
+                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
+                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
+            )
+        );
+
+        $this->visit("/admin/francken-vrij/{$id}")
+            ->type('Clinical', 'title')
+            ->type(20, 'volume')
+            ->type(1, 'edition')
+            ->press('Update');
+
+        $this->see('Clinical');
+    }
+
+    /** @test */
+    function changing_a_published_francken_vrij_pdf_file()
+    {
+        $franckenVrij = $this->app->make(FranckenVrijRepository::class);
+        $id = EditionId::generate();
+        $franckenVrij->save(
+            Edition::publish(
+                $id,
+                "Francken Vrij 20.1",
+                20,
+                1,
+                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
+                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
+            )
+        );
+
+        $this->visit("/admin/francken-vrij/{$id}")
+            ->type('Clinical', 'title')
+            ->type(20, 'volume')
+            ->type(1, 'edition')
+            ->attach(__DIR__ . '/stubs/20-1.pdf', 'pdf')
+            ->press('Update');
+
+        $this->see('Clinical');
+    }
 }

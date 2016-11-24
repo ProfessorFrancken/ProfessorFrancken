@@ -63,7 +63,6 @@ final class FranckenVrijController extends Controller
             'title' => $title,
             'volume' => $currentVolume,
             'edition' => $currentEdition,
-            'useFrontPageAsCover' => true,
         ]);
     }
 
@@ -72,10 +71,6 @@ final class FranckenVrijController extends Controller
      */
     public function store(Request $request)
     {
-        $title = $request->get('title');
-        $volume = (int)$request->get('volume');
-        $edition = (int)$request->get('edition');
-
         $this->validate($request, [
             'title' => 'required',
             'volume' => 'required|min:1',
@@ -84,15 +79,69 @@ final class FranckenVrijController extends Controller
         ]);
 
         $edition = $this->createEdition(
-            $title,
-            $volume,
-            $edition,
+            $request->get('title'),
+            (int)$request->get('volume'),
+            (int)$request->get('edition'),
             $request->file('pdf')
         );
 
         $this->franckenVrij->save($edition);
 
         return redirect('/admin/francken-vrij');
+    }
+
+    public function edit(string $id)
+    {
+        $edition = $this->franckenVrij->find(new EditionId($id));
+
+        return view('admin.francken-vrij.edit', ['edition' => $edition]);
+    }
+
+    public function update(string $id, Request $request)
+    {
+        $edition = $this->franckenVrij->find(new EditionId($id));
+
+        $this->validate($request, [
+            'title' => 'required',
+            'volume' => 'required|min:1',
+            'edition' => 'required|min:1|max:3',
+            'pdf' => 'file'
+        ]);
+        $volume = (int)$request->get('volume');
+        $editionNumber = (int)$request->get('edition');
+
+        list($cover, $pdf) = $request->hasFile('pdf')
+            ? $this->uploadPdf($request->file('pdf'), $volume . '-' . $editionNumber . '.pdf')
+            : [$edition->cover(), $edition->pdf()];
+
+        $this->franckenVrij->save(
+            Edition::publish(
+                new EditionId($edition->getId()),
+                $request->get('title'),
+                $volume,
+                $editionNumber,
+                $cover,
+                $pdf
+            )
+        );
+
+        return redirect('/admin/francken-vrij');
+    }
+
+    private function uploadPdf(UploadedFile $pdf, $filename)
+    {
+        $pdfPath = $pdf->storeAs('francken-vrij', $filename, 'public');
+        $coverPath = preg_replace('"\.pdf$"', '-cover.png', $pdfPath);
+
+        $this->generateCoverImageFromPdf(
+            public_path() . $this->storage->url($pdfPath),
+            $coverPath
+        );
+
+        return [
+            new Url(asset($this->storage->url($coverPath))),
+            new Url(asset($this->storage->url($pdfPath)))
+        ];
     }
 
     private function createEdition(
