@@ -78,11 +78,21 @@ final class FranckenVrijController extends Controller
             'pdf' => 'required|file'
         ]);
 
-        $edition = $this->createEdition(
+        $volume = (int)$request->get('volume');
+        $edition= (int)$request->get('edition');
+
+        list($coverPath, $pdfPath) = $this->uploadPdf(
+            $request->file('pdf'),
+            $volume . '-' . $edition. '.pdf'
+        );
+
+        $edition = Edition::publish(
+            EditionId::generate(),
             $request->get('title'),
-            (int)$request->get('volume'),
-            (int)$request->get('edition'),
-            $request->file('pdf')
+            $volume,
+            $edition,
+            $coverPath,
+            $pdfPath
         );
 
         $this->franckenVrij->save($edition);
@@ -107,6 +117,7 @@ final class FranckenVrijController extends Controller
             'edition' => 'required|min:1|max:3',
             'pdf' => 'file'
         ]);
+
         $volume = (int)$request->get('volume');
         $editionNumber = (int)$request->get('edition');
 
@@ -142,30 +153,6 @@ final class FranckenVrijController extends Controller
             new Url(asset($this->storage->url($coverPath))),
             new Url(asset($this->storage->url($pdfPath)))
         ];
-    }
-
-    private function createEdition(
-        string $title,
-        int $volume,
-        int $edition,
-        UploadedFile $pdf
-    ) : Edition {
-        $pdfPath = $pdf->storeAs('francken-vrij', $volume . '-' . $edition . '.pdf', 'public');
-        $coverPath = preg_replace('"\.pdf$"', '-cover.png', $pdfPath);
-
-        $this->generateCoverImageFromPdf(
-            public_path() . $this->storage->url($pdfPath),
-            $coverPath
-        );
-
-        return Edition::publish(
-            EditionId::generate(),
-            $title,
-            $volume,
-            $edition,
-            new Url(asset($this->storage->url($coverPath))),
-            new Url(asset($this->storage->url($pdfPath)))
-        );
     }
 
     private function generateCoverImageFromPdf(string $pdfPath, string $coverPath) : string
