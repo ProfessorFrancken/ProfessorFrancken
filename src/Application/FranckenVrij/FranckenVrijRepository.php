@@ -21,6 +21,11 @@ final class FranckenVrijRepository
         $this->repo->save($edition);
     }
 
+    public function remove(EditionId $id)
+    {
+        $this->repo->remove((string)$id);
+    }
+
     public function find(EditionId $id)
     {
         return $this->repo->find((string)$id);

@@ -39,4 +39,11 @@
     {!! Form::close() !!}
 
     @include('admin._errors')
+
+    {!! Form::open(['url' => '/admin/francken-vrij/' . $edition->getId(), 'method' => 'delete']) !!}
+    <button class="btn btn-danger">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+        Archive
+    </button>
+    {!! Form::close() !!}
 @endsection

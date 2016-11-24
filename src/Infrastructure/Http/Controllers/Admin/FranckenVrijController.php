@@ -139,6 +139,13 @@ final class FranckenVrijController extends Controller
         return redirect('/admin/francken-vrij');
     }
 
+    public function destroy(string $id)
+    {
+        $this->franckenVrij->remove(new EditionId($id));
+
+        return redirect('/admin/francken-vrij');
+    }
+
     private function uploadPdf(UploadedFile $pdf, $filename)
     {
         $pdfPath = $pdf->storeAs('francken-vrij', $filename, 'public');
