@@ -11,7 +11,10 @@ env:
     - APP_KEY=SomeRandomStringSomeRandomString
 
 before_script:
-  - pecl install imagick
+  - sudo add-apt-repository -y ppa:moti-p/cc
+  - sudo apt-get update
+  - sudo apt-get -y --reinstall install imagemagick
+  - printf "\n" | pecl install imagick-beta
   - composer selfupdate
   - composer install --prefer-dist
 
