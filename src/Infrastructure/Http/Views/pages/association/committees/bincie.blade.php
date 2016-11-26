@@ -1,4 +1,4 @@
-@extends('pages.about.committees')
+@extends('pages.association.committees')
 
 @section('content')
     <div class="row">
