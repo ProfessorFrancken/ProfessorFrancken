@@ -25,7 +25,7 @@
                 <button class="btn btn-primary">Read more</button>
             </div>
         </div>
-        <div class="col-md-4 offset-md-1">
+        <div class="col-md-5">
             @include("homepage.agenda")
         </div>
 
