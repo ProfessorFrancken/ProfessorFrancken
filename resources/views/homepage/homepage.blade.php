@@ -53,22 +53,22 @@
 
         <div class="overflowwing">
             <div class="header__registration-cta">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="text-right col-md-4 offset-md-7">
+                <div class="registration-cta container h-100">
+                    <div class="row align-items-center h-100">
+                        <div class="registration-cta__body text-right col-md-4 offset-md-5 align-self-center">
 
                             <h1>
-                                Wordt lid van
+                                Become part of
                                 <small>
-                                    de leukste vereniging
+                                    the best student association
                                 </small>
                             </h1>
 
                             <p class="small">
-                                Egestas fringilla phasellus faucibus scelerisque eleifend donec.
+                                Mauris rhoncus aenean vel.
                             </p>
                         </div>
-                        <div class="col-md-1 text-left">
+                        <div class="col-md-1 text-left registration-cta__button">
                             <button class="btn btn-primary">Wordt lid</button>
                         </div>
                     </div>

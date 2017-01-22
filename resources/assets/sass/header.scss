@@ -86,6 +86,16 @@ $cta-height: 510px;
     overflow: hidden;
 }
 
+.registration-cta {
+    z-index: 100;
+}
+
+.registration-cta__button {
+    border-left: 3px white solid;
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+}
+
 // Make sure that child elements are rendered normally
 .header__registration-cta > * {
     transform: skewX(-$angle);
