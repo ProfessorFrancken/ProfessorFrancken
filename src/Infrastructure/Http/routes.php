@@ -1,6 +1,11 @@
 <?php
 
 Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/de-nieuwe-homepage', function() {
+        return view('homepage/homepage');
+    });
+
     Route::get('/', 'MainContentController@index');
 
     Route::resource('study/books', 'BookController');

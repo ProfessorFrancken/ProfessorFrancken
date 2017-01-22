@@ -1,8 +1,78 @@
 // Fonts
+@import url(https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow|Raleway|Signika);
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
 // Variables
 @import "variables";
 
+
+.header-logo {
+    background-color: $francken-blue;
+    height: 200px;
+}
+
+.navigation {
+    background-color: #fafafa;
+    color: $francken-red;
+    border-top: 4px solid $francken-red;
+}
+.header-image {
+    background-color: $francken-red;
+    width: 80%;
+    height: 450px;
+    float: right;
+    border-bottom-left-radius: 1em;
+    // https://css-tricks.com/stripes-css/
+    // http://jsfiddle.net/jme11/D9M2L/
+    // https://jsfiddle.net/vh1mk5yx/5/
+    // http://stackoverflow.com/questions/31078763/how-can-i-make-slope
+    // http://stackoverflow.com/questions/24337512/create-slope-full-width-css3
+    // http://www.hongkiat.com/blog/skewed-edges-css/
+}
+
+.header-image:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -100px;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    border-top: solid 100px #0093f7;
+    border-left: solid 100px transparent;
+}
+
+.register-cta {
+    background-color: $francken-red;
+    height: 350px;
+}
+
+.agenda {
+    background: white;
+    width: 100%;
+    height: 300px;
+    margin-top: -3em;
+    padding: 1em;
+    box-shadow: 1px 1px 5px #aaa;
+}
+
+.news {
+    background-color: $secondary-color;
+}
+.about {
+    background-color: white;
+    box-shadow: 1px 1px 5px #aaa;
+    /* border: thin solid black; */
+    padding: 4em;
+
+    /* http://www.endocreative.com/flexbox-circle-responsive-elements/ */
+    flex: 1 0 auto;
+    height:auto;
+}
+
+
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "header";
+@import "footer";

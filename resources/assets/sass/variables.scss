@@ -1,36 +1,42 @@
+$francken-blue: #173249;
+$francken-red: #E63C39;
+
+$primary-color: #011842;
+$secondary-color: #7FBCB5;
+
+$francken-blue: $primary-color;
+$francken-red: $secondary-color;
+
+
+$blue: $francken-blue; // override
+$red: $francken-red; // override
+
+$brand-primary:             $blue !default;
+$brand-danger:              $red !default;
+// font-family: 'PT Sans', sans-serif;
+// font-family: 'PT Sans Narrow', sans-serif;
+// font-family: 'Signika', sans-serif;
+// font-family: 'Raleway', sans-serif;
+
 // Body
-$body-bg: #f5f8fa;
+$body-bg: #FAFAFA; // override
+$footer-bg: #E8E8E8;
 
-// Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
+// Links
 
-// Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
+$link-color: $francken-red !default;
 
-// Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: #636b6f;
+// Fonts
 
-// Navbar
-$navbar-default-bg: #fff;
+$font-family-sans-serif: 'PT Sans', sans-serif -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+// Headings
+$headings-font-family: 'Signika', sans-serif !default;
 
 // Buttons
-$btn-default-color: $text-color;
+$btn-primary-bg:                 $brand-primary !default;
+$btn-primary-border:             $btn-primary-bg !default;
 
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
-
-// Panels
-$panel-default-heading-bg: #fff;
+$btn-danger-bg:                  $brand-danger !default;
+$btn-danger-border:              $btn-danger-bg !default;
