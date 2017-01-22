@@ -11,37 +11,6 @@
     height: 200px;
 }
 
-.navigation {
-    background-color: #fafafa;
-    color: $francken-red;
-    border-top: 4px solid $secondary-color;
-}
-.header-image {
-    background-color: $secondary-color;
-    width: 80%;
-    height: 450px;
-    float: right;
-    border-bottom-left-radius: 1em;
-    // https://css-tricks.com/stripes-css/
-    // http://jsfiddle.net/jme11/D9M2L/
-    // https://jsfiddle.net/vh1mk5yx/5/
-    // http://stackoverflow.com/questions/31078763/how-can-i-make-slope
-    // http://stackoverflow.com/questions/24337512/create-slope-full-width-css3
-    // http://www.hongkiat.com/blog/skewed-edges-css/
-}
-
-.header-image:after {
-    content: "";
-    position: absolute;
-    display: block;
-    left: -100px;
-    top: 0px;
-    width: 0px;
-    height: 0px;
-    border-top: solid 100px #0093f7;
-    border-left: solid 100px transparent;
-}
-
 .register-cta {
     background-color: $secondary-color;
     height: 350px;
