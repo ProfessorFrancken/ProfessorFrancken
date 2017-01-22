@@ -101,10 +101,12 @@ $cta-height: 510px;
     background: linear-gradient(
             to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%
         ),
-        url(http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_buitengewoon.JPG);
+    url(http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_buitengewoon.JPG)
+       $secondary-color;
 
     background-size: cover;
     background-repeat: no-repeat;
+    background-blend-mode: luminosity;
 
     position: absolute;
     z-index: 2;
