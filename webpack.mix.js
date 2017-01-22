@@ -11,6 +11,9 @@ let mix = require('laravel-mix').mix;
   |
 */
 
+// Though we don't currently use mix to compile our javascript, mix will throw
+// an exception if we do not call .js at least once, hence we compile an
+// empty javascript file.
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .version();
