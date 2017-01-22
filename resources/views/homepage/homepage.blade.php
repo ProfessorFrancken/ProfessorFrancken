@@ -111,7 +111,9 @@
 
         <div class="row">
             <div class="col">
-                <h2>About T.F.V. 'Professor Francken'</h2>
+                <h2 class="section-header">
+                    About T.F.V. 'Professor Francken'
+                </h2>
 
                 <p>
                     Orci dapibus ultrices in iaculis nunc sed augue lacus, viverra vitae congue eu, consequat ac felis donec et odio pellentesque diam! Fringilla urna, porttitor rhoncus dolor purus non enim praesent!
@@ -123,17 +125,7 @@
                 <button class="btn btn-primary">Read more</button>
             </div>
             <div class="col-md-4">
-                <div class="agenda">
-                    <h3>Agenda</h3>
-                    <ul>
-                        <li>
-                            Moi
-                        </li>
-                        <li>
-                            Doei
-                        </li>
-                    </ul>
-                </div>
+                @include("homepage.agenda")
             </div>
 
             <div class="row">
@@ -141,7 +133,7 @@
                     <img alt="" src="https://unsplash.it/300/300"/>
                 </div>
                 <div class="col">
-                    <h3>Francken Vrij</h3>
+                    <h3 class="section-header">Francken Vrij</h3>
                     <p>
                         Ultricies mi, quis hendrerit dolor magna eget est lorem ipsum dolor sit amet, consectetur adipiscing elit pellentesque habitant morbi tristique senectus et netus et? Malesuada fames ac turpis egestas maecenas.
                     </p>
@@ -154,7 +146,7 @@
 
     <div class="news">
         <div class="container">
-            <h2 class="text-center">Latest news</h2>
+            <h2 class="section-header text-center">Latest news</h2>
             <div class="row">
                 <article class="col news-item">
                     <div class="news-item__date">
