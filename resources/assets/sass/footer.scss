@@ -1,0 +1,50 @@
+.footer__logo {
+    background: none;
+    color: white;
+    padding: 4em;
+    padding-right: 0;
+
+    background-color: $primary-color;
+
+    border-radius: 0px 10px 10px 0px;
+    z-index: 100;
+}
+
+.footer__logo::before {
+    content: " ";
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    top: 0;
+    right: -130px;
+    z-index: 1;
+
+    background-color: $primary-color;
+    border-radius: 0px 10px 0px 0px;
+    transform-origin: bottom left;
+    transform: skewX(30deg);
+}
+
+.footer__logo img {
+    filter: brightness(0) invert(1);
+    z-index: 10;
+}
+
+.footer__contact {
+    background-color: $secondary-color;
+    color: white;
+}
+
+.footer__body {
+    color: $primary-color;
+}
+
+.footer__body a {
+    color: $primary-color;
+}
+
+.sponsors {
+    height: 150px;
+    width: 100%;
+    background: #eee;
+}
