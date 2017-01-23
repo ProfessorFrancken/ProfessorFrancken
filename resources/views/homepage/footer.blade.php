@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col">
             <div class="d-flex flex-column align-items-stretch h-100 align-content-stretch ">
                 <div class="row no-gutters">
                     <div class="col">

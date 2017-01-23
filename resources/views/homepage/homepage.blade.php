@@ -6,7 +6,7 @@
             <div class="col-md-4 text-right">
                 @include("homepage.logo")
             </div>
-            <div class="col-md-8">
+            <div class="col">
                 @include("homepage.navigation")
             </div>
         </div>
