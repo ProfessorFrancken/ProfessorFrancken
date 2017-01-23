@@ -1,3 +1,5 @@
+$menu-navigation-font: $headings-font-family;
+$sub-menu-navigation-font: '';
 
 .header__logo {
     // background-color: $primary-color;
@@ -43,9 +45,37 @@
 }
 
 .header__navigation {
-    border-top: 4px solid $secondary-color;
+    font-family: $menu-navigation-font;
+    border-top: 6px solid $secondary-color-dark;
+    color: $primary-color;
     z-index: -1;
 }
+
+.navigation__menu {
+    margin-bottom: 1em;
+}
+
+.navigation__menu-item {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: $primary-color;
+}
+
+.navigation__sub-menu {
+    margin-left: 2em;
+}
+.navigation__sub-menu-item {
+    color: #999;
+    font-size: 0.95rem;
+    border-right: thin solid #aaa;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navigation__sub-menu-item:last-child {
+    border-right: none;
+}
+
 
 .header__nav {
     width: 100%;
