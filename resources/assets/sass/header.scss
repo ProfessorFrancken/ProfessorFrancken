@@ -67,13 +67,52 @@ $sub-menu-navigation-font: '';
 .navigation__sub-menu-item {
     color: #999;
     font-size: 0.95rem;
+    position: relative;
+}
+
+.navigation__sub-menu-item:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
     border-right: thin solid #aaa;
-    padding-top: 0px;
-    padding-bottom: 0px;
 }
 
 .navigation__sub-menu-item:last-child {
     border-right: none;
+}
+
+.navigation__login {
+    background-color: $secondary-color-dark;
+    padding: 0.5em;
+    border-radius: 0 0 4px 4px;
+    color: white;
+
+}
+
+// this is from Bootstrap's dropdown-toggle, but now aligned to the right
+.navigation__login:before {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 0.3em;
+    vertical-align: middle;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-left: 0.3em solid transparent;
+}
+
+.navigation__login-link {
+    color: white;
+}
+.navigation__login-link i {
+    margin-left: .5em;
+}
+.navigation__login-link:hover {
+    color: white;
+    cursor: pointer;
 }
 
 
