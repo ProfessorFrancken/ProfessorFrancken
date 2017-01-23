@@ -9,7 +9,13 @@
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
           --}}
 
-        <link rel="stylesheet" href="/css/app.css">
+        @if (request()->exists('red'))
+            <link rel="stylesheet" href="/css/red.css">
+        @elseif (request()->exists('slef'))
+            <link rel="stylesheet" href="/css/slef.css">
+        @else
+            <link rel="stylesheet" href="/css/app.css">
+        @endif
     </head>
     <body>
 
