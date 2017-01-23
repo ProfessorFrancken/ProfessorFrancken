@@ -79,7 +79,7 @@ $sub-menu-navigation-font: '';
     border-right: thin solid #aaa;
 }
 
-.navigation__sub-menu-item:last-child {
+.navigation__sub-menu-item:last-child:after {
     border-right: none;
 }
 
