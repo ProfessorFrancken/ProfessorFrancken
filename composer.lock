@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b9d496d4b5a2240498001ed1251a474",
-    "content-hash": "89a1960c9f345a24ba5b5529744a2230",
+    "hash": "6bcb98ba63b3658d537b0a6050a7d4a3",
+    "content-hash": "c66b3ca2fff86662427e9056503e131a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -64,16 +64,16 @@
         },
         {
             "name": "broadway/broadway",
-            "version": "0.9.0",
+            "version": "0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/broadway/broadway.git",
-                "reference": "0ba385ee4e8f21beaaddd9c06564b21a60b57500"
+                "reference": "f9b3916fe0de097db588689b5f458a9cfa3dd9a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/broadway/broadway/zipball/0ba385ee4e8f21beaaddd9c06564b21a60b57500",
-                "reference": "0ba385ee4e8f21beaaddd9c06564b21a60b57500",
+                "url": "https://api.github.com/repos/broadway/broadway/zipball/f9b3916fe0de097db588689b5f458a9cfa3dd9a7",
+                "reference": "f9b3916fe0de097db588689b5f458a9cfa3dd9a7",
                 "shasum": ""
             },
             "require": {
@@ -88,6 +88,7 @@
                 "elasticsearch/elasticsearch": "~1.0|^2.0",
                 "instaclick/base-test-bundle": "~0.5",
                 "monolog/monolog": "~1.8",
+                "phpunit/phpunit": "^4.8",
                 "symfony/console": "~2.4",
                 "symfony/proxy-manager-bridge": "~2.4"
             },
@@ -102,7 +103,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -147,7 +148,7 @@
                 "domain-driven design",
                 "event sourcing"
             ],
-            "time": "2016-04-19 13:31:15"
+            "time": "2016-12-07 08:03:00"
         },
         {
             "name": "broadway/uuid-generator",
@@ -4677,7 +4678,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "laravelcollective/html": 20,
-        "mattketmo/uuid-2x-bridge": 20,
         "humbug/humbug": 20
     },
     "prefer-stable": true,
