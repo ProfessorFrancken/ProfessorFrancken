@@ -13,15 +13,15 @@
     "require": {
         "php": ">=7.0.0",
         "laravel/framework": "5.4.*",
-        "broadway/broadway": "^0.10.0",
-        "webmozart/assert": "^1.1",
-        "matthiasnoback/broadway-serialization": "^1.0",
-        "laravelcollective/html": "5.4.x-dev",
-        "ramsey/uuid": "^3.0",
-        "league/commonmark": "^0.15.0",
-        "fale/isbn": "^3.0",
         "laravel/tinker": "^1.0",
-        "laravel/browser-kit-testing": "^1.0.2"
+        "laravel/browser-kit-testing": "^1.0.2",
+        "laravelcollective/html": "5.4.x-dev",
+        "broadway/broadway": "^0.10.0",
+        "matthiasnoback/broadway-serialization": "^1.0",
+        "ramsey/uuid": "^3.0",
+        "webmozart/assert": "^1.1",
+        "league/commonmark": "^0.15.0",
+        "fale/isbn": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
