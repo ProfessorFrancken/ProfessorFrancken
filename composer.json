@@ -4,18 +4,12 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/maddhatter/html.git"
-        }
-    ],
     "require": {
         "php": ">=7.0.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "^1.0",
         "laravel/browser-kit-testing": "^1.0.2",
-        "laravelcollective/html": "5.4.x-dev",
+        "laravelcollective/html": "^5.4.0",
         "broadway/broadway": "^0.10.0",
         "matthiasnoback/broadway-serialization": "^1.0",
         "ramsey/uuid": "^3.0",

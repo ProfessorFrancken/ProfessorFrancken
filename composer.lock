@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c06b70822efe03415a57443ce121e50b",
-    "content-hash": "9433aeb4ddfc44babdd36797bac9392b",
+    "hash": "80c50fccaf14bcaead6669d66e147576",
+    "content-hash": "5910e3fedac854e443a35f8d3640d9fb",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -749,16 +749,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "5.4.x-dev",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/maddhatter/html.git",
-                "reference": "23223c6e283002f6f092d65015b82d6e3e746206"
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "7570f25d58a00fd6909c0563808590f9cdb14d47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maddhatter/html/zipball/23223c6e283002f6f092d65015b82d6e3e746206",
-                "reference": "23223c6e283002f6f092d65015b82d6e3e746206",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/7570f25d58a00fd6909c0563808590f9cdb14d47",
+                "reference": "7570f25d58a00fd6909c0563808590f9cdb14d47",
                 "shasum": ""
             },
             "require": {
@@ -783,26 +783,23 @@
                     "src/helpers.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Adam Engebretson",
-                    "email": "adam@laravelcollective.com"
-                },
-                {
                     "name": "Taylor Otwell",
                     "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
                 }
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
-            "support": {
-                "issues": "https://github.com/LaravelCollective/html/issues",
-                "source": "https://github.com/LaravelCollective/html"
-            },
-            "time": "2017-01-23 15:09:39"
+            "time": "2017-01-26 19:27:05"
         },
         {
             "name": "league/commonmark",
@@ -4677,7 +4674,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "laravelcollective/html": 20,
         "humbug/humbug": 20
     },
     "prefer-stable": true,
