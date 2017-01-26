@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0032b3b979fdcd089f6c1a0f08249194",
-    "content-hash": "ebc15352c4cd028965bd52581b5c96ef",
+    "hash": "7b9d496d4b5a2240498001ed1251a474",
+    "content-hash": "89a1960c9f345a24ba5b5529744a2230",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -380,16 +380,16 @@
         },
         {
             "name": "fale/isbn",
-            "version": "dev-master",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Fale/isbn.git",
-                "reference": "fb4563c0ce8c93868bc1c2e73610971bac382333"
+                "reference": "f0777e84ad432fdf2eda7a71ed4e98886f8c16b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Fale/isbn/zipball/fb4563c0ce8c93868bc1c2e73610971bac382333",
-                "reference": "fb4563c0ce8c93868bc1c2e73610971bac382333",
+                "url": "https://api.github.com/repos/Fale/isbn/zipball/f0777e84ad432fdf2eda7a71ed4e98886f8c16b4",
+                "reference": "f0777e84ad432fdf2eda7a71ed4e98886f8c16b4",
                 "shasum": ""
             },
             "require": {
@@ -423,7 +423,7 @@
                 "ISBN-10",
                 "ISBN-13"
             ],
-            "time": "2015-10-03 14:46:54"
+            "time": "2015-10-03 11:18:48"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -4678,7 +4678,6 @@
     "stability-flags": {
         "laravelcollective/html": 20,
         "mattketmo/uuid-2x-bridge": 20,
-        "fale/isbn": 20,
         "humbug/humbug": 20
     },
     "prefer-stable": true,
