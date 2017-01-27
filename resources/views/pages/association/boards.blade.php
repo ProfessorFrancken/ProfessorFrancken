@@ -37,6 +37,20 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1516.JPG'
       ]])
 
+      <hr>
+
+      @include("pages.association._board", ['board' => [
+        'year' => '2014-2015',
+        'name' => 'Ingenieus',
+        'members' => [
+          ['name' => 'Hilbert van Loo', 'title' => 'Chairman'],
+          ['name' => 'Serte Donderwinkel', 'title' => 'Secretary and Vice-Chairman'],
+          ['name' => 'Steven Groen', 'title' => 'Treasurer'],
+          ['name' => 'Friso Wobben', 'title' => 'Commissioner of External Relations']
+        ],
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1516.JPG'
+      ]])
+
 
 
       <hr>
