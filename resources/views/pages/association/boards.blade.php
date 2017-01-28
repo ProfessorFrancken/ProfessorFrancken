@@ -48,7 +48,7 @@
           ['name' => 'Steven Groen', 'title' => 'Treasurer'],
           ['name' => 'Friso Wobben', 'title' => 'Commissioner of External Relations']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1516.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
 
