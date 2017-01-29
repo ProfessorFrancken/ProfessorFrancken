@@ -32,7 +32,8 @@ final class ActivityRescheduled extends ActivityEvent
     protected static function deserializationCallbacks()
     {
         return [
-            'id' => [ActivityId::class, 'deserialize']
+            'id' => [ActivityId::class, 'deserialize'],
+            'schedule' => [Schedule::class, 'deserialize']
         ];
     }
 }
