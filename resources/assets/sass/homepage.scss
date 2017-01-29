@@ -173,6 +173,7 @@
     padding-bottom: 0.25em;
     position: relative;
     z-index: 1;
+    font-weight: bold;
 }
 
 .section-header:before {
@@ -207,4 +208,16 @@
     height: 0px;
     border-top: solid 100px #0093f7;
     border-left: solid 100px transparent;
+}
+
+.list {
+    margin: 2em 0;
+}
+.list li::before {
+    content: "•";
+    color: $secondary-color-dark;
+    margin-right: 1em;
+}
+.list li {
+    margin: 0.25em 0;
 }

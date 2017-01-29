@@ -4,7 +4,9 @@
             <div class="row align-items-center h-100">
                 <div class="registration-cta__body text-right col-md-4 offset-md-5 align-self-center">
                     <h1>
-                        Become part of
+                        <strong>
+                            Become part of
+                        </strong>
                         <small>
                             the best student association
                         </small>

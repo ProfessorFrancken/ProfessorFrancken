@@ -2,6 +2,8 @@ $francken-blue: #173249;
 $francken-red: #E63C39;
 
 $primary-color: #011842;
+
+$body-color:  #001744;
 // $secondary-color: $francken-red;
 $secondary-color: #9edad3 !default;
 $secondary-color-dark: #7ebcb5 !default;
@@ -31,7 +33,7 @@ $link-color: $francken-red !default;
 
 // Fonts
 
-$font-family-sans-serif: 'PT Sans', sans-serif -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-sans-serif: 'PT Sans', sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $font-family-base:       $font-family-sans-serif !default;
 
 // Headings
@@ -43,3 +45,5 @@ $btn-primary-border:             $btn-primary-bg !default;
 
 $btn-danger-bg:                  $brand-danger !default;
 $btn-danger-border:              $btn-danger-bg !default;
+
+$btn-font-weight: bold;

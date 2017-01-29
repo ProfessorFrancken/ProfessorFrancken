@@ -56,7 +56,7 @@
                 Tellus elementum sagittis vitae et leo duis ut? Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum, odio eu feugiat pretium, nibh ipsum consequat nisl.
             @endcomponent
         </div>
-        <div class="text-right">
+        <div class="text-md-right">
             <a class="link-to-all arrow" href="">
                 View all news
             </a>
