@@ -1,16 +1,13 @@
 $menu-navigation-font: $headings-font-family;
 $sub-menu-navigation-font: '';
+$cta-image: '/images/boards/bestuur_buitengewoon.JPG';
 
 .header__logo {
-    // background-color: $primary-color;
     background: none;
     color: white;
     padding: 4em;
-    // padding-bottom: 5em;
     padding-right: 0;
-
     background-color: $primary-color;
-
     border-radius: 0px 0px 10px 0px;
     z-index: 100;
 }
@@ -25,7 +22,6 @@ $sub-menu-navigation-font: '';
     z-index: 1;
 
     background-color: $primary-color;
-    // background-color: red;
     border-radius: 0px 0px 10px 0px;
     transform-origin: bottom left;
     transform: skewX(-30deg);
@@ -40,7 +36,6 @@ $sub-menu-navigation-font: '';
     font-size: 1.75rem;
     margin: 0;
     margin-left: 1em;
-    // margin-right: -1em;
     z-index: 10;
 }
 
@@ -107,14 +102,15 @@ $sub-menu-navigation-font: '';
 .navigation__login-link {
     color: white;
 }
+
 .navigation__login-link i {
     margin-left: .5em;
 }
+
 .navigation__login-link:hover {
     color: white;
     cursor: pointer;
 }
-
 
 .header__nav {
     width: 100%;
@@ -136,6 +132,7 @@ $registration-cta-height: 400px;
 }
 
 $cta-height: 510px;
+$cta-height: 455px;
 
 .header__registration-cta {
     margin-left: 5em;
@@ -155,6 +152,32 @@ $cta-height: 510px;
     overflow: hidden;
 }
 
+.header__registration-cta::before {
+    content: '';
+
+    // "Revert" the skew transformation so that the background image is rendered normally
+    transform: skewX(-$angle);
+    transform-origin: top left;
+
+    background: linear-gradient(
+        to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%
+    ),
+       url($cta-image),
+       $secondary-color;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: luminosity;
+
+    background-position-y: -60px;
+
+    position: absolute;
+    z-index: 2;
+    width: 52%; // 52 looked just about right :)
+    height: 120%; //$cta-height;
+    opacity: 0.5;
+}
+
 .registration-cta {
     z-index: 100;
 }
@@ -168,28 +191,4 @@ $cta-height: 510px;
 // Make sure that child elements are rendered normally
 .header__registration-cta > * {
     transform: skewX(-$angle);
-}
-
-.header__registration-cta::before {
-    content: '';
-
-    // "Revert" the skew transformation so that the background image is rendered normally
-    transform: skewX(-$angle);
-    transform-origin: top left;
-
-    background: linear-gradient(
-            to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%
-        ),
-    url(http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_buitengewoon.JPG)
-       $secondary-color;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: luminosity;
-
-    position: absolute;
-    z-index: 2;
-    width: 52%; // 52 looked just about right :)
-    height: $cta-height;
-    opacity: 0.5;
 }
