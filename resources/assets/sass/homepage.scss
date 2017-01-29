@@ -29,6 +29,11 @@
     border-color: currentcolor;
 }
 
+.link-to-all-dark {
+    @extend .link-to-all;
+    color: $secondary-color-dark;
+}
+
 .news {
     padding: 4em 0;
     margin: 3em 0;

@@ -39,7 +39,7 @@
                     Ultricies mi, quis hendrerit dolor magna eget est lorem ipsum dolor sit amet, consectetur adipiscing elit pellentesque habitant morbi tristique senectus et netus et? Malesuada fames ac turpis egestas maecenas.
                 </p>
                 <button class="btn btn-primary">Read me</button>
-                <a class="link" href="">View all Francken Vrijs</a>
+                <a class="link-to-all-dark" href="">View all Francken Vrijs</a>
             </div>
         </div>
     </div>
