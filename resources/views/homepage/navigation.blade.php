@@ -13,22 +13,21 @@ $subItems = [
     <div class="row no-gutters hidden-sm-down h-100">
         <div class="col-md-11 offset-md-1 align-items-center h-100">
             <div class="d-flex align-items-center h-100">
-                <div class="navigation col">
-                    <nav class="navigation__menu nav justify-content-start">
+                <div class="navigation col-md-9">
+                    <nav class="navigation__menu nav justify-content-around">
                         <a class="navigation__menu-item nav-link active" href="#">Home</a>
                         <a class="navigation__menu-item nav-link" href="#">Association</a>
                         <a class="navigation__menu-item nav-link" href="#">Carreer</a>
                         <a class="navigation__menu-item nav-link" href="#">Study</a>
                         <a class="navigation__menu-item nav-link disabled" href="#">Photos</a>
 
-                        <a class="navigation__menu-item nav-link" href="#">
+                        <a class="navigation__menu-item nav-link login-link" href="#">
                             Login
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </a>
-
                     </nav>
 
-                    <nav class="navigation__sub-menu nav justify-content-start">
+                    <nav class="navigation__sub-menu nav justify-content-end">
                         @foreach ($subItems as $item)
                             <a class="navigation__sub-menu-item nav-link active" href="{{ $item['url'] }}">{{ $item['title'] }}</a>
                         @endforeach
