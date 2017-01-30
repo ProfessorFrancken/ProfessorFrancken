@@ -3,7 +3,7 @@
 @section('content')
     <header>
         <div class="row no-gutters">
-            <div class="col-md-4 text-right">
+            <div class="col-6 col-md-4 text-right">
                 @include("homepage.logo")
             </div>
             <div class="col">

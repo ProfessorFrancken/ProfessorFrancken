@@ -10,16 +10,7 @@ $subItems = [
 ?>
 
 <div class="header__navigation h-100">
-    <div class="row no-gutters">
-        <div class="col-md-1 offset-md-7">
-            <div class="navigation__login text-center">
-                <a href="" class="navigation__login-link">
-                Login<i class="fa fa-user-o" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row no-gutters">
+    <div class="row no-gutters hidden-sm-down h-100">
         <div class="col-md-11 offset-md-1 align-items-center h-100">
             <div class="d-flex align-items-center h-100">
                 <div class="navigation col">
@@ -29,6 +20,12 @@ $subItems = [
                         <a class="navigation__menu-item nav-link" href="#">Carreer</a>
                         <a class="navigation__menu-item nav-link" href="#">Study</a>
                         <a class="navigation__menu-item nav-link disabled" href="#">Photos</a>
+
+                        <a class="navigation__menu-item nav-link" href="#">
+                            Login
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </a>
+
                     </nav>
 
                     <nav class="navigation__sub-menu nav justify-content-start">
