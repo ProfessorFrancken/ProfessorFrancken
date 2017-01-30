@@ -38,7 +38,7 @@
 
     <div class="row">
         <div class="col text-right">
-            <img alt="" src="/images/francken-vrij-homepage.png" class="img-responsive"/>
+            <img alt="" src="/images/francken-vrij-homepage.png" class="img-fluid"/>
         </div>
         <div class="col-md-5">
             <h3 class="section-header">The latest Francken Vrij</h3>
