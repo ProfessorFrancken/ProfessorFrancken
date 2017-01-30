@@ -15,13 +15,16 @@
 
                     <p>
                         <em>
-                            Orci dapibus ultrices in iaculis nunc sed augue lacus, viverra vitae congue eu, consequat ac felis donec et odio pellentesque diam! Fringilla urna, porttitor rhoncus dolor purus non enim praesent!
+                            ‘Professor Francken’ is the study association for Applied Physics, connected to the University of Groningen.
+                            It is named after Groningen’s first professor of Applied Physics and is for students and staff of the applied physics departments.
                         </em>
                     </p>
                 </div>
             </div>
             <p>
-                Dapibus ultrices in iaculis nunc sed augue lacus, viverra vitae congue eu, consequat ac felis donec. Sit amet, consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae congue mauris rhoncus.
+                It has over 700 members and organizes, among other, field trips in the Netherlands and an annual symposium and a foreign excursion.
+                Various activities, including the introductory activities for first-year students and the Bèta-bedrijvendagen (a career event for science students), are organised in partnership with sister associations.
+                Membership is a must for students with a technical orientation.
             </p>
 
             <div class="text-right mt-4">
@@ -40,7 +43,7 @@
         <div class="col-md-5">
             <h3 class="section-header">The latest Francken Vrij</h3>
             <p>
-                Lacus, luctus accumsan tortor posuere ac ut consequat semper viverra nam libero justo, laoreet sit?
+                Francken Vrij is the popular science magazine of the Technisch Fysische Vereniging ‘Professor Francken’ and is distributed to its members, sponsors and other interested parties.
             </p>
 
             <ul class="list list-unstyled">
@@ -50,8 +53,12 @@
                 <li>Sodales neque sodales ut.</li>
             </ul>
 
-            <button class="btn btn-primary">Read me</button>
-            <a class="link-to-all-dark" href="">View all Francken Vrijs</a>
+            <p>
+                Below you can download the <strong>latest edition</strong> of the Francken Vrij, or go to the archive including all published Francken Vrij magazines.
+            </p>
+
+            <button class="btn btn-primary">Download latest edition</button>
+            <a class="link-to-all-dark" href="">Go to the archive</a>
         </div>
     </div>
 </div>

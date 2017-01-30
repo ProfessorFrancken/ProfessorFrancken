@@ -36,7 +36,6 @@
 
 .news {
     padding: 4em 0;
-    margin: 3em 0;
 }
 .news__items {
     margin-bottom: 1em;
@@ -157,15 +156,16 @@
     margin-bottom: 1.5em;
 }
 
-.about {
+
+.francken-pillar {
+    @extend .rounded-circle;
+
     background-color: white;
     box-shadow: 1px 1px 5px #aaa;
-    /* border: thin solid black; */
     padding: 4em;
-
-    /* http://www.endocreative.com/flexbox-circle-responsive-elements/ */
-    flex: 1 0 auto;
-    height:auto;
+    flex: 0 0 50%;
+    height: 100%;
+    text-align: center;
 }
 
 .section-header {

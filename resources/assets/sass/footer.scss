@@ -2,21 +2,18 @@
     background: none;
     color: white;
     padding: 4em;
+    padding-top: 6em;
     padding-right: 0;
-
-    background-color: $primary-color;
-
-    border-radius: 0px 10px 10px 0px;
     z-index: 100;
 }
 
 .footer__logo::before {
     content: " ";
     position: absolute;
-    width: 200px;
+    width: 200%;
     height: 100%;
     top: 0;
-    right: -130px;
+    right: -100px;
     z-index: 1;
 
     background-color: $primary-color;
@@ -33,6 +30,16 @@
 .footer__contact {
     background-color: $secondary-color;
     color: white;
+    position: relative;
+}
+
+.footer__contact:before {
+    position: absolute;
+    content: '';
+    background: $secondary-color;
+    height: 100%;
+    width: 100%;
+    left: -100%;
 }
 
 .footer__body {
@@ -43,8 +50,12 @@
     color: $primary-color;
 }
 
+.footer__body i {
+    color: white;
+}
+
 .sponsors {
     height: 150px;
     width: 100%;
-    background: #eee;
+    background: #E8E8E8;
 }
