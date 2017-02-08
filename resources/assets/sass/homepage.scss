@@ -8,7 +8,7 @@
 }
 
 .link-to-all:hover, .link-to-all:focus {
-    color: $primary-color;
+    color: $secondary-color;
 }
 
 .link-to-all:before {
@@ -32,6 +32,10 @@
 .link-to-all-dark {
     @extend .link-to-all;
     color: $secondary-color-dark;
+}
+
+.link-to-all-dark:hover, .link-to-all-dark:focus {
+    color: $primary-color;
 }
 
 .agenda {
