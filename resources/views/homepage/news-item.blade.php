@@ -20,6 +20,6 @@
     </div>
 
     <div>
-        <button class="btn btn-primary">Read more</button>
+        <button class="btn btn-inverse">Read more</button>
     </div>
 </article>
