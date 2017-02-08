@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="about-francken__j-c-francken">
-                        <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" class="rounded-circle" style="width: 200px; height: 200px; overflow: hidden;"/>
+                        <img alt="" src="/images/prof-jan-carel-francken.png" class="prof-c-j-francken-portrait rounded-circle" style="width: 230px; height: 230px; overflow: hidden;"/>
                     </div>
                 </div>
                 <div class="col">

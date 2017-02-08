@@ -195,21 +195,28 @@
     margin-top: -5em;
 }
 
-.about-francken__j-c-francken .rounded-circle:after {
+.about-francken__j-c-francken:after  {
     content: '';
-    width: 100px;
-    height: 100px;
-    border: thin solid black;
-
-    content: "";
     position: absolute;
     display: block;
-    left: -100px;
-    top: 0px;
-    width: 0px;
-    height: 0px;
-    border-top: solid 100px #0093f7;
-    border-left: solid 100px transparent;
+    right: 0px;
+    bottom: 60px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba($secondary-color, 0.8);
+    border-radius: 50%;
+}
+
+.prof-c-j-francken-portrait {
+    border: thin solid $primary-color;
+    width: 230px;
+    height: 230px;
+    position: relative;
+}
+.prof-c-j-francken-portrait:after {
+    position: absolute;
+    content: '';
+    background: black;
 }
 
 .list {
