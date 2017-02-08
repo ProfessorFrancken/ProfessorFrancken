@@ -29,7 +29,7 @@
                 <div class="footer__contact h-100">
                     <div class="row no-gutters align-itmes-stretch h-100">
                         <div class="col-md-3 offset-md-1 align-self-center">
-                            <h4 class="h5">Adress</h4>
+                            <h4 class="h5 mb-3">Adress</h4>
 
                             <address class="footer__body">
                                 Nijenborgh 4<br>
@@ -38,7 +38,7 @@
                             </address>
                         </div>
                         <div class="col-md-3 align-self-center">
-                            <h4 class="h5">Contact</h4>
+                            <h4 class="h5 mb-3">Contact</h4>
 
                             <div class="footer__body">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 align-self-center">
-                            <h4 class="h5">Social Media</h4>
+                            <h4 class="h5 mb-3">Social Media</h4>
 
                             <div class="footer__body">
                                 <i class="fa fa-facebook" aria-hidden="true"></i> Facebook <br>

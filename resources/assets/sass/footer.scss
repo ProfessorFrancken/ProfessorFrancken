@@ -31,6 +31,8 @@
     background-color: $secondary-color;
     color: white;
     position: relative;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .footer__contact:before {
@@ -52,6 +54,8 @@
 
 .footer__body i {
     color: white;
+    margin-right: .25em;
+    width: 20px;
 }
 
 .sponsors {
