@@ -1,4 +1,4 @@
-<div class="news">
+<div class="news my-5">
     <div class="container">
         <h2 class="news__title">
             The latest news

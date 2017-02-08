@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-5">
     <div class="row no-gutters">
         <div class="col-md-4 text-right">
             <div class="footer__logo align-middle align-items-center">
