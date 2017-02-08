@@ -8,11 +8,11 @@
 
 
         @if (request()->exists('red'))
-            <link rel="stylesheet" href="{{ mix('/css/red.css') }}">
+            <link rel="stylesheet" href="{{ mix('/dist/css/red.css') }}">
         @elseif (request()->exists('slef'))
-            <link rel="stylesheet" href="{{ mix('/css/slef.css') }}">
+            <link rel="stylesheet" href="{{ mix('/dist/css/slef.css') }}">
         @else
-            <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+            <link rel="stylesheet" href="{{ mix('/dist/css/app.css') }}">
         @endif
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
