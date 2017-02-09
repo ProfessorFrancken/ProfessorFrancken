@@ -1,7 +1,5 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "T.F.V. 'Professor Francken'",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -57,7 +55,9 @@
         ],
         "post-update-cmd": [
             "php artisan optimize"
-        ]
+        ],
+        "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'",
+        "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'"
     },
     "config": {
         "preferred-install": "dist"
