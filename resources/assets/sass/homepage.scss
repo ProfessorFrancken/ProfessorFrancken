@@ -192,15 +192,18 @@
     margin-top: 2em;
 }
 .about-francken__j-c-francken {
-    margin-top: -5em;
+    float: left;
+    margin-top: -6em;
+    margin-right: 3em;
+    position: relative;
 }
 
 .about-francken__j-c-francken:after  {
     content: '';
     position: absolute;
     display: block;
-    right: 0px;
-    bottom: 60px;
+    right: -30px;
+    bottom: 5px;
     width: 100px;
     height: 100px;
     border: 2px solid rgba($secondary-color, 0.8);

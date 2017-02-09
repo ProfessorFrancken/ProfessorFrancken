@@ -1,26 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col about-francken">
-
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="about-francken__j-c-francken">
-                        <img alt="" src="/images/prof-jan-carel-francken.png" class="prof-c-j-francken-portrait rounded-circle" style="width: 230px; height: 230px; overflow: hidden;"/>
-                    </div>
-                </div>
-                <div class="col">
-                    <h2 class="section-header mt-4">
-                        About the association
-                    </h2>
-
-                    <p>
-                        <em>
-                            ‘Professor Francken’ is the study association for Applied Physics, connected to the University of Groningen.
-                            It is named after Groningen’s first professor of Applied Physics and is for students and staff of the applied physics departments.
-                        </em>
-                    </p>
-                </div>
+            <div class="about-francken__j-c-francken">
+                <img alt="" src="/images/prof-jan-carel-francken.png" class="prof-c-j-francken-portrait rounded-circle" />
             </div>
+
+            <h2 class="section-header mt-4 d-inline-block">
+                About the association
+            </h2>
+
+            <p>
+                <em>
+                    ‘Professor Francken’ is the study association for Applied Physics, connected to the University of Groningen.
+                    It is named after Groningen’s first professor of Applied Physics and is for students and staff of the applied physics departments.
+                </em>
+            </p>
             <p>
                 It has over 700 members and organizes, among other, field trips in the Netherlands and an annual symposium and a foreign excursion.
                 Various activities, including the introductory activities for first-year students and the Bèta-bedrijvendagen (a career event for science students), are organised in partnership with sister associations.
