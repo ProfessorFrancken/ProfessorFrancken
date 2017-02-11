@@ -1,0 +1,50 @@
+// Our style is mostly based on the primary-color and secondary-color
+// variables, the dark variant of primary-color is currently unused
+$primary-color: #173249 !default;
+$primary-color-dark: #011842 !default;
+
+$secondary-color: #9edad3 !default;
+$secondary-color-dark: #7ebcb5 !default;
+
+$blue: $primary-color; // override
+$red: $secondary-color; // override
+
+$brand-primary: $blue !default;
+$brand-danger: $red !default;
+
+// Body
+$body-color: #001744;
+$body-bg: #FAFAFA;
+$footer-bg: #E8E8E8;
+
+// Links
+$link-color: $secondary-color !default;
+
+// Fonts
+$font-family-sans-serif: 'PT Sans', sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
+
+// Headings
+$headings-font-family: 'Signika', sans-serif !default;
+
+// Buttons
+$btn-primary-bg: $brand-primary !default;
+$btn-primary-border: $btn-primary-bg !default;
+
+$btn-danger-bg: $brand-danger !default;
+$btn-danger-border: $btn-danger-bg !default;
+
+$btn-font-weight: bold;
+
+// Navigation
+$menu-navigation-font: $headings-font-family;
+$sub-menu-navigation-font: '';
+
+// Homepage
+
+/// News
+$news-background: $primary-color;
+$news-color: $secondary-color;
+$news-title-color: white;
+
+$cta-image: '/images/boards/bestuur_buitengewoon.JPG';

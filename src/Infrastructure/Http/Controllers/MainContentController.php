@@ -14,6 +14,11 @@ class MainContentController extends Controller
         return view('main');
     }
 
+    public function homepage()
+    {
+        return view('homepage/homepage');
+    }
+
     public function about()
     {
         return view('about');

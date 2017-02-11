@@ -1,0 +1,26 @@
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow|Raleway|Signika);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "homepage";
+@import "header";
+@import "footer";
+
+.btn.btn-primary {
+    font-family: $font-family-sans-serif;
+    font-size: 18px;
+}
+
+.btn.btn-inverse {
+    font-family: $font-family-sans-serif;
+    font-size: 18px;
+    background-color: $secondary-color;
+    color: white;
+}
+
+@import "junk";

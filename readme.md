@@ -12,6 +12,8 @@ For more info on Broadway, watch
 [Willem-Jan Zijderveld speak on CQRS and Event Sourcing](https://www.youtube.com/watch?v=d1PDPsxWGqM).
 
 - [Contributing](#contributing)
+    - [Generating css (or compiling assets)](#generating-css-or-compiling-assets)
+        - [Windows configuration](#windows-configuration)
     - [Testing](#testing)
     - [Code style](#code-style)
     - [Git Usage](#git-usage)
@@ -35,6 +37,41 @@ Below you will find a quick summary on how to run the tests and a code style
 fixer.
 This summary assumes you've correctly setup your development environment (i.e.
 it assumes you've setup a vagrant box with Homestead and you've run `composer install`).
+
+### Generating css (or compiling assets)
+
+We use [scss](http://sass-lang.com/) which compiles to css.
+
+To compile our assets you will first have to install some necessary javascript
+dependencies. You can do this using [npm](npmjs.com).
+Assuming you've installed npm locally you can run the command,
+```
+npm install
+```
+Alternatively if you prefer to use a docker container, then you can run
+`docker-compose run npm npm install` (assuming you're
+using [our docker repo](https://github.com/ProfessorFrancken/Docker)).
+
+
+Once you've installed the javascript dependencies you can compile our assets by
+running
+```
+npm run dev
+```
+in the root of this project (the folder in which a `package.json` file  is
+present), or alternatively use `docker-compose run npm npm run dev`.
+The compiled files will be placed in the `/public/dist` folder. This folder is
+added to our `.gitignore` so you won't see the folder until you run the above
+command.
+
+Check the documentation
+of [Laravel Mix](https://laravel.com/docs/5.4/mix#introduction) to learn more
+about how our assets (css & js) are compiled.
+
+#### Windows configuration
+
+I haven't yet tested whether this works on Windows.. If you're using Docker
+(which you should :-)) then the docker commands should work.
 
 ### Testing
 Once your VM has been setup you should be able to run the unit and integration
