@@ -20,6 +20,21 @@
         @include('homepage._favicon')
     </head>
     <body>
-        @yield('content')
+        <header>
+            <div class="row no-gutters">
+                <div class="col-6 col-md-4 text-right">
+                    @include("homepage._logo")
+                </div>
+                <div class="col">
+                    @include("homepage._navigation")
+                </div>
+            </div>
+
+            @yield('header-image')
+        </header>
+
+        @yield('main-content')
+
+        @include("homepage._footer")
     </body>
 </html>

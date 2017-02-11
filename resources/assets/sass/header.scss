@@ -148,6 +148,10 @@ $cta-height: 455px;
     overflow: hidden;
 }
 
+.header__registration-cta--small {
+    height: 200px;
+}
+
 .header__registration-cta::before {
     content: '';
 
