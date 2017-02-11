@@ -5,7 +5,7 @@
         </h2>
 
         <div class="news__items row align-items-stretch">
-            @component('homepage.news-item')
+            @component('homepage._news-item')
                 @slot('title')
                     Experiences of a freshmen
                 @endslot
@@ -22,7 +22,7 @@
                 Enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa.
             @endcomponent
 
-            @component('homepage.news-item')
+            @component('homepage._news-item')
                 @slot('title')
                     Experiences of a freshmen
                 @endslot
@@ -39,7 +39,7 @@
                 At consectetur lorem donec massa sapien, faucibus et molestie ac, feugiat sed lectus vestibulum mattis ullamcorper velit! Nunc sed augue lacus, viverra vitae congue eu, consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus!
             @endcomponent
 
-            @component('homepage.news-item')
+            @component('homepage._news-item')
                 @slot('title')
                     Experiences of a freshmen
                 @endslot

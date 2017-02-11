@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="col-md-5">
-            @include("homepage.agenda")
+            @include("homepage._agenda")
         </div>
     </div>
 

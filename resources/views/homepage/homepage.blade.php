@@ -4,21 +4,21 @@
     <header>
         <div class="row no-gutters">
             <div class="col-6 col-md-4 text-right">
-                @include("homepage.logo")
+                @include("homepage._logo")
             </div>
             <div class="col">
-                @include("homepage.navigation")
+                @include("homepage._navigation")
             </div>
         </div>
 
-        @include("homepage.registration-cta")
+        @include("homepage._registration-cta")
     </header>
 
-    @include("homepage.about-francken")
+    @include("homepage._about-francken")
 
-    @include("homepage.news")
+    @include("homepage._news")
 
-    @include("homepage.pillars")
+    @include("homepage._pillars")
 
-    @include("homepage.footer")
+    @include("homepage._footer")
 @endsection
