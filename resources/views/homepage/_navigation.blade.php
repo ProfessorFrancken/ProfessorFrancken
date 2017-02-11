@@ -15,11 +15,11 @@ $subItems = [
             <div class="d-flex align-items-center h-100">
                 <div class="navigation col-md-9">
                     <nav class="navigation__menu nav justify-content-around">
-                        <a class="navigation__menu-item nav-link active" href="#">Home</a>
-                        <a class="navigation__menu-item nav-link" href="#">Association</a>
-                        <a class="navigation__menu-item nav-link" href="#">Carreer</a>
-                        <a class="navigation__menu-item nav-link" href="#">Study</a>
-                        <a class="navigation__menu-item nav-link disabled" href="#">Photos</a>
+                        <a class="navigation__menu-item nav-link active" href="/">Home</a>
+                        <a class="navigation__menu-item nav-link" href="/association">Association</a>
+                        <a class="navigation__menu-item nav-link" href="/career">Career</a>
+                        <a class="navigation__menu-item nav-link" href="/study">Study</a>
+                        <a class="navigation__menu-item nav-link disabled" href="https://www.flickr.com/photos/fotocie/sets/">Photos</a>
 
                         <a class="navigation__menu-item nav-link login-link" href="#">
                             Login
