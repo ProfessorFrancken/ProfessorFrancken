@@ -1,4 +1,4 @@
-@extends('base-layout')
+@extends('pages.association')
 
 @section('sub-menu')
     @include('layout._subnavigation', [
