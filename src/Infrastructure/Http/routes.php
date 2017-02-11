@@ -2,8 +2,6 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/de-nieuwe-homepage', 'MainContentController@homepage');
-
     Route::get('/', 'MainContentController@index');
 
     Route::resource('study/books', 'BookController');

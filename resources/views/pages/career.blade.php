@@ -1,4 +1,4 @@
-@extends('base-layout')
+@extends('homepage.one-column-layout')
 
 @section('sub-menu')
     @include('layout._subnavigation', [
