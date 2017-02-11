@@ -28,7 +28,7 @@
                     @include("homepage._logo")
                 </div>
                 <div class="col">
-                    @include("homepage._navigation")
+                    @include("homepage.navigation._navigation")
                 </div>
             </div>
 
