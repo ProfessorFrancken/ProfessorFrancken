@@ -102,6 +102,34 @@ $committees = [
 		'description' => 'SOMETHING SOMETHING FIRST YEAR',
 		'link'=> 'sjaarscie'
 	],
+	[
+
+		'title' => 'Sportcie',
+		'translated' => 'Sport Committee',
+		'description' => 'Rumours are spreading about how the members of T.F.V. ‘Professor Francken’ manage to always stay fit. Are they following a carbonhydrate free diet? Do they participate the 30 Day Ab Challenge? Does the presence of a SEM accelerate the metabolism? Actually, we all owe the Sportcie for this. With different sporty activities throughout the year, we all stay fit and don’t have to worry about a beer belly.',
+		'link'=> 'sportcie'
+	],
+	[
+
+		'title' => 'Sympcie',
+		'translated' => 'Symposium Committee',
+		'description' => 'Every year the Symposium Committee organizes a symposium on a variety of applied physics topics, at which the participants find out what kinds of research various universities are doing and what is involved in researching new products or applications in industry. In past years symposia have been held with the themes: ‘Growing Smaller’, ‘Light Matters’ and ‘Sense. Compute. Control.’.',
+		'link'=> 'sympcie'
+	],
+	[
+
+		'title' => 'Takcie',
+		'translated' => 'Hitchhiking Committee',
+		'description' => 'NEEDZ MOAR TEXT',
+		'link'=> 'takcie'
+	],
+	[
+
+		'title' => 'Wiecksie',
+		'translated' => 'Member Weekend Committee',
+		'description' => 'This committee organises those weekends away for those who can’t get enough of T.F.V. ‘Professor Francken’ during regular weeks.',
+		'link'=> 'wiecksie'
+	],
 ]
 ?>
   <h1 class="centered-header">
