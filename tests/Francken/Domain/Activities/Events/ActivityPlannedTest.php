@@ -62,7 +62,6 @@ class ActivityPlannedTest extends TestCase
 
     protected function createInstance()
     {
-
         return new ActivityPlanned(
             ActivityId::generate(),
             'Crash & Compile',

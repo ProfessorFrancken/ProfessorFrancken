@@ -7,7 +7,7 @@ namespace Francken\Domain\Activities;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
 
-final class Location
+final class Location implements SerializableInterface
 {
     use Serializable;
 
@@ -25,7 +25,7 @@ final class Location
         return new Location;
     }
 
-    public static function fromNameAndAddress($name, $postalCode = '', $streetName = '', $streetNumber = '')
+    public static function fromNameAndAddress(string $name, string $postalCode = null, string $streetName = null, string $streetNumber = null)
     {
         $location = new Location;
         $location->name = $name;
@@ -56,10 +56,5 @@ final class Location
     public function streetNumber()
     {
         return $this->streetNumber;
-    }
-
-    protected static function deserializationCallbacks()
-    {
-        return [];
     }
 }

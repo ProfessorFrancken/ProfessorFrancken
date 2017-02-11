@@ -6,3 +6,4 @@ Homestead.json
 .env
 .vagrant
 /build
+/public/storage/francken-vrij

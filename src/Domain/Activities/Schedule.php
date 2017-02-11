@@ -6,8 +6,10 @@ namespace Francken\Domain\Activities;
 
 use DateTimeImmutable as DateTime;
 use InvalidArgumentException;
+use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 
-final class Schedule
+final class Schedule implements SerializableInterface
 {
     private $startTime;
     private $endTime;
@@ -44,5 +46,22 @@ final class Schedule
     public function endTime()
     {
         return $this->endTime;
+    }
+
+    public function serialize()
+    {
+
+        return [
+            'startTime' => $this->startTime->format(\DateTime::ISO8601),
+            'endTime' => is_null($this->endTime) ? null : $this->endTime->format(\DateTime::ISO8601)
+        ];
+    }
+
+    public static function deserialize(array $schedule)
+    {
+        return new Schedule(
+            DateTime::createFromFormat(\DateTime::ISO8601, $schedule['startTime']),
+            is_null($schedule['endTime']) ? null : DateTime::createFromFormat(\DateTime::ISO8601, $schedule['endTime'])
+        );
     }
 }

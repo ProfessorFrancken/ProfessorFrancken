@@ -62,4 +62,13 @@ final class ActivityPlanned extends ActivityEvent
     {
         return $this->category;
     }
+
+    protected static function deserializationCallbacks()
+    {
+        return [
+            'id' => [ActivityId::class, 'deserialize'],
+            'schedule' => [Schedule::class, 'deserialize'],
+            'location' => [Location::class, 'deserialize']
+        ];
+    }
 }

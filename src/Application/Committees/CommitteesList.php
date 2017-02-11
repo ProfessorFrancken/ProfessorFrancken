@@ -92,7 +92,9 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
 
     public function changeEmail(Email $email = null)
     {
-        return new CommitteesList($this->committeeId(), $this->name, $this->summary, $email, $this->markDown, $this->html, $this->members);
+        $committee = clone $this;
+        $committee->email = $email;
+        return $committee;
     }
 
     public function changeCommitteePage(string $markDown, string $html)
