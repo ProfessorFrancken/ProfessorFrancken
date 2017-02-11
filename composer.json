@@ -60,7 +60,7 @@
         ],
         "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'",
         "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",
-        "cs": "vendor/bin/php-cs-fixer fix",
+        "cs": "vendor/bin/php-cs-fixer fix --dry-run",
         "phpstan": "vendor/bin/phpstan analyze src",
         "psalm": "vendor/bin/psalm",
         "test": "composer run cs && composer run units && composer run features"
