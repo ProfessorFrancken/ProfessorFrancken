@@ -4,7 +4,7 @@
 
 <?php
 $volumeNumber = 21;
-$committees = [	
+$committees = [
 	[
 		'title' => 'Alumni Committee',
 		'translated' => '',
@@ -134,4 +134,24 @@ $committees = [
 ?>
   <h1 class="centered-header">
     Committees
+  </h1>
+
+
+  @foreach ($committees as $committee)
+      @component('pages.association._committee')
+          @slot('name')
+              {{ $committee['title'] }}
+          @endslot
+
+          @slot('translated')
+              {{ $committee['translated'] }}
+          @endslot
+
+          @slot('link')
+              {{ $committee['link'] }}
+          @endslot
+
+          {{ $committee['description'] }}
+      @endcomponent
+  @endforeach
  @endsection
