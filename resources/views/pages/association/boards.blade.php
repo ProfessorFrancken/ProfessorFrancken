@@ -44,7 +44,7 @@
         'name' => 'Ingenieus',
         'members' => [
           ['name' => 'Hilbert van Loo', 'title' => 'Chair'],
-          ['name' => 'Serte Donderwinkel', 'title' => 'Secretary' and Vice-Chair'],
+          ['name' => 'Serte Donderwinkel', 'title' => 'Secretary and Vice-Chair'],
           ['name' => 'Steven Groen', 'title' => 'Treasurer'],
           ['name' => 'Friso Wobben', 'title' => 'Commissioner of External Relations']
         ],
@@ -314,7 +314,7 @@
           ['name' => 'Lars de Groot', 'title' => 'Secretary'],
           ['name' => 'Jeroen de Boer', 'title' => 'Treasurer'],
           ['name' => 'Frederick Meis', 'title' => 'Commissioner of External Relations and Vice-Chair'],
-          ['name' => 'Marc Gotink', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+          ['name' => 'Marc Gotink', 'title' => 'Commissioner of External Relations and Vice-Chair']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -327,7 +327,7 @@
           ['name' => 'Frans Venker', 'title' => 'Chair'],
           ['name' => 'Walter Ganzevles', 'title' => 'Secretary'],
           ['name' => 'Marieke Duijvestein', 'title' => 'Treasurer'],
-          ['name' => 'Robert-Jan Zandvoort', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+          ['name' => 'Robert-Jan Zandvoort', 'title' => 'Commissioner of External Relations and Vice-Chair']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -339,7 +339,7 @@
         'members' => [
           ['name' => 'Marlien Klijnstra', 'title' => 'Chair'],
           ['name' => 'Alex Schoonveld', 'title' => 'Secretary'],
-          ['name' => 'Klaas Jan Wieringa', 'title' => 'Treasurer'],
+          ['name' => 'Klaas Jan Wieringa', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -351,7 +351,7 @@
         'members' => [
           ['name' => 'Sander Tichelaar', 'title' => 'Chair'],
           ['name' => 'Marco Workel', 'title' => 'Secretary'],
-          ['name' => 'Robin Advokaat', 'title' => 'Treasurer'],
+          ['name' => 'Robin Advokaat', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -363,7 +363,7 @@
         'members' => [
           ['name' => 'Jorgen van der Velde', 'title' => 'Chair'],
           ['name' => 'Ruerd Heeg', 'title' => 'Secretary'],
-          ['name' => 'Maarten van Essen', 'title' => 'Treasurer'],
+          ['name' => 'Maarten van Essen', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -375,7 +375,7 @@
         'members' => [
           ['name' => 'Arjan Douwes', 'title' => 'Chair'],
           ['name' => 'Nico van der Post', 'title' => 'Secretary'],
-          ['name' => 'Peter Magnee', 'title' => 'Treasurer'],
+          ['name' => 'Peter Magnee', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -387,7 +387,7 @@
         'members' => [
           ['name' => 'Wouter de Vries', 'title' => 'Chair'],
           ['name' => 'Sybren Sijbrandij', 'title' => 'Secretary'],
-          ['name' => 'Hung Le', 'title' => 'Treasurer'],
+          ['name' => 'Hung Le', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -399,7 +399,7 @@
         'members' => [
           ['name' => 'Dirk van Dijk', 'title' => 'Chair'],
           ['name' => 'Erik Lukkien', 'title' => 'Secretary'],
-          ['name' => 'Menno van der Burg', 'title' => 'Treasurer'],
+          ['name' => 'Menno van der Burg', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -411,7 +411,7 @@
         'members' => [
           ['name' => 'Erik Dalhuijsen', 'title' => 'Chair'],
           ['name' => 'Peter Reijneker', 'title' => 'Secretary'],
-          ['name' => 'Gerritjan Wessels', 'title' => 'Treasurer'],
+          ['name' => 'Gerritjan Wessels', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -424,7 +424,7 @@
           ['name' => 'Pim Luiten', 'title' => 'Chair'],
 	  ['name' => 'Wenzel Hurtak', 'title' => 'Secretary till 1 July'],
 	  ['name' => 'Peter Reijneker', 'title' => 'Secretary from 1 July'],
-          ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer'],
+          ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
@@ -436,7 +436,7 @@
         'members' => [
           ['name' => 'Tom Franke', 'title' => 'Chair'],
 	  ['name' => 'Guustaaf Brouwer', 'title' => 'Secretary'],
-          ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer'],
+          ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
       ]])
 
