@@ -35,6 +35,16 @@
     z-index: 10;
 }
 
+.header__title-link {
+    color: white;
+    z-index: 1;
+}
+
+.header__title-link:hover {
+    color: white;
+    text-decoration: none;
+}
+
 .header__navigation {
     font-family: $menu-navigation-font;
     border-top: 6px solid $secondary-color-dark;
