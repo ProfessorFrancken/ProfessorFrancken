@@ -13,6 +13,7 @@
     transform: skewX(30deg);
 }
 
+// Currently not used as we only skew the footer for medium devices
 .skew--bottom-right {
     transform: skewX(30deg);
     border-radius: 0px 10px 0px 0px;
@@ -21,4 +22,17 @@
 
 .skew--bottom-right > * {
     transform: skewX(-30deg);
+}
+
+// Used for the footer
+@include media-breakpoint-up(md) {
+    .skew-md--bottom-right {
+        transform: skewX(30deg);
+        border-radius: 0px 10px 0px 0px;
+        transform-origin: bottom right;
+    }
+
+    .skew-md--bottom-right > * {
+        transform: skewX(-30deg);
+    }
 }
