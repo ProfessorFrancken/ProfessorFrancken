@@ -11,7 +11,7 @@
                 </address>
             </div>
 
-            <div class="col-12 col-sm-5 col-md-3 my-3">
+            <div class="col-12 col-sm-5 col-md-4 my-3">
                 <h4 class="footer__header h5 mb-3">Contact</h4>
 
                 <div class="footer__body">
@@ -41,7 +41,7 @@
 
 
             {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
-            <div class="flex-md-first col-12 col-md-5 footer__logo skew-md--bottom-right">
+            <div class="flex-md-first col-12 col-md-4 hidden-sm-down footer__logo skew-md--bottom-right">
                 <div class="align-middle align-items-center">
                     <div class="d-flex justify-content-center justify-content-md-end align-items-center">
                         <a class="header__title-link" href="/">
