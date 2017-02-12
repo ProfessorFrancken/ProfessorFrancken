@@ -189,6 +189,21 @@
     		display: block;
     }
 
+    .navigation-list__item,
+    .navigation-sub-list li a{
+	      transition: background-color 0.1s cubic-bezier(.62,.28,.23,.99);
+    }
+
+    .navigation-list__item:focus,
+    .navigation-list__item:hover,
+    .navigation-list__item:active {
+        background: darken($primary-color, 5%);
+    }
+
+    .navigation-sub-list li a:focus {
+        background: darken(white, 5%);
+    }
+
     /** Responsive **/
     @media only screen and (max-width: 1032px /* $firstbreakpoint */){
         .francken-header {
@@ -208,7 +223,6 @@
 
 	      .navigation-list__link:link,
 	      .navigation-list__link:visited {
-		        background: $primary-color; /* $darkPurple; */
 		        color: #FFF;
 		        border: 0;
 		        display: block;
