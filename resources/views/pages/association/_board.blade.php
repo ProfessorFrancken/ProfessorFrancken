@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-md-7">
-    <h2 id="{{ $board['year'] }}">Board {{ $board['year'] }} ‘{{ $board['name'] }}’</h2>
+    @if ($board['name'] != '') 
+	<h2 id="{{ $board['year'] }}">Board {{ $board['year'] }} ‘{{ $board['name'] }}’</h2>
+    @else
+	<h2 id="{{ $board['year'] }}">Board {{ $board['year'] }}</h2>
+    @endif
     <ul>
       @foreach($board['members'] as $member)
         <li>{{ $member['name'] }} - {{ $member['title'] }}</li>
@@ -8,6 +12,8 @@
     </ul>
   </div>
   <div class="col-md-5">
-    <img width="100%" src="{{ $board['figure'] }}">
+    @if ($board['figure'] != '')
+        <img width="100%" src="{{ $board['figure'] }}" class="img-fluid">
+    @endif
   </div>
 </div>
