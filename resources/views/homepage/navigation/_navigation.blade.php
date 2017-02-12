@@ -47,7 +47,7 @@ $items = [
                     <nav class="navigation__menu nav justify-content-around">
                         @foreach ($items as $item)
 
-                            <a class="navigation__menu-item nav-link active" href="{{ $item['url'] }}">
+                            <a class="navigation__menu-item nav-link active text-nowrap" href="{{ $item['url'] }}">
                                 @if ($item['icon'] != '')
                                     <i class="fa fa-{{ $item['icon'] }} mr-2" aria-hidden="true"></i>
                                 @endif
@@ -57,7 +57,7 @@ $items = [
                             @if ('/' . Request::segment(1) == $item['url'])
                                 @foreach ($item['subItems'] as $subItem)
                                     @push('sub-navigation-items')
-                                        <a class="navigation__sub-menu-item nav-link active" href="{{ $subItem['url'] }}">{{ $subItem['title'] }}</a>
+                                        <a class="navigation__sub-menu-item nav-link active text-nowrap" href="{{ $subItem['url'] }}">{{ $subItem['title'] }}</a>
                                     @endpush
                                 @endforeach
                             @endif
@@ -65,11 +65,11 @@ $items = [
 
 
                         @if (Auth::check())
-                            <a class="navigation__menu-item nav-link" href="https://www.flickr.com/photos/fotocie/sets/">
+                            <a class="navigation__menu-item nav-link text-nowrap" href="https://www.flickr.com/photos/fotocie/sets/">
                                 <i class="fa fa-camera mr-2" aria-hidden="true"></i>
                                 Photos
                             </a>
-                            <a class="navigation__menu-item nav-link" href="/logout">
+                            <a class="navigation__menu-item nav-link text-nowrap" href="/logout">
                                 <i class="fa fa-user mr-2" aria-hidden="true"></i>
                                 Profile
                             </a>

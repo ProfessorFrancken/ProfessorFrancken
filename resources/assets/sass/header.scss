@@ -11,7 +11,7 @@ $top-stroke-width: 6px;
     background-color: $primary-color;
     border-radius: 0px 0px 10px 0px;
     width: 100%;
-    margin: -$top-stroke-width 0 -2em 0;
+    margin: -$top-stroke-width 0 -4em 0;
     padding-right: 5em;
 }
 
@@ -117,6 +117,14 @@ $top-stroke-width: 6px;
     z-index: 0;
 }
 
+.login-link {
+    background: $secondary-color;
+    color: white;
+    border-radius: 4px;
+}
+
+// Image header
+
 $angle: 15deg;
 $registration-cta-height: 400px;
 
@@ -190,10 +198,4 @@ $cta-height: 455px;
 // Make sure that child elements are rendered normally
 .header__registration-cta > * {
     transform: skewX(-$angle);
-}
-
-.login-link {
-    background: $secondary-color;
-    color: white;
-    border-radius: 4px;
 }
