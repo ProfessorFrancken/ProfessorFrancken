@@ -60,12 +60,23 @@ $items = [
                             @endif
                         @endforeach
 
-                        <a class="navigation__menu-item nav-link disabled" href="https://www.flickr.com/photos/fotocie/sets/">Photos</a>
 
-                        <a class="navigation__menu-item nav-link login-link" href="#">
-                            Login
-                            <i class="fa fa-user-o" aria-hidden="true"></i>
-                        </a>
+                        @if (Auth::check())
+                            <a class="navigation__menu-item nav-link" href="https://www.flickr.com/photos/fotocie/sets/">
+                                <i class="fa fa-camera mr-2" aria-hidden="true"></i>
+                                Photos
+                            </a>
+                            <a class="navigation__menu-item nav-link" href="/logout">
+                                <i class="fa fa-user mr-2" aria-hidden="true"></i>
+                                Profile
+                            </a>
+                        @else
+                            <a class="navigation__menu-item nav-link login-link" href="/login">
+                                <i class="fa fa-user mr-2" aria-hidden="true"></i>
+                                Login
+                            </a>
+                        @endif
+
                     </nav>
 
                     <nav class="navigation__sub-menu nav justify-content-end">
