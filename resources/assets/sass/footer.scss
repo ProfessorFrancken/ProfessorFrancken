@@ -2,18 +2,10 @@
     background: none;
     color: white;
     background-color: $primary-color;
-    border-radius: 0px 10px 0px 0px;
-    transform-origin: bottom right;
-    transform: skewX(30deg);
     width: 100%;
     margin: -2em 0 0 0;
-    padding: 4em 0;
+    padding: 4em 0 2em;
     padding-right: 5em;
-}
-
-.footer__logo > * {
-    transform-origin: bottom right;
-    transform: skewX(-30deg);
 }
 
 .footer__logo img {
@@ -22,17 +14,16 @@
     height: 100px;
 }
 
-.footer__contact {
+.footer__header {
+    color: white;
     font-weight: bold;
     font-size: 1.1em;
 }
 
-.footer__header {
-    color: white;
-}
-
 .footer__body {
     color: $primary-color;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .footer__body a {

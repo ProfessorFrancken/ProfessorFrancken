@@ -1,4 +1,3 @@
-
 // Set the border width of the border above the navigation
 $top-stroke-width: 6px;
 
@@ -11,16 +10,9 @@ $top-stroke-width: 6px;
     padding: 4em 0;
     background-color: $primary-color;
     border-radius: 0px 0px 10px 0px;
-    transform-origin: top right;
-    transform: skewX(-30deg);
     width: 100%;
     margin: -$top-stroke-width 0 -2em 0;
     padding-right: 5em;
-}
-
-.header__logo > * {
-    transform-origin: top right;
-    transform: skewX(30deg);
 }
 
 .header__logo img {
