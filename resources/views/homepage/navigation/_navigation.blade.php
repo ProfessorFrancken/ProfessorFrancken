@@ -2,10 +2,12 @@
 
 $items = [
     [
-
-        'url' => '/',
-        'title' => 'Home',
-        'subItems' => []
+        'url' => '/study',
+        'title' => 'Study',
+        'subItems' => [
+            ['url' => "/study/books", 'title' => 'Books'],
+        ],
+        'icon' => 'book',
     ],
     [
         'url' => '/association',
@@ -17,14 +19,8 @@ $items = [
             ['url' => "/association/boards", 'title' => 'Boards'],
             ['url' => "/association/committees", 'title' => 'Committees'],
             ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij']
-        ]
-    ],
-    [
-        'url' => '/study',
-        'title' => 'Study',
-        'subItems' => [
-            ['url' => "/study/books", 'title' => 'Books'],
-        ]
+        ],
+        'icon' => 'coffee',
     ],
     [
         'url' => '/career',
@@ -33,7 +29,8 @@ $items = [
             ['url' => "/career/job-openings", 'title' => 'Job openings'],
             ['url' => "/career/companies", 'title' => 'Company profiles'],
             ['url' => "/career/excursions", 'title' => 'Excursions']
-        ]
+        ],
+        'icon' => 'briefcase',
     ],
 ];
 
@@ -48,6 +45,9 @@ $items = [
                         @foreach ($items as $item)
 
                             <a class="navigation__menu-item nav-link active" href="{{ $item['url'] }}">
+                                @if ($item['icon'] != '')
+                                    <i class="fa fa-{{ $item['icon'] }} mr-2" aria-hidden="true"></i>
+                                @endif
                                 {{ $item['title'] }}
                             </a>
 
