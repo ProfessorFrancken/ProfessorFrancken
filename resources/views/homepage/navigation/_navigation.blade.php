@@ -37,6 +37,30 @@ $items = [
     ],
 ];
 
+if (Auth::check()) {
+    $items[] = [
+        'url' => 'https://www.flickr.com/photos/fotocie/sets/',
+        'title' => 'Photos',
+        'subItems' => [],
+        'icon' => 'camera',
+    ];
+
+    $items[] = [
+        'url' => '/logout',
+        'title' => 'Profile',
+        'subItems' => [],
+        'icon' => 'user',
+    ];
+} else {
+    $items[] = [
+        'url' => '/login',
+        'title' => 'Login',
+        'subItems' => [],
+        'icon' => 'user',
+        'class' => 'login-link'
+    ];
+}
+
 ?>
 
 <div class="header__navigation h-100">
@@ -46,8 +70,7 @@ $items = [
                 <div class="navigation">
                     <nav class="navigation__menu nav justify-content-around">
                         @foreach ($items as $item)
-
-                            <a class="navigation__menu-item nav-link active text-nowrap" href="{{ $item['url'] }}">
+                            <a class="navigation__menu-item nav-link active text-nowrap {{ $item['class'] or '' }}" href="{{ $item['url'] }}">
                                 @if ($item['icon'] != '')
                                     <i class="fa fa-{{ $item['icon'] }} mr-2" aria-hidden="true"></i>
                                 @endif
@@ -62,24 +85,6 @@ $items = [
                                 @endforeach
                             @endif
                         @endforeach
-
-
-                        @if (Auth::check())
-                            <a class="navigation__menu-item nav-link text-nowrap" href="https://www.flickr.com/photos/fotocie/sets/">
-                                <i class="fa fa-camera mr-2" aria-hidden="true"></i>
-                                Photos
-                            </a>
-                            <a class="navigation__menu-item nav-link text-nowrap" href="/logout">
-                                <i class="fa fa-user mr-2" aria-hidden="true"></i>
-                                Profile
-                            </a>
-                        @else
-                            <a class="navigation__menu-item nav-link login-link" href="/login">
-                                <i class="fa fa-user mr-2" aria-hidden="true"></i>
-                                Login
-                            </a>
-                        @endif
-
                     </nav>
 
                     <nav class="navigation__sub-menu nav justify-content-end">
