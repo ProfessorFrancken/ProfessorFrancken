@@ -6,6 +6,9 @@ $items = [
         'title' => 'Study',
         'subItems' => [
             ['url' => "/study/books", 'title' => 'Books'],
+            ['url' => "/study/research-groups", 'title' => 'Research Groups'],
+            ['url' => "/study/representation/university-council", 'title' => 'University Council'],
+            ['url' => "/study/representation/faculty-council", 'title' => 'Faculty Council'],
         ],
         'icon' => 'book',
     ],
