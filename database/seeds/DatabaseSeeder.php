@@ -12,13 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 50; $i++) {
-            DB::table('posts')->insert([
-                'id' => PostId::generate(),
-                'title' => str_random(20),
-                'content' => str_random(100)
-            ]);
-        }
+        DB::table('users')->insert(['id' => '1']);
 
         $this->call(CommitteesSeeder::class);
         $this->call(PostsSeeder::class);

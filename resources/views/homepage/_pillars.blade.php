@@ -2,7 +2,10 @@
     <div class="row">
         <div class="col-md-4 my-5">
             <div class="francken-pillar text-center">
-                <h3>Study</h3>
+                <h3>
+                    Study
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                </h3>
                 <p>
                     <small>
                         Prepare your exams well with the exams of last year.
@@ -14,7 +17,11 @@
         </div>
         <div class="col-md-4 my-5">
             <div class="francken-pillar text-center">
-                <h3>Association</h3>
+                <h3>
+                    Association
+                    <i class="fa fa-beer" aria-hidden="true"></i>
+                    <i class="fa fa-coffee" aria-hidden="true"></i>
+                </h3>
                 <p>
                     <small>
                         Are you curious who we are?
@@ -28,7 +35,10 @@
         </div>
         <div class="col-md-4 my-5">
             <div class="francken-pillar text-center">
-                <h3>Carreer</h3>
+                <h3>
+                    Carreer
+                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                </h3>
                 <p>
                     <small>
                         What happens after graduation?

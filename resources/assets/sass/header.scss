@@ -1,43 +1,50 @@
-.header__logo {
-    background: none;
-    color: white;
-    padding: 4em;
-    padding-right: 0;
-    background-color: $primary-color;
-    border-radius: 0px 0px 10px 0px;
-    z-index: 100;
+
+// Set the border width of the border above the navigation
+$top-stroke-width: 6px;
+
+.header {
+    border-top: $top-stroke-width solid $secondary-color-dark;
 }
 
-.header__logo::before {
-    content: " ";
-    position: absolute;
-    width: 200px;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: 1;
-
+.header__logo {
+    color: white;
+    padding: 4em 0;
     background-color: $primary-color;
     border-radius: 0px 0px 10px 0px;
-    transform-origin: bottom left;
+    transform-origin: top right;
     transform: skewX(-30deg);
+    width: 100%;
+    margin: -$top-stroke-width 0 -2em 0;
+    padding-right: 5em;
+}
+
+.header__logo > * {
+    transform-origin: top right;
+    transform: skewX(30deg);
 }
 
 .header__logo img {
     filter: brightness(0) invert(1);
     z-index: 10;
+    height: 100px;
 }
 
 .header__title {
     font-size: 1.75rem;
-    margin: 0;
-    margin-left: 1em;
-    z-index: 10;
+    margin: 0 0 0 1em;
+}
+
+.header__title-link {
+    color: white;
+}
+
+.header__title-link:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .header__navigation {
     font-family: $menu-navigation-font;
-    border-top: 6px solid $secondary-color-dark;
     color: $primary-color;
     z-index: -1;
 }
@@ -146,6 +153,10 @@ $cta-height: 455px;
 
     // Hide the overflow of the header image
     overflow: hidden;
+}
+
+.header__registration-cta--small {
+    height: 200px;
 }
 
 .header__registration-cta::before {

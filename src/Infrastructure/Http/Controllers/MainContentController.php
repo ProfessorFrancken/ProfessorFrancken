@@ -11,11 +11,6 @@ class MainContentController extends Controller
 {
     public function index()
     {
-        return view('main');
-    }
-
-    public function homepage()
-    {
         return view('homepage/homepage');
     }
 

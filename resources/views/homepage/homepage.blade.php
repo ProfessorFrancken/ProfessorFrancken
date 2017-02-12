@@ -1,24 +1,13 @@
 @extends('homepage.layout')
 
-@section('content')
-    <header>
-        <div class="row no-gutters">
-            <div class="col-6 col-md-4 text-right">
-                @include("homepage.logo")
-            </div>
-            <div class="col">
-                @include("homepage.navigation")
-            </div>
-        </div>
+@section('main-content')
+    @include("homepage._about-francken")
 
-        @include("homepage.registration-cta")
-    </header>
+    @include("homepage._news")
 
-    @include("homepage.about-francken")
+    @include("homepage._pillars")
+@endsection
 
-    @include("homepage.news")
-
-    @include("homepage.pillars")
-
-    @include("homepage.footer")
+@section('header-image')
+    @include("homepage.header._registration-cta")
 @endsection

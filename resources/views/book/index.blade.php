@@ -1,5 +1,4 @@
-@extends('base-layout')
-
+@extends('homepage.one-column-layout')
 
 @section('content')
 
