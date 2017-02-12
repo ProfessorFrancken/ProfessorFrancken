@@ -41,7 +41,7 @@ $items = [
 
 <div class="header__navigation h-100">
     <div class="row no-gutters hidden-sm-down h-100">
-        <div class="col-md-11 offset-md-1 align-items-center h-100">
+        <div class="col align-items-center h-100">
             <div class="d-flex align-items-center h-100">
                 <div class="navigation col-md-9">
                     <nav class="navigation__menu nav justify-content-around">
@@ -69,9 +69,6 @@ $items = [
                     </nav>
 
                     <nav class="navigation__sub-menu nav justify-content-end">
-                        <!-- Add an empty link so that the main menu's vertical position won't move when there are no sub items  -->
-                        <a class="nav-link">&nbsp;</a>
-
                         @stack('sub-navigation-items')
                     </nav>
                 </div>

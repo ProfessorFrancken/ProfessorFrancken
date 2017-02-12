@@ -4,7 +4,7 @@
             <img
                 alt=""
                 src="/images/LOGO_KAAL.png"
-                height="100px"
+                class="img-fluid"
             />
             <h1 class="header__title text-left float-right">
                 T.F.V.<br/>

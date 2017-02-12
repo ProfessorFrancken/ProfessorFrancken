@@ -22,12 +22,12 @@
         @include('homepage._favicon')
     </head>
     <body>
-        <header>
-            <div class="row no-gutters">
-                <div class="col-6 col-md-4 text-right">
+        <header class="header">
+            <div class="row">
+                <div class="col-7 col-md-5 col-sm-8 text-right">
                     @include("homepage._logo")
                 </div>
-                <div class="col">
+                <div class="col-5 col-md-7 col-sm-4">
                     @include("homepage.navigation._navigation")
                 </div>
             </div>
