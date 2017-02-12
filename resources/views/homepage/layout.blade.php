@@ -23,7 +23,7 @@
     </head>
     <body>
         <header class="header">
-            <div class="row">
+            <div class="row no-gutters">
                 <div class="col-7 col-md-5 col-sm-8 text-right">
                     @include("homepage._logo")
                 </div>
