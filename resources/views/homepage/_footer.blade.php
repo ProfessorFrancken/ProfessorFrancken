@@ -28,11 +28,15 @@
                             <div class="col-md-3 align-self-center">
                                 <h4 class="footer__header h5 mb-3">Social Media</h4>
 
-                                <div class="footer__body">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i> Facebook <br>
-                                    <i class="fa fa-twitter" aria-hidden="true"></i> Twitter <br>
+				<div class="footer__body">
+				    <a href="https://www.facebook.com/groups/139490187648/">
+					<i class="fa fa-facebook" aria-hidden="true"></i>Facebook<br>
+				    </a>
+				    <a href="https://www.linkedin.com/groups/1524067">
+					<i class="fa fa-linkedin" aria-hidden="true"></i>LinkedIn<br>
+				    </a>
                                     <a href="https://github.com/ProfessorFrancken/ProfessorFrancken">
-                                        <i class="fa fa-github" aria-hidden="true"></i> Github
+                                        <i class="fa fa-github" aria-hidden="true"></i>Github
                                     </a>
                                 </div>
                             </div>
