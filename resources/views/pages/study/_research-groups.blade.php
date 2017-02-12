@@ -6,14 +6,14 @@
 		{!!  $group['description'] !!}
 	</div>
 	<div class="col">
-		<img src="http://www.rug.nl{{ $group['photo'] }}" width="450" height="225"> 
+		<img src="http://www.rug.nl{{ $group['photo'] }}" width="450" height="225" class="rounded"> 
 	</div>
 </div>
 <br>
 <div class="row">
 	@foreach($group['groups'] as $unit)
 		<div class="col">
-			<img src="http://www.rug.nl{{ $unit['foto'] }}" width="283" height="142"> 
+			<img src="http://www.rug.nl{{ $unit['foto'] }}" width="283" height="142" class="rounded"> 
 			<h2>Prof. {{ $unit['group'] }}</h2>
 			{{ $unit['title'] }}
 			<br>

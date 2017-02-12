@@ -25,7 +25,7 @@ $groups = [
 			'groups' => [
 			[
 				'group' => 'Van der Giessen',
-				'title' => 'Micromechanics of materials',
+				'title' => 'Micromechanics of Materials',
 				'contact' => 'http://www.rug.nl/staff/e.van.der.giessen/',
 				'link' => 'http://www.rug.nl/research/zernike/micromechanics/van-der-giessen-group/',
 				'foto' => '/research/zernike/people/VanderGiessen-1-WEB.jpg'

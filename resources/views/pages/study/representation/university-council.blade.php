@@ -14,7 +14,7 @@ At the moment, there are three student parties: Lijst Calimero, SOG and Lijst St
 		<div class="media ml-0 mt-2" style="background:#0fb13a">
 			<img src="https://www.lijstcalimero.nl/wp-content/uploads/2016/09/Fractie_Hanne.jpg" height="200"/>
 			<div class="media-body ml-4" style="color:white">
-				<img src="http://betastuf.nl/wp-content/uploads/2017/01/Logo-wit.png" width="150" align="top" class="ml-2 mt-2"/>
+				<img src="http://betastuf.nl/wp-content/uploads/2017/01/Logo-wit.png" height="80" align="top" class="ml-2 mt-2"/>
 				<br>	
 				<br>Hanne Oelen
 				<br>hanneoelen@lijstcalimero.nl
@@ -26,7 +26,7 @@ At the moment, there are three student parties: Lijst Calimero, SOG and Lijst St
 		<div class="media ml-0 mt-2" style="background:#d69c29">
 			<img src="http://studentenorganisatie.nl/wp-content/uploads/2014/09/Cornesmall.jpg" height="200"/>
 			<div class="media-body ml-4" style="color:white">
-				<img src="http://studentenorganisatie.nl/wp-content/uploads/2015/01/logoSOG_klein.png" style="filter:brightness(0) invert(1)" width="150" align="top" class="ml-2 mt-2"/>
+				<img src="http://studentenorganisatie.nl/wp-content/uploads/2015/01/logoSOG_klein.png" style="filter:brightness(0) invert(1)" height="80" align="top" class="ml-2 mt-2"/>
 				<br>	
 				<br>Cornelis Zandt
 				<br>cornelis@studentenorganisatie.nl
