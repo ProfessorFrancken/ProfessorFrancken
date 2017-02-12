@@ -10,6 +10,6 @@
         </ul>
     </div>
     <div class="col-md-3">
-        <img class="job-opening__company-logo" alt="{{ $company['name'] }}" src="{{ $company['logo'] }}"/>
+        <img class="img-fluid job-opening__company-logo" alt="{{ $company['name'] }}" src="{{ $company['logo'] }}"/>
     </div>
 </section>

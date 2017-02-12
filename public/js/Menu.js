@@ -92,7 +92,7 @@ Menu = (function(){
 function overall() {
 	  $mainMenu = $('#main-menu');
 
-	  Menu.init($mainMenu, $('.navigation-sub-list__toggle'), $('#navbar-toggler-2'));
+	  Menu.init($mainMenu, $('.navigation-sub-list__toggle'), $('#navbar-toggler'));
 }
 
 overall();

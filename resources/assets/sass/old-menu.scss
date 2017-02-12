@@ -1,5 +1,4 @@
-.old-menu {
-    background: blue;
+.header__logo {
 
     .caret {
         display: inline-block;
@@ -162,9 +161,8 @@
 
     /* Wrapper around the Hambuger menu */
     .navigation__mobile-menu {
-	      position: absolute;
-	      right: 1em;
-	      top: 14px;
+        float: right;
+	      position: relative;
 	      z-index: 202; /* $gsvnet-z-index-base + 2; */
         display: block ;
     }
@@ -224,10 +222,6 @@
 		        position: static;
 	      }
 
-	      .hamburger-menu {
-		        // display: block;
-	      }
-
 	      .navigation-list {
 		        position: absolute;
 		        bottom: 100%;
@@ -268,21 +262,33 @@
     }
 }
 
-@include media-breakpoint-up(xs) {
-    .old-menu > * {
-        // display: none;
-    }
-}
-
 @include media-breakpoint-up(md) {
-
-   .old-menu > * {
+    .header__logo .navigation__mobile-menu,
+    .header__logo .navigation-list {
         display: none;
     }
 }
 
 @include media-breakpoint-down(sm) {
-	  .old-menu .hamburger-menu {
+    .header__logo {
+        position: absolute;
+    }
+
+    .header__title-link {
+        width: 100%;
+    }
+
+    .header__title {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+	  .header__logo .hamburger-menu {
 		    display: block;
 	  }
+
+    .header__title-link {
+        z-index: 202;
+        position: relative;
+    }
 }

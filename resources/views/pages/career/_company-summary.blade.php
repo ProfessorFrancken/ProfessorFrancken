@@ -1,6 +1,6 @@
 <section class="row company-summary">
     <div class="col-md-3">
-        <img class="company-summary__logo" alt="{{ $company['name'] }}" src="{{ $company['logo'] }}"/>
+        <img class="img-fluid company-summary__logo" alt="{{ $company['name'] }}" src="{{ $company['logo'] }}"/>
     </div>
     <div class="col-md-9">
         <h3 class="company-summary__title">
