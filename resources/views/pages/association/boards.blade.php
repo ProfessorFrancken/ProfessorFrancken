@@ -48,7 +48,7 @@
           ['name' => 'Steven Groen', 'title' => 'Treasurer'],
           ['name' => 'Friso Wobben', 'title' => 'Commissioner of External Relations']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur1415.jpg'
       ]])
 
 
@@ -64,7 +64,7 @@
           ['name' => 'Janneke Janssens', 'title' => 'Treasurer'],
           ['name' => 'Joran Böhmer', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1314_600breed.jpg'
       ]])
       <hr>
 
@@ -77,7 +77,7 @@
           ['name' => 'Sjoerd Meesters', 'title' => 'Treasurer'],
           ['name' => 'Bauke Steensma', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1213_600breed.jpg'
       ]])
 
       <hr>
@@ -91,7 +91,7 @@
           ['name' => 'Marion Dam', 'title' => 'Treasurer'],
           ['name' => 'Tobias Van Damme', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1112_600breed.png'
       ]])
 
       <hr>
@@ -105,7 +105,7 @@
           ['name' => 'Sjoerd Bielleman', 'title' => 'Treasurer'],
           ['name' => 'Hilbert Dijkstra', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1011_600breed.png'
       ]])
 
       <hr>
@@ -119,7 +119,7 @@
           ['name' => 'Aernout van der Poel', 'title' => 'Treasurer'],
           ['name' => 'Ypke Jager', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0910_600breed.jpg'
       ]])
 
       <hr>
@@ -133,7 +133,7 @@
           ['name' => 'Victor Haverkort', 'title' => 'Treasurer'],
           ['name' => 'Olger Zwier', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0809_600hoog.jpg'
       ]])
 
       <hr>
@@ -147,7 +147,7 @@
           ['name' => 'Pelle Koeslag', 'title' => 'Treasurer'],
           ['name' => 'Jakko de Jong', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0708_600breed.jpg'
       ]])
 
 
@@ -162,7 +162,7 @@
           ['name' => 'Jasper van den Berg', 'title' => 'Treasurer'],
           ['name' => 'Tom de Boer', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0607_600breed.jpg'
       ]])
 
       <hr>
@@ -176,7 +176,7 @@
           ['name' => 'Reeuwerd Straatman', 'title' => 'Treasurer'],
           ['name' => 'Tom Boot', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0506_600breed.jpg'
       ]])
 
       <hr>
@@ -190,7 +190,7 @@
           ['name' => 'Arjan van der Pal', 'title' => 'Treasurer'],
           ['name' => 'Sander Onur', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0405_600breed.jpg'
       ]])
 
       <hr>
@@ -204,7 +204,7 @@
           ['name' => 'Teun Koeman', 'title' => 'Treasurer'],
           ['name' => 'Hedde van Hoorn', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0304_640breed.jpg'
       ]])
 
       <hr>
@@ -216,9 +216,9 @@
           ['name' => 'Marten Frantzen', 'title' => 'Chair'],
           ['name' => 'Dennis Westra', 'title' => 'Secretary'],
           ['name' => 'Timon Lely', 'title' => 'Treasurer'],
-          ['name' => 'Auke-siûk Nutma', 'title' => 'Commissioner of External Relations and Vice-Chair']
+          ['name' => 'Auke-Siûk Nutma', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0203_600breed.jpg'
       ]])
 
       <hr>
@@ -232,7 +232,7 @@
           ['name' => 'Peter Koopmans', 'title' => 'Treasurer'],
           ['name' => 'Reinier Kaptein', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -245,7 +245,7 @@
           ['name' => 'Tasco Silva', 'title' => 'Secretary'],
           ['name' => 'Erik Koop', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0001_600breed.jpg'
       ]])
 
       <hr>
@@ -259,7 +259,7 @@
           ['name' => 'Wouter van Strien', 'title' => 'Treasurer'],
           ['name' => 'Laurens Willem van Beveren', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -273,7 +273,7 @@
           ['name' => 'Jur de Vries', 'title' => 'Treasurer'],
           ['name' => 'Armand van der Veen', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -287,7 +287,7 @@
           ['name' => 'Victor van Heeswijk', 'title' => 'Treasurer'],
           ['name' => 'Ronald Hanson', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -301,7 +301,7 @@
           ['name' => 'Eric van de Schoot', 'title' => 'Treasurer'],
           ['name' => 'Bouke Hoving', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -315,7 +315,7 @@
           ['name' => 'Jeroen de Boer', 'title' => 'Treasurer'],
           ['name' => 'Frederick Meis', 'title' => 'Commissioner of External Relations and Vice-Chair'],
           ['name' => 'Marc Gotink', 'title' => 'Commissioner of External Relations and Vice-Chair']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -328,7 +328,7 @@
           ['name' => 'Walter Ganzevles', 'title' => 'Secretary'],
           ['name' => 'Marieke Duijvestein', 'title' => 'Treasurer'],
           ['name' => 'Robert-Jan Zandvoort', 'title' => 'Commissioner of External Relations and Vice-Chair']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -340,7 +340,7 @@
           ['name' => 'Marlien Klijnstra', 'title' => 'Chair'],
           ['name' => 'Alex Schoonveld', 'title' => 'Secretary'],
           ['name' => 'Klaas Jan Wieringa', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -352,7 +352,7 @@
           ['name' => 'Sander Tichelaar', 'title' => 'Chair'],
           ['name' => 'Marco Workel', 'title' => 'Secretary'],
           ['name' => 'Robin Advokaat', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -364,7 +364,7 @@
           ['name' => 'Jorgen van der Velde', 'title' => 'Chair'],
           ['name' => 'Ruerd Heeg', 'title' => 'Secretary'],
           ['name' => 'Maarten van Essen', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -376,7 +376,7 @@
           ['name' => 'Arjan Douwes', 'title' => 'Chair'],
           ['name' => 'Nico van der Post', 'title' => 'Secretary'],
           ['name' => 'Peter Magnee', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -388,7 +388,7 @@
           ['name' => 'Wouter de Vries', 'title' => 'Chair'],
           ['name' => 'Sybren Sijbrandij', 'title' => 'Secretary'],
           ['name' => 'Hung Le', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -400,7 +400,7 @@
           ['name' => 'Dirk van Dijk', 'title' => 'Chair'],
           ['name' => 'Erik Lukkien', 'title' => 'Secretary'],
           ['name' => 'Menno van der Burg', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -412,7 +412,7 @@
           ['name' => 'Erik Dalhuijsen', 'title' => 'Chair'],
           ['name' => 'Peter Reijneker', 'title' => 'Secretary'],
           ['name' => 'Gerritjan Wessels', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -425,7 +425,7 @@
 	  ['name' => 'Wenzel Hurtak', 'title' => 'Secretary till 1 July'],
 	  ['name' => 'Peter Reijneker', 'title' => 'Secretary from 1 July'],
           ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
       <hr>
@@ -437,7 +437,7 @@
           ['name' => 'Tom Franke', 'title' => 'Chair'],
 	  ['name' => 'Guustaaf Brouwer', 'title' => 'Secretary'],
           ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1415.JPG'
+        'figure' => ''
       ]])
 
 
