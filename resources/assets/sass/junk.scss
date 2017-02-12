@@ -26,6 +26,17 @@
 
 // Used for the footer
 @include media-breakpoint-up(md) {
+
+    .skew-md--top-right {
+        transform: skewX(-30deg);
+        border-radius: 0px 0px 10px 0px;
+        transform-origin: top right;
+    }
+
+    .skew-md--top-right > * {
+        transform: skewX(30deg);
+    }
+
     .skew-md--bottom-right {
         transform: skewX(30deg);
         border-radius: 0px 10px 0px 0px;

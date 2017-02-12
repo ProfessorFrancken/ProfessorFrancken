@@ -7,23 +7,51 @@ $top-stroke-width: 6px;
 
 .header__logo {
     color: white;
-    padding: 4em 0;
+    padding: 1em;
     background-color: $primary-color;
-    border-radius: 0px 0px 10px 0px;
     width: 100%;
-    margin: -$top-stroke-width 0 -4em 0;
-    padding-right: 5em;
+    margin: -$top-stroke-width 0 1em 0;
 }
+
 
 .header__logo img {
     filter: brightness(0) invert(1);
     z-index: 10;
-    height: 100px;
+    height: 40px;
 }
 
 .header__title {
-    font-size: 1.75rem;
+    font-size: 1em;
     margin: 0 0 0 1em;
+}
+
+@include media-breakpoint-up(md) {
+    .header__logo {
+        padding: 2em 1em;
+        padding-right: 5em;
+        text-align: right;
+        margin-bottom: -4em;
+        border-radius: 0px 0px 10px 0px;
+    }
+
+    .header__logo img {
+        height: 60px;
+    }
+
+    .header__title {
+        font-size: 1.75rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .header__logo {
+        padding: 4em 1em;
+        padding-right: 5em;
+    }
+
+    .header__logo img {
+        height: 100px;
+    }
 }
 
 .header__title-link {
@@ -198,4 +226,14 @@ $cta-height: 455px;
 // Make sure that child elements are rendered normally
 .header__registration-cta > * {
     transform: skewX(-$angle);
+}
+
+@include media-breakpoint-between(md, lg) {
+    .navigation__menu-item {
+        font-size: 1rem;
+    }
+
+    .header__title {
+        display: none;
+    }
 }

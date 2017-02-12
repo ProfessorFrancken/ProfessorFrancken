@@ -40,10 +40,10 @@ $items = [
 ?>
 
 <div class="header__navigation h-100">
-    <div class="row no-gutters hidden-sm-down h-100">
-        <div class="col align-items-center h-100">
+    <div class="no-gutters hidden-sm-down h-100">
+        <div class="align-items-center h-100">
             <div class="d-flex align-items-center h-100">
-                <div class="navigation col-md-9">
+                <div class="navigation">
                     <nav class="navigation__menu nav justify-content-around">
                         @foreach ($items as $item)
 
