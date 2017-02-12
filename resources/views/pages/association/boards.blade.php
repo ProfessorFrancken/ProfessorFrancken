@@ -446,21 +446,6 @@
 
     </div>
 
-    <div class="col-sm-3" style="font-size: 14px">
-      <ul class="nav">
-        <li><a href="#2016">Buitengewoon (2016-2017)</a></li>
-        <li><a href="#2015">Daadkracht (2015-2016)</a></li>
-        <li><a href="#2014">Ingenieus (2014-2015)</a></li>
-        <li><a href="#2013">Aantrekkingskracht (2013-2014)</a></li>
-        <li><a href="#2012">Binnenstebuiten (2012-2013)</a></li>
-        <li><a href="#2011">Vooruit (2011-2012)</a></li>
-        <li><a href="#2010">Ruimte (2010-2011)</a></li>
-        <li><a href="#2009">Romeo Delta (2009-2010)</a></li>
-        <li><a href="#2008">Surreëel (2008-2009)</a></li>
-        <li><a href="#2007">Smakeloos (2007-2008)</a></li>
-        <li><a href="#2006">Vanzulf (2006-2007)</a></li>
-      </ul>
-    </div>
   </div>
 
 @endsection
