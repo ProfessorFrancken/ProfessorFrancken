@@ -5,14 +5,14 @@
     <ul class="agenda-list list-unstyled">
         <li class="agenda-item d-flex d-flex align-items-center">
             <div class="agenda-item__date align-self-start">
-                <h5 class="agenda-item__date-day">28</h5>
-                <span class="agenda-item__date-month">Nov</span>
+                <h5 class="agenda-item__date-day">13</h5>
+                <span class="agenda-item__date-month">Feb</span>
             </div>
 
             <div class="agenda-item__body">
-                <h5 class="agenda-item__header">Freshmen Dinner</h5>
+                <h5 class="agenda-item__header">General Assembly</h5>
                 <p class="agenda-item__description">
-                    Sed ut perspiciatis unde omnis
+                    I think the board should take a shot of <strong>Ketel1</strong>
                 </p>
             </div>
         </li>

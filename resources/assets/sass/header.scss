@@ -25,35 +25,6 @@ $top-stroke-width: 6px;
     margin: 0 0 0 1em;
 }
 
-@include media-breakpoint-up(md) {
-    .header__logo {
-        padding: 2em 1em;
-        padding-right: 5em;
-        text-align: right;
-        margin-bottom: -4em;
-        border-radius: 0px 0px 10px 0px;
-    }
-
-    .header__logo img {
-        height: 60px;
-    }
-
-    .header__title {
-        font-size: 1.75rem;
-    }
-}
-
-@include media-breakpoint-up(lg) {
-    .header__logo {
-        padding: 4em 1em;
-        padding-right: 5em;
-    }
-
-    .header__logo img {
-        height: 100px;
-    }
-}
-
 .header__title-link {
     color: white;
 }
@@ -166,21 +137,19 @@ $cta-height: 510px;
 $cta-height: 455px;
 
 .header__registration-cta {
-    margin-left: 5em;
     width: 100%;
-    height: $cta-height;;
     display: inline-block;
 
     background: $secondary-color;
-    transform: skew($angle);
-    transform-origin: top left;
-    border-radius: 0px 0px 0px 20px;
 
     position: relative;
     z-index: -10;
 
     // Hide the overflow of the header image
     overflow: hidden;
+
+    margin-top: 3em;
+    height: 200px;
 }
 
 .header__registration-cta--small {
@@ -190,26 +159,20 @@ $cta-height: 455px;
 .header__registration-cta::before {
     content: '';
 
-    // "Revert" the skew transformation so that the background image is rendered normally
-    transform: skewX(-$angle);
-    transform-origin: top left;
+    background: url($cta-image), $secondary-color;
 
-    background: linear-gradient(
-        to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%
-    ),
-       url($cta-image),
-       $secondary-color;
+    // http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oefensessie_willie-1080x400.jpg
 
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: luminosity;
 
-    background-position-y: -60px;
-
     position: absolute;
     z-index: 2;
     width: 52%; // 52 looked just about right :)
-    height: 120%; //$cta-height;
+    height: 100%;
+    width: 100%;
+
     opacity: 0.5;
 }
 
@@ -223,9 +186,83 @@ $cta-height: 455px;
     padding-top: 1.5em;
 }
 
-// Make sure that child elements are rendered normally
-.header__registration-cta > * {
-    transform: skewX(-$angle);
+@include media-breakpoint-up(md) {
+    .header__logo {
+        padding: 2em 1em;
+        padding-right: 5em;
+        text-align: right;
+        margin-bottom: -4em;
+        border-radius: 0px 0px 10px 0px;
+    }
+
+    .header__logo img {
+        height: 60px;
+    }
+
+    .header__title {
+        font-size: 1.75rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .header__logo {
+        padding: 4em 1em;
+        padding-right: 5em;
+    }
+
+    .header__logo img {
+        height: 100px;
+    }
+}
+
+
+@include media-breakpoint-up(sm) {
+    .header__registration-cta {
+        height: 250px;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .registration-cta {
+        display: none;
+    }
+}
+
+
+@include media-breakpoint-up(md) {
+    .header__registration-cta {
+        height: $cta-height;
+        margin-left: 5em;
+        margin-top: 0;
+        transform: skew($angle);
+        transform-origin: top left;
+        border-radius: 0px 0px 0px 20px;
+    }
+
+    .header__registration-cta::before {
+        background: linear-gradient(
+                to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%
+            ),
+            url($cta-image),
+            $secondary-color;
+
+        background-position-y: -60px;
+        background-size: cover;
+
+        // "Revert" the skew transformation so that the background image is rendered normally
+        transform: skewX(-$angle);
+        transform-origin: top left;
+
+        width: 52%; // 52 looked just about right :)
+        height: 120%; //$cta-height;
+
+    }
+
+    // Make sure that child elements are rendered normally
+    .header__registration-cta > * {
+        transform: skewX(-$angle);
+    }
+
 }
 
 @include media-breakpoint-between(md, lg) {
