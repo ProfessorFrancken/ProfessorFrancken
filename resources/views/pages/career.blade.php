@@ -90,3 +90,16 @@
   <hr>
 
 @endsection
+
+@section('header-image')
+    @component('homepage.header._header_image')
+    @slot('headerImageClass')
+        header__registration-cta--small header__registration-cta--study
+    @endslot
+
+    @slot('image')
+    http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oslo_willie-1080x400.jpg
+    @endslot
+
+    @endcomponent
+@endsection

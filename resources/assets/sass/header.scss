@@ -160,9 +160,8 @@ $cta-height: 455px;
     content: '';
 
     background-color: $secondary-color;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%),
-        url($cta-image);
-    background-size: 0px, cover, cover;
+    background-image: url($cta-image);
+    background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: luminosity;
 
@@ -175,9 +174,22 @@ $cta-height: 455px;
     opacity: 0.5;
 }
 
+
+.header__registration-cta::after {
+    content: '';
+
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%);
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+}
+
 .header__registration-cta--study::before {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%),
-        url(http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oefensessie_willie-1080x400.jpg);
+    background-image: url(http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oefensessie_willie-1080x400.jpg);
 }
 
 .registration-cta {
@@ -243,6 +255,8 @@ $cta-height: 455px;
         border-radius: 0px 0px 0px 20px;
     }
 
+
+    .header__registration-cta::after,
     .header__registration-cta::before {
         // Show the gradient, image, and green overlay
         background-size: cover, cover, cover;
@@ -261,10 +275,10 @@ $cta-height: 455px;
         transform: skewX(-$angle);
     }
 
-    .header__registration-cta--study::before {
+    .header__registration-cta--study::before,
+    .header__registration-cta--study::after {
         width: 80%;
     }
-
 }
 
 @include media-breakpoint-between(md, lg) {
