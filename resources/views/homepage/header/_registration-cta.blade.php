@@ -17,6 +17,6 @@
         </p>
     </div>
     <div class="col-md-1 text-left registration-cta__button">
-        <button class="btn btn-primary">Wordt lid</button>
+        <button class="btn btn-primary">Register</button>
     </div>
 @endcomponent
