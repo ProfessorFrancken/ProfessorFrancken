@@ -159,11 +159,10 @@ $cta-height: 455px;
 .header__registration-cta::before {
     content: '';
 
-    background: url($cta-image), $secondary-color;
-
-    // http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oefensessie_willie-1080x400.jpg
-
-    background-size: cover;
+    background-color: $secondary-color;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%),
+        url($cta-image);
+    background-size: 0px, cover, cover;
     background-repeat: no-repeat;
     background-blend-mode: luminosity;
 
@@ -174,6 +173,11 @@ $cta-height: 455px;
     width: 100%;
 
     opacity: 0.5;
+}
+
+.header__registration-cta--study::before {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%),
+        url(http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oefensessie_willie-1080x400.jpg);
 }
 
 .registration-cta {
@@ -240,14 +244,9 @@ $cta-height: 455px;
     }
 
     .header__registration-cta::before {
-        background: linear-gradient(
-                to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%
-            ),
-            url($cta-image),
-            $secondary-color;
-
+        // Show the gradient, image, and green overlay
+        background-size: cover, cover, cover;
         background-position-y: -60px;
-        background-size: cover;
 
         // "Revert" the skew transformation so that the background image is rendered normally
         transform: skewX(-$angle);
@@ -255,12 +254,15 @@ $cta-height: 455px;
 
         width: 52%; // 52 looked just about right :)
         height: 120%; //$cta-height;
-
     }
 
     // Make sure that child elements are rendered normally
     .header__registration-cta > * {
         transform: skewX(-$angle);
+    }
+
+    .header__registration-cta--study::before {
+        width: 80%;
     }
 
 }

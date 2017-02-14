@@ -30,3 +30,12 @@
   </div>
 
 @endsection
+
+@section('header-image')
+    @component('homepage.header._header_image')
+    @slot('headerImageClass')
+        header__registration-cta--small header__registration-cta--study
+    @endslot
+
+    @endcomponent
+@endsection
