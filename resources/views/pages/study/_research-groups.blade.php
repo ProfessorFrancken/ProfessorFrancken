@@ -1,18 +1,18 @@
-<h1>{{  $group['title']}}</h1>
-<div class="row">
+<div class="section-header d-inline-block mt-4 h1">{{  $group['title']}}</div>
+<div class="row mt-2">
 
-	<div class="col text-justify">
-		<br>
+	<div class="col text-justify " >
+		
 		{!!  $group['description'] !!}
 	</div>
-	<div class="col">
+	<!--<div class="col">
 		<img src="http://www.rug.nl{{ $group['photo'] }}" width="450" height="225" class="rounded"> 
-	</div>
+	</div>-->
 </div>
 <br>
 <div class="row">
 	@foreach($group['groups'] as $unit)
-		<div class="col">
+		<div class="col-md-6 mt-3">
 			<img src="http://www.rug.nl{{ $unit['foto'] }}" width="283" height="142" class="rounded"> 
 			<h2>Prof. {{ $unit['group'] }}</h2>
 			{{ $unit['title'] }}
