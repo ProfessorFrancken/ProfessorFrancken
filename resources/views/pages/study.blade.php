@@ -1,5 +1,6 @@
 @extends('homepage.one-column-layout')
 
+@section('header-image-url', '/images/header/practice-session.jpg')
 @section('content')
 
   <h1>Study</h1>
@@ -29,13 +30,4 @@
 
   </div>
 
-@endsection
-
-@section('header-image')
-    @component('homepage.header._header_image')
-    @slot('headerImageClass')
-        header__registration-cta--small header__registration-cta--study
-    @endslot
-
-    @endcomponent
 @endsection

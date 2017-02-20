@@ -1,14 +1,6 @@
 @extends('homepage.one-column-layout')
 
-@section('sub-menu')
-    @include('layout._subnavigation', [
-        'list' => [
-            ['url' => "/career/job-openings", 'title' => 'Job openings'],
-            ['url' => "/career/companies", 'title' => 'Company profiles'],
-            ['url' => "/career/excursions", 'title' => 'Excursions'],
-        ]
-    ])
-@endsection
+@section('header-image-url', '/images/header/oslo.jpg')
 
 @section('content')
   <h1>Career</h1>
@@ -89,17 +81,4 @@
 
   <hr>
 
-@endsection
-
-@section('header-image')
-    @component('homepage.header._header_image')
-    @slot('headerImageClass')
-        header__registration-cta--small header__registration-cta--study
-    @endslot
-
-    @slot('image')
-    http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oslo_willie-1080x400.jpg
-    @endslot
-
-    @endcomponent
 @endsection
