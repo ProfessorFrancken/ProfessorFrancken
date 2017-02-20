@@ -1,0 +1,51 @@
+.link-to-all {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.1em;
+    position: relative;
+    margin-left: 2em;
+}
+
+.link-to-all:hover, .link-to-all:focus {
+    color: $secondary-color;
+}
+
+.link-to-all:before {
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-color: currentcolor;
+    border-width: 2px;
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: -24px;
+    top: 4px;
+    transform: rotate(-45deg);
+}
+
+.link-to-all:hover:before {
+    border-color: currentcolor;
+}
+
+.link-to-all-dark {
+    @extend .link-to-all;
+    color: $secondary-color-dark;
+}
+
+.link-to-all-dark:hover, .link-to-all-dark:focus {
+    color: $primary-color;
+}
+
+.btn.btn-primary {
+    font-family: $font-family-sans-serif;
+    font-size: 18px;
+}
+
+.btn.btn-inverse {
+    font-family: $font-family-sans-serif;
+    font-size: 18px;
+    background-color: $secondary-color;
+    color: white;
+}
