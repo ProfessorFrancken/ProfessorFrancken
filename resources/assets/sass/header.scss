@@ -149,11 +149,7 @@ $cta-height: 455px;
     overflow: hidden;
 
     margin-top: 3em;
-    height: 200px;
-}
-
-.header__registration-cta--small {
-    height: 200px;
+    min-height: 200px;
 }
 
 .header__registration-cta::before {
@@ -188,12 +184,10 @@ $cta-height: 455px;
     width: 100%;
 }
 
-.header__registration-cta--study::before {
-    background-image: url(http://www.professorfrancken.nl/wordpress/wp-content/uploads/2017/01/Oefensessie_willie-1080x400.jpg);
-}
-
 .registration-cta {
     z-index: 100;
+    margin-top: 7em;
+    margin-bottom: 9em;
 }
 
 .registration-cta__button {
@@ -234,7 +228,7 @@ $cta-height: 455px;
 
 @include media-breakpoint-up(sm) {
     .header__registration-cta {
-        height: 250px;
+        min-height: 250px;
     }
 }
 
@@ -247,7 +241,7 @@ $cta-height: 455px;
 
 @include media-breakpoint-up(md) {
     .header__registration-cta {
-        height: $cta-height;
+        max-height: $cta-height;
         margin-left: 5em;
         margin-top: 0;
         transform: skew($angle);
