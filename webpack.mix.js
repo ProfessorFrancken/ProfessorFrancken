@@ -16,6 +16,4 @@ let mix = require('laravel-mix').mix;
 // empty javascript file.
 mix.js('resources/assets/js/app.js', 'public/dist/js')
     .sass('resources/assets/sass/app.scss', 'public/dist/css')
-    .sass('resources/assets/sass/red.scss', 'public/dist/css')
-    .sass('resources/assets/sass/slef.scss', 'public/dist/css')
     .version();
