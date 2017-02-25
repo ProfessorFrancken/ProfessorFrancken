@@ -1,4 +1,3 @@
-
 @section('hamburger-menu')
     {{-- This section adds the Hamburger menu --}}
     <div class="navigation__mobile-menu">

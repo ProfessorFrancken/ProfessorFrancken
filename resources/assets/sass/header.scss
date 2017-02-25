@@ -54,9 +54,14 @@ $top-stroke-width: 6px;
     margin-left: 2em;
 }
 .navigation__sub-menu-item {
+    display: none;
     color: #999;
     font-size: 0.95rem;
     position: relative;
+}
+
+.navigation__sub-menu-item--active {
+    display: block;
 }
 
 .navigation__sub-menu-item:after {

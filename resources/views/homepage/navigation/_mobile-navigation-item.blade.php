@@ -13,11 +13,12 @@
         {{-- may refactored to a horizontal-list --}}
         <ul class="navigation-sub-list">
             @foreach ($subItems as $item)
-                @include('homepage.navigation._mobile-navigation-sub-item', [
-                    'url' => $item['url'],
-                    'title' => $item['title'],
-                    'active' => $active,
-                ])
+
+                <li>
+                    <a class="navigation-sub-list__link" href="{{ $item['url'] }}">
+                        {{ $item['title'] }}
+                    </a>
+                </li>
             @endforeach
         </ul>
     @endif

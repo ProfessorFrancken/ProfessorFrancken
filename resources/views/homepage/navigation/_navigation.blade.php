@@ -11,19 +11,16 @@
                                 @endif
                                 {{ $item['title'] }}
                             </a>
-
-                            @if ('/' . Request::segment(1) == $item['url'])
-                                @foreach ($item['subItems'] as $subItem)
-                                    @push('sub-navigation-items')
-                                        <a class="navigation__sub-menu-item nav-link active text-nowrap" href="{{ $subItem['url'] }}">{{ $subItem['title'] }}</a>
-                                    @endpush
-                                @endforeach
-                            @endif
                         @endforeach
                     </nav>
 
                     <nav class="navigation__sub-menu nav justify-content-end">
-                        @stack('sub-navigation-items')
+                        @foreach ($items as $item)
+                            <?php $active = '/' . Request::segment(1) == $item['url'] ? 'navigation__sub-menu-item--active' : ''; ?>
+                                @foreach ($item['subItems'] as $subItem)
+                                    <a class="navigation__sub-menu-item nav-link {{ $active }} text-nowrap" href="{{ $subItem['url'] }}">{{ $subItem['title'] }}</a>
+                                @endforeach
+                        @endforeach
                     </nav>
                 </div>
             </div>
