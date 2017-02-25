@@ -4,7 +4,6 @@ Menu = (function(){
 		    $mainMenu;
 
 	  function collapse(){
-        console.log('collapse menu');
         collapseSubMenu();
 		    $mainMenu.removeClass('navigation-list--active');
 	  }
@@ -21,10 +20,8 @@ Menu = (function(){
 		    e.stopPropagation();
 		    e.preventDefault();
 
-        console.log('event', e);
 		    // Check if event is already handled
         if(e.handled !== true) {
-            console.log('show sub menu');
 			      // Save jQuery instance of element
             $this = $(this);
 			      $parent = $this.parent();
@@ -53,7 +50,6 @@ Menu = (function(){
 		    e.stopPropagation();
 		    e.preventDefault();
 
-        console.log('show menu');
 		    // Check if event is already handled
         if(e.handled !== true) {
 			      $mainMenu.toggleClass('navigation-list--active');

@@ -1,5 +1,6 @@
 @extends('homepage.one-column-layout')
 
+@section('header-image-url', '/images/header/practice-session.jpg')
 @section('content')
 
   <h1>Study</h1>

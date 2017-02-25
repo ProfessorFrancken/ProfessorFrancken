@@ -1,16 +1,110 @@
-<div class="header__logo align-middle align-items-center">
-    <div class="d-flex justify-content-end align-items-center">
-        <a class="header__title-link" href="/">
-            <img
-                alt=""
-                src="/images/LOGO_KAAL.png"
-                class="img-fluid"
-            />
-            <h1 class="header__title text-left float-right">
-                T.F.V.<br/>
-                'Professor<br/>
-                Francken'
-            </h1>
-        </a>
+<?php
+
+$items = [
+    [
+        'url' => '/study',
+        'title' => 'Study',
+        'subItems' => [
+            ['url' => "/study/books", 'title' => 'Books'],
+            ['url' => "/study/research-groups", 'title' => 'Research Groups'],
+            ['url' => "/study/representation/university-council", 'title' => 'University Council'],
+            ['url' => "/study/representation/faculty-council", 'title' => 'Faculty Council'],
+        ],
+        'icon' => 'book',
+    ],
+    [
+        'url' => '/association',
+        'title' => 'Association',
+        'subItems' => [
+            ['url' => "/association/news", 'title' => 'News'],
+            ['url' => "/association/history", 'title' => 'History'],
+            ['url' => "/association/honorary-members", 'title' => 'Honerary members'],
+            ['url' => "/association/boards", 'title' => 'Boards'],
+            ['url' => "/association/committees", 'title' => 'Committees'],
+            ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij']
+        ],
+    //    'icon' => 'beer',
+        'icon' => 'coffee',
+    ],
+    [
+        'url' => '/career',
+        'title' => 'Career',
+        'subItems' => [
+            ['url' => "/career/job-openings", 'title' => 'Job openings'],
+            ['url' => "/career/companies", 'title' => 'Company profiles'],
+            ['url' => "/career/excursions", 'title' => 'Excursions']
+        ],
+        'icon' => 'briefcase',
+    ],
+];
+
+if (Auth::check()) {
+    $items[] = [
+        'url' => 'https://www.flickr.com/photos/fotocie/sets/',
+        'title' => 'Photos',
+        'subItems' => [],
+        'icon' => 'camera',
+    ];
+
+    $items[] = [
+        'url' => '/logout',
+        'title' => 'Profile',
+        'subItems' => [],
+        'icon' => 'user',
+    ];
+} else {
+    $items[] = [
+        'url' => '/login',
+        'title' => 'Login',
+        'subItems' => [],
+        'icon' => 'user',
+        'class' => 'login-link'
+    ];
+}
+
+?>
+
+@section('hamburger-menu')
+    {{-- This section adds the Hamburger menu --}}
+    <div class="navigation__mobile-menu">
+        <button id="navbar-toggler" class="hamburger-menu">
+            <span class="hamburger-menu__line"></span>
+            <span class="hamburger-menu__line"></span>
+            <span class="hamburger-menu__line"></span>
+        </button>
     </div>
+@endsection
+
+@section('menu-items')
+    {{--
+
+        This section contains all of the menu items
+        We're using partial views so we can focus on
+        the structure on the menu
+
+    --}}
+    <ul class="navigation-list clearfix" id="main-menu">
+        @foreach ($items as $item)
+            @include('homepage._mobile-navigation-item', [
+                'url' => $item['url'],
+                'title' => $item['title'],
+                'icon' => $item['icon'],
+                'subItems' => $item['subItems'],
+            ])
+        @endforeach
+    </ul>
+@endsection
+
+<div class="skew-md--top-right header__logo d-flex justify-content-between justify-content-md-end">
+    <a class="header__title-link align-items-center align-middle d-inline-flex" href="/">
+        <img alt="Logo of T.F.V. 'Professor Francken'" src="/images/LOGO_KAAL.png" class="img-fluid" />
+        <h1 class="header__title text-left">
+            T.F.V.<br class="hidden-md-down"/>
+            'Professor<br class="hidden-md-down"/>
+            Francken'
+        </h1>
+    </a>
+
+    @yield('hamburger-menu')
+    @yield('menu-items')
 </div>

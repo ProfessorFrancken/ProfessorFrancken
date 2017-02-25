@@ -1,7 +1,12 @@
 @extends('pages.association')
 @inject('franckenVrij', "Francken\Application\FranckenVrij\FranckenVrijRepository")
+<?php
+$volumes = $franckenVrij->volumes();
+?>
 
-@section('content')
+@section('main-content')
+
+    <div class="container">
 
     <h1 class="centered-header">
         Francken Vrij
@@ -24,10 +29,41 @@
             </div>
         </div>
     </div>
+    </div>
 
-  @foreach($franckenVrij->volumes() as $volume)
+<div class="ribbon ribbon--light my-5">
+    <div class="container">
+        <h2 class="ribbon__header">
+            The latest volume
+        </h2>
 
-      <hr class="thin-bar"/>
+        <div class="ribbon__items row align-items-stretch">
+
+          @foreach(array_shift($volumes)->editions() as $edition)
+
+              <article class="col-md-4 d-flex flex-column news-item">
+
+                  <h4 class="news-item__title text-center">
+                      {{ $edition->title() }}
+                  </h4>
+                  <div class="text-center">
+                      <a href="{{ $edition->pdf() }}">
+                          <img src="{{ $edition->cover() }}" class="img-responsive center-block">
+                      </a>
+                  </div>
+
+                  <div class="text-center my-3">
+                      <a href="{{ $edition->pdf() }}" class="btn btn-inverse">Download</a>
+                  </div>
+              </article>
+          @endforeach
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+  @foreach($volumes as $volume)
 
       <h2>Volume {{ $volume->volume() }}</h2>
 
@@ -42,4 +78,5 @@
           @endforeach
       </div>
   @endforeach
+</div>
 @endsection

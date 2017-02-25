@@ -30,7 +30,7 @@ class FranckenVrijFeature extends TestCase
         );
 
         $this->visit('/association/francken-vrij')
-            ->see("Volume 20");
+            ->see("Francken Vrij 20.1");
     }
 
     /** @test */

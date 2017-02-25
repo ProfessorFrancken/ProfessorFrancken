@@ -1,0 +1,17 @@
+.section-header {
+    color: $primary-color;
+    padding-bottom: 0.25em;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.section-header:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 88px;
+    border-bottom: solid 3px $secondary-color-dark;
+}

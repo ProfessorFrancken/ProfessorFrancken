@@ -1,10 +1,10 @@
-<div class="news my-5">
+<div class="ribbon my-5">
     <div class="container">
-        <h2 class="news__title">
+        <h2 class="ribbon__header">
             The latest news
         </h2>
 
-        <div class="news__items row align-items-stretch">
+        <div class="ribbon__items row align-items-stretch">
             @component('homepage._news-item')
                 @slot('title')
                     Experiences of a freshmen

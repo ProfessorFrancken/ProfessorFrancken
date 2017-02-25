@@ -22,21 +22,14 @@
         @include('homepage._favicon')
     </head>
     <body>
-        <header class="header">
-            <div class="row no-gutters">
-                <div class="col-7 col-md-5 col-sm-8 text-right">
-                    @include("homepage._logo")
-                </div>
-                <div class="col-5 col-md-7 col-sm-4">
-                    @include("homepage.navigation._navigation")
-                </div>
-            </div>
-
-            @yield('header-image')
-        </header>
+        @include('homepage._header')
 
         @yield('main-content')
 
         @include("homepage._footer")
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="/js/Menu.js"></script>
     </body>
 </html>

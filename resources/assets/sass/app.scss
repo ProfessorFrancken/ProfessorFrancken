@@ -7,20 +7,12 @@
 // Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
+@import "junk";
+
+@import "components/typography";
+@import "components/buttons";
+@import "components/ribbon";
+
 @import "homepage";
 @import "header";
 @import "footer";
-
-.btn.btn-primary {
-    font-family: $font-family-sans-serif;
-    font-size: 18px;
-}
-
-.btn.btn-inverse {
-    font-family: $font-family-sans-serif;
-    font-size: 18px;
-    background-color: $secondary-color;
-    color: white;
-}
-
-@import "junk";

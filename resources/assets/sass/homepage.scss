@@ -1,53 +1,19 @@
-.link-to-all {
-    color: white;
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 1.1em;
-    position: relative;
-    margin-left: 2em;
-}
-
-.link-to-all:hover, .link-to-all:focus {
-    color: $secondary-color;
-}
-
-.link-to-all:before {
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-color: currentcolor;
-    border-width: 2px;
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    left: -24px;
-    top: 4px;
-    transform: rotate(-45deg);
-}
-
-.link-to-all:hover:before {
-    border-color: currentcolor;
-}
-
-.link-to-all-dark {
-    @extend .link-to-all;
-    color: $secondary-color-dark;
-}
-
-.link-to-all-dark:hover, .link-to-all-dark:focus {
-    color: $primary-color;
-}
-
 .agenda {
     background: white;
     width: 100%;
-    margin-top: -6em;
     padding: 3em;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
     font-family: 'PT Sans Narrow';
     margin-bottom: 4em;
+    margin-top: -3em;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.25);
 
-    margin-left: 3em;
+}
+@include media-breakpoint-up(md) {
+    .agenda {
+        margin-left: 3em;
+        margin-top: -6em;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+    }
 }
 
 .agenda-header {
@@ -98,67 +64,6 @@
     font-weight: bold;
 }
 
-.news {
-    padding: 4em 0;
-    background-color: $news-background;
-}
-
-.news__items {
-    margin-bottom: 1em;
-}
-
-.news__title {
-    font-weight: bold;
-    text-align: center;
-    color: $news-title-color;
-    padding-bottom: 0.25em;
-    position: relative;
-    z-index: 1;
-    padding-bottom: .5em;
-    margin-bottom: 1.5em;
-}
-
-.news__title:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    width: 10%;
-    left: 50% - 10% / 2;
-    border-bottom: solid 3px white;
-}
-
-.news-item {
-    margin: 2em 0;
-}
-
-.news-item__written-by {
-    color: #8b99a4;
-    font-size: 0.9em;
-    margin-left: 1em;
-}
-
-.news-item__author {
-    text-decoration: underline;
-    font-weight: bold;
-}
-.news-item__date {
-    color: $primary-color;
-    background: white;
-}
-
-.news-item__title {
-    font-weight: bold;
-    margin-bottom: .5em;
-    margin-top: .5em;
-    color: $news-color;
-}
-
-.news-item__body {
-    color: #6e7f8d;
-    margin-bottom: 1.5em;
-}
-
 .francken-pillar {
     @extend .rounded-circle;
 
@@ -168,24 +73,6 @@
     flex: 0 0 50%;
     height: 100%;
     text-align: center;
-}
-
-.section-header {
-    color: $primary-color;
-    padding-bottom: 0.25em;
-    position: relative;
-    z-index: 1;
-    font-weight: bold;
-}
-
-.section-header:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 1px;
-    width: 88px;
-    border-bottom: solid 3px $secondary-color-dark;
 }
 
 .about-francken {

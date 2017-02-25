@@ -2,3 +2,48 @@
 // Use this file to place scss rules for which you don't know where
 // they belong. This file should be cleaned periodically.
 //
+
+.skew--top-right {
+    transform: skewX(-30deg);
+    border-radius: 0px 0px 10px 0px;
+    transform-origin: top right;
+}
+
+.skew--top-right > * {
+    transform: skewX(30deg);
+}
+
+// Currently not used as we only skew the footer for medium devices
+.skew--bottom-right {
+    transform: skewX(30deg);
+    border-radius: 0px 10px 0px 0px;
+    transform-origin: bottom right;
+}
+
+.skew--bottom-right > * {
+    transform: skewX(-30deg);
+}
+
+// Used for the footer
+@include media-breakpoint-up(md) {
+
+    .skew-md--top-right {
+        transform: skewX(-30deg);
+        border-radius: 0px 0px 10px 0px;
+        transform-origin: top right;
+    }
+
+    .skew-md--top-right > * {
+        transform: skewX(30deg);
+    }
+
+    .skew-md--bottom-right {
+        transform: skewX(30deg);
+        border-radius: 0px 10px 0px 0px;
+        transform-origin: bottom right;
+    }
+
+    .skew-md--bottom-right > * {
+        transform: skewX(-30deg);
+    }
+}

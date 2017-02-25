@@ -8,12 +8,12 @@
                 Become part of
             </strong>
             <small>
-                the best student association
+                the best<sup>*</sup> student association
             </small>
         </h1>
 
         <p class="small">
-            Mauris rhoncus aenean vel.
+            *people tell us we are awesome
         </p>
     </div>
     <div class="col-md-1 text-left registration-cta__button">

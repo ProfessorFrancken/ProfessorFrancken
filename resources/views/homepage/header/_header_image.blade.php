@@ -1,3 +1,8 @@
+<style>
+ .header__registration-cta::before {
+     background-image: url(@yield('header-image-url', '/images/header/board-buitengewoon.jpg')) !important;
+ }
+</style>
 <div class="overflowwing">
     <div class="header__registration-cta {{ $headerImageClass or '' }}">
         <div class="registration-cta container h-100">

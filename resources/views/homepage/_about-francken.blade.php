@@ -25,7 +25,7 @@
                 <button class="btn btn-primary">Read more</button>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 flex-first flex-md-last">
             @include("homepage._agenda")
         </div>
     </div>
