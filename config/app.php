@@ -155,6 +155,7 @@ return [
          */
         Francken\Infrastructure\AppServiceProvider::class,
         Francken\Infrastructure\RouteServiceProvider::class,
+        Francken\Infrastructure\NavigationServiceProvider::class,
         Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
 
         /*
