@@ -85,7 +85,7 @@ if (Auth::check()) {
     --}}
     <ul class="navigation-list clearfix" id="main-menu">
         @foreach ($items as $item)
-            @include('homepage._mobile-navigation-item', [
+            @include('homepage.navigation._mobile-navigation-item', [
                 'url' => $item['url'],
                 'title' => $item['title'],
                 'icon' => $item['icon'],
