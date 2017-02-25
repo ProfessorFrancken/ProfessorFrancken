@@ -9,3 +9,4 @@ Homestead.json
 /public/storage/francken-vrij
 /public/dist
 /public/mix-manifest.json
+/database/database.sqlite
