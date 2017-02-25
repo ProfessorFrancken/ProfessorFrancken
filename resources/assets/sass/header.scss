@@ -29,7 +29,7 @@ $top-stroke-width: 6px;
     color: white;
 }
 
-.header__title-link:hover {
+.header__title-link:hover, .header__title-link:focus {
     color: white;
     text-decoration: none;
 }
