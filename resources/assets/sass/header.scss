@@ -13,7 +13,6 @@ $top-stroke-width: 6px;
     margin: -$top-stroke-width 0 1em 0;
 }
 
-
 .header__logo img {
     filter: brightness(0) invert(1);
     z-index: 10;
@@ -127,80 +126,6 @@ $top-stroke-width: 6px;
     border-radius: 4px;
 }
 
-// Image header
-
-$angle: 15deg;
-$registration-cta-height: 400px;
-
-.overflowwing {
-    width: 100%;
-    overflow: hidden;
-    margin-top: -1.5em;
-}
-
-$cta-height: 510px;
-$cta-height: 455px;
-
-.header__registration-cta {
-    width: 100%;
-    display: inline-block;
-
-    background: $secondary-color;
-
-    position: relative;
-    z-index: -10;
-
-    // Hide the overflow of the header image
-    overflow: hidden;
-
-    margin-top: 3em;
-    min-height: 200px;
-}
-
-.header__registration-cta::before {
-    content: '';
-
-    background-color: $secondary-color;
-    background-image: url($cta-image);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: luminosity;
-
-    position: absolute;
-    z-index: 2;
-    width: 52%; // 52 looked just about right :)
-    height: 100%;
-    width: 100%;
-
-    opacity: 0.5;
-}
-
-
-.header__registration-cta::after {
-    content: '';
-
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%);
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    height: 100%;
-    width: 100%;
-}
-
-.registration-cta {
-    z-index: 100;
-    margin-top: 7em;
-    margin-bottom: 9em;
-}
-
-.registration-cta__button {
-    border-left: 3px white solid;
-    padding-bottom: 1.5em;
-    padding-top: 1.5em;
-}
-
 @include media-breakpoint-up(md) {
     .header__logo {
         padding: 2em 1em;
@@ -230,56 +155,6 @@ $cta-height: 455px;
     }
 }
 
-
-@include media-breakpoint-up(sm) {
-    .header__registration-cta {
-        min-height: 250px;
-    }
-}
-
-@include media-breakpoint-down(md) {
-    .registration-cta {
-        display: none;
-    }
-}
-
-
-@include media-breakpoint-up(md) {
-    .header__registration-cta {
-        max-height: $cta-height;
-        margin-left: 5em;
-        margin-top: 0;
-        transform: skew($angle);
-        transform-origin: top left;
-        border-radius: 0px 0px 0px 20px;
-    }
-
-
-    .header__registration-cta::after,
-    .header__registration-cta::before {
-        // Show the gradient, image, and green overlay
-        background-size: cover, cover, cover;
-        background-position-y: -60px;
-
-        // "Revert" the skew transformation so that the background image is rendered normally
-        transform: skewX(-$angle);
-        transform-origin: top left;
-
-        width: 52%; // 52 looked just about right :)
-        height: 120%; //$cta-height;
-    }
-
-    // Make sure that child elements are rendered normally
-    .header__registration-cta > * {
-        transform: skewX(-$angle);
-    }
-
-    .header__registration-cta--study::before,
-    .header__registration-cta--study::after {
-        width: 80%;
-    }
-}
-
 @include media-breakpoint-between(md, lg) {
     .navigation__menu-item {
         font-size: 1rem;
@@ -291,3 +166,5 @@ $cta-height: 455px;
 }
 
 @import "old-menu";
+
+@import "components/header-image";
