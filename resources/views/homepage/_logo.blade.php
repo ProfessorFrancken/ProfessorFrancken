@@ -1,15 +1,17 @@
-<div class="skew-md--top-right header__logo d-flex justify-content-between justify-content-md-end">
+<div
+    class="skew-md--top-right header__logo d-flex justify-content-between justify-content-md-end"
+>
     <a class="header__title-link align-items-center align-middle d-inline-flex" href="/">
         <img
             alt="Logo of T.F.V. 'Professor Francken'"
             src="/images/LOGO_KAAL.png"
             class="img-fluid"
         />
-        <h1 class="header__title text-left">
+        <span class="header__title text-left">
             T.F.V.<br class="hidden-md-down"/>
             'Professor<br class="hidden-md-down"/>
             Francken'
-        </h1>
+        </span>
     </a>
 
     @include('homepage.navigation._hamburger')

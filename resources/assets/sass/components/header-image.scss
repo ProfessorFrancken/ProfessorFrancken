@@ -23,7 +23,6 @@ $cta-height: 455px;
     // Hide the overflow of the header image
     overflow: hidden;
 
-    margin-top: 3em;
     min-height: 200px;
 }
 
@@ -60,6 +59,8 @@ $cta-height: 455px;
 }
 
 .registration-cta {
+    display: none;
+
     z-index: 100;
     margin-top: 7em;
     margin-bottom: 9em;
@@ -77,13 +78,6 @@ $cta-height: 455px;
         min-height: 250px;
     }
 }
-
-@include media-breakpoint-down(md) {
-    .registration-cta {
-        display: none;
-    }
-}
-
 
 @include media-breakpoint-up(md) {
     .header__registration-cta {
@@ -118,5 +112,11 @@ $cta-height: 455px;
     .header__registration-cta--study::before,
     .header__registration-cta--study::after {
         width: 80%;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .registration-cta {
+        display: block;
     }
 }

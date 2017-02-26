@@ -1,5 +1,5 @@
 <div class="header__navigation h-100">
-    <div class="no-gutters hidden-sm-down h-100">
+    <div class="no-gutters h-100">
         <div class="align-items-center h-100">
             <div class="d-flex align-items-center h-100">
                 <div class="navigation">
