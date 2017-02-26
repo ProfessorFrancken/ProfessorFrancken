@@ -3,6 +3,10 @@
 
 <li class="navigation-list__item clearfix">
     <a class="navigation-list__link" href="{{ $url }}">
+        @if ($icon != '')
+            <i class="fa fa-{{ $icon }} mr-2" aria-hidden="true"></i>
+        @endif
+
         {{ $title }}
     </a>
     @if (isset($subItems) && count($subItems) > 0)
