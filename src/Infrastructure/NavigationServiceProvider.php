@@ -6,6 +6,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use DateTimeImmutable;
 
 final class NavigationServiceProvider extends ServiceProvider
 {
@@ -80,6 +81,14 @@ final class NavigationServiceProvider extends ServiceProvider
 
     public function associationIcon()
     {
-        return 'coffee';
+        $now = new DateTimeImmutable;
+        $fourOClock = DateTimeImmutable::createFromFormat('H a', '4 pm');
+        $fourOClockMorning = DateTimeImmutable::createFromFormat('H a', '4 pm');
+
+        if ($fourOClockMorning < $now && $now < $fourOClock) {
+            return 'coffee';
+        }
+
+        return 'beer';
     }
 }
