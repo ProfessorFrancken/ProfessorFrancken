@@ -34,6 +34,7 @@ $cta-height: 455px;
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: luminosity;
+    background-position-y: -40px;
 
     position: absolute;
     z-index: 2;
@@ -74,8 +75,8 @@ $cta-height: 455px;
 
 
 @include media-breakpoint-up(sm) {
-    .header__registration-cta {
-        min-height: 250px;
+    .header__registration-cta::before {
+        background-position-y: -60px;
     }
 }
 

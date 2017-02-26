@@ -25,9 +25,11 @@
                 <button class="btn btn-primary">Read more</button>
             </div>
         </div>
-        <div class="col-md-5 flex-first flex-md-last">
-            @include("homepage._agenda")
-        </div>
+        <aside class="col-md-5 flex-first flex-md-last">
+            <div class="agenda-wrapper">
+                @include("homepage._agenda")
+            </div>
+        </aside>
     </div>
 
     <div class="row">
