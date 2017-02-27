@@ -1,0 +1,17 @@
+<?php
+
+$config = require __DIR__ . '/.php_cs.dist';
+
+$finder = PhpCsFixer\Finder::create();
+$finder->in(__DIR__ . '/tests/');
+
+$config->setFinder($finder);
+$config->setRules(
+    array_merge(
+        $config->getRules(),
+        // Since all tests methods are public, it's okay to omit the visibility
+        ['visibility_required' => false]
+    )
+);
+
+return $config;
