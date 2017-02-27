@@ -11,8 +11,8 @@ use Francken\Application\Books\BookDetails;
 use Francken\Application\Books\BookDetailsRepositoryI;
 use Francken\Application\Projector;
 use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookOffered;
+use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
 use Francken\Domain\Books\Events\BookSoldToMember;
@@ -31,15 +31,15 @@ class AvailableBooksProjectorTest extends TestCase
         $sellersId = MemberId::generate();
 
         $this->scenario->when(
-            new BookOffered($bookId, $sellersId, "0534408133", 1500)
+            new BookOffered($bookId, $sellersId, '0534408133', 1500)
         )->then([
             new AvailableBook(
                 $bookId,
-                "title",
-                "author",
+                'title',
+                'author',
                 1500,
-                "0534408133",
-                "path_to_cover.jpg",
+                '0534408133',
+                'path_to_cover.jpg',
                 false)
         ]);
     }
@@ -51,7 +51,7 @@ class AvailableBooksProjectorTest extends TestCase
         $sellersId = MemberId::generate();
 
         $this->scenario->given([
-            new BookOffered($bookId, $sellersId, "0534408133", 1500)
+            new BookOffered($bookId, $sellersId, '0534408133', 1500)
         ])->when(
             new BookOfferRetracted($bookId)
         )->then([]);
@@ -65,17 +65,17 @@ class AvailableBooksProjectorTest extends TestCase
         $buyersId = MemberId::generate();
 
         $this->scenario->given([
-            new BookOffered($bookId, $sellersId, "0534408133", 1500)
+            new BookOffered($bookId, $sellersId, '0534408133', 1500)
         ])->when(
             new BookSoldToMember($bookId, $buyersId)
         )->then([
             new AvailableBook(
                 $bookId,
-                "title",
-                "author",
+                'title',
+                'author',
                 1500,
-                "0534408133",
-                "path_to_cover.jpg",
+                '0534408133',
+                'path_to_cover.jpg',
                 true)
         ]);
     }
@@ -88,18 +88,18 @@ class AvailableBooksProjectorTest extends TestCase
         $buyersId = MemberId::generate();
 
         $this->scenario->given([
-            new BookOffered($bookId, $sellersId, "0534408133", 1500),
+            new BookOffered($bookId, $sellersId, '0534408133', 1500),
             new BookSoldToMember($bookId, $buyersId)
         ])->when(
             new BookSaleCancelled($bookId)
         )->then([
             new AvailableBook(
                 $bookId,
-                "title",
-                "author",
+                'title',
+                'author',
                 1500,
-                "0534408133",
-                "path_to_cover.jpg",
+                '0534408133',
+                'path_to_cover.jpg',
                 false)
         ]);
     }
@@ -113,7 +113,7 @@ class AvailableBooksProjectorTest extends TestCase
         $buyersId = MemberId::generate();
 
         $this->scenario->given([
-            new BookOffered($bookId, $sellersId, "0534408133", 1500),
+            new BookOffered($bookId, $sellersId, '0534408133', 1500),
             new BookSoldToMember($bookId, $buyersId)
         ])->when(
             new BookSaleCompleted($bookId)
@@ -124,13 +124,13 @@ class AvailableBooksProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        $this->bookDetailRepo = $this->prophesize(BookDetailsRepositoryI::Class);
+        $this->bookDetailRepo = $this->prophesize(BookDetailsRepositoryI::class);
 
-        $this->bookDetailRepo->getByISBN("0534408133")->willReturn(
+        $this->bookDetailRepo->getByISBN('0534408133')->willReturn(
             new BookDetails(
-                "title",
-                "author",
-                "path_to_cover.jpg"));
+                'title',
+                'author',
+                'path_to_cover.jpg'));
 
         return new AvailableBooksProjector(
             new AvailableBooksRepository(

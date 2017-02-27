@@ -17,10 +17,10 @@ class CommitteeEmailChangedTest extends TestCase
     public function it_holds_an_email_adress()
     {
         $id = CommitteeId::generate();
-        $event = new CommitteeEmailChanged($id, new Email("scriptcie@professorfrancken.nl"));
+        $event = new CommitteeEmailChanged($id, new Email('scriptcie@professorfrancken.nl'));
 
         $this->assertEquals($id, $event->committeeId());
-        $this->assertEquals(new Email("scriptcie@professorfrancken.nl"), $event->email());
+        $this->assertEquals(new Email('scriptcie@professorfrancken.nl'), $event->email());
     }
 
     /**
@@ -37,6 +37,6 @@ class CommitteeEmailChangedTest extends TestCase
 
     protected function createInstance()
     {
-        return new CommitteeEmailChanged(CommitteeId::generate(), new Email("scriptcie@professorfrancken.nl"));
+        return new CommitteeEmailChanged(CommitteeId::generate(), new Email('scriptcie@professorfrancken.nl'));
     }
 }

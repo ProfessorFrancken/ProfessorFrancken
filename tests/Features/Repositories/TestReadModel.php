@@ -18,7 +18,7 @@ final class TestReadModel implements ReadModelInterface, SerializableInterface
 
     public static function create(string $id, string $first, string $second) : TestReadModel
     {
-        $instance = new self;
+        $instance = new self();
         $instance->id = $id;
         $instance->first = $first;
         $instance->second = $second;

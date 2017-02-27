@@ -9,13 +9,11 @@ use Francken\Application\Projector;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListProjector;
 use Francken\Application\ReadModel\PostList\PostListRepository;
-use Francken\Domain\Posts\Events\PostCategorized;
+use Francken\Domain\Members\MemberId;
 use Francken\Domain\Posts\Events\PostContentChanged;
-use Francken\Domain\Posts\Events\PostPublishedAt;
 use Francken\Domain\Posts\Events\PostTitleChanged;
 use Francken\Domain\Posts\Events\PostWritten;
 use Francken\Domain\Posts\PostId;
-use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
 

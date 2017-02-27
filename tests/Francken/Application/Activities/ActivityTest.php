@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Activities;
 
 use DateTimeImmutable;
-use Francken\Tests\Application\ReadModelTestCase;
 use Francken\Application\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Activities\Location;
-
+use Francken\Domain\Activities\Schedule;
+use Francken\Tests\Application\ReadModelTestCase;
 
 class ActivityTest extends ReadModelTestCase
 {
@@ -22,7 +21,7 @@ class ActivityTest extends ReadModelTestCase
 
         $activity = new Activity(
             $id,
-            "Crash and Compile",
+            'Crash and Compile',
             false,
             'social',
             $schedule,
@@ -45,7 +44,7 @@ class ActivityTest extends ReadModelTestCase
 
         return new Activity(
             $id,
-            "Crash and Compile",
+            'Crash and Compile',
             false,
             'social',
             Schedule::withStartTime(new DateTimeImmutable()),

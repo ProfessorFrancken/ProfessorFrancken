@@ -4,26 +4,25 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Committees;
 
-use League\CommonMark\CommonMarkConverter;
-use Francken\Application\Projector;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector as CommitteeListProjector;
 use Francken\Application\Committees\CommitteesListRepository;
+use Francken\Application\Projector;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
-use Francken\Domain\Committees\Events\CommitteeJoinedFrancken;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
-use Francken\Domain\Members\MemberId;
-use Francken\Domain\Members\Email;
+use League\CommonMark\CommonMarkConverter;
 
 class CommitteeListProjectorTest extends TestCase
 {
@@ -125,7 +124,7 @@ class CommitteeListProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        $this->members = new InMemoryRepository;
+        $this->members = new InMemoryRepository();
 
         return new CommitteeListProjector(
             new CommitteesListRepository(

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Committees\Events;
+namespace Francken\Tests\Committees\Events;
 
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;

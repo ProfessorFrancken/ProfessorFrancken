@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Members;
+namespace Francken\Tests\Domain\Members;
 
-use Francken\Domain\Members\StudyDetails;
 use DateTimeImmutable;
+use Francken\Domain\Members\StudyDetails;
 use Francken\Tests\SetupReconstitution;
 
 class StudyDetailsTest extends \PHPUnit_Framework_TestCase
@@ -24,7 +24,6 @@ class StudyDetailsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Msc Applied Mathematics', $studyDetails->study());
         $this->assertEquals(new DateTimeImmutable('01-08-2011'), $studyDetails->startDate());
         $this->assertEquals('s2218356', $studyDetails->studentNumber());
-
     }
 
     /** @test */

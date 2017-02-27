@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Activities;
+namespace Francken\Tests\Activities;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
+use DateTimeImmutable;
 use Francken\Domain\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Location;
-use Francken\Domain\Activities\Schedule;
-use Francken\Domain\Activities\InvalidActivity;
-use Francken\Domain\Activities\Events\ActivityPlanned;
-use Francken\Domain\Activities\Events\ActivityPublished;
 use Francken\Domain\Activities\Events\ActivityCancelled;
 use Francken\Domain\Activities\Events\ActivityCategorized;
+use Francken\Domain\Activities\Events\ActivityPlanned;
+use Francken\Domain\Activities\Events\ActivityPublished;
 use Francken\Domain\Activities\Events\ActivityRescheduled;
 use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
+use Francken\Domain\Activities\InvalidActivity;
+use Francken\Domain\Activities\Location;
+use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Members\MemberId;
-use DateTimeImmutable;
 
-class ActivitiesTest extends AggregateRootScenarioTestCase
+class ActivityTest extends AggregateRootScenarioTestCase
 {
     protected function getAggregateRootClass()
     {
@@ -147,7 +147,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
         $this->givenAPlannedActivity($id)
             ->when(function ($activity) {
-                return $activity->recategorize("something");
+                return $activity->recategorize('something');
             });
     }
 

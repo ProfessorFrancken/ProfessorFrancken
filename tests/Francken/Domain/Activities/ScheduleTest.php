@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Activities;
+namespace Francken\Tests\Activities;
 
-use Francken\Domain\Activities\Schedule;
 use DateTimeImmutable;
+use Francken\Domain\Activities\Schedule;
 use InvalidArgumentException;
 
 class ScheduleTest extends \PHPUnit_Framework_TestCase

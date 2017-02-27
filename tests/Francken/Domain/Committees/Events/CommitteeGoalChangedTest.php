@@ -6,7 +6,6 @@ namespace Francken\Tests\Domain\Committees\Events;
 
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
-use Francken\Domain\Members\MemberId;
 use Francken\Tests\Domain\EventTestCase as Testcase;
 
 class CommitteeGoalChangedTest extends TestCase

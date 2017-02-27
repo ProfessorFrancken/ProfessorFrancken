@@ -8,8 +8,8 @@ use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
 use Broadway\ReadModel\ProjectorInterface;
-use PHPUnit_Framework_TestCase;
 use Francken\Application\ReadModelRepository;
+use PHPUnit_Framework_TestCase;
 
 final class Scenario
 {
@@ -46,7 +46,7 @@ final class Scenario
      * @param array $events
      * @return Scenario
      */
-    public function given(array $events = array())
+    public function given(array $events = [])
     {
         foreach ($events as $given) {
             $this->projector->handle($this->createDomainMessageForEvent($given));
@@ -86,6 +86,6 @@ final class Scenario
             $occurredOn = DateTime::now();
         }
 
-        return new DomainMessage($this->aggregateId, $this->playhead, new Metadata, $event, $occurredOn);
+        return new DomainMessage($this->aggregateId, $this->playhead, new Metadata(), $event, $occurredOn);
     }
 }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Members;
+namespace Francken\Tests\Domain\Members;
 
+use Francken\Domain\Members\Address;
 use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
-use Francken\Domain\Members\Address;
 use Francken\Tests\SetupReconstitution;
 
 class ContactInfoTest extends \PHPUnit_Framework_TestCase

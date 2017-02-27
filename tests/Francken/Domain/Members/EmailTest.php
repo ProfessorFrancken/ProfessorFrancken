@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Members;
+namespace Francken\Tests\Domain\Members;
 
 use Francken\Domain\Members\Email;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Members\Registration;
+namespace Francken\Tests\Domain\Members\Registration;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use DateTimeImmutable;

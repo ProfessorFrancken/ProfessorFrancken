@@ -7,7 +7,6 @@ namespace Francken\Tests\Application\Members\Registration;
 use DateTimeImmutable;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
-use PHPUnit_Framework_TestCase as TestCase;
 use Francken\Tests\Application\ReadModelTestCase;
 
 class RequestStatusTest extends ReadModelTestCase
@@ -20,7 +19,7 @@ class RequestStatusTest extends ReadModelTestCase
             $id,
             'Mark Redeman',
             true, true, true, false,
-            new DateTimeImmutable
+            new DateTimeImmutable()
         );
 
         $this->assertEquals($id, $status->id());
@@ -40,7 +39,7 @@ class RequestStatusTest extends ReadModelTestCase
             $id,
             'Mark Redeman',
             true, true, true, true,
-            new DateTimeImmutable
+            new DateTimeImmutable()
         );
 
         $this->assertTrue($status->complete());
@@ -52,7 +51,7 @@ class RequestStatusTest extends ReadModelTestCase
             RegistrationRequestId::generate(),
             'Mark Redeman',
             true, true, true, false,
-            new DateTimeImmutable
+            new DateTimeImmutable()
         );
     }
 }

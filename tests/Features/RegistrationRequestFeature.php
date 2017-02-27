@@ -9,7 +9,6 @@ use Francken\Application\Members\Registration\RequestStatusRepository;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RegistrationRequestFeature extends TestCase
 {

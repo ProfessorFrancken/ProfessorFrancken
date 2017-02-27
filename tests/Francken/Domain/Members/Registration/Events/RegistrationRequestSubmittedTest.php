@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Members\Registration\Events;
+namespace Francken\Tests\Domain\Members\Registration\Events;
 
 use DateTimeImmutable;
 use Francken\Domain\Members\Address;
@@ -10,7 +10,6 @@ use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;

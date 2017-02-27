@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Broadway\Serializer\SerializableInterface;
-use Broadway\EventStore\EventStoreInterface;
-use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
-use Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider;
+use Broadway\EventStore\EventStoreInterface;
+use Broadway\EventStore\EventStreamNotFoundException;
+use Broadway\Serializer\SerializableInterface;
 use Francken\Infrastructure\EventSourcing\IlluminateEventStoreException;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class EventStoreFeature extends TestCase
 {
@@ -36,8 +35,8 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-1', $eventStream);
@@ -54,14 +53,14 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             ),
             DomainMessage::recordNow(
                 'aggregate-1',
                 1,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-1', $eventStream);
@@ -78,14 +77,14 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             ),
             DomainMessage::recordNow(
                 'aggregate-1',
                 1,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-1', $eventStream);
@@ -95,8 +94,8 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-2',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-2', $secondStream);
@@ -129,14 +128,14 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             ),
             new DomainMessage(
                 'aggregate-1',
                 1,
-                new Metadata(array()),
-                new ADomainEvent,
+                new Metadata([]),
+                new ADomainEvent(),
                 $time->reveal()
             ),
         ]);
@@ -147,7 +146,6 @@ class EventStoreFeature extends TestCase
 
 final class ADomainEvent implements SerializableInterface
 {
-
     public static function deserialize(array $data)
     {
         return new static($data['my_event']);

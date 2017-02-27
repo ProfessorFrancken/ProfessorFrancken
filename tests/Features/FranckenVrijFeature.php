@@ -21,16 +21,16 @@ class FranckenVrijFeature extends TestCase
         $franckenVrij->save(
             Edition::publish(
                 EditionId::generate(),
-                "Francken Vrij 20.1",
+                'Francken Vrij 20.1',
                 20,
                 1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
+                new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
+                new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
             )
         );
 
         $this->visit('/association/francken-vrij')
-            ->see("Francken Vrij 20.1");
+            ->see('Francken Vrij 20.1');
     }
 
     /** @test */
@@ -55,11 +55,11 @@ class FranckenVrijFeature extends TestCase
         $franckenVrij->save(
             Edition::publish(
                 $id,
-                "Francken Vrij 20.1",
+                'Francken Vrij 20.1',
                 20,
                 1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
+                new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
+                new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
             )
         );
 
@@ -80,11 +80,11 @@ class FranckenVrijFeature extends TestCase
         $franckenVrij->save(
             Edition::publish(
                 $id,
-                "Francken Vrij 20.1",
+                'Francken Vrij 20.1',
                 20,
                 1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
+                new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
+                new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
             )
         );
 
@@ -106,11 +106,11 @@ class FranckenVrijFeature extends TestCase
         $franckenVrij->save(
             Edition::publish(
                 $id,
-                "Francken Vrij 20.1",
+                'Francken Vrij 20.1',
                 20,
                 1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
+                new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
+                new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
             )
         );
 

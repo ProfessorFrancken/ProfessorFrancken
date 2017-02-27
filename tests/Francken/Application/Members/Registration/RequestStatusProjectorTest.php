@@ -15,7 +15,6 @@ use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;
@@ -62,7 +61,7 @@ class RequestStatusProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        $this->requests = new InMemoryRepository;
+        $this->requests = new InMemoryRepository();
 
         return new RequestStatusProjector(
             new RequestStatusRepository(
@@ -70,5 +69,4 @@ class RequestStatusProjectorTest extends TestCase
             )
         );
     }
-
 }

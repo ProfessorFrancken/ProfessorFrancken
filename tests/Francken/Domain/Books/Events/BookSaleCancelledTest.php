@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Books\Events;
+namespace Francken\Tests\Books\Events;
 
-use Francken\Tests\Domain\EventTestCase as Testcase;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Events\BookSaleCancelled;
+use Francken\Tests\Domain\EventTestCase as Testcase;
 
 class BookSaleCancelledTest extends Testcase
 {

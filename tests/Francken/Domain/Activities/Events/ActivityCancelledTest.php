@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Activities\Events;
+namespace Francken\Tests\Activities\Events;
 
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Events\ActivityCancelled;

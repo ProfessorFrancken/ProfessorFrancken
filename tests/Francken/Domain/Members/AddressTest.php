@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Members;
+namespace Francken\Tests\Domain\Members;
 
 use Francken\Domain\Members\Address;
 
@@ -21,5 +21,4 @@ class AddressTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('9742GS', $address->postalCode());
         $this->assertEquals('Plutolaan 11', $address->address());
     }
-
 }

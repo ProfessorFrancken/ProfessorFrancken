@@ -21,9 +21,9 @@ class MemberListProjectorTest extends TestCase
         $id = MemberId::generate();
 
         $this->scenario->when(
-            new MemberJoinedFrancken($id, "Mark", "Redeman")
+            new MemberJoinedFrancken($id, 'Mark', 'Redeman')
         )->then([
-            new MemberList($id, "Mark", "Redeman")
+            new MemberList($id, 'Mark', 'Redeman')
         ]);
     }
 

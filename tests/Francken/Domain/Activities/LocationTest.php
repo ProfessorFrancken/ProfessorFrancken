@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Activities;
+namespace Francken\Tests\Activities;
 
-use Francken\Tests\SetupReconstitution;
 use Francken\Domain\Activities\Location;
+use Francken\Tests\SetupReconstitution;
 
 class LocationTest extends \PHPUnit_Framework_TestCase
 {

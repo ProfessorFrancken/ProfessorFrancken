@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Committees;
+namespace Francken\Tests\Committees;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
+use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeGoalChanged;
-use Francken\Domain\Committees\Events\MemberJoinedCommittee;
-use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteePageChanged;
-use Francken\Domain\Members\MemberId;
+use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
 
 class CommitteeTest extends AggregateRootScenarioTestCase
 {

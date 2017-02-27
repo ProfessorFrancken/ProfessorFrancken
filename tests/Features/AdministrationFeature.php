@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 
 /**
  * The following are test that check that basic features of the admin page are working
@@ -86,5 +84,4 @@ class AdministrationFeature extends TestCase
             ->see('My title')
             ->see('My content');
     }
-
 }

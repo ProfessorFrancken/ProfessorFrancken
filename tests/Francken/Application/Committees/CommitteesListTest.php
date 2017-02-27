@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Committees;
 
-use Francken\Tests\Application\ReadModelTestCase as TestCase;
 use Francken\Application\Committees\CommitteesList;
-use Francken\Domain\Members\MemberId;
-use Francken\Domain\Members\Email;
 use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
+use Francken\Tests\Application\ReadModelTestCase as TestCase;
 
 class CommitteesListTest extends TestCase
 {
@@ -27,15 +27,15 @@ class CommitteesListTest extends TestCase
         $member = MemberId::generate();
         $committee = $committee->addMember(
             $member,
-            "Mark",
-            "Redeman"
+            'Mark',
+            'Redeman'
         );
 
         $this->assertEquals([
             [
-                "id" => (string)$member,
-                "first_name" => "Mark",
-                "last_name" => "Redeman"
+                'id' => (string)$member,
+                'first_name' => 'Mark',
+                'last_name' => 'Redeman'
             ]
         ], $committee->members());
     }
@@ -48,8 +48,8 @@ class CommitteesListTest extends TestCase
         $member = MemberId::generate();
         $committee = $committee->addMember(
             $member,
-            "Mark",
-            "Redeman"
+            'Mark',
+            'Redeman'
         );
         $committee = $committee->removeMember($member);
 

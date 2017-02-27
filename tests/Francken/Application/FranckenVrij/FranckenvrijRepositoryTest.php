@@ -17,7 +17,7 @@ class FranckenvrijRepositoryTest extends TestCase
     function it_returns_an_array_of_volumes()
     {
         $repo = new FranckenVrijRepository(
-            new InMemoryRepository
+            new InMemoryRepository()
         );
 
         foreach (range(3, 1, -1) as $volume) {
@@ -25,7 +25,7 @@ class FranckenvrijRepositoryTest extends TestCase
                 $repo->save(
                     Edition::publish(
                         EditionId::generate(),
-                        "Francken Vrij " . $volume . '.' . $edition,
+                        'Francken Vrij ' . $volume . '.' . $edition,
                         $volume,
                         $edition,
                         new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/{$volume}.{$edition}.jpg"),

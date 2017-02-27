@@ -2,24 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Books;
+namespace Francken\Tests\Books;
 
-use Francken\Tests\Domain\EventTestCase as Testcase;
-
-use Francken\Domain\Members\MemberId;
 use Francken\Domain\Books\BookId;
 
 use Francken\Domain\Books\Events\BookOffered;
+use Francken\Domain\Members\MemberId;
 
-class BookEventTest extends Testcase
+use Francken\Tests\Domain\EventTestCase as Testcase;
+
+class BookOfferedTests extends Testcase
 {
-
     /** @test */
     public function an_event_holds_data()
     {
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();
-        $isbn = "0534408133";
+        $isbn = '0534408133';
 
         $event = new BookOffered($bookId, $sellersId, $isbn, 1500);
 
@@ -34,6 +33,6 @@ class BookEventTest extends Testcase
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();
 
-        return new BookOffered($bookId, $sellersId, "0534408133", 1500);
+        return new BookOffered($bookId, $sellersId, '0534408133', 1500);
     }
 }

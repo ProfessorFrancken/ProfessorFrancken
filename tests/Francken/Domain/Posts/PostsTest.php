@@ -2,21 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Posts;
+namespace Francken\Tests\Domain\Posts;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Carbon\Carbon;
-use Francken\Domain\Posts\PostId;
+use Francken\Domain\Posts\Events\DraftDeleted;
+use Francken\Domain\Posts\Events\PostContentChanged;
+use Francken\Domain\Posts\Events\PostPublishedAt;
+use Francken\Domain\Posts\Events\PostTitleChanged;
+use Francken\Domain\Posts\Events\PostUnpublished;
+use Francken\Domain\Posts\Events\PostWritten;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostCategory;
-use Francken\Domain\Posts\Events\PostWritten;
-use Francken\Domain\Posts\Events\PostTitleChanged;
-use Francken\Domain\Posts\Events\PostContentChanged;
-use Francken\Domain\Posts\Events\PostCategorized;
-use Francken\Domain\Posts\Events\PostPublishedAt;
-use Francken\Domain\Posts\Events\PostUnpublished;
-use Francken\Domain\Posts\Events\DraftDeleted;
-use DateTimeImmutable;
+use Francken\Domain\Posts\PostId;
 
 class PostsTest extends AggregateRootScenarioTestCase
 {
@@ -34,13 +32,13 @@ class PostsTest extends AggregateRootScenarioTestCase
         $this->scenario
             ->when(function () use ($id, $type) {
                 return Post::createDraft($id,
-                    "Post Title",
-                    "Post Content",
+                    'Post Title',
+                    'Post Content',
                     $type);
             })
             ->then([new PostWritten($id,
-                    "Post Title",
-                    "Post Content",
+                    'Post Title',
+                    'Post Content',
                     $type)]);
     }
 
@@ -51,9 +49,9 @@ class PostsTest extends AggregateRootScenarioTestCase
 
         $this->givenANewPost($id)
             ->when(function ($post) {
-                return $post->editTitle("New Title");
+                return $post->editTitle('New Title');
             })
-            ->then([new PostTitleChanged($id, "New Title")]);
+            ->then([new PostTitleChanged($id, 'New Title')]);
     }
 
     /** test */
@@ -63,9 +61,9 @@ class PostsTest extends AggregateRootScenarioTestCase
 
         $this->givenANewPost($id)
             ->when(function ($post) {
-                return $post->editContent("New Content");
+                return $post->editContent('New Content');
             })
-            ->then([new PostContentChanged($id, "New Content")]);
+            ->then([new PostContentChanged($id, 'New Content')]);
     }
 
     /** @test */
@@ -111,9 +109,8 @@ class PostsTest extends AggregateRootScenarioTestCase
         return $this->scenario
             ->withAggregateId($id)
             ->given([new PostWritten($id,
-                    "Title",
-                    "Content",
+                    'Title',
+                    'Content',
                     PostCategory::fromString(PostCategory::NEWSPOST))]);
-
     }
 }

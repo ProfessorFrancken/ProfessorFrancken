@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests\Francken\Books;
+declare(strict_types=1);
+
+namespace Francken\Tests\Books;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Events\BookOffered;
-use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSoldToMember;
-use Francken\Domain\Books\Events\BookSoldToNonMember;
 
 use Francken\Domain\Members\MemberId;
 
@@ -30,7 +30,7 @@ class BookTest extends AggregateRootScenarioTestCase
                 return Book::offer(
                     $bookId,
                     $memberId,
-                    "0534408133",
+                    '0534408133',
                     1500 //= 15 euro
                 );
             })
@@ -38,7 +38,7 @@ class BookTest extends AggregateRootScenarioTestCase
                 new BookOffered(
                     $bookId,
                     $memberId,
-                    "0534408133",
+                    '0534408133',
                     1500 //= 15 euro
                 )
             ]);
@@ -57,18 +57,18 @@ class BookTest extends AggregateRootScenarioTestCase
                 new BookOffered(
                     $bookId,
                     $memberId,
-                    "0534408133",
+                    '0534408133',
                     1500)
                 ])
             ->when(function ($book) use ($buyersId) {
-                    return $book->sellToMember($buyersId);
-                })
+                return $book->sellToMember($buyersId);
+            })
             ->then([new BookSoldToMember($bookId, $buyersId)]);
     }
 
     /**
-    * @test
-    */
+     * @test
+     */
     public function a_book_cannot_be_sold_twice()
     {
         $bookId = BookId::generate();
@@ -79,26 +79,25 @@ class BookTest extends AggregateRootScenarioTestCase
         $book = Book::offer(
                     $bookId,
                     $memberId,
-                    "0534408133",
+                    '0534408133',
                     1500); //15 euro
 
         $book->sellToMember($buyersId1);
 
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("A book cannot be sold twice");
+        $this->expectExceptionMessage('A book cannot be sold twice');
         $book->sellToMember($buyersId2);
     }
 
     public function given_an_offered_book(BookId $bookId, MemberId $memberId)
     {
-
         return $this->scenario
             ->withAggregateId($bookId)
             ->given([
                 new BookOffered(
                     $bookId,
                     $memberId,
-                    "0534408133",
+                    '0534408133',
                     1500)
                 ]);
     }
