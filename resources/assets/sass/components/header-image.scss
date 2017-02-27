@@ -2,10 +2,9 @@
 $angle: 15deg;
 $registration-cta-height: 400px;
 
-.overflowwing {
+.stop-overflow {
     width: 100%;
     overflow: hidden;
-    margin-top: -1.5em;
 }
 
 $cta-height: 510px;
@@ -86,30 +85,21 @@ $cta-height: 455px;
         transform: skew($angle);
         transform-origin: top left;
         border-radius: 0px 0px 0px 20px;
+
+        > *, &::before, &::after {
+            // "Revert" the skew transformation so the content and background is rendered normally
+            transform: skewX(-$angle);
+        }
     }
 
 
     .header__registration-cta::after,
     .header__registration-cta::before {
         // Show the gradient, image, and green overlay
-        background-size: cover, cover, cover;
-
-        // "Revert" the skew transformation so that the background image is rendered normally
-        transform: skewX(-$angle);
-        transform-origin: top left;
+        background-size: cover;
 
         width: 52%; // 52 looked just about right :)
         height: 120%; //$cta-height;
-    }
-
-    // Make sure that child elements are rendered normally
-    .header__registration-cta > * {
-        transform: skewX(-$angle);
-    }
-
-    .header__registration-cta--study::before,
-    .header__registration-cta--study::after {
-        width: 80%;
     }
 }
 
