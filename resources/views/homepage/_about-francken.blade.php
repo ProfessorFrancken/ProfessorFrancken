@@ -22,7 +22,7 @@
             </p>
 
             <div class="text-right mt-4">
-                <button class="btn btn-primary">Read more</button>
+                <a href="/association" class="btn btn-primary">Read more</a>
             </div>
         </div>
         <aside class="col-md-5 flex-first flex-md-last">
@@ -34,7 +34,7 @@
 
     <div class="row">
         <div class="col text-right">
-            <img alt="" src="/images/francken-vrij-homepage.png" class="img-fluid"/>
+            <img alt="Preview of the latest Francken Vrij edition" src="/images/francken-vrij-homepage.png" class="img-fluid"/>
         </div>
         <div class="col-md-5">
             <h3 class="section-header">The latest Francken Vrij</h3>
@@ -54,7 +54,7 @@
             </p>
 
             <button class="btn btn-primary">Download latest edition</button>
-            <a class="link-to-all-dark" href="">Go to the archive</a>
+            <a class="link-to-all-dark text-nowrap" href="/association/francken-vrij">Go to the archive</a>
         </div>
     </div>
 </div>

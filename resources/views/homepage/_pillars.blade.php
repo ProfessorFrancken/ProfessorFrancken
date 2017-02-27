@@ -12,7 +12,7 @@
                         Make your voice heard for the degree programme in the NSOS!
                     </small>
                 </p>
-                <a class="btn btn-primary" href="">Read more</a>
+                <a class="btn btn-primary" href="/study">Read more</a>
             </div>
         </div>
         <div class="col-md-4 my-5">
@@ -30,13 +30,13 @@
                         Find all you need to know right here!
                     </small>
                 </p>
-                <a class="btn btn-primary" href="">Read more</a>
+                <a class="btn btn-primary" href="/association">Read more</a>
             </div>
         </div>
         <div class="col-md-4 my-5">
             <div class="francken-pillar text-center">
                 <h3>
-                    Carreer
+                    Career
                     <i class="fa fa-briefcase" aria-hidden="true"></i>
                 </h3>
                 <p>
@@ -46,7 +46,7 @@
                         Look here for your carreer orientation.
                     </small>
                 </p>
-                <a class="btn btn-primary" href="">Read more</a>
+                <a class="btn btn-primary" href="/career">Read more</a>
             </div>
         </div>
     </div>

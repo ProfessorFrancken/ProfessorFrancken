@@ -57,7 +57,7 @@
             @endcomponent
         </div>
         <div class="text-md-right">
-            <a class="link-to-all arrow" href="">
+            <a class="link-to-all arrow" href="/association/news">
                 View all news
             </a>
         </div>
