@@ -18,5 +18,9 @@ before_script:
   - composer selfupdate
   - composer install --prefer-dist
 
+script:
+  - ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml;
+  - ./vendor/bin/php-cs-fixer fix -v --diff --dry-run
+
 after_script:
   - vendor/bin/coveralls
