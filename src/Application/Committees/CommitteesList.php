@@ -93,7 +93,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
     public function changeEmail(Email $email = null)
     {
         $committee = clone $this;
-        $committee->email = $email;
+        $committee->email = (string)$email;
         return $committee;
     }
 
