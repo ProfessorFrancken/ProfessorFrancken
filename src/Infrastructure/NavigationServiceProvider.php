@@ -50,31 +50,31 @@ final class NavigationServiceProvider extends ServiceProvider
             ],
         ];
 
-        if (Auth::check()) {
-            $items[] = [
-                'url' => 'https://www.flickr.com/photos/fotocie/sets/',
-                'title' => 'Photos',
-                'subItems' => [],
-                'icon' => 'camera',
-            ];
-
-            $items[] = [
-                'url' => '/logout',
-                'title' => 'Profile',
-                'subItems' => [],
-                'icon' => 'user',
-            ];
-        } else {
-            $items[] = [
-                'url' => '/login',
-                'title' => 'Login',
-                'subItems' => [],
-                'icon' => 'user',
-                'class' => 'login-link'
-            ];
-        }
-
         View::composer('homepage._header', function ($view) use ($items) {
+            if (Auth::check()) {
+                $items[] = [
+                    'url' => 'https://www.flickr.com/photos/fotocie/sets/',
+                    'title' => 'Photos',
+                    'subItems' => [],
+                    'icon' => 'camera',
+                ];
+
+                $items[] = [
+                    'url' => '/logout',
+                    'title' => 'Profile',
+                    'subItems' => [],
+                    'icon' => 'user',
+                ];
+            } else {
+                $items[] = [
+                    'url' => '/login',
+                    'title' => 'Login',
+                    'subItems' => [],
+                    'icon' => 'user',
+                    'class' => 'login-link'
+                ];
+            }
+
             $view->with('items', $items);
         });
     }
