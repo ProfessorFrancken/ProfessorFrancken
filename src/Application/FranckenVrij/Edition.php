@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Application\FranckenVrij;
 
-use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 use Francken\Domain\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use InvalidArgumentException;
@@ -25,7 +25,6 @@ final class Edition implements ReadModelInterface, SerializableInterface
 
     private function __construct()
     {
-
     }
 
     public static function publish(
@@ -36,7 +35,7 @@ final class Edition implements ReadModelInterface, SerializableInterface
         Url $cover,
         Url $pdf
     ) : Edition {
-        $vrij = new Edition;
+        $vrij = new self();
 
         if ($volume <= 0) {
             throw new InvalidargumentException("Volume must be positive, [{$volume}] given");

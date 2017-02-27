@@ -10,7 +10,7 @@ final class Email
 
     public function __construct(string $email)
     {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if ( ! filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new \InvalidArgumentException('"' . $email . '" is not a valid email');
         }
 

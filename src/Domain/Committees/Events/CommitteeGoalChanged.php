@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Committees\Events;
 
-use Francken\Domain\Committees\CommitteeId;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
+use Francken\Domain\Committees\CommitteeId;
 
 final class CommitteeGoalChanged implements SerializableInterface
 {

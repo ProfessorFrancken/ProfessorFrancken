@@ -7,11 +7,9 @@ namespace Francken\Domain\Activities\Events;
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Location;
 use Francken\Domain\Activities\Schedule;
-use DateTimeImmutable;
 
 final class ActivityPlanned extends ActivityEvent
 {
-
     protected $name;
     protected $description;
     protected $startTime;

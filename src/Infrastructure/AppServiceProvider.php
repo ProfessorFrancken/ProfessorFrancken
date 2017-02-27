@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure;
 
 use Broadway\EventSourcing\EventSourcingRepository;
@@ -9,15 +11,15 @@ use Francken\Application\Books\BookDetailsRepositoryI;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
 use Francken\Application\Committees\CommitteesListRepository;
-use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Application\FranckenVrij\Edition;
+use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Application\Members\Registration\RequestStatusRepository;
-use Francken\Application\ReadModelRepository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListRepository;
+use Francken\Application\ReadModelRepository;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Committees\Committee;

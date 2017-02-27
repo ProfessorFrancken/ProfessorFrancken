@@ -7,10 +7,9 @@ namespace Francken\Application\Books;
 use Francken\Application\Projector;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
-use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
-use Francken\Application\ReadModelRepository as Repository;
+use Francken\Domain\Books\Events\BookSoldToMember;
 
 final class AvailableBooksProjector extends Projector
 {

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Application\Activities;
 
 use Francken\Application\ReadModelRepository;
-use Francken\Application\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
 
 final class ActivityRepository

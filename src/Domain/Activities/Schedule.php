@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
+use Broadway\Serializer\SerializableInterface;
 use DateTimeImmutable as DateTime;
 use InvalidArgumentException;
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
 
 final class Schedule implements SerializableInterface
 {
@@ -22,7 +21,7 @@ final class Schedule implements SerializableInterface
 
     public static function withStartTime(DateTime $startTime) : Schedule
     {
-        return new Schedule($startTime);
+        return new self($startTime);
     }
 
     public static function forPeriod(DateTime $startTime, DateTime $endTime) : Schedule
@@ -31,7 +30,7 @@ final class Schedule implements SerializableInterface
             throw new InvalidArgumentException("A schedule's end time can't be before the start time");
         }
 
-        return new Schedule($startTime, $endTime);
+        return new self($startTime, $endTime);
     }
 
     public function startTime() : DateTime
@@ -50,7 +49,6 @@ final class Schedule implements SerializableInterface
 
     public function serialize()
     {
-
         return [
             'startTime' => $this->startTime->format(\DateTime::ISO8601),
             'endTime' => is_null($this->endTime) ? null : $this->endTime->format(\DateTime::ISO8601)
@@ -59,7 +57,7 @@ final class Schedule implements SerializableInterface
 
     public static function deserialize(array $schedule)
     {
-        return new Schedule(
+        return new self(
             DateTime::createFromFormat(\DateTime::ISO8601, $schedule['startTime']),
             is_null($schedule['endTime']) ? null : DateTime::createFromFormat(\DateTime::ISO8601, $schedule['endTime'])
         );

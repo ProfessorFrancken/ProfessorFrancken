@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Posts\Events;
 
-use Francken\Domain\Posts\PostId;
-use Francken\Domain\DomainEvent;
 use Broadway\Serializer\SerializableInterface;
 use BroadwaySerialization\Serialization\Serializable;
+use Francken\Domain\Posts\PostId;
 
 final class PostWritten implements SerializableInterface
 {

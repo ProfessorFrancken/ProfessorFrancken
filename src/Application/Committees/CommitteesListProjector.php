@@ -1,19 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Committees;
 
-use League\CommonMark\CommonMarkConverter;
 use Francken\Application\Projector;
-use Francken\Application\ReadModelRepository as Repository;
-use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
+use League\CommonMark\CommonMarkConverter;
 
 final class CommitteesListProjector extends Projector
 {

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Domain;
 
 use Assert\Assertion as Assert;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Broadway\Serializer\SerializableInterface;
+use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 
 abstract class Identifier implements SerializableInterface
 {

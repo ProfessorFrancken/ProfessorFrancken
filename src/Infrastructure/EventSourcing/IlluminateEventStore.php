@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\EventSourcing;
 
+use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainEventStreamInterface;
 use Broadway\Domain\DomainMessage;
-use Broadway\Domain\DateTime;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Serializer\SerializerInterface;
@@ -15,7 +15,6 @@ use Illuminate\Database\ConnectionInterface as Connection;
 
 final class IlluminateEventStore implements EventStoreInterface
 {
-
     /**
      * @var Connection
      */
@@ -55,7 +54,7 @@ final class IlluminateEventStore implements EventStoreInterface
     {
         $events = $this->loadEvents($id);
 
-        if (! $events) {
+        if ( ! $events) {
             throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
         }
 

@@ -62,7 +62,7 @@ final class InMemoryRepository implements ReadModelRepository
      */
     public function findBy(array $fields) : array
     {
-        if (! $this->fieldsAreValid($fields)) {
+        if ( ! $this->fieldsAreValid($fields)) {
             return [];
         }
 

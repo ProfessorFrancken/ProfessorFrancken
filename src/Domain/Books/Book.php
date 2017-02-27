@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Domain\Books;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
@@ -21,7 +23,7 @@ final class Book extends EventSourcedAggregateRoot
 
     public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price) : Book
     {
-        $book = new Book();
+        $book = new self();
         $book->apply(new BookOffered($id, $sellersId, $isbn, $price));
         return $book;
     }

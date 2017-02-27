@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Committees;
 
 use Assert\Assertion;
-use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 use Francken\Domain\Committees\CommitteeId;
-use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
 
 final class CommitteesList implements ReadModelInterface, SerializableInterface
 {
@@ -99,22 +101,22 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
 
     public function changeCommitteePage(string $markDown, string $html)
     {
-        return new CommitteesList($this->committeeId(), $this->name, $this->summary, $this->email(), $markDown, $html, $this->members);
+        return new self($this->committeeId(), $this->name, $this->summary, $this->email(), $markDown, $html, $this->members);
     }
 
     public function changeName(string $name) : CommitteesList
     {
-        return new CommitteesList($this->committeeId(), $name, $this->summary, $this->email(), $this->markDown, $this->html, $this->members);
+        return new self($this->committeeId(), $name, $this->summary, $this->email(), $this->markDown, $this->html, $this->members);
     }
 
     public function changeGoal(string $summary) : CommitteesList
     {
-        return new CommitteesList($this->committeeId(), $this->name, $summary, $this->email(), $this->markDown, $this->html, $this->members);
+        return new self($this->committeeId(), $this->name, $summary, $this->email(), $this->markDown, $this->html, $this->members);
     }
 
     public function addMember(MemberId $memberId, string $firstName, string $lastName) : CommitteesList
     {
-        return new CommitteesList(
+        return new self(
             $this->committeeId(),
             $this->name,
             $this->summary,
@@ -124,9 +126,9 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
             array_merge(
                 $this->members,
                 [[
-                    "id" => (string)$memberId,
-                    "first_name" => $firstName,
-                    "last_name" => $lastName
+                    'id' => (string)$memberId,
+                    'first_name' => $firstName,
+                    'last_name' => $lastName
                 ]]
             )
         );
@@ -134,7 +136,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
 
     public function removeMember(MemberId $id) : CommitteesList
     {
-        return new CommitteesList(
+        return new self(
             $this->committeeId(),
             $this->name,
             $this->summary,

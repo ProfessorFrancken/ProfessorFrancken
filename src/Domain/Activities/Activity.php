@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
-use DateTimeImmutable;
 use Francken\Domain\Activities\Events\ActivityCancelled;
 use Francken\Domain\Activities\Events\ActivityCategorized;
 use Francken\Domain\Activities\Events\ActivityPlanned;
@@ -34,7 +33,7 @@ final class Activity extends AggregateRoot
         Location $location,
         $type
     ) {
-        $activity = new Activity;
+        $activity = new self();
 
         $activity->apply(new ActivityPlanned($id, $name, $description, $schedule, $location, $type));
 
@@ -52,7 +51,7 @@ final class Activity extends AggregateRoot
 
     public function cancel()
     {
-        if (! $this->published) {
+        if ( ! $this->published) {
             throw InvalidActivity::cantCancelADraft();
         }
 
@@ -84,7 +83,7 @@ final class Activity extends AggregateRoot
 
     public function registerParticipant(MemberId $memberId)
     {
-        if (! $this->published) {
+        if ( ! $this->published) {
             throw new InvalidActivity("Tried to register member {$memberId}, but activity isn't published");
         }
 
@@ -134,10 +133,10 @@ final class Activity extends AggregateRoot
 
     private function assertCategoryIsValid($category)
     {
-        if (! in_array($category, [
-            Activity::SOCIAL,
-            Activity::CAREER,
-            Activity::EDUCATION
+        if ( ! in_array($category, [
+            self::SOCIAL,
+            self::CAREER,
+            self::EDUCATION
         ])) {
             throw InvalidActivity::invalidCategory($category);
         }

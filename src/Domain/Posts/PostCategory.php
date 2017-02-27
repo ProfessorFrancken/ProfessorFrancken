@@ -20,11 +20,10 @@ class PostCategory
 
     public static function fromString(string $type) : PostCategory
     {
-        if (! in_array($type, [PostCategory::BLOGPOST, PostCategory::NEWSPOST]))
-        {
+        if ( ! in_array($type, [self::BLOGPOST, self::NEWSPOST])) {
             throw new InvalidArgumentException("{$type} is not a valied post category");
         }
-        return new PostCategory($type);
+        return new self($type);
     }
 
     public function __toString() : string

@@ -28,7 +28,7 @@ final class CommitteeRepository
      */
     public function load(CommitteeId $committeeId) : Committee
     {
-return $this->repo->load((string)$committeeId);
+        return $this->repo->load((string)$committeeId);
     }
 
     /**

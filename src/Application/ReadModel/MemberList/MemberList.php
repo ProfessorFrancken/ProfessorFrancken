@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\ReadModel\MemberList;
 
-use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 use Francken\Domain\Members\MemberId;
 
 final class MemberList implements ReadModelInterface, SerializableInterface

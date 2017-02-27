@@ -13,8 +13,6 @@ use Francken\Domain\Posts\Events\PostPublishedAt;
 use Francken\Domain\Posts\Events\PostTitleChanged;
 use Francken\Domain\Posts\Events\PostUnpublished;
 use Francken\Domain\Posts\Events\PostWritten;
-use Francken\Domain\Posts\PostCategory;
-use Francken\Domain\Posts\PostId;
 
 /// @todo this class still needs logic..
 class Post extends AggregateRoot
@@ -33,7 +31,7 @@ class Post extends AggregateRoot
 
     public static function createDraft(PostId $id, string $title, string $content, PostCategory $type)
     {
-        $post = new Post;
+        $post = new self();
         $post->apply(new PostWritten($id, $title, $content, $type));
         return $post;
     }

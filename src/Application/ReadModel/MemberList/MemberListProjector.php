@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\ReadModel\MemberList;
 
 use Francken\Application\Projector;
-use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Domain\Members\Events\MemberJoinedFrancken;
 
 final class MemberListProjector extends Projector

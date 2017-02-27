@@ -1,21 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Activities;
 
 use Francken\Application\Projector;
-use Francken\Application\ReadModelRepository as Repository;
 
 use Francken\Domain\Activities\ActivityId;
-use Francken\Application\Activities\Activity;
-use Francken\Application\Activities\ActivityRepository;
 
 // events:
-use Francken\Domain\Activities\Events\ActivityCancelled;
-use Francken\Domain\Activities\Events\ActivityCategorized;
 use Francken\Domain\Activities\Events\ActivityPlanned;
-use Francken\Domain\Activities\Events\ActivityPublished;
-use Francken\Domain\Activities\Events\ActivityRescheduled;
-use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
 
 final class ActivityProjector extends Projector
 {

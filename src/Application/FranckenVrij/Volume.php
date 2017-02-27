@@ -33,7 +33,7 @@ final class Volume
             if ($edition->volume() !== $this->volume) {
                 throw new InvalidArgumentException(
                     sprintf(
-                        "Tried to add edition of volume [%d] to volume [%d]",
+                        'Tried to add edition of volume [%d] to volume [%d]',
                         $edition->volume(),
                         $this->volume
                     )

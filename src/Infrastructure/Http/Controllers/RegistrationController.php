@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use Illuminate\Http\Request;
+use DateTimeImmutable;
 use Francken\Application\Members\Registration\SubmitRegistrationRequest;
-use Francken\Domain\Members\Registration\RegistrationRequest;
+use Francken\Domain\Members\Address;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\FullName;
+use Francken\Domain\Members\Gender;
+use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository as Repository;
 use Francken\Domain\Members\StudyDetails;
-use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\PaymentInfo;
-use Francken\Domain\Members\FullName;
-use Francken\Domain\Members\Address;
-use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\Email;
-use DateTimeImmutable;
+use Illuminate\Http\Request;
 
 class RegistrationController extends Controller
 {

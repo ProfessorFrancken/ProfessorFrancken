@@ -22,12 +22,12 @@ final class Location implements SerializableInterface
 
     public static function unspecified()
     {
-        return new Location;
+        return new self();
     }
 
     public static function fromNameAndAddress(string $name, string $postalCode = null, string $streetName = null, string $streetNumber = null)
     {
-        $location = new Location;
+        $location = new self();
         $location->name = $name;
         $location->postalCode = $postalCode;
         $location->streetName = $streetName;

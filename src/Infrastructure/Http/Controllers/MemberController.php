@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Francken\Domain\Members\MemberId;
-use Francken\Domain\Members\Member;
-use Francken\Domain\Members\MemberRepository;
 use DB;
+use Francken\Domain\Members\Member;
+use Francken\Domain\Members\MemberId;
+use Francken\Domain\Members\MemberRepository;
+use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {

@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\ReadModel\PostList;
 
 use DateTimeImmutable;
 use Francken\Application\Projector;
-use Francken\Application\ReadModelRepository as Repository;
-use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Posts\Events\PostCategorized;
 use Francken\Domain\Posts\Events\PostContentChanged;

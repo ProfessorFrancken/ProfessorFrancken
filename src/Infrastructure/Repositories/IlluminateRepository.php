@@ -86,7 +86,6 @@ final class IlluminateRepository implements ReadModelRepository
         }
 
         return $this->deserialize($row);
-
     }
 
     /**

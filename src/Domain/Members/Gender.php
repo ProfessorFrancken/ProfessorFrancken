@@ -9,7 +9,6 @@ use Francken\Domain\Serializable;
 
 final class Gender implements SerializableInterface
 {
-
     use Serializable;
 
     const FEMALE = 'female';
@@ -24,13 +23,13 @@ final class Gender implements SerializableInterface
 
     public static function fromString(string $gender) : Gender
     {
-        if (! in_array($gender, [
-            Gender::FEMALE, Gender::MALE
+        if ( ! in_array($gender, [
+            self::FEMALE, self::MALE
         ])) {
             throw new \InvalidArgumentException("{$gender} is not a valid gender");
         }
 
-        return new Gender($gender);
+        return new self($gender);
     }
 
     public function __toString() : string

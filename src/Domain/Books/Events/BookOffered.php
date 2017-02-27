@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Domain\Books\Events;
 
 use Broadway\Serializer\SerializableInterface;
-use Francken\Domain\Serializable;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Members\MemberId;
+use Francken\Domain\Serializable;
 
 final class BookOffered implements SerializableInterface
 {

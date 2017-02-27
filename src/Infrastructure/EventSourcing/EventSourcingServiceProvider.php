@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\EventSourcing;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Connection;
-use Broadway\EventStore\EventStoreInterface;
-use Broadway\Serializer\SerializerInterface;
-use Broadway\Serializer\SimpleInterfaceSerializer;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
 use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
-use BroadwaySerialization\Reconstitution\Reconstitution;
-use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
-use Doctrine\Instantiator\Instantiator;
+use Broadway\EventStore\EventStoreInterface;
+use Broadway\Serializer\SerializerInterface;
+use Broadway\Serializer\SimpleInterfaceSerializer;
 use BroadwaySerialization\Hydration\HydrateUsingReflection;
+use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use BroadwaySerialization\Reconstitution\Reconstitution;
+use Doctrine\Instantiator\Instantiator;
+use Illuminate\Database\Connection;
+use Illuminate\Support\ServiceProvider;
 
 class EventSourcingServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the event bus
      *

@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace Francken\Domain\Committees;
 
 use Francken\Domain\AggregateRoot;
-use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
-use Francken\Domain\Committees\Events\CommitteeEmailChanged;
-use Francken\Domain\Committees\Events\CommitteePageChanged;
-use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
 
 class Committee extends AggregateRoot
 {
@@ -22,12 +21,12 @@ class Committee extends AggregateRoot
     private $name;
     private $summary;
     private $email = null;
-    private $webPage = "";
+    private $webPage = '';
     private $members = []; // array of memberId's
 
     public static function instantiate(CommitteeId $id, string $name, string $summary) : Committee
     {
-        $committee = new Committee;
+        $committee = new self();
         $committee->apply(new CommitteeInstantiated($id, $name, $summary));
         return $committee;
     }
@@ -66,7 +65,7 @@ class Committee extends AggregateRoot
 
     public function leftByMember(MemberId $memberId)
     {
-        if (! $this->memberIsInCommittee($memberId)) {
+        if ( ! $this->memberIsInCommittee($memberId)) {
             return;
         }
 

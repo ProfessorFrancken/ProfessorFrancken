@@ -1,7 +1,7 @@
 <?php
 
+declare(strict_types=1);
 Route::group(['middleware' => ['web']], function () {
-
     Route::get('/', 'MainContentController@index');
 
     Route::resource('study/books', 'BookController');
@@ -20,12 +20,12 @@ Route::group(['middleware' => ['web']], function () {
 
     // Proof of concept login & logout, currently not using a spcific user
     // so that we can show this potential functionality at the ALV
-    Route::get('/login', function() {
+    Route::get('/login', function () {
         Auth::loginUsingId(1);
 
         return redirect('/');
     });
-    Route::get('/logout', function() {
+    Route::get('/logout', function () {
         try {
             Auth::logOut();
         } finally {

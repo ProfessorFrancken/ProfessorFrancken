@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Application\Books;
 
-use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 use Francken\Domain\Books\BookId;
 
 final class AvailableBook implements ReadModelInterface, SerializableInterface

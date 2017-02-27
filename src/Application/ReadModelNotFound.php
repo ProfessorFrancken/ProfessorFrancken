@@ -8,7 +8,7 @@ final class ReadModelNotFound extends \RunTimeException
 {
     public static function with(string $id) : ReadModelNotFound
     {
-        return new ReadModelNotFound(
+        return new self(
             sprintf('Could not find readmodel with id [%s]', $id)
         );
     }

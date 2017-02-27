@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Books;
 
 use Broadway\ReadModel\Projector;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
-use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
+use Francken\Domain\Books\Events\BookSoldToMember;
 
 final class BookTransactionsProjector extends Projector
 {

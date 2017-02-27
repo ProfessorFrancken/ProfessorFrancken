@@ -12,7 +12,6 @@ use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\PaymentInfoProvided;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
-use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;
 
 final class RegistrationRequest extends AggregateRoot
@@ -28,7 +27,7 @@ final class RegistrationRequest extends AggregateRoot
         StudyDetails $studyDetails,
         PaymentInfo $paymentInfo = null
     ) : RegistrationRequest {
-        $request = new RegistrationRequest;
+        $request = new self();
 
         $request->apply(
             new RegistrationRequestSubmitted(

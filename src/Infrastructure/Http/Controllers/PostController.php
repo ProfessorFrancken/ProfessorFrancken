@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\Http\Controllers;
 
 use DB;
-use Francken\Application\ReadModel\PostList\PostList;
-use Francken\Domain\Posts\Events\PostWritten;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostCategory;
 use Francken\Domain\Posts\PostId;

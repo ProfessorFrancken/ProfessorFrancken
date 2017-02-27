@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Activities;
 
-use BroadwaySerialization\Serialization\Serializable;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\Serializable;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Activities\Location;
+use Francken\Domain\Activities\Schedule;
 
 final class Activity implements ReadModelInterface, SerializableInterface
 {
