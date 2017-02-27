@@ -1,14 +1,12 @@
 // Image header
 $angle: 15deg;
 $registration-cta-height: 400px;
+$cta-height: 455px;
 
 .stop-overflow {
     width: 100%;
     overflow: hidden;
 }
-
-$cta-height: 510px;
-$cta-height: 455px;
 
 .header__registration-cta {
     width: 100%;
@@ -89,6 +87,7 @@ $cta-height: 455px;
         > *, &::before, &::after {
             // "Revert" the skew transformation so the content and background is rendered normally
             transform: skewX(-$angle);
+            transform-origin: top left;
         }
     }
 
