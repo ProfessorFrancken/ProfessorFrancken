@@ -39,14 +39,14 @@ $top-stroke-width: 6px;
     }
 }
 
-.header__navigation {
+.navigation__menu {
     font-family: $menu-navigation-font;
     color: $primary-color;
-    z-index: -1;
-}
-
-.navigation__menu {
     margin-bottom: 1em;
+    margin-top: 3em;
+
+    // This is to set the position of the sub menu
+    position: relative;
 }
 
 .navigation__menu-item {
@@ -56,6 +56,9 @@ $top-stroke-width: 6px;
 }
 
 .navigation__sub-menu {
+    position: absolute;
+    left: 0;
+    margin-top: .5em;
     margin-left: 2em;
 }
 
