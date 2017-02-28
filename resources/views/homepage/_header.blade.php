@@ -5,7 +5,7 @@
             <div class="col-12 col-md-4 col-lg-5 pl-0 pr-0">
                 @include("homepage._logo")
             </div>
-            <div class="col col-sm-4 col-md-8 col-lg-7">
+            <div class="col col-sm-4 col-md-8 col-lg-7 hidden-sm-down ">
                 @include("homepage.navigation._navigation")
             </div>
         </div>

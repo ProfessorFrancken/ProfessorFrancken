@@ -1,0 +1,109 @@
+// Image header
+$angle: 15deg;
+$registration-cta-height: 400px;
+$cta-height: 455px;
+
+.stop-overflow {
+    width: 100%;
+    overflow: hidden;
+}
+
+.header__registration-cta {
+    width: 100%;
+    display: inline-block;
+
+    background: $secondary-color;
+
+    position: relative;
+    z-index: -10;
+
+    // Hide the overflow of the header image
+    overflow: hidden;
+
+    min-height: 200px;
+}
+
+.header__registration-cta::before {
+    content: '';
+
+    background-color: $secondary-color;
+    background-image: url($cta-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: luminosity;
+
+    position: absolute;
+    z-index: 2;
+    width: 52%; // 52 looked just about right :)
+    height: 100%;
+    width: 100%;
+
+    opacity: 0.5;
+}
+
+
+.header__registration-cta::after {
+    content: '';
+
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%);
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+}
+
+.registration-cta {
+    display: none;
+
+    z-index: 100;
+    margin-top: 7em;
+    margin-bottom: 9em;
+}
+
+.registration-cta__button {
+    border-left: 3px white solid;
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+}
+
+
+@include media-breakpoint-up(sm) {
+    .header__registration-cta::before {
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .header__registration-cta {
+        max-height: $cta-height;
+        margin-left: 5em;
+        margin-top: 0;
+        transform: skew($angle);
+        transform-origin: top left;
+        border-radius: 0px 0px 0px 20px;
+
+        > *, &::before, &::after {
+            // "Revert" the skew transformation so the content and background is rendered normally
+            transform: skewX(-$angle);
+            transform-origin: top left;
+        }
+    }
+
+
+    .header__registration-cta::after,
+    .header__registration-cta::before {
+        // Show the gradient, image, and green overlay
+        background-size: cover;
+
+        width: 52%; // 52 looked just about right :)
+        height: 120%; //$cta-height;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .registration-cta {
+        display: block;
+    }
+}

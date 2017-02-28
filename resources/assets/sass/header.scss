@@ -1,47 +1,52 @@
 // Set the border width of the border above the navigation
 $top-stroke-width: 6px;
 
-.header {
-    border-top: $top-stroke-width solid $secondary-color-dark;
-}
-
 .header__logo {
     color: white;
     padding: 1em;
     background-color: $primary-color;
     width: 100%;
-    margin: -$top-stroke-width 0 1em 0;
-}
 
-
-.header__logo img {
-    filter: brightness(0) invert(1);
-    z-index: 10;
-    height: 40px;
+    img {
+        filter: brightness(0) invert(1);
+        z-index: 10;
+        height: 40px;
+        max-width: 100%;
+    }
 }
 
 .header__title {
     font-size: 1em;
-    margin: 0 0 0 1em;
+    line-height: 1.1;
+    font-weight: 500;
+    font-family: $headings-font-family;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .header__title-link {
+    width: 100%;
     color: white;
-}
 
-.header__title-link:hover, .header__title-link:focus {
-    color: white;
-    text-decoration: none;
-}
+    // Make both the logo and "T.F.V 'Professor Francken'" show in the mobile menu
+    z-index: 202;
+    position: relative;
 
-.header__navigation {
-    font-family: $menu-navigation-font;
-    color: $primary-color;
-    z-index: -1;
+    &:hover, &:focus {
+        color: white;
+        text-decoration: none;
+    }
 }
 
 .navigation__menu {
+    font-family: $menu-navigation-font;
+    color: $primary-color;
     margin-bottom: 1em;
+    margin-top: 3em;
+
+    // This is to set the position of the sub menu
+    position: relative;
 }
 
 .navigation__menu-item {
@@ -51,12 +56,21 @@ $top-stroke-width: 6px;
 }
 
 .navigation__sub-menu {
+    position: absolute;
+    left: 0;
+    margin-top: .5em;
     margin-left: 2em;
 }
+
 .navigation__sub-menu-item {
+    display: none;
     color: #999;
     font-size: 0.95rem;
     position: relative;
+}
+
+.navigation__sub-menu-item--active {
+    display: block;
 }
 
 .navigation__sub-menu-item:after {
@@ -72,145 +86,236 @@ $top-stroke-width: 6px;
     border-right: none;
 }
 
-.navigation__login {
-    background-color: $secondary-color-dark;
-    padding: 0.5em;
-    border-radius: 0 0 4px 4px;
-    color: white;
-
-}
-
-// this is from Bootstrap's dropdown-toggle, but now aligned to the right
-.navigation__login:before {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-right: 0.3em;
-    vertical-align: middle;
-    content: "";
-    border-top: 0.3em solid;
-    border-right: 0.3em solid transparent;
-    border-left: 0.3em solid transparent;
-}
-
-.navigation__login-link {
-    color: white;
-}
-
-.navigation__login-link i {
-    margin-left: .5em;
-}
-
-.navigation__login-link:hover {
-    color: white;
-    cursor: pointer;
-}
-
-.header__nav {
-    width: 100%;
-    height: 150px;
-    background: $secondary-color;
-    display: inline-block;
-    right: 0;
-    position: absolute;
-    z-index: 0;
-}
-
 .login-link {
     background: $secondary-color;
     color: white;
     border-radius: 4px;
 }
 
-// Image header
-
-$angle: 15deg;
-$registration-cta-height: 400px;
-
-.overflowwing {
-    width: 100%;
-    overflow: hidden;
-    margin-top: -1.5em;
-}
-
-$cta-height: 510px;
-$cta-height: 455px;
-
-.header__registration-cta {
-    width: 100%;
+.caret {
     display: inline-block;
-
-    background: $secondary-color;
-
-    position: relative;
-    z-index: -10;
-
-    // Hide the overflow of the header image
-    overflow: hidden;
-
-    margin-top: 3em;
-    min-height: 200px;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
 }
 
-.header__registration-cta::before {
-    content: '';
+.navigation-list {
+	  margin: 0;
+    padding: 0;
+		padding-top: 76px;
 
-    background-color: $secondary-color;
-    background-image: url($cta-image);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: luminosity;
+	  list-style-type: none;
+    z-index: 200;
+	  transition: transform 0.3s cubic-bezier(.62,.28,.23,.99);
 
-    position: absolute;
-    z-index: 2;
-    width: 52%; // 52 looked just about right :)
-    height: 100%;
-    width: 100%;
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+    right: 0;
+		background: $primary-color;
+}
 
-    opacity: 0.5;
+.navigation-list__item {
+	  float: left;
+	  position: relative; /* couples with navigation-sub-list */
+		float: none;
+		display: block;
+		height: auto;
+
+    &:focus,
+    &:hover,
+    &:active {
+        background: darken($primary-color, 5%);
+    }
+}
+
+/* Color the active menu item */
+.navigation-list__item--active {
+    background: $primary-color;
+	  color: #FFF;
+
+    /* Removes the caret below the active item */
+    &:after {
+		    display: none;
+    }
+
+    a:link, a:visited {
+        color: #FFF;
+    }
+}
+
+/* When the associated page is visited we want the background color
+     of a selected caret to be somewhat lighter than the item's background */
+.navigation-list__item--active {
+    &.navigation-list__item--active-sub-list .navigation-sub-list__toggle {
+    	  background: $primary-color;
+    }
+}
+
+/* Color the caret when it is selected */
+.navigation-list__item--active-sub-list {
+    .navigation-sub-list__toggle {
+        background: #CCC; /*$grey;*/
+    }
+
+    .navigation-sub-list {
+    	  height: auto;
+	      min-width: 200px;
+    	  width: auto;
+	      display: block;
+    }
+}
+
+.navigation-list__item,
+.navigation-sub-list li a {
+	  transition: background-color 0.1s cubic-bezier(.62,.28,.23,.99);
+}
+
+.navigation-list__link {
+    color: #31255e;
+	  text-decoration: none;
+	  padding: 0 .8em;
+	  display: inline-block;
+	  line-height: 90px;
+
+    &:hover {
+        color: #6c5ea2;
+		    text-decoration: none;
+    }
+
+    &:link, &:visited {
+		    color: #FFF;
+		    border: 0;
+		    display: block;
+		    float: left;
+		    padding: 0 0 0 4%;
+		    width: 82%;
+    }
+}
+
+/* This class is used for the mobile menu */
+.navigation-list--active {
+		transform: translateY(100%);
+		box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+.navigation-sub-list__toggle {
+    text-align: center;
+    cursor: pointer;
+	  line-height: 90px;
+    height: 90px;
+	  display: inline-block;
+    vertical-align: top; /* lost 1px bug in chrome op */
+
+    /* Move a bit closer to the associated list item */
+	  margin-left: -5px;
+
+    /* dunno */
+    user-select: none;
+}
+
+/** Top Sub menu **/
+.navigation-sub-list {
+    display: none;
+	  padding: 0;
+	  background: #FFF;
+	  z-index: 201;
+	  height: 0;
+	  overflow: hidden;
+
+		width: 100%;
+		position: static;
+}
+
+.navigation-sub-list__link,
+a.navigation-sub-list__link:link,
+a.navigation-sub-list__link:visited {
+    display: block;
+    padding: 0 .8em;
+    line-height: 3;
+    border: 1px solid #CCC;
+    border-top: 0;
+    color: #444;
+}
+
+.navigation-sub-list li a:focus {
+    background: darken(white, 5%);
+}
+
+/** Responsive **/
+.navigation-sub-list__toggle {
+    float: right;
+    width: 14%;
+    color: white;
 }
 
 
-.header__registration-cta::after {
-    content: '';
-
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%);
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    height: 100%;
-    width: 100%;
+/* Wrapper around the Hambuger menu */
+.navigation__hamburger-menu {
+    float: right;
+	  position: relative;
+	  z-index: 202;
+    display: block ;
 }
 
-.registration-cta {
-    z-index: 100;
-    margin-top: 7em;
-    margin-bottom: 9em;
-}
+.hamburger-menu {
+		display: block;
+	  background: $primary-color;
+    padding: 1em;
+	  border: 0;
+	  float: right;
 
-.registration-cta__button {
-    border-left: 3px white solid;
-    padding-bottom: 1.5em;
-    padding-top: 1.5em;
+    &:hover {
+        background: $primary-color;
+    }
+
+    .hamburger-menu__line {
+		    width: 22px;
+    		height: 2px;
+		    background: #FFF;
+    		display: block;
+    }
+
+    .hamburger-menu__line + .hamburger-menu__line {
+        margin-top: 4px;
+    }
 }
 
 @include media-breakpoint-up(md) {
+    .header {
+        border-top: $top-stroke-width solid $secondary-color-dark;
+    }
+
+    .header__title-link {
+        width: initial;
+    }
+
+    .navigation__hamburger-menu,
+    .navigation-list {
+        display: none;
+    }
+
     .header__logo {
         padding: 2em 1em;
         padding-right: 5em;
         text-align: right;
-        margin-bottom: -4em;
         border-radius: 0px 0px 10px 0px;
-    }
 
-    .header__logo img {
-        height: 60px;
+        margin: -$top-stroke-width 0 1em 0;
+        margin-bottom: -4em;
+
+        img {
+            height: 60px;
+        }
     }
 
     .header__title {
         font-size: 1.75rem;
+        margin: 0 0 0 1em;
     }
 }
 
@@ -218,60 +323,10 @@ $cta-height: 455px;
     .header__logo {
         padding: 4em 1em;
         padding-right: 5em;
-    }
 
-    .header__logo img {
-        height: 100px;
-    }
-}
-
-
-@include media-breakpoint-up(sm) {
-    .header__registration-cta {
-        min-height: 250px;
-    }
-}
-
-@include media-breakpoint-down(md) {
-    .registration-cta {
-        display: none;
-    }
-}
-
-
-@include media-breakpoint-up(md) {
-    .header__registration-cta {
-        max-height: $cta-height;
-        margin-left: 5em;
-        margin-top: 0;
-        transform: skew($angle);
-        transform-origin: top left;
-        border-radius: 0px 0px 0px 20px;
-    }
-
-
-    .header__registration-cta::after,
-    .header__registration-cta::before {
-        // Show the gradient, image, and green overlay
-        background-size: cover, cover, cover;
-        background-position-y: -60px;
-
-        // "Revert" the skew transformation so that the background image is rendered normally
-        transform: skewX(-$angle);
-        transform-origin: top left;
-
-        width: 52%; // 52 looked just about right :)
-        height: 120%; //$cta-height;
-    }
-
-    // Make sure that child elements are rendered normally
-    .header__registration-cta > * {
-        transform: skewX(-$angle);
-    }
-
-    .header__registration-cta--study::before,
-    .header__registration-cta--study::after {
-        width: 80%;
+        img {
+            height: 100px;
+        }
     }
 }
 
@@ -285,4 +340,4 @@ $cta-height: 455px;
     }
 }
 
-@import "old-menu";
+@import "components/header-image";
