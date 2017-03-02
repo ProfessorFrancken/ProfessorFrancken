@@ -17,6 +17,6 @@
         </p>
     </div>
     <div class="col-md-1 text-left registration-cta__button">
-        <button class="btn btn-primary">Register</button>
+        <a class="btn btn-primary" href="/register">Register</a>
     </div>
 @endcomponent

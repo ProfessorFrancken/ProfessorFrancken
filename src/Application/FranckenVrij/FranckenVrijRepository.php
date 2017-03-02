@@ -58,4 +58,11 @@ final class FranckenVrijRepository
 
         return $v;
     }
+
+    public function latestEdition() : Edition
+    {
+        $editions = $this->findAll();
+
+        return $editions[count($editions) - 1];
+    }
 }
