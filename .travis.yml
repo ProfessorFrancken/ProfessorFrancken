@@ -20,3 +20,8 @@ before_script:
 
 after_script:
   - vendor/bin/coveralls
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.php-cs-fixer
