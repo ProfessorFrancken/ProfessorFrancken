@@ -15,7 +15,6 @@ $cta-height: 455px;
     background: $secondary-color;
 
     position: relative;
-    z-index: -10;
 
     // Hide the overflow of the header image
     overflow: hidden;
@@ -33,7 +32,6 @@ $cta-height: 455px;
     background-blend-mode: luminosity;
 
     position: absolute;
-    z-index: 2;
     width: 52%; // 52 looked just about right :)
     height: 100%;
     width: 100%;
@@ -50,15 +48,13 @@ $cta-height: 455px;
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 2;
     height: 100%;
     width: 100%;
 }
 
 .registration-cta {
     display: none;
-
-    z-index: 100;
+    z-index: 1;
     margin-top: 7em;
     margin-bottom: 9em;
 }
@@ -106,4 +102,8 @@ $cta-height: 455px;
     .registration-cta {
         display: block;
     }
+}
+
+.header .container-fluid {
+    z-index: 1;
 }
