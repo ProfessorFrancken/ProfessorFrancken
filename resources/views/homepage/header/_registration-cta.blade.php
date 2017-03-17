@@ -2,7 +2,7 @@
     @slot('title')
         Experiences of a freshmen
     @endslot
-    <div class="registration-cta__body text-right col-md-4 offset-md-5 align-self-center">
+    <div class="registration-cta__body col-md-4 offset-md-5 align-self-center">
         <h1>
             <strong>
                 Become part of
@@ -16,7 +16,7 @@
             *people tell us we are awesome
         </p>
     </div>
-    <div class="col-md-1 text-left registration-cta__button">
+    <div class="col-md-1 registration-cta__button">
         <a class="btn btn-primary" href="/register">Register</a>
     </div>
 @endcomponent
