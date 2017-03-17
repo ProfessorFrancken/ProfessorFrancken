@@ -50,13 +50,22 @@
     width: 20px;
 }
 
+.footer__contact-background {
+    background: $secondary-color;
+}
+
 .sponsors {
     padding: 2em;
     width: 100%;
     background: #131823;
-    color: #989898
-}
+    color: #989898;
 
-.footer__contact-background {
-    background: $secondary-color;
+    img {
+        opacity: 1;
+        transition: opacity 0.25s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
 }
