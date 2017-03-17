@@ -53,16 +53,22 @@ $cta-height: 455px;
 }
 
 .registration-cta {
-    display: none;
     z-index: 1;
-    margin-top: 7em;
-    margin-bottom: 9em;
+    margin-top: 3em;
+    margin-bottom: 5em;
+
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 .registration-cta__button {
-    border-left: 3px white solid;
-    padding-bottom: 1.5em;
-    padding-top: 1.5em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.registration-cta__body {
+    text-align: center;
 }
 
 
@@ -96,11 +102,32 @@ $cta-height: 455px;
         width: 52%; // 52 looked just about right :)
         height: 120%; //$cta-height;
     }
+
+    .registration-cta__body {
+        text-align: right;
+    }
+
+    .registration-cta__button {
+        margin-top: 0;
+        border-left: 3px white solid;
+        padding-bottom: 1.5em;
+        padding-top: 1.5em;
+        text-align: left;
+    }
 }
 
 @include media-breakpoint-up(lg) {
     .registration-cta {
         display: block;
+    }
+    .registration-cta__body h1 {
+        font-size: 2.5rem;
+    }
+
+    .registration-cta {
+        z-index: 1;
+        margin-top: 7em;
+        margin-bottom: 9em;
     }
 }
 
