@@ -3,7 +3,7 @@
         <div class="navigation__hoverable">
             <a class="navigation__menu-item nav-link active text-nowrap {{ $item['class'] or '' }}" href="{{ $item['url'] }}">
                 @if ($item['icon'] != '')
-                    <i class="fa fa-{{ $item['icon'] }} mr-2" aria-hidden="true"></i>
+                    <img src="/icons/filled/{{ $item['icon'] }}.svg" alt="" style="height: 20px" class="mr-2">
                 @endif
                 {{ $item['title'] }}
             </a>

@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-4 my-5">
             <div class="francken-pillar text-center">
+                <img src="/icons/lined/study.svg" alt="" class="francken-pillar__icon">
                 <h3>
                     Study
-                    <i class="fa fa-book" aria-hidden="true"></i>
                 </h3>
                 <p>
                     <small>
@@ -17,10 +17,9 @@
         </div>
         <div class="col-md-4 my-5">
             <div class="francken-pillar text-center">
+                <img src="/icons/lined/coffee.svg" alt="" class="francken-pillar__icon">
                 <h3>
                     Association
-                    <i class="fa fa-beer" aria-hidden="true"></i>
-                    <i class="fa fa-coffee" aria-hidden="true"></i>
                 </h3>
                 <p>
                     <small>
@@ -35,9 +34,9 @@
         </div>
         <div class="col-md-4 my-5">
             <div class="francken-pillar text-center">
+                <img src="/icons/lined/career.svg" alt="" class="francken-pillar__icon">
                 <h3>
                     Career
-                    <i class="fa fa-briefcase" aria-hidden="true"></i>
                 </h3>
                 <p>
                     <small>
