@@ -22,7 +22,7 @@ final class NavigationServiceProvider extends ServiceProvider
                     ['url' => "/study/representation/university-council", 'title' => 'University Council'],
                     ['url' => "/study/representation/faculty-council", 'title' => 'Faculty Council'],
                 ],
-                'icon' => 'book',
+                'icon' => 'study',
             ],
             [
                 'url' => '/association',
@@ -46,7 +46,7 @@ final class NavigationServiceProvider extends ServiceProvider
                     ['url' => "/career/companies", 'title' => 'Company profiles'],
                     ['url' => "/career/excursions", 'title' => 'Excursions']
                 ],
-                'icon' => 'briefcase',
+                'icon' => 'career',
             ],
         ];
 
@@ -70,8 +70,8 @@ final class NavigationServiceProvider extends ServiceProvider
                     'url' => '/login',
                     'title' => 'Login',
                     'subItems' => [],
-                    'icon' => 'user',
-                    'class' => 'login-link'
+                    'icon' => '',
+                    'class' => 'login-link',
                 ];
             }
 
