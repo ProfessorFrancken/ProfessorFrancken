@@ -6,11 +6,6 @@
     Boards
   </h1>
 
-  <div class="row">
-    <div class="col-sm-9">
-
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2016-2017',
         'name' => 'Buitengewoon',
@@ -22,8 +17,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1617.jpg'
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '2015-2016',
@@ -37,8 +30,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1516.JPG'
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2014-2015',
         'name' => 'Ingenieus',
@@ -51,10 +42,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur1415.jpg'
       ]])
 
-
-
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2013-2014',
         'name' => 'Aantrekkingskracht',
@@ -66,7 +53,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1314_600breed.jpg'
       ]])
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '2012-2013',
@@ -80,8 +66,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1213_600breed.jpg'
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2011-2012',
         'name' => 'Vooruit',
@@ -93,8 +77,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1112_600breed.png'
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '2010-2011',
@@ -108,8 +90,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1011_600breed.png'
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2009-2010',
         'name' => 'Romeo Delta',
@@ -121,8 +101,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0910_600breed.jpg'
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '2008-2009',
@@ -136,8 +114,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0809_600hoog.jpg'
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2007-2008',
         'name' => 'Smakeloos',
@@ -149,9 +125,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0708_600breed.jpg'
       ]])
-
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '2006-2007',
@@ -165,8 +138,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0607_600breed.jpg'
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2005-2006',
         'name' => '',
@@ -178,8 +149,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0506_600breed.jpg'
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '2004-2005',
@@ -193,8 +162,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0405_600breed.jpg'
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2003-2004',
         'name' => '',
@@ -206,8 +173,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0304_640breed.jpg'
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '2002-2003',
@@ -221,8 +186,6 @@
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0203_600breed.jpg'
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2001-2002',
         'name' => '',
@@ -235,8 +198,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '2000-2001',
         'name' => '',
@@ -247,8 +208,6 @@
         ],
         'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0001_600breed.jpg'
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '1999-2000',
@@ -262,8 +221,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1998-1999',
         'name' => '',
@@ -275,8 +232,6 @@
         ],
         'figure' => ''
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '1997-1998',
@@ -290,8 +245,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1996-1997',
         'name' => '',
@@ -303,8 +256,6 @@
         ],
         'figure' => ''
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '1995-1996',
@@ -318,8 +269,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1994-1995',
         'name' => '',
@@ -331,8 +280,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1993-1994',
         'name' => '',
@@ -342,8 +289,6 @@
           ['name' => 'Klaas Jan Wieringa', 'title' => 'Treasurer']],
         'figure' => ''
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '1992-1993',
@@ -355,8 +300,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1991-1992',
         'name' => '',
@@ -366,8 +309,6 @@
           ['name' => 'Maarten van Essen', 'title' => 'Treasurer']],
         'figure' => ''
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '1990-1991',
@@ -379,8 +320,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1989-1990',
         'name' => '',
@@ -390,8 +329,6 @@
           ['name' => 'Hung Le', 'title' => 'Treasurer']],
         'figure' => ''
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '1988-1989',
@@ -403,8 +340,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1987-1988',
         'name' => '',
@@ -414,8 +349,6 @@
           ['name' => 'Gerritjan Wessels', 'title' => 'Treasurer']],
         'figure' => ''
       ]])
-
-      <hr>
 
       @include("pages.association._board", ['board' => [
         'year' => '1986-1987',
@@ -428,8 +361,6 @@
         'figure' => ''
       ]])
 
-      <hr>
-
       @include("pages.association._board", ['board' => [
         'year' => '1984-1986',
         'name' => '',
@@ -439,13 +370,4 @@
           ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
         'figure' => ''
       ]])
-
-
-
-      <hr>
-
-    </div>
-
-  </div>
-
 @endsection

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-7">
-    @if ($board['name'] != '') 
+    @if ($board['name'] != '')
 	<h2 id="{{ $board['year'] }}">Board {{ $board['year'] }} ‘{{ $board['name'] }}’</h2>
     @else
 	<h2 id="{{ $board['year'] }}">Board {{ $board['year'] }}</h2>
@@ -13,7 +13,9 @@
   </div>
   <div class="col-md-5">
     @if ($board['figure'] != '')
-        <img width="100%" src="{{ $board['figure'] }}" class="img-fluid">
+        <img width="100%" src="{{ $board['figure'] }}" class="img-fluid rounded">
     @endif
   </div>
 </div>
+
+<hr/>
