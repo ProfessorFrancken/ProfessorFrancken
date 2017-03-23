@@ -1,14 +1,13 @@
-<h2>
-    {{ $name }}
-    @if ($translated != '')
-        ({{ $translated }})
-    @endif
-</h2>
-
-<p>
-    {{ $slot }}
-</p>
-
-<a class="btn btn-primary" href="/association/committees/{{ $link }}">Visit the {{ $name }} page</a>
-
-<hr/>
+<div class="col-sm-6 col-md-4">
+    <div class="committee-card">
+        <a href="/association/committees/{{ $link }}" class="d-flex align-items-center committee-card__link">
+            @if ($logo != '')
+                <img alt="{{ $name }}" src="{{ $logo }}" class="committee-card__logo"/>
+            @else
+                <h4 class="committee-card__name">
+                    {{ $name }}
+                </h4>
+            @endif
+        </a>
+    </div>
+</div>

@@ -16,7 +16,8 @@ $committees = [
 		'title' => 'Borrelcie',
 		'translated' => 'Party Committee',
 		'description' => 'No society can exist without get-togethers, and that is certainly the case with T.F.V. ‘Professor Francken’! At Francken they are organized by the Borrelcie, or the Party Committee, who make sure that there is regularly something to celebrate at a pub or in the Francken Room, and that the celebration actually takes place. From barbecues to beer-drinking competitions, the Party Committee gets things really humming whilst ensuring that the place is not completely wrecked. To keep up with future activities watch your membership e-mails or check the site regularly.',
-		'link'=> 'borrelcie'
+		'link'=> 'borrelcie',
+    'logo' => 'http://borrelcie.vodka/img/borrelcielogo.png',
 	],
 	[
 
@@ -132,26 +133,25 @@ $committees = [
 	],
 ]
 ?>
-  <h1 class="centered-header">
+  <h1 class="section-header">
     Committees
   </h1>
 
-
-  @foreach ($committees as $committee)
-      @component('pages.association._committee')
+  <div class="row">
+      @foreach ($committees as $committee)
+          @component('pages.association._committee')
           @slot('name')
-              {{ $committee['title'] }}
-          @endslot
-
-          @slot('translated')
-              {{ $committee['translated'] }}
+          {{ $committee['title'] }}
           @endslot
 
           @slot('link')
-              {{ $committee['link'] }}
+          {{ $committee['link'] }}
           @endslot
 
-          {{ $committee['description'] }}
-      @endcomponent
-  @endforeach
+          @slot('logo')
+          {{ $committee['logo'] or '' }}
+          @endslot
+          @endcomponent
+      @endforeach
+  </div>
  @endsection
