@@ -47,3 +47,8 @@
         transform: skewX(-30deg);
     }
 }
+
+// Should be in footer.scss but this implementation is ugly
+footer .header__title {
+    color: white;
+}

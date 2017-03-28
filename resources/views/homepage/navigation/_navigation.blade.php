@@ -1,4 +1,4 @@
-<div class="navigation__menu nav">
+<div class="navigation__menu nav float-right">
     @foreach ($items as $item)
         <div class="navigation__hoverable">
             <a class="navigation__menu-item nav-link active text-nowrap {{ $item['class'] or '' }}" href="{{ $item['url'] }}">

@@ -117,6 +117,7 @@ $top-stroke-width: 6px;
 		left: 0;
     right: 0;
 		background: $primary-color;
+    z-index: 100;
 }
 
 .navigation-list__item {
