@@ -32,6 +32,9 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Francken\Infrastructure\Http\Middleware\VerifyCsrfToken::class,
         ],
+        'api' => [
+            \Francken\Infrastructure\Http\Middleware\EnableCORS::class,
+        ],
     ];
 
     /**

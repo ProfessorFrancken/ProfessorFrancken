@@ -1,5 +1,37 @@
 <?php
 
+use Illuminate\Http\Request;
+
+Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
+    Route::get('pluijmpje', function() {
+
+        $pluijmpje = Storage::disk('local')->get('pluijmpje.json');
+
+        $pushups = json_decode($pluijmpje)->pushups;
+
+        return [
+            'pushups' => $pushups
+        ];
+    });
+
+    Route::post('pluijmpje', function(Request $request) {
+        $clicks = $request->get('clicks') ?? 1;
+
+        $pluijmpje = Storage::disk('local')->get('pluijmpje.json');
+
+        $pushups = json_decode($pluijmpje)->pushups;
+        $pushups += min($clicks, 10);
+
+        Storage::disk('local')->put('pluijmpje.json', json_encode([
+            'pushups' => $pushups
+        ]));
+
+        return [
+            'pushups' => $pushups
+        ];
+    });
+});
+
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', 'MainContentController@index');
