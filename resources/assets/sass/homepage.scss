@@ -69,22 +69,25 @@
 }
 
 .francken-pillar {
-    @extend .rounded-circle;
-
-    background-color: white;
     box-shadow: 1px 1px 5px #aaa;
-    padding: 4em;
-    flex: 0 0 50%;
-    height: 100%;
+    margin: 3em 0;
     text-align: center;
+
+    .card-block {
+        padding: 2rem;
+    }
 }
 
 .francken-pillar__icon {
-    margin-top: -9em;
-    fill: white;
-
     width: 100px;
     height: 100px;
+    margin: -3em auto 1em auto;
+}
+.francken-pillar__footer {
+    background: none;
+    border: none;
+    text-align: center;
+    margin-bottom: 1em;
 }
 
 .about-francken {

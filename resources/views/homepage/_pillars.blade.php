@@ -1,52 +1,63 @@
 <div class="container">
+
+
     <div class="row">
-        <div class="col-md-4 my-5">
-            <div class="francken-pillar text-center">
+        <div class="card-group">
+            <div class="card francken-pillar col-md-4">
                 <img src="/icons/lined/study.svg" alt="" class="francken-pillar__icon">
-                <h3>
-                    Study
-                </h3>
-                <p>
-                    <small>
-                        Prepare your exams well with the exams of last year.
-                        Make your voice heard for the degree programme in the NSOS!
-                    </small>
-                </p>
-                <a class="btn btn-primary" href="/study">Read more</a>
+                <div class="card-block text-center">
+                    <h4 class="card-title">
+                        Study
+                    </h4>
+                    <p class="card-text">
+                        <small>
+                            Prepare your exams well with the exams of last year.
+                            Make your voice heard for the degree programme in the NSOS!
+                        </small>
+                    </p>
+                </div>
+                <div class="card-footer francken-pillar__footer">
+                    <a class="btn btn-primary" href="/career">Read more</a>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4 my-5">
-            <div class="francken-pillar text-center">
+            <div class="card francken-pillar col-md-4">
                 <img src="/icons/lined/coffee.svg" alt="" class="francken-pillar__icon">
-                <h3>
-                    Association
-                </h3>
-                <p>
-                    <small>
-                        Are you curious who we are?
-                        Do you want to know what Applied Physics is about?
-                        Or are you interested in participating in a committee?
-                        Find all you need to know right here!
-                    </small>
-                </p>
-                <a class="btn btn-primary" href="/association">Read more</a>
+                <div class="card-block text-center">
+                    <h4 class="card-title">
+                        Association
+                    </h4>
+                    <p class="card-text">
+                        <small>
+                            Are you curious who we are?
+                            Do you want to know what Applied Physics is about?
+                            Or are you interested in participating in a committee?
+                            Find all you need to know right here!
+                        </small>
+                    </p>
+                </div>
+                <div class="card-footer francken-pillar__footer">
+                    <a class="btn btn-primary" href="/career">Read more</a>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4 my-5">
-            <div class="francken-pillar text-center">
+            <div class="card francken-pillar col-md-4">
                 <img src="/icons/lined/career.svg" alt="" class="francken-pillar__icon">
-                <h3>
-                    Career
-                </h3>
-                <p>
-                    <small>
-                        What happens after graduation?
-                        Do you prefer an academic or a business carreer?
-                        Look here for your carreer orientation.
-                    </small>
-                </p>
-                <a class="btn btn-primary" href="/career">Read more</a>
+                <div class="card-block text-center">
+                    <h4 class="card-title">
+                        Career
+                    </h4>
+                    <p class="card-text">
+                        <small>
+                            What happens after graduation?
+                            Do you prefer an academic or a business carreer?
+                            Look here for your carreer orientation.
+                        </small>
+                    </p>
+                </div>
+                <div class="card-footer francken-pillar__footer">
+                    <a class="btn btn-primary" href="/career">Read more</a>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
