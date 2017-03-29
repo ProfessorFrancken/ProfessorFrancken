@@ -11,7 +11,7 @@
                 </address>
             </div>
 
-            <div class="col-12 col-sm-5 col-md-4 my-3">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 my-3">
                 <h4 class="footer__header h5 mb-3">Contact</h4>
 
                 <div class="footer__body">
