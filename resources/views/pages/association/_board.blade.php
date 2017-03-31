@@ -3,14 +3,14 @@
 <div class="row">
     <div class="col-md-7">
         @if ($board['name'] != '')
-	          <h4 id="{{ $board['year'] }}" class="text-muted">
+	          <h4 id="{{ $board['year'] }}" class="section-header">
                 ‘{{ $board['name'] }}’
                 <small>
                     {{ $board['year'] }}
                 </small>
             </h4>
         @else
-	          <h4 id="{{ $board['year'] }}">
+	          <h4 id="{{ $board['year'] }}" class="section-header">
                 Board of {{ $board['year'] }}
             </h4>
         @endif
