@@ -7,7 +7,9 @@
                 @yield('content')
             </div>
             <div class="col-md-5">
-                @include("homepage._agenda")
+                <div class="agenda-wrapper">
+                    @include("homepage._agenda")
+                </div>
             </div>
         </div>
     </div>
