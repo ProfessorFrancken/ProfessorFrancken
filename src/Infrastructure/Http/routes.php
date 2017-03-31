@@ -42,6 +42,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');
 
+    Route::get('/association/committees', 'CommitteesController@index');
+    Route::get('/association/committees/{committee}', 'CommitteesController@show');
+
     Route::get('/admin', function () {
         return redirect('/admin/overview');
     });
@@ -67,18 +70,18 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['prefix' => 'admin'], function () {
 
-        //committees
-        Route::resource('committee', 'CommitteeController', ['except' => ['edit']]);
 
         //posts: NEWS / BLOG
         Route::resource('post', 'PostController');
 
         Route::resource('activity', 'ActivityController');
 
-        //dit moet nog beter
-        Route::post('committee/search-member', 'CommitteeController@searchMember');
-        Route::post('committee/{committeeId}/member/{memberId}', 'CommitteeController@addMember');
-        Route::delete('committee/{committeeId}/member/{memberId}', 'CommitteeController@removeMember');
+
+        //committees
+        Route::resource('committee', 'Admin\CommitteeController', ['except' => ['edit']]);
+        Route::post('committee/search-member', 'Admin\CommitteeController@searchMember');
+        Route::post('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@addMember');
+        Route::delete('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@removeMember');
 
         Route::get('member', 'MemberController@index');
         Route::post('member/add-member', 'MemberController@addMember');

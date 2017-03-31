@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Infrastructure\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Francken\Application\ReadModelRepository;
