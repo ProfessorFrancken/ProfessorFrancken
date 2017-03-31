@@ -1,18 +1,21 @@
 // Image header
+// The angle that the skewed header image makes
 $angle: 15deg;
-$registration-cta-height: 400px;
-$cta-height: 455px;
+// max-height of the header-image for large screens
+$header-image-height: 455px;
+$header-image-color: darken($secondary-color, 5%);
+$margin-left-header-image: 5em;
 
 .stop-overflow {
     width: 100%;
     overflow: hidden;
 }
 
-.header__registration-cta {
+.header-image {
     width: 100%;
     display: inline-block;
 
-    background: $secondary-color;
+    background: $header-image-color;
 
     position: relative;
 
@@ -20,39 +23,99 @@ $cta-height: 455px;
     overflow: hidden;
 
     min-height: 200px;
+
+    &::before {
+        background-color: $header-image-color;
+        background-image: url($cta-image);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: luminosity;
+
+        opacity: 0.5;
+    }
+
+    &::after {
+        background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0) 85%,
+            $header-image-color 100%
+        );
+    }
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+
 }
 
-.header__registration-cta::before {
-    content: '';
-
-    background-color: $secondary-color;
-    background-image: url($cta-image);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: luminosity;
-
-    position: absolute;
-    width: 52%; // 52 looked just about right :)
+.header-image__body {
+    z-index: 1;
     height: 100%;
-    width: 100%;
 
-    opacity: 0.5;
 }
 
+@include media-breakpoint-up(md) {
+    .header-image {
+        max-height: $header-image-height;
+        border-radius: 0px 0px 0px 20px;
 
-.header__registration-cta::after {
-    content: '';
+        margin-left: 0;
 
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 85%, $secondary-color 100%);
+        transform: skew($angle);
+        transform-origin: top left;
 
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
+        > div > *, &::before, &::after {
+            // "Revert" the skew transformation so the content and background is rendered normally
+            transform: skewX(-$angle);
+            transform-origin: top left;
+        }
+
+        &::after,
+        &::before {
+            width: 52%; // 52 looked just about right :)
+            height: 120%; //$header-image-height;
+        }
+
+    }
+
+    // Negate the margin of header-image so that the body is aligned with content outside the header
+    .header-image__align {
+        margin-left: -$margin-left-header-image;
+    }
 }
 
-.registration-cta {
+@include media-breakpoint-up(lg) {
+    .header-image {
+        margin-left: $margin-left-header-image;
+    }
+
+    .header-image__body {
+        display: block;
+    }
+}
+
+// Let the image header be below the logo
+.header .container-fluid {
+    z-index: 2;
+}
+
+/*
+/ Registration call to action
+*/
+
+.registration-cta__action {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.registration-cta__body {
+    text-align: center;
     margin-top: 3em;
     margin-bottom: 5em;
 
@@ -61,52 +124,15 @@ $cta-height: 455px;
     }
 }
 
-.registration-cta__button {
-    text-align: center;
-    margin-top: 1em;
-}
-
-.registration-cta__body {
-    text-align: center;
-}
-
-
-@include media-breakpoint-up(sm) {
-    .header__registration-cta::before {
-    }
-}
-
 @include media-breakpoint-up(md) {
-    .header__registration-cta {
-        max-height: $cta-height;
-        margin-left: 5em;
-        margin-top: 0;
-        transform: skew($angle);
-        transform-origin: top left;
-        border-radius: 0px 0px 0px 20px;
-
-        > *, &::before, &::after {
-            // "Revert" the skew transformation so the content and background is rendered normally
-            transform: skewX(-$angle);
-            transform-origin: top left;
-        }
-    }
-
-
-    .header__registration-cta::after,
-    .header__registration-cta::before {
-        // Show the gradient, image, and green overlay
-        background-size: cover;
-
-        width: 52%; // 52 looked just about right :)
-        height: 120%; //$cta-height;
-    }
-
     .registration-cta__body {
         text-align: right;
+
+        margin-top: 7em;
+        margin-bottom: 9em;
     }
 
-    .registration-cta__button {
+    .registration-cta__action {
         margin-top: 0;
         border-left: 3px white solid;
         padding-bottom: 1.5em;
@@ -116,20 +142,37 @@ $cta-height: 455px;
 }
 
 @include media-breakpoint-up(lg) {
-    .registration-cta {
-        display: block;
-    }
     .registration-cta__body h1 {
         font-size: 2.5rem;
     }
+}
 
-    .registration-cta {
-        z-index: 1;
-        margin-top: 7em;
-        margin-bottom: 9em;
+.header-image__title {
+    margin: 3em 0;
+
+    color: white;
+
+    h2 {
+        // margin-top: 5em;
+        color: white;
+        font-size: 3em;
+        font-weight: bold;
     }
 }
 
-.header .container-fluid {
-    z-index: 1;
+.header-image--dark-overlay {
+    background-color: #98bdb9;
+
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 85%,
+        $header-image-color 100%
+    );
+}
+
+@include media-breakpoint-up(md) {
+    .header-image__title {
+        margin: 6em 0 4em;
+    }
 }

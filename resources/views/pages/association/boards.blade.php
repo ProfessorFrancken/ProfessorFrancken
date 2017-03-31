@@ -2,10 +2,6 @@
 
 @section('content')
 
-  <h1 class="section-header">
-    Boards
-  </h1>
-
       @include("pages.association._board", ['board' => [
         'year' => '2016-2017',
         'name' => 'Buitengewoon',
@@ -370,4 +366,14 @@
           ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
         'figure' => ''
       ]])
+@endsection
+
+@section('header-image')
+    @component('homepage.header._header_image')
+        <div class="header-image__title">
+            <h2>
+                Boards
+            </h2>
+        </div>
+        @endcomponent
 @endsection
