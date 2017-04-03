@@ -1,7 +1,7 @@
 @extends('homepage.layout')
 
 @section('main-content')
-    <div class="container">
+    <div class="container my-4">
         <div class="row">
             <div class="col">
                 @yield('content')

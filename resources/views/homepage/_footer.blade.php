@@ -1,4 +1,4 @@
-<footer class="mt-5">
+<footer>
     <div class="container-fluid">
         <div class="footer__contact-background footer__contact row">
             <div class="col-12 col-sm-3 col-md-2 my-3">

@@ -1,6 +1,4 @@
-<div class="container">
-
-
+<div class="container my-5">
     <div class="row">
         <div class="card-group">
             <div class="card francken-pillar col-md-4">
