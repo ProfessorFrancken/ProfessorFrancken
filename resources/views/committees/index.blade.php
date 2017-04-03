@@ -1,4 +1,4 @@
-@extends('pages.association')
+@extends('homepage.one-column-layout')
 
 @section('content')
   <h1 class="section-header">

@@ -1,4 +1,5 @@
-@extends('pages.association.committees')
+@extends('committees.show')
+
 
 @push('css')
 <style type="text/css">
@@ -195,12 +196,16 @@ p {
             <h2 class="brouwcie-title text-center">
                 Francken brouwcommissie
             </h2>
-            <img alt="Franckenators" class="img-responsive aligncenter" src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2015/01/Brouwcie.png" width="720">
+            <img
+                alt="Franckenators"
+                class="img-fluid aligncenter"
+                src="http://www.professorfrancken.nl/wordpress/wp-content/uploads/2015/01/Brouwcie.png"
+                width="720"
+            />
         </div>
     </div>
     <div class="row">
-
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2 class="brouwcie-title">
                 Informatie
             </h2>
@@ -211,7 +216,7 @@ p {
                 Om het bier te beschrijven moet gezocht worden naar iets dat heeft geleid tot het ontstaan ervan. Graag geloven wij dat de studie technische natuurkunde een belangrijk deel heeft bijgedragen aan het beginnen van dit avontuur. Het is echter de locatie die ons allen bindt. Al sinds vele jaren is er een plek in Nijenborgh waar altijd koffie klaarstaat, er vele vierde mannen rondlopen en de koffie na vier uur vervangen wordt door bier. Dit alles een een gebouw met de sfeer waar niet elke kroeg aan kan tippen. Het bier van de Brouwcie is dan ook een ode aan deze mooie plaats. een ode aan de wetenschappers die er werken en een ode aan de studenten die er studeren. Het is een ode aan gebouw 13…
             </p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2 class="brouwcie-title">
                 Consumptie
             </h2>
@@ -226,7 +231,7 @@ p {
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2 class="brouwcie-title">
                 Bieren in de maak
             </h2>
@@ -265,7 +270,7 @@ p {
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2 class="brouwcie-title">
                 Bieren
             </h2>
@@ -314,8 +319,12 @@ p {
             </div>
         </div>
 
-        <div class="col-md-6 col-md-pull-6">
+        <div class="col-md-12">
             @yield('contact-form')
         </div>
     </div>
+
+    <hr/>
+
+    @include('committees._members', ['members' => array_first($committee['years']) ])
 @endsection

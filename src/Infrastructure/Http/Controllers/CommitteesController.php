@@ -8,147 +8,324 @@ final class CommitteesController
 {
     public function __construct()
     {
-        $volumeNumber = 21;
-        $this->committees = [
-            [
-                'title' => 'Alumni Committee',
-                'translated' => '',
-                'description' => 'The Alumni Committee has the noble task of maintaining contact with the alumni of the association. Besides this, every two and a half year the Alumni Committee organises an event for alumni.',
-                'link'=> 'alumnicie'
-            ],
-            [
-
-                'title' => 'Borrelcie',
-                'translated' => 'Party Committee',
-                'description' => 'No society can exist without get-togethers, and that is certainly the case with T.F.V. ‘Professor Francken’! At Francken they are organized by the Borrelcie, or the Party Committee, who make sure that there is regularly something to celebrate at a pub or in the Francken Room, and that the celebration actually takes place. From barbecues to beer-drinking competitions, the Party Committee gets things really humming whilst ensuring that the place is not completely wrecked. To keep up with future activities watch your membership e-mails or check the site regularly.',
-                'link'=> 'borrelcie',
-                'logo' => 'http://borrelcie.vodka/img/borrelcielogo.png',
-            ],
-            [
-
-                'title' => 'Brouwcie',
-                'translated' => 'Brewing Committee',
-                'description' => '(DUTCH PAGE) De Brouwcie vond haar oorsprong in een groep op bier georiënteerde studenten van de TFV. Voeg bij het idee om eens zelf een biertje te brouwen bij een vleugje ‘gewoon gaan’ en het duurt niet lang voordat er een pruttelende ketel op het vuur staat. De Commissie is nu al toe aan zijn tweede en verbeterde brouwinstallatie en blijft stevig door automatiseren.',
-                'link'=> 'brouwcie'
-            ],
-            [
-
-                'title' => 'Buixie',
-                'translated' => 'Foreign Excursion Committee',
-                'description' => 'Every year, at the end of the third examination period, the Buixie, or the Foreign Field Trip Committee, organizes a trip to a European country. Last year we went to Scotland! Various activities take place during the trip, including visits to companies and universities to give the participants some idea of what goes on in the world of applied physics outside Groningen. At least one case study has to be carried out for the trip: this is usually arranged by one of the Association´s sponsors.',
-                'link'=> 'buixie'
-            ],
-            [
-
-                'title' => 'Compucie',
-                'translated' => 'Computer Committee',
-                'description' => 'Francken has had its own server since 2007. This hosts the website, the files of the board, committees and members, and music. The Compucie, or the Computer Committee, is responsible for keeping the server and the board’s and members’ workstations up and running. ',
-                'link'=> 'compucie'
-            ],
-            [
-
-                'title' => 'Fotocie',
-                'translated' => 'Photo Committee',
-                'description' => 'A Franckenmember is supposed to be in good condition. Fortunately there is a committee that takes responsibility for this. The Fraccie takes care of the state of our ears, eyes, minds, livers and senses, so that our Franckenmembers remain their beauty. The training schedule consists among other things movie nights, the yearly jam session, members weekends, the poker competition and the Christmas dinner. Keep an eye on the posters and sign up at the form on the Franckendoor.',
-                'link'=> 'fotocie'
-            ],
-            [
-
-                'title' => 'Fraccie',
-                'translated' => 'Francken Activity Committee',
-                'description' => 'A Franckenmember is supposed to be in good condition. Fortunately there is a committee that takes responsibility for this. The Fraccie takes care of the state of our ears, eyes, minds, livers and senses, so that our Franckenmembers remain their beauty. The training schedule consists among other things movie nights, the yearly jam session, members weekends, the poker competition and the Christmas dinner. Keep an eye on the posters and sign up at the form on the Franckendoor.',
-                'link'=> 'fraccie'
-            ],
-            [
-
-                'title' => 'Francken Vrij',
-                'translated' => '',
-                'description' => "One of the few regular events in the student lives of Francken members is the appearance of our popular science magazine Francken Vrij. It comes out three times a year and began volume {$volumeNumber} this academic year. Each edition contains some regular physics columns, looking, for instance, at one of the applied physics departments at the University of Groningen. There is also space devoted to the Association’s activities, such as the field trips and drinks parties organized by the committees.",
-                'link'=> 'franckenvrij'
-            ],
-            [
-
-                'title' => 'Intercie',
-                'translated' => 'International Committee',
-                'description' => 'UPDATE NEEDED',
-                'link'=> 'intercie'
-            ],
-            [
-
-                'title' => 'Kascie',
-                'translated' => 'Audit Committee',
-                'description' => 'The Audit Committee is a committee of the General Membership Assembly that is responsible for overseeing the association’s financial management. It presents a written report of its findings to the Assembly, which is read out there by one of the committee members. It is also tasked with advising the board’s treasurer on request or on its own initiative.',
-                'link'=> 'kascie'
-            ],
-            [
-
-                'title' => 'Oefensescie',
-                'translated' => 'Practice Session Committee',
-                'description' => 'The Practice Session Committee ensures that 10-15 practice sessions a year are held in difficult first-year subjects such as calculus, linear algebra and mechanics. Old exam papers are discussed under the supervision of experienced senior students, and students have an opportunity to ask the questions that so perplex them.',
-                'link'=> 'oefensescie'
-            ],
-            [
-
-                'title' => 'Representacie',
-                'translated' => 'Presentation Committee',
-                'description' => 'The Presentation Committee is responsible for all the decorative posters, television banners and this website.',
-                'link'=> 'representacie'
-            ],
-            [
-
-                'title' => 's[ck]rip(t|t?c)ie',
-                'translated' => 'Script Committee',
-                'description' => 'The Scripting Committee provides every device in the Francken Room capable of executing source code with computerized craziness, wanted or unwanted. Its first triumph was the four-o’clock-beer-time clock on the television, but if we are to believe the rumours going the rounds, there is yet more digital anarchy in store for us.',
-                'link'=> 'scriptcie'
-            ],
-            [
-
-                'title' => 'Sjaarscie',
-                'translated' => 'First Year`s Committee',
-                'description' => 'SOMETHING SOMETHING FIRST YEAR',
-                'link'=> 'sjaarscie'
-            ],
-            [
-
-                'title' => 'Sportcie',
-                'translated' => 'Sport Committee',
-                'description' => 'Rumours are spreading about how the members of T.F.V. ‘Professor Francken’ manage to always stay fit. Are they following a carbonhydrate free diet? Do they participate the 30 Day Ab Challenge? Does the presence of a SEM accelerate the metabolism? Actually, we all owe the Sportcie for this. With different sporty activities throughout the year, we all stay fit and don’t have to worry about a beer belly.',
-                'link'=> 'sportcie'
-            ],
-            [
-
-                'title' => 'Sympcie',
-                'translated' => 'Symposium Committee',
-                'description' => 'Every year the Symposium Committee organizes a symposium on a variety of applied physics topics, at which the participants find out what kinds of research various universities are doing and what is involved in researching new products or applications in industry. In past years symposia have been held with the themes: ‘Growing Smaller’, ‘Light Matters’ and ‘Sense. Compute. Control.’.',
-                'link'=> 'sympcie'
-            ],
-            [
-
-                'title' => 'Takcie',
-                'translated' => 'Hitchhiking Committee',
-                'description' => 'NEEDZ MOAR TEXT',
-                'link'=> 'takcie'
-            ],
-            [
-
-                'title' => 'Wiecksie',
-                'translated' => 'Member Weekend Committee',
-                'description' => 'This committee organises those weekends away for those who can’t get enough of T.F.V. ‘Professor Francken’ during regular weeks.',
-                'link'=> 'wiecksie'
-            ],
-        ];
-
+        $this->committees = $this->load();
     }
+
     public function index()
     {
-        $committees = $this->committees;
+        $committees = $this->load();
 
-        return view('pages.association.committees')
+        return view('committees.index')
             ->with('committees', $committees);
     }
 
     public function show($link)
     {
-        return view('pages.association.committees.' . $link);
+        $committee = array_first(
+            array_filter(
+                $this->load(),
+                function ($committee) use ($link) {
+                    return $committee['link'] === $link;
+                }
+            )
+        );
+
+        if (! is_null($committee['page'])) {
+            return view($committee['page'])
+                ->with('committee', $committee)
+                ->with('committees', $this->load());
+        }
+
+        return view('committees.show')
+            ->with('committee', $committee)
+            ->with('committees', $this->load());
+    }
+
+    private function load()
+    {
+        $committees = [
+            [
+                "id" => 35,
+                "title" => "Alumnicie",
+                "email" => "alumni@professorfrancken.nl",
+                "logo" => "https://api.adorable.io/avatars/75/35.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "alumnicie",
+                "page" => "pages.association.committees.alumnicie",
+                "years" => ["2016" => []]
+            ],
+            [
+                "id" => 19,
+                "title" => "Borrelcie",
+                "email" => "",
+                "logo" => "http://borrelcie.vodka/img/borrelcielogo.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "borrelcie",
+                "page" => "pages.association.committees.borrelcie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 33,
+                "title" => "Brouwcie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/33.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "brouwcie",
+                "page" => "pages.association.committees.brouwcie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 2,
+                "title" => "Buixie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/2.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "buixie",
+                "page" => "pages.association.committees.buixie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 53,
+                "title" => "CoDcie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/53.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "codcie",
+                "page" => "pages.association.committees.codcie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 1,
+                "title" => "Compucie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/1.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "compucie",
+                "page" => "pages.association.committees.compucie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 21,
+                "title" => "Fotocie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/21.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "fotocie",
+                "page" => "pages.association.committees.fotocie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 9,
+                "title" => "Fraccie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/9.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "fraccie",
+                "page" => "pages.association.committees.fraccie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 10,
+                "title" => "Francken Vrij",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/10.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "francken-vrij",
+                "page" => "pages.association.committees.francken-vrij",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 32,
+                "title" => "Intercie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/32.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "intercie",
+                "page" => null,
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 12,
+                "title" => "Kascie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/12.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "kascie",
+                "page" => "pages.association.committees.kascie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 18,
+                "title" => "Oefensescie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/18.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "oefensescie",
+                "page" => "pages.association.committees.oefensescie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 5,
+                "title" => "Representacie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/5.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "representacie",
+                "page" => "pages.association.committees.representacie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 24,
+                "title" => "Sjaarscie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/24.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "sjaarscie",
+                "page" => "pages.association.committees.sjaarcie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 29,
+                "title" => "Sportcie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/29.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "sportcie",
+                "page" => null,
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 22,
+                "title" => "Sympcie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/22.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "sympcie",
+                "page" => "pages.association.committees.sympcie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 28,
+                "title" => "Takcie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/28.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "takcie",
+                "page" => null,
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 27,
+                "title" => "Wiecksie",
+                "email" => "",
+                "logo" => "https://api.adorable.io/avatars/75/27.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "wiecksie",
+                "page" => "pages.association.committees.wiecksie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ],
+            [
+                "id" => 4,
+                "title" => "s[ck]rip(t|t?c)ie",
+                "email" => "scriptcie@professorfrancken.nl",
+                "logo" => "https://api.adorable.io/avatars/75/4.png",
+                "description" => "",
+                "translated" => "",
+                "link" => "sckripttcie",
+                "page" => "pages.association.committees.scriptcie",
+                "years" => [
+                    "2016" => [
+                    ]
+                ]
+            ]
+        ];
+
+        // Use faker to add some random members
+        $faker = \App::make(\Faker\Generator::class);
+        $faker->seed(31415);
+
+        foreach ($committees as &$committee) {
+            $members = array_map(function () use ($faker) {
+                return [
+                    'id' => $faker->randomNumber,
+                    'firstname' => $faker->firstName,
+                    'surname' => $faker->lastname,
+                    'email' => $faker->email,
+                    'created_at' => $faker->dateTime->format('Y-m-d H:i:s')
+                ];
+            }, range(0, $faker->numberBetween(2, 6)));
+            $committee['years']['2016'] = $members;
+        }
+
+        return $committees;
     }
 }
