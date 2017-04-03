@@ -14,11 +14,15 @@ $brand-danger: $red !default;
 
 // Body
 $body-color: #001744;
+$body-color: #001841;
+$body-color: #666;
 $body-bg: #FAFAFA;
 $footer-bg: #E8E8E8;
 
+$headings-color: $primary-color;
+
 // Links
-$link-color: $secondary-color !default;
+$link-color: $primary-color !default;
 
 // Fonts
 $font-family-sans-serif: 'PT Sans', sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;

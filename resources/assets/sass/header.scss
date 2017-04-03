@@ -53,6 +53,10 @@ $top-stroke-width: 6px;
     font-weight: 400;
     font-size: 1.2rem;
     color: $primary-color;
+
+    &:hover {
+        color: $secondary-color;
+    }
 }
 
 .navigation__sub-menu {
