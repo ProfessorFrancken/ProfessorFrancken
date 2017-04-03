@@ -12,6 +12,7 @@ use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
 use Francken\Application\Committees\CommitteesListRepository;
+use Francken\Infrastructure\Http\Controllers\Controller;
 use DB;
 
 class CommitteeController extends Controller
