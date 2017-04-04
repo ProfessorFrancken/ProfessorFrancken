@@ -13,7 +13,7 @@
                         alt="Generic placeholder image"
                         style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
                     >
-                    <div class="media-body">
+                    <div class="media-body align-self-center">
                         <h5 class="mt-0">
                             {{ $member['firstname'] }}
                             {{ $member['surname'] }}
