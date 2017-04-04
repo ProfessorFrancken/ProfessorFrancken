@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-md-4">
     <div class="committee-card">
-        <a href="/association/committees/{{ $link }}" class="d-flex align-items-center committee-card__link">
+        <a href="/association/committees/{{ $link }}" class="committee-card__link">
             @if ($logo != '')
                 <img alt="{{ $name }}" src="{{ $logo }}" class="committee-card__logo"/>
             @else
