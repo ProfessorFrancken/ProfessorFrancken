@@ -7,7 +7,7 @@
 
   <div class="row">
       @foreach ($committees as $committee)
-          @component('pages.association._committee')
+          @component('committees._committee')
           @slot('name')
           {{ $committee['title'] }}
           @endslot
