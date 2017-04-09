@@ -3,6 +3,8 @@
 namespace Francken\Infrastructure;
 
 use Broadway\EventSourcing\EventSourcingRepository;
+use Francken\Application\Activities\Activity;
+use Francken\Application\Activities\ActivityRepository;
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\BookDetailsRepositoryI;
@@ -76,6 +78,10 @@ final class AppServiceProvider extends ServiceProvider
         [
             FranckenVrijRepository::class,
             ['francken_vrij', Edition::class, 'id']
+        ],
+        [
+            ActivityRepository::class,
+            ['activities', Activity::class, 'id']
         ],
     ];
 

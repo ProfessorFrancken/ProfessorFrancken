@@ -3,54 +3,32 @@
 @section('content')
   <h1 class="page-header">Activities</h1>
 
-  <table class="table table-hover">
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th></th>
-    </tr>
-
-      <tr>
-        <td>1</td>
-        <td>Crash and Compile</td>
-        <td>Beer and programming!</td>
-        <td><a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
-      </tr>
-  </table>
-
-  <h3>Create an activity</h3>
-
-  <form action="{{ url('') }}" method="POST">
-    {!! csrf_field() !!}
-
-    <div class="form-group">
-      <label class="control-label">Title</label>
-      <input type="text" class="form-control" name="title">
+  <div class="row">
+    <div class="col-sm-4">
+      @include("admin.activity._create")
     </div>
 
-    <div class="form-group">
-      <label class="control-label">Description</label>
-      <input type="text" class="form-control" name="description">
+    <div class="col-sm-8">
+      <table class="table table-hover">
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+
+        <tr>
+          <td>1</td>
+          <td>Crash and Compile</td>
+          <td>Beer and programming!</td>
+          <td>
+            <button class="btn btn-default btn-xs">
+              <i class="fa fa-edit"></i>
+              edit
+            </button>
+          </td>
+        </tr>
+      </table>
     </div>
-
-    <div class="form-group">
-      <label class="control-label">Location</label>
-      <input type="text" class="form-control" name="location">
-    </div>
-
-    <div class="form-group">
-      <label class="control-label">Date-time (dd/mm/yyyy hh:mm)</label>
-      <input type="text" class="form-control" name="date-time">
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Is published?
-      </label>
-    </div>
-
-    <button type="submit" class="btn btn-default">Create Activity</button>
-
-  </form>
+  </div>
 @endsection

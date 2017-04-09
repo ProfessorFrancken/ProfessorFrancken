@@ -42,14 +42,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');
 
-    Route::get('/admin', function () {
-        return redirect('/admin/overview');
-    });
-
-    Route::get('/admin/overview', 'DashboardController@overview');
-    Route::get('/admin/analytics', 'DashboardController@analytics');
-    Route::get('/admin/export', 'DashboardController@export');
-
     // Proof of concept login & logout, currently not using a spcific user
     // so that we can show this potential functionality at the ALV
     Route::get('/login', function() {
@@ -65,17 +57,27 @@ Route::group(['middleware' => ['web']], function () {
         }
     });
 
+    Route::get('/admin', function () {
+        return redirect('/admin/overview');
+    });
+
     Route::group(['prefix' => 'admin'], function () {
 
-        //committees
+        Route::get('/', function () {
+            return redirect('/admin/overview');
+        });
+
+        Route::get('overview', 'DashboardController@overview');
+        Route::get('analytics', 'DashboardController@analytics');
+        Route::get('export', 'DashboardController@export');
+
         Route::resource('committee', 'CommitteeController', ['except' => ['edit']]);
 
-        //posts: NEWS / BLOG
         Route::resource('post', 'PostController');
 
-        Route::resource('activity', 'ActivityController');
+        Route::resource('activity', 'Admin\ActivityController');
 
-        //dit moet nog beter
+        //todo: dit moet nog beter
         Route::post('committee/search-member', 'CommitteeController@searchMember');
         Route::post('committee/{committeeId}/member/{memberId}', 'CommitteeController@addMember');
         Route::delete('committee/{committeeId}/member/{memberId}', 'CommitteeController@removeMember');

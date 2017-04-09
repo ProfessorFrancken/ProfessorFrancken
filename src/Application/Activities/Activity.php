@@ -65,9 +65,23 @@ final class Activity implements ReadModelInterface, SerializableInterface
         return $this->published;
     }
 
+    public function setPublished()
+    {
+        $activity = clone $this;
+        $activity->published = true;
+        return $activity;
+    }
+
     public function category() : string
     {
         return $this->category;
+    }
+
+    public function setCategory(string $category)
+    {
+        $activity = clone $this;
+        $activity->category = $category;
+        return $activity;
     }
 
     public function schedule() : Schedule
@@ -76,6 +90,15 @@ final class Activity implements ReadModelInterface, SerializableInterface
             'startTime' => $this->schedule_start,
             'endTime' => $this->schedule_end
         ]);
+    }
+
+    public function setSchedule(Schedule $schedule)
+    {
+      $activity = clone $this;
+      $serialized_schedule = $schedule->serialize();
+      $activity->schedule_start = $serialized_schedule['startTime'];
+      $activity->schedule_end = $serialized_schedule['endTime'];
+      return $activity;
     }
 
     public function location() : Location
@@ -88,9 +111,27 @@ final class Activity implements ReadModelInterface, SerializableInterface
         ]);
     }
 
+    public function setLocation(Location $location)
+    {
+        $activity = clone $this;
+        $serialized_location = $location->serialize();
+        $activity->location_name = $serialized_location['name'];
+        $activity->location_postal_code = $serialized_location['postalCode'];
+        $activity->location_street_name = $serialized_location['streetName'];
+        $activity->location_street_number = $serialized_location['streetNumber'];
+        return $activity;
+    }
+
     public function participants() : array
     {
         return $this->participants;
+    }
+
+    public function addMember(MemberId $memberId)
+    {
+        $activity = clone $this;
+        $activity->participants[] = $memberId;
+        return $activity;
     }
 
     private function extractScheduleAndLocation(Schedule $schedule, Location $location)

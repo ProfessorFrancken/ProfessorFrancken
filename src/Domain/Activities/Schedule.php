@@ -50,7 +50,6 @@ final class Schedule implements SerializableInterface
 
     public function serialize()
     {
-
         return [
             'startTime' => $this->startTime->format(\DateTime::ISO8601),
             'endTime' => is_null($this->endTime) ? null : $this->endTime->format(\DateTime::ISO8601)

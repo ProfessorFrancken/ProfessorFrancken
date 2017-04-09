@@ -34,6 +34,8 @@ final class Activity extends AggregateRoot
         Location $location,
         $type
     ) {
+        Activity::assertCategoryIsValid($type);
+
         $activity = new Activity;
 
         $activity->apply(new ActivityPlanned($id, $name, $description, $schedule, $location, $type));
@@ -61,7 +63,7 @@ final class Activity extends AggregateRoot
 
     public function recategorize($category)
     {
-        $this->assertCategoryIsValid($category);
+        Activity::assertCategoryIsValid($category);
 
         if ($this->category === $category) {
             return;
@@ -132,7 +134,7 @@ final class Activity extends AggregateRoot
         return $this->id;
     }
 
-    private function assertCategoryIsValid($category)
+    private static function assertCategoryIsValid($category)
     {
         if (! in_array($category, [
             Activity::SOCIAL,

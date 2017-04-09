@@ -58,7 +58,7 @@
             <li><a href="/admin/member">Members</a></li>
             <li><a href="/admin/committee">Committees</a></li>
             <li><a href="/admin/blog">Blog</a></li>
-            <li><a href="/admin/activities">Activities</a></li>
+            <li><a href="/admin/activity">Activities</a></li>
             <li><a href="/admin/francken-vrij">Francken Vrij</a></li>
           </ul>
         </div>
