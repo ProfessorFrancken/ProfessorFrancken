@@ -7,11 +7,11 @@
             The latest news
         </h2>
 
-        <div class="ribbon__items row align-items-stretch">
+        <div class="ribbon__items row no-gutters align-items-stretch my-5">
             @foreach (range(1, 12) as $r)
-            <div class="col-md-4 news-item">
+            <div class="col-md-6 col-lg-4" style="border-bottom: thin solid #eee; border-top: thin solid #eee;">
                 <article class="h-100 preview-item d-flex flex-column justify-content-between">
-                    <div style="">
+                    <div>
                         <div class="news-item__header">
                             <span class="news-item__date badge preview-item__date">
                                 {{ $faker->date('d M Y') }}
