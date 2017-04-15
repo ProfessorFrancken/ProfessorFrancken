@@ -14,3 +14,12 @@
     width: 88px;
     border-bottom: solid 3px $secondary-color-dark;
 }
+
+.section-header--centered {
+    text-align: center;
+
+    &:before {
+        width: 10%;
+        left: 50% - 10% / 2;
+    }
+}

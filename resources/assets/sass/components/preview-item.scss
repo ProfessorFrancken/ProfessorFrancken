@@ -1,0 +1,17 @@
+.preview-item {
+    padding: 1em;
+    transition: background 0.25s;
+
+    &:hover {
+        background: #efefef;
+    }
+}
+
+.preview-item__date {
+    background: #cccccc;
+    color: white;
+}
+
+.preview-item__title {
+    color: $primary-color;
+}
