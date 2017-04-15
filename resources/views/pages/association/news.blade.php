@@ -38,5 +38,15 @@
             </div>
             @endforeach
         </div>
+
+        <div class="d-flex justify-content-between">
+            <a class="link-to-all-dark arrow" href="/association/news">
+               Older news 
+            </a>
+
+            <a class="link-to-all-dark arrow" href="/association/news">
+                Newer news
+            </a>
+        </div>
     </div>
 @endsection
