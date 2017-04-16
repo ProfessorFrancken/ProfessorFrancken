@@ -32,7 +32,7 @@
                     </div>
 
                     <div>
-                        <button class="btn btn-inverse">Read more</button>
+                        <a class="btn btn-inverse" href="/association/news/item">Read more</a>
                     </div>
                 </article>
             </div>
