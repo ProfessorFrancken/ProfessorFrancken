@@ -39,13 +39,9 @@
             @endforeach
         </div>
 
-        <div class="d-flex justify-content-between">
-            <a class="link-to-all-dark arrow" href="/association/news">
-               Older news 
-            </a>
-
-            <a class="link-to-all-dark arrow" href="/association/news">
-                Newer news
+        <div class="text-center">
+            <a href="/association/news/archive" class="link-to-all-dark">
+                Visit the news archive                
             </a>
         </div>
     </div>
