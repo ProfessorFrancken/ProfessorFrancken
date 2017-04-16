@@ -102,14 +102,14 @@ $news = array_reverse(
                 <div class="form-group row">
                     <label for="example-date-input" class="col-5 col-form-label">Published before</label>
                     <div class="col-7">
-                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                        <input class="form-control" type="date" id="example-date-input">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="example-date-input" class="col-5 col-form-label">Published after</label>
                     <div class="col-7">
-                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                        <input class="form-control" type="date" id="example-date-input">
                     </div>
                 </div>
 
