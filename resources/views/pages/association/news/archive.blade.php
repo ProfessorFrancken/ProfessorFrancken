@@ -113,7 +113,7 @@ $news = array_reverse(
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Apply filters</button>
+                <button type="submit" class="btn btn-block btn-primary">Apply filters</button>
             </form>
         </li>
     </ul>
