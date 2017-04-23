@@ -27,6 +27,26 @@
         {{ $faker->paragraph($faker->numberBetween(5, 11)) }}
         </p>
 
+        @if ($faker->boolean(70))
+        <p>
+            @if ($faker->boolean(33))
+                \[
+                    H(x, y) = \frac{1}{2} y^2 + V(x).
+                \]
+            @elseif ($faker->boolean(33))
+                \(
+                    \frac{df}{dt} = (\frac{\partial}{\partial t} + \nabla_x + \nabla_\xi) f(x, \xi, t) = \Omega(f)
+                \)
+            @else
+                $$
+                f(x) = \int_{-\infty}^\infty
+                \hat f(\xi)\,e^{2 \pi i \xi x}
+                \,d\xi
+                $$
+            @endif
+        </p>
+        @endif
+
         @if ($faker->boolean(30))
             <img class="img-fluid my-3" src="http://pipsum.com/{{ $faker->numberBetween(800, 1200) }}x{{ $faker->numberBetween(100, 600) }}.jpg">
         @endif
