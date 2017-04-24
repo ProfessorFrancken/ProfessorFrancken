@@ -9,15 +9,15 @@
       @foreach ($committees as $committee)
           @component('committees._committee')
           @slot('name')
-          {{ $committee['title'] }}
+          {{ $committee->name() }}
           @endslot
 
           @slot('link')
-          {{ $committee['link'] }}
+          {{ $committee->link() }}
           @endslot
 
           @slot('logo')
-          {{ $committee['logo'] or '' }}
+          {{ $committee->logo() }}
           @endslot
           @endcomponent
       @endforeach

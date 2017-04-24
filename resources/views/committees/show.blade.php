@@ -3,19 +3,19 @@
 @section('content')
 
     <div class="text-center">
-        <img class="img-fluid" alt="" src="{{ $committee['logo'] }}"/>
+        <img class="img-fluid" alt="" src="{{ $committee->logo() }}"/>
     </div>
 
     <h2 class="section-header">
-        {{ $committee['title'] }}
+        {{ $committee->name() }}
     </h2>
 
 
-    @yield('committee-content', $committee['description'])
+    @yield('committee-content')
 
     <hr/>
 
-    @include('committees._members', ['members' => array_first($committee['years']) ])
+    @include('committees._members', ['members' => $committee->members() ])
 @endsection
 
 @section('aside')
@@ -31,25 +31,30 @@
 
             </li>
 
-            @foreach ($committees as $committe)
+            {{-- Mark the active committee with a highlighted background --}}
+            <?php $id = $committee->id(); ?>
+
+            @foreach ($committees as $committee)
 
                 <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
                     <a
-                        href="/association/committees/{{ $committe['link'] }}"
-                        class="aside-link {{ $committe['id'] == $committee['id'] ? 'aside-link--active' : '' }}"
+                        href="/association/committees/{{ $committee->link() }}"
+                        class="aside-link {{ $committee->id() == $id ? 'aside-link--active' : '' }}"
                     >
                         <div class="media align-items-center">
                             <div class="media-body">
                                 <h5 class="agenda-item__header">
-                                    {{ $committe['title'] }}
+                                    {{ $committee->name() }}
                                 </h5>
                             </div>
-                            <img
-                                class="rounded d-flex ml-3"
-                                src="{{ $committe['logo'] or '' }}"
-                                alt="{{ $committe['title'] }}'s logo"
-                                style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
+                            @if (! is_null($committee->logo()))
+                                <img
+                                    class="rounded d-flex ml-3"
+                                    src="{{ $committee->logo() }}"
+                                    alt="{{ $committee->name() }}'s logo"
+                                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
                             >
+                            @endif
                         </div>
                     </a>
 

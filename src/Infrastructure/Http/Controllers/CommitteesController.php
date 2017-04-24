@@ -28,10 +28,7 @@ final class CommitteesController
         $committees = $this->committees->list();
         $committee = $this->committees->findByLink($link);
 
-
-        $view = is_null($committee['page'])
-            ? view('committees.show')
-            : view($committee['page']);
+        $view = view($committee->page());
 
         return $view->with('committee', $committee)
             ->with('committees', $committees);

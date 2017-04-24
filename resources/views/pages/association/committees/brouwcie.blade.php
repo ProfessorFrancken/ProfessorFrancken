@@ -326,5 +326,5 @@ p {
 
     <hr/>
 
-    @include('committees._members', ['members' => array_first($committee['years']) ])
+    @include('committees._members', ['members' => $committee->members() ])
 @endsection
