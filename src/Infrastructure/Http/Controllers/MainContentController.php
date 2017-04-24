@@ -105,10 +105,16 @@ class MainContentController extends Controller
      */
     private function getEditUrlForThisPage(string $page) : string
     {
-        $stringfromfile = file(base_path('.git/HEAD'), FILE_USE_INCLUDE_PATH);
-        $firstLine = $stringfromfile[0];
-        $explodedstring = explode("/", $firstLine, 3);
-        $branchname = trim(preg_replace('/\s+/', ' ', $explodedstring[2]));
+        $branchname = '';
+
+        try {
+            $stringfromfile = file(base_path('.git/HEAD'), FILE_USE_INCLUDE_PATH);
+            $firstLine = $stringfromfile[0];
+            $explodedstring = explode("/", $firstLine, 3);
+            $branchname = trim(preg_replace('/\s+/', ' ', $explodedstring[2]));
+        } catch (\Exception $e) {
+            $branchname = 'master';
+        }
 
         return "https://github.com/ProfessorFrancken/ProfessorFrancken/edit/${branchname}/resources/views/pages/${page}.blade.php";
     }
