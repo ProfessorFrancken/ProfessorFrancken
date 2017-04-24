@@ -1,5 +1,5 @@
 <style>
- .header__registration-cta::before {
+ .header-image::before {
      background-image: url(@yield('header-image-url', '/images/header/board-buitengewoon.jpg')) !important;
  }
 </style>
