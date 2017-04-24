@@ -3,19 +3,20 @@ Menu = (function(){
 	  var activeClass = 'navigation-list__item--active-sub-list',
 		    $mainMenu;
 
-	  function collapse(){
+	  function collapse(e){
+        if (e.isPropagationStopped()) {
+            return;
+        }
+
         collapseSubMenu();
 		    $mainMenu.removeClass('navigation-list--active');
 	  }
 
     function collapseSubMenu() {
-        console.log('collapse sub menu');
 	      $('.' + activeClass).removeClass(activeClass);
     }
 
-
 	  function showSubMenu(e){
-
 		    // Stop bubbling up the DOM.
 		    e.stopPropagation();
 		    e.preventDefault();
@@ -82,7 +83,7 @@ Menu = (function(){
 				        click: collapse,
 				        keyup: function(e) {
 					          // Check for escape
-					          if (e.keyCode == 27) { collapse(); }
+					          if (e.keyCode == 27) { collapse(e); }
 				        }
 			      });
 		    }
