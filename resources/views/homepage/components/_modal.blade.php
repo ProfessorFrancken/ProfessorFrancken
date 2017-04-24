@@ -1,14 +1,14 @@
 <div
     class="login-modal"
     role="dialog"
-    aria-labelledby="Modal_Title"
-    aria-describedby="Modal_Description"
+    aria-labelledby="Login_Modal_Title"
+    aria-describedby="Login_Modal_Description"
     aria-hidden="true"
 >
     <div class="login-modal__body">
         <div class="text-right">
             <button class="login-modal__close">
-  <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
             </button>
         </div>
 
@@ -16,7 +16,7 @@
             <form>
                 <div class="form-group">
                     <h4 class="h5 login-modal__header text-right">
-                        <label for="email" class="login-modal__header text-right">
+                        <label for="email" class="login-modal__header text-right" id="Login_Modal_Title">
                             Login
                             <i class="login-modal__icon fa fa-user-o" aria-hidden="true"></i>
                         </label>
