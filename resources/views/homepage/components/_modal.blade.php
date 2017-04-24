@@ -13,7 +13,8 @@
         </div>
 
         <div class="login-modal__content">
-            <form>
+            {!! Form::open(['url' => 'login']) !!}
+                {!! csrf_field() !!}
                 <div class="form-group">
                     <h4 class="h5 login-modal__header text-right">
                         <label for="email" class="login-modal__header text-right" id="Login_Modal_Title">
@@ -31,7 +32,7 @@
                     <a class="btn btn-link" href="/register" style="color: white;">Register</a>
                     <button type="submit" class="btn btn-inverse">Login</button>
                 </div>
-            </form>
+            {!! Form::close() !!}
 
             <p id="Modal_Description" class="visually-hidden">
                 Login with your Francken account.
