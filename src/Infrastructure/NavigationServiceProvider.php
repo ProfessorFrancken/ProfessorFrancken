@@ -56,14 +56,14 @@ final class NavigationServiceProvider extends ServiceProvider
                     'url' => 'https://www.flickr.com/photos/fotocie/sets/',
                     'title' => 'Photos',
                     'subItems' => [],
-                    'icon' => 'camera',
+                    'icon' => '',
                 ];
 
                 $items[] = [
                     'url' => '/logout',
                     'title' => 'Profile',
                     'subItems' => [],
-                    'icon' => 'user',
+                    'icon' => '',
                 ];
             } else {
                 $items[] = [
