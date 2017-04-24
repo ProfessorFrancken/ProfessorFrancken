@@ -2,7 +2,7 @@
 <?php $active = '/' . Request::segment(1) == $url; ?>
 
 <li class="navigation-list__item clearfix">
-    <a class="navigation-list__link" href="{{ $url }}">
+    <a class="navigation-list__link {{ $item['class'] or '' }}" href="{{ $url }}">
         @if ($icon != '')
             <img src="/icons/filled/{{ $item['icon'] }}.svg" alt="" style="height: 20px" class="mr-2">
         @endif

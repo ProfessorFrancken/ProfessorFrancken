@@ -52,3 +52,74 @@
 footer .header__title {
     color: white;
 }
+
+
+// Login modal
+.login-modal {
+    z-index: 999;
+    position: fixed;
+    background: rgba(0, 0, 0, .6);
+    background: #395063;
+    background: rgba(57, 80, 99, 0.9);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.25s, opacity 0.25s ease-in-out;
+}
+
+.login-modal--visible {
+    visibility: visible;
+    opacity: 1;
+
+    .login-modal__body {
+	      transform: scale(1);
+    }
+}
+
+.login-modal__body {
+    padding: 0;
+	  transform: scale(0.4);
+    transition: transform 0.5s ease-in-out;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.login-modal__body {
+    background: $primary-color;
+}
+.login-modal__content {
+    padding: 2em 5em 3em;
+    color: white;
+}
+
+.login-modal__close {
+    background: $secondary-color;
+    border: none;
+    width: 3em;
+    height: 3em;
+    color: white;
+}
+
+.login-modal__header {
+    color: white;
+}
+
+.login-modal__icon {
+    margin-left: 1em;
+    color: $secondary-color;
+}
