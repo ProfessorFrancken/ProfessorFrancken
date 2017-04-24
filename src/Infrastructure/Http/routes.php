@@ -45,6 +45,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/association/committees', 'CommitteesController@index');
     Route::get('/association/committees/{committee}', 'CommitteesController@show');
 
+    Route::get('/study/research-groups', 'ResearchGroupsController@index');
+    Route::get('/study/research-groups/{group}', 'ResearchGroupsController@show');
+
     Route::get('/admin', function () {
         return redirect('/admin/overview');
     });
