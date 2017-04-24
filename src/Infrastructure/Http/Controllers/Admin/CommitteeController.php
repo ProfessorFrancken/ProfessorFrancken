@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Infrastructure\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Francken\Application\ReadModelRepository;
@@ -12,6 +12,7 @@ use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
 use Francken\Application\Committees\CommitteesListRepository;
+use Francken\Infrastructure\Http\Controllers\Controller;
 use DB;
 
 class CommitteeController extends Controller
