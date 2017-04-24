@@ -19,6 +19,13 @@ final class CommitteesRepository
                 "page" => "pages.association.committees.alumnicie",
             ],
             [
+                "id" => 404,
+                "title" => "Bincie",
+                "email" => "",
+                "link" => "bincie",
+                "page" => "pages.association.committees.bincie",
+            ],
+            [
                 "id" => 19,
                 "title" => "Borrelcie",
                 "email" => "",
