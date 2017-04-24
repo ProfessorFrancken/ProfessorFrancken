@@ -178,6 +178,13 @@ final class CommitteesRepository
             },
             $this->committees
         );
+
+        $this->committees = array_sort(
+            $this->committees,
+            function ($committee) {
+                return $committee->name();
+            }
+        );
     }
 
     public function list() :  array
