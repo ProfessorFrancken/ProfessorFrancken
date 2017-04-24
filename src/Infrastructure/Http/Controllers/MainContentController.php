@@ -78,8 +78,10 @@ class MainContentController extends Controller
                 throw new \InvalidArgumentException;
             }
 
+
             return view('pages.' . $page, [
-                'posts' => []
+                'posts' => [],
+                'editPageUrl' => $this->getEditUrlForThisPage($page)
             ]);
         } catch (\InvalidArgumentException $e) {
             return response()->view('errors.404', [], 404);
@@ -95,5 +97,19 @@ class MainContentController extends Controller
         $parts = explode('/', $page);
 
         return end($parts)[0] === '_';
+    }
+
+    /**
+     * Based on the current branch that is used by git, make a url so that users
+     * can easily edit this page
+     */
+    private function getEditUrlForThisPage(string $page) : string
+    {
+        $stringfromfile = file(base_path('.git/HEAD'), FILE_USE_INCLUDE_PATH);
+        $firstLine = $stringfromfile[0];
+        $explodedstring = explode("/", $firstLine, 3);
+        $branchname = trim(preg_replace('/\s+/', ' ', $explodedstring[2]));
+
+        return "https://github.com/ProfessorFrancken/ProfessorFrancken/edit/${branchname}/resources/views/pages/${page}.blade.php";
     }
 }

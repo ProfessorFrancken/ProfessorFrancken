@@ -1,4 +1,14 @@
 <footer>
+    @if (isset($editPageUrl))
+        <div class="container">
+            <p class="text-center my-5">
+                <a href="{{ $editPageUrl }}">
+                    Edit this page on github
+                </a>
+            </p>
+        </div>
+    @endif
+
     <div class="container-fluid">
         <div class="footer__contact-background footer__contact row">
             <div class="col-12 col-sm-3 col-md-2 my-3">
