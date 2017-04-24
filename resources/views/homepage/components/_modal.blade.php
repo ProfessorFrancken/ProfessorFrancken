@@ -22,7 +22,7 @@
                             <i class="login-modal__icon fa fa-user-o" aria-hidden="true"></i>
                         </label>
                     </h4>
-                    <input type="text" class="form-control" id="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" placeholder="Password">
