@@ -90,12 +90,6 @@ $top-stroke-width: 6px;
     border-right: none;
 }
 
-.login-link {
-    background: $secondary-color;
-    color: white;
-    border-radius: 4px;
-}
-
 .caret {
     display: inline-block;
     width: 0;
@@ -291,6 +285,17 @@ a.navigation-sub-list__link:visited {
 }
 
 @include media-breakpoint-up(md) {
+
+    .login-link {
+        background: $secondary-color;
+        color: white;
+        border-radius: 4px;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
     .header {
         border-top: $top-stroke-width solid $secondary-color-dark;
     }
