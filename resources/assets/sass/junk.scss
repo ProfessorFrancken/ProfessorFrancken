@@ -58,8 +58,6 @@ footer .header__title {
 .login-modal {
     z-index: 999;
     position: fixed;
-    background: rgba(0, 0, 0, .6);
-    background: #395063;
     background: rgba(57, 80, 99, 0.9);
     top: 0;
     left: 0;
@@ -90,6 +88,10 @@ footer .header__title {
     padding: 0;
 	  transform: scale(0.4);
     transition: transform 0.3s ease-in-out;
+
+    .form-control:focus {
+        border-color: #d80000;
+    }
 }
 
 .visually-hidden {
@@ -114,6 +116,7 @@ footer .header__title {
     height: 3em;
     color: white;
     user-select: none;
+    border-radius: 0 0 0 0.25rem;
 }
 
 .login-modal__header {
