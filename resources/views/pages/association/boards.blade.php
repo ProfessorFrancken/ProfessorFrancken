@@ -1,6 +1,11 @@
-@extends('pages.association')
+@extends('homepage.one-column-layout')
 
-@section('content')
+@section('main-content')
+    <div class="contaienr my-5">
+        <h2 class="section-header section-header--centered">
+            Boards of T.F.V. 'Professor Francken'
+        </h2>
+    </div>
 
       @include("pages.association._board", ['board' => [
         'year' => '2016-2017',
@@ -366,14 +371,4 @@
           ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
         'figure' => ''
       ]])
-@endsection
-
-@section('header-image')
-    @component('homepage.header._header_image')
-        <div class="header-image__title">
-            <h2>
-                Boards
-            </h2>
-        </div>
-        @endcomponent
 @endsection

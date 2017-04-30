@@ -124,3 +124,64 @@ footer .header__title {
     margin-left: 1em;
     color: $secondary-color;
 }
+.board-container {
+    height: 350px;
+    position: relative;
+    background-color: #173249;
+
+    border-radius: .5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.board-container--with-image:hover {
+        .board-image {
+            filter: brightness(90%);
+        }
+        .board-header {
+            opacity: 0;
+        }
+    }
+}
+
+.board-header {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    opacity: 1.0;
+    transition: opacity .25s ease-in-out;
+}
+
+.board-image {
+    object-fit: cover;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    filter: brightness(70%);
+    transition: filter .5s ease-in-out;
+    border-radius: .5rem;
+}
+
+.board-member {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: .5em 0;
+}
+
+.board-member__photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
