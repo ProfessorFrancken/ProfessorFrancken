@@ -1,14 +1,13 @@
-<section class="row company-summary">
-    <div class="col-md-3">
-        <img class="img-fluid company-summary__logo" alt="{{ $company['name'] }}" src="{{ $company['logo'] }}"/>
+<div class="col-sm-6 col-md-4">
+    <div class="company-card">
+        <a href="/career/companies/{{ $company['name'] }}" class="company-card__link">
+            @if ( $company['logo'] != '')
+                <img alt="{{ $company['name'] }}" src="{{ $company['logo'] }}" class="company-card__logo"/>
+            @else
+                <h4 class="company-card__name">
+                    {{ $company['name'] }}
+                </h4>
+            @endif
+        </a>
     </div>
-    <div class="col-md-9">
-        <h3 class="company-summary__title">
-            {{ $company['name'] }}
-        </h3>
-        <p>
-            {{ $company['summary'] }}
-        </p>
-        <a class="company-summary__read-more" href="{{ $company['read-more-at'] }}">Read more</a>
-    </div>
-</section>
+</div>
