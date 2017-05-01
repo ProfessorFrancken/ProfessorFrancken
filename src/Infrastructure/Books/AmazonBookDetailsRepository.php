@@ -3,9 +3,9 @@
 namespace Francken\Infrastructure\Books;
 
 use Francken\Application\Books\BookDetails;
-use Francken\Application\Books\BookDetailsRepositoryI;
+use Francken\Application\Books\BookDetailsRepository;
 
-class BookDetailsRepository implements BookDetailsRepositoryI
+class AmazonBookDetailsRepository implements BookDetailsRepository
 {
     public function getByISBN(string $isbn) : BookDetails
     {

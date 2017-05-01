@@ -8,7 +8,7 @@ use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksProjector;
 use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\BookDetails;
-use Francken\Application\Books\BookDetailsRepositoryI;
+use Francken\Application\Books\BookDetailsRepository;
 use Francken\Application\Projector;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Events\BookOfferRetracted;
@@ -124,13 +124,15 @@ class AvailableBooksProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        $this->bookDetailRepo = $this->prophesize(BookDetailsRepositoryI::Class);
+        $this->bookDetailRepo = $this->prophesize(BookDetailsRepository::Class);
 
         $this->bookDetailRepo->getByISBN("0534408133")->willReturn(
             new BookDetails(
                 "title",
                 "author",
-                "path_to_cover.jpg"));
+                "path_to_cover.jpg"
+            )
+        );
 
         return new AvailableBooksProjector(
             new AvailableBooksRepository(

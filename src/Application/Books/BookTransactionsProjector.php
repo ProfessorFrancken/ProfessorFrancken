@@ -15,7 +15,7 @@ final class BookTransactionsProjector extends Projector
     private $members;
     private $bookDetailRepository;
 
-    public function __construct(Repository $books, Repository $members, BookDetailsRepositoryI $repo)
+    public function __construct(Repository $books, Repository $members, BookDetailsRepository $repo)
     {
         $this->bookDetailRepository = $repo;
         $this->books = $books;

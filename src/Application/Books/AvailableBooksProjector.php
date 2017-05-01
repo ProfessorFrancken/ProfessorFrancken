@@ -17,7 +17,7 @@ final class AvailableBooksProjector extends Projector
     private $books;
     private $bookDetailRepository;
 
-    public function __construct(AvailableBooksRepository $books, BookDetailsRepositoryI $repo)
+    public function __construct(AvailableBooksRepository $books, BookDetailsRepository $repo)
     {
         $this->bookDetailRepository = $repo;
         $this->books = $books;

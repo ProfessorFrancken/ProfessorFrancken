@@ -3,9 +3,6 @@
 namespace Francken\Infrastructure;
 
 use Broadway\EventSourcing\EventSourcingRepository;
-use Francken\Application\Books\AvailableBook;
-use Francken\Application\Books\AvailableBooksRepository;
-use Francken\Application\Books\BookDetailsRepositoryI;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
 use Francken\Application\Committees\CommitteesListRepository;
@@ -18,8 +15,6 @@ use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListRepository;
-use Francken\Domain\Books\Book;
-use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
@@ -28,7 +23,6 @@ use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
-use Francken\Infrastructure\Books\BookDetailsRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -42,7 +36,6 @@ final class AppServiceProvider extends ServiceProvider
     // it contains pairs of the repository's class and the associated
     // aggregate's class name
     const EVENT_SOURCED_REPOSITORIES = [
-        [BookRepository::class, Book::class],
         [CommitteeRepository::class, Committee::class],
         [MemberRepository::class, Member::class],
         [PostRepository::class, Post::class],
@@ -68,10 +61,6 @@ final class AppServiceProvider extends ServiceProvider
         [
             RequestStatusRepository::class,
             ['request_status', RequestStatus::class, 'id']
-        ],
-        [
-            AvailableBooksRepository::class,
-            ['available_books', AvailableBook::class, 'id']
         ],
         [
             FranckenVrijRepository::class,
@@ -138,9 +127,6 @@ final class AppServiceProvider extends ServiceProvider
                     }
                 );
         }
-
-        // Responsible for getting the book cover from Amazon
-        $this->app->bind(BookDetailsRepositoryI::class, BookDetailsRepository::class);
 
         $this->app->bind(ReadModelRepository::class, \Francken\Infrastructure\Repositories\InMemoryRepository::class);
 
