@@ -1,9 +1,9 @@
 @extends('homepage.one-column-layout')
 
 @section('content')
-  <h1 class="section-header">
+  <h2 class="section-header section-header--centered">
     Committees
-  </h1>
+  </h2>
 
   <div class="row">
       @foreach ($committees as $committee)
