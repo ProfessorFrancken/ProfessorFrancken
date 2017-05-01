@@ -157,6 +157,7 @@ return [
         Francken\Infrastructure\RouteServiceProvider::class,
         Francken\Infrastructure\NavigationServiceProvider::class,
         Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
+        Francken\Infrastructure\Books\BooksServiceProvider::class,
 
         /*
          * Third Party Service Providers

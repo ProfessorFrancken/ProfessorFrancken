@@ -2,7 +2,7 @@
 
 namespace Francken\Application\Books;
 
-interface BookDetailsRepositoryI
+interface BookDetailsRepository
 {
     public function getByISBN(string $isbn) : BookDetails;
 }
