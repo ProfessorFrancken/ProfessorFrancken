@@ -6,6 +6,7 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\BookDetailsRepository;
+use Francken\Application\ReadModelRepository;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
 use Francken\Infrastructure\Books\AmazonBookDetailsRepository;
