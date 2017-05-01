@@ -78,7 +78,7 @@ final class CommitteesRepository
             [
                 "id" => 9,
                 "title" => "Fraccie",
-                "email" => "professorfrancken.nl",
+                "email" => "Fraccie@professorfrancken.nl",
                 "logo" => "https://borrelcie.vodka/tmp/Fraccie.png"
                 "link" => "fraccie",
                 "page" => "pages.association.committees.fraccie",
