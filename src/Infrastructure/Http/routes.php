@@ -48,6 +48,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/study/research-groups', 'ResearchGroupsController@index');
     Route::get('/study/research-groups/{group}', 'ResearchGroupsController@show');
 
+    Route::get('/career/companies', 'CompaniesController@index');
+    Route::get('/career/companies/{company}', 'CompaniesController@show');
+	
     Route::get('/admin', function () {
         return redirect('/admin/overview');
     });

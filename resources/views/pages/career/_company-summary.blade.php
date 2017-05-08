@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-md-4">
     <div class="company-card">
-        <a href="/career/companies/{{ $company['name'] }}" class="company-card__link">
+        <a href="/career/companies/{{ str_slug($company['name']) }}" class="company-card__link">
             @if ( $company['logo'] != '')
                 <img alt="{{ $company['name'] }}" src="{{ $company['logo'] }}" class="company-card__logo"/>
             @else
