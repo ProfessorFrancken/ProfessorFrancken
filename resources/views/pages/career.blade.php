@@ -4,6 +4,7 @@
 @section('title', "Career - T.F.V. 'Professor Francken'")
 
 @section('content')
+
   <h1>Career</h1>
 
   <p>Welcome to the carreer plaza of T.F.V. ‘Professor Francken’. Here you will find everything you need to prepare for your professional carreer. From excursions to job openings; this is where you will find everything that is relevant for your carreer.</p>
@@ -11,75 +12,31 @@
   <hr>
 
   <div class="row">
-    <div class="col-md-7">
+    <div style="text-align: center" class="col-md-4">
+      <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>Job openings</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="/career/job-openings" class="btn btn-primary">Read more</a>
+      <p>Bachelor or master research projects from Partners of Francken.</p>
     </div>
-    <div class="col-md-5">
-      <img data-holder-rendered="true" src="" alt="300x300" width="300" height="300">
-    </div>
-  </div>
 
-  <hr>
-
-  <div class="row">
-    <div class="col-md-5">
-      <img data-holder-rendered="true" src="" alt="300x300" width="300" height="300">
-    </div>
-    <div class="col-md-7">
+    <div style="text-align: center" class="col-md-4">
+      <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>Company profiles</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="/career/companies" class="btn btn-primary">See all company profiles</a>
+      <p>Company profiles of our partners!</p>
     </div>
-  </div>
 
-  <hr>
-
-  <div class="row">
-    <div class="col-md-7">
-      <h2>Excursions</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="/career/excursions" class="btn btn-primary">See planned and previous excursions</a>
+    <div style="text-align: center" class="col-md-4">
+      <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto">
+      <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin "></div>
+      <h2>Excursions </h2>
+      <p>An overview of excursions to research groups and companies</p>
     </div>
-    <div class="col-md-5">
-      <img data-holder-rendered="true" src="" alt="300x300" width="300" height="300">
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-md-5">
-      <img data-holder-rendered="true" src="" alt="300x300" width="300" height="300">
-    </div>
-    <div class="col-md-7">
+    
+    <div style="text-align: center" class="col-md-4">
+      <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>LinkedIn</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a href="http://www.linkedin.com/groups/TFV-Professor-Francken-1524067" class="btn btn-primary">Go to our LinkedIn page</a>
+      <p>Stay in touch with our alumni on LinkedIn.</p>
     </div>
-  </div>
-
+    
   <hr>
 
 @endsection
