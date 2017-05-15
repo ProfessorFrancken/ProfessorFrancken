@@ -16,7 +16,8 @@
           ['name' => 'David Koning', 'title' => 'Treasurer'],
           ['name' => 'Anne in ‘t Veld', 'title' => 'Commissioner of External Relations and Vice-Chair']
         ],
-        'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1617.jpg'
+        'figure' => '/images/header/board-buitengewoon.jpg'
+
       ]])
 
       @include("pages.association._board", ['board' => [

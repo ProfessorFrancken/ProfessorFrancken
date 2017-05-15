@@ -6,6 +6,8 @@ namespace Francken\Infrastructure\Http\Controllers;
 
 final class ResearchGroupsController
 {
+    private $groups;
+
     public function __construct()
     {
         $this->groups = [

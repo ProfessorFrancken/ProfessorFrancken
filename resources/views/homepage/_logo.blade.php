@@ -1,7 +1,7 @@
 <div
-    class="skew-md--top-right header__logo d-flex justify-content-between justify-content-md-end"
+    class="skew-md--top-right header__logo d-flex flex-md-column justify-content-end justify-content-md-end"
 >
-    <a class="header__title-link align-items-center align-middle d-inline-flex" href="/">
+    <a class="header__title-link justify-content-end align-items-center d-inline-flex" href="/">
         <img
             alt="Logo of T.F.V. 'Professor Francken'"
             src="/images/LOGO_KAAL.png"
