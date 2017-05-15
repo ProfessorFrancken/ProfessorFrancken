@@ -1,49 +1,10 @@
 @extends('homepage.two-column-layout')
 @inject('faker', "Faker\Generator")
 
-<?php
-
-// Enable artificial pagination
-if (request()->has('before')) {
-    $before = new DateTimeImmutable(request()->input('before', '-2 years'));
-    $start = $before->sub(DateInterval::createFromDateString('2 years'));
-    $end = $before;
-} elseif (request()->has('after')) {
-    $after = new DateTimeImmutable(request()->input('after', 'now'));
-    $start = $after;
-    $end = $after->add(DateInterval::createFromDateString('2 years'));
-} else {
-    $start = new DateTimeImmutable('-2 years');
-    $end = new DateTimeImmutable('now');
-}
-
-$news = array_reverse(
-    array_sort(
-        array_map(
-            function($news) use ($faker, $start, $end) {
-                return [
-                    'title' => $faker->sentence(),
-                    'author' => $faker->name(),
-                    'date' => $faker->dateTimeBetween( 
-                        $start->format('y-m-d'),
-                        $end->format('y-m-d')
-                    ),
-                ];
-            }, 
-            range(0, 15)
-        ),
-        function ($news) {
-            return $news['date'];
-        }
-    )
-);
-
-?>
-
 @section('content')
 
     <h2 class="section-header">
-        News Archive        
+        News Archive
     </h2>
 
     <hr>
@@ -52,10 +13,10 @@ $news = array_reverse(
         @foreach ($news as $item)
         <li class="agenda-item">
             <a href="/association/news/item" class="d-flex justify-content-between">
-                {{ $item['title'] }}
+                {{ $item->title() }}
                 <small class="text-muted">
-                    {{ $item['date']->format('d M Y')}}
-                </small> 
+                    {{ $item->publicationDate()->format('d M Y')}}
+                </small>
             </a>
         </li>
         @endforeach
@@ -64,18 +25,18 @@ $news = array_reverse(
     <hr>
 
     <div class="d-flex justify-content-between mb-5">
-        <a 
-            class="link-to-all-dark arrow" 
-            href="/association/news/archive?after={{ array_first($news)['date']->format('d-m-Y') }}"
+        <a
+            class="link-to-all-dark arrow"
+            href="/association/news/archive?after={{ array_first($news)->publicationDate()->format('d-m-Y') }}"
         >
             Newer news
         </a>
 
-        <a 
-            class="link-to-all-dark arrow" 
-            href="/association/news/archive?before={{ array_last($news)['date']->format('d-m-Y') }}"
+        <a
+            class="link-to-all-dark arrow"
+            href="/association/news/archive?before={{ array_last($news)->publicationDate()->format('d-m-Y') }}"
         >
-            Older news 
+            Older news
         </a>
     </div>
 @endsection
