@@ -1,8 +1,8 @@
-@extends('pages.career')
+@extends('homepage.one-column-layout')
 
 @section('content')
     <h1>Companies</h1>
-
+<div class="row">
     @include('pages.career._company-summary', ['company' => [
     'name' => 'ASML',
     'summary' => 'ASML, een succesvolle Nederlandse hightech onderneming, produceert complexe lithografiemachines die chipproducenten inzetten bij de productie van IC’s. De afgelopen jaren zijn de chips steeds sneller, kleiner, slimmer, energiezuiniger en beter betaalbaar geworden en het onderzoek van ASML heeft hieraan een belangrijke bijdrage geleverd. De stuwende kracht achter de technologische doorbraken van ASML zijn ingenieurs die vooruit denken. De medewerkers van ASML behoren tot de creatiefste denkers in de natuurkunde, wiskunde, scheikunde, mechatronica, optica, werktuigkunde, software en informatica. En omdat ASML jaarlijks ruim 1 miljard Euro in R&D investeert, hebben onze mensen de vrijheid en de middelen om de technologische grenzen te verleggen. Zij werken dagelijks samen in hechte multidisciplinaire teams waarin men naar elkaar luistert, van elkaar leert en onderling ideeën uitwisselt.',
@@ -74,4 +74,5 @@
     'read-more-at' => 'http://www.professorfrancken.nl/wordpress/carriere/bedrijfsprofielen/procam/',
     'logo' => 'http://www.professorfrancken.nl/wordpress/media/images/carriereplaza/procam.png'
     ]])
+	</div>
 @endsection
