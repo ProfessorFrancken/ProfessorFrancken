@@ -15,6 +15,7 @@ final class CommitteesRepository
                 "id" => 35,
                 "title" => "Alumnicie",
                 "email" => "alumni@professorfrancken.nl",
+                "logo" => "https://borrelcie.vodka/tmp/Alumnicie.png",
                 "link" => "alumnicie",
                 "page" => "pages.association.committees.alumnicie",
             ],
@@ -22,6 +23,7 @@ final class CommitteesRepository
                 "id" => 404,
                 "title" => "Bincie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Bincie.png",
                 "link" => "bincie",
                 "page" => "pages.association.committees.bincie",
             ],
@@ -29,7 +31,7 @@ final class CommitteesRepository
                 "id" => 19,
                 "title" => "Borrelcie",
                 "email" => "",
-                "logo" => "http://borrelcie.vodka/img/borrelcielogo.png",
+                "logo" => "https://borrelcie.vodka/tmp/Borrelcie.png",
                 "link" => "borrelcie",
                 "page" => "pages.association.committees.borrelcie",
             ],
@@ -37,6 +39,7 @@ final class CommitteesRepository
                 "id" => 33,
                 "title" => "Brouwcie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Brouwcie.png",
                 "link" => "brouwcie",
                 "page" => "pages.association.committees.brouwcie",
             ],
@@ -44,6 +47,7 @@ final class CommitteesRepository
                 "id" => 2,
                 "title" => "Buixie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Buixie.png",
                 "link" => "buixie",
                 "page" => "pages.association.committees.buixie",
             ],
@@ -51,6 +55,7 @@ final class CommitteesRepository
                 "id" => 53,
                 "title" => "CoDcie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/CoDcie.png",
                 "link" => "codcie",
                 "page" => "pages.association.committees.codcie",
             ],
@@ -58,6 +63,7 @@ final class CommitteesRepository
                 "id" => 1,
                 "title" => "Compucie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Compucie.png",
                 "link" => "compucie",
                 "page" => "pages.association.committees.compucie",
             ],
@@ -65,13 +71,15 @@ final class CommitteesRepository
                 "id" => 21,
                 "title" => "Fotocie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Fotocie.png",
                 "link" => "fotocie",
                 "page" => "pages.association.committees.fotocie",
             ],
             [
                 "id" => 9,
                 "title" => "Fraccie",
-                "email" => "",
+                "email" => "Fraccie@professorfrancken.nl",
+                "logo" => "https://borrelcie.vodka/tmp/Fraccie.png"
                 "link" => "fraccie",
                 "page" => "pages.association.committees.fraccie",
             ],
@@ -79,6 +87,7 @@ final class CommitteesRepository
                 "id" => 10,
                 "title" => "Francken Vrij",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Francken_Vrij.png"
                 "link" => "francken-vrij",
                 "page" => "pages.association.committees.francken-vrij",
             ],
@@ -86,6 +95,7 @@ final class CommitteesRepository
                 "id" => 32,
                 "title" => "Intercie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Intercie.png"
                 "link" => "intercie",
                 "page" => null,
             ],
@@ -93,6 +103,7 @@ final class CommitteesRepository
                 "id" => 12,
                 "title" => "Kascie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Kascie.png"
                 "link" => "kascie",
                 "page" => "pages.association.committees.kascie",
             ],
@@ -100,6 +111,7 @@ final class CommitteesRepository
                 "id" => 18,
                 "title" => "Oefensescie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Oefensescie.png"
                 "link" => "oefensescie",
                 "page" => "pages.association.committees.oefensescie",
             ],
@@ -107,6 +119,7 @@ final class CommitteesRepository
                 "id" => 5,
                 "title" => "Representacie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Representacie.png"
                 "link" => "representacie",
                 "page" => "pages.association.committees.representacie",
             ],
@@ -114,6 +127,7 @@ final class CommitteesRepository
                 "id" => 24,
                 "title" => "Sjaarscie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Sjaarscie.png"
                 "link" => "sjaarscie",
                 "page" => "pages.association.committees.sjaarcie",
             ],
@@ -121,6 +135,7 @@ final class CommitteesRepository
                 "id" => 29,
                 "title" => "Sportcie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Sportcie.png"
                 "link" => "sportcie",
                 "page" => null,
             ],
@@ -128,6 +143,7 @@ final class CommitteesRepository
                 "id" => 22,
                 "title" => "Sympcie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Sympcie.jpg"
                 "link" => "sympcie",
                 "page" => "pages.association.committees.sympcie",
             ],
@@ -135,6 +151,7 @@ final class CommitteesRepository
                 "id" => 28,
                 "title" => "Takcie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Takcie.png"
                 "link" => "takcie",
                 "page" => null,
             ],
@@ -142,6 +159,7 @@ final class CommitteesRepository
                 "id" => 27,
                 "title" => "Wiecksie",
                 "email" => "",
+                "logo" => "https://borrelcie.vodka/tmp/Wiecksie.png"
                 "link" => "wiecksie",
                 "page" => "pages.association.committees.wiecksie",
             ],
@@ -149,6 +167,7 @@ final class CommitteesRepository
                 "id" => 4,
                 "title" => "s[ck]rip(t|t?c)ie",
                 "email" => "scriptcie@professorfrancken.nl",
+                "logo" => "https://borrelcie.vodka/tmp/Scriptcie.png"
                 "link" => "sckripttcie",
                 "page" => "pages.association.committees.scriptcie",
             ]
