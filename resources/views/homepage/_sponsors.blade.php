@@ -66,6 +66,12 @@
                 <img class="img-fluid" src="/images/footer/dnb.png" alt="DNB">
             </a>
         </div>
+
+        <div class="my-3 col-6 col-sm-4 col-md-3 col-lg-2 col-lx-1">
+            <a href="https://valersi.nl/">
+                <img class="img-fluid" src="/images/footer/valersi.png" alt="DNB">
+            </a>
+        </div>
     </div>
 
     <p>
