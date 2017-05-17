@@ -16,7 +16,7 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('name');
-            $table->boolean('false');
+            $table->boolean('published');
             // $table->description();
             $table->string('category');
 
@@ -28,7 +28,7 @@ class CreateActivitiesTable extends Migration
             $table->string('location_street_name')->nullable();
             $table->string('location_street_number')->nullable();
 
-            $table->json('members');
+            $table->json('participants');
         });
     }
 

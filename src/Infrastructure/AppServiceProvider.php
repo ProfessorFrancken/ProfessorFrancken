@@ -45,6 +45,7 @@ final class AppServiceProvider extends ServiceProvider
     // aggregate's class name
     const EVENT_SOURCED_REPOSITORIES = [
         [BookRepository::class, Book::class],
+        [\Francken\Domain\Activities\ActivityRepository::class, \Francken\Domain\Activities\Activity::class],
         [CommitteeRepository::class, Committee::class],
         [MemberRepository::class, Member::class],
         [PostRepository::class, Post::class],

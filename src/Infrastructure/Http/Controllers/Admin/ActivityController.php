@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers\Admin;
 
-use Francken\Infrastructure\Http\Controllers\Controller;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Francken\Infrastructure\Http\Controllers\Controller;
 
+use Francken\Domain\Activities\ActivityRepository;
 use Francken\Domain\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Location;
@@ -30,7 +31,7 @@ class ActivityController extends Controller
             ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, ActivityRepository $repo)
     {
         $this->validate($request, [
             'title' => 'required|min:3',
@@ -47,13 +48,15 @@ class ActivityController extends Controller
         // TODO: add option with end time.
         $schedule = Schedule::withStartTime($date);
 
-        Activity::plan(
+        $activity = Activity::plan(
             ActivityId::generate(),
             $title,
             $description,
             $schedule,
             $location,
             Activity::SOCIAL);
+
+        $repo->save($activity);
 
         return redirect('/admin/activity');
     }
