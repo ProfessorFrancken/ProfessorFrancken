@@ -7,7 +7,7 @@ namespace Francken\Infrastructure\Http\Controllers;
 final class CompaniesController
 {
 	private $companies;
-	
+
     public function __construct()
     {
         $this->companies = [
@@ -299,6 +299,15 @@ final class CompaniesController
         ['term' => 'homepage', 'description' => 'http://asml.com'],
     ]
 ],
+['name' => 'Valersi', 'summary' =>
+    '<p>Op zoek naar <a href="https://valersi.nl/">akoestisch onderzoek</a>, een specialist in ruimtelijke ordening of advies bij geluidvraagstukken? Ons team met meer dan 25 jaar ervaring in geluid denkt graag met u mee.</p><p>Valersi meet, weet en analyseert.</p><p><a href="https://valersi.nl/" >Valersi.nl</a></p>
+',
+    'read-more-at' =>
+    'https://valersi.nl', 'logo' =>
+    '/images/footer/valersi.png', 'metadata' => [
+        ['term' => 'homepage', 'description' => 'https://valersi.nl/'],
+    ]
+]
         ];
     }
 
