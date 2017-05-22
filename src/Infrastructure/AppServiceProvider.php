@@ -82,7 +82,7 @@ final class AppServiceProvider extends ServiceProvider
         ],
         [
             ActivityRepository::class,
-            ['activities', Activity::class, 'id']
+            ['activities', Activity::class, 'id', ['participants']]
         ],
     ];
 
