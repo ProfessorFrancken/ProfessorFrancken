@@ -30,13 +30,14 @@
       <h2>Excursions </h2>
       <p>An overview of excursions to research groups and companies</p>
     </div>
-    
+
     <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>LinkedIn</h2>
       <p>Stay in touch with our alumni on LinkedIn.</p>
     </div>
-    
+  </div>
+
   <hr>
 
 @endsection
