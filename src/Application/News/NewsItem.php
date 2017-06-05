@@ -15,24 +15,38 @@ final class NewsItem
     private $publicationDate;
     private $authorName;
     private $content;
+    private $related;
+    private $next;
+    private $previous;
 
     public function __construct(
         string $title,
         string $exerpt,
         DateTimeImmutable $publicationDate,
         string $authorName,
-        string $content
+        string $content,
+        array $related = [],
+        NewsItemLink $next,
+        NewsItemLink $previous
     ) {
         $this->title = $title;
         $this->exerpt = $exerpt;
         $this->publicationDate = $publicationDate;
         $this->authorName = $authorName;
         $this->content = $content;
+        $this->related = $related;
+        $this->next = $next;
+        $this->previous = $previous;
     }
 
     public function title() : string
     {
         return $this->title;
+    }
+
+    public function url() : string
+    {
+        return '/association/news/' . str_slug($this->title());
     }
 
     public function exerpt() : string
@@ -53,6 +67,21 @@ final class NewsItem
     public function content() : string
     {
         return $this->content;
+    }
+
+    public function relatedNewsItems() : array
+    {
+        return $this->related;
+    }
+
+    public function nextNewsItem() : NewsItemLink
+    {
+        return $this->next;
+    }
+
+    public function previousNewsItem() : NewsItemLink
+    {
+        return $this->next;
     }
 }
 

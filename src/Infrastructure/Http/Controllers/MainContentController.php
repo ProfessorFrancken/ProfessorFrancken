@@ -6,12 +6,14 @@ namespace Francken\Infrastructure\Http\Controllers;
 
 use DB;
 use Francken\Application\ReadModel\PostList\PostList;
+use Francken\Application\News\NewsRepository;
 
 class MainContentController extends Controller
 {
-    public function index()
+    public function index(NewsRepository $news)
     {
-        return view('homepage/homepage');
+        return view('homepage/homepage')
+            ->with('news', $news->recent(3));
     }
 
     public function about()

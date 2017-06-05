@@ -1,5 +1,4 @@
 @extends('homepage.two-column-layout')
-@inject('faker', "Faker\Generator")
 
 @section('content')
 
@@ -23,17 +22,18 @@
             <strong>
                 Previous news
             </strong>
-            <a class="" href="/association/news/item">
-                {{ $faker->sentence() }}
+            <a class="" href="{{ $newsItem->previousNewsItem()->url() }}">
+                {{ $newsItem->previousNewsItem()->title() }}
             </a>
         </div>
 
+        {{-- Note: the latest news item does not have any next news item --}}
         <div class="d-flex flex-column text-right">
             <strong>
                 Next news
             </strong>
-            <a class="" href="/association/news/item">
-                {{ $faker->sentence() }}
+            <a class="" href="{{ $newsItem->nextNewsItem()->url() }}">
+                {{ $newsItem->nextNewsItem()->title() }}
             </a>
         </div>
     </div>
@@ -49,7 +49,7 @@
     <ul class="agenda-list list-unstyled">
         <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
             <a
-                href="/association/news/item"
+                href="{{ $newsItem->url() }}"
                 class="aside-link"
             >
                 <div class="media align-items-center">
@@ -68,32 +68,27 @@
         </li>
     </ul>
 
-    <h5>
-        About {{ $newsItem->authorName() }}
-    </h5>
-    <p>
-        {{ $faker->paragraph() }}
-    </p>
+    @if (count($newsItem->relatedNewsItems()) > 0)
+        <h5>
+            Related articles
+        </h5>
 
-    <h5>
-        Related articles
-    </h5>
-
-    <ul class="agenda-list list-unstyled">
-        @foreach (range(0, $faker->numberBetween(2, 5)) as $r)
-        <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
-            <a
-                href="/association/news/item"
-                class="aside-link"
-            >
-                <div class="media align-items-center">
-                    <div class="media-body">
-                        {{ $faker->sentence() }}
-                    </div>
-                </div>
-            </a>
-        </li>
-        @endforeach
-    </ul>
+        <ul class="agenda-list list-unstyled">
+            @foreach ($newsItem->relatedNewsItems() as $related)
+                <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
+                    <a
+                        href="{{ $related->url() }}"
+                        class="aside-link"
+                    >
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                {{ $related->title() }}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    @endif
 </div>
 @endsection

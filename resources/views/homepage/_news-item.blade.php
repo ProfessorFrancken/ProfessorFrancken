@@ -2,24 +2,26 @@
     <div style="flex: 1 1 auto;">
         <div class="news-item__header">
             <span class="news-item__date badge">
-                {{ $date }}
+                {{ $newsItem->publicationDate()->format('d M Y') }}
             </span>
             <span class="news-item__written-by">
                 Posted by
                 <span class="news-item__author">
-                    {{ $author }}
+                    {{ $newsItem->authorName() }}
                 </span>
             </span>
         </div>
         <h4 class="news-item__title">
-            {{ $title }}
+            {{ $newsItem->title() }}
         </h4>
         <p class="news-item__body">
-            {{ $slot }}
+            {{ $newsItem->exerpt() }}
         </p>
     </div>
 
     <div>
-        <button class="btn btn-inverse">Read more</button>
+        <a href="{{ $newsItem->url() }}" class="btn btn-inverse">
+            Read more
+        </a>
     </div>
 </article>

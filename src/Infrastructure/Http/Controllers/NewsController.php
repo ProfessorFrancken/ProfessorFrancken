@@ -6,72 +6,30 @@ namespace Francken\Infrastructure\Http\Controllers;
 
 use DateInterval;
 use DateTimeImmutable;
-use Francken\Application\News\FakeNewsContent;
-use Francken\Application\News\NewsItem;
+use Francken\Application\News\NewsRepository;
+use League\Period\Period;
 
 final class NewsController
 {
     private $news;
     private $faker;
 
-    public function __construct(\Faker\Generator $faker)
+    public function __construct(\Faker\Generator $faker, NewsRepository $news)
     {
-        $this->news = [];
+        $this->news = $news;
         $this->faker = $faker;
     }
 
     public function index()
     {
         return view('pages.association.news')
-            ->with('news', array_map(
-                function() {
-                    return $this->fakeNewsItem();
-                },
-                range(1, 12)
-            ));
+            ->with('news', $this->news->recent(12));
     }
 
     public function archive()
     {
-        $faker = $this->faker;
-
-        // Enable artificial pagination
-        if (request()->has('before')) {
-            $before = new DateTimeImmutable(request()->input('before', '-2 years'));
-            $start = $before->sub(DateInterval::createFromDateString('2 years'));
-            $end = $before;
-        } elseif (request()->has('after')) {
-            $after = new DateTimeImmutable(request()->input('after', 'now'));
-            $start = $after;
-            $end = $after->add(DateInterval::createFromDateString('2 years'));
-        } else {
-            $start = new DateTimeImmutable('-2 years');
-            $end = new DateTimeImmutable('now');
-        }
-
-        $news = array_reverse(
-            array_sort(
-                array_map(
-                    function($news) use ($faker, $start, $end) {
-                        return new NewsItem(
-                            $faker->sentence(),
-                            $faker->paragraph(),
-                            DateTimeImmutable::createFromMutable(
-                                $faker->dateTimeBetween(
-                                    $start->format('y-m-d'),
-                                    $end->format('y-m-d')
-                                )
-                            ),
-                            $faker->name(),
-                            ''
-                        );
-                    },
-                    range(0, 15)
-                ),
-                function (NewsItem $news) {
-                    return $news->publicationDate();
-                }
-            )
+        $news = $this->news->findInPeriod(
+            $this->periodForPagination()
         );
 
         return view('pages.association.news.archive')
@@ -80,22 +38,36 @@ final class NewsController
 
     public function show($link)
     {
-        $newsItem = $this->fakeNewsItem();
+        $newsItem = $this->news->findByLink($link);
 
         return view('pages.association.news.item')
             ->with('newsItem', $newsItem);
     }
 
-    private function fakeNewsItem() : NewsItem
+    private function periodForPagination() : Period
     {
-        return new NewsItem(
-            $this->faker->sentence(),
-            $this->faker->paragraph(),
-            DateTimeImmutable::createFromMutable(
-                $this->faker->dateTime()
-            ),
-            $this->faker->name(),
-            (new FakeNewsContent($this->faker))->generate()
+        // Enable artificial pagination
+        if (request()->has('before')) {
+            $before = new DateTimeImmutable(request()->input('before', '-2 years'));
+
+            return new Period(
+                $before->sub(DateInterval::createFromDateString('2 years')),
+                $before
+            );
+        }
+
+        if (request()->has('after')) {
+            $after = new DateTimeImmutable(request()->input('after', 'now'));
+
+            return new Period(
+                $after,
+                $after->add(DateInterval::createFromDateString('2 years'))
+            );
+        }
+
+        return new Period(
+            $start = new DateTimeImmutable('-2 years'),
+            $end = new DateTimeImmutable('now')
         );
     }
 }
