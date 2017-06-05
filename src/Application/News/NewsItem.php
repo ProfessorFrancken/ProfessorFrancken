@@ -34,7 +34,9 @@ final class NewsItem
         $this->publicationDate = $publicationDate;
         $this->authorName = $authorName;
         $this->content = $content;
-        $this->related = $related;
+        $this->related = (function(NewsItemLink ...$item) {
+            return $item;
+        })(...$related);
         $this->next = $next;
         $this->previous = $previous;
     }
