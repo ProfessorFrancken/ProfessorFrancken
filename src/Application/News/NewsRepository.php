@@ -96,8 +96,8 @@ final class NewsRepository
                 $this->faker->sentence(),
                 DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween(
-                        $date->format('y-m-d'),
-                        $date->add(new \DateInterval('P1M'))->format('y-m-d')
+                        $date->sub(new \DateInterval('P1M'))->format('y-m-d'),
+                        $date->format('y-m-d')
                     )
                 )
             ),
@@ -105,8 +105,8 @@ final class NewsRepository
                 $this->faker->sentence(),
                 DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween(
-                        $date->sub(new \DateInterval('P1M'))->format('y-m-d'),
-                        $date->format('y-m-d')
+                        $date->format('y-m-d'),
+                        $date->add(new \DateInterval('P1M'))->format('y-m-d')
                     )
                 )
             )

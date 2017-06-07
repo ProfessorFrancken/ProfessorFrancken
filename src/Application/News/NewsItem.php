@@ -26,8 +26,8 @@ final class NewsItem
         string $authorName,
         string $content,
         array $related = [],
-        NewsItemLink $next,
-        NewsItemLink $previous
+        NewsItemLink $previous,
+        NewsItemLink $next = null
     ) {
         $this->title = $title;
         $this->exerpt = $exerpt;
@@ -86,68 +86,3 @@ final class NewsItem
         return $this->next;
     }
 }
-
-// final class NewsItem //implements ReadModelInterface, SerializableInterface
-// {
-//     private $title;
-//     private $summary;
-//     private $contents;
-//     private $author;
-//     private $published_at;
-
-//     public function __construct(
-//         string $title,
-//         string $summary,
-//         string $contents,
-//         Author $author
-//     ) {
-//         $this->title = $title;
-//         $this->summary = $summary;
-//         $this->contents = $contents;
-//         $this->author = $author;
-//     }
-
-//     public function publish(MarkdownCompiler $compiler, DateTime $at) : PublishedNewsItem
-//     {
-//         $this->published_at = $at;
-
-//         $this->raise(
-//             new NewsItemWasPublished($this->id, $at)
-//         );
-//         return PublishedNewsItem::publish($this, $compiler);
-//     }
-
-//     public function changeAuthor(Author $author)
-//     {
-//         $this->author = $author;
-
-//         $this->raise(
-//             new AuthorWasChanged($this->id, $author)
-//         );
-//     }
-
-//     public function title() : string
-//     {
-//         return $this->title;
-//     }
-
-//     public function contents() : string
-//     {
-//         return $this->contents;
-//     }
-
-//     public function summary() : string
-//     {
-//         return $this->summary;
-//     }
-
-//     public function author() : Author
-//     {
-//         return $this->author;
-//     }
-
-//     public function publishedAt()
-//     {
-//         return 'never';
-//     }
-// }
