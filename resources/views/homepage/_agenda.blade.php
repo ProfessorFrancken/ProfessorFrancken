@@ -5,53 +5,53 @@
     <ul class="agenda-list list-unstyled">
         <li class="agenda-item d-flex d-flex align-items-center">
             <div class="agenda-item__date align-self-start">
-                <h5 class="agenda-item__date-day">13</h5>
-                <span class="agenda-item__date-month">Feb</span>
+                <h5 class="agenda-item__date-day">07</h5>
+                <span class="agenda-item__date-month">Jun</span>
             </div>
 
             <div class="agenda-item__body">
-                <h5 class="agenda-item__header">General Assembly</h5>
+                <h5 class="agenda-item__header">Transition - General Assembly</h5>
                 <p class="agenda-item__description">
-                    I think the board should take a shot of <strong>Ketel1</strong>
+                    T-GA, super mooi.
                 </p>
             </div>
         </li>
         <li class="agenda-item d-flex d-flex align-items-center">
             <div class="agenda-item__date align-self-start">
-                <h5 class="agenda-item__date-day">03</h5>
-                <span class="agenda-item__date-month">Oct</span>
+                <h5 class="agenda-item__date-day">14</h5>
+                <span class="agenda-item__date-month">Jun</span>
             </div>
 
             <div class="agenda-item__body">
-                <h5 class="agenda-item__header">Ice Skating with the Sportcie</h5>
+                <h5 class="agenda-item__header">Summer BBQ</h5>
                 <p class="agenda-item__description">
-                    Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a.
+                    Pay €10,- get &#8734; drinks
+                </p>
+            </div>
+        </li>
+        <li class="agenda-item d-flex d-flex align-items-center">
+            <div class="agenda-item__date align-self-start">
+                <h5 class="agenda-item__date-day">19</h5>
+                <span class="agenda-item__date-month">Jun</span>
+            </div>
+
+            <div class="agenda-item__body">
+                <h5 class="agenda-item__header">Practice Session: Electricity and Magnetism 2</h5>
+                <p class="agenda-item__description">
+                    5118.-156
                 </p>
             </div>
         </li>
         <li class="agenda-item d-flex d-flex align-items-center">
             <div class="agenda-item__date align-self-start">
                 <h5 class="agenda-item__date-day">21</h5>
-                <span class="agenda-item__date-month">Dec</span>
+                <span class="agenda-item__date-month">Jun</span>
             </div>
 
             <div class="agenda-item__body">
-                <h5 class="agenda-item__header">Vrijmibo</h5>
+                <h5 class="agenda-item__header">Practice Session: Structure of Matter 2</h5>
                 <p class="agenda-item__description">
-                    Id ornare arcu odio ut sem.
-                </p>
-            </div>
-        </li>
-        <li class="agenda-item d-flex d-flex align-items-center">
-            <div class="agenda-item__date align-self-start">
-                <h5 class="agenda-item__date-day">09</h5>
-                <span class="agenda-item__date-month">Jan</span>
-            </div>
-
-            <div class="agenda-item__body">
-                <h5 class="agenda-item__header">Karakterborrel</h5>
-                <p class="agenda-item__description">
-                    Habitasse platea dictumst quisque sagittis, purus sit amet!
+                    5114.0043
                 </p>
             </div>
         </li>
