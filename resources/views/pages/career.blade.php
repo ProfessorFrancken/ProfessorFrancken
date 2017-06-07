@@ -5,7 +5,7 @@
 
 @section('content')
 
-  <h1>Career</h1>
+  <h1 class="section-header">Career</h1>
 
   <p>Welcome to the carreer plaza of T.F.V. ‘Professor Francken’. Here you will find everything you need to prepare for your professional carreer. From excursions to job openings; this is where you will find everything that is relevant for your carreer.</p>
 
