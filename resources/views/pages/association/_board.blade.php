@@ -29,7 +29,7 @@
                 </h6>
                 <img
                     class="board-member__photo mt-3"
-                    src="https://api.adorable.io/avatars/150/{{ str_slug($member['name']) }}.png"
+                    src="{{ $member['photo'] or 'https://api.adorable.io/avatars/150/' .  str_slug($member['name']) . '.png' }}"
                     alt="Photo of {{ $member['name'] }}"
                 >
             </li>

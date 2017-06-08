@@ -6,6 +6,18 @@
             Boards of T.F.V. 'Professor Francken'
         </h2>
     </div>
+      @include("pages.association._board", ['board' => [
+        'year' => '2017-2018',
+        'name' => 'Hè Watt?',
+        'members' => [
+          ['name' => 'Kathinka Frieswijk', 'title' => 'President', 'photo' => '/images/boards/members/kathinka.jpg'],
+          ['name' => 'Anna Kenbeek', 'title' => 'Secretary and commissioner of education', 'photo' => '/images/boards/members/anna.jpg'],
+          ['name' => 'Arjen Kramer', 'title' => 'Treasurer', 'photo' => '/images/boards/members/arjen.jpg'],
+          ['name' => 'Mark Redeman', 'title' => 'Commissioner of external relations', 'photo' => '/images/boards/members/mark.jpg'],
+          ['name' => 'Su-Elle Kamps', 'title' => 'Commissioner of internal relations and vice president', 'photo' => '/images/boards/members/su-elle.jpg']
+        ],
+        'figure' => '/images/boards/he_watt.jpg'
+      ]])
 
       @include("pages.association._board", ['board' => [
         'year' => '2016-2017',
