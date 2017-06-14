@@ -10,7 +10,7 @@
         'year' => '2017-2018',
         'name' => 'Hè Watt?',
         'members' => [
-          ['name' => 'Kathinka Frieswijk', 'title' => 'President', 'photo' => '/images/boards/members/kathinka.jpg'],
+          ['name' => 'Kathinka Frieswijk', 'title' => 'President', 'photo' => '/images/boards/members/kathinka-kat.jpg'],
           ['name' => 'Anna Kenbeek', 'title' => 'Secretary and commissioner of education', 'photo' => '/images/boards/members/anna.jpg'],
           ['name' => 'Arjen Kramer', 'title' => 'Treasurer', 'photo' => '/images/boards/members/arjen.jpg'],
           ['name' => 'Su-Elle Kamps', 'title' => 'Commissioner of internal relations and vice president', 'photo' => '/images/boards/members/su-elle.jpg'],
