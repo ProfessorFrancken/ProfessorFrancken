@@ -11,6 +11,9 @@ You can find some high quality introductory videos on
 For more info on Broadway, watch
 [Willem-Jan Zijderveld speak on CQRS and Event Sourcing](https://www.youtube.com/watch?v=d1PDPsxWGqM).
 
+
+- [Getting started](#getting-started)
+    - [Summary](#summary)
 - [Contributing](#contributing)
     - [Generating css (or compiling assets)](#generating-css-or-compiling-assets)
         - [Windows configuration](#windows-configuration)
@@ -22,12 +25,6 @@ For more info on Broadway, watch
     - [Application layer](#application-layer)
         - [Adding projectors](#adding-projectors)
     - [Infrastructure layer](#infrastructure-layer)
-- [Setting up a VM](#setting-up-a-vm)
-    - [Generate a ssh key](#generate-a-ssh-key)
-    - [Setup homestead](#setup-homestead)
-    - [Verify that everything is working](#verify-that-everything-is-working)
-    - [Configure your hosts file](#configure-your-hosts-file)
-        - [Using the xip.io service](#using-the-xipio-service)
 
 ## Getting started
 
