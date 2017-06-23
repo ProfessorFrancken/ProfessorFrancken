@@ -1,0 +1,66 @@
+version: '2'
+
+services:
+  php:
+    image: francken/php
+    links:
+      - mysql
+    volumes:
+      - ./:/var/www/francken
+    # volumes_from:
+    #   - data
+
+  # data:
+  #   image: busybox
+  #   volumes:
+  #     - /var/www/francken/storage
+
+  nginx:
+    image: francken/nginx
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - php
+    volumes_from:
+      - php
+    restart: always
+
+  mysql:
+    image: francken/mysql
+    environment:
+      - MYSQL_USER=francken
+      - MYSQL_PASSWORD=leden
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=francken
+    restart: always
+
+  composer:
+    image: composer/composer:alpine
+    volumes_from:
+      - php
+    working_dir: /var/www/francken
+
+  npm:
+    image: node:7.4
+    volumes_from:
+      - php
+    working_dir: /var/www/francken
+
+  yarn:
+    image: kkarczmarczyk/node-yarn
+    volumes_from:
+      - php
+    working_dir: /var/www/francken
+    command: yarn
+
+# This service is mostly identical to the php service except that it also
+# intalls xdebug so we can check for coverage
+  test_coverage:
+    image: francken/php:with-xdebug
+    volumes_from:
+      - php
+    links:
+      - mysql
+    environment:
+      DB_CONNECTION: testing

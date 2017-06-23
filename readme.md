@@ -29,14 +29,50 @@ For more info on Broadway, watch
     - [Configure your hosts file](#configure-your-hosts-file)
         - [Using the xip.io service](#using-the-xipio-service)
 
+## Getting started
+
+If you want to get started working on our website, first clone the repository
+using git. Next copy the `.env.example` file and name the copy `.env`.
+
+The following instructions assume that you've
+installed [Docker](https://www.docker.com/products/docker#/linux)
+and [docker-compose](https://docs.docker.com/compose/install/).
+If you haven't yet, follow the links and install Docker.
+
+Next you will want to download our php and javascript dependencies. Using you
+terminal run `docker-compose run composer install` and `docker-compose run yarn
+install` in the root of the project.
+Once you've installed the dependencies run `docker-compose run php php artisan
+key:generate` to generate an application key.
+Next run `docker-compose run php php artisan migrate:refresh --seed` to setup a
+sqlite database and lastly run `docker-compose up nginx` to start the website.
+
+You can now visit the website at [localhost](http://localhost).
+
+
+### Summary
+
+Run the following commands to setup and start the website.
+
+```sh
+git clone git@github.com:ProfessorFrancken/ProfessorFrancken.git Francken && cd Francken
+
+cp .env.example .env
+
+docker-compose run composer install
+docker-compose run yarn install
+docker-compose run npm npm run dev
+docker-compose run php php artisan key:generate
+docker-compose run php php artisan migrate:refresh --seed
+docker-compose up nginx
+```
+
 ## Contributing
 Before you push your changes to this repository make sure that the tests are all
 green and that there are no issues with code style.
 
 Below you will find a quick summary on how to run the tests and a code style
 fixer.
-This summary assumes you've correctly setup your development environment (i.e.
-it assumes you've setup a vagrant box with Homestead and you've run `composer install`).
 
 ### Generating css (or compiling assets)
 
@@ -48,9 +84,9 @@ Assuming you've installed npm locally you can run the command,
 ```
 npm install
 ```
-Alternatively if you prefer to use a docker container, then you can run
-`docker-compose run npm npm install` (assuming you're
-using [our docker repo](https://github.com/ProfessorFrancken/Docker)).
+Alternatively if you prefer to use a docker container (that is if you have
+installed Docker but don't have npm installed), then you can run
+`docker-compose run npm npm install`.
 
 
 Once you've installed the javascript dependencies you can compile our assets by
@@ -74,12 +110,10 @@ I haven't yet tested whether this works on Windows.. If you're using Docker
 (which you should :-)) then the docker commands should work.
 
 ### Testing
-Once your VM has been setup you should be able to run the unit and integration
-tests and verify that everything is working correctly.
-
-Run the tests from your VM in the root directory:
+We use [phpunit](https://phpunit.de/) for most of our tests. To execute the
+tests using Docker run,
 ```
-vendor/bin/phpunit
+docker-compose run php vendor/bin/phpunit
 ```
 
 ### Code style
@@ -153,72 +187,3 @@ It may also contain implementations of repositories, notification services etc.
 
 Code inside the infrastructure layer should be tested using acceptance criteria.
 Unit and integration tests should be written whenever they are useful.
-
-
-## Setting up a VM
-You should first install [virtualbox](https://www.virtualbox.org/wiki/Downloads)
-and [vagrant](https://www.vagrantup.com/).
-Vagrant is used to provision our VM.
-You will now need to download Homestead, e.g. by cloning the repository:
-```
-git clone https://github.com/laravel/homestead.git Homestead
-```
-
-### Generate a ssh key
-If you do not yet have an ssh key (if you've installed
-[Github Desktop](https://desktop.github.com/) then you can skip this step) then
-you should generate a new, see
-[generating a new ssh key](https://help.github.com/articles/generating-a-new-ssh-key/).
-
-Next copy and rename the `Homestead.yaml.dist` file to `Homestead.yaml`, also
-copy and rename the `.env.example` file to `.env`.
-If you are on windows, then change the `authorize` as well as the `keys` property in `Homestead.yaml` to point to your
-public ssh key.
-
-### Setup homestead
-Once virtualbox and thereafter vagrant have been installed and you've correctly
-cloned Homestead and configured your sshkey, then you should install the
-`homestead` box:
-```
-vagrant box add laravel/homestead
-```
-Downloading the box might take a while.
-
-Next you *should* be able to run `vagrant up`, which starts the VM,
-```
-vagrant up
-```
-Once vagrant has finished you can ssh into the VM by using `vagrant ssh`. The VM
-is automatically configured with nginx and MYSQL database. See the
-[homestead documentation](https://laravel.com/docs/5.2/homestead) for some
-additional info.
-
-### Verify that everything is working
-Once you've successfully ssh'd into your VM you'll need to install some
-dependencies using [composer](http://getcomposer.org/).
-Next `cd` into the `francken` directory and then run `composer install`.
-Once that's finished you should be able to run the unit and integration tests,
-```
-vendor/bin/phpunit
-```
-
-Next if you want to visit the website you should run some migrations (these will
-configure your MYSQL database) and setup an random application key (this is used
-for security stuff),
-```
-php artisan key:generate
-php artisan migrate
-```
-
-### Configure your hosts file
-In order to actually visit the website you will have to configure your (local,
-so not the VM's)
-`/etc/hosts` file to redirect `francken.app` to `192.168.10.10`, by adding the
-next line to your `/etc/hosts` file (this requires root permission, so use sudo)
-```
-sudo echo "192.168.10.10  francken.app" >> /etc/hosts
-```
-
-#### Using the xip.io service
-Instead of configuring your host file you should also be able to open the
-website by visiting [francken.192.168.10.10.xip.io/](http://francken.192.168.10.10.xip.io/).
