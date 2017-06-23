@@ -37,8 +37,8 @@ and [docker-compose](https://docs.docker.com/compose/install/).
 If you haven't yet, follow the links and install Docker.
 
 Next you will want to download our php and javascript dependencies. Using you
-terminal run `docker-compose run composer install` and `docker-compose run yarn
-install` in the root of the project.
+terminal run `docker-compose run composer install` and `docker-compose run yarn`
+in the root of the project.
 Once you've installed the dependencies run `docker-compose run php php artisan
 key:generate` to generate an application key.
 Next run `docker-compose run php php artisan migrate:refresh --seed` to setup a
@@ -57,7 +57,7 @@ git clone git@github.com:ProfessorFrancken/ProfessorFrancken.git Francken && cd 
 cp .env.example .env
 
 docker-compose run composer install
-docker-compose run yarn install
+docker-compose run yarn
 docker-compose run npm npm run dev
 docker-compose run php php artisan key:generate
 docker-compose run php php artisan migrate:refresh --seed
