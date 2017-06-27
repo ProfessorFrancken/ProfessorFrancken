@@ -48,23 +48,18 @@
 
     <ul class="agenda-list list-unstyled">
         <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
-            <a
-                href="{{ $newsItem->url() }}"
-                class="aside-link"
-            >
-                <div class="media align-items-center">
-                    <div class="media-body">
-                        <h5 class="agenda-item__header">
-                            {{ $newsItem->authorName() }}
-                        </h5>
-                    </div>
-                    <img
-                        class="rounded d-flex ml-3"
-                        src="{{ $newsItem->authorPhoto() }}"
-                        style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
-                    >
+            <div class="media align-items-center">
+                <div class="media-body">
+                    <h5 class="agenda-item__header">
+                        {{ $newsItem->authorName() }}
+                    </h5>
                 </div>
-            </a>
+                <img
+                    class="rounded d-flex ml-3"
+                    src="{{ $newsItem->authorPhoto() }}"
+                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
+                >
+            </div>
         </li>
     </ul>
 
