@@ -24,9 +24,14 @@ final class NewsItemPreview
     ) {
         $this->title = $title;
         $this->publicationDate = $publicationDate;
-        $this->url = '/association/news/' . str_slug($title);
+        $this->url = '/association/news/' . $this->link();
         $this->exerpt = $exerpt;
         $this->authorName = $authorName;
+    }
+
+    private function link() : string
+    {
+        return $this->publicationDate()->format('y-m-d-') . str_slug($this->title());
     }
 
     public function title() : string

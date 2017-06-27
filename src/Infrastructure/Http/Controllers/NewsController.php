@@ -12,12 +12,10 @@ use League\Period\Period;
 final class NewsController
 {
     private $news;
-    private $faker;
 
-    public function __construct(\Faker\Generator $faker, NewsRepository $news)
+    public function __construct(NewsRepository $news)
     {
         $this->news = $news;
-        $this->faker = $faker;
     }
 
     public function index()

@@ -7,13 +7,17 @@ namespace Francken\Application\News;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
 use DateTimeImmutable;
+use Francken\Domain\Url;
 
 final class NewsItem
 {
     private $title;
     private $exerpt;
     private $publicationDate;
+
+    private $author;
     private $authorName;
+
     private $content;
     private $related;
     private $next;
@@ -24,15 +28,19 @@ final class NewsItem
         string $exerpt,
         DateTimeImmutable $publicationDate,
         string $authorName,
+        string $authorPhoto,
         string $content,
         array $related = [],
-        NewsItemLink $previous,
+        NewsItemLink $previous = null,
         NewsItemLink $next = null
     ) {
         $this->title = $title;
         $this->exerpt = $exerpt;
         $this->publicationDate = $publicationDate;
         $this->authorName = $authorName;
+
+        $this->author = new Author($authorName, $authorPhoto);
+
         $this->content = $content;
         $this->related = (function(NewsItemLink ...$item) {
             return $item;
@@ -46,9 +54,14 @@ final class NewsItem
         return $this->title;
     }
 
+    public function link() : string
+    {
+        return $this->publicationDate()->format('y-m-d-') . str_slug($this->title());
+    }
+
     public function url() : string
     {
-        return '/association/news/' . str_slug($this->title());
+        return '/association/news/' . $this->link();
     }
 
     public function exerpt() : string
@@ -63,7 +76,12 @@ final class NewsItem
 
     public function authorName() : string
     {
-        return $this->authorName;
+        return $this->author->name();
+    }
+
+    public function authorPhoto() : string
+    {
+        return $this->author->photo();
     }
 
     public function content() : string
@@ -83,6 +101,6 @@ final class NewsItem
 
     public function previousNewsItem() : NewsItemLink
     {
-        return $this->next;
+        return $this->previous;
     }
 }

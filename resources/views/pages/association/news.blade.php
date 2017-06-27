@@ -27,12 +27,12 @@
                             {{ $newsItem->title() }}
                         </h4>
                         <p class="news-item__body">
-                            {{ $newsItem->exerpt() }}
+                            {!! $newsItem->exerpt() !!}
                         </p>
                     </div>
 
                     <div>
-                        <a class="btn btn-inverse" href="/association/news/{{ str_slug($newsItem->title()) }}">Read more</a>
+                        <a class="btn btn-inverse" href="{{ $newsItem->url() }}">Read more</a>
                     </div>
                 </article>
             </div>

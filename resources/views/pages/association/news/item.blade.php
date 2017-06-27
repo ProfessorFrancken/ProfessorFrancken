@@ -60,7 +60,7 @@
                     </div>
                     <img
                         class="rounded d-flex ml-3"
-                        src="https://api.adorable.io/avatars/75/0.png"
+                        src="{{ $newsItem->authorPhoto() }}"
                         style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
                     >
                 </div>

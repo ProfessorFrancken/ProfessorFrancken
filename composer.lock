@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5ce6568a2b243e6e5fe04aeb7f2832ef",
-    "content-hash": "75dad97a0fa7c18d0dee69e4c0faf5c7",
+    "hash": "1bd657546c5e9f65623a7ff54413e251",
+    "content-hash": "6b4d436ffa180799db08c5bed3e1a3ba",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -952,6 +952,63 @@
                 "storage"
             ],
             "time": "2017-02-09 11:33:58"
+        },
+        {
+            "name": "league/period",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/period.git",
+                "reference": "6a291739c326c8cc88b5c97098d182cc0d1b6a1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/period/zipball/6a291739c326c8cc88b5c97098d182cc0d1b6a1d",
+                "reference": "6a291739c326c8cc88b5c97098d182cc0d1b6a1d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.10",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Period\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A time range immutable value object",
+            "homepage": "http://period.thephpleague.com",
+            "keywords": [
+                "date",
+                "dateinterval",
+                "dateperiod",
+                "datetime",
+                "interval",
+                "range",
+                "time"
+            ],
+            "time": "2016-09-19 10:33:45"
         },
         {
             "name": "matthiasnoback/broadway-serialization",

@@ -12,7 +12,7 @@
     <ul class="list-unstyled agenda-list">
         @foreach ($news as $item)
         <li class="agenda-item">
-            <a href="/association/news/item" class="d-flex justify-content-between">
+            <a href="{{ $item->url() }}" class="d-flex justify-content-between">
                 {{ $item->title() }}
                 <small class="text-muted">
                     {{ $item->publicationDate()->format('d M Y')}}
