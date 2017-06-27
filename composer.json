@@ -12,7 +12,7 @@
         "matthiasnoback/broadway-serialization": "^1.0",
         "ramsey/uuid": "^3.0",
         "webmozart/assert": "^1.1",
-        "league/commonmark": "^0.15.0",
+        "league/commonmark": "^0.15.4",
         "fale/isbn": "^3.0",
         "league/period": "^3.3"
     },

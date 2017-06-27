@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\News;
 
+use League\CommonMark\CommonMarkConverter;
+use League\HTMLToMarkdown\HtmlConverter;
 use Francken\Application\News\FindNewsItemsInPeriod;
 use Francken\Application\News\FindNewsItemByLink;
 use Francken\Application\News\FindRecentNewsItems;
@@ -176,9 +178,29 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
 
     public function byLink(string $link) : NewsItem
     {
-        return $this->items->filter(function (NewsItem $item) use ($link) {
+        $item = $this->items->filter(function (NewsItem $item) use ($link) {
             return $item->link() == $link;
         })->first();
+
+        $toHtml = new CommonMarkConverter([
+            'html_input' => 'allow',
+            'allow_unsafe_links' => true,
+        ]);
+
+        $content = $toHtml->convertToHtml($item->content());
+
+        return new NewsItem(
+            $item->title(),
+            $item->exerpt(),
+            $item->publicationDate(),
+            $item->authorName(),
+            $item->authorPhoto(),
+            $content,
+            // $item->content(),
+            [],
+            $item->previousNewsItem(),
+            $item->nextNewsItem()
+        );
     }
 
     public function inPeriod(Period $period, int $amount) : array
