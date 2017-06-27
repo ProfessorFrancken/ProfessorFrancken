@@ -254,7 +254,7 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
                 return [
                     'key' => $authorKey,
                     'name' => $data['name'],
-                    'photo' => $images[0] ?? null,
+                    'photo' => $images[1] ?? null,
                     'content' => $data['content'],
                 ];
             }
