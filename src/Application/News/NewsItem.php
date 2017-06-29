@@ -14,10 +14,7 @@ final class NewsItem
     private $title;
     private $exerpt;
     private $publicationDate;
-
     private $author;
-    private $authorName;
-
     private $content;
     private $related;
     private $next;
@@ -27,8 +24,7 @@ final class NewsItem
         string $title,
         string $exerpt,
         DateTimeImmutable $publicationDate,
-        string $authorName,
-        string $authorPhoto,
+        Author $author,
         string $content,
         array $related = [],
         NewsItemLink $previous = null,
@@ -37,10 +33,7 @@ final class NewsItem
         $this->title = $title;
         $this->exerpt = $exerpt;
         $this->publicationDate = $publicationDate;
-        $this->authorName = $authorName;
-
-        $this->author = new Author($authorName, $authorPhoto);
-
+        $this->author = $author;
         $this->content = $content;
         $this->related = (function(NewsItemLink ...$item) {
             return $item;

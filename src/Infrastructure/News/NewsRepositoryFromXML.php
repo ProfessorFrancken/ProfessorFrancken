@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\News;
 
-use League\CommonMark\CommonMarkConverter;
-use League\HTMLToMarkdown\HtmlConverter;
-use Francken\Application\News\FindNewsItemsInPeriod;
+use DateTimeImmutable;
+use Faker\Generator;
+use Francken\Application\News\Author;
 use Francken\Application\News\FindNewsItemByLink;
+use Francken\Application\News\FindNewsItemsInPeriod;
 use Francken\Application\News\FindRecentNewsItems;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsItemLink;
 use Francken\Application\News\NewsItemPreview;
-use Francken\Domain\News\NewsId;
 use Francken\Domain\News\AuthorId;
-use Faker\Generator;
+use Francken\Domain\News\NewsId;
+use League\CommonMark\CommonMarkConverter;
+use League\HTMLToMarkdown\HtmlConverter;
 use League\Period\Period;
-use DateTimeImmutable;
 
 final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemByLink, FindNewsItemsInPeriod
 {
@@ -155,7 +156,7 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
         $previous = null;
         foreach ($newsItems as $newsItem) {
             $next = $links[$idx + 1] ?? null;
-            $previous = $links[$idx] ?? null;
+            $previous = $links[$idx - 1] ?? null;
             $idx++;
 
             $this->items[] = $this->importNewsItemFromXml($newsItem, $next, $previous);
@@ -166,14 +167,30 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
         })->unique(function (NewsItem $item) {
             return $item->title();
         })->filter();
-
-
-        // filter on unique items, there should only by 1 title + date, and preferably english
     }
 
     public function recent(int $amount) : array
     {
-        return $this->items->reverse()->take($amount)->toArray();
+        $toHtml = new CommonMarkConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => true,
+        ]);
+
+        return $this->items->reverse()->take($amount)
+            ->map(function (NewsItem $item) use ($toHtml){
+                $content = $toHtml->convertToHtml($item->content());
+
+                return new NewsItem(
+                    $item->title(),
+                    str_limit($content, 140),
+                    $item->publicationDate(),
+                    new Author($item->authorName(), $item->authorPhoto()),
+                    $content,
+                    [],
+                    $item->previousNewsItem(),
+                    $item->nextNewsItem()
+                );
+            })->toArray();
     }
 
     public function byLink(string $link) : NewsItem
@@ -193,10 +210,8 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
             $item->title(),
             $item->exerpt(),
             $item->publicationDate(),
-            $item->authorName(),
-            $item->authorPhoto(),
+            new Author($item->authorName(), $item->authorPhoto()),
             $content,
-            // $item->content(),
             [],
             $item->previousNewsItem(),
             $item->nextNewsItem()
@@ -229,7 +244,6 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
     {
         return new NewsItemLink(
             (string)$xml->title,
-            // (string)$xml->title . $xml->children('wp', true)->post_id,
             new \DateTimeImmutable(
                 (string)$xml->children('wp', true)->post_date
             )
@@ -247,8 +261,10 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
             new \DateTimeImmutable(
                 (string)$xml->children('wp', true)->post_date
             ),
-            $author['name'] ?? 'Board', // authorName
-            $author['photo'] ?? '/images/LOGO_KAAL.png',
+            new Author(
+                $author['name'] ?? 'Board',
+                $author['photo'] ?? '/images/LOGO_KAAL.png'
+            ),
             $content,
             [],
             $next,
@@ -260,6 +276,7 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
     {
         $content = (string)$xml->children("content", true);
 
+        // Some of the old legacy articles contain references to $hbar$ which was replaced with the following
         return preg_replace('$hbar$', '<span style="font-family\':serif;font-style:italic;">ħ</span>', $content);
     }
 

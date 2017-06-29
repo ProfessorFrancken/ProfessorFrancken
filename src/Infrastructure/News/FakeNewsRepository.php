@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\News;
 
-use Francken\Application\News\FindNewsItemsInPeriod;
+use DateTimeImmutable;
+use Faker\Generator;
+use Francken\Application\News\Author;
 use Francken\Application\News\FindNewsItemByLink;
+use Francken\Application\News\FindNewsItemsInPeriod;
 use Francken\Application\News\FindRecentNewsItems;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsItemLink;
 use Francken\Application\News\NewsItemPreview;
-use Francken\Domain\News\NewsId;
 use Francken\Domain\News\AuthorId;
-use Faker\Generator;
+use Francken\Domain\News\NewsId;
 use League\Period\Period;
-use DateTimeImmutable;
 
 final class FakeNewsRepository implements FindNewsItemsInPeriod, FindNewsItemByLink, FindRecentNewsItems
 {
@@ -60,8 +61,10 @@ final class FakeNewsRepository implements FindNewsItemsInPeriod, FindNewsItemByL
             $this->faker->sentence(),
             $this->faker->paragraph(),
             $date,
-            $this->faker->name(),
-            'https://api.adorable.io/avatars/75/' . $this->faker->randomNumber() . '.png',
+            new Author(
+                $this->faker->name(),
+                'https://api.adorable.io/avatars/75/' . $this->faker->randomNumber() . '.png'
+            ),
             (new FakeNewsContent($this->faker))->generate(),
             array_map(
                 function() {
