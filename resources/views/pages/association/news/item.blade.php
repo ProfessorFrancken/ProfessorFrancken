@@ -16,7 +16,9 @@
     <hr>
 
 
-    {!! $newsItem->content() !!}
+    <div class="news-item__content">
+        {!! $newsItem->content() !!}
+    </div>
 
     <hr class="my-4">
 
