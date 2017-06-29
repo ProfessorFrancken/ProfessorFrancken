@@ -1,5 +1,8 @@
 @extends('homepage.two-column-layout')
 
+@section('title', $newsItem->title() . " - T.F.V. 'Professor Francken'")
+@section('description', $newsItem->exerpt())
+
 @section('content')
 
     <h2 class="section-header">

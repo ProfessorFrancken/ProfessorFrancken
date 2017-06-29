@@ -1,5 +1,6 @@
 @extends('pages.association')
-@inject('faker', "Faker\Generator")
+
+@section('title', "Recent news - T.F.V. 'Professor Francken'")
 
 @section('main-content')
     <div class="container my-5">

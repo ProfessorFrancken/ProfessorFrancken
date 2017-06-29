@@ -1,5 +1,6 @@
 @extends('homepage.two-column-layout')
-@inject('faker', "Faker\Generator")
+
+@section('title', "News archive - T.F.V. 'Professor Francken'")
 
 @section('content')
 
