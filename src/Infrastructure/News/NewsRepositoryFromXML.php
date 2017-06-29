@@ -173,7 +173,7 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
     {
         $toHtml = new CommonMarkConverter([
             'html_input' => 'strip',
-            'allow_unsafe_links' => true,
+            'allow_unsafe_links' => false,
         ]);
 
         return $this->items->reverse()->take($amount)
@@ -201,7 +201,7 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
 
         $toHtml = new CommonMarkConverter([
             'html_input' => 'allow',
-            'allow_unsafe_links' => true,
+            'allow_unsafe_links' => false,
         ]);
 
         $content = $toHtml->convertToHtml($item->content());
