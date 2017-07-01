@@ -44,7 +44,7 @@ final class NavigationServiceProvider extends ServiceProvider
                 'subItems' => [
                     ['url' => "/career/job-openings", 'title' => 'Job openings'],
                     ['url' => "/career/companies", 'title' => 'Company profiles'],
-                    ['url' => "/career/excursions", 'title' => 'Excursions']
+                    ['url' => "/career/events", 'title' => 'Career events']
                 ],
                 'icon' => 'career',
             ],
