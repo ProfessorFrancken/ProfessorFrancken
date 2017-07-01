@@ -13,7 +13,7 @@
             'subItems' => [
                 ['url' => "/association/news", 'title' => 'News'],
                 ['url' => "/association/history", 'title' => 'History'],
-                ['url' => "/association/honorary-members", 'title' => 'Honerary members'],
+                ['url' => "/association/honorary-members", 'title' => 'Honorary members'],
                 ['url' => "/association/boards", 'title' => 'Boards'],
                 ['url' => "/association/committees", 'title' => 'Committees'],
                 ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij']

@@ -1,17 +1,5 @@
 @extends('homepage.one-column-layout')
 
-@section('sub-menu')
-    @include('layout._subnavigation', [
-        'list' => [
-            ['url' => "/association/history", 'title' => 'History'],
-            ['url' => "/association/honorary-members", 'title' => 'Honerary members'],
-            ['url' => "/association/boards", 'title' => 'Boards'],
-            ['url' => "/association/committees", 'title' => 'Committees'],
-            ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij'],
-        ]
-    ])
-@endsection
-
 @section('content')
 
   <h1 class="section-header">Association</h1>
@@ -38,8 +26,8 @@
     <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto">
       <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin "></div>
-      <h2>Honerary members</h2>
-      <p>Learn more about our honerary members</p>
+      <h2>Honorary members</h2>
+      <p>Learn more about our honorary members</p>
     </div>
 
     <div style="text-align: center" class="col-md-4">
