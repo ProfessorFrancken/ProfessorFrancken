@@ -18,7 +18,7 @@ class ActivityTest extends ReadModelTestCase
     public function an_activity_has_a_name_category_schedule_and_location()
     {
         $id = ActivityId::generate();
-        $schedule = Schedule::withStartTime(new DateTimeImmutable());
+        $schedule = Schedule::withStartTime(new DateTimeImmutable('07 july 2017 17:00:00'));
 
         $activity = new Activity(
             $id,
