@@ -25,9 +25,6 @@ before_script:
   - composer selfupdate
   - travis_retry composer install --prefer-source --no-interaction
 
-after_script:
-  - vendor/bin/coveralls
-
 cache:
   directories:
     - $HOME/.composer/cache

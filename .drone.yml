@@ -36,9 +36,18 @@ pipeline:
       - php artisan migrate:refresh --seed
 
   run_tests:
-    image: francken/php
+    image: francken/php-with-xdebug
     commands:
       - vendor/bin/phpunit
+
+  send_test_coverage_to_coveralls:
+    image: francken/php-with-xdebug
+    secrets: [COVERALLS_REPO_TOKEN]
+    environment:
+      - COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
+      - COVERALLS_RUN_LOCALLY=1
+    commands:
+      - vendor/bin/coveralls
 
   notify-and-speak-over-ssh:
     image: appleboy/drone-ssh
