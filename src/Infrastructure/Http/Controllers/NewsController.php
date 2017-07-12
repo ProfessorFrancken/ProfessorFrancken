@@ -26,7 +26,7 @@ final class NewsController
 
     public function archive()
     {
-        $news = $this->news->findInPeriod(
+        $news = $this->news->inPeriod(
             $this->periodForPagination()
         );
 
@@ -36,7 +36,7 @@ final class NewsController
 
     public function show($link)
     {
-        $newsItem = $this->news->findByLink($link);
+        $newsItem = $this->news->byLink($link);
 
         return view('pages.association.news.item')
             ->with('newsItem', $newsItem);

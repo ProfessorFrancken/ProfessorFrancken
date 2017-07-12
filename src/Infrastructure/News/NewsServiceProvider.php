@@ -2,12 +2,14 @@
 
 namespace Francken\Infrastructure\News;
 
+use Faker\Generator;
 use Francken\Application\News\NewsRepository;
+use Francken\Infrastructure\News\CachedNewsRepository;
 use Francken\Infrastructure\News\FakeNewsRepository;
 use Francken\Infrastructure\News\NewsRepositoryFromXML;
+use Illuminate\Cache\Repository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Faker\Generator;
 
 final class NewsServiceProvider extends ServiceProvider
 {
@@ -17,20 +19,15 @@ final class NewsServiceProvider extends ServiceProvider
             $this->app->bind(NewsRepository::class, function ($app) {
                 $faker = $app->make(Generator::class);
 
-                return new NewsRepository(
-                    new FakeNewsRepository($faker),
-                    new FakeNewsRepository($faker),
-                    new FakeNewsRepository($faker)
-                );
+                return new FakeNewsRepository($faker);
             });
         } else {
             $this->app->bind(NewsRepository::class, function ($app) {
                 $filename = config('francken.news.xml');
 
-                return new NewsRepository(
+                return new CachedNewsRepository(
                     new NewsRepositoryFromXml($filename),
-                    new NewsRepositoryFromXml($filename),
-                    new NewsRepositoryFromXml($filename)
+                    $app->make(Repository::class)
                 );
             });
         }

@@ -7,9 +7,7 @@ namespace Francken\Infrastructure\News;
 use DateTimeImmutable;
 use Faker\Generator;
 use Francken\Application\News\Author;
-use Francken\Application\News\FindNewsItemByLink;
-use Francken\Application\News\FindNewsItemsInPeriod;
-use Francken\Application\News\FindRecentNewsItems;
+use Francken\Application\News\NewsRepository;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsItemLink;
 use Francken\Application\News\NewsItemPreview;
@@ -17,7 +15,7 @@ use Francken\Domain\News\AuthorId;
 use Francken\Domain\News\NewsId;
 use League\Period\Period;
 
-final class FakeNewsRepository implements FindNewsItemsInPeriod, FindNewsItemByLink, FindRecentNewsItems
+final class FakeNewsRepository implements NewsRepository
 {
     private $faker;
 
@@ -26,8 +24,10 @@ final class FakeNewsRepository implements FindNewsItemsInPeriod, FindNewsItemByL
         $this->faker = $faker;
     }
 
-    public function inPeriod(Period $period, int $amount) : array
+    public function inPeriod(Period $period) : array
     {
+        $amount = NewsRepository::News_Items_Per_Archive_Page;
+
         return array_reverse(
             array_sort(
                 array_map(
@@ -97,8 +97,10 @@ final class FakeNewsRepository implements FindNewsItemsInPeriod, FindNewsItemByL
         );
     }
 
-    public function recent(int $limit) : array
+    public function recent() : array
     {
+        $limit = NewsRepository::News_Items_Per_Page;
+
         return array_map(
             function() : NewsItemPreview {
                 return new NewsItemPreview(

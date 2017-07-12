@@ -7,9 +7,7 @@ namespace Francken\Infrastructure\News;
 use DateTimeImmutable;
 use Faker\Generator;
 use Francken\Application\News\Author;
-use Francken\Application\News\FindNewsItemByLink;
-use Francken\Application\News\FindNewsItemsInPeriod;
-use Francken\Application\News\FindRecentNewsItems;
+use Francken\Application\News\NewsRepository;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsItemLink;
 use Francken\Application\News\NewsItemPreview;
@@ -19,7 +17,7 @@ use League\CommonMark\CommonMarkConverter;
 use League\HTMLToMarkdown\HtmlConverter;
 use League\Period\Period;
 
-final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemByLink, FindNewsItemsInPeriod
+final class NewsRepositoryFromXml implements NewsRepository
 {
     private $authors = [
         ':blog-boerma:' => [
@@ -169,8 +167,10 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
         })->filter();
     }
 
-    public function recent(int $amount) : array
+    public function recent() : array
     {
+        $amount = NewsRepository::News_Items_Per_Page;
+
         $toHtml = new CommonMarkConverter([
             'html_input' => 'strip',
             'allow_unsafe_links' => false,
@@ -218,8 +218,10 @@ final class NewsRepositoryFromXml implements FindRecentNewsItems, FindNewsItemBy
         );
     }
 
-    public function inPeriod(Period $period, int $amount) : array
+    public function inPeriod(Period $period) : array
     {
+        $amount = NewsRepository::News_Items_Per_Archive_Page;
+
         return $this->items->reverse()->filter(function (NewsItem $item) use ($period) {
             $publishedAt = $item->publicationDate();
 
