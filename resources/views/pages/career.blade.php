@@ -25,8 +25,7 @@
     </div>
 
     <div style="text-align: center" class="col-md-4">
-      <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto">
-      <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin "></div>
+      <div style="height: 150px; width: 150px; border-radius: 50%; background-image: url('http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png'); margin: auto">
       <h2>Excursions </h2>
       <p>An overview of excursions to research groups and companies</p>
     </div>
