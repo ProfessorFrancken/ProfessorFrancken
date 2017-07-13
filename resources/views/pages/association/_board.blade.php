@@ -1,25 +1,25 @@
 <div class="container my-5" style="">
-    <div class="board-container rounded {{($board['figure'] != '') ? 'board-container--with-image' : ''}}">
-	      <h3 id="{{ $board['year'] }}" class="section-header section-header--centered section-header--light board-header" >
-            @if ($board['name'] != '')
-                ‘{{ $board['name'] }}’
+    <div class="board-container rounded {{($board->photo() != '') ? 'board-container--with-image' : ''}}">
+	      <h3 class="section-header section-header--centered section-header--light board-header" >
+            @if ($board->name() != '')
+                ‘{{ $board->name() }}’
                 <br/>
                 <small>
-                    {{ $board['year'] }}
+                    {{ $board->startOfYear()->format('Y') }} - {{  $board->endOfYear()->format('Y') }}
                 </small>
             @else
-                {{ $board['year'] }}
+                {{ $board->startOfYear()->format('Y') }} - {{  $board->endOfYear()->format('Y') }}
             @endif
         </h3>
-        @if ($board['figure'] != '')
-            <img src="{{ $board['figure'] }}" class="img-fluid rounded board-image"/>
+        @if ($board->photo() != '')
+            <img src="{{ $board->photo() }}" class="img-fluid rounded board-image"/>
         @endif
     </div>
 </div>
 
 <div class="container my-4">
     <ul class="list-unstyled row">
-        @foreach($board['members'] as $member)
+        @foreach($board->members() as $member)
             <li class="col board-member">
                 <h4>
                     {{ $member['name'] }}
