@@ -17,7 +17,7 @@ interface NewsRepository
     const News_Items_Per_Page = 12;
     const News_Items_Per_Archive_Page = 15;
 
-    public function inPeriod(Period $period) : array;
+    public function search(Period $period = null, string $subject = null, string $author = null) : array;
     public function byLink(string $link) : NewsItem;
     public function recent(int $amount) : array;
 }

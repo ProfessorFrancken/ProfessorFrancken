@@ -26,8 +26,10 @@ final class NewsController
 
     public function archive()
     {
-        $news = $this->news->inPeriod(
-            $this->periodForPagination()
+        $news = $this->news->search(
+            $this->periodForPagination(),
+            request()->input('subject', null),
+            request()->input('author', null)
         );
 
         return view('pages.association.news.archive')
@@ -45,6 +47,16 @@ final class NewsController
     private function periodForPagination() : Period
     {
         // Enable artificial pagination
+        if (request()->has('before') && request()->has('after')) {
+            $before = new DateTimeImmutable(request()->input('before', '-2 years'));
+            $after = new DateTimeImmutable(request()->input('after', 'now'));
+
+            return new Period(
+                $after,
+                $before
+            );
+        }
+
         if (request()->has('before')) {
             $before = new DateTimeImmutable(request()->input('before', '-2 years'));
 

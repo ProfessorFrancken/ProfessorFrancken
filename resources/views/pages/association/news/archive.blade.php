@@ -10,35 +10,43 @@
 
     <hr>
 
-    <ul class="list-unstyled agenda-list">
-        @foreach ($news as $item)
-        <li class="agenda-item">
-            <a href="{{ $item->url() }}" class="d-flex justify-content-between">
-                {{ $item->title() }}
-                <small class="text-muted">
-                    {{ $item->publicationDate()->format('d M Y')}}
-                </small>
-            </a>
-        </li>
-        @endforeach
-    </ul>
+    @if (count($news) > 0)
+        <ul class="list-unstyled agenda-list">
+            @foreach ($news as $item)
+                <li class="agenda-item">
+                    <a href="{{ $item->url() }}" class="d-flex justify-content-between">
+                        {{ $item->title() }}
+                        <small class="text-muted">
+                            {{ $item->publicationDate()->format('d M Y')}}
+                        </small>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>
+            Could not find any news items according to your search criteria
+        </p>
+    @endif
 
     <hr>
 
     <div class="d-flex justify-content-between mb-5">
-        <a
-            class="link-to-all-dark arrow"
-            href="/association/news/archive?after={{ array_first($news)->publicationDate()->format('d-m-Y') }}"
-        >
-            Newer news
-        </a>
+        @if (count($news) > 0)
+            <a
+                class="link-to-all-dark arrow"
+                href="/association/news/archive?after={{ array_first($news)->publicationDate()->format('d-m-Y') }}"
+            >
+                Newer news
+            </a>
 
-        <a
-            class="link-to-all-dark arrow"
-            href="/association/news/archive?before={{ array_last($news)->publicationDate()->format('d-m-Y') }}"
+            <a
+                class="link-to-all-dark arrow"
+                href="/association/news/archive?before={{ array_last($news)->publicationDate()->format('d-m-Y') }}"
         >
-            Older news
-        </a>
+                Older news
+            </a>
+        @endif
     </div>
 @endsection
 
@@ -52,26 +60,27 @@
     <ul class="agenda-list list-unstyled">
         <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
 
-            <form>
+            <form action="{{ url('/association/news/archive') }}" method="GET" class="form-horizontal">
+
                 <div class="form-group">
-                    <input type="text" class="form-control" id="search-news" placeholder="Search by subject">
+                    {!! Form::text('subject', null, ['placeholder' => 'Search by subject', 'class' => 'form-control'])  !!}
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="search-author" placeholder="Search by author">
+                    {!! Form::text('author', null, ['placeholder' => 'Search by author', 'class' => 'form-control'])  !!}
                 </div>
 
                 <div class="form-group row">
                     <label for="example-date-input" class="col-5 col-form-label">Published before</label>
                     <div class="col-7">
-                        <input class="form-control" type="date" id="example-date-input">
+                        {!! Form::date('before', null, ['class' => 'form-control'])  !!}
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="example-date-input" class="col-5 col-form-label">Published after</label>
                     <div class="col-7">
-                        <input class="form-control" type="date" id="example-date-input">
+                        {!! Form::date('after', null, ['class' => 'form-control'])  !!}
                     </div>
                 </div>
 

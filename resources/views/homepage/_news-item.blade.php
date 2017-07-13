@@ -14,9 +14,9 @@
         <h4 class="news-item__title">
             {{ $newsItem->title() }}
         </h4>
-        <p class="news-item__body">
-            {{ $newsItem->exerpt() }}
-        </p>
+        <div class="news-item__body">
+            {!! $newsItem->exerpt() !!}
+        </div>
     </div>
 
     <div>

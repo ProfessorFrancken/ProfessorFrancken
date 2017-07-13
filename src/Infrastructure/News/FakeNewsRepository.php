@@ -24,7 +24,12 @@ final class FakeNewsRepository implements NewsRepository
         $this->faker = $faker;
     }
 
-    public function inPeriod(Period $period) : array
+    /**
+     * Note that this search implementation is "fake" we only return
+     * results that are in the given period and ignore the subject
+     * and author criteria
+     */
+    public function search(Period $period = null, string $subject = null, string $author = null) : array
     {
         $amount = NewsRepository::News_Items_Per_Archive_Page;
 

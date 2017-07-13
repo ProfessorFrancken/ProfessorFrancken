@@ -41,6 +41,11 @@ final class CachedNewsRepository implements NewsRepository
         );
     }
 
+    public function search(Period $period = null, string $subject = null, string $author = null) : array
+    {
+        return $this->news->search($period, $subject, $author);
+    }
+
     public function byLink(string $link) : NewsItem
     {
         return $this->cache->remember(

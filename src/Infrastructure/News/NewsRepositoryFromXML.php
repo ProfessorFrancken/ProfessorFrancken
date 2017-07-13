@@ -225,9 +225,36 @@ final class NewsRepositoryFromXml implements NewsRepository
             $publishedAt = $item->publicationDate();
 
             return $period->contains($publishedAt);
-        })->take($amount)->map(function (NewsItem $item) {
-            return $item;
-        })->toArray();
+        })->take($amount)->toArray();
+    }
+
+    public function search(Period $period = null, string $subject = null, string $author = null) : array
+    {
+        $amount = NewsRepository::News_Items_Per_Archive_Page;
+        $items = $this->items->reverse();
+
+        if (! is_null($period)) {
+            $items = $items->filter(function (NewsItem $item) use ($period) {
+                $publishedAt = $item->publicationDate();
+
+                return $period->contains($publishedAt);
+            });
+
+        }
+
+        if (! is_null($author) && $author != '') {
+            $items = $items->filter(function (NewsItem $item) use ($author) {
+                return str_contains($item->authorName(), $author);
+            });
+        }
+
+        if (! is_null($subject) && $subject != '') {
+            $items = $items->filter(function (NewsItem $item) use ($subject) {
+                return str_contains($item->title(), $subject);
+            });
+        }
+
+        return $items->take($amount)->toArray();
     }
 
     private function linksFromXml(array $newsItems) : array
