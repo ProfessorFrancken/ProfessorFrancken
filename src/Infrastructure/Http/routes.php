@@ -42,6 +42,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');
 
+    Route::get('/association/news', 'NewsController@index');
+    Route::get('/association/news/archive', 'NewsController@archive');
+    Route::get('/association/news/{item}', 'NewsController@show');
+
     Route::get('/association/committees', 'CommitteesController@index');
     Route::get('/association/committees/{committee}', 'CommitteesController@show');
 
