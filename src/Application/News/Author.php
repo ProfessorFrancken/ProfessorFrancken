@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Application\News;
 
+use Francken\Domain\Boards\Board;
 use Francken\Domain\Boards\BoardId;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Identifier;
@@ -19,6 +20,14 @@ final class Author
     {
         $this->name = $name;
         $this->photo = $photo;
+    }
+
+    public static function fromBoard(Board $board) : self
+    {
+        return new Author(
+            'Board ' . $board->name(),
+            $board->photo()
+        );
     }
 
     public function name() : string

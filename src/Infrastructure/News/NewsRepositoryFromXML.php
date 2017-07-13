@@ -7,10 +7,11 @@ namespace Francken\Infrastructure\News;
 use DateTimeImmutable;
 use Faker\Generator;
 use Francken\Application\News\Author;
-use Francken\Application\News\NewsRepository;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsItemLink;
 use Francken\Application\News\NewsItemPreview;
+use Francken\Application\News\NewsRepository;
+use Francken\Domain\Boards\BoardRepository;
 use Francken\Domain\News\AuthorId;
 use Francken\Domain\News\NewsId;
 use League\CommonMark\CommonMarkConverter;
@@ -255,18 +256,18 @@ final class NewsRepositoryFromXml implements NewsRepository
     private function importNewsItemFromXml(\SimpleXMLElement $xml, NewsItemLink $next = null, NewsItemLink $previous = null) : NewsItem
     {
         $content = $this->loadContent($xml);
-        $author = $this->importAuthorFromContent($content);
+
+        $publicationDate = new \DateTimeImmutable(
+            (string)$xml->children('wp', true)->post_date
+        );
+
+        $author = $this->importAuthorFromContent($content, $publicationDate);
 
         return new NewsItem(
             (string)$xml->title,
             str_limit($content, 140),
-            new \DateTimeImmutable(
-                (string)$xml->children('wp', true)->post_date
-            ),
-            new Author(
-                $author['name'] ?? 'Board',
-                $author['photo'] ?? '/images/LOGO_KAAL.png'
-            ),
+            $publicationDate,
+            $author,
             $content,
             [],
             $next,
@@ -282,7 +283,7 @@ final class NewsRepositoryFromXml implements NewsRepository
         return preg_replace('$hbar$', '<span style="font-family\':serif;font-style:italic;">ħ</span>', $content);
     }
 
-    private function importAuthorFromContent(string& $content) : array
+    private function importAuthorFromContent(string& $content, DateTimeImmutable $publicationDate) : Author
     {
         $authorKey = '';
         foreach ($this->authors as $author => $data) {
@@ -292,6 +293,11 @@ final class NewsRepositoryFromXml implements NewsRepository
                 $content = str_replace($authorKey, '', $content);
                 preg_match('/src="([^"]+)/i', $data['content'], $images);
 
+                return new Author(
+                    $data['name'],
+                    $images[1] ??  '/images/LOGO_KAAL.png'
+                );
+
                 return [
                     'key' => $authorKey,
                     'name' => $data['name'],
@@ -300,8 +306,7 @@ final class NewsRepositoryFromXml implements NewsRepository
                 ];
             }
         }
-
-        return [];
+        $board = (new BoardRepository)->boardDuringDate($publicationDate);
+        return Author::fromBoard($board);
     }
-
 }
