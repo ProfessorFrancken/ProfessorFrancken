@@ -168,10 +168,8 @@ final class NewsRepositoryFromXml implements NewsRepository
         })->filter();
     }
 
-    public function recent() : array
+    public function recent(int $amount) : array
     {
-        $amount = NewsRepository::News_Items_Per_Page;
-
         $toHtml = new CommonMarkConverter([
             'html_input' => 'strip',
             'allow_unsafe_links' => false,

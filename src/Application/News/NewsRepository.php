@@ -19,5 +19,5 @@ interface NewsRepository
 
     public function inPeriod(Period $period) : array;
     public function byLink(string $link) : NewsItem;
-    public function recent() : array;
+    public function recent(int $amount) : array;
 }

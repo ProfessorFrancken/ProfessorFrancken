@@ -52,13 +52,13 @@ final class CachedNewsRepository implements NewsRepository
         );
     }
 
-    public function recent() : array
+    public function recent(int $amount) : array
     {
         return $this->cache->remember(
-            'news_recent',
+            $this->recentCacheKey($amount),
             self::REMEMBER_TIME,
-            function() {
-                return $this->news->recent();
+            function() use ($amount) {
+                return $this->news->recent($amount);
             }
         );
     }
@@ -75,5 +75,10 @@ final class CachedNewsRepository implements NewsRepository
     private function linkCacheKey(string $link) : string
     {
         return sprintf('news_link_%s', $link);
+    }
+
+    private function recentCacheKey(int $amount) : string
+    {
+        return sprintf('news_recent_%d', $amount);
     }
 }

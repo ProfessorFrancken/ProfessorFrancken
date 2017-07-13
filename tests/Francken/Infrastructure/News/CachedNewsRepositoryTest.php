@@ -85,13 +85,13 @@ class CachedNewsRepositoryTest extends TestCase
         // Check that the cache key was set correctly, we
         // will assume that the timespan
         $cache->remember(
-            'news_recent',
+            'news_recent_12',
             Argument::type('int'),
             Argument::any()
         )->willReturn(['news']);
 
 
-        $result = $cachedNews->recent();
+        $result = $cachedNews->recent(12);
 
         $this->assertEquals(['news'], $result);
     }

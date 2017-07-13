@@ -97,10 +97,8 @@ final class FakeNewsRepository implements NewsRepository
         );
     }
 
-    public function recent() : array
+    public function recent(int $amount) : array
     {
-        $limit = NewsRepository::News_Items_Per_Page;
-
         return array_map(
             function() : NewsItemPreview {
                 return new NewsItemPreview(
@@ -112,7 +110,7 @@ final class FakeNewsRepository implements NewsRepository
                     $this->faker->name()
                 );
             },
-            range(1, $limit)
+            range(1, $amount)
         );
     }
 }
