@@ -273,3 +273,15 @@ footer .header__title {
 .news-item__content img {
     max-width: 100%;
 }
+
+.job-opening {
+    border-top: thin solid $gray-lighter;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em 0;
+}
+
+.job-opening__title {
+    color: $gray;
+}
+

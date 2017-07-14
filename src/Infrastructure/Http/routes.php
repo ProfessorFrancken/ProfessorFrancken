@@ -52,6 +52,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/study/research-groups', 'ResearchGroupsController@index');
     Route::get('/study/research-groups/{group}', 'ResearchGroupsController@show');
 
+    Route::get('/career/job-openings', 'CareerController@jobs')->name('job-openings');
     Route::get('/career/companies', 'CompaniesController@index');
     Route::get('/career/companies/{company}', 'CompaniesController@show');
 	
