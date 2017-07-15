@@ -4,7 +4,8 @@
 <li class="navigation-list__item clearfix">
     <a class="navigation-list__link {{ $item['class'] or '' }}" href="{{ $url }}">
         @if ($icon != '')
-            <img src="/icons/filled/{{ $item['icon'] }}.svg" alt="" style="height: 20px" class="mr-2">
+             <i class="fa fa-{{ $item['icon'] }}" aria-hidden="true"></i>
+            {{-- <img src="/icons/filled/{{ $item['icon'] }}.svg" alt="" style="height: 20px" class="mr-2"> --}}
         @endif
 
         {{ $title }}

@@ -22,7 +22,7 @@ final class NavigationServiceProvider extends ServiceProvider
                     ['url' => "/study/representation/university-council", 'title' => 'University Council'],
                     ['url' => "/study/representation/faculty-council", 'title' => 'Faculty Council'],
                 ],
-                'icon' => 'study',
+                'icon' => 'graduation-cap',
             ],
             [
                 'url' => '/association',
@@ -46,7 +46,7 @@ final class NavigationServiceProvider extends ServiceProvider
                     ['url' => "/career/companies", 'title' => 'Company profiles'],
                     ['url' => "/career/events", 'title' => 'Career events']
                 ],
-                'icon' => 'career',
+                'icon' => 'suitcase',
             ],
         ];
 
@@ -56,14 +56,14 @@ final class NavigationServiceProvider extends ServiceProvider
                     'url' => 'https://www.flickr.com/photos/fotocie/sets/',
                     'title' => 'Photos',
                     'subItems' => [],
-                    'icon' => '',
+                    'icon' => 'camera',
                 ];
 
                 $items[] = [
                     'url' => '/logout',
                     'title' => 'Profile',
                     'subItems' => [],
-                    'icon' => '',
+                    'icon' => 'user',
                 ];
             } else {
                 $items[] = [
