@@ -19,7 +19,7 @@ final class CareerController
             JobType::fromString(request()->input('jobType', ''))
         );
 
-        // $jobs = (collect($jobs)->shuffle());
+        $jobs = (collect($jobs)->shuffle());
 
         return view('pages.career.job-openings')
             ->with([

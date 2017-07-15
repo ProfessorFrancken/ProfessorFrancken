@@ -8,9 +8,9 @@ final class JobOpeningRepository
 {
     private $jobs;
 
-    public function __construct(string $filename = '')
+    public function __construct(array $jobs = [])
     {
-        $this->loadJobsFromPHPFile($filename);
+        $this->jobs = $jobs;
     }
 
     /**
@@ -59,11 +59,5 @@ final class JobOpeningRepository
         }
 
         return $jobs->toArray();
-    }
-
-    private function loadJobsFromPHPFile(string $filename)
-    {
-        // Idea: if no job description was given, default to company job description
-        $this->jobs = (require database_path('vacancies.php'));
     }
 }
