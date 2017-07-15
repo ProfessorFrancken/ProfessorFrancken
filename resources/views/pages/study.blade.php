@@ -6,7 +6,8 @@
   <h1 class="section-header">Study</h1>
 
   <p>
-      T.F.V. ‘Professor Francken’ organiseert verschillende studiegerelateerde activiteiten zoals symposia, vakgroepexcursies en oefenmiddagen voor tentamens. Daarnaast hebben we regelmatig contact met besturende organen als opleidingscommissies, de faculteitsraad en het opleidingsbestuur.
+      T.F.V. ‘Professor Francken’ organizes a plethora of activities related to (applied) physics, including symposia, (research group) excursions, practice sessions for exams.
+      In addition to that we communicate regularly with many different university organs like the educations committees, the faculty councils and the university council.
   </p>
 
   <hr>

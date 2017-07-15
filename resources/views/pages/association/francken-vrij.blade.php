@@ -14,21 +14,22 @@ $volumes = $franckenVrij->volumes();
     </h1>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <p>
                 Francken Vrij is the popular science magazine of the Technisch Fysische Vereniging ‘Professor Francken’ and is distributed to its members, sponsors and other interested parties. The complete Francken Vrij archive can be found on this page.
             </p>
             <p>
-                Quam nulla porttitor massa id neque aliquam vestibulum morbi blandit cursus risus, at ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida! Turpis in eu mi bibendum neque egestas.
+                The theme of each edition is different but relates to (Applied) Physics. The contents of the magazine changes slightly from edition to edition but generaly one might expect an article by one of the applied physics research groups, an article by a student about his or her internship or a graduate about her or his new job.
+                Most editions come with a challenging puzzle and a fun comic as well.
             </p>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="well">
                 <p>
                     Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien! Pretium aenean pharetra, magna ac placerat vestibulum, lectus mauris ultrices eros, in cursus turpis massa tincidunt?
                 </p>
             </div>
-        </div>
+        </div> -->
     </div>
     </div>
 

@@ -61,8 +61,8 @@ final class FranckenVrijRepository
 
     public function latestEdition() : Edition
     {
-        $editions = $this->findAll();
+        $volume = array_first($this->volumes());
 
-        return $editions[count($editions) - 1];
+        return array_last($volume->editions());
     }
 }
