@@ -18,7 +18,7 @@
 	      @foreach($group['groups'] as $unit)
 		        <div class="col-md-6 mt-3">
 			          <img src="http://www.rug.nl{{ $unit['foto'] }}" width="283" height="142" class="rounded">
-			          <h2>Prof. {{ $unit['group'] }}</h2>
+                        <h2> {{ $unit['group'] }} Group</h2>
 			          {{ $unit['title'] }}
 			          <br>
 			          <a class="btn btn-secondary" href="{{ $unit['contact'] }}">

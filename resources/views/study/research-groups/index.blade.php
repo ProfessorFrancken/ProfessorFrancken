@@ -6,25 +6,24 @@
   </h1>
 
   <p>
-      Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum, odio eu feugiat pretium, nibh ipsum consequat nisl, vel. Fames ac turpis egestas integer eget.
+     
   </p>
 
-  <h2>Research proposals</h2>
-
-  <p>
-      Dignissim sodales ut eu sem integer vitae justo eget magna fermentum iaculis eu. Nisi porta lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor id eu nisl nunc mi!
-  </p>
+  <h2>Zernike Institute for Advanced Materials</h2>
 
   <p>
-      Gravida arcu ac tortor dignissim convallis aenean et tortor at risus viverra adipiscing at in tellus integer feugiat scelerisque varius morbi enim nunc, faucibus a pellentesque sit amet? Lectus urna duis convallis convallis tellus, id interdum? Sit amet, dictum sit amet justo donec enim diam, vulputate ut pharetra sit amet, aliquam! Sodales ut etiam sit amet nisl purus, in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non? Facilisis magna etiam tempor, orci eu lobortis elementum, nibh tellus molestie nunc, non blandit massa enim nec dui nunc mattis enim ut tellus elementum sagittis vitae et leo duis?
+    The <i>Zernike Institute for Advanced Materials</i> at the University of Groningen is simultaneously young and old. We got our current name on 16 January 2007, making us quite young, but we grew out of the Materials Science Centre, which started back in 1970. Much has changed since those early days, but there are a few constants. Possibly our greatest asset is the close collaboration between people with different backgrounds. Physicists and chemists, and increasingly biologists, theoreticians and experimentalists work closely together, giving the Institute a breadth rarely found elsewhere. In our efforts we involve the whole chain of knowledge; modelling, design, synthesis, characterization, physical properties, theory and device functionality.
+
+    <img src="/images/study/rug_zernike_institute_logoen_rood_rgb.png" alt="Zernike Institute for Advanced Materials" class="img-fluid mt-4">
   </p>
+
  @endsection
 
 
 @section('aside')
 <div class="agenda">
     <h3 class="section-header agenda-header">
-        Research groups
+        Research Groups
     </h3>
     <ul class="agenda-list list-unstyled">
         @foreach ($groups as $group)
