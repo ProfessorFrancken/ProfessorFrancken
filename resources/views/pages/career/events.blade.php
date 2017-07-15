@@ -1,4 +1,5 @@
 @extends('pages.career')
+@section('title', "Career events - T.F.V. 'Professor Francken'")
 
 <?php
 $plannedExcursions = [
