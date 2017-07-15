@@ -11,6 +11,21 @@ final class ResearchGroupsController
     public function __construct()
     {
         $this->groups = [
+
+            [
+                'title' => 'Device Physics of Complex Materials',
+                'description' => 'Device physics contributes to our present knowledge of emergent behaviour of complex materials and probes its properties by making use of modern experimental tools and techniques based on nanotechnology. Emergent behaviour is prevalent in many complex materials and originates from competing interactions of electronic, magnetic and structural origin.',
+                'photo' => '/research/zernike/device-physics-of-complex-materials/ye-group/YeWeb_460.png',
+                'groups' => [
+                    [
+                        'group' => 'Ye',
+                        'title' => 'Device Physics of Complex Materials',
+                        'contact' => 'http://www.rug.nl/staff/j.ye/',
+                        'link' => 'http://www.rug.nl/research/zernike/device-physics-of-complex-materials/ye-group/',
+                        'foto' => '/research/zernike/people/Ye-1-WEB.jpg'
+                    ]
+                ]
+            ],
             [
                 'title' => 'Materials Science',
                 'description' => 'The principal aim of the research programme of the Applied Physics-Materials Science group is to search for the relation between the microstructure of materials and its physical properties. The programme concentrates on experimental and theoretical work of the characterization of line defects (dislocations and disclinations) and homo-/heterophase interfaces so as to draw conclusions about the correlation between atomic structure, electronic charge transfer, and physical properties, both structural and functional.',
@@ -25,7 +40,6 @@ final class ResearchGroupsController
                     ]
                 ]
             ],
-
             [
                 'title' => 'Micromechanics',
                 'description' => 'The mission of this research group is to develop new models and computational tools for the micromechanics of materials, and to employ these to develop relationships between the internal structure of a material and its mechanical properties. We study material properties at a range of length scales, placing special emphasis on scale transitions. We cover a variety of engineering materials, considering and exploiting the similarities and differences in their behaviour.',
@@ -84,6 +98,7 @@ final class ResearchGroupsController
                     ],
                     [
                         'group' => 'Koster',
+                        'group-title' => 'dr.',
                         'title' => 'Device Physics of Organic Semiconductors',
                         'contact' => 'http://www.rug.nl/staff/l.j.a.koster/',
                         'link' => 'http://www.rug.nl/research/zernike/photophysics-and-opto-electronics/koster-group/',
@@ -92,20 +107,6 @@ final class ResearchGroupsController
                 ]
             ],
 
-            [
-                'title' => 'Device Physics of Complex Materials',
-                'description' => 'Device physics contributes to our present knowledge of emergent behaviour of complex materials and probes its properties by making use of modern experimental tools and techniques based on nanotechnology. Emergent behaviour is prevalent in many complex materials and originates from competing interactions of electronic, magnetic and structural origin.',
-                'photo' => '/research/zernike/device-physics-of-complex-materials/ye-group/YeWeb_460.png',
-                'groups' => [
-                    [
-                        'group' => 'Ye',
-                        'title' => 'Device Physics of Complex Materials',
-                        'contact' => 'http://www.rug.nl/staff/j.ye/',
-                        'link' => 'http://www.rug.nl/research/zernike/device-physics-of-complex-materials/ye-group/',
-                        'foto' => '/research/zernike/people/Ye-1-WEB.jpg'
-                    ]
-                ]
-            ],
 
             [
                 'title' => 'Physics of Nanodevices',
