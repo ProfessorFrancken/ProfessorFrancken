@@ -12,7 +12,8 @@
                 href="{{ $item['url'] }}"
             >
                 @if ($item['icon'] != '')
-                    <img src="/icons/filled/{{ $item['icon'] }}.svg" alt="" style="height: 20px" class="mr-2">
+                    <i class="fa fa-{{ $item['icon'] }}" aria-hidden="true"></i>
+                    {{-- <img src="/icons/filled/{{ $item['icon'] }}.svg" alt="" style="height: 20px" class="mr-2"> --}}
                 @endif
                 {{ $item['title'] }}
             </a>
