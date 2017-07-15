@@ -41,13 +41,14 @@
             <h3 class="section-header">The latest Francken Vrij</h3>
             <p>
                 Francken Vrij is the popular science magazine of the Technisch Fysische Vereniging ‘Professor Francken’ and is distributed to its members, sponsors and other interested parties.
+                The magazine has a different theme every edition that in some way has a connection to applied physics, and generally might contain the following:
             </p>
 
             <ul class="list list-unstyled">
-                <li>Porta nibh venenatis cras sed.</li>
-                <li>Lorem donec massa sapien, faucibus et.</li>
-                <li>Id aliquet risus feugiat in ante metus?</li>
-                <li>Sodales neque sodales ut.</li>
+                <li>A scientific article from one of the research groups</li>
+                <li>A theoretical view of something pertaining to the theme</li>
+                <li>The story of a member that did an internship or has started working</li>
+                <li>A challenging puzzle</li>
             </ul>
 
             <p>
