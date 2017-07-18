@@ -4,6 +4,7 @@ namespace Francken\Infrastructure;
 
 use Faker\Generator;
 use Francken\Application\Career\CompanyRepository;
+use Francken\Application\Career\EventRepository;
 use Francken\Application\Career\JobOpeningRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,17 @@ final class CareerServiceProvider extends ServiceProvider
 
             return new CompanyRepository(
                 $companies
+            );
+        });
+
+        $this->app->bind(EventRepository::class, function ($app) {
+            $events = file_exists(database_path('events.php'))
+                ? require database_path('events.php')
+                : [];
+
+            return new EventRepository(
+                $events['planned'],
+                $events['past']
             );
         });
     }

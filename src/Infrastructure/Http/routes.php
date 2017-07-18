@@ -32,7 +32,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
     });
 });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/', 'MainContentController@index');
 
@@ -55,7 +55,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/career/job-openings', 'CareerController@jobs')->name('job-openings');
     Route::get('/career/companies', 'CompaniesController@index');
     Route::get('/career/companies/{company}', 'CompaniesController@show');
-	
+    Route::get('/career/events', 'CareerController@redirectEvents');
+    Route::get('/career/events/{year}', 'CareerController@events');
+
     Route::get('/admin', function () {
         return redirect('/admin/overview');
     });

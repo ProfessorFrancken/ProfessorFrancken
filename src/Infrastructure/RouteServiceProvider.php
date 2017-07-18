@@ -4,6 +4,7 @@ namespace Francken\Infrastructure;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Francken\Application\Career\AcademicYear;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -27,5 +28,13 @@ class RouteServiceProvider extends ServiceProvider
         $router->group(['namespace' => $this->namespace], function ($router) {
             require base_path('src/Infrastructure/Http/routes.php');
         });
+
+        $router->bind(
+            'year',
+            function (string $year) : AcademicYear {
+                return AcademicYear::fromString($year);
+            }
+        );
+
     }
 }

@@ -268,6 +268,10 @@ footer .header__title {
     border-bottom: thin solid $gray-lighter;
     margin-bottom: 2em;
     margin-top: 2em;
+
+    &:last-child {
+        border-bottom: none;
+    }
 }
 
 .news-item__content img {
