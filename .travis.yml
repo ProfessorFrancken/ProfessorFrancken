@@ -5,7 +5,7 @@ group: deprecated-2017Q1
 language: php
 
 php:
-  - 7.0
+  - 7.1
 
 env:
   global:
