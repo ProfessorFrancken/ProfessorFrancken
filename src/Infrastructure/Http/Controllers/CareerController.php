@@ -19,6 +19,11 @@ final class CareerController
         // perhaps we can bind the BoardYear route here?
     }
 
+    public function index()
+    {
+        return view('career.index');
+    }
+
     public function jobs(JobOpeningRepository $repo)
     {
         $jobs = $repo->search(

@@ -1,4 +1,4 @@
-@extends('pages.career')
+@extends('career.index')
 @section('header-image-url', '/images/header/oslo.jpg')
 @section('title', "Career events - T.F.V. 'Professor Francken'")
 
@@ -53,7 +53,7 @@
         <ul class="list-unstyled">
 
             @foreach ($plannedEvents as $excursion)
-                @include('pages.career._event', ['excursion' => $excursion])
+                @include('career._event', ['excursion' => $excursion])
             @endforeach
         </ul>
     @endif
@@ -66,7 +66,7 @@
         <ul class="list-unstyled">
 
             @foreach ($pastEvents as $excursion)
-                @include('pages.career._event', ['excursion' => $excursion])
+                @include('career._event', ['excursion' => $excursion])
             @endforeach
         </ul>
     @endif
