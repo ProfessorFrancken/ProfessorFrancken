@@ -57,7 +57,7 @@ final class Board
 
     /**
      * Assume that $year is of the form yyyy-yyyy and get the start and end year
-     * from it. Moreover assume that a board year starts and ends at the 7th of Julne
+     * from it. Moreover assume that a board year starts and ends at the 7th of June
      */
     private function parseYear(string $year)
     {
