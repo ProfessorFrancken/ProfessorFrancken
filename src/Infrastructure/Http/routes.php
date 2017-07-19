@@ -69,18 +69,8 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
 
     // Proof of concept login & logout, currently not using a spcific user
     // so that we can show this potential functionality at the ALV
-    Route::post('/login', function() {
-        Auth::loginUsingId(1);
-
-        return redirect('/');
-    });
-    Route::get('/logout', function() {
-        try {
-            Auth::logOut();
-        } finally {
-            return redirect('/');
-        }
-    });
+    Route::post('/login', 'SessionController@login');
+    Route::get('/logout', 'SessionController@logout');
 
     Route::group(['prefix' => 'admin'], function () {
 
