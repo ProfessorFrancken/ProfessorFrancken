@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="card francken-pillar col-md-4">
-                <img src="/icons/lined/coffee.svg" alt="" class="francken-pillar__icon">
+                <img src="/icons/lined/{{ $associationIcon }}.svg" alt="" class="francken-pillar__icon">
                 <div class="card-block text-center">
                     <h4 class="card-title">
                         Association

@@ -77,13 +77,17 @@ final class NavigationServiceProvider extends ServiceProvider
 
             $view->with('items', $items);
         });
+
+        View::composer('homepage._pillars', function ($view) use ($items) {
+            $view->with('associationIcon', $this->associationIcon());
+        });
     }
 
     public function associationIcon()
     {
         $now = new DateTimeImmutable;
         $fourOClock = DateTimeImmutable::createFromFormat('H a', '4 pm');
-        $fourOClockMorning = DateTimeImmutable::createFromFormat('H a', '4 pm');
+        $fourOClockMorning = DateTimeImmutable::createFromFormat('H a', '4 am');
 
         if ($fourOClockMorning < $now && $now < $fourOClock) {
             return 'coffee';
