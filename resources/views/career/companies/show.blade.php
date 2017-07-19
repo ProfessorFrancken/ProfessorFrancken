@@ -1,11 +1,13 @@
 ﻿@extends('homepage.two-column-layout')
+@section('header-image-url', '/images/header/oslo.jpg')
+@section('title', $company['name'] . " - T.F.V. 'Professor Francken'")
 
 @section('content')
 
     <div class="section-header d-inline-block mt-4 h1">
         {{  $company['name']}}
     </div>
-	
+
     <div class="row mt-2">
 			<div class="col text-justify " >
 
@@ -33,7 +35,7 @@
 			</tbody>
 		</table>
 	</div>
-    <div class="agenda mt-5"> 
+    <div class="agenda mt-5">
         <h3 class="section-header agenda-header">
             Companies
         </h3>

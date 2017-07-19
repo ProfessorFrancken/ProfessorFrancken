@@ -159,6 +159,8 @@ return [
         Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
         Francken\Infrastructure\Books\BooksServiceProvider::class,
         Francken\Infrastructure\News\NewsServiceProvider::class,
+        Francken\Infrastructure\CareerServiceProvider::class,
+        Francken\Infrastructure\ViewServiceProvider::class,
 
         /*
          * Third Party Service Providers

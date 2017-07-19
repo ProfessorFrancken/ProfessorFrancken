@@ -7,7 +7,11 @@
 
   <h1 class="section-header">Career</h1>
 
-  <p>Welcome to the carreer plaza of T.F.V. ‘Professor Francken’. Here you will find everything you need to prepare for your professional carreer. From excursions to job openings; this is where you will find everything that is relevant for your carreer.</p>
+  <p>
+      At T.F.V. 'Professor Francken' we aim to help students prepare for their professional career after their studies.
+      We do this by organizing <a href="/career/events">lunch lectures, excursions, symposia and other career related activities</a>.
+      Additionally we have large network of alumni students that work at various companies whom might be of help when you're looking for a <a href="/career/job-openings">job or an internship</a>.
+  </p>
 
   <hr>
 
@@ -15,7 +19,6 @@
     <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto"></div>
       <h2>Job openings</h2>
-      <p>Bachelor or master research projects from Partners of Francken.</p>
     </div>
 
     <div style="text-align: center" class="col-md-4">
@@ -27,6 +30,7 @@
     <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto">
       <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin "></div>
+
       <h2>Excursions </h2>
       <p>An overview of excursions to research groups and companies</p>
     </div>
