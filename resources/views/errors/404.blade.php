@@ -1,47 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>404</title>
+@extends('homepage.one-column-layout')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('header-image-url', '/images/header/oslo.jpg')
+@section('title', "404 - Page not found - T.F.V. 'Professor Francken'")
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('header-image')
+@endsection
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+@section('content')
+    <h1 class="section-header section-header--centered">
+        Page not found
+    </h1>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <canvas id='mpcCanvas' width="1600px" height="680px" style="
+                        background-color: #fafafa;
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+                        border: thin solid #fefefe;
+                        width: 100%;
+                        border-radius: 25%;
 
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Sorry, we could not find what you where looking for</div>
-            </div>
+
+                        ">
+            </canvas>
         </div>
-    </body>
-</html>
+    </div>
+
+    <script src="/js/404.js"></script>
+@endsection
