@@ -43,7 +43,7 @@ The faculty council is a participation body that consists of nine elected studen
 		<h2>Links and Contact</h2>
 		For more infomation about the faculty council and current affairs, visit the faculty counsil website (log-in required), their Facebook page, or send them an e-mail.
 		<br>
-		<a class="link-to-all-dark" href="mailto:fast@betastuf.nl"><i class="fa fa-envelope-o mr-2" aria-hidden="true"></i>fast@betastuf.nl</a>
+		<a class="link-to-all-dark" href="mailto:fast@betastuf.nl">fast@betastuf.nl</a>
 		<br><br>
 		<a class="btn btn-secondary" href="https://www.facebook.com/fcfse/">
 		<i class="fa fa-facebook mr-2" aria-hidden="true"></i>Facebook
