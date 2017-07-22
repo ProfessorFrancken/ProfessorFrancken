@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="card-footer francken-pillar__footer">
-                    <a class="btn btn-primary" href="/career">Read more</a>
+                    <a class="btn btn-primary" href="/study">Read more</a>
                 </div>
             </div>
             <div class="card francken-pillar col-md-4">
@@ -34,7 +34,7 @@
                     </p>
                 </div>
                 <div class="card-footer francken-pillar__footer">
-                    <a class="btn btn-primary" href="/career">Read more</a>
+                    <a class="btn btn-primary" href="/association">Read more</a>
                 </div>
             </div>
             <div class="card francken-pillar col-md-4">
