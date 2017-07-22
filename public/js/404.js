@@ -388,7 +388,6 @@ GridCell.prototype.applyCollisions = function(alpha) {
             particle.vx = avx + Math.cos(alpha) * (vx - avx) + Math.sin(alpha) * (vy - avy);
             particle.vy = avy - Math.sin(alpha) * (vy - avy) + Math.cos(alpha) * (vx - avx);
 
-            console.log(particle.number, this.number);
             if (this.well === true && particle.number == this.number) {
                 dx = this.x - particle.x + this.width / 2;
                 dy = this.y - particle.y + this.height / 2;
@@ -577,7 +576,7 @@ function next() {
     console.log(step);
     switch(step) {
     case 0:
-        sim = new Simulation(3000);
+        sim = new Simulation(2500);
         sim.placeParticlesIn404Pattern();
         // sim.particles = sim.particles.splice(0, 1);
         // sim.particles[0].vx = 0.5;
