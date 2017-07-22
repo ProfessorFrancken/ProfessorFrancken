@@ -6,6 +6,8 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\BookDetailsRepository;
+use Francken\Infrastructure\Books\AvailableBooks\LegacyDBRepository;
+use Francken\Infrastructure\Books\AvailableBooks\ProjectionRepository;
 use Francken\Application\ReadModelRepository;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
@@ -54,7 +56,7 @@ final class BooksServiceProvider extends ServiceProvider
      */
     private function registerReadModels()
     {
-        $this->app->when(AvailableBooksRepository::class)
+        $this->app->when(ProjectionRepository::class)
             ->needs(ReadModelRepository::class)
             ->give(
                 function (Application $app) {
@@ -66,6 +68,12 @@ final class BooksServiceProvider extends ServiceProvider
                     );
                 }
             );
+
+        if (config('francken.books.use_legacy')) {
+            $this->app->bind(AvailableBooksRepository::class, LegacyDBRepository::class);
+        } else {
+            $this->app->bind(AvailableBooksRepository::class, ProjectionRepository::class);
+        }
 
         // Responsible for getting the book cover from Amazon
         if ( ! env('APP_OFFLINE', true)) {

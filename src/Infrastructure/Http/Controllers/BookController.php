@@ -25,19 +25,16 @@ class BookController extends Controller
     {
         $books = $this->books->findAll();
 
-        return view(
-            'book.index',
-            ['books'=> $books]
-        );
+        return view('book.index')
+            ->with(['books'=> $books]);
     }
 
     public function show($id)
     {
-        $book = $this->books->find($id);
-        return view(
-            'book.show',
-            ['book' => $book]
-        );
+        $book = $this->books->find(new BookId($id));
+
+        return view('book.show')
+            ->with(['book' => $book]);
     }
 
     //-----------------------
