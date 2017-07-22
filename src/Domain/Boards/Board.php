@@ -22,6 +22,7 @@ final class Board
         $this->name = $data['name'];
         $this->members = $data['members'];
         $this->photo = $data['figure'];
+        $this->photoPosition = $data['figurePosition'];
         $this->parseYear($data['year']);
     }
 
@@ -38,6 +39,11 @@ final class Board
     public function photo() : string
     {
         return $this->photo;
+    }
+
+    public function photoPosition() : string
+    {
+        return $this->photoPosition;
     }
 
     public function boardYear() : BoardYear

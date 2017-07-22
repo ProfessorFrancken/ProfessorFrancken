@@ -12,7 +12,13 @@
             @endif
         </h3>
         @if ($board->photo() != '')
-            <img src="{{ $board->photo() }}" class="img-fluid rounded board-image"/>
+            <img 
+            src="{{ $board->photo() }}" 
+            class="img-fluid rounded board-image"
+            @if ($board->photoPosition() != '')
+                style="object-position: 50% {{ $board->photoPosition }}%"
+            @endif
+            >
         @endif
     </div>
 </div>
