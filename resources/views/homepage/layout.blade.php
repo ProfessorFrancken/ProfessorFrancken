@@ -5,8 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>@yield('title', "T.F.V. 'Professor Francken'")</title>
-        <meta name="description" content="@yield('description')" />
+        @include('homepage._seo')
 
         @unless(env('APP_ENV') == 'testing')
             @if (request()->exists('red'))
