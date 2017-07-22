@@ -1,5 +1,4 @@
 @extends('pages.study')
-@section('title', "Faculty Council - T.F.V. 'Professor Francken'")
 
 @section('content')
 <h1>Faculty Council</h1>
@@ -15,15 +14,6 @@ The faculty council is a participation body that consists of nine elected studen
 		On the final day of each cycle, we have three meetings: first one with the student faction, then one with the whole council (including staff) and finally one with the board. This day, all important topics are discussed and decided upon. Sometimes, we have to vote on certain issues when a consensus cannot be reached.
 		<br>
 		<br>
-		<h2>Links and Contact</h2>
-		<a class="link-to-all-dark" href="mailto:fast@betastuf.nl"><i class="fa fa-envelope-o mr-2" aria-hidden="true"></i>fast@betastuf.nl</a>
-		<br>
-		<a class="btn btn-secondary" href="https://www.facebook.com/fcfse/">
-		<i class="fa fa-facebook mr-2" aria-hidden="true"></i>Facebook
-		</a>
-		<a class="btn btn-secondary" href="http://student.portal.rug.nl/infonet/studenten/fse/quick-links/facraad/faculteitsraad/">Website</a>
-	</div>
-	<div class="col">
 		<h2>Faculty Council Committees</h2>
 		There are different committees in the Faculty Council, each one of them consists of both student and staff members and they discuss various topics related to their focus on which they give updates during the council meetings with their faction. In this way all council members are well informed on all the topics we discuss. Not all committees meet as often or take as much time as others, but they are all important and every member of the Faculty Council takes place in 2 different committees.
 		<br>
@@ -43,6 +33,22 @@ The faculty council is a participation body that consists of nine elected studen
 		<b>Personnel and Organisation Committee (P&O) - </b>
 		The P&O focuses for example on changes in policy regarding the faculty staff and reports on workload among staff members.
 		<br>
+		
+	</div>
+	<div class="col">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/h0yKz8iRgbY" frameborder="0" allowfullscreen></iframe>
+		<br>
+		<br>
+		<br>
+		<h2>Links and Contact</h2>
+		For more infomation about the faculty council and current affairs, visit the faculty counsil website (log-in required), their Facebook page, or send them an e-mail.
+		<br>
+		<a class="link-to-all-dark" href="mailto:fast@betastuf.nl"><i class="fa fa-envelope-o mr-2" aria-hidden="true"></i>fast@betastuf.nl</a>
+		<br><br>
+		<a class="btn btn-secondary" href="https://www.facebook.com/fcfse/">
+		<i class="fa fa-facebook mr-2" aria-hidden="true"></i>Facebook
+		</a>
+		<a class="btn btn-secondary" href="http://student.portal.rug.nl/infonet/studenten/fse/quick-links/facraad/faculteitsraad/">Website</a>
 		
 	</div>
 </div>
