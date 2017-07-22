@@ -27,11 +27,14 @@
                 <h6>
                     {{ $member['title'] }}
                 </h6>
+
+                @if (isset($member['photo']))
                 <img
                     class="board-member__photo mt-3"
-                    src="{{ $member['photo'] or 'https://api.adorable.io/avatars/150/' .  str_slug($member['name']) . '.png' }}"
+                    src="{{ $member['photo'] }}"
                     alt="Photo of {{ $member['name'] }}"
                 >
+                @endif
             </li>
         @endforeach
     </ul>
