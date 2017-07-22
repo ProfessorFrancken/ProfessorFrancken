@@ -15,11 +15,11 @@ final class BoardRepository
                 'year' => '2017-2018',
                 'name' => 'Hè Watt?',
                 'members' => [
-                    ['name' => 'Su-Elle Kamps', 'title' => 'Commissioner of internal relations and vice president', 'photo' => '/images/boards/members/su-elle.jpg'],
-                    ['name' => 'Anna Kenbeek', 'title' => 'Secretary and commissioner of education', 'photo' => '/images/boards/members/anna.jpg'],
+                    ['name' => 'Su-Elle Kamps', 'title' => 'Commissioner of Internal Relations and Vice-President', 'photo' => '/images/boards/members/su-elle.jpg'],
+                    ['name' => 'Anna Kenbeek', 'title' => 'Secretary and Commissioner of Education', 'photo' => '/images/boards/members/anna.jpg'],
                     ['name' => 'Kathinka Frieswijk', 'title' => 'President', 'photo' => '/images/boards/members/kathinka-kat.jpg'],
                     ['name' => 'Arjen Kramer', 'title' => 'Treasurer', 'photo' => '/images/boards/members/arjen.jpg'],
-                    ['name' => 'Mark Redeman', 'title' => 'Commissioner of external relations', 'photo' => '/images/boards/members/mark.jpg']
+                    ['name' => 'Mark Redeman', 'title' => 'Commissioner of External Relations', 'photo' => '/images/boards/members/mark.jpg']
                 ],
                 'figure' => '/images/boards/he_watt.jpg',
                 'figurePosition' => ''
@@ -29,9 +29,9 @@ final class BoardRepository
                 'name' => 'Buitengewoon',
                 'members' => [
                     ['name' => 'Willeke Mulder', 'title' => 'Secretary and Commissioner of Education'],
-                    ['name' => 'Anton Jansen', 'title' => 'Chair'],
+                    ['name' => 'Anton Jansen', 'title' => 'President'],
                     ['name' => 'David Koning', 'title' => 'Treasurer'],
-                    ['name' => 'Anne in ‘t Veld', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Anne in ‘t Veld', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => '/images/header/board-buitengewoon.jpg',
                 'figurePosition' => '30'
@@ -41,9 +41,9 @@ final class BoardRepository
                 'name' => 'Daadkracht',
                 'members' => [
                     ['name' => 'Max Kamperman', 'title' => 'Secretary and Commissioner of Education'],
-                    ['name' => 'Jelle Bor', 'title' => 'Chair'],
+                    ['name' => 'Jelle Bor', 'title' => 'President'],
                     ['name' => 'Evelien Zwanenburg', 'title' => 'Treasurer'],
-                    ['name' => 'Pieter Wolff', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Pieter Wolff', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1516.JPG',
                 'figurePosition' => ''
@@ -52,8 +52,8 @@ final class BoardRepository
                 'year' => '2014-2015',
                 'name' => 'Ingenieus',
                 'members' => [
-                    ['name' => 'Serte Donderwinkel', 'title' => 'Secretary and Vice-Chair'],
-                    ['name' => 'Hilbert van Loo', 'title' => 'Chair'],
+                    ['name' => 'Serte Donderwinkel', 'title' => 'Secretary and Vice-President'],
+                    ['name' => 'Hilbert van Loo', 'title' => 'President'],
                     ['name' => 'Steven Groen', 'title' => 'Treasurer'],
                     ['name' => 'Friso Wobben', 'title' => 'Commissioner of External Relations']
                 ],
@@ -64,9 +64,9 @@ final class BoardRepository
                 'year' => '2013-2014',
                 'name' => 'Aantrekkingskracht',
                 'members' => [
-                    ['name' => 'Joran Böhmer', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Joran Böhmer', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Janneke Janssens', 'title' => 'Treasurer'],
-                    ['name' => 'Paul Wijnbergen', 'title' => 'Chair'],
+                    ['name' => 'Paul Wijnbergen', 'title' => 'President'],
                     ['name' => 'Janna de Wit', 'title' => 'Secretary'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1314_600breed.jpg',
@@ -77,9 +77,9 @@ final class BoardRepository
                 'name' => 'Binnenstebuiten',
                 'members' => [
                     ['name' => 'Guus Winter', 'title' => 'Secretary'],
-                    ['name' => 'Tom Bosma', 'title' => 'Chair'],
+                    ['name' => 'Tom Bosma', 'title' => 'President'],
                     ['name' => 'Sjoerd Meesters', 'title' => 'Treasurer'],
-                    ['name' => 'Bauke Steensma', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Bauke Steensma', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1213_600breed.jpg',
                 'figurePosition' => '40'
@@ -89,8 +89,8 @@ final class BoardRepository
                 'name' => 'Vooruit',
                 'members' => [
                     ['name' => 'Maurits de Jong', 'title' => 'Secretary'],
-                    ['name' => 'Tobias Van Damme', 'title' => 'Commissioner of External Relations and Vice-Chair'],
-                    ['name' => 'Edwin de Jong', 'title' => 'Chair'],
+                    ['name' => 'Tobias Van Damme', 'title' => 'Commissioner of External Relations and Vice-President'],
+                    ['name' => 'Edwin de Jong', 'title' => 'President'],
                     ['name' => 'Marion Dam', 'title' => 'Treasurer'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1112_600breed.png',
@@ -101,8 +101,8 @@ final class BoardRepository
                 'name' => 'Ruimte',
                 'members' => [
                     ['name' => 'Marten Hutten', 'title' => 'Secretary'],
-                    ['name' => 'Jasper Bosch', 'title' => 'Chair'],
-                    ['name' => 'Hilbert Dijkstra', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Jasper Bosch', 'title' => 'President'],
+                    ['name' => 'Hilbert Dijkstra', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Sjoerd Bielleman', 'title' => 'Treasurer'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1011_600breed.png',
@@ -112,10 +112,10 @@ final class BoardRepository
                 'year' => '2009-2010',
                 'name' => 'Romeo Delta',
                 'members' => [
-                    ['name' => 'Arjan Bijlsma', 'title' => 'Chair'],
+                    ['name' => 'Arjan Bijlsma', 'title' => 'President'],
                     ['name' => 'Aernout van der Poel', 'title' => 'Treasurer'],
                     ['name' => 'Arjan Boerma', 'title' => 'Secretary'],
-                    ['name' => 'Ypke Jager', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Ypke Jager', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0910_600breed.jpg',
                 'figurePosition' => '45'
@@ -124,9 +124,9 @@ final class BoardRepository
                 'year' => '2008-2009',
                 'name' => 'Surreëel',
                 'members' => [
-                    ['name' => 'Mannold van der Schootbrugge', 'title' => 'Chair'],
+                    ['name' => 'Mannold van der Schootbrugge', 'title' => 'President'],
                     ['name' => 'Victor Haverkort', 'title' => 'Treasurer'],
-                    ['name' => 'Olger Zwier', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Olger Zwier', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Thijs Huijskes', 'title' => 'Secretary'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0809_600hoog.jpg',
@@ -136,9 +136,9 @@ final class BoardRepository
                 'year' => '2007-2008',
                 'name' => 'Smakeloos',
                 'members' => [
-                    ['name' => 'Jakko de Jong', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Jakko de Jong', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Laurens-Jan Soer', 'title' => 'Secretary'],
-                    ['name' => 'Mark Schenkel', 'title' => 'Chair'],
+                    ['name' => 'Mark Schenkel', 'title' => 'President'],
                     ['name' => 'Pelle Koeslag', 'title' => 'Treasurer'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0708_600breed.jpg',
@@ -149,8 +149,8 @@ final class BoardRepository
                 'name' => 'Vanzulf',
                 'members' => [
                     ['name' => 'Jasper van den Berg', 'title' => 'Treasurer'],
-                    ['name' => 'Rudy Schuitema', 'title' => 'Chair'],
-                    ['name' => 'Tom de Boer', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Rudy Schuitema', 'title' => 'President'],
+                    ['name' => 'Tom de Boer', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Sander Boonstra', 'title' => 'Secretary'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0607_600breed.jpg',
@@ -161,9 +161,9 @@ final class BoardRepository
                 'name' => '',
                 'members' => [
                     ['name' => 'Wendy Docters', 'title' => 'Secretary'],
-                    ['name' => 'Christiaan van der Kwaak', 'title' => 'Chair'],
+                    ['name' => 'Christiaan van der Kwaak', 'title' => 'President'],
                     ['name' => 'Reeuwerd Straatman', 'title' => 'Treasurer'],
-                    ['name' => 'Tom Boot', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Tom Boot', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0506_600breed.jpg',
                 'figurePosition' => '55'
@@ -172,8 +172,8 @@ final class BoardRepository
                 'year' => '2004-2005',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Gerbert Bakker', 'title' => 'Chair'],
-                    ['name' => 'Sander Onur', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Gerbert Bakker', 'title' => 'President'],
+                    ['name' => 'Sander Onur', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Arjan van der Pal', 'title' => 'Treasurer'],
                     ['name' => 'Bas Vlaming', 'title' => 'Secretary'],
                 ],
@@ -185,8 +185,8 @@ final class BoardRepository
                 'name' => '',
                 'members' => [
                     ['name' => 'Teun Koeman', 'title' => 'Treasurer'],
-                    ['name' => 'Hedde van Hoorn', 'title' => 'Commissioner of External Relations and Vice-Chair'],
-                    ['name' => 'Marc de Boer', 'title' => 'Chair'],
+                    ['name' => 'Hedde van Hoorn', 'title' => 'Commissioner of External Relations and Vice-President'],
+                    ['name' => 'Marc de Boer', 'title' => 'President'],
                     ['name' => 'Maaike Wiltjer', 'title' => 'Secretary'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0304_640breed.jpg',
@@ -196,10 +196,10 @@ final class BoardRepository
                 'year' => '2002-2003',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Auke-Siûk Nutma', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Auke-Siûk Nutma', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Dennis Westra', 'title' => 'Secretary'],
                     ['name' => 'Timon Lely', 'title' => 'Treasurer'],
-                    ['name' => 'Marten Frantzen', 'title' => 'Chair'],
+                    ['name' => 'Marten Frantzen', 'title' => 'President'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0203_600breed.jpg',
                 'figurePosition' => ''
@@ -208,10 +208,10 @@ final class BoardRepository
                 'year' => '2001-2002',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Marloes Steneker', 'title' => 'Chair'],
+                    ['name' => 'Marloes Steneker', 'title' => 'President'],
                     ['name' => 'Herman Nicolai', 'title' => 'Secretary'],
                     ['name' => 'Peter Koopmans', 'title' => 'Treasurer'],
-                    ['name' => 'Reinier Kaptein', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Reinier Kaptein', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => '',
                 'figurePosition' => ''
@@ -220,9 +220,9 @@ final class BoardRepository
                 'year' => '2000-2001',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Erik Koop', 'title' => 'Commissioner of External Relations and Vice-Chair'],
+                    ['name' => 'Erik Koop', 'title' => 'Commissioner of External Relations and Vice-President'],
                     ['name' => 'Tasco Silva', 'title' => 'Secretary'],
-                    ['name' => 'Chris Rademakers', 'title' => 'Chair and Treasurer'],
+                    ['name' => 'Chris Rademakers', 'title' => 'President and Treasurer'],
                 ],
                 'figure' => 'http://www.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0001_600breed.jpg',
                 'figurePosition' => '12'
@@ -231,10 +231,10 @@ final class BoardRepository
                 'year' => '1999-2000',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Ramon van Ingen', 'title' => 'Chair'],
+                    ['name' => 'Ramon van Ingen', 'title' => 'President'],
                     ['name' => 'Dirk Bekke', 'title' => 'Secretary'],
                     ['name' => 'Wouter van Strien', 'title' => 'Treasurer'],
-                    ['name' => 'Laurens Willem van Beveren', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Laurens Willem van Beveren', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => '',
                 'figurePosition' => ''
@@ -243,10 +243,10 @@ final class BoardRepository
                 'year' => '1998-1999',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Sander Nijman', 'title' => 'Chair'],
+                    ['name' => 'Sander Nijman', 'title' => 'President'],
                     ['name' => 'Wouter Soer', 'title' => 'Secretary'],
                     ['name' => 'Jur de Vries', 'title' => 'Treasurer'],
-                    ['name' => 'Armand van der Veen', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Armand van der Veen', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => '',
                 'figurePosition' => ''
@@ -255,10 +255,10 @@ final class BoardRepository
                 'year' => '1997-1998',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Frank Meijer', 'title' => 'Chair'],
+                    ['name' => 'Frank Meijer', 'title' => 'President'],
                     ['name' => 'Rutger van Merkerk', 'title' => 'Secretary'],
                     ['name' => 'Victor van Heeswijk', 'title' => 'Treasurer'],
-                    ['name' => 'Ronald Hanson', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Ronald Hanson', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => '',
                 'figurePosition' => ''
@@ -267,10 +267,10 @@ final class BoardRepository
                 'year' => '1996-1997',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Sjoerd Blom', 'title' => 'Chair'],
+                    ['name' => 'Sjoerd Blom', 'title' => 'President'],
                     ['name' => 'Jan-Willem Berghuis', 'title' => 'Secretary'],
                     ['name' => 'Eric van de Schoot', 'title' => 'Treasurer'],
-                    ['name' => 'Bouke Hoving', 'title' => 'Commissioner of External Relations and Vice-Chair']
+                    ['name' => 'Bouke Hoving', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => '',
                 'figurePosition' => ''
@@ -279,11 +279,11 @@ final class BoardRepository
                 'year' => '1995-1996',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Maarten Stokhof', 'title' => 'Chair'],
+                    ['name' => 'Maarten Stokhof', 'title' => 'President'],
                     ['name' => 'Lars de Groot', 'title' => 'Secretary'],
                     ['name' => 'Jeroen de Boer', 'title' => 'Treasurer'],
-                    ['name' => 'Frederick Meis', 'title' => 'Commissioner of External Relations and Vice-Chair'],
-                    ['name' => 'Marc Gotink', 'title' => 'Commissioner of External Relations and Vice-Chair']],
+                    ['name' => 'Frederick Meis', 'title' => 'Commissioner of External Relations and Vice-President'],
+                    ['name' => 'Marc Gotink', 'title' => 'Commissioner of External Relations and Vice-President']],
                 'figure' => '',
                 'figurePosition' => ''
             ]),
@@ -291,10 +291,10 @@ final class BoardRepository
                 'year' => '1994-1995',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Frans Venker', 'title' => 'Chair'],
+                    ['name' => 'Frans Venker', 'title' => 'President'],
                     ['name' => 'Walter Ganzevles', 'title' => 'Secretary'],
                     ['name' => 'Marieke Duijvestein', 'title' => 'Treasurer'],
-                    ['name' => 'Robert-Jan Zandvoort', 'title' => 'Commissioner of External Relations and Vice-Chair']],
+                    ['name' => 'Robert-Jan Zandvoort', 'title' => 'Commissioner of External Relations and Vice-President']],
                 'figure' => '',
                 'figurePosition' => ''
             ]),
@@ -302,7 +302,7 @@ final class BoardRepository
                 'year' => '1993-1994',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Marlien Klijnstra', 'title' => 'Chair'],
+                    ['name' => 'Marlien Klijnstra', 'title' => 'President'],
                     ['name' => 'Alex Schoonveld', 'title' => 'Secretary'],
                     ['name' => 'Klaas Jan Wieringa', 'title' => 'Treasurer']],
                 'figure' => '',
@@ -312,7 +312,7 @@ final class BoardRepository
                 'year' => '1992-1993',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Sander Tichelaar', 'title' => 'Chair'],
+                    ['name' => 'Sander Tichelaar', 'title' => 'President'],
                     ['name' => 'Marco Workel', 'title' => 'Secretary'],
                     ['name' => 'Robin Advokaat', 'title' => 'Treasurer']],
                 'figure' => '',
@@ -322,7 +322,7 @@ final class BoardRepository
                 'year' => '1991-1992',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Jorgen van der Velde', 'title' => 'Chair'],
+                    ['name' => 'Jorgen van der Velde', 'title' => 'President'],
                     ['name' => 'Ruerd Heeg', 'title' => 'Secretary'],
                     ['name' => 'Maarten van Essen', 'title' => 'Treasurer']],
                 'figure' => '',
@@ -332,7 +332,7 @@ final class BoardRepository
                 'year' => '1990-1991',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Arjan Douwes', 'title' => 'Chair'],
+                    ['name' => 'Arjan Douwes', 'title' => 'President'],
                     ['name' => 'Nico van der Post', 'title' => 'Secretary'],
                     ['name' => 'Peter Magnee', 'title' => 'Treasurer']],
                 'figure' => '',
@@ -342,7 +342,7 @@ final class BoardRepository
                 'year' => '1989-1990',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Wouter de Vries', 'title' => 'Chair'],
+                    ['name' => 'Wouter de Vries', 'title' => 'President'],
                     ['name' => 'Sybren Sijbrandij', 'title' => 'Secretary'],
                     ['name' => 'Hung Le', 'title' => 'Treasurer']],
                 'figure' => '',
@@ -352,7 +352,7 @@ final class BoardRepository
                 'year' => '1988-1989',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Dirk van Dijk', 'title' => 'Chair'],
+                    ['name' => 'Dirk van Dijk', 'title' => 'President'],
                     ['name' => 'Erik Lukkien', 'title' => 'Secretary'],
                     ['name' => 'Menno van der Burg', 'title' => 'Treasurer']],
                 'figure' => '',
@@ -362,7 +362,7 @@ final class BoardRepository
                 'year' => '1987-1988',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Erik Dalhuijsen', 'title' => 'Chair'],
+                    ['name' => 'Erik Dalhuijsen', 'title' => 'President'],
                     ['name' => 'Peter Reijneker', 'title' => 'Secretary'],
                     ['name' => 'Gerritjan Wessels', 'title' => 'Treasurer']],
                 'figure' => '',
@@ -372,7 +372,7 @@ final class BoardRepository
                 'year' => '1986-1987',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Pim Luiten', 'title' => 'Chair'],
+                    ['name' => 'Pim Luiten', 'title' => 'President'],
                     ['name' => 'Wenzel Hurtak', 'title' => 'Secretary till 1 July'],
                     ['name' => 'Peter Reijneker', 'title' => 'Secretary from 1 July'],
                     ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
@@ -383,7 +383,7 @@ final class BoardRepository
                 'year' => '1984-1986',
                 'name' => '',
                 'members' => [
-                    ['name' => 'Tom Franke', 'title' => 'Chair'],
+                    ['name' => 'Tom Franke', 'title' => 'President'],
                     ['name' => 'Guustaaf Brouwer', 'title' => 'Secretary'],
                     ['name' => 'Pieter Simon van Dijk', 'title' => 'Treasurer']],
                 'figure' => '',
