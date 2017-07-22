@@ -1,6 +1,7 @@
 @extends('homepage.two-column-layout')
 @section('header-image-url', '/images/header/oslo.jpg')
 @section('title', "Job openings and internships - T.F.V. 'Professor Francken'")
+@section('description', "Find job openings and internships related to applied physics.")
 
 @section('content')
   <h1 class="section-header">Jobs and internships</h1>

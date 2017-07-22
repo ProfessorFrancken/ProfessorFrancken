@@ -1,4 +1,6 @@
 @extends('homepage.one-column-layout')
+@section('title', "Books - T.F.V. 'Professor Francken'")
+@section('description', "Buy or sell second hand study books.")
 
 @section('content')
 

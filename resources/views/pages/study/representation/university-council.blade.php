@@ -1,4 +1,5 @@
 @extends('pages.study')
+@section('title', "University Council - T.F.V. 'Professor Francken'")
 
 @section('content')
 <div class="section-header d-inline-block mt-4 h1">University Council</div>

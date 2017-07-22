@@ -1,4 +1,5 @@
 @extends('homepage.two-column-layout')
+@section('title', "Research Groups - T.F.V. 'Professor Francken'")
 
 @section('content')
   <h1 class="section-header">

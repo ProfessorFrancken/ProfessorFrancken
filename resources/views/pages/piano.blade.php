@@ -1,6 +1,6 @@
 @extends('homepage.one-column-layout')
-@section('title', '')
-@section('description', '')
+@section('title', "The Francken Piano - T.F.V. 'Professor Francken'")
+@section('description', 'Help us tuning the Francken Piano by joining our fundraiser.')
 
 @section('header-image-url', 'https://images3.persgroep.net/rcs/kFiWtBVNnKswrVgF7zYT6pnqrlI/diocontent/100809956/_fill/1164/900/?appId=21791a8992982cd8da851550a453bd7f&quality=0.9')
 

@@ -1,4 +1,5 @@
 @extends('pages.study')
+@section('title', "Faculty Council - T.F.V. 'Professor Francken'")
 
 @section('content')
 <h1>Faculty Council</h1>

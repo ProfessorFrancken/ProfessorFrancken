@@ -1,4 +1,5 @@
 @extends('homepage.two-column-layout')
+@section('title', $group['title'] . " - Research Groups - T.F.V. 'Professor Francken'")
 
 @section('header-image-url', 'http://www.rug.nl' . $group['photo'])
 
