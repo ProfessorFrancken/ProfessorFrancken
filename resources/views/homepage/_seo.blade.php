@@ -4,6 +4,16 @@
 
 @section('keywords', 'Applied Physics, University of Groningen, Study Association, Research, Books, Second hand books, Beta, Career, Technische Natuurkunde, Tweedehands boeken')
 
-<title>@yield('title', "T.F.V. 'Professor Francken'")</title>
+<title>@yield('title', "T.F.V. 'Professor Francken' - the study association for applied physics in Groningen")</title>
 <meta name="description" content="@yield('description')" />
 <meta name="keywords" content="@yield('keywords')" />
+
+<meta property="og:site_name" content="T.F.V. 'Professor Francken' - the study association for applied physics in Groningen">
+<meta property="og:title" content="@yield('title', "T.F.V. 'Professor Francken'")>
+<meta property="og:description" content="@yield('description')">
+<meta property="og:url" content="https://professorfrancken.nl">
+<meta property="og:type" content="website" />
+
+<meta name="ICBM" content="53.238847, 6.537181">
+<meta name="geo.position" content="53.238847;6.537181">
+<meta name="geo.placename" content="Groningen">
