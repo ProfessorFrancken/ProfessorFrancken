@@ -64,25 +64,20 @@ return [
             'strict'    => false,
         ],
 
-        'pgsql' => [
-            'driver'   => 'pgsql',
-            'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
-        ],
-
-        'sqlsrv' => [
-            'driver'   => 'sqlsrv',
-            'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset'  => 'utf8',
-            'prefix'   => '',
+        /**
+         * This connection is used to connect to our old database.
+         * Note that
+         */
+        'francken-legacy' => [
+            'driver'    => 'mysql',
+            'host'      => env('DB_LEGACY_HOST', 'localhost'),
+            'database'  => env('DB_LEGACY_DATABASE', 'forge'),
+            'username'  => env('DB_LEGACY_USERNAME', 'forge'),
+            'password'  => env('DB_LEGACY_PASSWORD', ''),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
         ],
 
         'testing' => [

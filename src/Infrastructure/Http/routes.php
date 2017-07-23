@@ -6,8 +6,9 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/', 'MainContentController@index');
 
-    Route::resource('study/books', 'BookController');
-    Route::put('study/books/{bookId}/buy', 'BookController@buy');
+    Route::get('study/books', 'BookController@index');
+    Route::get('study/books/{book}', 'BookController@show');
+    Route::put('study/books/{bookId}/buy', 'BookController@buy')->middleware('auth');
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');

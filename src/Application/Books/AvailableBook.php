@@ -61,7 +61,7 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
 
     public function price() : int
     {
-        return $this->price;
+        return (int)$this->price;
     }
 
     public function isbn() : string
