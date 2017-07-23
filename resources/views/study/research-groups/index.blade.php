@@ -1,5 +1,6 @@
 @extends('homepage.two-column-layout')
 @section('title', "Research Groups - T.F.V. 'Professor Francken'")
+@section('header-image-url', '/images/header/practice-session.jpg')
 
 @section('content')
   <h1 class="section-header">
