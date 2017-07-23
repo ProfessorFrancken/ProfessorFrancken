@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
+use Auth;
+
 final class SessionController
 {
+    public function getLogin()
+    {
+        return view('login');
+    }
+
     public function login()
     {
-        Auth::loginUsingId(1);
-
-        return redirect('/');
+        return redirect('login')->withInput();
     }
 
     public function logout()

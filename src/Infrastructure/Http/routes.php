@@ -37,8 +37,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
     Route::get('/admin/analytics', 'DashboardController@analytics');
     Route::get('/admin/export', 'DashboardController@export');
 
-    // Proof of concept login & logout, currently not using a spcific user
-    // so that we can show this potential functionality at the ALV
+    Route::get('/login', 'SessionController@getLogin');
     Route::post('/login', 'SessionController@login');
     Route::get('/logout', 'SessionController@logout');
 
