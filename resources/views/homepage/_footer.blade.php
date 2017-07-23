@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-md-5">
     @if (isset($editPageUrl))
         <div class="container">
             <p class="text-center my-5">
