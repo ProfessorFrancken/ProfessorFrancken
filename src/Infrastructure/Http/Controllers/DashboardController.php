@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function redirectToDashboard()
     {
-        return redirect('/admin/dashboard');
+        return redirect('/admin/overview');
     }
 
     public function overview()
