@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use Auth;
+use DB;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Application\Members\Registration\RequestStatusRepository;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
@@ -14,6 +16,15 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class RegistrationRequestFeature extends TestCase
 {
     use DatabaseMigrations;
+
+    /**
+     * @before
+     */
+    public function login()
+    {
+        DB::table('users')->insert(['id' => '1']);
+        Auth::loginUsingId(1);
+    }
 
     /**
      * @test

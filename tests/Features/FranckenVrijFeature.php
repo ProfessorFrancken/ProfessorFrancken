@@ -9,10 +9,21 @@ use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Domain\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Auth;
+use DB;
 
 class FranckenVrijFeature extends TestCase
 {
     use DatabaseMigrations;
+
+    /**
+     * @before
+     */
+    public function login()
+    {
+        DB::table('users')->insert(['id' => '1']);
+        Auth::loginUsingId(1);
+    }
 
     /** @test */
     function a_list_of_all_francken_vrijs_are_displayed()

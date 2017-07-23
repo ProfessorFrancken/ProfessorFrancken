@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use Auth;
+use DB;
+use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 
 /**
  * The following are test that check that basic features of the admin page are working
@@ -14,6 +16,15 @@ use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 class AdministrationFeature extends TestCase
 {
     use DatabaseMigrations;
+
+    /**
+     * @before
+     */
+    public function login()
+    {
+        DB::table('users')->insert(['id' => '1']);
+        Auth::loginUsingId(1);
+    }
 
     /**
      * @test
