@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 
 class Authenticate
@@ -43,6 +44,6 @@ class Authenticate
 
         return ($request->ajax())
             ? response('Unauthorized.', 401)
-            : redirect()->guest('auth/login');
+            : redirect()->guest('login');
     }
 }
