@@ -8,6 +8,11 @@ use DB;
 
 class DashboardController extends Controller
 {
+    public function redirectToDashboard()
+    {
+        return redirect('/admin/dashboard');
+    }
+
     public function overview()
     {
         $events = DB::table('event_store')->get();

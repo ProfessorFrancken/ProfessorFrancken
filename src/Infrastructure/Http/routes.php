@@ -29,19 +29,16 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
     Route::get('/career/events', 'CareerController@redirectEvents');
     Route::get('/career/events/{year}', 'CareerController@events');
 
-    Route::get('/admin', function () {
-        return redirect('/admin/overview');
-    });
-
-    Route::get('/admin/overview', 'DashboardController@overview');
-    Route::get('/admin/analytics', 'DashboardController@analytics');
-    Route::get('/admin/export', 'DashboardController@export');
-
     Route::get('/login', 'SessionController@getLogin');
     Route::post('/login', 'SessionController@login');
     Route::get('/logout', 'SessionController@logout');
 
-    Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+
+        Route::get('/', 'DashboardController@redirectToDashboard');
+        Route::get('overview', 'DashboardController@overview');
+        Route::get('analytics', 'DashboardController@analytics');
+        Route::get('export', 'DashboardController@export');
 
 
         //posts: NEWS / BLOG
