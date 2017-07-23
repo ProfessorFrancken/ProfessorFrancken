@@ -25,9 +25,11 @@
                     <i class="fa fa-{{ $types[$job['type']] }}" aria-hidden="true"></i> {{ $job['type'] }}
                 </a>
             </li>
+            {{--
             <li class="list-inline-item">
                 <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $job['location'] or 'Eindhoven' }}
             </li>
+            --}}
         </ul>
 
         <p>
