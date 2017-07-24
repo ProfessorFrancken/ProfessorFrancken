@@ -46,9 +46,9 @@ class RegistrationRequestFeature extends TestCase
             ->type('9742GS', 'zip-code')
 
             // Study details
-            ->type('Msc Applied Mathematics', 'study')
+            ->type('Msc Applied Mathematics', 'study-name')
             ->type('s2218356', 'student-number')
-            ->type('2011-04', 'starting-date-study')
+            ->type('2011-04', 'study-starting-date')
 
             ->press('Submit request');
 

@@ -67,9 +67,9 @@ class RegistrationRequestSubmittedTest extends TestCase
                 )
             ),
             new StudyDetails(
+                's2218356',
                 'Msc Applied Mathematics',
-                new DateTimeImmutable('2011-09-01'),
-                's2218356'
+                new DateTimeImmutable('2011-09-01')
             )
         );
     }

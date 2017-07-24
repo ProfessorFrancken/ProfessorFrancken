@@ -78,12 +78,18 @@ class RegistrationController extends Controller
     private function studyDetailsFrom(Request $request) : StudyDetails
     {
         return new StudyDetails(
-            $request->input('study'),
+            $request->input('student-number'),
+            $request->input('study-name'),
             DateTimeImmutable::createFromFormat(
                 'Y-m',
-                $request->input('starting-date-study')
+                $request->input('study-starting-date')
             ),
-            $request->input('student-number')
+            $request->has('study-graduation-date')
+                ? DateTimeImmutable::createFromFormat(
+                    'Y-m',
+                    $request->input('study-graduation-date')
+                )
+                : null
         );
     }
 
