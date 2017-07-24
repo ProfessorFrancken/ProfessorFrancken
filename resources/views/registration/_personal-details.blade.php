@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-12 col-md-8">
         <div class="form-group">
             <label for="firstname">Name</label>
             <div class="row">
@@ -47,7 +47,6 @@
 
     </div>
     <div class="col-md-3">
-
         <div class="row">
             <div class="col-3 col-sm-4 col-md-12">
                 <img id="profilePicture" alt="" src="/images/person.png" style="cursor: pointer;" class="img-fluid w-100"/>
