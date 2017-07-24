@@ -2,9 +2,9 @@
 
 @section('content')
 
-  <h1 class="centered-header">
+  <div class="section-header d-inline-block mt-4 h1">
     History
-  </h1>
+  </div>
 
   <p>In 1957 the University of Groningen sends a request to the Minister of Education to institute doctoral exams for applied physics. In 1958 the request is granted. Professors for applied physics and chemistry are found easily, but for applied physics the search is harder.
   In November 1961 Jan Francken receives a letter from the nomination committee in which he is asked to become a professor. In that time he is working at Philips on the development of color TV. He accepts the request and on July 3, 1962 he is appointed professor. His main task is to set up the study applied physics.</p>
