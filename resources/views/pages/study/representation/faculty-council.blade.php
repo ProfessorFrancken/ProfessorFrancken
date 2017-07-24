@@ -50,18 +50,20 @@
 	</div>
 	<div class="col">
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/h0yKz8iRgbY" frameborder="0" allowfullscreen></iframe>
-		<br>
-		<br>
-		<br>
+		
+		<p>
 		<h2>Links and Contact</h2>
 		For more infomation about the faculty council and current affairs, visit the faculty counsil website (log-in required), their Facebook page, or send them an e-mail.
-		<br>
+		</p>
+		<p>
 		<a class="link-to-all-dark" href="mailto:fast@betastuf.nl">fast@betastuf.nl</a>
-		<br><br>
+		</p>
+		<p>
 		<a class="btn btn-secondary" href="https://www.facebook.com/fcfse/">
 		<i class="fa fa-facebook mr-2" aria-hidden="true"></i>Facebook
 		</a>
 		<a class="btn btn-secondary" href="http://student.portal.rug.nl/infonet/studenten/fse/quick-links/facraad/faculteitsraad/">Website</a>
+		</p>
 		
 	</div>
 </div>
