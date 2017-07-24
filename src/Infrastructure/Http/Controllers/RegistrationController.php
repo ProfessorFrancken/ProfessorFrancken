@@ -84,7 +84,12 @@ class RegistrationController extends Controller
                 'Y-m',
                 $request->input('study-starting-date')
             ),
-            $request->input('study-graduation-date')
+            $request->has('study-graduation-date')
+                ? DateTimeImmutable::createFromFormat(
+                    'Y-m',
+                    $request->input('study-graduation-date')
+                )
+                : null
         );
     }
 
