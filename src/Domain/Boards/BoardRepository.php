@@ -21,7 +21,7 @@ final class BoardRepository
                     ['name' => 'Arjen Kramer', 'title' => 'Treasurer', 'photo' => '/images/boards/members/arjen.jpg'],
                     ['name' => 'Mark Redeman', 'title' => 'Commissioner of External Relations', 'photo' => '/images/boards/members/mark.jpg']
                 ],
-                'figure' => '/images/boards/he_watt.jpg',
+                'figure' => 'http://beta.professorfrancken.nl/images/boards/he_watt.jpg',
                 'figurePosition' => ''
             ]),
             new Board([
@@ -33,7 +33,7 @@ final class BoardRepository
                     ['name' => 'David Koning', 'title' => 'Treasurer'],
                     ['name' => 'Anne in ‘t Veld', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
-                'figure' => '/images/header/board-buitengewoon.jpg',
+                'figure' => 'http://beta.professorfrancken.nl/images/header/board-buitengewoon.jpg',
                 'figurePosition' => '30'
             ]),
             new Board([

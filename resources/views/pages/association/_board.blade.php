@@ -12,8 +12,8 @@
             @endif
         </h3>
         @if ($board->photo() != '')
-            <img 
-            src="{{ $board->photo() }}" 
+            <img
+            src="{{ board_banner_image($board->photo(), ['vertical-offset' => $board->photoPosition]) }}"
             class="img-fluid rounded board-image"
             @if ($board->photoPosition() != '')
                 style="object-position: 50% {{ $board->photoPosition }}%"

@@ -3,7 +3,9 @@
 	      <h2 class="section-header section-header--centered section-header--light excursion-header" >
             {{ $excursion['name'] }}
         </h2>
-        <img src="{{ $excursion['promo-image'] }}" class="img-fluid rounded excursion-image"/>
+        @if ($excursion['promo-image'] != '')
+            <img src="{{ image($excursion['promo-image'], ['width' => 1110, 'height' => 200]) }}" class="img-fluid rounded excursion-image"/>
+        @endif
     </div>
 
     @if (! is_null($excursion['description']))
