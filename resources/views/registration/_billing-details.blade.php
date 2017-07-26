@@ -1,16 +1,3 @@
-<style>
- .grow {
-     transition: all .2s ease-in-out;
-     transform: scale(1.1);
-     margin: 2em 0;
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
- }
-
- .custom-control {
-     font-size: 150%;
- }
-</style>
-
 <p>
     The membership fee at our association is €5,- per year. Additionaly there may be extra costs for you if you want to buy food and drinks in our membersroom or if you'd like to attend payed events.
 </p>
@@ -18,48 +5,46 @@
 <div class="row no-gutters rounded grow">
     <div class="col-md-4 text-center">
         <label class="bg-primary h-100 rounded p-4 d-flex flex-column justify-content-between align-items-center">
-                <h4 class="text-white">Membership &<br>Additional costs</h4>
+            <h4 class="text-white">Membership &<br>Additional costs</h4>
 
-                <p class="text-white">
-                    Your membership fee and additional costs will be withdrawn from your bank
-                </p>
+            <p class="text-white">
+                Your membership fee and additional costs will be withdrawn from your bank
+            </p>
 
-
-                <span class="custom-control custom-checkbox">
-
-                    {!! Form::radio('payment', 'all-in', true, ['class' => 'custom-control-input']) !!}
-                    <span class="custom-control-indicator"></span>
-                </span>
-
+            <span class="custom-control custom-checkbox">
+                {!! Form::radio('payment', 'all-in', true, ['class' => 'custom-control-input']) !!}
+                <span class="custom-control-indicator"></span>
+            </span>
         </label>
     </div>
+
     <div class="col-md-4 text-center">
-
         <label class="bg-secondary h-100 rounded p-4 d-flex flex-column justify-content-between align-items-center">
-                <h4>Membership</h4>
+            <h4>Membership</h4>
 
-                <p class="text-primary">
-                    Only your membership subscription will be withdrawn from you bank account
-                </p>
+            <p class="text-primary">
+                Only your membership subscription will be withdrawn from you bank account
+            </p>
 
-                <span class="custom-control custom-checkbox">
+            <span class="custom-control custom-checkbox">
                 {!! Form::radio('payment', 'membership', false, ['class' => 'custom-control-input']) !!}
-                    <span class="custom-control-indicator"></span>
-                </span>
+                <span class="custom-control-indicator"></span>
+            </span>
         </label>
     </div>
+
     <div class="col-md-4 text-center">
         <label class="bg-faded h-100 rounded p-4 d-flex flex-column justify-content-between align-items-center">
-                <h4>Pay in cash</h4>
+            <h4>Pay in cash</h4>
 
-                <p>
-                    You will have to pay for your subscription and additoinal costs either in cash or by a manual bank transfer
-                </p>
+            <p>
+                You will have to pay for your subscription and additoinal costs either in cash or by a manual bank transfer
+            </p>
 
-                <span class="custom-control custom-checkbox">
+            <span class="custom-control custom-checkbox">
                 {!! Form::radio('payment', 'membership', false, ['class' => 'custom-control-input']) !!}
-                    <span class="custom-control-indicator"></span>
-                </span>
+                <span class="custom-control-indicator"></span>
+            </span>
         </label>
     </div>
 </div>

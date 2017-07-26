@@ -30,7 +30,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label for="birthdate">Gender</label>
+                    Gender
                     <div>
                         <label class="radio-inline">
                             {!! Form::radio('gender', 'female') !!}
@@ -44,7 +44,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="col-md-3">
         <div class="row">
@@ -54,34 +53,12 @@
 
             <div class="col-9 col-sm-8">
                 <div class="form-group">
-                    <label for="exampleInputFile">Profile picture (optional)</label>
+                    <label for="addProfilePicture">Profile picture (optional)</label>
 
-                    <input type="file" class="form-control-file" name="profile-picture" id="addProfilePicture">
+                    {!! Form::file('profile-picture', ['class' => 'form-control-file', 'id' => 'addProfilePicture']) !!}
                 </div>
             </div>
         </div>
 
     </div>
 </div>
-
-<script>
-  var loadFile = function(event) {
-    var reader = new FileReader();
-    reader.onload = function(){
-      var output = document.getElementById('profilePicture');
-      output.src = reader.result;
-    };
-      console.log(event);
-    reader.readAsDataURL(event.target.files[0]);
-  };
-
- var addProfilePicture = document.querySelector('#addProfilePicture');
- addProfilePicture.addEventListener('change', loadFile);
-
- var profilePicture = document.getElementById('profilePicture');
- profilePicture.addEventListener('click', function() {
-     addProfilePicture.click();
- });
-
-
-</script>
