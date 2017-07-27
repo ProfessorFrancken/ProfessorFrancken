@@ -209,7 +209,6 @@ Simulation.prototype.createParticles = function(n, space) {
     tempx = temp * this.grid.n / (this.grid.width);
     tempy = temp * this.grid.m / (this.grid.height);
     temp = Math.sqrt(tempx * tempx + tempy * tempy) * 10;
-    console.log("De temperatuur:", temp);
     for (var i = 0; i < n; i++) {
         this.particles[i].vx *= temp;
         this.particles[i].vy *= temp;
@@ -573,7 +572,6 @@ var sim;
 function next() {
     var stop = document.getElementsByClassName('btn-stop');
     var play = document.getElementsByClassName('btn-play');
-    console.log(step);
     switch(step) {
     case 0:
         sim = new Simulation(2500);
