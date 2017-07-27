@@ -18,26 +18,26 @@
 
             <address>
                 <h4>Visiting address</h4>
-                <strong>Board room</strong>: gebouw 13, kamer 5113.0006<br>
-                <strong>Members room</strong>: gebouw 13, kamer 5113.0002<br>
+                <strong>Board room</strong>: building 13, room 5113.0006<br>
+                <strong>Members room</strong>: building 13, room 5113.0002<br>
             </address>
         </div>
         <div class="col-sm-4">
             <h2>Contact details</h2>
 
             <h4>Board</h4>
-            <strong>Email</strong>: board@professorfrancken.nl<br>
-            <strong>Phone</strong>: +31 (0) 50 363 4978
+            <strong>Email</strong>: <a href="mailto:board@professorfrancken.nl">board@professorfrancken.nl</a><br>
+            <strong>Phone</strong>: <a href="tel:+310503634978">+31 (0) 50 363 4978</a>
 
             <h4>External relations</h4>
-            <strong>Email</strong>: extern@professorfrancken.nl<br>
-            <strong>Phone</strong>: +31 637349724
+            <strong>Email</strong>: <a href="mailto:extern@professorfrancken.nl" >extern@professorfrancken.nl</a><br>
+            <strong>Phone</strong>: <a href="tel:+31611759379">+31 611759379</a>
         </div>
         <div class="col-sm-4">
             <h2>Other information</h2>
 
             <strong>K.v.K.</strong>: 400 252 71<br>
-            <strong>Bankrekeningnummer</strong>: NL31 ABNA 0510 5771 56
+            <strong>IBAN</strong>: NL31 ABNA 0510 5771 56
         </div>
     </div>
 
