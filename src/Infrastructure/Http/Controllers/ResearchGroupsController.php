@@ -111,7 +111,7 @@ final class ResearchGroupsController
             [
                 'title' => 'Physics of Nanodevices',
                 'description' => 'We explore new physical phenomena that occur in electronic and opto-electronic device structures with nanoscale dimensions. The dynamics of such devices is often quantum mechanical in nature, but much richer than the dynamics of isolated atoms due to interactions with the solid-state environment. Our research investigates this quantum dynamics, and aims to apply it for new device functionalities.',
-                'photo' => '/research/physics-of-nanodevices/nanolab.jpg',
+                'photo' => '/research/zernike/physics-of-nanodevices/nanolab.jpg.jpg',
                 'groups' => [
                     [
                         'group' => 'van Wees',

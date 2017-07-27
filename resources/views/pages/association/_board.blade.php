@@ -37,7 +37,7 @@
                 @if (isset($member['photo']))
                 <img
                     class="board-member__photo mt-3"
-                    src="{{ $member['photo'] }}"
+                    src="{{ image('http://professorfrancken.nl' . $member['photo'], ['width' => 150, 'height' => 150]) }}"
                     alt="Photo of {{ $member['name'] }}"
                 >
                 @endif
