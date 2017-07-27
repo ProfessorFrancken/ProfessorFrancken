@@ -42,6 +42,7 @@
         <script src="/js/Menu.js"></script>
 
         <script type="text/javascript">
+         // UserReport (gather feedback)
          window._urq = window._urq || [];
          _urq.push(['initSite', '42efd18f-c4ef-4ad5-a1d8-a430d3f8ef0f']);
          (function() {
@@ -49,16 +50,23 @@
              ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
          })();
-</script>
-  <script>
 
-   document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body);
-   });
-  </script>
+         // Render  any latex currently loaded in our dom
+         document.addEventListener("DOMContentLoaded", function() {
+             renderMathInElement(document.body);
+         });
+
+         @if (config('francken.general.google-analytics'))
+         // Google Analytics
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+         ga('create', {{ config('francken.general.google-analytics') }}, 'auto');
+         ga('send', 'pageview');
+         @endif
+        </script>
+
     </body>
 </html>
-
-@section('description')
-‘Professor Francken’ is the study association for Applied Physics, connected to the University of Groningen. It is named after Groningen’s first professor of Applied Physics and is for students and staff of the applied physics departments. It has over 700 members and organizes, among other, field trips in the Netherlands and an annual symposium and a foreign excursion. Various activities, including the introductory activities for first-year students and the Bèta-bedrijvendagen (a career event for science students), are organised in partnership with sister associations. Membership is a must for students with a technical orientation.
-@endsection

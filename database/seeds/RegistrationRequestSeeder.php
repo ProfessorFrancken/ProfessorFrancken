@@ -51,9 +51,9 @@ final class RegistrationRequestsSeeder extends Seeder
                     )
                 ),
                 new StudyDetails(
+                    's2218356',
                     'Msc Applied Mathematics',
-                    new DateTimeImmutable('2011-09-01'),
-                    's2218356'
+                    new DateTimeImmutable('2011-09-01')
                 ),
                 new PaymentInfo(true, $faker->boolean)
                 // note: could add an additional "comment" section where a foreigner could tell the board that he/she lives outside of the Netherlands
