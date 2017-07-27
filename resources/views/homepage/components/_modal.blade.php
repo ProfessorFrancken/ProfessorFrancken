@@ -13,7 +13,7 @@
         </div>
 
         <div class="login-modal__content">
-            {!! Form::open(['url' => 'login']) !!}
+            {!! Form::open(['url' => '/login']) !!}
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <h4 class="h5 login-modal__header text-right">
