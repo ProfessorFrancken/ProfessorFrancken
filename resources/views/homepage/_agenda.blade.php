@@ -2,11 +2,6 @@
 
 $activities = [
     [
-        'date' => new \DateTimeImmutable('24-07-2017'),
-        'title' => 'Watch Game of Thrones at Francken',
-        'short-description' => '',
-    ],
-    [
         'date' => new \DateTimeImmutable('31-07-2017'),
         'title' => 'Watch Game of Thrones at Francken',
         'short-description' => '',
@@ -22,6 +17,11 @@ $activities = [
         'short-description' => '',
     ],
     [
+        'date' => new \DateTimeImmutable('14-08-2017'),
+        'title' => 'KEI-week 2017',
+        'short-description' => '',
+    ],
+    [
         'date' => new \DateTimeImmutable('21-08-2017'),
         'title' => 'Watch Game of Thrones at Francken',
         'short-description' => '',
@@ -30,6 +30,11 @@ $activities = [
         'date' => new \DateTimeImmutable('28-08-2017'),
         'title' => 'Watch Game of Thrones at Francken',
         'short-description' => '',
+    ],
+    [
+        'date' => new \DateTimeImmutable('01-09-2017'),
+        'title' => 'Pienterkamp',
+        'short-description' => 'Introduction camp for (Applied) Mathematics and (Applied) Physics.',
     ],
 
 ];
