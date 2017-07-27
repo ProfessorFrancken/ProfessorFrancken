@@ -22,11 +22,10 @@
 
     <div class="ribbon__items row no-gutters align-items-stretch my-5">
         @foreach ($books as $book)
-            <div class="col-6 col-xs-6 col-sm-4 col-md-3" style="border-bottom: thin solid #eee; border-top: thin solid #eee;">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="border-bottom: thin solid #eee; border-top: thin solid #eee;">
                 <article class="h-100 preview-item d-flex flex-column justify-content-between">
-
                     <div>
-                        <img src="{{ $book->pathToCover() }}" alt="Cover of {{ $book->title() }}" class="img-fluid mb-2" style="height: 300px; width: 100%">
+                        <img src="{{ image($book->pathToCover(), ['height' => 300, 'width' => 220]) }}" alt="Cover of {{ $book->title() }}" class="img-fluid mb-2" style="height: 300px;">
                         <h3 class="h5">
                             {{ $book->title() }}
                             <br/>
