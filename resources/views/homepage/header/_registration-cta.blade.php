@@ -7,17 +7,12 @@
     <div class="row align-items-center h-100">
         <div class="registration-cta__body col-md-4 offset-md-5 align-self-center">
             <h1>
+                The study association for
                 <strong>
-                    Become part of
+                    Applied Physicists
                 </strong>
-                <small>
-                    the best<sup>*</sup> student association
-                </small>
+                in Groningen
             </h1>
-
-            <p class="small">
-                *people tell us we are awesome
-            </p>
         </div>
         <div class="col-md-1 registration-cta__action">
             <a class="btn btn-primary" href="/register">Register</a>
