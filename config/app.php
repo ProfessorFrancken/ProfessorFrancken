@@ -166,6 +166,8 @@ return [
          * Third Party Service Providers
          */
         Collective\Html\HtmlServiceProvider::class,
+        Fideloper\Proxy\TrustedProxyServiceProvider::class,
+
     ],
 
     /*
