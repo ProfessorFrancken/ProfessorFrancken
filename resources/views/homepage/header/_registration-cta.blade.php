@@ -9,7 +9,7 @@
             <h1>
                 The study association for
                 <strong>
-                    Applied Physicists
+                    applied physics
                 </strong>
                 in Groningen
             </h1>
