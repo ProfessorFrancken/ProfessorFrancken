@@ -2,6 +2,14 @@
 
 use Illuminate\Http\Request;
 
+Route::get('/wordpress', function() {
+        return redirect('/');
+    });
+
+Route::get('/wordpress/{wp}', function ($wp) {
+        return redirect('http://old.professorfrancken.nl/wordpress/' . $wp);
+    })->where('wp', '.*');
+
 Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/', 'MainContentController@index');
