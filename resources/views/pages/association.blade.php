@@ -27,7 +27,7 @@
 
     <div style="text-align: center" class="col-md-4">
       <div style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin: auto">
-      <img src="http://www.professorfrancken.nl/wordpress/media/images/ereleden/profjcfrancken.png" style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin "></div>
+      <img src="/images/prof-jan-carel-francken.png" style="height: 150px; width: 150px; border-radius: 50%; background-color: grey; margin "></div>
       <h2>Honorary members</h2>
       <p>Learn more about our honorary members</p>
     </div>
