@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="text-center">
-        <img class="img-fluid" alt="" src="{{ $committee->logo() }}"/>
+        <img class="img-fluid" alt="" src="{{ image($committee->logo(), ['height' => 500, 'width' => 500]) }}"/>
     </div>
 
     <h2 class="section-header">
@@ -50,7 +50,7 @@
                             @if (! is_null($committee->logo()))
                                 <img
                                     class="rounded d-flex ml-3"
-                                    src="{{ $committee->logo() }}"
+                                    src="{{ image($committee->logo(), ['height' => 75, 'width' => 75]) }}"
                                     alt="{{ $committee->name() }}'s logo"
                                     style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
                             >
