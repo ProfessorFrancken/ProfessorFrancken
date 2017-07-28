@@ -48,6 +48,12 @@ final class NavigationServiceProvider extends ServiceProvider
                 ],
                 'icon' => 'suitcase',
             ],
+            [
+                'url' => 'http://pienterkamp.nl/',
+                'title' => 'Pienterkamp',
+                'subItems' => [],
+                'icon' => 'child'
+            ]
         ];
 
         View::composer('homepage._header', function ($view) use ($items) {
