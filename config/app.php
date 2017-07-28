@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL', 'https://professorfrancken.nl'),
 
     /*
     |--------------------------------------------------------------------------
