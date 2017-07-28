@@ -18,7 +18,7 @@ final class ForceHttps
      */
     public function handle($request, Closure $next)
     {
-        if (! app()->environment('local')) {
+        if (! app()->environment('local') && ! app()->environment('testing')) {
             // for Proxies
             Request::setTrustedProxies([$request->getClientIp()]);
 
