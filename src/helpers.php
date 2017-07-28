@@ -3,17 +3,13 @@
 function banner_image($url)
 {
     if (! filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED)) {
-        $url = 'http://beta.professorfrancken.nl' . $url;
+        $url = config('app.url') . $url;
     }
 
     return image($url, [
-        // 'width' => 930,
-        // 'height' => 350
         'width' => 1000,
         'height' => 450
     ]);
-        // 'width' => 1000,
-        // 'height' => 450
 }
 
 function board_banner_image($url = '', $options = [])
@@ -43,13 +39,11 @@ function board_member_image($url, $number)
 
 function image($url = '', $options = [])
 {
-    $proxy = 'imaginary';
-    $proxy = 'fly';
+    $proxy = config('francken.images.type');
+    $server = config('francken.images.url');
 
     switch ($proxy) {
         case 'imaginary': {
-            $server = "http://images-professorfrancken.dev";
-
             $additional = isset($options['vertical-offset']) && $options['vertical-offset'] != '' ? '&gravity=north' : '';
             return sprintf(
                 '%s/resize?width=%d&height=%d&url=%s%s',
@@ -61,8 +55,6 @@ function image($url = '', $options = [])
             );
         }
         case 'weserv': {
-            $server = "http://we-images-professorfrancken.dev";
-
             $map = [
                 'width' => 'w=',
                 'height' => 'h=',
@@ -88,8 +80,6 @@ function image($url = '', $options = [])
             );
         }
         case 'fly': {
-            $server = "http://fly-images-professorfrancken.dev";
-
             $map = [
                 'width' => 'w_',
                 'height' => 'h_',
@@ -107,14 +97,15 @@ function image($url = '', $options = [])
                 $result[] = $additional . $value;
             }
 
-
             return sprintf(
-                // '%s/upload/q_75,w_%d,h_%d,c_1,o_webp/%s',
                 '%s/upload/q_75,%s,c_1,o_webp/%s',
                 $server,
                 implode($result, ','),
                 $url
             );
+        }
+        default: {
+            return $url;
         }
     }
 
