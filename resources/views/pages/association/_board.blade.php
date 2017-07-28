@@ -1,4 +1,4 @@
-<div class="container my-5" style="">
+<div class="container my-4">
     <div class="board-container rounded {{($board->photo() != '') ? 'board-container--with-image' : ''}}">
 	      <h3 class="section-header section-header--centered section-header--light board-header" >
             @if ($board->name() != '')
@@ -21,6 +21,15 @@
             >
         @endif
     </div>
+
+    @if ($board->photo() != '')
+        <p class="text-right mt-3">
+            <a class="text-muted" href="{{ $board->photo() }}">
+                Download board photo
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+            </a>
+        </p>
+    @endif
 </div>
 
 <div class="container my-4">
