@@ -138,6 +138,56 @@ final class ResearchGroupsController
                     ]
                 ]
             ],
+              [
+                'title' => 'Quantum Interactions and Structural Dynamics',
+                'description' => 'Our research efforts focus on the ultrafast processes induced by energetic particle and photon interactions with matter ranging from single atoms and (bio-)molecules via clusters to surfaces. We aim at unveiling <ul><li>the primary electron dynamics occurring on femtosecond timescales and</li><li>the subsequent structural and functional changes.</li></ul>
+The knowledge obtained is applied in fields such as nanolithography,  advanced material science, space research, mass spectrometry and radiotherapy.
+<br><br>
+The research has a strong instrumentation development component. For our experiments with ions we operate the ZERNIKE-LEIF facility centered around our highly-charged ion source. The photon work is performed at synchrotrons or Free Electron Lasers.',
+                'photo' => '/research/zernike/research/topic_qisd.png',
+                'groups' => [
+
+                    [
+                        'group' => 'Hoekstra',
+                        'title' => 'Experimental Atomic Physics',
+                        'contact' => 'http://www.rug.nl/staff/r.a.hoekstra/',
+                        'link' => 'http://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/hoekstra-group/',
+                        'foto' => 'http://www.rug.nl/staff/r.a.hoekstra/ronnie1.jpg'
+                    ],
+
+                    [
+                        'group' => 'Schlathölter',
+                        'title' => 'Gas Phase Biomolecules and Energetic Interactions',
+                        'contact' => 'http://www.rug.nl/staff/t.a.schlatholter/',
+                        'link' => 'http://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/schlatholter-group/',
+                        'foto' => 'http://www.rug.nl/staff/t.a.schlatholter/photo.png?unique=1476193950193.jpg'
+                    ]
+                ]
+            ],
+
+               [
+                'title' => 'Surfaces and Thin Films',
+                'description' => 'Our mission is to carry out a competitive research program in the field of Surface and Interface Physics with particular emphasis on the preparation and analysis of crystalline organic thin films, functional molecules as well as molecular motors and switches on surfaces, and nanocomposites, while training young researchers at the master, PhD and postdoctoral level in state-of-the-art surface analysis techniques and research in the field of Surface and Interface Physics.',
+                'photo' => '/research/zernike/research/topic_stf.png',
+                'groups' => [
+
+                    [
+                        'group' => 'Rudolf',
+                        'title' => 'Surfaces and Thin Films',
+                        'contact' => 'http://www.rug.nl/staff/p.rudolf/',
+                        'link' => 'http://www.rug.nl/research/zernike/surfaces-and-thin-films/rudolf-group/',
+                        'foto' => 'http://www.rug.nl/staff/p.rudolf/p.rudolf-v150pxweb.jpg'
+                    ],
+
+                    [
+                        'group' => 'Stöhr',
+                        'title' => 'Surface Science',
+                        'contact' => 'http://www.rug.nl/staff/m.a.stohr/',
+                        'link' => 'http://www.rug.nl/research/zernike/surfaces-and-thin-films/stohr-group/',
+                        'foto' => 'http://www.rug.nl/staff/m.a.stohr/photo.png?unique=1432126028808.jpg'
+                    ]
+                ]
+            ],
         ];
     }
 
