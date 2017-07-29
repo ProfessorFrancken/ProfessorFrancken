@@ -29,6 +29,9 @@
         "vimeo/psalm": "^0.3.19"
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "classmap": [
             "database"
         ],

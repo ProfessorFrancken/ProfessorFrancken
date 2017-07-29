@@ -41,12 +41,14 @@
                                 {{ $group['title'] }}
                             </h5>
                         </div>
-                        <img
-                            class="rounded d-flex ml-3"
-                            src="https://www.rug.nl{{ $group['photo'] or '' }}"
-                            alt="{{ $group['title'] }}'s logo"
-                            style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
-                        >
+                        @if (isset($group['photo']))
+                            <img
+                                class="rounded d-flex ml-3"
+                                src="{{ image("https://www.rug.nl" . $group['photo'], ['width' => 75, 'height' => 75]) }}"
+                                alt="{{ $group['title'] }}'s logo"
+                                style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
+                            >
+                        @endif
                     </div>
                 </a>
 

@@ -54,6 +54,9 @@ services:
     working_dir: /var/www/francken
     command: yarn
 
+  fly-images:
+    image: flyimg/flyimg-build
+    restart: always
 # This service is mostly identical to the php service except that it also
 # intalls xdebug so we can check for coverage
   test_coverage:

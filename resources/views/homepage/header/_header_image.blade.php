@@ -1,6 +1,6 @@
 <style>
  .header-image::before {
-     background-image: url(@yield('header-image-url', '/images/boards/he_watt.jpg')) !important;
+     background-image: url({{ banner_image( $__env->yieldContent('header-image-url', '/images/boards/he_watt.jpg')) }}) !important;
  }
 </style>
 <div class="stop-overflow">

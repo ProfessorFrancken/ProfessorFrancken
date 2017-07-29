@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col about-francken">
             <div class="about-francken__j-c-francken">
-                <img alt="" src="/images/prof-jan-carel-francken.png" class="prof-c-j-francken-portrait rounded-circle" />
+                <img alt="" src="{{ image("https://professorfrancken.nl/images/prof-jan-carel-francken.png", ['width' => 300, 'height' => 300]) }}" class="prof-c-j-francken-portrait rounded-circle" />
             </div>
 
             <h2 class="section-header mt-4 d-inline-block">

@@ -1,4 +1,4 @@
-<div class="container my-5" style="">
+<div class="container my-4">
     <div class="board-container rounded {{($board->photo() != '') ? 'board-container--with-image' : ''}}">
 	      <h3 class="section-header section-header--centered section-header--light board-header" >
             @if ($board->name() != '')
@@ -12,8 +12,8 @@
             @endif
         </h3>
         @if ($board->photo() != '')
-            <img 
-            src="{{ $board->photo() }}" 
+            <img
+            src="{{ board_banner_image($board->photo(), ['vertical-offset' => $board->photoPosition]) }}"
             class="img-fluid rounded board-image"
             @if ($board->photoPosition() != '')
                 style="object-position: 50% {{ $board->photoPosition }}%"
@@ -21,6 +21,15 @@
             >
         @endif
     </div>
+
+    @if ($board->photo() != '')
+        <p class="text-right mt-3">
+            <a class="text-muted" href="{{ $board->photo() }}">
+                Download board photo
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+            </a>
+        </p>
+    @endif
 </div>
 
 <div class="container my-4">
@@ -37,7 +46,7 @@
                 @if (isset($member['photo']))
                 <img
                     class="board-member__photo mt-3"
-                    src="{{ $member['photo'] }}"
+                    src="{{ image('https://professorfrancken.nl' . $member['photo'], ['width' => 150, 'height' => 150]) }}"
                     alt="Photo of {{ $member['name'] }}"
                 >
                 @endif

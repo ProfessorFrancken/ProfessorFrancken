@@ -1,6 +1,5 @@
 @extends('homepage.two-column-layout')
 @section('title', $group['title'] . " - Research Groups - T.F.V. 'Professor Francken'")
-
 @section('header-image-url', 'http://www.rug.nl' . $group['photo'])
 
 @section('content')
@@ -18,7 +17,7 @@
     <div class="row">
 	      @foreach($group['groups'] as $unit)
 		        <div class="col-md-6 mt-3">
-			          <img src="http://www.rug.nl{{ $unit['foto'] }}" width="283" height="142" class="rounded">
+			          <img src="{{ image("http://www.rug.nl" . $unit['foto'], ['width' => 283, 'height' => 142]) }}" width="283" height="142" class="rounded">
                         <h2> {{ $unit['group'] }} Group</h2>
 			          {{ $unit['title'] }}
 			          <br>
@@ -53,12 +52,15 @@
                                     {{ $group['title'] }}
                                 </h5>
                             </div>
-                            <img
+
+                            @if (isset($group['photo']))
+                                <img
                                 class="rounded d-flex ml-3"
-                                src="https://www.rug.nl{{ $group['photo'] or '' }}"
-                                alt="{{ $group['title'] }}'s logo"
-                                style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
-                            >
+                                    src="{{ image("https://www.rug.nl" . $group['photo'], ['width' => 75, 'height' => 75]) }}"
+                                    alt="{{ $group['title'] }}'s logo"
+                                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
+                                >
+                            @endif
                         </div>
                     </a>
 
