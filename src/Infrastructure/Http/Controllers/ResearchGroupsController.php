@@ -152,7 +152,7 @@ The research has a strong instrumentation development component. For our experim
                         'title' => 'Experimental Atomic Physics',
                         'contact' => 'http://www.rug.nl/staff/r.a.hoekstra/',
                         'link' => 'http://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/hoekstra-group/',
-                        'foto' => 'http://www.rug.nl/staff/r.a.hoekstra/ronnie1.jpg'
+                        'foto' => '/research/zernike/people/hoekstra-1-web-new.jpg'
                     ],
 
                     [
@@ -160,7 +160,7 @@ The research has a strong instrumentation development component. For our experim
                         'title' => 'Gas Phase Biomolecules and Energetic Interactions',
                         'contact' => 'http://www.rug.nl/staff/t.a.schlatholter/',
                         'link' => 'http://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/schlatholter-group/',
-                        'foto' => 'http://www.rug.nl/staff/t.a.schlatholter/photo.png?unique=1476193950193.jpg'
+                        'foto' => '/research/zernike/people/schlatholter-1-web-new.jpg'
                     ]
                 ]
             ],
@@ -176,7 +176,7 @@ The research has a strong instrumentation development component. For our experim
                         'title' => 'Surfaces and Thin Films',
                         'contact' => 'http://www.rug.nl/staff/p.rudolf/',
                         'link' => 'http://www.rug.nl/research/zernike/surfaces-and-thin-films/rudolf-group/',
-                        'foto' => 'http://www.rug.nl/staff/p.rudolf/p.rudolf-v150pxweb.jpg'
+                        'foto' => '/research/zernike/people/rudolf-1-web-new.jpg'
                     ],
 
                     [
@@ -184,7 +184,7 @@ The research has a strong instrumentation development component. For our experim
                         'title' => 'Surface Science',
                         'contact' => 'http://www.rug.nl/staff/m.a.stohr/',
                         'link' => 'http://www.rug.nl/research/zernike/surfaces-and-thin-films/stohr-group/',
-                        'foto' => 'http://www.rug.nl/staff/m.a.stohr/photo.png?unique=1432126028808.jpg'
+                        'foto' => '/research/zernike/people/stoehr-1-web-new.jpg'
                     ]
                 ]
             ],
