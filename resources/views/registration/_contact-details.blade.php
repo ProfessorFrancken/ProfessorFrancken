@@ -23,7 +23,7 @@
         <div class="form-group row">
             <div class="col-sm-6">
                 <label for="Address">Address</label>
-                {!! Form::text('address', null, ['placeholder' => 'Neijenborgh 9', 'class' => 'form-control', 'required']) !!}
+                {!! Form::text('address', null, ['placeholder' => 'Nijenborgh 9', 'class' => 'form-control', 'required']) !!}
             </div>
 
             <div class="col-sm-6">
