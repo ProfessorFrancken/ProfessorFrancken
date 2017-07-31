@@ -4,7 +4,7 @@
  }
 </style>
 <div class="stop-overflow">
-    <div class="header-image">
+    <div class="header-image d-flex align-items-center justify-content-center">
 
         {{--
             Add a bit of margin to make the container in the header image align with

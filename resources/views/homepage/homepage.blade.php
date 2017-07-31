@@ -12,5 +12,5 @@
 @endsection
 
 @section('header-image')
-    @include("homepage.header._registration-cta")
+    @include("layout.header._registration-cta")
 @endsection

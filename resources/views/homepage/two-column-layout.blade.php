@@ -18,6 +18,6 @@
 @endsection
 
 @section('header-image')
-    @component('homepage.header._header_image')
+    @component('layout.header._header_image')
     @endcomponent
 @endsection
