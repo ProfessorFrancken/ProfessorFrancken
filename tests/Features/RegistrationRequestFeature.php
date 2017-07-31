@@ -16,15 +16,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class RegistrationRequestFeature extends TestCase
 {
     use DatabaseMigrations;
-
-    /**
-     * @before
-     */
-    public function login()
-    {
-        DB::table('users')->insert(['id' => '1']);
-        Auth::loginUsingId(1);
-    }
+    use LoggedInAsAdmin;
 
     /**
      * @test

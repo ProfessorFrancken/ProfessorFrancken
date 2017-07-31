@@ -12,7 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(['id' => '1']);
+        $passphrase = config('francken.general.admin_passphrase');
+
+        DB::table('users')->insert([
+            'id' => '1',
+            'email' => 'board@professorfrancken.nl',
+            'password' => bcrypt($passphrase),
+            'can_access_admin' => true
+        ]);
 
         $this->call(CommitteesSeeder::class);
         $this->call(PostsSeeder::class);

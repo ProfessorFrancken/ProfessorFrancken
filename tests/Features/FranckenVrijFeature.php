@@ -15,15 +15,7 @@ use DB;
 class FranckenVrijFeature extends TestCase
 {
     use DatabaseMigrations;
-
-    /**
-     * @before
-     */
-    public function login()
-    {
-        DB::table('users')->insert(['id' => '1']);
-        Auth::loginUsingId(1);
-    }
+    use LoggedInAsAdmin;
 
     /** @test */
     function a_list_of_all_francken_vrijs_are_displayed()

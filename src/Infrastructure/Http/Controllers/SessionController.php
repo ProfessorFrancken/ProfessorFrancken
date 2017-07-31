@@ -15,6 +15,15 @@ final class SessionController
 
     public function login()
     {
+        $loggedIn = Auth::attempt([
+            'email' => request()->input('email'),
+            'password' => request()->input('passprhase'),
+        ]);
+
+        if ($loggedIn) {
+            return redirect('/profile');
+        }
+
         return redirect('login')->withInput();
     }
 
