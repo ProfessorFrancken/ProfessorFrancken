@@ -3,44 +3,51 @@
 use Illuminate\Http\Request;
 
 Route::get('/wordpress', function() {
-        return redirect('/');
-    });
+    return redirect('/');
+});
 
 Route::get('/wordpress/{wp}', function ($wp) {
-        return redirect('http://old.professorfrancken.nl/wordpress/' . $wp);
-    })->where('wp', '.*');
+    return redirect('http://old.professorfrancken.nl/wordpress/' . $wp);
+})->where('wp', '.*');
 
 Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/', 'MainContentController@index');
 
-    Route::get('study/books', 'BookController@index');
-    Route::get('study/books/{book}', 'BookController@show');
-    Route::put('study/books/{bookId}/buy', 'BookController@buy')->middleware('auth');
-
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');
-
-    Route::get('/association/news', 'NewsController@index');
-    Route::get('/association/news/archive', 'NewsController@archive');
-    Route::get('/association/news/{item}', 'NewsController@show');
-
-    Route::get('/association/committees', 'CommitteesController@index');
-    Route::get('/association/committees/{committee}', 'CommitteesController@show');
-
-    Route::get('/study/research-groups', 'ResearchGroupsController@index');
-    Route::get('/study/research-groups/{group}', 'ResearchGroupsController@show');
-
-    Route::get('/career', 'CareerController@index');
-    Route::get('/career/job-openings', 'CareerController@jobs')->name('job-openings');
-    Route::get('/career/companies', 'CompaniesController@index');
-    Route::get('/career/companies/{company}', 'CompaniesController@show');
-    Route::get('/career/events', 'CareerController@redirectEvents');
-    Route::get('/career/events/{year}', 'CareerController@events');
 
     Route::get('/login', 'SessionController@getLogin');
     Route::post('/login', 'SessionController@login');
     Route::get('/logout', 'SessionController@logout');
+
+    Route::group(['prefix' => 'study'], function() {
+        Route::get('books', 'BookController@index');
+        Route::get('books/{book}', 'BookController@show');
+        Route::put('books/{bookId}/buy', 'BookController@buy')->middleware('auth');
+
+        Route::get('research-groups', 'ResearchGroupsController@index');
+        Route::get('research-groups/{group}', 'ResearchGroupsController@show');
+    });
+
+    Route::group(['prefix' => 'association'], function() {
+
+        Route::get('news', 'NewsController@index');
+        Route::get('news/archive', 'NewsController@archive');
+        Route::get('news/{item}', 'NewsController@show');
+
+        Route::get('committees', 'CommitteesController@index');
+        Route::get('committees/{committee}', 'CommitteesController@show');
+    });
+
+    Route::group(['prefix' => 'career'], function() {
+        Route::get('', 'CareerController@index');
+        Route::get('job-openings', 'CareerController@jobs')->name('job-openings');
+        Route::get('companies', 'CompaniesController@index');
+        Route::get('companies/{company}', 'CompaniesController@show');
+        Route::get('events', 'CareerController@redirectEvents');
+        Route::get('events/{year}', 'CareerController@events');
+    });
 
     Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
