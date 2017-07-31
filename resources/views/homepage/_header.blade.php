@@ -6,7 +6,7 @@
                 @include("homepage._logo")
             </div>
             <div class="col col-sm-4 col-md-8 col-lg-7 hidden-sm-down ">
-                @include("homepage.navigation._navigation")
+                @include("layout.navigation._navigation")
             </div>
         </div>
     </div>

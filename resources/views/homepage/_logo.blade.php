@@ -14,7 +14,7 @@
         </span>
     </a>
 
-    @include('homepage.navigation._hamburger')
+    @include('layout.navigation._hamburger')
 
     {{--
 
@@ -25,7 +25,7 @@
     --}}
     <ul class="navigation-list clearfix" id="main-menu">
         @foreach ($items as $item)
-            @include('homepage.navigation._mobile-navigation-item', [
+            @include('layout.navigation._mobile-navigation-item', [
                 'url' => $item['url'],
                 'title' => $item['title'],
                 'icon' => $item['icon'],
