@@ -20,7 +20,7 @@ final class FranckenVrijSeeder extends Seeder
         $editions = App::make(FranckenVrijRepository::class);
 
         // Save all existing editions
-        foreach (range(20, 1, -1) as $volume) {
+        foreach (range(21, 1, -1) as $volume) {
             foreach (range(1, 3) as $edition) {
                 $editions->save(
                     Edition::publish(
@@ -28,8 +28,8 @@ final class FranckenVrijSeeder extends Seeder
                         "Francken Vrij " . $volume . '.' . $edition,
                         $volume,
                         $edition,
-                        new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/{$volume}.{$edition}.jpg"),
-                        new Url("http://www.professorfrancken.nl/franckenvrij/{$volume}.{$edition}.pdf")
+                        new Url("https://professorfrancken.nl/franckenvrij/webplaatjes/{$volume}.{$edition}.jpg"),
+                        new Url("https://professorfrancken.nl/franckenvrij/{$volume}.{$edition}.pdf")
                     )
                 );
             }
