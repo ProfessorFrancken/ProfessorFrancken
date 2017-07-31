@@ -1,4 +1,4 @@
-@extends('homepage.layout')
+@extends('layout.layout')
 
 @section('main-content')
     <div class="container my-4">

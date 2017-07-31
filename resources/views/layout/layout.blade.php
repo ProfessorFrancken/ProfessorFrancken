@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        @include('homepage._seo')
+        @include('layout._seo')
 
         @unless(env('APP_ENV') == 'testing')
             @if (request()->exists('red'))
@@ -24,15 +24,15 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
 
 
-        @include('homepage._favicon')
+        @include('layout._favicon')
     </head>
     <body>
         <main>
-            @include('homepage._header')
+            @include('layout._header')
 
             @yield('main-content')
 
-            @include("homepage._footer")
+            @include("layout._footer")
         </main>
 
         @include('layout._login-modal')

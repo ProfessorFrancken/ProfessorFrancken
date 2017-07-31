@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @section('header-image-url', '/images/header/library-books.jpeg')
 @section('title', "Buy \"" . $book->title() . "\" - T.F.V. 'Professor Francken'")
 

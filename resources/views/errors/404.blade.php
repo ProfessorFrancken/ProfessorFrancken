@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 
 @section('header-image-url', '/images/header/oslo.jpg')
 @section('title', "404 - Page not found - T.F.V. 'Professor Francken'")

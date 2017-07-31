@@ -1,4 +1,4 @@
-@extends('homepage.two-column-layout')
+@extends('layout.two-column-layout')
 
 @section('content')
 

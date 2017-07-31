@@ -1,4 +1,4 @@
-﻿@extends('homepage.two-column-layout')
+﻿@extends('layout.two-column-layout')
 @section('header-image-url', '/images/header/oslo.jpg')
 @section('title', $company['name'] . " - T.F.V. 'Professor Francken'")
 

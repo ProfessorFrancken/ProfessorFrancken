@@ -11,7 +11,7 @@ final class ViewServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        View::composer('homepage._sponsors', function ($view) {
+        View::composer('layout._sponsors', function ($view) {
             $companies = $this->app->make(CompanyRepository::class);
 
             $view->with('footer', $companies->forFooter());

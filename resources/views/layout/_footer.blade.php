@@ -69,5 +69,5 @@
     </div>
 
 
-    @include('homepage._sponsors')
+    @include('layout._sponsors')
 </footer>

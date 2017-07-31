@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @inject('boards', "Francken\Domain\Boards\BoardRepository")
 
 @section('main-content')

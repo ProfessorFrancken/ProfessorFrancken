@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @section('title', "Contact - T.F.V. 'Professor Francken'")
 @section('description', "Contact information of the study association T.F.V. 'Professor Francken'.")
 

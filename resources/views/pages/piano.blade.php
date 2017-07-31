@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @section('title', "The Francken Piano - T.F.V. 'Professor Francken'")
 @section('description', 'Help us tuning the Francken Piano by joining our fundraiser.')
 

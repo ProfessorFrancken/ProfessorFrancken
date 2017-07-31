@@ -1,4 +1,4 @@
-@extends('homepage.two-column-layout')
+@extends('layout.two-column-layout')
 @section('header-image-url', '/images/header/oslo.jpg')
 @section('title', "Job openings and internships - T.F.V. 'Professor Francken'")
 @section('description', "Find job openings and internships related to applied physics.")

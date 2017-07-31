@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 
 @section('header-image-url', '/images/header/oslo.jpg')
 @section('title', "Career - T.F.V. 'Professor Francken'")
