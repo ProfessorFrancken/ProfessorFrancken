@@ -56,7 +56,7 @@ final class NavigationServiceProvider extends ServiceProvider
             ]
         ];
 
-        View::composer('homepage._header', function ($view) use ($items) {
+        View::composer('layout._header', function ($view) use ($items) {
             if (Auth::check()) {
                 $items[] = [
                     'url' => 'https://www.flickr.com/photos/fotocie/sets/',

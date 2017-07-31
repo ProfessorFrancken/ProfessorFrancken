@@ -1,7 +1,15 @@
-<!-- Header -->
-<!-- background-image: url('http://www.professorfrancken.nl/wordpress/wp-content/uploads/2013/11/das_header-1080x400.png') -->
-    <header class="front-header">
-    <div class="front-header__internal">
-        <h1 class="front-header__header">T.F.V. 'Professor Francken'</h1>
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
+            <div class="col-12 col-md-4 col-lg-5 pl-0 pr-0">
+                @include("layout._logo")
+            </div>
+            <div class="col col-sm-4 col-md-8 col-lg-7 hidden-sm-down ">
+                @include("layout.navigation._navigation")
+            </div>
+        </div>
     </div>
+
+    @yield('header-image')
 </header>

@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @section('title', "Study - T.F.V. 'Professor Francken'")
 @section('description', "As a study association T.F.V. 'Professor Francken' organizes plethora of activities related to (applied) physics, including symposia, (research group) excursions, practice sessions for exams.")
 

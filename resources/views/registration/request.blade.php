@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 
 @section('content')
     <h1 class="section-header section-header--centered">

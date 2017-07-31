@@ -1,4 +1,4 @@
-@extends('homepage.layout')
+@extends('layout.layout')
 
 @section('main-content')
     <div class="container my-4">
@@ -7,7 +7,7 @@
 @endsection
 
 @section('header-image')
-    @component('homepage.header._header_image')
+    @component('layout.header._header_image')
     @slot('headerImageClass')
         header__registration-cta--small
     @endslot

@@ -1,28 +1,19 @@
-<div class="sponsors">
-    <div class="container-fluid ">
-        <!-- <h3>Sponsors</h3> -->
-        <ul class="list-inline">
-            <li>
-                <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/frontpagelogos/asml.png"/>
-            </li>
-            <li>
-                <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/frontpagelogos/TMC.png"/>
-            </li>
-            <li>
-                <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/frontpagelogos/thales.png"/>
-            </li>
-            <li>
-                <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/frontpagelogos/shell.png"/>
-            </li>
-            <li>
-                <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/frontpagelogos/Schut.png"/>
-            </li>
-            <li>
-                <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/frontpagelogos/optiver.png"/>
-            </li>
-            <li>
-                <img alt="" src="http://www.professorfrancken.nl/wordpress/media/images/frontpagelogos/ZIAM.png"/>
-            </li>
-        </ul>
+@inject('companies', "Francken\Application\Career\CompanyRepository")
+
+<div class="sponsors text-center">
+    <h5>T.F.V. 'Professor Francken' is sponsored by</h5>
+
+    <div class="row">
+        @foreach ($footer as $company)
+            <div class="my-3 col-6 col-sm-4 col-md-3 col-lg-2 col-lx-1">
+                <a href="{{ $company['footer-link'] }}">
+                    <img class="img-fluid" src="{{ $company['footer-logo'] }}" alt="Logo of {{ $company['name'] }}">
+                </a>
+            </div>
+        @endforeach
     </div>
+
+    <p>
+        &copy; Copyright 2017
+    </p>
 </div>

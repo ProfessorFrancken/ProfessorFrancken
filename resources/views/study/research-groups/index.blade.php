@@ -1,4 +1,4 @@
-@extends('homepage.two-column-layout')
+@extends('layout.two-column-layout')
 @section('title', "Research Groups - T.F.V. 'Professor Francken'")
 @section('header-image-url', '/images/header/practice-session.jpg')
 

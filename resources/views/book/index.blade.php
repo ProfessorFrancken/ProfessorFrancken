@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @section('title', "Books - T.F.V. 'Professor Francken'")
 @section('description', "Buy or sell second hand study books.")
 @section('header-image-url', '/images/header/library-books.jpeg')

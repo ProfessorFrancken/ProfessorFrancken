@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @section('title', "Association - T.F.V. 'Professor Francken'")
 @section('description', "The Technisch Fysische Vereniging ‘Professor Francken’ (Applied Physics Association ‘Professor Francken’) is the University of Groningen’s study association for applied physics and it is focused on (graduated) applied physics students.")
 

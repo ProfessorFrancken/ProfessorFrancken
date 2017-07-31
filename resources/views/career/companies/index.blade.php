@@ -1,4 +1,4 @@
-@extends('homepage.one-column-layout')
+@extends('layout.one-column-layout')
 @section('header-image-url', '/images/header/oslo.jpg')
 @section('title', "Company profiles - T.F.V. 'Professor Francken'")
 @section('keywords', implode(', ', array_map(function ($company) { return $company['name']; }, $companies)))

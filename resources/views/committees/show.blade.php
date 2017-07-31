@@ -1,4 +1,4 @@
-@extends('homepage.two-column-layout')
+@extends('layout.two-column-layout')
 
 @section('content')
 
@@ -78,7 +78,7 @@
 @endsection
 
 @section('header-image')
-    @component('homepage.header._header_image')
+    @component('layout.header._header_image')
     <div class="header-image__title">
 
     </div>
