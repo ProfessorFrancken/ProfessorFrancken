@@ -35,7 +35,7 @@
             @include("homepage._footer")
         </main>
 
-        @include('homepage.components._modal')
+        @include('layout._login-modal')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="/js/LoginModal.js"></script>

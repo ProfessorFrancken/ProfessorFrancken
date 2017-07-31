@@ -1,3 +1,4 @@
+@if (! Auth::check())
 <div
     class="login-modal"
     role="dialog"
@@ -14,7 +15,6 @@
 
         <div class="login-modal__content">
             {!! Form::open(['url' => '/login']) !!}
-                {!! csrf_field() !!}
                 <div class="form-group">
                     <h4 class="h5 login-modal__header text-right">
                         <label for="email" class="login-modal__header text-right" id="Login_Modal_Title">
@@ -22,10 +22,10 @@
                             <i class="login-modal__icon fa fa-user-o" aria-hidden="true"></i>
                         </label>
                     </h4>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    {!! Form::email('email', null, ['placeholder' => 'Email', 'class' => 'form-control', 'id' => 'email']) !!}
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    {!! Form::password('passprhase', ['placeholder' => 'A super  secret passprhase', 'class' => 'form-control', 'id' => 'password']) !!}
                 </div>
 
                 <div class="form-group text-right">
@@ -40,3 +40,4 @@
         </div>
     </div>
 </div>
+@endif
