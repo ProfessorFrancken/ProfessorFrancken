@@ -71,7 +71,6 @@ function image($url = '', $options = [])
                 $result[] = $additional . $value;
             }
 
-
             return sprintf(
                 '%s/%s&url=%s',
                 $server,
@@ -86,12 +85,13 @@ function image($url = '', $options = [])
                 'face' => 'fc_1,fcp_',
             ];
 
-            $addiontals = [];
+            $additionals = [];
             foreach ($options as $option => $value) {
                 if (isset($map[$option])) {
                     $additionals[$map[$option]] = $value;
                 }
             }
+
             $result = [];
             foreach ($additionals as $additional => $value) {
                 $result[] = $additional . $value;
