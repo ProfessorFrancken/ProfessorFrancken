@@ -1,7 +1,9 @@
 @extends('admin.layout')
 
 @section('content')
-    <h1 class="page-header">Francken Vrij</h1>
+    <h1 class="section-header">
+        Francken Vrij
+    </h1>
 
     <div class="row">
         <div class="col-sm-4">

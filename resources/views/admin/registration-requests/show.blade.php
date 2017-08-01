@@ -1,7 +1,9 @@
 @extends('admin.layout')
 
 @section('content')
-    <h1>Membership submissal of Mark Redeman</h1>
+    <h1 class="section-header">
+        Membership submissal of Mark Redeman
+    </h1>
 
     <section>
         <h3>

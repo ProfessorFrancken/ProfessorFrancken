@@ -1,7 +1,10 @@
 @extends('admin.layout')
 
 @section('content')
-  <h1>Registrations</h1>
+  <h1 class="section-header">
+    Registrations
+  </h1>
+
   <table class="table table-hover">
       <caption>Open registration requests, you can either inspect a request (and possibly complete the registration), or mark it as spam in which case the request will be deleted.</caption>
       <thead>
@@ -35,11 +38,11 @@
                   Last thursday
               </td>
               <td>
-                  <a type="button" class="btn btn-default btn-xs" href="/admin/registration-requests/{{ $request->id() }}">
+                  <a class="btn btn-outline-success" href="/admin/registration-requests/{{ $request->id() }}">
                       <i class="fa fa-search" aria-hidden="true"></i>
                       Inspect
                   </a>
-                  <button class="btn btn-danger btn-xs">
+                  <button class="btn-link text-danger btn-xs">
                       <i class="fa fa-trash-o" aria-hidden="true"></i>
                       Mark as spam
                   </button>
