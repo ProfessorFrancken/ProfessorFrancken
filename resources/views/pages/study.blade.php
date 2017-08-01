@@ -19,8 +19,7 @@
                 <img
                     alt="Buy second-hand study books"
                     src="{{ image('https://professorfrancken.nl/images/header/library-books.jpeg', ['height' => 150, 'width' => 150]) }}"
-                    class="mb-3"
-                    style="border-radius: 50%;"
+                    class="mb-3 rounded-circle"
                 />
 
                 <h2>Books</h2>
@@ -33,8 +32,7 @@
                 <img
                     alt="Research groups associated to applied physics at the University of Groningen"
                     src="{{ image('http://www.rug.nl/research/zernike/images/cleanroom2_2.jpg', ['height' => 150, 'width' => 150]) }}"
-                    class="mb-3"
-                    style="border-radius: 50%;"
+                    class="mb-3 rounded-circle"
                 />
 
 
@@ -48,8 +46,7 @@
                 <img
                     alt="University council of the University of Groningen"
                     src="{{ image('http://www.alsalammasjid.org/wp-content/uploads/2017/05/council.jpg', ['height' => 150, 'width' => 150]) }}"
-                    class="mb-3"
-                    style="border-radius: 50%;"
+                    class="mb-3 rounded-circle"
                 />
 
                 <h2>University Council</h2>
@@ -62,8 +59,7 @@
                 <img
                     alt="Faculty council of the University of Groningen"
                     src="{{ image('http://worldartsme.com/images/church-council-committee-clipart-1.jpg', ['height' => 150, 'width' => 150]) }}"
-                    class="mb-3"
-                    style="border-radius: 50%;"
+                    class="mb-3 rounded-circle"
                 />
 
                 <h2>Faculty Council</h2>
