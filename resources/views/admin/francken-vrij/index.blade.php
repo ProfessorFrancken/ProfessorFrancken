@@ -19,7 +19,7 @@
 
                                 <span class="text-right pull-right">
                                     <small>
-                                        <a href="/admin/francken-vrij/{{ $edition->getId() }}">Edit</a> |
+                                        <a href="/admin/association/francken-vrij/{{ $edition->getId() }}">Edit</a> |
                                         <a href="{{ $edition->pdf() }}">Download</a>
                                     </small>
                                 </span>

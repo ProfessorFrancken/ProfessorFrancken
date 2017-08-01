@@ -1,6 +1,6 @@
 <h4>Publish a Francken Vrij</h4>
 
-{!! Form::open(['url' => 'admin/francken-vrij', 'files' => true]) !!}
+{!! Form::open(['url' => 'admin/association/francken-vrij', 'files' => true]) !!}
 
 <div class="form-group">
     {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}

@@ -56,31 +56,42 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('analytics', 'DashboardController@analytics');
         Route::get('export', 'DashboardController@export');
 
+        Route::group(['prefix' => 'study'], function() {
 
-        //posts: NEWS / BLOG
-        Route::resource('post', 'PostController');
+        });
 
-        Route::resource('activity', 'ActivityController');
+        Route::group(['prefix' => 'career'], function() {
+
+        });
+
+        Route::group(['prefix' => 'association'], function() {
+            //posts: NEWS / BLOG
+            Route::resource('post', 'PostController');
+
+            Route::resource('activity', 'ActivityController');
 
 
-        //committees
-        Route::resource('committee', 'Admin\CommitteeController', ['except' => ['edit']]);
-        Route::post('committee/search-member', 'Admin\CommitteeController@searchMember');
-        Route::post('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@addMember');
-        Route::delete('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@removeMember');
+            //committees
+            Route::resource('committee', 'Admin\CommitteeController', ['except' => ['edit']]);
+            Route::post('committee/search-member', 'Admin\CommitteeController@searchMember');
+            Route::post('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@addMember');
+            Route::delete('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@removeMember');
 
-        Route::get('member', 'MemberController@index');
-        Route::post('member/add-member', 'MemberController@addMember');
+            Route::get('member', 'MemberController@index');
+            Route::post('member/add-member', 'MemberController@addMember');
 
-        Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
-        Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
+            Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
+            Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
 
-        // Francken Vrij
-        Route::get('francken-vrij', 'Admin\FranckenVrijController@index');
-        Route::get('francken-vrij/{edition}', 'Admin\FranckenVrijController@edit');
-        Route::put('francken-vrij/{edition}', 'Admin\FranckenVrijController@update');
-        Route::delete('francken-vrij/{edition}', 'Admin\FranckenVrijController@destroy');
-        Route::post('francken-vrij', 'Admin\FranckenVrijController@store');
+            // Francken Vrij
+            Route::get('francken-vrij', 'Admin\FranckenVrijController@index');
+            Route::get('francken-vrij/{edition}', 'Admin\FranckenVrijController@edit');
+            Route::put('francken-vrij/{edition}', 'Admin\FranckenVrijController@update');
+            Route::delete('francken-vrij/{edition}', 'Admin\FranckenVrijController@destroy');
+            Route::post('francken-vrij', 'Admin\FranckenVrijController@store');
+        });
+
+
     });
 
     Route::get('{page}', 'MainContentController@page')->where('page', '.+');

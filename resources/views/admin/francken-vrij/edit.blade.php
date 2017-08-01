@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="page-header">Edit {{ $edition->title() }}</h1>
 
-    {!! Form::open(['url' => "/admin/francken-vrij/" . $edition->getId(), 'files' => true, 'method' => 'put']) !!}
+    {!! Form::open(['url' => "/admin/association/francken-vrij/" . $edition->getId(), 'files' => true, 'method' => 'put']) !!}
 
     <div class="form-group">
         {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}
@@ -40,7 +40,7 @@
 
     @include('admin._errors')
 
-    {!! Form::open(['url' => '/admin/francken-vrij/' . $edition->getId(), 'method' => 'delete']) !!}
+    {!! Form::open(['url' => '/admin/association/francken-vrij/' . $edition->getId(), 'method' => 'delete']) !!}
     <button class="btn btn-danger">
         <i class="fa fa-trash-o" aria-hidden="true"></i>
         Archive
