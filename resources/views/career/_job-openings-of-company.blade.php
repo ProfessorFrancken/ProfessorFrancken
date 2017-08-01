@@ -1,15 +1,10 @@
 <section class="job-opening row">
-    <div class="col-md-4 d-none">
-        <img class="company-card__logo img-fluid" alt="{{ $job['name'] }}" src="{{ $job['logo'] }}"/>
-
-        <a href="{{ $job['link'] }}">
-            <i class="fa fa-globe" aria-hidden="true"></i>
-            {{ $job['name'] }}
-        </a>
-    </div>
     <div class="col-md-12">
-        <img class="pull-right img-fluid job-opening__company-logo job-opening__company-logo " style="max-width: 100px;" alt="{{ $job['name'] }}" src="{{ $job['logo'] }}"/>
-        <h3 class="h4 job-opening__title">{{ $job['job'] }}</h3>
+        <img class="pull-right img-fluid job-opening__company-logo job-opening__company-logo " style="max-width: 100px;" alt="{{ $job['name'] }}" src="{{ image($job['logo'], ['width' => 100, 'height' => 100, 'crop' => 0]) }}"/>
+
+        <h3 class="h4 job-opening__title">
+            {{ $job['job'] }}
+        </h3>
 
         <ul class="list-inline">
             <li class="list-inline-item">
