@@ -10,6 +10,10 @@ Route::get('/wordpress/{wp}', function ($wp) {
     return redirect('http://old.professorfrancken.nl/wordpress/' . $wp);
 })->where('wp', '.*');
 
+Route::get('/scriptcie/{url}', function ($url) {
+    return redirect('http://old.professorfrancken.nl/scriptcie/' . $url);
+})->where('url', '.*');
+
 Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/', 'MainContentController@index');
