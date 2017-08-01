@@ -61,10 +61,14 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('export', 'DashboardController@export');
 
         Route::group(['prefix' => 'study'], function() {
-
+            Route::get('research-groups', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('books', 'Admin\AdminController@showPageIsUnavailable');
         });
 
         Route::group(['prefix' => 'career'], function() {
+            Route::get('companies', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('events', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('job-openings', 'Admin\AdminController@showPageIsUnavailable');
 
         });
 
@@ -93,6 +97,12 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
             Route::put('francken-vrij/{edition}', 'Admin\FranckenVrijController@update');
             Route::delete('francken-vrij/{edition}', 'Admin\FranckenVrijController@destroy');
             Route::post('francken-vrij', 'Admin\FranckenVrijController@store');
+
+
+            Route::get('blogs', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('activities', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('committees', 'Admin\AdminController@showPageIsUnavailable');
         });
 
 
