@@ -42,6 +42,8 @@ function image($url = '', $options = [])
     $proxy = config('francken.images.type');
     $server = config('francken.images.url');
 
+    $options = array_merge(['crop' => '1'], $options);
+
     switch ($proxy) {
         case 'imaginary': {
             $additional = isset($options['vertical-offset']) && $options['vertical-offset'] != '' ? '&gravity=north' : '';
@@ -83,6 +85,7 @@ function image($url = '', $options = [])
                 'width' => 'w_',
                 'height' => 'h_',
                 'face' => 'fc_1,fcp_',
+                'crop' => 'c_',
             ];
 
             $additionals = [];
@@ -98,7 +101,7 @@ function image($url = '', $options = [])
             }
 
             return sprintf(
-                '%s/upload/q_75,%s,c_1,o_webp/%s',
+                '%s/upload/q_75,%s,o_webp/%s',
                 $server,
                 implode($result, ','),
                 $url
