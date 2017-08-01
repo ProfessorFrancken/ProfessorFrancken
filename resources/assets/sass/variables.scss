@@ -10,7 +10,9 @@ $blue: $primary-color; // override
 $red: $secondary-color; // override
 
 $brand-primary: $blue !default;
-$brand-danger: $red !default;
+
+$francken-red: #E63C39;
+$brand-danger: $francken-red !default;
 
 // Body
 $body-color: #001744;
