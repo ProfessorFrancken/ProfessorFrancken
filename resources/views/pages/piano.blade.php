@@ -59,6 +59,14 @@
                 <td>Arjen Kramer</td>
                 <td>€10,-</td>
             </tr>
+            <tr>
+                <td>Steven Groen</td>
+                <td>€10,-</td>
+            </tr>
+            <tr>
+                <td>Delan Caglar (met gekke kringeltjes onderletters)</td>
+                <td>€10,-</td>
+            </tr>
         </tbody>
     </table>
 
