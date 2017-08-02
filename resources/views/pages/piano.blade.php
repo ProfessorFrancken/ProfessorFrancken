@@ -49,7 +49,7 @@
         <tbody>
             <tr>
                 <td>Mark Redeman</td>
-                <td>Creating this beatifull webpage</td>
+                <td>€10,-</td>
             </tr>
             <tr>
                 <td>Jasper Pluijmers</td>
