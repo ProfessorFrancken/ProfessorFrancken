@@ -59,6 +59,10 @@
                 <td>Arjen Kramer</td>
                 <td>€10,-</td>
             </tr>
+            <tr>
+                <td>Gerjan Wielink</td>
+                <td>€10,-</td>
+            </tr>
         </tbody>
     </table>
 
