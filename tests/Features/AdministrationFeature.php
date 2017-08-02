@@ -23,13 +23,13 @@ class AdministrationFeature extends TestCase
      */
     public function members_can_be_managed()
     {
-        $this->visit('/admin/member')
+        $this->visit('/admin/association/member')
             ->type('Mark', 'first_name')
             ->type('Redeman', 'last_name')
             ->press('Add member');
 
         // The name should now be listed
-        $this->seePageIs('/admin/member')
+        $this->seePageIs('/admin/association/member')
             ->see('Mark')
             ->see('Redeman');
 
@@ -43,18 +43,18 @@ class AdministrationFeature extends TestCase
     function committees_can_be_managed()
     {
         // Given we have a user  names Mark Redeman
-        $this->visit('/admin/member')
+        $this->visit('/admin/association/member')
             ->type('Mark', 'first_name')
             ->type('Redeman', 'last_name')
             ->press('Add member');
 
-        $this->visit('/admin/committee/create')
+        $this->visit('/admin/association/committee/create')
             ->type('S[ck]rip(t|t?c)ie', 'name')
             ->type('Digital anarchy', 'summary')
             ->press('Create!');
 
         // The name should now be listed
-        $this->seePageIs('/admin/committee')
+        $this->seePageIs('/admin/association/committee')
             ->see('S[ck]rip(t|t?c)ie')
             ->see('Digital anarchy');
 
@@ -76,18 +76,4 @@ class AdministrationFeature extends TestCase
         $this->press('remove-member')
             ->dontSee('Redeman');
     }
-
-    /** @test */
-    function blog_and_news_posts()
-    {
-        $this->visit('/admin/post/create')
-            ->type('My title', 'title')
-            ->type('My content', 'content')
-            ->press('Create!');
-
-        $this->seePageIs('/admin/post')
-            ->see('My title')
-            ->see('My content');
-    }
-
 }

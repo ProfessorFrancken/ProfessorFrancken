@@ -19,10 +19,10 @@
         <td>{{ $committee->name() }}</td>
         <td>{{ $committee->summary() }}</td>
         <td>{{ (string)$committee->email() }}</td>
-        <td><a href="/admin/committee/{{ (string)$committee->committeeId() }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        <td><a href="/admin/association/committee/{{ (string)$committee->committeeId() }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
       </tr>
     @endforeach
   </table>
 
-  <a href="/admin/committee/create" class="btn btn-default">Create new committee</a>
+  <a href="/admin/association/committee/create" class="btn btn-default">Create new committee</a>
 @endsection

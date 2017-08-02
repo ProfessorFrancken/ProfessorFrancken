@@ -53,7 +53,7 @@ class CommitteeController extends Controller
 
         $repo->save($committee);
 
-        return redirect('/admin/committee');
+        return redirect('/admin/association/committee');
     }
 
     public function show(string $id)
@@ -78,7 +78,7 @@ class CommitteeController extends Controller
 
         $repo->save($committee);
 
-        return redirect('/admin/committee/' . $id);
+        return redirect('/admin/association/committee/' . $id);
     }
 
     public function addMember(CommitteeRepository $repo, string $committeeId, string $memberId)

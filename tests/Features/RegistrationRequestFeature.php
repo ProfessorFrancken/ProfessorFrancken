@@ -72,7 +72,7 @@ class RegistrationRequestFeature extends TestCase
             )
         );
 
-        $this->visit('/admin/registration-requests')
+        $this->visit('/admin/association/registration-requests')
             ->see('Mark Redeman');
     }
 
@@ -95,7 +95,7 @@ class RegistrationRequestFeature extends TestCase
             )
         );
 
-        $this->visit('admin/registration-requests/fffbfb4c-378b-4c76-a0e6-629f3e4e1e9a')
+        $this->visit('admin/association/registration-requests/fffbfb4c-378b-4c76-a0e6-629f3e4e1e9a')
             ->see('Mark Redeman');
     }
 }

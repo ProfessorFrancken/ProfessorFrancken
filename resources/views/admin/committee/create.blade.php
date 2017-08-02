@@ -4,7 +4,7 @@
 
   <h1>Create committee</h1>
 
-  {!! Form::open(['url' => 'admin/committee']) !!}
+  {!! Form::open(['url' => 'admin/association/committee']) !!}
 
     <div class="form-group">
       {!! Form::label('name', 'Name:', ['class' => 'control-label']) !!}

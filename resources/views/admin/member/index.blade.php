@@ -24,7 +24,7 @@
 
   <h3>Add member</h3>
 
-  <form action="{{ url('admin/member/add-member') }}" method="POST" class="form-horizontal">
+  <form action="{{ url('admin/association/member/add-member') }}" method="POST" class="form-horizontal">
     {!! csrf_field() !!}
 
     <div class="form-group">

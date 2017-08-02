@@ -29,6 +29,6 @@ class MemberController extends Controller
 
         $repo->save($member);
 
-        return redirect('/admin/member');
+        return redirect('/admin/association/member');
     }
 }

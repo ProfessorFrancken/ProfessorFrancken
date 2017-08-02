@@ -39,14 +39,14 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     function publishing_a_new_francken_vrij()
     {
-        $this->visit('/admin/francken-vrij')
+        $this->visit('/admin/association/francken-vrij')
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
             ->attach(__DIR__ . '/stubs/20-1.pdf', 'pdf')
             ->press('Publish');
 
-        $this->seePageIs('/admin/francken-vrij')
+        $this->seePageIs('/admin/association/francken-vrij')
             ->see('Clinical');
     }
 
@@ -66,7 +66,7 @@ class FranckenVrijFeature extends TestCase
             )
         );
 
-        $this->visit("/admin/francken-vrij/{$id}")
+        $this->visit("/admin/association/francken-vrij/{$id}")
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
@@ -91,7 +91,7 @@ class FranckenVrijFeature extends TestCase
             )
         );
 
-        $this->visit("/admin/francken-vrij/{$id}")
+        $this->visit("/admin/association/francken-vrij/{$id}")
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
@@ -117,7 +117,7 @@ class FranckenVrijFeature extends TestCase
             )
         );
 
-        $this->visit("/admin/francken-vrij/{$id}")
+        $this->visit("/admin/association/francken-vrij/{$id}")
             ->press('Archive');
 
         $this->dontSee('Clinical');

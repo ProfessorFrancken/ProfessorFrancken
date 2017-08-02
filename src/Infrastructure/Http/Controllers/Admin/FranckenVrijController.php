@@ -97,7 +97,7 @@ final class FranckenVrijController extends Controller
 
         $this->franckenVrij->save($edition);
 
-        return redirect('/admin/francken-vrij');
+        return redirect('/admin/association/francken-vrij');
     }
 
     public function edit(string $id)
@@ -136,14 +136,14 @@ final class FranckenVrijController extends Controller
             )
         );
 
-        return redirect('/admin/francken-vrij');
+        return redirect('/admin/association/francken-vrij');
     }
 
     public function destroy(string $id)
     {
         $this->franckenVrij->remove(new EditionId($id));
 
-        return redirect('/admin/francken-vrij');
+        return redirect('/admin/association/francken-vrij');
     }
 
     private function uploadPdf(UploadedFile $pdf, $filename)
