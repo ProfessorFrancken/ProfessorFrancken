@@ -49,7 +49,7 @@
         <tbody>
             <tr>
                 <td>Mark Redeman</td>
-                <td>Creating this beatifull webpage</td>
+                <td>Creating this beatifull webpage, and €10,-</td>
             </tr>
             <tr>
                 <td>Jasper Pluijmers</td>
@@ -71,6 +71,16 @@
                 <td>Gerjan Wielink</td>
                 <td>€10,-</td>
             </tr>
+            <tr>
+                <td>Ids Schiere</td>
+                <td>€10,-</td>
+            </tr>
+            <tfoot>
+                <tr class="table-active">
+                    <td><strong>Total</strong></td>
+                    <td><strong>€70,-</strong></td>
+                </tr>
+            </tfoot>
         </tbody>
     </table>
 
