@@ -14,7 +14,6 @@
             </h1>
 
             {!! Form::open(['url' => 'login']) !!}
-                {!! csrf_field() !!}
                 <div class="form-group">
                     <label for="email">Email</label>
                     {!! Form::email('email', null, ['placeholder' => 'member@professorfrancken.nl', 'class' => 'form-control', 'id' => 'email']) !!}
