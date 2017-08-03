@@ -53,6 +53,17 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('events/{year}', 'CareerController@events');
     });
 
+    Route::group(['prefix' => 'my-francken', 'middleware' => ['auth']], function() {
+        Route::get('', 'MyFranckenController@index');
+        Route::get('profile', 'MyFranckenController@profile');
+        Route::get('settings', 'MyFranckenController@settings');
+        Route::get('members', 'MyFranckenController@members');
+        Route::get('committees', 'MyFranckenController@committees');
+        Route::get('activities', 'MyFranckenController@activities');
+        Route::get('canteen', 'MyFranckenController@canteen');
+        Route::get('adtcievements', 'MyFranckenController@adtcievements');
+    });
+
     Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
         Route::get('/', 'DashboardController@redirectToDashboard');

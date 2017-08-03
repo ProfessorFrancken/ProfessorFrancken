@@ -66,8 +66,8 @@ final class NavigationServiceProvider extends ServiceProvider
                 ];
 
                 $items[] = [
-                    'url' => '/logout',
-                    'title' => 'Profile',
+                    'url' => '/my-francken',
+                    'title' => 'My Francken',
                     'subItems' => [],
                     'icon' => 'user',
                 ];

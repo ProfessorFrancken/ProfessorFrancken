@@ -21,7 +21,7 @@ final class SessionController
         ]);
 
         if ($loggedIn) {
-            return redirect('/profile');
+            return redirect()->intended('/my-francken');
         }
 
         return redirect('login')->withInput();
