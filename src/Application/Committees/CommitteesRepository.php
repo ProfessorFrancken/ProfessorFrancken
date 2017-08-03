@@ -170,6 +170,38 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Scriptcie.png",
                 "link" => "sckripttcie",
                 "page" => "pages.association.committees.scriptcie",
+                "members" => [
+                    new CommitteeMember(
+                        798,
+                        "Paulus",
+                        "Meessen"
+                    ),
+                    new CommitteeMember(
+                        1403,
+                        "Mark",
+                        "Redeman"
+                    ),
+                    new CommitteeMember(
+                        442,
+                        "Gert",
+                        "Eising"
+                    ),
+                    new CommitteeMember(
+                        797,
+                        "Sjoerd",
+                        "Meesters"
+                    ),
+                    new CommitteeMember(
+                        799,
+                        "Sven",
+                        "Baars"
+                    ),
+                    new CommitteeMember(
+                        873,
+                        "Mark",
+                        "Boer"
+                    ),
+                ],
             ]
         ];
 
