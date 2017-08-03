@@ -4,13 +4,25 @@ declare(strict_types=1);
 
 namespace Francken\Application\Career;
 
+use League\CommonMark\CommonMarkConverter;
+use League\HTMLToMarkdown\HtmlConverter;
+
 final class CompanyRepository
 {
     private $companies;
 
     public function __construct(array $companies)
     {
-        $this->companies = $companies;
+        $toHtml = new CommonMarkConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
+
+        $this->companies = array_map(function ($company) use ($toHtml){
+            $company['summary'] = $toHtml->convertToHtml($company['summary']);
+            return $company;
+        }, $companies);
+
     }
 
     public function profiles() : array
