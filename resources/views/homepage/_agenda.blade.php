@@ -2,11 +2,6 @@
 
 $activities = [
     [
-        'date' => new \DateTimeImmutable('31-07-2017'),
-        'title' => 'Watch Game of Thrones at Francken',
-        'short-description' => '',
-    ],
-    [
         'date' => new \DateTimeImmutable('07-08-2017'),
         'title' => 'Watch Game of Thrones at Francken',
         'short-description' => '',
