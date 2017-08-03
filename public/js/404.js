@@ -40,7 +40,7 @@ var Particle = function(x, y, vx, vy) {
     this.number = Math.floor(Math.random() * 3);
 };
 
-Particle.prototype.update = function(bounds) {
+Particle.prototype.applyPeriodicBoundaryConditions = function (bounds) {
     this.x = (this.x + this.vx) % bounds.x;
     if (this.x < 0) {
         this.x += bounds.x
@@ -54,6 +54,57 @@ Particle.prototype.update = function(bounds) {
         // this.x = sim.grid.width / 2;
         // this.y = sim.grid.height / 2;
     }
+};
+
+Particle.prototype.applyWormHoldeBoundaryCondition = function (bounds) {
+    if (this.x < 0) {
+        this.x = sim.grid.width / 2;
+        this.y = sim.grid.height / 2;
+    }
+
+    if (this.x >= bounds.x) {
+        this.x = sim.grid.width / 2;
+        this.y = sim.grid.height / 2;
+    }
+
+    if (this.y < 0) {
+        this.x = sim.grid.width / 2;
+        this.y = sim.grid.height / 2;
+    }
+
+    if (this.y >= bounds.y) {
+        this.x = sim.grid.width / 2;
+        this.y = sim.grid.height / 2;
+    }
+};
+
+Particle.prototype.applyBounceBackOnBoundaries = function (bounds) {
+    if (this.x < 0) {
+        this.vx = -this.vx;
+        this.vy = this.vy;
+    }
+
+    if (this.x >= bounds.x) {
+        this.vx = -this.vx;
+        this.vy = this.vy;
+    }
+
+    if (this.y < 0) {
+        this.vx = this.vx;
+        this.vy = -this.vy;
+    }
+
+    if (this.y >= bounds.y) {
+        this.vx = this.vx;
+        this.vy = -this.vy;
+    }
+};
+
+Particle.prototype.update = function(bounds) {
+    this.x = this.x + this.vx;
+    this.y = this.y + this.vy;
+    this.applyBounceBackOnBoundaries(bounds);
+    // this.applyWormHoldeBoundaryCondition(bounds);
 };
 
 Particle.prototype.normalizedVelocity = function() {
@@ -259,7 +310,7 @@ Grid.prototype.findCell = function(x, y) {
     x = Math.floor(x * this.n / this.width)
     y = Math.floor(y * this.m / this.height)
 
-    return this.cells[x][y]
+    return this.cells[x][y];
 };
 
 Grid.prototype.reset = function() {
