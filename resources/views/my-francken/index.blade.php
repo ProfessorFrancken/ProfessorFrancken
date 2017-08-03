@@ -251,6 +251,24 @@
                     </div>
                 </a>
             </li>
+
+            @if (Auth::user()->can_access_admin)
+                <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
+                <a
+                    href="/admin"
+                    class="aside-link"
+                >
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <h5 class="agenda-item__header">
+                                <i class="fa fa-database text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
+                                Admin
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            @endif
         </ul>
     </div>
 @endsection
