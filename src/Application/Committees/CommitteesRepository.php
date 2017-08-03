@@ -218,7 +218,7 @@ final class CommitteesRepository
                     $committee['logo'] ?? null,
                     $committee['link'],
                     $committee['page'],
-                    array_map(function () use ($faker) {
+                    $committee['members'] ?? array_map(function () use ($faker) {
                         return new CommitteeMember(
                             $faker->randomNumber,
                             $faker->firstName,
