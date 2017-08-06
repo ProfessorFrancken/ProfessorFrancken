@@ -111,7 +111,6 @@
         </div>
     </div>
 
-
     <div class="card my-3">
         <div class="card-block">
             <h3>
@@ -126,6 +125,23 @@
             <a href="/my-francken/adtcievements" class="card-link">View your adtcievements</a>
         </div>
     </div>
+
+    @if (Auth::user()->can_access_admin)
+        <div class="card my-3">
+            <div class="card-block">
+                <h3>
+                    <i class="fa fa-database text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
+                    Admin
+                </h3>
+
+                <p class="card-text">
+                    It looks like you are allowed access to our administration pages!
+                </p>
+
+                <a href="/admin" class="card-link">Go to admin</a>
+            </div>
+        </div>
+    @endif
 @endsection
 
 @section('aside')
@@ -254,21 +270,37 @@
 
             @if (Auth::user()->can_access_admin)
                 <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
+                    <a
+                        href="/admin"
+                        class="aside-link"
+                    >
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <h5 class="agenda-item__header">
+                                    <i class="fa fa-database text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
+                                    Admin
+                                </h5>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            @endif
+
+            <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
                 <a
-                    href="/admin"
+                    href="/logout"
                     class="aside-link"
                 >
                     <div class="media align-items-center">
                         <div class="media-body">
                             <h5 class="agenda-item__header">
-                                <i class="fa fa-database text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
-                                Admin
+                                <i class="fa fa-sign-out text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
+                                Logout
                             </h5>
                         </div>
                     </div>
                 </a>
             </li>
-            @endif
         </ul>
     </div>
 @endsection
