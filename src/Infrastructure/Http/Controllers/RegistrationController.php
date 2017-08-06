@@ -48,7 +48,14 @@ class RegistrationController extends Controller
         // $command = SubmitRegistrationRequest::fromRequest($request);
         $this->dispatch($command);
 
+        return redirect('/register/success');
+
         return back()->withInput();
+    }
+
+    public function success()
+    {
+        return view('registration.success');
     }
 
     private function fullNameFrom(Request $request) : FullName

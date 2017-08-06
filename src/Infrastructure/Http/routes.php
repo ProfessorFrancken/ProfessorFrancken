@@ -20,6 +20,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');
+    Route::get('/register/success', 'RegistrationController@success');
 
     Route::get('/login', 'SessionController@getLogin');
     Route::post('/login', 'SessionController@login');
