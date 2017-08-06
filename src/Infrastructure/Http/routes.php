@@ -102,6 +102,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
 
             Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
             Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
+            Route::delete('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@remove');
 
             // Francken Vrij
             Route::get('francken-vrij', 'Admin\FranckenVrijController@index');

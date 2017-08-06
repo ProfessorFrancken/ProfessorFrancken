@@ -37,4 +37,15 @@ final class RegistrationRequestsController extends Controller
             )
         ]);
     }
+
+    public function remove(string $requestId)
+    {
+        $id = new RegistrationRequestId($requestId);
+        $request =$this->requests->find($id);
+
+        $this->requests->remove($id);
+
+        return redirect()->action('Admin\RegistrationRequestsController@index')
+            ->with('status', 'Successfully archived request from ' . $request->requestee());
+    }
 }

@@ -30,4 +30,9 @@ final class RequestStatusRepository
     {
         return $this->repo->findAll();
     }
+
+    public function remove(RegistrationRequestId $id)
+    {
+        $this->repo->remove((string)$id);
+    }
 }

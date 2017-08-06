@@ -39,7 +39,7 @@ final class RequestStatus implements ReadModelInterface, SerializableInterface
         $this->hasContactInfo = $hasContactInfo;
         $this->hasStudyInfo = $hasStudyInfo;
         $this->hasPaymentInfo = $hasPaymentInfo;
-        $this->submittedAt = $submittedAt;
+        $this->submittedAt = $submittedAt->format('Y-m-d H:i:s');
     }
 
     public function getId() : string
@@ -50,6 +50,11 @@ final class RequestStatus implements ReadModelInterface, SerializableInterface
     public function id() : RegistrationRequestId
     {
         return new RegistrationRequestId($this->id);
+    }
+
+    public function submittedAt() : DateTimeImmutable
+    {
+        return new DateTimeImmutable($this->submittedAt);
     }
 
     public function requestee() : string
