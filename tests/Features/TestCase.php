@@ -7,7 +7,7 @@ namespace Francken\Features;
 use Illuminate\Contracts\Console\Kernel;
 use Laravel\BrowserKitTesting\TestCase as LaravelTestCase;
 
-class TestCase extends LaravelTestCase
+abstract class TestCase extends LaravelTestCase
 {
     /**
      * The base URL to use while testing the application.

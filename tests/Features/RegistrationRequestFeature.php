@@ -16,7 +16,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class RegistrationRequestFeature extends TestCase
 {
     use DatabaseMigrations;
-    use LoggedInAsAdmin;
 
     /**
      * @test
@@ -38,9 +37,9 @@ class RegistrationRequestFeature extends TestCase
             ->type('9742GS', 'zip-code')
 
             // Study details
-            ->type('Msc Applied Mathematics', 'study-name')
             ->type('s2218356', 'student-number')
-            ->type('2011-04', 'study-starting-date')
+            ->type('Msc Applied Mathematics', 'study-name[0]')
+            ->type('2011-04', 'study-starting-date[0]')
 
             ->press('Submit request');
 
@@ -51,51 +50,5 @@ class RegistrationRequestFeature extends TestCase
         $this->seeInDatabase('request_status', [
             'requestee' => 'Mark Redeman'
         ]);
-    }
-
-    /** @test */
-    function listing_all_open_registration_requests()
-    {
-        $requests = $this->app->make(RequestStatusRepository::class);
-        $requests->save(
-            new RequestStatus(
-                new RegistrationRequestId('fffbfb4c-378b-4c76-a0e6-629f3e4e1e9a'),
-                'Mark Redeman',
-                true,
-                true,
-                true,
-                true,
-                \DateTimeImmutable::createFromFormat(
-                    \DateTime::ISO8601,
-                    '2016-11-18T15:52:01+0000'
-                )
-            )
-        );
-
-        $this->visit('/admin/association/registration-requests')
-            ->see('Mark Redeman');
-    }
-
-    /** @test */
-    function listing_details_of_a_registration_request()
-    {
-        $requests = $this->app->make(RequestStatusRepository::class);
-        $requests->save(
-            new RequestStatus(
-                new RegistrationRequestId('fffbfb4c-378b-4c76-a0e6-629f3e4e1e9a'),
-                'Mark Redeman',
-                true,
-                true,
-                true,
-                true,
-                \DateTimeImmutable::createFromFormat(
-                    \DateTime::ISO8601,
-                    '2016-11-18T15:52:01+0000'
-                )
-            )
-        );
-
-        $this->visit('admin/association/registration-requests/fffbfb4c-378b-4c76-a0e6-629f3e4e1e9a')
-            ->see('Mark Redeman');
     }
 }

@@ -13,6 +13,7 @@ use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Tests\Domain\EventTestCase as Testcase;
 
@@ -25,7 +26,16 @@ class RegistrationRequestSubmittedTest extends TestCase
         $event = $this->registrationRequestSubmitted($id);
         $this->assertEquals($id, $event->registrationRequestId());
         $this->assertEquals('s2218356', $event->studentNumber());
-        $this->assertEquals('Msc Applied Mathematics', $event->study());
+        $this->assertEquals(
+            [
+                new Study(
+                    'Msc Applied Mathematics',
+                    new DateTimeImmutable('2011-09-01')
+                )
+            ],
+            $event->studies()
+        );
+
         $this->assertEquals(new FullName(
             'Mark',
             '',
@@ -68,8 +78,10 @@ class RegistrationRequestSubmittedTest extends TestCase
             ),
             new StudyDetails(
                 's2218356',
-                'Msc Applied Mathematics',
-                new DateTimeImmutable('2011-09-01')
+                new Study(
+                    'Msc Applied Mathematics',
+                    new DateTimeImmutable('2011-09-01')
+                )
             )
         );
     }

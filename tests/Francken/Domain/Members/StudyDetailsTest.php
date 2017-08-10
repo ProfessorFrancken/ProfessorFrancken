@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Members;
 
-use Francken\Domain\Members\StudyDetails;
 use DateTimeImmutable;
+use Francken\Domain\Members\Study;
+use Francken\Domain\Members\StudyDetails;
 use Francken\Tests\SetupReconstitution;
 
 class StudyDetailsTest extends \PHPUnit_Framework_TestCase
@@ -17,38 +18,34 @@ class StudyDetailsTest extends \PHPUnit_Framework_TestCase
     {
         $studyDetails = new StudyDetails(
             's2218356',
-            'Msc Applied Mathematics',
-            new DateTimeImmutable('01-08-2011'),
-            new DateTimeImmutable('01-08-2014')
+            new Study(
+                'Msc Applied Mathematics',
+                new DateTimeImmutable('01-08-2011'),
+                new DateTimeImmutable('01-08-2014')
+            )
         );
 
-        $this->assertEquals('Msc Applied Mathematics', $studyDetails->study());
-        $this->assertEquals(new DateTimeImmutable('01-08-2011'), $studyDetails->startDate());
-        $this->assertEquals(new DateTimeImmutable('01-08-2014'), $studyDetails->graduationDate());
+        $this->assertEquals([
+            new Study(
+                'Msc Applied Mathematics',
+                new DateTimeImmutable('01-08-2011'),
+                new DateTimeImmutable('01-08-2014')
+            )
+        ], $studyDetails->studies());
+
         $this->assertEquals('s2218356', $studyDetails->studentNumber());
     }
-
-    /** @test */
-    function the_graduation_date_is_optional()
-    {
-        $studyDetails = new StudyDetails(
-            's2218356',
-            'Msc Applied Mathematics',
-            new DateTimeImmutable('01-08-2011')
-        );
-
-        $this->assertEquals(null, $studyDetails->graduationDate());
-    }
-
 
     /** @test */
     public function it_is_serializable()
     {
         $studyDetails = new StudyDetails(
             's2218356',
-            'Msc Applied Mathematics',
-            new DateTimeImmutable('01-08-2011'),
-            new DateTimeImmutable('01-08-2014')
+            new Study(
+                'Msc Applied Mathematics',
+                new DateTimeImmutable('01-08-2011'),
+                new DateTimeImmutable('01-08-2014')
+            )
         );
 
         $this->assertEquals(

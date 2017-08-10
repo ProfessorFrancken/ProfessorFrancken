@@ -11,20 +11,27 @@
 </div>
 
 <ul class="list-unstyled studies">
-    <li>
-        <div class="form-group row">
-            <div class="col-sm-3">
-                <label for="study">Study</label>
-                {!! Form::text('study-name', null, ['placeholder' => 'Bsc Applied Physics', 'class' => 'form-control', 'required']) !!}
+    @foreach (range(0, $amountOfStudies) as $number)
+        <li>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="study">Study</label>
+                    {!! Form::text("study-name[${number}]", null, ['placeholder' => 'Bsc Applied Physics', 'class' => 'form-control', 'required']) !!}
+                </div>
+                <div class="col-sm-3">
+                    <label for="starting-date-study">Starting date</label>
+                    {!! Form::input('month', "study-starting-date[${number}]", null, ['placeholder' => 'yyyy-mm', 'class' => 'form-control', 'required']) !!}
+                </div>
+                <div class="col-sm-3">
+                    <label for="starting-date-study">Graduation date (optional)</label>
+                    {!! Form::input('month', "study-graduation-date[${number}]", null, ['placeholder' => 'yyyy-mm', 'class' => 'form-control']) !!}
+                </div>
             </div>
-            <div class="col-sm-3">
-                <label for="starting-date-study">Starting date</label>
-                {!! Form::input('month', 'study-starting-date', null, ['placeholder' => 'yyyy-mm', 'class' => 'form-control', 'required']) !!}
-            </div>
-            <div class="col-sm-3">
-                <label for="starting-date-study">Graduation date (optional)</label>
-                {!! Form::input('month', 'study-graduation-date', null, ['placeholder' => 'yyyy-mm', 'class' => 'form-control']) !!}
-            </div>
-        </div>
-    </li>
+        </li>
+    @endforeach
 </ul>
+
+<button class="btn btn-link" id="addAdditionalStudy">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    Add another study
+</button>

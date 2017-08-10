@@ -87,16 +87,6 @@
  });
 </script>
 
-{{--
-
-We will probably switch to a React component
-
-<button class="btn btn-link" id="addAdditionalStudy">
-<i class="fa fa-plus-circle" aria-hidden="true"></i>
-Add another study
-</button>
---}}
-
 <script>
  var addStudy = document.querySelector('#addAdditionalStudy');
  var studies = document.querySelector('.studies');
@@ -106,15 +96,15 @@ Add another study
      return `<div class="form-group row">
                     <div class="col-sm-3">
                         <label for="study">Study</label>
-                        <input placeholder="Bsc Applied Physics" class="form-control" name="studies[]name[]" type="text" required>
+                        <input placeholder="Bsc Applied Physics" class="form-control" name="study-name[]" type="text" required>
                     </div>
                     <div class="col-sm-3">
                         <label for="starting-date-study">Starting date</label>
-                        <input placeholder="yyyy-mm" class="form-control" name="studies[]starting-date[]" type="month" required>
+                        <input placeholder="yyyy-mm" class="form-control" name="study-starting-date[]" type="month" required>
                     </div>
                     <div class="col-sm-3">
                         <label for="starting-date-study">Graduation date (optional)</label>
-                        <input placeholder="yyyy-mm" class="form-control" name="studies[]graduation-date[]" type="month">
+                        <input placeholder="yyyy-mm" class="form-control" name="study-graduation-date[]" type="month">
                     </div>
                     <div class="col-sm-3 d-flex">
                         <button class="remove-study btn btn-secondary align-self-end">

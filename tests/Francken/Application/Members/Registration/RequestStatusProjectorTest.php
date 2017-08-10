@@ -18,6 +18,7 @@ use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
@@ -44,8 +45,10 @@ class RequestStatusProjectorTest extends TestCase
                 ),
                 new StudyDetails(
                     's2218356',
-                    'Msc Applied Mathematics',
-                    new DateTimeImmutable('2011-09-01')
+                    new Study(
+                        'Msc Applied Mathematics',
+                        new DateTimeImmutable('2011-09-01')
+                    )
                 )
             ),
             DateTime::fromString('2016-07-18 00:00:00')

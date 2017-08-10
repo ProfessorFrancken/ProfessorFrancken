@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Francken\Domain\Members\Address;
+use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
@@ -52,8 +53,15 @@ final class RegistrationRequestsSeeder extends Seeder
                 ),
                 new StudyDetails(
                     's2218356',
-                    'Msc Applied Mathematics',
-                    new DateTimeImmutable('2011-09-01')
+                    new Study(
+                        'Bsc Applied Mathematics',
+                        new DateTimeImmutable('2011-09-01'),
+                        new DateTimeImmutable('2014-06-01')
+                    ),
+                    new Study(
+                        'Msc Applied Mathematics',
+                        new DateTimeImmutable('2014-09-01')
+                    )
                 ),
                 new PaymentInfo(true, $faker->boolean)
                 // note: could add an additional "comment" section where a foreigner could tell the board that he/she lives outside of the Netherlands

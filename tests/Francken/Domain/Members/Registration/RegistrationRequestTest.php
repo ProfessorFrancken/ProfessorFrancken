@@ -16,6 +16,7 @@ use Francken\Domain\Members\Registration\Events\PaymentInfoProvided;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
 
 class RegistrationRequestTest extends AggregateRootScenarioTestCase
@@ -51,8 +52,10 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
                     ),
                     new StudyDetails(
                         's2218356',
-                        'Msc Applied Mathematics',
-                        new DateTimeImmutable('2011-09-01')
+                        new Study(
+                            'Msc Applied Mathematics',
+                            new DateTimeImmutable('2011-09-01')
+                        )
                     ),
                     new PaymentInfo(true, true)
                     // note: could add an additional "comment" section where a foreigner could tell the board that he/she lives outside of the Netherlands
@@ -78,8 +81,10 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
                     ),
                     new StudyDetails(
                         's2218356',
-                        'Msc Applied Mathematics',
-                        new DateTimeImmutable('2011-09-01')
+                        new Study(
+                            'Msc Applied Mathematics',
+                            new DateTimeImmutable('2011-09-01')
+                        )
                     )
                 ),
                 new PaymentInfoProvided(
