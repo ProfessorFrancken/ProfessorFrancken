@@ -1,5 +1,4 @@
-<section class="job-opening row">
-    <div class="col-md-12">
+<section class="job-opening">
         <img class="pull-right img-fluid job-opening__company-logo job-opening__company-logo " style="max-width: 100px;" alt="{{ $job['name'] }}" src="{{ image($job['logo'], ['width' => 100, 'height' => 100, 'crop' => 0]) }}"/>
 
         <h3 class="h4 job-opening__title">
@@ -32,7 +31,7 @@
         </p>
 
         <p>
+
             <a class="" href="{{ $job['link'] }}">Show details</a>
         </p>
-    </div>
 </section>

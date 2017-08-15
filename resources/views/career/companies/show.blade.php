@@ -4,18 +4,36 @@
 
 @section('content')
 
-    <div class="section-header d-inline-block mt-4 h1">
+    <h1 class="section-header">
         {{  $company['name']}}
+    </h1>
+
+    <div class="text-justify">
+		    {!!  $company['summary'] !!}
     </div>
 
-    <div class="row mt-2">
-			<div class="col text-justify " >
+    @if (count($jobs) > 0)
 
-		        {!!  $company['summary'] !!}
-			</div>
-    </div>
-    <br>
-    <br><br><br>
+        <h2 class="mb-3 mt-4">
+            <i class="fa fa-suitcase" aria-hidden="true"></i>
+            Job openings from {{ $company['name'] }}
+        </h2>
+
+        <ul class="list-unstyled">
+        @foreach ($jobs as $job)
+            <li class="job-opening py-3">
+                <a href="{{ $job['link'] }}" class="mb-0">
+                    <h3 class="h5 job-opening__title mb-0">
+                        {{ $job['job'] }}
+                        <small class="text-muted h5 mb-0">
+                            ({{ $job['type'] }})
+                        </small>
+                    </h3>
+                </a>
+            </li>
+        @endforeach
+        </ul>
+    @endif
 @endsection
 
 @section('aside')

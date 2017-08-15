@@ -280,9 +280,8 @@ footer .header__title {
 
 .job-opening {
     border-top: thin solid $gray-lighter;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding: 1em 0;
+    border-bottom: thin solid $gray-lighter;
+    padding: 1.5em 0;
 }
 
 .job-opening__title {
