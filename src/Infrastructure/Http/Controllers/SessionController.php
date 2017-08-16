@@ -17,7 +17,7 @@ final class SessionController
     {
         $loggedIn = Auth::attempt([
             'email' => request()->input('email'),
-            'password' => request()->input('passprhase'),
+            'password' => request()->input('passphrase'),
         ]);
 
         if ($loggedIn) {

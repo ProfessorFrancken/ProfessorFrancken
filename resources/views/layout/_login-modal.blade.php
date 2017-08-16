@@ -25,7 +25,7 @@
                     {!! Form::email('email', null, ['placeholder' => 'Email', 'class' => 'form-control', 'id' => 'email']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::password('passprhase', ['placeholder' => 'A super  secret passprhase', 'class' => 'form-control', 'id' => 'password']) !!}
+                    {!! Form::password('passphrase', ['placeholder' => 'A super  secret passphrase', 'class' => 'form-control', 'id' => 'passphrase']) !!}
                 </div>
 
                 <div class="form-group text-right">
