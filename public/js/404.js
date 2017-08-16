@@ -101,10 +101,13 @@ Particle.prototype.applyBounceBackOnBoundaries = function (bounds) {
 };
 
 Particle.prototype.update = function(bounds) {
+
+    //this.applyBounceBackOnBoundaries(bounds);
+
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
-    this.applyBounceBackOnBoundaries(bounds);
-    // this.applyWormHoldeBoundaryCondition(bounds);
+
+    this.applyWormHoldeBoundaryCondition(bounds);
 };
 
 Particle.prototype.normalizedVelocity = function() {
