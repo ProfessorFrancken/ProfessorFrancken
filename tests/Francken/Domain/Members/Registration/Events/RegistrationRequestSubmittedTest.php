@@ -41,6 +41,17 @@ class RegistrationRequestSubmittedTest extends TestCase
             '',
             'Redeman'
         ), $event->fullName());
+
+
+        $this->assertEquals(
+            new Address('Groningen', '9742GS', 'Plutolaan 11'),
+            $event->address()
+        );
+
+        $this->assertEquals(
+            new Email('markredeman@gmail.com'),
+            $event->email()
+        );
     }
 
     /** @test */

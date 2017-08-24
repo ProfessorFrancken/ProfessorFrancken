@@ -36,4 +36,12 @@ final class ContactInfo implements SerializableInterface
     {
         return $this->address;
     }
+
+    protected static function deserializationCallbacks()
+    {
+        return [
+            'email' => [Email::class, 'deserialize'],
+            'address' => [Address::class, 'deserialize']
+        ];
+    }
 }

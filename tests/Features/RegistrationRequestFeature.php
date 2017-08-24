@@ -8,8 +8,13 @@ use Auth;
 use DB;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Application\Members\Registration\RequestStatusRepository;
+use Francken\Domain\Members\Address;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Members\Registration\RegistrationRequestRepository;
+use Francken\Domain\Members\StudyDetails;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -32,7 +37,7 @@ class RegistrationRequestFeature extends TestCase
 
             // Contact Details
             ->type('markredeman@gmail.com', 'email')
-            ->type('groningen', 'city')
+            ->type('Groningen', 'city')
             ->type('Nijenborgh 9', 'address')
             ->type('9742GS', 'zip-code')
 
@@ -50,5 +55,25 @@ class RegistrationRequestFeature extends TestCase
         $this->seeInDatabase('request_status', [
             'requestee' => 'Mark Redeman'
         ]);
+
+        $rq = \DB::table('request_status')->orderBy('submittedAt', 'desc')->first();
+
+        $store = app(\Broadway\EventStore\EventStoreInterface::class);
+        $events = $store->load($rq->id);
+        $event = array_first($events)->getPayload();
+
+        $this->assertEquals(
+            new FullName("Mark", "", "Redeman"), $event->fullname()
+        );
+
+        $this->assertEquals(
+            new Email("markredeman@gmail.com"), $event->email()
+        );
+
+        $this->assertEquals(
+            new Address("Groningen", "9742GS", "Nijenborgh 9"), $event->address()
+        );
+
+        $this->assertCount(1, $event->studies());
     }
 }

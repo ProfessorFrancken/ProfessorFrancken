@@ -34,6 +34,9 @@ final class CommitteeEmailChanged implements SerializableInterface
 
     protected static function deserializationCallbacks()
     {
-        return ['committeeId' => [CommitteeId::class, 'deserialize']];
+        return [
+            'email' => [Email::class, 'deserialize'],
+            'committeeId' => [CommitteeId::class, 'deserialize']
+        ];
     }
 }

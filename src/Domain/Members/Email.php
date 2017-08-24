@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Members;
 
-final class Email
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Serializable;
+
+final class Email implements SerializableInterface
 {
+    use Serializable;
+
     private $email;
 
     public function __construct(string $email)

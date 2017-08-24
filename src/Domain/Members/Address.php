@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Members;
 
-final class Address
+use Broadway\Serializer\SerializableInterface;
+use Francken\Domain\Serializable;
+
+final class Address implements SerializableInterface
 {
+    use Serializable;
+
     private $city;
     private $postalCode;
     private $address;

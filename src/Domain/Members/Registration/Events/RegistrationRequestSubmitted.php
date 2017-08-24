@@ -62,6 +62,17 @@ final class RegistrationRequestSubmitted implements SerializableInterface
         return $this->studyDetails->studies();
     }
 
+
+    public function email() : Email
+    {
+        return $this->contact->email();
+    }
+
+    public function address() : Address
+    {
+        return $this->contact->address();
+    }
+
     protected static function deserializationCallbacks()
     {
         return [
