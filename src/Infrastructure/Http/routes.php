@@ -14,6 +14,10 @@ Route::get('/scriptcie/{url}', function ($url) {
     return redirect('http://old.professorfrancken.nl/scriptcie/' . $url);
 })->where('url', '.*');
 
+Route::get('/database/streep/afbeeldingen/{url}', function ($url) {
+    return redirect('http://old.professorfrancken.nl/database/streep/afbeeldingen/' . $url);
+})->where('url', '.*');
+
 Route::post('store-jas-events', 'JasController@store');
 
 Route::group(['middleware' => ['web', 'bindings']], function () {
