@@ -18,25 +18,17 @@ final class CommitteeEmailChanged implements SerializableInterface
 
     public function __construct(CommitteeId $committeeId, Email $email = null)
     {
-        $this->committeeId = $committeeId;
-        $this->email = $email;
+        $this->committeeId = (string)$committeeId;
+        $this->email = (string)$email;
     }
 
     public function committeeId() : CommitteeId
     {
-        return $this->committeeId;
+        return new CommitteeId($this->committeeId);
     }
 
     public function email()
     {
-        return $this->email;
-    }
-
-    protected static function deserializationCallbacks()
-    {
-        return [
-            'email' => [Email::class, 'deserialize'],
-            'committeeId' => [CommitteeId::class, 'deserialize']
-        ];
+        return $this->email ? new Email($this->email) : null;
     }
 }
