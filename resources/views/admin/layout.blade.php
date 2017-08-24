@@ -108,7 +108,7 @@ $menu = [
                 @endforeach
             </nav>
         </div>
-        <div class="col-12 col-lg-7 col-md-9 bd-content">
+        <div class="col-12 col-lg-10 col-md-9 bd-content">
             @yield('content')
         </div>
     </div>
