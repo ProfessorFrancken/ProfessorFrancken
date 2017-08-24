@@ -14,7 +14,7 @@ Route::get('/scriptcie/{url}', function ($url) {
     return redirect('http://old.professorfrancken.nl/scriptcie/' . $url);
 })->where('url', '.*');
 
-Route::post('jassen', 'JasController@store');
+Route::post('store-jas-events', 'JasController@store');
 
 Route::group(['middleware' => ['web', 'bindings']], function () {
 

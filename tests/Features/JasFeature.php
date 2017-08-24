@@ -18,8 +18,8 @@ class JasFeature extends TestCase
     public function it_stores_events_raised_by_our_jas_app()
     {
         $id = '8741e80e-153f-4254-b13e-21ac8ac34948';
-        $this->json('POST', '/jassen', [
-            'id' => $id,
+        $this->json('POST', '/store-jas-events', [
+            'uuid' => $id,
             'name' => 'GameStarted',
             'date' => 1503301742819,
             'payload' => [
