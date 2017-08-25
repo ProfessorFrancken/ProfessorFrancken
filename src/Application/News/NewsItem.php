@@ -9,8 +9,23 @@ use Broadway\Serializer\SerializableInterface;
 use DateTimeImmutable;
 use Francken\Domain\Url;
 
+final class NewsItemId {
+    private $id;
+
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
+
+    public function __toString() : string
+    {
+        return $this->id;
+    }
+}
+
 final class NewsItem
 {
+    private $id = 1;
     private $title;
     private $exerpt;
     private $publicationDate;
@@ -30,6 +45,7 @@ final class NewsItem
         NewsItemLink $previous = null,
         NewsItemLink $next = null
     ) {
+        $this->id = '1';
         $this->title = $title;
         $this->exerpt = $exerpt;
         $this->publicationDate = $publicationDate;
@@ -40,6 +56,14 @@ final class NewsItem
         })(...$related);
         $this->next = $next;
         $this->previous = $previous;
+    }
+
+    public function id() : NewsItemId
+    {
+        return new NewsItemId(
+            // $this->id
+            $this->link()
+        );
     }
 
     public function title() : string
@@ -77,9 +101,9 @@ final class NewsItem
         return $this->author->photo();
     }
 
-    public function content() : string
+    public function content() : CompiledMarkdown
     {
-        return $this->content;
+        return new CompiledMarkdown($this->content);
     }
 
     public function relatedNewsItems() : array

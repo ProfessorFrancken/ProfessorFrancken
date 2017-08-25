@@ -92,7 +92,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
 
         Route::group(['prefix' => 'association'], function() {
             //posts: NEWS / BLOG
-            Route::resource('post', 'PostController');
+            Route::resource('news', 'Admin\NewsController');
 
             Route::resource('activity', 'ActivityController');
 
@@ -117,8 +117,6 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
             Route::delete('francken-vrij/{edition}', 'Admin\FranckenVrijController@destroy');
             Route::post('francken-vrij', 'Admin\FranckenVrijController@store');
 
-
-            Route::get('blogs', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('activities', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('committees', 'Admin\AdminController@showPageIsUnavailable');
