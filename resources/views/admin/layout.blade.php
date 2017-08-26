@@ -8,8 +8,8 @@ $menu = [
         "url" => "association",
         "items" => [
             [
-                "name" => "Blogs",
-                "url" => "blogs",
+                "name" => "News",
+                "url" => "news",
                 "works" => false,
             ],
             [
