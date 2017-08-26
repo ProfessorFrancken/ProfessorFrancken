@@ -75,7 +75,37 @@ $menu = [
                 "works" => false,
             ],
         ]
-    ],
+    ], [
+        "name" => "Committees",
+        "url" => "committees",
+        "items" => [
+            [
+                "name" => "Adtcie",
+                "url" => "adtcie",
+                "works" => false,
+            ],
+            [
+                "name" => "Borrelcie",
+                "url" => "borrelcie",
+                "works" => false,
+            ],
+            [
+                "name" => "Francken Vrij",
+                "url" => "francken-vrij",
+                "works" => false,
+            ],
+            [
+                "name" => "Brouwcie",
+                "url" => "brouwcie",
+                "works" => false,
+            ],
+            [
+                "name" => "Fotocie",
+                "url" => "fotocie",
+                "works" => false,
+            ],
+        ]
+    ]
 ];
 ?>
 
