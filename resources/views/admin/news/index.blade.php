@@ -213,7 +213,7 @@
                     </p>
 
                     <a href="/admin/news/authors/create" class="btn btn-outline-primary">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
                         Add new author
                     </a>
                 </div>
