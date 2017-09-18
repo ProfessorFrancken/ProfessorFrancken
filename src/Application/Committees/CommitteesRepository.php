@@ -18,14 +18,33 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Alumnicie.png",
                 "link" => "alumnicie",
                 "page" => "pages.association.committees.alumnicie",
-            ],
-            [
-                "id" => 404,
-                "title" => "Bincie",
-                "email" => "",
-                "logo" => "https://borrelcie.vodka/tmp/Bincie.png",
-                "link" => "bincie",
-                "page" => "pages.association.committees.bincie",
+                "members" => [
+                    new CommitteeMember(
+                        1266,
+                        "Anne",
+                        "in 't Veld"
+                    ),
+                    new CommitteeMember(
+                        1176,
+                        "Friso",
+                        "Wobben"
+                    ),
+                    new CommitteeMember(
+                        1206,
+                        "Max",
+                        "Kamperman"
+                    ),
+                    new CommitteeMember(
+                        1149,
+                        "Janneke",
+                        "Janssens"
+                    ),
+                    new CommitteeMember(
+                        1163,
+                        "Willeke",
+                        "Mulder"
+                    ),
+                ]
             ],
             [
                 "id" => 19,
@@ -34,6 +53,48 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Borrelcie.png",
                 "link" => "borrelcie",
                 "page" => "pages.association.committees.borrelcie",
+                "members" => [
+                    new CommitteeMember(
+                        1582,
+                        "Joris",
+                        "Doting"
+                    ),
+                    new CommitteeMember(
+                        1333,
+                        "Arjen",
+                        "Kramer"
+                    ),
+                    new CommitteeMember(
+                        1265,
+                        "Gerben",
+                        "Hijlkema"
+                    ),
+                    new CommitteeMember(
+                        1746,
+                        "Bo",
+                        "Gruppen"
+                    ),
+                    new CommitteeMember(
+                        1372,
+                        "Ids",
+                        "Schiere"
+                    ),
+                    new CommitteeMember(
+                        1670,
+                        "Mees",
+                        "Hoogland"
+                    ),
+                    new CommitteeMember(
+                        1710,
+                        "Bradley",
+                        "Spronk"
+                    ),
+                    new CommitteeMember(
+                        1163,
+                        "Willeke",
+                        "Mulder"
+                    ),
+                ]
             ],
             [
                 "id" => 33,
@@ -42,6 +103,58 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Brouwcie.png",
                 "link" => "brouwcie",
                 "page" => "pages.association.committees.brouwcie",
+                "members" => [
+                    new CommitteeMember(
+                        1143,
+                        "Hilbert",
+                        "van Loo"
+                    ),
+                    new CommitteeMember(
+                        934,
+                        "Marten",
+                        "Koopmans"
+                    ),
+                    new CommitteeMember(
+                        932,
+                        "Bauke",
+                        "Steensma"
+                    ),
+                    new CommitteeMember(
+                        916,
+                        "Camiel",
+                        "van Hooff"
+                    ),
+                    new CommitteeMember(
+                        918,
+                        "Rick",
+                        "Meijerink"
+                    ),
+                    new CommitteeMember(
+                        924,
+                        "Wopke",
+                        "Hellinga"
+                    ),
+                    new CommitteeMember(
+                        1345,
+                        "Bas",
+                        "de Jong"
+                    ),
+                    new CommitteeMember(
+                        1172,
+                        "Gerjan",
+                        "Wielink"
+                    ),
+                    new CommitteeMember(
+                        1206,
+                        "Max",
+                        "Kamperman"
+                    ),
+                    new CommitteeMember(
+                        1265,
+                        "Gerben",
+                        "Hijlkema"
+                    ),
+                ]
             ],
             [
                 "id" => 2,
@@ -50,14 +163,33 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Buixie.png",
                 "link" => "buixie",
                 "page" => "pages.association.committees.buixie",
-            ],
-            [
-                "id" => 53,
-                "title" => "CoDcie",
-                "email" => "",
-                "logo" => "https://borrelcie.vodka/tmp/CoDcie.png",
-                "link" => "codcie",
-                "page" => "pages.association.committees.codcie",
+                "members" => [
+                    new CommitteeMember(
+                        1143,
+                        "Willeke",
+                        "Mulder"
+                    ),
+                    new CommitteeMember(
+                        1582,
+                        "Joris",
+                        "Doting"
+                    ),
+                    new CommitteeMember(
+                        1174,
+                        "David",
+                        "Koning"
+                    ),
+                    new CommitteeMember(
+                        1571,
+                        "Chantal",
+                        "Kool"
+                    ),
+                    new CommitteeMember(
+                        1178,
+                        "Leon",
+                        "Trustram"
+                    ),
+                ]
             ],
             [
                 "id" => 1,
@@ -66,6 +198,43 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Compucie.png",
                 "link" => "compucie",
                 "page" => "pages.association.committees.compucie",
+                "members" => [
+                    new CommitteeMember(
+                        1176,
+                        "Friso",
+                        "Wobben"
+                    ),
+                    new CommitteeMember(
+                        1143,
+                        "Hilbert",
+                        "van Loo"
+                    ),
+                    new CommitteeMember(
+                        1172,
+                        "Gerjan",
+                        "Wielink"
+                    ),
+                    new CommitteeMember(
+                        1293,
+                        "Anton",
+                        "Jansen"
+                    ),
+                    new CommitteeMember(
+                        728,
+                        "Ypke",
+                        "Jager"
+                    ),
+                    new CommitteeMember(
+                        442,
+                        "Gert",
+                        "Eising"
+                    ),
+                    new CommitteeMember(
+                        439,
+                        "Laurens-Jan",
+                        "Soer"
+                    ),
+                ]
             ],
             [
                 "id" => 21,
@@ -74,6 +243,33 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Fotocie.png",
                 "link" => "fotocie",
                 "page" => "pages.association.committees.fotocie",
+                "members" => [
+                    new CommitteeMember(
+                        1187,
+                        "Jasper",
+                        "Staal"
+                    ),
+                    new CommitteeMember(
+                        1760,
+                        "Jeanne",
+                        "van Zuilen"
+                    ),
+                    new CommitteeMember(
+                        1608,
+                        "Su-Elle",
+                        "Kamps"
+                    ),
+                    new CommitteeMember(
+                        692,
+                        "Edwin",
+                        "de Jong"
+                    ),
+                    new CommitteeMember(
+                        1817,
+                        "Emiel",
+                        "de Wit"
+                    ),
+                ]
             ],
             [
                 "id" => 9,
@@ -82,6 +278,33 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Fraccie.png",
                 "link" => "fraccie",
                 "page" => "pages.association.committees.fraccie",
+                "members" => [
+                    new CommitteeMember(
+                        1209,
+                        "Laurens",
+                        "Even"
+                    ),
+                    new CommitteeMember(
+                        1774,
+                        "Alida",
+                        "Hunnink"
+                    ),
+                    new CommitteeMember(
+                        1760,
+                        "Jeanne",
+                        "van Zuilen"
+                    ),
+                    new CommitteeMember(
+                        1786,
+                        "Tamara",
+                        "Kok"
+                    ),
+                    new CommitteeMember(
+                        1732,
+                        "Puck",
+                        "Planje"
+                    ),
+                ]
             ],
             [
                 "id" => 10,
