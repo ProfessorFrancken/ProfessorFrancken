@@ -49,22 +49,15 @@ final class NavigationServiceProvider extends ServiceProvider
                 'icon' => 'suitcase',
             ],
             [
-                'url' => 'http://pienterkamp.nl/',
-                'title' => 'Pienterkamp',
+                'url' => 'https://www.flickr.com/photos/fotocie/sets/',
+                'title' => 'Photos',
                 'subItems' => [],
-                'icon' => 'child'
+                'icon' => 'camera',
             ]
         ];
 
         View::composer('layout._header', function ($view) use ($items) {
             if (Auth::check()) {
-                $items[] = [
-                    'url' => 'https://www.flickr.com/photos/fotocie/sets/',
-                    'title' => 'Photos',
-                    'subItems' => [],
-                    'icon' => 'camera',
-                ];
-
                 $items[] = [
                     'url' => '/my-francken',
                     'title' => 'My Francken',
