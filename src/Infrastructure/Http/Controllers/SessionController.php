@@ -15,10 +15,12 @@ final class SessionController
 
     public function login()
     {
+        $rememberUser = true;
+
         $loggedIn = Auth::attempt([
             'email' => request()->input('email'),
             'password' => request()->input('passphrase'),
-        ]);
+        ], $rememberUser);
 
         if ($loggedIn) {
             return redirect()->intended('/my-francken');
