@@ -16,6 +16,7 @@ final class PaymentInfoProvided implements SerializableInterface
     private $id;
     private $paysForMembership = true;
     private $paysForFoodAndDrinks = false;
+    private $iban = '';
 
     public function __construct(
         RegistrationRequestId $id,
@@ -24,6 +25,7 @@ final class PaymentInfoProvided implements SerializableInterface
         $this->id = (string)$id;
         $this->paysForMembership = $payment->payForMembership();
         $this->paysForFoodAndDrinks = $payment->payForFoodAndDrinks();
+        $this->iban = $payment->iban();
     }
 
     public function registrationRequestId() : RegistrationRequestId
@@ -35,7 +37,8 @@ final class PaymentInfoProvided implements SerializableInterface
     {
         return new PaymentInfo(
             $this->paysForMembership,
-            $this->paysForFoodAndDrinks
+            $this->paysForFoodAndDrinks,
+            $this->iban
         );
     }
-}
+};

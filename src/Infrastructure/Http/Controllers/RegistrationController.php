@@ -130,6 +130,6 @@ class RegistrationController extends Controller
 
     private function paymentInfoFrom(Request $request) : PaymentInfo
     {
-        return new PaymentInfo(true, true);
+        return new PaymentInfo(true, true, $request->input('iban'));
     }
 }

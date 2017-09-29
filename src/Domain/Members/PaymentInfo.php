@@ -17,7 +17,7 @@ final class PaymentInfo implements SerializableInterface
     private $payForFoodAndDrinks;
     private $iban;
 
-    public function __construct(bool $payForMembership, bool $payForFoodAndDrinks, IBAN $iban = null)
+    public function __construct(bool $payForMembership, bool $payForFoodAndDrinks, string $iban = null)
     {
         // A member must indicate that he or she is paying for the membership
         if (! $payForMembership) {
@@ -37,6 +37,11 @@ final class PaymentInfo implements SerializableInterface
     public function payForFoodAndDrinks() : bool
     {
         return $this->payForFoodAndDrinks;
+    }
+
+    public function iban() : string
+    {
+        return $this->iban;
     }
 }
 

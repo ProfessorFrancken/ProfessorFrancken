@@ -58,7 +58,7 @@
         @include('registration._billing-details')
     </fieldset>
 
-    {!! Form::submit('Submit request', ['class' => 'btn btn-lg btn-block btn-primary mb-5']) !!}
+    {!! Form::submit('Submit request', ['class' => 'btn btn-lg btn-block btn-outline-primary mb-5 register-section']) !!}
 
   {!! Form::close() !!}
 
