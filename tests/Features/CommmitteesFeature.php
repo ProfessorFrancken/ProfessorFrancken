@@ -11,7 +11,7 @@ class CommitteesFeature extends TestCase
     {
         $this->visit('/association/committees')
             ->see('Committees')
-            ->see('Bincie');
+            ->see('Borrelcie');
 
 
         $this->assertResponseOk();
@@ -21,7 +21,7 @@ class CommitteesFeature extends TestCase
     function more_info_about_a_committee_can_be_shown()
     {
         $this->visit('/association/committees')
-            ->click('Bincie')
+            ->click('Borrelcie')
             ->see('Committee members');
     }
 

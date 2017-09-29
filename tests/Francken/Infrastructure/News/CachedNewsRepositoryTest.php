@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use Francken\Application\News\Author;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsRepository;
+use Francken\Application\News\CompiledMarkdown;
 use Francken\Infrastructure\News\CachedNewsRepository;
 use Illuminate\Cache\Repository;
 use League\Period\Period;
@@ -58,7 +59,7 @@ class CachedNewsRepositoryTest extends TestCase
         // Check that the cache key was set correctly, we
         // will assume that the timespan
         $item = new NewsItem(
-            'title', 'exerpt', new \DateTimeImmutable('2017-07-13'), new Author('Mark', ''), ''
+            'title', 'exerpt', new \DateTimeImmutable('2017-07-13'), new Author('Mark', ''), new CompiledMarkdown('')
         );
         $cache->remember(
             'news_link_asdf',

@@ -38,10 +38,27 @@
         @include('layout._login-modal')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        @if (Auth::guest())
         <script src="/js/LoginModal.js"></script>
+        @endif
         <script src="/js/Menu.js"></script>
 
         <script type="text/javascript">
+
+         // Render  any latex currently loaded in our dom
+         document.addEventListener("DOMContentLoaded", function() {
+             renderMathInElement(document.body, {
+                     delimiters: [
+                         {left: "$$", right: "$$", display: true},
+                         {left: "$", right: "$", display: false},
+                         {left: "\\[", right: "\\]", display: true},
+                         {left: "\\(", right: "\\)", display: false}
+                     ]
+                 }
+             );
+         });
+
+         @if (config('francken.general.google-analytics'))
          // UserReport (gather feedback)
          window._urq = window._urq || [];
          _urq.push(['initSite', '42efd18f-c4ef-4ad5-a1d8-a430d3f8ef0f']);
@@ -51,12 +68,6 @@
              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
          })();
 
-         // Render  any latex currently loaded in our dom
-         document.addEventListener("DOMContentLoaded", function() {
-             renderMathInElement(document.body);
-         });
-
-         @if (config('francken.general.google-analytics'))
          // Google Analytics
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

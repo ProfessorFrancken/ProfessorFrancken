@@ -319,3 +319,35 @@ footer .header__title {
 .custom-control {
     font-size: 150%;
 }
+
+.news__comment {
+    font-size: 0.9rem;
+    background-color: $gray-lightest;
+    color: $gray;
+    padding: 1.5em 3em 1em;
+    border: thin solid $gray-lighter;
+    margin: 1.5em -3em;
+    line-height: 1.5;
+}
+
+.news-comment__title {
+    // border-bottom: thin solid lighten($primary-color, 40%);
+    // padding-bottom: 0.25em;
+    // margin-bottom: 0.5em;
+    position: relative;
+    padding-bottom: 0.25em;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        width: 88px;
+        border-bottom: solid 1px $secondary-color-dark;
+    }
+}
+
+.justified-paragraphs p {
+    text-align: justify;
+}
