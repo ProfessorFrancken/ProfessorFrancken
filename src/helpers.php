@@ -114,7 +114,7 @@ function image($url = '', $options = [])
             }
 
             return sprintf(
-                '%s/upload/q_75,%s,o_webp/%s',
+                '%s/upload/q_75,%s/%s',
                 $server,
                 implode($result, ','),
                 $url
