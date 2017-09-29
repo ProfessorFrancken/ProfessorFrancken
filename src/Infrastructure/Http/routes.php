@@ -20,6 +20,11 @@ Route::get('/database/streep/afbeeldingen/{url}', function ($url) {
 
 Route::post('store-jas-events', 'JasController@store');
 
+Route::get('/books', function () {
+    return redirect('/study/books');
+});
+
+
 Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/', 'MainContentController@index');
