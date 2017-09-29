@@ -5,7 +5,7 @@
         <img
             alt="Logo of T.F.V. 'Professor Francken'"
             src="/images/LOGO_KAAL.png"
-            class="img-fluid"
+            class="img-fluid scaleUp--hover"
         />
         <span class="header__title text-left">
             T.F.V.<br class="hidden-md-down"/>

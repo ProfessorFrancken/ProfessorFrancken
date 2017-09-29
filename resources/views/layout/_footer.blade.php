@@ -55,7 +55,7 @@
                 <div class="align-middle align-items-center">
                     <div class="d-flex justify-content-center justify-content-md-end align-items-center">
                         <a class="header__title-link" href="/">
-                            <img alt="Logo of T.F.V. 'Professor Francken'" src="/images/LOGO_KAAL.png" class="img-fluid" />
+                            <img alt="Logo of T.F.V. 'Professor Francken'" src="/images/LOGO_KAAL.png" class="img-fluid  scaleUp--hover" />
                             <h1 class="header__title footer__title text-left float-right hidden-md-down">
                                 T.F.V.<br/>
                                 'Professor<br/>

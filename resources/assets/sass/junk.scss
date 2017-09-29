@@ -328,6 +328,17 @@ footer .header__title {
     font-size: 150%;
 }
 
+.scaleUp--hover {
+    transition-timing-function: cubic-bezier(.68, -.55, .265, 1.55);
+    transition-timing-function: ease-in-out;
+    transition-duration: .15s;
+    transform-property: all;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
 .news__comment {
     font-size: 0.9rem;
     background-color: $gray-lightest;
