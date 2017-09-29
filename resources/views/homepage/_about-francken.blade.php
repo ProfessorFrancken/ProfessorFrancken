@@ -12,7 +12,7 @@
 
             <p>
                 <em>
-                    ‘Professor Francken’ is the study association for Applied Physics, connected to the University of Groningen.
+                    T.F.V. ‘Professor Francken’ is the study association for Applied Physics, connected to the University of Groningen.
                     It is named after Groningen’s first professor of Applied Physics and is for students and staff of the applied physics departments.
                 </em>
             </p>
