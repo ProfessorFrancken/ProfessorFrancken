@@ -40,7 +40,7 @@ final class NewsItem
         string $exerpt,
         DateTimeImmutable $publicationDate,
         Author $author,
-        string $content,
+        CompiledMarkdown $content,
         array $related = [],
         NewsItemLink $previous = null,
         NewsItemLink $next = null
@@ -103,7 +103,7 @@ final class NewsItem
 
     public function content() : CompiledMarkdown
     {
-        return new CompiledMarkdown($this->content);
+        return $this->content;
     }
 
     public function relatedNewsItems() : array
@@ -111,12 +111,12 @@ final class NewsItem
         return $this->related;
     }
 
-    public function nextNewsItem() : NewsItemLink
+    public function nextNewsItem() : ?NewsItemLink
     {
         return $this->next;
     }
 
-    public function previousNewsItem() : NewsItemLink
+    public function previousNewsItem() : ?NewsItemLink
     {
         return $this->previous;
     }

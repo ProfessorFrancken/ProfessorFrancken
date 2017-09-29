@@ -7,6 +7,7 @@ namespace Francken\Infrastructure\News;
 use DateTimeImmutable;
 use Faker\Generator;
 use Francken\Application\News\Author;
+use Francken\Application\News\CompiledMarkdown;
 use Francken\Application\News\NewsRepository;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsItemLink;
@@ -70,7 +71,7 @@ final class FakeNewsRepository implements NewsRepository
                 $this->faker->name(),
                 'https://api.adorable.io/avatars/75/' . $this->faker->randomNumber() . '.png'
             ),
-            (new FakeNewsContent($this->faker))->generate(),
+            new CompiledMarkdown((new FakeNewsContent($this->faker))->generate()),
             array_map(
                 function() {
                     return new NewsItemLink(

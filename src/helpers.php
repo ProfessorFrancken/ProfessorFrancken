@@ -37,6 +37,19 @@ function board_member_image($url, $number)
     ]);
 }
 
+function news_image($url) {
+
+    if (! filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED)) {
+        $url = config('app.url') . $url;
+    }
+
+
+    return image($url, [
+        'width' => 600,
+        'height' => 600,
+    ]);
+}
+
 function image($url = '', $options = [])
 {
     $proxy = config('francken.images.type');

@@ -16,13 +16,14 @@
     <hr>
 
 
-    <div class="news-item__content">
+    <div class="news-item__content justified-paragraphs">
         {!! $newsItem->content() !!}
     </div>
 
     <hr class="my-4">
 
     <div class="d-flex justify-content-between mb-5">
+        @unless ($newsItem->previousNewsItem() === null)
         <div class="d-flex flex-column">
             <strong>
                 Previous news
@@ -31,7 +32,9 @@
                 {{ $newsItem->previousNewsItem()->title() }}
             </a>
         </div>
+        @endunless
 
+        @unless ($newsItem->nextNewsItem() === null)
         {{-- Note: the latest news item does not have any next news item --}}
         <div class="d-flex flex-column text-right">
             <strong>
@@ -41,6 +44,7 @@
                 {{ $newsItem->nextNewsItem()->title() }}
             </a>
         </div>
+        @endunless
     </div>
 
 @endsection
@@ -61,7 +65,7 @@
                 </div>
                 <img
                     class="rounded d-flex ml-3"
-                    src="{{ $newsItem->authorPhoto() }}"
+                    src="{{image($newsItem->authorPhoto(), ['height' => '75', 'width' => '75']) }}"
                     style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
                 >
             </div>
