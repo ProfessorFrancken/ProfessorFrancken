@@ -13,9 +13,9 @@ final class PaymentInfo implements SerializableInterface
 {
     use Serializable;
 
-    private $payForMembership;
-    private $payForFoodAndDrinks;
-    private $iban;
+    private $payForMembership = true;
+    private $payForFoodAndDrinks = false;
+    private $iban = '';
 
     public function __construct(bool $payForMembership, bool $payForFoodAndDrinks, string $iban = null)
     {
@@ -26,7 +26,8 @@ final class PaymentInfo implements SerializableInterface
 
         $this->payForMembership = $payForMembership;
         $this->payForFoodAndDrinks = $payForFoodAndDrinks;
-        $this->iban = $iban;
+
+        $this->iban = $iban ?? '';
     }
 
     public function payForMembership() : bool
