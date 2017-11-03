@@ -47,14 +47,14 @@ final class CommitteesRepository
                 ]
                 ],
             ],
-            %[
-                %"id" => 404,
-                %"title" => "Almanakcie",
-                %"email" => "almanakfrancken@gmail.com",
-                %"logo" => "https://borrelcie.vodka/tmp/Bincie.png",
-                %"link" => "almanakcie",
-                %"page" => "pages.association.committees.almanakcie",
-            %],
+            [
+                "id" => 404,
+                "title" => "Almanakcie",
+                "email" => "almanakfrancken@gmail.com",
+                "logo" => "https://borrelcie.vodka/tmp/Bincie.png",
+                "link" => "almanakcie",
+                "page" => "pages.association.committees.almanakcie",
+            ],
             [
                 "id" => 404,
                 "title" => "Bincie",
@@ -583,6 +583,68 @@ final class CommitteesRepository
                 "logo" => "https://borrelcie.vodka/tmp/Sjaarscie.png",
                 "link" => "sjaarscie",
                 "page" => "pages.association.committees.sjaarcie",
+                "members" => [
+                    new CommitteeMember(
+                        1960,
+                        "Melav",
+                        "Salih"
+                    ),
+                    new CommitteeMember(
+                        1882,
+                        "Robin",
+                        "Dorstijn"
+                    ),
+                    new CommitteeMember(
+                        1906,
+                        "Jada",
+                        "Tijssen"
+                    ),
+                    new CommitteeMember(
+                        1914,
+                        "Dennis",
+                        "van der Veen"
+                    ),
+                    new CommitteeMember(
+                        1904,
+                        "Dominic",
+                        "Eelkema"
+                    ),
+                    new CommitteeMember(
+                        1918,
+                        "Jelmer",
+                        "Zijlstra"
+                    ),
+                    new CommitteeMember(
+                        1901,
+                        "Koen",
+                        "van der Heijden"
+                    ),
+                    new CommitteeMember(
+                        1888,
+                        "Sule",
+                        "Daley"
+                    ),
+                    new CommitteeMember(
+                        1913,
+                        "Carla",
+                        "Olsthoorn"
+                    ),
+                    new CommitteeMember(
+                        1926,
+                        "Lasse",
+                        "Vulto"
+                    ),
+                    new CommitteeMember(
+                        1915,
+                        "Patrick",
+                        "Ziengs"
+                    ),
+                    new CommitteeMember(
+                        1931,
+                        "Pieter",
+                        "Buisman"
+                    ),
+                    
             ],
             [
                 "id" => 29,
