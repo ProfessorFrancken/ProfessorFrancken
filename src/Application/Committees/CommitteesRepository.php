@@ -13,6 +13,52 @@ final class CommitteesRepository
         $this->committees = [
             [
                 "id" => 35,
+                "title" => "Adtie",
+                "email" => "",
+                "logo" => "",
+                "link" => "adtie",
+                "page" => "pages.association.committees.adtie",
+                "members" => [
+                    new CommitteeMember(
+                        1403,
+                        "Mark",
+                        "Redeman"
+                    ),
+                    new CommitteeMember(
+                        797,
+                        "Sjoerd",
+                        "Meesters"
+                    ),
+                    new CommitteeMember(
+                        1176,
+                        "Friso",
+                        "Wobben"
+                    ),
+                    new CommitteeMember(
+                        1172,
+                        "Gerjan",
+                        "Wielink"
+                    ),
+                    new CommitteeMember(
+                        1293,
+                        "Anton",
+                        "Jansen"
+                    ),
+                    new CommitteeMember(
+                        1359,
+                        "Diewertje",
+                        "Douglas"
+                    ),
+                    new CommitteeMember(
+                        1312,
+                        "Jasper",
+                        "Pluijmers"
+                    ),
+                ]
+                ],
+            ],
+            [
+                "id" => 35,
                 "title" => "Alumnicie",
                 "email" => "alumni@professorfrancken.nl",
                 "logo" => "https://borrelcie.vodka/tmp/Alumnicie.png",
@@ -51,9 +97,50 @@ final class CommitteesRepository
                 "id" => 404,
                 "title" => "Almanakcie",
                 "email" => "almanakfrancken@gmail.com",
-                "logo" => "https://borrelcie.vodka/tmp/Bincie.png",
+                "logo" => "",
                 "link" => "almanakcie",
                 "page" => "pages.association.committees.almanakcie",
+                "members" => [
+                    new CommitteeMember(
+                        1173,
+                        "Steven",
+                        "Groen"
+                    ),
+                    new CommitteeMember(
+                        1608,
+                        "Su-Elle",
+                        "Kamps"
+                    ),                   
+                    new CommitteeMember(
+                        1001,
+                        "Carlos",
+                        "Bril"
+                    ),
+                    new CommitteeMember(
+                        1042,
+                        "Janna",
+                        "de Wit"
+                    ),
+                    new CommitteeMember(
+                        1360,
+                        "Pieter",
+                        "Wolff"
+                    ),
+                    new CommitteeMember(
+                        1312,
+                        "Jasper",
+                        "Pluijmers"
+                    ),
+                    new CommitteeMember(
+                        1172,
+                        "Gerjan",
+                        "Wielink"
+                    ),
+                    new CommitteeMember(
+                        1361,
+                        "Jelle",
+                        "Bor"
+                    ),
             ],
             [
                 "id" => 404,
