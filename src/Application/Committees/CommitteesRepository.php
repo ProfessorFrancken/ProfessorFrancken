@@ -731,6 +731,46 @@ final class CommitteesRepository
                         "Pieter",
                         "Buisman"
                     ),
+                    new CommitteeMember(
+                        1900,
+                        "Chaya",
+                        "Hillekens"
+                    ),
+                    new CommitteeMember(
+                        1908,
+                        "Danique",
+                        "de Ruiter"
+                    ),
+                    new CommitteeMember(
+                        1911,
+                        "Sibren",
+                        "Wobben"
+                    ),
+                    new CommitteeMember(
+                        1968,
+                        "Thijs",
+                        "van Beers"
+                    ),
+                    new CommitteeMember(
+                        1889,
+                        "Tom",
+                        "Burghard"
+                    ),
+                    new CommitteeMember(
+                        1880,
+                        "Wim",
+                        "Drenth"
+                    ),
+                    new CommitteeMember(
+                        1969,
+                        "Wouter",
+                        "Haarman"
+                    ),
+                    new CommitteeMember(
+                        1953,
+                        "Wouter",
+                        "Slump"
+                    ),
                 ],
             ],
             [
