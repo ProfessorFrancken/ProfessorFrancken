@@ -12,7 +12,7 @@
 
         <div class="col-lg-8">
             <div class="card my-3">
-                <div class="card-block">
+                <div class="card-body">
 
                     <h4>Our collection</h4>
 

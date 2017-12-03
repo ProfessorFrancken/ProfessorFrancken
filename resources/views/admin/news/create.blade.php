@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col">
         <div class="card">
-            <div class="card-block">
+            <div class="card-body">
                 <h1>Write a news article</h1>
 
                 {!! Form::open(['url' => '/admin/association/news']) !!}

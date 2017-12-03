@@ -1,5 +1,5 @@
 <div class="card my-3">
-    {!! Form::open(['url' => 'admin/association/francken-vrij', 'files' => true, 'class' => 'card-block']) !!}
+    {!! Form::open(['url' => 'admin/association/francken-vrij', 'files' => true, 'class' => 'card-body']) !!}
 
     <h4>Publish a Francken Vrij</h4>
 

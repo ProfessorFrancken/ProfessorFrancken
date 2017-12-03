@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-block">
+                <div class="card-body">
 
                     <h1 class="section-header">
                         News
@@ -52,7 +52,7 @@
                             </td>
                     @endforeach
                 </table>
-                <div class="card-block d-flex justify-content-between">
+                <div class="card-body d-flex justify-content-between">
                     @if (count($news) > 0)
                         <a
                             class="card-link"
@@ -75,7 +75,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-block">
+                <div class="card-body">
                     <h3 class="card-title section-header agenda-header">
                         <label for="search-news">
                             Search for news
@@ -123,7 +123,7 @@
             </div>
 
             <div class="card mt-3">
-                <div class="card-block">
+                <div class="card-body">
                     <h3 class="card-title section-header agenda-header">
                         Manage authors
                     </h3>
@@ -206,7 +206,7 @@
                     </tbody>
                 </table>
 
-                <div class="card-block">
+                <div class="card-body">
 
                     <p>
                         Can't find the author you're looking for?

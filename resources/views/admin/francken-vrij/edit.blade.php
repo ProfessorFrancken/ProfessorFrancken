@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card my-3">
-        {!! Form::open(['url' => "/admin/association/francken-vrij/" . $edition->getId(), 'files' => true, 'method' => 'put', 'class' => 'card-block']) !!}
+        {!! Form::open(['url' => "/admin/association/francken-vrij/" . $edition->getId(), 'files' => true, 'method' => 'put', 'class' => 'card-body']) !!}
 
         <h2 class="card-title">Edit {{ $edition->title() }}</h2>
 
@@ -44,7 +44,7 @@
     @include('admin._errors')
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
             <h3 class="card-title">
                 Other actions
             </h3>

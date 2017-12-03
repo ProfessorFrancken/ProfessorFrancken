@@ -3,7 +3,7 @@
         <div class="card-group">
             <div class="card francken-pillar col-md-4">
                 <img src="/icons/lined/study.svg" alt="" class="francken-pillar__icon">
-                <div class="card-block text-center">
+                <div class="card-body text-center">
                     <h4 class="card-title">
                         Study
                     </h4>
@@ -20,7 +20,7 @@
             </div>
             <div class="card francken-pillar col-md-4">
                 <img src="/icons/lined/{{ $associationIcon }}.svg" alt="" class="francken-pillar__icon">
-                <div class="card-block text-center">
+                <div class="card-body text-center">
                     <h4 class="card-title">
                         Association
                     </h4>
@@ -39,7 +39,7 @@
             </div>
             <div class="card francken-pillar col-md-4">
                 <img src="/icons/lined/career.svg" alt="" class="francken-pillar__icon">
-                <div class="card-block text-center">
+                <div class="card-body text-center">
                     <h4 class="card-title">
                         Career
                     </h4>

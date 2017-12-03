@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-block">
+                <div class="card-body">
                     <h3 class="card-title">
                         Title
                     </h3>
@@ -16,7 +16,6 @@
                     <div class="form-group mt-3">
                         {!! Form::text('title', $news->title(), ['class' => 'form-control']) !!}
                     </div>
-
 
                     <h3 class="card-title">
                         Content
@@ -28,7 +27,7 @@
                         </div>
                         <div class="col-md-6 d-none">
                             <div style="overflow-y: scroll" class="card">
-                                <div class="card-block" id="news-item-preview">
+                                <div class="card-body" id="news-item-preview">
 
                                     {!! $news->content() !!}
                                 </div>
@@ -36,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-block bg-faded">
+                <div class="card-body bg-faded">
                     <h4 class="card-title">
                         Publishing
                     </h4>
@@ -59,7 +58,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($news->publicationDate() < (new DateTimeImmutable('2017-08-24')))
                         <div class="alert alert-warning">
 
@@ -97,7 +96,7 @@
         <div class="col">
 
             <div class="card">
-                <div class="card-block">
+                <div class="card-body">
                     <h3>Miscelanious</h3>
 
 
@@ -130,7 +129,7 @@
             </div>
 
             <div class="card mt-3">
-                <div class="card-block">
+                <div class="card-body">
 
                     <h3>
                         Author

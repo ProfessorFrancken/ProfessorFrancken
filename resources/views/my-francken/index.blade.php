@@ -14,7 +14,7 @@
     </p>
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
             <h3>
 
                 <i class="fa fa-user text-primary mr-2 text-center" aria-hidden="true" style="width: 1em"></i>
@@ -31,7 +31,7 @@
 
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
             <h3>
                 <i class="fa fa-cogs text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
                 Settings
@@ -46,7 +46,7 @@
     </div>
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
             <h3>
                 <i class="fa fa-university text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
                 Members list
@@ -62,7 +62,7 @@
 
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
 
             <h3>
                 <i class="fa fa-users text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
@@ -79,7 +79,7 @@
 
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
             <h3>
                 <i class="fa fa-calendar text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
                 Activities
@@ -95,7 +95,7 @@
     </div>
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
 
             <h3>
                 <i class="fa fa-bar-chart text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
@@ -112,7 +112,7 @@
     </div>
 
     <div class="card my-3">
-        <div class="card-block">
+        <div class="card-body">
             <h3>
                 <i class="fa fa-trophy text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
                 Adtcievements
@@ -128,7 +128,7 @@
 
     @if (Auth::user()->can_access_admin)
         <div class="card my-3">
-            <div class="card-block">
+            <div class="card-body">
                 <h3>
                     <i class="fa fa-database text-primary mr-2 text-center" aria-hidden="true" style="width: 1em;"></i>
                     Admin

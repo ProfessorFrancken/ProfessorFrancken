@@ -12,7 +12,7 @@
 
   {!! Form::open(['url' => 'register', 'files' => true]) !!}
 
-    <fieldset class="register-section card card-block">
+    <fieldset class="register-section card card-body">
         <legend>
             <h3>
                 <i class="fa fa-address-book" aria-hidden="true"></i>
@@ -25,7 +25,7 @@
 
     {{--
         --}}
-    <fieldset class="register-section card card-block">
+    <fieldset class="register-section card card-body">
         <legend>
             <h3>
                 <i class="fa fa-home" aria-hidden="true"></i>
@@ -36,7 +36,7 @@
         @include('registration._contact-details')
     </fieldset>
 
-    <fieldset class="register-section card card-block">
+    <fieldset class="register-section card card-body">
         <legend>
             <h3>
                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
@@ -47,7 +47,7 @@
         @include('registration._study-details')
     </fieldset>
 
-    <fieldset class="register-section card card-block">
+    <fieldset class="register-section card card-body">
         <legend>
             <h3>
                 <i class="fa fa-money" aria-hidden="true"></i>
