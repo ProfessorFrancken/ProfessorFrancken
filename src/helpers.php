@@ -50,8 +50,12 @@ function news_image($url) {
     ]);
 }
 
-function image($url = '', $options = [])
+function image($url = '', $options = [], $addAppUrl = false)
 {
+    if ($addAppUrl && ! filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED)) {
+        $url = config('app.url') . $url;
+    }
+
     $proxy = config('francken.images.type');
     $server = config('francken.images.url');
 

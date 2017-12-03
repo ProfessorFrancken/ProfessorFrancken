@@ -72,7 +72,8 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('members', 'MyFranckenController@members');
         Route::get('committees', 'MyFranckenController@committees');
         Route::get('activities', 'MyFranckenController@activities');
-        Route::get('canteen', 'MyFranckenController@canteen');
+        Route::get('finances', 'MyFranckenController@finances');
+        Route::get('finances/{ayear}/{month}', 'MyFranckenController@financesInMonth');
         Route::get('adtcievements', 'MyFranckenController@adtcievements');
     });
 
