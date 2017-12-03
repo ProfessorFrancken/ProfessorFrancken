@@ -8,8 +8,8 @@
             class="img-fluid scaleUp--hover"
         />
         <span class="header__title text-left">
-            T.F.V.<br class="hidden-md-down"/>
-            'Professor<br class="hidden-md-down"/>
+            T.F.V.<br class="d-none d-md-inline"/>
+            'Professor<br class="d-none d-md-inline"/>
             Francken'
         </span>
     </a>

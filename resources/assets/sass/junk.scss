@@ -195,8 +195,8 @@ footer .header__title {
 
     padding: 1em 0;
     margin-bottom: 2em;
-    border-top: thin solid $gray-lighter;
-    border-bottom: thin solid $gray-lighter;
+    border-top: thin solid $gray-200;
+    border-bottom: thin solid $gray-200;
 }
 
 .academic-year-list__item {
@@ -207,11 +207,11 @@ footer .header__title {
     }
 
     &--disabled {
-        color: $gray-lighter;
+        color: $gray-200;
 
         &:hover, &:focus, &:active {
             cursor: not-allowed;
-            color: $gray-lighter;
+            color: $gray-200;
             text-decoration: none;
         }
     }
@@ -265,7 +265,7 @@ footer .header__title {
 }
 
 .excursion-list-item {
-    border-bottom: thin solid $gray-lighter;
+    border-bottom: thin solid $gray-200;
     margin-bottom: 2em;
     margin-top: 2em;
 
@@ -279,13 +279,13 @@ footer .header__title {
 }
 
 .job-opening {
-    border-top: thin solid $gray-lighter;
-    border-bottom: thin solid $gray-lighter;
+    border-top: thin solid $gray-200;
+    border-bottom: thin solid $gray-200;
     padding: 1.5em 0;
 }
 
 .job-opening__title {
-    color: $gray;
+    color: $gray-700;
 }
 
 .bg-secondary {
@@ -341,10 +341,10 @@ footer .header__title {
 
 .news__comment {
     font-size: 0.9rem;
-    background-color: $gray-lightest;
-    color: $gray;
+    background-color: $gray-100;
+    color: $gray-700;
     padding: 1.5em 3em 1em;
-    border: thin solid $gray-lighter;
+    border: thin solid $gray-200;
     margin: 1.5em -3em;
     line-height: 1.5;
 }

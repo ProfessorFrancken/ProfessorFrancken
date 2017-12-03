@@ -85,6 +85,7 @@ $margin-left-header-image: 5em;
 
     // Negate the margin of header-image so that the body is aligned with content outside the header
     .header-image__align {
+        z-index: 1;
         margin-left: -$margin-left-header-image;
     }
 }

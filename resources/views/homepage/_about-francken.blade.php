@@ -26,7 +26,7 @@
                 <a href="/association" class="btn btn-primary">Read more</a>
             </div>
         </div>
-        <aside class="col-md-5 flex-first flex-md-last">
+        <aside class="col-md-5 order-1 order-md-12">
             <div class="agenda-wrapper">
                 @include("homepage._agenda")
             </div>
