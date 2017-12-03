@@ -38,7 +38,6 @@
 
 @section('aside')
 <div class="agenda">
-		<h3 class="section-header agenda-header">{{ $company['name'] }}</h3>
 		<table class="infobox vcard" style="width:22em">
 			<tbody>
 				<tr>
