@@ -69,15 +69,6 @@
         </main>
 
         <script type="text/javascript">
-         // UserReport (gather feedback)
-         window._urq = window._urq || [];
-         _urq.push(['initSite', '42efd18f-c4ef-4ad5-a1d8-a430d3f8ef0f']);
-         (function() {
-             var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
-             ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
-         })();
-
          // Render  any latex currently loaded in our dom
          document.addEventListener("DOMContentLoaded", function() {
              renderMathInElement(document.body);
