@@ -4,7 +4,7 @@
 
 @section('content')
 
-  <h1 class="centered-header">
+  <h1 class="section-header section-header--centered">
     Honorary members
   </h1>
 

@@ -9,7 +9,7 @@ $volumes = $franckenVrij->volumes();
 
     <div class="container">
 
-    <h1 class="centered-header">
+    <h1 class="section-header section-header--centered">
         Francken Vrij
     </h1>
 

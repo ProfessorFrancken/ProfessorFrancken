@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1 class="centered-header">
+  <h1 class="section-header section-header--centered">
     History
   </h1>
 
