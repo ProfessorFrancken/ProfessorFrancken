@@ -154,13 +154,15 @@ return [
          * Application Service Providers...
          */
         Francken\Infrastructure\AppServiceProvider::class,
-        Francken\Infrastructure\RouteServiceProvider::class,
         Francken\Infrastructure\NavigationServiceProvider::class,
         Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
         Francken\Infrastructure\Books\BooksServiceProvider::class,
-        Francken\Infrastructure\News\NewsServiceProvider::class,
         Francken\Infrastructure\CareerServiceProvider::class,
         Francken\Infrastructure\ViewServiceProvider::class,
+
+        Francken\Association\News\ServiceProvider::class,
+
+        Francken\Infrastructure\RouteServiceProvider::class,
 
         /*
          * Third Party Service Providers

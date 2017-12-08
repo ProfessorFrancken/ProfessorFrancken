@@ -47,11 +47,6 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
     });
 
     Route::group(['prefix' => 'association'], function() {
-
-        Route::get('news', 'NewsController@index');
-        Route::get('news/archive', 'NewsController@archive');
-        Route::get('news/{item}', 'NewsController@show');
-
         Route::get('committees', 'CommitteesController@index');
         Route::get('committees/{committee}', 'CommitteesController@show');
     });
@@ -97,9 +92,6 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         });
 
         Route::group(['prefix' => 'association'], function() {
-            //posts: NEWS / BLOG
-            Route::resource('news', 'Admin\NewsController');
-
             Route::resource('activity', 'ActivityController');
 
 
