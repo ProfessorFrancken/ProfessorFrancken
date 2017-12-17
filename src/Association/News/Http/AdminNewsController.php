@@ -4,21 +4,19 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
-use Francken\Association\News\Repository as NewsRepository;
-use Illuminate\Http\Request;
-use Francken\Association\News\Eloquent\News;
+use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
-
+use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\Repository as NewsRepository;
+use Illuminate\Http\Request;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use League\CommonMark\Inline\Element\Image;
 use League\HTMLToMarkdown\HtmlConverter;
+use League\Period\Period;
 use Webuni\CommonMark\AttributesExtension\AttributesExtension;
 use Webuni\CommonMark\TableExtension\TableExtension;
-
-use League\Period\Period;
-use DateTimeImmutable;
 
 /**
  * Note that since the logic of news is quite trivial

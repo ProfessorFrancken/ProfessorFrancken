@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
-use Francken\Association\News\Repository as NewsRepository;
-use League\Period\Period;
 use DateInterval;
 use DateTimeImmutable;
+use Francken\Association\News\Repository as NewsRepository;
+use League\Period\Period;
 
 final class NewsController
 {
@@ -80,5 +80,4 @@ final class NewsController
             $end = new DateTimeImmutable('now')
         );
     }
-
 }
