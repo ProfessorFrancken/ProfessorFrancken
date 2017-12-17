@@ -7,7 +7,7 @@ namespace Francken\Tests\Association\News\Fake;
 use PHPUnit_Framework_TestCase as TestCase;
 use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
-use Francken\Application\News\NewsItem;
+use Francken\Association\News\NewsItem;
 
 final class FakeNewsTest extends TestCase
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Eloquent;
 
-use Francken\Application\News\Author;
-use Francken\Application\News\NewsItem;
+use Francken\Association\News\Author;
+use Francken\Association\News\NewsItem;
 use Francken\Association\News\Repository as NewsRepository;
 use Francken\Association\News\CouldNotFindNews;
 use League\Period\Period;

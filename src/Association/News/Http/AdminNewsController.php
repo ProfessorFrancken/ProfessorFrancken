@@ -7,8 +7,8 @@ namespace Francken\Association\News\Http;
 use Francken\Association\News\Repository as NewsRepository;
 use Illuminate\Http\Request;
 use Francken\Association\News\Eloquent\News;
-use Francken\Application\News\Author;
-use Francken\Application\News\CompiledMarkdown;
+use Francken\Association\News\Author;
+use Francken\Association\News\CompiledMarkdown;
 
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
@@ -40,9 +40,6 @@ final class AdminNewsController
             request()->input('subject', null),
             request()->input('author', null)
         );
-
-        dd($news);
-
 
         return view('admin.news.index', [
             'news' => $news

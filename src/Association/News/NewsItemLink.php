@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\News;
+namespace Francken\Association\News;
 
 use DateTimeImmutable;
 
@@ -48,3 +48,4 @@ final class NewsItemLink
         return $this->publicationDate;
     }
 }
+

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\News;
+namespace Francken\Association\News;
 
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\Serializer\SerializableInterface;
@@ -50,7 +50,7 @@ final class NewsItem
         $this->exerpt = $exerpt;
         $this->publicationDate = $publicationDate;
         $this->author = $author;
-        $this->content = $content;
+        $this->content = new CompiledMarkdown(''); //$content;
         $this->related = [];
         // $this->related = (function(NewsItemLink ...$item) {
         //     return $item;
@@ -122,3 +122,4 @@ final class NewsItem
         return $this->previous;
     }
 }
+

@@ -6,11 +6,11 @@ namespace Francken\Association\News\Eloquent;
 
 use DateTimeImmutable;
 use Eloquent;
-use Francken\Application\News\Author;
-use Francken\Application\News\CompiledMarkdown;
+use Francken\Association\News\Author;
+use Francken\Association\News\CompiledMarkdown;
 use League\Period\Period;
-use Francken\Application\News\NewsItem;
-use Francken\Application\News\NewsItemLink;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\NewsItemLink;
 
 final class News extends Eloquent
 {
@@ -233,7 +233,7 @@ final class News extends Eloquent
      * Scope a query to only include a given author
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Francken\Application\News\Author $author
+     * @param \Francken\Association\News\Author $author
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithAuthorName($query, string $author = null)
