@@ -7,10 +7,10 @@ namespace Francken\Association\News\Fake;
 use Faker\Generator;
 use DateTimeImmutable;
 
-use Francken\Application\News\NewsItem;
-use Francken\Application\News\NewsItemLink;
-use Francken\Application\News\Author;
-use Francken\Application\News\CompiledMarkdown;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\NewsItemLink;
+use Francken\Association\News\Author;
+use Francken\Association\News\CompiledMarkdown;
 
 final class FakeNews 
 {

@@ -9,7 +9,7 @@ use Francken\Association\News\Eloquent\News;
 use Francken\Features\TestCase;
 use Francken\Tests\Association\News\RepositoryTests;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Francken\Application\News\NewsItem;
+use Francken\Association\News\NewsItem;
 
 final class RepositoryTest extends TestCase
 {

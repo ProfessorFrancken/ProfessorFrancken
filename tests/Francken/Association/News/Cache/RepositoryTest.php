@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Tests\Association\News\Cache;
 
 use DateTimeImmutable;
-use Francken\Application\News\Author;
-use Francken\Application\News\NewsItem;
-use Francken\Application\News\CompiledMarkdown;
+use Francken\Association\News\Author;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\Repository as NewsRepository;
 use Francken\Association\News\Cache\Repository as CachedNewsRepository;
 use Illuminate\Cache\Repository;

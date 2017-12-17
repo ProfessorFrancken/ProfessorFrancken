@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\News;
 
-use Francken\Application\News\Author;
+use Francken\Association\News\Author;
 use Francken\Association\News\Repository;
-use Francken\Application\News\NewsItemLink;
-use Francken\Application\News\NewsItemPreview;
-use Francken\Application\News\NewsItem;
+use Francken\Association\News\NewsItemLink;
+use Francken\Association\News\NewsItem;
 use Francken\Domain\News\NewsId;
 use Francken\Domain\News\AuthorId;
 use Faker\Generator;
@@ -23,9 +22,9 @@ interface Repository
 
     /**
      * Finds a news item corresponding to the link given,
-     * here link referes to the link used to view the 
+     * here link referes to the link used to view the
      * item on our website, i.e. "17-09-29-borel-borel-borel-distribution"
-     * 
+     *
      * @throws CouldNotFindNews
      */
     public function byLink(string $link) : NewsItem;

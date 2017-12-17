@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\News;
+namespace Francken\Association\News;
 
 use Francken\Domain\Boards\Board;
 use Francken\Domain\Boards\BoardId;

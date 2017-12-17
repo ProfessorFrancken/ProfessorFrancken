@@ -6,7 +6,7 @@ namespace Francken\Tests\Association\News;
 
 use Faker\Factory;
 use Francken\Association\News\CouldNotFindNews;
-use Francken\Application\News\NewsItem;
+use Francken\Association\News\NewsItem;
 use Francken\Association\News\Fake\FakeNews;
 use League\Period\Period;
 

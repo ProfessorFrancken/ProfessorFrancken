@@ -6,11 +6,10 @@ namespace Francken\Association\News\Xml;
 
 use DateTimeImmutable;
 use Faker\Generator;
-use Francken\Application\News\Author;
-use Francken\Application\News\CompiledMarkdown;
-use Francken\Application\News\NewsItem;
-use Francken\Application\News\NewsItemLink;
-use Francken\Application\News\NewsItemPreview;
+use Francken\Association\News\Author;
+use Francken\Association\News\CompiledMarkdown;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\NewsItemLink;
 use Francken\Domain\Boards\BoardRepository;
 use Francken\Domain\News\NewsId;
 use League\CommonMark\CommonMarkConverter;
@@ -254,4 +253,3 @@ class ResponsiveImageRenderer extends ImageRenderer
         return $element;
     }
 }
-

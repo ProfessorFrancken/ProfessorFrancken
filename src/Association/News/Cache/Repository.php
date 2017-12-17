@@ -6,11 +6,10 @@ namespace Francken\Association\News\Cache;
 
 use DateTimeImmutable;
 use Faker\Generator;
-use Francken\Application\News\Author;
+use Francken\Association\News\Author;
 use Francken\Association\News\Repository as NewsRepository;
-use Francken\Application\News\NewsItem;
-use Francken\Application\News\NewsItemLink;
-use Francken\Application\News\NewsItemPreview;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\NewsItemLink;
 use Francken\Domain\News\AuthorId;
 use Francken\Domain\News\NewsId;
 use Illuminate\Cache\Repository as CacheRepository;

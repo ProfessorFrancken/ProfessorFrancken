@@ -7,9 +7,8 @@ namespace Francken\Association\News\InMemory;
 use DateTimeImmutable;
 use Francken\Association\News\Repository as NewsRepository;
 use Francken\Association\News\CouldNotFindNews;
-use Francken\Application\News\NewsItem;
-use Francken\Application\News\NewsItemLink;
-use Francken\Application\News\NewsItemPreview;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\NewsItemLink;
 use Francken\Domain\News\AuthorId;
 use Francken\Domain\News\NewsId;
 use League\Period\Period;
@@ -24,7 +23,7 @@ final class Repository implements NewsRepository
             return $news;
         })(...$news))
         ->sortByDesc(function ($news) {
-            return $news->publicationDate()->getTimestamp(); 
+            return $news->publicationDate()->getTimestamp();
         })->values();
     }
 

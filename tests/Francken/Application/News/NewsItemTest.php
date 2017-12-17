@@ -6,7 +6,7 @@ namespace Francken\Tests\Application\Committees;
 
 use DateTimeImmutable;
 use Francken\Tests\Application\ReadModelTestCase as TestCase;
-use Francken\Application\News\NewsItem;
+use Francken\Association\News\NewsItem;
 use Francken\Domain\Members\MemberId;
 
 class NewsItemsTest // extends TestCase
