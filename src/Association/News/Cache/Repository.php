@@ -7,7 +7,7 @@ namespace Francken\Association\News\Cache;
 use DateTimeImmutable;
 use Faker\Generator;
 use Francken\Application\News\Author;
-use Francken\Association\News\Repository;
+use Francken\Association\News\Repository as NewsRepository;
 use Francken\Application\News\NewsItem;
 use Francken\Application\News\NewsItemLink;
 use Francken\Application\News\NewsItemPreview;
@@ -16,7 +16,7 @@ use Francken\Domain\News\NewsId;
 use Illuminate\Cache\Repository as CacheRepository;
 use League\Period\Period;
 
-final class CachedNewsRepository implements Repository
+final class Repository implements NewsRepository
 
 {
     const REMEMBER_TIME = 60 * 60 * 24;

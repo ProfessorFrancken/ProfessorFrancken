@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Francken\Tests\Infrastructure\News;
+namespace Francken\Tests\Association\News\Cache;
 
 use DateTimeImmutable;
 use Francken\Application\News\Author;
 use Francken\Application\News\NewsItem;
-use Francken\Application\News\NewsRepository;
 use Francken\Application\News\CompiledMarkdown;
-use Francken\Infrastructure\News\CachedNewsRepository;
+use Francken\Association\News\Repository as NewsRepository;
+use Francken\Association\News\Cache\Repository as CachedNewsRepository;
 use Illuminate\Cache\Repository;
 use League\Period\Period;
 use PHPUnit_Framework_TestCase as TestCase;
 use Prophecy\Argument;
 
-class CachedNewsRepositoryTest extends TestCase
+class RepositoryTest extends TestCase
 {
     /** @test */
     function it_caches_the_in_period_method()
