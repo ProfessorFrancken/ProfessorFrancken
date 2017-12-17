@@ -4,11 +4,31 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use Francken\Association\News\Repository as NewsRepository;
+use Francken\Association\News\Fake\FakeNews;
+use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
+use Faker\Factory;
+
 class NewsFeature extends TestCase
 {
+    private $news;
+
+    // inmemory with fakes
+    /** @before */
+    function setupNews()
+    {
+        $faker = Factory::create();
+        $faker->seed(31415);
+        $fakeNews = new FakeNews($faker, 10);
+
+        $this->news = new InMemoryNewsRepository($fakeNews->all());
+    }
+
     /** @test */
     function the_latest_news_is_shown()
     {
+        \App::instance(NewsRepository::class, $this->news);
+
         $this->visit('/association/news')
             ->click('Read more')
 

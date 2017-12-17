@@ -22,12 +22,17 @@ final class NewsItemLink
         $this->url = '/association/news/' . $this->link();
     }
 
+    public function id() : string
+    {
+        return '1';
+    }
+
     public function title() : string
     {
         return $this->title;
     }
 
-    private function link() : string
+    public function link() : string
     {
         return $this->publicationDate()->format('y-m-d-') . str_slug($this->title());
     }

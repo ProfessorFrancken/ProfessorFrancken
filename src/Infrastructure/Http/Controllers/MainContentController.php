@@ -6,7 +6,7 @@ namespace Francken\Infrastructure\Http\Controllers;
 
 use DB;
 use Francken\Application\ReadModel\PostList\PostList;
-use Francken\Application\News\NewsRepository;
+use Francken\Association\News\Repository as NewsRepository;
 
 class MainContentController extends Controller
 {

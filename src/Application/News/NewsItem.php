@@ -51,9 +51,10 @@ final class NewsItem
         $this->publicationDate = $publicationDate;
         $this->author = $author;
         $this->content = $content;
-        $this->related = (function(NewsItemLink ...$item) {
-            return $item;
-        })(...$related);
+        $this->related = [];
+        // $this->related = (function(NewsItemLink ...$item) {
+        //     return $item;
+        // })(...$related);
         $this->next = $next;
         $this->previous = $previous;
     }
