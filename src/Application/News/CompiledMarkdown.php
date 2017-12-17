@@ -19,6 +19,14 @@ final class CompiledMarkdown
         $this->contents = $contents;
     }
 
+    public static function withSource(string $contents, string $source) : CompiledMarkdown
+    {
+        $compiled = new self($contents);
+        $compiled->source = $source;
+
+        return $compiled;
+    }
+
     public static function fromSource(CommonMarkConverter $compiler, string $source) : CompiledMarkdown
     {
         // Instead of storing the compiled markdown we store a markdown compiler and
