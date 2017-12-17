@@ -4,11 +4,11 @@ namespace Francken\Association\News;
 
 use Faker\Generator;
 use Francken\Association\News\Repository;
-use Francken\Association\News\Cache\CachedNewsRepository;
+use Francken\Association\News\Cache\Repository as CachedNewsRepository;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
 use Francken\Association\News\Eloquent\Repository as EloquentNewsRepository;
-use Francken\Infrastructure\News\NewsRepositoryFromXML;
+use Francken\Association\News\Xml\Repository as NewsRepositoryFromXML;
 use Illuminate\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
@@ -31,7 +31,7 @@ final class ServiceProvider extends RouteServiceProvider
             $this->app->bind(Repository::class, function ($app) {
                 $faker = $app->make(Generator::class);
                 $faker->seed(31415);
-                $fakeNews = new FakeNews($faker, 10);
+                $fakeNews = new FakeNews($faker, 100);
                 return new InMemoryNewsRepository($fakeNews->all());
             });
         } elseif (config('francken.news.type') == 'eloquent') {
