@@ -862,9 +862,9 @@ final class CommitteesRepository
                 "page" => null,
                 "members" => [
                     new CommitteeMember(
-                        1817,
+                        1264,
                         "Emiel",
-                        "de Wit"
+                        "Langelaan"
                     ),
                     new CommitteeMember(
                         1786,
@@ -880,11 +880,6 @@ final class CommitteesRepository
                         1858,
                         "Eva",
                         "Visser"
-                    ),
-                    new CommitteeMember(
-                        1830,
-                        "Aoibhin",
-                        "Quinn"
                     ),
                     new CommitteeMember(
                         1733,
