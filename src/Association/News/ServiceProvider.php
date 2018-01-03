@@ -3,16 +3,16 @@
 namespace Francken\Association\News;
 
 use Faker\Generator;
-use Francken\Association\News\Repository;
 use Francken\Association\News\Cache\Repository as CachedNewsRepository;
+use Francken\Association\News\Eloquent\Repository as EloquentNewsRepository;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
-use Francken\Association\News\Eloquent\Repository as EloquentNewsRepository;
-use Francken\Association\News\Xml\Repository as NewsRepositoryFromXML;
+use Francken\Association\News\Repository;
+use Francken\Association\News\Xml\WordpressNewsIterator;
 use Illuminate\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
+use Illuminate\Routing\Router;
 
 final class ServiceProvider extends RouteServiceProvider
 {
@@ -41,9 +41,19 @@ final class ServiceProvider extends RouteServiceProvider
         } else {
             $this->app->bind(Repository::class, function ($app) {
                 $filename = config('francken.news.xml');
+                $authors = config('francken.news.authors');
+                $boards = $this->app->make(\Francken\Domain\Boards\BoardRepository::class);
 
                 return new CachedNewsRepository(
-                    new NewsRepositoryFromXml($filename),
+                    new InMemoryNewsRepository(
+                        iterator_to_array(
+                            new WordpressNewsIterator(
+                                $filename,
+                                $authors,
+                                $boards
+                            )
+                        )
+                    ),
                     $app->make(CacheRepository::class)
                 );
             });
