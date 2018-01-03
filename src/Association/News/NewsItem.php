@@ -50,7 +50,7 @@ final class NewsItem
         $this->exerpt = $exerpt;
         $this->publicationDate = $publicationDate;
         $this->author = $author;
-        $this->content = new CompiledMarkdown(''); //$content;
+        $this->content = $content;
         $this->related = [];
         // $this->related = (function(NewsItemLink ...$item) {
         //     return $item;

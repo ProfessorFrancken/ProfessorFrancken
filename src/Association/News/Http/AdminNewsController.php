@@ -6,17 +6,12 @@ namespace Francken\Association\News\Http;
 
 use DateTimeImmutable;
 use Francken\Association\News\Author;
+use Francken\Association\News\NewsContentCompiler;
 use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\Repository as NewsRepository;
 use Illuminate\Http\Request;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
-use League\CommonMark\Inline\Element\Image;
-use League\HTMLToMarkdown\HtmlConverter;
 use League\Period\Period;
-use Webuni\CommonMark\AttributesExtension\AttributesExtension;
-use Webuni\CommonMark\TableExtension\TableExtension;
 
 /**
  * Note that since the logic of news is quite trivial
@@ -106,22 +101,8 @@ final class AdminNewsController
         );
         $news->changeTitle($req->input('title'));
 
-
-        $env = Environment::createCommonMarkEnvironment();
-        $env->addExtension(new TableExtension());
-        $env->addExtension(new AttributesExtension());
-        $env->addInlineRenderer(Image::class, new ResponsiveImageRenderer());
-
-        $markdown = new CommonMarkConverter([
-            'html_input' => 'allow',
-            'allow_unsafe_links' => false,
-        ], $env);
-
         $news->changeContents(
-            CompiledMarkdown::fromSource(
-                $markdown,
-                $req->input('content')
-            )
+            (new NewsContentCompiler)->content($req->input('content'))
         );
 
         dd($req->all(), $news);
@@ -188,22 +169,5 @@ final class AdminNewsController
             $start = new DateTimeImmutable('-2 years'),
             $end = new DateTimeImmutable('now')
         );
-    }
-}
-
-use League\CommonMark\ElementRendererInterface;
-use League\CommonMark\Inline\Element\AbstractInline;
-use League\CommonMark\Inline\Renderer\ImageRenderer;
-
-class ResponsiveImageRenderer extends ImageRenderer
-{
-    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
-    {
-        $element = parent::render($inline, $htmlRenderer);
-
-        $element->setAttribute('class', 'img-fluid');
-        $element->setAttribute('src', news_image($element->getAttribute('src')));
-
-        return $element;
     }
 }
