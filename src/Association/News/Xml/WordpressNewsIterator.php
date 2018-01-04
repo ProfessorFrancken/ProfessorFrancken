@@ -39,6 +39,7 @@ final class WordpressNewsIterator implements \IteratorAggregate
             }
         );
     }
+
     private function toNewsItem($news)
     {
         return new NewsItem(
