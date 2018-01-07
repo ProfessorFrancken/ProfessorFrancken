@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Francken\Association\News\Eloquent;
 
 use DateTimeImmutable;
-use Eloquent;
 use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
-use League\Period\Period;
 use Francken\Association\News\NewsItem;
 use Francken\Association\News\NewsItemLink;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use League\Period\Period;
 
 final class News extends Eloquent
 {
@@ -28,18 +28,25 @@ final class News extends Eloquent
         'related_news_items' => 'array',
     ];
 
+
+    // waarschijnlijk gaat er wat mis bij het converteren van string naar object oid
+
     protected $dates = [
+        'created_at',
+        'updated_at',
         'published_at'
     ];
 
     public function publish(DateTimeImmutable $publicationDate)
     {
         $this->published_at = $publicationDate;
+        $this->slug = $this->toNewsItem()->link();
     }
 
     public function archive()
     {
         $this->published_at = null;
+        $this->slug = $this->toNewsItem()->link();
     }
 
     public function changeAuthor(Author $author)
@@ -51,6 +58,7 @@ final class News extends Eloquent
     public function changeTitle(string $title)
     {
         $this->title = $title;
+        $this->slug = $this->toNewsItem()->link();
     }
 
     public function changeContents(CompiledMarkdown $markdown)
@@ -101,7 +109,7 @@ final class News extends Eloquent
 
     private function previousNewsLink() : ?NewsItemLink
     {
-        $previous = $this->previous()->first();
+        $previous = $this->previous();
 
         if ($previous === null) {
             return null;
@@ -115,7 +123,7 @@ final class News extends Eloquent
 
     private function nextNewsLink() : ?NewsItemLink
     {
-        $next = $this->next()->first();
+        $next = $this->next();
 
         if ($next === null) {
             return null;
@@ -175,9 +183,14 @@ final class News extends Eloquent
      */
     public function previous()
     {
+        if ($this->published_at === null) {
+            return null;
+        }
+
         return News::orderBy('published_at', 'desc')
-            ->where('id', '<>',$this->id)
-            ->whereDate('published_at', '<=', $this->published_at->toDateTimeString());
+            ->where('id', '<>', $this->id)
+            ->whereDate('published_at', '<=', $this->published_at->toDateTimeString())
+            ->first();
     }
 
     /**
@@ -188,9 +201,14 @@ final class News extends Eloquent
      */
     public function next()
     {
+        if ($this->published_at === null) {
+            return null;
+        }
+
         return News::orderBy('published_at', 'asc')
-            ->where('id', '<>',$this->id)
-            ->whereDate('published_at', '>=', $this->published_at->toDateTimeString());
+            ->where('id', '<>', $this->id)
+            ->whereDate('published_at', '>=', $this->published_at->toDateTimeString())
+            ->first();
     }
 
     /**

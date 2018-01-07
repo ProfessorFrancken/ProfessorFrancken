@@ -2,7 +2,12 @@
 
 @section('content')
 
-
+    <div class="alert alert-secondary">
+        <a href="/admin/association/news/" >
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            Back to news
+        </a>
+    </div>
 
     {!! Form::model($news, ['url' => ['admin/association/news', $news->link()], 'method' => 'put']) !!}
     <div class="row">
@@ -34,28 +39,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body bg-faded">
-                    <h4 class="card-title">
-                        Publishing
+
+                    <h4 class="card-title my-3">
+                        Exerpt
                     </h4>
-                    <p>
-                        This news article hasn't been published yet. You can either pick a publication date (so that for instance the article will be published on next monday) or save and publish the article directly.
-                    </p>
 
+                    <div class="form-group mt-3">
+                        {!! Form::textarea('exerpt', $news->exerpt(), ['class' => 'form-control', 'rows' => 3]) !!}
 
-                    <div class="d-flex justify-content-between align-items-end">
-                        <div class="form-group mb-0">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                            {!! Form::label('publish-at', 'Publish at:', ['class' => 'control-label-col']) !!}
-                            {!! Form::date('publicationDate', $news->publicationDate()->format('Y-m-d'), ['class' => 'form-control']) !!}
-                        </div>
-
-                        <button class="btn btn-outline-primary pull-right">
-                            <i class="fa fa-upload" aria-hidden="true"></i>
-
-                            Publish
-                        </button>
+                        <span class="form-help">
+                            Note try to keep the exerpt short and make it either a nice summary or a short introduction to the news post. Don't use any Markdown formatting.
+                        </span>
                     </div>
                 </div>
                 <div class="card-body">
@@ -73,21 +67,48 @@
 
                     <div class="d-flex justify-content-between">
                         @if ($news->publicationDate() > (new DateTimeImmutable('2017-08-24')))
-                            <button class="btn btn-outline-success">
+                            <button type="submit" class="btn btn-outline-success">
                                 <i class="fa fa-check" aria-hidden="true"></i>
 
                                 Update
                             </button>
                         @else
 
-                            <button class="btn btn-outline-warning" onclick="return confirm('Saving this news item might override import setting. Are you sure you want to save?')">
+                            <button type="submit" class="btn btn-outline-warning" onclick="return confirm('Saving this news item might override import setting. Are you sure you want to save?')">
                                 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 
                                 Update
                             </button>
                         @endif
 
-                        {!! Form::submit('Archive', ['class' => 'btn-link text-danger pull-right']) !!}
+                        {{--
+                        {!! Form::submit('Archive', ['class' => 'btn btn-link text-warning pull-right', 'formaction' => 'admin/association/news/archive/' . $news->link()]) !!}
+                         --}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3">
+                <div class="card-body bg-light">
+                    <h4 class="card-title">
+                        Publishing
+                    </h4>
+                    <p>
+                        This news article hasn't been published yet. You can either pick a publication date (so that for instance the article will be published on next monday) or save and publish the article directly.
+                    </p>
+
+                    <div class="d-flex justify-content-between align-items-end">
+                        <div class="form-group mb-0">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            {!! Form::label('publish-at', 'Publish at:', ['class' => 'control-label-col']) !!}
+                            {!! Form::date('publish-at', $news->publicationDate()->format('Y-m-d'), ['class' => 'form-control']) !!}
+                        </div>
+
+                        <button type="submit" formaction="/admin/association/news/publish/{{ $news->link() }}" class="btn btn-outline-primary pull-right">
+                            <i class="fa fa-upload" aria-hidden="true"></i>
+
+                            Publish
+                        </button>
                     </div>
                 </div>
             </div>
@@ -141,7 +162,16 @@
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
-                                {!! Form::text('author', $news->authorName(), ['class' => 'form-control']) !!}
+                                {!! Form::text('author-name', $news->authorName(), ['class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::text('author-photo', $news->authorPhoto(), ['class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('author-bio', 'Bio:', ['class' => 'control-label-col']) !!}
+                                {!! Form::textarea('bio', "lorem", ['class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
