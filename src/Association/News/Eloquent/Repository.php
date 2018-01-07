@@ -4,14 +4,31 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Eloquent;
 
+use Carbon\Carbon;
 use Francken\Association\News\Author;
+use Francken\Association\News\CouldNotFindNews;
 use Francken\Association\News\NewsItem;
 use Francken\Association\News\Repository as NewsRepository;
-use Francken\Association\News\CouldNotFindNews;
+use Illuminate\Database\Eloquent\Builder;
 use League\Period\Period;
 
 final class Repository implements NewsRepository
 {
+    private $showUnPublished = false;
+    public function __construct(bool $showDrafts = false)
+    {
+        $this->showUnPublished = $showDrafts;
+
+        News::addGlobalScope('published', function (Builder $builder) {
+            if (! $this->showUnPublished) {
+                $today = Carbon::today()->toDateString();
+                $builder->whereNotNull('published_at')
+                    ->whereDate('published_at', '<=', $today);
+
+            }
+        });
+    }
+
     public function search(Period $period = null, string $subject = null, string $author = null) : array
     {
         return News::recent()

@@ -26,7 +26,7 @@ class CreateNewsTable extends Migration
 
             $table->json('related_news_items');
 
-            $table->timestamp('published_at');
+            $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });
 
@@ -40,7 +40,7 @@ class CreateNewsTable extends Migration
             $table->string('author_name');
             $table->string('author_photo');
 
-            $table->timestamp('published_at');
+            $table->dateTime('published_at');
         });
 
     }

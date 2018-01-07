@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\News\Eloquent;
 
+use Faker\Factory;
+use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\Eloquent\Repository;
 use Francken\Association\News\Eloquent\News;
 use Francken\Features\TestCase;
@@ -29,21 +31,40 @@ final class RepositoryTest extends TestCase
             $news->save();
         });
 
-        $this->news = new Repository($news);
+        $this->news = new Repository(true);
+    }
+
+    /** @test */
+    function it_does_not_find_unpublished_news_by_default()
+    {
+        $faker = Factory::create();
+        $faker->seed(31415);
+        $fake = new FakeNews($faker, 1);
+        $this->setupNews($fake->all());
+        $news = News::first();
+        $news->archive();
+        $news->save();
+
+        $this->news = new Repository();
+
+        $this->assertCount(0, $this->news->recent(1));
+
+        $this->news = new Repository(true);
+        $this->assertCount(1, $this->news->recent(1));
     }
 }
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 // final class RepositoryTest
 // {

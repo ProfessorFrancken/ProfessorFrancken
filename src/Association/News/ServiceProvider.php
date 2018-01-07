@@ -38,6 +38,14 @@ final class ServiceProvider extends RouteServiceProvider
             $this->app->bind(Repository::class, function ($app) {
                 return $app->make(EloquentNewsRepository::class);
             });
+
+            $this->app->when(\Francken\Association\News\Http\AdminNewsController::class)
+                ->needs(Repository::class)
+                ->give(function () {
+                    // Show unpublished news
+                    return new EloquentNewsRepository(true);
+
+                });
         } else {
             $this->app->bind(Repository::class, function ($app) {
                 $filename = config('francken.news.xml');
@@ -73,6 +81,8 @@ final class ServiceProvider extends RouteServiceProvider
             $router->get('association/news/archive', "NewsController@archive");
             $router->get('association/news/{item}', "NewsController@show");
 
+            $router->put('admin/association/news/publish/{item}', 'AdminNewsController@publish');
+            $router->put('admin/association/news/archive/{item}', 'AdminNewsController@archive');
             $router->resource('admin/association/news', 'AdminNewsController');
         });
     }

@@ -22,13 +22,13 @@ class NewsFeature extends TestCase
         $fakeNews = new FakeNews($faker, 10);
 
         $this->news = new InMemoryNewsRepository($fakeNews->all());
+
+        \App::instance(NewsRepository::class, $this->news);
     }
 
     /** @test */
     function the_latest_news_is_shown()
     {
-        \App::instance(NewsRepository::class, $this->news);
-
         $this->visit('/association/news')
             ->click('Read more')
 

@@ -90,13 +90,18 @@ final class AdminNewsController
 
     public function update(Request $req, $link)
     {
+        // We assume that the request gives all necessary data,
+        // except for the author image.
+
+
         // Note that for read actions we normally use the news repository
         // however since now we want to make changes we will use an eloquent model
-        $news = News::byLink($link)->firstOrNew([]);
+        // $news = News::byLink($link)->firstOrNew([]);
+        $news = News::byLink($link)->firstOrFail();
         $news->changeAuthor(
             new Author(
-                $req->input('author'),
-                ''
+                $req->input('author-name', $news->author_name),
+                $req->input('author-photo', $news->author_photo)
             )
         );
         $news->changeTitle($req->input('title'));
@@ -104,23 +109,32 @@ final class AdminNewsController
         $news->changeContents(
             (new NewsContentCompiler)->content($req->input('content'))
         );
+        $news->changeExerpt($req->input('exerpt'));
 
-        dd($req->all(), $news);
+        $news->save();
 
+        return redirect('/admin' . $news->toNewsItem()->url());
+    }
 
-        // Check if it should be published
+    public function  publish(Request $req, $link)
+    {
+        $news = News::byLink($link)->firstOrFail();
+        $publishAt = new \DateTimeImmutable($req->input('publish-at'));
 
+        $news->publish($publishAt);
+        $news->save();
 
-        return view('admin.news.show', [
-            'news' => $news->toNewsItem()
-        ]);
+        return redirect('/admin' . $news->toNewsItem()->url());
+    }
 
-        $post = $repo->load($id);
-        $post->edit($req->input('name'), $req->input('goal'));
+    public function archive(Request $req, $link)
+    {
+        $news = News::byLink($link)->firstOrFail();
+        $news->archive();
+        $news->save();
+        dd($news);
 
-        $repo->save($post);
-
-        return redirect('/admin/committee/' . $id);
+        return redirect('/admin' . $news->toNewsItem()->url());
     }
 
     public function destroy($id)

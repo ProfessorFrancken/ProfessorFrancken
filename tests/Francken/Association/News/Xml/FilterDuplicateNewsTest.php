@@ -10,7 +10,7 @@ use Francken\Association\News\NewsItem;
 use Francken\Association\News\Xml\FilterDuplicateNews;
 use PHPUnit_Framework_TestCase as TestCase;
 
-final class WordpressNewsIteratorTest extends TestCase
+final class FilterDuplicateNewsTest extends TestCase
 {
     /** @test */
     function it_no_news_items_if_no_duplicates_exists()
