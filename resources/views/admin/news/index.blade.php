@@ -122,6 +122,7 @@
                 </div>
             </div>
 
+            {{--
             <div class="card mt-3">
                 <div class="card-body">
                     <h3 class="card-title section-header agenda-header">
@@ -218,6 +219,8 @@
                     </a>
                 </div>
             </div>
+
+            --}}
         </div>
     </div>
 @endsection
