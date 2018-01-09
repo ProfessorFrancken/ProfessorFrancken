@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="card-body">
-        @if ($news->publicationDate() < (new DateTimeImmutable('2017-08-24')))
+        @if (! is_null($news->publicationDate()) && $news->publicationDate() < (new DateTimeImmutable('2017-08-24')))
             <div class="alert alert-warning">
 
                 <strong>
@@ -52,7 +52,7 @@
         @endif
 
         <div class="d-flex justify-content-between">
-            @if ($news->publicationDate() > (new DateTimeImmutable('2017-08-24')))
+            @if (is_null($news->publicationDate()) || $news->publicationDate() > (new DateTimeImmutable('2017-08-24')))
                 <button type="submit" class="btn btn-outline-success">
                     <i class="fa fa-check" aria-hidden="true"></i>
 
