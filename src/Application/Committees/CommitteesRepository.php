@@ -862,9 +862,9 @@ final class CommitteesRepository
                 "page" => null,
                 "members" => [
                     new CommitteeMember(
-                        1817,
+                        1264,
                         "Emiel",
-                        "de Wit"
+                        "Langelaan"
                     ),
                     new CommitteeMember(
                         1786,
