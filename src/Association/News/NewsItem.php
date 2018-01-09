@@ -38,9 +38,9 @@ final class NewsItem
     public function __construct(
         string $title,
         string $exerpt,
-        DateTimeImmutable $publicationDate,
         Author $author,
         CompiledMarkdown $content,
+        DateTimeImmutable $publicationDate = null,
         array $related = [],
         NewsItemLink $previous = null,
         NewsItemLink $next = null
@@ -59,6 +59,16 @@ final class NewsItem
         $this->previous = $previous;
     }
 
+    public static function empty()
+    {
+        return new self(
+            '',
+            '',
+            new Author('', ''),
+            CompiledMarkdown::withSource('', '')
+        );
+    }
+
     public function id() : NewsItemId
     {
         return new NewsItemId(
@@ -74,7 +84,11 @@ final class NewsItem
 
     public function link() : string
     {
-        return $this->publicationDate()->format('y-m-d-') . str_slug($this->title());
+        if ($this->publicationDate !== null) {
+            return $this->publicationDate()->format('y-m-d-') . str_slug($this->title());
+        }
+
+        return str_slug($this->title());
     }
 
     public function url() : string
@@ -87,7 +101,7 @@ final class NewsItem
         return $this->exerpt;
     }
 
-    public function publicationDate() : DateTimeImmutable
+    public function publicationDate() : ?DateTimeImmutable
     {
         return $this->publicationDate;
     }
@@ -122,4 +136,3 @@ final class NewsItem
         return $this->previous;
     }
 }
-

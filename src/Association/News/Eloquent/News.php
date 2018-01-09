@@ -98,9 +98,9 @@ final class News extends Eloquent
         return new NewsItem(
             $this->title,
             $this->exerpt,
-            new DateTimeImmutable((string) $this->published_at),
             $this->author(),
             $this->contents(),
+            new DateTimeImmutable((string) $this->published_at),
             [],   // related
             $this->previousNewsLink(),
             $this->nextNewsLink()

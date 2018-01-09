@@ -80,7 +80,6 @@ final class FakeNews
             return new NewsItem(
                 $news['title'],
                 $this->faker->paragraph(),
-                $news['published_at'],
                 new Author(
                     $this->faker->name(),
                     'https://api.adorable.io/avatars/75/' . $this->faker->randomNumber() . '.png'
@@ -89,6 +88,7 @@ final class FakeNews
                     $content,
                     $content
                 ),
+                $news['published_at'],
                 [], // no related articles
                 $previous,
                 $next

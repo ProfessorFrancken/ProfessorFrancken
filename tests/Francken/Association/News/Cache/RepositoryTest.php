@@ -59,7 +59,7 @@ class RepositoryTest extends TestCase
         // Check that the cache key was set correctly, we
         // will assume that the timespan
         $item = new NewsItem(
-            'title', 'exerpt', new \DateTimeImmutable('2017-07-13'), new Author('Mark', ''), new CompiledMarkdown('')
+            'title', 'exerpt', new Author('Mark', ''), new CompiledMarkdown(''), new \DateTimeImmutable('2017-07-13')
         );
         $cache->remember(
             'news_link_asdf',
