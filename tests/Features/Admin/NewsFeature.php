@@ -98,5 +98,28 @@ class NewsFeature extends TestCase
         $this->assertEquals($updated->publicationDate(), new \DateTimeImmutable('2018-01-07'));
     }
 
+    /** @test */
+    function createing_a_new_news_post()
+    {
+        $this->visit('/admin/association/news/create')
+            ->type('Bitterballen dibs machines', 'title')
+            ->type('Bitterballen are nice', 'content')
+            ->type('About bitterballen', 'exerpt')
+            ->press('Save');
+
+        $news = News::orderBy('id', 'desc')->first();
+
+        $this->assertEquals(
+            'Bitterballen dibs machines', $news->title
+        );
+        $this->assertEquals(
+            'Bitterballen are nice', $news->source_contents
+        );
+        $this->assertEquals(
+            'About bitterballen', $news->exerpt
+        );
+    }
+
+
     // it gives a warning when editing news items imported from our wordpress website
 }

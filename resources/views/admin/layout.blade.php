@@ -10,7 +10,7 @@ $menu = [
             [
                 "name" => "News",
                 "url" => "news",
-                "works" => false,
+                "works" => true,
             ],
             [
                 "name" => "Activities",

@@ -68,9 +68,9 @@ final class FilterDuplicateNewsTest extends TestCase
         return new NewsItem(
             $title,
             'exerpt',
-            new \DateTimeImmutable('2018-01-02'),
             $author,
-            $content
+            $content,
+            new \DateTimeImmutable('2018-01-02')
         );
     }
 }

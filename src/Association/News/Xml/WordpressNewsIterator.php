@@ -45,9 +45,9 @@ final class WordpressNewsIterator implements \IteratorAggregate
         return new NewsItem(
             $news['title'],
             (string)$news['content']->exerpt(),
-            $news['published_at'],
             $news['author'],
             $news['content']->content(),
+            $news['published_at'],
             []
         );
     }

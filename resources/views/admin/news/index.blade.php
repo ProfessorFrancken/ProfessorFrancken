@@ -14,44 +14,23 @@
                         Here you can add news, which can be a blog, information from the association, advertisement or perhaps something else which I haven't thought about yet...
                     </p>
 
-                    <a class="btn btn-outline-success" href="/admin/association/news/create">
-                        <i class="fa fa-plus mr-1" aria-hidden="true"></i>
-                        Write a new news post
-                    </a>
+                    @if (count($drafts) > 0)
+                        <h3 class="card-title" >
+                            Drafts
+                        </h3>
+                    @endif
                 </div>
 
-                <table class="table table-hover table-small mt-4">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Title</th>
-                            <th colspan="1" class="text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    @foreach ($news as $item)
-                        <tr>
-                            <td>
-                                <small class="text-muted">
-                                    {{ $item->publicationDate()->format('d M Y')}}
-                                </small>
-                            </td>
-                            <td>
-                                {{ $item->title() }}
-                            </td>
-                            <td class="text-right">
-                                <a class="btn btn-outline-primary btn-sm mr-2" href="{{ $item->url() }}">
-                                    <i class="fa fa-eye mr-1" aria-hidden="true"></i>
-                                    View
-                                </a>
-                                <a class="btn btn-outline-primary btn-sm" href="/admin/association/news/{{ $item->id() }}">
-                                    <i class="fa fa-pencil mr-1" aria-hidden="true"></i>
-                                    Edit
-                                </a>
-                            </td>
+                @include('admin.news._table', ['news' => $drafts])
 
-                            </td>
-                    @endforeach
-                </table>
+                <div class="card-body">
+                    <h3 class="card-title mt-4" >
+                        Published news
+                    </h3>
+                </div>
+
+                @include('admin.news._table', ['news' => $news])
+
                 <div class="card-body d-flex justify-content-between">
                     @if (count($news) > 0)
                         <a
@@ -74,6 +53,13 @@
 
         </div>
         <div class="col-lg-4">
+
+            <a class="btn btn-lg btn-block btn-success mb-4" href="/admin/association/news/create">
+                <i class="fa fa-plus mr-1" aria-hidden="true"></i>
+                Write a new news post
+            </a>
+
+
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title section-header agenda-header">

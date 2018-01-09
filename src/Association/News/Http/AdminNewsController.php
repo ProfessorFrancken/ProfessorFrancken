@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
+use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\NewsContentCompiler;
 use Francken\Association\News\CompiledMarkdown;
+use Francken\Association\News\NewsItem;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\Repository as NewsRepository;
 use Illuminate\Http\Request;
@@ -28,6 +30,8 @@ final class AdminNewsController
 
     public function index()
     {
+        $drafts = $this->drafts();
+
         $news = $this->news->search(
             $this->periodForPagination(),
             request()->input('subject', null),
@@ -35,39 +39,37 @@ final class AdminNewsController
         );
 
         return view('admin.news.index', [
-            'news' => $news
+            'news' => $news,
+            'drafts' => $drafts
         ]);
     }
 
     public function create()
     {
-        return view('admin.news.create');
+        return view('admin.news.create', [
+            'news' => NewsItem::empty()
+        ]);
     }
 
-    public function store(Request $req, PostRepository $repo)
+    public function store(Request $req)
     {
-        //Validate doesn't work?
-        // $this->validate($req, [
-        //     'title' => 'required|max:255',
-        //     'content' => 'required',
-        //     'type' => 'in:blog,news',
-        //     'publishes_at' => 'date',
-        // ]);
-
-        $id = PostId::generate();
-
-        $post = Post::createDraft(
-            $id,
-            $req->input('title'),
-            $req->input('content'),
-            PostCategory::fromString($req->input('type'))
+        $news = News::fromNewsItem(NewsItem::empty());
+        $news->changeAuthor(
+            new Author(
+                $req->input('author-name', $news->author_name),
+                $req->input('author-photo', $news->author_photo)
+            )
         );
+        $news->changeTitle($req->input('title'));
 
-        $post->setPublishDate(\Carbon\Carbon::now()); /// @todo
+        $news->changeContents(
+            (new NewsContentCompiler)->content($req->input('content'))
+        );
+        $news->changeExerpt($req->input('exerpt'));
 
-        $repo->save($post);
+        $news->save();
 
-        return redirect('/admin/news');
+        return redirect('/admin' . $news->toNewsItem()->url());
     }
 
     public function show($link)
@@ -183,5 +185,12 @@ final class AdminNewsController
             $start = new DateTimeImmutable('-2 years'),
             $end = new DateTimeImmutable('now')
         );
+    }
+
+    private function drafts()
+    {
+        return News::whereNull('published_at')->get()->map(function ($news) {
+            return $news->toNewsItem();
+        });
     }
 }
