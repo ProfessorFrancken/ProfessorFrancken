@@ -512,9 +512,9 @@ final class CommitteesRepository
                 "page" => null,
                 "members" => [
                     new CommitteeMember(
-                        1001,
-                        "Carlos",
-                        "Bril"
+                        1950,
+                        "George",
+                        "Cummings"
                     ),
                     new CommitteeMember(
                         1960,
@@ -527,9 +527,9 @@ final class CommitteesRepository
                         "Quinn"
                     ),
                     new CommitteeMember(
-                        1807,
-                        "Callum",
-                        "Blair"
+                        1962,
+                        "Nayana Marsal",
+                        "Ortin"
                     ),
                 ],
             ],
