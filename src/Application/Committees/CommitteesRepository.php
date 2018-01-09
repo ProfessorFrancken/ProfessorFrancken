@@ -882,11 +882,6 @@ final class CommitteesRepository
                         "Visser"
                     ),
                     new CommitteeMember(
-                        1830,
-                        "Aoibhin",
-                        "Quinn"
-                    ),
-                    new CommitteeMember(
                         1733,
                         "Stijn",
                         "Eikens"
