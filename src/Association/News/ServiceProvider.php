@@ -76,14 +76,17 @@ final class ServiceProvider extends RouteServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function ($router) {
+        $router->group(['namespace' => $this->namespace, 'middleware' => ['web']], function ($router) {
             $router->get('association/news', "NewsController@index");
             $router->get('association/news/archive', "NewsController@archive");
             $router->get('association/news/{item}', "NewsController@show");
 
-            $router->put('admin/association/news/publish/{item}', 'AdminNewsController@publish');
-            $router->put('admin/association/news/archive/{item}', 'AdminNewsController@archive');
-            $router->resource('admin/association/news', 'AdminNewsController');
+            $router->group(['middleware' => ['auth']], function () use ($router) {
+                $router->put('admin/association/news/publish/{item}', 'AdminNewsController@publish');
+                $router->put('admin/association/news/archive/{item}', 'AdminNewsController@archive');
+                $router->get('admin/association/news/{item}/preview', 'AdminNewsController@preview');
+                $router->resource('admin/association/news', 'AdminNewsController');
+            });
         });
     }
 }

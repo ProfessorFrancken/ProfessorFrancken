@@ -81,6 +81,14 @@ final class AdminNewsController
         ]);
     }
 
+    public function preview($link)
+    {
+        $newsItem = $this->news->byLink($link);
+
+        return view('pages.association.news.item')
+            ->with('newsItem', $newsItem);
+    }
+
     public function edit($id)
     {
         $post = DB::table('posts')->where('id', $id)->first();
