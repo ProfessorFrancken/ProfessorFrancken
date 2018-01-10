@@ -29,7 +29,8 @@
         "davidbadura/faker-markdown-generator": "^1.0",
         "friendsofphp/php-cs-fixer": "^2.0",
         "phpstan/phpstan": "^0.6.3",
-        "vimeo/psalm": "^0.3.19"
+        "vimeo/psalm": "^0.3.19",
+        "codedungeon/phpunit-result-printer": "^0.4.4"
     },
     "autoload": {
         "files": [
