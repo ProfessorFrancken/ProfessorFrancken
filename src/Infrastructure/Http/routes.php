@@ -81,7 +81,9 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
 
         Route::group(['prefix' => 'study'], function() {
             Route::get('research-groups', 'Admin\AdminController@showPageIsUnavailable');
-            Route::get('books', 'Admin\AdminController@showPageIsUnavailable');
+
+            Route::get('books', '\Francken\Study\BooksSale\Http\AdminBooksController@index');
+            Route::post('books', '\Francken\Study\BooksSale\Http\AdminBooksController@store');
         });
 
         Route::group(['prefix' => 'career'], function() {
