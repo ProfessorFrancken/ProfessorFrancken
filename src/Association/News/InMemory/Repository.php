@@ -79,6 +79,6 @@ final class Repository implements NewsRepository
     {
         return $this->news->sortByDesc(function (NewsItem $news) {
             return $news->publicationDate();
-        })->take(9)->toArray();
+        })->take($amount)->toArray();
     }
 }
