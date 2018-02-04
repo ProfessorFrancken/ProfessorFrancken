@@ -7,7 +7,7 @@ namespace Tests\Francken\Domain\Members;
 use Francken\Domain\Members\FullName;
 use Francken\Tests\SetupReconstitution;
 
-class FullNameTest extends \PHPUnit_Framework_TestCase
+class FullNameTest extends \PHPUnit\Framework\TestCase
 {
     use SetupReconstitution;
 

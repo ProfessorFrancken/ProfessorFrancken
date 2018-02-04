@@ -9,7 +9,7 @@ use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Domain\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 class FranckenvrijRepositoryTest extends TestCase
 {

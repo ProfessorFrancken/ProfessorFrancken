@@ -14,16 +14,19 @@ class NewsFeature extends TestCase
     private $news;
 
     // inmemory with fakes
+
     /** @before */
     function setupNews()
     {
-        $faker = Factory::create();
-        $faker->seed(31415);
-        $fakeNews = new FakeNews($faker, 10);
+        $this->afterApplicationCreated(function () {
+            $faker = Factory::create();
+            $faker->seed(31415);
+            $fakeNews = new FakeNews($faker, 10);
 
-        $this->news = new InMemoryNewsRepository($fakeNews->all());
+            $this->news = new InMemoryNewsRepository($fakeNews->all());
 
-        \App::instance(NewsRepository::class, $this->news);
+            \App::instance(NewsRepository::class, $this->news);
+        });
     }
 
     /** @test */

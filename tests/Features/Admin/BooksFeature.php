@@ -18,14 +18,6 @@ class BooksFeature extends TestCase
 
     private $books;
 
-    // inmemory with fakes
-    /** @before */
-    function setupBooks()
-    {
-        $faker = Factory::create();
-        $faker->seed(31415);
-    }
-
     /** @test */
     function a_list_of_news_is_shown()
     {

@@ -17,6 +17,8 @@ class CommitteesListTest extends TestCase
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
+
+        $this->assertEmpty($committee->members());
     }
 
     /** @test */

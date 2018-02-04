@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\EventSourcing;
 
-use Broadway\EventHandling\EventBusInterface;
-use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
+use Broadway\EventHandling\EventBus;
+use Broadway\EventSourcing\AggregateFactory\AggregateFactory;
 use Broadway\EventSourcing\EventSourcingRepository;
-use Broadway\EventStore\EventStoreInterface;
+use Broadway\EventStore\EventStore;
 
 final class Factory
 {
@@ -16,9 +16,9 @@ final class Factory
     private $factory;
 
     public function __construct(
-        EventStoreInterface $eventStore,
-        EventBusInterface $bus,
-        AggregateFactoryInterface $factory
+        EventStore $eventStore,
+        EventBus $bus,
+        AggregateFactory $factory
     ) {
         $this->store = $eventStore;
         $this->bus = $bus;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Repositories;
 
-use Broadway\ReadModel\ReadModelInterface;
-use Broadway\Serializer\SerializableInterface;
+use Broadway\ReadModel\Identifiable as ReadModelInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Application\ReadModelNotFound;
 use Francken\Application\ReadModelRepository;
 use Illuminate\Database\ConnectionInterface as Connection;

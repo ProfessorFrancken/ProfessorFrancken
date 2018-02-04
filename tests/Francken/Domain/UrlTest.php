@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Domain;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 use Francken\Domain\Url;
 
 class UrlTest extends TestCase

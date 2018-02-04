@@ -8,7 +8,7 @@ use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\NewsItem;
 use Francken\Association\News\Xml\FilterDuplicateNews;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 final class FilterDuplicateNewsTest extends TestCase
 {

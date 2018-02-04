@@ -9,7 +9,7 @@ use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Tests\SetupReconstitution;
 
-class StudyDetailsTest extends \PHPUnit_Framework_TestCase
+class StudyDetailsTest extends \PHPUnit\Framework\TestCase
 {
     use SetupReconstitution;
 

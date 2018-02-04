@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\EventSourcing;
 
 use Broadway\Domain\DomainEventStream;
-use Broadway\Domain\DomainEventStreamInterface;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\DateTime;
-use Broadway\EventStore\EventStoreInterface;
+use Broadway\EventStore\EventStore;
 use Broadway\EventStore\EventStreamNotFoundException;
-use Broadway\Serializer\SerializerInterface;
+use Broadway\Serializer\Serializer;
 use Illuminate\Database\ConnectionInterface as Connection;
 
-final class IlluminateEventStore implements EventStoreInterface
+final class IlluminateEventStore implements EventStore
 {
 
     /**
@@ -22,7 +21,7 @@ final class IlluminateEventStore implements EventStoreInterface
     private $connection;
 
     /**
-     * @var \Broadway\Serializer\SerializerInterface
+     * @var \Broadway\Serializer\Serializer
      */
     private $serializer;
 
@@ -35,12 +34,12 @@ final class IlluminateEventStore implements EventStoreInterface
      * Construct the dependancies
      *
      * @param \Illuminate\Database\DatabaseManager $databaseManager
-     * @param SerializerInterface $serializer
+     * @param Serializer $serializer
      * @param string $eventStoreTable
      */
     public function __construct(
         Connection $connection,
-        SerializerInterface $serializer,
+        Serializer $serializer,
         string $eventStoreTable
     ) {
         $this->connection = $connection;
@@ -69,7 +68,25 @@ final class IlluminateEventStore implements EventStoreInterface
     /**
      * {@inheritdoc}
      */
-    public function append($id, DomainEventStreamInterface $eventStream)
+    public function loadFromPlayhead($id, $playhead)
+    {
+        $events = $this->loadEvents($id, $playhead);
+
+        if (! $events) {
+            throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
+        }
+
+        return new DomainEventStream(
+            array_map(function ($event) {
+                return $this->deserializeEvent($event);
+            }, $events)
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function append($id, DomainEventStream $eventStream)
     {
         $this->connection->beginTransaction();
 
@@ -89,9 +106,13 @@ final class IlluminateEventStore implements EventStoreInterface
      * Load all events of an aggregate from our table
      * Note that since Laravel 5.3 the connection will now return a collection object
      */
-    private function loadEvents(string $id) : array
+    private function loadEvents(string $id, int $playhead = 0) : array
     {
-        return $this->connection->table($this->table)->where('uuid', $id)->get()->all();
+        return $this->connection->table($this->table)
+            ->where('uuid', $id)
+            ->where('playhead', '>=', $playhead)
+            ->get()
+            ->all();
     }
 
     /**

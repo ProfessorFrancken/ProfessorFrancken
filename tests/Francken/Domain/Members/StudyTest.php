@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use Francken\Domain\Members\Study;
 use Francken\Tests\SetupReconstitution;
 
-class StudyTest extends \PHPUnit_Framework_TestCase
+class StudyTest extends \PHPUnit\Framework\TestCase
 {
     use SetupReconstitution;
 

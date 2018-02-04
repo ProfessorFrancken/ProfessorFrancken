@@ -58,7 +58,7 @@ class RegistrationRequestFeature extends TestCase
 
         $rq = \DB::table('request_status')->orderBy('submittedAt', 'desc')->first();
 
-        $store = app(\Broadway\EventStore\EventStoreInterface::class);
+        $store = app(\Broadway\EventStore\EventStore::class);
         $events = $store->load($rq->id);
         $event = array_first($events)->getPayload();
 

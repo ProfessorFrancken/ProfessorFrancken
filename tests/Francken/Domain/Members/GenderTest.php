@@ -7,7 +7,7 @@ namespace Tests\Francken\Domain\Members;
 use Francken\Domain\Members\Gender;
 use Francken\Tests\SetupReconstitution;
 
-class GenderTest extends \PHPUnit_Framework_TestCase
+class GenderTest extends \PHPUnit\Framework\TestCase
 {
     use SetupReconstitution;
 

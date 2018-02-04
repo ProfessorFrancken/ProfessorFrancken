@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable as SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 
 final class Location implements SerializableInterface
 {

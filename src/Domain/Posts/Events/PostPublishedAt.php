@@ -8,8 +8,8 @@ use Carbon\Carbon;
 use DateTimeImmutable;
 use Francken\Domain\Posts\PostId;
 use Francken\Domain\DomainEvent;
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable as SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 
 final class PostPublishedAt implements SerializableInterface
 {

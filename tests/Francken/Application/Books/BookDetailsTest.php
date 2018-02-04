@@ -6,7 +6,7 @@ namespace Francken\Tests\Application\Books;
 
 use Francken\Application\Books\BookDetails;
 
-class BookDetailsTest extends \PHPUnit_Framework_TestCase
+class BookDetailsTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     function a_book_has_a_title_and_authors()

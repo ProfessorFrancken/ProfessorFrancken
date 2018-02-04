@@ -6,7 +6,7 @@ use Francken\Domain\Books\Guest;
 use Francken\Domain\Members\Email;
 
 
-class GuestTest extends \PHPUnit_Framework_TestCase
+class GuestTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function a_guest_is_instantiated_with_a_name_and_email()

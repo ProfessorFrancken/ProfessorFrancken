@@ -6,8 +6,8 @@ namespace Francken\Domain\Committees\Events;
 
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Members\Email;
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable as SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 
 final class CommitteeEmailChanged implements SerializableInterface
 {

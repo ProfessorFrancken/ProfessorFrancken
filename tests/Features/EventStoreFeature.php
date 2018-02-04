@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Broadway\Serializer\SerializableInterface;
-use Broadway\EventStore\EventStoreInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
+use Broadway\EventStore\EventStore;
 use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
@@ -24,7 +24,7 @@ class EventStoreFeature extends TestCase
     {
         parent::setUp();
 
-        $this->store = $this->app->make(EventStoreInterface::class);
+        $this->store = $this->app->make(EventStore::class);
     }
 
     /**

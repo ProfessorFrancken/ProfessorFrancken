@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Domain;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Tests\SetupReconstitution;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 abstract class EventTestCase extends TestCase
 {
@@ -27,7 +27,7 @@ abstract class EventTestCase extends TestCase
 
     /**
      * We don't give a return typehint here so that not all of our tests are
-     * forced to include the Broadway\Serializer\SerializableInterface
+     * forced to include the Broadway\Serializer\Serializable
      * @return SerializableInterface
      */
     abstract protected function createInstance();

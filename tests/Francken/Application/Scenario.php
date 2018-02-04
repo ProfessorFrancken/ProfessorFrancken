@@ -7,8 +7,8 @@ namespace Francken\Tests\Application;
 use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
-use Broadway\ReadModel\ProjectorInterface;
-use PHPUnit_Framework_TestCase;
+use Broadway\ReadModel\Projector;
+use PHPUnit\Framework\TestCase;
 use Francken\Application\ReadModelRepository;
 
 final class Scenario
@@ -20,9 +20,9 @@ final class Scenario
     private $aggregateId;
 
     public function __construct(
-        PHPUnit_Framework_TestCase $testCase,
+        TestCase $testCase,
         ReadModelRepository $repository,
-        ProjectorInterface $projector
+        Projector $projector
     ) {
         $this->testCase = $testCase;
         $this->repository = $repository;

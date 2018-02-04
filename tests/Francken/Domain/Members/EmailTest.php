@@ -6,7 +6,7 @@ namespace Tests\Francken\Domain\Members;
 
 use Francken\Domain\Members\Email;
 
-class EmailTest extends \PHPUnit_Framework_TestCase
+class EmailTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function it_stores_an_email()

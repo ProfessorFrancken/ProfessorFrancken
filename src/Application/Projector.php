@@ -3,7 +3,6 @@
 namespace Francken\Application;
 
 use Broadway\ReadModel\Projector as BroadwayProjector;
-use Broadway\ReadModel\ProjectorInterface;
 use Broadway\Domain\DomainMessage;
 
 abstract class Projector extends BroadwayProjector

@@ -8,7 +8,7 @@ use Francken\Domain\Activities\Schedule;
 use DateTimeImmutable;
 use InvalidArgumentException;
 
-class ScheduleTest extends \PHPUnit_Framework_TestCase
+class ScheduleTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function a_schedule_has_a_start_time()

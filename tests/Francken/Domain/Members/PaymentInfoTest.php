@@ -8,7 +8,7 @@ use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\MemberMustPayForMembership;
 use Francken\Tests\SetupReconstitution;
 
-class PaymentInfoTest extends \PHPUnit_Framework_TestCase
+class PaymentInfoTest extends \PHPUnit\Framework\TestCase
 {
     use SetupReconstitution;
 

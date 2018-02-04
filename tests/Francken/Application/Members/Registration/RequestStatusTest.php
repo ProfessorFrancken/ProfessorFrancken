@@ -7,7 +7,7 @@ namespace Francken\Tests\Application\Members\Registration;
 use DateTimeImmutable;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 use Francken\Tests\Application\ReadModelTestCase;
 
 class RequestStatusTest extends ReadModelTestCase

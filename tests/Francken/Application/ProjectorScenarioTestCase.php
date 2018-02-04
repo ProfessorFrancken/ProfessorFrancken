@@ -6,7 +6,7 @@ namespace Francken\Tests\Application;
 
 use Francken\Application\Projector;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 abstract class ProjectorScenarioTestCase extends TestCase
 {

@@ -6,8 +6,8 @@ namespace Francken\Domain\Members\Events;
 
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\DomainEvent;
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable as SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 
 final class MemberJoinedFrancken implements SerializableInterface
 {

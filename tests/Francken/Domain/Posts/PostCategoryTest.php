@@ -7,7 +7,7 @@ namespace Tests\Francken\Domain\Posts;
 use Francken\Domain\Posts\PostCategory;
 use InavlidArgumentException;
 
-class PostCategoryTest extends \PHPUnit_Framework_TestCase
+class PostCategoryTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function a_category_can_only_be_created_from_a_string()

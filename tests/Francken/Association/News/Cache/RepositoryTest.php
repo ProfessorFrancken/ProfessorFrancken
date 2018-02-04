@@ -12,7 +12,7 @@ use Francken\Association\News\Repository as NewsRepository;
 use Francken\Association\News\Cache\Repository as CachedNewsRepository;
 use Illuminate\Cache\Repository;
 use League\Period\Period;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 use Prophecy\Argument;
 
 class RepositoryTest extends TestCase

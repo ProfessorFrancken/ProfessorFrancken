@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\News\InMemory;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 use Francken\Association\News\InMemory\Repository;
 use Francken\Tests\Association\News\RepositoryTests;
 

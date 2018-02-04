@@ -26,14 +26,16 @@ class NewsFeature extends TestCase
     /** @before */
     function setupNews()
     {
-        $faker = Factory::create();
-        $faker->seed(31415);
-        $fakeNews = new FakeNews($faker, 10);
-        $this->news = $fakeNews->all();
+        $this->afterApplicationCreated(function () {
+            $faker = Factory::create();
+            $faker->seed(31415);
+            $fakeNews = new FakeNews($faker, 10);
+            $this->news = $fakeNews->all();
 
-        foreach ($this->news as $news) {
-            News::fromNewsItem($news)->save();
-        }
+            foreach ($this->news as $news) {
+                News::fromNewsItem($news)->save();
+            }
+        });
     }
 
     /** @test */

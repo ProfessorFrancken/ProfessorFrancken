@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Francken\Infrastructure\Repositories;
 
-use Broadway\ReadModel\ReadModelInterface;
+use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Francken\Application\ReadModelNotFound;
 use Francken\Application\ReadModelRepository;
 use ReflectionClass;

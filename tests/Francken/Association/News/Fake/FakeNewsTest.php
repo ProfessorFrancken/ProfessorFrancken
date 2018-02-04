@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\News\Fake;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\NewsItem;
@@ -75,7 +75,7 @@ final class FakeNewsTest extends TestCase
             $item->previousNewsItem()->url(),
             $previous->url()
         );
-        
+
         $this->assertEquals(
             $item->previousNewsItem()->title(),
             $previous->title()
@@ -93,7 +93,7 @@ final class FakeNewsTest extends TestCase
             $item->nextNewsItem()->url(),
             $next->url()
         );
-        
+
         $this->assertEquals(
             $item->nextNewsItem()->title(),
             $next->title()

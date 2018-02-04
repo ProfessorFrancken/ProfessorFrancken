@@ -4,12 +4,12 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.4.*",
+        "laravel/framework": "5.5.*",
         "laravel/tinker": "^1.0",
-        "laravel/browser-kit-testing": "^1.0.2",
+        "laravel/browser-kit-testing": "^3.0",
         "laravelcollective/html": "^5.4.0",
-        "broadway/broadway": "^0.10.0",
-        "matthiasnoback/broadway-serialization": "^1.0",
+        "broadway/broadway": "^1.0",
+        "matthiasnoback/broadway-serialization": "^2.0",
         "ramsey/uuid": "^3.0",
         "webmozart/assert": "^1.1",
         "league/commonmark": "^0.15.4",
@@ -23,14 +23,15 @@
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "humbug/humbug": "1.0.0-alpha2",
-        "phpunit/phpunit": "~5.7.0",
+        "humbug/humbug": "1.0.0-rc.0",
+        "phpunit/phpunit": "~6.0",
         "satooshi/php-coveralls": "^1.0",
         "davidbadura/faker-markdown-generator": "^1.0",
         "friendsofphp/php-cs-fixer": "^2.10",
         "phpstan/phpstan": "^0.6.3",
         "vimeo/psalm": "^0.3.19",
-        "codedungeon/phpunit-result-printer": "^0.4.4"
+        "codedungeon/phpunit-result-printer": "^0.4.4",
+        "filp/whoops": "^2.1"
     },
     "autoload": {
         "files": [
@@ -66,6 +67,10 @@
         ],
         "post-update-cmd": [
             "php artisan optimize"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ],
         "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'",
         "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",

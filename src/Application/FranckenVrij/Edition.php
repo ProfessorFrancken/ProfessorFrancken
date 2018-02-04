@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Application\FranckenVrij;
 
-use BroadwaySerialization\Serialization\Serializable;
-use Broadway\ReadModel\ReadModelInterface;
-use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Broadway\ReadModel\Identifiable as ReadModelInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use InvalidArgumentException;

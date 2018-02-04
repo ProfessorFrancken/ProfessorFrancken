@@ -6,7 +6,7 @@ namespace Francken\Tests\Application\Career;
 
 use DateTimeImmutable;
 use Francken\Application\Career\AcademicYear;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 class AcademicYearTest extends TestCase
 {

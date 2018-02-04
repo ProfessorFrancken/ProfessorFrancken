@@ -2,9 +2,9 @@
 
 namespace Francken\Application\Activities;
 
-use BroadwaySerialization\Serialization\Serializable;
-use Broadway\ReadModel\ReadModelInterface;
-use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Broadway\ReadModel\Identifiable as ReadModelInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Activities\Location;

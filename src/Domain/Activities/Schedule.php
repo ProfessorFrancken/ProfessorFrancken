@@ -6,8 +6,8 @@ namespace Francken\Domain\Activities;
 
 use DateTimeImmutable as DateTime;
 use InvalidArgumentException;
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable as SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 
 final class Schedule implements SerializableInterface
 {

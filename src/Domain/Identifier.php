@@ -6,7 +6,7 @@ namespace Francken\Domain;
 
 use Assert\Assertion as Assert;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 
 abstract class Identifier implements SerializableInterface
 {

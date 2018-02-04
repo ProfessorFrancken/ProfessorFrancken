@@ -6,12 +6,12 @@ namespace Francken\Infrastructure\EventSourcing;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Connection;
-use Broadway\EventStore\EventStoreInterface;
-use Broadway\Serializer\SerializerInterface;
+use Broadway\EventStore\EventStore;
+use Broadway\Serializer\Serializer;
 use Broadway\Serializer\SimpleInterfaceSerializer;
-use Broadway\EventHandling\EventBusInterface;
+use Broadway\EventHandling\EventBus;
 use Broadway\EventHandling\SimpleEventBus;
-use Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface;
+use Broadway\EventSourcing\AggregateFactory\AggregateFactory;
 use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
 use BroadwaySerialization\Reconstitution\Reconstitution;
 use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
@@ -28,7 +28,7 @@ class EventSourcingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $eventBus = $this->app->make(EventBusInterface::class);
+        $eventBus = $this->app->make(EventBus::class);
 
         // The projections config contains a list of class names or projectors.
         // Each of these projectors will be subscribed to the given event bus.
@@ -67,17 +67,17 @@ class EventSourcingServiceProvider extends ServiceProvider
     private function registerDefaultEventSourcingBindings()
     {
         $this->app->bind(
-            AggregateFactoryInterface::class,
+            AggregateFactory::class,
             PublicConstructorAggregateFactory::class
         );
 
         $this->app->bind(
-            SerializerInterface::class,
+            Serializer::class,
             SimpleInterfaceSerializer::class
         );
 
         $this->app->singleton(
-            EventBusInterface::class,
+            EventBus::class,
             SimpleEventBus::class
         );
     }
@@ -90,7 +90,7 @@ class EventSourcingServiceProvider extends ServiceProvider
     {
         $this->app->bind(IlluminateEventStore::class, function ($app) {
             $connection = $app->make(Connection::class);
-            $serializer = $app->make(SerializerInterface::class);
+            $serializer = $app->make(Serializer::class);
             $eventStoreTable = $app->config->get('event_sourcing.event_store_table');
 
             return new IlluminateEventStore(
@@ -102,7 +102,7 @@ class EventSourcingServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(
-            EventStoreInterface::class,
+            EventStore::class,
             IlluminateEventStore::class
         );
     }

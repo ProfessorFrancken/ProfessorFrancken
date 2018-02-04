@@ -7,8 +7,8 @@ namespace Francken\Domain\Posts\Events;
 use Francken\Domain\Posts\PostId;
 use Francken\Domain\Posts\PostCategory;
 use Francken\Domain\DomainEvent;
-use Broadway\Serializer\SerializableInterface;
-use BroadwaySerialization\Serialization\Serializable;
+use Broadway\Serializer\Serializable as SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 
 final class PostCategorized implements SerializableInterface
 {

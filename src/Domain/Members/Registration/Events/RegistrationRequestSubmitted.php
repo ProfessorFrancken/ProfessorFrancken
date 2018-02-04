@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Members\Registration\Events;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Serializable;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;

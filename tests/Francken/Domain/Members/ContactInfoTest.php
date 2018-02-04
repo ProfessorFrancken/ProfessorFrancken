@@ -9,7 +9,7 @@ use Francken\Domain\Members\Email;
 use Francken\Domain\Members\Address;
 use Francken\Tests\SetupReconstitution;
 
-class ContactInfoTest extends \PHPUnit_Framework_TestCase
+class ContactInfoTest extends \PHPUnit\Framework\TestCase
 {
     use SetupReconstitution;
 

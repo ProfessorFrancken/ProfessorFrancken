@@ -10,7 +10,7 @@ use BroadwaySerialization\Reconstitution\Reconstitution;
 use Doctrine\Instantiator\Instantiator;
 use Francken\Application\ReadModelNotFound;
 use Francken\Application\ReadModelRepository;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 abstract class RepositoryTestCase extends TestCase
 {
@@ -169,7 +169,14 @@ abstract class RepositoryTestCase extends TestCase
     public function removing_unknown_models_is_done_without_throwing()
     {
         $repo = $this->createRepository();
-        $repo->remove('nonexisting');
+        $model = $this->createReadModel('42', 'First', 'Second');
+
+        $repo->save($model);
+        $repo->remove('42');
+        $repo->remove('42');
+
+        $this->expectException(ReadModelNotFound::class);
+        $repo->find('42');
     }
 
     /** @test */

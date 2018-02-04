@@ -6,7 +6,7 @@ namespace Tests\Francken\Domain\Members;
 
 use Francken\Domain\Members\Address;
 
-class AddressTest extends \PHPUnit_Framework_TestCase
+class AddressTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
     public function an_address_consists_of_a_city_a_postal_code_and_street_naeme_with_a_street_number()

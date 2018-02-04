@@ -6,7 +6,7 @@ namespace Tests\Francken\Domain\Boards;
 
 use DateTimeImmutable;
 use Francken\Domain\Boards\BoardRepository;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 final class BoardRepositoryTest extends TestCase
 {

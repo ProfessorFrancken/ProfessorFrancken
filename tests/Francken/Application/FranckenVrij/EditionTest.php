@@ -53,12 +53,15 @@ class EditionTest extends TestCase
             new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
             new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
         );
+
+        $this->assertEquals(1, $edition->volume());
+        $this->assertEquals(1, $edition->edition());
     }
 
     function editionProvider() : array
     {
         return [
-            [1, 1],
+            [1, 1, false],
             [-1, 1, true],
             [0, 1, true],
             [1, 0, true],

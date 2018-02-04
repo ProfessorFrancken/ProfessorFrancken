@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Posts\PostId;
 
-use BroadwaySerialization\Serialization\Serializable;
-use Broadway\ReadModel\ReadModelInterface;
-use Broadway\Serializer\SerializableInterface;
+use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Broadway\ReadModel\Identifiable as ReadModelInterface;
+use Broadway\Serializer\Serializable as SerializableInterface;
 
 final class PostList implements ReadModelInterface, SerializableInterface
 {

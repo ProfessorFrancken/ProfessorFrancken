@@ -8,7 +8,7 @@ use Francken\Application\FranckenVrij\Edition;
 use Francken\Application\FranckenVrij\Volume;
 use Francken\Domain\FranckenVrij\EditionId;
 use Francken\Domain\Url;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 class VolumeTest extends TestCase
 {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application;
 
-use Broadway\Serializer\SerializableInterface;
+use Broadway\Serializer\Serializable;
 use Francken\Tests\SetupReconstitution;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 abstract class ReadModelTestCase extends TestCase
 {
@@ -15,7 +15,7 @@ abstract class ReadModelTestCase extends TestCase
     /** @test */
     public function its_serializable()
     {
-        $this->assertInstanceOf(SerializableInterface::class, $this->createInstance());
+        $this->assertInstanceOf(Serializable::class, $this->createInstance());
     }
 
     /** @test */
@@ -27,7 +27,7 @@ abstract class ReadModelTestCase extends TestCase
 
     /**
      * We don't give a return typehint here so that not all of our tests are
-     * forced to include the Broadway\Serializer\SerializableInterface
+     * forced to include the Broadway\Serializer\Serializable
      * @return SerializableInterface
      */
     abstract protected function createInstance();
