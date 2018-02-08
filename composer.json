@@ -4,7 +4,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.5.*",
+        "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "laravel/browser-kit-testing": "^3.0",
         "laravelcollective/html": "^5.4.0",
@@ -15,23 +15,21 @@
         "league/commonmark": "^0.15.4",
         "fale/isbn": "^3.0",
         "league/period": "^3.3",
-        "fideloper/proxy": "^3.3",
+        "fideloper/proxy": "^4.0",
         "league/html-to-markdown": "^4.4",
         "webuni/commonmark-attributes-extension": "^0.5.0",
         "webuni/commonmark-table-extension": "^0.6.1"
     },
     "require-dev": {
+        "codedungeon/phpunit-result-printer": "^0.4.4",
+        "davidbadura/faker-markdown-generator": "^1.0",
+        "filp/whoops": "^2.1",
+        "friendsofphp/php-cs-fixer": "^2.10",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "humbug/humbug": "1.0.0-rc.0",
+        "nunomaduro/collision": "^1.1",
         "phpunit/phpunit": "~6.0",
-        "satooshi/php-coveralls": "^1.0",
-        "davidbadura/faker-markdown-generator": "^1.0",
-        "friendsofphp/php-cs-fixer": "^2.10",
-        "phpstan/phpstan": "^0.6.3",
-        "vimeo/psalm": "^0.3.19",
-        "codedungeon/phpunit-result-printer": "^0.4.4",
-        "filp/whoops": "^2.1"
+        "satooshi/php-coveralls": "^1.0"
     },
     "autoload": {
         "files": [
@@ -50,23 +48,20 @@
             "Francken\\Tests\\": "tests/Francken"
         }
     },
+    "extra": {
+        "laravel" : {
+            "dont-discover": [
+
+            ]
+        }
+
+    },
     "scripts": {
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "php artisan key:generate"
-        ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
-        ],
-        "pre-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan clear-compiled"
-        ],
-        "post-update-cmd": [
-            "php artisan optimize"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -80,7 +75,9 @@
         "test": "composer run cs && composer run units && composer run features"
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
     },
     "minimum-stability": "dev",
     "prefer-stable" : true
