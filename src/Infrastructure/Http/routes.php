@@ -24,6 +24,30 @@ Route::get('/books', function () {
     return redirect('/study/books');
 });
 
+Route::group(['prefix' => 'api', 'middleware' => ['api']], function () {
+    Route::get('/members', function() {
+
+        // $db = DB::connection('francken-legacy');
+        // $db->table('producten')->join('producten_extras', 'producten.id', 'producten_extras.product_id')->get();
+
+        // file_put_contents(database_path('producten.json'), json_encode($producten));
+
+        $db = DB::connection('francken-legacy');
+        $selects = ['id', 'voornaam', 'initialen', 'tussenvoegsel', 'achternaam', 'geboortedatum', 'prominent', 'kleur', 'afbeelding', 'bijnaam', 'button_width', 'button_height'];
+        $members = $db->table('leden')->leftJoin('leden_extras', 'leden.id', 'leden_extras.lid_id')->select($selects)->where('is_lid', 1)->where('streeplijst', 'Afschrijven')->where('machtiging', 1)->whereNull('einde_lidmaatschap')->whereNull('deleted_at')->get();
+
+        return collect(['members' => $members]);
+
+        // file_put_contents(database_path(leden.json'), json_encode($leden));
+    });
+
+    Route::get('products', function () {
+        $db = DB::connection('francken-legacy');
+        $products = $db->table('producten')->leftJoin('producten_extras', 'producten.id', 'producten_extras.product_id')->get();
+        return collect(['products' => $products]);
+    });
+});
+
 
 Route::group(['middleware' => ['web', 'bindings']], function () {
 
