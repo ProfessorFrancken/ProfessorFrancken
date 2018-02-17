@@ -43,8 +43,15 @@ Route::group(['prefix' => 'api', 'middleware' => ['api']], function () {
 
     Route::get('products', function () {
         $db = DB::connection('francken-legacy');
-        $products = $db->table('producten')->leftJoin('producten_extras', 'producten.id', 'producten_extras.product_id')->get();
+        $products = $db->table('producten')->where('beschikbaar', 1)->leftJoin('producten_extras', 'producten.id', 'producten_extras.product_id')->get();
         return collect(['products' => $products]);
+    });
+
+    Route::post('orders', function () {
+        $member = request()->get('member');
+        $order = request()->get('order');
+
+        return [$member, $order];
     });
 });
 
