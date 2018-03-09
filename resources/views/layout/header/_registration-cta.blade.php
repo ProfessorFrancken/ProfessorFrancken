@@ -5,11 +5,11 @@
 
     {{-- registration call to action --}}
     <div class="row align-items-center h-100">
-        <div class="registration-cta__body col-md-4 offset-md-5 align-self-center">
+        <div class="registration-cta__body col-md-5 offset-md-4 align-self-center">
             <h1>
                 The study association for
                 <strong>
-                    applied physics
+                    engineering physics
                 </strong>
                 in Groningen
             </h1>

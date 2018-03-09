@@ -12,14 +12,15 @@
 
             <p>
                 <em>
-                    T.F.V. ‘Professor Francken’ is the study association for Applied Physics, connected to the University of Groningen.
+                    T.F.V. ‘Professor Francken’ is the study association for Engineering Physics, connected to the University of Groningen.
                     It is named after Groningen’s first professor of Applied Physics and is for students and staff of the applied physics departments.
                 </em>
             </p>
+
             <p>
-                It has over 700 members and organizes, among other, field trips in the Netherlands and an annual symposium and a foreign excursion.
-                Various activities, including the introductory activities for first-year students and the Bèta-bedrijvendagen (a career event for science students), are organised in partnership with sister associations.
-                Membership is a must for students with a technical orientation.
+                It has over 900 members and organizes, among other, field trips in the Netherlands, an annual symposium and a foreign excursion.
+                Various activities, including the introductory activities for first-year students and the Beta Business Days (a career event for science students), are organised in partnership with sister associations.
+                Membership is a must for physics students with a technical orientation.
             </p>
 
             <div class="text-right mt-4">
