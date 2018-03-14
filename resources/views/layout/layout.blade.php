@@ -7,7 +7,7 @@
 
         @include('layout._seo')
 
-        @unless(config('env') == 'testing')
+        @unless(config('env') != 'testing')
             @if (request()->exists('red'))
                 <link rel="stylesheet" href="{{ mix('/dist/css/red.css') }}">
             @elseif (request()->exists('slef'))

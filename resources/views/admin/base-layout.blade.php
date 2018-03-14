@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         @include('layout._seo')
-
-        <link rel="stylesheet" href="{{ mix('/dist/css/app.css') }}">
+        @unless(config('env') != 'testing')
+            <link rel="stylesheet" href="{{ mix('/dist/css/app.css') }}">
+        @endunless
         <link href="https://v4-alpha.getbootstrap.com/assets/css/docs.min.css" rel="stylesheet"/>
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
