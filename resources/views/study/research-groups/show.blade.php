@@ -1,6 +1,6 @@
 @extends('layout.two-column-layout')
 @section('title', $group['title'] . " - Research Groups - T.F.V. 'Professor Francken'")
-@section('header-image-url', 'http://www.rug.nl' . $group['photo'])
+@section('header-image-url', 'https://www.rug.nl' . $group['photo'])
 
 @section('content')
     <div class="section-header d-inline-block mt-4 h1">
@@ -17,7 +17,7 @@
     <div class="row">
 	      @foreach($group['groups'] as $unit)
 		        <div class="col-md-6 mt-3">
-			          <img src="{{ image("http://www.rug.nl" . $unit['foto'], ['width' => 283, 'height' => 142]) }}" width="283" height="142" class="rounded">
+			          <img src="{{ image("https://www.rug.nl" . $unit['foto'], ['width' => 283, 'height' => 142]) }}" width="283" height="142" class="rounded">
                         <h2> {{ $unit['group'] }} Group</h2>
 			          {{ $unit['title'] }}
 			          <br>

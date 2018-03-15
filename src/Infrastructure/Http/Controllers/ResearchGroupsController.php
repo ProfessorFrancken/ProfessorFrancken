@@ -20,8 +20,8 @@ final class ResearchGroupsController
                     [
                         'group' => 'Ye',
                         'title' => 'Device Physics of Complex Materials',
-                        'contact' => 'http://www.rug.nl/staff/j.ye/',
-                        'link' => 'http://www.rug.nl/research/zernike/device-physics-of-complex-materials/ye-group/',
+                        'contact' => 'https://www.rug.nl/staff/j.ye/',
+                        'link' => 'https://www.rug.nl/research/zernike/device-physics-of-complex-materials/ye-group/',
                         'foto' => '/research/zernike/people/Ye-1-WEB.jpg'
                     ]
                 ]
@@ -34,8 +34,8 @@ final class ResearchGroupsController
                     [
                         'group' => 'De Hosson',
                         'title' => 'Materials Science',
-                        'contact' => 'http://www.rug.nl/staff/j.t.m.de.hosson/',
-                        'link' => 'http://www.rug.nl/research/zernike/materials-science/de-hosson-group/',
+                        'contact' => 'https://www.rug.nl/staff/j.t.m.de.hosson/',
+                        'link' => 'https://www.rug.nl/research/zernike/materials-science/de-hosson-group/',
                         'foto' => '/research/zernike/people/DeHosson-1-WEB.jpg'
                     ]
                 ]
@@ -48,15 +48,15 @@ final class ResearchGroupsController
                     [
                         'group' => 'Van der Giessen',
                         'title' => 'Micromechanics of Materials',
-                        'contact' => 'http://www.rug.nl/staff/e.van.der.giessen/',
-                        'link' => 'http://www.rug.nl/research/zernike/micromechanics/van-der-giessen-group/',
+                        'contact' => 'https://www.rug.nl/staff/e.van.der.giessen/',
+                        'link' => 'https://www.rug.nl/research/zernike/micromechanics/van-der-giessen-group/',
                         'foto' => '/research/zernike/people/VanderGiessen-1-WEB.jpg'
                     ],
                     [
                         'group' => 'Onck',
                         'title' => 'Micromechanics of Cellular and Active Materials',
-                        'contact' => 'http://www.rug.nl/staff/p.r.onck/',
-                        'link' => 'http://www.rug.nl/research/zernike/micromechanics/onck-group/',
+                        'contact' => 'https://www.rug.nl/staff/p.r.onck/',
+                        'link' => 'https://www.rug.nl/research/zernike/micromechanics/onck-group/',
                         'foto' => '/research/zernike/people/Onck-1.jpg'
                     ]
                 ]
@@ -70,15 +70,15 @@ final class ResearchGroupsController
                     [
                         'group' => 'Kooi',
                         'title' => 'Nanostructured Materials and Interfaces',
-                        'contact' => 'http://www.rug.nl/staff/b.j.kooi/',
-                        'link' => 'http://www.rug.nl/research/zernike/nanostructured-materials-and-interfaces/kooi-group/',
+                        'contact' => 'https://www.rug.nl/staff/b.j.kooi/',
+                        'link' => 'https://www.rug.nl/research/zernike/nanostructured-materials-and-interfaces/kooi-group/',
                         'foto' => '/research/zernike/people/Kooi-1-WEB.jpg'
                     ],
                     [
                         'group' => 'Palasantzas',
                         'title' => 'Surface Interactions and Nanostructures',
-                        'contact' => 'http://www.rug.nl/staff/g.palasantzas/',
-                        'link' => 'http://www.rug.nl/research/zernike/nanostructured-materials-and-interfaces/palasantzas-group/',
+                        'contact' => 'https://www.rug.nl/staff/g.palasantzas/',
+                        'link' => 'https://www.rug.nl/research/zernike/nanostructured-materials-and-interfaces/palasantzas-group/',
                         'foto' => '/research/zernike/people/Palasantzas-1-WEB.jpg'
                     ]
                 ]
@@ -92,16 +92,16 @@ final class ResearchGroupsController
                     [
                         'group' => 'Loi',
                         'title' => 'Materials for Solar Cell & Microelectronics Applications',
-                        'contact' => 'http://www.rug.nl/staff/m.a.loi/',
-                        'link' => 'http://www.rug.nl/research/zernike/photophysics-and-opto-electronics/loi-group/',
+                        'contact' => 'https://www.rug.nl/staff/m.a.loi/',
+                        'link' => 'https://www.rug.nl/research/zernike/photophysics-and-opto-electronics/loi-group/',
                         'foto' => '/research/zernike/photophysics-and-opto-electronics/loi-group/images/employees/Maria_Loi_2.jpg'
                     ],
                     [
                         'group' => 'Koster',
                         'group-title' => 'dr.',
                         'title' => 'Device Physics of Organic Semiconductors',
-                        'contact' => 'http://www.rug.nl/staff/l.j.a.koster/',
-                        'link' => 'http://www.rug.nl/research/zernike/photophysics-and-opto-electronics/koster-group/',
+                        'contact' => 'https://www.rug.nl/staff/l.j.a.koster/',
+                        'link' => 'https://www.rug.nl/research/zernike/photophysics-and-opto-electronics/koster-group/',
                         'foto' => '/research/zernike/photophysics-and-opto-electronics/images/Jan_Anton_Koster_2.jpg'
                     ]
                 ]
@@ -116,24 +116,24 @@ final class ResearchGroupsController
                     [
                         'group' => 'van Wees',
                         'title' => 'Magnon Spintronics in Magnetic Insulators',
-                        'contact' => 'http://www.rug.nl/staff/b.j.van.wees/',
-                        'link' => 'http://www.rug.nl/research/zernike/physics-of-nanodevices/research/magnonspintronics',
+                        'contact' => 'https://www.rug.nl/staff/b.j.van.wees/',
+                        'link' => 'https://www.rug.nl/research/zernike/physics-of-nanodevices/research/magnonspintronics',
                         'foto' => '/research/zernike/people/VanWees-1-WEB.jpg'
                     ],
 
                     [
                         'group' => 'van der Wal',
                         'title' => 'Physics of Quantum Devices',
-                        'contact' => 'http://www.rug.nl/staff/c.h.van.der.wal/',
-                        'link' => 'http://www.rug.nl/research/physics-of-nanodevices/research/quantum-devices',
+                        'contact' => 'https://www.rug.nl/staff/c.h.van.der.wal/',
+                        'link' => 'https://www.rug.nl/research/physics-of-nanodevices/research/quantum-devices',
                         'foto' => '/research/zernike/people/VanDerWal-1-WEB.jpg'
                     ],
 
                     [
                         'group' => 'Banerjee',
                         'title' => 'Spintronics in Functional Materials',
-                        'contact' => 'http://www.rug.nl/staff/t.banerjee/',
-                        'link' => 'http://www.rug.nl/research/physics-of-nanodevices/research/spin-transport',
+                        'contact' => 'https://www.rug.nl/staff/t.banerjee/',
+                        'link' => 'https://www.rug.nl/research/physics-of-nanodevices/research/spin-transport',
                         'foto' => '/research/zernike/people/Banjeree-1-WEB.jpg'
                     ]
                 ]
@@ -150,16 +150,16 @@ The research has a strong instrumentation development component. For our experim
                     [
                         'group' => 'Hoekstra',
                         'title' => 'Experimental Atomic Physics',
-                        'contact' => 'http://www.rug.nl/staff/r.a.hoekstra/',
-                        'link' => 'http://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/hoekstra-group/',
+                        'contact' => 'https://www.rug.nl/staff/r.a.hoekstra/',
+                        'link' => 'https://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/hoekstra-group/',
                         'foto' => '/research/zernike/people/hoekstra-1-web-new.jpg'
                     ],
 
                     [
                         'group' => 'Schlathölter',
                         'title' => 'Gas Phase Biomolecules and Energetic Interactions',
-                        'contact' => 'http://www.rug.nl/staff/t.a.schlatholter/',
-                        'link' => 'http://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/schlatholter-group/',
+                        'contact' => 'https://www.rug.nl/staff/t.a.schlatholter/',
+                        'link' => 'https://www.rug.nl/research/zernike/quantum-interactions-and-structural-dynamics/schlatholter-group/',
                         'foto' => '/research/zernike/people/schlatholter-1-web-new.jpg'
                     ]
                 ]
@@ -174,16 +174,16 @@ The research has a strong instrumentation development component. For our experim
                     [
                         'group' => 'Rudolf',
                         'title' => 'Surfaces and Thin Films',
-                        'contact' => 'http://www.rug.nl/staff/p.rudolf/',
-                        'link' => 'http://www.rug.nl/research/zernike/surfaces-and-thin-films/rudolf-group/',
+                        'contact' => 'https://www.rug.nl/staff/p.rudolf/',
+                        'link' => 'https://www.rug.nl/research/zernike/surfaces-and-thin-films/rudolf-group/',
                         'foto' => '/research/zernike/people/rudolf-1-web-new.jpg'
                     ],
 
                     [
                         'group' => 'Stöhr',
                         'title' => 'Surface Science',
-                        'contact' => 'http://www.rug.nl/staff/m.a.stohr/',
-                        'link' => 'http://www.rug.nl/research/zernike/surfaces-and-thin-films/stohr-group/',
+                        'contact' => 'https://www.rug.nl/staff/m.a.stohr/',
+                        'link' => 'https://www.rug.nl/research/zernike/surfaces-and-thin-films/stohr-group/',
                         'foto' => '/research/zernike/people/stoehr-1-web-new.jpg'
                     ]
                 ]
