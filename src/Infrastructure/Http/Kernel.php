@@ -17,6 +17,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \Fideloper\Proxy\TrustProxies::class,
         \Francken\Infrastructure\Http\Middleware\ForceHttps::class,
         \Francken\Infrastructure\Http\Middleware\EnableCORS::class
@@ -53,6 +54,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Francken\Infrastructure\Http\Middleware\RedirectIfAuthenticated::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-
+        'plus-one' => \Francken\PlusOne\Http\Middleware\AuthenticatePlusOne::class
     ];
 }
