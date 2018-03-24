@@ -31,7 +31,7 @@
             <a href="/study/research-groups">
                 <img
                     alt="Research groups associated to applied physics at the University of Groningen"
-                    src="{{ image('http://www.rug.nl/research/zernike/images/cleanroom2_2.jpg', ['height' => 150, 'width' => 150]) }}"
+                    src="{{ image('https://www.rug.nl/research/zernike/images/cleanroom2_2.jpg', ['height' => 150, 'width' => 150]) }}"
                     class="mb-3 rounded-circle"
                 />
 
