@@ -23,10 +23,10 @@ final class ProductsController
                   ->get()
                   ->map(function ($product) {
                       if ($product->afbeelding !== null) {
-                          $product->afbeelding = "https:/old.professorfrancken.nl/database/streep/afbeeldingen/{$product->afbeelding}";
+                          $product->afbeelding = "https://old.professorfrancken.nl/database/streep/afbeeldingen/{$product->afbeelding}";
                       }
                       if ($product->splash_afbeelding !== null) {
-                          $product->splash_afbeelding = "https:/old.professorfrancken.nl/database/streep/afbeeldingen/{$product->splash_afbeelding}";
+                          $product->splash_afbeelding = "https://old.professorfrancken.nl/database/streep/afbeeldingen/{$product->splash_afbeelding}";
                       }
                       return $product;
                   });

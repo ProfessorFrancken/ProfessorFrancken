@@ -36,7 +36,7 @@ final class MembersController
                  ->get()
                  ->map(function ($lid) {
                      if ($lid->afbeelding !== null) {
-                         $lid->afbeelding = "https:/old.professorfrancken.nl/database/streep/afbeeldingen/{$lid->afbeelding}";
+                         $lid->afbeelding = "https://old.professorfrancken.nl/database/streep/afbeeldingen/{$lid->afbeelding}";
                      }
                      return $lid;
                  });
