@@ -38,6 +38,7 @@ final class ServiceProvider extends RouteServiceProvider
                 $router->get('committees', 'CommitteesController@index');
                 $router->get('boards', 'BoardsController@index');
 
+                $router->get('orders', 'OrdersController@index');
                 $router->post('orders', 'OrdersController@post');
             });
         });
