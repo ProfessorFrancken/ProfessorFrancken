@@ -8,7 +8,7 @@ final class JasController
 {
     public function store()
     {
-        $id = request()->input('uuid');
+        $id = request()->input('id');
         $name = request()->input('name');
         $payload = request()->input('payload');
         $date = request()->input('date');
