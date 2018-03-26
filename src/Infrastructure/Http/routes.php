@@ -19,8 +19,15 @@ Route::get('/database/streep/afbeeldingen/{url}', function ($url) {
 })->where('url', '.*');
 
 Route::post('store-jas-events', 'JasController@store');
+Route::get('jas-events', function () {
+    return DB::table('jas_events')->get();
+});
 
 Route::get('/books', function () {
+    return redirect('/study/books');
+});
+
+Route::get('/boeken', function () {
     return redirect('/study/books');
 });
 
