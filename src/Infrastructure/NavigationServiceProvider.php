@@ -53,6 +53,18 @@ final class NavigationServiceProvider extends ServiceProvider
                 'title' => 'Photos',
                 'subItems' => [],
                 'icon' => 'camera',
+            ],
+            [
+                'url' => 'https://slef.nl',
+                'title' => 'Buixie',
+                'subItems' => [],
+                'icon' => 'map',
+            ],
+            [
+                'url' => 'https://franckensymposium.nl',
+                'title' => 'Symposium',
+                'subItems' => [],
+                'icon' => 'react fab',
             ]
         ];
 
