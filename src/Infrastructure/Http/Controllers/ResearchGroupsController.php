@@ -217,6 +217,29 @@ The research has a strong instrumentation development component. For our experim
                 ]
             ],
             [
+                'title' => 'Solid State Materials for Electronics',
+                'description' => 'We investigate the synthesis, crystal structure, and electronic properties of compounds with interesting physical phenomena. We are in particular interested in electrical conduction and dielectric properties of transition metal oxides, and of molecular organic conductors. Both classes of materials not only display a wealth of exciting properties, such as superconductivity, magnetism and ferroelectricity, but are also of relevance for electronic applications.',
+                'photo' => 'https://www.rug.nl/research/zernike/research/topic_ssme.png',
+                'groups' => [
+
+                    [
+                        'group' => 'Palstra',
+                        'title' => 'Solid State Chemistry',
+                        'contact' => 'https://www.rug.nl/research/zernike/ssme/palstra-group/contact',
+                        'link' => 'https://www.rug.nl/research/zernike/ssme/palstra-group/',
+                        'foto' => 'https://www.rug.nl/about-us/images_new/topicpage/onderzoek/science-plaatjes/onderzoeker-pc.jpg'
+                    ],
+
+                    [
+                        'group' => 'Blake',
+                        'title' => 'Blake Group',
+                        'contact' => 'https://www.rug.nl/research/zernike/ssme/blake-group/contact',
+                        'link' => 'https://www.rug.nl/research/zernike/ssme/blake-group/',
+                        'foto' => 'https://www.rug.nl/research/zernike/solid-state-materials-for-electronics/hdr_blake.png'
+                    ]
+                ]
+            ],
+            [
                 'title' => 'Surfaces and Thin Films',
                 'description' => 'Our mission is to carry out a competitive research program in the field of Surface and Interface Physics with particular emphasis on the preparation and analysis of crystalline organic thin films, functional molecules as well as molecular motors and switches on surfaces, and nanocomposites, while training young researchers at the master, PhD and postdoctoral level in state-of-the-art surface analysis techniques and research in the field of Surface and Interface Physics.',
                 'photo' => 'https://www.rug.nl/research/zernike/research/topic_stf.png',
