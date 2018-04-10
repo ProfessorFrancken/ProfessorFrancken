@@ -8,7 +8,7 @@
   </h1>
 
   <p>
-     
+
   </p>
 
   <h2>Zernike Institute for Advanced Materials</h2>
@@ -44,7 +44,7 @@
                         @if (isset($group['photo']))
                             <img
                                 class="rounded d-flex ml-3"
-                                src="{{ image("https://www.rug.nl" . $group['photo'], ['width' => 75, 'height' => 75]) }}"
+                                src="{{ image($group['photo'], ['width' => 75, 'height' => 75]) }}"
                                 alt="{{ $group['title'] }}'s logo"
                                 style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
                             >
