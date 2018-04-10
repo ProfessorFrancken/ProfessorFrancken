@@ -56,6 +56,6 @@ final class OrdersController
                 ]);
         }
 
-        return response('ok', 201);
+        return response(['create' => 'ok'], 201);
     }
 }
