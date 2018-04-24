@@ -36,6 +36,11 @@ final class OrdersController
 
     public function post()
     {
+        \Log::info(
+            'Buying an order',
+            ['ip' => request()->ip(), 'order' => request()->get('order')]
+        );
+
         $order = request()->get('order');
 
         foreach ($order['products'] as $product) {
