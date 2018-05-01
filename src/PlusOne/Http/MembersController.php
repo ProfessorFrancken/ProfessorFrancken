@@ -5,29 +5,41 @@ declare(strict_types=1);
 namespace Francken\PlusOne\Http;
 
 use Illuminate\Database\DatabaseManager;
+use DB;
 
 final class MembersController
 {
     private $members;
+    private $db;
 
     public function __construct(DatabaseManager $db)
     {
+        $this->db = $db->connection('francken-legacy');
         $this->members = $db->connection('francken-legacy')
                        ->table('leden');
     }
 
     public function index()
     {
+        $selects = ['id', 'voornaam', 'initialen', 'tussenvoegsel', 'achternaam', 'geboortedatum', 'prominent', 'kleur', 'afbeelding', 'bijnaam', 'button_width', 'button_height', 'transacties.latest_purchase_at'];
 
-        // $db = DB::connection('francken-legacy');
-        // $db->table('producten')->join('producten_extras', 'producten.id', 'producten_extras.product_id')->get();
-
-        // file_put_contents(database_path('producten.json'), json_encode($producten));
-
-        $selects = ['id', 'voornaam', 'initialen', 'tussenvoegsel', 'achternaam', 'geboortedatum', 'prominent', 'kleur', 'afbeelding', 'bijnaam', 'button_width', 'button_height'];
+        // For each member we want to find the date of their latest purchase,
+        // so that we can give a warning when someone wants to make an order
+        // on a member who has not purchased anything lately
+        $latestPurchasePerMember = $this->db->table('transacties')
+                                 ->select(['lid_id', DB::raw('MAX(tijd) as latest_purchase_at')])
+                                 ->groupBy('lid_id')
+                                 ->toSql();
 
         $members = $this->members->leftJoin('leden_extras', 'leden.id', 'leden_extras.lid_id')
-                 ->select($selects)->where('is_lid', 1)
+                 ->leftJoin(
+                     DB::raw('(' . $latestPurchasePerMember . ') transacties'),
+                     function ($join) {
+                         return $join->on('leden.id', '=', 'transacties.lid_id');
+                     }
+                 )
+                 ->select($selects)
+                 ->where('is_lid', 1)
                  ->where('streeplijst', 'Afschrijven')
                  ->where('machtiging', 1)
                  ->whereNull('einde_lidmaatschap')
@@ -42,7 +54,5 @@ final class MembersController
                  });
 
         return collect(['members' => $members]);
-
-        // file_put_contents(database_path(leden.json'), json_encode($leden));
     }
 }
