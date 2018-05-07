@@ -11,7 +11,7 @@ class PlusOneFeature extends TestCase
     /** @test */
     function it_retrieves_a_jwt_token_when_autenticating()
     {
-        $this->json('POST', '/api/authenticate', [
+        $this->json('POST', '/api/plus-one/authenticate', [
             'password' => 'hoi',
         ]);
 
@@ -22,7 +22,7 @@ class PlusOneFeature extends TestCase
     /** @test */
     function it_can_buy_an_order()
     {
-        $this->json('POST', '/api/authenticate', [
+        $this->json('POST', '/api/plus-one/authenticate', [
             'password' => 'hoi',
         ]);
         $token = $this->decodeResponseJson()['token'];
