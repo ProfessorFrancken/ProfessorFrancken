@@ -28,7 +28,7 @@ final class ServiceProvider extends RouteServiceProvider
         $router->group([
             'namespace' => $this->namespace,
             'middleware' => ['api'],
-            'prefix' => 'api'
+            'prefix' => 'api/plus-one'
         ], function ($router) {
             $router->post('authenticate', 'AuthenticationController@post');
 
