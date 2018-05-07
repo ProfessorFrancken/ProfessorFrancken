@@ -55,6 +55,8 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
     Route::group(['prefix' => 'association'], function() {
         Route::get('committees', 'CommitteesController@index');
         Route::get('committees/{committee}', 'CommitteesController@show');
+
+        Route::get('boards/birthdays', '\Francken\Association\Boards\BirthdaysController@index');
     });
 
     Route::group(['prefix' => 'career'], function() {
