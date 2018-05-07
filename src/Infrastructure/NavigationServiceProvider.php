@@ -54,12 +54,6 @@ final class NavigationServiceProvider extends ServiceProvider
                 'subItems' => [],
                 'icon' => 'camera',
             ],
-            [
-                'url' => 'https://franckensymposium.nl',
-                'title' => 'Symposium',
-                'subItems' => [],
-                'icon' => 'react fab',
-            ]
         ];
 
         View::composer('layout._header', function ($view) use ($items) {
