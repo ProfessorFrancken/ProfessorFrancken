@@ -26,6 +26,9 @@ final class BirthdaysController
                  ->where('commissie_lid.commissie_id', 14)
                  ->orderByRaw('DAYOFYEAR(leden.geboortedatum)')
                  ->get()
+                 ->filter(function ($member) {
+                     return $member->geboortedatum !== null;
+                 })
                  ->map(function ($member) {
                      return [
                          'name' => implode(
