@@ -54,8 +54,8 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::group(['prefix' => 'association'], function() {
         Route::get('activities', '\Francken\Association\Activities\Http\ActivitiesController@index');
-        Route::get('activities/{ayear}/{month}', '\Francken\Association\Activities\Http\ActivitiesPerMonthController@index');
-        Route::get('activities/{ayear}/{month}/{activity}', '\Francken\Association\Activities\Http\ActivitiesController@show');
+        Route::get('activities/{year}/{month}', '\Francken\Association\Activities\Http\ActivitiesPerMonthController@index');
+        Route::get('activities/{year}/{month}/{activity}', '\Francken\Association\Activities\Http\ActivitiesController@show');
 
 
         Route::get('committees', 'CommitteesController@index');
@@ -70,7 +70,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('companies', 'CompaniesController@index');
         Route::get('companies/{company}', 'CompaniesController@show');
         Route::get('events', 'CareerController@redirectEvents');
-        Route::get('events/{year}', 'CareerController@events');
+        Route::get('events/{academic_year}', 'CareerController@events');
     });
 
     Route::group(['prefix' => 'my-francken', 'middleware' => ['auth']], function() {
@@ -81,7 +81,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('committees', 'MyFranckenController@committees');
         Route::get('activities', 'MyFranckenController@activities');
         Route::get('finances', 'MyFranckenController@finances');
-        Route::get('finances/{ayear}/{month}', 'MyFranckenController@financesInMonth');
+        Route::get('finances/{year}/{month}', 'MyFranckenController@financesInMonth');
         Route::get('adtcievements', 'MyFranckenController@adtcievements');
     });
 
