@@ -146,6 +146,7 @@ return [
         Francken\Infrastructure\ViewServiceProvider::class,
 
         Francken\Association\News\ServiceProvider::class,
+        Francken\Association\Activities\ServiceProvider::class,
 
         Francken\PlusOne\ServiceProvider::class,
         Francken\Infrastructure\RouteServiceProvider::class,

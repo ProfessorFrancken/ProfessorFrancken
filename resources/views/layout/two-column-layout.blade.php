@@ -8,9 +8,7 @@
             </div>
             <div class="col-lg-5">
                 <div class="agenda-wrapper">
-                    @section('aside')
-                        @include("homepage._agenda")
-                    @show
+                    @yield('aside')
                 </div>
             </div>
         </div>

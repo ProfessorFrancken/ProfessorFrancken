@@ -53,6 +53,11 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
     });
 
     Route::group(['prefix' => 'association'], function() {
+        Route::get('activities', '\Francken\Association\Activities\Http\ActivitiesController@index');
+        Route::get('activities/{ayear}/{month}', '\Francken\Association\Activities\Http\ActivitiesPerMonthController@index');
+        Route::get('activities/{ayear}/{month}/{activity}', '\Francken\Association\Activities\Http\ActivitiesController@show');
+
+
         Route::get('committees', 'CommitteesController@index');
         Route::get('committees/{committee}', 'CommitteesController@show');
 

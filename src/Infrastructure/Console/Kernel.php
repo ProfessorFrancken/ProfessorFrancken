@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\Console;
 
 use Francken\Association\News\Xml\ImportIntoEloquent;
+use Francken\Association\Activities\FetchLatestFranckenIcal;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +17,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        ImportIntoEloquent::class
+        ImportIntoEloquent::class,
+        FetchLatestFranckenIcal::class,
     ];
 
     /**

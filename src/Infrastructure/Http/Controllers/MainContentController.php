@@ -12,8 +12,16 @@ class MainContentController extends Controller
 {
     public function index(NewsRepository $news)
     {
-        return view('homepage/homepage')
-            ->with('news', $news->recent(3));
+        $today = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Amsterdam'));
+
+        $activities = new  \Francken\Association\Activities\ActivitiesRepository(
+            fopen(storage_path('app/calendar.ics'),'r')
+        );
+
+        return view('homepage/homepage', [
+            'news' => $news->recent(3),
+            'activities' => $activities->after($today, 5)
+        ]);
     }
 
     public function about()
