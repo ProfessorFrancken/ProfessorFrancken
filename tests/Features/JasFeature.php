@@ -19,7 +19,7 @@ class JasFeature extends TestCase
     {
         $id = '8741e80e-153f-4254-b13e-21ac8ac34948';
         $this->json('POST', '/store-jas-events', [
-            'uuid' => $id,
+            'id' => $id,
             'name' => 'GameStarted',
             'date' => 1503301742819,
             'payload' => [
