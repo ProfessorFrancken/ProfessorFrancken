@@ -13,11 +13,9 @@ final class ActivitiesPerMonthController
 {
     private $activities;
 
-    public function __construct()
+    public function __construct(ActivitiesRepository $activities)
     {
-        $this->activities = new  ActivitiesRepository(
-            fopen(storage_path('app/calendar.ics'),'r')
-        );
+        $this->activities = $activities;
     }
 
     public function index(int $year, int $month)

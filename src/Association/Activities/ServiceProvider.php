@@ -29,6 +29,15 @@ final class ServiceProvider extends RouteServiceProvider
             'association.activities.index',
             ActivitiesSidebarComposer::class
         );
+
+        $this->app->bind(
+            ActivitiesRepository::class,
+            function ($app) {
+                return new ActivitiesRepository(
+                    fopen(storage_path('app/calendar.ics'),'r')
+                );
+            }
+        );
     }
 
     /**

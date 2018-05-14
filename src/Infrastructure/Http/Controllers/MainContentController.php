@@ -7,15 +7,14 @@ namespace Francken\Infrastructure\Http\Controllers;
 use DB;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Association\News\Repository as NewsRepository;
+use Francken\Association\Activities\ActivitiesRepository;
 
 class MainContentController extends Controller
 {
-    public function index(NewsRepository $news)
+    public function index(NewsRepository $news, ActivitiesRepository $activities)
     {
-        $today = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Amsterdam'));
-
-        $activities = new  \Francken\Association\Activities\ActivitiesRepository(
-            fopen(storage_path('app/calendar.ics'),'r')
+        $today = new \DateTimeImmutable(
+            'now', new \DateTimeZone('Europe/Amsterdam')
         );
 
         return view('homepage/homepage', [
