@@ -42,7 +42,7 @@ class PlusOneFeature extends TestCase
             ]
         ];
 
-        $this->post('/api/orders', $order, ['Authorization' => 'Bearer ' . $token]);
+        $this->post('/api/plus-one/orders', $order, ['Authorization' => 'Bearer ' . $token]);
 
         $this->assertResponseStatus(201);
     }
