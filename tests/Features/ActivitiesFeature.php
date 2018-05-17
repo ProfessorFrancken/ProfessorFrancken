@@ -5,20 +5,30 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Francken\Association\Activities\ActivitiesSidebarComposer;
+use Francken\Association\Activities\ActivitiesRepository;
 
 class ActivitiesFeature extends TestCase
 {
-    /** @setup */
-    public function setup_activities_repository()
+    private $start;
+
+    public function setUp()
     {
+        parent::setUp();
+
+        $tomorrow = new \DateTimeImmutable('tomorrow +1day');
+        $this->start = $tomorrow;
+        $start = $tomorrow->format('Ymd');
+        $end = $tomorrow->format('Ymd');
+
         $this->app->bind(
             ActivitiesRepository::class,
-            function ($app) {
+            function ($app) use ($start, $end) {
+
                 $data = <<<CALENDAR
 BEGIN:VCALENDAR
 BEGIN:VEVENT
-DTSTART:20180516T100000Z
-DTEND:20180516T110000Z
+DTSTART:{$start}
+DTEND:{$end}
 DTSTAMP:20180503T094905Z
 UID:1id4gr64bsncqjk5dgbnodecoo@google.com
 ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Activi
@@ -33,6 +43,7 @@ STATUS:CONFIRMED
 SUMMARY:Lunch lecture: Demcon
 TRANSP:OPAQUE
 END:VEVENT
+END:VCALENDAR
 CALENDAR;
                 return new ActivitiesRepository(
                     $data
@@ -51,14 +62,14 @@ CALENDAR;
     /** @test */
     public function it_shows_activities_in_a_given_month()
     {
-        $this->visit('/association/activities/2018/5')
+        $this->visit('/association/activities/' . $this->start->format('Y/m'))
              ->see("Lunch lecture: Demcon");
     }
 
     /** @test */
     public function if_no_activities_are_planned_it_shows_nothing()
     {
-        $this->visit('/association/activities/2019/5')
+        $this->visit('/association/activities/' . $this->start->add(new \DateInterval('P1Y'))->format('Y/m'))
              ->dontSee("Lunch lecture: Demcon");
     }
 }
