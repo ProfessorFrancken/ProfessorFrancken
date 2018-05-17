@@ -6,15 +6,13 @@ namespace Francken\Application\Committees;
 
 final class CommitteeMember
 {
-    private $firstname;
-    private $lastname;
     private $id;
+    private $fullName;
 
-    public function __construct($id, string $firstname, string $lastname)
+    public function __construct($id, string $fullName)
     {
         $this->id = $id;
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
+        $this->fullName = $fullName;
     }
 
     public function id()
@@ -24,6 +22,6 @@ final class CommitteeMember
 
     public function fullName() : string
     {
-        return $this->firstname . ' ' . $this->lastname;
+        return $this->fullName;
     }
 }

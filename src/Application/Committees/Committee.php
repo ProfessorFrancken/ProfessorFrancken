@@ -37,6 +37,11 @@ final class Committee
         return $this->name;
     }
 
+    public function email() : string
+    {
+        return $this->email;
+    }
+
     public function logo()
     {
         return $this->logo;

@@ -19,41 +19,6 @@ final class CommitteesRepository
                 "link" => "adtcie",
                 "page" => "pages.association.committees.adtcie",
                 "members" => [
-                    new CommitteeMember(
-                        1403,
-                        "Mark",
-                        "Redeman"
-                    ),
-                    new CommitteeMember(
-                        797,
-                        "Sjoerd",
-                        "Meesters"
-                    ),
-                    new CommitteeMember(
-                        1176,
-                        "Friso",
-                        "Wobben"
-                    ),
-                    new CommitteeMember(
-                        1172,
-                        "Gerjan",
-                        "Wielink"
-                    ),
-                    new CommitteeMember(
-                        1293,
-                        "Anton",
-                        "Jansen"
-                    ),
-                    new CommitteeMember(
-                        1359,
-                        "Diewertje",
-                        "Douglas"
-                    ),
-                    new CommitteeMember(
-                        1312,
-                        "Jasper",
-                        "Pluijmers"
-                    ),
                 ],
             ],
             [
@@ -64,31 +29,6 @@ final class CommitteesRepository
                 "link" => "alumnicie",
                 "page" => "pages.association.committees.alumnicie",
                 "members" => [
-                    new CommitteeMember(
-                        1266,
-                        "Anne",
-                        "in 't Veld"
-                    ),
-                    new CommitteeMember(
-                        1176,
-                        "Friso",
-                        "Wobben"
-                    ),
-                    new CommitteeMember(
-                        1206,
-                        "Max",
-                        "Kamperman"
-                    ),
-                    new CommitteeMember(
-                        1149,
-                        "Janneke",
-                        "Janssens"
-                    ),
-                    new CommitteeMember(
-                        1163,
-                        "Willeke",
-                        "Mulder"
-                    ),
                 ],
             ],
             [
@@ -99,46 +39,6 @@ final class CommitteesRepository
                 "link" => "almanakcie",
                 "page" => "pages.association.committees.almanakcie",
                 "members" => [
-                    new CommitteeMember(
-                        1173,
-                        "Steven",
-                        "Groen"
-                    ),
-                    new CommitteeMember(
-                        1608,
-                        "Su-Elle",
-                        "Kamps"
-                    ),
-                    new CommitteeMember(
-                        1001,
-                        "Carlos",
-                        "Bril"
-                    ),
-                    new CommitteeMember(
-                        1042,
-                        "Janna",
-                        "de Wit"
-                    ),
-                    new CommitteeMember(
-                        1360,
-                        "Pieter",
-                        "Wolff"
-                    ),
-                    new CommitteeMember(
-                        1312,
-                        "Jasper",
-                        "Pluijmers"
-                    ),
-                    new CommitteeMember(
-                        1172,
-                        "Gerjan",
-                        "Wielink"
-                    ),
-                    new CommitteeMember(
-                        1361,
-                        "Jelle",
-                        "Bor"
-                    ),
                 ],
             ],
             // [
@@ -157,67 +57,6 @@ final class CommitteesRepository
                 "link" => "borrelcie",
                 "page" => "pages.association.committees.borrelcie",
                 "members" => [
-                    new CommitteeMember(
-                        1582,
-                        "Joris",
-                        "Doting"
-                    ),
-                    new CommitteeMember(
-                        1372,
-                        "Ids",
-                        "Schiere"
-                    ),
-                    new CommitteeMember(
-                        1333,
-                        "Arjen",
-                        "Kramer"
-                    ),
-                    new CommitteeMember(
-                        1265,
-                        "Gerben",
-                        "Hijlkema"
-                    ),
-                    new CommitteeMember(
-                        1710,
-                        "Bradley",
-                        "Spronk"
-                    ),
-                    new CommitteeMember(
-                        1880,
-                        "Wim",
-                        "Drenth"
-                    ),
-                    new CommitteeMember(
-                        1945,
-                        "Sammie",
-                        "Mulder"
-                    ),
-                    new CommitteeMember(
-                        1593,
-                        "Simone",
-                        "Kockelkorn"
-                    ),
-                    new CommitteeMember(
-                        1926,
-                        "Lasse",
-                        "Vulto"
-                    ),
-                    new CommitteeMember(
-                        1915,
-                        "Patrick",
-                        "Ziengs"
-                    ),
-                    new CommitteeMember(
-                        1931,
-                        "Pieter",
-                        "Buisman"
-                    ),
-                    new CommitteeMember(
-                        1350,
-                        "Berend",
-                        "Mintjes"
-                    ),
-
                 ],
             ],
             [
@@ -228,56 +67,6 @@ final class CommitteesRepository
                 "link" => "brouwcie",
                 "page" => "pages.association.committees.brouwcie",
                 "members" => [
-                    new CommitteeMember(
-                        1143,
-                        "Hilbert",
-                        "van Loo"
-                    ),
-                    new CommitteeMember(
-                        934,
-                        "Marten",
-                        "Koopmans"
-                    ),
-                    new CommitteeMember(
-                        932,
-                        "Bauke",
-                        "Steensma"
-                    ),
-                    new CommitteeMember(
-                        916,
-                        "Camiel",
-                        "van Hooff"
-                    ),
-                    new CommitteeMember(
-                        918,
-                        "Rick",
-                        "Meijerink"
-                    ),
-                    new CommitteeMember(
-                        924,
-                        "Wopke",
-                        "Hellinga"
-                    ),
-                    new CommitteeMember(
-                        1345,
-                        "Bas",
-                        "de Jong"
-                    ),
-                    new CommitteeMember(
-                        1172,
-                        "Gerjan",
-                        "Wielink"
-                    ),
-                    new CommitteeMember(
-                        1206,
-                        "Max",
-                        "Kamperman"
-                    ),
-                    new CommitteeMember(
-                        1265,
-                        "Gerben",
-                        "Hijlkema"
-                    ),
                 ],
             ],
             [
@@ -288,36 +77,6 @@ final class CommitteesRepository
                 "link" => "buixie",
                 "page" => "pages.association.committees.buixie",
                 "members" => [
-                    new CommitteeMember(
-                        1187,
-                        "Jasper",
-                        "Staal"
-                    ),
-                    new CommitteeMember(
-                        1582,
-                        "Joris",
-                        "Doting"
-                    ),
-                    new CommitteeMember(
-                        1571,
-                        "Chantal",
-                        "Kool"
-                    ),
-                    new CommitteeMember(
-                        1178,
-                        "Leon",
-                        "Trustram"
-                    ),
-                    new CommitteeMember(
-                        1817,
-                        "Emiel",
-                        "de Wit"
-                    ),
-                    new CommitteeMember(
-                        1913,
-                        "Carla",
-                        "Olsthoorn"
-                    ),
                 ],
             ],
             // [
@@ -336,41 +95,6 @@ final class CommitteesRepository
                 "link" => "compucie",
                 "page" => "pages.association.committees.compucie",
                 "members" => [
-                    new CommitteeMember(
-                        1176,
-                        "Friso",
-                        "Wobben"
-                    ),
-                    new CommitteeMember(
-                        1143,
-                        "Hilbert",
-                        "van Loo"
-                    ),
-                    new CommitteeMember(
-                        1172,
-                        "Gerjan",
-                        "Wielink"
-                    ),
-                    new CommitteeMember(
-                        1293,
-                        "Anton",
-                        "Jansen"
-                    ),
-                    new CommitteeMember(
-                        728,
-                        "Ypke",
-                        "Jager"
-                    ),
-                    new CommitteeMember(
-                        442,
-                        "Gert",
-                        "Eising"
-                    ),
-                    new CommitteeMember(
-                        439,
-                        "Laurens-Jan",
-                        "Soer"
-                    ),
                 ],
             ],
             [
@@ -381,31 +105,6 @@ final class CommitteesRepository
                 "link" => "fotocie",
                 "page" => "pages.association.committees.fotocie",
                 "members" => [
-                    new CommitteeMember(
-                        1875,
-                        "Randy",
-                        "Wind"
-                    ),
-                    new CommitteeMember(
-                        1817,
-                        "Emiel",
-                        "de Wit"
-                    ),
-                    new CommitteeMember(
-                        1924,
-                        "Robert",
-                        "Mol"
-                    ),
-                    new CommitteeMember(
-                        1667,
-                        "Floris",
-                        "Westerman"
-                    ),
-                    new CommitteeMember(
-                        1608,
-                        "Su-Elle",
-                        "Kamps"
-                    ),
                 ],
             ],
             [
@@ -416,46 +115,6 @@ final class CommitteesRepository
                 "link" => "fraccie",
                 "page" => "pages.association.committees.fraccie",
                 "members" => [
-                    new CommitteeMember(
-                        1786,
-                        "Tamara",
-                        "Kok"
-                    ),
-                    new CommitteeMember(
-                        1760,
-                        "Jeanne",
-                        "van Zuilen"
-                    ),
-                    new CommitteeMember(
-                        1774,
-                        "Alida",
-                        "Hunnink"
-                    ),
-                    new CommitteeMember(
-                        1209,
-                        "Laurens",
-                        "Even"
-                    ),
-                    new CommitteeMember(
-                        1732,
-                        "Puck",
-                        "Planje"
-                    ),
-                    new CommitteeMember(
-                        1942,
-                        "Sven",
-                        "Cats"
-                    ),
-                    new CommitteeMember(
-                        1753,
-                        "Vincent",
-                        "Tissing"
-                    ),
-                    new CommitteeMember(
-                        1049,
-                        "Steven",
-                        "Hiemstra"
-                    ),
                 ],
             ],
             [
@@ -466,41 +125,6 @@ final class CommitteesRepository
                 "link" => "francken-vrij",
                 "page" => "pages.association.committees.francken-vrij",
                 "members" => [
-                    new CommitteeMember(
-                        1336,
-                        "Evelien",
-                        "Zwanenburg"
-                    ),
-                    new CommitteeMember(
-                        1173,
-                        "Steven",
-                        "Groen"
-                    ),
-                    new CommitteeMember(
-                        1172,
-                        "Gerjan",
-                        "Wielink"
-                    ),
-                    new CommitteeMember(
-                        1037,
-                        "Kathinka",
-                        "Frieswijk"
-                    ),
-                    new CommitteeMember(
-                        1045,
-                        "Paul",
-                        "Wijnbergen"
-                    ),
-                    new CommitteeMember(
-                        1817,
-                        "Emiel",
-                        "de Wit"
-                    ),
-                    new CommitteeMember(
-                        1905,
-                        "Shreya",
-                        "Shrestha"
-                    ),
                 ],
             ],
             [
@@ -511,26 +135,6 @@ final class CommitteesRepository
                 "link" => "intercie",
                 "page" => null,
                 "members" => [
-                    new CommitteeMember(
-                        1950,
-                        "George",
-                        "Cummings"
-                    ),
-                    new CommitteeMember(
-                        1960,
-                        "Melav",
-                        "Salih"
-                    ),
-                    new CommitteeMember(
-                        1830,
-                        "Aoibhin",
-                        "Quinn"
-                    ),
-                    new CommitteeMember(
-                        1962,
-                        "Nayana Marsal",
-                        "Ortin"
-                    ),
                 ],
             ],
             [
@@ -541,26 +145,6 @@ final class CommitteesRepository
                 "link" => "kascie",
                 "page" => "pages.association.committees.kascie",
                 "members" => [
-                    new CommitteeMember(
-                        1173,
-                        "Steven",
-                        "Groen"
-                    ),
-                    new CommitteeMember(
-                        1336,
-                        "Evelien",
-                        "Zwanenburg"
-                    ),
-                    new CommitteeMember(
-                        1174,
-                        "David",
-                        "Koning"
-                    ),
-                    new CommitteeMember(
-                        1333,
-                        "Arjen",
-                        "Kramer"
-                    ),
                 ],
             ],
             [
@@ -571,41 +155,6 @@ final class CommitteesRepository
                 "link" => "oefensescie",
                 "page" => "pages.association.committees.oefensescie",
                 "members" => [
-                    new CommitteeMember(
-                        1724,
-                        "Anna",
-                        "Kenbeek"
-                    ),
-                    new CommitteeMember(
-                        1140,
-                        "Olivier",
-                        "Gelling"
-                    ),
-                    new CommitteeMember(
-                        1359,
-                        "Diewertje",
-                        "Douglas"
-                    ),
-                    new CommitteeMember(
-                        1824,
-                        "Lars",
-                        "van der Laan"
-                    ),
-                    new CommitteeMember(
-                        1846,
-                        "Thijs",
-                        "Qualm"
-                    ),
-                    new CommitteeMember(
-                        1851,
-                        "Richard",
-                        "Borgers"
-                    ),
-                    new CommitteeMember(
-                        1942,
-                        "Sven",
-                        "Cats"
-                    ),
                 ],
             ],
             [
@@ -616,51 +165,6 @@ final class CommitteesRepository
                 "link" => "representacie",
                 "page" => "pages.association.committees.representacie",
                 "members" => [
-                    new CommitteeMember(
-                        1042,
-                        "Janna",
-                        "de Wit"
-                    ),
-                    new CommitteeMember(
-                        1149,
-                        "Janneke",
-                        "Janssens"
-                    ),
-                    new CommitteeMember(
-                        1670,
-                        "Mees",
-                        "Hoogland"
-                    ),
-                    new CommitteeMember(
-                        999,
-                        "Joris",
-                        "Admiraal"
-                    ),
-                    new CommitteeMember(
-                        1174,
-                        "David",
-                        "Koning"
-                    ),
-                    new CommitteeMember(
-                        1172,
-                        "Gerjan",
-                        "Wielink"
-                    ),
-                    new CommitteeMember(
-                        1163,
-                        "Willeke",
-                        "Mulder"
-                    ),
-                    new CommitteeMember(
-                        1593,
-                        "Simone",
-                        "Kockelkorn"
-                    ),
-                    new CommitteeMember(
-                        1469,
-                        "Robert",
-                        "van der Meer"
-                    ),
                 ],
             ],
             [
@@ -671,106 +175,6 @@ final class CommitteesRepository
                 "link" => "sjaarscie",
                 "page" => "pages.association.committees.sjaarcie",
                 "members" => [
-                    new CommitteeMember(
-                        1960,
-                        "Melav",
-                        "Salih"
-                    ),
-                    new CommitteeMember(
-                        1882,
-                        "Robin",
-                        "Dorstijn"
-                    ),
-                    new CommitteeMember(
-                        1906,
-                        "Jada",
-                        "Tijssen"
-                    ),
-                    new CommitteeMember(
-                        1914,
-                        "Dennis",
-                        "van der Veen"
-                    ),
-                    new CommitteeMember(
-                        1904,
-                        "Dominic",
-                        "Eelkema"
-                    ),
-                    new CommitteeMember(
-                        1918,
-                        "Jelmer",
-                        "Zijlstra"
-                    ),
-                    new CommitteeMember(
-                        1901,
-                        "Koen",
-                        "van der Heijden"
-                    ),
-                    new CommitteeMember(
-                        1888,
-                        "Sule",
-                        "Daley"
-                    ),
-                    new CommitteeMember(
-                        1913,
-                        "Carla",
-                        "Olsthoorn"
-                    ),
-                    new CommitteeMember(
-                        1926,
-                        "Lasse",
-                        "Vulto"
-                    ),
-                    new CommitteeMember(
-                        1915,
-                        "Patrick",
-                        "Ziengs"
-                    ),
-                    new CommitteeMember(
-                        1931,
-                        "Pieter",
-                        "Buisman"
-                    ),
-                    new CommitteeMember(
-                        1900,
-                        "Chaya",
-                        "Hillekens"
-                    ),
-                    new CommitteeMember(
-                        1908,
-                        "Danique",
-                        "de Ruiter"
-                    ),
-                    new CommitteeMember(
-                        1911,
-                        "Sibren",
-                        "Wobben"
-                    ),
-                    new CommitteeMember(
-                        1968,
-                        "Thijs",
-                        "van Beers"
-                    ),
-                    new CommitteeMember(
-                        1889,
-                        "Tom",
-                        "Burghard"
-                    ),
-                    new CommitteeMember(
-                        1880,
-                        "Wim",
-                        "Drenth"
-                    ),
-                    new CommitteeMember(
-                        1969,
-                        "Wouter",
-                        "Haarman"
-                    ),
-                    new CommitteeMember(
-                        1953,
-                        "Wouter",
-                        "Slump"
-                    ),
                 ],
             ],
             [
@@ -781,41 +185,6 @@ final class CommitteesRepository
                 "link" => "sportcie",
                 "page" => null,
                 "members" => [
-                    new CommitteeMember(
-                        1339,
-                        "Sietske",
-                        "Dijkstra"
-                    ),
-                    new CommitteeMember(
-                        1265,
-                        "Gerben",
-                        "Hijlkema"
-                    ),
-                    new CommitteeMember(
-                        1153,
-                        "Kristel",
-                        "Lok"
-                    ),
-                    new CommitteeMember(
-                        1341,
-                        "Joachim",
-                        "Koojinga"
-                    ),
-                    new CommitteeMember(
-                        1524,
-                        "Chris",
-                        "van Ewijk"
-                    ),
-                    new CommitteeMember(
-                        1206,
-                        "Max",
-                        "Kamperman"
-                    ),
-                    new CommitteeMember(
-                        1826,
-                        "Robbert",
-                        "Julius"
-                    ),
                 ],
             ],
             [
@@ -826,31 +195,6 @@ final class CommitteesRepository
                 "link" => "sympcie",
                 "page" => "pages.association.committees.sympcie",
                 "members" => [
-                    new CommitteeMember(
-                        1858,
-                        "Eva",
-                        "Visser"
-                    ),
-                    new CommitteeMember(
-                        1140,
-                        "Olivier",
-                        "Gelling"
-                    ),
-                    new CommitteeMember(
-                        1710,
-                        "Bradley",
-                        "Spronk"
-                    ),
-                    new CommitteeMember(
-                        1776,
-                        "Oscar",
-                        "Tanis"
-                    ),
-                    new CommitteeMember(
-                        1738,
-                        "Jesse",
-                        "Scheepstra"
-                    ),
                 ],
             ],
             [
@@ -861,31 +205,6 @@ final class CommitteesRepository
                 "link" => "takcie",
                 "page" => null,
                 "members" => [
-                    new CommitteeMember(
-                        1264,
-                        "Emiel",
-                        "Langelaan"
-                    ),
-                    new CommitteeMember(
-                        1786,
-                        "Tamara",
-                        "Kok"
-                    ),
-                    new CommitteeMember(
-                        1880,
-                        "Wim",
-                        "Drenth"
-                    ),
-                    new CommitteeMember(
-                        1858,
-                        "Eva",
-                        "Visser"
-                    ),
-                    new CommitteeMember(
-                        1733,
-                        "Stijn",
-                        "Eikens"
-                    ),
                 ],
             ],
             [
@@ -896,36 +215,6 @@ final class CommitteesRepository
                 "link" => "wiecksie",
                 "page" => "pages.association.committees.wiecksie",
                 "members" => [
-                    new CommitteeMember(
-                        1360,
-                        "Pieter",
-                        "Wolff"
-                    ),
-                    new CommitteeMember(
-                        1710,
-                        "Bradley",
-                        "Spronk"
-                    ),
-                    new CommitteeMember(
-                        1446,
-                        "Rick",
-                        "van Voorbergen"
-                    ),
-                    new CommitteeMember(
-                        1293,
-                        "Anton",
-                        "Jansen"
-                    ),
-                    new CommitteeMember(
-                        1361,
-                        "Jelle",
-                        "Bor"
-                    ),
-                    new CommitteeMember(
-                        1556,
-                        "Tom",
-                        "Siebring"
-                    ),
                 ],
             ],
             [
@@ -936,36 +225,6 @@ final class CommitteesRepository
                 "link" => "sckripttcie",
                 "page" => "pages.association.committees.scriptcie",
                 "members" => [
-                    new CommitteeMember(
-                        798,
-                        "Paulus",
-                        "Meessen"
-                    ),
-                    new CommitteeMember(
-                        1403,
-                        "Mark",
-                        "Redeman"
-                    ),
-                    new CommitteeMember(
-                        442,
-                        "Gert",
-                        "Eising"
-                    ),
-                    new CommitteeMember(
-                        797,
-                        "Sjoerd",
-                        "Meesters"
-                    ),
-                    new CommitteeMember(
-                        799,
-                        "Sven",
-                        "Baars"
-                    ),
-                    new CommitteeMember(
-                        873,
-                        "Mark",
-                        "Boer"
-                    ),
                 ],
             ]
         ];
@@ -984,7 +243,7 @@ final class CommitteesRepository
                     $committee['logo'] ?? null,
                     $committee['link'],
                     $committee['page'],
-                    $committee['members'] ?? []
+                    []
                 );
             },
             $this->committees
@@ -1005,13 +264,40 @@ final class CommitteesRepository
 
     public function findByLink($link)
     {
-        return array_first(
+        $committee = array_first(
             array_filter(
                 $this->committees,
                 function ($committee) use ($link) {
                     return $committee->link() === $link;
                 }
             )
+        );
+
+        $today = new \DateTimeImmutable;
+        $year = \Francken\Application\Career\AcademicYear::fromDate($today);
+
+        $members = \DB::connection('francken-legacy')
+            ->table('commissie_lid')
+            ->select(['leden.id', 'leden.voornaam', 'leden.tussenvoegsel', 'leden.achternaam'])
+            ->join('leden', 'leden.id', 'commissie_lid.lid_id')
+            ->where('jaar', $year->start()->format('Y'))
+            ->where('commissie_id', $committee->id())
+            ->get()
+            ->map(function ($member) {
+                return new CommitteeMember(
+                    $member->id,
+                    implode(' ', array_filter([$member->voornaam, $member->tussenvoegsel, $member->achternaam]))
+                );
+            });
+
+        return new Committee(
+            $committee->id(),
+            $committee->name(),
+            $committee->email(),
+            $committee->logo(),
+            $committee->link(),
+            $committee->page(),
+            $members->toArray()
         );
     }
 }
