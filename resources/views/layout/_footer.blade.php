@@ -36,36 +36,44 @@
                 <h4 class="footer__header h5 mb-3">Social Media</h4>
 
                 <div class="footer__body">
-
-				            <a href="https://www.facebook.com/groups/139490187648/">
-					              <i class="fa fa-facebook" aria-hidden="true"></i>Facebook<br>
-				            </a>
-				            <a href="https://www.linkedin.com/groups/1524067">
-					              <i class="fa fa-linkedin" aria-hidden="true"></i>LinkedIn<br>
-				            </a>
+                    <a href="https://www.facebook.com/groups/139490187648/">
+                        <i class="fa fa-facebook" aria-hidden="true"></i> Facebook<br>
+                    </a>
+                    <a href="https://www.linkedin.com/groups/1524067">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn<br>
+                    </a>
                     <a href="https://github.com/ProfessorFrancken/ProfessorFrancken">
-                        <i class="fa fa-github" aria-hidden="true"></i>Github
+                        <i class="fa fa-github" aria-hidden="true"></i> Github
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-2 my-3 order-4">
+                <h4 class="footer__header h5 mb-3">Policies</h4>
+
+                <div class="footer__body">
+                    <a href="/privacy-policy">
+                        Privacy policy<br>
+                    </a>
+                    <a href="/cookies-policy">
+                        Cookies<br>
                     </a>
                 </div>
             </div>
 
 
             {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
-            <div class="order-md-1 col-12 col-md-4 d-none d-md-block footer__logo skew-md--bottom-right">
+            <div class="order-md-1 col-12 col-md-2 d-none d-md-block footer__logo skew-md--bottom-right">
                 <div class="align-middle align-items-center">
                     <div class="d-flex justify-content-center justify-content-md-end align-items-center">
                         <a class="header__title-link" href="/">
                             <img alt="Logo of T.F.V. 'Professor Francken'" src="/images/LOGO_KAAL.png" class="img-fluid  scaleUp--hover" />
-                            <h1 class="header__title footer__title text-left float-right d-none d-lg-block">
-                                T.F.V.<br/>
-                                'Professor<br/>
-                                Francken'
-                            </h1>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 
