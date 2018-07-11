@@ -43,6 +43,12 @@ return [
             'subItems' => [],
             'icon' => 'camera',
         ],
+        [
+            'url' => 'http://pienterkamp.nl/',
+            'title' => 'Pienterkamp',
+            'subItems' => [],
+            'icon' => 'child'
+        ],
     ],
 
     'admin-menu' => [
