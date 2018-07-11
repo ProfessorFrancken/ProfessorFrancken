@@ -40,6 +40,8 @@ final class ServiceProvider extends RouteServiceProvider
 
                 $router->get('orders', 'OrdersController@index');
                 $router->post('orders', 'OrdersController@post');
+
+                $router->get('statistics/categories/', 'CategoryStatisticsController@index');
             });
         });
     }
