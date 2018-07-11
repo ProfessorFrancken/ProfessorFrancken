@@ -34,6 +34,7 @@ Route::get('/boeken', function () {
 Route::group(['middleware' => ['api'], 'prefix' => 'api'], function () {
     Route::get('activities', '\Francken\Api\Http\ActivitiesController@index');
     Route::get('books', '\Francken\Api\Http\BooksController@index');
+    Route::get('job-openings', '\Francken\Api\Http\JobOpeningsController@index');
 });
 
 Route::group(['middleware' => ['web', 'bindings']], function () {
