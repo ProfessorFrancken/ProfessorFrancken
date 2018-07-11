@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Api\Http;
 
+use DateTime;
 use DateTimeImmutable;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\Activities\CalendarEvent;
@@ -20,8 +21,8 @@ final class ActivitiesController
                     'title' => $activity->title(),
                     'description' => $activity->description(),
                     'location' => $activity->location(),
-                    'startDate' => $activity->startDate()->format(DateTimeImmutable::ATOM),
-                    'endDate' => $activity->endDate()->format(DateTimeImmutable::ATOM),
+                    'startDate' => $activity->startDate()->format(DateTime::ATOM),
+                    'endDate' => $activity->endDate()->format(DateTime::ATOM),
                 ];
             });
     }
