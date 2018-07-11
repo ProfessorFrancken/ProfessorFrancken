@@ -31,6 +31,10 @@ Route::get('/boeken', function () {
     return redirect('/study/books');
 });
 
+Route::group(['middleware' => ['api'], 'prefix' => 'api'], function () {
+    Route::get('activities', '\Francken\Api\Http\ActivitiesController@index');
+});
+
 Route::group(['middleware' => ['web', 'bindings']], function () {
 
     Route::get('/', 'MainContentController@index');
