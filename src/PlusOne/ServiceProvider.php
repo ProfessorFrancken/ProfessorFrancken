@@ -42,6 +42,7 @@ final class ServiceProvider extends RouteServiceProvider
                 $router->post('orders', 'OrdersController@post');
 
                 $router->get('statistics/categories/', 'CategoryStatisticsController@index');
+                $router->get('statistics/activities', '\Francken\Api\Http\ActivitiesController@index');
             });
         });
     }
