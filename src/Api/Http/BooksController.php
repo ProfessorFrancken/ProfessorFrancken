@@ -12,15 +12,17 @@ final class BooksController
 {
     public function index(AvailableBooksRepository $books)
     {
-        return collect($books->findAll())
-            ->map(function (AvailableBook $book) {
-                return [
-                    'title' => $book->title(),
-                    'author' => $book->author(),
-                    'isbn' => $book->isbn(),
-                    'cover' => $book->pathToCover(),
-                    'price_in_cents' => $book->price(),
-                ];
-            });
+        return [
+            'books' => collect($books->findAll())->map(
+                function (AvailableBook $book) {
+                    return [
+                        'title' => $book->title(),
+                        'author' => $book->author(),
+                        'isbn' => $book->isbn(),
+                        'cover' => $book->pathToCover(),
+                        'price_in_cents' => $book->price(),
+                    ];
+                })->values()
+        ];
     }
 }

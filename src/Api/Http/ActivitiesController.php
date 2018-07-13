@@ -33,9 +33,13 @@ final class ActivitiesController
                 'Y-m-d', request()->get('before')
             );
 
-            return $activities->between($after, $before)->map($map);
+            return [
+                'activities' => $activities->between($after, $before)->map($map)->values()
+            ];
         }
 
-        return $activities->after($after, $limit)->map($map);
+        return [
+            'activities' => $activities->after($after, $limit)->map($map)->values()
+        ];
     }
 }
