@@ -46,6 +46,15 @@ final class ActivitiesRepository
         })->take($amount);
     }
 
+    public function between(\DateTimeImmutable $after, \DateTimeImmutable $before)
+    {
+        return $this->activities->filter(function ($activity) use ($after, $before) {
+            return $activity->endDate() > $after && $activity->startDate() < $before;
+        })->sortBy(function ($event) {
+            return $event->startDate();
+        });
+    }
+
     public function inMonth(int $year, int $month)
     {
         return $this->activities->filter(function ($activity) use ($year, $month) {
