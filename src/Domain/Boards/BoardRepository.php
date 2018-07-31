@@ -12,6 +12,19 @@ final class BoardRepository
     {
         return [
             new Board([
+                'year' => '2018-2019',
+                'name' => 'Statisch',
+                'members' => [
+                    ['name' => 'Jeanne van Zuilen', 'title' => 'Commissioner of Internal Relations', 'photo' => '/images/boards/members/jeanne.jpg'],
+                    ['name' => 'Chantal Kool', 'title' => 'Secretary and Vice-President', 'photo' => '/images/boards/members/chantal.jpg'],
+                    ['name' => 'Joris Doting', 'title' => 'President', 'photo' => '/images/boards/members/joris.jpg'],
+                    ['name' => 'Bradley Spronk', 'title' => 'Treasurer', 'photo' => '/images/boards/members/bradley.jpg'],
+                    ['name' => 'Leon Trustram', 'title' => 'Commissioner of External Relations and Commissioner of Education', 'photo' => '/images/boards/members/leon.jpg']
+                ],
+                'figure' => 'https://professorfrancken.nl/images/boards/statisch.jpg',
+                'figurePosition' => 'North'
+            ]),
+            new Board([
                 'year' => '2017-2018',
                 'name' => 'Hè Watt?',
                 'members' => [

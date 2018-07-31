@@ -57,7 +57,7 @@
                 <a href="/association/boards">
                     <img
                         alt="Current and previous boards of T.F.V. 'Professor Francken'"
-                        src="{{ image('https://professorfrancken.nl/images/boards/he_watt.jpg', ['height' => 150, 'width' => 150]) }}"
+                        src="{{ image('https://professorfrancken.nl/images/boards/statisch.jpg', ['height' => 150, 'width' => 150]) }}"
                         class="mb-3 rounded-circle"
                     />
                     <h2>Boards</h2>

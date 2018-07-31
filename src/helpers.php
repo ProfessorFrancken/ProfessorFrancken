@@ -103,6 +103,7 @@ function image($url = '', $options = [], $addAppUrl = false)
                 'height' => 'h_',
                 'face' => 'fc_1,fcp_',
                 'crop' => 'c_',
+                'vertical-offset' => 'g_'
             ];
 
             $additionals = [];
