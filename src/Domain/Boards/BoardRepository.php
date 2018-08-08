@@ -47,7 +47,7 @@ final class BoardRepository
                     ['name' => 'Anne in ‘t Veld', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'https://professorfrancken.nl/images/header/board-buitengewoon.jpg',
-                'figurePosition' => '30'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2015-2016',
@@ -71,7 +71,7 @@ final class BoardRepository
                     ['name' => 'Friso Wobben', 'title' => 'Commissioner of External Relations']
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur1415.jpg',
-                'figurePosition' => '15'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2013-2014',
@@ -83,7 +83,7 @@ final class BoardRepository
                     ['name' => 'Janna de Wit', 'title' => 'Secretary'],
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1314_600breed.jpg',
-                'figurePosition' => '40'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2012-2013',
@@ -95,7 +95,7 @@ final class BoardRepository
                     ['name' => 'Bauke Steensma', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1213_600breed.jpg',
-                'figurePosition' => '40'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2011-2012',
@@ -107,7 +107,7 @@ final class BoardRepository
                     ['name' => 'Marion Dam', 'title' => 'Treasurer'],
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_1112_600breed.png',
-                'figurePosition' => '25'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2010-2011',
@@ -131,7 +131,7 @@ final class BoardRepository
                     ['name' => 'Ypke Jager', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0910_600breed.jpg',
-                'figurePosition' => '45'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2008-2009',
@@ -143,7 +143,7 @@ final class BoardRepository
                     ['name' => 'Thijs Huijskes', 'title' => 'Secretary'],
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0809_600hoog.jpg',
-                'figurePosition' => '20'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2007-2008',
@@ -155,7 +155,7 @@ final class BoardRepository
                     ['name' => 'Pelle Koeslag', 'title' => 'Treasurer'],
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0708_600breed.jpg',
-                'figurePosition' => '30'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2006-2007',
@@ -167,7 +167,7 @@ final class BoardRepository
                     ['name' => 'Sander Boonstra', 'title' => 'Secretary'],
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0607_600breed.jpg',
-                'figurePosition' => '30'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2005-2006',
@@ -179,7 +179,7 @@ final class BoardRepository
                     ['name' => 'Tom Boot', 'title' => 'Commissioner of External Relations and Vice-President']
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0506_600breed.jpg',
-                'figurePosition' => '55'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2004-2005',
@@ -191,7 +191,7 @@ final class BoardRepository
                     ['name' => 'Bas Vlaming', 'title' => 'Secretary'],
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0405_600breed.jpg',
-                'figurePosition' => '35'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '2003-2004',
@@ -238,7 +238,7 @@ final class BoardRepository
                     ['name' => 'Chris Rademakers', 'title' => 'President and Treasurer'],
                 ],
                 'figure' => 'https://old.professorfrancken.nl/wordpress/media/images/besturen/bestuur_0001_600breed.jpg',
-                'figurePosition' => '12'
+                'figurePosition' => 'North'
             ]),
             new Board([
                 'year' => '1999-2000',

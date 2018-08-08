@@ -17,6 +17,8 @@ final class Board
     private $policyPlan;
     private $yearReview;
 
+    private $photoPosition;
+
     public function __construct($data)
     {
         $this->name = $data['name'];
@@ -43,7 +45,12 @@ final class Board
 
     public function photoPosition() : string
     {
-        return $this->photoPosition;
+        if (in_array($this->photoPosition, [
+            'NorthWest', 'North', 'NorthEast', 'West', 'Center', 'East', 'SouthWest', 'South', 'SouthEast'
+        ])) {
+            return $this->photoPosition;
+        }
+        return 'Center';
     }
 
     public function boardYear() : BoardYear
