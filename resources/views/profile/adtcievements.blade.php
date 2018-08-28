@@ -1,4 +1,4 @@
-@extends('my-francken.index')
+@extends('profile.index')
 
 @section('content')
     <h2 class="section-header">

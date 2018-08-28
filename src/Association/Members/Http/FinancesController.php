@@ -2,59 +2,31 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Association\Members\Http;
 
-use Illuminate\View\Factory as View;
 use DateTimeImmutable;
+use Francken\Association\Members\Member;
+use Francken\Application\Committees\CommitteesRepository;
+use Illuminate\View\Factory as View;
 
-final class MyFranckenController
+final class FinancesController
 {
-    private $profile;
-
-    public function __construct(View $view)
+    private function member($user)
     {
-        $id = 1403;
+        $lid = \DB::connection('francken-legacy')
+            ->table('leden')
+            ->where('id', $user->francken_id)
+            ->first();
 
-        $lid = \DB::connection('francken-legacy')->table('leden')->where('id', $id)->first();
         $this->profile = $lid;
 
-        $view->share('profile', $lid);
+        return $lid;
     }
 
     public function index()
     {
-        return view('my-francken.index');
-    }
-
-    public function profile()
-    {
-
-        return view('my-francken.profile');
-    }
-
-    public function settings()
-    {
-        return view('my-francken.settings');
-    }
-
-    public function members()
-    {
-        return view('my-francken.members');
-    }
-
-    public function committees()
-    {
-        return view('my-francken.committees');
-    }
-
-    public function activities()
-    {
-        return view('my-francken.activities');
-    }
-
-    public function finances()
-    {
-        $id = $this->profile->id;
+        $member = $this->member(request()->user());
+        $id = $member->id;
 
         $transactions = \DB::connection('francken-legacy')->table('transacties')
             ->join('producten', 'transacties.product_id', '=', 'producten.id')
@@ -95,16 +67,17 @@ final class MyFranckenController
                 ];
             });
 
-        return view('my-francken.finances')
+        return view('profile.finances')
             ->with([
                 'transactions' => $transactions,
                 'perMonth' => $perMonth
                 ]);
     }
 
-    public function financesInMonth($year, $month)
+    public function show($year, $month)
     {
-        $id = $this->profile->id;
+        $member = $this->member(request()->user());
+        $id = $member->id;
 
         $deductions = \DB::connection('francken-legacy')
                 ->table('afschrijvingen')
@@ -148,7 +121,7 @@ final class MyFranckenController
             return $transaction['time']->format('d');
         });
 
-        return view('my-francken.finances-in-month')
+        return view('profile.finances-in-month')
             ->with([
                 'byDay' => $byDay,
                 'date' => (DateTimeImmutable::createFromFormat("Y-m", "$year-$month"))->format('F Y')
@@ -157,6 +130,6 @@ final class MyFranckenController
 
     public function adtcievements()
     {
-        return view('my-francken.adtcievements');
+        return view('profile.adtcievements');
     }
 }
