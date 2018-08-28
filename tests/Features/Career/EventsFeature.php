@@ -20,7 +20,7 @@ final class EventsFeature extends TestCase
 
         // setup boards repo
         $this->visit('/career/events')
-            ->seePageIs('/career/events/2017-2018');
+            ->seePageIs('/career/events/2018-2019');
 
         $this->assertResponseOk();
     }
