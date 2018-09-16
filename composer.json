@@ -1,87 +1,76 @@
 {
-    "name": "professorfrancken/professorfrancken",
-    "license": "MIT",
-    "type": "project",
-    "require": {
-        "php": ">=7.0.0",
-        "broadway/broadway": "^1.0",
-        "fale/isbn": "^3.0",
-        "fideloper/proxy": "^4.0",
-        "laravel/browser-kit-testing": "^3.0",
-        "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.4.0",
-        "lcobucci/jwt": "^3.2",
-        "league/commonmark": "^0.15.4",
-        "league/html-to-markdown": "^4.4",
-        "league/period": "^3.3",
-        "matthiasnoback/broadway-serialization": "^2.0",
-        "ramsey/uuid": "^3.0",
-        "sabre/vobject": "^4.1",
-        "webmozart/assert": "^1.1",
-        "webuni/commonmark-attributes-extension": "^0.5.0",
-        "webuni/commonmark-table-extension": "^0.6.1"
-    },
-    "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.4.4",
-        "davidbadura/faker-markdown-generator": "^1.0",
-        "filp/whoops": "^2.1",
-        "friendsofphp/php-cs-fixer": "^2.10",
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "nunomaduro/collision": "^1.1",
-        "phpstan/phpstan": "^0.10.0",
-        "phpunit/phpunit": "~6.0",
-        "satooshi/php-coveralls": "^1.0"
-    },
-    "autoload": {
-        "files": [
-            "src/helpers.php"
-        ],
-        "classmap": [
-            "database"
-        ],
-        "psr-4": {
-          "Francken\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Francken\\Features\\": "tests/Features",
-            "Francken\\Tests\\": "tests/Francken"
-        }
-    },
-    "extra": {
-        "laravel" : {
-            "dont-discover": [
-
-            ]
-        }
-
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "php -r \"copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "php artisan key:generate"
-        ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
-        ],
-        "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'",
-        "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",
-        "cs": "vendor/bin/php-cs-fixer fix --dry-run",
-        "phpstan": "vendor/bin/phpstan analyze src",
-        "psalm": "vendor/bin/psalm",
-        "test": "composer run cs && composer run units && composer run features"
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable" : true
+  "name": "professorfrancken/professorfrancken",
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "broadway/broadway": "^1.0",
+    "cmpayments/iban": "^1.1",
+    "fale/isbn": "^3.0",
+    "fideloper/proxy": "^4.0",
+    "laravel/browser-kit-testing": "^3.0",
+    "laravel/framework": "5.6.*",
+    "laravel/tinker": "^1.0",
+    "laravelcollective/html": "^5.4.0",
+    "lcobucci/jwt": "^3.2",
+    "league/commonmark": "^0.15.4",
+    "league/html-to-markdown": "^4.4",
+    "league/period": "^3.3",
+    "matthiasnoback/broadway-serialization": "^2.0",
+    "ramsey/uuid": "^3.0",
+    "sabre/vobject": "^4.1",
+    "webmozart/assert": "^1.1",
+    "webuni/commonmark-attributes-extension": "^0.5.0",
+    "webuni/commonmark-table-extension": "^0.6.1"
+  },
+  "require-dev": {
+    "codedungeon/phpunit-result-printer": "^0.4.4",
+    "davidbadura/faker-markdown-generator": "^1.0",
+    "filp/whoops": "^2.1",
+    "friendsofphp/php-cs-fixer": "^2.10",
+    "fzaninotto/faker": "~1.4",
+    "mockery/mockery": "0.9.*",
+    "nunomaduro/collision": "^1.1",
+    "phpstan/phpstan": "^0.10.0",
+    "phpunit/phpunit": "~6.0",
+    "satooshi/php-coveralls": "^1.0"
+  },
+  "autoload": {
+    "files": ["src/helpers.php"],
+    "classmap": ["database"],
+    "psr-4": {
+      "Francken\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Francken\\Features\\": "tests/Features",
+      "Francken\\Tests\\": "tests/Francken"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": []
+    }
+  },
+  "scripts": {
+    "post-root-package-install": ["php -r \"copy('.env.example', '.env');\""],
+    "post-create-project-cmd": ["php artisan key:generate"],
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover"
+    ],
+    "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'",
+    "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",
+    "cs": "vendor/bin/php-cs-fixer fix --dry-run",
+    "phpstan": "vendor/bin/phpstan analyze src",
+    "psalm": "vendor/bin/psalm",
+    "test": "composer run cs && composer run units && composer run features"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
