@@ -36,18 +36,16 @@
         </main>
 
         @include('layout._login-modal')
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         @if (Auth::guest())
         <script src="/js/LoginModal.js"></script>
         @endif
+
         <script src="/js/Menu.js"></script>
 
-        <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-        <script src="https://use.fontawesome.com/releases/v5.0.9/js/v4-shims.js" integrity="sha384-9f5gaI9TkuYhi5O/inzfdOXx2nkIhDsLtXqBNmtY6/c5PoqXfd0U2DAjqQVSCXQh" crossorigin="anonymous"></script>
-
         <script type="text/javascript">
-
          // Render  any latex currently loaded in our dom
          document.addEventListener("DOMContentLoaded", function() {
              renderMathInElement(document.body, {
@@ -62,15 +60,6 @@
          });
 
          @if (config('francken.general.google-analytics'))
-         // UserReport (gather feedback)
-         window._urq = window._urq || [];
-         _urq.push(['initSite', '42efd18f-c4ef-4ad5-a1d8-a430d3f8ef0f']);
-         (function() {
-             var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
-             ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
-         })();
-
          // Google Analytics
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -81,6 +70,5 @@
          ga('send', 'pageview');
          @endif
         </script>
-
     </body>
 </html>
