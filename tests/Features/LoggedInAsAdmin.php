@@ -20,7 +20,7 @@ trait LoggedInAsAdmin
 
             DB::table('users')->insert([
                 'id' => '1',
-                'francken_id' => 1,
+                'francken_id' => 1403,
                 'email' => 'board@professorfrancken.nl',
                 'password' => bcrypt($passphrase),
                 'can_access_admin' => true

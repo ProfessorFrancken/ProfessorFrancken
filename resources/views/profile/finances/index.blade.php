@@ -1,4 +1,4 @@
-@extends('my-francken.index')
+@extends('profile.layout')
 
 @section('content')
     <h2 class="section-header">
@@ -40,7 +40,7 @@
                         €{{ $month['price'] }},-
                     </td>
                     <td class="text-right">
-                        <a href="/my-francken/finances/{{ $month['time']->format('Y/m') }}">
+                        <a href="/profile/finances/{{ $month['time']->format('Y/m') }}">
                             show transactions
                         </a>
                     </td>

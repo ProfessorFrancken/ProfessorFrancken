@@ -23,7 +23,7 @@ final class SessionController
         ], $rememberUser);
 
         if ($loggedIn) {
-            return redirect()->intended('/my-francken');
+            return redirect()->intended('profile');
         }
 
         return redirect('login')->withInput();

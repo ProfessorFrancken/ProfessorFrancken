@@ -370,3 +370,18 @@ footer .header__title {
 .justified-paragraphs p {
     text-align: justify;
 }
+
+.profile-container {
+    border-color: #cfd7d6 !important;
+}
+
+.profile-section {
+    border-top: thin solid;
+    border-color: #cfd7d6 !important;
+}
+
+.profile-section__icon {
+    background: $secondary-color;
+}
+.profile-section__body {
+}

@@ -20,8 +20,8 @@ final class NavigationServiceProvider extends ServiceProvider
             if (Auth::check()) {
                 $user = Auth::user();
                 $menu[] = [
-                    'url' => '/my-francken',
-                    'title' => 'My Francken',
+                    'url' => '/profile',
+                    'title' => 'Profile',
                     'subItems' => [],
                     'icon' => 'user',
                 ];

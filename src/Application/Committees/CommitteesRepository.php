@@ -300,4 +300,49 @@ final class CommitteesRepository
             $members->toArray()
         );
     }
+
+    public function ofMember(int $franckenMemberId) : array
+    {
+        $today = new \DateTimeImmutable;
+        $year = \Francken\Application\Career\AcademicYear::fromDate($today);
+
+        $committees = \DB::connection('francken-legacy')
+            ->table('commissie_lid')
+            ->select(['commissie_id', 'functie', 'jaar'])
+            // ->where('jaar', $year->start()->format('Y'))
+            ->where('lid_id', $franckenMemberId)
+            ->get();
+
+        return array_filter(
+            $this->committees,
+            function ($committee) use ($committees) {
+                return $committees->map(
+                    function ($committee) { return $committee->commissie_id; }
+                )->contains($committee->id());
+            }
+        );
+
+
+
+        $committee = array_first(
+            array_filter(
+                $this->committees,
+                function ($committee) use ($link) {
+                    return $committee->link() === $link;
+                }
+            )
+        );
+
+
+        return new Committee(
+            $committee->id(),
+            $committee->name(),
+            $committee->email(),
+            $committee->logo(),
+            $committee->link(),
+            $committee->page(),
+            $members->toArray()
+        );
+
+    }
 }
