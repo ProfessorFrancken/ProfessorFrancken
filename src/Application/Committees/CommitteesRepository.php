@@ -232,10 +232,6 @@ final class CommitteesRepository
 
         $this->committees = array_map(
             function ($committee) {
-                // Use faker to add some random members
-                $faker = \App::make(\Faker\Generator::class);
-                $faker->seed(31415);
-
                 return new Committee(
                     $committee['id'],
                     $committee['title'],
