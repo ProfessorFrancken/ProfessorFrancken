@@ -93,11 +93,10 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
             Route::post('books', '\Francken\Study\BooksSale\Http\AdminBooksController@store');
         });
 
-        Route::group(['prefix' => 'career'], function() {
+        Route::group(['prefix' => 'extern'], function() {
             Route::get('companies', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('events', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('job-openings', 'Admin\AdminController@showPageIsUnavailable');
-
         });
 
         Route::group(['prefix' => 'association'], function() {
