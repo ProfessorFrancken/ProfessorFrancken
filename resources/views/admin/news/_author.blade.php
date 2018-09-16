@@ -11,11 +11,11 @@
             </div>
             <div class="col-md-9">
                 <div class="form-group">
-                    {!! Form::text('author-name', $news->authorName(), ['class' => 'form-control']) !!}
+                    {!! Form::text('author-name', $news->authorName(), ['class' => 'form-control', 'placeholder' => 'Author name']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::text('author-photo', $news->authorPhoto(), ['class' => 'form-control']) !!}
+                    {!! Form::text('author-photo', $news->authorPhoto(), ['class' => 'form-control', 'placeholder' => 'Url to picture of author']) !!}
                 </div>
 
                 <div class="form-group">
