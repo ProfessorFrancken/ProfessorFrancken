@@ -101,9 +101,6 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         });
 
         Route::group(['prefix' => 'association'], function() {
-            // Route::resource('activity', 'ActivityController');
-
-
             //committees
             Route::resource('committee', 'Admin\CommitteeController', ['except' => ['edit']]);
             Route::post('committee/search-member', 'Admin\CommitteeController@searchMember');
