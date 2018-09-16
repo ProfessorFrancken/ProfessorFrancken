@@ -305,7 +305,7 @@ final class CommitteesRepository
         $committees = \DB::connection('francken-legacy')
             ->table('commissie_lid')
             ->select(['commissie_id', 'functie', 'jaar'])
-            // ->where('jaar', $year->start()->format('Y'))
+            ->where('jaar', $year->start()->format('Y'))
             ->where('lid_id', $franckenMemberId)
             ->get();
 
