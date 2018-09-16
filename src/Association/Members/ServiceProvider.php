@@ -47,8 +47,8 @@ final class ServiceProvider extends RouteServiceProvider
         ], function($router) {
             $router->get('/', 'ProfileController@index');
 
-            $router->get('finances', 'FinancesController@index');
-            $router->get('finances/{year}/{month}', 'FinancesController@show');
+            $router->get('expenses', 'ExpensesController@index');
+            $router->get('expenses/{year}/{month}', 'ExpensesController@show');
             $router->get('settings', 'SettingsController@index');
             $router->get('members', 'MembersController@index');
         });

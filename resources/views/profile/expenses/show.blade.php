@@ -2,8 +2,8 @@
 
 @section('content')
     <h2 class="section-header">
-        <i class="fa fa-bar-chart text-primary text-center" aria-hidden="true"></i>
-        Finances in {{ $date }}
+        <i class="fa fa-chart-bar text-primary text-center" aria-hidden="true"></i>
+        Expenses in {{ $date }}
     </h2>
 
     @if (count($byDay) > 0)

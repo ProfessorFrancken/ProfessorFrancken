@@ -26,7 +26,7 @@ class ProfileFeature extends TestCase
     }
 
     /** @test */
-    function it_finances()
+    function it_shows_expenses_of_a_member()
     {
         $now = new \DateTimeImmutable;
         $ids = \DB::connection('francken-legacy')->table('transacties')
@@ -39,7 +39,7 @@ class ProfileFeature extends TestCase
                 "tijd" => $now
             ]);
 
-        $this->visit('/profile/finances')
+        $this->visit('/profile/expenses')
             ->see('show transactions');
 
         // Cleanup
@@ -50,7 +50,7 @@ class ProfileFeature extends TestCase
     }
 
     /** @test */
-    public function it_shows_finances_of_a_certain_month()
+    public function it_shows_expenses_of_a_certain_month()
     {
         $now = new \DateTimeImmutable;
         \DB::connection('francken-legacy')->table('transacties')
@@ -68,7 +68,7 @@ class ProfileFeature extends TestCase
                 "tijd" => $now
             ]);
 
-        $this->visit('/profile/finances/' . $now->format('Y') . '/' . $now->format('m'))
+        $this->visit('/profile/expenses/' . $now->format('Y') . '/' . $now->format('m'))
             ->see('€10000');
 
         // Cleanup

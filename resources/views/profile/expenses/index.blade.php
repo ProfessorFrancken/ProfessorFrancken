@@ -2,8 +2,8 @@
 
 @section('content')
     <h2 class="section-header">
-        <i class="fa fa-bar-chart text-primary text-center" aria-hidden="true"></i>
-        Finances
+        <i class="fa fa-chart-bar text-primary text-center" aria-hidden="true"></i>
+        Expenses
     </h2>
 
     <p class="lead">
@@ -40,7 +40,7 @@
                         €{{ $month['price'] }},-
                     </td>
                     <td class="text-right">
-                        <a href="/profile/finances/{{ $month['time']->format('Y/m') }}">
+                        <a href="/profile/expenses/{{ $month['time']->format('Y/m') }}">
                             show transactions
                         </a>
                     </td>

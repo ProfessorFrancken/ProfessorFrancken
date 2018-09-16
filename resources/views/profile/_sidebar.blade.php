@@ -2,7 +2,7 @@
 
 $menu = [
     ['link' => '/profile', 'icon' => 'fa fa-user', 'text' => 'Profile'],
-    ['link' => '/profile/finances', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
+    ['link' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
 ];
 
 if (Auth::user()->can_access_admin) {
