@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
-use DateTimeImmutable as DateTime;
+use DateTimeImmutable;
 use InvalidArgumentException;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
@@ -14,18 +14,18 @@ final class Schedule implements SerializableInterface
     private $startTime;
     private $endTime;
 
-    private function __construct(DateTime $startTime, DateTime $endTime = null)
+    private function __construct(DateTimeImmutable $startTime, DateTimeImmutable $endTime = null)
     {
         $this->startTime = $startTime;
         $this->endTime = $endTime;
     }
 
-    public static function withStartTime(DateTime $startTime) : Schedule
+    public static function withStartTime(DateTimeImmutable $startTime) : Schedule
     {
         return new Schedule($startTime);
     }
 
-    public static function forPeriod(DateTime $startTime, DateTime $endTime) : Schedule
+    public static function forPeriod(DateTimeImmutable $startTime, DateTimeImmutable $endTime) : Schedule
     {
         if ($startTime >= $endTime) {
             throw new InvalidArgumentException("A schedule's end time can't be before the start time");
@@ -34,7 +34,7 @@ final class Schedule implements SerializableInterface
         return new Schedule($startTime, $endTime);
     }
 
-    public function startTime() : DateTime
+    public function startTime() : DateTimeImmutable
     {
         return $this->startTime;
     }
@@ -60,8 +60,8 @@ final class Schedule implements SerializableInterface
     public static function deserialize(array $schedule)
     {
         return new Schedule(
-            DateTime::createFromFormat(\DateTime::ISO8601, $schedule['startTime']),
-            is_null($schedule['endTime']) ? null : DateTime::createFromFormat(\DateTime::ISO8601, $schedule['endTime'])
+            DateTimeImmutable::createFromFormat(\DateTime::ISO8601, $schedule['startTime']),
+            is_null($schedule['endTime']) ? null : DateTimeImmutable::createFromFormat(\DateTime::ISO8601, $schedule['endTime'])
         );
     }
 }
