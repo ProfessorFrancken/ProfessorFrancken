@@ -8,7 +8,7 @@
                        nav-link
                        text-nowrap
                        {{ $active }}
-                       {{ $item['class'] or '' }}"
+                       {{ $item['class'] ?? '' }}"
                 href="{{ $item['url'] }}"
             >
                 @if ($item['icon'] != '')

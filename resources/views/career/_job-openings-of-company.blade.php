@@ -21,7 +21,7 @@
             </li>
             {{--
             <li class="list-inline-item">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $job['location'] or 'Eindhoven' }}
+                <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $job['location'] ?? 'Eindhoven' }}
             </li>
             --}}
         </ul>
