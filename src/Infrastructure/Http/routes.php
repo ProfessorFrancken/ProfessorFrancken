@@ -101,7 +101,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         });
 
         Route::group(['prefix' => 'association'], function() {
-            Route::resource('activity', 'ActivityController');
+            // Route::resource('activity', 'ActivityController');
 
 
             //committees
