@@ -149,6 +149,8 @@ return [
         Francken\Association\Activities\ServiceProvider::class,
         Francken\Association\Members\ServiceProvider::class,
 
+        Francken\Extern\ServiceProvider::class,
+
         Francken\PlusOne\ServiceProvider::class,
         Francken\Infrastructure\RouteServiceProvider::class,
 
