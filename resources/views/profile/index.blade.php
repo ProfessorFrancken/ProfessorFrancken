@@ -33,7 +33,10 @@
 
         @component('profile._profile', ['icon' => 'fas fa-graduation-cap'])
             <h5>
-                <strong>Student number</strong>: <span class="font-weight-light h6">s2218356</span>
+                <strong>Student number</strong>:
+                <span class="font-weight-light h6">
+                    {{ $member->student()->studentNumber() }}
+                </span>
             </h5>
             <ul class="list-unstyled">
                 @foreach ($member->student()->studies() as $study)
