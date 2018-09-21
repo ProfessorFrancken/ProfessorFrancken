@@ -73,6 +73,16 @@ final class RegistrationRequestSubmitted implements SerializableInterface
         return $this->contact->address();
     }
 
+    public function birthdate() : DateTimeImmutable
+    {
+        return $this->birthdate;
+    }
+
+    public function gender() : Gender
+    {
+        return $this->gender;
+    }
+
     protected static function deserializationCallbacks()
     {
         return [
