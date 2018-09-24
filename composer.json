@@ -16,6 +16,7 @@
     "league/html-to-markdown": "^4.4",
     "league/period": "^3.3",
     "matthiasnoback/broadway-serialization": "^2.0",
+    "predis/predis": "^1.1",
     "ramsey/uuid": "^3.0",
     "sabre/vobject": "^4.1",
     "webmozart/assert": "^1.1",
