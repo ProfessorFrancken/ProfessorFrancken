@@ -16,6 +16,15 @@ services:
     # volumes_from:
     #   - data
 
+  scheduler:
+    image: francken/scheduler
+    links:
+      - legacy-db
+      - redis
+    volumes:
+      - ./:/var/www/francken
+    restart: always
+
   # data:
   #   image: busybox
   #   volumes:
