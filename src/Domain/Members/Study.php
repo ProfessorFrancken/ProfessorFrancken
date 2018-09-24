@@ -43,4 +43,16 @@ final class Study implements SerializableInterface
     {
         return $this->graduationDate;
     }
+
+    protected static function deserializationCallbacks()
+    {
+        return [
+            'startDate' => function ($value) {
+                return \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']);
+            },
+            'graduationDate' => function ($value) {
+                return $value !== null ? \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']) : null;
+            },
+        ];
+    }
 }

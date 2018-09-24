@@ -89,6 +89,9 @@ final class RegistrationRequestSubmitted implements SerializableInterface
             'id' => [RegistrationRequestId::class, 'deserialize'],
             'fullName' => [FullName::class, 'deserialize'],
             'gender' => [Gender::class, 'deserialize'],
+            'birthdate' => function ($value) {
+                return \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']);
+            },
             'contact' => [ContactInfo::class, 'deserialize'],
             'studyDetails' => [StudyDetails::class, 'deserialize']
         ];
