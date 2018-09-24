@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 
+Route::get('/blog', function() {
+    return redirect('/association/news');
+});
+
 Route::get('/wordpress', function() {
     return redirect('/');
 });
