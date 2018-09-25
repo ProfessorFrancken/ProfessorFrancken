@@ -48,9 +48,15 @@ final class Study implements SerializableInterface
     {
         return [
             'startDate' => function ($value) {
+                if ($value instanceof \DateTimeImmutable) {
+                    return $value;
+                }
                 return \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']);
             },
             'graduationDate' => function ($value) {
+                if ($value instanceof \DateTimeImmutable) {
+                    return $value;
+                }
                 return $value !== null ? \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']) : null;
             },
         ];
