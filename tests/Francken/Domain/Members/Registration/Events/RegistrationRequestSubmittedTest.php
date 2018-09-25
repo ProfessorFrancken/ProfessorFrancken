@@ -10,7 +10,6 @@ use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Study;
@@ -62,7 +61,9 @@ class RegistrationRequestSubmittedTest extends TestCase
 
         $this->assertEquals(
             $event,
-            RegistrationRequestSubmitted::deserialize($event->serialize())
+            RegistrationRequestSubmitted::deserialize(
+                $event->serialize()
+            )
         );
     }
 

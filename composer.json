@@ -8,7 +8,7 @@
     "fale/isbn": "^3.0",
     "fideloper/proxy": "^4.0",
     "laravel/browser-kit-testing": "^3.0",
-    "laravel/framework": "5.6.*",
+    "laravel/framework": "5.7.*",
     "laravel/tinker": "^1.0",
     "laravelcollective/html": "^5.4.0",
     "lcobucci/jwt": "^3.2",
@@ -24,6 +24,7 @@
     "webuni/commonmark-table-extension": "^0.6.1"
   },
   "require-dev": {
+    "beyondcode/laravel-dump-server": "^1.2",
     "codedungeon/phpunit-result-printer": "^0.4.4",
     "davidbadura/faker-markdown-generator": "^1.0",
     "filp/whoops": "^2.1",
@@ -55,10 +56,10 @@
   },
   "scripts": {
     "post-root-package-install": ["php -r \"copy('.env.example', '.env');\""],
-    "post-create-project-cmd": ["php artisan key:generate"],
+    "post-create-project-cmd": ["@php artisan key:generate --ansi"],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover"
+      "@php artisan package:discover --ansi"
     ],
     "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'",
     "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",
