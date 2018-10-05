@@ -82,7 +82,7 @@ services:
     working_dir: /var/www/francken
 
   npm:
-    image: node:7.4
+    image: node:8.2
     volumes_from:
       - php
     working_dir: /var/www/francken
