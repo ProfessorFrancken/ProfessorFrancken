@@ -11,8 +11,15 @@ services:
     links:
       - mysql
       - legacy-db
+      - redis
+    working_dir: /var/www/francken
     volumes:
       - ./:/var/www/francken
+    environment:
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_DRIVER=redis
+      - REDIS_HOST=redis
     # volumes_from:
     #   - data
 
@@ -21,9 +28,21 @@ services:
     links:
       - legacy-db
       - redis
+    working_dir: /var/www/francken
     volumes:
       - ./:/var/www/francken
     restart: always
+
+  queue-worker:
+    image: francken/scheduler
+    links:
+      - legacy-db
+      - redis
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+    restart: always
+    command: php artisan horizon
 
   # data:
   #   image: busybox
@@ -110,3 +129,14 @@ services:
       - mysql
     environment:
       DB_CONNECTION: testing
+
+  redis:
+    image: redis:4-alpine
+    ports:
+      - 16379:6379
+    volumes:
+      - redis:/data
+
+volumes:
+  redis:
+    driver: "local"
