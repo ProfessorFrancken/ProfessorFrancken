@@ -42,7 +42,7 @@
             <h3 class="section-header">The latest Francken Vrij</h3>
             <p>
                 Francken Vrij is the popular science magazine of the Technisch Fysische Vereniging ‘Professor Francken’ and is distributed to its members, sponsors and other interested parties.
-                The magazine has a different theme every edition that in some way has a connection to applied physics, and generally might contain the following:
+                The magazine has a different theme every edition that in some way has a connection to engineering physics, and generally might contain the following:
             </p>
 
             <ul class="list list-unstyled">

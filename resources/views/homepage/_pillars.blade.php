@@ -27,7 +27,7 @@
                     <p class="card-text">
                         <small>
                             Are you curious who we are?
-                            Do you want to know what Applied Physics is about?
+                            Do you want to know what Engineering Physics is about?
                             Or are you interested in participating in a committee?
                             Find all you need to know right here!
                         </small>
