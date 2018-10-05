@@ -15,8 +15,11 @@
                 <h4 class="footer__header h5 mb-3">Adress</h4>
 
                 <address class="footer__body">
+                    <i class="fa fa-map-marker-alt text-primary" aria-hidden="true"></i>
                     Nijenborgh 4<br>
+                    <i class="fa fa-map-marker-alt invisible" aria-hidden="true"></i>
                     9747AG, Groningen<br>
+                    <i class="fa fa-globe-africa invisible" aria-hidden="true"></i>
                     The Netherlands
                 </address>
             </div>
@@ -25,8 +28,8 @@
                 <h4 class="footer__header h5 mb-3">Contact</h4>
 
                 <div class="footer__body">
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
-                    <i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+310503634978">tel: +31 (0) 50 363 4978</a> <br>
+                    <i class="far fa-envelope text-primary" aria-hidden="true"></i> <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
+                    <i class="fa fa-phone text-primary" aria-hidden="true"></i> <a href="tel:+310503634978">tel: +31 (0) 50 363 4978</a> <br>
 
                     <a href="/contact"><u>More contact info</u></a>
                 </div>
@@ -37,13 +40,13 @@
 
                 <div class="footer__body">
                     <a href="https://www.facebook.com/groups/139490187648/">
-                        <i class="fa fa-facebook" aria-hidden="true"></i> Facebook<br>
+                        <i class="fab fa-facebook text-primary" aria-hidden="true"></i> Facebook<br>
                     </a>
                     <a href="https://www.linkedin.com/groups/1524067">
-                        <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn<br>
+                        <i class="fab fa-linkedin text-primary" aria-hidden="true"></i> LinkedIn<br>
                     </a>
                     <a href="https://github.com/ProfessorFrancken/ProfessorFrancken">
-                        <i class="fa fa-github" aria-hidden="true"></i> Github
+                        <i class="fab fa-github-square text-primary" aria-hidden="true"></i> Github
                     </a>
                 </div>
             </div>
@@ -53,9 +56,11 @@
 
                 <div class="footer__body">
                     <a href="/privacy-policy">
+                        <i class="fa fa-user-secret text-primary" aria-hidden="true"></i>
                         Privacy policy<br>
                     </a>
                     <a href="/cookies-policy">
+                        <i class="fa fa-cookie-bite text-primary" aria-hidden="true"></i>
                         Cookies<br>
                     </a>
                 </div>

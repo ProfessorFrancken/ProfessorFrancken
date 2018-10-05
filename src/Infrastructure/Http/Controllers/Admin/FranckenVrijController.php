@@ -83,7 +83,7 @@ final class FranckenVrijController extends Controller
 
         list($coverPath, $pdfPath) = $this->uploadPdf(
             $request->file('pdf'),
-            $volume . '-' . $edition. '.pdf'
+            $volume . '-' . $edition . '.pdf'
         );
 
         $edition = Edition::publish(
