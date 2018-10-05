@@ -1,14 +1,12 @@
 <?php
 
-use Illuminate\Http\Request;
+declare(strict_types=1);
 
-Route::get('/blog', function() {
-    return redirect('/association/news');
-});
 
-Route::get('/wordpress', function() {
-    return redirect('/');
-});
+Route::redirect('/blog', '/association/news');
+Route::permanentRedirect('/wordpress', '/');
+Route::redirect('/books', '/study/books');
+Route::redirect('/boeken', '/study/books');
 
 Route::get('/wordpress/{wp}', function ($wp) {
     return redirect('http://old.professorfrancken.nl/wordpress/' . $wp);
@@ -27,22 +25,13 @@ Route::get('jas-events', function () {
     return DB::table('jas_events')->get();
 });
 
-Route::get('/books', function () {
-    return redirect('/study/books');
-});
-
-Route::get('/boeken', function () {
-    return redirect('/study/books');
-});
-
-Route::group(['middleware' => ['api'], 'prefix' => 'api'], function () {
+Route::group(['middleware' => ['api'], 'prefix' => 'api'], function () : void {
     Route::get('activities', '\Francken\Api\Http\ActivitiesController@index');
     Route::get('books', '\Francken\Api\Http\BooksController@index');
     Route::get('job-openings', '\Francken\Api\Http\JobOpeningsController@index');
 });
 
-Route::group(['middleware' => ['web', 'bindings']], function () {
-
+Route::group(['middleware' => ['web', 'bindings']], function () : void {
     Route::get('/', 'MainContentController@index');
 
     Route::get('/register', 'RegistrationController@request');
@@ -53,7 +42,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
     Route::post('/login', 'SessionController@login');
     Route::get('/logout', 'SessionController@logout');
 
-    Route::group(['prefix' => 'study'], function() {
+    Route::group(['prefix' => 'study'], function () : void {
         Route::get('books', 'BookController@index');
         Route::get('books/{book}', 'BookController@show');
         Route::put('books/{bookId}/buy', 'BookController@buy')->middleware('auth');
@@ -62,7 +51,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('research-groups/{group}', 'ResearchGroupsController@show');
     });
 
-    Route::group(['prefix' => 'association'], function() {
+    Route::group(['prefix' => 'association'], function () : void {
         Route::get('activities', '\Francken\Association\Activities\Http\ActivitiesController@index');
         Route::get('activities/{year}/{month}', '\Francken\Association\Activities\Http\ActivitiesPerMonthController@index');
         Route::get('activities/{year}/{month}/{activity}', '\Francken\Association\Activities\Http\ActivitiesController@show');
@@ -74,7 +63,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('boards/birthdays', '\Francken\Association\Boards\BirthdaysController@index');
     });
 
-    Route::group(['prefix' => 'career'], function() {
+    Route::group(['prefix' => 'career'], function () : void {
         Route::get('', 'CareerController@index');
         Route::get('job-openings', 'CareerController@jobs')->name('job-openings');
         Route::get('companies', 'CompaniesController@index');
@@ -83,27 +72,26 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
         Route::get('events/{academic_year}', 'CareerController@events');
     });
 
-    Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () : void {
         Route::get('/', 'DashboardController@redirectToDashboard');
         Route::get('overview', 'DashboardController@overview');
         Route::get('analytics', 'DashboardController@analytics');
         Route::get('export', 'DashboardController@export');
 
-        Route::group(['prefix' => 'study'], function() {
+        Route::group(['prefix' => 'study'], function () : void {
             Route::get('research-groups', 'Admin\AdminController@showPageIsUnavailable');
 
             Route::get('books', '\Francken\Study\BooksSale\Http\AdminBooksController@index');
             Route::post('books', '\Francken\Study\BooksSale\Http\AdminBooksController@store');
         });
 
-        Route::group(['prefix' => 'extern'], function() {
+        Route::group(['prefix' => 'extern'], function () : void {
             Route::get('companies', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('events', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('job-openings', 'Admin\AdminController@showPageIsUnavailable');
         });
 
-        Route::group(['prefix' => 'association'], function() {
+        Route::group(['prefix' => 'association'], function () : void {
             //committees
             Route::resource('committee', 'Admin\CommitteeController', ['except' => ['edit']]);
             Route::post('committee/search-member', 'Admin\CommitteeController@searchMember');
@@ -128,8 +116,6 @@ Route::group(['middleware' => ['web', 'bindings']], function () {
             Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('committees', 'Admin\AdminController@showPageIsUnavailable');
         });
-
-
     });
 
     Route::get('{page}', 'MainContentController@page')->where('page', '.+');
