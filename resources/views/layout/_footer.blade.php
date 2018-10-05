@@ -11,7 +11,7 @@
 
     <div class="container-fluid">
         <div class="footer__contact-background footer__contact row">
-            <div class="col-12 col-sm-3 col-md-2 my-3 order-2">
+            <div class="col-12 col-sm-3 offset-md-1 col-md-2 my-3 order-2">
                 <h4 class="footer__header h5 mb-3">Adress</h4>
 
                 <address class="footer__body">
@@ -68,11 +68,12 @@
 
 
             {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
-            <div class="order-md-1 col-12 col-md-2 d-none d-md-block footer__logo skew-md--bottom-right">
+            <div class="order-md-4 col-12 col-md-2 d-none d-lg-block footer__logo skew-md--bottom-left">
                 <div class="align-middle align-items-center">
-                    <div class="d-flex justify-content-center justify-content-md-end align-items-center">
+                    <div class="d-flex justify-content-center justify-content-md-start align-items-center" style="margin-left: 5em";>
                         <a class="header__title-link" href="/">
-                            <img alt="Logo of T.F.V. 'Professor Francken'" src="/images/LOGO_KAAL.png" class="img-fluid  scaleUp--hover" />
+                            <img alt="Logo of T.F.V. 'Professor Francken'" src="/images/LOGO_KAAL.png" class="img-fluid  scaleUp--hover" style="
+    transform: skewX(30DEG); object-fit: contain;" />
                         </a>
                     </div>
                 </div>
