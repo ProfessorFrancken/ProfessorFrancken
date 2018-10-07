@@ -1,20 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure;
 
 use Broadway\EventSourcing\EventSourcingRepository;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector;
 use Francken\Application\Committees\CommitteesListRepository;
-use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Application\FranckenVrij\Edition;
+use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Application\Members\Registration\RequestStatusRepository;
-use Francken\Application\ReadModelRepository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListRepository;
+use Francken\Application\ReadModelRepository;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
@@ -35,7 +37,7 @@ final class AppServiceProvider extends ServiceProvider
     // This constant contains all the repositories we want to register,
     // it contains pairs of the repository's class and the associated
     // aggregate's class name
-    const EVENT_SOURCED_REPOSITORIES = [
+    public const EVENT_SOURCED_REPOSITORIES = [
         [CommitteeRepository::class, Committee::class],
         [MemberRepository::class, Member::class],
         [PostRepository::class, Post::class],
@@ -45,7 +47,7 @@ final class AppServiceProvider extends ServiceProvider
     // Similarly we can register illuminate read models by again providing a pair
     // where the first value is the repository's class name and the second value
     // are the options that should be given to the illuminate repository
-    const ILLUMINATE_READ_MODELS = [
+    public const ILLUMINATE_READ_MODELS = [
         [
             MemberListRepository::class,
             ['members', MemberList::class, 'id']
@@ -71,8 +73,19 @@ final class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register()
+    public function register() : void
     {
+        \Horizon::auth(function ($request) {
+            $user = $request->user();
+
+            if ($user === null) {
+                return false;
+            }
+
+            return $user->can_access_admin;
+            // return true / false;
+        });
+
         // Register the event sourced repositories
         foreach (static::EVENT_SOURCED_REPOSITORIES as $repository) {
             $this->registerRepository($repository[0], $repository[1]);
@@ -92,7 +105,7 @@ final class AppServiceProvider extends ServiceProvider
      * @param string $repository classname
      * @param string $aggregate  classname
      */
-    private function registerRepository(string $repository, string $aggregate)
+    private function registerRepository(string $repository, string $aggregate) : void
     {
         $this->app->when($repository)
             ->needs(EventSourcingRepository::class)
@@ -106,7 +119,7 @@ final class AppServiceProvider extends ServiceProvider
     /**
      * Register bindings to get specific Illuminate repositories for our read models
      */
-    private function registerReadModels()
+    private function registerReadModels() : void
     {
         // Register all read models
         foreach (static::ILLUMINATE_READ_MODELS as $readModel) {
