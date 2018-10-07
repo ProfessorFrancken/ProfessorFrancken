@@ -19,7 +19,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \Fideloper\Proxy\TrustProxies::class,
-        \Francken\Infrastructure\Http\Middleware\ForceHttps::class,
         \Francken\Infrastructure\Http\Middleware\EnableCORS::class
 
     ];
