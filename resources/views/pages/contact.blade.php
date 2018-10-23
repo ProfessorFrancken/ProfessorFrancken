@@ -27,11 +27,11 @@
 
             <h4>Board</h4>
             <strong>Email</strong>: <a href="mailto:board@professorfrancken.nl">board@professorfrancken.nl</a><br>
-            <strong>Phone</strong>: <a href="tel:+310503634978">+31 (0) 50 363 4978</a>
+            <strong>Phone</strong>: <a href="tel:+31503634978">+31 (0) 50 363 4978</a>
 
             <h4>External relations</h4>
             <strong>Email</strong>: <a href="mailto:extern@professorfrancken.nl" >extern@professorfrancken.nl</a><br>
-            <strong>Phone</strong>: <a href="tel:+31611759379">+31 650882750</a>
+            <strong>Phone</strong>: <a href="tel:+31650882750">+31 650882750</a>
         </div>
         <div class="col-sm-4">
             <h2>Other information</h2>

@@ -29,7 +29,7 @@
 
                 <div class="footer__body">
                     <i class="far fa-envelope text-primary" aria-hidden="true"></i> <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
-                    <i class="fa fa-phone text-primary" aria-hidden="true"></i> <a href="tel:+310503634978">tel: +31 (0) 50 363 4978</a> <br>
+                    <i class="fa fa-phone text-primary" aria-hidden="true"></i> <a href="tel:+31503634978">tel: +31 (0) 50 363 4978</a> <br>
 
                     <a href="/contact"><u>More contact info</u></a>
                 </div>
