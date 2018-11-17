@@ -49,6 +49,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        // Change to : Illuminate\Session\Middleware\AuthenticateSession ?
         'auth' => \Francken\Infrastructure\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Francken\Infrastructure\Http\Middleware\RedirectIfAuthenticated::class,

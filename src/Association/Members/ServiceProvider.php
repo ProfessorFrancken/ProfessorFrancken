@@ -46,6 +46,13 @@ final class ServiceProvider extends RouteServiceProvider
             'middleware' => ['web', 'auth']
         ], function($router) {
             $router->get('/', 'ProfileController@index');
+            $router->get('/edit', 'ProfileController@edit');
+
+            $router->get('/personal-information/edit', 'PersonalInformationController@edit');
+            $router->get('/contact-information/edit', 'ContactInformationController@edit');
+            $router->get('/study-profile/edit', 'StuyProfileController@edit');
+            $router->get('/bank-account/edit', 'BankAccountController@edit');
+            $router->get('/privacy-settings/edit', 'PrivacySettingsController@edit');
 
             $router->get('expenses', 'ExpensesController@index');
             $router->get('expenses/{year}/{month}', 'ExpensesController@show');

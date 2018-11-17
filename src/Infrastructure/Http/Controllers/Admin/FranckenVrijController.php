@@ -58,6 +58,13 @@ final class FranckenVrijController extends Controller
 
         $title = 'Francken Vrij ' . $currentVolume . '.' . $currentEdition;
 
+        // return ([$title, array_map(function ($volume) {
+        //     return [
+        //         'volume' => $volume->volume(),
+        //         'editions' => array_map(function ($edition) { return $edition->serialize(); }, $volume->editions())
+        //     ];
+        // }, $volumes), $currentVolume, $currentEdition]);
+
         return view('admin.francken-vrij.index', [
             'volumes' => $volumes,
             'title' => $title,

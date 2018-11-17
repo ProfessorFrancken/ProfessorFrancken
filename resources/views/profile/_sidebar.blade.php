@@ -2,7 +2,12 @@
 
 $menu = [
     ['link' => '/profile', 'icon' => 'fa fa-user', 'text' => 'Profile'],
+//    ['link' => '/profile/settings', 'icon' => 'fa fa-cogs', 'text' => 'Settings'],
+//    ['link' => '/profile/members', 'icon' => 'fa fa-university', 'text' => 'Member list'],
     ['link' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
+//    ['link' => '/profile/committees', 'icon' => 'fa fa-users', 'text' => 'Committees'],
+//    ['link' => '/profile/activities', 'icon' => 'fa fa-calendar', 'text' => 'Activities'],
+//    ['link' => '/profile/adtcievements', 'icon' => 'fa fa-trophy', 'text' => 'Adtcievements'],
 ];
 
 if (Auth::user()->can_access_admin) {

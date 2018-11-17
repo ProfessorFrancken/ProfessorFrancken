@@ -1,9 +1,6 @@
 @extends('profile.layout')
 
 @section('content')
-    <a class="btn btn-outline-primary my-3" href="/profile/edit">
-        Edit profile
-    </a>
 
     <ul class="list-unstyled profile-container border rounded" style="">
         @component('profile._profile', ['icon' => 'fas fa-user'])
@@ -91,7 +88,6 @@
         @endcomponent
 
         @component('profile._profile', ['icon' => 'fas fa-money-check-alt'])
-
             <h6 class="text-body font-weight-light">
                 {{ $member->iban()  }}
             </h6>
@@ -106,24 +102,6 @@
 
             <a href="/" class="float-right text-secondary" style="color: #46988e">Edit</a>
         @endcomponent
-
-        @if (count($committees) > 0)
-            @component('profile._profile', ['icon' => 'fas fa-users'])
-                <h6 class="text-body font-weight-light">
-                    Committees
-                </h6>
-
-                <ul class="">
-                    @foreach ($committees as $committee)
-                        <li>
-                            <a href="{{ $committee->link() }}">
-                                {{ $committee->name() }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endcomponent
-        @endif
 
         @component('profile._profile', ['icon' => 'fas fa-user-secret'])
             <h6 class="text-body font-weight-light">

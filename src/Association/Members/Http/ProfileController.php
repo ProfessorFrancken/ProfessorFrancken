@@ -24,6 +24,11 @@ final class ProfileController
             ]);
     }
 
+    public function edit()
+    {
+        return view('profile.edit');
+    }
+
     private function member($user)
     {
         $lid = \DB::connection('francken-legacy')

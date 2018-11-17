@@ -1,0 +1,5 @@
+((nil . ((php-project-root . git)
+         (phpstan-working-dir . (root . "."))
+         (phpstan-level . 7)
+         (eval . (setq php-cs-fixer-config-option (concat (projectile-project-root) ".php_cs.dist")))
+         )))

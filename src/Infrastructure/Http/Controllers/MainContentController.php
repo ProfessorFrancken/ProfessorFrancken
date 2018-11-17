@@ -13,13 +13,31 @@ class MainContentController extends Controller
 {
     public function index(NewsRepository $news, ActivitiesRepository $activities)
     {
+
+
+    // $members = \DB::connection('francken-legacy')
+    //     ->table('commissie_lid')
+    //     ->select(['leden.id', 'leden.voornaam', 'leden.tussenvoegsel', 'leden.achternaam', 'commissies.naam'])
+    //     ->join('leden', 'leden.id', 'commissie_lid.lid_id')
+    //     ->join('commissies', 'commissies.id', 'commissie_lid.commissie_id')
+    //     ->where('jaar', '2017')
+    //     ->get()
+    //     ->map(function ($member) {
+    //         return [
+    //             'commissie' => $member->naam,
+    //             'naam' => implode(' ', array_filter([$member->voornaam, $member->tussenvoegsel, $member->achternaam]))
+    //         ];
+    //     })
+    //     ->groupBy('commissie');
+
         $today = new \DateTimeImmutable(
             'now', new \DateTimeZone('Europe/Amsterdam')
         );
 
         return view('homepage/homepage', [
             'news' => $news->recent(3),
-            'activities' => $activities->after($today, 5)
+            'activities' => $activities->after($today, 5),
+            // 'committeeMembers' => $members
         ]);
     }
 
