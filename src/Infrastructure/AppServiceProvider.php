@@ -94,7 +94,7 @@ final class AppServiceProvider extends ServiceProvider
         // Register read model repositories and other associated services
         $this->registerReadModels();
 
-        $this->app->instance('path', 'src/Infrastructure');
+        $this->app->instance('path', 'src');
     }
 
     /**

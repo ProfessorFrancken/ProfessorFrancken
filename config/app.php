@@ -157,6 +157,7 @@ return [
         /*
          * Third Party Service Providers
          */
+        Francken\Infrastructure\TelescopeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         // Fideloper\Proxy\TrustedProxyServiceProvider::class,
 
