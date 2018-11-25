@@ -38,7 +38,7 @@ return [
             'icon' => 'suitcase',
         ],
         [
-            'url' => 'https://www.flickr.com/photos/fotocie/sets/',
+            'url' => '/association/photos',
             'title' => 'Photos',
             'subItems' => [],
             'icon' => 'camera',
