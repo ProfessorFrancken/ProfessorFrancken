@@ -36,13 +36,13 @@
         {{ $album->description }}
     </p>
 
-    <ul class="list-unstyled photo-grid">
+    <ul class="list-unstyled photo-grid" id="album-photos">
         @if ($photos->onFirstPage())
-            @include('association.photos._photo', ['photo' => $cover_photo, 'classes' => ['photo-cover']])
+            @include('association.photos._photo', ['photo' => $cover_photo, 'href' => $cover_photo->src(), 'classes' => ['photo-cover']])
         @endif
 
         @foreach ($photos as $photo)
-            @include('association.photos._photo', ['photo' => $photo])
+            @include('association.photos._photo', ['photo' => $photo, 'href' => $photo->src()])
         @endforeach
     </ul>
 
@@ -61,4 +61,28 @@
             @include('association.photos._album', ['album' => $next_album])
         @endisset
     </ul>
+
+    @push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    @endpush
+
+    @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    @endpush
+
+    @push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#album-photos').magnificPopup({
+                delegate: '.photo-link',
+                type: 'image',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [1,3]
+                },
+            });
+        })
+    </script>
+    @endpush
 @endsection
