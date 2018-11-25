@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <ul class="my-5 list-unstyled d-flex justify-content-between" role="navigation">
+    <ul class="my-4 list-unstyled d-flex justify-content-between" role="navigation">
         <div class="d-flex">
             @if ($paginator->onFirstPage())
                 <li class="mr-2">
