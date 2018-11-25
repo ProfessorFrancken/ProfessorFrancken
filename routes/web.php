@@ -6,6 +6,7 @@ Route::redirect('/blog', '/association/news');
 Route::permanentRedirect('/wordpress', '/');
 Route::redirect('/books', '/study/books');
 Route::redirect('/boeken', '/study/books');
+Route::redirect('/photos', '/association/photos');
 
 Route::get('/wordpress/{wp}', function ($wp) {
     return redirect('http://old.professorfrancken.nl/wordpress/' . $wp);
