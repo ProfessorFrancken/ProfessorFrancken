@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -36,4 +38,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'flickr' => [
+        'api_key' => env('FLICKR_API_KEY'),
+        'secret' => env('FLICKR_SECRET'),
+        'user_id' => env('FLICKR_USER_ID'),
+    ],
 ];
