@@ -29,5 +29,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule) : void
     {
         $schedule->command('activities:update-ical')->hourly();
+        $schedule->command('photos:synchronize')->hourly();
     }
 }
