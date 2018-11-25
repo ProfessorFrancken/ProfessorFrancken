@@ -29,6 +29,7 @@ use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\CommonMarkConverter;
 
@@ -95,6 +96,13 @@ final class AppServiceProvider extends ServiceProvider
         $this->registerReadModels();
 
         $this->app->instance('path', 'src');
+    }
+
+    public function boot() : void
+    {
+        Paginator::defaultView('components.pagination.default');
+
+        Paginator::defaultSimpleView('components.pagination.simple-default');
     }
 
     /**
