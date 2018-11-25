@@ -105,24 +105,29 @@ final class SynchronizeFlickrAlbums extends Command
         $title = str_after($album['title'], $activity_date . " ");
         $slug = str_slug($activity_date . '-' . $title);
 
-        $this->db->table('albums')->insert([
-            'id' => $album['id'],
-            'published_at' => $album['date_created'],
-            'activity_date' => $activity_date,
+        try {
+            $this->db->table('albums')->insert([
+                'id' => $album['id'],
+                'published_at' => $album['date_created'],
+                'activity_date' => $activity_date,
 
-            'title' => $title,
-            'description' => $album['description'],
-            'slug' => $slug,
+                'title' => $title,
+                'description' => $album['description'],
+                'slug' => $slug,
 
-            'is_public' => $album['is_public'] === 1,
-            'cover_photo' => $album['primary']['id'],
+                'is_public' => $album['is_public'] === 1,
+                'cover_photo' => $album['primary']['id'],
 
-            'views' => $album['views'],
-            'amount_of_photos' => $album['photos'],
+                'views' => $album['views'],
+                'amount_of_photos' => $album['photos'],
 
-            'created_at' => $album['date_created'],
-            'updated_at' => $album['date_update'],
-        ]);
+                'created_at' => $album['date_created'],
+                'updated_at' => $album['date_update'],
+            ]);
+        } catch (\Exception $e) {
+            $this->info("Something went wrong {$album['title']} - {$album['id']}");
+            return;
+        }
 
         foreach ($photos as $photo) {
             try {
