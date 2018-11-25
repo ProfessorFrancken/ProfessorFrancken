@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure;
 
-use Illuminate\Routing\Router;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Francken\Application\Career\AcademicYear;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -19,15 +21,11 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Define the routes for the application.
-     *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
      */
-    public function map(Router $router)
+    public function map(Router $router) : void
     {
-        $router->group(['namespace' => $this->namespace], function ($router) {
-            require base_path('src/Infrastructure/Http/routes.php');
-        });
+        $this->mapWebRoutes($router);
+        $this->mapApiRoutes($router);
 
         $router->bind(
             'academic_year',
@@ -35,6 +33,29 @@ class RouteServiceProvider extends ServiceProvider
                 return AcademicYear::fromString($year);
             }
         );
+    }
 
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     */
+    protected function mapWebRoutes(Router $router) : void
+    {
+        $router->middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     */
+    protected function mapApiRoutes(Router $router) : void
+    {
+        $router->middleware('api')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/api.php'));
     }
 }
