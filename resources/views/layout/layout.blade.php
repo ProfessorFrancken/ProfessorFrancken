@@ -8,13 +8,7 @@
         @include('layout._seo')
 
         @unless(config('env') == 'testing')
-            @if (request()->exists('red'))
-                <link rel="stylesheet" href="{{ mix('/dist/css/red.css') }}">
-            @elseif (request()->exists('slef'))
-                <link rel="stylesheet" href="{{ mix('/dist/css/slef.css') }}">
-            @else
-                <link rel="stylesheet" href="{{ mix('/dist/css/app.css') }}">
-            @endif
+            <link rel="stylesheet" href="{{ mix('/dist/css/app.css') }}">
         @endunless
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
