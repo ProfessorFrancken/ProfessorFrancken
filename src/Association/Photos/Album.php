@@ -32,6 +32,7 @@ final class Album extends Model
         return self::orderBy('activity_date', 'asc')
             ->where('is_public', true)
             ->where('activity_date', '>', $this->activity_date)
+            ->where('id', '!=', $this->id)
             ->with('coverPhoto')
             ->first();
     }
@@ -41,6 +42,7 @@ final class Album extends Model
         return self::orderBy('activity_date', 'desc')
             ->where('is_public', true)
             ->where('activity_date', '<', $this->activity_date)
+            ->where('id', '!=', $this->id)
             ->with('coverPhoto')
             ->first();
     }
