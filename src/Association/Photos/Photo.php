@@ -17,7 +17,6 @@ final class Photo extends Model
         800 => "_c",
         1024 => "_b",
         1600 => "_h",
-        2048 => "_k",
     ];
 
     public function album()
