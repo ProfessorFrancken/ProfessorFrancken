@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -159,6 +161,7 @@ return [
          */
         Francken\Infrastructure\TelescopeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        BladeSvg\BladeSvgServiceProvider::class,
         // Fideloper\Proxy\TrustedProxyServiceProvider::class,
 
     ],
