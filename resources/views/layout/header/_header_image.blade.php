@@ -12,7 +12,7 @@
         --}}
         <div class="header-image__align">
 
-            <div class="header-image__body container">
+            <div class="header-image__body container text-white">
                 {{ $slot }}
             </div>
 
