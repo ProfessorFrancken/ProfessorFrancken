@@ -29,8 +29,8 @@
     margin-right: 2em;
 }
 
-.about-francken__j-c-francken:after  {
-    content: '';
+.about-francken__j-c-francken:after {
+    content: "";
     position: absolute;
     display: block;
     right: -20px;
@@ -51,10 +51,10 @@
 @include media-breakpoint-up(lg) {
     .about-francken__j-c-francken {
         margin-right: 3em;
-        margin-top: -6em;
+        // margin-top: -6em;
     }
 
-    .about-francken__j-c-francken:after  {
+    .about-francken__j-c-francken:after {
         right: -30px;
         bottom: 5px;
         width: 100px;

@@ -1,15 +1,16 @@
-<header class="header">
-    <div class="container-fluid">
-        <div class="row">
-            {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
-            <div class="col-12 col-md-4 col-lg-5 pl-0 pr-0" style="z-index: 1">
-                @include("layout._logo")
-            </div>
-            <div class="col col-sm-4 col-md-8 col-lg-7 d-none d-md-block">
-                @include("layout.navigation._navigation")
-            </div>
-        </div>
-    </div>
+<header
+    class="d-flex justify-content-between bg-primary"
+    style="height: 100px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); background: #8cd3cb; background: black; "
+>
+    {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
+    @include("layout._logo")
 
-    @yield('header-image')
+    <div class="container d-flex align-items-center">
+    @include("layout.navigation._navigation")
+   </div>
+
+
+
 </header>
+
+@yield('header-image')

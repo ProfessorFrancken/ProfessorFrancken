@@ -4,18 +4,19 @@
     @endslot
 
     {{-- registration call to action --}}
-    <div class="row align-items-center h-100">
-        <div class="registration-cta__body col-md-5 offset-md-4 align-self-center">
-            <h1>
-                The study association for
+    <div class="align-items-center h-100">
+        <div class="align-self-center">
+            <h1>T.F.V. 'Professor Francken'</h1>
+            <h3>
+                The study association for<br />
                 <strong>
                     engineering physics
                 </strong>
-                in Groningen
-            </h1>
-        </div>
-        <div class="col-md-1 registration-cta__action">
-            <a class="btn btn-primary" href="/register">Register</a>
+                in Groningen<br/>
+                <small>
+                    Become a member for only 5,- per year
+                </small>
+            </h3>
         </div>
     </div>
 @endcomponent
