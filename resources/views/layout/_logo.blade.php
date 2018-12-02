@@ -1,13 +1,10 @@
 <div
     class="skew-md--top-right header__logo d-flex flex-md-column justify-content-end justify-content-md-end"
 >
-    <a class="header__title-link justify-content-end align-items-center d-inline-flex" href="/">
-        <img
-            alt="Logo of T.F.V. 'Professor Francken'"
-            src="/images/LOGO_KAAL.png"
-            class="img-fluid scaleUp--hover"
-        />
-        <span class="header__title text-left">
+    <a class="header__title-link justify-content-begin justify-content-md-end align-items-center d-inline-flex" href="/">
+        @svg('LOGO_KAAL', 'svg-logo scaleUp--hover')
+
+        <span class="d-md-none header__title text-left">
             T.F.V.<br class="d-none d-md-inline"/>
             'Professor<br class="d-none d-md-inline"/>
             Francken'
