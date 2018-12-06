@@ -1,4 +1,4 @@
-<div class="navigation__menu nav">
+<div class="navigation__menu nav d-flex justify-content-end">
     @foreach ($items as $item)
         <div class="navigation__hoverable">
             <?php $active = '/' . Request::segment(1) == $item['url'] ? 'navigation__menu-item--active' : ''; ?>
