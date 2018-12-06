@@ -15,5 +15,5 @@
             </div>
         </div>
     </div>
-    @yield('header-image')
-</header>;
+</header>
+@yield('header-image')
