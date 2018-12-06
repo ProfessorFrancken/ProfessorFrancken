@@ -68,11 +68,11 @@
 
 
             {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
-            <div class="order-md-1 col-12 col-md-2 d-none d-md-block footer__logo skew-md--bottom-right">
+            <div class="order-md-1 col-12 col-md-2 col-lg-3 d-none d-lg-block footer__logo skew-md--bottom-right">
                 <div class="align-middle align-items-center">
                     <div class="d-flex justify-content-center justify-content-md-end align-items-center">
                         <a class="header__title-link" href="/">
-                            <img alt="Logo of T.F.V. 'Professor Francken'" src="/images/LOGO_KAAL.png" class="img-fluid  scaleUp--hover" />
+                            @svg('LOGO_KAAL', 'svg-logo scaleUp--hover')
                         </a>
                     </div>
                 </div>
