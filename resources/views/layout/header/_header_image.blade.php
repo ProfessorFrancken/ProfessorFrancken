@@ -1,6 +1,6 @@
 <style>
  .header-image::before {
-     background-image: url({{ banner_image( $__env->yieldContent('header-image-url', '/images/boards/statisch.jpg')) }}) !important;
+     background-image: url({{ banner_image($__env->yieldContent('header-image-url', '/images/boards/statisch.jpg'), ['vertical-offset' => 'North']) }}) !important;
  }
 </style>
 <div class="stop-overflow">
