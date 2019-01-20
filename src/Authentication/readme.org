@@ -1,0 +1,3 @@
+This should contain various middleware and an AuthenticatedUser object that can be used to retrieve members
+
+perhaps also use context object
