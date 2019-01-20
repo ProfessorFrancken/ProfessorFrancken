@@ -90,14 +90,6 @@ services:
       - php
     working_dir: /var/www/francken
 
-  yarn:
-    image: kkarczmarczyk/node-yarn
-    volumes_from:
-      - php
-    working_dir: /var/www/francken
-    command: yarn
-
-
   fly-images:
     image: flyimg/flyimg-build
     restart: always
