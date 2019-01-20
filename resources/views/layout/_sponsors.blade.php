@@ -14,6 +14,6 @@
     </div>
 
     <p>
-        &copy; Copyright 2017
+        &copy; Copyright {{ date('Y') }}
     </p>
 </div>
