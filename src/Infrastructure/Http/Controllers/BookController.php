@@ -26,7 +26,11 @@ class BookController extends Controller
         $books = $this->books->findAll();
 
         return view('book.index')
-            ->with(['books'=> $books]);
+            ->with(['books'=> $books])
+            ->with('breadcrumbs', [
+                ['url' => '/study', 'text' => 'Study'],
+                ['url' => '/study/books', 'text' => 'Books'],
+            ]);
     }
 
     public function show($id)
@@ -34,7 +38,12 @@ class BookController extends Controller
         $book = $this->books->find(new BookId($id));
 
         return view('book.show')
-            ->with(['book' => $book]);
+            ->with(['book' => $book])
+            ->with('breadcrumbs', [
+                ['url' => '/study', 'text' => 'Study'],
+                ['url' => '/study/books', 'text' => 'Books'],
+                ['text' => $book->title()],
+            ]);
     }
 
     //-----------------------

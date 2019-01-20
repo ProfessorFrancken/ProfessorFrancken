@@ -1,4 +1,4 @@
-@extends('layout.two-column-layout')
+@extends('study.research-groups.index')
 @section('title', $group['title'] . " - Research Groups - T.F.V. 'Professor Francken'")
 @section('header-image-url', $group['photo'])
 
@@ -30,41 +30,4 @@
           @endforeach
     </div>
     <br><br><br>
-@endsection
-
-@section('aside')
-    <div class="agenda">
-        <h3 class="section-header agenda-header">
-            Research groups
-        </h3>
-        <ul class="agenda-list list-unstyled">
-            @foreach ($groups as $group)
-
-                <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
-                    <a
-                        href="/study/research-groups/{{ str_slug($group['title'])  }}"
-                        class="aside-link"
-                    >
-                        <div class="media align-items-center">
-                            <div class="media-body">
-                                <h5 class="agenda-item__header">
-                                    {{ $group['title'] }}
-                                </h5>
-                            </div>
-
-                            @if (isset($group['photo']))
-                                <img
-                                class="rounded d-flex ml-3"
-                                    src="{{ image($group['photo'], ['width' => 75, 'height' => 75]) }}"
-                                    alt="{{ $group['title'] }}'s logo"
-                                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
-                                >
-                            @endif
-                        </div>
-                    </a>
-
-                </li>
-            @endforeach
-        </ul>
-    </div>
 @endsection

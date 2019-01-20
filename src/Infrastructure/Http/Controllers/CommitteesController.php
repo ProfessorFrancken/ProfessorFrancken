@@ -20,7 +20,11 @@ final class CommitteesController
         $committees = $this->committees->list();
 
         return view('committees.index')
-            ->with('committees', $committees);
+            ->with('committees', $committees)
+            ->with('breadcrumbs', [
+                ['url' => '/association', 'text' => 'Association'],
+                ['url' => '/association/committees', 'text' => 'Committees'],
+            ]);
     }
 
     public function show($link)
@@ -31,6 +35,11 @@ final class CommitteesController
         $view = view($committee->page());
 
         return $view->with('committee', $committee)
-            ->with('committees', $committees);
+            ->with('committees', $committees)
+            ->with('breadcrumbs', [
+                ['url' => '/association', 'text' => 'Association'],
+                ['url' => '/association/committees', 'text' => 'Committees'],
+                ['text' => $committee->name()],
+            ]);
     }
 }

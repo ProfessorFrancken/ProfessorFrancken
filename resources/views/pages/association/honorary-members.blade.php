@@ -1,6 +1,12 @@
 @extends('pages.association')
 @section('title', "Honorary members - T.F.V. 'Professor Francken'")
 @section('description', "T.F.V. ‘Professor Francken’ has the honour to have two very much appreciated physicists as honorary members. Of course professor J.C. Francken, after whom we named the association, is an honorary member. And of course professor J.Th.M. De Hosson became an honorary member on basis of his special merit towards the association.")
+@php
+$breadcrumbs = [
+    ['url' => '/association', 'text' => 'Association'],
+    ['text' => 'Honorary members'],
+];
+@endphp
 
 @section('content')
 

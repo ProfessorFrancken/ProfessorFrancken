@@ -39,6 +39,10 @@ final class CareerController
                 'companies' => $repo->companies(),
                 'sectors' => Sector::SECTORS,
                 'types' => JobType::TYPES
+            ])
+            ->with('breadcrumbs', [
+                ['url' => '/career', 'text' => 'Career'],
+                ['url' => '/career/job-openings', 'text' => 'Job openings'],
             ]);
     }
 
@@ -63,6 +67,10 @@ final class CareerController
                 'plannedEvents' => $plannedEvents,
                 'year' => $year,
                 'showNextYear' => $today > $year->end()
+            ])
+            ->with('breadcrumbs', [
+                ['url' => '/career', 'text' => 'Career'],
+                ['url' => '/career/events', 'text' => 'Career events'],
             ]);
     }
 }

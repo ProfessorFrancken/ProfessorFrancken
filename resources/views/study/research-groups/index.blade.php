@@ -57,3 +57,12 @@
     </ul>
 </div>
 @endsection
+
+@section('breadcrumbs')
+<nav aria-label="breadcrumb" class="container my-1 mt-md-5 px-0">
+  <ol class="breadcrumb" style="background-color: #f2f5f8 !important;">
+    <li class="breadcrumb-item"><a href="/study/">Study</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Research Groups</li>
+  </ol>
+</nav>
+@endsection

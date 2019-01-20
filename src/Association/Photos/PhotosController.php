@@ -36,6 +36,10 @@ final class PhotosController
             'cover_photo' => $album->coverPhoto,
             'next_album' => $album->nextAlbum(),
             'previous_album' => $album->previousAlbum(),
+            'breadcrumbs' => [
+                ['url' => '/association/photos', 'text' => 'Photos'],
+                ['text' => $album->title],
+            ]
         ]);
     }
 }

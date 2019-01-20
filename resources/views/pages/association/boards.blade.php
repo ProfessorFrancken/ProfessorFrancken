@@ -1,5 +1,11 @@
 @extends('layout.one-column-layout')
 @inject('boards', "Francken\Domain\Boards\BoardRepository")
+@php
+$breadcrumbs = [
+    ['url' => '/association', 'text' => 'Association'],
+    ['text' => 'Boards'],
+];
+@endphp
 
 @section('main-content')
     <div class="contaienr my-5">
