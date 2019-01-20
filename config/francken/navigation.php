@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'menu' => [
         [
             'url' => '/study',
             'title' => 'Study',
             'subItems' => [
-                ['url' => "/study/books", 'title' => 'Books'],
-                ['url' => "/study/research-groups", 'title' => 'Research Groups'],
-                ['url' => "/study/representation/university-council", 'title' => 'University Council'],
-                ['url' => "/study/representation/faculty-council", 'title' => 'Faculty Council'],
+                ['url' => "/study/books", 'title' => 'Books', 'description' => 'Buy or sell second hand books', 'icon' => 'fas fa-book'],
+                ['url' => "/study/research-groups", 'title' => 'Research Groups', 'description' => 'Find a research group for your bachelor or master thesis', 'icon' => 'fas fa-flask'],
+                ['url' => "/study/representation/university-council", 'title' => 'University Council', 'description' => 'Read about the parties that represent students among the university', 'icon' => 'fas fa-user-tie'],
+                ['url' => "/study/representation/faculty-council", 'title' => 'Faculty Council', 'description' => 'See who is representing students from the FSE', 'icon' => 'fas fa-person-booth'],
             ],
             'icon' => 'graduation-cap',
         ],
@@ -17,12 +19,12 @@ return [
             'url' => '/association',
             'title' => 'Association',
             'subItems' => [
-                ['url' => "/association/news", 'title' => 'News'],
-                ['url' => "/association/history", 'title' => 'History'],
-                ['url' => "/association/honorary-members", 'title' => 'Honorary members'],
-                ['url' => "/association/boards", 'title' => 'Boards'],
-                ['url' => "/association/committees", 'title' => 'Committees'],
-                ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij']
+                ['url' => "/association/news", 'title' => 'News', 'description' => 'The latest news from the association', 'icon' => 'fas fa-newspaper'],
+                ['url' => "/association/history", 'title' => 'History', 'description' => 'Curious about the history of our association, read it here', 'icon' => 'far fa-clock'],
+                ['url' => "/association/honorary-members", 'title' => 'Honorary members', 'description' => 'Francken knows two honnorary members: Francken and De Hosson', 'icon' => 'fas fa-award'],
+                ['url' => "/association/boards", 'title' => 'Boards', 'description' => 'Current and previous board members', 'icon' => 'fas fa-user-tie'],
+                ['url' => "/association/committees", 'title' => 'Committees', 'description' => 'Want to join a committee?', 'icon' => 'fas fa-users'],
+                ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij', 'description' => 'Our popular science magazine', 'icon' => 'fab fa-readme']
             ],
             //    'icon' => 'beer',
             'icon' => 'coffee',
@@ -31,9 +33,10 @@ return [
             'url' => '/career',
             'title' => 'Career',
             'subItems' => [
-                ['url' => "/career/job-openings", 'title' => 'Job openings'],
-                ['url' => "/career/companies", 'title' => 'Company profiles'],
-                ['url' => "/career/events", 'title' => 'Career events']
+                // Job prospects
+                ['url' => "/career/job-openings", 'title' => 'Job openings', 'icon' => 'fas fa-search-dollar', 'description' => 'Curious about your job opportunities, check these job openings!'],
+                ['url' => "/career/companies", 'title' => 'Company profiles', 'icon' => 'fas fa-building', 'description' => 'These companies'],
+                ['url' => "/career/events", 'title' => 'Career events', 'icon' => 'fas fa-calendar-check', 'description' => '']
             ],
             'icon' => 'suitcase',
         ],
