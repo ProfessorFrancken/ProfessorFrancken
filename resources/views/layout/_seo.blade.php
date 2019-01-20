@@ -9,7 +9,7 @@
 <meta name="keywords" content="@yield('keywords')" />
 
 <meta property="og:site_name" content="T.F.V. 'Professor Francken' - the study association for engineering physics in Groningen">
-<meta property="og:title" content="@yield('title', "T.F.V. 'Professor Francken'")>
+<meta property="og:title" content="@yield('title', "T.F.V. 'Professor Francken'")">
 <meta property="og:description" content="@yield('description')">
 <meta property="og:url" content="https://professorfrancken.nl">
 <meta property="og:type" content="website" />
