@@ -1,5 +1,11 @@
 @extends('pages.study')
 @section('title', "University Council - T.F.V. 'Professor Francken'")
+@php
+$breadcrumbs = [
+    ['url' => '/study', 'text' => 'Study'],
+    ['text' => 'University council'],
+];
+@endphp
 
 @section('content')
     <h2 class="section-header d-inline-block mt-4 h1">
@@ -19,33 +25,33 @@
         </div>
         <div class="col-lg-5">
             <h2>
-		            Contacts
+                    Contacts
             </h2>
 
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="media ml-0 mt-2 rounded" style="background:#0fb13a">
-			                  <img src="https://www.lijstcalimero.nl/wp-content/uploads/2016/09/Fractie_Hanne.jpg" height="200" class="rounded"/>
-			                  <div class="media-body ml-4" style="color:white">
-				                    <img src="http://betastuf.nl/wp-content/uploads/2017/01/Logo-wit.png" height="80" align="top" class="ml-2 mt-2"/>
-				                    <br>
-				                    <br><b>Hanne Oelen</b>
-				                    <br>hanneoelen@lijstcalimero.nl
-				                    <br>06 488 06 112
-			                  </div>
-		                </div>
+                              <img src="https://www.lijstcalimero.nl/wp-content/uploads/2016/09/Fractie_Hanne.jpg" height="200" class="rounded"/>
+                              <div class="media-body ml-4" style="color:white">
+                                    <img src="http://betastuf.nl/wp-content/uploads/2017/01/Logo-wit.png" height="80" align="top" class="ml-2 mt-2"/>
+                                    <br>
+                                    <br><b>Hanne Oelen</b>
+                                    <br>hanneoelen@lijstcalimero.nl
+                                    <br>06 488 06 112
+                              </div>
+                        </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="media ml-0 mt-2 rounded" style="background:#d69c29">
-			                  <img src="http://studentenorganisatie.nl/wp-content/uploads/2014/09/Cornesmall.jpg" height="200" width="150" class="rounded"/>
-			                  <div class="media-body ml-4" style="color:white">
-				                    <img src="http://studentenorganisatie.nl/wp-content/uploads/2015/01/logoSOG_klein.png" style="filter:brightness(0) invert(1)" height="80" align="top" class="ml-2 mt-2"/>
-				                    <br>
-				                    <br><b>Cornelis Zandt</b>
-				                    <br>cornelis@studentenorganisatie.nl
-				                    <br>06 233 38 298
-			                  </div>
-		                </div>
+                              <img src="http://studentenorganisatie.nl/wp-content/uploads/2014/09/Cornesmall.jpg" height="200" width="150" class="rounded"/>
+                              <div class="media-body ml-4" style="color:white">
+                                    <img src="http://studentenorganisatie.nl/wp-content/uploads/2015/01/logoSOG_klein.png" style="filter:brightness(0) invert(1)" height="80" align="top" class="ml-2 mt-2"/>
+                                    <br>
+                                    <br><b>Cornelis Zandt</b>
+                                    <br>cornelis@studentenorganisatie.nl
+                                    <br>06 233 38 298
+                              </div>
+                        </div>
                 </div>
             </div>
 

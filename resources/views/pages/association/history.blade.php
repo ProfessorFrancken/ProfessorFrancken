@@ -1,4 +1,10 @@
 @extends('pages.association')
+@php
+$breadcrumbs = [
+    ['url' => '/association', 'text' => 'Association'],
+    ['text' => 'History'],
+];
+@endphp
 
 @section('content')
 

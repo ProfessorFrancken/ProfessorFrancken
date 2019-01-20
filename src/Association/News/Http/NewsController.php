@@ -21,7 +21,11 @@ final class NewsController
     public function index()
     {
         return view('pages.association.news')
-            ->with('news', $this->news->recent(12));
+            ->with('news', $this->news->recent(12))
+            ->with('breadcrumbs', [
+                ['url' => '/association', 'text' => 'Association'],
+                ['url' => '/association/news', 'text' => 'News'],
+            ]);
     }
 
     public function archive()
@@ -33,7 +37,12 @@ final class NewsController
         );
 
         return view('pages.association.news.archive')
-            ->with('news', $news);
+            ->with('news', $news)
+            ->with('breadcrumbs', [
+                ['url' => '/association', 'text' => 'Association'],
+                ['url' => '/association/news', 'text' => 'News'],
+                ['url' => '/association/news/archive', 'text' => 'Archive'],
+            ]);
     }
 
     public function show($link)
@@ -41,7 +50,12 @@ final class NewsController
         $newsItem = $this->news->byLink($link);
 
         return view('pages.association.news.item')
-            ->with('newsItem', $newsItem);
+            ->with('newsItem', $newsItem)
+            ->with('breadcrumbs', [
+                ['url' => '/association', 'text' => 'Association'],
+                ['url' => '/association/news', 'text' => 'News'],
+                ['text' => $newsItem->title()],
+            ]);
     }
 
     private function periodForPagination() : Period

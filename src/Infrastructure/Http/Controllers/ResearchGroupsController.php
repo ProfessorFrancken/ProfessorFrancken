@@ -296,7 +296,11 @@ The research has a strong instrumentation development component. For our experim
     public function index()
     {
         return view('study.research-groups.index')
-            ->with('groups', $this->groups);
+            ->with('groups', $this->groups)
+            ->with('breadcrumbs', [
+                ['url' => '/study', 'text' => 'Study'],
+                ['url' => '/study/research-groups', 'text' => 'Research Groups'],
+            ]);
     }
 
     public function show($slug)
@@ -309,6 +313,11 @@ The research has a strong instrumentation development component. For our experim
 
         return view('study.research-groups.show')
             ->with('groups', $this->groups)
-            ->with('group', $group);
+            ->with('group', $group)
+            ->with('breadcrumbs', [
+                ['url' => '/study', 'text' => 'Study'],
+                ['url' => '/study/research-groups', 'text' => 'Research Groups'],
+                ['text' => $group['title']],
+            ]);
     }
 }
