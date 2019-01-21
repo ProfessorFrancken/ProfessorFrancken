@@ -8,22 +8,16 @@ final class PhotosController
 {
     private const PHOTOS_PER_PAGE = 40;
 
-    public function index()
+    public function index(AlbumsRepository $albums)
     {
-        $albums = Album::where('is_public', true)
-            ->with('coverPhoto')
-            ->orderBy('activity_date', 'desc')
-            ->simplePaginate(16);
+        $albums = $albums->albums();
 
         return view('association.photos.index', ['albums' => $albums]);
     }
 
-    public function show(string $album_slug)
+    public function show(AlbumsRepository $albums, string $album_slug)
     {
-        $album = Album::where('slug', $album_slug)
-            ->where('is_public', true)
-            ->with('photos')
-            ->first();
+        $album = $albums->bySlug($album_slug);
 
         if ( ! request()->has('page')) {
             $album->addView();
