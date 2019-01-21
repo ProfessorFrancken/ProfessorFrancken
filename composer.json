@@ -9,7 +9,6 @@
     "fale/isbn": "^3.0",
     "fideloper/proxy": "^4.0",
     "guzzlehttp/guzzle": "^6.3",
-    "laravel/browser-kit-testing": "^3.0",
     "laravel/framework": "5.7.*",
     "laravel/horizon": "^1.4",
     "laravel/telescope": "^1.0",
@@ -29,15 +28,16 @@
   },
   "require-dev": {
     "beyondcode/laravel-dump-server": "^1.2",
-    "codedungeon/phpunit-result-printer": "^0.4.4",
+    "codedungeon/phpunit-result-printer": "0.23.*",
     "davidbadura/faker-markdown-generator": "^1.0",
     "filp/whoops": "^2.1",
     "friendsofphp/php-cs-fixer": "^2.10",
     "fzaninotto/faker": "~1.4",
-    "mockery/mockery": "0.9.*",
+    "laravel/browser-kit-testing": "^4.0",
+    "mockery/mockery": "^1.0",
     "nunomaduro/collision": "^1.1",
     "phpstan/phpstan": "^0.10.0",
-    "phpunit/phpunit": "~6.0",
+    "phpunit/phpunit": "~7.0",
     "satooshi/php-coveralls": "^1.0"
   },
   "autoload": {
