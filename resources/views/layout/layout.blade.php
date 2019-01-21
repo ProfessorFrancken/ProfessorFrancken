@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -21,12 +21,12 @@
 
         @include('layout._favicon')
     </head>
-    <body>
-        <main>
-            @include('layout._header')
-
-            @yield('main-content')
-
+    <body class="h-100">
+        <main class="d-flex flex-column justify-content-between h-100">
+            <div>
+                @include('layout._header')
+                @yield('main-content')
+            </div>
             @include("layout._footer")
         </main>
 
