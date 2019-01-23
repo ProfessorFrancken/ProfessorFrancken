@@ -148,6 +148,7 @@ return [
         Francken\Association\News\ServiceProvider::class,
         Francken\Association\Activities\ServiceProvider::class,
         Francken\Association\Members\ServiceProvider::class,
+        Francken\Association\Photos\PhotosServiceProvider::class,
 
         Francken\Extern\ServiceProvider::class,
 

@@ -27,6 +27,7 @@ use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
+use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Pagination\Paginator;
@@ -76,6 +77,12 @@ final class AppServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
+        $this->app->singleton(GateContract::class, function ($app) {
+            return new GateThatAllowsGuestsInCallables($app, function () use ($app) {
+                return call_user_func($app['auth']->userResolver());
+            });
+        });
+
         \Horizon::auth(function ($request) {
             $user = $request->user();
 

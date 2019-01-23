@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Illuminate\Http\Request;
+
 final class PhotosController
 {
     private const PHOTOS_PER_PAGE = 40;
@@ -31,5 +33,14 @@ final class PhotosController
             'next_album' => $album->nextAlbum(),
             'previous_album' => $album->previousAlbum(),
         ]);
+    }
+
+    public function post(PhotosAuthentication $auth, Request $request)
+    {
+        $password = $request->get('password', '');
+
+        $success = $auth->login($password);
+
+        return redirect()->back()->with('private-album-login', $success);
     }
 }
