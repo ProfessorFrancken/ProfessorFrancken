@@ -6,12 +6,12 @@
 
     @if (session('private-album-login') === true)
         <div class="alert alert-success font-weight-bold" role="alert">
-            Success
+            You can now view private albums
         </div>
         @elseif (session('private-album-login') === false)
 
         <div class="alert alert-danger font-weight-bold" role="alert">
-            Wrong password!
+            The password you've submitted is wrong.
         </div>
     @endif
 
