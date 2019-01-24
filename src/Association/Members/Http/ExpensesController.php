@@ -6,24 +6,11 @@ namespace Francken\Association\Members\Http;
 
 use DateTimeImmutable;
 use Francken\Association\Members\Member;
-use Francken\Application\Committees\CommitteesRepository;
 use Illuminate\View\Factory as View;
 
 final class ExpensesController
 {
     private $profile;
-
-    private function member($user)
-    {
-        $lid = \DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('id', $user->francken_id)
-            ->first();
-
-        $this->profile = $lid;
-
-        return $lid;
-    }
 
     public function index()
     {
@@ -60,9 +47,9 @@ final class ExpensesController
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)
             ->limit(100)
-            ->groupby('year','month')
+            ->groupby('year', 'month')
             ->get()
-            ->map(function($month) {
+            ->map(function ($month) {
                 return [
                     "time" => new DateTimeImmutable($month->tijd),
                     "price" => $month->price
@@ -72,8 +59,12 @@ final class ExpensesController
         return view('profile.expenses.index')
             ->with([
                 'transactions' => $transactions,
-                'perMonth' => $perMonth
-                ]);
+                'perMonth' => $perMonth,
+                'breadcrumbs' => [
+                    ['url' => '/profile', 'text' => 'Profile'],
+                    ['url' => '/profile/expenses', 'text' => 'Expenses'],
+                ],
+            ]);
     }
 
     public function show($year, $month)
@@ -123,10 +114,29 @@ final class ExpensesController
             return $transaction['time']->format('d');
         });
 
+        $date = (DateTimeImmutable::createFromFormat("Y-m", "$year-$month"))->format('F Y');
+
         return view('profile.expenses.show')
             ->with([
                 'byDay' => $byDay,
-                'date' => (DateTimeImmutable::createFromFormat("Y-m", "$year-$month"))->format('F Y')
+                'date' => $date,
+                'breadcrumbs' => [
+                    ['url' => '/profile', 'text' => 'Profile'],
+                    ['url' => '/profile/expenses', 'text' => 'Expenses'],
+                    ['text' => $date],
+                ],
             ]);
+    }
+
+    private function member($user)
+    {
+        $lid = \DB::connection('francken-legacy')
+            ->table('leden')
+            ->where('id', $user->francken_id)
+            ->first();
+
+        $this->profile = $lid;
+
+        return $lid;
     }
 }

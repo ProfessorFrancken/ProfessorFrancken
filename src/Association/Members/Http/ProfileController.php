@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http;
 
-use DateTimeImmutable;
-use Francken\Association\Members\Member;
 use Francken\Application\Committees\CommitteesRepository;
+use Francken\Association\Members\Member;
 
 final class ProfileController
 {
@@ -20,7 +19,10 @@ final class ProfileController
 
         return view('profile.index')
             ->with([
-                'committees' => $committees
+                'committees' => $committees,
+                'breadcrumbs' => [
+                    ['url' => '/profile', 'text' => 'Profile'],
+                ]
             ]);
     }
 
