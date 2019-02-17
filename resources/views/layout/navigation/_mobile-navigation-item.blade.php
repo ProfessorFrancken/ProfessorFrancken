@@ -21,6 +21,11 @@
 
                 <li>
                     <a class="navigation-sub-list__link" href="{{ $item['url'] }}">
+
+                        @if ($item['icon'] != '')
+                            <i class="fa fa-{{ $item['icon'] }} fa-fw text-muted" aria-hidden="true"></i>
+                        @endif
+
                         {{ $item['title'] }}
                     </a>
                 </li>
