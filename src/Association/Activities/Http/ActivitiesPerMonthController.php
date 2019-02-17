@@ -17,7 +17,7 @@ final class ActivitiesPerMonthController
         $this->activities = $activities;
     }
 
-    public function index(int $year, int $month)
+    public function index(int $year, string $month)
     {
         $date = DateTimeImmutable::createFromFormat(
             'Y-m', $year . '-' . $month
@@ -28,7 +28,7 @@ final class ActivitiesPerMonthController
         }
 
         return view('association.activities.index', [
-            'activities' => $this->activities->inMonth($year, $month),
+            'activities' => $this->activities->inMonth($year, (int)$month),
             'selectedYear' => $year,
             'selectedMonth' => $month,
             'selectedDate' => $date,

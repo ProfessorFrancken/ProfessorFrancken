@@ -20,7 +20,7 @@ class ActivitiesSidebarComposer
     {
         $viewData = $view->getData();
         $year = $viewData['selectedYear'] ?? (int) $this->today->format('Y');
-        $month =$viewData['selectedMonth'] ?? (int)$this->today->format('m');
+        $month = $viewData['selectedMonth'] ?? (int)$this->today->format('m');
 
         $view->with([
             'selectedYear' => $year,
@@ -58,7 +58,7 @@ class ActivitiesSidebarComposer
     {
         return collect(range(1, 12))->map(function ($month) {
             return [
-                'number' => $month,
+                'number' => date('m', mktime(0, 0, 0, $month, 1)),
                 'name' => date('F', mktime(0, 0, 0, $month, 1))
             ];
         });

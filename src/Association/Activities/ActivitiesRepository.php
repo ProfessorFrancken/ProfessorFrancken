@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\Activities;
 
 use Illuminate\Support\Collection;
-use Carbon\Carbon;
 
 final class ActivitiesRepository
 {
@@ -59,6 +58,9 @@ final class ActivitiesRepository
     {
         return $this->activities->filter(function ($activity) use ($year, $month) {
             return (
+                (int)$activity->startDate()->format('Y') === $year &&
+                (int)$activity->startDate()->format('m') === $month
+            ) || (
                 (int)$activity->endDate()->format('Y') === $year &&
                 (int)$activity->endDate()->format('m') === $month
             );
