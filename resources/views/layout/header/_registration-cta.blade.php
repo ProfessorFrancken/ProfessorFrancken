@@ -17,7 +17,7 @@
                 in Groningen
             </h2>
         </div>
-        <div class="col-md-1 registration-cta__action">
+        <div class="col-md-1 registration-cta__action d-none">
             <a class="btn btn-primary" href="/register">Register</a>
         </div>
     </div>

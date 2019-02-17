@@ -31,13 +31,15 @@ final class NavigationServiceProvider extends ServiceProvider
                     ],
                 ];
             } else {
-                $menu[] = [
+                $loginLink = [
                     'url' => '/login',
                     'title' => 'Login',
                     'subItems' => [],
                     'icon' => '',
                     'class' => 'login-link',
                 ];
+                // Disabled for now..
+                //  $menu[] = $loginLink;
             }
 
             $view->with('items', $menu);
