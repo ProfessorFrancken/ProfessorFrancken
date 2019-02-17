@@ -67,16 +67,14 @@ services:
       - "traefik.docker.network=traefik_webgateway"
 
   mysql:
-    image: francken/mysql
+    image: mysql:5.7
     environment:
-      - MYSQL_USER=francken
-      - MYSQL_PASSWORD=leden
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=francken
-    restart: always
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: francken
+      MYSQL_PASSWORD: leden
+      MYSQL_DATABASE: francken
     volumes:
       - mysql:/var/lib/mysql
-
 
   composer:
     image: composer:1.7
