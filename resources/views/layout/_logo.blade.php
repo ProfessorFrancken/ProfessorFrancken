@@ -5,7 +5,7 @@
     <a class="header__title-link justify-content-begin justify-content-md-end align-items-center d-inline-flex" href="/">
         @svg('LOGO_KAAL', 'svg-logo scaleUp--hover')
 
-        <span class="d-md-none header__title text-left">
+        <span class="d-md-none header__title text-center">
             T.F.V.<br class="d-none d-md-inline"/>
             'Professor<br class="d-none d-md-inline"/>
             Francken'

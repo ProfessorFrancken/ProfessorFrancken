@@ -10,11 +10,11 @@
     @endif
 
     <div class="container-fluid">
-        <div class="footer__contact-background footer__contact row">
-            <div class="col-12 col-sm-3 col-md-2 my-3 order-2">
-                <h4 class="footer__header h5 mb-3">Adress</h4>
+        <div class="footer__contact-background footer__contact row flex-md-nowrap">
+            <div class="col-12 col-sm-3 col-md-2 my-3">
+                <h4 class="footer__header h5 mb-2">Adress</h4>
 
-                <address class="footer__body">
+                <address class="footer__body mb-0">
                     <i class="fa fa-map-marker-alt text-primary" aria-hidden="true"></i>
                     Nijenborgh 4<br>
                     <i class="fa fa-map-marker-alt invisible" aria-hidden="true"></i>
@@ -24,8 +24,8 @@
                 </address>
             </div>
 
-            <div class="col-12 col-sm-5 col-md-4 col-lg-3 my-3 order-3">
-                <h4 class="footer__header h5 mb-3">Contact</h4>
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 my-3">
+                <h4 class="footer__header h5 mb-2">Contact</h4>
 
                 <div class="footer__body">
                     <i class="far fa-envelope text-primary" aria-hidden="true"></i> <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
@@ -35,8 +35,8 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-4 col-md-2 my-3 order-4">
-                <h4 class="footer__header h5 mb-3">Social Media</h4>
+            <div class="col-12 col-sm-4 col-md-2 my-3">
+                <h4 class="footer__header h5 mb-2">Social Media</h4>
 
                 <div class="footer__body">
                     <a href="https://www.facebook.com/groups/139490187648/">
@@ -51,8 +51,8 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-4 col-md-2 my-3 order-4">
-                <h4 class="footer__header h5 mb-3">Policies</h4>
+            <div class="col-12 col-sm-4 col-md-2 my-3">
+                <h4 class="footer__header h5 mb-2">Policies</h4>
 
                 <div class="footer__body">
                     <a href="/privacy-policy">
@@ -68,9 +68,14 @@
 
 
             {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
-            <div class="order-md-1 col-12 col-md-2 col-lg-3 d-none d-lg-block footer__logo skew-md--bottom-right">
+            <div class="col-12 col-md-2 col-lg-3 d-none d-lg-block footer__logo skew-md--bottom-right align-self-end"
+                 style="
+        box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+                        "
+
+            >
                 <div class="align-middle align-items-center">
-                    <div class="d-flex justify-content-center justify-content-md-end align-items-center">
+                    <div class="d-flex justify-content-center justify-content-md-start align-items-center">
                         <a class="header__title-link" href="/">
                             @svg('LOGO_KAAL', 'svg-logo scaleUp--hover')
                         </a>

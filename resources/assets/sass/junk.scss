@@ -37,13 +37,13 @@
   }
 
   .skew-md--bottom-right {
-    transform: skewX(30deg);
-    border-radius: 0px 10px 0px 0px;
-    transform-origin: bottom right;
+    transform: skewX(-30deg);
+    border-radius: 10px 0px 0px 0px;
+    transform-origin: top left;
   }
 
   .skew-md--bottom-right > * {
-    transform: skewX(-30deg);
+    transform: skewX(30deg);
   }
 }
 

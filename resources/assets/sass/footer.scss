@@ -1,81 +1,81 @@
 .footer__logo {
-    background: none;
-    color: white;
-    background-color: $primary-color;
-    width: 100%;
-    padding: 2em 1em;
+  background: none;
+  color: white;
+  background-color: $primary-color;
+  width: 100%;
+  padding: 2em 1em;
 }
 
 @include media-breakpoint-up(md) {
-    .footer__logo {
-        text-align: right;
-        margin: -2em 0 0 0;
-        padding: 4em 0 2em;
-        padding-right: 5em;
-    }
+  .footer__logo {
+    text-align: right;
+    margin: -2em 0 0 8em;
+    padding: 2em 0 2em;
+    padding-left: 5em;
+  }
 }
 
 @include media-breakpoint-up(md) {
-    .footer__logo svg {
-        height: 60px;
-    }
+  .footer__logo svg {
+    height: 60px;
+  }
 }
 
 @include media-breakpoint-up(lg) {
-    .footer__logo svg {
-        height: 100px;
-    }
+  .footer__logo svg {
+    height: 100px;
+  }
 }
 
 .footer__header {
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .footer__body {
-    white-space: nowrap;
-    color: $primary-color;
-    font-weight: bold;
+  white-space: nowrap;
+  color: $primary-color;
+  font-weight: bold;
 }
 
 @include media-breakpoint-up(lg) {
-    .footer__body {
-        font-size: 1.1em;
-    }
+  .footer__body {
+    font-size: 1.1em;
+  }
 }
 
 .footer__body a {
-    color: $primary-color;
+  color: $primary-color;
 }
 
 .footer__body i {
-    color: white;
-    margin-right: 0.25em;
-    width: 20px;
+  color: white;
+  margin-right: 0.25em;
+  width: 20px;
 }
 
 .footer__contact-background {
-    background: $secondary-color;
+  background: $secondary-color;
 }
 
 .sponsors {
-    padding: 2em;
-    width: 100%;
-    background: #131823;
+  padding: 2em;
+  width: 100%;
+  background: #131823;
+  color: #989898;
+
+  img {
+    opacity: 1;
+    transition: opacity 0.25s;
+    filter: grayscale(100%);
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  h5 {
     color: #989898;
-
-    img {
-        opacity: 1;
-        transition: opacity 0.25s;
-        filter:  grayscale(100%);
-
-        &:hover {
-            opacity: 0.7;
-        }
-    }
-
-    h5 {
-        color: #989898;
-    }
+  }
 }
