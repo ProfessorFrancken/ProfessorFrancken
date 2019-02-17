@@ -6,20 +6,25 @@
         </div>
 
         <div class="agenda-item__body">
-            <h5 class="agenda-item__header">{{ $activity->title() }}</h5>
-            <p class="agenda-item__description">
-                {{ $activity->shortDescription() }}
-            </p>
-            <small class="mt-1 text-muted font-weight-light d-block">
-                <i class="fas fa-clock"></i>
-                {{ $activity->schedule() }}
-            </small>
-            @if ($activity->location() !== '')
-                <small class="mt-1 text-muted font-weight-light">
-                    <i class="fas fa-map-marker"></i>
-                    {{ $activity->location()  }}
+            <a href="{{ action(
+                            [\Francken\Association\Activities\Http\ActivitiesPerMonthController::class, 'index'] ,
+                            [$activity->startDate()->format('Y'), $activity->startDate()->format('m')]
+                        ) }}">
+                <h5 class="agenda-item__header">{{ $activity->title() }}</h5>
+                <p class="agenda-item__description">
+                    {{ $activity->shortDescription() }}
+                </p>
+                <small class="mt-1 text-muted font-weight-light d-block">
+                    <i class="fas fa-clock"></i>
+                    {{ $activity->schedule() }}
                 </small>
-            @endif
+                @if ($activity->location() !== '')
+                    <small class="mt-1 text-muted font-weight-light">
+                        <i class="fas fa-map-marker"></i>
+                        {{ $activity->location()  }}
+                    </small>
+                @endif
+            </a>
         </div>
     </div>
 </li>
