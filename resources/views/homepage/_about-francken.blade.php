@@ -1,7 +1,7 @@
 @inject('franckenVrij', "Francken\Application\FranckenVrij\FranckenVrijRepository")
 <div class="container">
     <div class="row">
-        <div class="col about-francken">
+        <div class="col about-francken order-end order-1">
             <div class="about-francken__j-c-francken">
                 <img alt="" src="{{ image("https://professorfrancken.nl/images/prof-jan-carel-francken.png", ['width' => 300, 'height' => 300]) }}" class="prof-c-j-francken-portrait rounded-circle" />
             </div>
@@ -27,7 +27,7 @@
                 <a href="/association" class="btn btn-primary">Read more</a>
             </div>
         </div>
-        <aside class="col-md-5 order-1 order-md-12">
+        <aside class="col-md-5 order-0 order-md-12 mt-n5">
             <div class="agenda-wrapper">
                 @include("homepage._agenda")
             </div>
