@@ -12,6 +12,7 @@ return [
                 ['url' => "/study/research-groups", 'title' => 'Research Groups', 'description' => 'Find a research group for your bachelor or master thesis', 'icon' => 'fas fa-flask'],
                 ['url' => "/study/representation/university-council", 'title' => 'University Council', 'description' => 'Read about the parties that represent students among the university', 'icon' => 'fas fa-user-tie'],
                 ['url' => "/study/representation/faculty-council", 'title' => 'Faculty Council', 'description' => 'See who is representing students from the FSE', 'icon' => 'fas fa-person-booth'],
+                ['url' => "/study/internationals", 'title' => 'Internationals', 'description' => 'Useful information about studying and living in Groningen', 'icon' => 'fas fa-globe-europe'],
             ],
             'icon' => 'graduation-cap',
         ],
