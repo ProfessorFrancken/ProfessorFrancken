@@ -5,46 +5,41 @@ declare(strict_types=1);
 namespace Francken\Association\Activities;
 
 use DateTimeImmutable;
+use Illuminate\Support\Collection;
 
-class ActivitiesSidebarComposer {
-
+class ActivitiesSidebarComposer
+{
     private $today;
 
     public function __construct()
     {
-        $this->today = new DateTimeImmutable;
+        $this->today = new DateTimeImmutable();
     }
 
-    public function compose($view)
+    public function compose($view) : void
     {
-        $year = isset($view->selectedYear)
-            ? $view->selectedYear
-            : ((int) $this->today->format('Y'));
-
-        $months = collect(range(1, 12))->map(function ($month) {
-            return [
-                'number' => $month,
-                'name' => date('F', mktime(0, 0, 0, $month, 1))
-            ];
-        });
-
-        $visibleYears = $this->getVisibleYears($year);
+        $viewData = $view->getData();
+        $year = $viewData['selectedYear'] ?? (int) $this->today->format('Y');
+        $month =$viewData['selectedMonth'] ?? (int)$this->today->format('m');
 
         $view->with([
             'selectedYear' => $year,
-            'selectedMonth' => (int)$this->today->format('m'),
-            'months' => $months,
-            'visibleYears' => $visibleYears
+            'selectedMonth' => $month,
+            'selectedDate' => DateTimeImmutable::createFromFormat(
+                'Y-m', $year . '-' . $month
+            ),
+            'months' => $this->monthNames(),
+            'visibleYears' => $this->visibleYears($year)
         ]);
     }
 
-    private function getVisibleYears($year)
+    private function visibleYears($year)
     {
         // Create list of visible years
         $yearsList = [];
 
         // Previous year
-        if($year > 2007) {
+        if ($year > 2007) {
             $yearsList[] = $year - 1;
         }
 
@@ -52,10 +47,20 @@ class ActivitiesSidebarComposer {
         $yearsList[] = $year;
 
         // Next year
-        if($year <= (int)$this->today->format('Y')) {
+        if ($year <= (int)$this->today->format('Y')) {
             $yearsList[] = $year + 1;
         }
 
         return $yearsList;
+    }
+
+    private function monthNames() : Collection
+    {
+        return collect(range(1, 12))->map(function ($month) {
+            return [
+                'number' => $month,
+                'name' => date('F', mktime(0, 0, 0, $month, 1))
+            ];
+        });
     }
 }

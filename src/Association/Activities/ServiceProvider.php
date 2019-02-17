@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Association\Activities;
 
-use Francken\Association\Activities\ActivitiesSidebarComposer;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Routing\Router;
@@ -19,7 +20,7 @@ final class ServiceProvider extends RouteServiceProvider
      */
     protected $namespace = 'Francken\Association\Activities\Http';
 
-    public function boot()
+    public function boot() : void
     {
         parent::boot();
 
@@ -30,11 +31,16 @@ final class ServiceProvider extends RouteServiceProvider
             ActivitiesSidebarComposer::class
         );
 
+        $view->composer(
+            'association.activities.ical',
+            ActivitiesSidebarComposer::class
+        );
+
         $this->app->bind(
             ActivitiesRepository::class,
             function ($app) {
                 return new ActivitiesRepository(
-                    fopen(storage_path('app/calendar.ics'),'r')
+                    fopen(storage_path('app/calendar.ics'), 'r')
                 );
             }
         );
@@ -42,11 +48,8 @@ final class ServiceProvider extends RouteServiceProvider
 
     /**
      * Define the routes for the application.
-     *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
      */
-    public function map(Router $router)
+    public function map(Router $router) : void
     {
         // $router->group([
         //     'namespace' => $this->namespace,

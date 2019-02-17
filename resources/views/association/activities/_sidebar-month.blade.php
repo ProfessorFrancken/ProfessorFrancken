@@ -5,7 +5,7 @@
     >
         <div class="media align-items-center">
             <div class="media-body">
-                <h5 class="agenda-item__header">
+                <h5 class="agenda-item__header {{ $month['number'] === $selectedMonth ? 'text-primary' : '' }}">
                     {{ $month['name']  }}
                 </h5>
             </div>
