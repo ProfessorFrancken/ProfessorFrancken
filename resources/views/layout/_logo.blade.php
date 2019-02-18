@@ -3,7 +3,7 @@
     style="box-shadow: 0 0px 5px rgba(0,0,0,0.2); box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);"
 >
     <a class="header__title-link justify-content-begin justify-content-md-end align-items-center d-inline-flex" href="/">
-        @svg('LOGO_KAAL', 'svg-logo scaleUp--hover')
+        @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '100px'])
 
         <span class="d-md-none header__title text-center">
             T.F.V.<br class="d-none d-md-inline"/>
