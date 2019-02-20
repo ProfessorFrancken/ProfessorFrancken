@@ -23,10 +23,17 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
     Route::post('/register', 'RegistrationController@submitRequest');
     Route::get('/register/success', 'RegistrationController@success');
 
-    Route::get('login', '\Francken\Auth\Http\Controllers\LoginController@showLoginForm')->name('login');
-    Route::post('login', '\Francken\Auth\Http\Controllers\LoginController@login');
-    Route::get('logout', '\Francken\Auth\Http\Controllers\LoginController@logout')->name('logout');
-    Route::post('logout', '\Francken\Auth\Http\Controllers\LoginController@logout')->name('logout');
+    Route::group(['namespace' => '\Francken\Auth\Http\Controllers'], function () : void {
+        Route::get('login', 'LoginController@showLoginForm')->name('login');
+        Route::post('login', 'LoginController@login');
+        Route::get('logout', 'LoginController@logout')->name('logout');
+        Route::post('logout', 'LoginController@logout')->name('logout');
+
+        Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+        Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
+    });
 
     Route::group(['prefix' => 'study'], function () : void {
         Route::get('books', 'BookController@index');

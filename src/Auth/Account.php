@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-// use Illuminate\Foundation\Auth\User as Authenticatable;
 use Francken\Domain\Members\MemberId;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -14,6 +13,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 final class Account extends Model implements
@@ -24,6 +24,7 @@ final class Account extends Model implements
     use Authenticatable;
     use Authorizable;
     use CanResetPassword;
+    use Notifiable;
 
     use HasRoles;
 
