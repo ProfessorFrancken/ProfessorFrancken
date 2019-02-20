@@ -33,6 +33,12 @@ final class Account extends Model implements
 
     protected $table = 'auth_accounts';
 
+    protected $fillable = [
+        'email',
+        'password',
+        'member_id',
+    ];
+
     public function scopeOfMember(Builder $query, MemberId $memberId) : Builder
     {
         // If we do want to have users that can represent members, alumni and
