@@ -152,6 +152,8 @@ return [
         Francken\Association\Members\ServiceProvider::class,
         Francken\Association\Photos\PhotosServiceProvider::class,
 
+        Francken\Auth\ServiceProvider::class,
+
         Francken\Extern\ServiceProvider::class,
 
         Francken\PlusOne\ServiceProvider::class,

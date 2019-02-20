@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure;
+namespace Francken\Auth;
 
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
