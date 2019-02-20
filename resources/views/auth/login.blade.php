@@ -2,8 +2,8 @@
 @section('title', "Login - T.F.V. 'Professor Francken'")
 
 @section('content')
-    <div class="row d-flex justify-content-center">
-        <div class="col-sm-6">
+    <div class="d-flex justify-content-center">
+        <div class="card p-5 mx-3 mx-md-5 w-100">
             <div class="alert alert-warning">
                 <strong>Login is currently disabled.</strong>
             </div>
@@ -25,7 +25,7 @@
                            value="{{ old('email') }}"
                            placeholder="member@professorfrancken.nl"
                            required
-                           utofocus
+                           autofocus
                     >
 
                     @if ($errors->has('email'))
