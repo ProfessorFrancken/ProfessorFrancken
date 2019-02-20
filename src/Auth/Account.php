@@ -7,7 +7,6 @@ namespace Francken\Auth;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
 use Francken\Domain\Members\MemberId;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -25,7 +24,6 @@ final class Account extends Model implements
     use Authenticatable;
     use Authorizable;
     use CanResetPassword;
-    use MustVerifyEmail;
 
     use HasRoles;
 
