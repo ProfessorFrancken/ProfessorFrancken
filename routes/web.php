@@ -23,9 +23,9 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
     Route::post('/register', 'RegistrationController@submitRequest');
     Route::get('/register/success', 'RegistrationController@success');
 
-    Route::get('/login', 'SessionController@getLogin')->name('login');
-    Route::post('/login', 'SessionController@login');
-    Route::get('/logout', 'SessionController@logout')->name('logout');
+    Route::get('login', '\Francken\Auth\Http\Controllers\LoginController@showLoginForm')->name('login');
+    Route::post('login', '\Francken\Auth\Http\Controllers\LoginController@login');
+    Route::post('logout', '\Francken\Auth\Http\Controllers\LoginController@logout')->name('logout');
 
     Route::group(['prefix' => 'study'], function () : void {
         Route::get('books', 'BookController@index');
