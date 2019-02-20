@@ -21,6 +21,7 @@ services:
       - SESSION_DRIVER=redis
       - QUEUE_DRIVER=redis
       - REDIS_HOST=redis
+      - APP_URL=http://francken.nl.localhost
       - MAIL_HOST=mailhog
       - MAIL_PORT=1025
     # volumes_from:
