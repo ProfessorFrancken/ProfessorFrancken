@@ -12,6 +12,7 @@ services:
       - mysql
       - legacy-db
       - redis
+      - mailhog
     working_dir: /var/www/francken
     volumes:
       - ./:/var/www/francken
@@ -20,6 +21,8 @@ services:
       - SESSION_DRIVER=redis
       - QUEUE_DRIVER=redis
       - REDIS_HOST=redis
+      - MAIL_HOST=mailhog
+      - MAIL_PORT=1025
     # volumes_from:
     #   - data
 
@@ -129,6 +132,18 @@ services:
       - 16379:6379
     volumes:
       - redis:/data
+
+  mailhog:
+    image: mailhog/mailhog
+    networks:
+      - default
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=francken-email-web"
+      - "traefik.frontend.rule=Host:francken-mail.nl.localhost"
+      - "traefik.port=8025"
+      - "traefik.docker.network=traefik_webgateway"
 
 volumes:
   mysql:
