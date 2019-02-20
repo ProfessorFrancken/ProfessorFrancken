@@ -19,7 +19,6 @@ return [
         'board-external-affairs',
         'board-internal-affairs',
 
-
         'can-access-dashboard',
 
         'books-dashboard-read',

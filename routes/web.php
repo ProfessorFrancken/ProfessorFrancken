@@ -62,7 +62,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
         Route::get('events/{academic_year}', 'CareerController@events');
     });
 
-    Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () : void {
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'can:can-access-dashboard']], function () : void {
         Route::get('/', 'DashboardController@redirectToDashboard');
         Route::get('overview', 'DashboardController@overview');
         Route::get('analytics', 'DashboardController@analytics');
