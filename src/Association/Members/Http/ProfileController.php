@@ -30,7 +30,7 @@ final class ProfileController
     {
         $lid = \DB::connection('francken-legacy')
             ->table('leden')
-            ->where('id', $user->francken_id)
+            ->where('id', $user->member_id)
             ->first();
 
         $this->profile = $lid;

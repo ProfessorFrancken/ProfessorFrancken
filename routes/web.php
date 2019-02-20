@@ -25,6 +25,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
 
     Route::get('login', '\Francken\Auth\Http\Controllers\LoginController@showLoginForm')->name('login');
     Route::post('login', '\Francken\Auth\Http\Controllers\LoginController@login');
+    Route::get('logout', '\Francken\Auth\Http\Controllers\LoginController@logout')->name('logout');
     Route::post('logout', '\Francken\Auth\Http\Controllers\LoginController@logout')->name('logout');
 
     Route::group(['prefix' => 'study'], function () : void {

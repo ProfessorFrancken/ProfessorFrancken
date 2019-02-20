@@ -28,8 +28,7 @@ final class ServiceProvider extends BaseServiceProvider
                 return false;
             }
 
-            return $user->can_access_admin;
-            // return true / false;
+            return $user->hasRole('Admin');
         });
     }
 

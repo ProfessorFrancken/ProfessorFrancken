@@ -7,6 +7,7 @@ namespace Francken\Infrastructure\Console;
 use Francken\Association\Activities\FetchLatestFranckenIcal;
 use Francken\Association\News\Xml\ImportIntoEloquent;
 use Francken\Association\Photos\SynchronizeFlickrAlbums;
+use Francken\Auth\ImportPermissionsFromConfig;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        ImportPermissionsFromConfig::class,
         ImportIntoEloquent::class,
         FetchLatestFranckenIcal::class,
         SynchronizeFlickrAlbums::class,

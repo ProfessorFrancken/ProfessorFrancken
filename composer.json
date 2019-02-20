@@ -23,6 +23,7 @@
     "predis/predis": "^1.1",
     "ramsey/uuid": "^3.0",
     "sabre/vobject": "^4.1",
+    "spatie/laravel-permission": "^2.32",
     "webmozart/assert": "^1.1",
     "webuni/commonmark-attributes-extension": "^0.5.0",
     "webuni/commonmark-table-extension": "^0.6.1"

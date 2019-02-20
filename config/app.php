@@ -165,6 +165,7 @@ return [
         Francken\Infrastructure\TelescopeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         BladeSvg\BladeSvgServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         // Fideloper\Proxy\TrustedProxyServiceProvider::class,
 
     ],

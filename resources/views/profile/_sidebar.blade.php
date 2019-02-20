@@ -5,7 +5,7 @@ $menu = [
     ['link' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
 ];
 
-if (Auth::user()->can_access_admin) {
+if (Auth::user()->can('can-access-dashboard')) {
     $menu[] = ['link' => '/admin', 'icon' => 'fas fa-database', 'text' => 'Admin'];
 }
 

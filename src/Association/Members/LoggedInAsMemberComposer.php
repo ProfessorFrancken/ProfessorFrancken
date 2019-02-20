@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members;
 
-use DateTimeImmutable;
 use Illuminate\View\View;
 
 final class LoggedInAsMemberComposer
@@ -13,7 +12,7 @@ final class LoggedInAsMemberComposer
 
     public function __construct()
     {
-        $franckenId = \Auth::user()->francken_id;
+        $franckenId = \Auth::user()->member_id;
 
         $lid = \DB::connection('francken-legacy')
             ->table('leden')
@@ -23,7 +22,7 @@ final class LoggedInAsMemberComposer
         $this->profile = $lid;
     }
 
-    public function compose(View $view)
+    public function compose(View $view) : void
     {
         $view->with([
           'profile' => $this->profile,
