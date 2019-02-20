@@ -27,12 +27,12 @@ final class NavigationServiceProvider extends ServiceProvider
                     'subItems' => [
                         // Job prospects
                         ['url' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'title' => 'Expenses'],
-                        ['url' => '/logout', 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
+                        ['url' => route('logout'), 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
                     ],
                 ];
             } else {
                 $loginLink = [
-                    'url' => '/login',
+                    'url' => route('login'),
                     'title' => 'Login',
                     'subItems' => [],
                     'icon' => '',

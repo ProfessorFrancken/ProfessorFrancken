@@ -17,15 +17,15 @@ Route::get('/scriptcie/{url}', function ($url) {
 })->where('url', '.*');
 
 Route::group(['middleware' => ['web', 'bindings']], function () : void {
-    Route::get('/', 'MainContentController@index');
+    Route::get('/', 'MainContentController@index')->name('home');
 
     Route::get('/register', 'RegistrationController@request');
     Route::post('/register', 'RegistrationController@submitRequest');
     Route::get('/register/success', 'RegistrationController@success');
 
-    Route::get('/login', 'SessionController@getLogin');
+    Route::get('/login', 'SessionController@getLogin')->name('login');
     Route::post('/login', 'SessionController@login');
-    Route::get('/logout', 'SessionController@logout');
+    Route::get('/logout', 'SessionController@logout')->name('logout');
 
     Route::group(['prefix' => 'study'], function () : void {
         Route::get('books', 'BookController@index');
