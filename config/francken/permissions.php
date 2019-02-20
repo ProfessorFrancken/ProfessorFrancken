@@ -16,8 +16,8 @@ return [
         'board-president',
         'board-secretary',
         'board-treasurer',
-        'board-external-affairs',
-        'board-internal-affairs',
+        'board-external-relations',
+        'board-internal-relations',
 
         'can-access-dashboard',
 
