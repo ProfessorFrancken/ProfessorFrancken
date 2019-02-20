@@ -19,7 +19,7 @@ final class SessionController
 
         $loggedIn = Auth::attempt([
             'email' => request()->input('email'),
-            'password' => request()->input('passphrase'),
+            'password' => request()->input('password'),
         ], $rememberUser);
 
         if ($loggedIn) {

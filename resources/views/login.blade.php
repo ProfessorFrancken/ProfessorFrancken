@@ -19,8 +19,8 @@
                     {!! Form::email('email', null, ['placeholder' => 'member@professorfrancken.nl', 'class' => 'form-control', 'id' => 'email']) !!}
                 </div>
                 <div class="form-group">
-                    <label for="passphrase">Passphrase</label>
-                    {!! Form::password('passphrase', ['placeholder' => 'A super  secret passphrase', 'class' => 'form-control', 'id' => 'password']) !!}
+                    <label for="password">Passphrase</label>
+                    {!! Form::password('password', ['placeholder' => 'A super  secret passphrase', 'class' => 'form-control', 'id' => 'password']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Login', ['class' => 'btn btn-lg btn-block btn-outline-primary']) !!}
