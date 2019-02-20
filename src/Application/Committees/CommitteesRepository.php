@@ -253,7 +253,7 @@ final class CommitteesRepository
         );
     }
 
-    public function list() :  array
+    public function list() : array
     {
         return $this->committees;
     }
@@ -269,7 +269,7 @@ final class CommitteesRepository
             )
         );
 
-        $today = new \DateTimeImmutable;
+        $today = new \DateTimeImmutable();
         $year = \Francken\Application\Career\AcademicYear::fromDate($today);
 
         $members = \DB::connection('francken-legacy')
@@ -299,7 +299,7 @@ final class CommitteesRepository
 
     public function ofMember(int $franckenMemberId) : array
     {
-        $today = new \DateTimeImmutable;
+        $today = new \DateTimeImmutable();
         $year = \Francken\Application\Career\AcademicYear::fromDate($today);
 
         $committees = \DB::connection('francken-legacy')
@@ -313,32 +313,11 @@ final class CommitteesRepository
             $this->committees,
             function ($committee) use ($committees) {
                 return $committees->map(
-                    function ($committee) { return $committee->commissie_id; }
+                    function ($committee) {
+                        return $committee->commissie_id;
+                    }
                 )->contains($committee->id());
             }
         );
-
-
-
-        $committee = array_first(
-            array_filter(
-                $this->committees,
-                function ($committee) use ($link) {
-                    return $committee->link() === $link;
-                }
-            )
-        );
-
-
-        return new Committee(
-            $committee->id(),
-            $committee->name(),
-            $committee->email(),
-            $committee->logo(),
-            $committee->link(),
-            $committee->page(),
-            $members->toArray()
-        );
-
     }
 }
