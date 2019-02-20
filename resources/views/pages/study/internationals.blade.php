@@ -10,7 +10,10 @@ $breadcrumbs = [
 @section('content')
     <h1>Information for internationals</h1>
     <p>
-        The following information and useful tips for students starting their studies in Groningen were collected by our <a href="/association/committees/intercie" class="font-weight-bold">intercie</a> committee.
+        The following information and useful tips for students starting their studies in Groningen were collected by the <a href="/association/committees/intercie" class="font-weight-bold">intercie</a> committee.
+    </p>
+    <p>
+        If you have further questions feel free to contact them at <a href="mailto:intercietfv@gmail.com">intercietfv@gmail.com</a>.
     </p>
 
     <h2 id="bank-account" class="mb-1 mt-4">Bank account</h2>
