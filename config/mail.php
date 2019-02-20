@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -54,7 +56,10 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => [
+        'address' => 'board@professorfrancken.nl',
+        'name' => "T.F.V. 'Professor Francken'"
+    ],
 
     /*
     |--------------------------------------------------------------------------
