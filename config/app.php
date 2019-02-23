@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 return [
 
+    'name' => "T.F.V. 'Professor Francken'",
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
