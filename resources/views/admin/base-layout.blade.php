@@ -21,6 +21,9 @@
     </head>
     <body>
         <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+            <div class="text-white font-weight-bold d-flex justify-content-end align-items-end">
+                @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '50px'])
+            </div>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -66,7 +69,7 @@
             </div>
         </nav>
 
-        <main class="container-fluid my-3">
+        <main>
             @yield('main-content')
         </main>
 
