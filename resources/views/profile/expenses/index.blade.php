@@ -37,10 +37,10 @@
                         {{ $month['time']->format('Y - F') }}
                     </td>
                     <td class="text-right">
-                        €{{ $month['price'] }},-
+                        €{{ number_format($month['price'], 2) }}
                     </td>
                     <td class="text-right">
-                        <a href="/profile/expenses/{{ $month['time']->format('Y/m') }}">
+                        <a href="{{ action([\Francken\Association\Members\Http\ExpensesController::class, 'show'], [$month['time']->format('Y'), $month['time']->format('m')]) }}">
                             show transactions
                         </a>
                     </td>

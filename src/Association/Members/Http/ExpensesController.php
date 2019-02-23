@@ -41,7 +41,7 @@ final class ExpensesController
             ->select(
                 'tijd',
                 'lid_id',
-                \DB::raw('count(prijs) as price'),
+                \DB::raw('sum(prijs) as price'),
                 \DB::raw('YEAR(tijd) year, MONTH(tijd) month')
             )
             ->orderBy('tijd', 'desc')
