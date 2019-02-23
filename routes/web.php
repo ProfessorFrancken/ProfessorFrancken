@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Francken\Auth\Http\Controllers\Admin;
 Route::redirect('/blog', '/association/news');
 Route::permanentRedirect('/wordpress', '/');
 Route::redirect('/books', '/study/books');
@@ -112,6 +113,19 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             Route::get('activities', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('committees', 'Admin\AdminController@showPageIsUnavailable');
+        });
+        Route::group(['prefix' => 'compucie'], function () : void {
+            Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
+                Route::get('accounts', [Admin\AccountsController::class, 'index']);
+                Route::get('accounts/{account}', [Admin\AccountsController::class, 'show']);
+            });
+
+            Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
+                Route::post('accounts/{account}/permissions/', [Admin\AccountPermissionsController::class, 'store']);
+                Route::delete('accounts/{account}/permissions/{permission}', [Admin\AccountPermissionsController::class, 'remove']);
+                Route::post('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'store']);
+                Route::delete('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'remove']);
+            });
         });
     });
 

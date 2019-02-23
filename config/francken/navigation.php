@@ -175,7 +175,7 @@ return [
                 [
                     "name" => "Accounts",
                     "url" => "accounts",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:accounts-read",
                 ],
                 [
