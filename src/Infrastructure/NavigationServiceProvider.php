@@ -6,6 +6,7 @@ namespace Francken\Infrastructure;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use Francken\Infrastructure\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -18,17 +19,21 @@ final class NavigationServiceProvider extends ServiceProvider
             $menu = $this->app->config->get('francken.navigation.menu');
             $menu[1]['icon'] = $this->associationIcon();
 
-            if (Auth::check()) {
-                $user = Auth::user();
+            $user = Auth::user();
+            if ($user !== null) {
                 $menu[] = [
                     'url' => '/profile',
                     'title' => 'Profile',
                     'icon' => 'user',
-                    'subItems' => [
+                    'subItems' => array_filter([
                         // Job prospects
                         ['url' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'title' => 'Expenses'],
+
+                        ($user->can('can-access-dashboard')
+                         ? ['url' => action([DashboardController::class, 'redirectToDashboard']), 'icon' => 'fa fa-database', 'title' => 'Admin', 'can' => 'can-access-dashboard']
+                         : []),
                         ['url' => route('logout'), 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
-                    ],
+                    ]),
                 ];
             } else {
                 $loginLink = [
