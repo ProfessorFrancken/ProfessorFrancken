@@ -59,31 +59,37 @@ return [
                     "name" => "News",
                     "url" => "news",
                     "works" => true,
+                    "can" => "dashboard:news-read",
                 ],
                 [
                     "name" => "Activities",
                     "url" => "activities",
                     "works" => false,
+                    "can" => "dashboard:activities-read",
                 ],
                 [
                     "name" => "Open registrations",
                     "url" => "registration-requests",
                     "works" => true,
+                    "can" => "dashboard:registrations-read",
                 ],
                 [
                     "name" => "Members",
                     "url" => "members",
                     "works" => false,
+                    "can" => "dashboard:members-read",
                 ],
                 [
                     "name" => "Committees",
                     "url" => "committees",
                     "works" => false,
+                    "can" => "dashboard:committees-read",
                 ],
                 [
                     "name" => "Francken Vrij",
                     "url" => "francken-vrij",
                     "works" => true,
+                    "can" => "dashboard:francken-vrij-read",
                 ],
             ]
         ],
@@ -95,11 +101,13 @@ return [
                     "name" => "Research Groups",
                     "url" => "research-groups",
                     "works" => false,
+                    "can" => "dashboard:research-groups-read",
                 ],
                 [
                     "name" => "Books",
                     "url" => "books",
                     "works" => false,
+                    "can" => "dashboard:books-read",
                 ],
             ]
         ], [
@@ -110,6 +118,7 @@ return [
                     "name" => "Companies",
                     "url" => "companies",
                     "works" => false,
+                    "can" => "dashboard:companies-read",
                 ],
                 [
                     "name" => "Events",
@@ -120,11 +129,13 @@ return [
                     "name" => "Jop openings",
                     "url" => "jop-openings",
                     "works" => false,
+                    "can" => "dashboard:companies-read",
                 ],
                 [
                     "name" => "Factsheet",
                     "url" => "fact-sheet",
                     "works" => true,
+                    "can" => "dashboard:fact-sheet-read",
                 ]
             ]
         ], [
@@ -155,6 +166,35 @@ return [
                     "name" => "Fotocie",
                     "url" => "fotocie",
                     "works" => false,
+                ],
+            ]
+        ], [
+            "name" => "Compucie",
+            "url" => "compucie",
+            "items" => [
+                [
+                    "name" => "Accounts",
+                    "url" => "accounts",
+                    "works" => false,
+                    "can" => "dashboard:accounts-read",
+                ],
+                [
+                    "name" => "Settings",
+                    "url" => "settings",
+                    "works" => false,
+                    "can" => "dashboard:settings-read",
+                ],
+                [
+                    "name" => "Permissions",
+                    "url" => "permissions",
+                    "works" => false,
+                    "can" => "dashboard:permissions-read",
+                ],
+                [
+                    "name" => "Roles",
+                    "url" => "roles",
+                    "works" => false,
+                    "can" => "dashboard:permissions-read",
                 ],
             ]
         ]

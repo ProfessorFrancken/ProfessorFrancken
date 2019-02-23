@@ -21,16 +21,44 @@ return [
 
         'can-access-dashboard',
 
-        'books-dashboard-read',
-        'books-dashboard-write',
+        'dashboard:news-read',
+        'dashboard:news-write',
 
-        'francken-vrij-read',
-        'francken-vrij-write',
+        'dashboard:francken-vrij-read',
+        'dashboard:francken-vrij-write',
 
-        'committees-read',
-        'committees-write',
+        'dashboard:registrations-read',
+        'dashboard:registrations-write',
+
+        'dashboard:members-read',
+        'dashboard:members-write',
+
+        'dashboard:committees-read',
+        'dashboard:committees-write',
+
+        'dashboard:books-read',
+        'dashboard:books-write',
+
+        'dashboard:companies-read',
+        'dashboard:companies--write',
+
+        'dashboard:fact-sheet-read',
+
+        'dashboard:settings-read',
+        'dashboard:settings-write',
+
+        'dashboard:accounts-read',
+        'dashboard:accounts-write',
+
+        'dashboard:permissions-read',
+        'dashboard:permissions-write',
     ],
 
     'api' => [
+        'plus-one-read',
+        'plus-one-write',
+
+        'register-symposium',
+        'register-symposium',
     ]
 ];
