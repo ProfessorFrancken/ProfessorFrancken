@@ -18,7 +18,7 @@ class CreateAuthAccountsTable extends Migration
 
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('member_id');
+            $table->integer('member_id')->unique();
             $table->rememberToken();
             $table->timestamps();
         });
