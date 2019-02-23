@@ -7,7 +7,6 @@ namespace Francken\Auth;
 
 use DB;
 use Illuminate\Console\Command;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 /**
@@ -34,7 +33,7 @@ final class SetupPermissions extends Command
      */
     public function handle() : void
     {
-        $this->seedRoles();
+        $this->seedRolesAndPermissions();
         $old_users = DB::table('users')->get();
 
         foreach ($old_users as $user) {
@@ -50,18 +49,14 @@ final class SetupPermissions extends Command
         }
     }
 
-    private function seedRoles() : void
+    private function seedRolesAndPermissions() : void
     {
-
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Make sure to import all permissions
-
-        // this can be done as separate statements
         $role = Role::create(['name' => 'Admin']);
-        $role->givePermissionTo(Permission::all());
-
+        $this->call('permission:import');
 
         $role = Role::create(['name' => 'Board']);
         $role = Role::create(['name' => 'Old board']);

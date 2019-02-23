@@ -114,6 +114,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('committees', 'Admin\AdminController@showPageIsUnavailable');
         });
+
         Route::group(['prefix' => 'compucie'], function () : void {
             Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
                 Route::get('accounts', [Admin\AccountsController::class, 'index']);
