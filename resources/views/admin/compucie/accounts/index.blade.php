@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         @foreach ($accounts as $account)
-                            <tr>
+                            <tr class="position-relative">
                                 <td>
                                     <a href="{{ action([\Francken\Auth\Http\Controllers\Admin\AccountsController::class, 'show'], $account->id)}}"
                                        class="stretched-link"

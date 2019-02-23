@@ -126,6 +126,16 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
                 Route::post('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'store']);
                 Route::delete('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'remove']);
             });
+
+            Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
+                Route::get('roles', [Admin\RolesController::class, 'index']);
+                Route::get('roles/{role}', [Admin\RolesController::class, 'show']);
+            });
+
+            Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
+                Route::post('roles/{role}/permissions', [Admin\RolePermissionsController::class, 'store']);
+                Route::delete('roles/{role}/permissions/{permission}', [Admin\RolePermissionsController::class, 'remove']);
+            });
         });
     });
 

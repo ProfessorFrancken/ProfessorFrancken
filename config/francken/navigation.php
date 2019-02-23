@@ -185,15 +185,9 @@ return [
                     "can" => "dashboard:settings-read",
                 ],
                 [
-                    "name" => "Permissions",
-                    "url" => "permissions",
-                    "works" => false,
-                    "can" => "dashboard:permissions-read",
-                ],
-                [
                     "name" => "Roles",
                     "url" => "roles",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:permissions-read",
                 ],
             ]
