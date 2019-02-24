@@ -26,7 +26,7 @@
                                         <span class="text-right pull-right">
                                             <small>
                                                 <a href="/admin/association/francken-vrij/{{ $edition->getId() }}">
-                                                    <i class="fa fa-pencil mr-1" aria-hidden="true"></i>
+                                                    <i class="fa fa-edit mr-1" aria-hidden="true"></i>
                                                 </a>
                                                 <a href="{{ $edition->pdf() }}">
                                                     <i class="fa fa-download mr-1" aria-hidden="true"></i>

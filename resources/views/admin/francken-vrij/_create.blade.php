@@ -29,7 +29,12 @@
             Upload the pdf of the new Francken Vrij. Note we currently only support uploading files which are less than 40MB.
         </p>
         {!! Form::label('pdf', 'Francken Vrij PDF', ['class' => 'control-label']) !!}
-        {!! Form::file('pdf') !!}
+        {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
+        <p>
+            The cover is optional. If no cover is given then we will generate one from the pdf.
+        </p>
+        {!! Form::label('cover', 'Cover', ['class' => 'control-label']) !!}
+        {!! Form::file('cover', ['class' => 'form-control-file']) !!}
     </div>
 
     {!! Form::submit('Publish', ['class' => 'btn btn-block btn-outline-success']) !!}

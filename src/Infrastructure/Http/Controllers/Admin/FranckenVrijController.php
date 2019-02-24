@@ -13,7 +13,6 @@ use Francken\Infrastructure\Http\Controllers\Controller;
 use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 
 final class FranckenVrijController extends Controller
 {
@@ -75,14 +74,15 @@ final class FranckenVrijController extends Controller
             'title' => 'required',
             'volume' => 'required|min:1',
             'edition' => 'required|min:1|max:3',
-            'pdf' => 'required|file'
+            'pdf' => 'required|file',
+            'cover' => 'file'
         ]);
 
         $volume = (int)$request->get('volume');
         $edition= (int)$request->get('edition');
 
         list($coverPath, $pdfPath) = $this->uploadPdf(
-            $request->file('pdf'),
+            $request,
             $volume . '-' . $edition . '.pdf'
         );
 
@@ -122,7 +122,7 @@ final class FranckenVrijController extends Controller
         $editionNumber = (int)$request->get('edition');
 
         list($cover, $pdf) = $request->hasFile('pdf')
-            ? $this->uploadPdf($request->file('pdf'), $volume . '-' . $editionNumber . '.pdf')
+            ? $this->uploadPdf($request, $volume . '-' . $editionNumber . '.pdf')
             : [$edition->cover(), $edition->pdf()];
 
         $this->franckenVrij->save(
@@ -146,15 +146,25 @@ final class FranckenVrijController extends Controller
         return redirect('/admin/association/francken-vrij');
     }
 
-    private function uploadPdf(UploadedFile $pdf, $filename)
+    private function uploadPdf(Request $request, $filename)
     {
+        $pdf = $request->file('pdf');
         $pdfPath = $pdf->storeAs('francken-vrij', $filename, 'public');
         $coverPath = preg_replace('"\.pdf$"', '-cover.png', $pdfPath);
 
-        $this->generateCoverImageFromPdf(
-            public_path() . $this->storage->url($pdfPath),
-            $coverPath
-        );
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')
+                ->storeAs(
+                    'francken-vrij',
+                    preg_replace('"\.pdf$"', '-cover.png', $filename),
+                    'public'
+                );
+        } else {
+            $this->generateCoverImageFromPdf(
+                public_path() . $this->storage->url($pdfPath),
+                $coverPath
+            );
+        }
 
         return [
             new Url(asset($this->storage->url($coverPath))),

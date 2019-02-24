@@ -32,7 +32,15 @@
                 You may optionally reupload the Francken Vrij Pdf
             </p>
             {!! Form::label('pdf', 'Francken Vrij PDF', ['class' => 'control-label']) !!}
-            {!! Form::file('pdf') !!}
+            {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
+        </div>
+
+        <div class="form-group">
+            <p>
+                You may optionally reupload the cover image
+            </p>
+            {!! Form::label('cover', 'Cover', ['class' => 'control-label']) !!}
+            {!! Form::file('cover', ['class' => 'form-control-file']) !!}
         </div>
 
         {!! Form::submit('Update', ['class' => 'btn btn-outline-success']) !!}
