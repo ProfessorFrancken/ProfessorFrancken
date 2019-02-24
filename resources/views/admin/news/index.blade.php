@@ -133,7 +133,7 @@
                         </td>
                         <td>
                             <a class="btn btn-text text-success" href="#">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <i class="fa fa-edit" aria-hidden="true"></i>
                                 Edit
                             </a>
                         </td>
@@ -150,7 +150,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-text text-success" href="#">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
                                     Edit
                                 </a>
                             </td>
@@ -168,7 +168,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-text text-success" href="#">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
                                     Edit
                                 </a>
                             </td>
@@ -185,7 +185,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-text text-success" href="#">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
                                     Edit
                                 </a>
                             </td>

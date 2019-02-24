@@ -23,7 +23,7 @@
                         View
                     </a>
                     <a class="btn btn-outline-primary btn-sm" href="/admin/association/news/{{ $item->id() }}">
-                        <i class="fa fa-pencil mr-1" aria-hidden="true"></i>
+                        <i class="fa fa-edit mr-1" aria-hidden="true"></i>
                         Edit
                     </a>
                 </td>
