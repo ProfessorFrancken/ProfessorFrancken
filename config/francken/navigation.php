@@ -106,7 +106,7 @@ return [
                 [
                     "name" => "Books",
                     "url" => "books",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:books-read",
                 ],
             ]

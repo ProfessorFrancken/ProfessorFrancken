@@ -79,8 +79,17 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
         Route::group(['prefix' => 'study'], function () : void {
             Route::get('research-groups', 'Admin\AdminController@showPageIsUnavailable');
 
-            Route::get('books', '\Francken\Study\BooksSale\Http\AdminBooksController@index');
-            Route::post('books', '\Francken\Study\BooksSale\Http\AdminBooksController@store');
+            Route::group(['middleware' => 'can:dashboard:books-write'], function () : void {
+                Route::get('books/create', '\Francken\Study\BooksSale\Http\AdminBooksController@create');
+                Route::post('books', '\Francken\Study\BooksSale\Http\AdminBooksController@store');
+                Route::put('books/{book}', '\Francken\Study\BooksSale\Http\AdminBooksController@update');
+                Route::delete('books/{book}', '\Francken\Study\BooksSale\Http\AdminBooksController@remove');
+            });
+
+            Route::group(['middleware' => 'can:dashboard:books-read'], function () : void {
+                Route::get('books', '\Francken\Study\BooksSale\Http\AdminBooksController@index');
+                Route::get('books/{book}', '\Francken\Study\BooksSale\Http\AdminBooksController@show');
+            });
         });
 
         Route::group(['prefix' => 'extern'], function () : void {

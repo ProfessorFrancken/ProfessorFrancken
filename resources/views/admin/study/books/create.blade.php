@@ -20,42 +20,9 @@
                     {!! Form::model($book, ['url' => 'admin/study/books', 'method' => 'post']) !!}
                         {!! Form::text('search', null, ['class' => 'form-control search-for-book', 'placeholder' => 'Search by title, author and / or isbn']) !!}
 
-                    <div class="row mt-4">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="title">Book title</label>
-                                {!! Form::text('title', null, ['class' => 'form-control book-title', 'placeholder' => 'Title', 'id' => 'tilte']) !!}
-                            </div>
-                            <div class="form-group">
-                                {!! Form::text('edition', null, ['class' => 'form-control book-edition', 'placeholder' => 'Edition']) !!}
+                        @include('admin.study.books._form', ['book' => $book])
 
-                            </div>
-                            <div class="form-group">
-                                {!! Form::text('author', null, ['class' => 'form-control book-author', 'placeholder' => 'Author']) !!}
-                            </div>
-                            <div class="form-group">
-                                {!! Form::text('isbn', null, ['class' => 'form-control book-isbn', 'placeholder' => 'Isbn']) !!}
-                            </div>
-
-                            <div class="form-group">
-                                {{-- The seller field is used to autocomplete seller-id--}}
-                                <label for="seller">Sold by member</label>
-                                {!! Form::text('seller', null, ['class' => 'form-control book-seller', 'placeholder' => 'Seller', 'id' => 'seller']) !!}
-                                {!! Form::hidden('seller-id', null, ['class' => 'book-seller-id']) !!}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="price">Price in euros</label>
-                                {!! Form::number('price', 10, ['class' => 'form-control book-price', 'placeholder' => 'Price', 'id' => 'price']) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <img alt="" src="" class="book-image" />
-                        </div>
-                    </div>
-
-                    {!! Form::submit('Add book', ['class' => 'btn btn-outline-success']) !!}
+                        {!! Form::submit('Add book', ['class' => 'btn btn-outline-success']) !!}
 
                     {!! Form::close() !!}
                 </div>
