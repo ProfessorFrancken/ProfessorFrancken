@@ -86,7 +86,7 @@ final class AdminBooksController
 
         $book = Book::create($book);
 
-        return redirect()->action([self::class, 'show'], $book->id);
+        return redirect()->action([self::class, 'index']);
     }
 
     public function update(Request $request, Book $book)

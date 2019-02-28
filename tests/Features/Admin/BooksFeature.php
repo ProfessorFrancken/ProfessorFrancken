@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin;
 
-use Faker\Factory;
 use Francken\Features\LoggedInAsAdmin;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Francken\Features\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class BooksFeature extends TestCase
 {
@@ -19,7 +18,7 @@ class BooksFeature extends TestCase
     private $books;
 
     /** @test */
-    function a_list_of_news_is_shown()
+    public function a_list_of_news_is_shown() : void
     {
         $this->visit('/admin/study/books');
 
@@ -27,9 +26,10 @@ class BooksFeature extends TestCase
     }
 
     /** @test */
-    function putting_a_book_on_sale()
+    public function putting_a_book_on_sale() : void
     {
-        $this->visit('/admin/study/books');
+        $this->visit('/admin/study/books/create')
+            ->see('Put a book on sale');
 
         $this->type('Introduction to classical mechanics', 'title')
             ->type('1', 'edition')

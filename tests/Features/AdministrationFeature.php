@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Auth;
-use DB;
-use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * The following are test that check that basic features of the admin page are working
@@ -21,7 +17,7 @@ class AdministrationFeature extends TestCase
     /**
      * @test
      */
-    public function members_can_be_managed()
+    public function members_can_be_managed() : void
     {
         $this->visit('/admin/association/member')
             ->type('Mark', 'first_name')
@@ -40,7 +36,7 @@ class AdministrationFeature extends TestCase
     }
 
     /** @test */
-    function committees_can_be_managed()
+    public function committees_can_be_managed() : void
     {
         // Given we have a user  names Mark Redeman
         $this->visit('/admin/association/member')
@@ -48,13 +44,13 @@ class AdministrationFeature extends TestCase
             ->type('Redeman', 'last_name')
             ->press('Add member');
 
-        $this->visit('/admin/association/committee/create')
+        $this->visit('/admin/association/committees/create')
             ->type('S[ck]rip(t|t?c)ie', 'name')
             ->type('Digital anarchy', 'summary')
             ->press('Create!');
 
         // The name should now be listed
-        $this->seePageIs('/admin/association/committee')
+        $this->seePageIs('/admin/association/committees')
             ->see('S[ck]rip(t|t?c)ie')
             ->see('Digital anarchy');
 

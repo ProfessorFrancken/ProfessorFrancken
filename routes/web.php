@@ -100,10 +100,10 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
 
         Route::group(['prefix' => 'association'], function () : void {
             //committees
-            Route::resource('committee', 'Admin\CommitteeController', ['except' => ['edit']]);
-            Route::post('committee/search-member', 'Admin\CommitteeController@searchMember');
-            Route::post('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@addMember');
-            Route::delete('committee/{committeeId}/member/{memberId}', 'Admin\CommitteeController@removeMember');
+            Route::resource('committees', 'Admin\CommitteeController');
+            Route::post('committees/search-member', 'Admin\CommitteeController@searchMember');
+            Route::post('committees/{committeeId}/member/{memberId}', 'Admin\CommitteeController@addMember');
+            Route::delete('committees/{committeeId}/member/{memberId}', 'Admin\CommitteeController@removeMember');
 
             Route::get('member', 'MemberController@index');
             Route::post('member/add-member', 'MemberController@addMember');
@@ -121,7 +121,6 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
 
             Route::get('activities', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
-            Route::get('committees', 'Admin\AdminController@showPageIsUnavailable');
         });
 
         Route::group(['prefix' => 'compucie'], function () : void {

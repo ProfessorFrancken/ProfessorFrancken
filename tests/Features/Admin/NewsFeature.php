@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin;
 
-use Francken\Association\News\Repository as NewsRepository;
-use Francken\Association\News\Fake\FakeNews;
-use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
-use Francken\Association\News\Eloquent\News;
 use Faker\Factory;
+use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\Fake\FakeNews;
 use Francken\Features\LoggedInAsAdmin;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Francken\Features\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class NewsFeature extends TestCase
 {
@@ -24,9 +22,9 @@ class NewsFeature extends TestCase
 
     // inmemory with fakes
     /** @before */
-    function setupNews()
+    public function setupNews() : void
     {
-        $this->afterApplicationCreated(function () {
+        $this->afterApplicationCreated(function () : void {
             $faker = Factory::create();
             $faker->seed(31415);
             $fakeNews = new FakeNews($faker, 10);
@@ -39,7 +37,7 @@ class NewsFeature extends TestCase
     }
 
     /** @test */
-    function a_list_of_news_is_shown()
+    public function a_list_of_news_is_shown() : void
     {
         $this->visit('/admin/association/news');
 
@@ -47,7 +45,7 @@ class NewsFeature extends TestCase
     }
 
     /** @test */
-    function a_news_item_can_be_changed()
+    public function a_news_item_can_be_changed() : void
     {
         $news = $this->news[0];
         $id = News::byLink($news->link())->first()->id;
@@ -61,7 +59,7 @@ class NewsFeature extends TestCase
             ->press('Update')
             ->see('Mooie gekken')
             ->see('Franckenleden');
-            // ->see('"New title" was succesfully updated.');
+        // ->see('"New title" was succesfully updated.');
         $updated = News::find($id)->toNewsItem();
 
         // Recently there was a bug where the publication date was changed
@@ -69,7 +67,7 @@ class NewsFeature extends TestCase
     }
 
     /** @test */
-    function uploading_an_author_image()
+    public function uploading_an_author_image() : void
     {
         $news = $this->news[0];
         $id = News::byLink($news->link())->first()->id;
@@ -87,7 +85,7 @@ class NewsFeature extends TestCase
     }
 
     /** @test */
-    function chaning_the_publication_date()
+    public function chaning_the_publication_date() : void
     {
         $news = $this->news[0];
         $id = News::byLink($news->link())->first()->id;
@@ -101,12 +99,14 @@ class NewsFeature extends TestCase
     }
 
     /** @test */
-    function createing_a_new_news_post()
+    public function creating_a_new_news_post() : void
     {
         $this->visit('/admin/association/news/create')
             ->type('Bitterballen dibs machines', 'title')
             ->type('Bitterballen are nice', 'content')
             ->type('About bitterballen', 'exerpt')
+            ->type('Mark', 'author-name')
+            ->type('picture', 'author-photo')
             ->press('Save');
 
         $news = News::orderBy('id', 'desc')->first();

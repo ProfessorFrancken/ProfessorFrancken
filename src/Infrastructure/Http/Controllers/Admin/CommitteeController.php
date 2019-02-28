@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Francken\Application\ReadModelRepository;
+use DB;
+use Francken\Application\Committees\CommitteesListRepository;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\CommitteeRepository;
-use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
-use Francken\Application\Committees\CommitteesListRepository;
+use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Http\Controllers\Controller;
-use DB;
+use Illuminate\Http\Request;
 
 class CommitteeController extends Controller
 {
-
     private $committeeRepo;
 
     public function __construct(CommitteesListRepository $committees)
@@ -43,9 +41,12 @@ class CommitteeController extends Controller
     {
         $id = CommitteeId::generate();
         $committee = Committee::instantiate($id, $req->input('name'), $req->input('summary'));
-        $committee->setCommitteePage($req->input('page'));
+
+        if ($req->filled('page')) {
+            $committee->setCommitteePage($req->input('page', ''));
+        }
         $email = $req->input('email');
-        if (!empty($email)) {
+        if ( ! empty($email)) {
             $committee->setEmail(new Email($req->input('email')));
         } else {
             $committee->setEmail(null);
@@ -53,7 +54,7 @@ class CommitteeController extends Controller
 
         $repo->save($committee);
 
-        return redirect('/admin/association/committee');
+        return redirect('/admin/association/committees');
     }
 
     public function show(string $id)
@@ -78,7 +79,7 @@ class CommitteeController extends Controller
 
         $repo->save($committee);
 
-        return redirect('/admin/association/committee/' . $id);
+        return redirect('/admin/association/committees/' . $id);
     }
 
     public function addMember(CommitteeRepository $repo, string $committeeId, string $memberId)

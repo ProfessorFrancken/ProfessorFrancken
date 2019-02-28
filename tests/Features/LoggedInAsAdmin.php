@@ -15,6 +15,8 @@ trait LoggedInAsAdmin
     public function login() : void
     {
         $this->afterApplicationCreated(function () : void {
+            \Artisan::call('permission:setup');
+
             $passphrase = config('francken.general.admin_passphrase');
 
             $account = Account::create([
@@ -22,6 +24,7 @@ trait LoggedInAsAdmin
                 'email' => 'board@professorfrancken.nl',
                 'password' => bcrypt($passphrase),
             ]);
+            $account->assignRole('Admin');
             Auth::loginUsingId($account->id);
         });
     }
