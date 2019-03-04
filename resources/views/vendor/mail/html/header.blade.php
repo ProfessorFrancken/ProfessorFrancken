@@ -4,7 +4,7 @@
             <!-- Body content -->
             <tr>
                 <td class="header-logo-cell">
-                    <img src="{{ url('/images/mail/small_white_logo.png') }}" class="header-logo"/>
+                    <img src="{{ $src ?? url('/images/mail/small_white_logo.png') }}" class="header-logo"/>
                 </td>
                 <td class="">
 
