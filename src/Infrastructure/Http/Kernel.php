@@ -62,7 +62,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'plus-one' => \Francken\PlusOne\Http\Middleware\AuthenticatePlusOne::class
+        'plus-one' => \Francken\PlusOne\Http\Middleware\AuthenticatePlusOne::class,
+        'symposium-cors' => \Francken\Association\Symposium\EnableCORS::class,
     ];
 
     /**

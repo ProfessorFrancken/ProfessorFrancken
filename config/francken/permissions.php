@@ -39,6 +39,9 @@ return [
         'dashboard:books-read',
         'dashboard:books-write',
 
+        'dashboard:symposia-read',
+        'dashboard:symposia-write',
+
         'dashboard:companies-read',
         'dashboard:companies--write',
 

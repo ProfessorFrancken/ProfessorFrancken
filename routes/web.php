@@ -18,6 +18,16 @@ Route::get('/scriptcie/{url}', function ($url) {
 })->where('url', '.*');
 
 Route::group(['middleware' => ['web', 'bindings']], function () : void {
+    Route::get('/symposia/{symposium}/participants/{participant}', [
+        \Francken\Association\Symposium\Http\ParticipantRegistrationController::class,
+        'verify'
+    ])->name('symposium.participant.verify')->middleware(['signed', 'throttle:6,1']);
+
+    Route::post('/symposia/{symposium}/participants', [
+        \Francken\Association\Symposium\Http\ParticipantRegistrationController::class,
+        'store'
+    ])->middleware(['throttle:6,1', 'symposium-cors']);
+
     Route::get('/', 'MainContentController@index')->name('home');
 
     Route::get('/register', 'RegistrationController@request');
@@ -121,6 +131,29 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
 
             Route::get('activities', 'Admin\AdminController@showPageIsUnavailable');
             Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
+
+            Route::group([
+                'namespace' => '\Francken\Association\Symposium\Http',
+                'prefix' => 'symposia'
+            ], function () : void {
+                Route::group(['middleware' => 'can:dashboard:symposia-write'], function () : void {
+                    Route::get('/create', 'AdminSymposiaController@create');
+                    Route::post('/', 'AdminSymposiaController@store');
+                    Route::get('/{symposium}/edit', 'AdminSymposiaController@edit');
+                    Route::put('/{symposium}', 'AdminSymposiaController@update');
+
+                    Route::get('/{symposium}/participants/create', 'AdminSymposiumParticipantsController@create');
+                    Route::post('/{symposium}/participants', 'AdminSymposiumParticipantsController@store');
+                    Route::get('/{symposium}/participants/{participant}/edit', 'AdminSymposiumParticipantsController@edit');
+                    Route::put('/{symposium}/participants/{participant}', 'AdminSymposiumParticipantsController@update');
+                    Route::delete('/{symposium}/participants/{participant}', 'AdminSymposiumParticipantsController@remove');
+                });
+
+                Route::group(['middleware' => 'can:dashboard:symposia-read'], function () : void {
+                    Route::get('/', 'AdminSymposiaController@index');
+                    Route::get('/{symposium}', 'AdminSymposiaController@show');
+                });
+            });
         });
 
         Route::group(['prefix' => 'compucie'], function () : void {

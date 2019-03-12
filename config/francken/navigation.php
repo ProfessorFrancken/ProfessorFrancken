@@ -91,6 +91,12 @@ return [
                     "works" => true,
                     "can" => "dashboard:francken-vrij-read",
                 ],
+                [
+                    "name" => "Symposium",
+                    "url" => "symposia",
+                    "works" => true,
+                    "can" => "dashboard:symposia-read",
+                ],
             ]
         ],
         [
