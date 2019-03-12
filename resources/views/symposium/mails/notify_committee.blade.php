@@ -10,7 +10,7 @@
     {{-- Body --}}
 # Lieve commissie,
 
-    Er is een nieuwe inschrijving van <strong>{{ $full_name }}</strong>, wat betekent dat <strong>{{ $who_needs_to_take_an_adt }}</strong> een leermomentje krijgt.
+Er is een nieuwe inschrijving van <strong>{{ $full_name }}</strong>, wat betekent dat <strong>{{ $who_needs_to_take_an_adt }}</strong> een leermomentje krijgt.
 
     {{-- Subcopy --}}
     @isset($subcopy)
