@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        // We want people to be able to register from franckensymposium.nl
+        '/symposia/*/participants'
     ];
 }
