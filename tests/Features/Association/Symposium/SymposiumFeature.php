@@ -217,7 +217,7 @@ class SymposiumFeature extends TestCase
                 'is_francken_member' => true,
                 'is_nnv_member' => true,
                 'nnv_number' => '706116',
-                'payws_with_iban' => true,
+                'payment_method'=> 'debit',
                 'iban' => 'NL18ABNA0484869868'
             ]
         )->assertResponseOk();

@@ -21,7 +21,7 @@ final class ParticipantRegistrationController
             $request->has('is_francken_member'),
             $request->has('is_nnv_member'),
             $request->input('nnv_number'),
-            $request->has('pays_with_iban'),
+            $request->input('payment_method', 'debit') !== 'cash',
             $request->input('iban')
         );
 
