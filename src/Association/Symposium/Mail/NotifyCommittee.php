@@ -43,10 +43,15 @@ class NotifyCommittee extends Mailable
      */
     public function build()
     {
-        return $this->subject("Feest! Iemand heeft zich ingeschreven!")
-            ->markdown('symposium.mails.notify_committee', [
-                'full_name' => $this->participant->full_name,
-                'who_needs_to_take_an_adt' => $this->who_needs_to_take_an_adt
-            ]);
+        return $this->subject(
+            sprintf(
+                "%s has registered, %s take a drink",
+                $this->participant->full_name,
+                $this->who_needs_to_take_an_adt
+            )
+        )->markdown('symposium.mails.notify_committee', [
+            'full_name' => $this->participant->full_name,
+            'who_needs_to_take_an_adt' => $this->who_needs_to_take_an_adt
+        ]);
     }
 }

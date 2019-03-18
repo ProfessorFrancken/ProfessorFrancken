@@ -25,9 +25,9 @@ final class ParticipantRegistrationController
             $request->input('iban')
         );
 
-        return [
+        return response()->json([
             'status' => 'ok'
-        ];
+        ]);
     }
 
     /**
