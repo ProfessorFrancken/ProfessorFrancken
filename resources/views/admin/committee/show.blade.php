@@ -1,8 +1,7 @@
 @extends('admin.layout')
+@section('page-title', 'Committees / ' . $committee->name())
 
 @section('content')
-  <h1 class="page-header">{{ $committee->name() }}</h1>
-
   <h3>General info</h3>
 
   {!! Form::open(['url' => url('admin/association/committees', (string)$committee->committeeId()), 'method' => 'PUT']) !!}

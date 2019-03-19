@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('page-title', 'Roles / ' . $role->name)
 
 @section('content')
     <div class="row">

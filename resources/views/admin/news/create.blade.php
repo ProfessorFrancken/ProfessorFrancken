@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('page-title', 'News / create')
 
 @section('content')
 

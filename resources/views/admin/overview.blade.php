@@ -1,10 +1,7 @@
 @extends('admin.layout')
+@section('page-title', 'Administration panel')
 
 @section('content')
-    <h1 class="section-header">
-        Administration panel
-    </h1>
-
     <p class="lead">
         Welcome to the administration page of T.F.V. 'Professor Francken'.
         Currently only board memers are allowed to use these pages. If you're not a board member, you're probably lost.

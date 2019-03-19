@@ -1,15 +1,11 @@
 @extends('admin.layout')
+@section('page-title', 'Accounts')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
-
-                    <h1 class="section-header">
-                        Accounts
-                    </h1>
-
                     <p>
                         Here you can see the currently activated accounts.
                         An account belongs to a member and can be used to do stuff on our website.

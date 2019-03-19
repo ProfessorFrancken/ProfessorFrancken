@@ -1,10 +1,7 @@
 @extends('admin.layout')
+@section('page-title', 'Fact sheet')
 
 @section('content')
-    <h1 class="section-header">
-        Fact Sheet
-    </h1>
-
     <div class="row">
         <div class="col-md-4">
             @include('admin.extern.fact-sheet._studies', ['studies' => $studies])

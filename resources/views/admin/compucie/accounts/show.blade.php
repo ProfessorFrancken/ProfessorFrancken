@@ -1,15 +1,10 @@
 @extends('admin.layout')
+@section('page-title', 'Accounts / ' . $account->email)
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body">
-
-                    <h1 class="section-header">
-                        {{ $account->email }}
-                    </h1>
-                </div>
                 <div class="card-body">
                     <h3 class="section-header">
                         Roles

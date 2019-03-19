@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -9,51 +9,58 @@
         @include('layout._favicon')
         @include('admin._styles')
     </head>
-    <body>
-        <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
-            <div class="text-white font-weight-bold d-flex justify-content-end align-items-end">
-                @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '50px'])
-            </div>
-            <a class="navbar-brand text-white" href="/admin">Francken admin</a>
-        </nav>
+    <body class="h-100">
+        <div class="row no-gutters h-100">
+            <div class="col-12 col-lg-2 col-md-3 bg-primary">
+                <a class="p-3 d-flex align-items-center justify-content-start text-white" href="/admin" style="background-color: #0a1d2d !important">
+                    <span class="font-weight-bold h3 text-white mb-0 pb-0 w-100">
+                        Francken
+                        Admin
+                    </span>
+                    @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '50px'])
+                </a>
 
-        <main>
-            <div class="row">
-                <div class="col-12 col-lg-2 col-md-3 bd-sidebar bg-white">
-
-                    <nav class="bd-links" id="docsNavbarContent">
+                <nav>
+                    <ul class="list-unstyled">
                         @foreach ($menu as $item)
-
-                            <div class="bd-toc-item active">
-                                <span class="bd-toc-link font-weight-bold">
+                            <li class="pb-4">
+                                <span class="d-block font-weight-bold text-white h5 mb-0 p-3" style="background-color: #0e283e !important">
                                     {{ $item['name'] }}
                                 </span>
 
-                                <ul class="nav bd-sidenav">
+                                <ul class="list-unstyled">
                                     @foreach ($item['items'] as $subItem)
                                         <?php $active = Request::segment(3) == $subItem['url'] ? 'active' : ''; ?>
                                         @can($subItem['can'] ?? 'can-access-dashboard')
-                                        <li class="{{ $active }} text-white">
-                                            <a  href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}">
-                                                @if (! $subItem['works'])
-                                                    <i class="fa fa-times" aria-hidden="true"></i>
-                                                @endif
+                                        @if ($subItem['works'])
+                                            <li class="{{ $active }} text-white">
+                                                <a  href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}" class="d-block px-3 py-2 admin-navigation-item">
+                                                    @if (! $subItem['works'])
+                                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                                    @endif
 
-                                                {{ $subItem['name'] }}
-                                            </a>
-                                        </li>
+                                                    {{ $subItem['name'] }}
+                                                </a>
+                                            </li>
+                                        @endif
                                         @endcan
                                     @endforeach
                                 </ul>
-                            </div>
+                            </li>
                         @endforeach
-                    </nav>
-                </div>
-                <div class="col-12 col-lg-10 col-md-9 bd-content pt-4">
+                    </ul>
+                </nav>
+            </div>
+            <main class="col-12 col-lg-10 col-md-9 bd-content">
+                <div class="p-4 pt-2">
+                    <h1 class="section-header mb-4">
+                        @yield('page-title', 'Administration panel')
+                    </h1>
+
                     @yield('content')
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
 
         @include('admin._scripts')
     </body>

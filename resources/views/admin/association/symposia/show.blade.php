@@ -1,14 +1,11 @@
 @extends('admin.layout')
+@section('page-title', 'Symposia / ' . $symposium->name)
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="section-header">
-                        {{ $symposium->name }}
-                    </h1>
-
                     <dl class="row">
                         <dt class="col-sm-3">Schedule</dt>
                         <dd class="col-sm-9">

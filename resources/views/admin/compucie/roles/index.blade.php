@@ -1,16 +1,10 @@
 @extends('admin.layout')
+@section('page-title', 'Roles')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body">
-
-                    <h1 class="section-header">
-                        Roles
-                    </h1>
-                </div>
-
                 <table class="table table-hover table-small">
                     <thead>
                         <tr>

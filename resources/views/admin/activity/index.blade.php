@@ -1,8 +1,7 @@
 @extends('admin.layout')
+@section('page-title', 'Activities')
 
 @section('content')
-  <h1 class="page-header">Activities</h1>
-
   <table class="table table-hover">
     <tr>
       <th>#</th>

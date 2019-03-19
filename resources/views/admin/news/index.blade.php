@@ -1,15 +1,11 @@
 @extends('admin.layout')
+@section('page-title', 'News')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
-
-                    <h1 class="section-header">
-                        News
-                    </h1>
-
                     <p>
                         Here you can add news, which can be a blog, information from the association, advertisement or perhaps something else which I haven't thought about yet...
                     </p>

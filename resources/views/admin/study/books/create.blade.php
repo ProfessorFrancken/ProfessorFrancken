@@ -1,15 +1,10 @@
 @extends('admin.layout')
+@section('page-title', 'Books / Put a book on sale')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body">
-                    <h1 class="section-header">
-                        Put a book on sale
-                    </h1>
-
-                </div>
                 <div class="card-body bg-light">
 
                     <p class="lead">

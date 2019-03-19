@@ -1,13 +1,11 @@
 @extends('admin.layout')
+@section('page-title', 'Books')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body d-flex justify-content-between">
-                    <h1 class="section-header">
-                        Books
-                    </h1>
                     <div>
                     <a href="{{ action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'create']) }}"
                        class='btn btn-primary'

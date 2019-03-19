@@ -1,4 +1,4 @@
-<div class="card my-3">
+<div class="card">
     {!! Form::open(['url' => 'admin/association/francken-vrij', 'files' => true, 'class' => 'card-body']) !!}
 
     <h4>Publish a Francken Vrij</h4>

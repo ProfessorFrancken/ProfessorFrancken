@@ -1,17 +1,14 @@
 @extends('admin.layout')
+@section('page-title', 'Francken Vrij')
 
 @section('content')
-    <h1 class="section-header">
-        Francken Vrij
-    </h1>
-
     <div class="row">
         <div class="col-lg-4 flex-lg-last">
             @include('admin.francken-vrij._create')
         </div>
 
         <div class="col-lg-8">
-            <div class="card my-3">
+            <div class="card">
                 <div class="card-body">
 
                     <h4>Our collection</h4>

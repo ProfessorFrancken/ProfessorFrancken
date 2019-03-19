@@ -1,14 +1,10 @@
 @extends('admin.layout')
+@section('page-title', 'Books / ' . $book->title)
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body">
-                    <h1 class="section-header">
-                        {{ $book->title }}
-                    </h1>
-                </div>
                 <div class="card-body bg-light">
                     {!! Form::model($book, ['url' => action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'update'], $book->id), 'method' => 'post']) !!}
                         @method('PUT')

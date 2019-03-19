@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('page-title', 'Registration requests / Mark Redeman')
 
 @section('content')
     <h1 class="section-header">

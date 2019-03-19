@@ -1,15 +1,10 @@
 @extends('admin.layout')
+@section('page-title', $symposium->name . ' / ' . $participant->full_name)
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body">
-                    <h1 class="section-header">
-                        Edit {{ $participant->full_name }}
-                    </h1>
-
-                </div>
                 <div class="card-body bg-light">
                     {!! Form::model($participant, ['url' => action([\Francken\Association\Symposium\Http\AdminSymposiumParticipantsController::class, 'update'], [$symposium->id, $participant->id]), 'method' => 'put']) !!}
 

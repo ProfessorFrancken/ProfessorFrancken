@@ -1,13 +1,11 @@
 @extends('admin.layout')
+@section('page-title', 'Symposia / ' . $symposium->name)
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="section-header">
-                        Add a new symposium
-                    </h1>
 
                 </div>
                 <div class="card-body bg-light">
