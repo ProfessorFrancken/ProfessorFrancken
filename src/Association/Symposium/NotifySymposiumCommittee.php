@@ -33,6 +33,14 @@ class NotifySymposiumCommittee implements ShouldQueue
             'Bradley'
         ]);
 
+        // This is very important
+        AdCount::create([
+            'symposium_id' => $participant->symposium_id,
+            'participant_id' => $participant->id,
+            'name' => $who_needs_to_take_an_adt,
+            'consumed' => false,
+        ]);
+
 
         $this->mail->to('sympfr@gmail.com')
             ->send(new Mail\NotifyCommittee(
