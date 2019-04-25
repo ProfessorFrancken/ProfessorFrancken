@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Francken\Application\Committees\CommitteesRepository;
-use Francken\Extern\FactSheet\StudentsByStudyAndStudyPhase;
-use Francken\Extern\FactSheet\FirstYearStudentsPerYear;
-use Francken\Extern\FactSheet\ActiveMembersStatistics;
-use League\Period\Period;
-use DateTimeImmutable;
 use DateInterval;
-use DateTime;
+use DateTimeImmutable;
 use DB;
+use Francken\Application\Committees\CommitteesRepository;
+use Francken\Extern\FactSheet\ActiveMembersStatistics;
+use Francken\Extern\FactSheet\FirstYearStudentsPerYear;
+use Francken\Extern\FactSheet\StudentsByStudyAndStudyPhase;
+use League\Period\Period;
 
 final class FactSheetController
 {
@@ -73,7 +72,7 @@ final class FactSheetController
         return collect(range(0, 12 * 4))->map(function ($weeksBeforeToday) {
             $target = \Carbon\Carbon::now()->subMonths($weeksBeforeToday);
             return [
-                'week' => $target->format('Y').' '.$target->format('M'),
+                'week' => $target->format('Y') . ' ' . $target->format('M'),
                 'stats' => $this->transactionsDuringMonth(
                     (int)$target->format('Y'),
                     (int)$target->format('n')

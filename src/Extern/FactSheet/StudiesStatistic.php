@@ -49,7 +49,7 @@ final class StudiesStatistic
 
         return $studies->sortBy(
             function (StudyStatistic $study) use ($relatedStudies) {
-                return array_search($study->study(), $relatedStudies);
+                return array_search($study->study(), $relatedStudies, true);
             }
         );
     }
@@ -65,9 +65,13 @@ final class StudiesStatistic
             "(Technische) Scheikunde",
         ];
 
+        if ($studies->isEmpty()) {
+            return collect();
+        }
+
         $grouped = $studies->groupBy(
             function (StudyStatistic $study) use ($relatedStudies) {
-                return in_array($study->study(), $relatedStudies);
+                return in_array($study->study(), $relatedStudies, true);
             }
         );
 
