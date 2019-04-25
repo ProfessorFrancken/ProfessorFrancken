@@ -10,8 +10,8 @@
         @include('admin._styles')
     </head>
     <body class="h-100">
-        <div class="row no-gutters h-100">
-            <div class="col-12 col-lg-2 col-md-3 bg-primary">
+        <div class="row no-gutters h-100 order-2">
+            <div class="col-12 col-lg-2 col-md-3 bg-primary order-2 order-md-0">
                 <a class="p-3 d-flex align-items-center justify-content-start text-white" href="/admin" style="background-color: #0a1d2d !important">
                     <span class="font-weight-bold h3 text-white mb-0 pb-0 w-100">
                         Francken
@@ -32,14 +32,18 @@
                                     @foreach ($item['items'] as $subItem)
                                         <?php $active = Request::segment(3) == $subItem['url'] ? 'active' : ''; ?>
                                         @can($subItem['can'] ?? 'can-access-dashboard')
-                                        @if ($subItem['works'])
+                                        @if ($subItem['works'] || Auth::user()->can('super-admin-read'))
                                             <li class="{{ $active }} text-white">
-                                                <a  href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}" class="d-block px-3 py-2 admin-navigation-item">
-                                                    @if (! $subItem['works'])
-                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                    @endif
+                                                <a  href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}" class="d-block px-3 py-2 admin-navigation-item d-flex justify-content-between align-items-center">
+                                                    <span>
+                                                        @if (! $subItem['works'])
+                                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                                        @endif
 
-                                                    {{ $subItem['name'] }}
+                                                        {{ $subItem['name'] }}
+                                                    </span>
+
+                                                    <span class="badge badge-light d-none">3</span>
                                                 </a>
                                             </li>
                                         @endif
@@ -51,11 +55,39 @@
                     </ul>
                 </nav>
             </div>
-            <main class="col-12 col-lg-10 col-md-9 bd-content">
+            <main class="col-12 col-lg-10 col-md-9 bd-content order-1">
+                @isset ($breadcrumbs)
+                <nav aria-label="breadcrumb" class="d-flex justify-content-between bg-white rounded-0">
+                    <ol class="breadcrumb bg-white py-4 mb-0" style="">
+                        @foreach ($breadcrumbs as $breadcrumb)
+                            @if (! $loop->last)
+                                <li class="breadcrumb-item">
+                                    <a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['text'] }}</a>
+                                </li>
+                            @else
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    {{ $breadcrumb['text'] }}
+                                </li>
+                            @endif
+                        @endforeach
+                    </ol>
+
+                    <div class="breadcrumb-item">
+                        <a href="/" class="h-100 d-flex align-items-center px-4 text-muted">
+                            Back to Francken
+                        </a>
+                    </div>
+                </nav>
+                @endisset
                 <div class="p-4 pt-2">
-                    <h1 class="section-header mb-4">
-                        @yield('page-title', 'Administration panel')
-                    </h1>
+                    <div class="d-flex justify-content-between align-itmes-center mb-4">
+                        <h1 class="section-header">
+                            @yield('page-title', 'Administration panel')
+                        </h1>
+
+                        @section('actions')
+                        @show
+                    </div>
 
                     @yield('content')
                 </div>
