@@ -16,6 +16,9 @@ final class RolesController
 
         return view('admin.compucie.roles.index', [
             'roles' => $roles,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Roles'],
+            ]
         ]);
     }
 
@@ -27,6 +30,10 @@ final class RolesController
         return view('admin.compucie.roles.show', [
             'role' => $role,
             'permissions' => $permissions,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Roles'],
+                ['url' => action([static::class, 'show'], $role->id), 'text' => $role->name],
+            ]
         ]);
     }
 }

@@ -17,6 +17,9 @@ final class AccountsController
 
         return view('admin.compucie.accounts.index', [
             'accounts' => $accounts,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Accounts'],
+            ]
         ]);
     }
 
@@ -29,6 +32,10 @@ final class AccountsController
             'account' => $account,
             'permissions' => $permissions,
             'roles' => $roles,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Accounts'],
+                ['url' => action([static::class, 'show'], $account->id), 'text' => $account->email],
+            ]
         ]);
     }
 }

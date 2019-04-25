@@ -15,7 +15,12 @@ final class AdminSymposiumParticipantsController
     {
         return view('admin.association.symposia.participants.create', [
             'symposium' => $symposium,
-            'participant' => new Participant()
+            'participant' => new Participant(),
+            'breadcrumbs' => [
+                ['url' => action([AdminSymposiaController::class, 'index']), 'text' => 'Symposia'],
+                ['url' => action([AdminSymposiaController::class, 'show'], $symposium->id), 'text' => $symposium->name],
+                ['url' => action([static::class, 'create'], $symposium->id), 'text' => 'Add participant'],
+            ]
         ]);
     }
 
@@ -23,7 +28,13 @@ final class AdminSymposiumParticipantsController
     {
         return view('admin.association.symposia.participants.edit', [
             'symposium' => $symposium,
-            'participant' => $participant
+            'participant' => $participant,
+            'breadcrumbs' => [
+                ['url' => action([AdminSymposiaController::class, 'index']), 'text' => 'Symposia'],
+                ['url' => action([AdminSymposiaController::class, 'show'], $symposium->id), 'text' => $symposium->name],
+                ['url' => action([AdminSymposiaController::class, 'show'], $symposium->id), 'text' => 'Participants'],
+                ['url' => action([static::class, 'edit'], [$symposium->id, $participant->id]), 'text' => $participant->full_name],
+            ]
         ]);
     }
 

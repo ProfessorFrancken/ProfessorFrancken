@@ -19,6 +19,9 @@ final class AdminSymposiaController
         return view('admin.association.symposia.index', [
             'symposia' => $symposia,
             'news' => [],
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Symposia'],
+            ]
         ]);
     }
 
@@ -26,6 +29,10 @@ final class AdminSymposiaController
     {
         return view('admin.association.symposia.create', [
             'symposium' => new Symposium(),
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Symposia'],
+                ['url' => action([static::class, 'create']), 'text' => 'Add'],
+            ]
         ]);
     }
 
@@ -51,6 +58,10 @@ final class AdminSymposiaController
     {
         return view('admin.association.symposia.show', [
             'symposium' => $symposium,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Symposia'],
+                ['url' => action([static::class, 'show'], $symposium->id), 'text' => $symposium->name],
+            ]
         ]);
     }
 
@@ -58,6 +69,11 @@ final class AdminSymposiaController
     {
         return view('admin.association.symposia.edit', [
             'symposium' => $symposium,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'Symposia'],
+                ['url' => action([static::class, 'show'], $symposium->id), 'text' => $symposium->name],
+                ['url' => action([static::class, 'edit'], $symposium->id), 'text' => 'edit'],
+            ]
         ]);
     }
 

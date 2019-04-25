@@ -40,14 +40,21 @@ final class AdminNewsController
 
         return view('admin.news.index', [
             'news' => $news,
-            'drafts' => $drafts
+            'drafts' => $drafts,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'News'],
+            ]
         ]);
     }
 
     public function create()
     {
         return view('admin.news.create', [
-            'news' => NewsItem::empty()
+            'news' => NewsItem::empty(),
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'News'],
+                ['url' => action([static::class, 'create']), 'text' => 'Create'],
+            ]
         ]);
     }
 
@@ -77,7 +84,11 @@ final class AdminNewsController
         $news = $this->news->byLink($link);
 
         return view('admin.news.show', [
-            'news' => $news
+            'news' => $news,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'News'],
+                ['url' => action([static::class, 'show'], $news->id()), 'text' => $news->title()],
+            ]
         ]);
     }
 

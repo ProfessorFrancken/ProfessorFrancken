@@ -42,6 +42,9 @@ final class FactSheetController
                 'firstYearStudentsPerYear' => (new FirstYearStudentsPerYear(collect(range(2011, 2018))))->handle(),
                 'weeklyStats' => $this->weeklyStats(),
                 'monthlyStats' => $this->monthlyStats(),
+                'breadcrumbs' => [
+                    ['url' => action([self::class, 'index']), 'text' => 'Factsheet'],
+                ]
             ]);
     }
 

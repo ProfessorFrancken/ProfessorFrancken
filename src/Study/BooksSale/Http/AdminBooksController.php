@@ -34,7 +34,10 @@ final class AdminBooksController
 
         return view('admin.study.books.index', [
             'books' => $books->paginate(30),
-            'members' => $this->members()
+            'members' => $this->members(),
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Books'],
+            ]
         ]);
     }
 
@@ -42,7 +45,11 @@ final class AdminBooksController
     {
         return view('admin.study.books.show', [
             'book' => $book,
-            'members' => $this->members()
+            'members' => $this->members(),
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Books'],
+                ['url' => action([self::class, 'show'], $book->id), 'text' => $book->title],
+            ]
         ]);
     }
 
@@ -50,7 +57,11 @@ final class AdminBooksController
     {
         return view('admin.study.books.create', [
             'book' => new Book(),
-            'members' => $this->members()
+            'members' => $this->members(),
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Books'],
+                ['url' => action([self::class, 'create']), 'text' => 'Add'],
+            ]
         ]);
     }
 

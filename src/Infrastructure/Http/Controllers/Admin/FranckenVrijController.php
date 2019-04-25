@@ -62,6 +62,10 @@ final class FranckenVrijController extends Controller
             'title' => $title,
             'volume' => $currentVolume,
             'edition' => $currentEdition,
+            'breadcrumbs' => [
+                ['url' => '/association', 'text' => 'Association'],
+                ['url' => '/association/francken-vrij', 'text' => 'Francken Vrij'],
+            ]
         ]);
     }
 
