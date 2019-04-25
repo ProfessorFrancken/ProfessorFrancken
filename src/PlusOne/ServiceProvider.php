@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\PlusOne;
 
 use Illuminate\Contracts\Foundation\Application;
@@ -19,20 +21,17 @@ final class ServiceProvider extends RouteServiceProvider
 
     /**
      * Define the routes for the application.
-     *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
      */
-    public function map(Router $router)
+    public function map(Router $router) : void
     {
         $router->group([
             'namespace' => $this->namespace,
             'middleware' => ['api'],
             'prefix' => 'api/plus-one'
-        ], function ($router) {
+        ], function ($router) : void {
             $router->post('authenticate', 'AuthenticationController@post');
 
-            $router->group(['middleware' => 'plus-one'], function ($router) {
+            $router->group(['middleware' => 'plus-one'], function ($router) : void {
                 $router->get('products', 'ProductsController@index');
                 $router->get('members', 'MembersController@index');
                 $router->get('committees', 'CommitteesController@index');
