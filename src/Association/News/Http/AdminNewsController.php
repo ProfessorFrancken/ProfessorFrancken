@@ -7,10 +7,9 @@ namespace Francken\Association\News\Http;
 use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\News\Author;
-use Francken\Association\News\NewsContentCompiler;
-use Francken\Association\News\CompiledMarkdown;
-use Francken\Association\News\NewsItem;
 use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\NewsContentCompiler;
+use Francken\Association\News\NewsItem;
 use Francken\Association\News\Repository as NewsRepository;
 use Illuminate\Http\Request;
 use League\Period\Period;
@@ -70,7 +69,7 @@ final class AdminNewsController
         $news->changeTitle($req->input('title'));
 
         $news->changeContents(
-            (new NewsContentCompiler)->content($req->input('content'))
+            (new NewsContentCompiler())->content($req->input('content'))
         );
         $news->changeExerpt($req->input('exerpt'));
 
@@ -128,7 +127,7 @@ final class AdminNewsController
         $news->changeTitle($req->input('title'));
 
         $news->changeContents(
-            (new NewsContentCompiler)->content($req->input('content'))
+            (new NewsContentCompiler())->content($req->input('content'))
         );
         $news->changeExerpt($req->input('exerpt'));
 
@@ -137,7 +136,7 @@ final class AdminNewsController
         return redirect('/admin' . $news->toNewsItem()->url());
     }
 
-    public function  publish(Request $req, $link)
+    public function publish(Request $req, $link)
     {
         $news = News::byLink($link)->firstOrFail();
         $publishAt = new \DateTimeImmutable($req->input('publish-at'));
