@@ -35,26 +35,24 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-4 col-md-2 my-3">
-                <h4 class="footer__header h5 mb-2">Social Media</h4>
+            <div class="col-12 col-sm-4 col-md-4 my-3">
+                <h4 class="footer__header h5 mb-2">Other</h4>
 
-                <div class="footer__body">
+                <div class="footer__body" style="column-count: 2">
                     <a href="https://www.facebook.com/groups/139490187648/">
                         <i class="fab fa-facebook text-primary" aria-hidden="true"></i> Facebook<br>
                     </a>
+
+                    <a href="https://www.instagram.com/tfvprofessorfrancken/">
+                        <i class="fab fa-instagram text-primary" aria-hidden="true"></i> Instagram<br>
+                    </a>
+
                     <a href="https://www.linkedin.com/groups/1524067">
                         <i class="fab fa-linkedin text-primary" aria-hidden="true"></i> LinkedIn<br>
                     </a>
                     <a href="https://github.com/ProfessorFrancken/ProfessorFrancken">
-                        <i class="fab fa-github-square text-primary" aria-hidden="true"></i> Github
+                        <i class="fab fa-github-square text-primary" aria-hidden="true"></i> Github<br>
                     </a>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-4 col-md-2 my-3">
-                <h4 class="footer__header h5 mb-2">Policies</h4>
-
-                <div class="footer__body">
                     <a href="/privacy-policy">
                         <i class="fa fa-user-secret text-primary" aria-hidden="true"></i>
                         Privacy policy<br>
@@ -65,7 +63,6 @@
                     </a>
                 </div>
             </div>
-
 
             {{-- Note: we add a padding left 0 since the gutter from the row adds a padding --}}
             <div class="col-12 col-md-2 col-lg-3 d-none d-lg-block footer__logo skew-md--bottom-right align-self-end"
