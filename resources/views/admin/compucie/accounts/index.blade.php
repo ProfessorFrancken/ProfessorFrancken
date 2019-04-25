@@ -51,3 +51,15 @@
         </div>
     </div>
 @endsection
+
+@section('actions')
+    <div class="d-flex align-items-end">
+        <a
+            class="btn btn-primary btn-sm"
+            href="{{ action([\Francken\Auth\Http\Controllers\Admin\AccountsController::class, 'create']) }}"
+        >
+            <i class="fas fa-plus fa-fw"></i>
+            Activate a new account
+        </a>
+    </div>
+@endsection

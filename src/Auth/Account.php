@@ -38,6 +38,22 @@ final class Account extends Model implements
         'member_id',
     ];
 
+    public static function activate(
+        string $member_id,
+        string $email,
+        string $password
+    ) : self {
+        $account = self::create([
+            'member_id' => $member_id,
+            'email' => $email,
+            'password' => $password
+        ]);
+
+        event(new AccountWasActivated($account));
+
+        return $account;
+    }
+
     public function scopeOfMember(Builder $query, MemberId $memberId) : Builder
     {
         // If we do want to have users that can represent members, alumni and
