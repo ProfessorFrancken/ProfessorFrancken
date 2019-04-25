@@ -16,7 +16,6 @@ final class Photo extends Model
         640 => "_z",
         800 => "_c",
         1024 => "_b",
-        1600 => "_h",
     ];
 
     public function album()
@@ -24,7 +23,7 @@ final class Photo extends Model
         return $this->belongsTo(Album::class);
     }
 
-    public function src($quality = 1600) : string
+    public function src($quality = 1024) : string
     {
         $base_url = str_before($this->flickr_base_url, '.jpg');
 
