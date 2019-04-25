@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Francken\Auth\Account;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\GenericUser as User;
 
 final class PhotosPolicy
 {
@@ -22,13 +22,13 @@ final class PhotosPolicy
         $this->auth = $auth;
     }
 
-    public function view(?User $user) : bool
+    public function view(?Account $account) : bool
     {
-        return $this->allowed($user);
+        return $this->allowed($account);
     }
 
-    private function allowed($user = null) : bool
+    private function allowed(?Account $account = null) : bool
     {
-        return $user !== null || $this->auth->isLoggedIn();
+        return $account !== null || $this->auth->isLoggedIn();
     }
 }
