@@ -59,7 +59,7 @@ final class FlickrRepository
         });
     }
 
-    public function findAlbum($album_id = '72157702088966911') : Collection
+    public function findAlbum($album_id) : Collection
     {
         $album = $this->flickr->photosForSet(
             $album_id, // set id
