@@ -159,10 +159,13 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
         Route::group(['prefix' => 'compucie'], function () : void {
             Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
                 Route::get('accounts', [Admin\AccountsController::class, 'index']);
+                Route::get('accounts/create', [Admin\AccountsController::class, 'create']);
+                Route::post('accounts', [Admin\AccountsController::class, 'store']);
                 Route::get('accounts/{account}', [Admin\AccountsController::class, 'show']);
             });
 
             Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
+                Route::post('accounts', [Admin\AccountsController::class, 'store']);
                 Route::post('accounts/{account}/permissions/', [Admin\AccountPermissionsController::class, 'store']);
                 Route::delete('accounts/{account}/permissions/{permission}', [Admin\AccountPermissionsController::class, 'remove']);
                 Route::post('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'store']);
