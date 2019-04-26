@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Auth;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -37,5 +38,8 @@ final class ServiceProvider extends BaseServiceProvider
         $gate->before(function ($user, $ability) {
             return $user->hasRole('Admin') ? true : null;
         });
+
+        $dispatcher = $this->app->make(Dispatcher::class);
+        $dispatcher->listen(AccountWasActivated::class, ChangeRolesListener::class);
     }
 }
