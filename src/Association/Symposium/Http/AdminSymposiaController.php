@@ -58,6 +58,10 @@ final class AdminSymposiaController
 
     public function show(Symposium $symposium)
     {
+        $symposium->load(['participants' => function ($query) {
+            return $query->orderBy('id', 'desc');
+        }]);
+
         return view('admin.association.symposia.show', [
             'symposium' => $symposium,
             'breadcrumbs' => [
