@@ -42,7 +42,7 @@
 
 
                     <h3>
-                        Participants
+                        Participants ({{ $symposium->participants->where('is_spam', false)->count() }})
                     </h3>
                 </div>
 

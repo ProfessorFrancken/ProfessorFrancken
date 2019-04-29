@@ -13,7 +13,9 @@ final class AdminSymposiaController
     public function index()
     {
         $symposia = Symposium::orderBy('start_date', 'DESC')
-            ->withCount('participants')
+            ->withCount(['participants' => function ($query) : void {
+                $query->where('is_spam', false);
+            }])
             ->paginate(10);
 
         return view('admin.association.symposia.index', [
