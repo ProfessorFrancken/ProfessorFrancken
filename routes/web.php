@@ -146,6 +146,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
                     Route::post('/{symposium}/participants', 'AdminSymposiumParticipantsController@store');
                     Route::get('/{symposium}/participants/{participant}/edit', 'AdminSymposiumParticipantsController@edit');
                     Route::put('/{symposium}/participants/{participant}', 'AdminSymposiumParticipantsController@update');
+                    Route::put('/{symposium}/participants/{participant}/toggle-spam', 'AdminSymposiumParticipantsController@toggleSpam');
                     Route::delete('/{symposium}/participants/{participant}', 'AdminSymposiumParticipantsController@remove');
                 });
 

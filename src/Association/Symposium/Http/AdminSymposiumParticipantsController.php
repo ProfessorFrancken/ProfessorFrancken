@@ -87,4 +87,13 @@ final class AdminSymposiumParticipantsController
 
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
     }
+
+    public function toggleSpam(Symposium $symposium, Participant $participant)
+    {
+        $participant->update([
+            'is_spam' => ! $participant->is_spam
+        ]);
+
+        return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
+    }
 }

@@ -16,6 +16,18 @@ final class Participant extends Model
 
     protected $table = 'association_symposium_participants';
 
+    protected $casts = [
+        'is_spam' => 'boolean',
+        'received_information_mail' => 'boolean',
+        "is_francken_member" => 'boolean',
+        "is_nnv_member" => 'boolean',
+        "pays_with_iban" => 'boolean',
+        "has_registration" => 'boolean',
+        "has_paid" => 'boolean',
+        "is_spam" => 'boolean',
+        'email_verified_at' => 'date',
+    ];
+
     protected $fillable = [
         'firstname',
         'lastname',
@@ -29,6 +41,9 @@ final class Participant extends Model
 
         'email_verified_at',
         'has_paid',
+
+        'is_spam',
+        'received_information_mail',
     ];
 
     protected $dates = ['email_verified_at'];
@@ -47,5 +62,10 @@ final class Participant extends Model
     public function symposium()
     {
         return $this->belongsTo(Symposium::class);
+    }
+
+    public function adCount()
+    {
+        return $this->hasOne(AdCount::class);
     }
 }
