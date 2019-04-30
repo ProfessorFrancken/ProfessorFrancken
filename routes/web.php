@@ -153,6 +153,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
                 Route::group(['middleware' => 'can:dashboard:symposia-read'], function () : void {
                     Route::get('/', 'AdminSymposiaController@index');
                     Route::get('/{symposium}', 'AdminSymposiaController@show');
+                    Route::get('/{symposium}/export', 'ExportController@index');
                 });
             });
         });
