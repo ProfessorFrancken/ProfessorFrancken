@@ -38,7 +38,8 @@
 
         <div class="form-group">
             <p>
-                You may optionally reupload the cover image
+                You may optionally reupload the cover image.
+                The cover image should have a size of 175x245 pixels.
             </p>
             {!! Form::label('cover', 'Cover', ['class' => 'control-label']) !!}
             {!! Form::file('cover', ['class' => 'form-control-file']) !!}

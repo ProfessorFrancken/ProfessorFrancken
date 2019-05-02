@@ -32,6 +32,7 @@
         {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
         <p>
             The cover is optional. If no cover is given then we will generate one from the pdf.
+            The cover image should have a size of 175x245 pixels.
         </p>
         {!! Form::label('cover', 'Cover', ['class' => 'control-label']) !!}
         {!! Form::file('cover', ['class' => 'form-control-file']) !!}
