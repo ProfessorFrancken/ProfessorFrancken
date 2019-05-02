@@ -42,7 +42,7 @@
 
         <div class="form-group form-check">
             <label for="iban">IBan</label>
-            {!! Form::text('iban', null, ['class' => 'form-control', 'id' => 'iban']) !!}
+            {!! Form::text('iban', decrypt($participant->iban), ['class' => 'form-control', 'id' => 'iban']) !!}
         </div>
 
     </div>

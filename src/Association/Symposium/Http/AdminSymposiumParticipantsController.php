@@ -75,7 +75,7 @@ final class AdminSymposiumParticipantsController
             'nnv_number' => $request->input('nnv_number'),
             'member_id' => $request->input('member_id'),
             'pays_with_iban' => $pays_with_iban,
-            'iban' => $request->input('iban'),
+            'iban' => encrypt($request->input('iban')),
         ]);
 
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
