@@ -16,7 +16,6 @@
 
                 @include('admin.association.symposia._table', ['symposia' => $symposia])
 
-
                 {!! $symposia->links() !!}
             </div>
         </div>

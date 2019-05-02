@@ -20,7 +20,6 @@ final class AdminSymposiaController
 
         return view('admin.association.symposia.index', [
             'symposia' => $symposia,
-            'news' => [],
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Symposia'],
             ]

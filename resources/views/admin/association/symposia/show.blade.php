@@ -6,6 +6,33 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    <div class="mb-4">
+                        <a href="{{ action([\Francken\Association\Symposium\Http\AttendanceController::class, 'index'], $symposium->id) }}"
+                           class="btn btn-primary"
+                        >
+                            <i class="fas fa-clipboard-list"></i>
+                            Attendance list
+                        </a>
+                        <a href="{{ action([\Francken\Association\Symposium\Http\NameTagsController::class, 'index'], $symposium->id) }}"
+                           class="btn btn-primary mx-2"
+                        >
+                            <i class="fas fa-user-tag"></i>
+                            Name tags
+                        </a>
+
+                        <a href="{{ action([\Francken\Association\Symposium\Http\ExportController::class, 'index'], $symposium->id) }}"
+                           class="btn btn-primary mx-2"
+                        >
+                            <i class="fas fa-file-export"></i>
+                            Export
+                        </a>
+                        <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'edit'], $symposium->id) }}"
+                           class="btn btn-primary mx-2"
+                        >
+                            <i class="far fa-edit"></i>
+                            Edit
+                        </a>
+                    </div>
                     <dl class="row">
                         <dt class="col-sm-3">Schedule</dt>
                         <dd class="col-sm-9">
@@ -31,13 +58,7 @@
                         <dt class="col-sm-3">Promote on agenda</dt>
                         <dd class="col-sm-9">{{ $symposium->promote_on_agenda ? 'Yes' : 'No' }}</dd>
 
-                        <div class="col-sm-3">
-                            <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'edit'], $symposium->id) }}"
-                               class="btn btn-outline-primary"
-                            >
-                                Edit
-                            </a>
-                        </div>
+
                     </dl>
 
 
