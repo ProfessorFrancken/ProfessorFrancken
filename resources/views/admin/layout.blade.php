@@ -11,7 +11,7 @@
     </head>
     <body class="h-100">
         <div class="row no-gutters h-100 order-2">
-            <div class="col-12 col-lg-2 col-md-3 bg-primary order-2 order-md-0">
+            <div class="col-12 col-lg-2 col-md-3 bg-primary order-2 order-md-0 d-print-none">
                 <a class="p-3 d-flex align-items-center justify-content-start text-white" href="/admin" style="background-color: #0a1d2d !important">
                     <span class="font-weight-bold h3 text-white mb-0 pb-0 w-100">
                         Francken
@@ -55,9 +55,9 @@
                     </ul>
                 </nav>
             </div>
-            <main class="col-12 col-lg-10 col-md-9 bd-content order-1">
+            <main class="col bd-content order-1">
                 @isset ($breadcrumbs)
-                <nav aria-label="breadcrumb" class="d-flex justify-content-between bg-white rounded-0">
+                <nav aria-label="breadcrumb" class="d-print-none d-flex justify-content-between bg-white rounded-0">
                     <ol class="breadcrumb bg-white py-4 mb-0" style="">
                         @foreach ($breadcrumbs as $breadcrumb)
                             @if (! $loop->last)
