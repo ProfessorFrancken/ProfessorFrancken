@@ -25,8 +25,10 @@ class AddIsSpamAndReceivedInformationMailToParticipantsTable extends Migration
     public function down() : void
     {
         Schema::table('association_symposium_participants', function (Blueprint $table) : void {
-            $table->dropColumn('is_spam');
             $table->dropColumn('received_information_mail');
+        });
+        Schema::table('association_symposium_participants', function (Blueprint $table) : void {
+            $table->dropColumn('is_spam');
         });
     }
 }
