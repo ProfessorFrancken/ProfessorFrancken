@@ -53,6 +53,25 @@ final class ChangeRolesListener
         }
     }
 
+    public function whenBoardWasInstalled(
+        BoardwasInstalled $event
+    ) : void {
+    }
+
+    public function whenBoardMemberWasInstalled(
+        BoardMemberwasInstalled $event
+    ) : void {
+        $account = Account::ofMember($event->memberId());
+        $account->assignRole('board');
+    }
+
+    public function whenBoardMemberWasDischarged(
+        BoardMemberwasDischarged $event
+    ) : void {
+        $account = Account::ofMember($event->memberId());
+        $account->removeRole('board');
+    }
+
     private function roleForCommittee(Committee $committee)
     {
         return Role::firstOrCreate([

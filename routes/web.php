@@ -119,6 +119,9 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             Route::get('member', 'MemberController@index');
             Route::post('member/add-member', 'MemberController@addMember');
 
+            Route::resource('boards', '\Francken\Association\Boards\Http\Controllers\AdminBoardsController');
+            Route::resource('boards/{board}/members', '\Francken\Association\Boards\Http\Controllers\AdminBoardMembersController');
+
             Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
             Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
             Route::delete('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@remove');

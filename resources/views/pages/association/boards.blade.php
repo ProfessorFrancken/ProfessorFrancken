@@ -8,7 +8,7 @@ $breadcrumbs = [
 @endphp
 
 @section('main-content')
-    <div class="contaienr my-5">
+    <div class="container my-5">
         <h2 class="section-header section-header--centered">
             Boards of T.F.V. 'Professor Francken'
         </h2>
