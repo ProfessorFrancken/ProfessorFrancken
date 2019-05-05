@@ -45,6 +45,8 @@ return [
 
     'url' => env('APP_URL', 'https://professorfrancken.nl'),
 
+    'asset_url' => env('ASSET_URL', 'https://professorfrancken.nl/storage/'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
