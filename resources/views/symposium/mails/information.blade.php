@@ -22,6 +22,11 @@ Click the link below to get travel directions.
     Travel directions to EM2
 @endcomponent
 
+### Colloquium points
+
+By visiting the symposium you can earn 1 physics colloquium point.
+The attendance list for the colloquium points can be found at the entrance of the venue.
+
 ### Dresscode
 
 The dresscode for the symposium is business casual.
