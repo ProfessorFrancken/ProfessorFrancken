@@ -33,6 +33,9 @@ return [
         'dashboard:members-read',
         'dashboard:members-write',
 
+        'dashboard:board-members-read',
+        'dashboard:board-members-write',
+
         'dashboard:committees-read',
         'dashboard:committees-write',
 

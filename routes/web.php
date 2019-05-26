@@ -119,6 +119,8 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             Route::get('member', 'MemberController@index');
             Route::post('member/add-member', 'MemberController@addMember');
 
+            Route::get('boards/export', '\Francken\Association\Boards\Http\Controllers\AdminExportsController@export');
+            Route::post('boards/import', '\Francken\Association\Boards\Http\Controllers\AdminImportsController@import');
             Route::resource('boards', '\Francken\Association\Boards\Http\Controllers\AdminBoardsController');
             Route::resource('boards/{board}/members', '\Francken\Association\Boards\Http\Controllers\AdminBoardMembersController');
 

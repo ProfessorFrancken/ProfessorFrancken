@@ -89,6 +89,24 @@
                         @show
                     </div>
 
+
+                    @section('alerts')
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <h3 class='h5'>We've found some validation errors while processing your request</h3>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                <p>
+                                    <strong>Note</strong>: I'm sorry for the crappy user feedback.
+                                </p>
+                            </div>
+                        @endif
+                    @show
+
+
                     @yield('content')
                 </div>
             </main>

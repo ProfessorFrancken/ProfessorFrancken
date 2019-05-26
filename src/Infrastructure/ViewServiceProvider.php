@@ -1,26 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure;
 
 use Francken\Application\Career\CompanyRepository;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 final class ViewServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot() : void
     {
-        View::composer('layout._sponsors', function ($view) {
+        View::composer('layout._sponsors', function ($view) : void {
             $companies = $this->app->make(CompanyRepository::class);
 
             $view->with('footer', $companies->forFooter());
         });
+
+        $this->app->singleton(\Francken\Shared\ViewComposers\MemberSelectionComposer::class);
+
+        View::composer(
+            'admin.association.boards._member-selection',
+            \Francken\Shared\ViewComposers\MemberSelectionComposer::class
+        );
     }
 
     public function associationIcon()
     {
-        $now = new DateTimeImmutable;
+        $now = new DateTimeImmutable();
         $fourOClock = DateTimeImmutable::createFromFormat('H a', '4 pm');
         $fourOClockMorning = DateTimeImmutable::createFromFormat('H a', '4 am');
 

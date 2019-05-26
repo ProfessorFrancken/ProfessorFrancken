@@ -86,6 +86,12 @@ return [
                     "can" => "dashboard:members-read",
                 ],
                 [
+                    "name" => "Boards",
+                    "url" => "boards",
+                    "works" => true,
+                    "can" => "dashboard:board-members-read",
+                ],
+                [
                     "name" => "Committees",
                     "url" => "committees",
                     "works" => false,

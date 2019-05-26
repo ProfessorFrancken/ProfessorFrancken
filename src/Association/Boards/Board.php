@@ -18,15 +18,24 @@ final class Board extends Model
         'photo_position',
 
         'installed_at',
-        'demisioned_at',
+        'demissioned_at',
         'decharged_at',
     ];
 
+    protected $dates = [
+        'installed_at',
+        'demissioned_at',
+        'decharged_at',
+    ];
+
+    /**
+     * Install a new Board
+     */
     public static function install(
-        string $name,
-        string $photo,
+        BoardName $name,
+        ?string $photo,
         string $photo_position,
-        DateTimeImmutable $install_date,
+        DateTimeImmutable $installed_at,
         Collection $members
     ) : self {
         Assert::oneOf($photo_position, [
@@ -36,49 +45,73 @@ final class Board extends Model
             Assert::keyExists($member, 'member_id');
             Assert::keyExists($member, 'title');
             Assert::keyExists($member, 'photo');
-            Assert::keyExists($member, 'install_date');
         });
 
-        $board = self::create([
-            'name' => $name,
+        /** @var Board $board */
+        $board = static::create([
+            'name' => $name->toString(),
             'photo' => $photo,
             'photo_position' => $photo_position,
-            'install_date' => $install_date
+            'installed_at' => $installed_at
         ]);
-        $members->each(function ($member) use ($board) : void {
-            $board->installMember(
+
+        $members->each(function ($member) use ($board, $installed_at) : void {
+            BoardMember::install(
+                $board,
                 $member['member_id'],
                 $member['title'],
-                $member['photo'],
-                $member['installed_at']
+                $installed_at,
+                $member['photo']
             );
         });
 
-        event(new BoardwasInstalled($board->id));
+        event(new BoardWasInstalled($board->id));
 
         return $board;
-    }
-
-    public function installMember(
-        ?int $member_id,
-        string $title,
-        string $photo,
-        DateTimeImmutable $install_date
-    ) : BoardMember {
-        $member = new BoardMember([
-            'member_id' => $member_id,
-            'title' => $title,
-            'photo' => $photo,
-            'install_date' => $install_date
-        ]);
-
-        $this->members()->create($member);
-
-        return $member;
     }
 
     public function members()
     {
         return $this->hasMany(BoardMember::class);
+    }
+
+    public function getBoardYearAttribute() : BoardYear
+    {
+        return BoardYear::fromInstallDate(
+            DateTimeImmutable::createFromMutable(
+                $this->installed_at
+            )
+        );
+    }
+
+    public function getBoardNameAttribute() : BoardName
+    {
+        return new BoardName($this->name);
+    }
+
+    public function setBoardNameAttribute(BoardName $board_name) : void
+    {
+        $this->name = $board_name->toString();
+    }
+
+    public function updateBoardAttributes(
+        BoardName $name,
+        string $photo_position,
+        DateTimeImmutable $installed_at,
+        ?DateTimeImmutable $demissioned_at,
+        ?DateTimeImmutable $decharged_at,
+        ?string $photo
+    ) : void {
+        $this->board_name = $name;
+        $this->photo_position = $photo_position;
+        $this->installed_at = $installed_at;
+        $this->demissioned_at = $demissioned_at;
+        $this->decharged_at = $decharged_at;
+
+        if ($photo !== null) {
+            $this->photo = $photo;
+        }
+
+        $this->save();
     }
 }

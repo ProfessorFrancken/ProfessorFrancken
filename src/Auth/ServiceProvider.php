@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Francken\Association\Boards;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
@@ -41,5 +42,9 @@ final class ServiceProvider extends BaseServiceProvider
 
         $dispatcher = $this->app->make(Dispatcher::class);
         $dispatcher->listen(AccountWasActivated::class, ChangeRolesListener::class);
+        $dispatcher->listen(Boards\BoardMemberWasDischarged::class, ChangeRolesListener::class);
+        $dispatcher->listen(Boards\BoardMemberWasDemissioned::class, ChangeRolesListener::class);
+        $dispatcher->listen(Boards\BoardMemberWasInstalled::class, ChangeRolesListener::class);
+        $dispatcher->listen(Boards\MemberBecameCandidateBoardMember::class, ChangeRolesListener::class);
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards;
 
+use DateInterval;
 use DateTimeImmutable;
 use League\Period\Period;
 
@@ -50,16 +51,26 @@ final class BoardYear
         return new self(new Period($start, $end));
     }
 
+    /**
+     * Returns the board year that is associated to the date
+     */
+    public static function fromInstallDate(DateTimeImmutable $date) : self
+    {
+        return self::from(
+            $date,
+            $date->add(new DateInterval('P1Y'))
+        );
+    }
 
     /**
-     * Returns the academic year that is associated to the date
+     * Returns the board year that is associated to the date
      */
     public static function fromDate(DateTimeImmutable $date) : self
     {
         $year = $date->format('Y');
 
         //
-        if ($date < new DateTimeImmutable(sprintf('01-07-%s', $year))) {
+        if ($date < new DateTimeImmutable(sprintf('01-06-%s', $year))) {
             return self::fromString(sprintf(
                 '%d-%d', $year - 1, $year
             ));
