@@ -10,3 +10,5 @@ Homestead.json
 /public/dist
 /public/mix-manifest.json
 /database/database.sqlite
+/public/storage/
+/public/vendor/
