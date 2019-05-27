@@ -48,12 +48,6 @@ return [
             'subItems' => [],
             'icon' => 'camera',
         ],
-        [
-            'url' => 'https://franckensymposium.nl',
-            'title' => 'Symposium',
-            'subItems' => [],
-            'icon' => 'globe-europe',
-        ],
     ],
 
     'admin-menu' => [
