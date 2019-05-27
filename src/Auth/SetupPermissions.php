@@ -58,10 +58,13 @@ final class SetupPermissions extends Command
         $role = Role::create(['name' => 'Admin']);
         $this->call('permission:import');
 
-        $role = Role::create(['name' => 'Board']);
-        $role = Role::create(['name' => 'Old board']);
-        $role = Role::create(['name' => 'Member']);
-        $role = Role::create(['name' => 'Active Member']);
-        $role = Role::create(['name' => 'Alumni member']);
+        Role::create(['name' => ChangeRolesListener::BOARD_ROLE]);
+        Role::create(['name' => ChangeRolesListener::CANDIDATE_BOARD_ROLE]);
+        Role::create(['name' => ChangeRolesListener::DEMISSIONED_BOARD_ROLE]);
+        Role::create(['name' => ChangeRolesListener::DECHARGED_BOARD_ROLE]);
+
+        Role::create(['name' => 'Member']);
+        Role::create(['name' => 'Active Member']);
+        Role::create(['name' => 'Alumni member']);
     }
 }
