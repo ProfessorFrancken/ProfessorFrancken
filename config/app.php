@@ -173,7 +173,7 @@ return [
         BladeSvg\BladeSvgServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         // Fideloper\Proxy\TrustedProxyServiceProvider::class,
-
+        Plank\Mediable\MediableServiceProvider::class,
     ],
 
     /*

@@ -21,6 +21,7 @@
     "maatwebsite/excel": "^3.1",
     "matthiasnoback/broadway-serialization": "^2.0",
     "nothingworks/blade-svg": "^0.3.0",
+    "plank/laravel-mediable": "^2.9",
     "predis/predis": "^1.1",
     "ramsey/uuid": "^3.0",
     "sabre/vobject": "^4.1",
