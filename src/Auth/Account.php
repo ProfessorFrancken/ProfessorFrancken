@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Francken\Association\LegacyMember;
 use Francken\Domain\Members\MemberId;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -12,6 +13,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -59,5 +61,10 @@ final class Account extends Model implements
         // If we do want to have users that can represent members, alumni and
         // companies, then we could add an additional type check
         return $query->whereMemberId((string) $memberId);
+    }
+
+    public function member() : BelongsTo
+    {
+        return $this->belongsTo(LegacyMember::class, 'member_id');
     }
 }

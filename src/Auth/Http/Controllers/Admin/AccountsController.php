@@ -6,6 +6,8 @@ namespace Francken\Auth\Http\Controllers\Admin;
 
 use DB;
 use Francken\Auth\Account;
+use Francken\Auth\Mail\NotifyAboutAccountActivation;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -49,7 +51,7 @@ final class AccountsController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Mailer $mail)
     {
         $member_id = $request->input('member_id');
 
@@ -69,6 +71,11 @@ final class AccountsController
             $email,
             \Hash::make(str_random(32))
         );
+
+        if ($request->input('send_notification_email', null) === '1') {
+            $mail->to($account->email)
+                ->queue(new NotifyAboutAccountActivation($account->id));
+        }
 
         return redirect()->action([
             self::class,
