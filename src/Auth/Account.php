@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Auth;
 
 use Francken\Association\LegacyMember;
-use Francken\Domain\Members\MemberId;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -56,11 +55,11 @@ final class Account extends Model implements
         return $account;
     }
 
-    public function scopeOfMember(Builder $query, MemberId $memberId) : Builder
+    public function scopeOfMember(Builder $query, string $member_id) : Builder
     {
         // If we do want to have users that can represent members, alumni and
         // companies, then we could add an additional type check
-        return $query->whereMemberId((string) $memberId);
+        return $query->whereMemberId($member_id);
     }
 
     public function member() : BelongsTo

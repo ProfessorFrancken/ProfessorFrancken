@@ -7,6 +7,7 @@ namespace Francken\Association\Boards;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Plank\Mediable\Media;
 use Webmozart\Assert\Assert;
 
 final class Board extends Model
@@ -33,7 +34,7 @@ final class Board extends Model
      */
     public static function install(
         BoardName $name,
-        ?string $photo,
+        ?Media $photo,
         string $photo_position,
         DateTimeImmutable $installed_at,
         Collection $members
@@ -47,10 +48,12 @@ final class Board extends Model
             Assert::keyExists($member, 'photo');
         });
 
+        $photo_url = ($photo !== null) ? $photo->getUrl() : null;
+
         /** @var Board $board */
         $board = static::create([
             'name' => $name->toString(),
-            'photo' => $photo,
+            'photo' => $photo_url,
             'photo_position' => $photo_position,
             'installed_at' => $installed_at
         ]);

@@ -7,6 +7,7 @@ namespace Francken\Association\Boards;
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
+use Plank\Mediable\Media;
 
 final class BoardMember extends Model
 {
@@ -40,15 +41,17 @@ final class BoardMember extends Model
         int $member_id,
         string $title,
         DateTimeImmutable $installed_at,
-        ?string $photo
+        ?Media $photo
     ) : self {
         $legacy_member = \Francken\Association\LegacyMember::find($member_id);
+
+        $photo_url = ($photo !== null) ? $photo->getUrl() : null;
 
         $member = $board->members()->make([
             'member_id' => $member_id,
             'name' => optional($legacy_member)->full_name ?? '',
             'title' => $title,
-            'photo' => $photo,
+            'photo' => $photo_url,
             'installed_at' => $installed_at,
         ]);
         $member->refreshStatus();

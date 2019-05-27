@@ -9,14 +9,24 @@ use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardYear;
 use Francken\Association\Boards\Http\Requests\BoardRequest;
-use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Plank\Mediable\Media;
+use Plank\Mediable\MediaUploader;
 
 final class AdminBoardsController
 {
     public const PHOTO_POSITIONS = [
         '', 'NorthWest', 'North', 'NorthEast', 'West', 'Center', 'East', 'SouthWest', 'South', 'SouthEast'
     ];
+    /**
+     * @var MediaUploader
+     */
+    private $uploader;
+
+    public function __construct(MediaUploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
 
     public function index()
     {
@@ -137,17 +147,7 @@ final class AdminBoardsController
                     $photo
                 );
             }
-
-            // $member->updateMemberAttributes(
-                // );
         });
-
-        // $request->members->
-        // call method on board member instead...
-        // member should be able to determine if its state changed and dispatch an event
-        // accordingaly
-        // $board->members->each(function (BoardMember $member) use ($request) : void {
-        // });
 
         return redirect()->action([self::class, 'index']);
     }
@@ -156,42 +156,20 @@ final class AdminBoardsController
     {
     }
 
-    private function updateBoard(Board $board, Request $request) : void
-    {
-        $photo_position = self::PHOTO_POSITIONS[$request->get('photo_position')];
-
-        $installed_at = DateTimeImmutable::createFromFormat(
-            'Y-m-d',
-            $request->input('installed_at')
-        );
-        $board_year = BoardYear::fromInstallDate($installed_at);
-
-        $name = $request->input('name', $board_year->toString());
-        $photo = $this->uploadPhoto($request->photo, $board_year, $name);
-
-        $attributes = array_merge(
-            ['photo_position' => $photo_position],
-            $request->only(['name', 'installed_at', 'demissioned_at', 'decharged_at'])
-        );
-        $attributes['photo'] = $photo;
-
-        $board->update($attributes);
-    }
-
     private function uploadPhoto(
         ?UploadedFile $photo,
         BoardYear $board_year,
         string $name
-    ) : ?string {
+    ) : ?Media {
         if ($photo === null) {
             return null;
         }
 
         $directory = "images/boards/{$board_year->toString()}/";
-        $photo_name = str_slug($name) . '.' . $photo->extension();
 
-        return asset(
-            $photo->storePubliclyAs($directory, $photo_name, ['disk' => 'public'])
-        );
+        return $this->uploader->fromSource($photo)
+            ->toDirectory($directory)
+            ->useFilename(str_slug($name))
+            ->upload();
     }
 }
