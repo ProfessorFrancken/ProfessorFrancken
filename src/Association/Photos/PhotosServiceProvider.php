@@ -11,7 +11,8 @@ final class PhotosServiceProvider extends ServiceProvider
 {
     public function boot(Gate $gate) : void
     {
-        $gate->define('view-private-albums', [PhotosPolicy::class, 'view']);
+        $gate->define('view-albums', [PhotosPolicy::class, 'view']);
+        $gate->define('view-private-albums', [PhotosPolicy::class, 'viewPrivate']);
     }
 
     public function register() : void

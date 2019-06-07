@@ -16,13 +16,17 @@ final class PhotosPolicy
      */
     private $auth;
 
-
     public function __construct(PhotosAuthentication $auth)
     {
         $this->auth = $auth;
     }
 
     public function view(?Account $account) : bool
+    {
+        return true;
+    }
+
+    public function viewPrivate(?Account $account) : bool
     {
         return $this->allowed($account);
     }

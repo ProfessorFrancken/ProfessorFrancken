@@ -7,6 +7,7 @@ namespace Francken\Infrastructure;
 use DateTimeImmutable;
 use DateTimeZone;
 use Francken\Infrastructure\Http\Controllers\DashboardController;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -47,7 +48,11 @@ final class NavigationServiceProvider extends ServiceProvider
                 //  $menu[] = $loginLink;
             }
 
-            $view->with('items', $menu);
+            $gate = $this->app->make(Gate::class);
+            $view->with('items', array_filter($menu, function ($item) use ($gate) {
+                // If no permission rule is set always allow showing the item
+                return ! isset($item['can']) || $gate->allows($item['can']);
+            }));
         });
 
         View::composer('admin.layout', function ($view) : void {

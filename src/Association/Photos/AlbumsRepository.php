@@ -15,8 +15,6 @@ use Illuminate\Pagination\Paginator;
  */
 final class AlbumsRepository
 {
-    private const SESSION_KEY = 'authenticated-for-viewing-albums';
-
     /**
      * @var Gate
      */

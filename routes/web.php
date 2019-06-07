@@ -68,8 +68,8 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             ->middleware(['role:Board|Old Board']);
 
         Route::get('photos', '\Francken\Association\Photos\PhotosController@index');
-        Route::get('photos/{album}', '\Francken\Association\Photos\PhotosController@show');
         Route::post('photos', '\Francken\Association\Photos\PhotosController@post');
+        Route::get('photos/{album}', '\Francken\Association\Photos\PhotosController@show');
     });
 
     Route::group(['prefix' => 'career'], function () : void {
