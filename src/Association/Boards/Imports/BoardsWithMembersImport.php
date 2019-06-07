@@ -4,25 +4,37 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards\Imports;
 
+use Francken\Association\Boards\Board;
+use Francken\Association\Boards\BoardMember;
 use Illuminate\Database\Connection;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Events\BeforeImport;
+use Plank\Mediable\MediaUploader;
 
 final class BoardsWithMembersImport implements WithMultipleSheets, WithEvents
 {
+    /**
+     * @var Connection
+     */
     private $db;
 
-    public function __construct(Connection $db)
+    /**
+     * @var MediaUploader
+     */
+    private $uploader;
+
+    public function __construct(Connection $db, MediaUploader $uploader)
     {
         $this->db = $db;
+        $this->uploader = $uploader;
     }
 
     public function sheets() : array
     {
         return [
-            'Boards' => new BoardsImport(),
-            'Board members' => new BoardMembersImport()
+            'Boards' => new BoardsImport($this->uploader),
+            'Board members' => new BoardMembersImport($this->uploader)
         ];
     }
 
@@ -37,6 +49,13 @@ final class BoardsWithMembersImport implements WithMultipleSheets, WithEvents
              * duplicate keys.
              */
             BeforeImport::class => function (BeforeImport $event) : void {
+                // Remove all associated media before reuploading them
+                Board::all()->each(function (Board $board) : void {
+                    $board->members->each(function (BoardMember $member) : void {
+                        $member->detachMediaTags('board_member_photo');
+                    });
+                    $board->detachMediaTags('board_photo');
+                });
                 $this->db->statement('SET FOREIGN_KEY_CHECKS=0;');
                 $this->db->table('association_board_members')->truncate();
                 $this->db->table('association_boards')->truncate();

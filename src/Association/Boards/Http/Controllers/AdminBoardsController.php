@@ -30,8 +30,15 @@ final class AdminBoardsController
 
     public function index()
     {
+        $boards = Board::orderBy('installed_at', 'desc')
+            ->withPhotos()
+            ->with(['members' => function ($query) {
+                return $query->withPhotos();
+            }])
+            ->get();
+
         return view('admin.association.boards.index', [
-            'boards' => Board::orderBy('installed_at', 'desc')->with('members')->get(),
+            'boards' => $boards,
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Boards'],
             ]
@@ -165,7 +172,7 @@ final class AdminBoardsController
             return null;
         }
 
-        $directory = "images/boards/{$board_year->toString()}/";
+        $directory = "images/boards/" . str_slug($board_year->toString()) . "/";
 
         return $this->uploader->fromSource($photo)
             ->toDirectory($directory)

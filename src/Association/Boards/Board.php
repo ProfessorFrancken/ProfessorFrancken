@@ -8,10 +8,15 @@ use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
+use Plank\Mediable\Mediable;
 use Webmozart\Assert\Assert;
 
 final class Board extends Model
 {
+    use Mediable;
+
+    private const BOARD_PHOTO_TAG = 'board_photo';
+
     protected $table = 'association_boards';
     protected $fillable = [
         'name',
@@ -57,6 +62,7 @@ final class Board extends Model
             'photo_position' => $photo_position,
             'installed_at' => $installed_at
         ]);
+        $board->attachMedia($photo, static::BOARD_PHOTO_TAG);
 
         $members->each(function ($member) use ($board, $installed_at) : void {
             BoardMember::install(
@@ -76,6 +82,17 @@ final class Board extends Model
     public function members()
     {
         return $this->hasMany(BoardMember::class);
+    }
+
+    public function getPhotoAttribute() : ?string
+    {
+        $photo = $this->getMedia(static::BOARD_PHOTO_TAG)->first();
+
+        if ($photo !== null) {
+            return $photo->getUrl();
+        }
+
+        return null;
     }
 
     public function getBoardYearAttribute() : BoardYear
@@ -116,5 +133,10 @@ final class Board extends Model
         }
 
         $this->save();
+    }
+
+    public function scopeWithPhotos($query)
+    {
+        return $query->withMedia([static::BOARD_PHOTO_TAG]);
     }
 }

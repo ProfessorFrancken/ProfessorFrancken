@@ -19,7 +19,7 @@
     <div class="d-flex align-items-end">
         @can('export-boards')
         @if ($boards->count() > 0)
-            <a href="{{ action([\Francken\Association\Boards\Http\Controllers\AdminExportsController::class, 'export']) }}"
+            <a href="{{ action([\Francken\Association\Boards\Http\Controllers\AdminExportsController::class, 'index']) }}"
                class="btn btn-primary mr-3"
             >
                 <i class="fas fa-cloud-download-alt"></i>

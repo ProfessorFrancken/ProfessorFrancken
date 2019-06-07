@@ -2,7 +2,7 @@
 
     {!!
        Form::open([
-           'url' => action([\Francken\Association\Boards\Http\Controllers\AdminImportsController::class, 'import']),
+           'url' => action([\Francken\Association\Boards\Http\Controllers\AdminImportsController::class, 'store']),
            'method' => 'POST',
            'enctype' => 'multipart/form-data',
            'class' => 'border border-primary rounded-lg p-4 bg-light text-center',

@@ -8,9 +8,13 @@ use DateTimeImmutable;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Plank\Mediable\Media;
+use Plank\Mediable\Mediable;
 
 final class BoardMember extends Model
 {
+    use Mediable;
+
+    private const BOARD_MEMBER_PHOTO_TAG =  'board_member_photo';
     protected $table = 'association_board_members';
 
     protected $fillable = [
@@ -55,8 +59,25 @@ final class BoardMember extends Model
             'installed_at' => $installed_at,
         ]);
         $member->refreshStatus();
+        $member->attachMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
 
         return $member;
+    }
+
+    public function getPhotoAttribute() : ?string
+    {
+        $photo = $this->getMedia(static::BOARD_MEMBER_PHOTO_TAG)->first();
+
+        if ($photo !== null) {
+            return $photo->getUrl();
+        }
+
+        return null;
+    }
+
+    public function board()
+    {
+        return $this->belongsTo(Board::class);
     }
 
     public function member()
@@ -133,6 +154,11 @@ final class BoardMember extends Model
                 event(new BoardMemberWasDischarged($this->board_id, $this->id));
                 break;
         }
+    }
+
+    public function scopeWithPhotos($query)
+    {
+        return $query->withMedia([static::BOARD_MEMBER_PHOTO_TAG]);
     }
 
     /**
