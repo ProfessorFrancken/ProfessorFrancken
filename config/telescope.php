@@ -7,7 +7,7 @@ use Laravel\Telescope\Watchers;
 
 return [
 
-    'path' => 'admin/telescope',
+    'path' => 'admin/compucie/telescope',
 
     /*
     |--------------------------------------------------------------------------
