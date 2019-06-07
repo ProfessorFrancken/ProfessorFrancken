@@ -202,6 +202,18 @@ return [
                     "works" => true,
                     "can" => "dashboard:permissions-read",
                 ],
+                [
+                    "name" => "Telescope",
+                    "url" => "telescope",
+                    "works" => true,
+                    "can" => "dashboard:super-admin-read",
+                ],
+                [
+                    "name" => "Horizon",
+                    "url" => "horizon",
+                    "works" => true,
+                    "can" => "dashboard:super-admin-read",
+                ],
             ]
         ]
     ]
