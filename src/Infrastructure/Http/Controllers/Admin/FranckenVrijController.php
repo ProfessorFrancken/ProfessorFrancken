@@ -10,21 +10,25 @@ use Francken\Application\FranckenVrij\Volume;
 use Francken\Domain\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use Francken\Infrastructure\Http\Controllers\Controller;
-use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Plank\Mediable\Media;
+use Plank\Mediable\MediaUploader;
 
 final class FranckenVrijController extends Controller
 {
     use ValidatesRequests;
 
-    private $franckenVrij;
-    private $storage;
+    private const ONE_HUNDRED_MB = 100 * 1024 * 1024;
 
-    public function __construct(FranckenVrijRepository $franckenVrij, Factory $storage)
+    private $franckenVrij;
+
+    private $uploader;
+
+    public function __construct(FranckenVrijRepository $franckenVrij, MediaUploader $uploader)
     {
         $this->franckenVrij = $franckenVrij;
-        $this->storage = $storage;
+        $this->uploader = $uploader;
     }
 
     public function index()
@@ -87,7 +91,8 @@ final class FranckenVrijController extends Controller
 
         list($coverPath, $pdfPath) = $this->uploadPdf(
             $request,
-            $volume . '-' . $edition . '.pdf'
+            $volume,
+            $edition
         );
 
         $edition = Edition::publish(
@@ -126,7 +131,7 @@ final class FranckenVrijController extends Controller
         $editionNumber = (int)$request->get('edition');
 
         list($cover, $pdf) = $request->hasFile('pdf')
-            ? $this->uploadPdf($request, $volume . '-' . $editionNumber . '.pdf')
+            ? $this->uploadPdf($request, $volume, $editionNumber)
             : [$edition->cover(), $edition->pdf()];
 
         $this->franckenVrij->save(
@@ -150,44 +155,48 @@ final class FranckenVrijController extends Controller
         return redirect('/admin/association/francken-vrij');
     }
 
-    private function uploadPdf(Request $request, $filename)
+    private function uploadPdf(Request $request, $volume, $edition)
     {
-        $pdf = $request->file('pdf');
-        $pdfPath = $pdf->storeAs('francken-vrij', $filename, 'public');
-        $coverPath = preg_replace('"\.pdf$"', '-cover.png', $pdfPath);
+        $uploader = \App::make(MediaUploader::class);
 
-        if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')
-                ->storeAs(
-                    'francken-vrij',
-                    preg_replace('"\.pdf$"', '-cover.png', $filename),
-                    'public'
-                );
-        } else {
-            $this->generateCoverImageFromPdf(
-                public_path() . $this->storage->url($pdfPath),
-                $coverPath
-            );
-        }
+        /** @var Media */
+        $francken_vrij_media = $this->uploader->fromSource($request->file('pdf'))
+            ->toDirectory('francken-vrij')
+            ->useFilename($volume . '-' . $edition)
+            ->setMaximumSize(static::ONE_HUNDRED_MB)
+            ->upload();
+
+        /** @var UploadedFile|string */
+        $cover_file = $request->hasFile('cover')
+            ? $request->file('cover')
+            : $this->generateCoverImageFromPdf($francken_vrij_media->getAbsolutePath());
+
+        /** @var Media */
+        $cover_media = $this->uploader->fromSource($cover_file)
+            ->toDirectory('francken-vrij/covers/')
+            ->useFilename($volume . '-' . $edition . '-cover')
+            ->setMaximumSize(static::ONE_HUNDRED_MB)
+            ->upload();
 
         return [
-            new Url(asset($this->storage->url($coverPath))),
-            new Url(asset($this->storage->url($pdfPath)))
+            new Url($cover_media->getUrl()),
+            new Url($francken_vrij_media->getUrl())
         ];
     }
 
-    private function generateCoverImageFromPdf(string $pdfPath, string $coverPath) : string
+    private function generateCoverImageFromPdf(string $pdf_path) : string
     {
+        $cover_path = preg_replace('"\.pdf$"', '-cover.png', $pdf_path);
+
         $imagick = new \Imagick();
         $imagick->setCompressionQuality(100);
         $imagick->setResolution(300, 300);
-        $imagick->readImage($pdfPath . '[0]');
+        $imagick->readImage($pdf_path . '[0]');
         $imagick->resizeImage(175, 245, \Imagick::FILTER_LANCZOS, 0.9);
         $imagick->transformImageColorspace(\Imagick::COLORSPACE_SRGB);
         $imagick->setFormat('png');
+        $imagick->writeImage($cover_path);
 
-        $this->storage->disk('public')->put($coverPath, $imagick);
-
-        return $coverPath;
+        return $cover_path;
     }
 }
