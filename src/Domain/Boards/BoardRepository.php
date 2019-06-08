@@ -12,6 +12,19 @@ final class BoardRepository
     {
         return [
             new Board([
+                'year' => '2019-2020',
+                'name' => 'Nuclear',
+                'members' => [
+                    ['name' => 'Robbert Julius', 'title' => 'Commissioner of Internal Relations'],
+                    ['name' => 'Sibren Wobben', 'title' => 'Secretary and Commissioner of Education'],
+                    ['name' => 'Eva Visser', 'title' => 'President'],
+                    ['name' => 'Carla Olsthoorn', 'title' => 'Treasurer'],
+                    ['name' => 'Chantal Rikse', 'title' => 'Commissioner of External Relations and Vice-President']
+                ],
+                'figure' => '',
+                'figurePosition' => ''
+            ]),
+            new Board([
                 'year' => '2018-2019',
                 'name' => 'Statisch',
                 'members' => [
