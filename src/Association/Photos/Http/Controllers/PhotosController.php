@@ -2,24 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Francken\Association\Photos;
+namespace Francken\Association\Photos\Http\Controllers;
 
+use Francken\Association\Photos\AlbumsRepository;
 use Illuminate\Http\Request;
 
 final class PhotosController
 {
     private const PHOTOS_PER_PAGE = 40;
+    /**
+     * @var AlbumsRepository
+     */
+    private $albums;
 
-    public function index(AlbumsRepository $albums)
+    public function __construct(AlbumsRepository $albums)
     {
-        $albums = $albums->albums();
+        $this->albums = $albums;
+    }
+
+    public function index()
+    {
+        $albums = $this->albums->albums();
 
         return view('association.photos.index', ['albums' => $albums]);
     }
 
-    public function show(AlbumsRepository $albums, string $album_slug)
+    public function show(string $album_slug)
     {
-        $album = $albums->bySlug($album_slug);
+        $album = $this->albums->bySlug($album_slug);
 
         if ( ! request()->has('page')) {
             $album->addView();
@@ -37,14 +47,5 @@ final class PhotosController
                 ['text' => $album->title],
             ]
         ]);
-    }
-
-    public function post(PhotosAuthentication $auth, Request $request)
-    {
-        $password = $request->get('password', '');
-
-        $success = $auth->login($password);
-
-        return redirect()->back()->with('private-album-login', $success);
     }
 }

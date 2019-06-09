@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Francken\Association\Photos\Http\Controllers\PhotosController;
 use Illuminate\Database\Eloquent\Model;
 
 final class Album extends Model

@@ -41,7 +41,7 @@
                 <h3 class="h5">Login to view older albums</h3>
                 <p>Fill in the <strong>album password</strong> below to view more albums. Don't know the password? Ask a board member.</p>
 
-                <form action="{{ action([\Francken\Association\Photos\PhotosController::class, 'post']) }}"
+                <form action="{{ action([\Francken\Association\Photos\Http\Controllers\AuthenticationController::class, 'store']) }}"
                       class="form d-flex flex-column justify-content-between"
                       method="post"
                 >

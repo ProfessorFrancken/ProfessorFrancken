@@ -97,9 +97,9 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
         Route::get('boards/birthdays', '\Francken\Association\Boards\Http\Controllers\BirthdaysController@index')
             ->middleware(['role:Board|Old Board']);
 
-        Route::get('photos', '\Francken\Association\Photos\PhotosController@index');
-        Route::post('photos', '\Francken\Association\Photos\PhotosController@post');
-        Route::get('photos/{album}', '\Francken\Association\Photos\PhotosController@show');
+        Route::get('photos', '\Francken\Association\Photos\Http\Controllers\PhotosController@index');
+        Route::post('photos', '\Francken\Association\Photos\Http\Controllers\AuthenticationController@store');
+        Route::get('photos/{album}', '\Francken\Association\Photos\Http\Controllers\PhotosController@show');
     });
 
     Route::group(['prefix' => 'career'], function () : void {
