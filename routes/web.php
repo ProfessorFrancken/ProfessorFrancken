@@ -64,7 +64,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
         Route::get('committees', 'CommitteesController@index');
         Route::get('committees/{committee}', 'CommitteesController@show');
 
-        Route::get('boards/birthdays', '\Francken\Association\Boards\BirthdaysController@index')
+        Route::get('boards/birthdays', '\Francken\Association\Boards\Http\Controllers\BirthdaysController@index')
             ->middleware(['role:Board|Old Board']);
 
         Route::get('photos', '\Francken\Association\Photos\PhotosController@index');

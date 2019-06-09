@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Association\Boards;
+namespace Francken\Association\Boards\Http\Controllers;
 
 use Illuminate\Database\DatabaseManager;
 
@@ -18,7 +18,7 @@ final class BirthdaysController
 
     public function index()
     {
-        $today = (new \DatetimeImmutable)->sub(new \DateInterval('P1D'));
+        $today = (new \DatetimeImmutable())->sub(new \DateInterval('P1D'));
 
         $members = $this->boards
                  ->select(['leden.voornaam', 'leden.tussenvoegsel', 'leden.achternaam', 'leden.geboortedatum'])
