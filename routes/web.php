@@ -183,6 +183,9 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
                 Route::delete('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'remove']);
             });
 
+            Route::get('settings', [\Francken\Shared\Settings\Http\Controllers\SettingsController::class, 'index']);
+            Route::put('settings', [\Francken\Shared\Settings\Http\Controllers\SettingsController::class, 'update']);
+
             Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
                 Route::get('roles', [Admin\RolesController::class, 'index']);
                 Route::get('roles/{role}', [Admin\RolesController::class, 'show']);

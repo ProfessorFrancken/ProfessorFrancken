@@ -27,11 +27,14 @@ use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
+use Francken\Shared\Settings\Settings;
+use Francken\Shared\Settings\ValueStoreSettings;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\CommonMarkConverter;
+use Spatie\Valuestore\Valuestore;
 
 final class AppServiceProvider extends ServiceProvider
 {
@@ -85,6 +88,17 @@ final class AppServiceProvider extends ServiceProvider
         $this->registerReadModels();
 
         $this->app->instance('path', 'src');
+
+
+        $this->app->bind(ValueStore::class, function () {
+            return ValueStore::make(
+                storage_path('app/settings.json')
+            );
+        });
+        $this->app->bind(
+            Settings::class,
+            ValueStoreSettings::class
+        );
     }
 
     public function boot() : void
