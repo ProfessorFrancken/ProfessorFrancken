@@ -120,7 +120,7 @@ final class Board extends Model
         DateTimeImmutable $installed_at,
         ?DateTimeImmutable $demissioned_at,
         ?DateTimeImmutable $decharged_at,
-        ?string $photo
+        ?Media $photo
     ) : void {
         $this->board_name = $name;
         $this->photo_position = $photo_position;
@@ -129,7 +129,8 @@ final class Board extends Model
         $this->decharged_at = $decharged_at;
 
         if ($photo !== null) {
-            $this->photo = $photo;
+            $this->syncMedia($photo, static::BOARD_PHOTO_TAG);
+            $this->photo = $photo->getUrl();
         }
 
         $this->save();

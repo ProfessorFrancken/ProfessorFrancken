@@ -102,7 +102,7 @@ final class BoardMember extends Model
         DateTimeImmutable $installed_at,
         ?DateTimeImmutable $demissioned_at,
         ?DateTimeImmutable $decharged_at,
-        ?string $photo
+        ?Media $photo
     ) : void {
         $legacy_member = \Francken\Association\LegacyMember::find($member_id);
         $this->member_id = $member_id;
@@ -114,7 +114,8 @@ final class BoardMember extends Model
         $this->refreshStatus();
 
         if ($photo !== null) {
-            $this->photo = $photo;
+            $this->syncMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
+            $this->photo = $photo->getUrl();
         }
 
         $this->save();
