@@ -103,10 +103,17 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             });
         });
 
-        Route::group(['prefix' => 'extern'], function () : void {
-            Route::get('companies', 'Admin\AdminController@showPageIsUnavailable');
-            Route::get('events', 'Admin\AdminController@showPageIsUnavailable');
-            Route::get('job-openings', 'Admin\AdminController@showPageIsUnavailable');
+        Route::group([
+            'prefix' => 'extern',
+            'namespace' => '\Francken\Extern\Http'
+        ], function () : void {
+            Route::get('/fact-sheet', 'FactSheetController@index');
+
+            $unavailable = 'Francken\infrastructure\Http\Controllers\Admin\AdminController@showPageIsUnavailable';
+
+            Route::get('companies', $unavailable);
+            Route::get('events', $unavailable);
+            Route::get('job-openings', $unavailable);
         });
 
         Route::group(['prefix' => 'association'], function () : void {

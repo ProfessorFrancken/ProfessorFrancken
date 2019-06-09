@@ -160,8 +160,6 @@ return [
 
         Francken\Auth\ServiceProvider::class,
 
-        Francken\Extern\ServiceProvider::class,
-
         Francken\Infrastructure\RouteServiceProvider::class,
 
         /*
