@@ -9,25 +9,13 @@ use Francken\Association\News\Cache\Repository as CachedNewsRepository;
 use Francken\Association\News\Eloquent\Repository as EloquentNewsRepository;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
-use Francken\Association\News\Repository;
 use Francken\Association\News\Xml\WordpressNewsIterator;
 use Illuminate\Cache\Repository as CacheRepository;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
-use Illuminate\Routing\Router;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-final class ServiceProvider extends RouteServiceProvider
+final class ServiceProvider extends BaseServiceProvider
 {
-    /**
-     * This namespace is applied to the controller routes in your routes file.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'Francken\Association\News\Http';
-
-    public function register()
+    public function register() : void
     {
         if (config('francken.news.type') == 'fake') {
             $this->app->bind(Repository::class, function ($app) {
