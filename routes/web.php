@@ -34,6 +34,19 @@ Route::group([
     });
 });
 
+Route::group([
+    'namespace' =>  '\Francken\Association\Members\Http',
+    'prefix' => 'profile',
+    'middleware' => ['web', 'auth']
+], function ($router) : void {
+    Route::get('/', 'ProfileController@index');
+
+    Route::get('expenses', 'ExpensesController@index');
+    Route::get('expenses/{year}/{month}', 'ExpensesController@show');
+    Route::get('settings', 'SettingsController@index');
+    Route::get('members', 'MembersController@index');
+});
+
 Route::group(['middleware' => ['web', 'bindings']], function () : void {
     Route::get('/symposia/{symposium}/participants/{participant}', [
         \Francken\Association\Symposium\Http\ParticipantRegistrationController::class,
