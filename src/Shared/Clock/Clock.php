@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Utilities\Clock;
+namespace Francken\Shared\Clock;
 
 use DateTimeImmutable;
 
