@@ -6,7 +6,6 @@ namespace Francken\Association\Boards\Http\Requests;
 
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardName;
-use Francken\Association\Boards\BoardPhoto;
 use Francken\Association\Boards\BoardYear;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
@@ -80,10 +79,6 @@ class BoardRequest extends FormRequest
         return $this->board_name;
     }
 
-    public function boardPhoto() : BoardPhoto
-    {
-    }
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -135,18 +130,4 @@ class BoardRequest extends FormRequest
 
         return $date_time;
     }
-
-
-    // /**
-//  * Get the error messages for the defined validation rules.
-//  *
-//  * @return array
-//  */
-// public function messages()
-// {
-//     return [
-//         'title.required' => 'A title is required',
-//         'body.required'  => 'A message is required',
-//     ];
-// }
 }
