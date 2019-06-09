@@ -20,7 +20,6 @@ final class Board extends Model
     protected $table = 'association_boards';
     protected $fillable = [
         'name',
-        'photo',
         'photo_position',
 
         'installed_at',
@@ -53,12 +52,9 @@ final class Board extends Model
             Assert::keyExists($member, 'photo');
         });
 
-        $photo_url = ($photo !== null) ? $photo->getUrl() : null;
-
         /** @var Board $board */
         $board = static::create([
             'name' => $name->toString(),
-            'photo' => $photo_url,
             'photo_position' => $photo_position,
             'installed_at' => $installed_at
         ]);
@@ -130,7 +126,6 @@ final class Board extends Model
 
         if ($photo !== null) {
             $this->syncMedia($photo, static::BOARD_PHOTO_TAG);
-            $this->photo = $photo->getUrl();
         }
 
         $this->save();

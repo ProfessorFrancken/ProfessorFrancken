@@ -16,7 +16,6 @@ class CreateAssociationBoardsTable extends Migration
         Schema::create('association_boards', function (Blueprint $table) : void {
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->string('photo')->nullable();
             $table->string('photo_position');
 
             $table->date('installed_at');

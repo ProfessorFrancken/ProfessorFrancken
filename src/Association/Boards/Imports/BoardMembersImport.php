@@ -31,7 +31,6 @@ final class BoardMembersImport implements ToCollection, WithHeadingRow
                 'member_id' => $row['member_id'],
                 'name' => $row['name'] ?? '',
                 'title' => $row['title'],
-                'photo' => $row['photo'] ?? '',
                 'board_member_status' => $row['board_member_status'],
                 'installed_at' => $row['installed_at'],
                 'demissioned_at' => $row['demissioned_at'],

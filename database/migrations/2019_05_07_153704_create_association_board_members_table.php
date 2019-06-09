@@ -22,8 +22,6 @@ class CreateAssociationBoardMembersTable extends Migration
             $table->integer('member_id')->unsigned()->nullable();
             $table->string('title');
             $table->string('name');
-            $table->string('photo')->nullable();
-
 
             $table->string('board_member_status');
             $table->date('installed_at');

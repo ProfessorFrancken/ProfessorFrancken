@@ -22,7 +22,6 @@ final class BoardMember extends Model
         'member_id',
         'name',
         'title',
-        'photo',
 
         'board_member_status',
         'installed_at',
@@ -49,13 +48,10 @@ final class BoardMember extends Model
     ) : self {
         $legacy_member = \Francken\Association\LegacyMember::find($member_id);
 
-        $photo_url = ($photo !== null) ? $photo->getUrl() : null;
-
         $member = $board->members()->make([
             'member_id' => $member_id,
             'name' => optional($legacy_member)->full_name ?? '',
             'title' => $title,
-            'photo' => $photo_url,
             'installed_at' => $installed_at,
         ]);
         $member->refreshStatus();
@@ -115,7 +111,6 @@ final class BoardMember extends Model
 
         if ($photo !== null) {
             $this->syncMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
-            $this->photo = $photo->getUrl();
         }
 
         $this->save();

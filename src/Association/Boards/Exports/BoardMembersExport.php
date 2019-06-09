@@ -17,7 +17,6 @@ class BoardMembersExport implements FromQuery, WithTitle, WithHeadings
         'member_id',
         'name',
         'title',
-        'photo',
 
         'board_member_status',
         'installed_at',

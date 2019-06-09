@@ -28,7 +28,6 @@ final class BoardsImport implements ToCollection, WithHeadingRow
             $board = Board::forceCreate([
                 'id' => $row['id'],
                 'name' => $row['name'] ?? '',
-                'photo' => $row['photo'] ?? '',
                 'photo_position' => $row['photo_position'] ?? '',
                 'installed_at' => $row['installed_at'],
                 'demissioned_at' => $row['demissioned_at'],

@@ -14,7 +14,6 @@ class BoardsExport implements FromQuery, WithTitle, WithHeadings
     private const FIELDS = [
         'id',
         'name',
-        'photo',
         'photo_position',
 
         'installed_at',
@@ -35,7 +34,7 @@ class BoardsExport implements FromQuery, WithTitle, WithHeadings
         return 'Boards';
     }
 
-    public function headings(): array
+    public function headings() : array
     {
         return self::FIELDS;
     }
