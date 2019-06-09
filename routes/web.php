@@ -199,6 +199,28 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
     });
 });
 
+Route::group([
+    'namespace' => '\Francken\PlusOne\Http',
+    'middleware' => ['api'],
+    'prefix' => 'api/plus-one'
+], function () : void {
+    Route::post('authenticate', 'AuthenticationController@post');
+
+    Route::group(['middleware' => 'plus-one'], function () : void {
+        Route::get('products', 'ProductsController@index');
+        Route::get('members', 'MembersController@index');
+        Route::get('committees', 'CommitteesController@index');
+        Route::get('boards', 'BoardsController@index');
+        Route::get('sponsors', 'SponsorsController@index');
+
+        Route::get('orders', 'OrdersController@index');
+        Route::post('orders', 'OrdersController@post');
+
+        Route::get('statistics/categories/', 'CategoryStatisticsController@index');
+        Route::get('statistics/activities', '\Francken\Api\Http\ActivitiesController@index');
+    });
+});
+
 Route::group(['middleware' => ['web', 'bindings']], function () : void {
     Route::get('{page}', 'MainContentController@page')->where('page', '.+');
 });
