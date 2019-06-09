@@ -17,6 +17,23 @@ Route::get('/scriptcie/{url}', function ($url) {
     return redirect('http://old.professorfrancken.nl/scriptcie/' . $url);
 })->where('url', '.*');
 
+
+Route::group([
+    'namespace' => '\Francken\Association\News\Http',
+    'middleware' => ['web']
+], function () : void {
+    Route::get('association/news', "NewsController@index");
+    Route::get('association/news/archive', "NewsController@archive");
+    Route::get('association/news/{item}', "NewsController@show");
+
+    Route::group(['middleware' => ['auth']], function () : void {
+        Route::put('admin/association/news/publish/{item}', 'AdminNewsController@publish');
+        Route::put('admin/association/news/archive/{item}', 'AdminNewsController@archive');
+        Route::get('admin/association/news/{item}/preview', 'AdminNewsController@preview');
+        Route::resource('admin/association/news', 'AdminNewsController');
+    });
+});
+
 Route::group(['middleware' => ['web', 'bindings']], function () : void {
     Route::get('/symposia/{symposium}/participants/{participant}', [
         \Francken\Association\Symposium\Http\ParticipantRegistrationController::class,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Association\News;
 
 use Faker\Generator;
@@ -66,27 +68,5 @@ final class ServiceProvider extends RouteServiceProvider
                 );
             });
         }
-    }
-
-    /**
-     * Define the routes for the application.
-     *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
-     */
-    public function map(Router $router)
-    {
-        $router->group(['namespace' => $this->namespace, 'middleware' => ['web']], function ($router) {
-            $router->get('association/news', "NewsController@index");
-            $router->get('association/news/archive', "NewsController@archive");
-            $router->get('association/news/{item}', "NewsController@show");
-
-            $router->group(['middleware' => ['auth']], function () use ($router) {
-                $router->put('admin/association/news/publish/{item}', 'AdminNewsController@publish');
-                $router->put('admin/association/news/archive/{item}', 'AdminNewsController@archive');
-                $router->get('admin/association/news/{item}/preview', 'AdminNewsController@preview');
-                $router->resource('admin/association/news', 'AdminNewsController');
-            });
-        });
     }
 }
