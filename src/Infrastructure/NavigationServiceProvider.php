@@ -20,6 +20,32 @@ final class NavigationServiceProvider extends ServiceProvider
             $menu = $this->app->config->get('francken.navigation.menu');
             $menu[1]['icon'] = $this->associationIcon();
 
+            $settings = $this->app->make(\Francken\Shared\Settings\Settings::class);
+            if ($settings->isPienterShownInNavigation()) {
+                $menu[] = [
+                    'url' => 'http://pienterkamp.nl/',
+                    'title' => 'Pienterkamp',
+                    'subItems' => [],
+                    'icon' => 'child'
+                ];
+            }
+            if ($settings->isSymposiumShownInNavigation()) {
+                $menu[] = [
+                    'url' => 'https://franckensymposium.nl',
+                    'title' => 'Symposium',
+                    'subItems' => [],
+                    'icon' => 'globe-europe',
+                ];
+            }
+            if ($settings->isSlefShownInNavigation()) {
+                $menu[] = [
+                    'url' => 'https://slef.nl',
+                    'title' => 'Slef',
+                    'subItems' => [],
+                    'icon' => 'globe-europe',
+                ];
+            }
+
             $user = Auth::user();
             if ($user !== null) {
                 $menu[] = [
@@ -37,15 +63,15 @@ final class NavigationServiceProvider extends ServiceProvider
                     ]),
                 ];
             } else {
-                $loginLink = [
-                    'url' => route('login'),
-                    'title' => 'Login',
-                    'subItems' => [],
-                    'icon' => '',
-                    'class' => 'login-link',
-                ];
-                // Disabled for now..
-                //  $menu[] = $loginLink;
+                if ($settings->isLoginShownInNavigation()) {
+                    $menu[] = [
+                        'url' => route('login'),
+                        'title' => 'Login',
+                        'subItems' => [],
+                        'icon' => '',
+                        'class' => 'login-link',
+                    ];
+                }
             }
 
             $gate = $this->app->make(Gate::class);
