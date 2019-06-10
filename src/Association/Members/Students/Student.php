@@ -34,32 +34,17 @@ final class Student
 
     public static function fromDb($member)
     {
-        return new Student(
+        return new self(
             new StudentNumber($member->studentnummer),
             [
                 new Study(
                     $member->studierichting,
                     DateTimeImmutable::createFromFormat(
                         'Y-m-d',
-                        $member->jaar_van_inschrijving.'-09-01'
+                        $member->jaar_van_inschrijving . '-09-01'
                     )
                 )
             ]
         );
-    }
-}
-
-final class StudentNumber
-{
-    private $studentNumber;
-
-    public function __construct(string $number)
-    {
-        $this->studentNumber = $number;
-    }
-
-    public function __toString() : string
-    {
-        return $this->studentNumber;
     }
 }

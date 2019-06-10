@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Association\Members;
 
 use DateTimeImmutable;
-use Illuminate\Support\Carbon;
 use Francken\Association\Members\Students\Student;
+use Illuminate\Support\Carbon;
 
 final class Member
 {
@@ -59,12 +59,27 @@ final class Member
         return $this->member->nnvnummer;
     }
 
-    public function address()
+    public function address() : Address
     {
         return new Address(
             $this->member->plaats,
             $this->member->adres,
             $this->member->postcode
         );
+    }
+
+    public function receivesFranckenVrij() : bool
+    {
+        return (bool) $this->member->mailinglist_franckenvrij;
+    }
+
+    public function receivesBiWeeklyMailing() : bool
+    {
+        return (bool) $this->member->mailinglist_email;
+    }
+
+    public function paymentInfo() : PaymentInfo
+    {
+        return PaymentInfo::fromDb($this->member);
     }
 }
