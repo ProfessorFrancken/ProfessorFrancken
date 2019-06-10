@@ -1,6 +1,6 @@
 <div class="container my-4">
     <div class="board-container rounded {{($board->photo() != '') ? 'board-container--with-image' : ''}}">
-	      <h3 class="section-header section-header--centered section-header--light board-header" >
+          <h3 class="section-header section-header--centered section-header--light board-header" >
             @if ($board->name() != '')
                 ‘{{ $board->name() }}’
                 <br/>

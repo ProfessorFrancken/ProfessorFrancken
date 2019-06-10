@@ -61,10 +61,14 @@ final class BirthdaysController
                      });
                  });
 
-        return view(
-            'association.boards.birthdays',
-            ['years' => $members, 'today' => new \DateTimeImmutable]
-        );
+        return view('association.boards.birthdays', [
+            'years' => $members, 'today' => new \DateTimeImmutable(),
+            'breadcrumbs' => [
+                ['url' => '/association/', 'text' => 'Association'],
+                ['url' => action([BoardsController::class, 'index']), 'text' => 'Boards'],
+                ['url' => action([static::class, 'index']), 'text' => 'Birthdays'],
+            ],
+        ]);
 
         return collect($members);
     }
