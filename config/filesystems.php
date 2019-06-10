@@ -58,6 +58,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+            'url' => env('APP_URL') . '/uploads',
+            'visibility' => 'public',
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',

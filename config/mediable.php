@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     /*
      * FQCN of the model to use for media
@@ -16,7 +18,7 @@ return [
     /*
      * Filesystem disk to use if none is specified
      */
-    'default_disk' => 'public',
+    'default_disk' => 'uploads',
 
     /*
      * Filesystems that can be used for media storage
@@ -24,7 +26,7 @@ return [
      * Uploader will throw an exception if a disk not in this list is selected
      */
     'allowed_disks' => [
-        'public',
+        'uploads',
     ],
 
     /*
