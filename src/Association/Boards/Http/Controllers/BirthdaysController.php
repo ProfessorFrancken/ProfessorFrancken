@@ -51,7 +51,6 @@ final class BirthdaysController
                      );
 
                      return array_merge($member, ['day' => $birthday]);
-
                  })->sortBy(function ($member) use ($today) {
                      return ($member['day']->getTimestamp() - $today->getTimestamp());
                  })->groupBy(function ($member) {
@@ -63,7 +62,7 @@ final class BirthdaysController
                  });
 
         return view(
-            'association.board.birthdays',
+            'association.boards.birthdays',
             ['years' => $members, 'today' => new \DateTimeImmutable]
         );
 
