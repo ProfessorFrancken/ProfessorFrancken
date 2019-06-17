@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Photos;
 
 use Francken\Auth\Account;
+use Francken\Shared\Settings\Settings;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 final class PhotosPolicy
@@ -16,14 +17,20 @@ final class PhotosPolicy
      */
     private $auth;
 
-    public function __construct(PhotosAuthentication $auth)
+    /**
+     * @var bool
+     */
+    private $are_albums_public;
+
+    public function __construct(PhotosAuthentication $auth, Settings $settings)
     {
         $this->auth = $auth;
+        $this->are_albums_public = ! $settings->areAlbumsPrivate();
     }
 
     public function view(?Account $account) : bool
     {
-        return true;
+        return $this->are_albums_public || $this->viewPrivate($account);
     }
 
     public function viewPrivate(?Account $account) : bool

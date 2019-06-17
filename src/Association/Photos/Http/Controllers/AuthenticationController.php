@@ -19,12 +19,19 @@ final class AuthenticationController
         $this->auth = $auth;
     }
 
+    public function index()
+    {
+        return view('association.photos.login');
+    }
+
     public function store(Request $request)
     {
         $password = $request->get('password', '');
 
         $success = $this->auth->login($password);
 
-        return redirect()->back()->with('private-album-login', $success);
+        return redirect()
+            ->action([PhotosController::class, 'index'])
+            ->with('private-album-login', $success);
     }
 }

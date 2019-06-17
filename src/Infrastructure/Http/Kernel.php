@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'plus-one' => \Francken\PlusOne\Http\Middleware\AuthenticatePlusOne::class,
         'symposium-cors' => \Francken\Association\Symposium\EnableCORS::class,
+        'login-to-view-photos' => \Francken\Association\Photos\Http\Middleware\LoginToViewPhotos::class,
     ];
 
     /**
