@@ -16,7 +16,7 @@ use Spatie\Permission\Models\Role;
 
 final class ChangeRolesListener
 {
-    public const ACTIVE_MEMBER_ROLE = 'Active member';
+    public const ACTIVE_MEMBER_ROLE = 'Active Member';
     public const BOARD_ROLE = 'Board';
     public const CANDIDATE_BOARD_ROLE = 'Candidate Board';
     public const DEMISSIONED_BOARD_ROLE = 'Demissioned Board';
@@ -67,6 +67,15 @@ final class ChangeRolesListener
         $as_board_members->each(function (BoardMember $member) use ($account) : void {
             $account->assignRole($this->boardMemberRole($member));
         });
+
+        // Anyone who is in a committee or (will be) a board member is
+        // considered an active member
+        if (count($committees) > 0 ||
+            $account->hasRole(static::BOARD_ROLE) ||
+            $account->hasRole(static::CANDIDATE_BOARD_ROLE)
+        ) {
+            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+        }
     }
 
     public function whenMemberBecameCandidateBoardMember(
@@ -75,6 +84,7 @@ final class ChangeRolesListener
         /** @var Account */
         $account = Account::ofMember($event->memberId())->firstOrFail();
         $account->assignRole(static::CANDIDATE_BOARD_ROLE);
+        $account->assignRole(static::ACTIVE_MEMBER_ROLE);
     }
 
     public function whenBoardMemberWasInstalled(
@@ -84,6 +94,7 @@ final class ChangeRolesListener
         $account = Account::ofMember($event->memberId())->firstOrFail();
         $account->assignRole(static::BOARD_ROLE);
         $account->removeRole(static::CANDIDATE_BOARD_ROLE);
+        $account->assignRole(static::ACTIVE_MEMBER_ROLE);
     }
 
     public function whenBoardMemberWasDemissioned(
@@ -93,6 +104,13 @@ final class ChangeRolesListener
         $account = Account::ofMember($event->memberId())->firstOrFail();
         $account->assignRole(static::DEMISSIONED_BOARD_ROLE);
         $account->removeRole(static::BOARD_ROLE);
+
+        // Since this member is no longer in the board nor a member of a committee
+        // their active member role will be removed
+        $committees = $this->committees->ofMember($account->member_id);
+        if (count($committees) === 0) {
+            $account->removeRole(static::ACTIVE_MEMBER_ROLE);
+        }
     }
 
     public function whenBoardMemberWasDecharged(
