@@ -2,10 +2,15 @@
     <td>
         <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0">
             <tr>
-                <td class="content-cell" align="center">
+                <td class="content-cell" align="center" style="padding-bottom: 15px">
                     {{ Illuminate\Mail\Markdown::parse($slot) }}
                     <p>
                     Nijenborgh 4, 9747 AG Groningen, Tel: 050 363 4978
+                    </p>
+                    <p>
+                        <a href='https://professorfrancken.nl/' style="color: #999; text-decoration: none;">
+                            https://professorfrancken.nl
+                        </a>
                     </p>
                     <p>
                         <a href="https://www.linkedin.com/groups/1524067" class="m-x">
@@ -22,7 +27,14 @@
             </tr>
             <tr>
                 <td class="footer-sponsor-cell">
-                    <img src="{{ url('/images/mail/asml.gif') }}" class="footer-sponsor"/>
+                    <a href='http://www.asml.nl/careers'>
+                        <img
+                            src='http://www.professorfrancken.nl/mailing/ASMLbanner200x80.gif'
+                            alt='Careers at ASML'
+                            style='border:1px solid grey; margin-bottom: 45px;'
+                            class="footer-sponsor"
+                        >
+                    </a>
                 </td>
             </tr>
         </table>
