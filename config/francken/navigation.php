@@ -194,7 +194,7 @@ return [
                 [
                     "name" => "Settings",
                     "url" => "settings",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:settings-read",
                 ],
                 [
