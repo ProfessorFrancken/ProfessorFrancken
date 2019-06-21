@@ -208,6 +208,20 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             });
         });
 
+        Route::group([
+            'prefix' => 'treasurer',
+            'namespace' => '\Francken\Treasurer\Http\Controllers',
+            'can:board-treasurer'
+        ], function () : void {
+            Route::get('deductions', 'DeductionsController@index');
+            Route::post('deductions', 'DeductionsController@store');
+            Route::get('deductions/create', 'DeductionsController@create');
+            Route::get('deductions/{deduction}', 'DeductionsController@show');
+            Route::put('deductions/{deduction}', 'DeductionsController@update');
+            Route::post('deductions/{deduction}/send', 'DeductionEmailsController@create');
+            Route::get('deductions/{deduction}/member/{member}', 'DeductionMembersController@show');
+        });
+
         Route::group(['prefix' => 'compucie'], function () : void {
             Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
                 Route::get('accounts', [Admin\AccountsController::class, 'index']);

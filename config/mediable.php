@@ -26,6 +26,7 @@ return [
      * Uploader will throw an exception if a disk not in this list is selected
      */
     'allowed_disks' => [
+        'local',
         'uploads',
     ],
 

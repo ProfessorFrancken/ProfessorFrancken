@@ -19,4 +19,12 @@ final class LegacyMember extends Model
             $this->achternaam
         ])->filter()->implode(' ');
     }
+
+    public function getSurnameAttribute() : string
+    {
+        if ($this->tussenvoegsel !== '') {
+            return $this->tussenvoegsel . ' ' . $this->achternaam;
+        }
+        return $this->achternaam;
+    }
 }
