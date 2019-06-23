@@ -27,6 +27,8 @@ final class BoardMember extends Model
         'installed_at',
         'demissioned_at',
         'decharged_at',
+
+        'photo_media_id',
     ];
 
     protected $casts = [
@@ -53,6 +55,7 @@ final class BoardMember extends Model
             'name' => optional($legacy_member)->full_name ?? '',
             'title' => $title,
             'installed_at' => $installed_at,
+            'photo_media_id' => $photo->id ?? null,
         ]);
         $member->refreshStatus();
         $member->attachMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
@@ -111,6 +114,7 @@ final class BoardMember extends Model
 
         if ($photo !== null) {
             $this->syncMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
+            $this->photo_media_id = $photo->id;
         }
 
         $this->save();

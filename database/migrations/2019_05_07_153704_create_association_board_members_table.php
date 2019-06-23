@@ -28,6 +28,9 @@ class CreateAssociationBoardMembersTable extends Migration
             $table->date('demissioned_at')->nullable();
             $table->date('decharged_at')->nullable();
 
+            $table->integer('photo_media_id')->unsigned()->nullable();
+            $table->foreign('photo_media_id')->references('id')->on('media');
+
             $table->timestamps();
         });
     }

@@ -57,5 +57,7 @@ final class BoardMembersImport implements ToCollection, WithHeadingRow
             ->upload();
 
         $member->attachMedia($media, 'board_member_photo');
+        $member->photo_media_id = $media->id;
+        $member->save();
     }
 }

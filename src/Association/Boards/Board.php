@@ -25,6 +25,8 @@ final class Board extends Model
         'installed_at',
         'demissioned_at',
         'decharged_at',
+
+        'photo_media_id',
     ];
 
     protected $dates = [
@@ -56,7 +58,8 @@ final class Board extends Model
         $board = static::create([
             'name' => $name->toString(),
             'photo_position' => $photo_position,
-            'installed_at' => $installed_at
+            'installed_at' => $installed_at,
+            'photo_media_id' => $photo->id ?? null,
         ]);
         $board->attachMedia($photo, static::BOARD_PHOTO_TAG);
 
@@ -126,6 +129,7 @@ final class Board extends Model
 
         if ($photo !== null) {
             $this->syncMedia($photo, static::BOARD_PHOTO_TAG);
+            $this->photo_media_id = $photo->id;
         }
 
         $this->save();

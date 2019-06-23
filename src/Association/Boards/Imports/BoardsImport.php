@@ -54,5 +54,7 @@ final class BoardsImport implements ToCollection, WithHeadingRow
             ->upload();
 
         $board->attachMedia($media, 'board_photo');
+        $board->photo_media_id = $media->id;
+        $board->save();
     }
 }
