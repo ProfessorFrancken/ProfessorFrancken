@@ -13,7 +13,7 @@
                            'enctype' => 'multipart/form-data'
                        ])
                     !!}
-                        @include('admin.association.boards._form', ['symposium' => $board])
+                        @include('admin.association.boards._form', ['board' => $board])
 
                         {!! Form::submit('Install', ['class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}
