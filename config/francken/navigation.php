@@ -124,6 +124,17 @@ return [
                 ],
             ]
         ], [
+            "name" => "Treasurer",
+            "url" => "treasurer",
+            "items" => [
+                [
+                    "name" => "Deductions",
+                    "url" => "deductions",
+                    "works" => true,
+                    "can" => "board-treasurer",
+                ],
+            ]
+        ], [
             "name" => "Extern",
             "url" => "extern",
             "items" => [
