@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Francken\Auth\Http\Controllers\Admin;
+
 Route::redirect('/blog', '/association/news');
 Route::permanentRedirect('/wordpress', '/');
 Route::redirect('/books', '/study/books');
@@ -43,8 +44,8 @@ Route::group([
 
     Route::get('expenses', 'ExpensesController@index');
     Route::get('expenses/{year}/{month}', 'ExpensesController@show');
-    Route::get('settings', 'SettingsController@index');
-    Route::get('members', 'MembersController@index');
+    // Route::get('settings', 'SettingsController@index');
+    // Route::get('members', 'MembersController@index');
 });
 
 Route::group(['middleware' => ['web', 'bindings']], function () : void {
@@ -143,7 +144,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
         ], function () : void {
             Route::get('/fact-sheet', 'FactSheetController@index');
 
-            $unavailable = 'Francken\infrastructure\Http\Controllers\Admin\AdminController@showPageIsUnavailable';
+            $unavailable = '\Francken\infrastructure\Http\Controllers\Admin\AdminController@showPageIsUnavailable';
 
             Route::get('companies', $unavailable);
             Route::get('events', $unavailable);
@@ -163,7 +164,7 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             Route::get('boards/export', '\Francken\Association\Boards\Http\Controllers\AdminExportsController@index');
             Route::post('boards/import', '\Francken\Association\Boards\Http\Controllers\AdminImportsController@store');
             Route::resource('boards', '\Francken\Association\Boards\Http\Controllers\AdminBoardsController');
-            Route::resource('boards/{board}/members', '\Francken\Association\Boards\Http\Controllers\AdminBoardMembersController');
+            // Route::resource('boards/{board}/members', '\Francken\Association\Boards\Http\Controllers\AdminBoardMembersController');
 
             Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
             Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
