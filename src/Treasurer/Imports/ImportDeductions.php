@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Imports;
 
+use Francken\Association\LegacyMember;
 use Francken\Treasurer\DeductionEmail;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
@@ -26,8 +28,42 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
     public function collection(Collection $rows) : void
     {
         foreach ($rows as $deduction) {
+            // Some old deduction files contain invalid data, so we will skip them
+            if ($deduction['machtigingskenmerk'] === null) {
+                continue;
+            }
+
             $this->addDeduction($deduction);
         }
+
+        // Sometimes the same member can occur twice or more in one deduction.
+        // This may happen when a member had a deduction for both food & drinks and activities
+        // In this case we will merge the deducitons into 1 deduction
+        $this->deductions = $this->deductions->groupBy(function ($deduction) : int {
+            return $deduction['member']->id;
+        })->map(function ($deductions, $member_id) {
+            if ($deductions->count() > 1) {
+                $description = $deductions->map(function (Collection $deduction) : string {
+                    return $deduction['omschrijving_2'];
+                })->implode(', ');
+
+                $amount = $deductions->map(function (Collection $deduction) : float {
+                    return ((float)str_replace(',', '.', $deduction['bedrag']));
+                })->sum();
+
+                $errors = $deductions->map(function (Collection $deduction) : Collection {
+                    return $deduction['errors'];
+                })->reduce(function (Collection $all, Collection $errors) : Collection {
+                    return $all->merge($errors);
+                }, new Collection());
+
+                $deductions[0]['bedrag'] = str_replace('.', ',', (string)$amount);
+                $deductions[0]['errors'] = $errors;
+                $deductions[0]['omschrijving_2'] = $description;
+            }
+
+            return $deductions[0];
+        });
     }
 
     public function deductions() : Collection
@@ -50,8 +86,14 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
     private function addDeduction(Collection $deduction) : void
     {
-        $possible_member_id = (int) str_after($deduction['machtigingskenmerk'], 'ref.  ');
-        $member = \Francken\Association\LegacyMember::findOrFail($possible_member_id);
+        try {
+            $possible_member_id = (int) str_after($deduction['machtigingskenmerk'], 'ref.  ');
+            $member = LegacyMember::findOrFail($possible_member_id);
+        } catch (ModelNotFoundException $e) {
+            \Log::error("Could not retrieve deduction information", $deduction->toArray());
+            return;
+        }
+
         $deduction->put('member', $member);
 
         $checks = [

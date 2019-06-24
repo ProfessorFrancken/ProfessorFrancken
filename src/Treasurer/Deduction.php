@@ -17,7 +17,6 @@ final class Deduction extends Model
         'id', 'tijd', 'created_at', 'updated_at'
     ];
 
-
     public function previousDeduction() : self
     {
         return self::orderBy('tijd', 'desc')
