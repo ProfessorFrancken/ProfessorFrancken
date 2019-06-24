@@ -7,7 +7,7 @@ namespace Francken\Treasurer\Http\Controllers;
 // use Francken\Treasurer\Transaction;
 use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\DeductionEmailToMember;
-use Illuminate\Mail\Mailable;
+use Francken\Treasurer\SendDeductionNotification;
 
 final class DeductionMembersController
 {
@@ -18,29 +18,10 @@ final class DeductionMembersController
                 return $member->member_id === $member_id;
             });
 
-        return new class($deduction, $member) extends Mailable {
-            public function __construct($deduction, $member)
-            {
-                $this->date = $deduction->deducted_at->format('Y-m-d');
-                $this->amount = $member->amount;
-                $this->deduction = $deduction;
-                $this->description = $member->description;
-                $this->name = $member->member->fullname;
-            }
+        if ($member === null) {
+            abort(404);
+        }
 
-            public function build()
-            {
-                return $this->markdown('auth.mails.deduction')->with([
-                    'subject' => 'Deduction',
-                    'email' => 'markredeman@gmail.com',
-
-                    'name' => $this->name,
-                    'description' => $this->description,
-                    'date' => $this->date,
-                    'deduction_amount' => $this->amount,
-                    'subject' => 'Incasso ' . $this->date,
-                ]);
-            }
-        };
+        return new SendDeductionNotification($member->id);
     }
 }
