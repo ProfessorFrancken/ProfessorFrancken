@@ -117,7 +117,7 @@ final class DeductionsController
         $this->importer->import(
             $import,
             $deduction->deductionFile->getDiskPath(),
-            $deduction->deductionFile->disk,
+            $deduction->deductionFile->disk
         );
 
         return $import->errors()->reject(function (Collection $errors) {

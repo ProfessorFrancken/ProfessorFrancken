@@ -117,8 +117,12 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
     }
 
 
-    private function checkIban(string $member, string $deduction) : bool
+    private function checkIban(?string $member = '', ?string $deduction = '') : bool
     {
+        if (is_null($member) || is_null($deduction)) {
+            return false;
+        }
+
         return str_replace(" ", "", $member) === str_replace(" ", "", $deduction);
     }
     // TODO before import remove old DeductionEmailMembers for this deduction, if given

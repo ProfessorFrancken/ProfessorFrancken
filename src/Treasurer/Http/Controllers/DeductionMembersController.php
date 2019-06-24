@@ -15,7 +15,7 @@ final class DeductionMembersController
     {
         $member = $deduction->deductionToMembers
             ->first(function (DeductionEmailToMember $member) use ($member_id) {
-                return $member->member_id === $member_id;
+                return (int)$member->member_id === $member_id;
             });
 
         if ($member === null) {
