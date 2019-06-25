@@ -254,7 +254,3 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
         });
     });
 });
-
-Route::group(['middleware' => ['web', 'bindings']], function () : void {
-    Route::get('{page}', 'MainContentController@page')->where('page', '.+');
-});

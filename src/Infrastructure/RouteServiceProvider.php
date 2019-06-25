@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Infrastructure;
 
 use Francken\Application\Career\AcademicYear;
+use Francken\Infrastructure\Http\Controllers\MainContentController;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
 
@@ -46,9 +47,9 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
 
-        // $router->middleware('web')
-        //      ->namespace($this->namespace)
-        //      ->group(base_path('routes/web.php'));
+        $router->group(['middleware' => ['web', 'bindings']], function () use ($router) : void {
+            $router->fallback([MainContentController::class, 'page']);
+        });
     }
 
     /**
