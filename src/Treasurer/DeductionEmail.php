@@ -90,4 +90,11 @@ final class DeductionEmail extends Model
     {
         return $this->hasMany(DeductionEmailToMember::class);
     }
+
+    public function getTotalAmountAttribute() : float
+    {
+        return $this->deductionToMembers->map(function (DeductionEmailToMember $member) {
+            return $member->amount_in_cents;
+        })->sum() / 100;
+    }
 }

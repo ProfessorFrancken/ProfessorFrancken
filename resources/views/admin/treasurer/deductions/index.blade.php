@@ -12,10 +12,9 @@ use Francken\Treasurer\Http\Controllers\DeductionsController;
                 <table class="table table-hover table-small">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Date</th>
+                            <th>Dedction date</th>
                             <th class="text-right">Members</th>
-                            <th class="text-right">Email sent at</th>
+                            <th class="text-right">Total amount</th>
                         </tr>
                     </thead>
 

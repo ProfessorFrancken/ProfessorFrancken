@@ -31,6 +31,7 @@ final class DeductionsController
     public function index()
     {
         $deductions = DeductionEmail::orderBy('deducted_at', 'desc')
+            ->with('deductionToMembers')
             ->paginate(15);
 
         return view('admin.treasurer.deductions.index', [
