@@ -15,7 +15,7 @@ final class AdminBooksController
     {
         $books = Book::with(['seller', 'buyer'])->orderBy('id', 'desc');
 
-        if ($request->has('title')) {
+        if ($request->has('title') && $request->get('title') !== null) {
             $books->where('naam', 'LIKE', '%' . $request->get('title') . '%');
         }
         if ($request->has('seller_id') && $request->get('seller') !== null) {
