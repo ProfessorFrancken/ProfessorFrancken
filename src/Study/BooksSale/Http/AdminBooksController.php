@@ -133,6 +133,15 @@ final class AdminBooksController
         return redirect()->action([self::class, 'show'], $book->id);
     }
 
+    public function remove(Request $request, Book $book)
+    {
+        if ($book->buyer === null) {
+            $book->delete();
+        }
+
+        return redirect()->action([self::class, 'index']);
+    }
+
     private function members()
     {
         return DB::connection('francken-legacy')

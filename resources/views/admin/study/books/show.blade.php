@@ -20,6 +20,19 @@
     </div>
 @endsection
 
+
+@section('actions')
+    @if ($book->buyer === null)
+    <div class="d-flex align-items-end">
+        {!! Form::model($book, ['url' => action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'remove'], $book->id), 'method' => 'post']) !!}
+        @method('DELETE')
+
+        {!! Form::submit('Remove', ['class' => 'btn btn-outline-danger', 'onClick' => 'return confirm("Are you sure you want to remove this book?");']) !!}
+        {!! Form::close() !!}
+    </div>
+    @endif
+@endsection
+
 @push('css')
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 @endpush
