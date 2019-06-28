@@ -50,7 +50,7 @@
             </tr>
         @endforeach
     </table>
-    <div class="card-body">
+    <div class="card-footer">
         {!! $books->links() !!}
     </div>
 @endif

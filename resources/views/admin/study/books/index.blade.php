@@ -5,17 +5,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body d-flex justify-content-between">
-                    <div>
-                    <a href="{{ action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'create']) }}"
-                       class='btn btn-primary'
-                    >
-                        <i class="fas fa-plus"></i>
-                        Add a book
-                    </a>
-                    </div>
-                </div>
-                <div class="card-body bg-light">
+                <div class="card-body">
                     <p class="lead">
                         The table below shows only books that are currently being sold.
 
@@ -49,7 +39,6 @@
                         </div>
                     </form>
                 </div>
-
 
                 @include('admin.study.books._table', ['books' => $books])
             </div>
@@ -95,3 +84,14 @@
  });
 </script>
 @endpush
+
+@section('actions')
+    <div class="d-flex align-items-end">
+        <a href="{{ action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'create']) }}"
+           class='btn btn-primary'
+        >
+            <i class="fas fa-plus"></i>
+            Add a book
+        </a>
+    </div>
+@endsection
