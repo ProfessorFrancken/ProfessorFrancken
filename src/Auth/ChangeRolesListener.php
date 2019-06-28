@@ -81,45 +81,56 @@ final class ChangeRolesListener
     public function whenMemberBecameCandidateBoardMember(
         MemberBecameCandidateBoardMember $event
     ) : void {
-        /** @var Account */
-        $account = Account::ofMember($event->memberId())->firstOrFail();
-        $account->assignRole(static::CANDIDATE_BOARD_ROLE);
-        $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+        /** @var Account|null */
+        $account = Account::ofMember($event->memberId())->first();
+
+        if ($account !== null) {
+            $account->assignRole(static::CANDIDATE_BOARD_ROLE);
+            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+        }
     }
 
     public function whenBoardMemberWasInstalled(
         BoardMemberwasInstalled $event
     ) : void {
-        /** @var Account */
-        $account = Account::ofMember($event->memberId())->firstOrFail();
-        $account->assignRole(static::BOARD_ROLE);
-        $account->removeRole(static::CANDIDATE_BOARD_ROLE);
-        $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+        /** @var Account|null */
+        $account = Account::ofMember($event->memberId())->first();
+        if ($account !== null) {
+            $account->assignRole(static::BOARD_ROLE);
+            $account->removeRole(static::CANDIDATE_BOARD_ROLE);
+            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+        }
     }
 
     public function whenBoardMemberWasDemissioned(
         BoardMemberWasDemissioned $event
     ) : void {
-        /** @var Account */
-        $account = Account::ofMember($event->memberId())->firstOrFail();
-        $account->assignRole(static::DEMISSIONED_BOARD_ROLE);
-        $account->removeRole(static::BOARD_ROLE);
+        /** @var Account|null */
+        $account = Account::ofMember($event->memberId())->first();
 
-        // Since this member is no longer in the board nor a member of a committee
-        // their active member role will be removed
-        $committees = $this->committees->ofMember($account->member_id);
-        if (count($committees) === 0) {
-            $account->removeRole(static::ACTIVE_MEMBER_ROLE);
+        if ($account !== null) {
+            $account->assignRole(static::DEMISSIONED_BOARD_ROLE);
+            $account->removeRole(static::BOARD_ROLE);
+
+            // Since this member is no longer in the board nor a member of a committee
+            // their active member role will be removed
+            $committees = $this->committees->ofMember($account->member_id);
+            if (count($committees) === 0) {
+                $account->removeRole(static::ACTIVE_MEMBER_ROLE);
+            }
         }
     }
 
     public function whenBoardMemberWasDecharged(
         BoardMemberWasDischarged $event
     ) : void {
-        /** @var Account */
-        $account = Account::ofMember($event->memberId())->firstOrFail();
-        $account->assignRole(static::DECHARGED_BOARD_ROLE);
-        $account->removeRole(static::DEMISSIONED_BOARD_ROLE);
+        /** @var Account|null */
+        $account = Account::ofMember($event->memberId())->first();
+
+        if ($account !== null) {
+            $account->assignRole(static::DECHARGED_BOARD_ROLE);
+            $account->removeRole(static::DEMISSIONED_BOARD_ROLE);
+        }
     }
 
     private function boardMemberRole(BoardMember $member) : string
