@@ -5,16 +5,16 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body bg-light">
-                    {!! Form::model($book, ['url' => action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'update'], $book->id), 'method' => 'post']) !!}
-                        @method('PUT')
+                {!! Form::model($book, ['url' => action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'update'], $book->id), 'method' => 'post']) !!}
+                <div class="card-body">
+                    @method('PUT')
 
-                        @include('admin.study.books._form', ['book' => $book])
-
-                        {!! Form::submit('Update', ['class' => 'btn btn-outline-success']) !!}
-
-                    {!! Form::close() !!}
+                    @include('admin.study.books._form', ['book' => $book])
                 </div>
+                <div class="card-footer">
+                    {!! Form::submit('Update', ['class' => 'btn btn-outline-success']) !!}
+                </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

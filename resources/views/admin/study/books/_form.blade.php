@@ -1,5 +1,6 @@
 <div class="row mt-4">
-    <div class="col">
+    <div class="col-md-3">
+        <h4>Book info</h4>
         <div class="form-group">
             <label for="title">Book title</label>
             {!! Form::text('title', null, ['class' => 'form-control book-title', 'placeholder' => 'Title', 'id' => 'tilte']) !!}
@@ -21,7 +22,9 @@
             <label for="price">Price in euros</label>
             {!! Form::number('price', $book->price, ['class' => 'form-control book-price', 'placeholder' => 'Price', 'id' => 'price']) !!}
         </div>
+    </div>
 
+    <div class="col-md-3"">
         <h4>Seller</h4>
 
         <div class="form-group">
@@ -31,6 +34,9 @@
             <label for="purchase_date">Purchase date</label>
             {!! Form::date('purchase_date', optional($book->purchase_date)->format('Y-m-d'), ['class' => 'form-control', 'id' => 'purchase_date']) !!}
         </div>
+    </div>
+
+    <div class="col-md-3"">
         <h4>Buyer</h4>
         <div class="form-group">
             <label for="seller">Bought by</label>

@@ -5,23 +5,21 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body bg-light">
-
+                {!! Form::model($book, ['url' => 'admin/study/books', 'method' => 'post']) !!}
+                <div class="card-body">
                     <p class="lead">
-                        Use the form below to add a new book to our database. For your convenience you can use the search bar to search for books and automatically fill in all details. Note that the edition number of the book is not filled in automatically.
-
+                        Use the form below to add a new book to our database.
+                        For your convenience you can use the search bar to search for books and automatically fill in all details.
+                        Note that the edition number of the book is not filled in automatically.
                     </p>
+                    {!! Form::text('search', null, ['class' => 'form-control search-for-book', 'placeholder' => 'Search by title, author and / or isbn']) !!}
 
-                    {!! Form::model($book, ['url' => 'admin/study/books', 'method' => 'post']) !!}
-                        {!! Form::text('search', null, ['class' => 'form-control search-for-book', 'placeholder' => 'Search by title, author and / or isbn']) !!}
-
-                        @include('admin.study.books._form', ['book' => $book])
-
-                        {!! Form::submit('Add book', ['class' => 'btn btn-outline-success']) !!}
-
-                    {!! Form::close() !!}
+                    @include('admin.study.books._form', ['book' => $book])
                 </div>
-
+                <div class="card-footer">
+                        {!! Form::submit('Add book', ['class' => 'btn btn-outline-success']) !!}
+                </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
