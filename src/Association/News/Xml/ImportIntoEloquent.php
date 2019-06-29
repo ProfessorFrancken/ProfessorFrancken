@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Xml;
 
-use Francken\Domain\Boards\BoardRepository;
-use Francken\Association\News\Repository;
 use Francken\Association\News\Eloquent\News;
 use Illuminate\Console\Command;
 
@@ -25,7 +23,6 @@ final class ImportIntoEloquent extends Command
      */
     protected $description = 'Import all news from an xml file into the database';
 
-    private $boards;
     private $authors;
 
     /**
@@ -33,9 +30,8 @@ final class ImportIntoEloquent extends Command
      *
      * @return void
      */
-    public function __construct(BoardRepository $boards)
+    public function __construct()
     {
-        $this->boards = $boards;
         $this->authors = config('francken.news.authors');
 
         parent::__construct();
@@ -53,8 +49,7 @@ final class ImportIntoEloquent extends Command
         $wordpress = new FilterDuplicateNews(
             (new WordpressNewsIterator(
                 $filename,
-                $this->authors,
-                $this->boards
+                $this->authors
             ))->getIterator()
         );
 

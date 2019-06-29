@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Xml;
 
-use Francken\Domain\Boards\BoardRepository;
-use Francken\Association\News\Repository;
+use FilterIterator;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\NewsItem;
-use FilterIterator;
 use Iterator;
 
 /**

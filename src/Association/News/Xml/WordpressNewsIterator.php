@@ -5,32 +5,28 @@ declare(strict_types=1);
 namespace Francken\Association\News\Xml;
 
 use DateTimeImmutable;
+use Francken\Association\Boards\Board;
 use Francken\Association\News\Author;
-use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\NewsContentCompiler;
 use Francken\Association\News\NewsItem;
-use Francken\Association\News\NewsItemLink;
-use Francken\Domain\Boards\BoardRepository;
-use SimpleXmlIterator;
+use SimpleXMLIterator;
 
 final class WordpressNewsIterator implements \IteratorAggregate
 {
     private $authors;
-    private $boards;
     private $filename;
     private $compiler;
 
-    public function __construct(string $filename, array $authors, BoardRepository $boards)
+    public function __construct(string $filename, array $authors)
     {
         $this->authors = $authors;
-        $this->boards = $boards;
         $this->compiler = new NewsContentCompiler();
         $this->filename = $filename;
     }
 
     public function getIterator()
     {
-        $xml = new SimpleXmlIterator($this->filename, 0, true);
+        $xml = new SimpleXMLIterator($this->filename, 0, true);
 
         return new MapIterator(
             new \ArrayIterator($xml->xpath('/rss/channel/item')),
@@ -69,17 +65,16 @@ final class WordpressNewsIterator implements \IteratorAggregate
             ),
             'author' => $this->importAuthor(
                 $this->authors,
-                $this->boards,
                 $content,
                 $publicationDate
             )
         ];
     }
 
-    private  function importAuthor(array $authors, BoardRepository $boards, string $content, DateTimeImmutable $publicationDate) : Author
+    private function importAuthor(array $authors, string $content, DateTimeImmutable $publicationDate) : Author
     {
         foreach ($authors as $author => $data) {
-            if (! preg_match($author, $content)) {
+            if ( ! preg_match($author, $content)) {
                 continue;
             }
 
@@ -94,9 +89,15 @@ final class WordpressNewsIterator implements \IteratorAggregate
         }
 
         // Assume that one of the board members has written this news
-        $board = $boards->boardDuringDate($publicationDate);
+        $board = Board::orderBy('installed_at', 'desc')
+            ->where('installed_at', '<=', $publicationDate)
+            ->where(function ($query) use ($publicationDate) {
+                return $query->where('demissioned_at', '>=', $publicationDate)
+                    ->orWhere('demissioned_at', '=', null);
+            })
+            ->first();
 
-        return Author::fromBoard($board);
+        return ($board) ? Author::fromBoard($board) : new Author('Unkown');
     }
 }
 
@@ -149,7 +150,7 @@ class MapIterator extends \IteratorIterator
     public function __construct(\Traversable $iterator, $callback)
     {
         parent::__construct($iterator);
-        if (!is_callable($callback)) {
+        if ( ! is_callable($callback)) {
             throw new InvalidArgumentException('The callback must be callable');
         }
         $this->callback = $callback;

@@ -34,21 +34,18 @@ final class ServiceProvider extends BaseServiceProvider
                 ->give(function () {
                     // Show unpublished news
                     return new EloquentNewsRepository(true);
-
                 });
         } else {
             $this->app->bind(Repository::class, function ($app) {
                 $filename = config('francken.news.xml');
                 $authors = config('francken.news.authors');
-                $boards = $this->app->make(\Francken\Domain\Boards\BoardRepository::class);
 
                 return new CachedNewsRepository(
                     new InMemoryNewsRepository(
                         iterator_to_array(
                             new WordpressNewsIterator(
                                 $filename,
-                                $authors,
-                                $boards
+                                $authors
                             )
                         )
                     ),

@@ -5,19 +5,20 @@ declare(strict_types=1);
 namespace Francken\Tests\Association\News\Xml;
 
 use Francken\Association\News\Xml\WordpressNewsIterator;
-use Francken\Domain\Boards\BoardRepository;
 use Francken\Features\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 final class WordpressNewsIteratorTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /** @test */
-    function it_imports_news_from_an_xml_file()
+    public function it_imports_news_from_an_xml_file() : void
     {
         $filename = __DIR__ . "/example.xml";
         $authors = config('francken.news.authors');
-        $boards = new BoardRepository;
 
-        $iterator = new WordpressNewsIterator($filename, $authors, $boards);
+        $iterator = new WordpressNewsIterator($filename, $authors);
 
         $news = array_map(function ($item) {
             return $item;
