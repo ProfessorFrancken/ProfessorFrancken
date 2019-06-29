@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use Francken\Application\Career\JobOpeningRepository;
 use Francken\Application\Career\AcademicYear;
 use Francken\Application\Career\EventRepository;
+use Francken\Application\Career\JobOpeningRepository;
 use Francken\Application\Career\JobType;
 use Francken\Application\Career\Sector;
-use Francken\Domain\Boards\BoardRepository;
-use Francken\Domain\Boards\BoardYear;
 
 final class CareerController
 {
@@ -29,8 +27,8 @@ final class CareerController
         $jobs = $repo->search(
             request()->input('job-title', null),
             request()->input('company', null),
-            Sector::fromString(request()->input('sector', '')),
-            JobType::fromString(request()->input('jobType', ''))
+            Sector::fromString((string)request()->input('sector', '')),
+            JobType::fromString((string)request()->input('jobType', ''))
         );
 
         return view('career.job-openings')
@@ -46,17 +44,15 @@ final class CareerController
             ]);
     }
 
-    public function redirectEvents(EventRepository $repo, BoardRepository $boards)
+    public function redirectEvents()
     {
-        $academicYear = AcademicYear::fromDate(new \DateTimeImmutable);
+        $academicYear = AcademicYear::fromDate(new \DateTimeImmutable());
 
         return redirect('/career/events/' . str_slug($academicYear->toString()));
     }
 
-    public function events(EventRepository $repo, BoardRepository $boards, AcademicYear $year = null)
+    public function events(EventRepository $repo, AcademicYear $year = null)
     {
-        // boards->findBoardAfter($year), before
-
         $plannedEvents = $repo->plannedInYear($year);
         $pastEvents = $repo->pastInYear($year);
         $today = new \DateTimeImmutable;

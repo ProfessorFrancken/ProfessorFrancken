@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Infrastructure;
 
-use Faker\Generator;
 use Francken\Application\Career\CompanyRepository;
 use Francken\Application\Career\EventRepository;
 use Francken\Application\Career\JobOpeningRepository;
@@ -39,8 +40,8 @@ final class CareerServiceProvider extends ServiceProvider
                 : [];
 
             return new EventRepository(
-                $events['planned'],
-                $events['past']
+                $events['planned'] ?? [],
+                $events['past'] ?? []
             );
         });
     }
