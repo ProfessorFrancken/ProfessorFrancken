@@ -2,40 +2,33 @@
 
 declare(strict_types=1);
 
+use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
+use Francken\Association\Boards\Http\Controllers\AdminExportsController;
+use Francken\Association\Boards\Http\Controllers\AdminImportsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
 use Francken\Association\Symposium\Http\AdminSymposiumParticipantsController;
 use Francken\Association\Symposium\Http\AttendanceController;
 use Francken\Association\Symposium\Http\ExportController;
 use Francken\Association\Symposium\Http\NameTagsController;
-use Francken\Association\Symposium\Http\ParticipantRegistrationController;
 use Francken\Auth\Http\Controllers\Admin\AccountPermissionsController;
 use Francken\Auth\Http\Controllers\Admin\AccountRolesController;
 use Francken\Auth\Http\Controllers\Admin\AccountsController;
 use Francken\Auth\Http\Controllers\Admin\RolePermissionsController;
 use Francken\Auth\Http\Controllers\Admin\RolesController;
-use Francken\Auth\Http\Controllers\ForgotPasswordController;
-use Francken\Auth\Http\Controllers\LoginController;
-use Francken\Auth\Http\Controllers\ResetPasswordController;
 use Francken\Extern\Http\FactSheetController;
+use Francken\Infrastructure\Http\Controllers\Admin\AdminController;
 use Francken\Infrastructure\Http\Controllers\Admin\CommitteeController as AdminCommitteeController;
 use Francken\Infrastructure\Http\Controllers\Admin\FranckenVrijController;
 use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
-use Francken\Infrastructure\Http\Controllers\BookController;
-use Francken\Infrastructure\Http\Controllers\CareerController;
-use Francken\Infrastructure\Http\Controllers\CommitteesController;
-use Francken\Infrastructure\Http\Controllers\CompaniesController;
 use Francken\Infrastructure\Http\Controllers\DashboardController;
-use Francken\Infrastructure\Http\Controllers\MainContentController;
 use Francken\Infrastructure\Http\Controllers\MemberController;
-use Francken\Infrastructure\Http\Controllers\RegistrationController;
-use Francken\Infrastructure\Http\Controllers\ResearchGroupsController;
-use Francken\Shared\Http\Controllers\RedirectController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
+use Francken\Shared\Settings\Http\Controllers\SettingsController;
+use Francken\Study\BooksSale\Http\AdminBooksController;
 use Francken\Treasurer\Http\Controllers\DeductionEmailsController;
 use Francken\Treasurer\Http\Controllers\DeductionMembersController;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
-use Francken\infrastructure\Http\Controllers\Admin\AdminController;
 
 Route::group(['prefix' => 'admin/association', 'middleware' => ['auth']], function () : void {
     Route::put('/news/publish/{item}', [AdminNewsController::class, 'publish']);
@@ -55,15 +48,15 @@ Route::group(['middleware' => ['web', 'bindings'], ], function () : void {
             Route::get('research-groups', [AdminController::class, 'showPageIsUnavailable']);
 
             Route::group(['middleware' => 'can:dashboard:books-write'], function () : void {
-                Route::get('books/create', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'create']);
-                Route::post('books', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'store']);
-                Route::put('books/{book}', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'update']);
-                Route::delete('books/{book}', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'remove']);
+                Route::get('books/create', [AdminBooksController::class, 'create']);
+                Route::post('books', [AdminBooksController::class, 'store']);
+                Route::put('books/{book}', [AdminBooksController::class, 'update']);
+                Route::delete('books/{book}', [AdminBooksController::class, 'remove']);
             });
 
             Route::group(['middleware' => 'can:dashboard:books-read'], function () : void {
-                Route::get('books', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'index']);
-                Route::get('books/{book}', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'show']);
+                Route::get('books', [AdminBooksController::class, 'index']);
+                Route::get('books/{book}', [AdminBooksController::class, 'show']);
             });
         });
 
@@ -79,7 +72,7 @@ Route::group(['middleware' => ['web', 'bindings'], ], function () : void {
 
         Route::group(['prefix' => 'association'], function () : void {
             //committees
-            Route::resource('committees', '\Francken\Infrastructure\Http\Controllers\Admin\CommitteeController');
+                Route::resource('committees', AdminCommitteeController::class);
             Route::post('committees/search-member', [AdminCommitteeController::class, 'searchMember']);
             Route::post('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'addMember']);
             Route::delete('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'removeMember']);
@@ -87,10 +80,9 @@ Route::group(['middleware' => ['web', 'bindings'], ], function () : void {
             Route::get('member', [MemberController::class, 'index']);
             Route::post('member/add-member', [MemberController::class, 'addMember']);
 
-            Route::get('boards/export', [\Francken\Association\Boards\Http\Controllers\AdminExportsController::class, 'index']);
-            Route::post('boards/import', [\Francken\Association\Boards\Http\Controllers\AdminImportsController::class, 'store']);
-            Route::resource('boards', '\Francken\Association\Boards\Http\Controllers\AdminBoardsController');
-            // Route::resource('boards/{board}/members', '\Francken\Association\Boards\Http\Controllers\AdminBoardMembersController']);
+            Route::get('boards/export',  [AdminExportsController::class, 'index']);
+            Route::post('boards/import', [AdminImportsController::class, 'store']);
+            Route::resource('boards', AdminBoardsController::class);
 
             Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
             Route::get('registration-requests/{requestId}', [RegistrationRequestsController::class, 'show']);
@@ -158,8 +150,8 @@ Route::group(['middleware' => ['web', 'bindings'], ], function () : void {
                 Route::delete('accounts/{account}/roles/{role}', [AccountRolesController::class, 'remove']);
             });
 
-            Route::get('settings', [\Francken\Shared\Settings\Http\Controllers\SettingsController::class, 'index']);
-            Route::put('settings', [\Francken\Shared\Settings\Http\Controllers\SettingsController::class, 'update']);
+            Route::get('settings', [SettingsController::class, 'index']);
+            Route::put('settings', [SettingsController::class, 'update']);
 
             Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
                 Route::get('roles', [RolesController::class, 'index']);
