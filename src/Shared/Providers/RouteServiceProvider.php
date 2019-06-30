@@ -16,9 +16,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * In addition, it is set as the URL generator's root namespace.
      *
+     * Since we always want use route actions we set the namespace to root
+     *
      * @var string
      */
-    protected $namespace = 'Francken\Infrastructure\Http\Controllers';
+    protected $namespace = '';
 
     /**
      * Define the routes for the application.
@@ -49,9 +51,12 @@ class RouteServiceProvider extends ServiceProvider
         $router->middleware('web')
              ->group(base_path('routes/admin.php'));
 
-        $router->group(['middleware' => ['web', 'bindings']], function () use ($router) : void {
-            $router->fallback([MainContentController::class, 'page']);
-        });
+        $router->group(
+            ['middleware' => ['web', 'bindings']],
+            function () use ($router) : void {
+                $router->fallback([MainContentController::class, 'page']);
+            }
+        );
     }
 
     /**
