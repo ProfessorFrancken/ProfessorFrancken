@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Francken\Auth\Http\Controllers\Admin;
+use Francken\Shared\Http\Controllers\RedirectController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
 
 Route::redirect('/blog', '/association/news');
@@ -10,15 +11,8 @@ Route::permanentRedirect('/wordpress', '/');
 Route::redirect('/books', '/study/books');
 Route::redirect('/boeken', '/study/books');
 Route::redirect('/photos', '/association/photos');
-
-Route::get('/wordpress/{wp}', function ($wp) {
-    return redirect('http://old.professorfrancken.nl/wordpress/' . $wp);
-})->where('wp', '.*');
-
-Route::get('/scriptcie/{url}', function ($url) {
-    return redirect('http://old.professorfrancken.nl/scriptcie/' . $url);
-})->where('url', '.*');
-
+Route::get('/wordpress/{url}', [RedirectController::class, 'wordpress'])->where('url', '.*');
+Route::get('/scriptcie/{url}', [RedirectController::class, 'scriptcie'])->where('url', '.*');
 
 Route::group([
     'namespace' => '\Francken\Association\News\Http',
