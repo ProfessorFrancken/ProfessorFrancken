@@ -42,6 +42,7 @@ class Kernel extends HttpKernel
         ],
         'api' => [
             \Francken\Infrastructure\Http\Middleware\EnableCORS::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
 
