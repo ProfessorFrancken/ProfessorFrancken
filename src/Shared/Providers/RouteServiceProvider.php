@@ -44,8 +44,10 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes(Router $router) : void
     {
         $router->middleware('web')
-             ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+
+        $router->middleware('web')
+             ->group(base_path('routes/admin.php'));
 
         $router->group(['middleware' => ['web', 'bindings']], function () use ($router) : void {
             $router->fallback([MainContentController::class, 'page']);
