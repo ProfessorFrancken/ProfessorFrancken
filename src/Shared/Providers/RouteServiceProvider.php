@@ -45,7 +45,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes(Router $router) : void
     {
-        $router->middleware('web')
+        $router->middleware(['web', 'bindings'])
              ->group(base_path('routes/web.php'));
 
         $router->middleware(['web', 'bindings', 'auth', 'can:can-access-dashboard'])
