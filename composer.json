@@ -44,7 +44,7 @@
     "nunomaduro/collision": "^1.1",
     "nunomaduro/larastan": "^0.3.13",
     "nunomaduro/phpinsights": "^1.0",
-    "phpstan/phpstan": "^0.10.0",
+    "phpstan/phpstan": "^0.11.8",
     "phpunit/phpunit": "~7.0",
     "psalm/plugin-laravel": "^0.4.0",
     "satooshi/php-coveralls": "^1.0",
