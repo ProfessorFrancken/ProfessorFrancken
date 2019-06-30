@@ -71,7 +71,7 @@ return [
                 [
                     "name" => "Open registrations",
                     "url" => "registration-requests",
-                    "works" => true,
+                    "works" => false,
                     "can" => "dashboard:registrations-read",
                 ],
                 [
@@ -148,6 +148,7 @@ return [
                     "name" => "Events",
                     "url" => "events",
                     "works" => false,
+                    "can" => "dashboard:companies-read",
                 ],
                 [
                     "name" => "Jop openings",
@@ -167,29 +168,28 @@ return [
             "url" => "committees",
             "items" => [
                 [
-                    "name" => "Adtcie",
-                    "url" => "adtcie",
-                    "works" => false,
-                ],
-                [
                     "name" => "Borrelcie",
                     "url" => "borrelcie",
                     "works" => false,
+                    "can" => "dashboard:borrelcie-read",
                 ],
                 [
                     "name" => "Francken Vrij",
                     "url" => "francken-vrij",
-                    "works" => false,
+                    "works" => true,
+                    "can" => "dashboard:francken-vrij-read",
                 ],
                 [
                     "name" => "Brouwcie",
                     "url" => "brouwcie",
                     "works" => false,
+                    "can" => "dashboard:brouwcie-read",
                 ],
                 [
                     "name" => "Fotocie",
                     "url" => "fotocie",
                     "works" => false,
+                    "can" => "dashboard:fotocie-read",
                 ],
             ]
         ], [
