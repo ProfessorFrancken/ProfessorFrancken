@@ -145,12 +145,12 @@ return [
         /*
          * Application Service Providers...
          */
-        Francken\Infrastructure\AppServiceProvider::class,
-        Francken\Infrastructure\NavigationServiceProvider::class,
-        Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
-        Francken\Infrastructure\Books\BooksServiceProvider::class,
-        Francken\Infrastructure\CareerServiceProvider::class,
-        Francken\Infrastructure\ViewServiceProvider::class,
+        Francken\Shared\Providers\AppServiceProvider::class,
+        Francken\Shared\Providers\NavigationServiceProvider::class,
+        Francken\Shared\Providers\EventSourcingServiceProvider::class,
+        Francken\Shared\Providers\BooksServiceProvider::class,
+        Francken\Shared\Providers\CareerServiceProvider::class,
+        Francken\Shared\Providers\ViewServiceProvider::class,
 
         Francken\Association\News\ServiceProvider::class,
         Francken\Association\Activities\ServiceProvider::class,
@@ -160,12 +160,12 @@ return [
 
         Francken\Auth\ServiceProvider::class,
 
-        Francken\Infrastructure\RouteServiceProvider::class,
+        Francken\Shared\Providers\RouteServiceProvider::class,
 
         /*
          * Third Party Service Providers
          */
-        Francken\Infrastructure\TelescopeServiceProvider::class,
+        Francken\Shared\Providers\TelescopeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         BladeSvg\BladeSvgServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,

@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Broadway\Serializer\Serializable as SerializableInterface;
-use Broadway\EventStore\EventStore;
-use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
-use Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider;
+use Broadway\EventStore\EventStore;
+use Broadway\EventStore\EventStreamNotFoundException;
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Infrastructure\EventSourcing\IlluminateEventStoreException;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class EventStoreFeature extends TestCase
 {

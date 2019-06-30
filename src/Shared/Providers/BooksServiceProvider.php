@@ -1,17 +1,19 @@
 <?php
 
-namespace Francken\Infrastructure\Books;
+declare(strict_types=1);
+
+namespace Francken\Shared\Providers;
 
 use Broadway\EventSourcing\EventSourcingRepository;
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\BookDetailsRepository;
-use Francken\Infrastructure\Books\AvailableBooks\LegacyDBRepository;
-use Francken\Infrastructure\Books\AvailableBooks\ProjectionRepository;
 use Francken\Application\ReadModelRepository;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;
 use Francken\Infrastructure\Books\AmazonBookDetailsRepository;
+use Francken\Infrastructure\Books\AvailableBooks\LegacyDBRepository;
+use Francken\Infrastructure\Books\AvailableBooks\ProjectionRepository;
 use Francken\Infrastructure\Books\InMemoryBookDetailsRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
@@ -24,7 +26,7 @@ final class BooksServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register()
+    public function register() : void
     {
         $this->registerRepository(BookRepository::class, Book::class);
 

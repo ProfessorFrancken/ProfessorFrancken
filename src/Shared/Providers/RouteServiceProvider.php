@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure;
+namespace Francken\Shared\Providers;
 
 use Francken\Application\Career\AcademicYear;
 use Francken\Infrastructure\Http\Controllers\MainContentController;
