@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
+use DB;
+
 final class JasController
 {
+    public function index()
+    {
+        return DB::table('jas_events')->get();
+    }
+
     public function store()
     {
         $id = request()->input('id');
@@ -13,7 +20,7 @@ final class JasController
         $payload = request()->input('payload');
         $date = request()->input('date');
 
-        \DB::table('jas_events')->insert([
+        DB::table('jas_events')->insert([
             'uuid' => $id,
             'name' => $name,
             'date' => $date,

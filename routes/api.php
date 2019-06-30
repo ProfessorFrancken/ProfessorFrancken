@@ -14,38 +14,38 @@ declare(strict_types=1);
 |
 */
 
-Route::post('store-jas-events', 'JasController@store');
-Route::get('jas-events', function () {
-    return DB::table('jas_events')->get();
-});
+use Francken\Api\Http\ActivitiesController;
+use Francken\Api\Http\BooksController;
+use Francken\Api\Http\JobOpeningsController;
+use Francken\Infrastructure\Http\Controllers\JasController;
+use Francken\PlusOne\Http as PlusOne;
 
-Route::get('/database/streep/afbeeldingen/{url}', function ($url) {
-    return redirect('http://old.professorfrancken.nl/database/streep/afbeeldingen/' . $url);
-})->where('url', '.*');
+Route::get('jas-events', [JasController::class, 'index']);
+Route::post('store-jas-events', [JasController::class, 'store']);
 
-Route::group(['middleware' => ['api'], 'prefix' => 'api'], function () : void {
-    Route::get('activities', '\Francken\Api\Http\ActivitiesController@index');
-    Route::get('books', '\Francken\Api\Http\BooksController@index');
-    Route::get('job-openings', '\Francken\Api\Http\JobOpeningsController@index');
-});
+Route::get('/database/streep/afbeeldingen/{url}', [PlusOne\PicturesController::class, 'show'])
+    ->where('url', '.*');
 
-Route::group([
-    'namespace' => '\Francken\PlusOne\Http',
-    'prefix' => 'api/plus-one'
-], function () : void {
-    Route::post('authenticate', 'AuthenticationController@post');
+Route::group(['prefix' => '/api'], function () : void {
+    Route::get('activities', [ActivitiesController::class, 'index']);
+    Route::get('books', [BooksController::class, 'index']);
+    Route::get('job-openings', [JobOpeningsController::class, 'index']);
 
-    Route::group(['middleware' => 'plus-one'], function () : void {
-        Route::get('products', 'ProductsController@index');
-        Route::get('members', 'MembersController@index');
-        Route::get('committees', 'CommitteesController@index');
-        Route::get('boards', 'BoardsController@index');
-        Route::get('sponsors', 'SponsorsController@index');
+    Route::group(['prefix' => '/plus-one'], function () : void {
+        Route::post('authenticate', [PlusOne\AuthenticationController::class, 'post']);
+    });
 
-        Route::get('orders', 'OrdersController@index');
-        Route::post('orders', 'OrdersController@post');
+    Route::group(['prefix' => '/plus-one', 'middleware' => 'plus-one'], function () : void {
+        Route::get('orders', [PlusOne\OrdersController::class, 'index']);
+        Route::post('orders', [PlusOne\OrdersController::class, 'post']);
 
-        Route::get('statistics/categories/', 'CategoryStatisticsController@index');
-        Route::get('statistics/activities', '\Francken\Api\Http\ActivitiesController@index');
+        Route::get('products', [PlusOne\ProductsController::class, 'index']);
+        Route::get('members', [PlusOne\MembersController::class, 'index']);
+        Route::get('committees', [PlusOne\CommitteesController::class, 'index']);
+        Route::get('boards', [PlusOne\BoardsController::class, 'index']);
+        Route::get('sponsors', [PlusOne\SponsorsController::class, 'index']);
+
+        Route::get('statistics/categories/', [PlusOne\CategoryStatisticsController::class, 'index']);
+        Route::get('statistics/activities', [ActivitiesController::class, 'index']);
     });
 });
