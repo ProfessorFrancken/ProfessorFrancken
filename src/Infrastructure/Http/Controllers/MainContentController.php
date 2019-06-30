@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use DB;
 use Francken\Application\ReadModel\PostList\PostList;
-use Francken\Association\News\Repository as NewsRepository;
 use Francken\Association\Activities\ActivitiesRepository;
+use Francken\Association\News\Repository as NewsRepository;
 
 class MainContentController extends Controller
 {
@@ -84,7 +83,7 @@ class MainContentController extends Controller
     {
         try {
             if ($this->pageCorrespondsToPartialView($page)) {
-                throw new \InvalidArgumentException;
+                throw new \InvalidArgumentException();
             }
 
 
