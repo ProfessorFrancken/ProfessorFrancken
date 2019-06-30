@@ -11,6 +11,14 @@
                         <dd>{{ $media->basename }}</dd>
                         <dt>Directory</dt>
                         <dd>{{ $media->directory }}</dd>
+                        @if ($media->isPubliclyAccessible())
+                        <dt>Url</dt>
+                        <dd>
+                            <a href="{{ $media->getUrl() }}" target="_blank">
+                                {{ $media->getUrl() }}
+                            </a>
+                        </dd>
+                        @endif
                         <dt>Mimetype</dt>
                         <dd>{{ $media->mime_type }}</dd>
                         <dt>Size</dt>
