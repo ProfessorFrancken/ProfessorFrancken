@@ -30,13 +30,6 @@ use Francken\Treasurer\Http\Controllers\DeductionEmailsController;
 use Francken\Treasurer\Http\Controllers\DeductionMembersController;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
 
-Route::group(['prefix' => 'admin/association', 'middleware' => ['auth']], function () : void {
-    Route::put('/news/publish/{item}', [AdminNewsController::class, 'publish']);
-    Route::put('/news/archive/{item}', [AdminNewsController::class, 'archive']);
-    Route::get('/news/{item}/preview', [AdminNewsController::class, 'preview']);
-    Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
-});
-
 Route::group(['middleware' => ['web', 'bindings'], ], function () : void {
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'can:can-access-dashboard']], function () : void {
         Route::get('/', [DashboardController::class, 'redirectToDashboard']);
@@ -71,8 +64,13 @@ Route::group(['middleware' => ['web', 'bindings'], ], function () : void {
         });
 
         Route::group(['prefix' => 'association'], function () : void {
+           Route::put('/news/publish/{item}', [AdminNewsController::class, 'publish']);
+           Route::put('/news/archive/{item}', [AdminNewsController::class, 'archive']);
+           Route::get('/news/{item}/preview', [AdminNewsController::class, 'preview']);
+           Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
+
             //committees
-                Route::resource('committees', AdminCommitteeController::class);
+            Route::resource('committees', AdminCommitteeController::class);
             Route::post('committees/search-member', [AdminCommitteeController::class, 'searchMember']);
             Route::post('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'addMember']);
             Route::delete('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'removeMember']);
