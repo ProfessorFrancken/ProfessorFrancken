@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Features\Repositories;
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
 use Francken\Application\ReadModelRepository;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
+
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\ConnectionInterface as Connection;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Schema;
 
 class IlluminateRepositoryFeature extends RepositoryTestCase
 {
@@ -25,7 +24,7 @@ class IlluminateRepositoryFeature extends RepositoryTestCase
     /**
      * Setup the App
      */
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 

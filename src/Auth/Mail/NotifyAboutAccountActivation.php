@@ -52,6 +52,6 @@ class NotifyAboutAccountActivation extends Mailable
     {
         // $broker = \App::make(PasswordBroker::class);
 
-        return route('password.reset', $broker->createToken($account));
+        return route('password.reset', ['token' => $broker->createToken($account)]);
     }
 }

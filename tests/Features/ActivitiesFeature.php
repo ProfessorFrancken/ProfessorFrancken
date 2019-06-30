@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Francken\Association\Activities\ActivitiesSidebarComposer;
 use Francken\Association\Activities\ActivitiesRepository;
 
 class ActivitiesFeature extends TestCase

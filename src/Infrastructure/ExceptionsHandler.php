@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Infrastructure;
 
 use Exception;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -49,4 +48,5 @@ class ExceptionsHandler extends ExceptionHandler
     {
         return parent::render($request, $e);
     }
+
 }

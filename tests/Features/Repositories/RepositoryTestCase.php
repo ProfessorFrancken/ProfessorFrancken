@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase as TestCase;
 
 abstract class RepositoryTestCase extends TestCase
 {
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 
@@ -28,7 +28,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function it_saves_and_finds_a_model()
+    public function it_saves_and_finds_a_model() : void
     {
         $repo = $this->createRepository();
 
