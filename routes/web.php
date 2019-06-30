@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Francken\Auth\Http\Controllers\Admin;
+use Francken\Shared\Media\Http\Controllers\MediaController;
 
 Route::redirect('/blog', '/association/news');
 Route::permanentRedirect('/wordpress', '/');
@@ -245,11 +246,19 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
             Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
                 Route::get('roles', [Admin\RolesController::class, 'index']);
                 Route::get('roles/{role}', [Admin\RolesController::class, 'show']);
+                Route::get('permissions', [Admin\AccountsController::class, 'index']);
             });
 
             Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
                 Route::post('roles/{role}/permissions', [Admin\RolePermissionsController::class, 'store']);
                 Route::delete('roles/{role}/permissions/{permission}', [Admin\RolePermissionsController::class, 'remove']);
+            });
+
+            Route::group(['middleware' => 'can:media-read'], function () : void {
+                Route::get('media/{directory?}', [MediaController::class, 'index'])
+                    ->where('directory', '.+');
+
+                Route::get('media-item/{media}', [MediaController::class, 'show']);
             });
         });
     });

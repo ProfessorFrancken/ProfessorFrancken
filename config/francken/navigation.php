@@ -215,6 +215,12 @@ return [
                     "can" => "dashboard:permissions-read",
                 ],
                 [
+                    "name" => "Media",
+                    "url" => "media",
+                    "works" => true,
+                    "can" => "dashboard:media-read",
+                ],
+                [
                     "name" => "Telescope",
                     "url" => "telescope",
                     "works" => true,
