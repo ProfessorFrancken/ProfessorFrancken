@@ -2,9 +2,43 @@
 
 declare(strict_types=1);
 
-use Francken\Auth\Http\Controllers\Admin;
+use \Francken\Association\Members\Http\ExpensesController;
+use \Francken\Association\Members\Http\ProfileController;
+use \Francken\Association\News\Http\AdminNewsController;
+use Francken\Association\News\Http\NewsController;
+use Francken\Association\Symposium\Http\AdminSymposiaController;
+use Francken\Association\Symposium\Http\AdminSymposiumParticipantsController;
+use Francken\Association\Symposium\Http\AttendanceController;
+use Francken\Association\Symposium\Http\ExportController;
+use Francken\Association\Symposium\Http\NameTagsController;
+use Francken\Association\Symposium\Http\ParticipantRegistrationController;
+use Francken\Auth\Http\Controllers\Admin\AccountPermissionsController;
+use Francken\Auth\Http\Controllers\Admin\AccountRolesController;
+use Francken\Auth\Http\Controllers\Admin\AccountsController;
+use Francken\Auth\Http\Controllers\Admin\RolePermissionsController;
+use Francken\Auth\Http\Controllers\Admin\RolesController;
+use Francken\Auth\Http\Controllers\ForgotPasswordController;
+use Francken\Auth\Http\Controllers\LoginController;
+use Francken\Auth\Http\Controllers\ResetPasswordController;
+use Francken\Extern\Http\FactSheetController;
+use Francken\infrastructure\Http\Controllers\Admin\AdminController;
+use Francken\Infrastructure\Http\Controllers\Admin\CommitteeController as AdminCommitteeController;
+use Francken\Infrastructure\Http\Controllers\Admin\FranckenVrijController;
+use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
+use Francken\Infrastructure\Http\Controllers\BookController;
+use Francken\Infrastructure\Http\Controllers\CareerController;
+use Francken\Infrastructure\Http\Controllers\CommitteesController;
+use Francken\Infrastructure\Http\Controllers\CompaniesController;
+use Francken\Infrastructure\Http\Controllers\DashboardController;
+use Francken\Infrastructure\Http\Controllers\MainContentController;
+use Francken\Infrastructure\Http\Controllers\MemberController;
+use Francken\Infrastructure\Http\Controllers\RegistrationController;
+use Francken\Infrastructure\Http\Controllers\ResearchGroupsController;
 use Francken\Shared\Http\Controllers\RedirectController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
+use Francken\Treasurer\Http\Controllers\DeductionEmailsController;
+use Francken\Treasurer\Http\Controllers\DeductionMembersController;
+use Francken\Treasurer\Http\Controllers\DeductionsController;
 
 Route::redirect('/blog', '/association/news');
 Route::permanentRedirect('/wordpress', '/');
@@ -14,132 +48,120 @@ Route::redirect('/photos', '/association/photos');
 Route::get('/wordpress/{url}', [RedirectController::class, 'wordpress'])->where('url', '.*');
 Route::get('/scriptcie/{url}', [RedirectController::class, 'scriptcie'])->where('url', '.*');
 
-Route::group([
-    'namespace' => '\Francken\Association\News\Http',
-    'middleware' => ['web']
-], function () : void {
-    Route::get('association/news', "NewsController@index");
-    Route::get('association/news/archive', "NewsController@archive");
-    Route::get('association/news/{item}', "NewsController@show");
-
-    Route::group(['middleware' => ['auth']], function () : void {
-        Route::put('admin/association/news/publish/{item}', 'AdminNewsController@publish');
-        Route::put('admin/association/news/archive/{item}', 'AdminNewsController@archive');
-        Route::get('admin/association/news/{item}/preview', 'AdminNewsController@preview');
-        Route::resource('admin/association/news', 'AdminNewsController');
-    });
+Route::group(['prefix' => 'association'], function () : void {
+    Route::get('/news', [NewsController::class, 'index']);
+    Route::get('/news/archive', [NewsController::class, 'archive']);
+    Route::get('/news/{item}', [NewsController::class, 'show']);
 });
 
-Route::group([
-    'namespace' =>  '\Francken\Association\Members\Http',
-    'prefix' => 'profile',
-    'middleware' => ['web', 'auth']
-], function ($router) : void {
-    Route::get('/', 'ProfileController@index');
-
-    Route::get('expenses', 'ExpensesController@index');
-    Route::get('expenses/{year}/{month}', 'ExpensesController@show');
-    // Route::get('settings', 'SettingsController@index');
-    // Route::get('members', 'MembersController@index');
+Route::group(['prefix' => 'admin/association', 'middleware' => ['auth']], function () : void {
+    Route::put('/news/publish/{item}', [AdminNewsController::class, 'publish']);
+    Route::put('/news/archive/{item}', [AdminNewsController::class, 'archive']);
+    Route::get('/news/{item}/preview', [AdminNewsController::class, 'preview']);
+    Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
 });
 
-Route::group(['middleware' => ['web', 'bindings']], function () : void {
+Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth']], function ($router) : void {
+    Route::get('/', [ProfileController::class, 'index']);
+
+    Route::get('expenses', [ExpensesController::class, 'index']);
+    Route::get('expenses/{year}/{month}', [ExpensesController::class, 'show']);
+    // Route::get('settings', 'SettingsController::class, 'index');
+    // Route::get('members', 'MembersController::class, 'index');
+});
+
+Route::group(['middleware' => ['web', 'bindings'], ], function () : void {
     Route::get('/symposia/{symposium}/participants/{participant}', [
-        \Francken\Association\Symposium\Http\ParticipantRegistrationController::class,
+        ParticipantRegistrationController::class,
         'verify'
     ])->name('symposium.participant.verify')->middleware(['signed', 'throttle:6,1']);
 
     Route::post('/symposia/{symposium}/participants', [
-        \Francken\Association\Symposium\Http\ParticipantRegistrationController::class,
+        ParticipantRegistrationController::class,
         'store'
     ])->middleware(['throttle:6,1', 'symposium-cors']);
 
-    Route::get('/', 'MainContentController@index')->name('home');
+    Route::get('/', [MainContentController::class, 'index'])->name('home');
 
-    Route::get('/register', 'RegistrationController@request');
-    Route::post('/register', 'RegistrationController@submitRequest');
-    Route::get('/register/success', 'RegistrationController@success');
+    Route::get('/register', [RegistrationController::class, 'request']);
+    Route::post('/register', [RegistrationController::class, 'submitRequest']);
+    Route::get('/register/success', [RegistrationController::class, 'success']);
 
-    Route::group(['namespace' => '\Francken\Auth\Http\Controllers'], function () : void {
-        Route::get('login', 'LoginController@showLoginForm')->name('login');
-        Route::post('login', 'LoginController@login');
-        Route::get('logout', 'LoginController@logout')->name('logout');
-        Route::post('logout', 'LoginController@logout')->name('logout');
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-        Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-        Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-        Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
-        Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
-    });
+    Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
     Route::group(['prefix' => 'study'], function () : void {
-        Route::get('books', 'BookController@index');
-        Route::get('books/{book}', 'BookController@show');
-        Route::put('books/{bookId}/buy', 'BookController@buy')->middleware('auth');
+        Route::get('books', [BookController::class, 'index']);
+        Route::get('books/{book}', [BookController::class, 'show']);
+        Route::put('books/{bookId}/buy', [BookController::class, 'buy'])->middleware('auth');
 
-        Route::get('research-groups', 'ResearchGroupsController@index');
-        Route::get('research-groups/{group}', 'ResearchGroupsController@show');
+        Route::get('research-groups', [ResearchGroupsController::class, 'index']);
+        Route::get('research-groups/{group}', [ResearchGroupsController::class, 'show']);
     });
 
     Route::group(['prefix' => 'association'], function () : void {
-        Route::get('activities', '\Francken\Association\Activities\Http\ActivitiesController@index');
-        Route::get('activities/ical', '\Francken\Association\Activities\Http\IcalController@index');
-        Route::get('activities/ical/all', '\Francken\Association\Activities\Http\IcalController@show');
-        Route::get('activities/{year}/{month}', '\Francken\Association\Activities\Http\ActivitiesPerMonthController@index');
+        Route::get('activities', [\Francken\Association\Activities\Http\ActivitiesController::class, 'index']);
+        Route::get('activities/ical', [\Francken\Association\Activities\Http\IcalController::class, 'index']);
+        Route::get('activities/ical/all', [\Francken\Association\Activities\Http\IcalController::class, 'show']);
+        Route::get('activities/{year}/{month}', [\Francken\Association\Activities\Http\ActivitiesPerMonthController::class, 'index']);
 
-        Route::get('committees', 'CommitteesController@index');
-        Route::get('committees/{committee}', 'CommitteesController@show');
+        Route::get('committees', [CommitteesController::class, 'index']);
+        Route::get('committees/{committee}', [CommitteesController::class, 'show']);
 
-        Route::get('boards', '\Francken\Association\Boards\Http\Controllers\BoardsController@index');
-        Route::get('boards/birthdays', '\Francken\Association\Boards\Http\Controllers\BirthdaysController@index')
+        Route::get('boards', [\Francken\Association\Boards\Http\Controllers\BoardsController::class, 'index']);
+        Route::get('boards/birthdays', [\Francken\Association\Boards\Http\Controllers\BirthdaysController::class, 'index'])
             ->middleware(['role:Board|Old Board']);
 
-        Route::get('photos/login', '\Francken\Association\Photos\Http\Controllers\AuthenticationController@index');
-        Route::post('photos', '\Francken\Association\Photos\Http\Controllers\AuthenticationController@store');
+        Route::get('photos/login', [\Francken\Association\Photos\Http\Controllers\AuthenticationController::class, 'index']);
+        Route::post('photos', [\Francken\Association\Photos\Http\Controllers\AuthenticationController::class, 'store']);
         Route::group(['middleware' => ['login-to-view-photos']], function () : void {
-            Route::get('photos', '\Francken\Association\Photos\Http\Controllers\PhotosController@index');
-            Route::get('photos/{album}', '\Francken\Association\Photos\Http\Controllers\PhotosController@show');
+            Route::get('photos', [\Francken\Association\Photos\Http\Controllers\PhotosController::class, 'index']);
+            Route::get('photos/{album}', [\Francken\Association\Photos\Http\Controllers\PhotosController::class, 'show']);
         });
     });
 
     Route::group(['prefix' => 'career'], function () : void {
-        Route::get('', 'CareerController@index');
-        Route::get('job-openings', 'CareerController@jobs')->name('job-openings');
-        Route::get('companies', 'CompaniesController@index');
-        Route::get('companies/{company}', 'CompaniesController@show');
-        Route::get('events', 'CareerController@redirectEvents');
-        Route::get('events/{academic_year}', 'CareerController@events');
+        Route::get('/', [CareerController::class, 'index']);
+        Route::get('job-openings', [CareerController::class, 'jobs'])->name('job-openings');
+        Route::get('companies', [CompaniesController::class, 'index']);
+        Route::get('companies/{company}', [CompaniesController::class, 'show']);
+        Route::get('events', [CareerController::class, 'redirectEvents']);
+        Route::get('events/{academic_year}', [CareerController::class, 'events']);
     });
 
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'can:can-access-dashboard']], function () : void {
-        Route::get('/', 'DashboardController@redirectToDashboard');
-        Route::get('overview', 'DashboardController@overview');
-        Route::get('analytics', 'DashboardController@analytics');
-        Route::get('export', 'DashboardController@export');
+        Route::get('/', [DashboardController::class, 'redirectToDashboard']);
+        Route::get('overview', [DashboardController::class, 'overview']);
+        Route::get('analytics', [DashboardController::class, 'analytics']);
+        Route::get('export', [DashboardController::class, 'export']);
 
         Route::group(['prefix' => 'study'], function () : void {
-            Route::get('research-groups', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('research-groups', [AdminController::class, 'showPageIsUnavailable']);
 
             Route::group(['middleware' => 'can:dashboard:books-write'], function () : void {
-                Route::get('books/create', '\Francken\Study\BooksSale\Http\AdminBooksController@create');
-                Route::post('books', '\Francken\Study\BooksSale\Http\AdminBooksController@store');
-                Route::put('books/{book}', '\Francken\Study\BooksSale\Http\AdminBooksController@update');
-                Route::delete('books/{book}', '\Francken\Study\BooksSale\Http\AdminBooksController@remove');
+                Route::get('books/create', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'create']);
+                Route::post('books', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'store']);
+                Route::put('books/{book}', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'update']);
+                Route::delete('books/{book}', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'remove']);
             });
 
             Route::group(['middleware' => 'can:dashboard:books-read'], function () : void {
-                Route::get('books', '\Francken\Study\BooksSale\Http\AdminBooksController@index');
-                Route::get('books/{book}', '\Francken\Study\BooksSale\Http\AdminBooksController@show');
+                Route::get('books', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'index']);
+                Route::get('books/{book}', [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'show']);
             });
         });
 
-        Route::group([
-            'prefix' => 'extern',
-            'namespace' => '\Francken\Extern\Http'
-        ], function () : void {
-            Route::get('/fact-sheet', 'FactSheetController@index');
+        Route::group(['prefix' => 'extern', ], function () : void {
+            Route::get('/fact-sheet', [FactSheetController::class, 'index']);
 
-            $unavailable = '\Francken\infrastructure\Http\Controllers\Admin\AdminController@showPageIsUnavailable';
+            $unavailable = [AdminController::class, 'showPageIsUnavailable'];
 
             Route::get('companies', $unavailable);
             Route::get('events', $unavailable);
@@ -148,104 +170,97 @@ Route::group(['middleware' => ['web', 'bindings']], function () : void {
 
         Route::group(['prefix' => 'association'], function () : void {
             //committees
-            Route::resource('committees', 'Admin\CommitteeController');
-            Route::post('committees/search-member', 'Admin\CommitteeController@searchMember');
-            Route::post('committees/{committeeId}/member/{memberId}', 'Admin\CommitteeController@addMember');
-            Route::delete('committees/{committeeId}/member/{memberId}', 'Admin\CommitteeController@removeMember');
+            Route::resource('committees', '\Francken\Infrastructure\Http\Controllers\Admin\CommitteeController');
+            Route::post('committees/search-member', [AdminCommitteeController::class, 'searchMember']);
+            Route::post('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'addMember']);
+            Route::delete('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'removeMember']);
 
-            Route::get('member', 'MemberController@index');
-            Route::post('member/add-member', 'MemberController@addMember');
+            Route::get('member', [MemberController::class, 'index']);
+            Route::post('member/add-member', [MemberController::class, 'addMember']);
 
-            Route::get('boards/export', '\Francken\Association\Boards\Http\Controllers\AdminExportsController@index');
-            Route::post('boards/import', '\Francken\Association\Boards\Http\Controllers\AdminImportsController@store');
+            Route::get('boards/export', [\Francken\Association\Boards\Http\Controllers\AdminExportsController::class, 'index']);
+            Route::post('boards/import', [\Francken\Association\Boards\Http\Controllers\AdminImportsController::class, 'store']);
             Route::resource('boards', '\Francken\Association\Boards\Http\Controllers\AdminBoardsController');
-            // Route::resource('boards/{board}/members', '\Francken\Association\Boards\Http\Controllers\AdminBoardMembersController');
+            // Route::resource('boards/{board}/members', '\Francken\Association\Boards\Http\Controllers\AdminBoardMembersController']);
 
-            Route::get('registration-requests', 'Admin\RegistrationRequestsController@index');
-            Route::get('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@show');
-            Route::delete('registration-requests/{requestId}', 'Admin\RegistrationRequestsController@remove');
+            Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
+            Route::get('registration-requests/{requestId}', [RegistrationRequestsController::class, 'show']);
+            Route::delete('registration-requests/{requestId}', [RegistrationRequestsController::class, 'remove']);
 
             // Francken Vrij
-            Route::get('francken-vrij', 'Admin\FranckenVrijController@index');
-            Route::get('francken-vrij/{edition}', 'Admin\FranckenVrijController@edit');
-            Route::put('francken-vrij/{edition}', 'Admin\FranckenVrijController@update');
-            Route::delete('francken-vrij/{edition}', 'Admin\FranckenVrijController@destroy');
-            Route::post('francken-vrij', 'Admin\FranckenVrijController@store');
+            Route::get('francken-vrij', [FranckenVrijController::class, 'index']);
+            Route::get('francken-vrij/{edition}', [FranckenVrijController::class, 'edit']);
+            Route::put('francken-vrij/{edition}', [FranckenVrijController::class, 'update']);
+            Route::delete('francken-vrij/{edition}', [FranckenVrijController::class, 'destroy']);
+            Route::post('francken-vrij', [FranckenVrijController::class, 'store']);
 
-            Route::get('activities', 'Admin\AdminController@showPageIsUnavailable');
-            Route::get('members', 'Admin\AdminController@showPageIsUnavailable');
+            Route::get('activities', [AdminController::class, 'showPageIsUnavailable']);
+            Route::get('members', [AdminController::class, 'showPageIsUnavailable']);
 
-            Route::group([
-                'namespace' => '\Francken\Association\Symposium\Http',
-                'prefix' => 'symposia'
-            ], function () : void {
+            Route::group(['prefix' => 'symposia'], function () : void {
                 Route::group(['middleware' => 'can:dashboard:symposia-write'], function () : void {
-                    Route::get('/create', 'AdminSymposiaController@create');
-                    Route::post('/', 'AdminSymposiaController@store');
-                    Route::get('/{symposium}/edit', 'AdminSymposiaController@edit');
-                    Route::put('/{symposium}', 'AdminSymposiaController@update');
+                    Route::get('/create', [AdminSymposiaController::class, 'create']);
+                    Route::post('/', [AdminSymposiaController::class, 'store']);
+                    Route::get('/{symposium}/edit', [AdminSymposiaController::class, 'edit']);
+                    Route::put('/{symposium}', [AdminSymposiaController::class, 'update']);
 
-                    Route::get('/{symposium}/participants/create', 'AdminSymposiumParticipantsController@create');
-                    Route::post('/{symposium}/participants', 'AdminSymposiumParticipantsController@store');
-                    Route::get('/{symposium}/participants/{participant}/edit', 'AdminSymposiumParticipantsController@edit');
-                    Route::put('/{symposium}/participants/{participant}', 'AdminSymposiumParticipantsController@update');
-                    Route::put('/{symposium}/participants/{participant}/toggle-spam', 'AdminSymposiumParticipantsController@toggleSpam');
-                    Route::delete('/{symposium}/participants/{participant}', 'AdminSymposiumParticipantsController@remove');
+                    Route::get('/{symposium}/participants/create', [AdminSymposiumParticipantsController::class, 'create']);
+                    Route::post('/{symposium}/participants', [AdminSymposiumParticipantsController::class, 'store']);
+                    Route::get('/{symposium}/participants/{participant}/edit', [AdminSymposiumParticipantsController::class, 'edit']);
+                    Route::put('/{symposium}/participants/{participant}', [AdminSymposiumParticipantsController::class, 'update']);
+                    Route::put('/{symposium}/participants/{participant}/toggle-spam', [AdminSymposiumParticipantsController::class, 'toggleSpam']);
+                    Route::delete('/{symposium}/participants/{participant}', [AdminSymposiumParticipantsController::class, 'remove']);
                 });
 
                 Route::group(['middleware' => 'can:dashboard:symposia-read'], function () : void {
-                    Route::get('/', 'AdminSymposiaController@index');
-                    Route::get('/{symposium}', 'AdminSymposiaController@show');
+                    Route::get('/', [AdminSymposiaController::class, 'index']);
+                    Route::get('/{symposium}', [AdminSymposiaController::class, 'show']);
 
-                    Route::get('/{symposium}/attendance', 'AttendanceController@index');
-                    Route::get('/{symposium}/name-tags', 'NameTagsController@index');
-                    Route::get('/{symposium}/export', 'ExportController@index');
+                    Route::get('/{symposium}/attendance', [AttendanceController::class, 'index']);
+                    Route::get('/{symposium}/name-tags', [NameTagsController::class, 'index']);
+                    Route::get('/{symposium}/export', [ExportController::class, 'index']);
                 });
             });
         });
 
-        Route::group([
-            'prefix' => 'treasurer',
-            'namespace' => '\Francken\Treasurer\Http\Controllers',
-            'can:board-treasurer'
-        ], function () : void {
-            Route::get('deductions', 'DeductionsController@index');
-            Route::post('deductions', 'DeductionsController@store');
-            Route::get('deductions/create', 'DeductionsController@create');
-            Route::get('deductions/{deduction}', 'DeductionsController@show');
-            Route::put('deductions/{deduction}', 'DeductionsController@update');
-            Route::post('deductions/{deduction}/send', 'DeductionEmailsController@create');
-            Route::get('deductions/{deduction}/member/{member}', 'DeductionMembersController@show');
+        Route::group(['prefix' => 'treasurer', 'can:board-treasurer'], function () : void {
+            Route::get('deductions', [DeductionsController::class, 'index']);
+            Route::post('deductions', [DeductionsController::class, 'store']);
+            Route::get('deductions/create', [DeductionsController::class, 'create']);
+            Route::get('deductions/{deduction}', [DeductionsController::class, 'show']);
+            Route::put('deductions/{deduction}', [DeductionsController::class, 'update']);
+            Route::post('deductions/{deduction}/send', [DeductionEmailsController::class, 'create']);
+            Route::get('deductions/{deduction}/member/{member}', [DeductionMembersController::class, 'show']);
         });
 
         Route::group(['prefix' => 'compucie'], function () : void {
             Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
-                Route::get('accounts', [Admin\AccountsController::class, 'index']);
-                Route::get('accounts/create', [Admin\AccountsController::class, 'create']);
-                Route::post('accounts', [Admin\AccountsController::class, 'store']);
-                Route::get('accounts/{account}', [Admin\AccountsController::class, 'show']);
+                Route::get('accounts', [AccountsController::class, 'index']);
+                Route::get('accounts/create', [AccountsController::class, 'create']);
+                Route::post('accounts', [AccountsController::class, 'store']);
+                Route::get('accounts/{account}', [AccountsController::class, 'show']);
             });
 
             Route::group(['middleware' => 'can:dashboard:accounts-write'], function () : void {
-                Route::post('accounts', [Admin\AccountsController::class, 'store']);
-                Route::post('accounts/{account}/permissions/', [Admin\AccountPermissionsController::class, 'store']);
-                Route::delete('accounts/{account}/permissions/{permission}', [Admin\AccountPermissionsController::class, 'remove']);
-                Route::post('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'store']);
-                Route::delete('accounts/{account}/roles/{role}', [Admin\AccountRolesController::class, 'remove']);
+                Route::post('accounts', [AccountsController::class, 'store']);
+                Route::post('accounts/{account}/permissions/', [AccountPermissionsController::class, 'store']);
+                Route::delete('accounts/{account}/permissions/{permission}', [AccountPermissionsController::class, 'remove']);
+                Route::post('accounts/{account}/roles/{role}', [AccountRolesController::class, 'store']);
+                Route::delete('accounts/{account}/roles/{role}', [AccountRolesController::class, 'remove']);
             });
 
             Route::get('settings', [\Francken\Shared\Settings\Http\Controllers\SettingsController::class, 'index']);
             Route::put('settings', [\Francken\Shared\Settings\Http\Controllers\SettingsController::class, 'update']);
 
             Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
-                Route::get('roles', [Admin\RolesController::class, 'index']);
-                Route::get('roles/{role}', [Admin\RolesController::class, 'show']);
-                Route::get('permissions', [Admin\AccountsController::class, 'index']);
+                Route::get('roles', [RolesController::class, 'index']);
+                Route::get('roles/{role}', [RolesController::class, 'show']);
+                Route::get('permissions', [AccountsController::class, 'index']);
             });
 
             Route::group(['middleware' => 'can:dashboard:permissions-write'], function () : void {
-                Route::post('roles/{role}/permissions', [Admin\RolePermissionsController::class, 'store']);
-                Route::delete('roles/{role}/permissions/{permission}', [Admin\RolePermissionsController::class, 'remove']);
+                Route::post('roles/{role}/permissions', [RolePermissionsController::class, 'store']);
+                Route::delete('roles/{role}/permissions/{permission}', [RolePermissionsController::class, 'remove']);
             });
 
             Route::group(['middleware' => 'can:media-read'], function () : void {
