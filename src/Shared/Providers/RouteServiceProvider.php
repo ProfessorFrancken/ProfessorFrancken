@@ -48,8 +48,9 @@ class RouteServiceProvider extends ServiceProvider
         $router->middleware('web')
              ->group(base_path('routes/web.php'));
 
-        $router->middleware('web')
-             ->group(base_path('routes/admin.php'));
+        $router->middleware(['web', 'bindings', 'auth', 'can:can-access-dashboard'])
+            ->prefix('admin')
+            ->group(base_path('routes/admin.php'));
 
         $router->group(
             ['middleware' => ['web', 'bindings']],
