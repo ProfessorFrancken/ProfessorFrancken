@@ -167,3 +167,5 @@ Route::group(['prefix' => 'compucie'], function () : void {
         Route::get('media-item/{media}', [MediaController::class, 'show']);
     });
 });
+
+Route::fallback([AdminController::class, 'showPageIsUnavailable']);

@@ -8,6 +8,10 @@ final class AdminController
 {
     public function showPageIsUnavailable()
     {
-        return view('admin.unavailable');
+        return view('admin.unavailable', [
+            'breadcrumbs' => [
+                ['url' => '', 'text' => 'Unavailable'],
+            ]
+        ]);
     }
 }
