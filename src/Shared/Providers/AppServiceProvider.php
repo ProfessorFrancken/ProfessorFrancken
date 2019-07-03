@@ -27,6 +27,8 @@ use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
+use Francken\Shared\Clock\Clock;
+use Francken\Shared\Clock\SystemClock;
 use Francken\Shared\Settings\Settings;
 use Francken\Shared\Settings\ValueStoreSettings;
 use Illuminate\Contracts\Foundation\Application;
@@ -95,10 +97,8 @@ final class AppServiceProvider extends ServiceProvider
                 storage_path('app/settings.json')
             );
         });
-        $this->app->bind(
-            Settings::class,
-            ValueStoreSettings::class
-        );
+        $this->app->bind(Settings::class, ValueStoreSettings::class);
+        $this->app->bind(Clock::class, SystemClock::class);
     }
 
     public function boot() : void

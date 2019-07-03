@@ -9,6 +9,7 @@ use Francken\Application\Career\EventRepository;
 use Francken\Application\Career\JobOpeningRepository;
 use Francken\Application\Career\JobType;
 use Francken\Application\Career\Sector;
+use Francken\Shared\Clock\Clock;
 
 final class CareerController
 {
@@ -44,18 +45,18 @@ final class CareerController
             ]);
     }
 
-    public function redirectEvents()
+    public function redirectEvents(Clock $clock)
     {
-        $academicYear = AcademicYear::fromDate(new \DateTimeImmutable());
+        $academicYear = AcademicYear::fromDate($clock->now());
 
         return redirect('/career/events/' . str_slug($academicYear->toString()));
     }
 
-    public function events(EventRepository $repo, AcademicYear $year = null)
+    public function events(EventRepository $repo, Clock $clock, AcademicYear $year = null)
     {
         $plannedEvents = $repo->plannedInYear($year);
         $pastEvents = $repo->pastInYear($year);
-        $today = new \DateTimeImmutable;
+        $today = $clock->now();
 
         return view('career.events')
             ->with([
