@@ -19,7 +19,7 @@ class EventStoreFeature extends TestCase
 
     private $store;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -29,7 +29,7 @@ class EventStoreFeature extends TestCase
     /**
      * @test
      */
-    public function an_event_stream_can_be_saved_to_the_database()
+    public function an_event_stream_can_be_saved_to_the_database() : void
     {
         $eventStream = new DomainEventStream([
             DomainMessage::recordNow(

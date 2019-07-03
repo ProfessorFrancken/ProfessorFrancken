@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Features\ReadModels;
 
-use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\CommitteeRepository;
+use Francken\Features\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CommitteeListFeature extends TestCase
 {
@@ -18,7 +18,7 @@ class CommitteeListFeature extends TestCase
     private $generator;
     private $repo;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 

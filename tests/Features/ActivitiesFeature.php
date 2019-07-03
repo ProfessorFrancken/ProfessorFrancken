@@ -11,7 +11,7 @@ class ActivitiesFeature extends TestCase
 {
     private $start;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 

@@ -15,14 +15,11 @@ abstract class ProjectorScenarioTestCase extends TestCase
      */
     protected $scenario;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->scenario = $this->createScenario();
     }
 
-    /**
-     * @return Scenario
-     */
     protected function createScenario() : Scenario
     {
         $repository = new InMemoryRepository();
@@ -30,9 +27,5 @@ abstract class ProjectorScenarioTestCase extends TestCase
         return new Scenario($this, $repository, $this->createProjector($repository));
     }
 
-    /**
-     * @param InMemoryRepository $repository
-     * @return Projector
-     */
     abstract protected function createProjector(InMemoryRepository $repository) : Projector;
 }
