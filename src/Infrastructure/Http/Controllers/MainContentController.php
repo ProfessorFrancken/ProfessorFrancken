@@ -4,21 +4,27 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
+use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\News\Repository as NewsRepository;
 
 class MainContentController extends Controller
 {
-    public function index(NewsRepository $news, ActivitiesRepository $activities)
-    {
+    public function index(
+        NewsRepository $news,
+        ActivitiesRepository $activities,
+        FranckenVrijRepository $francken_vrij
+    ) {
         $today = new \DateTimeImmutable(
             'now', new \DateTimeZone('Europe/Amsterdam')
         );
 
+
         return view('homepage/homepage', [
             'news' => $news->recent(3),
-            'activities' => $activities->after($today, 5)
+            'activities' => $activities->after($today, 5),
+            'latest_edition' => $francken_vrij->latestEdition()
         ]);
     }
 

@@ -1,4 +1,3 @@
-@inject('franckenVrij', "Francken\Application\FranckenVrij\FranckenVrijRepository")
 <div class="container">
     <div class="row">
         <div class="col about-francken order-end order-1">
@@ -56,8 +55,14 @@
                 Below you can download the <strong>latest edition</strong> of the Francken Vrij, or go to the archive including all published Francken Vrij magazines.
             </p>
 
-            <a class="btn btn-primary" href="{{ $franckenVrij->latestEdition()->pdf() }}">Download latest edition</a>
-            <a class="link-to-all-dark text-nowrap" href="/association/francken-vrij">Go to the archive</a>
+            @isset($latest_edition)
+            <a class="btn btn-primary" href="{{ $latest_edition->pdf() }}">
+                Download latest edition
+            </a>
+            @endisset
+            <a class="link-to-all-dark text-nowrap" href="/association/francken-vrij">
+                Go to the archive
+            </a>
         </div>
     </div>
 </div>
