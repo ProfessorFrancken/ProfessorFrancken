@@ -34,7 +34,7 @@
   "require-dev": {
     "barryvdh/laravel-ide-helper": "^2.6",
     "beyondcode/laravel-dump-server": "^1.2",
-    "codedungeon/phpunit-result-printer": "0.23.*",
+    "codedungeon/phpunit-result-printer": "0.26.*",
     "davidbadura/faker-markdown-generator": "^1.0",
     "filp/whoops": "^2.1",
     "friendsofphp/php-cs-fixer": "^2.10",
