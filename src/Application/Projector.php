@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application;
 
-use Broadway\ReadModel\Projector as BroadwayProjector;
 use Broadway\Domain\DomainMessage;
+use Broadway\ReadModel\Projector as BroadwayProjector;
 
 abstract class Projector extends BroadwayProjector
 {
-    public function handle(DomainMessage $domainMessage)
+    public function handle(DomainMessage $domainMessage): void
     {
         $event  = $domainMessage->getPayload();
         $method = $this->getHandleMethod($event);

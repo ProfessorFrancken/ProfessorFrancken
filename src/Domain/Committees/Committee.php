@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace Francken\Domain\Committees;
 
 use Francken\Domain\AggregateRoot;
-use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
+use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
-use Francken\Domain\Committees\Events\CommitteeEmailChanged;
-use Francken\Domain\Committees\Events\CommitteePageChanged;
-use Francken\Domain\Members\MemberId;
 use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
 
 class Committee extends AggregateRoot
 {
@@ -73,9 +72,9 @@ class Committee extends AggregateRoot
         $this->apply(new MemberLeftCommittee($this->id, $memberId));
     }
 
-    public function getAggregateRootId() : CommitteeId
+    public function getAggregateRootId() : string
     {
-        return $this->id;
+        return (string)$this->id;
     }
 
     protected function applyCommitteeInstantiated(CommitteeInstantiated $event)

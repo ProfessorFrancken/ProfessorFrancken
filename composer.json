@@ -3,7 +3,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "broadway/broadway": "^1.0",
+    "broadway/broadway": "^2.0",
     "cmpayments/iban": "^1.1",
     "doctrine/dbal": "^2.8",
     "fale/isbn": "^3.0",

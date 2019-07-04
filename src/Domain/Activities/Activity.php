@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
-use DateTimeImmutable;
 use Francken\Domain\Activities\Events\ActivityCancelled;
 use Francken\Domain\Activities\Events\ActivityCategorized;
 use Francken\Domain\Activities\Events\ActivityPlanned;
@@ -16,15 +15,15 @@ use Francken\Domain\Members\MemberId;
 
 final class Activity extends AggregateRoot
 {
+    public const SOCIAL = 'social';
+    public const CAREER = 'career';
+    public const EDUCATION = 'education';
+
     private $id;
     private $published = false;
     private $category;
     private $schedule;
     private $members = [];
-
-    const SOCIAL = 'social';
-    const CAREER = 'career';
-    const EDUCATION = 'education';
 
     public static function plan(
         ActivityId $id,
@@ -34,14 +33,14 @@ final class Activity extends AggregateRoot
         Location $location,
         $type
     ) {
-        $activity = new Activity;
+        $activity = new self();
 
         $activity->apply(new ActivityPlanned($id, $name, $description, $schedule, $location, $type));
 
         return $activity;
     }
 
-    public function publish()
+    public function publish() : void
     {
         if ($this->published) {
             throw InvalidActivity::alreadyPublished();
@@ -127,9 +126,9 @@ final class Activity extends AggregateRoot
         $this->members[] = $event->memberId();
     }
 
-    public function getAggregateRootId()
+    public function getAggregateRootId() : string
     {
-        return $this->id;
+        return (string)$this->id;
     }
 
     private function assertCategoryIsValid($category)

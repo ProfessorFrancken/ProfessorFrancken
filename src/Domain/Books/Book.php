@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Domain\Books;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
@@ -19,14 +21,14 @@ final class Book extends EventSourcedAggregateRoot
     private $isSold = false;
     private $isPaid = false;
 
-    public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price) : Book
+    public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price) : self
     {
-        $book = new Book();
+        $book = new self();
         $book->apply(new BookOffered($id, $sellersId, $isbn, $price));
         return $book;
     }
 
-    public function offerRetracted()
+    public function offerRetracted() : void
     {
         $this->apply(new BookOfferRetracted($id));
     }
@@ -93,8 +95,8 @@ final class Book extends EventSourcedAggregateRoot
         $this->isSold = false;
     }
 
-    public function getAggregateRootId()
+    public function getAggregateRootId() : string
     {
-        return $this->id;
+        return (string)$this->id;
     }
 }

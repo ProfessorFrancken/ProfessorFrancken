@@ -71,7 +71,7 @@ final class PostList implements ReadModelInterface, SerializableInterface
         );
     }
 
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }

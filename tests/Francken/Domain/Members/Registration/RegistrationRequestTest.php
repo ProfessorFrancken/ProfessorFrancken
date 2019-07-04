@@ -21,13 +21,8 @@ use Francken\Domain\Members\StudyDetails;
 
 class RegistrationRequestTest extends AggregateRootScenarioTestCase
 {
-    protected function getAggregateRootClass()
-    {
-        return RegistrationRequest::class;
-    }
-
     /** @test */
-    public function a_visitor_can_request_to_be_registered()
+    public function a_visitor_can_request_to_be_registered() : void
     {
         $id = RegistrationRequestId::generate();
 
@@ -96,4 +91,9 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
 
 
     // a potential member can be interested in doing committee work
+
+    protected function getAggregateRootClass() : string
+    {
+        return RegistrationRequest::class;
+    }
 }

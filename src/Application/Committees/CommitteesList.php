@@ -87,7 +87,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
         return $this->html;
     }
 
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }

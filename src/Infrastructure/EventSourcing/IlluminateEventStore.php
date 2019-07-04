@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\EventSourcing;
 
+use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
-use Broadway\Domain\DateTime;
 use Broadway\EventStore\EventStore;
 use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Serializer\Serializer;
@@ -14,7 +14,6 @@ use Illuminate\Database\ConnectionInterface as Connection;
 
 final class IlluminateEventStore implements EventStore
 {
-
     /**
      * @var Connection
      */
@@ -32,10 +31,6 @@ final class IlluminateEventStore implements EventStore
 
     /**
      * Construct the dependancies
-     *
-     * @param \Illuminate\Database\DatabaseManager $databaseManager
-     * @param Serializer $serializer
-     * @param string $eventStoreTable
      */
     public function __construct(
         Connection $connection,
@@ -50,7 +45,7 @@ final class IlluminateEventStore implements EventStore
     /**
      * {@inheritdoc}
      */
-    public function load($id)
+    public function load($id) : DomainEventStream
     {
         $events = $this->loadEvents($id);
 
@@ -68,7 +63,7 @@ final class IlluminateEventStore implements EventStore
     /**
      * {@inheritdoc}
      */
-    public function loadFromPlayhead($id, $playhead)
+    public function loadFromPlayhead($id, $playhead) : DomainEventStream
     {
         $events = $this->loadEvents($id, $playhead);
 
@@ -86,7 +81,7 @@ final class IlluminateEventStore implements EventStore
     /**
      * {@inheritdoc}
      */
-    public function append($id, DomainEventStream $eventStream)
+    public function append($id, DomainEventStream $eventStream) : void
     {
         $this->connection->beginTransaction();
 

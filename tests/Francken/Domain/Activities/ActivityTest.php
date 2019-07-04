@@ -5,29 +5,24 @@ declare(strict_types=1);
 namespace Tests\Francken\Activities;
 
 use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
+use DateTimeImmutable;
 use Francken\Domain\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Location;
-use Francken\Domain\Activities\Schedule;
-use Francken\Domain\Activities\InvalidActivity;
-use Francken\Domain\Activities\Events\ActivityPlanned;
-use Francken\Domain\Activities\Events\ActivityPublished;
 use Francken\Domain\Activities\Events\ActivityCancelled;
 use Francken\Domain\Activities\Events\ActivityCategorized;
+use Francken\Domain\Activities\Events\ActivityPlanned;
+use Francken\Domain\Activities\Events\ActivityPublished;
 use Francken\Domain\Activities\Events\ActivityRescheduled;
 use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
+use Francken\Domain\Activities\InvalidActivity;
+use Francken\Domain\Activities\Location;
+use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Members\MemberId;
-use DateTimeImmutable;
 
 class ActivitiesTest extends AggregateRootScenarioTestCase
 {
-    protected function getAggregateRootClass()
-    {
-        return Activity::class;
-    }
-
     /** @test */
-    public function an_activity_can_be_planned()
+    public function an_activity_can_be_planned() : void
     {
         $id = ActivityId::generate();
 
@@ -46,7 +41,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function once_an_activity_has_been_planned_it_can_be_published()
+    public function once_an_activity_has_been_planned_it_can_be_published() : void
     {
         $id = ActivityId::generate();
 
@@ -63,7 +58,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $id = ActivityId::generate();
 
         return $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id)
@@ -97,7 +92,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $id = ActivityId::generate();
 
         return $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id)
@@ -157,7 +152,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $id = ActivityId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id, [
                     'category' => Activity::EDUCATION
@@ -169,7 +164,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
             ->then([]);
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityCategorized($id, Activity::EDUCATION)
@@ -202,7 +197,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $memberId = MemberId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id)
@@ -220,7 +215,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $memberId = MemberId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id),
@@ -238,7 +233,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $id = ActivityId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
             ])
@@ -267,7 +262,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $id = ActivityId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id, [
                     'schedule' => Schedule::forPeriod(
@@ -289,7 +284,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
         // It should also be idempotent when repeatedly rescheduling an activity
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityRescheduled(
@@ -311,10 +306,15 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
             ->then([]);
     }
 
+    protected function getAggregateRootClass() : string
+    {
+        return Activity::class;
+    }
+
     private function givenAPlannedActivity(ActivityId $id)
     {
         return $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)(string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id)
             ]);
