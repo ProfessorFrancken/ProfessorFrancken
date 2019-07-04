@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
+use Broadway\Serializer\Serializable as SerializableInterface;
 use DateTimeImmutable;
 use InvalidArgumentException;
-use Broadway\Serializer\Serializable as SerializableInterface;
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 
 final class Schedule implements SerializableInterface
 {

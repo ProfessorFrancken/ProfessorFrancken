@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Books;
 
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Francken\Domain\Serializable;
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Books\BookId;

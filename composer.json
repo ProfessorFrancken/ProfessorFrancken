@@ -19,7 +19,6 @@
     "league/html-to-markdown": "^4.4",
     "league/period": "^3.3",
     "maatwebsite/excel": "^3.1",
-    "matthiasnoback/broadway-serialization": "^2.0",
     "nothingworks/blade-svg": "^0.3.0",
     "plank/laravel-mediable": "^2.9",
     "predis/predis": "^1.1",

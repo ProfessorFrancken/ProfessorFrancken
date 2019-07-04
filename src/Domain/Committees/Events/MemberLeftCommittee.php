@@ -7,7 +7,7 @@ namespace Francken\Domain\Committees\Events;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Committees\CommitteeId;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Francken\Domain\Serializable;
 
 final class MemberLeftCommittee implements SerializableInterface
 {

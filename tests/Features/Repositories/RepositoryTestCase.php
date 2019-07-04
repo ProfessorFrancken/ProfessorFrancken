@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Features\Repositories;
 
-use BroadwaySerialization\Hydration\HydrateUsingReflection;
-use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
-use BroadwaySerialization\Reconstitution\Reconstitution;
 use Doctrine\Instantiator\Instantiator;
 use Francken\Application\ReadModelNotFound;
 use Francken\Application\ReadModelRepository;
+use Francken\Shared\Serialization\Hydration\HydrateUsingReflection;
+use Francken\Shared\Serialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use Francken\Shared\Serialization\Reconstitution\Reconstitution;
 use PHPUnit\Framework\TestCase as TestCase;
 
 abstract class RepositoryTestCase extends TestCase

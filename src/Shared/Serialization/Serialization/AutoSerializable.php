@@ -1,35 +1,28 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace Francken\Domain;
+namespace Francken\Shared\Serialization\Serialization;
 
 use Francken\Shared\Serialization\Reconstitution\Reconstitution;
-use Francken\Shared\Serialization\Serialization\RecursiveSerializer;
-
-/**
- * Note that this class has been copy pasted from BroadwaySerialization\Serializer\Serializable
- * but instead of using self we use static to reference the deserializationCallbacks
- */
 
 /**
  * Use this trait in classes that implement \Broadway\Serializer\Serializable to make them automatically fully
  * serializable. If properties need to be deserialized to objects, you need to override the `deserializationCallbacks()`
  * method as well. See \BroadwaySerialization\Serializable::deserializationCallbacks().
  */
-trait Serializable
+trait AutoSerializable
 {
     /**
      * @see \Broadway\Serializer\Serializable::deserialize()
      *
-     * @param array $data
      * @return object of type static::class
      */
     final public static function deserialize(array $data)
     {
         return Reconstitution::reconstitute()->objectFrom(
             get_called_class(),
-            RecursiveSerializer::deserialize($data, static::deserializationCallbacks())
+            RecursiveSerializer::deserialize($data, self::deserializationCallbacks())
         );
     }
 
@@ -38,7 +31,7 @@ trait Serializable
      *
      * @return array Values of properties that should be serialized
      */
-    final public function serialize()
+    final public function serialize(): array
     {
         return RecursiveSerializer::serialize(get_object_vars($this));
     }
@@ -54,7 +47,7 @@ trait Serializable
      *
      * @return array
      */
-    protected static function deserializationCallbacks()
+    protected static function deserializationCallbacks(): array
     {
         return [];
     }
