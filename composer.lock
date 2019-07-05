@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f25977b2fc156c995b37bfd086e7355",
+    "content-hash": "10e33209e8621dca454de507519bb78a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1896,35 +1896,44 @@
         },
         {
             "name": "league/period",
-            "version": "3.4.0",
+            "version": "4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/period.git",
-                "reference": "280b54d737b4d9d804d19f865a6496b82d1cee2a"
+                "reference": "fbe9d2102e36b84c996baba0d0227551282c7742"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/period/zipball/280b54d737b4d9d804d19f865a6496b82d1cee2a",
-                "reference": "280b54d737b4d9d804d19f865a6496b82d1cee2a",
+                "url": "https://api.github.com/repos/thephpleague/period/zipball/fbe9d2102e36b84c996baba0d0227551282c7742",
+                "reference": "fbe9d2102e36b84c996baba0d0227551282c7742",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "ext-json": "*",
+                "php": "^7.1.3"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.10",
-                "phpunit/phpunit": "^4.0"
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "infection/infection": "^0.13",
+                "phpstan/phpstan": "^0.11",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "phpunit/phpunit": "^7.0|^8.0",
+                "symfony/var-dumper": "^4.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "4.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "League\\Period\\": "src"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1938,18 +1947,28 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A time range immutable value object",
+            "description": "Time range API for PHP",
             "homepage": "http://period.thephpleague.com",
             "keywords": [
+                "boundaries",
+                "calendar",
+                "collection",
                 "date",
                 "dateinterval",
                 "dateperiod",
                 "datetime",
+                "gap",
+                "intersections",
                 "interval",
+                "period",
                 "range",
-                "time"
+                "schedule",
+                "sequence",
+                "time",
+                "timeline",
+                "unions"
             ],
-            "time": "2017-11-17T11:28:33+00:00"
+            "time": "2019-06-20T20:50:18+00:00"
         },
         {
             "name": "maatwebsite/excel",

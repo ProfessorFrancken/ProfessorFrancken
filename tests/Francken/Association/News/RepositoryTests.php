@@ -6,8 +6,8 @@ namespace Francken\Tests\Association\News;
 
 use Faker\Factory;
 use Francken\Association\News\CouldNotFindNews;
-use Francken\Association\News\NewsItem;
 use Francken\Association\News\Fake\FakeNews;
+use Francken\Association\News\NewsItem;
 use League\Period\Period;
 
 trait RepositoryTests 
@@ -105,7 +105,10 @@ trait RepositoryTests
         $publishedAt =$fakeNews[0]->publicationDate();
 
         // return;
-        $period = new Period($publishedAt, $publishedAt);
+        $period = new Period(
+            $publishedAt,
+            $publishedAt->add(new \DateInterval('PT1S'))
+        );
         $this->assertNewsFound(
             [$fakeNews[0]],
             $this->news->search($period, null, null),
