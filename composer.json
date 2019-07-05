@@ -15,7 +15,7 @@
     "laravel/tinker": "^1.0",
     "laravelcollective/html": "^5.8.0",
     "lcobucci/jwt": "^3.2",
-    "league/commonmark": "^0.15.4",
+    "league/commonmark": "^0.15.7",
     "league/html-to-markdown": "^4.4",
     "league/period": "^3.3",
     "maatwebsite/excel": "^3.1",
