@@ -50,7 +50,9 @@ final class ChangeRolesListener
         /** @var Account */
         $account = Account::findOrFail($event->accountId());
 
-        $committees = $this->committees->ofMember($account->member_id);
+        $committees = $this->committees->ofMember(
+            (int)$account->member_id
+        );
 
         foreach ($committees as $committee) {
             $account->assignRole(
@@ -59,7 +61,10 @@ final class ChangeRolesListener
         }
 
         /** @var \Illuminate\Support\Collection */
-        $as_board_members = BoardMember::where('member_id', '=', $account->member_id)->get();
+        $as_board_members = BoardMember::where(
+            'member_id', '=', (int)$account->member_id
+        )->get();
+
         // Ideally each member should be in only 1 board, and we will assume that
         // this is the case as otherwise wed things will happen where an account
         // can have both an board and an candidate board role
@@ -114,7 +119,7 @@ final class ChangeRolesListener
 
             // Since this member is no longer in the board nor a member of a committee
             // their active member role will be removed
-            $committees = $this->committees->ofMember($account->member_id);
+            $committees = $this->committees->ofMember((int)$account->member_id);
             if (count($committees) === 0) {
                 $account->removeRole(static::ACTIVE_MEMBER_ROLE);
             }
