@@ -7,7 +7,7 @@ namespace Francken\Domain\Posts\Events;
 use Francken\Domain\Posts\PostId;
 use Francken\Domain\DomainEvent;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Francken\Domain\Serializable;
 
 final class PostUnpublished implements SerializableInterface
 {

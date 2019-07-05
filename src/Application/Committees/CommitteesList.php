@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Committees;
 
 use Assert\Assertion;
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Francken\Domain\Serializable;
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Committees\CommitteeId;
@@ -85,7 +87,7 @@ final class CommitteesList implements ReadModelInterface, SerializableInterface
         return $this->html;
     }
 
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }

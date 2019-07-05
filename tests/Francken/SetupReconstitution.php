@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Tests;
 
-use BroadwaySerialization\Reconstitution\Reconstitution;
-use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
 use Doctrine\Instantiator\Instantiator;
-use BroadwaySerialization\Hydration\HydrateUsingReflection;
+use Francken\Shared\Serialization\Hydration\HydrateUsingReflection;
+use Francken\Shared\Serialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use Francken\Shared\Serialization\Reconstitution\Reconstitution;
 
 trait SetupReconstitution
 {

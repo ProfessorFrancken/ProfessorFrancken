@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Members\Registration;
 
-use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use DateTimeImmutable;
 use Francken\Domain\Members\Address;
 use Francken\Domain\Members\ContactInfo;
@@ -18,16 +17,12 @@ use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
+use Francken\Tests\AggregateRootScenarioTestCase;
 
 class RegistrationRequestTest extends AggregateRootScenarioTestCase
 {
-    protected function getAggregateRootClass()
-    {
-        return RegistrationRequest::class;
-    }
-
     /** @test */
-    public function a_visitor_can_request_to_be_registered()
+    public function a_visitor_can_request_to_be_registered() : void
     {
         $id = RegistrationRequestId::generate();
 
@@ -96,4 +91,9 @@ class RegistrationRequestTest extends AggregateRootScenarioTestCase
 
 
     // a potential member can be interested in doing committee work
+
+    protected function getAggregateRootClass() : string
+    {
+        return RegistrationRequest::class;
+    }
 }

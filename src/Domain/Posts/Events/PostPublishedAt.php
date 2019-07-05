@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Posts\Events;
 
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Carbon\Carbon;
 use DateTimeImmutable;
 use Francken\Domain\Posts\PostId;
-use Francken\Domain\DomainEvent;
-use Broadway\Serializer\Serializable as SerializableInterface;
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Francken\Domain\Serializable;
 
 final class PostPublishedAt implements SerializableInterface
 {

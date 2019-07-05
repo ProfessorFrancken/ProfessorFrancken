@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Tests\Francken\Domain\Members;
 
 use Francken\Domain\Members\Email;
+use InvalidArgumentException;
 
 class EmailTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
-    public function it_stores_an_email()
+    public function it_stores_an_email() : void
     {
         $email = new Email('markredeman@gmail.com');
 
@@ -26,10 +27,10 @@ class EmailTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function it_does_not_store_invalid_emails()
     {
+        $this->expectException(InvalidArgumentException::class);
         $email = new Email('markredeman.com');
     }
 }

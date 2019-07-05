@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Application\Books;
 
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Books\BookId;
+use Francken\Domain\Serializable;
 
 final class AvailableBook implements ReadModelInterface, SerializableInterface
 {
@@ -39,7 +39,7 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
         $this->sale_pending= $sale_pending;
     }
 
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }

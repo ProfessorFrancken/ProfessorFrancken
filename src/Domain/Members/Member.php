@@ -6,7 +6,6 @@ namespace Francken\Domain\Members;
 
 use Francken\Domain\AggregateRoot;
 use Francken\Domain\Members\Events\MemberJoinedFrancken;
-use Francken\Domain\Members\MemberId;
 
 class Member extends AggregateRoot
 {
@@ -16,7 +15,7 @@ class Member extends AggregateRoot
 
     public static function instantiate(MemberId $id, $first_name, $last_name)
     {
-        $member = new Member;
+        $member = new self();
         $member->apply(new MemberJoinedFrancken($id, $first_name, $last_name));
         return $member;
     }
@@ -28,8 +27,8 @@ class Member extends AggregateRoot
         $this->last_name = $event->lastName();
     }
 
-    public function getAggregateRootId()
+    public function getAggregateRootId() : string
     {
-        return $this->id;
+        return (string)$this->id;
     }
 }

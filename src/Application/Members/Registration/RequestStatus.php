@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Application\Members\Registration;
 
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use DateTimeImmutable;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Serializable;
 
 final class RequestStatus implements ReadModelInterface, SerializableInterface
 {

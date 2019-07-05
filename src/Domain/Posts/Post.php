@@ -13,37 +13,33 @@ use Francken\Domain\Posts\Events\PostPublishedAt;
 use Francken\Domain\Posts\Events\PostTitleChanged;
 use Francken\Domain\Posts\Events\PostUnpublished;
 use Francken\Domain\Posts\Events\PostWritten;
-use Francken\Domain\Posts\PostCategory;
-use Francken\Domain\Posts\PostId;
 
 /// @todo this class still needs logic..
 class Post extends AggregateRoot
 {
+    public const BLOGPOST = 'blog';
+    public const NEWSPOST = 'news';
+
     private $id;
     private $title;
     private $content;
     private $type;
     private $publishedAt;
     private $isDeleted = false;
-    // private $authorId;
-
-    // types: PHP needs enums...
-    const BLOGPOST = 'blog';
-    const NEWSPOST = 'news';
 
     public static function createDraft(PostId $id, string $title, string $content, PostCategory $type)
     {
-        $post = new Post;
+        $post = new self();
         $post->apply(new PostWritten($id, $title, $content, $type));
         return $post;
     }
 
-    public function editTitle(string $title)
+    public function editTitle(string $title) : void
     {
         $this->apply(new PostTitleChanged($this->id, $title));
     }
 
-    public function editContent(string $content)
+    public function editContent(string $content) : void
     {
         $this->apply(new PostContentChanged($this->id, $content));
     }
@@ -106,8 +102,8 @@ class Post extends AggregateRoot
         $this->isDeleted = true;
     }
 
-    public function getAggregateRootId()
+    public function getAggregateRootId() : string
     {
-        return $this->id;
+        return (string)$this->id;
     }
 }

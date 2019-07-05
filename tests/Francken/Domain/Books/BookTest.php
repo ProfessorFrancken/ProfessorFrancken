@@ -1,26 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Francken\Books;
 
-use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Events\BookOffered;
-use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSoldToMember;
-use Francken\Domain\Books\Events\BookSoldToNonMember;
-
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\AggregateRootScenarioTestCase;
 
 class BookTest extends AggregateRootScenarioTestCase
 {
-    protected function getAggregateRootClass()
-    {
-        return Book::class;
-    }
-
     /** @test */
-    public function a_book_can_be_offered()
+    public function a_book_can_be_offered() : void
     {
         $bookId = BookId::generate();
         $memberId = MemberId::generate();
@@ -45,14 +39,14 @@ class BookTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function a_book_can_be_sold_to_a_member()
+    public function a_book_can_be_sold_to_a_member() : void
     {
         $bookId = BookId::generate();
         $memberId = MemberId::generate();
         $buyersId = MemberId::generate();
 
         $this->scenario
-            ->withAggregateId($bookId)
+            ->withAggregateId((string)$bookId)
             ->given([
                 new BookOffered(
                     $bookId,
@@ -101,5 +95,10 @@ class BookTest extends AggregateRootScenarioTestCase
                     "0534408133",
                     1500)
                 ]);
+    }
+
+    protected function getAggregateRootClass(): string
+    {
+        return Book::class;
     }
 }

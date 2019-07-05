@@ -35,8 +35,8 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-1', $eventStream);
@@ -47,7 +47,7 @@ class EventStoreFeature extends TestCase
     /**
      * @test
      */
-    public function an_event_stream_of_more_than_one_event_can_be_saved()
+    public function an_event_stream_of_more_than_one_event_can_be_saved() : void
     {
         $eventStream = new DomainEventStream([
             DomainMessage::recordNow(
@@ -118,11 +118,6 @@ class EventStoreFeature extends TestCase
     public function when_appending_one_event_from_a_event_stream_fails_it_rolls_back_all_changes()
     {
         $this->expectException(IlluminateEventStoreException::class);
-        // this test is a bit of an hack, by mocking the DateTime object we make
-        // the append() method of the event store throw an exception
-        $time = $this->prophesize(\Broadway\Domain\DateTime::class);
-        $time->toString()
-            ->willThrow(new \Exception('This is an invalid event'));
 
         $eventStream = new DomainEventStream([
             DomainMessage::recordNow(
@@ -131,12 +126,11 @@ class EventStoreFeature extends TestCase
                 new Metadata(array()),
                 new ADomainEvent
             ),
-            new DomainMessage(
+            DomainMessage::recordNow(
                 'aggregate-1',
                 1,
                 new Metadata(array()),
-                new ADomainEvent,
-                $time->reveal()
+                new AThrowingDomainEent
             ),
         ]);
 
@@ -152,10 +146,24 @@ final class ADomainEvent implements SerializableInterface
         return new static($data['my_event']);
     }
 
-    public function serialize()
+    public function serialize(): array
     {
         return [
             'my_event' => 'l33t'
         ];
+    }
+}
+
+final class AThrowingDomainEent implements SerializableInterface
+{
+
+    public static function deserialize(array $data)
+    {
+        return new static($data['my_event']);
+    }
+
+    public function serialize(): array
+    {
+        throw new  \Exception('This is an invalid event');
     }
 }

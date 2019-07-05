@@ -20,24 +20,20 @@
     <filter>
        <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src/</directory>
-            <exclude>
-                <file>./src/Infrastructure/Http/routes.php</file>
-                <directory suffix=".blade.php">./src/Infrastructure/Http/Views/</directory>
-            </exclude>
        </whitelist>
     </filter>
     <php>
-        <env name="TELESCOPE_ENABLED" value="false"/>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="DB_CONNECTION" value="testing"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+        <server name="APP_ENV" value="testing"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="DB_CONNECTION" value="testing"/>
 
-        <env name="NEWS_TYPE" value="eloquent"/>
+        <server name="NEWS_TYPE" value="eloquent"/>
 
-        <env name="PLUS_ONE_PASSWORD" value="$2y$10$G8JBEHEjzVQYmazk2AzekujDYHIH4JIP9KKbblzTust1VXXQFa4Aa"/>
-        <env name="PLUS_ONE_KEY" value="VCNdSDNlfjZbeJxDzRI0G3Ho7cLzPN7g"/>
+        <server name="PLUS_ONE_PASSWORD" value="$2y$10$G8JBEHEjzVQYmazk2AzekujDYHIH4JIP9KKbblzTust1VXXQFa4Aa"/>
+        <server name="PLUS_ONE_KEY" value="VCNdSDNlfjZbeJxDzRI0G3Ho7cLzPN7g"/>
     </php>
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
