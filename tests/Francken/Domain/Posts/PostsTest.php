@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Posts;
 
-use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Carbon\Carbon;
 use Francken\Domain\Posts\Events\DraftDeleted;
 use Francken\Domain\Posts\Events\PostContentChanged;
@@ -15,11 +14,12 @@ use Francken\Domain\Posts\Events\PostWritten;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostCategory;
 use Francken\Domain\Posts\PostId;
+use Francken\Tests\AggregateRootScenarioTestCase;
 
 class PostsTest extends AggregateRootScenarioTestCase
 {
     /** @test */
-    public function a_post_can_be_written()
+    public function a_post_can_be_written() : void
     {
         $id = PostId::generate();
         $type = PostCategory::fromString(PostCategory::BLOGPOST);
@@ -38,7 +38,7 @@ class PostsTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function a_title_can_be_changed()
+    public function a_title_can_be_changed() : void
     {
         $id = PostId::generate();
 
@@ -50,7 +50,7 @@ class PostsTest extends AggregateRootScenarioTestCase
     }
 
     /** test */
-    public function content_can_be_edited()
+    public function content_can_be_edited() : void
     {
         $id = PostId::generate();
 
@@ -65,25 +65,27 @@ class PostsTest extends AggregateRootScenarioTestCase
     public function once_a_draft_is_created_a_publish_date_can_be_set()
     {
         $id = PostId::generate();
+        $date = Carbon::createFromDate(2012, 1, 1);
 
         $this->givenANewPost($id)
-            ->when(function ($post) {
-                return $post->setPublishDate(Carbon::createFromDate(2012, 1, 1));
+            ->when(function ($post) use ($date) {
+                return $post->setPublishDate($date);
             })
-            ->then([new PostPublishedAt($id, Carbon::createFromDate(2012, 1, 1))]);
+            ->then([new PostPublishedAt($id, $date)]);
     }
 
     /** @test */
     public function a_published_post_can_be_unpublished()
     { // reset back to draft.
         $id = PostId::generate();
+        $date = Carbon::createFromDate(2012, 1, 1);
 
         $this->givenANewPost($id)
-            ->when(function ($post) {
-                $post->setPublishDate(Carbon::createFromDate(2012, 1, 1));
+            ->when(function ($post) use ($date) {
+                $post->setPublishDate($date);
                 $post->unpublish();
             })
-            ->then([new PostPublishedAt($id, Carbon::createFromDate(2012, 1, 1)),
+            ->then([new PostPublishedAt($id, $date),
                 new PostUnpublished($id)]);
     }
 

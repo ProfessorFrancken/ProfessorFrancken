@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Committees;
 
-use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeEmailChanged;
@@ -15,6 +14,7 @@ use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Members\Email;
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\AggregateRootScenarioTestCase;
 
 class CommitteeTest extends AggregateRootScenarioTestCase
 {
@@ -41,7 +41,7 @@ class CommitteeTest extends AggregateRootScenarioTestCase
 
         $this->scenario
             ->given([new CommitteeInstantiated($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy')])
-            ->when(function ($committee) use ($id) {
+            ->when(function ($committee) use ($id) : void {
                 $committee->setEmail(new Email('scriptcie@professorfrancken.nl'));
             })
             ->then([new CommitteeEmailChanged($id, new Email('scriptcie@professorfrancken.nl'))]);

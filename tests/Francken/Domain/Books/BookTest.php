@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Books;
 
-use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\AggregateRootScenarioTestCase;
 
 class BookTest extends AggregateRootScenarioTestCase
 {

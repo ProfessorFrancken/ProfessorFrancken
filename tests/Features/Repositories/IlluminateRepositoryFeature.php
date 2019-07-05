@@ -36,14 +36,14 @@ class IlluminateRepositoryFeature extends RepositoryTestCase
         $this->kernel->bootstrap();
         $this->kernel->call('migrate');
 
-        Schema::create('testing_table', function (Blueprint $table) {
+        Schema::create('testing_table', function (Blueprint $table) : void {
             $table->string('id');
             $table->string('first');
             $table->string('second');
         });
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         Schema::drop('testing_table');
         $this->kernel->call('migrate:rollback');

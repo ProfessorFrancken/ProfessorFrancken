@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities;
 
-use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
 use DateTimeImmutable;
 use Francken\Domain\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
@@ -18,6 +17,7 @@ use Francken\Domain\Activities\InvalidActivity;
 use Francken\Domain\Activities\Location;
 use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Members\MemberId;
+use Francken\Tests\AggregateRootScenarioTestCase;
 
 class ActivitiesTest extends AggregateRootScenarioTestCase
 {
@@ -72,7 +72,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function a_draft_activity_cant_be_cancelled()
+    public function a_draft_activity_cant_be_cancelled() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -105,7 +105,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function a_cancelled_activity_cant_be_cancelled_again()
+    public function a_cancelled_activity_cant_be_cancelled_again() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -119,7 +119,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function an_activity_can_be_recategorized()
+    public function an_activity_can_be_recategorized() : void
     {
         $id = ActivityId::generate();
 
@@ -135,7 +135,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function an_activity_can_only_be_categorized_into_valid_categories()
+    public function an_activity_can_only_be_categorized_into_valid_categories() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -147,7 +147,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function recategorizing_an_activity_is_idempotent()
+    public function recategorizing_an_activity_is_idempotent() : void
     {
         $id = ActivityId::generate();
 
