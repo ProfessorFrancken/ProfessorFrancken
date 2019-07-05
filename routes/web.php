@@ -2,9 +2,16 @@
 
 declare(strict_types=1);
 
-use \Francken\Association\Members\Http\ExpensesController;
-use \Francken\Association\Members\Http\ProfileController;
+use Francken\Association\Activities\Http\ActivitiesController;
+use Francken\Association\Activities\Http\ActivitiesPerMonthController;
+use Francken\Association\Activities\Http\IcalController;
+use Francken\Association\Boards\Http\Controllers\BirthdaysController;
+use Francken\Association\Boards\Http\Controllers\BoardsController;
+use Francken\Association\Members\Http\ExpensesController;
+use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
+use Francken\Association\Photos\Http\Controllers\AuthenticationController;
+use Francken\Association\Photos\Http\Controllers\PhotosController;
 use Francken\Association\Symposium\Http\ParticipantRegistrationController;
 use Francken\Auth\Http\Controllers\ForgotPasswordController;
 use Francken\Auth\Http\Controllers\LoginController;
@@ -56,23 +63,23 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('/news/archive', [NewsController::class, 'archive']);
     Route::get('/news/{item}', [NewsController::class, 'show']);
 
-    Route::get('activities', [\Francken\Association\Activities\Http\ActivitiesController::class, 'index']);
-    Route::get('activities/ical', [\Francken\Association\Activities\Http\IcalController::class, 'index']);
-    Route::get('activities/ical/all', [\Francken\Association\Activities\Http\IcalController::class, 'show']);
-    Route::get('activities/{year}/{month}', [\Francken\Association\Activities\Http\ActivitiesPerMonthController::class, 'index']);
+    Route::get('activities', [ActivitiesController::class, 'index']);
+    Route::get('activities/ical', [IcalController::class, 'index']);
+    Route::get('activities/ical/all', [IcalController::class, 'show']);
+    Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
 
     Route::get('committees', [CommitteesController::class, 'index']);
     Route::get('committees/{committee}', [CommitteesController::class, 'show']);
 
-    Route::get('boards', [\Francken\Association\Boards\Http\Controllers\BoardsController::class, 'index']);
-    Route::get('boards/birthdays', [\Francken\Association\Boards\Http\Controllers\BirthdaysController::class, 'index'])
+    Route::get('boards', [BoardsController::class, 'index']);
+    Route::get('boards/birthdays', [BirthdaysController::class, 'index'])
         ->middleware(['role:Board|Old Board']);
 
-    Route::get('photos/login', [\Francken\Association\Photos\Http\Controllers\AuthenticationController::class, 'index']);
-    Route::post('photos', [\Francken\Association\Photos\Http\Controllers\AuthenticationController::class, 'store']);
+    Route::get('photos/login', [AuthenticationController::class, 'index']);
+    Route::post('photos', [AuthenticationController::class, 'store']);
     Route::group(['middleware' => ['login-to-view-photos']], function () : void {
-        Route::get('photos', [\Francken\Association\Photos\Http\Controllers\PhotosController::class, 'index']);
-        Route::get('photos/{album}', [\Francken\Association\Photos\Http\Controllers\PhotosController::class, 'show']);
+        Route::get('photos', [PhotosController::class, 'index']);
+        Route::get('photos/{album}', [PhotosController::class, 'show']);
     });
 });
 
