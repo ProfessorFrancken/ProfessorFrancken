@@ -20,10 +20,6 @@
     <filter>
        <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src/</directory>
-            <exclude>
-                <file>./src/Infrastructure/Http/routes.php</file>
-                <directory suffix=".blade.php">./src/Infrastructure/Http/Views/</directory>
-            </exclude>
        </whitelist>
     </filter>
     <php>
