@@ -1,5 +1,8 @@
 @extends('admin.layout')
 @section('page-title', 'News')
+@php
+use Francken\Association\News\Http\AdminNewsController;
+@endphp
 
 @section('content')
     <div class="row">
@@ -49,13 +52,6 @@
 
         </div>
         <div class="col-lg-4">
-
-            <a class="btn btn-lg btn-block btn-success mb-4" href="/admin/association/news/create">
-                <i class="fa fa-plus mr-1" aria-hidden="true"></i>
-                Write a new news post
-            </a>
-
-
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title section-header agenda-header">
@@ -204,5 +200,17 @@
 
             --}}
         </div>
+    </div>
+@endsection
+
+@section('actions')
+    <div class="d-flex align-items-end">
+        <a
+            class="btn btn-primary"
+            href="{{ action([AdminNewsController::class, 'create']) }}"
+        >
+            <i class="fa fa-plus mr-1" aria-hidden="true"></i>
+            Write a new news post
+        </a>
     </div>
 @endsection
