@@ -32,6 +32,7 @@
     "webuni/commonmark-table-extension": "^0.6.1"
   },
   "require-dev": {
+    "barryvdh/laravel-debugbar": "^3.2",
     "barryvdh/laravel-ide-helper": "^2.6",
     "beyondcode/laravel-dump-server": "^1.2",
     "codedungeon/phpunit-result-printer": "0.26.*",
@@ -45,10 +46,10 @@
     "nunomaduro/collision": "^3.0.1",
     "nunomaduro/larastan": "^0.3.17",
     "nunomaduro/phpinsights": "^1.0",
+    "php-coveralls/php-coveralls": "^2.0",
     "phpstan/phpstan": "^0.11.8",
     "phpunit/phpunit": "~8.0",
     "psalm/plugin-laravel": "^0.4.0",
-    "php-coveralls/php-coveralls": "^2.0",
     "vimeo/psalm": "^3.4"
   },
   "autoload": {
