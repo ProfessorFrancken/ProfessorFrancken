@@ -2,9 +2,9 @@
 <?php $active = '/' . Request::segment(1) == $url; ?>
 
 <li class="navigation-list__item clearfix">
-    <a class="navigation-list__link {{ $item['class'] ?? '' }}" href="{{ $url }}">
+    <a class="navigation-list__link {{ $class ?? '' }}" href="{{ $url }}">
         @if ($icon != '')
-             <i class="fa fa-{{ $item['icon'] }}" aria-hidden="true"></i>
+             <i class="fa fa-{{ $icon }}" aria-hidden="true"></i>
             {{-- <img src="/icons/filled/{{ $item['icon'] }}.svg" alt="" style="height: 20px" class="mr-2"> --}}
         @endif
 
@@ -18,7 +18,6 @@
         {{-- may refactored to a horizontal-list --}}
         <ul class="navigation-sub-list">
             @foreach ($subItems as $item)
-
                 <li>
                     <a class="navigation-sub-list__link" href="{{ $item['url'] }}">
 
