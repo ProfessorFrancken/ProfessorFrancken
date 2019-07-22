@@ -69,10 +69,12 @@ final class DeductionEmail extends Model
 
         $deduction_email->deductionToMembers()->createMany(
             $import->deductions()->map(function (Collection $deduction) {
+                $amount_in_float = (float) str_replace(',', '.', $deduction['bedrag']);
+
                 return [
                     'member_id' => $deduction['member']->id,
                     'description' => $deduction['omschrijving_2'],
-                    'amount_in_cents' => str_replace(',', '', $deduction['bedrag']),
+                    'amount_in_cents' => (int)(100 * $amount_in_float),
                     'contained_errors' => $deduction['errors']->isNotEmpty(),
                 ];
             })->toArray()
