@@ -1,11 +1,9 @@
 sudo: required
 
-group: deprecated-2017Q1
-
 language: php
 
 php:
-  - 7.1
+  - 7.3
 
 env:
   global:
