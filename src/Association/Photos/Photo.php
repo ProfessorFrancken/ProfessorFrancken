@@ -6,6 +6,45 @@ namespace Francken\Association\Photos;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Francken\Association\Photos\Photo
+ *
+ * @property int $id
+ * @property string $album_id
+ * @property string|null $title
+ * @property string|null $description
+ * @property int $is_public
+ * @property int $views
+ * @property string $flickr_base_url
+ * @property string $flickr_original_url
+ * @property int $is_tall
+ * @property int $is_wide
+ * @property string $taken_at
+ * @property int $latitude
+ * @property int $longitude
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Francken\Association\Photos\Album $album
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereAlbumId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereFlickrBaseUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereFlickrOriginalUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereIsPublic($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereIsTall($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereIsWide($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereLongitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereTakenAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereViews($value)
+ * @mixin \Eloquent
+ */
 final class Photo extends Model
 {
     private const SIZES = [
