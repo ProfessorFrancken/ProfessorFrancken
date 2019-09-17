@@ -1,9 +1,7 @@
 @extends('admin.layout')
+@section('page-title', 'News / ' . $post->title)
 
 @section('content')
-
-<h1>Create committee</h1>
-
 {!! Form::model($post, ['url' => ['admin/post', $post->uuid], 'method' => 'put']) !!}
 
   <div class="form-group">

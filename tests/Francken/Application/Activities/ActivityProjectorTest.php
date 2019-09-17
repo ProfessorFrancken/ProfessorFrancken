@@ -5,33 +5,27 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Activities;
 
 use DateTimeImmutable;
-use Francken\Application\Projector;
-use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
-use Francken\Infrastructure\Repositories\InMemoryRepository;
-
-//domain
-use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Schedule;
-use Francken\Domain\Activities\Location;
-
-//application
 use Francken\Application\Activities\Activity;
 use Francken\Application\Activities\ActivityProjector;
 use Francken\Application\Activities\ActivityRepository;
 
-//events
-use Francken\Domain\Activities\Events\ActivityCancelled;
-use Francken\Domain\Activities\Events\ActivityCategorized;
+//domain
+use Francken\Application\Projector;
+use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Events\ActivityPlanned;
-use Francken\Domain\Activities\Events\ActivityPublished;
-use Francken\Domain\Activities\Events\ActivityRescheduled;
-use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
 
+//application
+use Francken\Domain\Activities\Location;
+use Francken\Domain\Activities\Schedule;
+use Francken\Infrastructure\Repositories\InMemoryRepository;
+
+//events
+use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
 
 class ActivityProjectorTest extends TestCase
 {
     /** @test */
-    public function it_stores_a_committee()
+    public function it_stores_a_committee() : void
     {
         $id = ActivityId::generate();
 
@@ -60,7 +54,7 @@ class ActivityProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        return new ActivityProjector (
+        return new ActivityProjector(
             new ActivityRepository(
                 $repository
             )

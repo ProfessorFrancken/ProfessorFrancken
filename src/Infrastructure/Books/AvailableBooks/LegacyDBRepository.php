@@ -43,12 +43,12 @@ final class LegacyDBRepository implements AvailableBooksRepository
             ->toArray();
     }
 
-    public function save(AvailableBook $book)
+    public function save(AvailableBook $book) : void
     {
         throw new \Exception("Tried to save a book to the legacy system, which is not allowed");
     }
 
-    public function remove(BookID $id)
+    public function remove(BookID $id) : void
     {
         throw new \Exception("Tried to remove a book from the legacy system, which is not allowed");
     }

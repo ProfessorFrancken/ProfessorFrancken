@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+use Illuminate\Support\Str;
+
 return [
 
     /*
@@ -50,6 +54,18 @@ return [
             'driver'   => 'sqlite',
             'database' => database_path('database.sqlite'),
             'prefix'   => '',
+        ],
+
+        'francken_2' => [
+            'driver'    => 'mysql',
+            'host'      => env('DB_2_HOST', 'localhost'),
+            'database'  => env('DB_2_DATABASE', 'francken_2'),
+            'username'  => env('DB_2_USERNAME', 'forge'),
+            'password'  => env('DB_2_PASSWORD', ''),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
         ],
 
         'mysql' => [
@@ -114,14 +130,26 @@ return [
 
     'redis' => [
 
-        'cluster' => false,
+        'client' => 'phpredis',
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
+        ],
 
         'default' => [
-            'host'     => env('REDIS_HOST', 'localhost'),
+            'host'     => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port'     => env('REDIS_PORT', 6379),
-            'database' => 0,
+            'database' => env('REDIS_DB', 0),
         ],
+
+        'cache' => [
+            'host'     => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port'     => env('REDIS_PORT', 6379),
+            'database' => env('REDIS_CACHE_DB', 1),
+        ]
 
     ],
 

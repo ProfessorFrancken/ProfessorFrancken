@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Features\Repositories;
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
 use Francken\Application\ReadModelRepository;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
+
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\ConnectionInterface as Connection;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Schema;
 
 class IlluminateRepositoryFeature extends RepositoryTestCase
 {
@@ -25,7 +24,7 @@ class IlluminateRepositoryFeature extends RepositoryTestCase
     /**
      * Setup the App
      */
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 
@@ -37,14 +36,14 @@ class IlluminateRepositoryFeature extends RepositoryTestCase
         $this->kernel->bootstrap();
         $this->kernel->call('migrate');
 
-        Schema::create('testing_table', function (Blueprint $table) {
+        Schema::create('testing_table', function (Blueprint $table) : void {
             $table->string('id');
             $table->string('first');
             $table->string('second');
         });
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         Schema::drop('testing_table');
         $this->kernel->call('migrate:rollback');

@@ -14,7 +14,7 @@ class MemberJoinedCommitteeTest extends TestCase
     /**
      * @test
      */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $id = CommitteeId::generate();
         $memberId = MemberId::generate();

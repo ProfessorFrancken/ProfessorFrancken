@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\ReadModel\PostList;
 
-use DateTimeImmutable;
-use Illuminate\Database\Eloquent\Model;
-use Francken\Domain\Members\MemberId;
-use Francken\Domain\Posts\PostId;
-
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
+use DateTimeImmutable;
+use Francken\Domain\Members\MemberId;
+use Francken\Domain\Posts\PostId;
+use Francken\Domain\Serializable;
 
 final class PostList implements ReadModelInterface, SerializableInterface
 {
@@ -71,7 +71,7 @@ final class PostList implements ReadModelInterface, SerializableInterface
         );
     }
 
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }

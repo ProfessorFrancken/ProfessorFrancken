@@ -16,7 +16,7 @@ final class RequestStatusRepository
         $this->repo = $repo;
     }
 
-    public function save(RequestStatus $requestStatus)
+    public function save(RequestStatus $requestStatus) : void
     {
         $this->repo->save($requestStatus);
     }
@@ -31,7 +31,7 @@ final class RequestStatusRepository
         return $this->repo->findAll();
     }
 
-    public function remove(RegistrationRequestId $id)
+    public function remove(RegistrationRequestId $id) : void
     {
         $this->repo->remove((string)$id);
     }

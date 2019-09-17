@@ -6,28 +6,23 @@ namespace Francken\Tests\Association\News;
 
 use Faker\Factory;
 use Francken\Association\News\CouldNotFindNews;
-use Francken\Association\News\NewsItem;
 use Francken\Association\News\Fake\FakeNews;
+use Francken\Association\News\NewsItem;
 use League\Period\Period;
 
-trait RepositoryTests 
+trait RepositoryTests
 {
     protected $news;
 
-    /**
-     * Setup the repository with the given news
-     */
-    abstract protected function setupNews(array $news = []);
-
     /** @test */
-    function it_finds_no_recent_news_items_if_no_news_exists()
+    public function it_finds_no_recent_news_items_if_no_news_exists() : void
     {
         $this->setupNews([]);
         $this->assertCount(0, $this->news->recent(3));
     }
 
     /** @test */
-    function it_finds_all_recent_news_items()
+    public function it_finds_all_recent_news_items() : void
     {
         $this->setupNews($this->fakeNews(1));
         $this->assertCount(1, $this->news->recent(9));
@@ -37,7 +32,7 @@ trait RepositoryTests
     }
 
     /** @test */
-    function it_sorts_news_when_looking_for_recent_news()
+    public function it_sorts_news_when_looking_for_recent_news() : void
     {
         $fakeNews = $this->fakeNews(10);
         $this->setupNews($fakeNews);
@@ -55,7 +50,7 @@ trait RepositoryTests
     }
 
     /** @test */
-    function it_finds_news_items_by_their_link()
+    public function it_finds_news_items_by_their_link() : void
     {
         $fakeNews = $this->fakeNews(10);
 
@@ -65,7 +60,7 @@ trait RepositoryTests
     }
 
     /** @test */
-    function it_fails_when_looking_for_news_that_does_not_exist()
+    public function it_fails_when_looking_for_news_that_does_not_exist() : void
     {
         $this->setupNews([]);
         $this->expectException(CouldNotFindNews::class);
@@ -74,7 +69,7 @@ trait RepositoryTests
     }
 
     /** @test */
-    function it_finds_all_news_if_no_criteria_is_given()
+    public function it_finds_all_news_if_no_criteria_is_given() : void
     {
         $fakeNews = $this->fakeNews(10);
 
@@ -84,7 +79,7 @@ trait RepositoryTests
     }
 
     /** @test */
-    function it_finds_news_belonging_to_search_criteria()
+    public function it_finds_news_belonging_to_search_criteria() : void
     {
         $fakeNews = $this->fakeNews(10);
 
@@ -105,7 +100,10 @@ trait RepositoryTests
         $publishedAt =$fakeNews[0]->publicationDate();
 
         // return;
-        $period = new Period($publishedAt, $publishedAt);
+        $period = new Period(
+            $publishedAt,
+            $publishedAt->add(new \DateInterval('PT1S'))
+        );
         $this->assertNewsFound(
             [$fakeNews[0]],
             $this->news->search($period, null, null),
@@ -114,7 +112,7 @@ trait RepositoryTests
     }
 
     /** @test */
-    function it_finds_news_in_a_given_period()
+    public function it_finds_news_in_a_given_period() : void
     {
         $fakeNews = $this->fakeNews(10);
         $this->setupNews($fakeNews);
@@ -136,7 +134,7 @@ trait RepositoryTests
     }
 
     /** @test */
-    function it_sorts_news_when_searching_for_news()
+    public function it_sorts_news_when_searching_for_news() : void
     {
         $fakeNews = $this->fakeNews(10);
         $this->setupNews($fakeNews);
@@ -153,6 +151,11 @@ trait RepositoryTests
         );
     }
 
+    /**
+     * Setup the repository with the given news
+     */
+    abstract protected function setupNews(array $news = []);
+
     private function fakeNews(int $amount = 1) : array
     {
         $faker = Factory::create();
@@ -166,7 +169,7 @@ trait RepositoryTests
         )->values()->toArray();
     }
 
-    private function assertNewsFound(array $expected, array $actual, string $reason = "Not all expected news items were found")
+    private function assertNewsFound(array $expected, array $actual, string $reason = "Not all expected news items were found") : void
     {
         $contains = collect($expected)->filter(function ($news) use ($actual) {
             return collect($actual)->contains($news);

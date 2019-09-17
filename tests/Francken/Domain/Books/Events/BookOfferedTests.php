@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Books;
 
-use Francken\Tests\Domain\EventTestCase as Testcase;
-
-use Francken\Domain\Members\MemberId;
 use Francken\Domain\Books\BookId;
 
 use Francken\Domain\Books\Events\BookOffered;
+use Francken\Domain\Members\MemberId;
 
-class BookEventTest extends Testcase
+use Francken\Tests\Domain\EventTestCase as Testcase;
+
+class BookOfferedTests extends Testcase
 {
-
     /** @test */
-    public function an_event_holds_data()
+    public function an_event_holds_data() : void
     {
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();

@@ -14,7 +14,7 @@ class CommitteeEmailChangedTest extends TestCase
     /**
      * @test
      */
-    public function it_holds_an_email_adress()
+    public function it_holds_an_email_adress() : void
     {
         $id = CommitteeId::generate();
         $event = new CommitteeEmailChanged($id, new Email("scriptcie@professorfrancken.nl"));
@@ -26,13 +26,13 @@ class CommitteeEmailChangedTest extends TestCase
     /**
      * @test
      */
-    public function it_an_email_can_be_empty()
+    public function it_an_email_can_be_empty() : void
     {
         $id = CommitteeId::generate();
         $event = new CommitteeEmailChanged($id, null);
 
         $this->assertEquals($id, $event->committeeId());
-        $this->assertEquals(null, $event->email());
+        $this->assertNull($event->email());
     }
 
     protected function createInstance()

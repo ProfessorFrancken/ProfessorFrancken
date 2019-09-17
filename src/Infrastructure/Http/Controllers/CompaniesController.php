@@ -23,7 +23,11 @@ final class CompaniesController
     public function index()
     {
         return view('career.companies.index')
-            ->with('companies', $this->companies->profiles());
+            ->with('companies', $this->companies->profiles())
+            ->with('breadcrumbs', [
+                ['url' => '/career', 'text' => 'Career'],
+                ['url' => '/career/companies', 'text' => 'Company profiles'],
+            ]);
     }
 
     public function show($slug)
@@ -38,6 +42,11 @@ final class CompaniesController
             ->with('company', $company)
             ->with('jobs', $jobs)
             ->with('sectors', Sector::SECTORS)
-            ->with('types', JobType::TYPES);
+            ->with('types', JobType::TYPES)
+            ->with('breadcrumbs', [
+                ['url' => '/career', 'text' => 'Career'],
+                ['url' => '/career/companies', 'text' => 'Company profiles'],
+                ['text' => $company['name']],
+            ]);
     }
 }

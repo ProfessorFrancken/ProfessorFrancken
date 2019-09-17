@@ -4,30 +4,25 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Activities;
 
-use Broadway\EventSourcing\Testing\AggregateRootScenarioTestCase;
+use DateTimeImmutable;
 use Francken\Domain\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Location;
-use Francken\Domain\Activities\Schedule;
-use Francken\Domain\Activities\InvalidActivity;
-use Francken\Domain\Activities\Events\ActivityPlanned;
-use Francken\Domain\Activities\Events\ActivityPublished;
 use Francken\Domain\Activities\Events\ActivityCancelled;
 use Francken\Domain\Activities\Events\ActivityCategorized;
+use Francken\Domain\Activities\Events\ActivityPlanned;
+use Francken\Domain\Activities\Events\ActivityPublished;
 use Francken\Domain\Activities\Events\ActivityRescheduled;
 use Francken\Domain\Activities\Events\MemberRegisteredToParticipate;
+use Francken\Domain\Activities\InvalidActivity;
+use Francken\Domain\Activities\Location;
+use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Members\MemberId;
-use DateTimeImmutable;
+use Francken\Tests\AggregateRootScenarioTestCase;
 
-class ActivitiesTest extends AggregateRootScenarioTestCase
+class ActivityTest extends AggregateRootScenarioTestCase
 {
-    protected function getAggregateRootClass()
-    {
-        return Activity::class;
-    }
-
     /** @test */
-    public function an_activity_can_be_planned()
+    public function an_activity_can_be_planned() : void
     {
         $id = ActivityId::generate();
 
@@ -46,7 +41,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function once_an_activity_has_been_planned_it_can_be_published()
+    public function once_an_activity_has_been_planned_it_can_be_published() : void
     {
         $id = ActivityId::generate();
 
@@ -63,7 +58,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $id = ActivityId::generate();
 
         return $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id)
@@ -77,7 +72,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function a_draft_activity_cant_be_cancelled()
+    public function a_draft_activity_cant_be_cancelled() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -97,7 +92,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
         $id = ActivityId::generate();
 
         return $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id)
@@ -110,7 +105,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function a_cancelled_activity_cant_be_cancelled_again()
+    public function a_cancelled_activity_cant_be_cancelled_again() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -124,7 +119,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function an_activity_can_be_recategorized()
+    public function an_activity_can_be_recategorized() : void
     {
         $id = ActivityId::generate();
 
@@ -140,7 +135,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function an_activity_can_only_be_categorized_into_valid_categories()
+    public function an_activity_can_only_be_categorized_into_valid_categories() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -152,12 +147,12 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function recategorizing_an_activity_is_idempotent()
+    public function recategorizing_an_activity_is_idempotent() : void
     {
         $id = ActivityId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id, [
                     'category' => Activity::EDUCATION
@@ -169,7 +164,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
             ->then([]);
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityCategorized($id, Activity::EDUCATION)
@@ -183,7 +178,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function a_member_cant_register_to_participate_in_activity_that_isnt_published()
+    public function a_member_cant_register_to_participate_in_activity_that_isnt_published() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -196,13 +191,13 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function a_member_can_register_to_participate_in_a_published_activity()
+    public function a_member_can_register_to_participate_in_a_published_activity() : void
     {
         $id = ActivityId::generate();
         $memberId = MemberId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id)
@@ -214,13 +209,13 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function registering_a_member_is_idempotent()
+    public function registering_a_member_is_idempotent() : void
     {
         $id = ActivityId::generate();
         $memberId = MemberId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityPublished($id),
@@ -233,12 +228,12 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function rescheduling_an_activity()
+    public function rescheduling_an_activity() : void
     {
         $id = ActivityId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
             ])
@@ -262,12 +257,12 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function an_activity_isnt_rescheduled_when_the_same_period_is_given()
+    public function an_activity_isnt_rescheduled_when_the_same_period_is_given() : void
     {
         $id = ActivityId::generate();
 
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id, [
                     'schedule' => Schedule::forPeriod(
@@ -289,7 +284,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
 
         // It should also be idempotent when repeatedly rescheduling an activity
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id),
                 new ActivityRescheduled(
@@ -311,10 +306,15 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
             ->then([]);
     }
 
+    protected function getAggregateRootClass() : string
+    {
+        return Activity::class;
+    }
+
     private function givenAPlannedActivity(ActivityId $id)
     {
         return $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId((string)(string)$id)
             ->given([
                 $this->socialActivityWasPlanned($id)
             ]);

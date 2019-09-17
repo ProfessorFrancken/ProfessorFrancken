@@ -14,7 +14,7 @@
             </div>
 
             <div class="agenda-item__body">
-                <a href="https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics">
+                <a href="{{ action([\Francken\Association\Activities\Http\IcalController::class, 'index']) }}">
                     <h5 class="agenda-item__header">Download our ical</h5>
                     <p class="agenda-item__description">
                         Upload our agenda to your own by downloading our ical

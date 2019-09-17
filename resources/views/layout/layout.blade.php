@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -8,44 +8,39 @@
         @include('layout._seo')
 
         @unless(config('env') == 'testing')
-            @if (request()->exists('red'))
-                <link rel="stylesheet" href="{{ mix('/dist/css/red.css') }}">
-            @elseif (request()->exists('slef'))
-                <link rel="stylesheet" href="{{ mix('/dist/css/slef.css') }}">
-            @else
-                <link rel="stylesheet" href="{{ mix('/dist/css/app.css') }}">
-            @endif
+            <link rel="stylesheet" href="{{ mix('/dist/css/app.css') }}">
         @endunless
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        @stack('styles')
 
         @include('layout._favicon')
     </head>
-    <body>
-        <main>
-            @include('layout._header')
-
-            @yield('main-content')
-
+    <body class="h-100">
+        <main class="d-flex flex-column justify-content-between h-100">
+            <div>
+                @include('layout._header')
+                @yield('main-content')
+            </div>
             @include("layout._footer")
         </main>
 
         @include('layout._login-modal')
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         @if (Auth::guest())
         <script src="/js/LoginModal.js"></script>
         @endif
+
         <script src="/js/Menu.js"></script>
 
-        <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-        <script src="https://use.fontawesome.com/releases/v5.0.9/js/v4-shims.js" integrity="sha384-9f5gaI9TkuYhi5O/inzfdOXx2nkIhDsLtXqBNmtY6/c5PoqXfd0U2DAjqQVSCXQh" crossorigin="anonymous"></script>
-
         <script type="text/javascript">
-
          // Render  any latex currently loaded in our dom
          document.addEventListener("DOMContentLoaded", function() {
              renderMathInElement(document.body, {
@@ -60,15 +55,6 @@
          });
 
          @if (config('francken.general.google-analytics'))
-         // UserReport (gather feedback)
-         window._urq = window._urq || [];
-         _urq.push(['initSite', '42efd18f-c4ef-4ad5-a1d8-a430d3f8ef0f']);
-         (function() {
-             var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
-             ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
-         })();
-
          // Google Analytics
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -80,5 +66,6 @@
          @endif
         </script>
 
+        @stack('scripts')
     </body>
 </html>

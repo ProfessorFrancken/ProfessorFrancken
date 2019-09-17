@@ -7,20 +7,19 @@ namespace Francken\Tests\Application\Members\Registration;
 use DateTimeImmutable;
 use Francken\Application\Members\Registration\RequestStatus;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
-use PHPUnit\Framework\TestCase as TestCase;
 use Francken\Tests\Application\ReadModelTestCase;
 
 class RequestStatusTest extends ReadModelTestCase
 {
     /** @test */
-    function a_status_is_incomplete_if_information_is_missing()
+    public function a_status_is_incomplete_if_information_is_missing() : void
     {
         $id = RegistrationRequestId::generate();
         $status = new RequestStatus(
             $id,
             'Mark Redeman',
             true, true, true, false,
-            new DateTimeImmutable
+            new DateTimeImmutable()
         );
 
         $this->assertEquals($id, $status->id());
@@ -33,14 +32,14 @@ class RequestStatusTest extends ReadModelTestCase
     }
 
     /** @test */
-    function the_status_can_be_complete()
+    public function the_status_can_be_complete() : void
     {
         $id = RegistrationRequestId::generate();
         $status = new RequestStatus(
             $id,
             'Mark Redeman',
             true, true, true, true,
-            new DateTimeImmutable
+            new DateTimeImmutable()
         );
 
         $this->assertTrue($status->complete());
@@ -52,7 +51,7 @@ class RequestStatusTest extends ReadModelTestCase
             RegistrationRequestId::generate(),
             'Mark Redeman',
             true, true, true, false,
-            new DateTimeImmutable
+            new DateTimeImmutable()
         );
     }
 }

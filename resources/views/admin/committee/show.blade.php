@@ -1,11 +1,10 @@
 @extends('admin.layout')
+@section('page-title', 'Committees / ' . $committee->name())
 
 @section('content')
-  <h1 class="page-header">{{ $committee->name() }}</h1>
-
   <h3>General info</h3>
 
-  {!! Form::open(['url' => url('admin/association/committee', (string)$committee->committeeId()), 'method' => 'PUT']) !!}
+  {!! Form::open(['url' => url('admin/association/committees', (string)$committee->committeeId()), 'method' => 'PUT']) !!}
 
     <div class="form-group">
       {!! Form::label('name', 'Name:', ['class' => 'control-label']) !!}
@@ -51,7 +50,7 @@
       <td>{{ $member['first_name'] }}</td>
       <td>{{ $member['last_name'] }}</td>
       <td>
-        <form action="{{ url('admin/association/committee/' . (string)$committee->committeeId() . '/member/' . $member['id']) }}" method="POST">
+        <form action="{{ url('admin/association/committees/' . (string)$committee->committeeId() . '/member/' . $member['id']) }}" method="POST">
           {!! csrf_field() !!}
           {{ method_field('DELETE') }}
 
@@ -65,7 +64,7 @@
   <h4>Add members</h4>
   <table class="table table-hover">
     <tr>
-      <form id="searchForm" action="{{ url('admin/association/committee/search-member') }}" method="POST" target="searchResults">
+      <form id="searchForm" action="{{ url('admin/association/committees/search-member') }}" method="POST" target="searchResults">
         {!! csrf_field() !!}
         <th><input type="text" class="form-control" name="first_name" placeholder="first name"></th>
         <th><input type="text" class="form-control" name="last_name" placeholder="last name"></th>
@@ -79,7 +78,7 @@
         <td>{{ $result->first_name }}</td>
         <td>{{ $result->last_name }}</td>
         <td>
-          <form action="{{ url('admin/association/committee/' . (string)$committee->committeeId() . '/member/' . $result->id) }}" method="POST">
+          <form action="{{ url('admin/association/committees/' . (string)$committee->committeeId() . '/member/' . $result->id) }}" method="POST">
             {!! csrf_field() !!}
 
             <button class="btn btn-default" name="add-member"><span class="glyphicon glyphicon-plus"></span></button>

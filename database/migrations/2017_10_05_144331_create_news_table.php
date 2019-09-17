@@ -29,20 +29,6 @@ class CreateNewsTable extends Migration
             $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });
-
-        Schema::create('published_news', function (Blueprint $table) {
-            $table->increments('id');
-
-            $table->string('title');
-            $table->text('exerpt');
-            $table->string('slug');
-            $table->text('contents');
-            $table->string('author_name');
-            $table->string('author_photo');
-
-            $table->dateTime('published_at');
-        });
-
     }
 
     /**
@@ -53,6 +39,5 @@ class CreateNewsTable extends Migration
     public function down()
     {
         Schema::drop('news');
-        Schema::drop('published_news');
     }
 }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\EventSourcing;
 
+use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
-use Broadway\Domain\DateTime;
 use Broadway\EventStore\EventStore;
 use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Serializer\Serializer;
@@ -14,7 +14,6 @@ use Illuminate\Database\ConnectionInterface as Connection;
 
 final class IlluminateEventStore implements EventStore
 {
-
     /**
      * @var Connection
      */
@@ -32,10 +31,6 @@ final class IlluminateEventStore implements EventStore
 
     /**
      * Construct the dependancies
-     *
-     * @param \Illuminate\Database\DatabaseManager $databaseManager
-     * @param Serializer $serializer
-     * @param string $eventStoreTable
      */
     public function __construct(
         Connection $connection,
@@ -50,11 +45,11 @@ final class IlluminateEventStore implements EventStore
     /**
      * {@inheritdoc}
      */
-    public function load($id)
+    public function load($id) : DomainEventStream
     {
         $events = $this->loadEvents($id);
 
-        if (! $events) {
+        if ( ! $events) {
             throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
         }
 
@@ -68,11 +63,11 @@ final class IlluminateEventStore implements EventStore
     /**
      * {@inheritdoc}
      */
-    public function loadFromPlayhead($id, $playhead)
+    public function loadFromPlayhead($id, $playhead) : DomainEventStream
     {
         $events = $this->loadEvents($id, $playhead);
 
-        if (! $events) {
+        if ( ! $events) {
             throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
         }
 
@@ -86,7 +81,7 @@ final class IlluminateEventStore implements EventStore
     /**
      * {@inheritdoc}
      */
-    public function append($id, DomainEventStream $eventStream)
+    public function append($id, DomainEventStream $eventStream) : void
     {
         $this->connection->beginTransaction();
 
@@ -120,7 +115,6 @@ final class IlluminateEventStore implements EventStore
      *
      * @author Dennis Schepers
      *
-     * @param $row
      *
      * @return \Broadway\Domain\DomainMessage
      */
@@ -138,7 +132,7 @@ final class IlluminateEventStore implements EventStore
     /**
      * Appends an event to the event store
      */
-    private function appendEvent(DomainMessage $event)
+    private function appendEvent(DomainMessage $event) : void
     {
         $this->connection->table($this->table)->insert([
             'uuid'        => (string) $event->getId(),

@@ -6,7 +6,7 @@ namespace Francken\Features\Repositories;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Francken\Domain\Serializable;
 
 final class TestReadModel implements ReadModelInterface, SerializableInterface
 {
@@ -16,16 +16,16 @@ final class TestReadModel implements ReadModelInterface, SerializableInterface
     private $first;
     private $second;
 
-    public static function create(string $id, string $first, string $second) : TestReadModel
+    public static function create(string $id, string $first, string $second) : self
     {
-        $instance = new self;
+        $instance = new self();
         $instance->id = $id;
         $instance->first = $first;
         $instance->second = $second;
         return $instance;
     }
 
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }

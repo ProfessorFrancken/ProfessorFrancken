@@ -22,19 +22,14 @@ final class CommitteeRepository
         $this->repo = $repo;
     }
 
-    /**
-     * @param CommitteeId $committeeId
-     * @return Committee
-     */
+    
     public function load(CommitteeId $committeeId) : Committee
     {
-return $this->repo->load((string)$committeeId);
+        return $this->repo->load((string)$committeeId);
     }
 
-    /**
-     * @param Committee $committee
-     */
-    public function save(Committee $committee)
+    
+    public function save(Committee $committee) : void
     {
         $this->repo->save($committee);
     }

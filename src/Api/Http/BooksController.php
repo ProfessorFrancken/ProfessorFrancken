@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Api\Http;
 
-use DateTimeImmutable;
-use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\AvailableBook;
+use Francken\Application\Books\AvailableBooksRepository;
 
 final class BooksController
 {

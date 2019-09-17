@@ -7,19 +7,19 @@ $secondary-color: #9edad3 !default;
 $secondary-color-dark: #7ebcb5 !default;
 
 $blue: $primary-color; // override
-$red: $secondary-color; // override
+// $red: $secondary-color; // override
 
 $brand-primary: $blue !default;
 
-$francken-red: #E63C39;
-$brand-danger: $francken-red !default;
+$francken-red: #e63c39;
+// $brand-danger: $francken-red !default;
 
 // Body
 $body-color: #001744;
 $body-color: #001841;
 $body-color: #666;
-$body-bg: #FAFAFA;
-$footer-bg: #E8E8E8;
+$body-bg: #fafafa;
+$footer-bg: #e8e8e8;
 
 $headings-color: $primary-color;
 
@@ -27,24 +27,25 @@ $headings-color: $primary-color;
 $link-color: $primary-color !default;
 
 // Fonts
-$font-family-sans-serif: 'PT Sans', sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-sans-serif: "PT Sans", sans-serif, -apple-system, system-ui,
+  BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $font-family-base: $font-family-sans-serif !default;
 
 // Headings
-$headings-font-family: 'Signika', sans-serif !default;
+$headings-font-family: "Signika", sans-serif !default;
 
 // Buttons
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: $btn-primary-bg !default;
 
-$btn-danger-bg: $brand-danger !default;
-$btn-danger-border: $btn-danger-bg !default;
+// $btn-danger-bg: $brand-danger !default;
+// $btn-danger-border: $btn-danger-bg !default;
 
 $btn-font-weight: bold;
 
 // Navigation
 $menu-navigation-font: $headings-font-family;
-$sub-menu-navigation-font: '';
+$sub-menu-navigation-font: "";
 
 // Homepage
 
@@ -53,4 +54,4 @@ $news-background: $primary-color;
 $news-color: $secondary-color;
 $news-title-color: white;
 
-$cta-image: '/images/boards/he_watt.jpg';
+$cta-image: "/images/boards/he_watt.jpg";

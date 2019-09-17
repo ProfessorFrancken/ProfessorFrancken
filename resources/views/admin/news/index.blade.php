@@ -1,15 +1,14 @@
 @extends('admin.layout')
+@section('page-title', 'News')
+@php
+use Francken\Association\News\Http\AdminNewsController;
+@endphp
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
-
-                    <h1 class="section-header">
-                        News
-                    </h1>
-
                     <p>
                         Here you can add news, which can be a blog, information from the association, advertisement or perhaps something else which I haven't thought about yet...
                     </p>
@@ -53,13 +52,6 @@
 
         </div>
         <div class="col-lg-4">
-
-            <a class="btn btn-lg btn-block btn-success mb-4" href="/admin/association/news/create">
-                <i class="fa fa-plus mr-1" aria-hidden="true"></i>
-                Write a new news post
-            </a>
-
-
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title section-header agenda-header">
@@ -133,7 +125,7 @@
                         </td>
                         <td>
                             <a class="btn btn-text text-success" href="#">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <i class="fa fa-edit" aria-hidden="true"></i>
                                 Edit
                             </a>
                         </td>
@@ -150,7 +142,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-text text-success" href="#">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
                                     Edit
                                 </a>
                             </td>
@@ -168,7 +160,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-text text-success" href="#">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
                                     Edit
                                 </a>
                             </td>
@@ -185,7 +177,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-text text-success" href="#">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
                                     Edit
                                 </a>
                             </td>
@@ -208,5 +200,17 @@
 
             --}}
         </div>
+    </div>
+@endsection
+
+@section('actions')
+    <div class="d-flex align-items-end">
+        <a
+            class="btn btn-primary"
+            href="{{ action([AdminNewsController::class, 'create']) }}"
+        >
+            <i class="fa fa-plus mr-1" aria-hidden="true"></i>
+            Write a new news post
+        </a>
     </div>
 @endsection

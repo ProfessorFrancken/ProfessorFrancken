@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'name' => "T.F.V. 'Professor Francken'",
 
     /*
     |--------------------------------------------------------------------------
@@ -40,6 +44,8 @@ return [
     */
 
     'url' => env('APP_URL', 'https://professorfrancken.nl'),
+
+    'asset_url' => env('ASSET_URL', 'https://professorfrancken.nl/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,6 +129,7 @@ return [
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
+        Illuminate\Notifications\NotificationServiceProvider::class,
         Illuminate\Pagination\PaginationServiceProvider::class,
         Illuminate\Pipeline\PipelineServiceProvider::class,
         Illuminate\Queue\QueueServiceProvider::class,
@@ -138,25 +145,35 @@ return [
         /*
          * Application Service Providers...
          */
-        Francken\Infrastructure\AppServiceProvider::class,
-        Francken\Infrastructure\NavigationServiceProvider::class,
-        Francken\Infrastructure\EventSourcing\EventSourcingServiceProvider::class,
-        Francken\Infrastructure\Books\BooksServiceProvider::class,
-        Francken\Infrastructure\CareerServiceProvider::class,
-        Francken\Infrastructure\ViewServiceProvider::class,
+        Francken\Shared\Providers\AppServiceProvider::class,
+        Francken\Shared\Providers\NavigationServiceProvider::class,
+        Francken\Shared\Providers\EventSourcingServiceProvider::class,
+        Francken\Shared\Providers\BooksServiceProvider::class,
+        Francken\Shared\Providers\CareerServiceProvider::class,
+        Francken\Shared\Providers\ViewServiceProvider::class,
 
         Francken\Association\News\ServiceProvider::class,
         Francken\Association\Activities\ServiceProvider::class,
+        Francken\Association\Members\ServiceProvider::class,
+        Francken\Association\Photos\PhotosServiceProvider::class,
+        Francken\Association\Symposium\ServiceProvider::class,
 
-        Francken\PlusOne\ServiceProvider::class,
-        Francken\Infrastructure\RouteServiceProvider::class,
+        Francken\Auth\ServiceProvider::class,
+
+        Francken\Shared\Providers\RouteServiceProvider::class,
 
         /*
          * Third Party Service Providers
          */
+        Francken\Shared\Providers\TelescopeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        BladeSvg\BladeSvgServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         // Fideloper\Proxy\TrustedProxyServiceProvider::class,
+        Plank\Mediable\MediableServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Facade\Ignition\IgnitionServiceProvider::class,
     ],
 
     /*
@@ -173,6 +190,7 @@ return [
     'aliases' => [
 
         'App'       => Illuminate\Support\Facades\App::class,
+        'Arr' => Illuminate\Support\Arr::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
         'Blade'     => Illuminate\Support\Facades\Blade::class,
@@ -184,7 +202,6 @@ return [
         'Eloquent'  => Illuminate\Database\Eloquent\Model::class,
         'Event'     => Illuminate\Support\Facades\Event::class,
         'File'      => Illuminate\Support\Facades\File::class,
-        'Form'      => Collective\Html\FormFacade::class,
         'Gate'      => Illuminate\Support\Facades\Gate::class,
         'Hash'      => Illuminate\Support\Facades\Hash::class,
         'Html'      => Collective\Html\HtmlFacade::class,
@@ -192,6 +209,7 @@ return [
         'Log'       => Illuminate\Support\Facades\Log::class,
         'Mail'      => Illuminate\Support\Facades\Mail::class,
         'Password'  => Illuminate\Support\Facades\Password::class,
+        'Notification' => Illuminate\Support\Facades\Notification::class,
         'Queue'     => Illuminate\Support\Facades\Queue::class,
         'Redirect'  => Illuminate\Support\Facades\Redirect::class,
         'Redis'     => Illuminate\Support\Facades\Redis::class,
@@ -201,12 +219,12 @@ return [
         'Schema'    => Illuminate\Support\Facades\Schema::class,
         'Session'   => Illuminate\Support\Facades\Session::class,
         'Storage'   => Illuminate\Support\Facades\Storage::class,
+        'Str' => Illuminate\Support\Str::class,
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Form'      => Collective\Html\FormFacade::class,
-
     ],
 
 ];

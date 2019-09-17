@@ -7,10 +7,9 @@ namespace Francken\Association\News\Http;
 use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\News\Author;
-use Francken\Association\News\NewsContentCompiler;
-use Francken\Association\News\CompiledMarkdown;
-use Francken\Association\News\NewsItem;
 use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\NewsContentCompiler;
+use Francken\Association\News\NewsItem;
 use Francken\Association\News\Repository as NewsRepository;
 use Illuminate\Http\Request;
 use League\Period\Period;
@@ -40,14 +39,21 @@ final class AdminNewsController
 
         return view('admin.news.index', [
             'news' => $news,
-            'drafts' => $drafts
+            'drafts' => $drafts,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'News'],
+            ]
         ]);
     }
 
     public function create()
     {
         return view('admin.news.create', [
-            'news' => NewsItem::empty()
+            'news' => NewsItem::empty(),
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'News'],
+                ['url' => action([static::class, 'create']), 'text' => 'Create'],
+            ]
         ]);
     }
 
@@ -63,7 +69,7 @@ final class AdminNewsController
         $news->changeTitle($req->input('title'));
 
         $news->changeContents(
-            (new NewsContentCompiler)->content($req->input('content'))
+            (new NewsContentCompiler())->content($req->input('content'))
         );
         $news->changeExerpt($req->input('exerpt'));
 
@@ -77,7 +83,11 @@ final class AdminNewsController
         $news = $this->news->byLink($link);
 
         return view('admin.news.show', [
-            'news' => $news
+            'news' => $news,
+            'breadcrumbs' => [
+                ['url' => action([static::class, 'index']), 'text' => 'News'],
+                ['url' => action([static::class, 'show'], $news->id()), 'text' => $news->title()],
+            ]
         ]);
     }
 
@@ -117,7 +127,7 @@ final class AdminNewsController
         $news->changeTitle($req->input('title'));
 
         $news->changeContents(
-            (new NewsContentCompiler)->content($req->input('content'))
+            (new NewsContentCompiler())->content($req->input('content'))
         );
         $news->changeExerpt($req->input('exerpt'));
 
@@ -126,7 +136,7 @@ final class AdminNewsController
         return redirect('/admin' . $news->toNewsItem()->url());
     }
 
-    public function  publish(Request $req, $link)
+    public function publish(Request $req, $link)
     {
         $news = News::byLink($link)->firstOrFail();
         $publishAt = new \DateTimeImmutable($req->input('publish-at'));

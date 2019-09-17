@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\ReadModel\MemberList;
 
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Members\MemberId;
+use Francken\Domain\Serializable;
 
 final class MemberList implements ReadModelInterface, SerializableInterface
 {
@@ -22,7 +24,7 @@ final class MemberList implements ReadModelInterface, SerializableInterface
         $this->last_name = $lastName;
     }
 
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }

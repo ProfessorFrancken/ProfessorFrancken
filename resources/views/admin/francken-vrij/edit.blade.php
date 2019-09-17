@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('page-title', 'Francken Vrij / ' . $edition->title())
 
 @section('content')
     <div class="card my-3">
@@ -32,7 +33,16 @@
                 You may optionally reupload the Francken Vrij Pdf
             </p>
             {!! Form::label('pdf', 'Francken Vrij PDF', ['class' => 'control-label']) !!}
-            {!! Form::file('pdf') !!}
+            {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
+        </div>
+
+        <div class="form-group">
+            <p>
+                You may optionally reupload the cover image.
+                The cover image should have a size of 175x245 pixels.
+            </p>
+            {!! Form::label('cover', 'Cover', ['class' => 'control-label']) !!}
+            {!! Form::file('cover', ['class' => 'form-control-file']) !!}
         </div>
 
         {!! Form::submit('Update', ['class' => 'btn btn-outline-success']) !!}

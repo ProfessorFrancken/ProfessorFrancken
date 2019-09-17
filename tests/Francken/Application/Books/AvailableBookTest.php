@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Books;
 
-use Francken\Tests\Application\ReadModelTestCase;
 use Francken\Application\Books\AvailableBook;
 use Francken\Domain\Books\BookId;
+use Francken\Tests\Application\ReadModelTestCase;
 
 class AvailableBookTest extends ReadModelTestCase
 {
     /** @test */
-    function a_book_has_a_title_and_authors()
+    public function a_book_has_a_title_and_authors() : void
     {
         $id = BookId::generate();
 

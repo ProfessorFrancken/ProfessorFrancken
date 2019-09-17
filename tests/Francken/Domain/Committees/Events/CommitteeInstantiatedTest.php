@@ -13,7 +13,7 @@ class CommitteeInstantiatedTest extends TestCase
     /**
      * @test
      */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $id = CommitteeId::generate();
         $event = new CommitteeInstantiated($id, 'name', 'goal');

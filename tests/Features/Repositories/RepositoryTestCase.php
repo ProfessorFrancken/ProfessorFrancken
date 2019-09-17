@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Francken\Features\Repositories;
 
-use BroadwaySerialization\Hydration\HydrateUsingReflection;
-use BroadwaySerialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
-use BroadwaySerialization\Reconstitution\Reconstitution;
 use Doctrine\Instantiator\Instantiator;
 use Francken\Application\ReadModelNotFound;
 use Francken\Application\ReadModelRepository;
+use Francken\Shared\Serialization\Hydration\HydrateUsingReflection;
+use Francken\Shared\Serialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use Francken\Shared\Serialization\Reconstitution\Reconstitution;
 use PHPUnit\Framework\TestCase as TestCase;
 
 abstract class RepositoryTestCase extends TestCase
 {
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 
@@ -28,7 +28,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function it_saves_and_finds_a_model()
+    public function it_saves_and_finds_a_model() : void
     {
         $repo = $this->createRepository();
 
@@ -40,7 +40,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    function it_cant_find_nonexisting_models()
+    public function it_cant_find_nonexisting_models() : void
     {
         $this->expectException(ReadModelNotFound::class);
 
@@ -52,7 +52,7 @@ abstract class RepositoryTestCase extends TestCase
      * @group hoi
      * @test
      */
-    public function it_finds_by_fields()
+    public function it_finds_by_fields() : void
     {
         $repo = $this->createRepository();
 
@@ -71,7 +71,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    function looking_for_fields_that_dont_exist_will_have_no_result()
+    public function looking_for_fields_that_dont_exist_will_have_no_result() : void
     {
         $repo = $this->createRepository();
 
@@ -92,7 +92,7 @@ abstract class RepositoryTestCase extends TestCase
 
 
     /** @test */
-    public function it_returns_nothing_when_no_fields_are_set()
+    public function it_returns_nothing_when_no_fields_are_set() : void
     {
         $repo = $this->createRepository();
 
@@ -104,7 +104,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function it_finds_all()
+    public function it_finds_all() : void
     {
         $repo = $this->createRepository();
 
@@ -114,15 +114,14 @@ abstract class RepositoryTestCase extends TestCase
         $repo->save($model1);
         $repo->save($model2);
 
-        $this->assertEquals(
+        $this->assertEqualsCanonicalizing(
             [$model1, $model2],
-            $repo->findAll(),
-            '', 0.0, 10, true // canonical order
+            $repo->findAll()
         );
     }
 
     /** @test */
-    public function it_finds_existing_ids()
+    public function it_finds_existing_ids() : void
     {
         $repo = $this->createRepository();
 
@@ -144,15 +143,14 @@ abstract class RepositoryTestCase extends TestCase
         );
 
         // Both exist
-        $this->assertEquals(
+        $this->assertEqualsCanonicalizing(
             [$model1, $model3],
-            $repo->findByIds(['42', '44']),
-            '', 0.0, 10, true // canonical order
+            $repo->findByIds(['42', '44'])
         );
     }
 
     /** @test */
-    public function it_removes_models()
+    public function it_removes_models() : void
     {
         $repo = $this->createRepository();
 
@@ -166,7 +164,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function removing_unknown_models_is_done_without_throwing()
+    public function removing_unknown_models_is_done_without_throwing() : void
     {
         $repo = $this->createRepository();
         $model = $this->createReadModel('42', 'First', 'Second');
@@ -180,7 +178,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function it_removes_by_fields_only_if_they_are_provided()
+    public function it_removes_by_fields_only_if_they_are_provided() : void
     {
         $repo = $this->createRepository();
 
@@ -194,10 +192,9 @@ abstract class RepositoryTestCase extends TestCase
 
         // Remove nothing if nothing is provided
         $repo->removeBy([]);
-        $this->assertEquals(
+        $this->assertEqualsCanonicalizing(
             [$model1, $model2, $model3],
-            $repo->findAll(),
-            '', 0.0, 10, true // canonical order
+            $repo->findAll()
         );
 
         // Removes the second model only
@@ -206,19 +203,14 @@ abstract class RepositoryTestCase extends TestCase
             'second' => 'Hello',
         ]);
 
-        $this->assertEquals(
+        $this->assertEqualsCanonicalizing(
             [$model1, $model3],
-            $repo->findAll(),
-            '', 0.0, 10, true // canonical order
+            $repo->findAll()
         );
     }
 
     /**
      * Return an instance of a read model
-     * @param string $id
-     * @param string $first
-     * @param string $second
-     * @return TestReadModel
      */
     protected function createReadModel(string $id, string $first, string $second) : TestReadModel
     {
@@ -227,7 +219,6 @@ abstract class RepositoryTestCase extends TestCase
 
     /**
      * Provide an instance of the repository that must be tested
-     * @return ReadModelRepository
      */
     abstract protected function createRepository() : ReadModelRepository;
 }

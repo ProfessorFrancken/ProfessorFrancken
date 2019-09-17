@@ -13,7 +13,7 @@ class CommitteeNameChangedTest extends TestCase
     /**
      * @test
      */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $id = CommitteeId::generate();
         $event = new CommitteeNameChanged($id, 'S[ck]rip(t|t?c)ie 2');

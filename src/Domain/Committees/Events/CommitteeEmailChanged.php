@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Committees\Events;
 
+use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Members\Email;
-use Broadway\Serializer\Serializable as SerializableInterface;
-use BroadwaySerialization\Serialization\AutoSerializable as Serializable;
+use Francken\Domain\Serializable;
 
 final class CommitteeEmailChanged implements SerializableInterface
 {

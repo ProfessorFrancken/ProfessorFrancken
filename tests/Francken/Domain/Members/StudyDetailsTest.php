@@ -14,7 +14,7 @@ class StudyDetailsTest extends \PHPUnit\Framework\TestCase
     use SetupReconstitution;
 
     /** @test */
-    public function it_is_constructed_with_study_details()
+    public function it_is_constructed_with_study_details() : void
     {
         $studyDetails = new StudyDetails(
             's2218356',
@@ -37,7 +37,7 @@ class StudyDetailsTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $studyDetails = new StudyDetails(
             's2218356',

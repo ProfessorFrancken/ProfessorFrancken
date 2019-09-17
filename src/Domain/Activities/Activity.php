@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Activities;
 
-use DateTimeImmutable;
 use Francken\Domain\Activities\Events\ActivityCancelled;
 use Francken\Domain\Activities\Events\ActivityCategorized;
 use Francken\Domain\Activities\Events\ActivityPlanned;
@@ -16,15 +15,15 @@ use Francken\Domain\Members\MemberId;
 
 final class Activity extends AggregateRoot
 {
+    public const SOCIAL = 'social';
+    public const CAREER = 'career';
+    public const EDUCATION = 'education';
+
     private $id;
     private $published = false;
     private $category;
     private $schedule;
     private $members = [];
-
-    const SOCIAL = 'social';
-    const CAREER = 'career';
-    const EDUCATION = 'education';
 
     public static function plan(
         ActivityId $id,
@@ -34,14 +33,14 @@ final class Activity extends AggregateRoot
         Location $location,
         $type
     ) {
-        $activity = new Activity;
+        $activity = new self();
 
         $activity->apply(new ActivityPlanned($id, $name, $description, $schedule, $location, $type));
 
         return $activity;
     }
 
-    public function publish()
+    public function publish() : void
     {
         if ($this->published) {
             throw InvalidActivity::alreadyPublished();
@@ -50,16 +49,16 @@ final class Activity extends AggregateRoot
         $this->apply(new ActivityPublished($this->id));
     }
 
-    public function cancel()
+    public function cancel() : void
     {
-        if (! $this->published) {
+        if ( ! $this->published) {
             throw InvalidActivity::cantCancelADraft();
         }
 
         $this->apply(new ActivityCancelled($this->id));
     }
 
-    public function recategorize($category)
+    public function recategorize($category) : void
     {
         $this->assertCategoryIsValid($category);
 
@@ -70,7 +69,7 @@ final class Activity extends AggregateRoot
         $this->apply(new ActivityCategorized($this->id, $category));
     }
 
-    public function reschedule(Schedule $schedule)
+    public function reschedule(Schedule $schedule) : void
     {
         if ($this->schedule == $schedule) {
             return;
@@ -82,63 +81,63 @@ final class Activity extends AggregateRoot
         ));
     }
 
-    public function registerParticipant(MemberId $memberId)
+    public function registerParticipant(MemberId $memberId) : void
     {
-        if (! $this->published) {
+        if ( ! $this->published) {
             throw new InvalidActivity("Tried to register member {$memberId}, but activity isn't published");
         }
 
-        if (in_array($memberId, $this->members)) {
+        if (in_array($memberId, $this->members, true)) {
             return;
         }
 
         $this->apply(new MemberRegisteredToParticipate($this->id, $memberId));
     }
 
-    protected function applyActivityPlanned(ActivityPlanned $event)
+    public function getAggregateRootId() : string
+    {
+        return (string)$this->id;
+    }
+
+    protected function applyActivityPlanned(ActivityPlanned $event) : void
     {
         $this->id = $event->activityId();
         $this->schedule = $event->schedule();
         $this->category = $event->category();
     }
 
-    protected function applyActivityPublished(ActivityPublished $event)
+    protected function applyActivityPublished(ActivityPublished $event) : void
     {
         $this->published = true;
     }
 
-    protected function applyActivityCancelled(ActivityCancelled $event)
+    protected function applyActivityCancelled(ActivityCancelled $event) : void
     {
         $this->published = false;
     }
 
-    protected function applyActivityCategorized(ActivityCategorized $event)
+    protected function applyActivityCategorized(ActivityCategorized $event) : void
     {
         $this->category = $event->category();
     }
 
-    protected function applyActivityRescheduled(ActivityRescheduled $event)
+    protected function applyActivityRescheduled(ActivityRescheduled $event) : void
     {
         $this->schedule = $event->schedule();
     }
 
-    protected function applyMemberRegisteredToParticipate(MemberRegisteredToParticipate $event)
+    protected function applyMemberRegisteredToParticipate(MemberRegisteredToParticipate $event) : void
     {
         $this->members[] = $event->memberId();
     }
 
-    public function getAggregateRootId()
+    private function assertCategoryIsValid($category) : void
     {
-        return $this->id;
-    }
-
-    private function assertCategoryIsValid($category)
-    {
-        if (! in_array($category, [
-            Activity::SOCIAL,
-            Activity::CAREER,
-            Activity::EDUCATION
-        ])) {
+        if ( ! in_array($category, [
+            self::SOCIAL,
+            self::CAREER,
+            self::EDUCATION
+        ], true)) {
             throw InvalidActivity::invalidCategory($category);
         }
     }

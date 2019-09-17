@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase as TestCase;
 final class FilterDuplicateNewsTest extends TestCase
 {
     /** @test */
-    function it_no_news_items_if_no_duplicates_exists()
+    public function it_no_news_items_if_no_duplicates_exists() : void
     {
         $source = [
             $this->aNewsItem('title 1', 'content 1'),
@@ -29,7 +29,7 @@ final class FilterDuplicateNewsTest extends TestCase
     }
 
     /** @test */
-    function it_filters_news_items_based_on_title()
+    public function it_filters_news_items_based_on_title() : void
     {
         $source = [
             $this->aNewsItem('title'),
@@ -44,7 +44,7 @@ final class FilterDuplicateNewsTest extends TestCase
     }
 
     /** @test */
-    function it_filters_news_items_based_on_their_content()
+    public function it_filters_news_items_based_on_their_content() : void
     {
         $source = [
             $this->aNewsItem('title 1', 'content'),

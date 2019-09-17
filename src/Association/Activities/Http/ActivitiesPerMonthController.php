@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities\Http;
 
-use DateInterval;
 use DateTimeImmutable;
-use League\Period\Period;
 use Francken\Association\Activities\ActivitiesRepository;
+use InvalidArgumentException;
 
 final class ActivitiesPerMonthController
 {
@@ -18,12 +17,27 @@ final class ActivitiesPerMonthController
         $this->activities = $activities;
     }
 
-    public function index(int $year, int $month)
+    public function index(int $year, string $month)
     {
-        return view('association.activities.index')
-            ->with('activities', $this->activities->inMonth($year, $month))
-            ->with('selectedYear', $year)
-            ->with('selectedMonth', $month)
-            ->with('searchTimeRange', true);
+        $date = DateTimeImmutable::createFromFormat(
+            'Y-m', $year . '-' . $month
+        );
+
+        if ($date === false) {
+            throw new InvalidArgumentException("Invalid year and month combination");
+        }
+
+        return view('association.activities.index', [
+            'activities' => $this->activities->inMonth($year, (int)$month),
+            'selectedYear' => $year,
+            'selectedMonth' => $month,
+            'selectedDate' => $date,
+            'searchTimeRange' => true,
+            'breadcrumbs' => [
+                ['url' => '/association/', 'text' => 'Association'],
+                ['url' => '/association/activities/', 'text' => 'Activities'],
+                ['text' => $date->format('F / Y')],
+            ],
+        ]);
     }
 }

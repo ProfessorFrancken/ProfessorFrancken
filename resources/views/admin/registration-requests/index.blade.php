@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('page-title', 'Registration requests')
 
 @section('content')
     @if (session('status'))
@@ -8,12 +9,6 @@
     @endif
 
     <div class="card">
-        <div class="card-body">
-            <h1 class="section-header">
-                Registrations
-            </h1>
-
-        </div>
         <table class="table table-hover">
             <caption class="card-body">
                 Open registration requests, you can either inspect a request (and possibly complete the registration), or mark it as spam in which case the request will be deleted.

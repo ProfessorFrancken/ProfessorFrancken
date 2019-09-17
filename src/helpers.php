@@ -1,15 +1,17 @@
 <?php
 
-function banner_image($url)
+declare(strict_types=1);
+
+function banner_image($url, $options)
 {
-    if (! filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED)) {
+    if ( ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
     }
 
-    return image($url, [
+    return image($url, array_merge($options, [
         'width' => 1000,
         'height' => 450
-    ]);
+    ]));
 }
 
 function board_banner_image($url = '', $options = [])
@@ -37,9 +39,9 @@ function board_member_image($url, $number)
     ]);
 }
 
-function news_image($url) {
-
-    if (! filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED)) {
+function news_image($url)
+{
+    if ( ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
     }
 
@@ -52,7 +54,7 @@ function news_image($url) {
 
 function image($url = '', $options = [], $addAppUrl = false)
 {
-    if ($addAppUrl && ! filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED)) {
+    if ($addAppUrl && ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
     }
 
@@ -129,5 +131,4 @@ function image($url = '', $options = [], $addAppUrl = false)
             return $url;
         }
     }
-
 }

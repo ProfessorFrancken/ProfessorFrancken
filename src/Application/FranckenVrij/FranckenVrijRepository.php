@@ -16,12 +16,12 @@ final class FranckenVrijRepository
         $this->repo = $repo;
     }
 
-    public function save(Edition $edition)
+    public function save(Edition $edition) : void
     {
         $this->repo->save($edition);
     }
 
-    public function remove(EditionId $id)
+    public function remove(EditionId $id) : void
     {
         $this->repo->remove((string)$id);
     }
@@ -59,9 +59,15 @@ final class FranckenVrijRepository
         return $v;
     }
 
-    public function latestEdition() : Edition
+    public function latestEdition() : ?Edition
     {
-        $volume = array_first($this->volumes());
+        $volumes = $this->volumes();
+
+        if (empty($volumes)) {
+            return null;
+        }
+
+        $volume = array_first($volumes);
 
         return array_last($volume->editions());
     }

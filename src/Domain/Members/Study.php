@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Members;
 
-use DateTimeImmutable;
 use Broadway\Serializer\Serializable as SerializableInterface;
+use DateTimeImmutable;
 use Francken\Domain\Serializable;
 
 final class Study implements SerializableInterface
@@ -42,5 +42,23 @@ final class Study implements SerializableInterface
     public function graduationDate()
     {
         return $this->graduationDate;
+    }
+
+    protected static function deserializationCallbacks()
+    {
+        return [
+            'startDate' => function ($value) {
+                if ($value instanceof \DateTimeImmutable) {
+                    return $value;
+                }
+                return \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']);
+            },
+            'graduationDate' => function ($value) {
+                if ($value instanceof \DateTimeImmutable) {
+                    return $value;
+                }
+                return $value !== null ? \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']) : null;
+            },
+        ];
     }
 }

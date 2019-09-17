@@ -4,165 +4,151 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http;
 
-use DB;
 use DateTimeImmutable;
-use Francken\Domain\Books\BookId;
-use Francken\Domain\Url;
-use Francken\Infrastructure\Http\Controllers\Controller;
-use Francken\Application\Books\AvailableBooksRepository;
+use DB;
+use Francken\Study\BooksSale\Book;
 use Illuminate\Http\Request;
 
 final class AdminBooksController
 {
-    private $books;
-
-    public function __construct(AvailableBooksRepository $books)
+    public function index(Request $request)
     {
-        $this->books = $books;
-    }
+        $books = Book::with(['seller', 'buyer'])->orderBy('id', 'desc');
 
-    public function index()
-    {
-        $members = DB::connection('francken-legacy')
-                 ->table('leden')
-                 ->where('is_lid', true)
-                 ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
-                 ->orderBy('id', 'desc')
-                 ->get();
-
-        $books = $this->books($members);
+        if ($request->has('title') && $request->get('title') !== null) {
+            $books->where('naam', 'LIKE', '%' . $request->get('title') . '%');
+        }
+        if ($request->has('seller_id') && $request->get('seller') !== null) {
+            $books->where('verkoperid', $request->get('seller_id'));
+        }
+        if ($request->has('buyer_id') && $request->get('buyer') !== null) {
+            $books->where('koperid', $request->get('buyer_id'));
+        }
+        if ( ! $request->has('show_sold_books')) {
+            $books->where(function ($query) {
+                return $query->where('verkoopdatum', null)
+                    ->orWhere('koperid', null)
+                    ->orWhere('verkocht', false);
+            });
+        }
 
         return view('admin.study.books.index', [
-            'books' => $books,
-            'book' => null,
-            'members' => $members
+            'books' => $books->paginate(30),
+            'members' => $this->members(),
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Books'],
+            ]
+        ]);
+    }
+
+    public function show(Book $book)
+    {
+        return view('admin.study.books.show', [
+            'book' => $book,
+            'members' => $this->members(),
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Books'],
+                ['url' => action([self::class, 'show'], $book->id), 'text' => $book->title],
+            ]
+        ]);
+    }
+
+    public function create()
+    {
+        return view('admin.study.books.create', [
+            'book' => new Book(),
+            'members' => $this->members(),
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Books'],
+                ['url' => action([self::class, 'create']), 'text' => 'Add'],
+            ]
         ]);
     }
 
     public function store(Request $request)
     {
-        $now = new DateTimeImmutable;
+        $now = new DateTimeImmutable();
+
+        $inkoopdatum = ($request->filled('purchase_date'))
+            ? (new DateTimeImmutable($request->get('purchase_date')))->format('Y-m-d H:i:s')
+            : $now->format('Y-m-d H:i:s');
+
+        $verkoopdatum = ($request->filled('sale_date'))
+            ? (new DateTimeImmutable($request->get('sale_date')))->format('Y-m-d H:i:s')
+            : null;
 
         $book = [
             "naam" => $request->input('title'),
             "editie" => $request->input('edition'),
-            'isbn' => $request->input('isbn'),
             'auteur' => $request->input('author'),
-
-            'verkoperid' => $request->input('seller-id'),
+            'beschrijving' => $request->input('description'),
+            'isbn' => $request->input('isbn'),
             'prijs' => $request->input('price'),
-            'inkoopdatum' => $now->format('Y-m-d H:i:s')
+
+            'verkoperid' => $request->input('seller_id'),
+            'koperid' => $request->input('buyer_id'),
+
+            'inkoopdatum' => $inkoopdatum,
+            'verkoopdatum' => $verkoopdatum,
+
+            "verkocht" => $request->has('sold'),
+            "afgerekend" => $request->has('paid_off'),
         ];
 
-        DB::connection('francken-legacy')
-            ->table('boeken')
-            ->insert($book);
+        $book = Book::create($book);
 
-        return redirect('/admin/study/books');
+        return redirect()->action([self::class, 'index']);
     }
 
-    private function books($members)
+    public function update(Request $request, Book $book)
+    {
+        $now = new DateTimeImmutable();
+
+        $inkoopdatum = ($request->filled('purchase_date'))
+            ? (new DateTimeImmutable($request->get('purchase_date')))->format('Y-m-d H:i:s')
+            : $now->format('Y-m-d H:i:s');
+
+        $verkoopdatum = ($request->filled('sale_date'))
+            ? (new DateTimeImmutable($request->get('sale_date')))->format('Y-m-d H:i:s')
+            : null;
+
+        $book->update([
+            "naam" => $request->input('title'),
+            "editie" => $request->input('edition'),
+            'auteur' => $request->input('author'),
+            'beschrijving' => $request->input('description'),
+            'isbn' => $request->input('isbn'),
+            'prijs' => $request->input('price'),
+
+            'verkoperid' => $request->input('seller_id'),
+            'koperid' => $request->input('buyer_id'),
+
+            'inkoopdatum' => $inkoopdatum,
+            'verkoopdatum' => $verkoopdatum,
+
+            "verkocht" => $request->has('sold'),
+            "afgerekend" => $request->has('paid_off'),
+        ]);
+
+        return redirect()->action([self::class, 'show'], $book->id);
+    }
+
+    public function remove(Request $request, Book $book)
+    {
+        if ($book->buyer === null) {
+            $book->delete();
+        }
+
+        return redirect()->action([self::class, 'index']);
+    }
+
+    private function members()
     {
         return DB::connection('francken-legacy')
-            ->table("boeken")
-            ->where('verkoopdatum', null)
-            ->orWhere('verkocht', false)
-            ->orWhere('afgerekend', false)
-            ->orderBy('inkoopdatum', 'asc')
-            ->get()
-            ->map($this->mapToBook($members))
-            ->toArray();
-    }
-
-    private function mapToBook($members) {
-        return function ($boek) use ($members) {
-            return new class(
-                BookId::fromLegacyId($boek->id),
-                $boek->naam,
-                $boek->auteur,
-                $boek->isbn,
-                'http://images.amazon.com/images/P/' . $boek->isbn . '.jpg',
-                100 * $boek->prijs,
-                new DateTimeImmutable($boek->inkoopdatum ?? '01-01-1111'),
-                $boek->verkoopdatum ? new DateTimeImmutable($boek->verkoopdatum) : null,
-                false
-            ) {
-                private $id;
-                private $title;
-                private $author;
-                private $price;
-                private $isbn_10;
-                private $path_to_cover;
-                private $sale_pending;
-                private $receivedAt;
-
-                public function __construct(
-                    BookId $id,
-                    string $title,
-                    string $author,
-                    string $isbn_10,
-                    string $path_to_cover,
-                    int $price,
-                    DateTimeImmutable $receivedAt,
-                    ?DateTimeImmutable $soldAt,
-                    bool $sale_pending
-                ) {
-                    $this->id = (string)$id;
-                    $this->title = $title;
-                    $this->author = $author;
-                    $this->price = $price;
-                    $this->isbn_10 = $isbn_10;
-                    $this->path_to_cover = $path_to_cover;
-                    $this->sale_pending= $sale_pending;
-
-                    $this->receivedAt = $receivedAt;
-                }
-
-                public function getId()
-                {
-                    return $this->id;
-                }
-
-                public function bookId()
-                {
-                    return new BookId($this->id);
-                }
-
-                public function title() : string
-                {
-                    return $this->title;
-                }
-
-                public function author() : string
-                {
-                    return $this->author;
-                }
-
-                public function price() : int
-                {
-                    return (int)$this->price;
-                }
-
-                public function isbn() : string
-                {
-                    return $this->isbn_10;
-                }
-
-                public function pathToCover() : string
-                {
-                    return $this->path_to_cover;
-                }
-
-                public function salePending() : bool
-                {
-                    return $this->sale_pending;
-                }
-
-                public function putOnSaleAt() : string
-                {
-                    return $this->receivedAt->format('Y-m-d');
-                }
-            };
-        };
+            ->table('leden')
+            ->where('is_lid', true)
+            ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
+            ->orderBy('id', 'desc')
+            ->get();
     }
 }

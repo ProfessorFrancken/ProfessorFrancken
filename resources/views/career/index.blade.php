@@ -20,14 +20,14 @@
 
         <a href="/career/job-openings">
             <img
-                alt="Find job openings and internships related to applied physics"
+                alt="Find job openings and internships related to engineering physics"
                 src="{{ image('https://cdn.pixabay.com/photo/2016/10/04/13/52/hire-1714369_960_720.jpg', ['height' => 150, 'width' => 150]) }}"
                 class="mb-3 rounded-circle"
                 style="height: 150px; width: 150px; object-fit: contain"
             />
             <h2>Job openings</h2>
             <p>
-                Find job openings and internships related to applied physics
+                Find job openings and internships related to engineering physics
             </p>
         </a>
     </div>
@@ -35,14 +35,14 @@
     <div style="text-align: center" class="col-md-4">
         <a href="/career/companies">
             <img
-                alt="Companies related to applied physics"
+                alt="Companies related to engineering physics"
                 src="{{ image('https://upload.wikimedia.org/wikipedia/en/1/11/Inside_Aryogen.jpg', ['height' => 150, 'width' => 150]) }}"
                 class="mb-3 rounded-circle"
                 style="height: 150px; width: 150px; object-fit: contain"
             />
             <h2>Company profiles</h2>
             <p>
-                Companies related to applied physics
+                Companies related to engineering physics
             </p>
         </a>
     </div>

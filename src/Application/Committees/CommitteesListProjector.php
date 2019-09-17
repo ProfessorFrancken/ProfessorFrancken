@@ -1,19 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Committees;
 
-use League\CommonMark\CommonMarkConverter;
 use Francken\Application\Projector;
-use Francken\Application\ReadModelRepository as Repository;
-use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
+use League\CommonMark\CommonMarkConverter;
 
 final class CommitteesListProjector extends Projector
 {
@@ -31,7 +31,7 @@ final class CommitteesListProjector extends Projector
         $this->markDownConverter = $markDownConverter;
     }
 
-    public function whenCommitteeInstantiated(CommitteeInstantiated $event)
+    public function whenCommitteeInstantiated(CommitteeInstantiated $event) : void
     {
         $committee = new CommitteesList(
             $event->committeeId(),
@@ -42,7 +42,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenCommitteeEmailChanged(CommitteeEmailChanged $event)
+    public function whenCommitteeEmailChanged(CommitteeEmailChanged $event) : void
     {
         $committee = $this->committees->find($event->committeeId());
         $committee = $committee->changeEmail($event->email());
@@ -50,7 +50,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenCommitteePageChanged(CommitteePageChanged $event)
+    public function whenCommitteePageChanged(CommitteePageChanged $event) : void
     {
         $committee = $this->committees->find($event->committeeId());
         $committee = $committee->changeCommitteePage(
@@ -61,7 +61,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenCommitteeNameChanged(CommitteeNameChanged $event)
+    public function whenCommitteeNameChanged(CommitteeNameChanged $event) : void
     {
         $committee = $this->committees->find($event->committeeId());
         $committee = $committee->changeName($event->name());
@@ -69,7 +69,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenCommitteeGoalChanged(CommitteeGoalChanged $event)
+    public function whenCommitteeGoalChanged(CommitteeGoalChanged $event) : void
     {
         $committee = $this->committees->find($event->committeeId());
         $committee = $committee->changeGoal($event->goal());
@@ -77,7 +77,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenMemberJoinedCommittee(MemberJoinedCommittee $event)
+    public function whenMemberJoinedCommittee(MemberJoinedCommittee $event) : void
     {
         $committee = $this->committees->find($event->committeeId());
         $member = $this->members->find($event->memberId());
@@ -91,7 +91,7 @@ final class CommitteesListProjector extends Projector
         $this->committees->save($committee);
     }
 
-    public function whenMemberLeftCommittee(MemberLeftCommittee $event)
+    public function whenMemberLeftCommittee(MemberLeftCommittee $event) : void
     {
         $committee = $this->committees->find($event->committeeId());
         $committee = $committee->removeMember($event->memberId());

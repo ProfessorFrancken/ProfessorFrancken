@@ -6,7 +6,6 @@ namespace Francken\Tests\Domain\Committees\Events;
 
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteePageChanged;
-use Francken\Domain\Members\MemberId;
 use Francken\Tests\Domain\EventTestCase as Testcase;
 
 class CommitteePageChangedTest extends TestCase
@@ -14,7 +13,7 @@ class CommitteePageChangedTest extends TestCase
     /**
      * @test
      */
-    public function it_holds_a_markdown_string()
+    public function it_holds_a_markdown_string() : void
     {
         $id = CommitteeId::generate();
         $event = new CommitteePageChanged($id, '# Title\nPlain text');

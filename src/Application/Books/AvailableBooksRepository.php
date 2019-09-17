@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Application\Books;
 
-use Francken\Application\ReadModelRepository;
 use Francken\Domain\Books\BookId;
 
 interface AvailableBooksRepository

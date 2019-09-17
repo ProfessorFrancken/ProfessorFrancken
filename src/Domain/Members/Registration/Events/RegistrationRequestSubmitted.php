@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Francken\Domain\Members\Registration\Events;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Serializable;
+use DateTimeImmutable;
+use Francken\Domain\Members\Address;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\FullName;
+use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;
-use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\FullName;
-use Francken\Domain\Members\Address;
-use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\Email;
-use DateTimeImmutable;
+use Francken\Domain\Serializable;
 
 final class RegistrationRequestSubmitted implements SerializableInterface
 {
@@ -73,12 +73,28 @@ final class RegistrationRequestSubmitted implements SerializableInterface
         return $this->contact->address();
     }
 
+    public function birthdate() : DateTimeImmutable
+    {
+        return $this->birthdate;
+    }
+
+    public function gender() : Gender
+    {
+        return $this->gender;
+    }
+
     protected static function deserializationCallbacks()
     {
         return [
             'id' => [RegistrationRequestId::class, 'deserialize'],
             'fullName' => [FullName::class, 'deserialize'],
             'gender' => [Gender::class, 'deserialize'],
+            'birthdate' => function ($value) {
+                if ($value instanceof \DateTimeImmutable) {
+                    return $value;
+                }
+                return \DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $value['date']);
+            },
             'contact' => [ContactInfo::class, 'deserialize'],
             'studyDetails' => [StudyDetails::class, 'deserialize']
         ];

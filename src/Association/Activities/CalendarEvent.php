@@ -95,19 +95,19 @@ final class CalendarEvent
         $string .= $start->format('d');
 
         // Display month and year only twice if necessary
-        if($from->month != $to->month) {
+        if ($from->month != $to->month) {
             $string .= $start->format(' F');
         }
 
         // Check if the end date is different
-        if($from->format('Y-m-d') != $to->format('Y-m-d')) {
+        if ($from->format('Y-m-d') != $to->format('Y-m-d')) {
             $string .= ' - ' . $end->format('d F');
         } else {
             $string .= $end->format(' F');
         }
 
         // Show time if the activity isn't on the whole day
-        if($this->startDate()->format('H:i') !== '00:00') {
+        if ($this->startDate()->format('H:i') !== '00:00') {
             $string .= ' at ' . $start->format('H:i');
         }
 
@@ -115,10 +115,9 @@ final class CalendarEvent
     }
 
 
-    private function parseSchedule($event)
+    private function parseSchedule($event) : void
     {
         $this->start = $event->DTSTART->getDateTime();
         $this->end = $event->DTEND->getDateTime();
     }
 }
-

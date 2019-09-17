@@ -15,7 +15,7 @@ class JasFeature extends TestCase
      *
      * @test
      */
-    public function it_stores_events_raised_by_our_jas_app()
+    public function it_stores_events_raised_by_our_jas_app() : void
     {
         $id = '8741e80e-153f-4254-b13e-21ac8ac34948';
         $this->json('POST', '/store-jas-events', [

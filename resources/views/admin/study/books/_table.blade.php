@@ -1,54 +1,56 @@
 @if (count($books) > 0)
-    <table class="table table-hover table-small">
+    <table class="table table-hover table-small table-striped">
         <thead>
             <tr>
                 <th>Title</th>
+                <th>ISBN</th>
+                <th>Sold by</th>
+                <th>Bought by</th>
                 <th class="text-left">Price</th>
-                <th>Seller</th>
-                <th class="text-right">ISBN</th>
-                <th class="text-right">Put on sale at</th>
-                <th class="text-right"></th>
             </tr>
         </thead>
         @foreach ($books as $book)
-            <tr class="align-middle">
+            <tr class="align-middle position-relative">
                 <td>
-                    {{ $book->title() }}<br/>
+                    <a
+                        href="{{ action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'show'], $book->id) }}"
+                        class="stretched-link"
+                    >
+                        {{ $book->title }} <br/>
                     <small class="text-muted">
-                        {{ $book->author() }}
+                        {{ $book->author }}
                     </small>
-                </td>
-                <td class="text-left align-middle">
-                    €{{ number_format($book->price()/100, 2, ",", "") }}
+                    </a>
                 </td>
                 <td class="align-middle">
-                    Unkown
+                    {{ $book->isbn }}<br/>
+                    <small class="text-muted">
+                        Edition: {{ $book->edition }}
+                    </small>
                 </td>
-                <td class="text-right align-middle">
-                    {{ $book->isbn() }}
+                <td class="align-middle">
+                    @if ($book->seller)
+                        {{ $book->seller->fullName }}<br/>
+                        <small>
+                            {{ optional($book->purchase_date)->format('Y-m-d') }}
+                        </small>
+                    @endif
                 </td>
-                <td class="text-right align-middle">
-                    {{ $book->putOnSaleAt() }}
+                <td class="align-middle">
+                    @if ($book->buyer)
+                        {{ $book->buyer->fullName }}<br />
+                        <small>
+                            {{ optional($book->sale_date)->format('Y-m-d') }}
+                        </small>
+                    @endif
                 </td>
-                <td class="text-right align-middle">
-                    <a class="btn btn-sm btn-link text-muted" href="">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                        Remove
-
-                    </a>
-
-                    <a class="btn btn-sm btn-link" href="">
-                        <i class="fa fa-print" aria-hidden="true"></i>
-                        Form
-                    </a>
-
-                    <a class="btn btn-sm btn-outline-success" href="">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Sell
-
-                    </a>
+                <td class="text-left align-middle">
+                    €{{ number_format($book->price, 2, ",", "") }}
                 </td>
             </tr>
         @endforeach
     </table>
+    <div class="card-footer">
+        {!! $books->links() !!}
+    </div>
 @endif

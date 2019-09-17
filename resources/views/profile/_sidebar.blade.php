@@ -1,20 +1,15 @@
 @php
 
 $menu = [
-    ['link' => '/profile', 'icon' => 'fa-user', 'text' => 'Profile'],
-    ['link' => '/profile/settings', 'icon' => 'fa-cogs', 'text' => 'Settings'],
-    ['link' => '/profile/members', 'icon' => 'fa-university', 'text' => 'Member list'],
-    ['link' => '/profile/finances', 'icon' => 'fa-bar-chart', 'text' => 'Finances'],
-    ['link' => '/profile/committees', 'icon' => 'fa-users', 'text' => 'Committees'],
-    ['link' => '/profile/activities', 'icon' => 'fa-calendar', 'text' => 'Activities'],
-    ['link' => '/profile/adtcievements', 'icon' => 'fa-trophy', 'text' => 'Adtcievements'],
+    ['link' => '/profile', 'icon' => 'fa fa-user', 'text' => 'Profile'],
+    ['link' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
 ];
 
-if (Auth::user()->can_access_admin) {
-    $menu[] = ['link' => '/admin', 'icon' => 'fa-database', 'text' => 'Admin'];
+if (Auth::user()->can('can-access-dashboard')) {
+    $menu[] = ['link' => '/admin', 'icon' => 'fas fa-database', 'text' => 'Admin'];
 }
 
-$menu[] = ['link' => '/logout', 'icon' => 'fa-sign-out', 'text' => 'Logout'];
+$menu[] = ['link' => '/logout', 'icon' => 'fas fa-sign-out-alt', 'text' => 'Logout'];
 
 @endphp
 <div class="agenda">
@@ -38,7 +33,7 @@ $menu[] = ['link' => '/logout', 'icon' => 'fa-sign-out', 'text' => 'Logout'];
                 <div class="media align-items-center">
                     <div class="media-body">
                         <h5 class="agenda-item__header">
-                            <i class="fa {{ $item['icon'] }} text-primary mr-2 text-center" aria-hidden="true" style="width: 1em"></i>
+                            <i class="{{ $item['icon'] }} fa-fw text-primary mr-2 text-center" aria-hidden="true" style="width: 1em"></i>
                             {{ $item['text'] }}
                         </h5>
                     </div>

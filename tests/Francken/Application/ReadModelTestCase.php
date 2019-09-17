@@ -13,13 +13,13 @@ abstract class ReadModelTestCase extends TestCase
     use SetupReconstitution;
 
     /** @test */
-    public function its_serializable()
+    public function its_serializable() : void
     {
         $this->assertInstanceOf(Serializable::class, $this->createInstance());
     }
 
     /** @test */
-    public function serializing_and_hydrating_yields_the_same_object()
+    public function serializing_and_hydrating_yields_the_same_object() : void
     {
         $event = $this->createInstance();
         $this->assertEquals($event, $event::deserialize($event->serialize()));

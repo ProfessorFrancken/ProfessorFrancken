@@ -22,19 +22,14 @@ final class RegistrationRequestRepository
         $this->repo = $repo;
     }
 
-    /**
-     * @param RegistrationRequestId $registrationRequestId
-     * @return RegistrationRequest
-     */
+    
     public function load(RegistrationRequestId $registrationRequestId) : RegistrationRequest
     {
         return $this->repo->load((string)$registrationRequestId);
     }
 
-    /**
-     * @param RegistrationRequest $registrationRequest
-     */
-    public function save(RegistrationRequest $registrationRequest)
+    
+    public function save(RegistrationRequest $registrationRequest) : void
     {
         $this->repo->save($registrationRequest);
     }

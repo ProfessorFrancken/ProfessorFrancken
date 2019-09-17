@@ -11,10 +11,53 @@ services:
     links:
       - mysql
       - legacy-db
+      - redis
+      - mailhog
+    working_dir: /var/www/francken
     volumes:
       - ./:/var/www/francken
+    environment:
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_DRIVER=redis
+      - QUEUE_CONNECTION=redis
+      - REDIS_HOST=redis
+      - APP_URL=http://francken.nl.localhost
+      - MAIL_HOST=mailhog
+      - MAIL_PORT=1025
     # volumes_from:
     #   - data
+
+  scheduler:
+    image: francken/scheduler
+    links:
+      - legacy-db
+      - redis
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+    restart: always
+
+  queue-worker:
+    image: francken/scheduler
+    links:
+      - legacy-db
+      - redis
+      - mailhog
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+    restart: always
+    command: php artisan horizon
+    environment:
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_DRIVER=redis
+      - QUEUE_CONNECTION=redis
+      - REDIS_HOST=redis
+      - APP_URL=http://francken.nl.localhost
+      - MAIL_HOST=mailhog
+      - MAIL_PORT=1025
 
   # data:
   #   image: busybox
@@ -39,33 +82,26 @@ services:
       - "traefik.docker.network=traefik_webgateway"
 
   mysql:
-    image: francken/mysql
+    image: mysql:5.7
     environment:
-      - MYSQL_USER=francken
-      - MYSQL_PASSWORD=leden
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=francken
-    restart: always
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: francken
+      MYSQL_PASSWORD: leden
+      MYSQL_DATABASE: francken
+    volumes:
+      - mysql:/var/lib/mysql
 
   composer:
-    image: composer/composer:alpine
+    image: composer:1.7
     volumes_from:
       - php
     working_dir: /var/www/francken
 
   npm:
-    image: node:7.4
+    image: node:8.2
     volumes_from:
       - php
     working_dir: /var/www/francken
-
-  yarn:
-    image: kkarczmarczyk/node-yarn
-    volumes_from:
-      - php
-    working_dir: /var/www/francken
-    command: yarn
-
 
   fly-images:
     image: flyimg/flyimg-build
@@ -101,3 +137,52 @@ services:
       - mysql
     environment:
       DB_CONNECTION: testing
+
+  redis:
+    image: redis:4-alpine
+    ports:
+      - 16379:6379
+    volumes:
+      - redis:/data
+
+  mailhog:
+    image: mailhog/mailhog
+    networks:
+      - default
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=francken-email-web"
+      - "traefik.frontend.rule=Host:francken-mail.nl.localhost"
+      - "traefik.port=8025"
+      - "traefik.docker.network=traefik_webgateway"
+
+  tinker:
+    image: francken/php
+    links:
+      - mysql
+      - legacy-db
+      - redis
+      - mailhog
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+      - ./.config:/var/www/.config
+    environment:
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_DRIVER=redis
+      - REDIS_HOST=redis
+      - APP_URL=http://francken.nl.localhost
+      - MAIL_HOST=mailhog
+      - MAIL_PORT=1025
+    command: ["php", "artisan", "tinker"]
+    user: "1000:986"
+    env_file:
+      - "./.docker.env"
+
+volumes:
+  mysql:
+    driver: "local"
+  redis:
+    driver: "local"

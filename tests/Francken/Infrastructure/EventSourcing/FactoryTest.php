@@ -8,14 +8,14 @@ use Broadway\EventHandling\EventBus;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactory;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStore;
-use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Domain\Members\Member;
+use Francken\Infrastructure\EventSourcing\Factory;
 use PHPUnit\Framework\TestCase as TestCase;
 
 class FactoryTest extends TestCase
 {
     /** @test */
-    function it_builds_a_new_event_sourcing_repository()
+    public function it_builds_a_new_event_sourcing_repository() : void
     {
         $store = $this->prophesize(EventStore::class);
         $bus = $this->prophesize(EventBus::class);
@@ -33,7 +33,7 @@ class FactoryTest extends TestCase
     }
 
     /** @test */
-    function it_throws_when_building_a_repository_for_a_non_aggregate_root_class()
+    public function it_throws_when_building_a_repository_for_a_non_aggregate_root_class() : void
     {
         $store = $this->prophesize(EventStore::class);
         $bus = $this->prophesize(EventBus::class);

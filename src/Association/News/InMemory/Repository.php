@@ -4,13 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\InMemory;
 
-use DateTimeImmutable;
-use Francken\Association\News\Repository as NewsRepository;
 use Francken\Association\News\CouldNotFindNews;
 use Francken\Association\News\NewsItem;
-use Francken\Association\News\NewsItemLink;
-use Francken\Domain\News\AuthorId;
-use Francken\Domain\News\NewsId;
+use Francken\Association\News\Repository as NewsRepository;
 use League\Period\Period;
 
 final class Repository implements NewsRepository
@@ -19,7 +15,7 @@ final class Repository implements NewsRepository
 
     public function __construct(array $news = [])
     {
-        $this->news = collect((function (NewsItem... $news) {
+        $this->news = collect((function (NewsItem ...$news) {
             return $news;
         })(...$news))
         ->sortByDesc(function ($news) {

@@ -10,7 +10,6 @@ use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Study;
@@ -20,7 +19,7 @@ use Francken\Tests\Domain\EventTestCase as Testcase;
 class RegistrationRequestSubmittedTest extends TestCase
 {
     /** @test */
-    public function it_is_insttantiable()
+    public function it_is_insttantiable() : void
     {
         $id = RegistrationRequestId::generate();
         $event = $this->registrationRequestSubmitted($id);
@@ -55,15 +54,22 @@ class RegistrationRequestSubmittedTest extends TestCase
     }
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $id = RegistrationRequestId::generate();
         $event = $this->registrationRequestSubmitted($id);
 
         $this->assertEquals(
             $event,
-            RegistrationRequestSubmitted::deserialize($event->serialize())
+            RegistrationRequestSubmitted::deserialize(
+                $event->serialize()
+            )
         );
+    }
+
+    protected function createInstance()
+    {
+        return $this->registrationRequestSubmitted(RegistrationRequestId::generate());
     }
 
     private function registrationRequestSubmitted(RegistrationRequestId $id) : RegistrationRequestSubmitted
@@ -95,10 +101,5 @@ class RegistrationRequestSubmittedTest extends TestCase
                 )
             )
         );
-    }
-
-    protected function createInstance()
-    {
-        return $this->registrationRequestSubmitted(RegistrationRequestId::generate());
     }
 }

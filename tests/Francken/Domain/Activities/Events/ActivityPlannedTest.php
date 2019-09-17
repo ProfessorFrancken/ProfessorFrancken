@@ -17,7 +17,7 @@ class ActivityPlannedTest extends TestCase
     /**
      * @test
      */
-    public function it_happend_to_an_activity()
+    public function it_happend_to_an_activity() : void
     {
         $id = ActivityId::generate();
         $event = new ActivityPlanned(
@@ -38,7 +38,7 @@ class ActivityPlannedTest extends TestCase
     }
 
     /** @test */
-    public function the_deserialized_activity_has_the_same_properties()
+    public function the_deserialized_activity_has_the_same_properties() : void
     {
         $id = ActivityId::generate();
         $event = new ActivityPlanned(

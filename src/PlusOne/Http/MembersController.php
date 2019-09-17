@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Database\DatabaseManager;
 use DB;
+use Illuminate\Database\DatabaseManager;
 
 final class MembersController
 {

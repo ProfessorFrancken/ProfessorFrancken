@@ -6,7 +6,6 @@ namespace Francken\Tests\Domain\Committees\Events;
 
 use Francken\Domain\Committees\CommitteeId;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
-use Francken\Domain\Members\MemberId;
 use Francken\Tests\Domain\EventTestCase as Testcase;
 
 class CommitteeGoalChangedTest extends TestCase
@@ -14,7 +13,7 @@ class CommitteeGoalChangedTest extends TestCase
     /**
      * @test
      */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $id = CommitteeId::generate();
         $event = new CommitteeGoalChanged($id, 'Websites bouwen');

@@ -9,7 +9,7 @@ use Francken\Application\Career\CompanyRepository;
 class CompaniesFeature extends TestCase
 {
     /** @test */
-    function companies_are_listed()
+    public function companies_are_listed() : void
     {
         $this->addDNBToCompanies();
 
@@ -22,7 +22,7 @@ class CompaniesFeature extends TestCase
     }
 
     /** @test */
-    function more_info_about_a_companie_can_be_shown()
+    public function more_info_about_a_companie_can_be_shown() : void
     {
         $this->addDNBToCompanies();
 
@@ -34,7 +34,7 @@ class CompaniesFeature extends TestCase
         $this->visit($company->link()->getUri())->see($companyName);
     }
 
-    private function addDNBToCompanies()
+    private function addDNBToCompanies() : void
     {
         $this->app->bind(CompanyRepository::class, function ($app) {
             return new CompanyRepository(

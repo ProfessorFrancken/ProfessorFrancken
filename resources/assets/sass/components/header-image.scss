@@ -7,102 +7,100 @@ $header-image-color: darken($secondary-color, 5%);
 $margin-left-header-image: 5em;
 
 .stop-overflow {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 .header-image {
-    width: 100%;
-    background: $header-image-color;
+  width: 100%;
+  background: $header-image-color;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
 
-    position: relative;
+  &::before {
+    background-color: $header-image-color;
+    background-image: url($cta-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: luminosity;
+    background-position-x: 50%;
 
-    // Hide the overflow of the header image
-    overflow: hidden;
+    opacity: 0.5;
+  }
 
-    min-height: 200px;
-
-    &::before {
-        background-color: $header-image-color;
-        background-image: url($cta-image);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-blend-mode: luminosity;
-        background-position-x: 50%;
-
-        opacity: 0.5;
-    }
-
-    &::after {
-        background-image: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0) 85%,
-            $header-image-color 100%
-        );
-    }
-
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
-    }
-
-}
-
-.header-image__body {
-    z-index: 1;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
     height: 100%;
-
+    width: 100%;
+  }
 }
 
 @include media-breakpoint-up(md) {
-    .header-image {
-        max-height: $header-image-height;
-        border-radius: 0px 0px 0px 20px;
+  .header-image::after {
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 85%,
+      $header-image-color 100%
+    );
+  }
+}
 
-        margin-left: 0;
+.header-image__body {
+  z-index: 1;
+  height: 100%;
+}
 
-        transform: skew($angle);
-        transform-origin: top left;
+@include media-breakpoint-up(md) {
+  .header-image {
+    max-height: $header-image-height;
+    border-radius: 0px 0px 0px 20px;
 
-        > div > *, &::before, &::after {
-            // "Revert" the skew transformation so the content and background is rendered normally
-            transform: skewX(-$angle);
-            transform-origin: top left;
-        }
+    margin-left: 0;
 
-        &::after,
-        &::before {
-            width: 52%; // 52 looked just about right :)
-            height: 120%; //$header-image-height;
-        }
+    transform: skew($angle);
+    transform-origin: top left;
 
+    > div > *,
+    &::before,
+    &::after {
+      // "Revert" the skew transformation so the content and background is rendered normally
+      transform: skewX(-$angle);
+      transform-origin: top left;
     }
 
-    // Negate the margin of header-image so that the body is aligned with content outside the header
-    .header-image__align {
-        z-index: 1;
-        margin-left: -$margin-left-header-image;
+    &::after,
+    &::before {
+      width: 55%;
+      height: 120%; //$header-image-height;
     }
+  }
+
+  // Negate the margin of header-image so that the body is aligned with content outside the header
+  .header-image__align {
+    z-index: 1;
+    margin-left: -$margin-left-header-image;
+  }
 }
 
 @include media-breakpoint-up(lg) {
-    .header-image {
-        margin-left: $margin-left-header-image;
-    }
+  .header-image {
+    margin-left: $margin-left-header-image;
+  }
 
-    .header-image__body {
-        display: block;
-    }
+  .header-image__body {
+    display: block;
+  }
 }
 
 // Let the image header be below the logo
 .header .container-fluid {
-    z-index: 2;
+  z-index: 2;
 }
 
 /*
@@ -110,73 +108,73 @@ $margin-left-header-image: 5em;
 */
 
 .registration-cta__action {
-    text-align: center;
-    margin-top: 1em;
+  text-align: center;
+  margin-top: 1em;
 
-    margin-top: 0em;
-    margin-bottom: 5em;
+  margin-top: 0em;
+  margin-bottom: 5em;
 }
 
 .registration-cta__body {
-    text-align: center;
-    margin-top: 3em;
-    margin-bottom: 0em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
 
-    h1 {
-        font-size: 2rem;
-    }
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 @include media-breakpoint-up(md) {
-    .registration-cta__body {
-        text-align: right;
+  .registration-cta__body {
+    text-align: right;
 
-        margin-top: 7em;
-        margin-bottom: 9em;
-    }
+    margin-top: 7em;
+    margin-bottom: 9em;
+  }
 
-    .registration-cta__action {
-        margin-top: 0;
-        margin-bottom: 0;
-        border-left: 3px white solid;
-        padding-bottom: 1.5em;
-        padding-top: 1.5em;
-        text-align: left;
-    }
+  .registration-cta__action {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-left: 3px white solid;
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+    text-align: left;
+  }
 }
 
 @include media-breakpoint-up(lg) {
-    .registration-cta__body h1 {
-        font-size: 2.5rem;
-    }
+  .registration-cta__body h1 {
+    font-size: 2.5rem;
+  }
 }
 
 .header-image__title {
-    margin: 3em 0;
+  margin: 3em 0;
 
+  color: white;
+
+  h2 {
+    // margin-top: 5em;
     color: white;
-
-    h2 {
-        // margin-top: 5em;
-        color: white;
-        font-size: 3em;
-        font-weight: bold;
-    }
+    font-size: 3em;
+    font-weight: bold;
+  }
 }
 
 .header-image--dark-overlay {
-    background-color: #98bdb9;
+  background-color: #98bdb9;
 
-    background-image: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0) 85%,
-        $header-image-color 100%
-    );
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 85%,
+    $header-image-color 100%
+  );
 }
 
 @include media-breakpoint-up(md) {
-    .header-image__title {
-        margin: 6em 0 4em;
-    }
+  .header-image__title {
+    margin: 6em 0 4em;
+  }
 }

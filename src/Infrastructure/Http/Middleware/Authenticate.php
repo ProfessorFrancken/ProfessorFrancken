@@ -6,7 +6,6 @@ namespace Francken\Infrastructure\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Support\Facades\Auth;
 
 class Authenticate
 {
@@ -21,7 +20,6 @@ class Authenticate
      * Create a new middleware instance.
      * The guard instance is used to check if a user is authenticated
      *
-     * @param  Guard  $guard
      * @return void
      */
     public function __construct(Guard $guard)
@@ -33,8 +31,6 @@ class Authenticate
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
      */
     public function handle($request, Closure $next)
     {

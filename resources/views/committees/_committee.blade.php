@@ -2,7 +2,11 @@
     <div class="committee-card">
         <a href="/association/committees/{{ $link }}" class="committee-card__link">
             @if ($logo != '')
-                <img alt="{{ $name }}" src="{{ image($logo, ['height' => 200, 'width' => 140]) }}" class="committee-card__logo"/>
+                <img
+                    alt="{{ $name }}"
+                    src="{{ image($logo, ['height' => 200, 'width' => 300]) }}"
+                    class="committee-card__logo"
+                />
             @else
                 <h4 class="committee-card__name">
                     {{ $name }}

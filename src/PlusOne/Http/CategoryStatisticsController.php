@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use DB;
-use DateTimeImmutable;
 use DateInterval;
+use DateTimeImmutable;
+use DB;
 
 final class CategoryStatisticsController
 {
@@ -15,7 +15,7 @@ final class CategoryStatisticsController
         // By default use the period between today and 6 months ago
         $endDate = DateTimeImmutable::createFromFormat(
             'Y-m-d',
-            request()->get('endDate', (new DateTimeImmutable)->format('Y-m-d'))
+            request()->get('endDate', (new DateTimeImmutable())->format('Y-m-d'))
         );
 
         $startDate = DateTimeImmutable::createFromFormat(
@@ -30,7 +30,7 @@ final class CategoryStatisticsController
             ->select([
                 DB::raw('sum(aantal) as amount'),
                 'categorie',
-                DB::raw('DATE_FORMAT(DATE_SUB(tijd, INTERVAL 6 HOUR), "%Y-%m-%d") as date')
+                DB::raw('DATE_FORMAT(DATE_SUB(tijd, INTERVAL 6 HOUR), "%Y-%m-%d") as date'),
             ])
             ->groupBy('date', 'categorie')
             ->where('lid_id', '<>', 1098) // filter out Guests
@@ -43,9 +43,15 @@ final class CategoryStatisticsController
             })->map(function ($statByDate, $date) {
                 // For each date we probably have a category for beer, soda and food unless said category
                 // wasn't purchased that day
-                $beer = $statByDate->first(function ($stat) { return $stat->categorie === 'Bier'; });
-                $soda = $statByDate->first(function ($stat) { return $stat->categorie === 'Fris'; });
-                $food = $statByDate->first(function ($stat) { return $stat->categorie === 'Eten'; });
+                $beer = $statByDate->first(function ($stat) {
+                    return 'Bier' === $stat->categorie;
+                });
+                $soda = $statByDate->first(function ($stat) {
+                    return 'Fris' === $stat->categorie;
+                });
+                $food = $statByDate->first(function ($stat) {
+                    return 'Eten' === $stat->categorie;
+                });
 
                 return [
                     'date' => $date,
@@ -53,8 +59,7 @@ final class CategoryStatisticsController
                     'soda' => $soda ? $soda->amount : 0,
                     'food' => $food ? $food->amount : 0,
                 ];
-            })->values()
+            })->values(),
         ];
     }
-
 }

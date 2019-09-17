@@ -1,0 +1,60 @@
+#+TITLE: Authentication and authorization
+
+This namespace handles the authentication and authorization of our app.
+
+* Authentication
+
+** Third party platforms
+Ideally we would like people to be able to login using a Google, Facebook,
+or Twitter account.
+
+*** Google
+*** Facebook
+*** Twitter
+
+** API
+
+We will have some sort of authentication in which we can allow third party apps
+(i.e. the Borrelcie website) can access a user's private data.
+
+* Authorization
+
+** Permissions
+
+The permissions used in our app are listed in =config/francken/permissions.php=.
+
+** Policies
+
+Sometimes we will use special policy classes to determine whether someome is
+allowed to do an action.
+For instance the =PhotosPolicy= checks whether someone is logged in either as a
+user, or has filled in the photos password.
+
+** Per user
+
+Sometimes it will be useful to give a specific user additional permissions.
+
+*** Revoking after a certain date
+
+It might be useful to set a date at which these permissions will be revoked.
+But we will have to do some customization of the =spatie/laravel-permission=
+package to do this.
+
+** Per role
+
+*** Board
+
+Board members will have access to all areas of the website.
+
+*** Member
+
+Anyone who is currently a member (not excluding donors) of the association has
+this role.
+
+*** Alumni member
+
+We could use a Alumni role to give certain users less access than members.
+
+*** Commitee
+
+Some committees will have special permissions.

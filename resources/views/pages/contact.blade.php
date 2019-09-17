@@ -1,6 +1,7 @@
 @extends('layout.one-column-layout')
 @section('title', "Contact - T.F.V. 'Professor Francken'")
 @section('description', "Contact information of the study association T.F.V. 'Professor Francken'.")
+@inject('settings', "Francken\Shared\Settings\Settings")
 
 @section('content')
     <h1>Contact</h1>
@@ -27,11 +28,11 @@
 
             <h4>Board</h4>
             <strong>Email</strong>: <a href="mailto:board@professorfrancken.nl">board@professorfrancken.nl</a><br>
-            <strong>Phone</strong>: <a href="tel:+310503634978">+31 (0) 50 363 4978</a>
+            <strong>Phone</strong>: <a href="tel:+31503634978">+31 (0) 50 363 4978</a>
 
             <h4>External relations</h4>
             <strong>Email</strong>: <a href="mailto:extern@professorfrancken.nl" >extern@professorfrancken.nl</a><br>
-            <strong>Phone</strong>: <a href="tel:+31611759379">+31 611759379</a>
+            <strong>Phone</strong>: <a href="tel:{{ str_replace(' ', '', $settings->contactNumberOfExtern()) }}">{{ $settings->contactNumberOfExtern() }}</a>
         </div>
         <div class="col-sm-4">
             <h2>Other information</h2>

@@ -9,7 +9,7 @@ use Francken\Application\Books\BookDetails;
 class BookDetailsTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
-    function a_book_has_a_title_and_authors()
+    public function a_book_has_a_title_and_authors() : void
     {
         $bookDetail = new BookDetails(
             "Domain-driven design",

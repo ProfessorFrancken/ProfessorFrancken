@@ -14,7 +14,7 @@ class ActivityCategorizedTest extends TestCase
     /**
      * @test
      */
-    public function it_happend_to_an_activity()
+    public function it_happend_to_an_activity() : void
     {
         $id = ActivityId::generate();
         $event = new ActivityCategorized($id, Activity::SOCIAL);

@@ -12,7 +12,6 @@ use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\Events\PaymentInfoProvided;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
-use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;
 
 final class RegistrationRequest extends AggregateRoot
@@ -27,8 +26,8 @@ final class RegistrationRequest extends AggregateRoot
         ContactInfo $contact,
         StudyDetails $studyDetails,
         PaymentInfo $paymentInfo = null
-    ) : RegistrationRequest {
-        $request = new RegistrationRequest;
+    ) : self {
+        $request = new self();
 
         $request->apply(
             new RegistrationRequestSubmitted(
@@ -48,20 +47,20 @@ final class RegistrationRequest extends AggregateRoot
         return $request;
     }
 
-    public function getAggregateRootId()
+    public function getAggregateRootId() : string
     {
-        return $this->id;
+        return (string)$this->id;
     }
 
 
-    public function providePaymentInfo(PaymentInfo $paymentInfo)
+    public function providePaymentInfo(PaymentInfo $paymentInfo) : void
     {
         $this->apply(
             new PaymentInfoProvided($this->id, $paymentInfo)
         );
     }
 
-    protected function applyRegistrationRequestSubmitted(RegistrationRequestSubmitted $event)
+    protected function applyRegistrationRequestSubmitted(RegistrationRequestSubmitted $event) : void
     {
         $this->id = $event->registrationRequestId();
     }
