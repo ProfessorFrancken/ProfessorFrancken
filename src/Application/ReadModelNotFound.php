@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Application;
 
-final class ReadModelNotFound extends \RunTimeException
+use RuntimeException;
+
+final class ReadModelNotFound extends RuntimeException
 {
     public static function with(string $id) : self
     {

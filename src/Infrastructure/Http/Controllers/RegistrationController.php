@@ -38,8 +38,11 @@ class RegistrationController extends Controller
             $contactInfo = $this->contactInfoFrom($request);
             $paymentInfo = $this->paymentInfoFrom($request);
 
+            /** @var RegistrationRequestId */
+            $id = RegistrationRequestId::generate();
+
             $command = new SubmitRegistrationRequest(
-                RegistrationRequestId::generate(),
+                $id,
                 $name,
                 $birthdate,
                 $gender,

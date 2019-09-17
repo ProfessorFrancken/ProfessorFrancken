@@ -41,7 +41,7 @@ final class AcademicYear
      */
     public static function fromDate(DateTimeImmutable $date) : self
     {
-        $year = $date->format('Y');
+        $year = (int)$date->format('Y');
 
         //
         if ($date < new DateTimeImmutable(sprintf('01-07-%s', $year))) {

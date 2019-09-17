@@ -34,15 +34,21 @@ final class MailDeduction extends Model
 
     public function deduction() : Deduction
     {
-        return Deduction::orderBy('tijd', 'desc')
+        /** @var Deduction */
+        $deduction = Deduction::orderBy('tijd', 'desc')
             ->where('tijd', '<', $this->datum)
             ->firstOrFail();
+
+        return $deduction;
     }
 
-    public function previousDeduction() : self
+    public function previousDeduction() : Deduction
     {
-        return self::orderBy('datum', 'desc')
+        /** @var Deduction */
+        $deduction = self::orderBy('datum', 'desc')
             ->where('datum', '<', $this->datum)
             ->firstOrFail();
+
+        return $deduction;
     }
 }

@@ -36,9 +36,12 @@ final class Deduction extends Model
 
     public function previousDeduction() : self
     {
-        return self::orderBy('tijd', 'desc')
+        /** @var Deduction */
+        $deduction = self::orderBy('tijd', 'desc')
             ->where('tijd', '<', $this->tijd)
             ->firstOrFail();
+
+        return $deduction;
     }
 
     public function getPeriodAttribute() : Period

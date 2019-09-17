@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards;
 
+use App;
 use Francken\Association\LegacyMember;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Eloquent\Builder;
@@ -48,13 +49,15 @@ final class LegacyBoardMember extends Model
     {
         parent::boot();
 
-        $dispatcher = $this->app->make(Dispatcher::class);
-        $dispatcher->listen(BoardwasInstalled::class, function (BoardWasInstalled $event) : void {
-            $board = Board::find($event->boardId());
-            $board->members->each(function (BoardMember $member) : void {
-                self::createFromBoardMember($member);
+        $dispatcher = App::make(Dispatcher::class);
+        $dispatcher->listen(
+            BoardwasInstalled::class,
+            function (BoardWasInstalled $event) : void {
+                $board = Board::find($event->boardId());
+                $board->members->each(function (BoardMember $member) : void {
+                    self::createFromBoardMember($member);
+                });
             });
-        });
 
         static::addGlobalScope('board', function (Builder $builder) : void {
             $builder->where('commissie_id', '=', self::LEGACY_BOARD_COMMITTEE_ID);
