@@ -52,6 +52,18 @@ return [
             'prefix'   => '',
         ],
 
+        'francken_2' => [
+            'driver'    => 'mysql',
+            'host'      => env('DB_2_HOST', 'localhost'),
+            'database'  => env('DB_2_DATABASE', 'francken_2'),
+            'username'  => env('DB_2_USERNAME', 'forge'),
+            'password'  => env('DB_2_PASSWORD', ''),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+        ],
+
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
