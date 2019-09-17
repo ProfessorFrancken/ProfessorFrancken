@@ -13,7 +13,7 @@ class StudyTest extends \PHPUnit\Framework\TestCase
     use SetupReconstitution;
 
     /** @test */
-    public function it_is_constructed_with_study_details()
+    public function it_is_constructed_with_study_details() : void
     {
         $study = new Study(
             'Msc Applied Mathematics',
@@ -27,19 +27,19 @@ class StudyTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    function the_graduation_date_is_optional()
+    public function the_graduation_date_is_optional() : void
     {
         $study= new Study(
             'Msc Applied Mathematics',
             new DateTimeImmutable('01-08-2011')
         );
 
-        $this->assertEquals(null, $study->graduationDate());
+        $this->assertNull($study->graduationDate());
     }
 
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $study = new Study(
             'Msc Applied Mathematics',

@@ -9,20 +9,18 @@ use Francken\Application\Projector;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Application\ReadModel\PostList\PostListProjector;
 use Francken\Application\ReadModel\PostList\PostListRepository;
-use Francken\Domain\Posts\Events\PostCategorized;
+use Francken\Domain\Members\MemberId;
 use Francken\Domain\Posts\Events\PostContentChanged;
-use Francken\Domain\Posts\Events\PostPublishedAt;
 use Francken\Domain\Posts\Events\PostTitleChanged;
 use Francken\Domain\Posts\Events\PostWritten;
 use Francken\Domain\Posts\PostId;
-use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
 
 class PostListProjectorTest extends TestCase
 {
     /** @test */
-    function it_stores_posts()
+    public function it_stores_posts() : void
     {
         // Currently hardcoding published at and member id
         $id = PostId::generate();
@@ -43,7 +41,7 @@ class PostListProjectorTest extends TestCase
     }
 
     /** @test */
-    function it_changes_the_contents_of_a_post()
+    public function it_changes_the_contents_of_a_post() : void
     {
         // Currently hardcoding published at and member id
         $id = PostId::generate();

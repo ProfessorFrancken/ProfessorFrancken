@@ -306,7 +306,7 @@ The research has a strong instrumentation development component. For our experim
     public function show($slug)
     {
         $group = array_first(
-            array_filter($this->groups, function ($group) use ($slug){
+            array_filter($this->groups, function ($group) use ($slug) {
                 return str_slug($group['title']) === $slug;
             })
         );

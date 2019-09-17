@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Association\News;
 
-use Broadway\ReadModel\Identifiable as ReadModelInterface;
-use Broadway\Serializer\Serializable as SerializableInterface;
 use DateTimeImmutable;
 use Francken\Domain\Url;
 
-final class NewsItemId {
+final class NewsItemId
+{
     private $id;
 
     public function __construct(string $id)

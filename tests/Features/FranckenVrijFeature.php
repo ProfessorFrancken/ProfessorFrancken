@@ -9,8 +9,6 @@ use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Domain\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Auth;
-use DB;
 
 class FranckenVrijFeature extends TestCase
 {
@@ -18,7 +16,7 @@ class FranckenVrijFeature extends TestCase
     use LoggedInAsAdmin;
 
     /** @test */
-    function a_list_of_all_francken_vrijs_are_displayed()
+    public function a_list_of_all_francken_vrijs_are_displayed() : void
     {
         $franckenVrij = $this->app->make(FranckenVrijRepository::class);
         $franckenVrij->save(
@@ -37,7 +35,7 @@ class FranckenVrijFeature extends TestCase
     }
 
     /** @test */
-    function publishing_a_new_francken_vrij()
+    public function publishing_a_new_francken_vrij() : void
     {
         $this->visit('/admin/association/francken-vrij')
             ->type('Clinical', 'title')
@@ -51,7 +49,7 @@ class FranckenVrijFeature extends TestCase
     }
 
     /** @test */
-    function changing_a_published_francken_vrij()
+    public function changing_a_published_francken_vrij() : void
     {
         $franckenVrij = $this->app->make(FranckenVrijRepository::class);
         $id = EditionId::generate();
@@ -76,7 +74,7 @@ class FranckenVrijFeature extends TestCase
     }
 
     /** @test */
-    function changing_a_published_francken_vrij_pdf_file()
+    public function changing_a_published_francken_vrij_pdf_file() : void
     {
         $franckenVrij = $this->app->make(FranckenVrijRepository::class);
         $id = EditionId::generate();
@@ -102,7 +100,7 @@ class FranckenVrijFeature extends TestCase
     }
 
     /** @test */
-    function removing_a_published_francken_vrij()
+    public function removing_a_published_francken_vrij() : void
     {
         $franckenVrij = $this->app->make(FranckenVrijRepository::class);
         $id = EditionId::generate();

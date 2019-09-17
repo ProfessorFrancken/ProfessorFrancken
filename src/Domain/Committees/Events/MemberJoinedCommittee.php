@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Committees\Events;
 
-use Francken\Domain\Members\MemberId;
-use Francken\Domain\Committees\CommitteeId;
 use Broadway\Serializer\Serializable as SerializableInterface;
+use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Members\MemberId;
 use Francken\Domain\Serializable;
 
 final class MemberJoinedCommittee implements SerializableInterface

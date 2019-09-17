@@ -121,7 +121,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function it_finds_existing_ids()
+    public function it_finds_existing_ids() : void
     {
         $repo = $this->createRepository();
 
@@ -150,7 +150,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function it_removes_models()
+    public function it_removes_models() : void
     {
         $repo = $this->createRepository();
 
@@ -164,7 +164,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function removing_unknown_models_is_done_without_throwing()
+    public function removing_unknown_models_is_done_without_throwing() : void
     {
         $repo = $this->createRepository();
         $model = $this->createReadModel('42', 'First', 'Second');
@@ -178,7 +178,7 @@ abstract class RepositoryTestCase extends TestCase
     }
 
     /** @test */
-    public function it_removes_by_fields_only_if_they_are_provided()
+    public function it_removes_by_fields_only_if_they_are_provided() : void
     {
         $repo = $this->createRepository();
 
@@ -211,10 +211,6 @@ abstract class RepositoryTestCase extends TestCase
 
     /**
      * Return an instance of a read model
-     * @param string $id
-     * @param string $first
-     * @param string $second
-     * @return TestReadModel
      */
     protected function createReadModel(string $id, string $first, string $second) : TestReadModel
     {
@@ -223,7 +219,6 @@ abstract class RepositoryTestCase extends TestCase
 
     /**
      * Provide an instance of the repository that must be tested
-     * @return ReadModelRepository
      */
     abstract protected function createRepository() : ReadModelRepository;
 }

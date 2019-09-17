@@ -5,26 +5,17 @@ declare(strict_types=1);
 namespace Francken\Application;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
-use Broadway\Serializer\Serializable as SerializableInterface;
 
 interface ReadModelRepository
 {
-    /**
-     * @param ReadModelInterface $model
-     */
     public function save(ReadModelInterface $model);
 
     /**
-     * @param string $id
-     *
-     * @return ReadModelInterface
      * @throws ReadModelNotFound
      */
     public function find(string $id) : ReadModelInterface;
 
     /**
-     * @param array $fields
-     *
      * @return ReadModelInterface[]
      */
     public function findBy(array $fields) : array;
@@ -35,18 +26,13 @@ interface ReadModelRepository
     public function findAll() : array;
 
     /**
-     * @param array $ids
      * @return ReadModelInterface[]
      */
     public function findByIds(array $ids) : array;
 
-    /**
-     * @param string $id
-     */
+    
     public function remove(string $id);
 
-    /**
-     * @param array $fields
-     */
+    
     public function removeBy(array $fields);
 }

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Fake;
 
-use DateTimeImmutable;
-
 final class FakeNewsContent
 {
     private $faker;
@@ -17,7 +15,7 @@ final class FakeNewsContent
 
     public function generate() : string
     {
-        $header = function() : string {
+        $header = function () : string {
             if ($this->faker->boolean(20)) {
                 return '<h3>' . $this->faker->sentence() . '</h3>';
             }

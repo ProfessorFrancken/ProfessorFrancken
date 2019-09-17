@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Francken\Posts;
 
 use Francken\Domain\Books\Guest;
 use Francken\Domain\Members\Email;
 
-
 class GuestTest extends \PHPUnit\Framework\TestCase
 {
     /** @test */
-    public function a_guest_is_instantiated_with_a_name_and_email()
+    public function a_guest_is_instantiated_with_a_name_and_email() : void
     {
         $email = new Email("hoi@gmail.com");
         $name = "firstname lastname";
@@ -21,7 +22,7 @@ class GuestTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $this->markTestSkipped('Should I be serializable?');
         $email = new Email("hoi@gmail.com");

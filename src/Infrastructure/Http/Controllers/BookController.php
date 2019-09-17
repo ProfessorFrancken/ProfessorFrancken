@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Francken\Domain\Books\Book;
-use Francken\Domain\Books\BookRepository;
-use Francken\Domain\Books\BookId;
-use Francken\Domain\Members\MemberId;
-use Francken\Application\ReadModelRepository;
 use Francken\Application\Books\AvailableBooksRepository;
+use Francken\Domain\Books\Book;
+use Francken\Domain\Books\BookId;
+use Francken\Domain\Books\BookRepository;
+use Francken\Domain\Members\MemberId;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -59,7 +58,7 @@ class BookController extends Controller
         $isbn = new \Isbn\Isbn();
 
         ///@todo validation
-        if (!$isbn->check->identify($req->input('isbn'))) {
+        if ( ! $isbn->check->identify($req->input('isbn'))) {
             throw new \Exception('Not an ISBN');
         }
 
@@ -90,11 +89,11 @@ class BookController extends Controller
         return redirect('/study/books');
     }
 
-    public function update(Request $req, BookRepository $repo, $id)
+    public function update(Request $req, BookRepository $repo, $id) : void
     {
     }
 
-    public function destroy($id)
+    public function destroy($id) : void
     {
     }
 }

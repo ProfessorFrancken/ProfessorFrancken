@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Francken\Domain\Members\Registration\Events;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Serializable;
+use DateTimeImmutable;
+use Francken\Domain\Members\Address;
+use Francken\Domain\Members\ContactInfo;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\FullName;
+use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\StudyDetails;
-use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\FullName;
-use Francken\Domain\Members\Address;
-use Francken\Domain\Members\Gender;
-use Francken\Domain\Members\Email;
-use DateTimeImmutable;
+use Francken\Domain\Serializable;
 
 final class RegistrationRequestSubmitted implements SerializableInterface
 {

@@ -22,7 +22,7 @@ final class ContactInfo implements SerializableInterface
 
     public static function describe(Email $email, Address $address)
     {
-        $contact = new ContactInfo($email, $address);
+        $contact = new self($email, $address);
 
         return $contact;
     }

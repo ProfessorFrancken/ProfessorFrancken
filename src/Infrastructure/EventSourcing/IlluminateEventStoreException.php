@@ -9,9 +9,9 @@ use Exception;
 
 final class IlluminateEventStoreException extends EventStoreException
 {
-    public static function failedToAppend(Exception $exception)
+    public static function failedToAppend(Exception $exception) : void
     {
-        throw new IlluminateEventStoreException(
+        throw new self(
             $exception->getMessage(),
             (int) $exception->getCode(),
             $exception->getPrevious()

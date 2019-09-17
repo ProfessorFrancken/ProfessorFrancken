@@ -19,7 +19,7 @@ use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Members\MemberId;
 use Francken\Tests\AggregateRootScenarioTestCase;
 
-class ActivitiesTest extends AggregateRootScenarioTestCase
+class ActivityTest extends AggregateRootScenarioTestCase
 {
     /** @test */
     public function an_activity_can_be_planned() : void
@@ -178,7 +178,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     /**
      * @test
      */
-    public function a_member_cant_register_to_participate_in_activity_that_isnt_published()
+    public function a_member_cant_register_to_participate_in_activity_that_isnt_published() : void
     {
         $this->expectException(InvalidActivity::class);
         $id = ActivityId::generate();
@@ -191,7 +191,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function a_member_can_register_to_participate_in_a_published_activity()
+    public function a_member_can_register_to_participate_in_a_published_activity() : void
     {
         $id = ActivityId::generate();
         $memberId = MemberId::generate();
@@ -209,7 +209,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function registering_a_member_is_idempotent()
+    public function registering_a_member_is_idempotent() : void
     {
         $id = ActivityId::generate();
         $memberId = MemberId::generate();
@@ -228,7 +228,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function rescheduling_an_activity()
+    public function rescheduling_an_activity() : void
     {
         $id = ActivityId::generate();
 
@@ -257,7 +257,7 @@ class ActivitiesTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function an_activity_isnt_rescheduled_when_the_same_period_is_given()
+    public function an_activity_isnt_rescheduled_when_the_same_period_is_given() : void
     {
         $id = ActivityId::generate();
 

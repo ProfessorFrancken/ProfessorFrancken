@@ -49,7 +49,7 @@ final class IlluminateEventStore implements EventStore
     {
         $events = $this->loadEvents($id);
 
-        if (! $events) {
+        if ( ! $events) {
             throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
         }
 
@@ -67,7 +67,7 @@ final class IlluminateEventStore implements EventStore
     {
         $events = $this->loadEvents($id, $playhead);
 
-        if (! $events) {
+        if ( ! $events) {
             throw new EventStreamNotFoundException(sprintf('EventStream not found for aggregate with id %s', $id));
         }
 
@@ -115,7 +115,6 @@ final class IlluminateEventStore implements EventStore
      *
      * @author Dennis Schepers
      *
-     * @param $row
      *
      * @return \Broadway\Domain\DomainMessage
      */
@@ -133,7 +132,7 @@ final class IlluminateEventStore implements EventStore
     /**
      * Appends an event to the event store
      */
-    private function appendEvent(DomainMessage $event)
+    private function appendEvent(DomainMessage $event) : void
     {
         $this->connection->table($this->table)->insert([
             'uuid'        => (string) $event->getId(),

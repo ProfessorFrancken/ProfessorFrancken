@@ -7,10 +7,9 @@ namespace Francken\Application\Books;
 use Francken\Application\Projector;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
-use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
-use Francken\Application\ReadModelRepository as Repository;
+use Francken\Domain\Books\Events\BookSoldToMember;
 
 final class AvailableBooksProjector extends Projector
 {
@@ -23,7 +22,7 @@ final class AvailableBooksProjector extends Projector
         $this->books = $books;
     }
 
-    public function whenBookOffered(BookOffered $event)
+    public function whenBookOffered(BookOffered $event) : void
     {
         $bookDetails = $this->bookDetailRepository->getByISBN($event->isbn());
 
@@ -40,12 +39,12 @@ final class AvailableBooksProjector extends Projector
         $this->books->save($book);
     }
 
-    public function whenBookOfferRetracted(BookOfferRetracted $event)
+    public function whenBookOfferRetracted(BookOfferRetracted $event) : void
     {
         $this->books->remove($event->bookId());
     }
 
-    public function whenBookSoldToMember(BookSoldToMember $event)
+    public function whenBookSoldToMember(BookSoldToMember $event) : void
     {
         $book = $this->books->find($event->bookId());
 
@@ -62,7 +61,7 @@ final class AvailableBooksProjector extends Projector
         $this->books->save($book);
     }
 
-    public function whenBookSaleCancelled(BookSaleCancelled $event)
+    public function whenBookSaleCancelled(BookSaleCancelled $event) : void
     {
         $book = $this->books->find($event->bookId());
 
@@ -79,7 +78,7 @@ final class AvailableBooksProjector extends Projector
         $this->books->save($book);
     }
 
-    public function whenBookSaleCompleted(BookSaleCompleted $event)
+    public function whenBookSaleCompleted(BookSaleCompleted $event) : void
     {
         $this->books->remove($event->bookId());
     }

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-class CommitteesFeature extends TestCase
+class CommmitteesFeature extends TestCase
 {
     /** @test */
-    function committees_are_listed()
+    public function committees_are_listed() : void
     {
         $this->visit('/association/committees')
             ->see('Committees')
@@ -18,11 +18,10 @@ class CommitteesFeature extends TestCase
     }
 
     /** @test */
-    function more_info_about_a_committee_can_be_shown()
+    public function more_info_about_a_committee_can_be_shown() : void
     {
         $this->visit('/association/committees')
             ->click('Borrelcie')
             ->see('Committee members');
     }
-
 }

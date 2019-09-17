@@ -49,16 +49,16 @@ final class Activity extends AggregateRoot
         $this->apply(new ActivityPublished($this->id));
     }
 
-    public function cancel()
+    public function cancel() : void
     {
-        if (! $this->published) {
+        if ( ! $this->published) {
             throw InvalidActivity::cantCancelADraft();
         }
 
         $this->apply(new ActivityCancelled($this->id));
     }
 
-    public function recategorize($category)
+    public function recategorize($category) : void
     {
         $this->assertCategoryIsValid($category);
 
@@ -69,7 +69,7 @@ final class Activity extends AggregateRoot
         $this->apply(new ActivityCategorized($this->id, $category));
     }
 
-    public function reschedule(Schedule $schedule)
+    public function reschedule(Schedule $schedule) : void
     {
         if ($this->schedule == $schedule) {
             return;
@@ -81,49 +81,17 @@ final class Activity extends AggregateRoot
         ));
     }
 
-    public function registerParticipant(MemberId $memberId)
+    public function registerParticipant(MemberId $memberId) : void
     {
-        if (! $this->published) {
+        if ( ! $this->published) {
             throw new InvalidActivity("Tried to register member {$memberId}, but activity isn't published");
         }
 
-        if (in_array($memberId, $this->members)) {
+        if (in_array($memberId, $this->members, true)) {
             return;
         }
 
         $this->apply(new MemberRegisteredToParticipate($this->id, $memberId));
-    }
-
-    protected function applyActivityPlanned(ActivityPlanned $event)
-    {
-        $this->id = $event->activityId();
-        $this->schedule = $event->schedule();
-        $this->category = $event->category();
-    }
-
-    protected function applyActivityPublished(ActivityPublished $event)
-    {
-        $this->published = true;
-    }
-
-    protected function applyActivityCancelled(ActivityCancelled $event)
-    {
-        $this->published = false;
-    }
-
-    protected function applyActivityCategorized(ActivityCategorized $event)
-    {
-        $this->category = $event->category();
-    }
-
-    protected function applyActivityRescheduled(ActivityRescheduled $event)
-    {
-        $this->schedule = $event->schedule();
-    }
-
-    protected function applyMemberRegisteredToParticipate(MemberRegisteredToParticipate $event)
-    {
-        $this->members[] = $event->memberId();
     }
 
     public function getAggregateRootId() : string
@@ -131,13 +99,45 @@ final class Activity extends AggregateRoot
         return (string)$this->id;
     }
 
-    private function assertCategoryIsValid($category)
+    protected function applyActivityPlanned(ActivityPlanned $event) : void
     {
-        if (! in_array($category, [
-            Activity::SOCIAL,
-            Activity::CAREER,
-            Activity::EDUCATION
-        ])) {
+        $this->id = $event->activityId();
+        $this->schedule = $event->schedule();
+        $this->category = $event->category();
+    }
+
+    protected function applyActivityPublished(ActivityPublished $event) : void
+    {
+        $this->published = true;
+    }
+
+    protected function applyActivityCancelled(ActivityCancelled $event) : void
+    {
+        $this->published = false;
+    }
+
+    protected function applyActivityCategorized(ActivityCategorized $event) : void
+    {
+        $this->category = $event->category();
+    }
+
+    protected function applyActivityRescheduled(ActivityRescheduled $event) : void
+    {
+        $this->schedule = $event->schedule();
+    }
+
+    protected function applyMemberRegisteredToParticipate(MemberRegisteredToParticipate $event) : void
+    {
+        $this->members[] = $event->memberId();
+    }
+
+    private function assertCategoryIsValid($category) : void
+    {
+        if ( ! in_array($category, [
+            self::SOCIAL,
+            self::CAREER,
+            self::EDUCATION
+        ], true)) {
             throw InvalidActivity::invalidCategory($category);
         }
     }

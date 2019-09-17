@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Posts\Events;
 
-use Francken\Domain\Posts\PostId;
-use Francken\Domain\DomainEvent;
 use Broadway\Serializer\Serializable as SerializableInterface;
+use Francken\Domain\Posts\PostId;
 use Francken\Domain\Serializable;
 
 final class PostContentChanged implements SerializableInterface

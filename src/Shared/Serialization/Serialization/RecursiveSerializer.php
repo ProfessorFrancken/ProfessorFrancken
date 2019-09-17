@@ -16,7 +16,7 @@ final class RecursiveSerializer
     /**
      * Recursively serialize an array of (property) values.
      */
-    public static function serialize(array $values): array
+    public static function serialize(array $values) : array
     {
         $serializedData = [];
 
@@ -38,12 +38,8 @@ final class RecursiveSerializer
     /**
      * Recursively deserialize an array of (property) values. Use callbacks to further deserialize more complicated
      * values.
-     *
-     * @param array $values
-     * @param array $callbacks
-     * @return array
      */
-    public static function deserialize(array $values, array $callbacks = []): array
+    public static function deserialize(array $values, array $callbacks = []) : array
     {
         $deserializedData = [];
         foreach ($values as $property => $value) {

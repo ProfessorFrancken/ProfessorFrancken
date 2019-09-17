@@ -5,17 +5,16 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Activities;
 
 use DateTimeImmutable;
-use Francken\Tests\Application\ReadModelTestCase;
 use Francken\Application\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Activities\Location;
-
+use Francken\Domain\Activities\Schedule;
+use Francken\Tests\Application\ReadModelTestCase;
 
 class ActivityTest extends ReadModelTestCase
 {
     /** @test */
-    public function an_activity_has_a_name_category_schedule_and_location()
+    public function an_activity_has_a_name_category_schedule_and_location() : void
     {
         $id = ActivityId::generate();
         $schedule = Schedule::withStartTime(new DateTimeImmutable('07 july 2017 17:00:00'));

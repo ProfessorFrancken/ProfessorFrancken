@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Members;
 
-use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\MemberMustPayForMembership;
+use Francken\Domain\Members\PaymentInfo;
 use Francken\Tests\SetupReconstitution;
 
 class PaymentInfoTest extends \PHPUnit\Framework\TestCase
@@ -13,7 +13,7 @@ class PaymentInfoTest extends \PHPUnit\Framework\TestCase
     use SetupReconstitution;
 
     /** @test */
-    function a_member_pays_for_a_membership()
+    public function a_member_pays_for_a_membership() : void
     {
         $paymentInfo = new PaymentInfo(
             true,
@@ -25,7 +25,7 @@ class PaymentInfoTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    function a_member_can_pay_for_food_and_drinks()
+    public function a_member_can_pay_for_food_and_drinks() : void
     {
         $paymentInfo = new PaymentInfo(
             true,
@@ -37,7 +37,7 @@ class PaymentInfoTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    function a_member_must_pay_for_a_membershipo()
+    public function a_member_must_pay_for_a_membershipo() : void
     {
         $this->expectException(MemberMustPayForMembership::class);
         $paymentInfo = new PaymentInfo(
@@ -48,7 +48,7 @@ class PaymentInfoTest extends \PHPUnit\Framework\TestCase
 
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $paymentInfo = new PaymentInfo(
             true,

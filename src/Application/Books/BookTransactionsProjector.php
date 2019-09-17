@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Books;
 
 use Broadway\ReadModel\Projector;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
-use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
+use Francken\Domain\Books\Events\BookSoldToMember;
 
 final class BookTransactionsProjector extends Projector
 {
@@ -21,7 +23,7 @@ final class BookTransactionsProjector extends Projector
         $this->books = $books;
     }
 
-    public function whenBookOffered(BookOffered $event)
+    public function whenBookOffered(BookOffered $event) : void
     {
         $bookDetails = $this->bookDetailRepository->getByISBN($event->isbn());
 
@@ -42,12 +44,12 @@ final class BookTransactionsProjector extends Projector
         $this->books->save($book);
     }
 
-    public function whenBookOfferRetracted(BookOfferRetracted $event)
+    public function whenBookOfferRetracted(BookOfferRetracted $event) : void
     {
         $this->books->remove($event->bookId());
     }
 
-    public function whenBookSoldToMember(BookSoldToMember $event)
+    public function whenBookSoldToMember(BookSoldToMember $event) : void
     {
         $book = $this->books->find((string)$event->bookId());
 
@@ -68,7 +70,7 @@ final class BookTransactionsProjector extends Projector
         $this->books->save($book);
     }
 
-    public function whenBookSaleCancelled(BookSaleCancelled $event)
+    public function whenBookSaleCancelled(BookSaleCancelled $event) : void
     {
         $book = $this->books->find((string)$event->bookId());
 
@@ -87,7 +89,7 @@ final class BookTransactionsProjector extends Projector
         $this->books->save($book);
     }
 
-    public function whenBookSaleCompleted(BookSaleCompleted $event)
+    public function whenBookSaleCompleted(BookSaleCompleted $event) : void
     {
         $book = $this->books->find((string)$event->bookId());
 

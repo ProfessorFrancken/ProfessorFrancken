@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Francken\Tests\Association\News\Eloquent;
 
 use Faker\Factory;
-use Francken\Association\News\Fake\FakeNews;
-use Francken\Association\News\Eloquent\Repository;
 use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\Eloquent\Repository;
+use Francken\Association\News\Fake\FakeNews;
+use Francken\Association\News\NewsItem;
 use Francken\Features\TestCase;
 use Francken\Tests\Association\News\RepositoryTests;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Francken\Association\News\NewsItem;
 
 final class RepositoryTest extends TestCase
 {
@@ -20,22 +20,8 @@ final class RepositoryTest extends TestCase
 
     protected $news;
 
-    /**
-     * Setup the repository with the given news
-     */
-    protected function setupNews(array $news = [])
-    {
-        $items = collect($news)->map(function (NewsItem $news) {
-            return News::fromNewsItem($news);
-        })->each(function (News $news) {
-            $news->save();
-        });
-
-        $this->news = new Repository(true);
-    }
-
     /** @test */
-    function it_does_not_find_unpublished_news_by_default()
+    public function it_does_not_find_unpublished_news_by_default() : void
     {
         $faker = Factory::create();
         $faker->seed(31415);
@@ -51,6 +37,20 @@ final class RepositoryTest extends TestCase
 
         $this->news = new Repository(true);
         $this->assertCount(1, $this->news->recent(1));
+    }
+
+    /**
+     * Setup the repository with the given news
+     */
+    protected function setupNews(array $news = []) : void
+    {
+        $items = collect($news)->map(function (NewsItem $news) {
+            return News::fromNewsItem($news);
+        })->each(function (News $news) : void {
+            $news->save();
+        });
+
+        $this->news = new Repository(true);
     }
 }
 

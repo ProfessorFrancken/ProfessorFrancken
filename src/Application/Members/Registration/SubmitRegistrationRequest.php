@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\Members\Registration;
 
 use DateTimeImmutable;
 use Francken\Application\Command;
-use Francken\Domain\Members\Address;
 use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\Email;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;
@@ -18,7 +18,6 @@ use Illuminate\Http\Request;
 
 final class SubmitRegistrationRequest extends Command
 {
-
     private $id;
     private $name;
     private $birthdate;
@@ -46,7 +45,7 @@ final class SubmitRegistrationRequest extends Command
     }
 
     // handle a [Membership Application]
-    public function handle(Repository $repo)
+    public function handle(Repository $repo) : void
     {
         $registrationRequest = RegistrationRequest::submit(
             $this->id,
@@ -90,7 +89,7 @@ final class SubmitRegistrationRequest extends Command
 
         $contactOptions = [];
 
-        return new SubmitRegistrationRequest(
+        return new self(
             RegistrationRequestId::generate(),
             $name,
             $birthdate,

@@ -29,7 +29,7 @@ class CommitteeListFeature extends TestCase
     /**
      * @test
      */
-    public function a_list_of_all_new_committees_is_kept()
+    public function a_list_of_all_new_committees_is_kept() : void
     {
         $id = new CommitteeId($this->generator->generate());
         $committee = Committee::instantiate($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');

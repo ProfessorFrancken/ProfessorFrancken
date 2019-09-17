@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Domain\Posts\Events;
 
-use Francken\Domain\Posts\PostId;
-use Francken\Domain\Posts\PostCategory;
-use Francken\Domain\DomainEvent;
 use Broadway\Serializer\Serializable as SerializableInterface;
+use Francken\Domain\Posts\PostCategory;
+use Francken\Domain\Posts\PostId;
 use Francken\Domain\Serializable;
 
 final class PostCategorized implements SerializableInterface

@@ -16,7 +16,7 @@ final class MemberListRepository
         $this->repo = $repo;
     }
 
-    public function save(MemberList $member)
+    public function save(MemberList $member) : void
     {
         $this->repo->save($member);
     }

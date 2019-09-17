@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\News\Fake;
 
-use PHPUnit\Framework\TestCase as TestCase;
 use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\NewsItem;
+use PHPUnit\Framework\TestCase as TestCase;
 
 final class FakeNewsTest extends TestCase
 {
     /** @test */
-    function it_generates_fake_news_items()
+    public function it_generates_fake_news_items() : void
     {
         $fakeNews = new FakeNews(Factory::create(), 100);
 
@@ -20,7 +20,7 @@ final class FakeNewsTest extends TestCase
     }
 
     /** @test */
-    function it_keeps_track_of_previous_news_items()
+    public function it_keeps_track_of_previous_news_items() : void
     {
         $fakeNews = new FakeNews(Factory::create(), 5);
 
@@ -36,7 +36,7 @@ final class FakeNewsTest extends TestCase
     }
 
     /** @test */
-    function it_keeps_track_of_next_news_items()
+    public function it_keeps_track_of_next_news_items() : void
     {
         $fakeNews = new FakeNews(Factory::create(), 5);
 
@@ -52,7 +52,7 @@ final class FakeNewsTest extends TestCase
     }
 
     /** @test */
-    function it_orders_all_news_items_based_on_publication_date()
+    public function it_orders_all_news_items_based_on_publication_date() : void
     {
         $fakeNews = new FakeNews(Factory::create(), 10);
 
@@ -69,7 +69,7 @@ final class FakeNewsTest extends TestCase
         }
     }
 
-    private function assertPreviousNewsItemIsEqualTo(NewsItem $item, NewsItem $previous)
+    private function assertPreviousNewsItemIsEqualTo(NewsItem $item, NewsItem $previous) : void
     {
         $this->assertEquals(
             $item->previousNewsItem()->url(),
@@ -87,7 +87,7 @@ final class FakeNewsTest extends TestCase
         );
     }
 
-    private function assertNextNewsItemIsEqualTo(NewsItem $item, NewsItem $next)
+    private function assertNextNewsItemIsEqualTo(NewsItem $item, NewsItem $next) : void
     {
         $this->assertEquals(
             $item->nextNewsItem()->url(),
@@ -104,5 +104,4 @@ final class FakeNewsTest extends TestCase
             "The previous news item should be published before the current one"
         );
     }
-
 }

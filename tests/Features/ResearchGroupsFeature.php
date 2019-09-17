@@ -7,7 +7,7 @@ namespace Francken\Features;
 class ResearchGroupsFeature extends TestCase
 {
     /** @test */
-    function research_groups_are_displayed_with_additional_information()
+    public function research_groups_are_displayed_with_additional_information() : void
     {
         $this->visit('/study/research-groups')
             ->click('Materials Science')

@@ -19,7 +19,7 @@ use Francken\Tests\Domain\EventTestCase as Testcase;
 class RegistrationRequestSubmittedTest extends TestCase
 {
     /** @test */
-    public function it_is_insttantiable()
+    public function it_is_insttantiable() : void
     {
         $id = RegistrationRequestId::generate();
         $event = $this->registrationRequestSubmitted($id);
@@ -54,7 +54,7 @@ class RegistrationRequestSubmittedTest extends TestCase
     }
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $id = RegistrationRequestId::generate();
         $event = $this->registrationRequestSubmitted($id);
@@ -65,6 +65,11 @@ class RegistrationRequestSubmittedTest extends TestCase
                 $event->serialize()
             )
         );
+    }
+
+    protected function createInstance()
+    {
+        return $this->registrationRequestSubmitted(RegistrationRequestId::generate());
     }
 
     private function registrationRequestSubmitted(RegistrationRequestId $id) : RegistrationRequestSubmitted
@@ -96,10 +101,5 @@ class RegistrationRequestSubmittedTest extends TestCase
                 )
             )
         );
-    }
-
-    protected function createInstance()
-    {
-        return $this->registrationRequestSubmitted(RegistrationRequestId::generate());
     }
 }

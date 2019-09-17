@@ -44,27 +44,27 @@ class Post extends AggregateRoot
         $this->apply(new PostContentChanged($this->id, $content));
     }
 
-    public function categorize(PostCategory $type)
+    public function categorize(PostCategory $type) : void
     {
         $this->apply(new PostCategorized($this->id, $type));
     }
 
-    public function setPublishDate(Carbon $date)
+    public function setPublishDate(Carbon $date) : void
     {
         $this->apply(new PostPublishedAt($this->id, $date));
     }
 
-    public function unpublish()
+    public function unpublish() : void
     {
         $this->apply(new PostUnpublished($this->id));
     }
 
-    public function delete()
+    public function delete() : void
     {
         $this->apply(new DraftDeleted($this->id));
     }
 
-    public function applyPostWritten(PostWritten $event)
+    public function applyPostWritten(PostWritten $event) : void
     {
         $this->id = $event->PostId();
         $this->title = $event->title();
@@ -72,32 +72,32 @@ class Post extends AggregateRoot
         $this->type = $event->type();
     }
 
-    public function applyPostTitleChanged(PostTitleChanged $event)
+    public function applyPostTitleChanged(PostTitleChanged $event) : void
     {
         $this->title = $event->title();
     }
 
-    public function applyPostContentChanged(PostContentChanged $event)
+    public function applyPostContentChanged(PostContentChanged $event) : void
     {
         $this->content = $event->content;
     }
 
-    public function applyPostCategorized(PostCategorized $event)
+    public function applyPostCategorized(PostCategorized $event) : void
     {
         $events->type = $event->type();
     }
 
-    public function applyPostPublishedAt(PostPublishedAt $event)
+    public function applyPostPublishedAt(PostPublishedAt $event) : void
     {
         $this->published_at = $event->publishedAt();
     }
 
-    public function applyPostUnpublished(PostUnpublished $event)
+    public function applyPostUnpublished(PostUnpublished $event) : void
     {
         $this->published_at = null;
     }
 
-    public function applyDraftDeleted(DraftDeleted $event)
+    public function applyDraftDeleted(DraftDeleted $event) : void
     {
         $this->isDeleted = true;
     }

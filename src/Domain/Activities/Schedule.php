@@ -24,13 +24,13 @@ final class Schedule implements SerializableInterface
         return new self($startTime);
     }
 
-    public static function forPeriod(DateTimeImmutable $startTime, DateTimeImmutable $endTime) : Schedule
+    public static function forPeriod(DateTimeImmutable $startTime, DateTimeImmutable $endTime) : self
     {
         if ($startTime >= $endTime) {
             throw new InvalidArgumentException("A schedule's end time can't be before the start time");
         }
 
-        return new Schedule($startTime, $endTime);
+        return new self($startTime, $endTime);
     }
 
     public function startTime() : DateTimeImmutable
@@ -47,7 +47,7 @@ final class Schedule implements SerializableInterface
         return $this->endTime;
     }
 
-    public function serialize(): array
+    public function serialize() : array
     {
         return [
             'startTime' => $this->startTime->format(\DateTime::ISO8601),
@@ -57,7 +57,7 @@ final class Schedule implements SerializableInterface
 
     public static function deserialize(array $schedule)
     {
-        return new Schedule(
+        return new self(
             DateTimeImmutable::createFromFormat(\DateTime::ISO8601, $schedule['startTime']),
             is_null($schedule['endTime']) ? null : DateTimeImmutable::createFromFormat(\DateTime::ISO8601, $schedule['endTime'])
         );

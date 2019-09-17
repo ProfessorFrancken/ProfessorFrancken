@@ -22,19 +22,14 @@ final class PostRepository
         $this->repo = $repo;
     }
 
-    /**
-     * @param PostId $postId
-     * @return Post
-     */
+    
     public function load(PostId $postId) : Post
     {
         return $this->repo->load((string)$postId);
     }
 
-    /**
-     * @param Post $post
-     */
-    public function save(Post $post)
+    
+    public function save(Post $post) : void
     {
         $this->repo->save($post);
     }

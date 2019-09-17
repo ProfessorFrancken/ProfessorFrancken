@@ -22,19 +22,14 @@ final class MemberRepository
         $this->repo = $repo;
     }
 
-    /**
-     * @param MemberId $memberId
-     * @return Member
-     */
+    
     public function load(MemberId $memberId) : Member
     {
         return $this->repo->load((string)$memberId);
     }
 
-    /**
-     * @param Member $member
-     */
-    public function save(Member $member)
+    
+    public function save(Member $member) : void
     {
         $this->repo->save($member);
     }

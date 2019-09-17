@@ -7,7 +7,7 @@ namespace Francken\Features;
 class StaticPagesFeature extends TestCase
 {
     /** @test */
-    function it_shows_a_404_response_if_the_page_could_not_be_found()
+    public function it_shows_a_404_response_if_the_page_could_not_be_found() : void
     {
         $response = $this->call('GET', '/this-url-should-not-exist');
 
@@ -16,7 +16,7 @@ class StaticPagesFeature extends TestCase
 
 
     /** @test */
-    function it_wont_show_partial_views()
+    public function it_wont_show_partial_views() : void
     {
         $response = $this->call('GET', '/about/_board');
 

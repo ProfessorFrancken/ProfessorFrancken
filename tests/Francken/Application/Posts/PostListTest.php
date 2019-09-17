@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Committees;
 
 use DateTimeImmutable;
-use Francken\Tests\Application\ReadModelTestCase as TestCase;
 use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Posts\PostId;
+use Francken\Tests\Application\ReadModelTestCase as TestCase;
 
-class PostsListTest extends TestCase
+class PostListTest extends TestCase
 {
     /** @test */
-    function it_has_getters()
+    public function it_has_getters() : void
     {
         $id = PostId::generate();
         $member = MemberId::generate();

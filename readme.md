@@ -4,7 +4,7 @@
 
 This is the repository containing code for the new website of
 [T.F.V. Porfessor Francken](http://professorfrancken.nl/).
-We are using the [Laravel v5.2](http://laravel.com/docs/5.2) framework in
+We are using the [Laravel v6.0](http://laravel.com/docs/6.0) framework in
 combination with [Broadway](http://github.com/qandidate-labs/broadway), an
 infrastructure library for creating CQRS and Event Sourced applications.
 

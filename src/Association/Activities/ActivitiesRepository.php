@@ -26,9 +26,8 @@ final class ActivitiesRepository
         });
     }
 
-    public function store(Activity $activity)
+    public function store(Activity $activity) : void
     {
-
     }
 
     public function all()

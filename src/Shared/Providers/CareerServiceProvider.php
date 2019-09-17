@@ -7,12 +7,11 @@ namespace Francken\Shared\Providers;
 use Francken\Application\Career\CompanyRepository;
 use Francken\Application\Career\EventRepository;
 use Francken\Application\Career\JobOpeningRepository;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 final class CareerServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register() : void
     {
         $this->app->bind(JobOpeningRepository::class, function ($app) {
             $jobs = file_exists(database_path('vacancies.php'))

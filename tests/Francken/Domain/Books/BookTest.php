@@ -55,15 +55,15 @@ class BookTest extends AggregateRootScenarioTestCase
                     1500)
                 ])
             ->when(function ($book) use ($buyersId) {
-                    return $book->sellToMember($buyersId);
-                })
+                return $book->sellToMember($buyersId);
+            })
             ->then([new BookSoldToMember($bookId, $buyersId)]);
     }
 
     /**
-    * @test
-    */
-    public function a_book_cannot_be_sold_twice()
+     * @test
+     */
+    public function a_book_cannot_be_sold_twice() : void
     {
         $bookId = BookId::generate();
         $memberId = MemberId::generate();
@@ -85,7 +85,6 @@ class BookTest extends AggregateRootScenarioTestCase
 
     public function given_an_offered_book(BookId $bookId, MemberId $memberId)
     {
-
         return $this->scenario
             ->withAggregateId($bookId)
             ->given([
@@ -97,7 +96,7 @@ class BookTest extends AggregateRootScenarioTestCase
                 ]);
     }
 
-    protected function getAggregateRootClass(): string
+    protected function getAggregateRootClass() : string
     {
         return Book::class;
     }

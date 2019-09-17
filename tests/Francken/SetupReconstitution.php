@@ -14,7 +14,7 @@ trait SetupReconstitution
     /**
      * @before
      */
-    public function setupSomeFixtures()
+    public function setupSomeFixtures() : void
     {
         Reconstitution::reconstituteUsing(
             new ReconstituteUsingInstantiatorAndHydrator(

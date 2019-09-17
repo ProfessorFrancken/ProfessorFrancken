@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Committees;
 
-use Francken\Tests\Application\ReadModelTestCase as TestCase;
 use Francken\Application\Committees\CommitteesList;
-use Francken\Domain\Members\MemberId;
-use Francken\Domain\Members\Email;
 use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
+use Francken\Tests\Application\ReadModelTestCase as TestCase;
 
 class CommitteesListTest extends TestCase
 {
     /** @test */
-    function it_has_a_list_of_members()
+    public function it_has_a_list_of_members() : void
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
@@ -22,7 +22,7 @@ class CommitteesListTest extends TestCase
     }
 
     /** @test */
-    function a_member_can_be_added_to_a_committee()
+    public function a_member_can_be_added_to_a_committee() : void
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
@@ -43,7 +43,7 @@ class CommitteesListTest extends TestCase
     }
 
     /** @test */
-    function a_member_can_be_removed_from_a_committee()
+    public function a_member_can_be_removed_from_a_committee() : void
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
@@ -59,7 +59,7 @@ class CommitteesListTest extends TestCase
     }
 
     /** @test */
-    function the_name_of_a_committee_can_be_changed()
+    public function the_name_of_a_committee_can_be_changed() : void
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
@@ -68,7 +68,7 @@ class CommitteesListTest extends TestCase
     }
 
     /** @test */
-    function the_summary_of_a_committee_can_be_changed()
+    public function the_summary_of_a_committee_can_be_changed() : void
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
@@ -77,18 +77,18 @@ class CommitteesListTest extends TestCase
     }
 
     /** @test */
-    function the_email_of_a_committee_can_be_changed()
+    public function the_email_of_a_committee_can_be_changed() : void
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');
         $committee = $committee->changeEmail(new Email('scriptcie@professorfrancken.nl'));
         $this->assertEquals(new Email('scriptcie@professorfrancken.nl'), $committee->email());
         $committee = $committee->changeEmail(null);
-        $this->assertEquals(null, $committee->email());
+        $this->assertNull($committee->email());
     }
 
     /** @test */
-    function the_committee_page_can_be_changed()
+    public function the_committee_page_can_be_changed() : void
     {
         $id = CommitteeId::generate();
         $committee = new CommitteesList($id, 'S[ck]rip(t|t?c)ie', 'Digital anarchy');

@@ -39,4 +39,3 @@ class BoardsExport implements FromQuery, WithTitle, WithHeadings
         return self::FIELDS;
     }
 }
-

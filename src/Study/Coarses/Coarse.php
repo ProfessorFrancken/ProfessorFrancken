@@ -8,6 +8,5 @@ final class Coarse
 {
     public function __construct()
     {
-
     }
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Application\Activities;
 
 use Francken\Application\ReadModelRepository;
-use Francken\Application\Activities\Activity;
 use Francken\Domain\Activities\ActivityId;
 
 final class ActivityRepository
@@ -17,7 +16,7 @@ final class ActivityRepository
         $this->repo = $repo;
     }
 
-    public function save(Activity $activity)
+    public function save(Activity $activity) : void
     {
         $this->repo->save($activity);
     }
@@ -32,7 +31,7 @@ final class ActivityRepository
         return $this->repo->findAll();
     }
 
-    public function remove(ActivityId $id)
+    public function remove(ActivityId $id) : void
     {
         $this->repo->remove((string)$id);
     }

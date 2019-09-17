@@ -173,6 +173,7 @@ return [
         Plank\Mediable\MediableServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
+        Facade\Ignition\IgnitionServiceProvider::class,
     ],
 
     /*

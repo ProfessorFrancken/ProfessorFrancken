@@ -16,7 +16,7 @@ final class CommitteesListRepository
         $this->repo = $repo;
     }
 
-    public function save(CommitteesList $committee)
+    public function save(CommitteesList $committee) : void
     {
         $this->repo->save($committee);
     }

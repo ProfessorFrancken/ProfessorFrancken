@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Domain;
 
-use PHPUnit\Framework\TestCase as TestCase;
 use Francken\Domain\Url;
+use PHPUnit\Framework\TestCase as TestCase;
 
 class UrlTest extends TestCase
 {
@@ -13,7 +13,7 @@ class UrlTest extends TestCase
      * @dataProvider urlProvider
      * @test
      */
-    function it_is_constructed_from_a_string_representing_a_url(string $url, bool $throws = false)
+    public function it_is_constructed_from_a_string_representing_a_url(string $url, bool $throws = false) : void
     {
         if ($throws) {
             $this->expectException(\InvalidArgumentException::class);

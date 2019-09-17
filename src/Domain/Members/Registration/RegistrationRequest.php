@@ -53,14 +53,14 @@ final class RegistrationRequest extends AggregateRoot
     }
 
 
-    public function providePaymentInfo(PaymentInfo $paymentInfo)
+    public function providePaymentInfo(PaymentInfo $paymentInfo) : void
     {
         $this->apply(
             new PaymentInfoProvided($this->id, $paymentInfo)
         );
     }
 
-    protected function applyRegistrationRequestSubmitted(RegistrationRequestSubmitted $event)
+    protected function applyRegistrationRequestSubmitted(RegistrationRequestSubmitted $event) : void
     {
         $this->id = $event->registrationRequestId();
     }

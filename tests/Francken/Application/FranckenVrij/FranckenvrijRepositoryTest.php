@@ -14,10 +14,10 @@ use PHPUnit\Framework\TestCase as TestCase;
 class FranckenvrijRepositoryTest extends TestCase
 {
     /** @test */
-    function it_returns_an_array_of_volumes()
+    public function it_returns_an_array_of_volumes() : void
     {
         $repo = new FranckenVrijRepository(
-            new InMemoryRepository
+            new InMemoryRepository()
         );
 
         foreach (range(3, 1, -1) as $volume) {

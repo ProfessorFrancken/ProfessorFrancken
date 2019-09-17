@@ -8,7 +8,7 @@ class Sector
 {
     // Engineering and Industry and utilities are too vague
     // Optics, sound
-    const SECTORS = [
+    public const SECTORS = [
         "Energy and sustainability" => "tree",
         "Engineering" => "wrench",
         "Industry and utilities" => "industry",
@@ -27,11 +27,16 @@ class Sector
 
     public function __construct(string $sector)
     {
-        if (! array_key_exists($sector, self::SECTORS)) {
+        if ( ! array_key_exists($sector, self::SECTORS)) {
             throw new \InvalidArgumentException(sprintf('[%s] is not a valid job type', $sector));
         }
 
         $this->sector = $sector;
+    }
+
+    public function __toString() : string
+    {
+        return $this->sector;
     }
 
     public static function fromString(string $sector) : ?self
@@ -46,10 +51,5 @@ class Sector
     public function fontawesomeIcon() : string
     {
         return '';
-    }
-
-    public function __toString() : string
-    {
-        return $this->sector;
     }
 }

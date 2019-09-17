@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Francken\Application\ReadModel\PostList;
 
 use DateTimeImmutable;
 use Francken\Application\Projector;
-use Francken\Application\ReadModelRepository as Repository;
-use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Domain\Members\MemberId;
 use Francken\Domain\Posts\Events\PostCategorized;
 use Francken\Domain\Posts\Events\PostContentChanged;
@@ -22,7 +22,7 @@ final class PostListProjector extends Projector
         $this->posts = $posts;
     }
 
-    public function whenPostWritten(PostWritten $event)
+    public function whenPostWritten(PostWritten $event) : void
     {
         $post = new PostList(
             $event->postId(),
@@ -36,7 +36,7 @@ final class PostListProjector extends Projector
         $this->posts->save($post);
     }
 
-    public function whenPostTitleChanged(PostTitleChanged $event)
+    public function whenPostTitleChanged(PostTitleChanged $event) : void
     {
         $post = $this->posts->find($event->postId());
 
@@ -52,7 +52,7 @@ final class PostListProjector extends Projector
         );
     }
 
-    public function whenPostContentChanged(PostContentChanged $event)
+    public function whenPostContentChanged(PostContentChanged $event) : void
     {
         $post = $this->posts->find($event->postId());
 
@@ -68,7 +68,7 @@ final class PostListProjector extends Projector
         );
     }
 
-    public function whenPostCategorized(PostCategorized $event)
+    public function whenPostCategorized(PostCategorized $event) : void
     {
         $post = $this->posts->find($event->postId());
 
@@ -84,7 +84,7 @@ final class PostListProjector extends Projector
         );
     }
 
-    public function whenPostPublishedAt(PostPublishedAt $event)
+    public function whenPostPublishedAt(PostPublishedAt $event) : void
     {
         $post = $this->posts->find($event->postId());
 

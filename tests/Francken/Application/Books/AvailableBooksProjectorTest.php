@@ -6,13 +6,12 @@ namespace Francken\Tests\Application\Books;
 
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksProjector;
-use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Application\Books\BookDetails;
 use Francken\Application\Books\BookDetailsRepository;
 use Francken\Application\Projector;
 use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookOffered;
+use Francken\Domain\Books\Events\BookOfferRetracted;
 use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
 use Francken\Domain\Books\Events\BookSoldToMember;
@@ -26,7 +25,7 @@ class AvailableBooksProjectorTest extends TestCase
     private $bookDetailRepo;
 
     /** @test */
-    public function it_stores_a_book()
+    public function it_stores_a_book() : void
     {
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();
@@ -46,7 +45,7 @@ class AvailableBooksProjectorTest extends TestCase
     }
 
     /** @test */
-    public function an_offer_can_be_cancelled()
+    public function an_offer_can_be_cancelled() : void
     {
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();
@@ -59,7 +58,7 @@ class AvailableBooksProjectorTest extends TestCase
     }
 
     /** @test */
-    public function a_book_can_be_sold_to_a_member()
+    public function a_book_can_be_sold_to_a_member() : void
     {
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();
@@ -82,7 +81,7 @@ class AvailableBooksProjectorTest extends TestCase
     }
 
     /** @test */
-    public function a_sale_can_be_cancelled()
+    public function a_sale_can_be_cancelled() : void
     {
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();
@@ -107,7 +106,7 @@ class AvailableBooksProjectorTest extends TestCase
 
 
     /** @test */
-    public function a_sale_can_be_completed()
+    public function a_sale_can_be_completed() : void
     {
         $bookId = BookId::generate();
         $sellersId = MemberId::generate();
@@ -125,7 +124,7 @@ class AvailableBooksProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        $this->bookDetailRepo = $this->prophesize(BookDetailsRepository::Class);
+        $this->bookDetailRepo = $this->prophesize(BookDetailsRepository::class);
 
         $this->bookDetailRepo->getByISBN("0534408133")->willReturn(
             new BookDetails(

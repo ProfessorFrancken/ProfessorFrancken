@@ -11,25 +11,21 @@ use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
 use Broadway\EventStore\EventStore;
 use Broadway\Serializer\Serializer;
 use Broadway\Serializer\SimpleInterfaceSerializer;
-use Francken\Shared\Serialization\Hydration\HydrateUsingReflection;
-use Francken\Shared\Serialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
-use Francken\Shared\Serialization\Reconstitution\Reconstitution;
 use Doctrine\Instantiator\Instantiator;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\EventSourcing\IlluminateEventStore;
-use Francken\Infrastructure\EventSourcing\IlluminateEventStoreException;
+use Francken\Shared\Serialization\Hydration\HydrateUsingReflection;
+use Francken\Shared\Serialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
+use Francken\Shared\Serialization\Reconstitution\Reconstitution;
 use Illuminate\Database\Connection;
 use Illuminate\Support\ServiceProvider;
 
 class EventSourcingServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the event bus
-     *
-     * @return void
      */
-    public function boot()
+    public function boot() : void
     {
         $eventBus = $this->app->make(EventBus::class);
 
@@ -54,10 +50,8 @@ class EventSourcingServiceProvider extends ServiceProvider
 
     /**
      * Register event sourcing services.
-     *
-     * @return void
      */
-    public function register()
+    public function register() : void
     {
         $this->registerDefaultEventSourcingBindings();
         $this->registerEventStore();
@@ -67,7 +61,7 @@ class EventSourcingServiceProvider extends ServiceProvider
      * Registers default implementations for the aggregate factory,
      * serializer and the event bus.
      */
-    private function registerDefaultEventSourcingBindings()
+    private function registerDefaultEventSourcingBindings() : void
     {
         $this->app->bind(
             AggregateFactory::class,
@@ -89,7 +83,7 @@ class EventSourcingServiceProvider extends ServiceProvider
      * Register bindings for the IlluminateEventStore and bind it as
      * the default EventS
      */
-    private function registerEventStore()
+    private function registerEventStore() : void
     {
         $this->app->bind(IlluminateEventStore::class, function ($app) {
             $connection = $app->make(Connection::class);
