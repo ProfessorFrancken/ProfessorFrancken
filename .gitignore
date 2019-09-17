@@ -15,3 +15,4 @@ Homestead.json
 /public/vendor/
 .php_cs.cache
 .cache/
+/storage/debugbar/
