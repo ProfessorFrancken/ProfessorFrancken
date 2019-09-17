@@ -6,7 +6,7 @@ namespace Francken\Application\Career;
 
 class JobType
 {
-    const TYPES = [
+    public const TYPES = [
         "Fulltime" => "hourglass",
         "Part-time" => "hourglass-half",
         "Internship" => "info-circle"
@@ -16,11 +16,16 @@ class JobType
 
     public function __construct(string $type)
     {
-        if (! array_key_exists($type, self::TYPES)) {
+        if ( ! array_key_exists($type, self::TYPES)) {
             throw new \InvalidArgumentException(sprintf('[%s] is not a valid job type', $type));
         }
 
         $this->type = $type;
+    }
+
+    public function __toString() : string
+    {
+        return $this->type;
     }
 
     public static function fromString(string $type) : ?self
@@ -35,10 +40,5 @@ class JobType
     public function fontawesomeIcon() : string
     {
         return '';
-    }
-
-    public function __toString() : string
-    {
-        return $this->type;
     }
 }

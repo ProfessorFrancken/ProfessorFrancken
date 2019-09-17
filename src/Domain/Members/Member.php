@@ -20,7 +20,7 @@ class Member extends AggregateRoot
         return $member;
     }
 
-    public function applyMemberJoinedFrancken(MemberJoinedFrancken $event)
+    public function applyMemberJoinedFrancken(MemberJoinedFrancken $event) : void
     {
         $this->id = $event->memberId();
         $this->first_name = $event->firstName();

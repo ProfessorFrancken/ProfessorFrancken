@@ -40,10 +40,6 @@ final class IlluminateRepository implements ReadModelRepository
 
     /**
      * IlluminateRepository constructor.
-     * @param Connection $connection
-     * @param string $table
-     * @param string $model
-     * @param string $primaryKey
      * @param array $stringify Specify the columns which must be stringified
      */
     public function __construct(
@@ -60,10 +56,8 @@ final class IlluminateRepository implements ReadModelRepository
         $this->stringify = $stringify;
     }
 
-    /**
-     * @param ReadModelInterface $model
-     */
-    public function save(ReadModelInterface $model)
+    
+    public function save(ReadModelInterface $model) : void
     {
         $this->connection->table($this->table)->updateOrInsert([
             $this->primaryKey => (string)$model->getId()
@@ -71,9 +65,6 @@ final class IlluminateRepository implements ReadModelRepository
     }
 
     /**
-     * @param string $id
-     *
-     * @return ReadModelInterface
      * @throws ReadModelNotFound
      */
     public function find(string $id) : ReadModelInterface
@@ -86,12 +77,9 @@ final class IlluminateRepository implements ReadModelRepository
         }
 
         return $this->deserialize($row);
-
     }
 
     /**
-     * @param array $fields
-     *
      * @return ReadModelInterface[]
      */
     public function findBy(array $fields) : array
@@ -116,7 +104,6 @@ final class IlluminateRepository implements ReadModelRepository
     }
 
     /**
-     * @param array $ids
      * @return ReadModelInterface[]
      */
     public function findByIds(array $ids) : array
@@ -126,18 +113,14 @@ final class IlluminateRepository implements ReadModelRepository
         return $this->deserializeRows($rows);
     }
 
-    /**
-     * @param string $id
-     */
-    public function remove(string $id)
+    
+    public function remove(string $id) : void
     {
         $this->connection->table($this->table)->where($this->primaryKey, $id)->delete();
     }
 
-    /**
-     * @param array $fields
-     */
-    public function removeBy(array $fields)
+    
+    public function removeBy(array $fields) : void
     {
         if (empty($fields)) {
             return;
@@ -151,8 +134,6 @@ final class IlluminateRepository implements ReadModelRepository
     /**
      * Since SQL databases are normalized, nested arrays
      * must be serialized to JSON.
-     * @param SerializableInterface $model
-     * @return array
      */
     private function serialize(SerializableInterface $model) : array
     {
@@ -168,8 +149,6 @@ final class IlluminateRepository implements ReadModelRepository
     /**
      * Since SQL databases are normalized, nested structures
      * muse be deserialized from JSON to arrays.
-     * @param \stdClass $object
-     * @return ReadModelInterface
      */
     private function deserialize(\stdClass $object) : ReadModelInterface
     {
@@ -182,10 +161,7 @@ final class IlluminateRepository implements ReadModelRepository
         return ($this->model)::deserialize($array);
     }
 
-    /**
-     * @param Collection $rows
-     * @return array
-     */
+    
     private function deserializeRows(Collection $rows) : array
     {
         return $rows->map(function ($row) {

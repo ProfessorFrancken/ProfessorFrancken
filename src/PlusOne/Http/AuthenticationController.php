@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Config\Repository as Config;
+use Illuminate\Http\Request;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
-use Illuminate\Http\Request;
-use Illuminate\Config\Repository as Config;
-use Illuminate\Contracts\Hashing\Hasher;
 
 final class AuthenticationController
 {
     public function post(Request $request, Config $config)
     {
-        if (! \Hash::check(
+        if ( ! \Hash::check(
             $request->get('password'),
             $config->get('francken.plus_one.password')
         )) {

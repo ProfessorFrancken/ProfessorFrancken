@@ -22,7 +22,7 @@ final class ProjectionRepository implements AvailableBooksRepository
         $this->repo = $repo;
     }
 
-    public function save(AvailableBook $book)
+    public function save(AvailableBook $book) : void
     {
         $this->repo->save($book);
     }
@@ -37,7 +37,7 @@ final class ProjectionRepository implements AvailableBooksRepository
         return $this->repo->findAll();
     }
 
-    public function remove(BookID $id)
+    public function remove(BookID $id) : void
     {
         $this->repo->remove((string)$id);
     }

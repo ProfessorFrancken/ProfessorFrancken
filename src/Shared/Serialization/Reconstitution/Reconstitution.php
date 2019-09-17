@@ -17,9 +17,9 @@ final class Reconstitution
     /**
      * @throws \LogicException When reconstituteUsing() wasn't called first
      */
-    public static function reconstitute(): Reconstitute
+    public static function reconstitute() : Reconstitute
     {
-        if (!self::$reconstitute instanceof Reconstitute) {
+        if ( ! self::$reconstitute instanceof Reconstitute) {
             throw new \LogicException(
                 'You have to call \BroadwaySerialization\Reconstitution::reconstituteUsing() first'
             );
@@ -32,11 +32,9 @@ final class Reconstitution
      * Provide an object which can reconstitute objects, call this when the application is booting.
      * Provide `null` to free the object reference.
      *
-     * @param Reconstitute|null $reconstitute
-     * @return void
      * @private
      */
-    public static function reconstituteUsing(Reconstitute $reconstitute = null)
+    public static function reconstituteUsing(Reconstitute $reconstitute = null) : void
     {
         self::$reconstitute = $reconstitute;
     }

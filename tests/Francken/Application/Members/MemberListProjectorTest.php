@@ -16,7 +16,7 @@ use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
 class MemberListProjectorTest extends TestCase
 {
     /** @test */
-    function it_stores_a_users_firstname_and_lastnaem()
+    public function it_stores_a_users_firstname_and_lastnaem() : void
     {
         $id = MemberId::generate();
 

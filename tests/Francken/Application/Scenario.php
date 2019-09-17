@@ -32,7 +32,6 @@ final class Scenario
     }
 
     /**
-     * @param string $aggregateId
      * @return Scenario
      */
     public function withAggregateId(string $aggregateId)
@@ -43,10 +42,9 @@ final class Scenario
     }
 
     /**
-     * @param array $events
      * @return Scenario
      */
-    public function given(array $events = array())
+    public function given(array $events = [])
     {
         foreach ($events as $given) {
             $this->projector->handle($this->createDomainMessageForEvent($given));
@@ -56,7 +54,6 @@ final class Scenario
     }
 
     /**
-     * @param mixed $event
      * @param DateTime $occurredOn
      * @return Scenario
      */
@@ -68,7 +65,6 @@ final class Scenario
     }
 
     /**
-     * @param array $expectedData
      * @return Scenario
      */
     public function then(array $expectedData)
@@ -86,6 +82,6 @@ final class Scenario
             $occurredOn = DateTime::now();
         }
 
-        return new DomainMessage($this->aggregateId, $this->playhead, new Metadata, $event, $occurredOn);
+        return new DomainMessage($this->aggregateId, $this->playhead, new Metadata(), $event, $occurredOn);
     }
 }

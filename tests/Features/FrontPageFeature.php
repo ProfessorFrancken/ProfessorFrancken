@@ -19,7 +19,7 @@ class FrontPageFeature extends TestCase
      *
      * @test
      */
-    public function the_front_page_shows_our_name()
+    public function the_front_page_shows_our_name() : void
     {
         $this->publishAFranckenVrij();
 
@@ -28,7 +28,7 @@ class FrontPageFeature extends TestCase
     }
 
 
-    private function publishAFranckenVrij()
+    private function publishAFranckenVrij() : void
     {
         $franckenVrij = $this->app->make(FranckenVrijRepository::class);
         $id = EditionId::generate();

@@ -39,8 +39,6 @@ final class ImportIntoEloquent extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
@@ -58,12 +56,12 @@ final class ImportIntoEloquent extends Command
         }
 
         $this->info('Importing news from xml file');
-        $news = array_map(function ($news){
+        $news = array_map(function ($news) {
             return News::fromNewsItem($news);
         }, iterator_to_array($wordpress));
 
         $amount = count($news);
-        if (! $this->confirm("Store {$amount} news items?")) {
+        if ( ! $this->confirm("Store {$amount} news items?")) {
             return;
         }
 

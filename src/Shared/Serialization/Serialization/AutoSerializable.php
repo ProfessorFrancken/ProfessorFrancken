@@ -31,7 +31,7 @@ trait AutoSerializable
      *
      * @return array Values of properties that should be serialized
      */
-    final public function serialize(): array
+    final public function serialize() : array
     {
         return RecursiveSerializer::serialize(get_object_vars($this));
     }
@@ -44,10 +44,8 @@ trait AutoSerializable
      *   [
      *     'property' => [DesiredClass::class, 'deserialize']
      *   ]
-     *
-     * @return array
      */
-    protected static function deserializationCallbacks(): array
+    protected static function deserializationCallbacks() : array
     {
         return [];
     }

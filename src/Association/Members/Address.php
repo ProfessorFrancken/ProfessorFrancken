@@ -20,6 +20,11 @@ final class Address
         $this->address = $address;
     }
 
+    public function __toString() : string
+    {
+        return $this->city . ' ' . $this->address . ' ' . $this->postalCode;
+    }
+
     public function city() : string
     {
         return $this->city;
@@ -33,10 +38,5 @@ final class Address
     public function address() : string
     {
         return $this->address;
-    }
-
-    public function __toString() : string
-    {
-        return $this->city.' '.$this->address.' '.$this->postalCode;
     }
 }

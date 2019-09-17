@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Application\Career;
 
 use League\CommonMark\CommonMarkConverter;
-use League\HTMLToMarkdown\HtmlConverter;
 
 final class CompanyRepository
 {
@@ -18,11 +17,10 @@ final class CompanyRepository
             'allow_unsafe_links' => false,
         ]);
 
-        $this->companies = array_map(function ($company) use ($toHtml){
+        $this->companies = array_map(function ($company) use ($toHtml) {
             $company['summary'] = $toHtml->convertToHtml($company['summary']);
             return $company;
         }, $companies);
-
     }
 
     public function profiles() : array
@@ -38,11 +36,10 @@ final class CompanyRepository
     public function findByLink($slug) : array
     {
         return array_first(
-            array_filter($this->profiles(), function ($company) use ($slug){
+            array_filter($this->profiles(), function ($company) use ($slug) {
                 return str_slug($company['name']) === $slug;
             })
         );
-
     }
 
     /**

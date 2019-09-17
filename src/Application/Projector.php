@@ -9,12 +9,12 @@ use Broadway\ReadModel\Projector as BroadwayProjector;
 
 abstract class Projector extends BroadwayProjector
 {
-    public function handle(DomainMessage $domainMessage): void
+    public function handle(DomainMessage $domainMessage) : void
     {
         $event  = $domainMessage->getPayload();
         $method = $this->getHandleMethod($event);
 
-        if (! method_exists($this, $method)) {
+        if ( ! method_exists($this, $method)) {
             return;
         }
 

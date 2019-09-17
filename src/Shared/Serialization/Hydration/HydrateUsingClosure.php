@@ -19,7 +19,7 @@ class HydrateUsingClosure implements Hydrate
      */
     public function __construct()
     {
-        $this->hydrator = function (array $data, array $props) {
+        $this->hydrator = function (array $data, array $props) : void {
             foreach ($data as $key => $value) {
                 if (isset($props[$key])) {
                     $this->{$key} = $value;
@@ -31,10 +31,10 @@ class HydrateUsingClosure implements Hydrate
     /**
      * {@inheritdoc}
      */
-    public function hydrate(array $data, $object)
+    public function hydrate(array $data, $object) : void
     {
         $class = get_class($object);
-        if (!isset($this->cache[$class])) {
+        if ( ! isset($this->cache[$class])) {
             $this->getProps($class);
         }
 
@@ -44,7 +44,7 @@ class HydrateUsingClosure implements Hydrate
     /**
      * @param $class
      */
-    private function getProps($class)
+    private function getProps($class) : void
     {
         $this->cache[$class] = [];
         foreach ((new \ReflectionClass($class))->getProperties() as $property) {

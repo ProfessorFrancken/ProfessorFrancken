@@ -6,7 +6,6 @@ namespace Francken\Domain\Activities\Events;
 
 use Francken\Domain\Activities\ActivityId;
 use Francken\Domain\Activities\Schedule;
-use DateTimeImmutable;
 
 final class ActivityRescheduled extends ActivityEvent
 {

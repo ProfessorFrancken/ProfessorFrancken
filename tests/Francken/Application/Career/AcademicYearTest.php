@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase as TestCase;
 class AcademicYearTest extends TestCase
 {
     /** @test */
-    function it_can_be_constructed_using_only_two_years()
+    public function it_can_be_constructed_using_only_two_years() : void
     {
         $year = AcademicYear::fromString('2016-2017');
 
@@ -19,7 +19,7 @@ class AcademicYearTest extends TestCase
     }
 
     /** @test */
-    function it_returns_the_next_academic_year_after_the_current_one()
+    public function it_returns_the_next_academic_year_after_the_current_one() : void
     {
         $year = AcademicYear::fromString('2016-2017');
 
@@ -27,7 +27,7 @@ class AcademicYearTest extends TestCase
     }
 
     /** @test */
-    function it_returns_the_previous_academic_year_before_the_current_one()
+    public function it_returns_the_previous_academic_year_before_the_current_one() : void
     {
         $year = AcademicYear::fromString('2016-2017');
 
@@ -35,7 +35,7 @@ class AcademicYearTest extends TestCase
     }
 
     /** @test */
-    function it_can_check_whether_a_date_is_in_an_academic_date()
+    public function it_can_check_whether_a_date_is_in_an_academic_date() : void
     {
         $year = AcademicYear::fromString('2016-2017');
 
@@ -96,7 +96,7 @@ class AcademicYearTest extends TestCase
     }
 
     /** @test */
-    function it_can_return_the_academic_year_associated_to_a_date()
+    public function it_can_return_the_academic_year_associated_to_a_date() : void
     {
         $year = AcademicYear::fromDate(new \DateTimeImmutable('17-07-2017'));
 

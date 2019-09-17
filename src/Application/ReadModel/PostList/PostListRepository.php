@@ -16,7 +16,7 @@ final class PostListRepository
         $this->repo = $repo;
     }
 
-    public function save(PostList $post)
+    public function save(PostList $post) : void
     {
         $this->repo->save($post);
     }

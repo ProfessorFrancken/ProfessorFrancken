@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Fake;
 
-use Faker\Generator;
 use DateTimeImmutable;
+use Faker\Generator;
 
-use Francken\Association\News\NewsItem;
-use Francken\Association\News\NewsItemLink;
 use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\NewsItemLink;
 
-final class FakeNews 
+final class FakeNews
 {
     private $faker;
     private $news;
@@ -29,12 +29,10 @@ final class FakeNews
     }
     public function newsItem() : NewsItem
     {
-
     }
 
     public function newsLink() : NewsItemLink
     {
-
     }
 
     private function generateNews(int $amount) : array

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Francken\Association\News\Repository as NewsRepository;
+use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
-use Faker\Factory;
+use Francken\Association\News\Repository as NewsRepository;
 
 class NewsFeature extends TestCase
 {
@@ -16,9 +16,9 @@ class NewsFeature extends TestCase
     // inmemory with fakes
 
     /** @before */
-    function setupNews()
+    public function setupNews() : void
     {
-        $this->afterApplicationCreated(function () {
+        $this->afterApplicationCreated(function () : void {
             $faker = Factory::create();
             $faker->seed(31415);
             $fakeNews = new FakeNews($faker, 10);
@@ -30,7 +30,7 @@ class NewsFeature extends TestCase
     }
 
     /** @test */
-    function the_latest_news_is_shown()
+    public function the_latest_news_is_shown() : void
     {
         $this->visit('/association/news')
             ->click('Read more')
@@ -43,7 +43,7 @@ class NewsFeature extends TestCase
     }
 
     /** @test */
-    function the_archive_can_be_used_to_search_for_old_news()
+    public function the_archive_can_be_used_to_search_for_old_news() : void
     {
         $this->visit('/association/news/archive');
 

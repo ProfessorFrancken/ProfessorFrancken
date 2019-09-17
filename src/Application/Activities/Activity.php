@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Application\Activities;
 
-use Francken\Domain\Serializable;
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Activities\ActivityId;
-use Francken\Domain\Activities\Schedule;
 use Francken\Domain\Activities\Location;
+use Francken\Domain\Activities\Schedule;
+use Francken\Domain\Serializable;
 
 final class Activity implements ReadModelInterface, SerializableInterface
 {
@@ -95,7 +95,7 @@ final class Activity implements ReadModelInterface, SerializableInterface
         return $this->participants;
     }
 
-    private function extractScheduleAndLocation(Schedule $schedule, Location $location)
+    private function extractScheduleAndLocation(Schedule $schedule, Location $location) : void
     {
         $serialized_schedule = $schedule->serialize();
         $this->schedule_start = $serialized_schedule['startTime'];

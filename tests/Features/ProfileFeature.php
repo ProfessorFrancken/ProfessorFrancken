@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Auth;
-use DB;
-use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * The following are test that check that basic features of the admin page are working
@@ -19,16 +15,16 @@ class ProfileFeature extends TestCase
     use LoggedInAsAdmin;
 
     /** @test */
-    function it_shows_personal_information_of_a_member()
+    public function it_shows_personal_information_of_a_member() : void
     {
         $this->visit('/profile')
             ->see('Mark Redeman');
     }
 
     /** @test */
-    function it_shows_expenses_of_a_member()
+    public function it_shows_expenses_of_a_member() : void
     {
-        $now = new \DateTimeImmutable;
+        $now = new \DateTimeImmutable();
         $ids = \DB::connection('francken-legacy')->table('transacties')
             ->insert([
                 "lid_id" => 1403,
@@ -50,9 +46,9 @@ class ProfileFeature extends TestCase
     }
 
     /** @test */
-    public function it_shows_expenses_of_a_certain_month()
+    public function it_shows_expenses_of_a_certain_month() : void
     {
-        $now = new \DateTimeImmutable;
+        $now = new \DateTimeImmutable();
         \DB::connection('francken-legacy')->table('transacties')
             ->whereYear('tijd', $now->format('Y'))
             ->whereMonth('tijd', $now->format('m'))

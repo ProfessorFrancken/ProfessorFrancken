@@ -62,7 +62,7 @@ class PostsTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function once_a_draft_is_created_a_publish_date_can_be_set()
+    public function once_a_draft_is_created_a_publish_date_can_be_set() : void
     {
         $id = PostId::generate();
         $date = Carbon::createFromDate(2012, 1, 1);
@@ -75,13 +75,13 @@ class PostsTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function a_published_post_can_be_unpublished()
+    public function a_published_post_can_be_unpublished() : void
     { // reset back to draft.
         $id = PostId::generate();
         $date = Carbon::createFromDate(2012, 1, 1);
 
         $this->givenANewPost($id)
-            ->when(function ($post) use ($date) {
+            ->when(function ($post) use ($date) : void {
                 $post->setPublishDate($date);
                 $post->unpublish();
             })
@@ -90,15 +90,20 @@ class PostsTest extends AggregateRootScenarioTestCase
     }
 
     /** @test */
-    public function a_draft_can_be_deleted()
+    public function a_draft_can_be_deleted() : void
     {
         $id = PostId::generate();
 
         $this->givenANewPost($id)
-            ->when(function ($post) {
+            ->when(function ($post) : void {
                 $post->delete();
             })
             ->then([new DraftDeleted($id)]);
+    }
+
+    protected function getAggregateRootClass() : string
+    {
+        return Post::class;
     }
 
     private function givenANewPost(PostId $id)
@@ -109,11 +114,5 @@ class PostsTest extends AggregateRootScenarioTestCase
                     "Title",
                     "Content",
                     PostCategory::fromString(PostCategory::NEWSPOST))]);
-
-    }
-
-    protected function getAggregateRootClass(): string
-    {
-        return Post::class;
     }
 }

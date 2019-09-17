@@ -12,7 +12,7 @@ use Francken\Tests\Application\ReadModelTestCase as TestCase;
 class EditionTest extends TestCase
 {
     /** @test */
-    function it_has_a_volume_and_edition_number()
+    public function it_has_a_volume_and_edition_number() : void
     {
         $id = EditionId::generate();
 
@@ -37,7 +37,7 @@ class EditionTest extends TestCase
      * @dataProvider editionProvider
      * @test
      */
-    function the_volume_and_edition_must_be_positive(int $volume, int $edition, bool $throws = false)
+    public function the_volume_and_edition_must_be_positive(int $volume, int $edition, bool $throws = false) : void
     {
         $id = EditionId::generate();
 
@@ -58,7 +58,7 @@ class EditionTest extends TestCase
         $this->assertEquals(1, $edition->edition());
     }
 
-    function editionProvider() : array
+    public function editionProvider() : array
     {
         return [
             [1, 1, false],

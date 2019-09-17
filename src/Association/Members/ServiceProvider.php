@@ -9,7 +9,7 @@ use Illuminate\View\Factory as View;
 
 final class ServiceProvider extends BaseServiceProvider
 {
-    public function boot()
+    public function boot() : void
     {
         $view = $this->app->make(View::class);
 

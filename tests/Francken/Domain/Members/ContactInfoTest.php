@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Members;
 
+use Francken\Domain\Members\Address;
 use Francken\Domain\Members\ContactInfo;
 use Francken\Domain\Members\Email;
-use Francken\Domain\Members\Address;
 use Francken\Tests\SetupReconstitution;
 
 class ContactInfoTest extends \PHPUnit\Framework\TestCase
@@ -14,7 +14,7 @@ class ContactInfoTest extends \PHPUnit\Framework\TestCase
     use SetupReconstitution;
 
     /** @test */
-    public function a_contact_needs_an_address_and_an_email()
+    public function a_contact_needs_an_address_and_an_email() : void
     {
         $contact = ContactInfo::describe(
             new Email('markredeman@gmail.com'),
@@ -44,7 +44,7 @@ class ContactInfoTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $contact = ContactInfo::describe(
             new Email('markredeman@gmail.com'),

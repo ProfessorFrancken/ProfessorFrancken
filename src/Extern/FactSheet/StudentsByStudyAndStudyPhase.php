@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Extern\FactSheet;
 
-use DB;
 use DateTimeImmutable;
+use DB;
 
 final class StudentsByStudyAndStudyPhase
 {

@@ -7,7 +7,6 @@ namespace Francken\Domain\Members;
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\DomainException;
 use Francken\Domain\Serializable;
-use Francken\Domain\Members;
 
 final class PaymentInfo implements SerializableInterface
 {
@@ -20,8 +19,8 @@ final class PaymentInfo implements SerializableInterface
     public function __construct(bool $payForMembership, bool $payForFoodAndDrinks, string $iban = null)
     {
         // A member must indicate that he or she is paying for the membership
-        if (! $payForMembership) {
-            throw new MemberMustPayForMembership;
+        if ( ! $payForMembership) {
+            throw new MemberMustPayForMembership();
         }
 
         $this->payForMembership = $payForMembership;

@@ -22,19 +22,14 @@ final class BookRepository
         $this->repo = $repo;
     }
 
-    /**
-     * @param BookId $BookId
-     * @return Book
-     */
+    
     public function load(BookId $BookId) : Book
     {
         return $this->repo->load((string)$BookId);
     }
 
-    /**
-     * @param Book $Book
-     */
-    public function save(Book $Book)
+    
+    public function save(Book $Book) : void
     {
         $this->repo->save($Book);
     }

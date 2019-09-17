@@ -53,14 +53,14 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             ),
             DomainMessage::recordNow(
                 'aggregate-1',
                 1,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-1', $eventStream);
@@ -71,20 +71,20 @@ class EventStoreFeature extends TestCase
     /**
      * @test
      */
-    public function the_event_stream_of_more_than_one_aggregate_can_be_saved()
+    public function the_event_stream_of_more_than_one_aggregate_can_be_saved() : void
     {
         $eventStream = new DomainEventStream([
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             ),
             DomainMessage::recordNow(
                 'aggregate-1',
                 1,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-1', $eventStream);
@@ -94,8 +94,8 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-2',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             )
         ]);
         $this->store->append('aggregate-2', $secondStream);
@@ -106,7 +106,7 @@ class EventStoreFeature extends TestCase
     /**
      * @test
      */
-    public function it_cant_find_a_event_stream_of_a_non_existing_aggregate()
+    public function it_cant_find_a_event_stream_of_a_non_existing_aggregate() : void
     {
         $this->expectException(EventStreamNotFoundException::class);
         $this->store->load('aggregate-1');
@@ -115,7 +115,7 @@ class EventStoreFeature extends TestCase
     /**
      * @test
      */
-    public function when_appending_one_event_from_a_event_stream_fails_it_rolls_back_all_changes()
+    public function when_appending_one_event_from_a_event_stream_fails_it_rolls_back_all_changes() : void
     {
         $this->expectException(IlluminateEventStoreException::class);
 
@@ -123,14 +123,14 @@ class EventStoreFeature extends TestCase
             DomainMessage::recordNow(
                 'aggregate-1',
                 0,
-                new Metadata(array()),
-                new ADomainEvent
+                new Metadata([]),
+                new ADomainEvent()
             ),
             DomainMessage::recordNow(
                 'aggregate-1',
                 1,
-                new Metadata(array()),
-                new AThrowingDomainEent
+                new Metadata([]),
+                new AThrowingDomainEent()
             ),
         ]);
 
@@ -140,13 +140,12 @@ class EventStoreFeature extends TestCase
 
 final class ADomainEvent implements SerializableInterface
 {
-
     public static function deserialize(array $data)
     {
         return new static($data['my_event']);
     }
 
-    public function serialize(): array
+    public function serialize() : array
     {
         return [
             'my_event' => 'l33t'
@@ -156,13 +155,12 @@ final class ADomainEvent implements SerializableInterface
 
 final class AThrowingDomainEent implements SerializableInterface
 {
-
     public static function deserialize(array $data)
     {
         return new static($data['my_event']);
     }
 
-    public function serialize(): array
+    public function serialize() : array
     {
         throw new  \Exception('This is an invalid event');
     }

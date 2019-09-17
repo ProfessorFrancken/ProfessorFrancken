@@ -27,7 +27,6 @@ final class Factory
 
     /**
      * Creates a new binding for an event sourced aggregate repository
-     * @param string $repository classname
      * @param string $aggregate classname
      */
     public function buildForAggregate(string $aggregate) : EventSourcingRepository

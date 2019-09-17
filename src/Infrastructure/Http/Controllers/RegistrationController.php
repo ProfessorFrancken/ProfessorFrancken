@@ -12,7 +12,6 @@ use Francken\Domain\Members\Email;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;
-use Francken\Domain\Members\Registration\RegistrationRequest;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
 use Francken\Domain\Members\Registration\RegistrationRequestRepository as Repository;
 use Francken\Domain\Members\Study;
@@ -58,7 +57,6 @@ class RegistrationController extends Controller
                 ->withInput()
                 ->with('amountOfStudies', count($request->input('study-name')));
         }
-
     }
 
     public function success()
@@ -94,9 +92,9 @@ class RegistrationController extends Controller
     {
         // A student can have multiple studies, since we currently
         $studies = array_map(function ($name, $start, $end) use ($request) {
-                $end = DateTimeImmutable::createFromFormat('Y-m', $end);
+            $end = DateTimeImmutable::createFromFormat('Y-m', $end);
 
-                return new Study(
+            return new Study(
                     $name,
                     DateTimeImmutable::createFromFormat(
                         'Y-m',
@@ -104,7 +102,7 @@ class RegistrationController extends Controller
                     ),
                     $end ? $end : null
                 );
-            },
+        },
             request()->input('study-name'),
             request()->input('study-starting-date'),
             request()->input('study-graduation-date')

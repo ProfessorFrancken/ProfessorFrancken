@@ -9,7 +9,7 @@ final class ArrayHelper
     /**
      * Find out if the given array is numerically indexed?
      */
-    public static function isNumericallyIndexed(array $values): bool
+    public static function isNumericallyIndexed(array $values) : bool
     {
         if (empty($values)) {
             return true;

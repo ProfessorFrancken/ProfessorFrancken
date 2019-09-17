@@ -32,18 +32,13 @@ final class InMemoryRepository implements ReadModelRepository
         }
     }
 
-    /**
-     * @param ReadModelInterface $model
-     */
-    public function save(ReadModelInterface $model)
+    
+    public function save(ReadModelInterface $model) : void
     {
         $this->data[(string)$model->getId()] = $model;
     }
 
     /**
-     * @param string $id
-     *
-     * @return ReadModelInterface
      * @throws ReadModelNotFound
      */
     public function find(string $id) : ReadModelInterface
@@ -56,13 +51,11 @@ final class InMemoryRepository implements ReadModelRepository
     }
 
     /**
-     * @param array $fields
-     *
      * @return ReadModelInterface[]
      */
     public function findBy(array $fields) : array
     {
-        if (! $this->fieldsAreValid($fields)) {
+        if ( ! $this->fieldsAreValid($fields)) {
             return [];
         }
 
@@ -91,7 +84,6 @@ final class InMemoryRepository implements ReadModelRepository
     }
 
     /**
-     * @param array $ids
      * @return ReadModelInterface[]
      */
     public function findByIds(array $ids) : array
@@ -99,18 +91,14 @@ final class InMemoryRepository implements ReadModelRepository
         return array_values(array_intersect_key($this->data, array_flip($ids)));
     }
 
-    /**
-     * @param string $id
-     */
-    public function remove(string $id)
+    
+    public function remove(string $id) : void
     {
         unset($this->data[(string)$id]);
     }
 
-    /**
-     * @param array $fields
-     */
-    public function removeBy(array $fields)
+    
+    public function removeBy(array $fields) : void
     {
         $remove = [];
         foreach ($this->findBy($fields) as $model) {

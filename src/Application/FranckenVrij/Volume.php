@@ -27,7 +27,7 @@ final class Volume
         return $this->editions;
     }
 
-    private function setEditions(Edition ...$editions)
+    private function setEditions(Edition ...$editions) : void
     {
         foreach ($editions as $edition) {
             if ($edition->volume() !== $this->volume) {

@@ -4,33 +4,32 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Committees;
 
-use League\CommonMark\CommonMarkConverter;
-use Francken\Application\Projector;
 use Francken\Application\Committees\CommitteesList;
 use Francken\Application\Committees\CommitteesListProjector as CommitteeListProjector;
 use Francken\Application\Committees\CommitteesListRepository;
+use Francken\Application\Projector;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Domain\Committees\CommitteeId;
+use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteeGoalChanged;
 use Francken\Domain\Committees\Events\CommitteeInstantiated;
-use Francken\Domain\Committees\Events\CommitteeJoinedFrancken;
 use Francken\Domain\Committees\Events\CommitteeNameChanged;
-use Francken\Domain\Committees\Events\CommitteeEmailChanged;
 use Francken\Domain\Committees\Events\CommitteePageChanged;
 use Francken\Domain\Committees\Events\MemberJoinedCommittee;
 use Francken\Domain\Committees\Events\MemberLeftCommittee;
+use Francken\Domain\Members\Email;
+use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
-use Francken\Domain\Members\MemberId;
-use Francken\Domain\Members\Email;
+use League\CommonMark\CommonMarkConverter;
 
 class CommitteeListProjectorTest extends TestCase
 {
     private $members;
 
     /** @test */
-    function it_stores_a_committee()
+    public function it_stores_a_committee() : void
     {
         $id = CommitteeId::generate();
 
@@ -42,7 +41,7 @@ class CommitteeListProjectorTest extends TestCase
     }
 
     /** @test */
-    function it_changes_the_properties_of_a_committee()
+    public function it_changes_the_properties_of_a_committee() : void
     {
         $id = CommitteeId::generate();
 
@@ -68,7 +67,7 @@ class CommitteeListProjectorTest extends TestCase
     }
 
     /** @test */
-    function it_can_store_a_committee_page_using_mark_down()
+    public function it_can_store_a_committee_page_using_mark_down() : void
     {
         $id = CommitteeId::generate();
 
@@ -82,7 +81,7 @@ class CommitteeListProjectorTest extends TestCase
     }
 
     /** @test */
-    function it_stores_information_about_members()
+    public function it_stores_information_about_members() : void
     {
         $this->members->save(
             new MemberList(
@@ -125,7 +124,7 @@ class CommitteeListProjectorTest extends TestCase
 
     protected function createProjector(InMemoryRepository $repository) : Projector
     {
-        $this->members = new InMemoryRepository;
+        $this->members = new InMemoryRepository();
 
         return new CommitteeListProjector(
             new CommitteesListRepository(

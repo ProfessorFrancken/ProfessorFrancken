@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-
 class PlusOneFeature extends TestCase
 {
     /** @test */
-    function it_retrieves_a_jwt_token_when_autenticating()
+    public function it_retrieves_a_jwt_token_when_autenticating() : void
     {
         $this->json('POST', '/api/plus-one/authenticate', [
             'password' => 'hoi',
@@ -20,7 +18,7 @@ class PlusOneFeature extends TestCase
 
 
     /** @test */
-    function it_can_buy_an_order()
+    public function it_can_buy_an_order() : void
     {
         $this->json('POST', '/api/plus-one/authenticate', [
             'password' => 'hoi',
@@ -35,8 +33,8 @@ class PlusOneFeature extends TestCase
                     "surname" => "Redeman",
                 ],
                 "products" => [
-                    ["id" => 3,"name" => "Hertog Jan","price" => 68],
-                    ["id" => 172,"name" => "Gebouw 13","price" => 100]
+                    ["id" => 3, "name" => "Hertog Jan", "price" => 68],
+                    ["id" => 172, "name" => "Gebouw 13", "price" => 100]
                 ],
                 "ordered_at" => 1522075374402
             ]

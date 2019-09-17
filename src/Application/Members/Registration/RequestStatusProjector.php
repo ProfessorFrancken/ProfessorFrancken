@@ -8,7 +8,6 @@ use Broadway\Domain\DomainMessage;
 use DateTimeImmutable;
 use Francken\Application\Projector;
 use Francken\Domain\Members\Registration\Events\RegistrationRequestSubmitted;
-use Francken\Domain\Members\Registration\RegistrationRequestId;
 
 final class RequestStatusProjector extends Projector
 {
@@ -19,7 +18,7 @@ final class RequestStatusProjector extends Projector
         $this->statuses = $statuses;
     }
 
-    public function whenRegistrationRequestSubmitted(RegistrationRequestSubmitted $event, DomainMessage $message)
+    public function whenRegistrationRequestSubmitted(RegistrationRequestSubmitted $event, DomainMessage $message) : void
     {
         $this->statuses->save(
             new RequestStatus(

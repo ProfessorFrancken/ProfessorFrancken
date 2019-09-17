@@ -15,7 +15,7 @@ final class ActivitiesController
     {
         $limit = (int) request()->get('limit', 10);
         $after = DateTimeImmutable::createFromFormat(
-            'Y-m-d', request()->get('after', (new DateTimeImmutable)->format('Y-m-d'))
+            'Y-m-d', request()->get('after', (new DateTimeImmutable())->format('Y-m-d'))
         );
 
         $map = function (CalendarEvent $activity) {

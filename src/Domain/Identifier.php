@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Domain;
 
 use Assert\Assertion as Assert;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Broadway\Serializer\Serializable as SerializableInterface;
+use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 
 abstract class Identifier implements SerializableInterface
 {
@@ -14,9 +14,7 @@ abstract class Identifier implements SerializableInterface
 
     protected $id;
 
-    /**
-     * @param string $committeeId
-     */
+    
     public function __construct(string $id)
     {
         Assert::uuid($id);
@@ -24,21 +22,19 @@ abstract class Identifier implements SerializableInterface
         $this->id = $id;
     }
 
+    
+    public function __toString() : string
+    {
+        return $this->id;
+    }
+
     /**
      * Generates a new Identifier instance with a uuid
      */
-    public static function generate() : Identifier
+    public static function generate() : self
     {
         $generator = new Version4Generator();
 
         return new static($generator->generate());
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString() : string
-    {
-        return $this->id;
     }
 }

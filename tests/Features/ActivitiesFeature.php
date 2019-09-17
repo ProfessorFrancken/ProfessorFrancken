@@ -22,7 +22,6 @@ class ActivitiesFeature extends TestCase
         $this->app->bind(
             ActivitiesRepository::class,
             function ($app) use ($start, $end) {
-
                 $data = <<<CALENDAR
 BEGIN:VCALENDAR
 BEGIN:VEVENT
@@ -52,24 +51,23 @@ CALENDAR;
     }
 
     /** @test */
-    public function it_shows_upcoming_activities()
+    public function it_shows_upcoming_activities() : void
     {
         $this->visit('/association/activities')
              ->see("Lunch lecture: Demcon");
     }
 
     /** @test */
-    public function it_shows_activities_in_a_given_month()
+    public function it_shows_activities_in_a_given_month() : void
     {
         $this->visit('/association/activities/' . $this->start->format('Y/m'))
              ->see("Lunch lecture: Demcon");
     }
 
     /** @test */
-    public function if_no_activities_are_planned_it_shows_nothing()
+    public function if_no_activities_are_planned_it_shows_nothing() : void
     {
         $this->visit('/association/activities/' . $this->start->add(new \DateInterval('P1Y'))->format('Y/m'))
              ->dontSee("Lunch lecture: Demcon");
     }
 }
-

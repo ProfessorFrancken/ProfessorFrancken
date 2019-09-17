@@ -7,7 +7,7 @@ namespace Francken\Association\Photos\Flickr;
 use DateTimeImmutable;
 use Illuminate\Support\Collection;
 
-final class FlickrRepository
+final class Repository
 {
     private $flickr;
     private $user_id;

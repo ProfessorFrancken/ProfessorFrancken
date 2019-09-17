@@ -42,7 +42,7 @@ final class BooksServiceProvider extends ServiceProvider
      * @param string $repository classname
      * @param string $aggregate  classname
      */
-    private function registerRepository(string $repository, string $aggregate)
+    private function registerRepository(string $repository, string $aggregate) : void
     {
         $this->app->when($repository)
             ->needs(EventSourcingRepository::class)
@@ -56,7 +56,7 @@ final class BooksServiceProvider extends ServiceProvider
     /**
      * Register bindings to get specific Illuminate repositories for our read models
      */
-    private function registerReadModels()
+    private function registerReadModels() : void
     {
         $this->app->when(ProjectionRepository::class)
             ->needs(ReadModelRepository::class)

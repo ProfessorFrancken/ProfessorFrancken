@@ -18,7 +18,7 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_accepts_an_email_with_gmail_aliases()
+    public function it_accepts_an_email_with_gmail_aliases() : void
     {
         $email = new Email('markredeman+123@gmail.com');
 
@@ -28,7 +28,7 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function it_does_not_store_invalid_emails()
+    public function it_does_not_store_invalid_emails() : void
     {
         $this->expectException(InvalidArgumentException::class);
         $email = new Email('markredeman.com');

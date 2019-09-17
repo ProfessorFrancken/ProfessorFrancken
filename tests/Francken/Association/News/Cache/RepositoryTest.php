@@ -6,10 +6,10 @@ namespace Francken\Tests\Association\News\Cache;
 
 use DateTimeImmutable;
 use Francken\Association\News\Author;
-use Francken\Association\News\NewsItem;
-use Francken\Association\News\CompiledMarkdown;
-use Francken\Association\News\Repository as NewsRepository;
 use Francken\Association\News\Cache\Repository as CachedNewsRepository;
+use Francken\Association\News\CompiledMarkdown;
+use Francken\Association\News\NewsItem;
+use Francken\Association\News\Repository as NewsRepository;
 use Illuminate\Cache\Repository;
 use League\Period\Period;
 use PHPUnit\Framework\TestCase as TestCase;
@@ -18,7 +18,7 @@ use Prophecy\Argument;
 class RepositoryTest extends TestCase
 {
     /** @test */
-    function it_caches_the_in_period_method()
+    public function it_caches_the_in_period_method() : void
     {
         $cache = $this->prophesize(Repository::class);
         $news = $this->prophesize(NewsRepository::class);
@@ -47,7 +47,7 @@ class RepositoryTest extends TestCase
     }
 
     /** @test */
-    function it_caches_the_by_link_method()
+    public function it_caches_the_by_link_method() : void
     {
         $cache = $this->prophesize(Repository::class);
         $news = $this->prophesize(NewsRepository::class);
@@ -74,7 +74,7 @@ class RepositoryTest extends TestCase
     }
 
     /** @test */
-    function it_caches_the_recent_method()
+    public function it_caches_the_recent_method() : void
     {
         $cache = $this->prophesize(Repository::class);
         $news = $this->prophesize(NewsRepository::class);

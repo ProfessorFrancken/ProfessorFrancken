@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use DB;
-use DateTimeImmutable;
 use DateInterval;
+use DateTimeImmutable;
+use DB;
 
 final class CategoryStatisticsController
 {

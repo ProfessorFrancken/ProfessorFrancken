@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\News\Eloquent;
 
 use Carbon\Carbon;
-use Francken\Association\News\Author;
 use Francken\Association\News\CouldNotFindNews;
 use Francken\Association\News\NewsItem;
 use Francken\Association\News\Repository as NewsRepository;
@@ -19,12 +18,11 @@ final class Repository implements NewsRepository
     {
         $this->showUnPublished = $showDrafts;
 
-        News::addGlobalScope('published', function (Builder $builder) {
-            if (! $this->showUnPublished) {
+        News::addGlobalScope('published', function (Builder $builder) : void {
+            if ( ! $this->showUnPublished) {
                 $today = Carbon::today()->toDateString();
                 $builder->whereNotNull('published_at')
                     ->whereDate('published_at', '<=', $today);
-
             }
         });
     }

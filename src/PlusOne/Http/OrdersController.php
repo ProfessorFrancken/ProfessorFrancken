@@ -55,8 +55,8 @@ final class OrdersController
                     "aantal" =>	1,
                     "prijs" => $productFromDb->prijs,
                     "totaalprijs" => $productFromDb->prijs,
-                    "tijd" => (new \DateTimeImmutable)->setTimestamp(
-                        (int)( $order['ordered_at'] / 1000 )
+                    "tijd" => (new \DateTimeImmutable())->setTimestamp(
+                        (int)($order['ordered_at'] / 1000)
                     )
                 ]);
         }

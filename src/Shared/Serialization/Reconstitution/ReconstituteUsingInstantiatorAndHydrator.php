@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace Francken\Shared\Serialization\Reconstitution;
 
-use Francken\Shared\Serialization\Hydration\Hydrate;
 use Doctrine\Instantiator\InstantiatorInterface;
+use Francken\Shared\Serialization\Hydration\Hydrate;
 
 /**
  * Uses doctrine/instantiator and a Hydrate instance to reconstitute objects

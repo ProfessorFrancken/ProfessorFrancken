@@ -6,9 +6,9 @@ namespace Francken\Application;
 
 final class ReadModelNotFound extends \RunTimeException
 {
-    public static function with(string $id) : ReadModelNotFound
+    public static function with(string $id) : self
     {
-        return new ReadModelNotFound(
+        return new self(
             sprintf('Could not find readmodel with id [%s]', $id)
         );
     }

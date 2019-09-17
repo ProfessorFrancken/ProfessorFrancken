@@ -12,7 +12,7 @@ class FullNameTest extends \PHPUnit\Framework\TestCase
     use SetupReconstitution;
 
     /** @test */
-    public function a_name_consists_of_a_firstname_and_a_surname()
+    public function a_name_consists_of_a_firstname_and_a_surname() : void
     {
         $fullName = new FullName(
             'Mark',
@@ -26,7 +26,7 @@ class FullNameTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function an_optional_middlename_can_be_given()
+    public function an_optional_middlename_can_be_given() : void
     {
         $fullName = new FullName(
             'Mark',
@@ -39,7 +39,7 @@ class FullNameTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $fullName = new FullName(
             'Mark',

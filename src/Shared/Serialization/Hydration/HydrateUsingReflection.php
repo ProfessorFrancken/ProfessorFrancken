@@ -20,7 +20,7 @@ final class HydrateUsingReflection implements Hydrate
     public function hydrate(array $data, $object) : void
     {
         foreach ($this->propertiesOf($object) as $name => $property) {
-            if (!isset($data[$name])) {
+            if ( ! isset($data[$name])) {
                 continue;
             }
 
@@ -32,11 +32,11 @@ final class HydrateUsingReflection implements Hydrate
      * @param object $object
      * @return \ReflectionProperty[]
      */
-    private function propertiesOf($object): array
+    private function propertiesOf($object) : array
     {
         $className = get_class($object);
 
-        if (!isset($this->properties[$className])) {
+        if ( ! isset($this->properties[$className])) {
             $this->properties[$className] = [];
             foreach ((new \ReflectionObject($object))->getProperties() as $property) {
                 /** @var \ReflectionProperty $property */

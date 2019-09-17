@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Domain\Members\Registration\Events;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Serializable;
 use Francken\Domain\Members\PaymentInfo;
 use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Domain\Serializable;
 
 final class PaymentInfoProvided implements SerializableInterface
 {
@@ -41,4 +41,4 @@ final class PaymentInfoProvided implements SerializableInterface
             $this->iban
         );
     }
-};
+}

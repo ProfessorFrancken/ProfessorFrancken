@@ -12,7 +12,7 @@ class GenderTest extends \PHPUnit\Framework\TestCase
     use SetupReconstitution;
 
     /** @test */
-    public function it_can_be_constructed_from_a_string()
+    public function it_can_be_constructed_from_a_string() : void
     {
         $gender = Gender::fromString('male');
 
@@ -21,7 +21,7 @@ class GenderTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_accepts_a_female_gender()
+    public function it_accepts_a_female_gender() : void
     {
         $gender = Gender::fromString('female');
 
@@ -29,7 +29,7 @@ class GenderTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_accepts_a_male_gender()
+    public function it_accepts_a_male_gender() : void
     {
         $gender = Gender::fromString('male');
 
@@ -37,14 +37,14 @@ class GenderTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function it_does_not_accept_an_invalid_gender()
+    public function it_does_not_accept_an_invalid_gender() : void
     {
         $this->expectException(\InvalidArgumentException::class);
         Gender::fromString('foo');
     }
 
     /** @test */
-    public function it_is_serializable()
+    public function it_is_serializable() : void
     {
         $gender = Gender::fromString('male');
 
