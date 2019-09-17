@@ -157,6 +157,30 @@ services:
       - "traefik.port=8025"
       - "traefik.docker.network=traefik_webgateway"
 
+  tinker:
+    image: francken/php
+    links:
+      - mysql
+      - legacy-db
+      - redis
+      - mailhog
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+      - ./.config:/var/www/.config
+    environment:
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_DRIVER=redis
+      - REDIS_HOST=redis
+      - APP_URL=http://francken.nl.localhost
+      - MAIL_HOST=mailhog
+      - MAIL_PORT=1025
+    command: ["php", "artisan", "tinker"]
+    user: "1000:986"
+    env_file:
+      - "./.docker.env"
+
 volumes:
   mysql:
     driver: "local"
