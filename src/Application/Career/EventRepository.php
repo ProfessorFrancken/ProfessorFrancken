@@ -7,6 +7,8 @@ namespace Francken\Application\Career;
 final class EventRepository
 {
     private $events;
+    private $plannedEvents;
+    private $pastEvents;
 
     public function __construct(array $plannedEvents, array $pastEvents)
     {
@@ -16,18 +18,30 @@ final class EventRepository
 
     public function pastInYear(AcademicYear $year) : array
     {
-        return array_filter(
+        $pastEvents = array_filter(
             $this->pastEvents,
             $this->filterByAcademicYear($year)
         );
+
+        if ($pastEvents === null) {
+            return [];
+        }
+
+        return $pastEvents;
     }
 
     public function plannedInYear(AcademicYear $year) : array
     {
-        return array_filter(
+        $plannedEvents = array_filter(
             $this->plannedEvents,
             $this->filterByAcademicYear($year)
         );
+
+        if ($plannedEvents === null) {
+            return [];
+        }
+
+        return $plannedEvents;
     }
 
     private function filterByAcademicYear($year)

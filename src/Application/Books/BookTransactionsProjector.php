@@ -17,10 +17,14 @@ final class BookTransactionsProjector extends Projector
     private $members;
     private $bookDetailRepository;
 
-    public function __construct(Repository $books, Repository $members, BookDetailsRepository $repo)
-    {
+    public function __construct(
+        Repository $books,
+        Repository $members,
+        BookDetailsRepository $repo
+    ) {
         $this->bookDetailRepository = $repo;
         $this->books = $books;
+        $this->members = $members;
     }
 
     public function whenBookOffered(BookOffered $event) : void

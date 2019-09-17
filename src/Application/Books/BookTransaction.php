@@ -28,7 +28,7 @@ final class BookTransaction implements ReadModelInterface, SerializableInterface
         BookId $id,
         string $title,
         MemberId $sellersId,
-        string $sellerName,
+        string $sellersName,
         MemberId $buyersId,
         string $buyersName,
         int $price,

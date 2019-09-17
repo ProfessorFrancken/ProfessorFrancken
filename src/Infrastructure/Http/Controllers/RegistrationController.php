@@ -94,17 +94,17 @@ class RegistrationController extends Controller
     private function studyDetailsFrom(Request $request) : StudyDetails
     {
         // A student can have multiple studies, since we currently
-        $studies = array_map(function ($name, $start, $end) use ($request) {
+        $studies = array_map(function ($name, $start, $end) {
             $end = DateTimeImmutable::createFromFormat('Y-m', $end);
 
             return new Study(
-                    $name,
-                    DateTimeImmutable::createFromFormat(
-                        'Y-m',
-                        $start
-                    ),
-                    $end ? $end : null
-                );
+                $name,
+                DateTimeImmutable::createFromFormat(
+                    'Y-m',
+                    $start
+                ),
+                $end ? $end : null
+            );
         },
             request()->input('study-name'),
             request()->input('study-starting-date'),
