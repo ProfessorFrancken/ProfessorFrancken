@@ -20,6 +20,7 @@ services:
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
       - QUEUE_DRIVER=redis
+      - QUEUE_CONNECTION=redis
       - REDIS_HOST=redis
       - APP_URL=http://francken.nl.localhost
       - MAIL_HOST=mailhog
