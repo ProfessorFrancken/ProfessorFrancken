@@ -73,7 +73,6 @@ final class Participant extends Model
     protected $table = 'association_symposium_participants';
 
     protected $casts = [
-        'is_spam' => 'boolean',
         'received_information_mail' => 'boolean',
         "is_francken_member" => 'boolean',
         "is_nnv_member" => 'boolean',

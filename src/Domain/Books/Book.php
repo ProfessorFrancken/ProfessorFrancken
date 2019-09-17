@@ -7,7 +7,9 @@ namespace Francken\Domain\Books;
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Francken\Domain\Books\Events\BookOffered;
 use Francken\Domain\Books\Events\BookOfferRetracted;
+use Francken\Domain\Books\Events\BookPayedFor;
 use Francken\Domain\Books\Events\BookSaleCancelled;
+use Francken\Domain\Books\Events\BookSaleCompleted;
 use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Books\Events\BookSoldToNonMember;
 use Francken\Domain\Members\MemberId;
@@ -30,7 +32,7 @@ final class Book extends EventSourcedAggregateRoot
 
     public function offerRetracted() : void
     {
-        $this->apply(new BookOfferRetracted($id));
+        $this->apply(new BookOfferRetracted($this->id));
     }
 
     public function sellToMember(MemberId $memberId) : void

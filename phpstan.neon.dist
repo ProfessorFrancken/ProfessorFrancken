@@ -1,4 +1,8 @@
 includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 parameters:
-    level: max
+    level: 0
+    paths:
+        - src
+    ignoreErrors:
+        - '#Result of static method Plank\\Mediable\\Media::scopeInDirectory\(\) \(void\) is used.#'

@@ -24,7 +24,7 @@ class Post extends AggregateRoot
     private $title;
     private $content;
     private $type;
-    private $publishedAt;
+    private $published_at;
     private $isDeleted = false;
 
     public static function createDraft(PostId $id, string $title, string $content, PostCategory $type)
@@ -79,7 +79,7 @@ class Post extends AggregateRoot
 
     public function applyPostContentChanged(PostContentChanged $event) : void
     {
-        $this->content = $event->content;
+        $this->content = $event->content();
     }
 
     public function applyPostCategorized(PostCategorized $event) : void
