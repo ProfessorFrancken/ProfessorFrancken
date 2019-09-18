@@ -9,7 +9,7 @@
     <p class="lead">
         On this page you can find your expenses at Francken.
         Note that due to technical difficulties we only show transactions from the streep system (the fridge).
-        These do not include expenses from ordering foot and participating in activities.
+        These do not include expenses from ordering food and participating in activities.
     </p>
 
     <p>
