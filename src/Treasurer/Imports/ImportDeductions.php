@@ -80,7 +80,7 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
     {
         return [
             'input_encoding' => 'ISO-8859-1',
-            'delimiter' => ';'
+            'delimiter' => ','
         ];
     }
 

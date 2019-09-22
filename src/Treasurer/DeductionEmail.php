@@ -14,7 +14,7 @@ use Plank\Mediable\Mediable;
 
 /**
  * We keep track of each deduction that has occured.
- * 
+ *
  * For each deduction there will be one or more members
  *
  * @property int $id

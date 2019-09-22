@@ -6,6 +6,7 @@ namespace Francken\Features\Treasurer;
 
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
+use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -42,5 +43,17 @@ class EmailDeductionsFeature extends TestCase
                 'deduction'
             )
             ->press('Upload');
+        $this->assertResponseOk();
+
+        $deduction_email = DeductionEmail::whereDate('deducted_at', '2019-07-24')->first();
+
+        $this->assertNotNull($deduction_email);
+        $to_members = $deduction_email->deductionToMembers;
+        $this->assertCount(2, $to_members);
+
+        $this->assertEquals(1403, $to_members[0]->member_id);
+        $this->assertEquals("Food and drinks until June 18, Being board", $to_members[0]->description);
+        $this->assertEquals(3333, $to_members[0]->amount_in_cents);
+        $this->assertEquals(3140, $to_members[1]->amount_in_cents);
     }
 }
