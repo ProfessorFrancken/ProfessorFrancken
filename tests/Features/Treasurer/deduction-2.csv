@@ -1,4 +1,4 @@
-Naam Betaler,IBAN Rekeningnr,BIC-code bank,Valuta soort,Bedrag,Adres betaler,Woonplaats Betaler,Land code,Trans-actie kosten,Betalingskenmerk,Omschrijving 2,Machtigingskenmerk,Datum van de Machtiging
+Naam Betaler,IBAN Rekeningnr,BIC-code bank,Valuta soort,Bedrag,Adres betaler,Woonplaats Betaler,Land code,Trans-actie kosten,Betalingskenmerk,Omschrijving 2,Wrong input,Datum van de Machtiging
 M.S. Redeman,NL91ABNA0417164300,ABNANL2A,EUR,33.0,Nijenborgh 4,Groningen,NL,,,Food and drinks until June 18,ref.  1403,3-12-13
 M.S. Redeman,NL91ABNA0417164300,ABNANL2A,EUR,0.33,Nijenborgh 4,Groningen,NL,,,Being board,ref.  1403,3-12-13
 J. Snow,NL91ABNA0417164300,ABNANL2A,EUR,31.4,Nijenborgh 4,Groningen,NL,,,Food and drinks until June 18,ref.  1402,3-12-13
