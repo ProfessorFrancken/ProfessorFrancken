@@ -9,6 +9,11 @@ use Illuminate\Support\Collection;
 
 final class FirstYearStudentsPerYear
 {
+    /**
+     * @var Collection
+     */
+    private $years;
+
     public function __construct(Collection $years)
     {
         $this->years = $years;

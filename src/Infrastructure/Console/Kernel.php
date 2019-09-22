@@ -41,5 +41,6 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('activities:update-ical')->hourly();
         $schedule->command('photos:synchronize')->hourly();
+        $schedule->command('boards:update-board-member-status')->daily();
     }
 }

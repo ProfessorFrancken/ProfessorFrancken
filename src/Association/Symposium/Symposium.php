@@ -7,6 +7,36 @@ namespace Francken\Association\Symposium;
 use Francken\Domain\Members\Email;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Francken\Association\Symposium\Symposium
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon $start_date
+ * @property \Illuminate\Support\Carbon $end_date
+ * @property string $name
+ * @property string $location
+ * @property string $website_url
+ * @property int $open_for_registration
+ * @property int $promote_on_agenda
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Association\Symposium\Participant[] $participants
+ * @property-read int|null $participants_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereLocation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereOpenForRegistration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium wherePromoteOnAgenda($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium whereWebsiteUrl($value)
+ * @mixin \Eloquent
+ */
 final class Symposium extends Model
 {
     protected $table = 'association_symposia';

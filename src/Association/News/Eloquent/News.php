@@ -12,6 +12,43 @@ use Francken\Association\News\NewsItemLink;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use League\Period\Period;
 
+/**
+ * Francken\Association\News\Eloquent\News
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $exerpt
+ * @property string $slug
+ * @property string $source_contents
+ * @property string $compiled_contents
+ * @property string $author_name
+ * @property string $author_photo
+ * @property array $related_news_items
+ * @property \Illuminate\Support\Carbon|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News byLink($slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News inPeriod(\League\Period\Period $period = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News recent()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereAuthorName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereAuthorPhoto($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereCompiledContents($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereExerpt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereRelatedNewsItems($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereSourceContents($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News withAuthorName($author = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News withSubject($subject = null)
+ * @mixin \Eloquent
+ */
 final class News extends Eloquent
 {
     protected $fillable = [

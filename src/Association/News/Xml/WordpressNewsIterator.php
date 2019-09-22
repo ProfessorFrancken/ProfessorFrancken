@@ -9,6 +9,7 @@ use Francken\Association\Boards\Board;
 use Francken\Association\News\Author;
 use Francken\Association\News\NewsContentCompiler;
 use Francken\Association\News\NewsItem;
+use InvalidArgumentException;
 use SimpleXMLIterator;
 
 final class WordpressNewsIterator implements \IteratorAggregate

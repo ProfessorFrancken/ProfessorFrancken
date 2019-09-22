@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards\Http\Controllers;
 
+use DateInterval;
+use DateTimeImmutable;
 use Illuminate\Database\DatabaseManager;
 
 final class BirthdaysController
@@ -18,7 +20,7 @@ final class BirthdaysController
 
     public function index()
     {
-        $today = (new \DatetimeImmutable())->sub(new \DateInterval('P1D'));
+        $today = (new DateTimeImmutable())->sub(new DateInterval('P1D'));
 
         $members = $this->boards
                  ->select(['leden.voornaam', 'leden.tussenvoegsel', 'leden.achternaam', 'leden.geboortedatum'])
@@ -35,7 +37,7 @@ final class BirthdaysController
                              ' ',
                              array_filter([$member->voornaam, $member->tussenvoegsel, $member->achternaam])
                          ),
-                         'birthday' => new \DateTimeImmutable($member->geboortedatum)
+                         'birthday' => new DateTimeImmutable($member->geboortedatum)
                      ];
                  })->map(function ($member) use ($today) {
                      $birthdayInSameYearAsNow = $member['birthday']->setDate(
@@ -62,7 +64,7 @@ final class BirthdaysController
                  });
 
         return view('association.boards.birthdays', [
-            'years' => $members, 'today' => new \DateTimeImmutable(),
+            'years' => $members, 'today' => new DateTimeImmutable(),
             'breadcrumbs' => [
                 ['url' => '/association/', 'text' => 'Association'],
                 ['url' => action([BoardsController::class, 'index']), 'text' => 'Boards'],

@@ -8,6 +8,7 @@ use Francken\Association\LegacyMember;
 use Francken\Treasurer\DeductionEmail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -27,6 +28,8 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
     public function collection(Collection $rows) : void
     {
+        Validator::make($rows->toArray(), $this->rules())->validate();
+
         foreach ($rows as $deduction) {
             // Some old deduction files contain invalid data, so we will skip them
             if ($deduction['machtigingskenmerk'] === null) {
@@ -80,7 +83,20 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
     {
         return [
             'input_encoding' => 'ISO-8859-1',
-            'delimiter' => ';'
+            'delimiter' => ','
+        ];
+    }
+
+    private function rules() : array
+    {
+        return [
+            '*.machtigingskenmerk' => 'required',
+            '*.omschrijving_2' => 'required',
+            '*.bedrag' => 'required|numeric',
+            '*.naam_betaler' => 'required',
+            '*.adres_betaler' => 'required',
+            '*.woonplaats_betaler' => 'required',
+            '*.iban_rekeningnr' => 'required',
         ];
     }
 
@@ -125,6 +141,4 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
         return str_replace(" ", "", $member) === str_replace(" ", "", $deduction);
     }
-    // TODO before import remove old DeductionEmailMembers for this deduction, if given
-    // in constructor
 }

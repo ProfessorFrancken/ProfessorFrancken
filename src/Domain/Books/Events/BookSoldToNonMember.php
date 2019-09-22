@@ -13,12 +13,12 @@ final class BookSoldToNonMember implements SerializableInterface
 {
     use Serializable;
 
-    private $id;
+    private $bookId;
     private $guest;
 
     public function __construct(BookId $id, Guest $guest)
     {
-        $this->id = $id;
+        $this->bookId = $id;
         $this->guest = $guest;
     }
 

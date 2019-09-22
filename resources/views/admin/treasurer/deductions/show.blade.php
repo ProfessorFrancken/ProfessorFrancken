@@ -1,6 +1,10 @@
 @extends('admin.layout')
-@section('page-title', 'Deductions / ' . $deduction->deducted_at->format('Y-m-d'))
-
+@section('page-title')
+    Deductions / {{ $deduction->deducted_at->format('Y-m-d') }} -
+    <small>
+        €{{ number_format($deduction->total_amount, 2) }}
+    </small>
+@endsection
 @php
 use Francken\Treasurer\Http\Controllers\DeductionEmailsController;
 use Francken\Treasurer\Http\Controllers\DeductionMembersController;

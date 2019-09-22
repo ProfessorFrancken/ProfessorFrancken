@@ -7,6 +7,23 @@ namespace Francken\Treasurer;
 use Illuminate\Database\Eloquent\Model;
 use League\Period\Period;
 
+/**
+ * Francken\Treasurer\Deduction
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon $tijd
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property-read mixed $period
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction whereTijd($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 final class Deduction extends Model
 {
     public $timestamps = true;
@@ -19,9 +36,12 @@ final class Deduction extends Model
 
     public function previousDeduction() : self
     {
-        return self::orderBy('tijd', 'desc')
+        /** @var Deduction */
+        $deduction = self::orderBy('tijd', 'desc')
             ->where('tijd', '<', $this->tijd)
             ->firstOrFail();
+
+        return $deduction;
     }
 
     public function getPeriodAttribute() : Period

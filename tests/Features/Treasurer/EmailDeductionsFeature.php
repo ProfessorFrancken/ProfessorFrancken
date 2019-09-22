@@ -6,10 +6,12 @@ namespace Francken\Features\Treasurer;
 
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
+use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Validation\ValidationException;
 
 class EmailDeductionsFeature extends TestCase
 {
@@ -39,6 +41,38 @@ class EmailDeductionsFeature extends TestCase
             ->type('2019-07-01', 'deduction_to')
             ->attach(
                 new UploadedFile(__DIR__ . '/deduction.csv', 'deduction.csv'),
+                'deduction'
+            )
+            ->press('Upload');
+        $this->assertResponseOk();
+
+        $deduction_email = DeductionEmail::whereDate('deducted_at', '2019-07-24')->first();
+
+        $this->assertNotNull($deduction_email);
+        $to_members = $deduction_email->deductionToMembers;
+        $this->assertCount(2, $to_members);
+
+        $this->assertEquals(1403, $to_members[0]->member_id);
+        $this->assertEquals("Food and drinks until June 18, Being board", $to_members[0]->description);
+        $this->assertEquals(3333, $to_members[0]->amount_in_cents);
+        $this->assertEquals(3140, $to_members[1]->amount_in_cents);
+    }
+
+    /** @test */
+    public function a_validation_message_is_shown() : void
+    {
+        $this->visit(action([DeductionsController::class, 'create']))
+            ->see('Start');
+
+        $this->withoutExceptionHandling();
+        $this->expectException(ValidationException::class);
+
+        $this->assertResponseOk();
+        $this->type('2019-07-24', 'deducted_at')
+            ->type('2019-06-01', 'deduction_from')
+            ->type('2019-07-01', 'deduction_to')
+            ->attach(
+                new UploadedFile(__DIR__ . '/deduction-2.csv', 'deduction-2.csv'),
                 'deduction'
             )
             ->press('Upload');

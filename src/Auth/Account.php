@@ -17,6 +17,38 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * Francken\Auth\Account
+ *
+ * @property int $id
+ * @property string $email
+ * @property string $password
+ * @property int $member_id
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Francken\Association\LegacyMember $member
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account ofMember($member_id)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account whereMemberId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Auth\Account whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 final class Account extends Model implements
     AuthenticatableContract,
     AuthorizableContract,

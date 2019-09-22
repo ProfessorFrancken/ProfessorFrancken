@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Boards\Exports;
 
 use Francken\Association\Boards\BoardMember;
+use Illuminate\Database\Query\Builder;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
@@ -29,7 +30,10 @@ class BoardMembersExport implements FromQuery, WithTitle, WithHeadings
 
     public function query()
     {
-        return BoardMember::query()->select(self::FIELDS);
+        /** @var Builder */
+        $query = BoardMember::query()->select(self::FIELDS);
+
+        return $query;
     }
 
     public function title() : string

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\Http\Controllers\Admin;
 
 use DB;
+use Exception;
 use Francken\Application\Committees\CommitteesListRepository;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeId;

@@ -20,6 +20,7 @@ class Committee extends AggregateRoot
     private $id;
     private $name;
     private $summary;
+    private $goal;
     private $email = null;
     private $webPage = "";
     private $members = []; // array of memberId's

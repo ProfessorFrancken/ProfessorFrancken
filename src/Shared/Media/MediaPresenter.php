@@ -56,6 +56,6 @@ final class MediaPresenter
 
     public function mediaUrl() : string
     {
-        return action([MediaController::class, 'show'], $this->id);
+        return action([MediaController::class, 'show'], $this->media->id);
     }
 }

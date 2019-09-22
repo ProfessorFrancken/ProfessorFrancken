@@ -73,7 +73,7 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::get('boards', [BoardsController::class, 'index']);
     Route::get('boards/birthdays', [BirthdaysController::class, 'index'])
-        ->middleware(['role:Board|Old Board']);
+        ->middleware(['role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']);
 
     Route::get('photos/login', [AuthenticationController::class, 'index']);
     Route::post('photos', [AuthenticationController::class, 'store']);

@@ -136,7 +136,7 @@ final class FactSheetController
         // we will have to "shift" the time of a transaction when we group
         // the transactions by day so that it gives a more realistic view
 
-        $period = Period::fromWeek($year, $weekNumber);
+        $period = Period::fromIsoWeek($year, $weekNumber);
 
         $transactions = $this->transactionsInPeriod($period);
 
