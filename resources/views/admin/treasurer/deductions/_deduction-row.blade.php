@@ -2,10 +2,10 @@
 use Francken\Treasurer\Http\Controllers\DeductionsController;
 @endphp
 
-<tr class="position-relative">
-    <td class="position-static">
+<tr>
+    <td>
         <a href="{{ action([DeductionsController::class, 'show'], $deduction->id) }}"
-           class="stretched-link text-decoration-none"
+           class="text-decoration-none"
         >
             @isset ($deduction->emails_sent_at)
             <i class="fas fa-check"></i>

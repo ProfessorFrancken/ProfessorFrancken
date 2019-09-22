@@ -8,11 +8,9 @@
             </tr>
         </thead>
         @foreach ($symposia as $symposium)
-            <tr class="position-relative">
+            <tr>
                 <td>
-                    <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'show'], $symposium->id) }}"
-                       class="stretched-link"
-                    >
+                    <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'show'], $symposium->id) }}">
                         {{ $symposium->name }}
                     </a>
                 </td>

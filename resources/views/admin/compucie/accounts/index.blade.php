@@ -24,11 +24,9 @@
                     </thead>
                     <tbody>
                         @foreach ($accounts as $account)
-                            <tr class="position-relative">
+                            <tr>
                                 <td>
-                                    <a href="{{ action([\Francken\Auth\Http\Controllers\Admin\AccountsController::class, 'show'], $account->id)}}"
-                                       class="stretched-link"
-                                    >
+                                    <a href="{{ action([\Francken\Auth\Http\Controllers\Admin\AccountsController::class, 'show'], $account->id)}}">
                                         {{ $account->email }}
                                     </a>
                                 </td>
