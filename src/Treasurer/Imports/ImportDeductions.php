@@ -50,8 +50,8 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
                     return $deduction['omschrijving_2'];
                 })->implode(', ');
 
-                $amount = $deductions->map(function (Collection $deduction) : float {
-                    return ((float)str_replace(',', '.', $deduction['bedrag']));
+                $amount = $deductions->map(function (Collection $deduction) : int {
+                    return (int)(100 * $deduction['bedrag']);
                 })->sum();
 
                 $errors = $deductions->map(function (Collection $deduction) : Collection {
@@ -60,9 +60,11 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
                     return $all->merge($errors);
                 }, new Collection());
 
-                $deductions[0]['bedrag'] = str_replace('.', ',', (string)$amount);
+                $deductions[0]['bedrag'] = $amount;
                 $deductions[0]['errors'] = $errors;
                 $deductions[0]['omschrijving_2'] = $description;
+            } else {
+                $deductions[0]['bedrag'] = (int)(100 * $deductions[0]['bedrag']);
             }
 
             return $deductions[0];
