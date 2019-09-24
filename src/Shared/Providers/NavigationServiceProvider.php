@@ -45,6 +45,14 @@ final class NavigationServiceProvider extends ServiceProvider
                     'icon' => 'globe-europe',
                 ];
             }
+            if ($settings->isLustrumShownInNavigation()) {
+                $menu[] = [
+                    'url' => '/lustrum',
+                    'title' => 'Lustrum',
+                    'subItems' => [],
+                    'icon' => 'water',
+                ];
+            }
 
             $user = Auth::user();
             if ($user !== null) {
