@@ -39,44 +39,14 @@
         </ul>
 
         <ul class="list-unstyled">
-            <li style="
-                       padding: 4em;
-                       position: relative;
-                       overflow: hidden;
-                       "
-                class="my-5 rounded shadow-sm"
-            >
-                <div style="
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            background-color: #273151;
-                            background: linear-gradient(to top left, #4d5bc4, #a41786);
-                            z-index: -2;
-                            ">
-                </div>
+            <li class="my-5 rounded shadow-sm lustrum-list-item">
+                <div class="lustrum-background-gradient"></div>
                 <div
-                    style="
-                           top: 0;
-                           left: 0;
-                           right: 0;
-                           bottom: 0;
-                           position: absolute;
-                           mix-blend-mode: multiply;
-                           filter: grayscale(100%);
-                           width: 100%;
-                           height: 100%;
-                           object-fit: cover;
-                           background-size: cover;
-                           background-blend-mode: multiply;
-                           background-image: url('https://i.ytimg.com/vi/qImPaM4lKoA/maxresdefault.jpg');
-                           z-index: -1;
-                           "
+                    class="lustrum-background-image"
+                    style="background-image: url('https://i.ytimg.com/vi/qImPaM4lKoA/maxresdefault.jpg');"
                 >
                 </div>
-                <div style="" class="">
+                <div>
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Monday October 7th<br/>
@@ -103,7 +73,7 @@
                         </div>
                     </h2>
 
-                    <ul class="text-white font-weight-bold" style="font-size: 1.5rem; list-style: disc;">
+                    <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li><span style="color: #ff9200; font-size: 1.75rem;">Free</span> beer for <span style="color: #ff9200; font-size: 2.0rem;">&euro;5,-</span></li>
                         <li>Fishing with Eva Visser</li>
                         <li>Adventcalendar</li>
@@ -111,44 +81,14 @@
                 </div>
             </li>
 
-            <li style="
-                       padding: 4em;
-                       position: relative;
-                       overflow: hidden;
-                       "
-                class="my-5 rounded shadow-sm"
-            >
-                <div style="
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            background-color: #273151;
-                            background: linear-gradient(to top left, #4d5bc4, #a41786);
-                            z-index: -2;
-                            ">
-                </div>
+            <li class="my-5 rounded shadow-sm lustrum-list-item">
+                <div class="lustrum-background-gradient"></div>
                 <div
-                    style="
-                           top: 0;
-                           left: 0;
-                           right: 0;
-                           bottom: 0;
-                           position: absolute;
-                           mix-blend-mode: multiply;
-                           filter: grayscale(100%);
-                           width: 100%;
-                           height: 100%;
-                           object-fit: cover;
-                           background-size: cover;
-                           background-blend-mode: multiply;
-                           background-image: url('https://ksr-ugc.imgix.net/assets/014/496/598/dc6af42bb5c8f3f74ba4efae94e8925f_original.jpg?ixlib=rb-2.1.0&crop=faces&w=1552&h=873&fit=crop&v=1479055883&auto=format&frame=1&q=92&s=0cce530c382b7cbdaee2d14a7990da78');
-                           z-index: -1;
-                           "
+                    class="lustrum-background-image"
+                    style="background-image: url('https://ksr-ugc.imgix.net/assets/014/496/598/dc6af42bb5c8f3f74ba4efae94e8925f_original.jpg?ixlib=rb-2.1.0&crop=faces&w=1552&h=873&fit=crop&v=1479055883&auto=format&frame=1&q=92&s=0cce530c382b7cbdaee2d14a7990da78');"
                 >
                 </div>
-                <div style="" class="">
+                <div>
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Tuesday October 8th<br/>
@@ -178,7 +118,7 @@
                         </div>
                     </h2>
 
-                    <ul class="text-white font-weight-bold list-unstyled" style="font-size: 1.5rem;">
+                    <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
                             Build a lifesize trebuchet for <span style="color: #ff9200; font-size: 2.0rem;">&euro;8,-</span>
                         </li>
@@ -186,44 +126,14 @@
                 </div>
             </li>
 
-            <li style="
-                       padding: 4em;
-                       position: relative;
-                       overflow: hidden;
-                       "
-                class="my-5 rounded shadow-sm"
-            >
-                <div style="
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            background-color: #273151;
-                            background: linear-gradient(to top left, #4d5bc4, #a41786);
-                            z-index: -2;
-                            ">
-                </div>
+            <li class="my-5 rounded shadow-sm lustrum-list-item">
+                <div class="lustrum-background-gradient"></div>
                 <div
-                    style="
-                           top: 0;
-                           left: 0;
-                           right: 0;
-                           bottom: 0;
-                           position: absolute;
-                           mix-blend-mode: multiply;
-                           filter: grayscale(100%);
-                           width: 100%;
-                           height: 100%;
-                           object-fit: cover;
-                           background-size: cover;
-                           background-blend-mode: multiply;
-                           background-image: url('https://www.julieslifestyle.com/src/Frontend/Files/blog/images/968x560/mushroom-avocado-sushi-rolls-vegan-gluten-free-inspiration-anett-velsberg-en-662.jpg');
-                           z-index: -1;
-                           "
+                    class="lustrum-background-image"
+                    style="background-image: url('https://www.julieslifestyle.com/src/Frontend/Files/blog/images/968x560/mushroom-avocado-sushi-rolls-vegan-gluten-free-inspiration-anett-velsberg-en-662.jpg');"
                 >
                 </div>
-                <div style="" class="">
+                <div>
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Wednesday October 9th<br/>
@@ -239,7 +149,7 @@
                         </span>
                     </h2>
 
-                    <ul class="text-white font-weight-bold list-unstyled" style="font-size: 1.5rem;">
+                    <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
                             Sushi workshop for <span style="color: #ff9200; font-size: 2.0rem;">&euro;?,-</span>
                         </li>
@@ -248,44 +158,14 @@
             </li>
 
 
-            <li style="
-                       padding: 4em;
-                       position: relative;
-                       overflow: hidden;
-                       "
-                class="my-5 rounded shadow-sm"
-            >
-                <div style="
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            background-color: #273151;
-                            background: linear-gradient(to top left, #4d5bc4, #a41786);
-                            z-index: -2;
-                            ">
-                </div>
+            <li class="my-5 rounded shadow-sm lustrum-list-item">
+                <div class="lustrum-background-gradient"></div>
                 <div
-                    style="
-                           top: 0;
-                           left: 0;
-                           right: 0;
-                           bottom: 0;
-                           position: absolute;
-                           mix-blend-mode: multiply;
-                           filter: grayscale(100%);
-                           width: 100%;
-                           height: 100%;
-                           object-fit: cover;
-                           background-size: cover;
-                           background-blend-mode: multiply;
-                           background-image: url('https://pensacolaliquor.com/files/Treasure%20Map%20no%20x.JPG');
-                           z-index: -1;
-                           "
+                    class="lustrum-background-image"
+                    style="background-image: url('https://pensacolaliquor.com/files/Treasure%20Map%20no%20x.JPG');"
                 >
                 </div>
-                <div style="" class="">
+                <div>
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Thursday October 10th<br/>
@@ -301,7 +181,7 @@
                         </span>
                     </h2>
 
-                    <ul class="text-white font-weight-bold list-unstyled" style="font-size: 1.5rem;">
+                    <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
                             Find the hidden treassure chest
                         </li>
@@ -312,44 +192,14 @@
                 </div>
             </li>
 
-            <li style="
-                       padding: 4em;
-                       position: relative;
-                       overflow: hidden;
-                       "
-                class="my-5 rounded shadow-sm"
-            >
-                <div style="
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            background-color: #273151;
-                            background: linear-gradient(to top left, #4d5bc4, #a41786);
-                            z-index: -2;
-                            ">
-                </div>
+            <li class="my-5 rounded shadow-sm lustrum-list-item">
+                <div class="lustrum-background-gradient"></div>
                 <div
-                    style="
-                           top: 0;
-                           left: 0;
-                           right: 0;
-                           bottom: 0;
-                           position: absolute;
-                           mix-blend-mode: multiply;
-                           filter: grayscale(100%);
-                           width: 100%;
-                           height: 100%;
-                           object-fit: cover;
-                           background-size: cover;
-                           background-blend-mode: multiply;
-                           background-image: url('https://www.margaretriver.com/wp-content/uploads/2018/12/SILENT-DISCO-boat-party-london-optimised.jpg');
-                           z-index: -1;
-                           "
+                    class="lustrum-background-image"
+                    style="background-image: url('https://www.margaretriver.com/wp-content/uploads/2018/12/SILENT-DISCO-boat-party-london-optimised.jpg');"
                 >
                 </div>
-                <div style="" class="">
+                <div>
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Friday October 11th<br/>
@@ -368,7 +218,7 @@
                         </div>
                     </h2>
 
-                    <ul class="text-white font-weight-bold" style="font-size: 1.5rem; list-style: disc">
+                    <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
                             With sushi and other ocean related food
                         </li>
@@ -379,44 +229,14 @@
                 </div>
             </li>
 
-            <li style="
-                       padding: 4em;
-                       position: relative;
-                       overflow: hidden;
-                       "
-                class="my-5 rounded shadow-sm"
-            >
-                <div style="
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            background-color: #273151;
-                            background: linear-gradient(to top left, #4d5bc4, #a41786);
-                            z-index: -2;
-                            ">
-                </div>
+            <li class="my-5 rounded shadow-sm lustrum-list-item">
+                <div class="lustrum-background-gradient"></div>
                 <div
-                    style="
-                           top: 0;
-                           left: 0;
-                           right: 0;
-                           bottom: 0;
-                           position: absolute;
-                           mix-blend-mode: multiply;
-                           filter: grayscale(100%);
-                           width: 100%;
-                           height: 100%;
-                           object-fit: cover;
-                           background-size: cover;
-                           background-blend-mode: multiply;
-                           background-image: url('https://cdn.pixabay.com/photo/2017/05/21/19/45/groningen-2332073_960_720.jpg');
-                           z-index: -1;
-                           "
+                    class="lustrum-background-image"
+                    style="background-image: url('https://cdn.pixabay.com/photo/2017/05/21/19/45/groningen-2332073_960_720.jpg');"
                 >
                 </div>
-                <div style="" class="">
+                <div>
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Saturday October 12th<br/>
@@ -432,7 +252,7 @@
                         </span>
                     </h2>
 
-                    <ul class="text-white font-weight-bold" style="font-size: 1.5rem; list-style: disc">
+                    <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
                             15:00 - 17:30 : Canal trip
                         </li>
@@ -448,44 +268,14 @@
                     </ul>
                 </div>
             </li>
-            <li style="
-                       padding: 4em;
-                       position: relative;
-                       overflow: hidden;
-                       "
-                class="my-5 rounded shadow-sm"
-            >
-                <div style="
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            background-color: #273151;
-                            background: linear-gradient(to top left, #4d5bc4, #a41786);
-                            z-index: -2;
-                            ">
-                </div>
+            <li class="my-5 rounded shadow-sm lustrum-list-item">
+                <div class="lustrum-background-gradient"></div>
                 <div
-                    style="
-                           top: 0;
-                           left: 0;
-                           right: 0;
-                           bottom: 0;
-                           position: absolute;
-                           mix-blend-mode: multiply;
-                           filter: grayscale(100%);
-                           width: 100%;
-                           height: 100%;
-                           object-fit: cover;
-                           background-size: cover;
-                           background-blend-mode: multiply;
-                           background-image: url('https://www.4mijl.nl/media/3486/4mijl-2017-0046.jpg?anchor=center&mode=crop&width=550&height=400&rnd=131684514000000000');
-                           z-index: -1;
-                           "
+                    class="lustrum-background-image"
+                    style="background-image: url('https://www.4mijl.nl/media/3486/4mijl-2017-0046.jpg?anchor=center&mode=crop&width=550&height=400&rnd=131684514000000000');"
                 >
                 </div>
-                <div style="" class="">
+                <div>
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Sunday October 13th<br/>
@@ -501,7 +291,7 @@
                         </span>
                     </h2>
 
-                    <ul class="text-white font-weight-bold list-unstyled" style="font-size: 1.5rem; list-style: none">
+                    <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
                             Cheer on people running the 4 mile
                         </li>
