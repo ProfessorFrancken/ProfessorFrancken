@@ -168,10 +168,14 @@ final class ValueStoreSettings implements Settings
             'value' => $this->isPienterShownInNavigation(),
             'type' => 'toggle'
         ];
+        yield static::IS_LUSTRUM_SHOWN_IN_NAVIGATION => [
+            'text' => 'Add a link to the lustrum page in the navigation menu',
+            'value' => $this->isLustrumShownInNavigation(),
+            'type' => 'toggle'
+        ];
     }
     public function isLustrumShownInNavigation() : bool
     {
-        return true;
         $value = $this->store->get(self::IS_LUSTRUM_SHOWN_IN_NAVIGATION);
 
         if ($value === null) {
