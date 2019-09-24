@@ -26,4 +26,6 @@ interface Settings extends IteratorAggregate
     public function isSymposiumShownInNavigation() : bool;
 
     public function isPienterShownInNavigation() : bool;
+
+    public function isLustrumShownInNavigation() : bool;
 }

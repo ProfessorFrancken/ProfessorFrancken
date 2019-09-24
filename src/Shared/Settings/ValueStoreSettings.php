@@ -18,6 +18,7 @@ final class ValueStoreSettings implements Settings
     private const IS_SLEF_SHOWN_IN_NAVIGATION = 'navigation_show_slef';
     private const IS_SYMPOSIUM_SHOWN_IN_NAVIGATION = 'navigation_show_symposium';
     private const IS_PIENTER_SHOWN_IN_NAVIGATION = 'navigation_show_pienter';
+    private const IS_LUSTRUM_SHOWN_IN_NAVIGATION = 'navigation_show_lustrum';
 
     /**
      * @var ValueStore
@@ -167,5 +168,16 @@ final class ValueStoreSettings implements Settings
             'value' => $this->isPienterShownInNavigation(),
             'type' => 'toggle'
         ];
+    }
+    public function isLustrumShownInNavigation() : bool
+    {
+        return true;
+        $value = $this->store->get(self::IS_LUSTRUM_SHOWN_IN_NAVIGATION);
+
+        if ($value === null) {
+            return false;
+        }
+
+        return (bool) $value;
     }
 }
