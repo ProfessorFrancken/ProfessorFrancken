@@ -8,10 +8,10 @@
                 <div class="card-body">
                     <ul class="row list-unstyled">
                         @foreach ($directories as $directory)
-                            <li class="col-md-2 my-3 position-relative">
+                            <li class="col-md-2 my-3">
                                 <div class="bg-light shadow-sm p-3 h-100">
                                     <a href="{{ $directory->url() }}"
-                                       class="stretched-link d-flex"
+                                       class="d-flex"
                                     >
                                         <i class="fas fa-folder h2"></i>
                                         <div class="ml-3 d-flex flex-column justify-content-center">
@@ -24,10 +24,10 @@
                             </li>
                         @endforeach
                         @foreach ($media as $file)
-                            <li class="col-md-2 my-3 position-relative">
+                            <li class="col-md-2 my-3">
                                 <div class="bg-light rounded-sm shadow-sm p-3 h-100">
                                     <a href="{{ $file->mediaUrl() }}"
-                                       class="stretched-link d-flex"
+                                       class="d-flex"
                                        target="_blank"
                                     >
                                         <i class="{{ $file->iconClass() }} h3"></i>

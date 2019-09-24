@@ -10,11 +10,11 @@
             </tr>
         </thead>
         @foreach ($books as $book)
-            <tr class="align-middle position-relative">
+            <tr class="align-middle">
                 <td>
                     <a
                         href="{{ action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'show'], $book->id) }}"
-                        class="stretched-link"
+                        class=""
                     >
                         {{ $book->title }} <br/>
                     <small class="text-muted">

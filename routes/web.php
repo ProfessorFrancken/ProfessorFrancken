@@ -23,6 +23,7 @@ use Francken\Infrastructure\Http\Controllers\CompaniesController;
 use Francken\Infrastructure\Http\Controllers\MainContentController;
 use Francken\Infrastructure\Http\Controllers\RegistrationController;
 use Francken\Infrastructure\Http\Controllers\ResearchGroupsController;
+use Francken\Lustrum\Http\Controllers\LustrumController;
 use Francken\Shared\Http\Controllers\RedirectController;
 
 Route::redirect('/blog', '/association/news');
@@ -110,3 +111,7 @@ Route::post('/symposia/{symposium}/participants', [
     ParticipantRegistrationController::class,
     'store'
 ])->middleware(['throttle:6,1', 'symposium-cors']);
+
+Route::prefix('lustrum')->group(function () : void {
+    Route::get('/', [LustrumController::class, 'index']);
+});

@@ -15,11 +15,9 @@
                     </thead>
                     <tbody>
                         @foreach ($roles as $role)
-                            <tr class="position-relative">
+                            <tr>
                                 <td>
-                                    <a href="{{ action([\Francken\Auth\Http\Controllers\Admin\RolesController::class, 'show'], $role->id)}}"
-                                       class="stretched-link"
-                                    >
+                                    <a href="{{ action([\Francken\Auth\Http\Controllers\Admin\RolesController::class, 'show'], $role->id)}}">
                                         {{ $role->name }}
                                     </a>
                                 </td>

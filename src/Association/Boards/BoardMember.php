@@ -183,18 +183,22 @@ final class BoardMember extends Model
         // have to save the model beforehand to guarantee that we he a valid id
         $this->save();
 
+        if ($this->member_id === null) {
+            return;
+        }
+
         switch ($status) {
             case BoardMemberStatus::CANDIDATE:
-                event(new MemberBecameCandidateBoardMember($this->board_id, $this->id));
+                event(new MemberBecameCandidateBoardMember($this->board_id, $this->member_id));
                 break;
             case BoardMemberStatus::BOARD_MEMBER:
-                event(new BoardMemberWasInstalled($this->board_id, $this->id));
+                event(new BoardMemberWasInstalled($this->board_id, $this->member_id));
                 break;
             case BoardMemberStatus::DEMISSIONED_BOARD_MEMBER:
-                event(new BoardMemberWasDemissioned($this->board_id, $this->id));
+                event(new BoardMemberWasDemissioned($this->board_id, $this->member_id));
                 break;
             case BoardMemberStatus::DECHARGED_BOARD_MEMBER:
-                event(new BoardMemberWasDischarged($this->board_id, $this->id));
+                event(new BoardMemberWasDischarged($this->board_id, $this->member_id));
                 break;
         }
     }
