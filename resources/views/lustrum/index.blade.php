@@ -38,8 +38,6 @@
             </li>
         </ul>
 
-        <!-- background-image: url('https://i.ytimg.com/vi/qImPaM4lKoA/maxresdefault.jpg');
-        -->
         <ul class="list-unstyled">
             <li style="
                        padding: 4em;
@@ -154,7 +152,7 @@
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Tuesday October 8th<br/>
-                            17:00
+                            15:00
                         </span>
                         <span class="font-weight-bold">
                             Franckenroom
@@ -229,7 +227,7 @@
                     <div class="d-flex justify-content-between text-white" style="font-size: 1.25rem; margin-bottom: 4em;">
                         <span class="font-weight-bold">
                             Wednesday October 9th<br/>
-                            17:00
+                            15:00
                         </span>
                         <span class="font-weight-bold">
                             TBA
@@ -244,9 +242,6 @@
                     <ul class="text-white font-weight-bold list-unstyled" style="font-size: 1.5rem;">
                         <li>
                             Sushi workshop for <span style="color: #ff9200; font-size: 2.0rem;">&euro;?,-</span>
-                        </li>
-                        <li>
-                            <span style="color: #ff9200; font-size: 2.0rem;">*</span> Not included in the passepartout
                         </li>
                     </ul>
                 </div>
