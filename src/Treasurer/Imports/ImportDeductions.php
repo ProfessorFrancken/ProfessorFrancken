@@ -95,10 +95,10 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
             '*.machtigingskenmerk' => 'required',
             '*.omschrijving_2' => 'required',
             '*.bedrag' => 'required|numeric',
-            '*.naam_betaler' => 'required',
-            '*.adres_betaler' => 'required',
-            '*.woonplaats_betaler' => 'required',
-            '*.iban_rekeningnr' => 'required',
+            '*.naam_betaler' => 'nullable|string',
+            '*.adres_betaler' => 'nullable|string',
+            '*.woonplaats_betaler' => 'nullable|string',
+            '*.iban_rekeningnr' => 'nullable|string',
         ];
     }
 
@@ -114,11 +114,15 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
         $deduction->put('member', $member);
 
+        $deduction_name = (string)$deduction["naam_betaler"] ?? '';
+        $deduction_address = (string)$deduction["adres_betaler"] ?? '';
+        $deduction_city = (string)$deduction["woonplaats_betaler"] ?? '';
+        $deduction_iban = $deduction["iban_rekeningnr"];
+
         $checks = [
-            "name" => "{$member->initialen} {$member->surname}" === (string)$deduction["naam_betaler"],
-            "address" => (string)$member->adres === (string)$deduction["adres_betaler"] ||
-            (string)$member->plaats === (string)$deduction["woonplaats_betaler"],
-            "iban" => $this->checkIban($member->rekeningnummer, $deduction["iban_rekeningnr"]),
+            "name" => "{$member->initialen} {$member->surname}" === $deduction_name,
+            "address" => (string)$member->adres === $deduction_address || (string)$member->plaats === $deduction_city,
+            "iban" => $this->checkIban($member->rekeningnummer, $deduction_iban),
         ];
 
         $errors = collect();
