@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * This code is somewhat odd, on the write side it uses our legacy, Dutch datbase.
- * 
+ *
  * On the read side it uses an English interface which we will migrate to.
  *
  * @property int $id
@@ -142,7 +142,7 @@ final class Book extends Model
 
     public function getPaidOffAttribute() : bool
     {
-        return $this->verkoct === 1;
+        return $this->verkocht === 1;
     }
 
     public function putOnSaleAt()

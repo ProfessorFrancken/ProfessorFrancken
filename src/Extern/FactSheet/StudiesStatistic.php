@@ -75,9 +75,12 @@ final class StudiesStatistic
             }
         );
 
-        return $grouped[1]->push(
-            $studies[0]::fromMultipleStatistics("Other", ...$grouped[0])
-        );
+        if ($grouped->has(0)) {
+            $grouped[1]->push(
+                $studies[0]::fromMultipleStatistics("Other", ...$grouped[0])
+            );
+        }
+        return $grouped[1];
     }
 }
 
