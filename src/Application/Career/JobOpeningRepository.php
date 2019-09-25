@@ -28,8 +28,8 @@ final class JobOpeningRepository
     public function search(
         string $title = null,
         string $company = null,
-        Sector $sector = null,
-        JobType $type = null
+        ?Sector $sector = null,
+        ?JobType $type = null
     ) : array {
         $jobs = collect($this->jobs);
 
