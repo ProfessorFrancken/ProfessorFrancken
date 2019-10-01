@@ -147,7 +147,7 @@ final class ValueStoreSettings implements Settings
 
     public function isExpeditionShownInNavigation() : bool
     {
-        $value = $this->store->get(self::IS_LUSTRUM_SHOWN_IN_NAVIGATION);
+        $value = $this->store->get(self::IS_EXPEDITION_SHOWN_IN_NAVIGATION);
 
         if ($value === null) {
             return false;
@@ -200,7 +200,7 @@ final class ValueStoreSettings implements Settings
         ];
         yield static::IS_EXPEDITION_SHOWN_IN_NAVIGATION => [
             'text' => 'Add a link to expedition strategy in the navigation menu',
-            'value' => $this->isLustrumShownInNavigation(),
+            'value' => $this->isExpeditionShownInNavigation(),
             'type' => 'toggle'
         ];
     }
