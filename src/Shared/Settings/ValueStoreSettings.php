@@ -19,6 +19,7 @@ final class ValueStoreSettings implements Settings
     private const IS_SYMPOSIUM_SHOWN_IN_NAVIGATION = 'navigation_show_symposium';
     private const IS_PIENTER_SHOWN_IN_NAVIGATION = 'navigation_show_pienter';
     private const IS_LUSTRUM_SHOWN_IN_NAVIGATION = 'navigation_show_lustrum';
+    private const IS_EXPEDITION_SHOWN_IN_NAVIGATION = 'navigation_show_expedition';
 
     /**
      * @var ValueStore
@@ -40,6 +41,8 @@ final class ValueStoreSettings implements Settings
             static::IS_SLEF_SHOWN_IN_NAVIGATION,
             static::IS_SYMPOSIUM_SHOWN_IN_NAVIGATION,
             static::IS_PIENTER_SHOWN_IN_NAVIGATION,
+            static::IS_LUSTRUM_SHOWN_IN_NAVIGATION,
+            static::IS_EXPEDITION_SHOWN_IN_NAVIGATION,
         ];
 
         foreach ($settings as $key => $value) {
@@ -131,6 +134,28 @@ final class ValueStoreSettings implements Settings
         return (bool) $value;
     }
 
+    public function isLustrumShownInNavigation() : bool
+    {
+        $value = $this->store->get(self::IS_LUSTRUM_SHOWN_IN_NAVIGATION);
+
+        if ($value === null) {
+            return false;
+        }
+
+        return (bool) $value;
+    }
+
+    public function isExpeditionShownInNavigation() : bool
+    {
+        $value = $this->store->get(self::IS_LUSTRUM_SHOWN_IN_NAVIGATION);
+
+        if ($value === null) {
+            return false;
+        }
+
+        return (bool) $value;
+    }
+
     public function getIterator()
     {
         yield static::NUMBER_OF_EXTERN => [
@@ -173,15 +198,10 @@ final class ValueStoreSettings implements Settings
             'value' => $this->isLustrumShownInNavigation(),
             'type' => 'toggle'
         ];
-    }
-    public function isLustrumShownInNavigation() : bool
-    {
-        $value = $this->store->get(self::IS_LUSTRUM_SHOWN_IN_NAVIGATION);
-
-        if ($value === null) {
-            return false;
-        }
-
-        return (bool) $value;
+        yield static::IS_EXPEDITION_SHOWN_IN_NAVIGATION => [
+            'text' => 'Add a link to expedition strategy in the navigation menu',
+            'value' => $this->isLustrumShownInNavigation(),
+            'type' => 'toggle'
+        ];
     }
 }

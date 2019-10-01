@@ -53,6 +53,14 @@ final class NavigationServiceProvider extends ServiceProvider
                     'icon' => 'water',
                 ];
             }
+            if ($settings->isExpeditionShownInNavigation()) {
+                $menu[] = [
+                    'url' => 'https://expeditionstrategy.nl/',
+                    'title' => 'Expedition Strategy',
+                    'subItems' => [],
+                    'icon' => 'building',
+                ];
+            }
 
             $user = Auth::user();
             if ($user !== null) {
