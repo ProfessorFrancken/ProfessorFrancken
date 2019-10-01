@@ -28,4 +28,6 @@ interface Settings extends IteratorAggregate
     public function isPienterShownInNavigation() : bool;
 
     public function isLustrumShownInNavigation() : bool;
+
+    public function isExpeditionShownInNavigation() : bool;
 }

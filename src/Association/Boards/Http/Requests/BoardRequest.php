@@ -96,18 +96,19 @@ class BoardRequest extends FormRequest
      */
     public function rules()
     {
+        $max_file_size = 10 * 1024;
         return [
             'name' => ['required', 'regex:/[a-zA-Z0-9\s]+/', ],
             'installed_at' => ['required', 'date_format:Y-m-d'],
             'demissioned_at' => ['nullable', 'date_format:Y-m-d', 'after:installed_at', 'before_or_equal:decharged_at'],
             'decharged_at' => ['nullable', 'date_format:Y-m-d', 'after:installed_at', 'after_or_equal:demissioned_at'],
             'photo_position' => ['required', 'integer'],
-            'photo' => ['image'],
+            'photo' => ['image', 'max:' . $max_file_size],
 
             // We only want to validate member input if the member_id is present
             'members.*.member_id' => ['sometimes', 'nullable', 'integer'],
             'members.*.title' => ['required_with:members.*.member_id'],
-            'members.*.photo' => ['image'],
+            'members.*.photo' => ['image', 'max:' . $max_file_size],
 
             'members.*.installed_at' => ['sometimes', 'nullable', 'date_format:Y-m-d'],
             'members.*.demissioned_at' => ['sometimes', 'nullable', 'date_format:Y-m-d', 'after:members.*.installed_at', 'before_or_equal:members.*.decharged_at'],
