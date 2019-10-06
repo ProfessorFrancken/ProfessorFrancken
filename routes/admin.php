@@ -23,6 +23,9 @@ use Francken\Infrastructure\Http\Controllers\Admin\FranckenVrijController;
 use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Infrastructure\Http\Controllers\DashboardController;
 use Francken\Infrastructure\Http\Controllers\MemberController;
+use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
+use Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController;
+use Francken\Lustrum\Http\Controllers\Admin\PirateCrewController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
 use Francken\Shared\Settings\Http\Controllers\SettingsController;
 use Francken\Study\BooksSale\Http\AdminBooksController;
@@ -167,5 +170,19 @@ Route::group(['prefix' => 'compucie'], function () : void {
         Route::get('media-item/{media}', [MediaController::class, 'show']);
     });
 });
+
+Route::group([
+    'prefix' => 'lustrum',
+    'middleware' => 'can:mannage-lustrum'
+],
+    function () : void {
+        Route::resource('adtchievements', AdtchievementsController::class);
+
+        Route::get('{pirateCrew}', [PirateCrewController::class, 'index']);
+        Route::post('{pirateCrew}/pirates', [PirateCrewController::class, 'store']);
+        Route::post('{pirateCrew}/adtchievements', [PirateAdtchievementsController::class, 'store']);
+        Route::delete('{pirateCrew}/adtchievements/{adtchievement}', [PirateAdtchievementsController::class, 'remove']);
+    }
+);
 
 Route::fallback([AdminController::class, 'showPageIsUnavailable']);

@@ -17,27 +17,6 @@
             Don't want to miss out of all the fun? Buy a <strong>Passepartout</strong> for &euro;28,- to get free access to all events and a very personal wristband.
         </p>
 
-        <ul class="list-unstyled justify-content-between shadow d-none">
-            <li class="bg-info text-white px-5 py-4 rounded-left border border-dark text-center" style="width: 43%">
-                <h2 class="text-center text-white mb-4">Blue Beards</h2>
-
-                <img src="{{ url('uploads/images/lustrum/bluebeard.png') }}" alt="" class="img-fluid"/>
-
-                <button class="btn btn-block btn-light">
-                    Join
-                </button>
-            </li>
-            <li class="bg-danger text-white px-5 py-4 rounded-right border border-dark text-center" style="width: 57%">
-                <h2 class="text-center text-white mb-4">Red Beards</h2>
-
-                <img src="{{ url('uploads/images/lustrum/redbeard.png') }}" alt="" class="img-fluid"/>
-
-                <button class="btn btn-block btn-light">
-                    Join
-                </button>
-            </li>
-        </ul>
-
         <ul class="list-unstyled">
             <li class="my-5 rounded shadow-sm lustrum-list-item">
                 <div class="lustrum-background-gradient"></div>
@@ -140,7 +119,7 @@
                             15:00
                         </span>
                         <span class="font-weight-bold">
-                            TBA
+                            Nieuwe kijk in 't jatstraat 49
                         </span>
                     </div>
                     <h2 class="text-white text-center h1 py-5 my-5 mt-4">
@@ -151,7 +130,7 @@
 
                     <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
-                            Sushi workshop for <span style="color: #ff9200; font-size: 2.0rem;">&euro;?,-</span>
+                            Sushi workshop for <span style="color: #ff9200; font-size: 2.0rem;">&euro;15,-</span>
                         </li>
                     </ul>
                 </div>
