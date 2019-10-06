@@ -119,7 +119,7 @@
                             15:00
                         </span>
                         <span class="font-weight-bold">
-                            TBA
+                            Nieuwe kijk in 't jatstraat 49
                         </span>
                     </div>
                     <h2 class="text-white text-center h1 py-5 my-5 mt-4">
@@ -130,7 +130,7 @@
 
                     <ul class="text-white font-weight-bold list-unstyled lustrum-information-list">
                         <li>
-                            Sushi workshop for <span style="color: #ff9200; font-size: 2.0rem;">&euro;?,-</span>
+                            Sushi workshop for <span style="color: #ff9200; font-size: 2.0rem;">&euro;15,-</span>
                         </li>
                     </ul>
                 </div>
