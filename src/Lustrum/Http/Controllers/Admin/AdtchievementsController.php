@@ -54,7 +54,8 @@ class AdtchievementsController
     {
         $adtchievement = Adtchievement::create([
             'title' => $request->input('title'),
-            'description' => $request->input('description'),
+            'description' => $request->input('description') ?? '',
+            'past_tense' => $request->input('past_tense') ?? '',
             'points' => $request->input('points'),
             'is_repeatable' => $request->has('is_repeatable'),
             'is_team_effort' => $request->has('is_team_effort'),
@@ -70,7 +71,8 @@ class AdtchievementsController
     {
         $adtchievement = $adtchievement->update([
             'title' => $request->input('title'),
-            'description' => $request->input('description'),
+            'description' => $request->input('description') ?? '',
+            'past_tense' => $request->input('past_tense') ?? '',
             'points' => $request->input('points'),
             'is_repeatable' => $request->has('is_repeatable'),
             'is_team_effort' => $request->has('is_team_effort'),

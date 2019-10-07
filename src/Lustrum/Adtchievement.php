@@ -21,16 +21,19 @@ final class Adtchievement extends Model
         'is_hidden',
     ];
 
-    public function earnBy(Pirate $pirate, string $reason = '')
+    public function earnBy(Pirate $pirate, ?int $points = null, string $reason = '')
     {
         // TODO:
         // Based on this adtchievement's settings eck if the pirate is allowed to earn this adtchievemnet
+        if ($points === null) {
+            $points = $this->points;
+        }
 
         return $this->earnedBy()
             ->attach(
                 $pirate->id,
                 [
-                    'points' => $this->points,
+                    'points' => $points,
                     'pirate_crew_id' => $pirate->pirate_crew_id,
                     'reason' => $reason,
                     'created_at' => new DateTimeImmutable(),
