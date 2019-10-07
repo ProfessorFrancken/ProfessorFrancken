@@ -49,7 +49,20 @@ final class NavigationServiceProvider extends ServiceProvider
                 $menu[] = [
                     'url' => '/lustrum',
                     'title' => 'Lustrum',
-                    'subItems' => [],
+                    'subItems' => [
+                        [
+                            'url' => '/lustrum/blue-beard-pirates',
+                            'icon' => 'fa fa-skull-crossbones',
+                            'title' => 'Blue beards',
+                            'description' => 'Join the blue team and win the Lustrum week',
+                        ],
+                        [
+                            'url' => '/lustrum/red-beard-pirates',
+                            'icon' => 'fa fa-skull-crossbones',
+                            'title' => 'Red beards',
+                            'description' => "Join the red team and don't win the Lustrum week",
+                        ]
+                    ],
                     'icon' => 'water',
                 ];
             }
