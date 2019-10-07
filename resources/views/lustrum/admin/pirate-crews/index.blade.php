@@ -111,10 +111,17 @@
             <div class="form-group">
                 <label for="permission">Adtchievement</label>
                 <select class="form-control" id="adtchievement" name="adtchievement_id">
-                    @foreach ($adtchievements as $adchievement)
-                        <option value="{{ $adchievement->id }}">{{ $adchievement->title }}</option>
+                    @foreach ($adtchievements as $adtchievement)
+                        <option value="{{ $adtchievement->id }}">
+                            {{ $adtchievement->title }} ({{ $adtchievement->points }} points)
+                        </option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="form-group">
+                <label for="points">Points</label>
+                {!! Form::number('points', null, ['class' => 'form-control', 'placeholder' => '', 'id' => 'points']) !!}
             </div>
 
             <div class="form-group">

@@ -14,6 +14,12 @@ class PirateAdtchievementsController
 {
     public function store(PirateCrew $pirateCrew, Request $request)
     {
+        $points = $request->input('points');
+
+        if ($points !== null) {
+            $points = (int)$points;
+        }
+
         $adtchievement = Adtchievement::findOrFail($request->adtchievement_id);
 
         $pirate = Pirate::where('member_id', $request->input('adtchievement.member_id'))
@@ -21,6 +27,7 @@ class PirateAdtchievementsController
 
         $adtchievement->earnBy(
             $pirate,
+            $points,
             $request->input('reason') ?? ''
         );
 
