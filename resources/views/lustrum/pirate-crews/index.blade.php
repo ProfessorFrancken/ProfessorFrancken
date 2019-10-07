@@ -2,23 +2,36 @@
 
 @section('main-content')
     <div class="container my-5">
-        <h2 class="section-header section-header--centered">
-            {{ $crew->name }}
-        </h2>
+        <div class="d-flex">
+            @if ($crew->name === "Blue beards")
+                <div>
+                    <img src="{{ url('uploads/images/lustrum/bluebeardR-01.png') }}" alt="" class="img-fluid" width="200" height="200"/>
+                </div>
+            @endif
+            <div class="p-3 mx-3 flex-grow-1">
+                <h2 class="section-header">
+                    {{ $crew->name }}
+                </h2>
 
-        <p class="lead text-center px-5 my-5">
-            Total points earned this week:
-            <br/>
-            {{ $crew->total_points }}
-        </p>
+                <p class="lead my-3">
+                    Total points earned this week: <strong>{{ $crew->total_points }}</strong>
+                </p>
 
-        <h3 class="text-center">Pirate of the day</h3>
+                @if ($crew->pirate_of_the_day)
+                    <h3>Pirate of the day</h3>
 
-        @if ($crew->pirate_of_the_day)
-            <p class="lead text-center px-5 mb-5">
-                {{ $crew->pirate_of_the_day->name }}
-            </p>
-        @endif
+                    <p class="lead ">
+                        {{ $crew->pirate_of_the_day->name }}
+                    </p>
+                @endif
+            </div>
+            @if ($crew->name === "Red beards")
+                <div>
+                    <img src="{{ url('uploads/images/lustrum/redbeardL-01.png') }}" alt="" class="img-fluid" width="200" height="200"/>
+                </div>
+            @endif
+        </div>
+
 
         <h3 class="mt-5">
             <i class="fas fa-users"></i>

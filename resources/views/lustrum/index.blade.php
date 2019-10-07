@@ -17,6 +17,40 @@
             Don't want to miss out of all the fun? Buy a <strong>Passepartout</strong> for &euro;28,- to get free access to all events and a very personal wristband.
         </p>
 
+        <h3 class="text-center">Join a Pirate Crew!</h3>
+
+        <p class="lead text-center px-5 mb-5">
+            Join a pirate crew and earn adtchievements troughout the week.
+            And earn prizes.
+        </p>
+
+        <ul class="list-unstyled justify-content-between shadow d-flex">
+            <li class="bg-info text-white px-5 py-4 rounded-left border border-dark text-center" style="width: 50%">
+                <a href="{{ action([\Francken\Lustrum\Http\Controllers\PirateCrewController::class, 'index'], ['pirateCrew' => 'blue-beard-pirates']) }}" class="d-flex justify-content-between align-items-center">
+                    <img src="{{ url('uploads/images/lustrum/bluebeardR-01.png') }}" alt="" class="img-fluid" width="200"/>
+                    <div>
+                        <h2 class="text-center text-white mb-4">Blue Beards</h2>
+
+                        <div class="text-white text-center">
+                            33 points
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="bg-danger text-white px-5 py-4 rounded-right border border-dark text-center" style="width: 50%">
+                <a href="{{ action([\Francken\Lustrum\Http\Controllers\PirateCrewController::class, 'index'], ['pirateCrew' => 'red-beard-pirates']) }}" class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="text-center text-white mb-4">Red Beards</h2>
+
+                        <div class="text-white text-center">
+                            33 points
+                        </div>
+                    </div>
+                    <img src="{{ url('uploads/images/lustrum/redbeardL-01.png') }}" alt="" class="img-fluid" width="200"/>
+                </a>
+            </li>
+        </ul>
+
         <ul class="list-unstyled">
             <li class="my-5 rounded shadow-sm lustrum-list-item">
                 <div class="lustrum-background-gradient"></div>
