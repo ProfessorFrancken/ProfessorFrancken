@@ -34,7 +34,14 @@ final class FlickrRepository
         ]);
         $photosets = $photoset->photosets['photoset'];
 
+
         return collect($photosets)->map(function ($album) {
+            $primary_photos = $album['primary_photo_extras'];
+            $width = (int)($primary_photos['width_m'] ?? $primary_photos['width_o']);
+            $height = (int)($primary_photos['height_m'] ?? $primary_photos['height_o']);
+            $original_url = $primary_photos['url_o'];
+            $url = $primary_photos['url_m'] ?? $primary_photos['url_o'];
+
             return collect([
                 'id' => $album['id'],
                 'title' => $album['title']['_content'],
@@ -44,10 +51,10 @@ final class FlickrRepository
                 'visibility' => $album['visibility_can_see_set'],
                 'primary' => [
                     'id' => $album['primary'],
-                    'url' => $album['primary_photo_extras']['url_m'],
-                    'original_url' => $album['primary_photo_extras']['url_o'],
-                    'width' => (int)$album['primary_photo_extras']['width_m'],
-                    'height' => (int)$album['primary_photo_extras']['height_m'],
+                    'url' => $url,
+                    'original_url' => $original_url,
+                    'width' => $width,
+                    'height' => $height,
                     'date_upload' => DateTimeImmutable::createFromFormat('U', $album['primary_photo_extras']['dateupload']),
                     'last_update' => DateTimeImmutable::createFromFormat('U', $album['primary_photo_extras']['lastupdate']),
                     'date_taken' => new DateTimeImmutable($album['primary_photo_extras']['datetaken']),
