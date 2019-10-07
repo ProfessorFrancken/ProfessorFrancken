@@ -31,8 +31,8 @@
                     <div>
                         <h2 class="text-center text-white mb-4">Blue Beards</h2>
 
-                        <div class="text-white text-center">
-                            {{ \Francken\Lustrum\PirateCrew::where('name', 'Blue beards')->first()->total_points }} points
+                        <div class="text-white text-center h2">
+                            {{ $blue_beards_points }} points
                         </div>
                     </div>
                 </a>
@@ -42,8 +42,8 @@
                     <div>
                         <h2 class="text-center text-white mb-4">Red Beards</h2>
 
-                        <div class="text-white text-center">
-                            {{ \Francken\Lustrum\PirateCrew::where('name', 'Red beards')->first()->total_points }} points
+                        <div class="text-white text-center h2">
+                            {{ $red_beards_points }} points
                         </div>
                     </div>
                     <img src="{{ url('uploads/images/lustrum/redbeardL-01.png') }}" alt="" class="img-fluid" width="200"/>
