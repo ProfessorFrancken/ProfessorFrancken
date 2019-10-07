@@ -86,6 +86,9 @@
                             <div>
                                 <h4 class="d-flex justify-content-between align-items-center">
                                     {{ $adtchievement->title }}
+                                    <small>
+                                        ({{ $adtchievement->points }} points)
+                                    </small>
                                 </h4>
                                 <p>
                                     {{ $adtchievement->description }}
@@ -93,7 +96,7 @@
                             </div>
                             <div class="d-flex flex-column text-right">
                                 <span class="my-1">
-                                    <strong>Total points:</strong> {{  $adtchievement->totalEarnedPointsBy($crew) }}
+                                    <strong>Total points:</strong> {{ $adtchievement->totalEarnedPointsBy($crew) }}
                                 </span>
                                 @if ($adtchievement->is_repeatable)
                                     <i class="fas fa-redo text-muted my-1"></i>

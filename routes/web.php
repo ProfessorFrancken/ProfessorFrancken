@@ -23,6 +23,7 @@ use Francken\Infrastructure\Http\Controllers\CompaniesController;
 use Francken\Infrastructure\Http\Controllers\MainContentController;
 use Francken\Infrastructure\Http\Controllers\RegistrationController;
 use Francken\Infrastructure\Http\Controllers\ResearchGroupsController;
+use Francken\Lustrum\Http\Controllers\AdtchievementController;
 use Francken\Lustrum\Http\Controllers\LustrumController;
 use Francken\Lustrum\Http\Controllers\PirateCrewController;
 use Francken\Shared\Http\Controllers\RedirectController;
@@ -116,5 +117,6 @@ Route::post('/symposia/{symposium}/participants', [
 Route::prefix('lustrum')->group(function () : void {
     Route::get('/', [LustrumController::class, 'index']);
 
+    Route::get('/adtchievements', [AdtchievementController::class, 'index']);
     Route::get('{pirateCrew}', [PirateCrewController::class, 'index']);
 });

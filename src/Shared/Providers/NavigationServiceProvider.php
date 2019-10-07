@@ -61,6 +61,12 @@ final class NavigationServiceProvider extends ServiceProvider
                             'icon' => 'fa fa-skull-crossbones',
                             'title' => 'Red beards',
                             'description' => "Join the red team and don't win the Lustrum week",
+                        ],
+                        [
+                            'url' => '/lustrum/adtchievements',
+                            'icon' => 'fa fa-trophy',
+                            'title' => 'Adtchievements',
+                            'description' => "",
                         ]
                     ],
                     'icon' => 'water',
