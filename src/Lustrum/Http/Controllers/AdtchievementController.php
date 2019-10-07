@@ -14,7 +14,7 @@ final class AdtchievementController
             'adtchievement',
             'pirate',
             'pirateCrew',
-        ])->get();
+        ])->orderBy('created_at', 'desc')->get();
 
         return view('lustrum.adtchievements.index', [
             'adtchievements' => $adtchievements,
