@@ -2,25 +2,19 @@
 @section('page-title', $crew->name)
 
 @section('content')
-    <div class="card">
+    <div class="card my-5">
         <div class="card-header">
-            <h3>Members</h3>
+            <h3>Adtchievements</h3>
         </div>
+
         <div class="card-body">
-            <ul>
-                @foreach ($crew->crewMembers as $pirate)
-                    <li>{{ $pirate->name }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="card-footer">
             {!!
                Form::model(
                    null,
                    [
                        'url' => action(
                            [
-                               \Francken\Lustrum\Http\Controllers\Admin\PirateCrewController::class,
+                               \Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController::class,
                                'store'
                            ],
                            ['pirateCrew' => $crew->slug]
@@ -30,16 +24,31 @@
                 )
             !!}
 
-            @include('admin.association.boards._member-selection', ['name' => "pirate"])
+            @include('admin.association.boards._member-selection', ['name' => "adtchievement"])
 
-            {!! Form::submit('Add member to crew', ['class' => 'btn btn-outline-success']) !!}
+            <div class="form-group">
+                <label for="permission">Adtchievement</label>
+                <select class="form-control" id="adtchievement" name="adtchievement_id">
+                    @foreach ($adtchievements as $adtchievement)
+                        <option value="{{ $adtchievement->id }}">
+                            {{ $adtchievement->title }} ({{ $adtchievement->points }} points)
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="points">Points</label>
+                {!! Form::number('points', null, ['class' => 'form-control', 'placeholder' => '', 'id' => 'points']) !!}
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Reason</label>
+                {!! Form::text('reason', null, ['class' => 'form-control', 'placeholder' => '', 'id' => 'reason']) !!}
+            </div>
+
+            {!! Form::submit('Add adtchievement', ['class' => 'btn btn-outline-success']) !!}
             {!! Form::close() !!}
-        </div>
-    </div>
-
-    <div class="card my-5">
-        <div class="card-header">
-            <h3>Adtchievements</h3>
         </div>
 
         <table class="table table-hover table-small table-striped">
@@ -89,6 +98,20 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Members</h3>
+        </div>
+        <div class="card-body">
+            <ul>
+                @foreach ($crew->crewMembers as $pirate)
+                    <li>{{ $pirate->name }}</li>
+                @endforeach
+            </ul>
+        </div>
         <div class="card-footer">
             {!!
                Form::model(
@@ -96,7 +119,7 @@
                    [
                        'url' => action(
                            [
-                               \Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController::class,
+                               \Francken\Lustrum\Http\Controllers\Admin\PirateCrewController::class,
                                'store'
                            ],
                            ['pirateCrew' => $crew->slug]
@@ -106,33 +129,13 @@
                 )
             !!}
 
-            @include('admin.association.boards._member-selection', ['name' => "adtchievement"])
+            @include('admin.association.boards._member-selection', ['name' => "pirate"])
 
-            <div class="form-group">
-                <label for="permission">Adtchievement</label>
-                <select class="form-control" id="adtchievement" name="adtchievement_id">
-                    @foreach ($adtchievements as $adtchievement)
-                        <option value="{{ $adtchievement->id }}">
-                            {{ $adtchievement->title }} ({{ $adtchievement->points }} points)
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="points">Points</label>
-                {!! Form::number('points', null, ['class' => 'form-control', 'placeholder' => '', 'id' => 'points']) !!}
-            </div>
-
-            <div class="form-group">
-                <label for="reason">Reason</label>
-                {!! Form::text('reason', null, ['class' => 'form-control', 'placeholder' => '', 'id' => 'reason']) !!}
-            </div>
-
-            {!! Form::submit('Add adtchievement', ['class' => 'btn btn-outline-success']) !!}
+            {!! Form::submit('Add member to crew', ['class' => 'btn btn-outline-success']) !!}
             {!! Form::close() !!}
         </div>
     </div>
+
 @endsection
 
 @section('actions')
