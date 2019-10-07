@@ -26,6 +26,7 @@ use Francken\Infrastructure\Http\Controllers\ResearchGroupsController;
 use Francken\Lustrum\Http\Controllers\AdtchievementController;
 use Francken\Lustrum\Http\Controllers\LustrumController;
 use Francken\Lustrum\Http\Controllers\PirateCrewController;
+use Francken\Lustrum\Http\Controllers\TV;
 use Francken\Shared\Http\Controllers\RedirectController;
 
 Route::redirect('/blog', '/association/news');
@@ -115,6 +116,11 @@ Route::post('/symposia/{symposium}/participants', [
 ])->middleware(['throttle:6,1', 'symposium-cors']);
 
 Route::prefix('lustrum')->group(function () : void {
+    Route::prefix('tv')->group(function () : void {
+        Route::get('pirate-crews', [TV\PirateCrewsController::class, 'index']);
+        Route::get('adtchievements', [TV\AdtchievementsController::class, 'index']);
+    });
+
     Route::get('/', [LustrumController::class, 'index']);
 
     Route::get('/adtchievements', [AdtchievementController::class, 'index']);
