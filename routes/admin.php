@@ -173,7 +173,7 @@ Route::group(['prefix' => 'compucie'], function () : void {
 
 Route::group([
     'prefix' => 'lustrum',
-    'middleware' => 'can:mannage-lustrum'
+    'middleware' => 'can:dashboard:manage-lustrum'
 ],
     function () : void {
         Route::resource('adtchievements', AdtchievementsController::class);
