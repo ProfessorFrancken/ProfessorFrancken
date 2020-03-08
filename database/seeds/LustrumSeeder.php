@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Francken\Lustrum\PirateCrew;
 use Illuminate\Database\Seeder;
 
 final class LustrumSeeder extends Seeder
@@ -13,7 +14,8 @@ final class LustrumSeeder extends Seeder
     {
         PirateCrew::create([
             'name' => 'Blue beards',
-            'slug' => 'blue-beard-pirates'
+            'slug' => 'blue-beard-pirates',
+            'logo' => 'logo'
         ]);
     }
 }
