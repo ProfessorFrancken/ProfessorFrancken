@@ -21,12 +21,12 @@ use Francken\Infrastructure\Http\Controllers\CareerController;
 use Francken\Infrastructure\Http\Controllers\CommitteesController;
 use Francken\Infrastructure\Http\Controllers\CompaniesController;
 use Francken\Infrastructure\Http\Controllers\MainContentController;
-use Francken\Infrastructure\Http\Controllers\RegistrationController;
 use Francken\Infrastructure\Http\Controllers\ResearchGroupsController;
 use Francken\Lustrum\Http\Controllers\AdtchievementController;
 use Francken\Lustrum\Http\Controllers\LustrumController;
 use Francken\Lustrum\Http\Controllers\PirateCrewController;
 use Francken\Lustrum\Http\Controllers\TV;
+use Francken\Members\Http\Controllers\RegistrationController;
 use Francken\Shared\Http\Controllers\RedirectController;
 
 Route::redirect('/blog', '/association/news');
@@ -39,9 +39,9 @@ Route::get('/scriptcie/{url}', [RedirectController::class, 'scriptcie'])->where(
 
 Route::get('/', [MainContentController::class, 'index'])->name('home');
 
-Route::get('/register', [RegistrationController::class, 'request']);
-Route::post('/register', [RegistrationController::class, 'submitRequest']);
-Route::get('/register/success', [RegistrationController::class, 'success']);
+Route::get('/register', [RegistrationController::class, 'index']);
+Route::post('/register', [RegistrationController::class, 'store']);
+Route::get('/register/success', [RegistrationController::class, 'show']);
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);

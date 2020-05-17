@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Members\Http\Controllers;
 
 use DateTimeImmutable;
 use Francken\Application\Members\Registration\SubmitRegistrationRequest;
@@ -18,15 +18,15 @@ use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
 use Illuminate\Http\Request;
 
-class RegistrationController extends Controller
+final class RegistrationController
 {
-    public function request()
+    public function index()
     {
         return view('registration.request')
             ->with('amountOfStudies', session()->get('amountOfStudies', 1) - 1);
     }
 
-    public function submitRequest(Request $request, Repository $repo)
+    public function store(Request $request, Repository $repo)
     {
         try {
             // Gather all the given inputs and put them into value objects
@@ -62,7 +62,7 @@ class RegistrationController extends Controller
         }
     }
 
-    public function success()
+    public function show()
     {
         return view('registration.success');
     }
