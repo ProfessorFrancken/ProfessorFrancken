@@ -20,7 +20,7 @@ final class Address
         $this->address = $address;
     }
 
-    public function __toString() : string
+    public function toString() : string
     {
         return $this->city . ' ' . $this->address . ' ' . $this->postalCode;
     }
