@@ -7,6 +7,7 @@ use Francken\Association\Activities\Http\ActivitiesPerMonthController;
 use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
+use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
@@ -26,7 +27,6 @@ use Francken\Lustrum\Http\Controllers\AdtchievementController;
 use Francken\Lustrum\Http\Controllers\LustrumController;
 use Francken\Lustrum\Http\Controllers\PirateCrewController;
 use Francken\Lustrum\Http\Controllers\TV;
-use Francken\Members\Http\Controllers\RegistrationController;
 use Francken\Shared\Http\Controllers\RedirectController;
 
 Route::redirect('/blog', '/association/news');
@@ -41,7 +41,9 @@ Route::get('/', [MainContentController::class, 'index'])->name('home');
 
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'store']);
-Route::get('/register/success', [RegistrationController::class, 'show']);
+
+// TODO: Add signed url
+Route::get('/register/{id}', [RegistrationController::class, 'show']);
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);

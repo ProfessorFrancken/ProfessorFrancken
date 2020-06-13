@@ -22,7 +22,6 @@ use Francken\Infrastructure\Http\Controllers\Admin\CommitteeController as AdminC
 use Francken\Infrastructure\Http\Controllers\Admin\FranckenVrijController;
 use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Infrastructure\Http\Controllers\DashboardController;
-use Francken\Infrastructure\Http\Controllers\MemberController;
 use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateCrewController;
@@ -75,9 +74,6 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::post('committees/search-member', [AdminCommitteeController::class, 'searchMember']);
     Route::post('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'addMember']);
     Route::delete('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'removeMember']);
-
-    Route::get('member', [MemberController::class, 'index']);
-    Route::post('member/add-member', [MemberController::class, 'addMember']);
 
     Route::get('boards/export', [AdminExportsController::class, 'index']);
     Route::post('boards/import', [AdminImportsController::class, 'store']);

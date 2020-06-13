@@ -78,8 +78,8 @@ final class Member
         return (bool) $this->member->mailinglist_email;
     }
 
-    public function paymentInfo() : PaymentInfo
+    public function paymentDetails() : PaymentDetails
     {
-        return PaymentInfo::fromDb($this->member);
+        return PaymentDetails::fromDb($this->member);
     }
 }

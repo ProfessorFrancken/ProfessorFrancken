@@ -42,9 +42,4 @@ class VerificationEmailFeature extends TestCase
                 return $mail->participant == $participant;
             });
     }
-
-    /** @test */
-    public function the_verification_email_contains_the_price() : void
-    {
-    }
 }

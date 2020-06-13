@@ -4,46 +4,34 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers\Admin;
 
-use Francken\Application\Members\Registration\RequestStatusRepository;
-use Francken\Domain\Members\Registration\RegistrationRequestId;
+use Francken\Association\Members\Registration\Registration;
 use Francken\Infrastructure\Http\Controllers\Controller;
 
 final class RegistrationRequestsController extends Controller
 {
-    private $requests;
-
-    public function __construct(RequestStatusRepository $requests)
-    {
-        $this->requests = $requests;
-    }
-
-
     public function index()
     {
+        $requests = Registration::paginate();
+
         return view('admin.registration-requests.index', [
-            'requests' => $this->requests->findAll()
+            'requests' => $requests
         ]);
     }
 
-    public function show(string $requestId)
+    public function show(Registration $request)
     {
         return view('admin.registration-requests.show', [
-            'request' => $this->requests->find(
-                new RegistrationRequestId(
-                    $requestId
-                )
-            )
+            'request' => $request
         ]);
     }
 
-    public function remove(string $requestId)
+    public function remove(Registration $request)
     {
-        $id = new RegistrationRequestId($requestId);
-        $request =$this->requests->find($id);
+        $request->delete();
 
-        $this->requests->remove($id);
-
-        return redirect()->action('Admin\RegistrationRequestsController@index')
-            ->with('status', 'Successfully archived request from ' . $request->requestee());
+        return redirect()->action([self::class, 'index'])
+            ->with([
+                'status' => 'Successfully archived request from ' . $request->fullname()->toString()
+            ]);
     }
 }
