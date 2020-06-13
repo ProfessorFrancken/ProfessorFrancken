@@ -57,7 +57,7 @@
 
         @component('profile._profile', ['icon' => 'fas fa-map-marker'])
             <h6 class="text-body font-weight-light">
-                {{ $member->address() }}
+                {{ $member->address()->toString() }}
             </h6>
 
             <ul class="list-unstyled">
