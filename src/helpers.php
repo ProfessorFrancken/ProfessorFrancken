@@ -63,16 +63,24 @@ function image($url = '', $options = [], $addAppUrl = false)
 
     $options = array_merge(['crop' => '1'], $options);
 
+    $proxy = 'imaginary';
+    //   $server = 'https://images.scriptcie.nl';
+    // return $url;
     switch ($proxy) {
         case 'imaginary': {
-            $additional = isset($options['vertical-offset']) && $options['vertical-offset'] != '' ? '&gravity=north' : '';
+
+            $additional = isset($options['vertical-offset']) && $options['vertical-offset'] != ''
+                ? '&gravity=north'
+                : '';
+
+            // background, sign, gravity,
             return sprintf(
-                '%s/resize?width=%d&height=%d&url=%s%s',
+                '%s/crop?extend=background,background=250,250,250&width=%d&height=%d%s&url=%s',
                 $server,
                 $options['width'],
                 $options['height'],
-                $url,
-                $additional
+                $additional,
+                $url
             );
         }
         case 'weserv': {
