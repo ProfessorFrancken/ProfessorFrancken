@@ -32,14 +32,20 @@
                        [
                            'url' => action(
                                [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'approve'],
-                               ['registation' => $registration->id]
+                               ['registration' => $registration->id]
                            ),
                            'method' => 'post'
                        ]
                    )
                 !!}
+                <button
+                    type="submit"
+                    class="btn btn-outline-success"
+                    onClick='return confirm("Are you sure you want to approve this registration request?");'
+                >
+                    Approve
+                </button>
 
-                {!! Form::submit('Approve', ['class' => 'btn btn-outline-success', 'onClick' => 'return confirm("Are you sure you want to approve this registration request?");']) !!}
                 {!! Form::close() !!}
             @endif
         </div>
@@ -48,7 +54,7 @@
 
 @section('actions')
     @if ($registration->registration_accepted_at === null)
-    <div class="d-flex align-items-end">
+    <div class="d-flex align-items-start">
         <a
             class="btn btn-outline-primary mr-3"
             href="{{ action(
