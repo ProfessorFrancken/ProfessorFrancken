@@ -86,7 +86,7 @@
                             <div>
                                 <h4 class="d-flex justify-content-between align-items-center">
                                     {{ $adtchievement->title }}
-                                    <small>
+                                    <small class="mx-1">
                                         ({{ $adtchievement->points }} points)
                                     </small>
                                 </h4>

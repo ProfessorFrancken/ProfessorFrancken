@@ -45,13 +45,13 @@
                     {{ $red_beards->total_points }}
                 </h2>
 
-                @if ($blue_beards->pirate_of_the_day)
+                @if ($red_beards->pirate_of_the_day)
                     <span class="mt-4" style="font-size: 2.0rem; font-weight: normal">
                         Pirate of the day
                     </span>
 
                     <strong class="text-primary">
-                        {{ $blue_beards->pirate_of_the_day->name }}
+                        {{ $red_beards->pirate_of_the_day->name }}
                     </strong>
                 @endif
             </div>
