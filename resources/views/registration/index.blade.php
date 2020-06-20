@@ -24,8 +24,6 @@
        Form::open(
            [
                'action' => [[\Francken\Association\Members\Http\Controllers\RegistrationController::class, 'store']] ,
-               'files' => true,
-//               'class' => 'was-validated',
            ]
        )
     !!}

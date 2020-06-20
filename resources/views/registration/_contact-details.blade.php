@@ -8,7 +8,7 @@
                    null,
                    [
                        'placeholder' => 'email@example.com',
-                       'class' => 'form-control', //
+                       'class' => 'form-control',
                        'required'
                    ]
                )
@@ -24,6 +24,7 @@
     <div class="col-sm-12">
         <h5 class="mt-3">
             <i class="fas fa-map-marker-alt"></i> Get the Franken Vrij
+            <small class="text-muted">(optional)</small>
         </h5>
         <p>
             Each year we publish three issues of our popular science magazine, the <a href="/association/francken-vrij">Francken Vrij</a>.
@@ -121,6 +122,7 @@
         <div class="form-group">
             <h5 class="mt-3">
                 <i class="fab fa-whatsapp"></i> Join our WhatsApp broadcast
+                <small class="text-muted">(optional)</small>
             </h5>
             <p>
                 Would you like to stay informed about upcoming activities?
