@@ -118,7 +118,8 @@ final class Board extends Model
 
     public function members()
     {
-        return $this->hasMany(BoardMember::class);
+        // Order the BoardMembers by id so that their position on the boards page is shown correctly
+        return $this->hasMany(BoardMember::class)->orderBy('id', 'desc');
     }
 
     public function getPhotoAttribute() : ?string
