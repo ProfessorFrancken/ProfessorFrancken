@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Infrastructure\Http\Controllers;
 
 use Francken\Application\FranckenVrij\FranckenVrijRepository;
-use Francken\Application\ReadModel\PostList\PostList;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\News\Repository as NewsRepository;
 
@@ -35,10 +34,7 @@ class MainContentController extends Controller
 
     public function post()
     {
-        // $posts = PostList::paginate(10);
-        return view('news'); //, [
-            // 'posts' => $posts
-        // ]);
+        return view('news');
     }
 
     public function news()
