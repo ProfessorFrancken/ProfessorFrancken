@@ -6,9 +6,11 @@ namespace Francken\Association\Members\Registration;
 
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
+use Francken\Association\Members\Birthdate;
 use Francken\Association\Members\ContactDetails;
 use Francken\Association\Members\Email;
 use Francken\Association\Members\Fullname;
+use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\PersonalDetails;
 use Francken\Association\Members\Study;
@@ -38,42 +40,10 @@ final class Registration extends Model
     ) : self {
         $registration = new self();
 
-        $registration->firstname = $personalDetails->fullname()->firstname();
-        $registration->surname = $personalDetails->fullname()->surname();
-        $registration->initials = $personalDetails->initials();
-        $registration->gender = $personalDetails->gender()->toString();
-        $registration->birthdate = $personalDetails->birthdate()->toDateTime();
-        $registration->has_dutch_diploma = $personalDetails->hasDutchDiploma();
-        $registration->nationality = $personalDetails->nationality();
-
-        $registration->email = $contactDetails->email()->toString();
-        $address = $contactDetails->address();
-        if ($address !== null) {
-            $registration->city = $address->city();
-            $registration->address = $address->address();
-            $registration->postal_code = $address->postalCode();
-            $registration->country = $address->country();
-        }
-        $registration->phone_number = $contactDetails->phoneNumber();
-
-        $registration->student_number = $studyDetails->studentNumber();
-        $registration->studies = json_encode(
-            array_map(
-                function (Study $study) : array {
-                    return [
-                        'study' => $study->study(),
-                        'start_date' => $study->startDate()->format('Y-m-d'),
-                        'graduation_date' => $study->graduationDate() ? $study->graduationDate()->format('Y-m-d') : null,
-                    ];
-                },
-                $studyDetails->studies()
-            )
-        );
-
-        $registration->iban = $paymentDetails->iban();
-        $registration->bic = $paymentDetails->bic();
-        $registration->deduct_additional_costs = $paymentDetails->deductAdditionalCosts();
-
+        $registration->personal_details = $personalDetails;
+        $registration->contact_details = $contactDetails;
+        $registration->study_details = $studyDetails;
+        $registration->payment_details = $paymentDetails;
         $registration->comments = $comments;
         $registration->wants_to_join_a_committee = $wantsToJoinACommittee;
 
@@ -110,6 +80,18 @@ final class Registration extends Model
         $this->save();
     }
 
+    public function personalDetails() : PersonalDetails
+    {
+        return new PersonalDetails(
+            $this->fullname,
+            $this->initials,
+            Gender::fromString($this->gender),
+            Birthdate::fromString($this->birthdate->format('Y-m-d')),
+            $this->nationality,
+            $this->has_dutch_diploma
+        );
+    }
+
     public function getFullnameAttribute() : Fullname
     {
         return Fullname::fromFirstnameAndSurname(
@@ -118,9 +100,33 @@ final class Registration extends Model
         );
     }
 
+    public function setPersonalDetailsAttribute(PersonalDetails $personalDetails) : void
+    {
+        $this->firstname = $personalDetails->fullname()->firstname();
+        $this->surname = $personalDetails->fullname()->surname();
+        $this->initials = $personalDetails->initials();
+        $this->gender = $personalDetails->gender()->toString();
+        $this->birthdate = $personalDetails->birthdate()->toDateTime();
+        $this->has_dutch_diploma = $personalDetails->hasDutchDiploma();
+        $this->nationality = $personalDetails->nationality();
+    }
+
     public function getEmailAttribute() : Email
     {
         return new Email($this->attributes['email']);
+    }
+
+    public function setContactDetailsAttribute(ContactDetails $contactDetails) : void
+    {
+        $this->email = $contactDetails->email()->toString();
+        $address = $contactDetails->address();
+        if ($address !== null) {
+            $this->city = $address->city();
+            $this->address = $address->address();
+            $this->postal_code = $address->postalCode();
+            $this->country = $address->country();
+        }
+        $this->phone_number = $contactDetails->phoneNumber();
     }
 
     public function getStudiesAttribute() : array
@@ -139,6 +145,23 @@ final class Registration extends Model
         return $studies;
     }
 
+    public function setStudyDetailsAttribute(StudyDetails $studyDetails) : void
+    {
+        $this->student_number = $studyDetails->studentNumber();
+        $this->studies = json_encode(
+            array_map(
+                function (Study $study) : array {
+                    return [
+                        'study' => $study->study(),
+                        'start_date' => $study->startDate()->format('Y-m-d'),
+                        'graduation_date' => $study->graduationDate() ? $study->graduationDate()->format('Y-m-d') : null,
+                    ];
+                },
+                $studyDetails->studies()
+            )
+        );
+    }
+
     public function getPaymentDetailsAttribute() : PaymentDetails
     {
         return new PaymentDetails(
@@ -146,6 +169,13 @@ final class Registration extends Model
             $this->bic,
             (bool) $this->deduct_additional_costs
         );
+    }
+
+    public function setPaymentDetailsAttribute(PaymentDetails $paymentDetails) : void
+    {
+        $this->iban = $paymentDetails->iban();
+        $this->bic = $paymentDetails->bic();
+        $this->deduct_additional_costs = $paymentDetails->deductAdditionalCosts();
     }
 
     /**
