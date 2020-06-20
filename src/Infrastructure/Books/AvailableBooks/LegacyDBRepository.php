@@ -20,9 +20,6 @@ final class LegacyDBRepository implements AvailableBooksRepository
     {
         $boek = DB::connection('francken-legacy')
             ->table("boeken")
-            ->where('verkoopdatum', null)
-            ->where('verkocht', false)
-            ->where('afgerekend', false)
             ->where('id', (string)$id)
             ->first();
 
