@@ -25,10 +25,15 @@
     <php>
         <server name="TELESCOPE_ENABLED" value="false"/>
         <server name="APP_ENV" value="testing"/>
+        <server name="APP_KEY" value="base64:n5VY5WYHeOSLa9x6TgX8hjpifzjbzHz9MBq0jMs69ko="/>
+        <server name="APP_URL" value="http://francken.nl.localhost"/>
+
         <server name="CACHE_DRIVER" value="array"/>
         <server name="SESSION_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="DB_CONNECTION" value="testing"/>
+        <server name="DB_CONNECTION" value="testing"/>
+        <server name="MAIL_DRIVER" value="log"/>
 
         <server name="NEWS_TYPE" value="eloquent"/>
 
