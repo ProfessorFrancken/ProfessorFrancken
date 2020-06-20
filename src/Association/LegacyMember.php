@@ -112,6 +112,7 @@ final class LegacyMember extends Model
 {
     protected $table = 'leden';
     protected $connection = 'francken-legacy';
+    protected $guarded = [];
 
     public function getFullNameAttribute()
     {
