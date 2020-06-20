@@ -51,7 +51,6 @@ class RegistrationTest extends \Francken\Tests\LaravelTestCase
 
         $legacyMember = LegacyMember::orderBy('id', 'desc')->first();
         $this->assertEquals($legacyMember->voornaam, 'Mark');
-        dump($legacyMember->toArray());
         $legacyMember->delete();
     }
 
