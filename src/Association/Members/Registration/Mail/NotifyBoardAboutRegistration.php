@@ -47,6 +47,8 @@ class NotifyBoardAboutRegistration extends Mailable
                 [RegistrationRequestsController::class, 'show'],
                 ['registration' => $this->registration->id]
             ),
+            'comments' => $this->registration->comments,
+            'email' => $this->registration->email->toString(),
         ]);
     }
 }

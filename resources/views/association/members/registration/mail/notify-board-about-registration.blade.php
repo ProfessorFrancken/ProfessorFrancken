@@ -11,6 +11,14 @@
 
 {{ $fullname}} has submitted a registration request, check their details [here]({{ $registration_details_url }}).
 
+@if ($comments !== null && $comments !== '')
+They've added a comment / question:
+
+> {{ $comments }}
+
+Make sure to answer their comments / questions by sending an email to: <a href="malto: {{ $email }}">{{ $email }}</a>.
+@endif
+
 Kind regards,
 
 The 36th board of T.F.V. ‘Professor Francken’
