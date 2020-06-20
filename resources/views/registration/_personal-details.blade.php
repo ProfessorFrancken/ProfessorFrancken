@@ -68,7 +68,7 @@
                     {!!
                        Form::date(
                            'birthdate',
-                           null,
+                           isset($registration) ? $registration->birthdate->format("Y-m-d") : null,
                            [
                                'placeholder' => 'yyyy-mm-dd',
                                'class' => 'form-control',

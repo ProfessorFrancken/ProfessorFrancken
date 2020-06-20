@@ -36,5 +36,14 @@ final class ServiceProvider extends BaseServiceProvider
             RegistrationWasSubmitted::class,
             EventHandlers\ConfirmRegistrationRequest::class
         );
+
+        // $events->listen(
+        //     RegistrationWasApproved::class,
+        //     EventHandlers\NotifyMemberAboutMembership::class
+        // );
+        // $events->listen(
+        //     RegistrationWasApproved::class,
+        //     EventHandlers\RegisterMemberToDatabase::class
+        // );
     }
 }

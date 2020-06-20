@@ -8,10 +8,11 @@
            Form::checkbox(
                'no_dutch_high_school_diploma',
                true,
-               false,
+               isset($registration) ? ! $registration->has_dutch_diploma : false,
                [
                    'class' => 'form-check-input',
                    'id' => 'no_dutch_high_school_diploma',
+                   'checked' => isset($registration) ? ! $registration->has_dutch_diploma : false
                ]
            )
         !!}

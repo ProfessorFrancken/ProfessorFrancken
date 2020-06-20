@@ -111,7 +111,8 @@
                    false,
                    [
                        'id' => 'deduct_additional_costs',
-                       'class' => 'form-check-input'
+                       'class' => 'form-check-input',
+                       'checked' => isset($registration) ? $registration->deduct_additional_costs : false
                    ]
                )
             !!}

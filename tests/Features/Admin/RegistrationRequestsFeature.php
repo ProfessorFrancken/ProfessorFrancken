@@ -48,7 +48,7 @@ class RegistrationRequestsFeature extends TestCase
             ['registration' => $registration->id]
         ))
             ->see('Mark Redeman')
-            ->click('Approve');
+            ->see('Approve');
     }
 
     /** @test */
@@ -76,6 +76,12 @@ class RegistrationRequestsFeature extends TestCase
     {
         $boardMember = new BoardMember();
         $registration = $this->submitRegistration();
+        $this->visit(action(
+            [RegistrationRequestsController::class, 'show'],
+            ['registration' => $registration->id]
+        ))
+            ->see('Mark Redeman')
+            ->click('Approve');
     }
 
     private function submitRegistration() : Registration

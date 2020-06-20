@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http\Controllers\Admin;
 
+use Francken\Association\Members\Http\Requests\RegistrationRequest;
 use Francken\Association\Members\Registration\Registration;
 use Francken\Infrastructure\Http\Controllers\Controller;
+use Francken\Shared\Clock\Clock;
 
 final class RegistrationRequestsController extends Controller
 {
@@ -36,6 +38,7 @@ final class RegistrationRequestsController extends Controller
     {
         return view('admin.registration-requests.edit', [
             'registration' => $registration,
+            'amountOfStudies' => count($registration->studies) - 1,
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Registration requests'],
                 ['url' => action([self::class, 'show'], ['registration' => $registration->id]), 'text' => $registration->fullname->toString()],

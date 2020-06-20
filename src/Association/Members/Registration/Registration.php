@@ -25,7 +25,7 @@ final class Registration extends Model
     protected $casts = [
         'email_verified_at' => 'datetime:!Y-m-d',
         'registration_accepted_at' => 'datetime:!Y-m-d',
-        'birthdate' => 'datetime:!Y-m-d',
+        'birthdate' => 'datetime:Y-m-d',
     ];
 
     public static function submit(
@@ -132,7 +132,7 @@ final class Registration extends Model
                     ? DateTimeImmutable::createFromFormat('!Y-m-d', $study['graduation_date'])
                     : null;
 
-                return new Study($study['study'], $start, null);
+                return new Study($study['study'], $start, $end);
             },
             json_decode($this->attributes['studies'], true)
         );
@@ -147,4 +147,60 @@ final class Registration extends Model
             (bool) $this->deduct_additional_costs
         );
     }
+
+    /**
+     * These attribute helpes were made to make updating the registration request easier
+     */
+    public function getStudyNameAttribute() : array
+    {
+        return array_map(function (Study $study) : string {
+            return $study->study();
+        }, $this->studies);
+    }
+
+    public function getStudyStartingDateAttribute() : array
+    {
+        return array_map(function (Study $study) : string {
+            return $study->startDate()->format('Y-m');
+        }, $this->studies);
+    }
+                       
+    public function getStudyGraduationDateAttribute() : array
+    {
+        return array_map(function (Study $study) : ?string {
+            return optional($study->graduationDate())->format('Y-m');
+        }, $this->studies);
+    }
+}
+
+namespace Francken\Association\Members\Registration;
+
+use Exception;
+
+final class RegistrationException extends Exception
+{
+    public static function alreadyApproved() : self
+    {
+        return new self("Tried approving a registration that's been approved before");
+    }
+
+
+    // /**
+    //  * Report the exception.
+    //  */
+    // public function report() : void
+    // {
+    //     //
+    // }
+
+    // /**
+    //  * Render the exception into an HTTP response.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function render($request)
+    // {
+    //     // return response(...);
+    // }
 }

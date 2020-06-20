@@ -17,6 +17,11 @@ final class Email
         $this->email = $email;
     }
 
+    public function __toString() : string
+    {
+        return $this->toString();
+    }
+
     public function toString() : string
     {
         return $this->email;
