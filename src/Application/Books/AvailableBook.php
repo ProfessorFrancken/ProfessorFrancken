@@ -23,18 +23,18 @@ final class AvailableBook implements ReadModelInterface, SerializableInterface
 
     public function __construct(
         BookId $id,
-        string $title,
-        string $author,
+        ?string $title,
+        ?string $author,
         int $price,
-        string $isbn_10,
+        ?string $isbn_10,
         string $path_to_cover,
         bool $sale_pending
     ) {
         $this->id = (string)$id;
-        $this->title = $title;
-        $this->author = $author;
+        $this->title = $title ?? '';
+        $this->author = $author ?? '';
         $this->price = $price;
-        $this->isbn_10 = $isbn_10;
+        $this->isbn_10 = $isbn_10 ?? '';
         $this->path_to_cover = $path_to_cover;
         $this->sale_pending= $sale_pending;
     }
