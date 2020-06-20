@@ -12,7 +12,7 @@
 Thank you for requesting registration with T.F.V ‘Professor Francken’!
 Once your registration has been reviewed, your membership will be confirmed and a personal account will be activated.
 
-Cick the link below to verify your email and confirm your personal details.
+Click the link below to verify your email and confirm your personal details.
 Please inform the board if any information is incorrect, or if there are any other problems.
 
 @component('mail::button', ['url' => $email_verification_url])
