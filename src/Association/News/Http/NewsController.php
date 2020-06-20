@@ -74,8 +74,8 @@ final class NewsController
         }
 
         if (request()->has('before')) {
-            $after_string = str_replace('/', '', request()->input('after', 'now'));
-            $after = new DateTimeImmutable($after_string);
+            $before_string = str_replace('/', '', request()->input('before', 'now'));
+            $before = new DateTimeImmutable($before_string);
 
             return new Period(
                 $before->sub(DateInterval::createFromDateString('2 years')),
@@ -84,7 +84,8 @@ final class NewsController
         }
 
         if (request()->has('after')) {
-            $after = new DateTimeImmutable(request()->input('after', 'now'));
+            $after = str_replace('/', '', request()->input('after', 'now'));
+            $after = new DateTimeImmutable($after_string);
 
             return new Period(
                 $after,

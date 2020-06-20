@@ -51,7 +51,7 @@ final class LegacyBoardMember extends Model
 
         $dispatcher = App::make(Dispatcher::class);
         $dispatcher->listen(
-            BoardwasInstalled::class,
+            BoardWasInstalled::class,
             function (BoardWasInstalled $event) : void {
                 $board = Board::find($event->boardId());
                 $board->members->each(function (BoardMember $member) : void {
