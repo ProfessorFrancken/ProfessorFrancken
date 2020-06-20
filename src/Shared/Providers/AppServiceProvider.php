@@ -12,8 +12,6 @@ use Francken\Application\FranckenVrij\Edition;
 use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
-use Francken\Application\ReadModel\PostList\PostList;
-use Francken\Application\ReadModel\PostList\PostListRepository;
 use Francken\Application\ReadModelRepository;
 use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
@@ -56,10 +54,6 @@ final class AppServiceProvider extends ServiceProvider
         [
             CommitteesListRepository::class,
             ['committees_list', CommitteesList::class, 'id', ['members']]
-        ],
-        [
-            PostListRepository::class,
-            ['posts', PostList::class, 'id']
         ],
         [
             FranckenVrijRepository::class,

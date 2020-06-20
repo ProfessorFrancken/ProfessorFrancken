@@ -7,7 +7,6 @@ return [
 
     'projectors' => [
         \Francken\Application\Committees\CommitteesListProjector::class,
-        \Francken\Application\ReadModel\PostList\PostListProjector::class,
         \Francken\Application\Books\AvailableBooksProjector::class,
     ],
 ];
