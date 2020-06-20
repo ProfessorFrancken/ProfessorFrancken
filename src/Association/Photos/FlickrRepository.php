@@ -70,7 +70,7 @@ final class FlickrRepository
         }
     }
 
-    public function findAlbum($album_id): Collection
+    public function findAlbum($album_id) : Collection
     {
         try {
             $album = $this->flickr->photosForSet(
@@ -91,7 +91,7 @@ final class FlickrRepository
                         'title' => $photo['title'],
                         'is_primary' => $photo['isprimary'],
                         'views' => $photo['views'],
-                        'url' => $photo['url_m'],
+                        'url' => $photo['url_m'] ?? $photo['url_o'],
                         'original_url' => $photo['url_o'],
                         'width' => $photo['width_m'],
                         'height' => $photo['height_m'],
