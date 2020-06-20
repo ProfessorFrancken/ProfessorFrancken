@@ -10,8 +10,6 @@ use Francken\Application\Committees\CommitteesListProjector;
 use Francken\Application\Committees\CommitteesListRepository;
 use Francken\Application\FranckenVrij\Edition;
 use Francken\Application\FranckenVrij\FranckenVrijRepository;
-use Francken\Application\Members\Registration\RequestStatus;
-use Francken\Application\Members\Registration\RequestStatusRepository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Application\ReadModel\PostList\PostList;
@@ -21,8 +19,6 @@ use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
 use Francken\Domain\Members\MemberRepository;
-use Francken\Domain\Members\Registration\RegistrationRequest;
-use Francken\Domain\Members\Registration\RegistrationRequestRepository;
 use Francken\Domain\Posts\Post;
 use Francken\Domain\Posts\PostRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
@@ -47,7 +43,6 @@ final class AppServiceProvider extends ServiceProvider
         [CommitteeRepository::class, Committee::class],
         [MemberRepository::class, Member::class],
         [PostRepository::class, Post::class],
-        [RegistrationRequestRepository::class, RegistrationRequest::class],
     ];
 
     // Similarly we can register illuminate read models by again providing a pair
@@ -65,10 +60,6 @@ final class AppServiceProvider extends ServiceProvider
         [
             PostListRepository::class,
             ['posts', PostList::class, 'id']
-        ],
-        [
-            RequestStatusRepository::class,
-            ['request_status', RequestStatus::class, 'id']
         ],
         [
             FranckenVrijRepository::class,
