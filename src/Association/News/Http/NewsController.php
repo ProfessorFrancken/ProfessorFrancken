@@ -62,7 +62,9 @@ final class NewsController
     {
         // Enable artificial pagination
         if (request()->has('before') && request()->has('after')) {
-            $before = new DateTimeImmutable(request()->input('before', '-2 years'));
+            $before_string = str_replace('/', '', request()->input('before', '-2 years'));
+            $before = new DateTimeImmutable($before_string);
+
             $after = new DateTimeImmutable(request()->input('after', 'now'));
 
             return new Period(
@@ -72,7 +74,8 @@ final class NewsController
         }
 
         if (request()->has('before')) {
-            $before = new DateTimeImmutable(request()->input('before', '-2 years'));
+            $after_string = str_replace('/', '', request()->input('after', 'now'));
+            $after = new DateTimeImmutable($after_string);
 
             return new Period(
                 $before->sub(DateInterval::createFromDateString('2 years')),
