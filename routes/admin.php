@@ -79,10 +79,15 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::post('boards/import', [AdminImportsController::class, 'store']);
     Route::resource('boards', AdminBoardsController::class);
 
-    Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
-    Route::get('registration-requests/{registration}', [RegistrationRequestsController::class, 'show']);
-    Route::delete('registration-requests/{registration}', [RegistrationRequestsController::class, 'remove']);
-    Route::post('registration-requests/{registration}/approve', [RegistrationRequestsController::class, 'approve']);
+    Route::group(['middleware' => 'can:dashboard:registrations-write'], function () : void {
+        Route::delete('registration-requests/{registration}', [RegistrationRequestsController::class, 'remove']);
+        Route::post('registration-requests/{registration}/approve', [RegistrationRequestsController::class, 'approve']);
+    });
+
+    Route::group(['middleware' => 'can:dashboard:registrations-read'], function () : void {
+        Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
+        Route::get('registration-requests/{registration}', [RegistrationRequestsController::class, 'show']);
+    });
 
     // Francken Vrij
     Route::get('francken-vrij', [FranckenVrijController::class, 'index']);
