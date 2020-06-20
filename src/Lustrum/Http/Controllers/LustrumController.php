@@ -11,8 +11,7 @@ class LustrumController
     public function index()
     {
         $blue_beards = PirateCrew::where('name', 'Blue beards')->firstOrFail();
-        // $red_beards = PirateCrew::where('name', 'Red beards')->firstOrFail();
-        $red_beards = PirateCrew::where('name', 'Blue beards')->firstOrFail();
+        $red_beards = PirateCrew::where('name', 'Red beards')->firstOrFail();
 
         return view('lustrum.index', [
             'blue_beards_points' => $blue_beards->total_points,

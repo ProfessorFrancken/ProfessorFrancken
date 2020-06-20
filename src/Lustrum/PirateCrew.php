@@ -61,6 +61,16 @@ final class PirateCrew extends Model
     public function getPirateOfTheDayAttribute() : ?Pirate
     {
         $today = new DateTimeImmutable();
+        $adtchievement = EarnedAdtchievement::query()
+           ->where('pirate_crew_id', $this->id)
+            ->groupBy('lustrum_pirate_adtchievements.pirate_id')
+            ->select([
+                'pirate_id',
+               DB::raw('sum(lustrum_pirate_adtchievements.points) as total_points'),
+            ])
+           ->orderBy('total_points', 'DESC')
+           ->first();
+
         $adtchievement = $this->earnedAdtchievements()
            ->groupBy('lustrum_pirate_adtchievements.pirate_id')
            // ->where('lustrum_pirate_adtchievements.created_at', $today)
