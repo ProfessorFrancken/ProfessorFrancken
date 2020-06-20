@@ -155,3 +155,17 @@
 
 </script>
 @endpush
+
+@section('actions')
+    <div class="d-flex align-items-start">
+        <a
+            class="btn btn-outline-primary mr-3"
+            href="{{ action(
+                       [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'show'],
+                       ['registration' => $registration->id]
+                   ) }}"
+        >
+            Back
+        </a>
+    </div>
+@endsection
