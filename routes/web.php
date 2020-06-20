@@ -42,8 +42,13 @@ Route::get('/', [MainContentController::class, 'index'])->name('home');
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'store']);
 
-// TODO: Add signed url
-Route::get('/register/{id}', [RegistrationController::class, 'show']);
+Route::get('/register/{registration}', [RegistrationController::class, 'show'])
+    ->name('registration.show')
+    ->middleware(['signed']);
+
+Route::get('/register/{registration}/verify', [RegistrationController::class, 'verify'])
+    ->name('registration.verify')
+    ->middleware(['signed', 'throttle:6,1']);
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);

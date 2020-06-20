@@ -2,9 +2,6 @@
 @section('page-title', 'Registration requests / Mark Redeman')
 
 @section('content')
-    <h1 class="section-header">
-        Membership submissal of Mark Redeman
-    </h1>
 
     <section>
         <h3>
@@ -149,4 +146,42 @@
             </div>
         </form>
     </section>
+@endsection
+
+@section('actions')
+    @if ($registration->registration_accepted_at === null)
+    <div class="d-flex align-items-end">
+        {!!
+           Form::model(
+               $registration,
+               [
+                   'url' => action(
+                       [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'approve'],
+                       ['registation' => $registration->id]
+                   ),
+                   'method' => 'post'
+               ]
+           )
+        !!}
+
+        {!! Form::submit('Approve', ['class' => 'btn btn-outline-success mr-3', 'onClick' => 'return confirm("Are you sure you want to approve this registration request?");']) !!}
+        {!! Form::close() !!}
+        {!!
+           Form::model(
+               $registration,
+               [
+                   'url' => action(
+                       [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'remove'],
+                       ['registation' => $registration->id]
+                   ),
+                   'method' => 'post'
+               ]
+           )
+        !!}
+        @method('DELETE')
+
+        {!! Form::submit('Remove', ['class' => 'btn btn-outline-danger', 'onClick' => 'return confirm("Are you sure you want to remove this registration request?");']) !!}
+        {!! Form::close() !!}
+    </div>
+    @endif
 @endsection

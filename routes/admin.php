@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
+use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
 use Francken\Association\Symposium\Http\AdminSymposiumParticipantsController;
@@ -20,7 +21,6 @@ use Francken\Extern\Http\FactSheetController;
 use Francken\Infrastructure\Http\Controllers\Admin\AdminController;
 use Francken\Infrastructure\Http\Controllers\Admin\CommitteeController as AdminCommitteeController;
 use Francken\Infrastructure\Http\Controllers\Admin\FranckenVrijController;
-use Francken\Infrastructure\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Infrastructure\Http\Controllers\DashboardController;
 use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController;
@@ -80,8 +80,9 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::resource('boards', AdminBoardsController::class);
 
     Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
-    Route::get('registration-requests/{requestId}', [RegistrationRequestsController::class, 'show']);
-    Route::delete('registration-requests/{requestId}', [RegistrationRequestsController::class, 'remove']);
+    Route::get('registration-requests/{registration}', [RegistrationRequestsController::class, 'show']);
+    Route::delete('registration-requests/{registration}', [RegistrationRequestsController::class, 'remove']);
+    Route::post('registration-requests/{registration}/approve', [RegistrationRequestsController::class, 'approve']);
 
     // Francken Vrij
     Route::get('francken-vrij', [FranckenVrijController::class, 'index']);

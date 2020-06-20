@@ -82,7 +82,7 @@
             --}}
         @endcomponent
 
-        @include('profile._payment-info', ['member' => $member, 'paymentInfo' => $member->paymentInfo()])
+        @include('profile._payment-info', ['member' => $member, 'paymentInfo' => $member->paymentDetails()])
 
         @if (count($committees) > 0)
             @component('profile._profile', ['icon' => 'fas fa-users'])

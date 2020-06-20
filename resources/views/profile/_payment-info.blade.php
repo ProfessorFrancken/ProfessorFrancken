@@ -1,6 +1,6 @@
 @component('profile._profile', ['icon' => 'fas fa-money-check-alt'])
     <h6 class="text-body font-weight-light text-monospace">
-        {{ $paymentInfo->iban()  }}
+        {{ $paymentInfo->maskedIban()  }}
     </h6>
 
     <p>

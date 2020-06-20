@@ -6,19 +6,21 @@ namespace Francken\Association\Members\Http\Controllers;
 
 use Francken\Association\Members\Http\Requests\RegistrationRequest;
 use Francken\Association\Members\Registration\Registration;
+use Francken\Shared\Clock\Clock;
+use Illuminate\Routing\UrlGenerator;
 
 final class RegistrationController
 {
     public function index()
     {
-        return view('registration.request')
+        return view('registration.index')
             ->with([
                 'amountOfStudies' => session()->get('amountOfStudies', 1) - 1,
                 // 'errors' => session()->get('errors'),
             ]);
     }
 
-    public function store(RegistrationRequest $request, \Illuminate\Routing\UrlGenerator $urlGenerator)
+    public function store(RegistrationRequest $request, UrlGenerator $urlGenerator)
     {
         $registration = Registration::submit(
             // PersonalDetails
@@ -36,20 +38,30 @@ final class RegistrationController
             $request->notes()
         );
 
-        $urlGenerator->temporarySignedRoute(
+        $url = $urlGenerator->signedRoute(
+            'registration.show',
+            ['registration' => $registration->id]
         );
 
-        // TODO: Add signed url
-        return redirect()->action(
-            [self::class, 'show'],
-            ['id' => $registration->id]
-        );
+        return redirect()->to($url);
     }
 
     public function show(Registration $registration)
     {
-        return view('registration.success')->with([
+        return view('registration.show')->with([
             'registration' => $registration
         ]);
+    }
+
+    public function verify(Registration $registration, UrlGenerator $urlGenerator, Clock $clock)
+    {
+        $registration->confirmEmail($clock->now());
+
+        $url = $urlGenerator->signedRoute(
+            'registration.show',
+            ['registration' => $registration->id]
+        );
+
+        return redirect()->to($url);
     }
 }
