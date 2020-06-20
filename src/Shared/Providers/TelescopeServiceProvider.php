@@ -21,11 +21,10 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         $this->hideSensitiveRequestDetails();
 
         Telescope::filter(function (IncomingEntry $entry) {
+            return false;
             if ($this->app->isLocal()) {
                 return true;
             }
-
-            return true;
 
             return $entry->isReportableException() ||
                    $entry->isFailedJob() ||
