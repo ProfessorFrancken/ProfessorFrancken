@@ -20,10 +20,10 @@ class ContactDetailsTest extends \PHPUnit\Framework\TestCase
                 '9742GS',
                 'Plutolaan',
                 '11'
-            )
+            ),
+            null
         );
 
-        $this->assertInstanceOf(ContactDetails::class, $contact);
         $this->assertEquals(
             new Email('markredeman@gmail.com'),
             $contact->email()
@@ -38,5 +38,35 @@ class ContactDetailsTest extends \PHPUnit\Framework\TestCase
             ),
             $contact->address()
         );
+    }
+
+    /** @test */
+    public function a_contact_can_be_given_a_phone_number() : void
+    {
+        $contact = new ContactDetails(
+            new Email('markredeman@gmail.com'),
+            new Address(
+                'Groningen',
+                '9742GS',
+                'Plutolaan',
+                '11'
+            ),
+            '+31-655-5754-22'
+        );
+        $this->assertEquals(
+            '+31-655-5754-22',
+            $contact->phoneNumber()
+        );
+    }
+
+    /** @test */
+    public function a_contact_can_be_given_without_an_address() : void
+    {
+        $contact = new ContactDetails(
+            new Email('markredeman@gmail.com'),
+            null,
+            '+31-655-5754-22'
+        );
+        $this->assertNull($contact->address());
     }
 }

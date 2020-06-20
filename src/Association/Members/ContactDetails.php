@@ -8,11 +8,13 @@ final class ContactDetails
 {
     private $email;
     private $address;
+    private $phoneNumber;
 
-    public function __construct(Email $email, Address $address)
+    public function __construct(Email $email, ?Address $address, ?string $phoneNumber)
     {
         $this->email = $email;
         $this->address = $address;
+        $this->phoneNumber = $phoneNumber;
     }
 
     public function email() : Email
@@ -20,8 +22,13 @@ final class ContactDetails
         return $this->email;
     }
 
-    public function address() : Address
+    public function address() : ?Address
     {
         return $this->address;
+    }
+
+    public function phoneNumber()
+    {
+        return $this->phoneNumber;
     }
 }

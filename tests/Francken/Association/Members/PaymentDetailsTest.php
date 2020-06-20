@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Domain\Members;
+namespace Tests\Francken\Association\Members;
 
 use Francken\Association\Members\PaymentDetails;
 
@@ -12,7 +12,7 @@ class PaymentDetailsTest extends \PHPUnit\Framework\TestCase
     public function a_member_pays_for_a_membership() : void
     {
         $paymentDetails = new PaymentDetails(
-            'NL91 ABNA 0417 1643 00', 'Afschrijven', false
+            'NL91 ABNA 0417 1643 00'
         );
 
         $this->assertEquals(
@@ -25,7 +25,7 @@ class PaymentDetailsTest extends \PHPUnit\Framework\TestCase
         );
 
         $this->assertFalse($paymentDetails->freeMembership());
-        $this->assertEquals('Afschrijven', $paymentDetails->paymentMethod());
+        $this->assertEquals('Contant', $paymentDetails->paymentMethod());
     }
 
     /**
@@ -36,9 +36,7 @@ class PaymentDetailsTest extends \PHPUnit\Framework\TestCase
      */
     public function a_iban_can_be_omitted() : void
     {
-        $paymentDetails = new PaymentDetails(
-null, 'Afschrijven', false
-        );
+        $paymentDetails = new PaymentDetails(null);
 
         $this->assertNull($paymentDetails->iban());
         $this->assertNull($paymentDetails->maskediban());

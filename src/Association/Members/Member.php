@@ -64,7 +64,8 @@ final class Member
         return new Address(
             $this->member->plaats,
             $this->member->adres,
-            $this->member->postcode
+            $this->member->postcode,
+            $this->member->land
         );
     }
 

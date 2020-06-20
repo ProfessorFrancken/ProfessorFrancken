@@ -9,20 +9,23 @@ final class Address
     private $city;
     private $postalCode;
     private $address;
+    private $country;
 
     public function __construct(
         string $city,
         string $postalCode,
-        string $address
+        string $address,
+        string $country
     ) {
         $this->city = $city;
         $this->postalCode = $postalCode;
         $this->address = $address;
+        $this->country = $country;
     }
 
     public function toString() : string
     {
-        return $this->city . ' ' . $this->address . ' ' . $this->postalCode;
+        return $this->city . ' ' . $this->address . ' ' . $this->postalCode . ', ' . $this->country;
     }
 
     public function city() : string
@@ -38,5 +41,10 @@ final class Address
     public function address() : string
     {
         return $this->address;
+    }
+
+    public function country() : string
+    {
+        return $this->country;
     }
 }

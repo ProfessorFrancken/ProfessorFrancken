@@ -14,11 +14,13 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $address = new Address(
             'Groningen',
             '9742GS',
-            'Plutolaan 11'
+            'Plutolaan 11',
+            'Netherlands'
         );
 
         $this->assertEquals('Groningen', $address->city());
         $this->assertEquals('9742GS', $address->postalCode());
         $this->assertEquals('Plutolaan 11', $address->address());
+        $this->assertEquals('Netherlands', $address->country());
     }
 }
