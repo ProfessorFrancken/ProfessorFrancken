@@ -24,11 +24,22 @@ final class RegistrationRequestsController extends Controller
     public function show(Registration $registration)
     {
         return view('admin.registration-requests.show', [
-            'request' => $registration,
             'registration' => $registration,
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Registration requests'],
                 ['url' => action([self::class, 'show'], ['registration' => $registration->id]), 'text' => $registration->fullname->toString()],
+            ]
+        ]);
+    }
+
+    public function edit(Registration $registration)
+    {
+        return view('admin.registration-requests.edit', [
+            'registration' => $registration,
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Registration requests'],
+                ['url' => action([self::class, 'show'], ['registration' => $registration->id]), 'text' => $registration->fullname->toString()],
+                ['url' => action([self::class, 'edit'], ['registration' => $registration->id]), 'text' => 'Edit'],
             ]
         ]);
     }

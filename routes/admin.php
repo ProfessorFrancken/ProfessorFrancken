@@ -82,6 +82,7 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::group(['middleware' => 'can:dashboard:registrations-write'], function () : void {
         Route::delete('registration-requests/{registration}', [RegistrationRequestsController::class, 'remove']);
         Route::post('registration-requests/{registration}/approve', [RegistrationRequestsController::class, 'approve']);
+        Route::get('registration-requests/{registration}/edit', [RegistrationRequestsController::class, 'edit']);
     });
 
     Route::group(['middleware' => 'can:dashboard:registrations-read'], function () : void {

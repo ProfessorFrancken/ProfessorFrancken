@@ -69,9 +69,9 @@ return [
                     "can" => "dashboard:activities-read",
                 ],
                 [
-                    "name" => "Open registrations",
+                    "name" => "Registrations requests",
                     "url" => "registration-requests",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:registrations-read",
                 ],
                 [
