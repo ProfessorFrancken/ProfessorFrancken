@@ -20,9 +20,43 @@
         </div>
 
         <div class="card-footer">
-            <!-- <div class="bg-white p-4 rounded"> -->
+            @if (true || $registration->registration_form_signed_at === null)
+                <h4>
+                    <i class="fas fa-signature"></i>
+                    Sign registration form
+                </h4>
+                <p>
+                    Use this action to let our system know that the member has signed the printed registration form.
+                </p>
+                {!!
+                   Form::model(
+                       $registration,
+                       [
+                           'url' => action(
+                               [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'sign'],
+                               ['registration' => $registration->id]
+                           ),
+                           'method' => 'post'
+                       ]
+                   )
+                !!}
+                <button
+                    type="submit"
+                    class="btn btn-outline-success"
+                    onClick='return confirm("Are you sure you want to approve this registration request?");'
+                >
+                    Sign registration form
+                </button>
+
+                {!! Form::close() !!}
+            @endif
+        </div>
+        <div class="card-footer">
             @if ($registration->registration_accepted_at === null)
-                <h4>Approve membership</h4>
+                <h4>
+                    <i class="fas fa-check"></i>
+                    Approve membership
+                </h4>
                 <p>
                     Once all information has been checked you can approve this person's membership.
                 </p>

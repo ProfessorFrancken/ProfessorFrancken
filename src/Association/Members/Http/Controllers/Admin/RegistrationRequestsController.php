@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http\Controllers\Admin;
 
+use Francken\Association\Boards\BoardMember;
+use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Http\Requests\RegistrationRequest;
 use Francken\Association\Members\Registration\Registration;
 use Francken\Infrastructure\Http\Controllers\Controller;
@@ -59,13 +61,43 @@ final class RegistrationRequestsController extends Controller
 
     public function approve(Registration $registration, Clock $clock)
     {
-        // TODO
-        $boardMember = null;
+        $boardMember = BoardMember::whereMemberId(auth()->user()->member_id)
+            ->whereIn('board_member_status', [
+                BoardMemberStatus::BOARD_MEMBER,
+                BoardMemberStatus::DEMISSIONED_BOARD_MEMBER
+            ])
+            ->first();
+
+        if ($boardMember === null) {
+            abort(403, "Only a board member may approve registrations");
+        }
+
         $registration->approve($boardMember, $clock->now());
 
         return redirect()->action([self::class, 'index'])
             ->with([
-                'status' => 'Successfully approved request from ' . $registration->fullname()->toString()
+                'status' => 'Successfully approved registration from ' . $registration->fullname->toString()
+            ]);
+    }
+
+    public function sign(Registration $registration, Clock $clock)
+    {
+        $boardMember = BoardMember::whereMemberId(auth()->user()->member_id)
+            ->whereIn('board_member_status', [
+                BoardMemberStatus::BOARD_MEMBER,
+                BoardMemberStatus::DEMISSIONED_BOARD_MEMBER
+            ])
+            ->first();
+
+        if ($boardMember === null) {
+            abort(403, "Only a board member may sign registrations");
+        }
+
+        $registration->signRegistrationForm($clock->now());
+
+        return redirect()->action([self::class, 'index'])
+            ->with([
+                'status' => 'Successfully signed registration form from ' . $registration->fullname->toString()
             ]);
     }
 }

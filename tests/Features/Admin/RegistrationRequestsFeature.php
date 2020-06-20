@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features\Admin;
 
 use Francken\Association\Boards\BoardMember;
+use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\Birthdate;
 use Francken\Association\Members\ContactDetails;
@@ -65,6 +66,32 @@ class RegistrationRequestsFeature extends TestCase
                  [RegistrationRequestsController::class, 'edit'],
                  ['registration' => $registration->id]
              ));
+        // TODO
+    }
+
+    /** @test */
+    public function signing_a_registration_by_a_board_member() : void
+    {
+        $registration = $this->submitRegistration();
+        $account = \Francken\Auth\Account::first();
+        $boardMember = BoardMember::create([
+            'board_id' => 0,
+            'member_id' => $account->member_id,
+            'name' => 'Mark',
+            'title' => 'Mark',
+
+            'board_member_status' => BoardMemberStatus::BOARD_MEMBER,
+            'installed_at' => new \DateTimeImmutable(),
+        ]);
+
+        $this->visit(action(
+            [RegistrationRequestsController::class, 'show'],
+            ['registration' => $registration->id]
+        ))
+            ->see('Mark Redeman')
+            ->see('Sign registration form')
+            ->submitForm('Sign registration form')
+            ->see('Signed');
     }
 
 
@@ -74,14 +101,41 @@ class RegistrationRequestsFeature extends TestCase
     /** @test */
     public function approving_a_registration_by_a_board_member() : void
     {
-        $boardMember = new BoardMember();
         $registration = $this->submitRegistration();
+        $account = \Francken\Auth\Account::first();
+        $boardMember = BoardMember::create([
+            'board_id' => 0,
+            'member_id' => $account->member_id,
+            'name' => 'Mark',
+            'title' => 'Mark',
+
+            'board_member_status' => BoardMemberStatus::BOARD_MEMBER,
+            'installed_at' => new \DateTimeImmutable(),
+        ]);
+
         $this->visit(action(
             [RegistrationRequestsController::class, 'show'],
             ['registration' => $registration->id]
         ))
             ->see('Mark Redeman')
-            ->click('Approve');
+            ->see('Approve')
+            ->submitForm('Approve')
+            ->see('Approved');
+    }
+
+    /** @test */
+    public function approving_a_registration_is_not_allowed() : void
+    {
+        $registration = $this->submitRegistration();
+
+        $this->expectException(\Laravel\BrowserKitTesting\HttpException::class);
+        $this->visit(action(
+            [RegistrationRequestsController::class, 'show'],
+            ['registration' => $registration->id]
+        ))
+            ->see('Mark Redeman')
+            ->see('Approve')
+             ->submitForm('Approve');
     }
 
     private function submitRegistration() : Registration

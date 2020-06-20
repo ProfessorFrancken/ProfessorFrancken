@@ -17,6 +17,8 @@
                 <tr>
                     <th>Fullname</th>
                     <th class="text-right">Subbmited at</th>
+                    <th class="text-right">Form signed at</th>
+                    <th class="text-right">Approved at</th>
                     <th class="text-right">Actions</th>
                 </tr>
             </thead>
@@ -36,6 +38,12 @@
                         </th>
                         <td class="text-right">
                             {{ $request->created_at->format('Y-m-d') }}
+                        </td>
+                        <td class="text-right">
+                            {{ optional($request->registration_accepted_at)->format('Y-m-d') }}
+                        </td>
+                        <td class="text-right">
+                            {{ optional($request->registration_form_signed_at)->format('Y-m-d') }}
                         </td>
                         <td class="text-right">
                             <a class="btn btn-outline-success" href="/admin/association/registration-requests/{{ $request->id }}">

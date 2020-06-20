@@ -45,7 +45,7 @@ class CreateMembersRegistrationsTable extends Migration
 
             $table->datetime('email_verified_at')->nullable();
             $table->datetime('registration_accepted_at')->nullable();
-            $table->datetime('registration_form_signed_at')->default(false);
+            $table->datetime('registration_form_signed_at')->nullable();
 
             $table->unsignedInteger('member_id')->nullable();
 
