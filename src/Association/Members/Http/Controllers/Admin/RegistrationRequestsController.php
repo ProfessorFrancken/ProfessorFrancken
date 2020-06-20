@@ -15,7 +15,8 @@ final class RegistrationRequestsController extends Controller
 {
     public function index()
     {
-        $requests = Registration::paginate();
+        $requests = Registration::orderBy('created_at', 'desc')
+                                 ->paginate();
 
         return view('admin.registration-requests.index', [
             'requests' => $requests,
@@ -47,6 +48,22 @@ final class RegistrationRequestsController extends Controller
                 ['url' => action([self::class, 'edit'], ['registration' => $registration->id]), 'text' => 'Edit'],
             ]
         ]);
+    }
+
+    public function update(RegistrationRequest $request, Registration $registration)
+    {
+        $registration->personal_details = $request->personalDetails();
+        $registration->contact_details = $request->contactDetails();
+        $registration->study_details = $request->studyDetails();
+        $registration->payment_details = $request->paymentDetails();
+        $registration->comments = $request->notes();
+        $registration->wants_to_join_a_committee = $request->wantsToJoinACommittee();
+        $registration->save();
+
+        return redirect()->action([self::class, 'show'], ['registration' => $registration->id])
+            ->with([
+                'status' => 'Successfully updated request from ' . $registration->fullname->toString()
+            ]);
     }
 
     public function remove(Registration $registration)

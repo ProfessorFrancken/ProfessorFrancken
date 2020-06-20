@@ -40,10 +40,10 @@
                             {{ $request->created_at->format('Y-m-d') }}
                         </td>
                         <td class="text-right">
-                            {{ optional($request->registration_accepted_at)->format('Y-m-d') }}
+                            {{ optional($request->registration_form_signed_at)->format('Y-m-d') }}
                         </td>
                         <td class="text-right">
-                            {{ optional($request->registration_form_signed_at)->format('Y-m-d') }}
+                            {{ optional($request->registration_accepted_at)->format('Y-m-d') }}
                         </td>
                         <td class="text-right">
                             <a class="btn btn-outline-success" href="/admin/association/registration-requests/{{ $request->id }}">

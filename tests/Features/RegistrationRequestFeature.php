@@ -33,7 +33,7 @@ class RegistrationRequestFeature extends TestCase
             ->type('markredeman@gmail.com', 'email')
             ->type('Groningen', 'city')
             ->type('Nijenborgh 9', 'address')
-            ->type('9742GS', 'zip_code')
+            ->type('9742GS', 'postal_code')
             ->type('Netherlands', 'country')
 
             // Study details
@@ -85,7 +85,7 @@ class RegistrationRequestFeature extends TestCase
                 'email',
                 'city',
                 'address',
-                'zip_code',
+                'postal_code',
                 'study_name.0',
                 'study_starting_date.0',
             ];

@@ -20,11 +20,11 @@
         </div>
 
         <div class="card-footer">
-            @if (true || $registration->registration_form_signed_at === null)
                 <h4>
                     <i class="fas fa-signature"></i>
                     Sign registration form
                 </h4>
+            @if ($registration->registration_form_signed_at === null)
                 <p>
                     Use this action to let our system know that the member has signed the printed registration form.
                 </p>
@@ -49,6 +49,10 @@
                 </button>
 
                 {!! Form::close() !!}
+            @else
+                <p>
+                    The registration form was signed {{ $registration->registration_form_signed_at->diffForHumans() }}
+                </p>
             @endif
         </div>
         <div class="card-footer">

@@ -51,10 +51,10 @@ class RegistrationRequest extends FormRequest
             'other_gender' => ['required_if:gener,other'],
 
             'email' => ['required', 'email'],
-            'city' => ['nullable', 'min:1', 'required_with:address,zip_code,country'],
-            'address' => ['nullable', 'min:1',  'required_with:city,zip_code,country'],
-            'zip_code' => ['nullable', 'min:1',  'required_with:city,address,country'],
-            'country' => ['nullable', 'min:1',  'required_with:city,address,zip_code'],
+            'city' => ['nullable', 'min:1', 'required_with:address,postal_code,country'],
+            'address' => ['nullable', 'min:1',  'required_with:city,postal_code,country'],
+            'postal_code' => ['nullable', 'min:1',  'required_with:city,address,country'],
+            'country' => ['nullable', 'min:1',  'required_with:city,address,postal_code'],
             'phone_number' => ['nullable', 'min:1'],
 
             // TODO add regex for studnet number
@@ -100,13 +100,13 @@ class RegistrationRequest extends FormRequest
     {
         $address = null;
         if (collect([
-            'city', 'zip_code', 'address', 'country'
+            'city', 'postal_code', 'address', 'country'
         ])->every(function (string $field) {
             return $this->input($field, null) !== null;
         })) {
             $address = new Address(
                 $this->input('city', null),
-                $this->input('zip_code'),
+                $this->input('postal_code'),
                 $this->input('address'),
                 $this->input('address', 'Netherlands')
             );
@@ -157,7 +157,7 @@ class RegistrationRequest extends FormRequest
 
     public function notes() : string
     {
-        return $this->input('notes') ?? '';
+        return $this->input('comments') ?? '';
     }
 
     public function wantsToJoinACommittee() : bool

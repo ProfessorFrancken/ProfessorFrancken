@@ -77,18 +77,19 @@
 
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label for="zip-code">ZIP code</label>
+                    <label for="postal_code">Postal code</label>
                     {!!
                        Form::text(
-                           'zip_code',
+                           'postal_code',
                            null,
                            [
                                'placeholder' => '9742 AG',
                                'class' => 'form-control',
+                               'id' => 'postal_code',
                            ]
                        )
                     !!}
-                    @error('zip_code')
+                    @error('postal_code')
                     <p class="invalid-feedback">
                         {{ $message  }}
                     </p>

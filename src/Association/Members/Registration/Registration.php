@@ -25,8 +25,9 @@ final class Registration extends Model
     protected $table = 'members_registrations';
 
     protected $casts = [
-        'email_verified_at' => 'datetime:!Y-m-d',
-        'registration_accepted_at' => 'datetime:!Y-m-d',
+        'email_verified_at' => 'datetime:Y-m-d',
+        'registration_accepted_at' => 'datetime:Y-m-d',
+        'registration_form_signed_at' => 'datetime:Y-m-d',
         'birthdate' => 'datetime:Y-m-d',
     ];
 

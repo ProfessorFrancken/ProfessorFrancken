@@ -97,16 +97,16 @@
         <div class="form-check">
             {!!
                Form::checkbox(
-                   'wants_to_join_committee',
+                   'wants_to_join_a_committee',
                    true,
                    false,
                    [
-                       'id' => 'wants_to_join_committee',
+                       'id' => 'wants_to_join_a_committee',
                        'class' => 'form-check-input'
                    ]
                )
             !!}
-            <label class="form-check-label" for="wants_to_join_committee">
+            <label class="form-check-label" for="wants_to_join_a_committee">
                 Yes I would like to join a committee!
             </label>
         </div>

@@ -71,27 +71,25 @@
                         <div class="form-check">
                             {!!
                                Form::checkbox(
-                                   'wants_to_join_committee',
+                                   'wants_to_join_a_committee',
                                    true,
                                    false,
                                    [
-                                       'id' => 'wants_to_join_committee',
+                                       'id' => 'wants_to_join_a_committee',
                                        'class' => 'form-check-input',
                                        'checked' => isset($registration) ? $registration->wants_to_join_committee : false
                                    ]
                                )
                             !!}
-                            <label class="form-check-label" for="wants_to_join_committee">
+                            <label class="form-check-label" for="wants_to_join_a_committee">
                                 Yes I would like to join a committee!
                             </label>
                         </div>
 
                         <h4 class="mt-3">
-                            Do you have any comments or questions? Let us know!
+                            Comments
                         </h4>
-                        <textarea name="comments" id="" rows="4" cols="" tabindex="" class="form-control" placeholder="Put your comments / questions here">
-
-                        </textarea>
+                        <textarea name="comments" id="" rows="4" cols="" tabindex="" class="form-control" placeholder="Put your comments / questions here">{{ $registration->comments }}</textarea>
                     </fieldset>
                 </div>
                 <div class="card-footer">
