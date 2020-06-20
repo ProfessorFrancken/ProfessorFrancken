@@ -19,88 +19,19 @@ final class RegisterMember implements ShouldQueue
         $registration = $event->registration;
 
         $member = $this->registerMemberToLegacyDatabase($registration);
+        $registration->member_id = $member->id;
+        $registration->save();
 
-        $this->subscribeToMailchimp($registration, $member);
+        // TODO
         $this->activateMemberAccount($registration, $member);
-        // TODO:
-        // Add member to legacy database
-        // Add member to mailchimp
-        // Activate account
+        $this->subscribeToMailchimp($registration, $member);
     }
 
     private function registerMemberToLegacyDatabase(Registration $registration) : LegacyMember
     {
-        // Francken\Association\LegacyMember {#3844
-        //   id: 1403,
-        //   geslacht: "M",
-        //   titel: "Ir.",
-        //   initialen: "M.S.",
-        //   voornaam: "Mark",
-        //   tussenvoegsel: "",
-        //   achternaam: "Redeman",
-        //   geboortedatum: "1993-04-26",
-        //   foto: "",
-        //   nederlands: 1,
-        //   adres: "Grote rozenstraat 26-3",
-        //   postcode: "9712 TH",
-        //   plaats: "Groningen",
-        //   land: "Nederland",
-        //   is_nederland: 1,
-        //   emailadres: "markredeman@gmail.com",
-        //   telefoonnummer_thuis: "",
-        //   telefoonnummer_werk: "",
-        //   telefoonnummer_mobiel: "0611759379",
-        //   rekeningnummer: "NL26INGB0008673001",
-        //   plaats_bank: "",
-        //   machtiging: 1,
-        //   wanbetaler: 0,
-        //   gratis_lidmaatschap: 0,
-        //   start_lidmaatschap: "2013-12-03",
-        //   einde_lidmaatschap: null,
-        //   is_lid: 1,
-        //   type_lid: "Student RUG",
-        //   studentnummer: "2218356",
-        //   studierichting: "(Technische) Wiskunde",
-        //   jaar_van_inschrijving: "2013",
-        //   afstudeerplek: "",
-        //   afgestudeerd: 0,
-        //   werkgever: "",
-        //   nnvnummer: "",
-        //   streeplijst: "Afschrijven",
-        //   mailinglist_email: 1,
-        //   mailinglist_post: 1,
-        //   mailinglist_sms: 0,
-        //   mailinglist_constitutiekaart: 0,
-        //   mailinglist_franckenvrij: 1,
-        //   erelid: 0,
-        //   notities: "Hoi.",
-        //   created_at: "2013-12-03 15:13:16",
-        //   updated_at: "2020-02-25 17:11:19",
-        //   deleted_at: null,
-        // }
-
-        $study_track = "Anders";
-        $year_of_registration = date("Y");
-        $study = collect($registration->studies)
-                 ->sortByDesc(function (Study $study) : DateTimeImmutable {
-                     return $study->startDate();
-                 })
-                 ->first();
-
-        if ($study !== null) {
-            $year_of_registration = $study->startDate()->format('Y');
-            $study_track = $study->study();
-        }
-
-        $hasAddress = collect([
-            $registration->address,
-            $registration->postal_code,
-            $registration->city,
-            $registration->country
-        ])->every(function (?string $field) {
-            return $field !== null;
-        });
-
+        [$study_track, $year_of_registration] = $this->study($registration);
+        $hasAddress =$this->hasAddress($registration);
+                                                            
         $legacyMember = LegacyMember::create([
             "geslacht" => $this->gender($registration),
             "initialen" => $registration->initials,
@@ -155,11 +86,38 @@ final class RegisterMember implements ShouldQueue
         return $registration->gender;
     }
 
+    private function study(Registration $registration) : array
+    {
+        $study = collect($registration->studies)
+                 ->sortByDesc(function (Study $study) : DateTimeImmutable {
+                     return $study->startDate();
+                 })
+                 ->first();
+
+        if ($study === null) {
+            return ["Anders", date("Y")];
+        }
+
+        return [$study->study(), $study->startDate()->format('Y')];
+    }
+
+    private function hasAddress(Registration $registration) : bool
+    {
+        return collect([
+            $registration->address,
+            $registration->postal_code,
+            $registration->city,
+            $registration->country
+        ])->every(function (?string $field) {
+            return $field !== null;
+        });
+    }
+
     private function subscribeToMailchimp(Registration $registration, LegacyMember $member) : void
     {
     }
 
-    private function activateMemberAccount(Registration $registration, LegacyMember $member): void
+    private function activateMemberAccount(Registration $registration, LegacyMember $member) : void
     {
     }
 }
