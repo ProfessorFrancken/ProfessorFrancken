@@ -6,15 +6,13 @@ namespace Francken\Application\Committees;
 
 final class Committee
 {
-    private $container;
     private $members = [];
-    private $slug;
     private $id;
     private $name;
     private $logo;
-
     private $page;
-    private $description;
+    private $email;
+    private $link;
 
     public function __construct($id, $name, $email, $logo, $link, $page, array $members)
     {
