@@ -22,8 +22,16 @@
                 Membership is a must for physics students with a technical orientation.
             </p>
 
-            <div class="text-right mt-4">
-                <a href="/association" class="btn btn-primary">Read more</a>
+            <h3 class="font-weight-bold">
+                Become a member
+            </h3>
+            <p>
+                A membership at our association costs only &euro;5,- per year and comes with many benefits such as free coffee and tea from our members room.
+                Each year we organise many study and career related activities such as practice sessions for your exams as well lectures and excursions to companies to help you be informed about future job opportunities.
+            </p>
+
+            <div class="mt-2">
+                <a href="/register" class="btn btn-primary">Register</a>
             </div>
         </div>
         <aside class="col-md-5 order-0 order-md-12 mt-n5">

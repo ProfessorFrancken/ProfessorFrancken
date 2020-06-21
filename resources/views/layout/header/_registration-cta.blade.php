@@ -1,7 +1,7 @@
 @component('layout.header._header_image')
     {{-- registration call to action --}}
     <div class="row align-items-center h-100 my-5 my-md-0">
-        <div class="registration-cta__body col-md-8 offset-md-2 align-self-center">
+        <div class="registration-cta__body col-md-9 offset-md-3 align-self-center">
             <h1>
                 <strong>T.F.V. 'Professor Francken'</strong>
             </h1>
@@ -12,9 +12,9 @@
                 </strong>
                 in Groningen
             </h2>
-        </div>
-        <div class="col-md-1 registration-cta__action d-none">
-            <a class="btn btn-primary" href="/register">Register</a>
+                <div class="d-inline-block border-top mb-4 mb-md-0 mt-4 pt-4 px-5 pr-md-0" style="border-width: 3px !important;">
+                    <a class="btn btn-primary" href="/register">Become a member</a>
+                </div>
         </div>
     </div>
 @endcomponent
