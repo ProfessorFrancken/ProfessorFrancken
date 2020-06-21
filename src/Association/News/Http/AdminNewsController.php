@@ -6,6 +6,7 @@ namespace Francken\Association\News\Http;
 
 use DateInterval;
 use DateTimeImmutable;
+use DB;
 use Francken\Association\News\Author;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\NewsContentCompiler;
@@ -91,9 +92,9 @@ final class AdminNewsController
         ]);
     }
 
-    public function preview($link)
+    public function preview(string $item)
     {
-        $newsItem = $this->news->byLink($link);
+        $newsItem = $this->news->byLink($item);
 
         return view('pages.association.news.item')
             ->with('newsItem', $newsItem);
