@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain\FranckenVrij;
+namespace Francken\Association\FranckenVrij;
 
 use Francken\Domain\Identifier;
 

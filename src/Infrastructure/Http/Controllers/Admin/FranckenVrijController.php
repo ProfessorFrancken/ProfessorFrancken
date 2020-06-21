@@ -7,7 +7,7 @@ namespace Francken\Infrastructure\Http\Controllers\Admin;
 use Francken\Application\FranckenVrij\Edition;
 use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Application\FranckenVrij\Volume;
-use Francken\Domain\FranckenVrij\EditionId;
+use Francken\Association\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use Francken\Infrastructure\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;

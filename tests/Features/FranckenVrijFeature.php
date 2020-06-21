@@ -6,7 +6,7 @@ namespace Francken\Features;
 
 use Francken\Application\FranckenVrij\Edition;
 use Francken\Application\FranckenVrij\FranckenVrijRepository;
-use Francken\Domain\FranckenVrij\EditionId;
+use Francken\Association\FranckenVrij\EditionId;
 use Francken\Domain\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
