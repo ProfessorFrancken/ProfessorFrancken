@@ -6,21 +6,16 @@ namespace Francken\Association\Members\Http;
 
 use DateTimeImmutable;
 use Francken\Association\Members\Member;
-use Francken\Application\Committees\CommitteesRepository;
 use Illuminate\View\Factory as View;
 
 final class FinancesController
 {
     private function member($user)
     {
-        $lid = \DB::connection('francken-legacy')
+        return \DB::connection('francken-legacy')
             ->table('leden')
             ->where('id', $user->francken_id)
             ->first();
-
-        $this->profile = $lid;
-
-        return $lid;
     }
 
     public function index()
