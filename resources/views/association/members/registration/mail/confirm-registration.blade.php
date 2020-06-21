@@ -25,7 +25,7 @@ A variety of activities are hosted for all members throughout the year, includin
 
 Be sure to swing by the Franckenroom for a cup of coffee or a game of klaverjas, and check out the many committees you can join!
 
-To stay up to date with upcoming activities and news by subscribing to our WhatsApp broadcast (+31 50 363 4978) and follow us on Instagram ([@tfvprofessorfrancken](https://www.instagram.com/tfvprofessorfrancken/)).
+Stay up to date with upcoming activities and news by subscribing to our WhatsApp broadcast (+31 50 363 4978) and follow us on Instagram ([@tfvprofessorfrancken](https://www.instagram.com/tfvprofessorfrancken/)).
 
 
 Kind regards,
