@@ -57,6 +57,12 @@ return [
             "url" => "association",
             "items" => [
                 [
+                    "name" => "Registrations requests",
+                    "url" => "registration-requests",
+                    "works" => true,
+                    "can" => "dashboard:registrations-read",
+                ],
+                [
                     "name" => "News",
                     "url" => "news",
                     "works" => true,
@@ -67,12 +73,6 @@ return [
                     "url" => "activities",
                     "works" => false,
                     "can" => "dashboard:activities-read",
-                ],
-                [
-                    "name" => "Registrations requests",
-                    "url" => "registration-requests",
-                    "works" => true,
-                    "can" => "dashboard:registrations-read",
                 ],
                 [
                     "name" => "Members",
