@@ -84,7 +84,7 @@ final class NewsController
         }
 
         if (request()->has('after')) {
-            $after = str_replace('/', '', request()->input('after', 'now'));
+            $after_string = str_replace('/', '', request()->input('after', 'now'));
             $after = new DateTimeImmutable($after_string);
 
             return new Period(
