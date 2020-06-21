@@ -12,7 +12,7 @@ final class Author
     private $name;
     private $photo;
 
-    public function __construct(string $name, string $photo = '')
+    public function __construct(?string $name = '', ?string $photo = '')
     {
         $this->name = $name;
         $this->photo = $photo;
@@ -28,7 +28,7 @@ final class Author
 
     public function name() : string
     {
-        return $this->name;
+        return $this->name ?? '';
     }
     public function photo() : string
     {
