@@ -119,6 +119,10 @@
         </textarea>
     </fieldset>
 
+    <p>
+        By registering this form you agree to the privacy statement of T.F.V. 'Professor Francken'
+    </p>
+
     {!! Form::submit('Register', ['class' => 'btn btn-lg btn-block btn-outline-primary mb-5 register-section']) !!}
 
   {!! Form::close() !!}

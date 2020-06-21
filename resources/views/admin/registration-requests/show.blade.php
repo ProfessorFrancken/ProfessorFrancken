@@ -9,8 +9,11 @@
 
            --}}
 @section('content')
-    <div class="card">
+    <p>
+        When printing the registration form make sure that, when usign Google Chrome, to set the <em>Margins</em> to <em>None</em> and enable <em>Background graphics</em>.
+    </p>
 
+    <div class="card">
         <div class="card-body">
             <!-- <div class="bg-white p-4 rounded"> -->
             @include('registration.show._personal-details', ['registration' => $registration])
@@ -96,10 +99,22 @@
         <a
             class="btn btn-outline-primary mr-3"
             href="{{ action(
+                       [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'print'],
+                       ['registration' => $registration->id]
+                   ) }}"
+            target="_blank"
+        >
+            <i class="fas fa-print"></i>
+            Print
+        </a>
+        <a
+            class="btn btn-outline-primary mr-3"
+            href="{{ action(
                        [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'edit'],
                        ['registration' => $registration->id]
                    ) }}"
         >
+            <i class="fas fa-user-edit"></i>
             Edit
         </a>
         {!!

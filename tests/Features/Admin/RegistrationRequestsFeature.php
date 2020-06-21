@@ -124,6 +124,21 @@ class RegistrationRequestsFeature extends TestCase
     }
 
     /** @test */
+    public function printing_a_registration_form() : void
+    {
+        $registration = $this->submitRegistration();
+
+        $this->visit(action(
+            [RegistrationRequestsController::class, 'print'],
+            ['registration' => $registration->id]
+        ))
+            ->see('Mark Redeman')
+            ->see('Member ID')
+            ->see($registration->fullname->firstname())
+            ->see($registration->fullname->surname());
+    }
+
+    /** @test */
     public function approving_a_registration_is_not_allowed() : void
     {
         $registration = $this->submitRegistration();

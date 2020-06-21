@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Registration\EventHandlers;
 
-use DateTimeImmutable;
 use Francken\Association\LegacyMember;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
@@ -88,11 +87,7 @@ final class RegisterMember implements ShouldQueue
 
     private function study(Registration $registration) : array
     {
-        $study = collect($registration->studies)
-                 ->sortByDesc(function (Study $study) : DateTimeImmutable {
-                     return $study->startDate();
-                 })
-                 ->first();
+        $study = $registration->most_recent_study;
 
         if ($study === null) {
             return ["Anders", date("Y")];

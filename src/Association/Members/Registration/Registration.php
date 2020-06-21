@@ -146,6 +146,15 @@ final class Registration extends Model
         return $studies;
     }
 
+    public function getMostRecentStudyAttribute() : ?Study
+    {
+        return collect($this->studies)
+            ->sortByDesc(function (Study $study): DateTimeImmutable {
+                return $study->startDate();
+            })
+            ->first();
+    }
+
     public function setStudyDetailsAttribute(StudyDetails $studyDetails) : void
     {
         $this->student_number = $studyDetails->studentNumber();

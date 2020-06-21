@@ -1,0 +1,164 @@
+@import "app";
+@import "variables";
+
+.styled-header {
+  --skew-degrees: 30deg;
+  --negative-skew-degrees: -30deg;
+  --bg-color: #173249;
+
+  background-color: var(--bg-color);
+  position: relative;
+
+  height: 8em;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: -.5em;
+    bottom: 0;
+    background-color: var(--bg-color);
+    transform: skewX(var(--negative-skew-degrees));
+    border-radius: 0px 0px 10px 0px;
+    transform-origin: bottom right;
+
+    width: 4em;
+    margin-left: 1.5em;
+  }
+
+  a {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -50%);
+  }
+
+  .styled_header__logo {
+    background-color: var(--bg-color);
+
+    svg {
+      max-width: 100%;
+      max-height: 80px;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &:before {
+      width: unset;
+      margin-left: 0em;
+    }
+  }
+}
+
+.styled-layout {
+  // Set the border width of the border above the navigation
+  --top-stroke-width: 0.75em;
+  --navigation-margin-right: 0em;
+  --border-color: #173249;
+
+  border-top: var(--top-stroke-width) solid var(--border-color);
+
+  min-height: 100vh;
+  min-width: 100%;
+
+  display: grid;
+  grid-column-gap: 0em;
+  grid-template-columns: 5em auto;
+  grid-template-areas:
+    'header nav'
+    'content content'
+    'side side'
+    'footer footer';
+
+  .francken-header {
+    grid-area: header;
+
+    margin-right: var(--navigation-margin-right);
+  }
+
+  .francken-navigation {
+    position: sticky;
+    grid-row: 1;
+    grid-column: 1/3;
+
+    margin-right: var(--navigation-margin-right);
+  }
+
+  .francken-content {
+    grid-area: content;
+  }
+
+  // Small devices (landscape phones, 576px and up)
+
+  // Medium devices (tablets, 768px and up)
+  @include media-breakpoint-up(md) {
+    --navigation-margin-right: 3em;
+
+    grid-template-rows: auto;
+    display: grid;
+    grid-template-areas:
+      'header nav'
+      'content content'
+      'side side'
+      'footer footer';
+
+    grid-template-columns: 12em 1fr;
+    grid-template-rows: auto 1fr auto auto;
+
+    .francken-navigation {
+      grid-area: nav;
+    }
+  }
+
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+  }
+
+  // Extra large devices (large desktops, 1300px and up)
+  // Note: this has specifically been set to 1300px instead of 1200px to improve
+  // responsiveness of the aside menu
+  @include media-breakpoint-up(xl) {
+    max-height: 100vh;
+    grid-template-columns: 12em minmax(700px, 1fr) minmax(auto, 30em);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      'header nav nav'
+      'content content content'
+      'side side side'
+      'footer footer footer';
+  }
+}
+
+.styled-navigation {
+    --primary-dark: #011842;
+  .bg-dark-primary {
+      background-color: var(--primary-dark);
+  }
+
+  .navigation-items {
+    transition: margin-top 400ms ease-in-out;
+    margin-top: -150%;
+
+    @include media-breakpoint-up(sm) {
+        margin-top: -100%;
+    }
+
+    @include media-breakpoint-up(md) {
+      height: 100%;
+      margin-top: 0;
+    }
+  }
+
+  .navigation-items.active {
+    margin-top: 0;
+
+    @include media-breakpoint-up(sm) {
+      margin-top: 0;
+    }
+  }
+}
+.francken-footer {
+    grid-area: side;
+}

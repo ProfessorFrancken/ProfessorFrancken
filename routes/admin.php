@@ -90,6 +90,7 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::group(['middleware' => 'can:dashboard:registrations-read'], function () : void {
         Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
         Route::get('registration-requests/{registration}', [RegistrationRequestsController::class, 'show']);
+        Route::get('registration-requests/{registration}/print', [RegistrationRequestsController::class, 'print']);
     });
 
     // Francken Vrij
