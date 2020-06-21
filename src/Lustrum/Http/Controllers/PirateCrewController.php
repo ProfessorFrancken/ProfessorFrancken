@@ -6,6 +6,7 @@ namespace Francken\Lustrum\Http\Controllers;
 
 use Francken\Lustrum\Adtchievement;
 use Francken\Lustrum\Http\Requests\LustrumRequest;
+use Francken\Lustrum\Pirate;
 use Francken\Lustrum\PirateCrew;
 
 class PirateCrewController
