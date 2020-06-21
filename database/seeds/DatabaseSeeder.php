@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CommitteesSeeder::class);
         $this->call(RolesSeeder::class);
 
-        $this->call(PostsSeeder::class);
         $this->call(RegistrationRequestsSeeder::class);
         $this->call(BooksSeeder::class);
         $this->call(FranckenVrijSeeder::class);

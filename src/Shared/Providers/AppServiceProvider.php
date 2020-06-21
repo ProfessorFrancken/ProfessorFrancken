@@ -17,8 +17,6 @@ use Francken\Domain\Committees\Committee;
 use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
 use Francken\Domain\Members\MemberRepository;
-use Francken\Domain\Posts\Post;
-use Francken\Domain\Posts\PostRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Francken\Shared\Clock\Clock;
@@ -40,7 +38,6 @@ final class AppServiceProvider extends ServiceProvider
     public const EVENT_SOURCED_REPOSITORIES = [
         [CommitteeRepository::class, Committee::class],
         [MemberRepository::class, Member::class],
-        [PostRepository::class, Post::class],
     ];
 
     // Similarly we can register illuminate read models by again providing a pair
