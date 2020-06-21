@@ -14,11 +14,6 @@ use Francken\Domain\Identifier;
  */
 final class BookId extends Identifier
 {
-    public function __construct(string $id)
-    {
-        $this->id = $id;
-    }
-
     public static function fromLegacyId(int $id)
     {
         return new self((string) $id);
