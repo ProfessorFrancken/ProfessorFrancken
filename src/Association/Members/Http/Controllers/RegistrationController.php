@@ -20,7 +20,7 @@ final class RegistrationController
             ]);
     }
 
-    public function store(RegistrationRequest $request, UrlGenerator $urlGenerator)
+    public function store(RegistrationRequest $request, UrlGenerator $urlGenerator, Clock $clock)
     {
         $registration = Registration::submit(
             // PersonalDetails
@@ -38,8 +38,9 @@ final class RegistrationController
             $request->notes()
         );
 
-        $url = $urlGenerator->signedRoute(
+        $url = $urlGenerator->temporarySignedRoute(
             'registration.show',
+            $clock->now()->modify('+1 week'),
             ['registration' => $registration->id]
         );
 
