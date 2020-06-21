@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\FranckenVrij;
+namespace Francken\Association\FranckenVrij;
 
 use Francken\Application\ReadModelRepository;
-use Francken\Association\FranckenVrij\EditionId;
 
 final class FranckenVrijRepository
 {

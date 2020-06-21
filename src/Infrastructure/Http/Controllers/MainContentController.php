@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Infrastructure\Http\Controllers;
 
-use Francken\Application\FranckenVrij\FranckenVrijRepository;
 use Francken\Association\Activities\ActivitiesRepository;
+use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Association\News\Repository as NewsRepository;
 
 class MainContentController extends Controller

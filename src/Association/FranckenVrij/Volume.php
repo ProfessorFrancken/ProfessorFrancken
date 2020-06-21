@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\FranckenVrij;
+namespace Francken\Association\FranckenVrij;
 
 use InvalidArgumentException;
 

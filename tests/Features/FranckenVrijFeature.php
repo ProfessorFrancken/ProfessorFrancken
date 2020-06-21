@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Francken\Application\FranckenVrij\Edition;
-use Francken\Application\FranckenVrij\FranckenVrijRepository;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
+use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Domain\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 

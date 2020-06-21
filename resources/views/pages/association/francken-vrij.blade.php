@@ -1,5 +1,5 @@
 @extends('pages.association')
-@inject('franckenVrij', "Francken\Application\FranckenVrij\FranckenVrijRepository")
+@inject('franckenVrij', "Francken\Association\FranckenVrij\FranckenVrijRepository")
 @section('header-image-url', '/images/header/library-books.jpeg')
 @php
 $volumes = $franckenVrij->volumes();

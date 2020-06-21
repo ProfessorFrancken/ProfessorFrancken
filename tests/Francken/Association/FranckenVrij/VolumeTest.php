@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Francken\Tests\Application\FranckenVrij;
+namespace Francken\Tests\Association\FranckenVrij;
 
-use Francken\Application\FranckenVrij\Edition;
-use Francken\Application\FranckenVrij\Volume;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
+use Francken\Association\FranckenVrij\Volume;
 use Francken\Domain\Url;
 use PHPUnit\Framework\TestCase as TestCase;
 

@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\FranckenVrij;
+namespace Francken\Association\FranckenVrij;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Association\FranckenVrij\EditionId;
 use Francken\Domain\Serializable;
 use Francken\Domain\Url;
 use InvalidArgumentException;
