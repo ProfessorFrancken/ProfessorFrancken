@@ -8,7 +8,6 @@ use Broadway\EventHandling\EventBus;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactory;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStore;
-use Francken\Domain\Members\Member;
 use Francken\Infrastructure\EventSourcing\Factory;
 use PHPUnit\Framework\TestCase as TestCase;
 
@@ -23,7 +22,7 @@ class FactoryTest extends TestCase
 
         $factory = new Factory($store->reveal(), $bus->reveal(), $aggregateFactory->reveal());
 
-        $repository = $factory->buildForAggregate(Member::class);
+        $repository = $factory->buildForAggregate(AggregateRootExample::class);
 
         $this->assertInstanceOf(
             EventSourcingRepository::class,
@@ -43,5 +42,17 @@ class FactoryTest extends TestCase
 
         $this->expectException(\Assert\InvalidArgumentException::class);
         $factory->buildForAggregate('Cat');
+    }
+}
+
+namespace Francken\Tests\Infrastructure\EventSourcing;
+
+use Francken\Domain\AggregateRoot;
+
+class AggregateRootExample extends AggregateRoot
+{
+    public function getAggregateRootId() : string
+    {
+        return "hoi";
     }
 }
