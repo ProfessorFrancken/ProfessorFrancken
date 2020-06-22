@@ -6,7 +6,7 @@ use Francken\Domain\Members\Address;
 use Francken\Domain\Members\Study;
 use Francken\Domain\Members\StudyDetails;
 use Francken\Domain\Members\ContactInfo;
-use Francken\Domain\Members\Email;
+use Francken\Shared\Email;
 use Francken\Domain\Members\FullName;
 use Francken\Domain\Members\Gender;
 use Francken\Domain\Members\PaymentInfo;

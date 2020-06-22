@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Francken\Domain\Committees;
-use Francken\Domain\Members\Email;
+use Francken\Shared\Email;
 use Illuminate\Database\Seeder;
 
 final class CommitteesSeeder extends Seeder

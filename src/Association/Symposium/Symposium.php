@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
-use Francken\Domain\Members\Email;
+use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Model;
 
 /**

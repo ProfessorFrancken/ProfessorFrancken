@@ -6,6 +6,7 @@ namespace Francken\Domain\Members;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Serializable;
+use Francken\Shared\Email;
 
 final class ContactInfo implements SerializableInterface
 {

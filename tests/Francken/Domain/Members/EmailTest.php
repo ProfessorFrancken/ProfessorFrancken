@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Members;
 
-use Francken\Domain\Members\Email;
+use Francken\Shared\Email;
 use InvalidArgumentException;
 
 class EmailTest extends \PHPUnit\Framework\TestCase

@@ -7,7 +7,7 @@ namespace Francken\Association\Symposium\Http;
 use DateTimeImmutable;
 use Francken\Association\Symposium\Participant;
 use Francken\Association\Symposium\Symposium;
-use Francken\Domain\Members\Email;
+use Francken\Shared\Email;
 use Illuminate\Http\Request;
 
 final class ParticipantRegistrationController

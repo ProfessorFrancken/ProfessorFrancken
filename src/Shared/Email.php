@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain\Members;
+namespace Francken\Shared;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Serializable;
