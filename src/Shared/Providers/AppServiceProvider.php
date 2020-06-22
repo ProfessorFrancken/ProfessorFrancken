@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use Broadway\EventSourcing\EventSourcingRepository;
-use Francken\Shared\ReadModelRepository;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
-use Francken\Domain\Members\Member;
-use Francken\Domain\Members\MemberRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Francken\Shared\Clock\Clock;
 use Francken\Shared\Clock\SystemClock;
+use Francken\Shared\ReadModelRepository;
 use Francken\Shared\Settings\Settings;
 use Francken\Shared\Settings\ValueStoreSettings;
 use Illuminate\Contracts\Foundation\Application;
@@ -28,7 +26,6 @@ final class AppServiceProvider extends ServiceProvider
     // it contains pairs of the repository's class and the associated
     // aggregate's class name
     public const EVENT_SOURCED_REPOSITORIES = [
-        [MemberRepository::class, Member::class],
     ];
 
     // Similarly we can register illuminate read models by again providing a pair
