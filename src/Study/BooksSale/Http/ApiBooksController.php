@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http;
 
-use Francken\Study\BooksSale\LegacyBook;
+use Francken\Study\BooksSale\Book;
 
 final class ApiBooksController
 {
     public function index()
     {
-        $legacy_books = LegacyBook::all();
+        $legacy_books = Book::all();
 
         return [
             'books' => $legacy_books->map(
-                function (LegacyBook $book) {
+                function (Book $book) {
                     return [
                         'title' => $book->naam,
                         'author' => $book->auteur,

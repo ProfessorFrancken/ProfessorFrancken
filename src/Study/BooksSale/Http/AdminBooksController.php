@@ -6,14 +6,14 @@ namespace Francken\Study\BooksSale\Http;
 
 use DateTimeImmutable;
 use DB;
-use Francken\Study\BooksSale\LegacyBook;
+use Francken\Study\BooksSale\Book;
 use Illuminate\Http\Request;
 
 final class AdminBooksController
 {
     public function index(Request $request)
     {
-        $books = LegacyBook::with(['seller', 'buyer'])->orderBy('id', 'desc');
+        $books = Book::with(['seller', 'buyer'])->orderBy('id', 'desc');
 
         if ($request->has('title') && $request->get('title') !== null) {
             $books->where('naam', 'LIKE', '%' . $request->get('title') . '%');
@@ -41,7 +41,7 @@ final class AdminBooksController
         ]);
     }
 
-    public function show(LegacyBook $book)
+    public function show(Book $book)
     {
         return view('admin.study.books.show', [
             'book' => $book,
@@ -56,7 +56,7 @@ final class AdminBooksController
     public function create()
     {
         return view('admin.study.books.create', [
-            'book' => new LegacyBook(),
+            'book' => new Book(),
             'members' => $this->members(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
@@ -95,12 +95,12 @@ final class AdminBooksController
             "afgerekend" => $request->has('paid_off'),
         ];
 
-        $book = LegacyBook::create($book);
+        $book = Book::create($book);
 
         return redirect()->action([self::class, 'index']);
     }
 
-    public function update(Request $request, LegacyBook $book)
+    public function update(Request $request, Book $book)
     {
         $now = new DateTimeImmutable();
 
@@ -133,7 +133,7 @@ final class AdminBooksController
         return redirect()->action([self::class, 'show'], $book->id);
     }
 
-    public function remove(Request $request, LegacyBook $book)
+    public function remove(Request $request, Book $book)
     {
         if ($book->buyer === null) {
             $book->delete();

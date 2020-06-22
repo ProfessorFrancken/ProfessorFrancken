@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Francken\Study\BooksSale\Http;
 
 use Francken\Infrastructure\Http\Controllers\Controller;
-use Francken\Study\BooksSale\LegacyBook;
+use Francken\Study\BooksSale\Book;
 
 class BooksController extends Controller
 {
     public function index()
     {
-        $books = LegacyBook::query()
+        $books = Book::query()
             ->available()
             ->orderBy('naam', 'asc')
             ->orderBy('editie', 'desc')
@@ -25,7 +25,7 @@ class BooksController extends Controller
             ]);
     }
 
-    public function show(LegacyBook $book)
+    public function show(Book $book)
     {
         return view('book.show')
             ->with(['book' => $book])
