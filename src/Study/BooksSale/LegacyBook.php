@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Study\BooksSale;
 
 use DateTimeImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -82,6 +83,14 @@ final class LegacyBook extends Model
         'afgerekend',
     ];
 
+    public function scopeAvailable(Builder $query) : Builder
+    {
+        return $query
+            ->where('verkoopdatum', null)
+            ->where('verkocht', false)
+            ->where('afgerekend', false);
+    }
+
     public function seller()
     {
         return $this->belongsTo(BookSeller::class, 'verkoperid');
@@ -153,5 +162,29 @@ final class LegacyBook extends Model
     public function getCoverPathAttribute() : string
     {
         return 'http://images.amazon.com/images/P/' . $this->isbn . '.jpg';
+    }
+
+    public function title() : string
+    {
+        return $this->naam ?? '';
+    }
+
+    public function author() : string
+    {
+        return $this->auteur ?? '';
+    }
+
+    public function pathToCover() : string
+    {
+        return $this->cover_path;
+    }
+
+    public function price() : int
+    {
+        return $this->prijs * 100;
+    }
+    public function bookId() : int
+    {
+        return $this->id;
     }
 }

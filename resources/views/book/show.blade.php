@@ -5,9 +5,9 @@
 @section('content')
 
     <div class="row">
-  	    <div class="col col-sm-4">
-  	        <img src="{{ $book->pathToCover() }}" class="img-fluid">
-  	    </div>
+        <div class="col col-sm-4">
+            <img src="{{ $book->pathToCover() }}" class="img-fluid">
+        </div>
         <div class="col col-sm-8">
             <h1 class="h3">
                 {{ $book->title() }}
@@ -29,7 +29,7 @@
                     ISBN
                 </dt>
                 <dd class="col-10 col-md-11">
-                    {{ $book->isbn() }}
+                    {{ $book->isbn }}
                 </dd>
             </dl>
 

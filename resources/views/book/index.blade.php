@@ -34,12 +34,20 @@
                             </small>
                         </h3>
                         <p class="text-muted">
-                            ISBN: {{ $book->isbn() }}
+                            ISBN: {{ $book->isbn }}
                         </p>
                     </div>
 
+
                     <div>
-                        <a href="/study/books/{{ $book->bookId() }}" class="btn btn-outline-primary btn-block">
+                        <a href="{{
+                                 action(
+                                     [\Francken\Study\BooksSale\Http\BooksController::class, 'show'],
+                                     ['book' => $book->bookId()]
+                                 )
+                                 }}"
+                           class="btn btn-outline-primary btn-block"
+                        >
                             Buy for €{{ number_format($book->price()/100, 2, ",", "") }}
                         </a>
                     </div>
@@ -47,4 +55,6 @@
             </div>
         @endforeach
     </div>
+    {!! $books->links() !!}
+
 @endsection
