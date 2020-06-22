@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Tests\Application\Books;
 
 use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\BookId;
 use Francken\Tests\Application\ReadModelTestCase;
 
 class AvailableBookTest extends ReadModelTestCase

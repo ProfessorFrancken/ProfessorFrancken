@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Books;
 
-use Francken\Domain\Books\Book;
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\Book;
+use Francken\Study\BooksSale\BookId;
 use Francken\Study\BooksSale\Events\BookOffered;
 use Francken\Study\BooksSale\Events\BookSoldToMember;
 use Francken\Domain\Members\MemberId;

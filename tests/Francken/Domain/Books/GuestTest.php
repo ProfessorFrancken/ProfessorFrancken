@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Domain\Books;
 
-use Francken\Domain\Books\Guest;
+use Francken\Study\BooksSale\Guest;
 use Francken\Domain\Members\Email;
 
 class GuestTest extends \PHPUnit\Framework\TestCase

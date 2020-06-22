@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Francken\Books;
 
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\BookId;
 use Francken\Study\BooksSale\Events\BookSoldToMember;
 use Francken\Domain\Members\MemberId;
 use Francken\Tests\Domain\EventTestCase as Testcase;

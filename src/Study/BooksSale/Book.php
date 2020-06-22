@@ -4,154 +4,97 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale;
 
-use DateTimeImmutable;
-use Illuminate\Database\Eloquent\Model;
+use Broadway\EventSourcing\EventSourcedAggregateRoot;
+use Francken\Study\BooksSale\Events\BookOffered;
+use Francken\Study\BooksSale\Events\BookOfferRetracted;
+use Francken\Study\BooksSale\Events\BookSaleCancelled;
+use Francken\Study\BooksSale\Events\BookSaleCompleted;
+use Francken\Study\BooksSale\Events\BookSoldToMember;
+use Francken\Study\BooksSale\Events\BookSoldToNonMember;
+use Francken\Domain\Members\MemberId;
+use Francken\Study\BooksSale\BookId;
+use Francken\Study\BooksSale\Guest;
 
-/**
- * This code is somewhat odd, on the write side it uses our legacy, Dutch datbase.
- *
- * On the read side it uses an English interface which we will migrate to.
- *
- * @property int $id
- * @property string|null $naam
- * @property int|null $editie
- * @property string|null $isbn
- * @property string|null $auteur
- * @property int|null $vakid
- * @property int|null $verkoperid
- * @property int|null $koperid
- * @property int|null $prijs
- * @property string|null $beschrijving
- * @property string|null $inkoopdatum
- * @property string|null $verkoopdatum
- * @property string|null $link
- * @property int|null $afgerekend
- * @property int|null $verkocht
- * @property-read \Francken\Study\BooksSale\BookBuyer|null $buyer
- * @property-read mixed $author
- * @property-read mixed $cover_path
- * @property-read mixed $description
- * @property-read mixed $edition
- * @property-read mixed $paid_off
- * @property-read mixed $price
- * @property-read mixed $purchase_date
- * @property-read mixed $sale_date
- * @property-read mixed $sold
- * @property-read mixed $title
- * @property-read \Francken\Study\BooksSale\BookSeller|null $seller
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereAfgerekend($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereAuteur($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereBeschrijving($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereEditie($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereInkoopdatum($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereIsbn($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereKoperid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereLink($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereNaam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book wherePrijs($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereVakid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereVerkocht($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereVerkoopdatum($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereVerkoperid($value)
- * @mixin \Eloquent
- */
-final class Book extends Model
+final class Book extends EventSourcedAggregateRoot
 {
-    public $timestamps = false;
-    protected $table = 'boeken';
-    protected $connection = 'francken-legacy';
-    protected $fillable = [
-        'naam',
-        'editie',
-        'auteur',
-        'beschrijving',
-        'isbn',
-        'prijs',
+    private $id;
+    private $sellersId;
+    private $isbn_10;
+    private $price;
+    private $isSold = false;
+    private $isPaid = false;
 
-        'verkoperid',
-        'koperid',
-
-        'inkoopdatum',
-        'verkoopdatum',
-
-        'verkocht',
-        'afgerekend',
-    ];
-
-    public function seller()
+    public static function offer(BookId $id, MemberId $sellersId, string $isbn, int $price) : self
     {
-        return $this->belongsTo(BookSeller::class, 'verkoperid');
+        $book = new self();
+        $book->apply(new BookOffered($id, $sellersId, $isbn, $price));
+        return $book;
     }
 
-    public function buyer()
+    public function offerRetracted() : void
     {
-        return $this->belongsTo(BookBuyer::class, 'koperid');
+        $this->apply(new BookOfferRetracted($this->id));
     }
 
-    public function getTitleAttribute()
+    public function sellToMember(MemberId $memberId) : void
     {
-        return $this->naam;
-    }
-
-    public function getDescriptionAttribute()
-    {
-        return $this->omschrijving;
-    }
-
-    public function getAuthorAttribute()
-    {
-        return $this->auteur;
-    }
-
-    public function getPriceAttribute()
-    {
-        return $this->prijs;
-    }
-
-    public function getPurchaseDateAttribute()
-    {
-        if ($this->inkoopdatum) {
-            return new DateTimeImmutable($this->inkoopdatum);
+        if ($this->isSold) {
+            throw new \Exception('A book cannot be sold twice');
         }
-
-        return null;
+        $this->isSold = true;
+        $this->apply(new BookSoldToMember($this->id, $memberId));
     }
 
-    public function getSaleDateAttribute()
+    public function sellToNonMember(Guest $guest) : void
     {
-        if ($this->verkoopdatum) {
-            return new DateTimeImmutable($this->verkoopdatum);
+        if ($this->isSold) {
+            throw new \Exception('A book cannot be sold twice');
         }
-
-        return null;
+        $this->isSold = true;
+        $this->apply(new BookSoldToNonMember($this->id, $guest));
     }
 
-    public function getEditionAttribute()
+    public function cancelSale() : void
     {
-        return (string)$this->editie;
+        $this->apply(new BookSaleCancelled($this->id));
     }
 
-    public function getSoldAttribute() : bool
+    public function completeSale() : void
     {
-        return $this->verkocht === 1;
+        $this->apply(new BookSaleCompleted($this->id));
     }
 
-    public function getPaidOffAttribute() : bool
+    public function applyBookOffered(BookOffered $event) : void
     {
-        return $this->verkocht === 1;
+        $this->id = $event->bookId();
+        $this->sellersId = $event->sellersId();
+        $this->isbn_10 = $event->isbn();
+        $this->price = $event->price();
     }
 
-    public function putOnSaleAt()
+    public function applyBookSoldToMember(BookSoldToMember $event) : void
     {
-        return null;
+        // ///@todo Mail bestuah?
+        // if($this->isSold)
+        //     throw new \Exception("A book cannot be sold twice");
+        $this->isSold = true;
     }
 
-    public function getCoverPathAttribute() : string
+    public function applyBookSoldToNonMember(BookSoldToNonMember $event) : void
     {
-        return 'http://images.amazon.com/images/P/' . $this->isbn . '.jpg';
+        // ///@todo Mail bestuah?
+        // if($this->isSold)
+        //     throw new \Exception("A book cannot be sold twice");
+        $this->isSold = true;
+    }
+
+    public function applyBookSaleCancelled(BookSaleCancelled $event) : void
+    {
+        $this->isSold = false;
+    }
+
+    public function getAggregateRootId() : string
+    {
+        return (string)$this->id;
     }
 }

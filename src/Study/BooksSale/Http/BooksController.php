@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Study\BooksSale\Http;
 
 use Francken\Study\BooksSale\AvailableBooks\AvailableBooksRepository;
-use Francken\Domain\Books\Book;
-use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\BookRepository;
+use Francken\Study\BooksSale\Book;
+use Francken\Study\BooksSale\BookId;
+use Francken\Study\BooksSale\BookRepository;
 use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Http\Controllers\Controller;
 use Illuminate\Http\Request;

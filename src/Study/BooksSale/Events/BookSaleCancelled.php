@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Study\BooksSale\Events;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\BookId;
 use Francken\Domain\Serializable;
 
 final class BookSaleCancelled implements SerializableInterface

@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain\Books;
+namespace Francken\Study\BooksSale;
 
 use Broadway\EventSourcing\EventSourcingRepository;
+use Francken\Study\BooksSale\BookId;
+use Francken\Study\BooksSale\LegacyBook;
 
 final class BookRepository
 {
@@ -23,13 +25,13 @@ final class BookRepository
     }
 
     
-    public function load(BookId $BookId) : Book
+    public function load(BookId $BookId) : LegacyBook
     {
         return $this->repo->load((string)$BookId);
     }
 
     
-    public function save(Book $Book) : void
+    public function save(LegacyBook $Book) : void
     {
         $this->repo->save($Book);
     }

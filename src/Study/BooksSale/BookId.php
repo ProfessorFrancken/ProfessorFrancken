@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain\Books;
+namespace Francken\Study\BooksSale;
 
 use Francken\Domain\Identifier;
 

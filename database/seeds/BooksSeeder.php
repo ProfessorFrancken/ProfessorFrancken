@@ -17,13 +17,13 @@ final class BooksSeeder extends Seeder
      */
     public function run()
     {
-        $repo = App::make(Books\BookRepository::class);
+        $repo = App::make(BooksSale\BookRepository::class);
         $faker = App::make(Faker\Generator::class);
 
         foreach ($this->isbns as $isbn) {
             $sellersId = MemberId::generate();
-            $bookId = Books\BookId::generate();
-            $book = Books\Book::offer(
+            $bookId = BooksSale\BookId::generate();
+            $book = BooksSale\Book::offer(
                 $bookId,
                 $sellersId,
                 $isbn,

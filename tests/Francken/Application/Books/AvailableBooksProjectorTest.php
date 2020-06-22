@@ -9,7 +9,7 @@ use Francken\Study\BooksSale\AvailableBooks\AvailableBooksProjector;
 use Francken\Study\BooksSale\AvailableBooks\BookDetails;
 use Francken\Study\BooksSale\AvailableBooks\BookDetailsRepository;
 use Francken\Application\Projector;
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\BookId;
 use Francken\Study\BooksSale\Events\BookOffered;
 use Francken\Study\BooksSale\Events\BookOfferRetracted;
 use Francken\Study\BooksSale\Events\BookSaleCancelled;

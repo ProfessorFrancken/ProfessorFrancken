@@ -7,7 +7,7 @@ namespace Francken\Study\BooksSale\AvailableBooks;
 use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
 use Francken\Study\BooksSale\AvailableBooks\AvailableBooksRepository;
 use Francken\Application\ReadModelRepository;
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\BookId;
 
 /**
  * This implementation is used by the projections and should be used

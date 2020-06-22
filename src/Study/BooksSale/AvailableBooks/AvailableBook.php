@@ -6,7 +6,7 @@ namespace Francken\Study\BooksSale\AvailableBooks;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\BookId;
 use Francken\Domain\Serializable;
 
 final class AvailableBook implements ReadModelInterface, SerializableInterface

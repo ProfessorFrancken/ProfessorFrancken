@@ -7,7 +7,7 @@ namespace Francken\Study\BooksSale\AvailableBooks;
 use DB;
 use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
 use Francken\Study\BooksSale\AvailableBooks\AvailableBooksRepository;
-use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\BookId;
 
 /**
  * This repository is used to retrieve books from our legacy database
