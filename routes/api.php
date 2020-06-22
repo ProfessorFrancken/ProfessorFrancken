@@ -15,7 +15,7 @@ declare(strict_types=1);
 */
 
 use Francken\Api\Http\ActivitiesController;
-use Francken\Api\Http\BooksController;
+use Francken\Study\BooksSale\Http\ApiBooksController;
 use Francken\Api\Http\JobOpeningsController;
 use Francken\Infrastructure\Http\Controllers\JasController;
 use Francken\PlusOne\Http as PlusOne;
@@ -28,7 +28,7 @@ Route::get('/database/streep/afbeeldingen/{url}', [PlusOne\PicturesController::c
 
 Route::group(['prefix' => '/api'], function () : void {
     Route::get('activities', [ActivitiesController::class, 'index']);
-    Route::get('books', [BooksController::class, 'index']);
+    Route::get('books', [ApiBooksController::class, 'index']);
     Route::get('job-openings', [JobOpeningsController::class, 'index']);
 
     Route::group(['prefix' => '/plus-one'], function () : void {

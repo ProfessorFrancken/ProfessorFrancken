@@ -17,7 +17,7 @@ use Francken\Association\Symposium\Http\ParticipantRegistrationController;
 use Francken\Auth\Http\Controllers\ForgotPasswordController;
 use Francken\Auth\Http\Controllers\LoginController;
 use Francken\Auth\Http\Controllers\ResetPasswordController;
-use Francken\Infrastructure\Http\Controllers\BookController;
+use Francken\Study\BooksSale\Http\BooksController;
 use Francken\Infrastructure\Http\Controllers\CareerController;
 use Francken\Infrastructure\Http\Controllers\CommitteesController;
 use Francken\Infrastructure\Http\Controllers\CompaniesController;
@@ -61,9 +61,9 @@ Route::get('password/reset/{token}', [ResetPasswordController::class, 'showReset
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::group(['prefix' => 'study'], function () : void {
-    Route::get('books', [BookController::class, 'index']);
-    Route::get('books/{book}', [BookController::class, 'show']);
-    Route::put('books/{bookId}/buy', [BookController::class, 'buy'])->middleware('auth');
+    Route::get('books', [BooksController::class, 'index']);
+    Route::get('books/{book}', [BooksController::class, 'show']);
+    Route::put('books/{bookId}/buy', [BooksController::class, 'buy'])->middleware('auth');
 
     Route::get('research-groups', [ResearchGroupsController::class, 'index']);
     Route::get('research-groups/{group}', [ResearchGroupsController::class, 'show']);

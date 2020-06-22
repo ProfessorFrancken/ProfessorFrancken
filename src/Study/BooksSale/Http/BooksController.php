@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Study\BooksSale\Http;
 
 use Francken\Application\Books\AvailableBooksRepository;
 use Francken\Domain\Books\Book;
@@ -11,7 +11,7 @@ use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Members\MemberId;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class BooksController extends Controller
 {
     private $books;
 

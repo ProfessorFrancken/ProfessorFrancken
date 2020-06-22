@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Francken\Api\Http;
+namespace Francken\Study\BooksSale\Http;
 
 use Francken\Application\Books\AvailableBook;
 use Francken\Application\Books\AvailableBooksRepository;
 
-final class BooksController
+final class ApiBooksController
 {
     public function index(AvailableBooksRepository $books)
     {
