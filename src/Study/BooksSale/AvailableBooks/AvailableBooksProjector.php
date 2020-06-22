@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Books;
+namespace Francken\Study\BooksSale\AvailableBooks;
 
 use Francken\Application\Projector;
 use Francken\Study\BooksSale\Events\BookOffered;
@@ -10,6 +10,7 @@ use Francken\Study\BooksSale\Events\BookOfferRetracted;
 use Francken\Study\BooksSale\Events\BookSaleCancelled;
 use Francken\Study\BooksSale\Events\BookSaleCompleted;
 use Francken\Study\BooksSale\Events\BookSoldToMember;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
 
 final class AvailableBooksProjector extends Projector
 {

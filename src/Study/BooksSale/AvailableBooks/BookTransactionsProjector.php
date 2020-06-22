@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Books;
+namespace Francken\Study\BooksSale\AvailableBooks;
 
 use Broadway\ReadModel\Projector;
 use Francken\Study\BooksSale\Events\BookOffered;
@@ -10,6 +10,8 @@ use Francken\Study\BooksSale\Events\BookOfferRetracted;
 use Francken\Study\BooksSale\Events\BookSaleCancelled;
 use Francken\Study\BooksSale\Events\BookSaleCompleted;
 use Francken\Study\BooksSale\Events\BookSoldToMember;
+use Francken\Study\BooksSale\AvailableBooks\BookDetailsRepository;
+use Francken\Study\BooksSale\AvailableBooks\BookTransaction;
 
 final class BookTransactionsProjector extends Projector
 {

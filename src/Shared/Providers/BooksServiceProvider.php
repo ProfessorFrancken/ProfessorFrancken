@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use Broadway\EventSourcing\EventSourcingRepository;
-use Francken\Application\Books\AvailableBook;
-use Francken\Application\Books\AvailableBooksRepository;
-use Francken\Application\Books\BookDetailsRepository;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBooksRepository;
+use Francken\Study\BooksSale\AvailableBooks\BookDetailsRepository;
 use Francken\Application\ReadModelRepository;
 use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookRepository;

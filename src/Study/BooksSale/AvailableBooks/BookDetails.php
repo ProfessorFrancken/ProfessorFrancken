@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Books;
+namespace Francken\Study\BooksSale\AvailableBooks;
 
 class BookDetails
 {

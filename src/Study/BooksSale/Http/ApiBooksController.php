@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http;
 
-use Francken\Application\Books\AvailableBook;
-use Francken\Application\Books\AvailableBooksRepository;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBooksRepository;
 
 final class ApiBooksController
 {

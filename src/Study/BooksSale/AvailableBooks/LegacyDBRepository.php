@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Study\BooksSale\AvailableBooks;
 
 use DB;
-use Francken\Application\Books\AvailableBook;
-use Francken\Application\Books\AvailableBooksRepository;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBooksRepository;
 use Francken\Domain\Books\BookId;
 
 /**

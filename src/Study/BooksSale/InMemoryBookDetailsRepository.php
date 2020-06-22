@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale;
 
-use Francken\Application\Books\BookDetails;
-use Francken\Application\Books\BookDetailsRepository;
+use Francken\Study\BooksSale\AvailableBooks\BookDetails;
+use Francken\Study\BooksSale\AvailableBooks\BookDetailsRepository;
 
 final class InMemoryBookDetailsRepository implements BookDetailsRepository
 {

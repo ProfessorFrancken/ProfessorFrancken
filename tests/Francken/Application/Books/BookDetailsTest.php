@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Books;
 
-use Francken\Application\Books\BookDetails;
+use Francken\Study\BooksSale\AvailableBooks\BookDetails;
 
 class BookDetailsTest extends \PHPUnit\Framework\TestCase
 {

@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Books;
+namespace Francken\Study\BooksSale\AvailableBooks;
 
 use Francken\Domain\Books\BookId;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
 
 interface AvailableBooksRepository
 {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Books;
 
-use Francken\Application\Books\AvailableBook;
-use Francken\Application\Books\AvailableBooksProjector;
-use Francken\Application\Books\BookDetails;
-use Francken\Application\Books\BookDetailsRepository;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBooksProjector;
+use Francken\Study\BooksSale\AvailableBooks\BookDetails;
+use Francken\Study\BooksSale\AvailableBooks\BookDetailsRepository;
 use Francken\Application\Projector;
 use Francken\Domain\Books\BookId;
 use Francken\Study\BooksSale\Events\BookOffered;

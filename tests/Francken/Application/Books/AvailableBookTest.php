@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application\Books;
 
-use Francken\Application\Books\AvailableBook;
+use Francken\Study\BooksSale\AvailableBooks\AvailableBook;
 use Francken\Domain\Books\BookId;
 use Francken\Tests\Application\ReadModelTestCase;
 

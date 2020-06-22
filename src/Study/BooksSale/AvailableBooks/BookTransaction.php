@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Books;
+namespace Francken\Study\BooksSale\AvailableBooks;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;

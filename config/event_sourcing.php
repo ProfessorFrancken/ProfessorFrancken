@@ -7,6 +7,6 @@ return [
 
     'projectors' => [
         \Francken\Application\Committees\CommitteesListProjector::class,
-        \Francken\Application\Books\AvailableBooksProjector::class,
+        Francken\Study\BooksSale\AvailableBooks\AvailableBooksProjector::class,
     ],
 ];
