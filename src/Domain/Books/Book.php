@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Francken\Domain\Books;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
-use Francken\Domain\Books\Events\BookOffered;
-use Francken\Domain\Books\Events\BookOfferRetracted;
-use Francken\Domain\Books\Events\BookSaleCancelled;
-use Francken\Domain\Books\Events\BookSaleCompleted;
-use Francken\Domain\Books\Events\BookSoldToMember;
-use Francken\Domain\Books\Events\BookSoldToNonMember;
+use Francken\Study\BooksSale\Events\BookOffered;
+use Francken\Study\BooksSale\Events\BookOfferRetracted;
+use Francken\Study\BooksSale\Events\BookSaleCancelled;
+use Francken\Study\BooksSale\Events\BookSaleCompleted;
+use Francken\Study\BooksSale\Events\BookSoldToMember;
+use Francken\Study\BooksSale\Events\BookSoldToNonMember;
 use Francken\Domain\Members\MemberId;
 
 final class Book extends EventSourcedAggregateRoot

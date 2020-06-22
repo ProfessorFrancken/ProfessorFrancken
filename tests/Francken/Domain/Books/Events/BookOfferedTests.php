@@ -6,7 +6,7 @@ namespace Tests\Francken\Books;
 
 use Francken\Domain\Books\BookId;
 
-use Francken\Domain\Books\Events\BookOffered;
+use Francken\Study\BooksSale\Events\BookOffered;
 use Francken\Domain\Members\MemberId;
 
 use Francken\Tests\Domain\EventTestCase as Testcase;

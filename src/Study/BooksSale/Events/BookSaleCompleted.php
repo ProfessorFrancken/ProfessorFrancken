@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain\Books\Events;
+namespace Francken\Study\BooksSale\Events;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Serializable;
 
-final class BookSaleCancelled implements SerializableInterface
+final class BookSaleCompleted implements SerializableInterface
 {
     use Serializable;
 

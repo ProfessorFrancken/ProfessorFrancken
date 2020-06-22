@@ -9,6 +9,7 @@ use Francken\Domain\Books\Book;
 use Francken\Domain\Books\BookId;
 use Francken\Domain\Books\BookRepository;
 use Francken\Domain\Members\MemberId;
+use Francken\Infrastructure\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller

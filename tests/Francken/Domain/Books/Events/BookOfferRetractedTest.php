@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Francken\Books\Events;
 
 use Francken\Domain\Books\BookId;
-use Francken\Domain\Books\Events\BookOfferRetracted;
+use Francken\Study\BooksSale\Events\BookOfferRetracted;
 use Francken\Tests\Domain\EventTestCase as Testcase;
 
 class BookOfferRetractedTest extends Testcase
