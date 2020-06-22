@@ -5,16 +5,11 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use Broadway\EventSourcing\EventSourcingRepository;
-use Francken\Application\Committees\CommitteesList;
-use Francken\Application\Committees\CommitteesListProjector;
-use Francken\Application\Committees\CommitteesListRepository;
 use Francken\Application\ReadModel\MemberList\MemberList;
 use Francken\Application\ReadModel\MemberList\MemberListRepository;
 use Francken\Application\ReadModelRepository;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
-use Francken\Domain\Committees\Committee;
-use Francken\Domain\Committees\CommitteeRepository;
 use Francken\Domain\Members\Member;
 use Francken\Domain\Members\MemberRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
@@ -27,7 +22,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-use League\CommonMark\CommonMarkConverter;
 use Spatie\Valuestore\Valuestore;
 
 final class AppServiceProvider extends ServiceProvider
@@ -36,7 +30,6 @@ final class AppServiceProvider extends ServiceProvider
     // it contains pairs of the repository's class and the associated
     // aggregate's class name
     public const EVENT_SOURCED_REPOSITORIES = [
-        [CommitteeRepository::class, Committee::class],
         [MemberRepository::class, Member::class],
     ];
 
@@ -47,10 +40,6 @@ final class AppServiceProvider extends ServiceProvider
         [
             MemberListRepository::class,
             ['members', MemberList::class, 'id']
-        ],
-        [
-            CommitteesListRepository::class,
-            ['committees_list', CommitteesList::class, 'id', ['members']]
         ],
         [
             FranckenVrijRepository::class,
@@ -135,14 +124,5 @@ final class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->bind(ReadModelRepository::class, \Francken\Infrastructure\Repositories\InMemoryRepository::class);
-
-        // In this case we don't want Laravel to resolve the CommonMarkConverter since
-        // this would mean that Laravel would provide the converter with an environment,
-        // instead we want the converter to create its own environment object
-        $this->app->when(CommitteesListProjector::class)
-            ->needs(CommonMarkConverter::class)
-            ->give(function () {
-                return new CommonMarkConverter();
-            });
     }
 }

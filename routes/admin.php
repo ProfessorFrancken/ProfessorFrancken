@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
-use Francken\Association\Committees\Http\AdminCommitteesController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
@@ -68,12 +67,6 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::put('/news/archive/{item}', [AdminNewsController::class, 'archive']);
     Route::get('/news/{item}/preview', [AdminNewsController::class, 'preview']);
     Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
-
-    //committees
-    Route::resource('committees', AdminCommitteesController::class);
-    Route::post('committees/search-member', [AdminCommitteesController::class, 'searchMember']);
-    Route::post('committees/{committeeId}/member/{memberId}', [AdminCommitteesController::class, 'addMember']);
-    Route::delete('committees/{committeeId}/member/{memberId}', [AdminCommitteesController::class, 'removeMember']);
 
     Route::get('boards/export', [AdminExportsController::class, 'index']);
     Route::post('boards/import', [AdminImportsController::class, 'store']);
