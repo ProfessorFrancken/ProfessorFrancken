@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application;
+namespace Francken\Shared;
 
 use Broadway\Domain\DomainMessage;
 use Broadway\ReadModel\Projector as BroadwayProjector;

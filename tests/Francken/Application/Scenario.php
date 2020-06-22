@@ -8,7 +8,7 @@ use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
 use Broadway\ReadModel\Projector;
-use Francken\Application\ReadModelRepository;
+use Francken\Shared\ReadModelRepository;
 use PHPUnit\Framework\TestCase;
 
 final class Scenario

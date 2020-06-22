@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Features\Repositories;
 
 use Doctrine\Instantiator\Instantiator;
-use Francken\Application\ReadModelNotFound;
-use Francken\Application\ReadModelRepository;
+use Francken\Shared\ReadModelNotFound;
+use Francken\Shared\ReadModelRepository;
 use Francken\Shared\Serialization\Hydration\HydrateUsingReflection;
 use Francken\Shared\Serialization\Reconstitution\ReconstituteUsingInstantiatorAndHydrator;
 use Francken\Shared\Serialization\Reconstitution\Reconstitution;

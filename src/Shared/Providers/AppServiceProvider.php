@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use Broadway\EventSourcing\EventSourcingRepository;
-use Francken\Application\ReadModelRepository;
+use Francken\Shared\ReadModelRepository;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Domain\Members\Member;

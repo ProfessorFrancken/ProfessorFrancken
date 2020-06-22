@@ -6,8 +6,8 @@ namespace Francken\Infrastructure\Repositories;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Application\ReadModelNotFound;
-use Francken\Application\ReadModelRepository;
+use Francken\Shared\ReadModelNotFound;
+use Francken\Shared\ReadModelRepository;
 use Illuminate\Database\ConnectionInterface as Connection;
 use Illuminate\Support\Collection;
 

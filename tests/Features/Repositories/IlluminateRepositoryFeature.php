@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features\Repositories;
 
-use Francken\Application\ReadModelRepository;
+use Francken\Shared\ReadModelRepository;
 use Francken\Infrastructure\Repositories\IlluminateRepository;
 
 use Illuminate\Contracts\Console\Kernel;

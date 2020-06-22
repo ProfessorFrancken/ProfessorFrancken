@@ -5,8 +5,8 @@ declare(strict_types = 1);
 namespace Francken\Infrastructure\Repositories;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
-use Francken\Application\ReadModelNotFound;
-use Francken\Application\ReadModelRepository;
+use Francken\Shared\ReadModelNotFound;
+use Francken\Shared\ReadModelRepository;
 use ReflectionClass;
 use stdClass;
 

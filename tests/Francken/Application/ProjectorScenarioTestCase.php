@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Application;
 
-use Francken\Application\Projector;
+use Francken\Shared\Projector;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use PHPUnit\Framework\TestCase as TestCase;
 

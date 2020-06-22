@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij;
 
-use Francken\Application\ReadModelRepository;
+use Francken\Shared\ReadModelRepository;
 
 final class FranckenVrijRepository
 {
