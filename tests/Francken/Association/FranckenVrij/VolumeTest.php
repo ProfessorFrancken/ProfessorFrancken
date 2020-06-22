@@ -7,7 +7,7 @@ namespace Francken\Tests\Association\FranckenVrij;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\Volume;
-use Francken\Domain\Url;
+use Francken\Shared\Url;
 use PHPUnit\Framework\TestCase as TestCase;
 
 class VolumeTest extends TestCase

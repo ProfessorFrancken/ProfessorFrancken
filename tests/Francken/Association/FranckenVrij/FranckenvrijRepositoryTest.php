@@ -7,7 +7,7 @@ namespace Francken\Tests\Association\FranckenVrij;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
-use Francken\Domain\Url;
+use Francken\Shared\Url;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
 use PHPUnit\Framework\TestCase as TestCase;
 

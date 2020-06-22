@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\News;
 
 use DateTimeImmutable;
-use Francken\Domain\Url;
+use Francken\Shared\Url;
 
 final class NewsItemId
 {

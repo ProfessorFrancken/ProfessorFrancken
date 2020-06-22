@@ -8,7 +8,7 @@ use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Association\FranckenVrij\Volume;
-use Francken\Domain\Url;
+use Francken\Shared\Url;
 use Francken\Infrastructure\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;

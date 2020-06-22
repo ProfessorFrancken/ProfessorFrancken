@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
-use Francken\Domain\Url;
+use Francken\Shared\Url;
 use Illuminate\Database\Seeder;
 
 final class FranckenVrijSeeder extends Seeder
