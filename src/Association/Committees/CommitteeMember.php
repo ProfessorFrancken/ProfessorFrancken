@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Committees;
+namespace Francken\Association\Committees;
 
 final class CommitteeMember
 {

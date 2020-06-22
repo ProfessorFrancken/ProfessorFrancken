@@ -7,7 +7,7 @@ namespace Francken\Extern\Http;
 use DateInterval;
 use DateTimeImmutable;
 use DB;
-use Francken\Application\Committees\CommitteesRepository;
+use Francken\Association\Committees\CommitteesRepository;
 use Francken\Extern\FactSheet\ActiveMembersStatistics;
 use Francken\Extern\FactSheet\FirstYearStudentsPerYear;
 use Francken\Extern\FactSheet\StudentsByStudyAndStudyPhase;

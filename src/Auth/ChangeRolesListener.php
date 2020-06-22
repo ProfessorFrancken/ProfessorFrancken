@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-use Francken\Application\Committees\Committee;
-use Francken\Application\Committees\CommitteesRepository;
+use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\CommitteesRepository;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Boards\BoardMemberWasDemissioned;

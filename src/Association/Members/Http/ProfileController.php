@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http;
 
-use Francken\Application\Committees\CommitteesRepository;
+use Francken\Association\Committees\CommitteesRepository;
 use Francken\Association\Members\Member;
 
 final class ProfileController
