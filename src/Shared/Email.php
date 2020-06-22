@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared;
 
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Serializable;
+use Francken\Shared\Serializable;
 
 final class Email implements SerializableInterface
 {

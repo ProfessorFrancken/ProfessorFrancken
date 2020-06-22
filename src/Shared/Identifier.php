@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain;
+namespace Francken\Shared;
 
 use Assert\Assertion as Assert;
 use Broadway\Serializer\Serializable as SerializableInterface;

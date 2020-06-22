@@ -6,7 +6,7 @@ namespace Francken\Association\FranckenVrij;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Serializable;
+use Francken\Shared\Serializable;
 use Francken\Shared\Url;
 use InvalidArgumentException;
 

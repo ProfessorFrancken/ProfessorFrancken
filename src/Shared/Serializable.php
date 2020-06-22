@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Domain;
+namespace Francken\Shared;
 
 use Francken\Shared\Serialization\Reconstitution\Reconstitution;
 use Francken\Shared\Serialization\Serialization\RecursiveSerializer;

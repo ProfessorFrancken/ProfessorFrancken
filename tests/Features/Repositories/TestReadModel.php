@@ -6,7 +6,7 @@ namespace Francken\Features\Repositories;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Domain\Serializable;
+use Francken\Shared\Serializable;
 
 final class TestReadModel implements ReadModelInterface, SerializableInterface
 {
