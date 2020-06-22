@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Books;
+namespace Francken\Study\BooksSale;
 
 use Francken\Application\Books\BookDetails;
 use Francken\Application\Books\BookDetailsRepository;

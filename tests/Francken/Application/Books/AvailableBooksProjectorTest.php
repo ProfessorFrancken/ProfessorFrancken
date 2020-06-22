@@ -16,8 +16,8 @@ use Francken\Domain\Books\Events\BookSaleCancelled;
 use Francken\Domain\Books\Events\BookSaleCompleted;
 use Francken\Domain\Books\Events\BookSoldToMember;
 use Francken\Domain\Members\MemberId;
-use Francken\Infrastructure\Books\AvailableBooks\ProjectionRepository;
 use Francken\Infrastructure\Repositories\InMemoryRepository;
+use Francken\Study\BooksSale\AvailableBooks\ProjectionRepository;
 use Francken\Tests\Application\ProjectorScenarioTestCase as TestCase;
 
 class AvailableBooksProjectorTest extends TestCase
