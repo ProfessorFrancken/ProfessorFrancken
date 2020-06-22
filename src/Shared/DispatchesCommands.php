@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure;
+namespace Francken\Shared;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
