@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers\Admin;
+namespace Francken\Association\Committees\Http;
 
 use DB;
 use Exception;
@@ -15,7 +15,7 @@ use Francken\Domain\Members\MemberId;
 use Francken\Infrastructure\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CommitteeController extends Controller
+class AdminCommitteesController extends Controller
 {
     private $committeeRepo;
 

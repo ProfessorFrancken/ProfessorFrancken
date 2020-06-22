@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Association\Committees\Http;
 
 use Francken\Application\Committees\CommitteesRepository;
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
+use Francken\Association\Committees\Http\AdminCommitteesController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
@@ -19,7 +20,6 @@ use Francken\Auth\Http\Controllers\Admin\RolePermissionsController;
 use Francken\Auth\Http\Controllers\Admin\RolesController;
 use Francken\Extern\Http\FactSheetController;
 use Francken\Infrastructure\Http\Controllers\Admin\AdminController;
-use Francken\Infrastructure\Http\Controllers\Admin\CommitteeController as AdminCommitteeController;
 use Francken\Infrastructure\Http\Controllers\Admin\FranckenVrijController;
 use Francken\Infrastructure\Http\Controllers\DashboardController;
 use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
@@ -70,10 +70,10 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
 
     //committees
-    Route::resource('committees', AdminCommitteeController::class);
-    Route::post('committees/search-member', [AdminCommitteeController::class, 'searchMember']);
-    Route::post('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'addMember']);
-    Route::delete('committees/{committeeId}/member/{memberId}', [AdminCommitteeController::class, 'removeMember']);
+    Route::resource('committees', AdminCommitteesController::class);
+    Route::post('committees/search-member', [AdminCommitteesController::class, 'searchMember']);
+    Route::post('committees/{committeeId}/member/{memberId}', [AdminCommitteesController::class, 'addMember']);
+    Route::delete('committees/{committeeId}/member/{memberId}', [AdminCommitteesController::class, 'removeMember']);
 
     Route::get('boards/export', [AdminExportsController::class, 'index']);
     Route::post('boards/import', [AdminImportsController::class, 'store']);

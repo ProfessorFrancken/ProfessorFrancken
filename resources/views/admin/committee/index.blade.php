@@ -18,13 +18,13 @@
         <td>{{ $committee->name() }}</td>
         <td>{{ $committee->summary() }}</td>
         <td>{{ (string)$committee->email() }}</td>
-        <td><a href="{{ action([\Francken\Infrastructure\Http\Controllers\Admin\CommitteeController::class, 'show'], (string) $committee->committeeId()) }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        <td><a href="{{ action([\Francken\Association\Committees\Http\AdminCommitteesController::class, 'show'], (string) $committee->committeeId()) }}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
 
       </tr>
     @endforeach
   </table>
 
-  <a href="{{ action([\Francken\Infrastructure\Http\Controllers\Admin\CommitteeController::class, 'create']) }}"
+  <a href="{{ action([\Francken\Association\Committees\Http\AdminCommitteesController::class, 'create']) }}"
      class="btn btn-default"
   >
       Create new committee

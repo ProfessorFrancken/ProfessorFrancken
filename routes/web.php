@@ -18,7 +18,7 @@ use Francken\Auth\Http\Controllers\ForgotPasswordController;
 use Francken\Auth\Http\Controllers\LoginController;
 use Francken\Auth\Http\Controllers\ResetPasswordController;
 use Francken\Infrastructure\Http\Controllers\CareerController;
-use Francken\Infrastructure\Http\Controllers\CommitteesController;
+use Francken\Association\Committees\Http\CommitteesController;
 use Francken\Infrastructure\Http\Controllers\CompaniesController;
 use Francken\Infrastructure\Http\Controllers\MainContentController;
 use Francken\Infrastructure\Http\Controllers\ResearchGroupsController;
