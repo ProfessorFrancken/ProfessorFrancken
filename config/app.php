@@ -148,7 +148,6 @@ return [
         Francken\Shared\Providers\AppServiceProvider::class,
         Francken\Shared\Providers\NavigationServiceProvider::class,
         Francken\Shared\Providers\EventSourcingServiceProvider::class,
-        Francken\Shared\Providers\BooksServiceProvider::class,
         Francken\Shared\Providers\CareerServiceProvider::class,
         Francken\Shared\Providers\ViewServiceProvider::class,
 
