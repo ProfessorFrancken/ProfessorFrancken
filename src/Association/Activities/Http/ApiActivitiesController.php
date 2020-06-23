@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Francken\Api\Http;
+namespace Francken\Association\Activities\Http;
 
 use DateTime;
 use DateTimeImmutable;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\Activities\CalendarEvent;
 
-final class ActivitiesController
+final class ApiActivitiesController
 {
     public function index(ActivitiesRepository $activities)
     {

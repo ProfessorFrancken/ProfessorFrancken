@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Francken\Api\Http;
+namespace Francken\Career\Http;
 
 use Francken\Career\JobOpeningRepository;
 
-final class JobOpeningsController
+final class ApiJobOpeningsController
 {
     public function index(JobOpeningRepository $jobOpenings)
     {

@@ -14,9 +14,9 @@ declare(strict_types=1);
 |
 */
 
-use Francken\Api\Http\ActivitiesController;
+use Francken\Association\Activities\Http\ApiActivitiesController;
 use Francken\Study\BooksSale\Http\ApiBooksController;
-use Francken\Api\Http\JobOpeningsController;
+use Francken\Career\Http\ApiJobOpeningsController;
 use Francken\Infrastructure\Http\Controllers\JasController;
 use Francken\PlusOne\Http as PlusOne;
 
@@ -27,9 +27,9 @@ Route::get('/database/streep/afbeeldingen/{url}', [PlusOne\PicturesController::c
     ->where('url', '.*');
 
 Route::group(['prefix' => '/api'], function () : void {
-    Route::get('activities', [ActivitiesController::class, 'index']);
+    Route::get('activities', [ApiActivitiesController::class, 'index']);
     Route::get('books', [ApiBooksController::class, 'index']);
-    Route::get('job-openings', [JobOpeningsController::class, 'index']);
+    Route::get('job-openings', [ApiJobOpeningsController::class, 'index']);
 
     Route::group(['prefix' => '/plus-one'], function () : void {
         Route::post('authenticate', [PlusOne\AuthenticationController::class, 'post']);
@@ -46,6 +46,6 @@ Route::group(['prefix' => '/api'], function () : void {
         Route::get('sponsors', [PlusOne\SponsorsController::class, 'index']);
 
         Route::get('statistics/categories/', [PlusOne\CategoryStatisticsController::class, 'index']);
-        Route::get('statistics/activities', [ActivitiesController::class, 'index']);
+        Route::get('statistics/activities', [ApiActivitiesController::class, 'index']);
     });
 });
