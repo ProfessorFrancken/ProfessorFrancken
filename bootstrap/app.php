@@ -30,7 +30,7 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    Francken\Infrastructure\Http\Kernel::class
+    Francken\Shared\Http\Kernel::class
 );
 
 $app->singleton(

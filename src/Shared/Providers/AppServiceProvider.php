@@ -74,7 +74,7 @@ final class AppServiceProvider extends ServiceProvider
     /**
      * Register the repositorie used to store our event sourced aggregate root
      * Currently all repositories use the same configuration based on the
-     * Francken\Infrastructure\EventSourcing\Factory class
+     * Francken\Shared\EventSourcing\Factory class
      *
      * @param string $repository classname
      * @param string $aggregate  classname

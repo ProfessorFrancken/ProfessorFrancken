@@ -1,4 +1,4 @@
-Middleware?php
+<?php
 
 declare(strict_types=1);
 
@@ -17,4 +17,3 @@ class CheckForMaintenanceMode extends Middleware
         //
     ];
 }
-void

@@ -8,10 +8,11 @@ use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Association\FranckenVrij\Volume;
-use Francken\Shared\Url;
 use Francken\Shared\Http\Controllers\Controller;
+use Francken\Shared\Url;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
 
@@ -166,7 +167,7 @@ final class FranckenVrijController extends Controller
             ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
 
-        /** @var string|\Francken\Infrastructure\Http\Controllers\Admin\UploadedFile */
+        /** @var string|UploadedFile */
         $cover_file = $request->hasFile('cover')
             ? $request->file('cover')
             : $this->generateCoverImageFromPdf($francken_vrij_media->getAbsolutePath());

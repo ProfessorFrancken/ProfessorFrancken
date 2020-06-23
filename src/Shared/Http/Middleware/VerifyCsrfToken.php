@@ -1,4 +1,4 @@
-BaseVerifier?php
+<?php
 
 declare(strict_types=1);
 
@@ -18,4 +18,3 @@ class VerifyCsrfToken extends BaseVerifier
         '/symposia/*/participants'
     ];
 }
-void
