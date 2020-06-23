@@ -171,10 +171,8 @@ final class News extends Eloquent
 
     /**
      * Scope a query to only include news only news before the current news
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function previous()
+    public function previous() : ?self
     {
         if ($this->published_at === null) {
             return null;
@@ -188,10 +186,8 @@ final class News extends Eloquent
 
     /**
      * Scope a query to only include news only news before the current news
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function next()
+     */           
+    public function next(): ?News
     {
         if ($this->published_at === null) {
             return null;
@@ -243,7 +239,7 @@ final class News extends Eloquent
      * Scope a query to only include a given author
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Francken\Association\News\Author $author
+     * @param string $author
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithAuthorName($query, string $author = null)

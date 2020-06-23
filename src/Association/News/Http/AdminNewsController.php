@@ -162,7 +162,7 @@ final class AdminNewsController
     {
         // Note that for read actions we normally use the news repository
         // however since now we want to make changes we will use an eloquent model
-        $news = News::byLink($id)->get();
+        $news = News::byLink($id)->firstOrFail();
         $news->archive();
         $news->save();
 
