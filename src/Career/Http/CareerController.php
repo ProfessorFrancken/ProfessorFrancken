@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Career\Http;
 
-use Francken\Career\AcademicYear;
+use Francken\Shared\AcademicYear;
 use Francken\Career\EventRepository;
 use Francken\Career\JobOpeningRepository;
 use Francken\Career\JobType;
