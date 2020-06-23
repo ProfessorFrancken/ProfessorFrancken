@@ -12,7 +12,7 @@ class SendDeductionNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $theme = 'francken';
+    public $theme = 'francken';
 
     /**
      * @var int

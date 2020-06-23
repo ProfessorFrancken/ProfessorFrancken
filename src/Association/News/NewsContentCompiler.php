@@ -8,8 +8,8 @@ use Francken\Shared\Markdown\ResponsiveImageRenderer;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use League\CommonMark\Inline\Element\Image;
+use League\CommonMark\Inline\Renderer\ImageRenderer;
 use Webuni\CommonMark\AttributesExtension\AttributesExtension;
-use Webuni\CommonMark\TableExtension\TableExtension;
 
 final class NewsContentCompiler
 {
@@ -18,9 +18,10 @@ final class NewsContentCompiler
     public function __construct()
     {
         $env = Environment::createCommonMarkEnvironment();
-        $env->addExtension(new TableExtension());
         $env->addExtension(new AttributesExtension());
-        $env->addInlineRenderer(Image::class, new ResponsiveImageRenderer());
+        $env->addInlineRenderer(Image::class, new ResponsiveImageRenderer(
+            new ImageRenderer()
+        ));
 
         $this->compiler = new CommonMarkConverter([
             'html_input' => 'allow',
@@ -39,7 +40,9 @@ final class NewsContentCompiler
     public function exerpt(string $content) : CompiledMarkdown
     {
         $env = Environment::createCommonMarkEnvironment();
-        $env->addInlineRenderer(Image::class, new ResponsiveImageRenderer());
+        $env->addInlineRenderer(Image::class, new ResponsiveImageRenderer(
+            new ImageRenderer()
+        ));
         $toHtml = new CommonMarkConverter([
             'html_input' => 'strip',
             'allow_unsafe_links' => false,

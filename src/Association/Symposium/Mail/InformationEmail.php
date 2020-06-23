@@ -18,7 +18,7 @@ class InformationEmail extends Mailable
      */
     public $participant;
 
-    protected $theme = 'symposium';
+    public $theme = 'symposium';
 
     /**
      * Create a new message instance.

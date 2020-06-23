@@ -19,7 +19,7 @@ class VerifyRegistration extends Mailable
      */
     public $participant;
 
-    protected $theme = 'symposium';
+    public $theme = 'symposium';
 
     /**
      * Create a new message instance.

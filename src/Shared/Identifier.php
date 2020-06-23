@@ -11,7 +11,7 @@ abstract class Identifier
 {
     protected $id;
 
-    public function __construct(string $id)
+    final public function __construct(string $id)
     {
         Assert::uuid($id);
 

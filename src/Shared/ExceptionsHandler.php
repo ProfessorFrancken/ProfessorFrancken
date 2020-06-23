@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Throwable;
 
 class ExceptionsHandler extends ExceptionHandler
 {
@@ -30,7 +31,7 @@ class ExceptionsHandler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      */
-    public function report(Exception $e) : void
+    public function report(Throwable $e) : void
     {
         parent::report($e);
     }
@@ -41,7 +42,7 @@ class ExceptionsHandler extends ExceptionHandler
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         return parent::render($request, $e);
     }

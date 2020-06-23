@@ -18,7 +18,7 @@ class NotifyCommittee extends Mailable
      */
     public $participant;
 
-    protected $theme = 'symposium';
+    public $theme = 'symposium';
 
     /**
      * @var string
