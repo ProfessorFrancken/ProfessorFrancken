@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Middleware;
+namespace Francken\Shared\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;

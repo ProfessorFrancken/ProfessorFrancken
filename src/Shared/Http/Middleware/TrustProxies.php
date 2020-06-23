@@ -1,8 +1,8 @@
-<?php
+Middleware?php
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Middleware;
+namespace Francken\Shared\Http\Middleware;
 
 use Fideloper\Proxy\TrustProxies as Middleware;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class TrustProxies extends Middleware
     /**
      * The trusted proxies for this application.
      *
-     * @var array
+     * @var array<array-key, mixed>
      */
     protected $proxies;
 
