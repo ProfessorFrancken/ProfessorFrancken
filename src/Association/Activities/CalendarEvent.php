@@ -76,7 +76,7 @@ final class CalendarEvent
 
     public function url() : string
     {
-        // slug of title, with date
+        return '';
     }
 
     /*

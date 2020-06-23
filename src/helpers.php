@@ -89,7 +89,7 @@ function image($url = '', $options = [], $addAppUrl = false)
                 'height' => 'h=',
             ];
 
-            $addiontals = [];
+            $additionals = [];
             foreach ($options as $option => $value) {
                 if (isset($map[$option])) {
                     $additionals[$map[$option]] = $value;

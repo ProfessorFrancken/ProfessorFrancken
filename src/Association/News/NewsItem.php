@@ -50,7 +50,7 @@ final class NewsItem
         $this->publicationDate = $publicationDate;
         $this->author = $author;
         $this->content = $content;
-        $this->related = [];
+        $this->related = $related;
         $this->next = $next;
         $this->previous = $previous;
     }
@@ -119,7 +119,7 @@ final class NewsItem
 
     public function relatedNewsItems() : array
     {
-        return $this->related;
+        return [];
     }
 
     public function nextNewsItem() : ?NewsItemLink

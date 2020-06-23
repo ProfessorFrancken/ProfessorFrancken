@@ -27,20 +27,13 @@ final class FakeNews
     {
         return $this->news;
     }
-    public function newsItem() : NewsItem
-    {
-    }
-
-    public function newsLink() : NewsItemLink
-    {
-    }
 
     private function generateNews(int $amount) : array
     {
         // First create a set of titles with associated publication dates
         // we use this to set the next and previous news items
         $publishedNews = collect(range(1, $amount))
-            ->map(function ($idx) {
+            ->map(function () {
                 return [
                     'title' => $this->faker->sentence(),
                     'published_at' => DateTimeImmutable::createFromMutable(

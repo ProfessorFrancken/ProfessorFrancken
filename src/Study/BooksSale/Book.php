@@ -108,7 +108,7 @@ final class Book extends Model
 
     public function getDescriptionAttribute()
     {
-        return $this->omschrijving;
+        return $this->beschrijving;
     }
 
     public function getAuthorAttribute()

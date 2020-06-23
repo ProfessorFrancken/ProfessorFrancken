@@ -16,14 +16,9 @@ final class LegacyBoardMember extends Model
     protected $table = 'commissie_lid';
     protected $connection = 'francken-legacy';
 
-
     public function getFullNameAttribute()
     {
-        return collect([
-            $this->voornaam,
-            $this->tussenvoegsel,
-            $this->achternaam
-        ])->filter()->implode(' ');
+        return $this->member->full_name;
     }
 
     public function member()

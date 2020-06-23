@@ -53,7 +53,6 @@ class PirateCrewController
         $pirate = Pirate::initiate($member);
         $pirate->joinCrew($crew);
 
-        $crew->join($member);
         $name = $crew->name;
 
         return redirect()->action([self::class, 'index'])

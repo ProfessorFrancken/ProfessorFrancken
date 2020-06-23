@@ -1,8 +1,9 @@
 includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 parameters:
-    level: 0
+    level: 3
     paths:
         - src
     ignoreErrors:
-        - '#Result of static method Plank\\Mediable\\Media::scopeInDirectory\(\) \(void\) is used.#'
+        - '#Access to an undefined property Spatie\\Permission\\Models\\Role::\$name.#'
+        - '#Access to an undefined property Spatie\\Permission\\Models\\Role::\$guard_name.#'

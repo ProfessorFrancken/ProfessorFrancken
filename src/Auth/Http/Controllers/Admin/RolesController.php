@@ -24,7 +24,6 @@ final class RolesController
 
     public function show(Role $role)
     {
-        $roles = Role::where('guard_name', 'web')->get();
         $permissions = Permission::where('guard_name', 'web')->get();
 
         return view('admin.compucie.roles.show', [
