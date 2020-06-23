@@ -13,7 +13,7 @@ class PlusOneFeature extends TestCase
             'password' => 'hoi',
         ]);
 
-        $this->assertArrayHasKey('token', $this->decodeResponseJson());
+        $this->seeJsonStructure(['token']);
     }
 
 
@@ -23,7 +23,7 @@ class PlusOneFeature extends TestCase
         $this->json('POST', '/api/plus-one/authenticate', [
             'password' => 'hoi',
         ]);
-        $token = $this->decodeResponseJson()['token'];
+        $token = $this->response->decodeResponseJson()['token'];
 
         $order = [
             "order" => [
