@@ -48,6 +48,8 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withMediaMatchAll($tags = array())
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withPhotos()
  * @mixin \Eloquent
+ * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
+ * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
  */
 final class Board extends Model
 {

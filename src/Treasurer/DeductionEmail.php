@@ -14,7 +14,7 @@ use Plank\Mediable\Mediable;
 
 /**
  * We keep track of each deduction that has occured.
- *
+ * 
  * For each deduction there will be one or more members
  *
  * @property int $id
@@ -51,6 +51,8 @@ use Plank\Mediable\Mediable;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMedia($tags = array(), $matchAll = false)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMediaMatchAll($tags = array())
  * @mixin \Eloquent
+ * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
+ * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
  */
 final class DeductionEmail extends Model
 {

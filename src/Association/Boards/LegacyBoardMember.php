@@ -10,6 +10,30 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Francken\Association\Boards\LegacyBoardMember
+ *
+ * @property int $id
+ * @property int $lid_id
+ * @property int $commissie_id
+ * @property int $jaar
+ * @property string $functie
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property-read mixed $full_name
+ * @property-read \Francken\Association\LegacyMember $member
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember whereCommissieId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember whereFunctie($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember whereJaar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember whereLidId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\LegacyBoardMember whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 final class LegacyBoardMember extends Model
 {
     public const LEGACY_BOARD_COMMITTEE_ID = 14;

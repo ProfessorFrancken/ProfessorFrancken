@@ -9,6 +9,33 @@ use DB;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Francken\Lustrum\PirateCrew
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property string $logo
+ * @property int $total_points
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Lustrum\Pirate[] $crewMembers
+ * @property-read int|null $crew_members_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Lustrum\EarnedAdtchievement[] $earnedAdtchievements
+ * @property-read int|null $earned_adtchievements_count
+ * @property-read \Francken\Lustrum\Pirate|null $pirate_of_the_day
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew whereTotalPoints($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 final class PirateCrew extends Model
 {
     protected $table = 'lustrum_pirate_crews';

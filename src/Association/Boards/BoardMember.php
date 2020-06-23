@@ -52,6 +52,8 @@ use Plank\Mediable\Mediable;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withMediaMatchAll($tags = array())
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withPhotos()
  * @mixin \Eloquent
+ * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
+ * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
  */
 final class BoardMember extends Model
 {

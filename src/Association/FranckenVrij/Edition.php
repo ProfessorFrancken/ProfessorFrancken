@@ -10,6 +10,27 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
+/**
+ * Francken\Association\FranckenVrij\Edition
+ *
+ * @property string $id
+ * @property string $title
+ * @property int $volume
+ * @property int $edition
+ * @property string $pdf
+ * @property string $cover
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition latestEdition()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereCover($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereEdition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition wherePdf($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereVolume($value)
+ * @mixin \Eloquent
+ */
 final class Edition extends Model
 {
     public $timestamps = false;

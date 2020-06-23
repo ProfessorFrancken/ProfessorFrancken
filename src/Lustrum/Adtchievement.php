@@ -7,6 +7,37 @@ namespace Francken\Lustrum;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Francken\Lustrum\Adtchievement
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property string|null $past_tense
+ * @property int $points
+ * @property int $is_repeatable
+ * @property int $is_team_effort
+ * @property int $is_hidden
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Lustrum\Pirate[] $earnedBy
+ * @property-read int|null $earned_by_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement earnedByPirateCrew(\Francken\Lustrum\PirateCrew $crew)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereIsHidden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereIsRepeatable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereIsTeamEffort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement wherePastTense($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement wherePoints($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 final class Adtchievement extends Model
 {
     protected $table = 'lustrum_adtchievements';

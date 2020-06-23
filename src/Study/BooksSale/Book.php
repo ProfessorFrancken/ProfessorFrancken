@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * This code is somewhat odd, on the write side it uses our legacy, Dutch datbase.
- *
+ * 
  * On the read side it uses an English interface which we will migrate to.
  *
  * @property int $id
@@ -59,6 +59,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereVerkoopdatum($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book whereVerkoperid($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book available()
  */
 final class Book extends Model
 {
