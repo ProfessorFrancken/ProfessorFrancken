@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $initials
  * @property string $gender
  * @property mixed $birthdate
- * @property int $has_dutch_diploma
+ * @property bool $has_dutch_diploma
  * @property string $nationality
  * @property \Francken\Association\Members\Email $email
  * @property string|null $city
@@ -39,9 +39,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property array $studies
  * @property string|null $iban
  * @property string|null $bic
- * @property int $deduct_additional_costs
+ * @property bool $deduct_additional_costs
  * @property string $comments
- * @property int $wants_to_join_a_committee
+ * @property bool $wants_to_join_a_committee
  * @property mixed|null $email_verified_at
  * @property mixed|null $registration_accepted_at
  * @property mixed|null $registration_form_signed_at
@@ -105,6 +105,9 @@ final class Registration extends Model
         'registration_accepted_at' => 'datetime:Y-m-d',
         'registration_form_signed_at' => 'datetime:Y-m-d',
         'birthdate' => 'datetime:Y-m-d',
+        'wants_to_join_a_committee' => 'boolean',
+        'has_dutch_diploma' => 'boolean',
+        'deduct_additional_costs' => 'boolean',
     ];
 
     public static function submit(
@@ -195,7 +198,7 @@ final class Registration extends Model
 
     public function setContactDetailsAttribute(ContactDetails $contactDetails) : void
     {
-        $this->email = $contactDetails->email()->toString();
+        $this->attributes['email'] = $contactDetails->email()->toString();
         $address = $contactDetails->address();
         if ($address !== null) {
             $this->city = $address->city();
@@ -234,7 +237,7 @@ final class Registration extends Model
     public function setStudyDetailsAttribute(StudyDetails $studyDetails) : void
     {
         $this->student_number = $studyDetails->studentNumber();
-        $this->studies = json_encode(
+        $this->attributes['studies'] = json_encode(
             array_map(
                 function (Study $study) : array {
                     return [

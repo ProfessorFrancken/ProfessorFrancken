@@ -52,7 +52,7 @@ class Api
      *
      * @param  string                   $call
      * @param  array|null               $parameters
-     * @return Response
+     * @return Response|string
      */
     public function request($call, $parameters = null)
     {
@@ -83,7 +83,7 @@ class Api
     protected function parameters($array)
     {
         if ( ! is_array($array)) {
-            return;
+            return '';
         }
         $encoded = [];
 

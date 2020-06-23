@@ -14,7 +14,7 @@ use Plank\Mediable\Mediable;
 
 /**
  * We keep track of each deduction that has occured.
- * 
+ *
  * For each deduction there will be one or more members
  *
  * @property int $id
@@ -23,7 +23,7 @@ use Plank\Mediable\Mediable;
  * @property \Illuminate\Support\Carbon $deduction_to
  * @property \Illuminate\Support\Carbon $deducted_at
  * @property \Illuminate\Support\Carbon|null $emails_sent_at
- * @property int $was_verified
+ * @property bool $was_verified
  * @property int $file_media_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -72,6 +72,9 @@ final class DeductionEmail extends Model
         'deduction_from',
         'deduction_to',
         'emails_sent_at'
+    ];
+    protected $casts = [
+        'was_verified' => 'boolean',
     ];
 
     public static function upload(

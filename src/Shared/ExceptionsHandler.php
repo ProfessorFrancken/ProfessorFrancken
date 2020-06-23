@@ -40,7 +40,7 @@ class ExceptionsHandler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function render($request, Throwable $e)
     {
@@ -49,6 +49,8 @@ class ExceptionsHandler extends ExceptionHandler
 
     /**
      * Overwrite the whoopsHandler so that we can use the new ignition error handler
+     *
+     * @return \Whoops\Handler\HandlerInterface
      */
     protected function whoopsHandler()
     {
