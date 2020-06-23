@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Console;
+namespace Francken\Shared\Console;
 
 use Artisan;
 use DB;

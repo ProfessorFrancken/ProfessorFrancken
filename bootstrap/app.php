@@ -35,7 +35,7 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Francken\Infrastructure\Console\Kernel::class
+    Francken\Shared\Console\Kernel::class
 );
 
 $app->singleton(
