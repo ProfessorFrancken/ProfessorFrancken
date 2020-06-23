@@ -10,6 +10,7 @@ use Francken\Association\News\Author;
 use Francken\Association\News\NewsContentCompiler;
 use Francken\Association\News\NewsItem;
 use InvalidArgumentException;
+use Iterator;
 use SimpleXMLIterator;
 
 final class WordpressNewsIterator implements \IteratorAggregate
@@ -25,7 +26,7 @@ final class WordpressNewsIterator implements \IteratorAggregate
         $this->filename = $filename;
     }
 
-    public function getIterator()
+    public function getIterator(): Iterator
     {
         $xml = new SimpleXMLIterator($this->filename, 0, true);
 

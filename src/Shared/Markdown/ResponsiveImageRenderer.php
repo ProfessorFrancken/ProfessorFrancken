@@ -6,6 +6,7 @@ namespace Francken\Shared\Markdown;
 
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Inline\Element\AbstractInline;
+use League\CommonMark\Inline\Element\Image;
 use League\CommonMark\Inline\Renderer\ImageRenderer;
 use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 use League\CommonMark\Util\ConfigurationAwareInterface;
@@ -25,6 +26,10 @@ class ResponsiveImageRenderer implements InlineRendererInterface, ConfigurationA
 
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
+        if ( ! ($inline instanceof Image)) {
+            throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
+        }
+
         $element = $this->imageRenderer->render($inline, $htmlRenderer);
         $element->setAttribute('class', 'img-fluid');
         $element->setAttribute('src', news_image($element->getAttribute('src')));

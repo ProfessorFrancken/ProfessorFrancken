@@ -25,8 +25,10 @@ abstract class Identifier
 
     /**
      * Generates a new Identifier instance with a uuid
+     *
+     * @return static
      */
-    public static function generate() : self
+    public static function generate()
     {
         return new static(Uuid::uuid4()->toString());
     }
