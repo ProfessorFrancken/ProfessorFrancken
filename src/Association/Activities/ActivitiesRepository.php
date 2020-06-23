@@ -26,10 +26,6 @@ final class ActivitiesRepository
         });
     }
 
-    public function store(Activity $activity) : void
-    {
-    }
-
     public function all()
     {
         return $this->activities;
