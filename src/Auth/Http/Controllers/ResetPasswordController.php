@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Auth\Http\Controllers;
 
-use Francken\Infrastructure\Http\Controllers\Controller;
+use Francken\Shared\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

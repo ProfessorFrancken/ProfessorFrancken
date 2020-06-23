@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Shared\Http\Controllers;
 
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;

@@ -6,7 +6,7 @@ namespace Francken\Shared\Providers;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use Francken\Infrastructure\Http\Controllers\DashboardController;
+use Francken\Shared\Http\Controllers\DashboardController;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;

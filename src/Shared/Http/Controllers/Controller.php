@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Shared\Http\Controllers;
 
 use Francken\Shared\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;

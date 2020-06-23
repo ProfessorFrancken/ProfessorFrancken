@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers\Admin;
+namespace Francken\Shared\Http\Controllers\Admin;
 
 final class AdminController
 {

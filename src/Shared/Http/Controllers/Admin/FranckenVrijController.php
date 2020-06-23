@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers\Admin;
+namespace Francken\Shared\Http\Controllers\Admin;
 
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Url;
-use Francken\Infrastructure\Http\Controllers\Controller;
+use Francken\Shared\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Plank\Mediable\Media;
@@ -163,10 +163,10 @@ final class FranckenVrijController extends Controller
         $francken_vrij_media = $this->uploader->fromSource($request->file('pdf'))
             ->toDirectory('francken-vrij')
             ->useFilename($volume . '-' . $edition)
-            ->setMaximumSize(static::ONE_HUNDRED_MB)
+            ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
 
-        /** @var UploadedFile|string */
+        /** @var string|\Francken\Infrastructure\Http\Controllers\Admin\UploadedFile */
         $cover_file = $request->hasFile('cover')
             ? $request->file('cover')
             : $this->generateCoverImageFromPdf($francken_vrij_media->getAbsolutePath());
@@ -175,7 +175,7 @@ final class FranckenVrijController extends Controller
         $cover_media = $this->uploader->fromSource($cover_file)
             ->toDirectory('francken-vrij/covers/')
             ->useFilename($volume . '-' . $edition . '-cover')
-            ->setMaximumSize(static::ONE_HUNDRED_MB)
+            ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
 
         return [

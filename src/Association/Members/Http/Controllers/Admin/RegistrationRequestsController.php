@@ -8,7 +8,7 @@ use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Http\Requests\RegistrationRequest;
 use Francken\Association\Members\Registration\Registration;
-use Francken\Infrastructure\Http\Controllers\Controller;
+use Francken\Shared\Http\Controllers\Controller;
 use Francken\Shared\Clock\Clock;
 
 final class RegistrationRequestsController extends Controller
