@@ -37,7 +37,6 @@
     "barryvdh/laravel-ide-helper": "^2.6",
     "beyondcode/laravel-dump-server": "^1.2",
     "codedungeon/phpunit-result-printer": "0.26.*",
-    "davidbadura/faker-markdown-generator": "^1.0",
     "friendsofphp/php-cs-fixer": "^2.10",
     "fzaninotto/faker": "~1.4",
     "laravel/browser-kit-testing": "^5.0",
