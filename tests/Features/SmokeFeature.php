@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijRepository;
+use Francken\Association\FranckenVrij\FranckenVrijEdition;
 use Francken\Shared\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -15,20 +14,16 @@ final class SmokeFeature extends TestCase
     use DatabaseMigrations;
     use LoggedInAsAdmin;
 
-
     public function setUp() : void
     {
         parent::setUp();
-        $francken_vrij = $this->app->make(FranckenVrijRepository::class);
-        $francken_vrij->save(
-            Edition::publish(
-                EditionId::generate(),
-                "Francken Vrij 20.1",
-                20,
-                1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
-            )
+        FranckenVrijEdition::publish(
+            EditionId::generate(),
+            "Francken Vrij 20.1",
+            20,
+            1,
+            new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
+            new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
     }
 

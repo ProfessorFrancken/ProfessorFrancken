@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijRepository;
+use Francken\Association\FranckenVrij\FranckenVrijEdition;
 use Francken\Shared\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -18,16 +17,13 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function a_list_of_all_francken_vrijs_are_displayed() : void
     {
-        $franckenVrij = $this->app->make(FranckenVrijRepository::class);
-        $franckenVrij->save(
-            Edition::publish(
-                EditionId::generate(),
-                "Francken Vrij 20.1",
-                20,
-                1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
-            )
+        FranckenVrijEdition::publish(
+            EditionId::generate(),
+            "Francken Vrij 20.1",
+            20,
+            1,
+            new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
+            new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
         $this->visit('/association/francken-vrij')
@@ -51,20 +47,16 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function changing_a_published_francken_vrij() : void
     {
-        $franckenVrij = $this->app->make(FranckenVrijRepository::class);
-        $id = EditionId::generate();
-        $franckenVrij->save(
-            Edition::publish(
-                $id,
-                "Francken Vrij 20.1",
-                20,
-                1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
-            )
+        $edition = FranckenVrijEdition::publish(
+            EditionId::generate(),
+            "Francken Vrij 20.1",
+            20,
+            1,
+            new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
+            new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
-        $this->visit("/admin/association/francken-vrij/{$id}")
+        $this->visit("/admin/association/francken-vrij/{$edition->getId()}")
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
@@ -76,20 +68,16 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function changing_a_published_francken_vrij_pdf_file() : void
     {
-        $franckenVrij = $this->app->make(FranckenVrijRepository::class);
-        $id = EditionId::generate();
-        $franckenVrij->save(
-            Edition::publish(
-                $id,
-                "Francken Vrij 20.1",
-                20,
-                1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
-            )
+        $edition = FranckenVrijEdition::publish(
+            EditionId::generate(),
+            "Francken Vrij 20.1",
+            20,
+            1,
+            new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
+            new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
-        $this->visit("/admin/association/francken-vrij/{$id}")
+        $this->visit("/admin/association/francken-vrij/{$edition->getId()}")
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
@@ -102,20 +90,16 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function removing_a_published_francken_vrij() : void
     {
-        $franckenVrij = $this->app->make(FranckenVrijRepository::class);
-        $id = EditionId::generate();
-        $franckenVrij->save(
-            Edition::publish(
-                $id,
-                "Francken Vrij 20.1",
-                20,
-                1,
-                new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
-                new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
-            )
+        $edition = FranckenVrijEdition::publish(
+            EditionId::generate(),
+            "Francken Vrij 20.1",
+            20,
+            1,
+            new Url("http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg"),
+            new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
-        $this->visit("/admin/association/francken-vrij/{$id}")
+        $this->visit("/admin/association/francken-vrij/{$edition->getId()}")
             ->press('Archive');
 
         $this->dontSee('Clinical');

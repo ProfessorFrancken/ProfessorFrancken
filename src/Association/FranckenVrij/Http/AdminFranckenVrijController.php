@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij\Http;
 
-use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijRepository;
+use Francken\Association\FranckenVrij\FranckenVrijEdition;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Http\Controllers\Controller;
 use Francken\Shared\Url;
@@ -22,23 +21,19 @@ final class AdminFranckenVrijController extends Controller
 
     private const ONE_HUNDRED_MB = 100 * 1024 * 1024;
 
-    private $franckenVrij;
-
     private $uploader;
 
-    public function __construct(FranckenVrijRepository $franckenVrij, MediaUploader $uploader)
+    public function __construct(MediaUploader $uploader)
     {
-        $this->franckenVrij = $franckenVrij;
         $this->uploader = $uploader;
     }
 
     public function index()
     {
-        $volumes = $this->franckenVrij->volumes();
+        $volumes = FranckenVrijEdition::volumes();
 
         // Predict the next volume and edition numbers
-        $currentVolume = array_reduce(
-            $volumes,
+        $currentVolume = $volumes->reduce(
             function (Volume $max, Volume $volume) {
                 return $volume->volume() > $max->volume() ? $volume : $max;
             },
@@ -47,7 +42,7 @@ final class AdminFranckenVrijController extends Controller
 
         $currentEdition = array_reduce(
             $currentVolume->editions(),
-            function (int $max, Edition $edition) {
+            function (int $max, FranckenVrijEdition $edition) {
                 return $edition->edition() > $max ? $edition->edition() : $max;
             },
             0
@@ -96,7 +91,7 @@ final class AdminFranckenVrijController extends Controller
             $edition
         );
 
-        $edition = Edition::publish(
+        FranckenVrijEdition::publish(
             EditionId::generate(),
             $request->get('title'),
             $volume,
@@ -105,22 +100,16 @@ final class AdminFranckenVrijController extends Controller
             $pdfPath
         );
 
-        $this->franckenVrij->save($edition);
-
         return redirect('/admin/association/francken-vrij');
     }
 
-    public function edit(string $id)
+    public function edit(FranckenVrijEdition $edition)
     {
-        $edition = $this->franckenVrij->find(new EditionId($id));
-
         return view('admin.francken-vrij.edit', ['edition' => $edition]);
     }
 
-    public function update(string $id, Request $request)
+    public function update(FranckenVrijEdition $edition, Request $request)
     {
-        $edition = $this->franckenVrij->find(new EditionId($id));
-
         $this->validate($request, [
             'title' => 'required',
             'volume' => 'required|min:1',
@@ -135,54 +124,65 @@ final class AdminFranckenVrijController extends Controller
             ? $this->uploadPdf($request, $volume, $editionNumber)
             : [$edition->cover(), $edition->pdf()];
 
-        $this->franckenVrij->save(
-            Edition::publish(
-                new EditionId($edition->getId()),
-                $request->get('title'),
-                $volume,
-                $editionNumber,
-                $cover,
-                $pdf
-            )
-        );
+
+        $edition->update([
+            'title' => $request->input('title'),
+            'volume' => $volume,
+            'edition' => $editionNumber,
+            'cover' => (string)$cover,
+            'pdf' => (string)$pdf
+        ]);
 
         return redirect('/admin/association/francken-vrij');
     }
 
-    public function destroy(string $id)
+    public function destroy(FranckenVrijEdition $edition)
     {
-        $this->franckenVrij->remove(new EditionId($id));
+        $edition->delete();
 
         return redirect('/admin/association/francken-vrij');
     }
 
-    private function uploadPdf(Request $request, $volume, $edition)
+    private function uploadPdf(Request $request, int $volume, int $edition) : array
     {
-        $uploader = \App::make(MediaUploader::class);
-
         /** @var Media */
-        $francken_vrij_media = $this->uploader->fromSource($request->file('pdf'))
+        $franckenVrijMedia = $this->uploader->fromSource($request->file('pdf'))
             ->toDirectory('francken-vrij')
             ->useFilename($volume . '-' . $edition)
             ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
 
+        $coverMedia = $this->generateCoverMedia(
+            $request,
+            $volume,
+            $edition,
+            $franckenVrijMedia
+        );
+
+        return [
+            new Url($coverMedia->getUrl()),
+            new Url($franckenVrijMedia->getUrl())
+        ];
+    }
+
+    private function generateCoverMedia(
+        Request $request,
+        int $volume,
+        int $edition,
+        Media $franckenVrijMedia
+    ) : Media {
         /** @var string|UploadedFile */
         $cover_file = $request->hasFile('cover')
             ? $request->file('cover')
-            : $this->generateCoverImageFromPdf($francken_vrij_media->getAbsolutePath());
+            : $this->generateCoverImageFromPdf(
+                $franckenVrijMedia->getAbsolutePath()
+            );
 
-        /** @var Media */
-        $cover_media = $this->uploader->fromSource($cover_file)
+        return $this->uploader->fromSource($cover_file)
             ->toDirectory('francken-vrij/covers/')
             ->useFilename($volume . '-' . $edition . '-cover')
             ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
-
-        return [
-            new Url($cover_media->getUrl()),
-            new Url($francken_vrij_media->getUrl())
-        ];
     }
 
     private function generateCoverImageFromPdf(string $pdf_path) : string

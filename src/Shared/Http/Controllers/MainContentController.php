@@ -5,25 +5,27 @@ declare(strict_types=1);
 namespace Francken\Shared\Http\Controllers;
 
 use Francken\Association\Activities\ActivitiesRepository;
-use Francken\Association\FranckenVrij\FranckenVrijRepository;
+use Francken\Association\FranckenVrij\FranckenVrijEdition;
 use Francken\Association\News\Repository as NewsRepository;
 
 class MainContentController extends Controller
 {
     public function index(
         NewsRepository $news,
-        ActivitiesRepository $activities,
-        FranckenVrijRepository $francken_vrij
+        ActivitiesRepository $activities
     ) {
         $today = new \DateTimeImmutable(
             'now', new \DateTimeZone('Europe/Amsterdam')
         );
 
+        $latestEdition = FranckenVrijEdition::query()
+            ->latestEdition()
+            ->first();
 
         return view('homepage/homepage', [
             'news' => $news->recent(3),
             'activities' => $activities->after($today, 5),
-            'latest_edition' => $francken_vrij->latestEdition()
+            'latest_edition' => $latestEdition,
         ]);
     }
 

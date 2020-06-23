@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use Broadway\EventSourcing\EventSourcingRepository;
-use Francken\Association\FranckenVrij\Edition;
-use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Shared\Clock\Clock;
 use Francken\Shared\Clock\SystemClock;
 use Francken\Shared\EventSourcing\Factory;
@@ -33,10 +31,6 @@ final class AppServiceProvider extends ServiceProvider
     // where the first value is the repository's class name and the second value
     // are the options that should be given to the illuminate repository
     public const ILLUMINATE_READ_MODELS = [
-        [
-            FranckenVrijRepository::class,
-            ['francken_vrij', Edition::class, 'id']
-        ],
     ];
 
     /**

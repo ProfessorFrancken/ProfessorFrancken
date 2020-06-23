@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\FranckenVrij;
 
-use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
+use Francken\Association\FranckenVrij\FranckenVrijEdition;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Url;
 use PHPUnit\Framework\TestCase as TestCase;
@@ -17,30 +17,30 @@ class VolumeTest extends TestCase
     public function setUp() : void
     {
         $this->editions = [
-            Edition::publish(
-                EditionId::generate(),
-                'Francken Vrij',
-                20,
-                1,
-                new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
-                new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
-            ),
-            Edition::publish(
-                EditionId::generate(),
-                'Francken Vrij',
-                20,
-                2,
-                new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.2.jpg'),
-                new Url('http://www.professorfrancken.nl/franckenvrij/20.2.pdf')
-            ),
-            Edition::publish(
-                EditionId::generate(),
-                'Francken Vrij',
-                20,
-                3,
-                new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.3.jpg'),
-                new Url('http://www.professorfrancken.nl/franckenvrij/20.3.pdf')
-            ),
+            new FranckenVrijEdition([
+                'id' => EditionId::generate(),
+                'title' => 'Francken Vrij',
+                'volume' => 20,
+                'edtion' => 1,
+                'pdf' => new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
+                'cover' => new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
+            ]),
+            new FranckenVrijEdition([
+                'id' => EditionId::generate(),
+                'title' => 'Francken Vrij',
+                'volume' => 20,
+                'edtion' => 2,
+                'pdf' => new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.2.jpg'),
+                'cover' => new Url('http://www.professorfrancken.nl/franckenvrij/20.2.pdf')
+            ]),
+            new FranckenVrijEdition([
+                'id' => EditionId::generate(),
+                'title' => 'Francken Vrij',
+                'volume' => 20,
+                'edtion' => 3,
+                'pdf' => new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.3.jpg'),
+                'cover' => new Url('http://www.professorfrancken.nl/franckenvrij/20.3.pdf')
+            ]),
         ];
     }
 
@@ -56,6 +56,6 @@ class VolumeTest extends TestCase
     public function a_volume_cant_contain_editions_that_dont_belong_to_the_same_volume() : void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $volume = new Volume(21, $this->editions);
+        new Volume(21, $this->editions);
     }
 }

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijRepository;
+use Francken\Association\FranckenVrij\FranckenVrijEdition;
 use Francken\Shared\Url;
 use Illuminate\Database\Seeder;
 
@@ -17,20 +16,16 @@ final class FranckenVrijSeeder extends Seeder
      */
     public function run()
     {
-        $editions = App::make(FranckenVrijRepository::class);
-
         // Save all existing editions
         foreach (range(21, 1, -1) as $volume) {
             foreach (range(1, 3) as $edition) {
-                $editions->save(
-                    Edition::publish(
-                        EditionId::generate(),
-                        "Francken Vrij " . $volume . '.' . $edition,
-                        $volume,
-                        $edition,
-                        new Url("https://professorfrancken.nl/franckenvrij/webplaatjes/{$volume}.{$edition}.jpg"),
-                        new Url("https://professorfrancken.nl/franckenvrij/{$volume}.{$edition}.pdf")
-                    )
+                FranckenVrijEdition::publish(
+                    EditionId::generate(),
+                    "Francken Vrij " . $volume . '.' . $edition,
+                    $volume,
+                    $edition,
+                    new Url("https://professorfrancken.nl/franckenvrij/webplaatjes/{$volume}.{$edition}.jpg"),
+                    new Url("https://professorfrancken.nl/franckenvrij/{$volume}.{$edition}.pdf")
                 );
             }
         }

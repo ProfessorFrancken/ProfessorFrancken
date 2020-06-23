@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\FranckenVrij;
 
-use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
+use Francken\Association\FranckenVrij\FranckenVrijEdition as Edition;
+use Francken\Features\TestCase;
 use Francken\Shared\Url;
-use Francken\Tests\Application\ReadModelTestCase as TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class EditionTest extends TestCase
 {
+    use DatabaseMigrations;
     /** @test */
     public function it_has_a_volume_and_edition_number() : void
     {
