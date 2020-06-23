@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Shared;
+namespace Francken\Shared\EventSourcing;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 

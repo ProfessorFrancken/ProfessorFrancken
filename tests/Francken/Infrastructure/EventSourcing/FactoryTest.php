@@ -47,7 +47,7 @@ class FactoryTest extends TestCase
 
 namespace Francken\Tests\Infrastructure\EventSourcing;
 
-use Francken\Shared\AggregateRoot;
+use Francken\Shared\EventSourcing\AggregateRoot;
 
 class AggregateRootExample extends AggregateRoot
 {
