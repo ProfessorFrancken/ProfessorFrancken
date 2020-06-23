@@ -14,9 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $passphrase = config('francken.general.admin_passphrase');
 
-        $this->call(CommitteesSeeder::class);
         $this->call(RolesSeeder::class);
-
         $this->call(FranckenVrijSeeder::class);
 
         $mark = Account::create([
