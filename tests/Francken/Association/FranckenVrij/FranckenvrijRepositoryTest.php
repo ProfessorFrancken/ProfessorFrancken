@@ -8,7 +8,7 @@ use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Shared\Url;
-use Francken\Infrastructure\Repositories\InMemoryRepository;
+use Francken\Shared\Repositories\InMemoryRepository;
 use PHPUnit\Framework\TestCase as TestCase;
 
 class FranckenvrijRepositoryTest extends TestCase

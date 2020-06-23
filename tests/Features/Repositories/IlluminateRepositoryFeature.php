@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features\Repositories;
 
 use Francken\Shared\ReadModelRepository;
-use Francken\Infrastructure\Repositories\IlluminateRepository;
+use Francken\Shared\Repositories\IlluminateRepository;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\ConnectionInterface as Connection;

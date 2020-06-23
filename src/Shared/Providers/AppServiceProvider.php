@@ -8,10 +8,11 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\FranckenVrijRepository;
 use Francken\Infrastructure\EventSourcing\Factory;
-use Francken\Infrastructure\Repositories\IlluminateRepository;
 use Francken\Shared\Clock\Clock;
 use Francken\Shared\Clock\SystemClock;
 use Francken\Shared\ReadModelRepository;
+use Francken\Shared\Repositories\IlluminateRepository;
+use Francken\Shared\Repositories\InMemoryRepository;
 use Francken\Shared\Settings\Settings;
 use Francken\Shared\Settings\ValueStoreSettings;
 use Illuminate\Contracts\Foundation\Application;
@@ -114,6 +115,6 @@ final class AppServiceProvider extends ServiceProvider
                 );
         }
 
-        $this->app->bind(ReadModelRepository::class, \Francken\Infrastructure\Repositories\InMemoryRepository::class);
+        $this->app->bind(ReadModelRepository::class, InMemoryRepository::class);
     }
 }

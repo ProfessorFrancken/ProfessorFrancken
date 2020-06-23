@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Francken\Infrastructure\Repositories;
+namespace Francken\Shared\Repositories;
 
 use Broadway\ReadModel\Identifiable as ReadModelInterface;
 use Francken\Shared\ReadModelNotFound;

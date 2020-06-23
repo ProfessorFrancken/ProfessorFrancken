@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features\Repositories;
 
 use Francken\Shared\ReadModelRepository;
-use Francken\Infrastructure\Repositories\InMemoryRepository;
+use Francken\Shared\Repositories\InMemoryRepository;
 
 class InMemoryRepositoryFeature extends RepositoryTestCase
 {
