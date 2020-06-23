@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Francken\Career\Http;
+namespace Francken\Extern\Http;
 
-use Francken\Career\JobOpeningRepository;
+use Francken\Extern\JobOpeningRepository;
 
 final class ApiJobOpeningsController
 {

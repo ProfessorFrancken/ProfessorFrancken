@@ -18,7 +18,7 @@ final class ActiveMembersStatistics
 
     public function handle()
     {
-        $year = Francken\Career\AcademicYear::fromDate(
+        $year = AcademicYear::fromDate(
             $this->today
         );
 

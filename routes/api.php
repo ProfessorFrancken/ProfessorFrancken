@@ -15,9 +15,9 @@ declare(strict_types=1);
 */
 
 use Francken\Association\Activities\Http\ApiActivitiesController;
-use Francken\Career\Http\ApiJobOpeningsController;
-use Francken\Shared\Http\Controllers\JasController;
+use Francken\Extern\Http\ApiJobOpeningsController;
 use Francken\PlusOne\Http as PlusOne;
+use Francken\Shared\Http\Controllers\JasController;
 
 Route::get('jas-events', [JasController::class, 'index']);
 Route::post('store-jas-events', [JasController::class, 'store']);

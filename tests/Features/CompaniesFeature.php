@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Francken\Career\CompanyRepository;
+use Francken\Extern\CompanyRepository;
 
 class CompaniesFeature extends TestCase
 {

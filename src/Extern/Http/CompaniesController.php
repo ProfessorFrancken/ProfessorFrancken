@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Francken\Career\Http;
+namespace Francken\Extern\Http;
 
-use Francken\Career\CompanyRepository;
-use Francken\Career\JobOpeningRepository;
-use Francken\Career\JobType;
-use Francken\Career\Sector;
+use Francken\Extern\CompanyRepository;
+use Francken\Extern\JobOpeningRepository;
+use Francken\Extern\JobType;
+use Francken\Extern\Sector;
 
 final class CompaniesController
 {
