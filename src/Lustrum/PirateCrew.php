@@ -111,9 +111,7 @@ final class PirateCrew extends Model
         if ($adtchievement !== null) {
             return $adtchievement->pirate;
         }
-        return null;
 
-        return $this->earnedAdtchievements()
-            ->where('lustrum_pirate_adtchievements.created_at', $today);
+        return null;
     }
 }

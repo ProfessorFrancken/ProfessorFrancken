@@ -16,18 +16,5 @@ final class ExportController
             new SymposiumExport($symposium),
             str_slug($symposium->name) . '.xlsx'
         );
-
-        $symposium->load(['participants' => function ($query) {
-            return $query->orderBy('lastname', 'asc');
-        }]);
-
-        return view('admin.association.symposia.attendance', [
-            'symposium' => $symposium,
-            'breadcrumbs' => [
-                ['url' => action([AdminSymposiaController::class, 'index']), 'text' => 'Symposia'],
-                ['url' => action([AdminSymposiaController::class, 'show'], $symposium->id), 'text' => $symposium->name],
-                ['url' => action([static::class, 'index'], $symposium->id), 'text' => 'Attendance'],
-            ]
-        ]);
     }
 }

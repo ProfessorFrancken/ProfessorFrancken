@@ -7,7 +7,7 @@ namespace Francken\Treasurer\Http\Requests;
 use DateTimeImmutable;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
-use InvalidArgumentException;
+use Webmozart\Assert\Assert;
 
 class DeductionRequest extends FormRequest
 {
@@ -56,12 +56,10 @@ class DeductionRequest extends FormRequest
 
     private function toDateTimeImmutable(string $input) : DateTimeImmutable
     {
-        $date_time = DateTimeImmutable::createFromFormat('Y-m-d', $input);
+        $datetime = DateTimeImmutable::createFromFormat('Y-m-d', $input);
 
-        if ($date_time === null) {
-            throw new InvalidArgumentException();
-        }
+        Assert::isInstanceOf($datetime, DateTimeImmutable::class);
 
-        return $date_time;
+        return $datetime;
     }
 }

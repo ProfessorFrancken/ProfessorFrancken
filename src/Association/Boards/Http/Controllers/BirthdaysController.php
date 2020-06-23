@@ -71,7 +71,5 @@ final class BirthdaysController
                 ['url' => action([static::class, 'index']), 'text' => 'Birthdays'],
             ],
         ]);
-
-        return collect($members);
     }
 }
