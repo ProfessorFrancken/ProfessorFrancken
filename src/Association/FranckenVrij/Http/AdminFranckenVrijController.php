@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Shared\Http\Controllers\Admin;
+namespace Francken\Association\FranckenVrij\Http;
 
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
@@ -16,7 +16,7 @@ use Illuminate\Http\UploadedFile;
 use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
 
-final class FranckenVrijController extends Controller
+final class AdminFranckenVrijController extends Controller
 {
     use ValidatesRequests;
 

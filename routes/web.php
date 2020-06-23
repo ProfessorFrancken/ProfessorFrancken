@@ -8,6 +8,7 @@ use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
 use Francken\Association\Committees\Http\CommitteesController;
+use Francken\Association\FranckenVrij\Http\FranckenVrijController;
 use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
 use Francken\Association\Members\Http\ProfileController;
@@ -80,6 +81,8 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::get('committees', [CommitteesController::class, 'index']);
     Route::get('committees/{committee}', [CommitteesController::class, 'show']);
+
+    Route::get('francken-vrij', [FranckenVrijController::class, 'index']);
 
     Route::get('boards', [BoardsController::class, 'index']);
     Route::get('boards/birthdays', [BirthdaysController::class, 'index'])

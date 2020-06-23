@@ -22,7 +22,7 @@ use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateCrewController;
 use Francken\Shared\Http\Controllers\Admin\AdminController;
-use Francken\Shared\Http\Controllers\Admin\FranckenVrijController;
+use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Shared\Http\Controllers\DashboardController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
 use Francken\Shared\Settings\Http\Controllers\SettingsController;
@@ -87,11 +87,11 @@ Route::group(['prefix' => 'association'], function () : void {
     });
 
     // Francken Vrij
-    Route::get('francken-vrij', [FranckenVrijController::class, 'index']);
-    Route::get('francken-vrij/{edition}', [FranckenVrijController::class, 'edit']);
-    Route::put('francken-vrij/{edition}', [FranckenVrijController::class, 'update']);
-    Route::delete('francken-vrij/{edition}', [FranckenVrijController::class, 'destroy']);
-    Route::post('francken-vrij', [FranckenVrijController::class, 'store']);
+    Route::get('francken-vrij', [AdminFranckenVrijController::class, 'index']);
+    Route::get('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'edit']);
+    Route::put('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'update']);
+    Route::delete('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'destroy']);
+    Route::post('francken-vrij', [AdminFranckenVrijController::class, 'store']);
 
     Route::get('activities', [AdminController::class, 'showPageIsUnavailable']);
     Route::get('members', [AdminController::class, 'showPageIsUnavailable']);

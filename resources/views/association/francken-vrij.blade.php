@@ -1,17 +1,8 @@
 @extends('pages.association')
-@inject('franckenVrij', "Francken\Association\FranckenVrij\FranckenVrijRepository")
 @section('header-image-url', '/images/header/library-books.jpeg')
-@php
-$volumes = $franckenVrij->volumes();
-$breadcrumbs = [
-    ['url' => '/association', 'text' => 'Association'],
-    ['text' => 'Francken Vrij'],
-];
-@endphp
 @section('main-content')
 
-    <div class="container">
-
+<div class="container">
     <h1 class="section-header section-header--centered">
         Francken Vrij
     </h1>
@@ -26,15 +17,8 @@ $breadcrumbs = [
                 Most editions come with a challenging puzzle and a fun comic as well.
             </p>
         </div>
-        <!-- <div class="col-md-4">
-            <div class="well">
-                <p>
-                    Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien! Pretium aenean pharetra, magna ac placerat vestibulum, lectus mauris ultrices eros, in cursus turpis massa tincidunt?
-                </p>
-            </div>
-        </div> -->
     </div>
-    </div>
+</div>
 
 <div class="ribbon ribbon--light my-5">
     <div class="container">
@@ -43,9 +27,7 @@ $breadcrumbs = [
         </h2>
 
         <div class="ribbon__items row align-items-stretch">
-
-          @foreach(array_shift($volumes)->editions() as $edition)
-
+          @foreach($latestEditions as $edition)
               <article class="col-md-4 d-flex flex-column news-item">
 
                   <h4 class="news-item__title text-center">
@@ -66,10 +48,8 @@ $breadcrumbs = [
     </div>
 </div>
 
-<div class="container">
-
+<div class="container my-3">
   @foreach($volumes as $volume)
-
       <h2>Volume {{ $volume->volume() }}</h2>
 
       <div class="row">
