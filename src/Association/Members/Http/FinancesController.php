@@ -10,14 +10,6 @@ use Illuminate\View\Factory as View;
 
 final class FinancesController
 {
-    private function member($user)
-    {
-        return \DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('id', $user->francken_id)
-            ->first();
-    }
-
     public function index()
     {
         $member = $this->member(request()->user());
@@ -53,9 +45,9 @@ final class FinancesController
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)
             ->limit(100)
-            ->groupby('year','month')
+            ->groupby('year', 'month')
             ->get()
-            ->map(function($month) {
+            ->map(function ($month) {
                 return [
                     "time" => new DateTimeImmutable($month->tijd),
                     "price" => $month->price
@@ -126,5 +118,12 @@ final class FinancesController
     public function adtcievements()
     {
         return view('profile.adtcievements');
+    }
+    private function member($user)
+    {
+        return \DB::connection('francken-legacy')
+            ->table('leden')
+            ->where('id', $user->francken_id)
+            ->first();
     }
 }

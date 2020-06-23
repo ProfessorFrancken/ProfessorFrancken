@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij\Http;
 
-use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\Edition;
+use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Http\Controllers\Controller;
 use Francken\Shared\Url;

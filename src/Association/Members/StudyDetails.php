@@ -27,4 +27,3 @@ final class StudyDetails
         return $this->studies;
     }
 }
-

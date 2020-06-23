@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Event;
 
 // use Francken\Association\Members\Study;
 
-class RegistrationTest extends \Francken\Tests\LaravelTestCase
+class RegisterMemberTest extends \Francken\Tests\LaravelTestCase
 {
     use DatabaseMigrations;
 

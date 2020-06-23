@@ -149,7 +149,7 @@ final class Registration extends Model
     public function getMostRecentStudyAttribute() : ?Study
     {
         return collect($this->studies)
-            ->sortByDesc(function (Study $study): DateTimeImmutable {
+            ->sortByDesc(function (Study $study) : DateTimeImmutable {
                 return $study->startDate();
             })
             ->first();

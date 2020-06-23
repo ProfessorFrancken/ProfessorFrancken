@@ -40,7 +40,7 @@ final class ImportIntoEloquent extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle() : void
     {
         $filename = database_path($this->argument('filename'));
 

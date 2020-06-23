@@ -35,7 +35,7 @@ class FetchLatestFranckenIcal extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle() : void
     {
         $url = 'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
         $file = file_get_contents($url);

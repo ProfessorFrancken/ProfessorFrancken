@@ -22,7 +22,7 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     {
         $email = new Email('markredeman+123@gmail.com');
 
-        $this->assertEquals('markredeman+123@gmail.com',  $email->toString());
+        $this->assertEquals('markredeman+123@gmail.com', $email->toString());
     }
 
     /**

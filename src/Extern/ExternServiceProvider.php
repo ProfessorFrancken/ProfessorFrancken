@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
-use Francken\Extern\CompanyRepository;
-use Francken\Extern\EventRepository;
-use Francken\Extern\JobOpeningRepository;
 use Illuminate\Support\ServiceProvider;
 
 final class ExternServiceProvider extends ServiceProvider

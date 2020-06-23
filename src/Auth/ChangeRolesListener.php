@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-use Francken\Association\Committees\Committee;
-use Francken\Association\Committees\CommitteesRepository;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Boards\BoardMemberWasDemissioned;
 use Francken\Association\Boards\BoardMemberWasDischarged;
 use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
+use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\CommitteesRepository;
 use Spatie\Permission\Models\Role;
 
 final class ChangeRolesListener
