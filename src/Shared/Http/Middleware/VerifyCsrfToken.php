@@ -11,7 +11,7 @@ class VerifyCsrfToken extends BaseVerifier
     /**
      * The URIs that should be excluded from CSRF verification.
      *
-     * @var array<array-key, mixed>
+     * @var array<string>
      */
     protected $except = [
         // We want people to be able to register from franckensymposium.nl

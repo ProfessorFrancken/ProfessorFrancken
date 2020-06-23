@@ -13,11 +13,12 @@ final class ActivitiesRepository
     public function __construct($calendar)
     {
         $this->activities = new Collection();
+        /** @var \Sabre\VObject\Component\VCalendar $vcalendar */
         $vcalendar = \Sabre\VObject\Reader::read(
             $calendar
         );
 
-        foreach ($vcalendar->VEVENT as $event) {
+        foreach ($vcalendar->select('VEVENT') as $event) {
             $this->activities[] = new CalendarEvent($event);
         }
 

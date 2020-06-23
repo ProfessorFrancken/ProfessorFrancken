@@ -28,6 +28,6 @@ abstract class Identifier
      */
     public static function generate() : self
     {
-        return new static((string)Uuid::uuid4());
+        return new static(Uuid::uuid4()->toString());
     }
 }

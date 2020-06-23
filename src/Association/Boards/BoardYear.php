@@ -67,9 +67,8 @@ final class BoardYear
      */
     public static function fromDate(DateTimeImmutable $date) : self
     {
-        $year = $date->format('Y');
+        $year = (int)$date->format('Y');
 
-        //
         if ($date < new DateTimeImmutable(sprintf('01-06-%s', $year))) {
             return self::fromString(sprintf(
                 '%d-%d', $year - 1, $year

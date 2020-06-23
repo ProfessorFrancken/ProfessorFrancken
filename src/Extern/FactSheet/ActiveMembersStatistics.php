@@ -26,7 +26,7 @@ final class ActiveMembersStatistics
         $members = \DB::connection('francken-legacy')
                  ->table('commissie_lid')
                  ->join('leden', 'leden.id', 'commissie_lid.lid_id')
-                 ->where('jaar', $year->start()->format('Y') - 1)
+                 ->where('jaar', (int)$year->start()->format('Y') - 1)
                  ->get()
                  ->unique(function ($member) {
                      return $member->lid_id;
