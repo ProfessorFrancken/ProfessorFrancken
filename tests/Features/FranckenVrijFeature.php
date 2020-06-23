@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijEdition;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Shared\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -17,7 +17,7 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function a_list_of_all_francken_vrijs_are_displayed() : void
     {
-        FranckenVrijEdition::publish(
+        Edition::publish(
             EditionId::generate(),
             "Francken Vrij 20.1",
             20,
@@ -47,7 +47,7 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function changing_a_published_francken_vrij() : void
     {
-        $edition = FranckenVrijEdition::publish(
+        $edition = Edition::publish(
             EditionId::generate(),
             "Francken Vrij 20.1",
             20,
@@ -68,7 +68,7 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function changing_a_published_francken_vrij_pdf_file() : void
     {
-        $edition = FranckenVrijEdition::publish(
+        $edition = Edition::publish(
             EditionId::generate(),
             "Francken Vrij 20.1",
             20,
@@ -90,7 +90,7 @@ class FranckenVrijFeature extends TestCase
     /** @test */
     public function removing_a_published_francken_vrij() : void
     {
-        $edition = FranckenVrijEdition::publish(
+        $edition = Edition::publish(
             EditionId::generate(),
             "Francken Vrij 20.1",
             20,

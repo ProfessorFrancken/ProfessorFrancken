@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Http\Controllers;
 
 use Francken\Association\Activities\ActivitiesRepository;
-use Francken\Association\FranckenVrij\FranckenVrijEdition;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\News\Repository as NewsRepository;
 
 class MainContentController extends Controller
@@ -18,7 +18,7 @@ class MainContentController extends Controller
             'now', new \DateTimeZone('Europe/Amsterdam')
         );
 
-        $latestEdition = FranckenVrijEdition::query()
+        $latestEdition = Edition::query()
             ->latestEdition()
             ->first();
 

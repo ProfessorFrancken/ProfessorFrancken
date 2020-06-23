@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
-final class FranckenVrijEdition extends Model
+final class Edition extends Model
 {
     public $timestamps = false;
     public $incrementing = false;

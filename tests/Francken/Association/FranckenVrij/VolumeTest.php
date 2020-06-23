@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Tests\Association\FranckenVrij;
 
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijEdition;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Url;
 use PHPUnit\Framework\TestCase as TestCase;
@@ -17,7 +17,7 @@ class VolumeTest extends TestCase
     public function setUp() : void
     {
         $this->editions = [
-            new FranckenVrijEdition([
+            new Edition([
                 'id' => EditionId::generate(),
                 'title' => 'Francken Vrij',
                 'volume' => 20,
@@ -25,7 +25,7 @@ class VolumeTest extends TestCase
                 'pdf' => new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'),
                 'cover' => new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf')
             ]),
-            new FranckenVrijEdition([
+            new Edition([
                 'id' => EditionId::generate(),
                 'title' => 'Francken Vrij',
                 'volume' => 20,
@@ -33,7 +33,7 @@ class VolumeTest extends TestCase
                 'pdf' => new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.2.jpg'),
                 'cover' => new Url('http://www.professorfrancken.nl/franckenvrij/20.2.pdf')
             ]),
-            new FranckenVrijEdition([
+            new Edition([
                 'id' => EditionId::generate(),
                 'title' => 'Francken Vrij',
                 'volume' => 20,

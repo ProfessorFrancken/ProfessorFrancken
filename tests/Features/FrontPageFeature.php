@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijEdition;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Shared\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -29,7 +29,7 @@ class FrontPageFeature extends TestCase
 
     private function publishAFranckenVrij() : void
     {
-        FranckenVrijEdition::publish(
+        Edition::publish(
             EditionId::generate(),
             "Francken Vrij 20.1",
             20,

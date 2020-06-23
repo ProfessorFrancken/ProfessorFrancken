@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij\Http;
 
-use Francken\Association\FranckenVrij\FranckenVrijEdition;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Shared\Http\Controllers\Controller;
 
 final class FranckenVrijController extends Controller
 {
     public function index()
     {
-        $volumes = FranckenVrijEdition::volumes();
+        $volumes = Edition::volumes();
 
         $latestEditions = $volumes->isNotEmpty()
             ? $volumes->first()->editions()

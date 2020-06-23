@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\FranckenVrij;
 
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijEdition as Edition;
 use Francken\Features\TestCase;
 use Francken\Shared\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

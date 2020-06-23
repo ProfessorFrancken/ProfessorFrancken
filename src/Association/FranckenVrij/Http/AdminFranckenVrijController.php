@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\FranckenVrij\Http;
 
 use Francken\Association\FranckenVrij\EditionId;
-use Francken\Association\FranckenVrij\FranckenVrijEdition;
+use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Http\Controllers\Controller;
 use Francken\Shared\Url;
@@ -30,7 +30,7 @@ final class AdminFranckenVrijController extends Controller
 
     public function index()
     {
-        $volumes = FranckenVrijEdition::volumes();
+        $volumes = Edition::volumes();
 
         // Predict the next volume and edition numbers
         $currentVolume = $volumes->reduce(
@@ -42,7 +42,7 @@ final class AdminFranckenVrijController extends Controller
 
         $currentEdition = array_reduce(
             $currentVolume->editions(),
-            function (int $max, FranckenVrijEdition $edition) {
+            function (int $max, Edition $edition) {
                 return $edition->edition() > $max ? $edition->edition() : $max;
             },
             0
@@ -91,7 +91,7 @@ final class AdminFranckenVrijController extends Controller
             $edition
         );
 
-        FranckenVrijEdition::publish(
+        Edition::publish(
             EditionId::generate(),
             $request->get('title'),
             $volume,
@@ -103,12 +103,12 @@ final class AdminFranckenVrijController extends Controller
         return redirect('/admin/association/francken-vrij');
     }
 
-    public function edit(FranckenVrijEdition $edition)
+    public function edit(Edition $edition)
     {
         return view('admin.francken-vrij.edit', ['edition' => $edition]);
     }
 
-    public function update(FranckenVrijEdition $edition, Request $request)
+    public function update(Edition $edition, Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -136,7 +136,7 @@ final class AdminFranckenVrijController extends Controller
         return redirect('/admin/association/francken-vrij');
     }
 
-    public function destroy(FranckenVrijEdition $edition)
+    public function destroy(Edition $edition)
     {
         $edition->delete();
 
