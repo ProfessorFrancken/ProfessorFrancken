@@ -84,7 +84,7 @@ final class RegistrationRequestsController extends Controller
 
         return redirect()->action([self::class, 'index'])
             ->with([
-                'status' => 'Successfully archived request from ' . $registration->fullname()->toString()
+                'status' => 'Successfully archived request from ' . $registration->fullname->toString()
             ]);
     }
 
