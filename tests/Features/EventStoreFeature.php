@@ -10,7 +10,7 @@ use Broadway\Domain\Metadata;
 use Broadway\EventStore\EventStore;
 use Broadway\EventStore\EventStreamNotFoundException;
 use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Infrastructure\EventSourcing\IlluminateEventStoreException;
+use Francken\Shared\EventSourcing\IlluminateEventStoreException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class EventStoreFeature extends TestCase

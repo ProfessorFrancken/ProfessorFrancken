@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\EventSourcing;
+namespace Francken\Shared\EventSourcing;
 
 use Broadway\EventStore\EventStoreException;
 use Exception;

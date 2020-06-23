@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\EventSourcing;
+namespace Francken\Shared\EventSourcing;
 
 use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainEventStream;
@@ -20,7 +20,7 @@ final class IlluminateEventStore implements EventStore
     private $connection;
 
     /**
-     * @var \Broadway\Serializer\Serializer
+     * @var Serializer
      */
     private $serializer;
 
@@ -116,7 +116,7 @@ final class IlluminateEventStore implements EventStore
      * @author Dennis Schepers
      *
      *
-     * @return \Broadway\Domain\DomainMessage
+     * @return DomainMessage
      */
     private function deserializeEvent($event)
     {

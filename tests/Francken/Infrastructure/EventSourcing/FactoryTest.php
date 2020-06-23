@@ -8,7 +8,7 @@ use Broadway\EventHandling\EventBus;
 use Broadway\EventSourcing\AggregateFactory\AggregateFactory;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStore;
-use Francken\Infrastructure\EventSourcing\Factory;
+use Francken\Shared\EventSourcing\Factory;
 use PHPUnit\Framework\TestCase as TestCase;
 
 class FactoryTest extends TestCase
