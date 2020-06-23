@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
-use Assert\Assertion as Assert;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Mail\Mailer;
+use Webmozart\Assert\Assert;
 
 final class SendInformationEmail extends Command
 {

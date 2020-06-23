@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Shared;
 
-use Assert\Assertion as Assert;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
+use Ramsey\Uuid\Uuid;
+use Webmozart\Assert\Assert;
 
 abstract class Identifier
 {
@@ -28,8 +28,6 @@ abstract class Identifier
      */
     public static function generate() : self
     {
-        $generator = new Version4Generator();
-
-        return new static($generator->generate());
+        return new static((string)Uuid::uuid4());
     }
 }
