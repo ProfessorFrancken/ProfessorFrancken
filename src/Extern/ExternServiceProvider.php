@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Francken\Shared\Providers;
+namespace Francken\Extern;
 
 use Francken\Extern\CompanyRepository;
 use Francken\Extern\EventRepository;
 use Francken\Extern\JobOpeningRepository;
 use Illuminate\Support\ServiceProvider;
 
-final class CareerServiceProvider extends ServiceProvider
+final class ExternServiceProvider extends ServiceProvider
 {
     public function register() : void
     {
