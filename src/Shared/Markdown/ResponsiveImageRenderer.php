@@ -7,9 +7,15 @@ namespace Francken\Shared\Markdown;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Inline\Element\AbstractInline;
 use League\CommonMark\Inline\Renderer\ImageRenderer;
+use League\CommonMark\Inline\Renderer\InlineRendererInterface;
+use League\CommonMark\Util\ConfigurationAwareInterface;
+use League\CommonMark\Util\ConfigurationInterface;
 
-class ResponsiveImageRenderer implements InlineRendererInterface
+class ResponsiveImageRenderer implements InlineRendererInterface, ConfigurationAwareInterface
 {
+    /**
+     * @var ImageRenderer
+     */
     private $imageRenderer;
 
     public function __construct(ImageRenderer $imageRenderer)
@@ -20,10 +26,14 @@ class ResponsiveImageRenderer implements InlineRendererInterface
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         $element = $this->imageRenderer->render($inline, $htmlRenderer);
-
         $element->setAttribute('class', 'img-fluid');
         $element->setAttribute('src', news_image($element->getAttribute('src')));
 
         return $element;
+    }
+
+    public function setConfiguration(ConfigurationInterface $configuration) : void
+    {
+        $this->imageRenderer->setConfiguration($configuration);
     }
 }
