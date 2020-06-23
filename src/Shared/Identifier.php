@@ -5,16 +5,12 @@ declare(strict_types=1);
 namespace Francken\Shared;
 
 use Assert\Assertion as Assert;
-use Broadway\Serializer\Serializable as SerializableInterface;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 
-abstract class Identifier implements SerializableInterface
+abstract class Identifier
 {
-    use Serializable;
-
     protected $id;
 
-    
     public function __construct(string $id)
     {
         Assert::uuid($id);
@@ -22,7 +18,6 @@ abstract class Identifier implements SerializableInterface
         $this->id = $id;
     }
 
-    
     public function __toString() : string
     {
         return $this->id;

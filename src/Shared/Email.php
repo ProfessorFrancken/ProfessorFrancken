@@ -4,13 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Shared;
 
-use Broadway\Serializer\Serializable as SerializableInterface;
-use Francken\Shared\Serializable;
-
-final class Email implements SerializableInterface
+final class Email
 {
-    use Serializable;
-
     private $email;
 
     public function __construct(string $email)
