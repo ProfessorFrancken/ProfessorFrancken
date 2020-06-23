@@ -14,7 +14,6 @@ use Francken\Auth\SetupPermissions;
 use Francken\Treasurer\ImportOldDeductions;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Francken\Shared\Console\MigrateSqliteToMysql;
 
 class Kernel extends ConsoleKernel
 {
@@ -32,7 +31,7 @@ class Kernel extends ConsoleKernel
         SetupPermissions::class,
         SynchronizeFlickrAlbums::class,
         UpdateBoardMemberStatus::class,
-        Francken\Shared\Console\MigrateSqliteToMysql::class,
+        MigrateSqliteToMysql::class,
     ];
 
     /**
