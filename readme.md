@@ -4,14 +4,10 @@
 
 This is the repository containing code for the new website of
 [T.F.V. Porfessor Francken](http://professorfrancken.nl/).
-We are using the [Laravel v6.0](http://laravel.com/docs/6.0) framework in
-combination with [Broadway](http://github.com/qandidate-labs/broadway), an
-infrastructure library for creating CQRS and Event Sourced applications.
+We are using the [Laravel v6.0](http://laravel.com/docs/6.0) framework.
 
 You can find some high quality introductory videos on
 [laravelfromscratch.com](laravelfromscratch.com).
-For more info on Broadway, watch
-[Willem-Jan Zijderveld speak on CQRS and Event Sourcing](https://www.youtube.com/watch?v=d1PDPsxWGqM).
 
 
 - [Getting started](#getting-started)
@@ -22,11 +18,6 @@ For more info on Broadway, watch
     - [Testing](#testing)
     - [Code style](#code-style)
     - [Git Usage](#git-usage)
-- [An introduction to this application's folder and namespace structure](#an-introduction-to-this-applications-folder-and-namespace-structure)
-    - [Domain layer](#domain-layer)
-    - [Application layer](#application-layer)
-        - [Adding projectors](#adding-projectors)
-    - [Infrastructure layer](#infrastructure-layer)
 
 ## Getting started
 
@@ -136,53 +127,3 @@ however it is not compatible with PSR-4, which is an improvement over PSR-0.
 The master branch is a protected branch, meaning you won't be able to force push changes to the master branch and status checks (i.e. tests should be green) are required before merging to master.
 Before sending a pull request with your latest changes you should make sure that your branch is up to date by rebasing your branch onto master.
 This makes it easier to review your pull request since there won't be many merge commits and it gives us a nice linear history.
-
-We generally use a [git flow](http://nvie.com/posts/a-successful-git-branching-model/) ish git model.
-Since this application hasn't been pushed to production yet we won't be very strict about this, however you should try to be consistent with the naming of branching (i.e. using feature and branches and bug fix branches).
-
-## An introduction to this application's folder and namespace structure
-This application is build upon an hexagonal architecture and is inspired by the
-talk [Hexagonal architecture - message oriented software design](http://www.slideshare.net/matthiasnoback/hexagonal-architecture-messageoriented-software-design-php-benelux-2016)
-by Matthias Noback.
-
-The application is divided by three layers: a Domain layer, Application layer
-and an Infrastructure layer.
-Each layer is only allowed to be dependent on its own layer, or a layer "below"
-it.
-Doing so ensures that we can use dependency inversion and makes our application
-more testable.
-
-### Domain layer
-The domain layer contains all of the business logic. Except for
-[Broadway](https://github.com/qandidate-labs/broadway) this layer should not
-have any external dependencies and *must* be framework agnostic.
-
-The code in the domain layer should have 100% line and mutation coverage and
-should only need unit tests.
-
-The [docs](docs/) folder contains some documentation of important domain concepts.
-
-### Application layer
-The application layer gives us an entry point into the domain layer.
-Inside the application layer we can find use cases of some our domain concepts.
-These use cases can be commands and command handlers, projections, event
-handlers and processors.
-The code inside this layer *should* be framework agnostic and should not need
-acceptance tests, however each class should be unit and integration tested.
-
-#### Adding projectors
-We use projectors to generate read models. Currently these projectors are placed
-in `App\ReadModels`. Once you've created a projector you should add its Fully
-Qualified Classs Name (FQCN) to the `event_sourcing.php` config file.
-The application will then automatically call each of the projectors in the
-config file when an event is published.
-
-### Infrastructure layer
-The infrastructure layer is the only layer that is not framework agnostic and
-could as well be called the "framework layer".
-This layer contains Laravel's service providers and the console and http
-kernels and their commands and controllers.
-It may also contain implementations of repositories, notification services etc.
-
-Code inside the infrastructure layer should be tested using acceptance criteria.
-Unit and integration tests should be written whenever they are useful.
