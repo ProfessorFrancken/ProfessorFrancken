@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Career;
+namespace Francken\Career;
+
+use Francken\Career\AcademicYear;
 
 final class EventRepository
 {

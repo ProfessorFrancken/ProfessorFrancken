@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees;
 
+use Francken\Career\AcademicYear;
+
 final class CommitteesRepository
 {
     private $committees;
@@ -270,7 +272,7 @@ final class CommitteesRepository
         );
 
         $today = new \DateTimeImmutable();
-        $year = \Francken\Application\Career\AcademicYear::fromDate($today);
+        $year = AcademicYear::fromDate($today);
 
         $members = \DB::connection('francken-legacy')
             ->table('commissie_lid')
@@ -300,7 +302,7 @@ final class CommitteesRepository
     public function ofMember(int $franckenMemberId) : array
     {
         $today = new \DateTimeImmutable();
-        $year = \Francken\Application\Career\AcademicYear::fromDate($today);
+        $year = AcademicYear::fromDate($today);
 
         $committees = \DB::connection('francken-legacy')
             ->table('commissie_lid')

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
-use Francken\Application\Career\CompanyRepository;
-use Francken\Application\Career\EventRepository;
-use Francken\Application\Career\JobOpeningRepository;
+use Francken\Career\CompanyRepository;
+use Francken\Career\EventRepository;
+use Francken\Career\JobOpeningRepository;
 use Illuminate\Support\ServiceProvider;
 
 final class CareerServiceProvider extends ServiceProvider

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Api\Http;
 
-use Francken\Application\Career\JobOpeningRepository;
+use Francken\Career\JobOpeningRepository;
 
 final class JobOpeningsController
 {

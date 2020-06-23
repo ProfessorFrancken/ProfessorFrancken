@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Extern\FactSheet;
 
 use DateTimeImmutable;
+use Francken\Career\AcademicYear;
 
 final class ActiveMembersStatistics
 {
@@ -17,7 +18,7 @@ final class ActiveMembersStatistics
 
     public function handle()
     {
-        $year = \Francken\Application\Career\AcademicYear::fromDate(
+        $year = Francken\Career\AcademicYear::fromDate(
             $this->today
         );
 

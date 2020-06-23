@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Career;
+namespace Francken\Career;
 
 class Sector
 {

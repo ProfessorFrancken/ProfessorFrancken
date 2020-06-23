@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Application\Career;
+namespace Francken\Career;
 
 use DateTimeImmutable;
 use League\Period\Period;

@@ -1,4 +1,4 @@
-@inject('companies', "Francken\Application\Career\CompanyRepository")
+@inject('companies', "Francken\Career\CompanyRepository")
 
 <div class="sponsors text-center">
     <h5>T.F.V. 'Professor Francken' is sponsored by</h5>

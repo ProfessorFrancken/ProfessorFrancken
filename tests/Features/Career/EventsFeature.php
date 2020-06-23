@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features\Career;
 
 use DateTimeImmutable;
-use Francken\Application\Career\EventRepository;
+use Francken\Career\EventRepository;
 use Francken\Features\TestCase;
 use Francken\Shared\Clock\Clock;
 use Francken\Shared\Clock\FrozenClock;

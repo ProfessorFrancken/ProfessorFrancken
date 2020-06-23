@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Francken\Infrastructure\Http\Controllers;
+namespace Francken\Career\Http;
 
-use Francken\Application\Career\AcademicYear;
-use Francken\Application\Career\EventRepository;
-use Francken\Application\Career\JobOpeningRepository;
-use Francken\Application\Career\JobType;
-use Francken\Application\Career\Sector;
+use Francken\Career\AcademicYear;
+use Francken\Career\EventRepository;
+use Francken\Career\JobOpeningRepository;
+use Francken\Career\JobType;
+use Francken\Career\Sector;
 use Francken\Shared\Clock\Clock;
 
 final class CareerController

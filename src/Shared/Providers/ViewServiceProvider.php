@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use DateTimeImmutable;
-use Francken\Application\Career\CompanyRepository;
+use Francken\Career\CompanyRepository;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 

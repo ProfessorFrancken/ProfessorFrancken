@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
-use Francken\Application\Career\AcademicYear;
+use Francken\Career\AcademicYear;
 use Francken\Infrastructure\Http\Controllers\MainContentController;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
