@@ -35,8 +35,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 final class EarnedAdtchievement extends Model
 {
-    // protected $with = ['pirate', 'pirateCrew', 'adtchievement'];
     protected $table = 'lustrum_pirate_adtchievements';
+
     protected $fillable = [
         'points',
         'pirate_crew_id',

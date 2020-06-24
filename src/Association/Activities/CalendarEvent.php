@@ -7,6 +7,7 @@ namespace Francken\Association\Activities;
 use Carbon\Carbon;
 use DateTimeImmutable;
 use DateTimeZone;
+use Sabre\VObject\Component\VEvent;
 
 final class CalendarEvent
 {
@@ -18,10 +19,9 @@ final class CalendarEvent
     private $status;
     private $google_id;
     private $last_modified_at_google;
-
     private $event;
 
-    public function __construct($event)
+    public function __construct(VEvent $event)
     {
         $this->event = $event;
 
@@ -30,7 +30,9 @@ final class CalendarEvent
         $this->location = (string)$event->LOCATION;
         $this->status = (string)$event->STATUS;
         $this->google_id = (string)$event->UID;
-        $this->last_modified_at_google = $event->{'LAST-MODIFIED'}->getDateTime();
+        $this->last_modified_at_google = array_first(
+            $event->select('LAST-MODIFIED')
+        )->getDateTime();
 
         $this->parseSchedule($event);
     }

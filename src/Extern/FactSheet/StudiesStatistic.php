@@ -8,9 +8,6 @@ use Illuminate\Support\Collection;
 
 final class StudiesStatistic
 {
-    // Auto filter unrelated studies into others
-    // sort by important
-    // add total?
     private $studies;
 
     public function __construct(StudyStatistic ...$studies)
@@ -82,14 +79,4 @@ final class StudiesStatistic
         }
         return $grouped[1];
     }
-}
-
-interface StudyStatistic
-{
-    public function study() : string;
-
-    /*
-     * Used to create "Total" and "Other" statistics
-     */
-    public static function fromMultipleStatistics(string $name, ...$others);
 }
