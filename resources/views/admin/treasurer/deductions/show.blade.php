@@ -12,19 +12,6 @@ use Francken\Treasurer\Http\Controllers\DeductionsController;
 @endphp
 
 @section('content')
-
-    @if (session('error'))
-        <p class="alert alert-danger mb-3">
-            <strong>Error: </strong> {{ session('error') }}
-        </p>
-    @endif
-
-    @if (session('status'))
-        <p class="alert alert-success mb-3">
-            {{ session('status') }}
-        </p>
-    @endif
-
     <div class="row">
         <div class="col">
             <div class="card">

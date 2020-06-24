@@ -2,12 +2,6 @@
 @section('page-title', 'Registration requests')
 
 @section('content')
-    @if (session('status'))
-        <p class="alert alert-success mb-3">
-            {{ session('status') }}
-        </p>
-    @endif
-
     <div class="card">
         <table class="table table-hover">
             <caption class="card-body">

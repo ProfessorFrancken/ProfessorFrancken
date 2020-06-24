@@ -89,6 +89,18 @@
                         @show
                     </div>
 
+                    @if (session('status'))
+                        <p class="alert alert-success mb-3">
+                            {{ session('status') }}
+                        </p>
+                    @endif
+
+                    @if (session('error'))
+                        <p class="alert alert-danger mb-3">
+                            <strong>Error: </strong> {{ session('error') }}
+                        </p>
+                    @endif
+
 
                     @section('alerts')
                         @if ($errors->any())
@@ -105,7 +117,6 @@
                             </div>
                         @endif
                     @show
-
 
                     @yield('content')
                 </div>
