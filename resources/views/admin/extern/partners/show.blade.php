@@ -37,38 +37,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer bg-white">
+            </div>
+            <div class="card my-3">
+                <div class="card-body">
                     <h4 class="font-weight-bold">Sponsor options</h4>
 
                     <p>
                         Below varous sponsor options are listed that you can enable for a partner.
                     </p>
-
-                    <ul class="list-unstyled mt-3">
-                        @include('admin.extern.partners._company-profile', ['partner' => $partner])
-                        @include('admin.extern.partners._footer', ['partner' => $partner])
-                        @include('admin.extern.partners._vacancies', ['partner' => $partner])
-
-                        <li class="p-3 bg-light my-3 d-none">
-                            <h5 class="h6 font-weight-bold">
-                                Streepsysteem sponsor
-                            </h5>
-
-                            <p>
-                                This partner's logo is not shown in the streepsysteem
-                            </p>
-                        </li>
-                        <li class="p-3 bg-light my-3 d-none">
-                            <h5 class="h6 font-weight-bold">
-                                TV sponsor
-                            </h5>
-
-                            <p>
-                                This partner's logo is not shown on our tv
-                            </p>
-                        </li>
-                    </ul>
                 </div>
+
+                <ul class="list-unstyled mt-3 mb-0">
+                    <li class="p-3 pb-4 border-top bg-white">
+                        @include('admin.extern.partners._company-profile', ['partner' => $partner])
+                    </li>
+                    <li class="p-3 pb-4 border-top bg-white">
+                        @include('admin.extern.partners._footer', ['partner' => $partner])
+                    </li>
+                    <li class="p-3 pb-4 border-top bg-light">
+                        @include('admin.extern.partners._vacancies', ['partner' => $partner])
+                    </li>
+                    <li class="p-3 pb-4 border-top d-none bg-light">
+                        <h5 class="h6 font-weight-bold">
+                            Streepsysteem sponsor
+                        </h5>
+
+                        <p>
+                            This partner's logo is not shown in the streepsysteem
+                        </p>
+                    </li>
+                    <li class="p-3 pb-4 border-top d-none bg-light">
+                        <h5 class="h6 font-weight-bold">
+                            TV sponsor
+                        </h5>
+
+                        <p>
+                            This partner's logo is not shown on our tv
+                        </p>
+                    </li>
+                </ul>
             </div>
 
             {!!
@@ -100,7 +107,8 @@
                     </h4>
 
                     <ul class='list-unstyled'>
-                        @foreach ($partner->notes as $note)
+
+                        @forelse ($partner->notes as $note)
                             <li class="d-flex flex-column {{ $loop->last ? '' : 'border-bottom  my-3 py-3' }}">
                                 <small class="text-muted">
                                     On {{ $note->created_at->format('Y-m-d') }}, {{ $note->member->fullname }} wrote:
@@ -109,7 +117,11 @@
                                     {{ $note->note }}
                                 </p>
                             </li>
-                        @endforeach
+                        @empty
+                            <li class="d-flex flex-column my-3">
+                                Use these notes to keep to keep track of arrangements with a partner or any other information that might be useful for you or your future kandi.
+                            </li>
+                        @endforelse
                     </ul>
                 </div>
                 <div class="card-footer">

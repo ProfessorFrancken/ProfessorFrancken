@@ -3,12 +3,7 @@
         <h6>
             {{ $vacancy->title }}
         </h6>
-    </div>
-    <p>
-        {{ $vacancy->description }}
-    </p>
-    <div class="d-flex justify-content-between">
-        <div class="d-flex justify-content-start">
+        <div>
             <a
                 href="{{ action(
                          [\Francken\Extern\Http\AdminVacanciesController::class, 'edit'],
@@ -20,9 +15,11 @@
                 Edit
             </a>
         </div>
-
-        <p>
-            Last changed {{ $vacancy->updated_at->diffForHumans() }}
-        </p>
     </div>
+    <p>
+        {{ $vacancy->description }}
+    </p>
+    <p class="mt-3 mb-0 text-muted text-right">
+        Last changed {{ $vacancy->updated_at->diffForHumans() }}
+    </p>
 </li>
