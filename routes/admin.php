@@ -20,6 +20,7 @@ use Francken\Auth\Http\Controllers\Admin\RolePermissionsController;
 use Francken\Auth\Http\Controllers\Admin\RolesController;
 use Francken\Extern\Http\AdminAlumniController;
 use Francken\Extern\Http\AdminCompanyProfilesController;
+use Francken\Extern\Http\AdminPartnerNotesController;
 use Francken\Extern\Http\FactSheetController;
 use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController;
@@ -71,6 +72,8 @@ Route::group(['prefix' => 'extern', ], function () : void {
         Route::get('partners/{partner}/company-profile', [AdminCompanyProfilesController::class, 'edit']);
         Route::put('partners/{partner}/company-profile', [AdminCompanyProfilesController::class, 'update']);
         Route::delete('partners/{partner}/company-profile', [AdminCompanyProfilesController::class, 'destroy']);
+
+        Route::post('partners/{partner}/notes', [AdminPartnerNotesController::class, 'store']);
     });
 });
 

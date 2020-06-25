@@ -7,6 +7,7 @@ namespace Francken\Extern;
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Plank\Mediable\Mediable;
@@ -53,5 +54,10 @@ final class Partner extends Model
     public function companyProfile() : HasOne
     {
         return $this->hasOne(CompanyProfile::class);
+    }
+
+    public function notes() : HasMany
+    {
+        return $this->hasMany(Note::class);
     }
 }

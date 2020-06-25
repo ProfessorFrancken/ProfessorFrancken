@@ -157,15 +157,44 @@
                     <h4 class="font-weight-bold">
                         Extern notes
                     </h4>
+
+                    <ul class='list-unstyled'>
+                        @foreach ($partner->notes as $note)
+                            <li class="d-flex flex-column {{ $loop->last ? '' : 'border-bottom  my-3 py-3' }}">
+                                <small class="text-muted">
+                                    On {{ $note->created_at->format('Y-m-d') }}, {{ $note->member->fullname }} wrote:
+                                </small>
+                                <p class="bg-light p-3 my-1">
+                                    {{ $note->note }}
+                                </p>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div class="card-footer">
+                    {!!
+                       Form::model($partner, [
+                           'url' => action(
+                               [\Francken\Extern\Http\AdminPartnerNotesController::class, 'store'],
+                               ['partner' => $partner]
+                           ),
+                           'method' => 'POST',
+                       ])
+                    !!}
                     <div class="form-group">
-                        <textarea name="note" class="form-control"  id="" rows="3"></textarea>
+                        {!!
+                           Form::textarea(
+                               'note',
+                               null,
+                               ['class' => 'form-control', 'id' => 'note', 'rows' => 3]
+                           )
+                        !!}
                     </div>
                     <button class='btn btn-text'>
                         <i class="fas fa-check"></i>
                         Save note
                     </button>
+                    {!! Form::close() !!}
                 </div>
             </div>
 

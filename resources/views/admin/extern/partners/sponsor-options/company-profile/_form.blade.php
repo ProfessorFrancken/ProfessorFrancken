@@ -1,5 +1,3 @@
-
-
 <div class="form-group form-check">
     {!!
        Form::checkbox(
