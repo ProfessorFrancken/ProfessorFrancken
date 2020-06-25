@@ -168,7 +168,7 @@
                                 Add vacancy
                             </a>
                         </li>
-                        <li class="p-3 bg-light my-3">
+                        <li class="p-3 bg-light my-3 d-none">
                             <h5 class="h6 font-weight-bold">
                                 Streepsysteem sponsor
                             </h5>
@@ -177,7 +177,7 @@
                                 This partner's logo is not shown in the streepsysteem
                             </p>
                         </li>
-                        <li class="p-3 bg-light my-3">
+                        <li class="p-3 bg-light my-3 d-none">
                             <h5 class="h6 font-weight-bold">
                                 TV sponsor
                             </h5>
