@@ -6,7 +6,6 @@ namespace Francken\Association\News\Http;
 
 use DateInterval;
 use DateTimeImmutable;
-use DB;
 use Francken\Association\News\Author;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\NewsContentCompiler;
@@ -98,15 +97,6 @@ final class AdminNewsController
 
         return view('pages.association.news.item')
             ->with('newsItem', $newsItem);
-    }
-
-    public function edit($id)
-    {
-        $post = DB::table('posts')->where('id', $id)->first();
-
-        return view('admin.news.edit', [
-            'post' => $post
-        ]);
     }
 
     public function update(Request $req, $link)
