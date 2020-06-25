@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
+use Francken\Extern\SponsorOptions\CompanyProfile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Plank\Mediable\Mediable;
 
@@ -46,5 +48,10 @@ final class Partner extends Model
     public function sector() : BelongsTo
     {
         return $this->belongsTo(Sector::class);
+    }
+
+    public function companyProfile() : HasOne
+    {
+        return $this->hasOne(CompanyProfile::class);
     }
 }

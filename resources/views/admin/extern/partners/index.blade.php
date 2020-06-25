@@ -21,7 +21,7 @@
                     <td>
                         <a href="{{ action(
                                     [\Francken\Extern\Http\AdminPartnersController::class, 'show'],
-                                    ['partner' => $partner->id]
+                                    ['partner' => $partner]
                                     ) }}"
                         >
                             <div class="d-flex justify-content-start">
@@ -85,7 +85,7 @@
                            class="btn btn-text"
                             href="{{ action(
                                     [\Francken\Extern\Http\AdminPartnersController::class, 'show'],
-                                    ['partner' => $partner->id]
+                                    ['partner' => $partner]
                                      ) }}"
                         >
                             <i class="fa fa-search" aria-hidden="true"></i>

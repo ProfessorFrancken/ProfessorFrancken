@@ -63,22 +63,27 @@ class AdminPartnersFeature extends TestCase
 
         $this->seePageIs(action(
             [AdminPartnersController::class, 'show'],
-            ['partner' => $partner->id]
+            ['partner' => $partner]
         ))
             ->click('Edit')
             ->seePageIs(action(
                 [AdminPartnersController::class, 'edit'],
-                ['partner' => $partner->id]
+                ['partner' => $partner]
             ))
             ->type('Scriptcie Inc', 'name')
             ->press('Save')
              ->seePageIs(action(
                 [AdminPartnersController::class, 'show'],
-                ['partner' => $partner->id]
+                ['partner' => $partner]
             ))
             ->see('Scriptcie Inc');
 
         $partner->refresh();
         $this->assertEquals($previous_logo_id, $partner->logo_media_id);
+        $this
+            ->see('Save note')
+            ->see('Enable company profile')
+            ->see('Add job opportunity')
+            ->see('Enable footer');
     }
 }

@@ -20,12 +20,7 @@ final class CompiledMarkdown
 
     public function __toString() : string
     {
-        // Lazy compile
-        if ($this->contents === null && $this->compiler !== null && $this->source !== null) {
-            $this->contents = $this->compiler->convertToHtml($this->source);
-        }
-
-        return $this->contents;
+        return $this->compiledContent();
     }
 
     public static function withSource(string $contents, string $source) : self
@@ -57,5 +52,15 @@ final class CompiledMarkdown
 
         $converter = new HtmlConverter();
         return $converter->convert($this->contents);
+    }
+
+    public function compiledContent() : string
+    {
+        // Lazy compile
+        if ($this->contents === null && $this->compiler !== null && $this->source !== null) {
+            $this->contents = $this->compiler->convertToHtml($this->source);
+        }
+
+        return $this->contents;
     }
 }

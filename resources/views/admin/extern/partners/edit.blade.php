@@ -8,7 +8,7 @@
                 <div class="card-body bg-light">
                     {!!
                        Form::model($partner, [
-                           'url' => action([\Francken\Extern\Http\AdminPartnersController::class, 'update'], ['partner' => $partner->id]),
+                           'url' => action([\Francken\Extern\Http\AdminPartnersController::class, 'update'], ['partner' => $partner]),
                            'method' => 'PUT',
                            'enctype' => 'multipart/form-data'
                        ])

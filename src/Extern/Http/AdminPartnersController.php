@@ -59,13 +59,16 @@ final class AdminPartnersController
             'status' => $request->status(),
             'homepage_url' => $request->homepageUrl(),
             'referral_url' => $request->referralUrl(),
-            'logo_media_id' => $logo->id
         ]);
-        $partner->attachMedia($logo, Partner::PARTNER_LOGO_TAG);
+
+        if ($logo !== null) {
+            $partner->update(['logo_media_id' => $logo->id]);
+            $partner->attachMedia($logo, Partner::PARTNER_LOGO_TAG);
+        }
 
         return redirect()->action(
             [self::class, 'show'],
-            ['partner' => $partner->id]
+            ['partner' => $partner]
         );
     }
 
@@ -75,7 +78,7 @@ final class AdminPartnersController
             'partner' => $partner,
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Partners'],
-                ['url' => action([static::class, 'show'], ['partner' => $partner->id]), 'text' => $partner->name],
+                ['url' => action([static::class, 'show'], ['partner' => $partner]), 'text' => $partner->name],
             ]
         ]);
     }
@@ -90,7 +93,7 @@ final class AdminPartnersController
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Partners'],
-                ['url' => action([static::class, 'edit'], ['partner' => $partner->id]), 'text' => $partner->name . ' / Edit'],
+                ['url' => action([static::class, 'edit'], ['partner' => $partner]), 'text' => $partner->name . ' / Edit'],
             ]
         ]);
     }
@@ -115,7 +118,7 @@ final class AdminPartnersController
 
         return redirect()->action(
             [self::class, 'show'],
-            ['partner' => $partner->id]
+            ['partner' => $partner]
         );
     }
 

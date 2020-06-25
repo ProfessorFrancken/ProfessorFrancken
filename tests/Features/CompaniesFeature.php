@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Francken\Extern\CompanyRepository;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CompaniesFeature extends TestCase
 {
+    use DatabaseMigrations;
+
     /** @test */
     public function companies_are_listed() : void
     {
