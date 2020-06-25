@@ -6,8 +6,10 @@ namespace Francken\Extern\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyProfileRequest extends FormRequest
+class FooterRequest extends FormRequest
 {
+    public const MAX_FILE_SIZE = 10 * 1024;
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -17,7 +19,8 @@ class CompanyProfileRequest extends FormRequest
     {
         return [
             'is_enabled' => ['nullable', 'boolean'],
-            'source_content' => ['required', 'min:1'],
+            'referral_url' => ['required', 'url'],
+            'logo' => ['image', 'max:' . self::MAX_FILE_SIZE],
         ];
     }
 
@@ -26,8 +29,8 @@ class CompanyProfileRequest extends FormRequest
         return (bool)$this->input('is_enabled', false);
     }
 
-    public function content() : string
+    public function referralUrl() : string
     {
-        return $this->input('source_content', '');
+        return $this->input('referral_url', '');
     }
 }

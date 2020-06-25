@@ -46,7 +46,6 @@ class PartnerRequest extends FormRequest
         return (int)$this->input('sector_id', '');
     }
 
-
     public function status() : string
     {
         return $this->input('status', '');
@@ -57,7 +56,7 @@ class PartnerRequest extends FormRequest
         return $this->input('homepage_url', '');
     }
 
-    public function referralUrl(): ?string
+    public function referralUrl() : ?string
     {
         return $this->input('referral_url');
     }

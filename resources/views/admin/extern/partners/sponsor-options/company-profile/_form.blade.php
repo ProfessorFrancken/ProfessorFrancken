@@ -3,7 +3,7 @@
        Form::checkbox(
            'is_enabled',
            true,
-           $partner->is_enabled,
+           $profile->is_enabled,
            ['class' => 'form-check-input', 'id' => 'is_enabled']
        )
     !!}

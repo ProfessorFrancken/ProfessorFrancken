@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Extern;
 
 use Francken\Extern\SponsorOptions\CompanyProfile;
+use Francken\Extern\SponsorOptions\Footer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -54,6 +55,11 @@ final class Partner extends Model
     public function companyProfile() : HasOne
     {
         return $this->hasOne(CompanyProfile::class);
+    }
+
+    public function footer() : HasOne
+    {
+        return $this->hasOne(Footer::class);
     }
 
     public function notes() : HasMany

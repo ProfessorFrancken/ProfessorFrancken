@@ -9,7 +9,7 @@ class PopulatePartnerSectorsTable extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up() : void
     {
         DB::table('extern_partner_sectors')->insert([
             ["name" => "Energy and sustainability", 'icon' => 'tree'],
@@ -34,6 +34,6 @@ class PopulatePartnerSectorsTable extends Migration
      */
     public function down()
     {
-        //
+        DB::table('extern_partner_sectors')->delete();
     }
 }

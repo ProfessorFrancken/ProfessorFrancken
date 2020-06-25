@@ -60,12 +60,10 @@
 <script>
  (function() {
      var loadFile = function(event) {
-         console.log(event);
          var reader = new FileReader();
          reader.onload = function(){
              var output = document.getElementById('partner-logo');
              output.src = reader.result;
-             console.log(output);
          };
          reader.readAsDataURL(event.target.files[0]);
      };
