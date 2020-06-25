@@ -28,6 +28,13 @@ class JobType
         return $this->type;
     }
 
+    public static function all() : array
+    {
+        return collect(array_keys(self::TYPES))->mapWithKeys(function (string $type) : array {
+            return [$type => $type];
+        })->all();
+    }
+
     public static function fromString(string $type) : ?self
     {
         try {

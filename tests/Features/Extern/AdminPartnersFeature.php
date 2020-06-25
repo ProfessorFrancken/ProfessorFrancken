@@ -83,7 +83,7 @@ class AdminPartnersFeature extends TestCase
         $this
             ->see('Save note')
             ->see('Enable company profile')
-            ->see('Add job opportunity')
+            ->see('Add vacancy')
             ->see('Enable footer');
     }
 }

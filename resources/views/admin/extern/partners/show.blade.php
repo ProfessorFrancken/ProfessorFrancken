@@ -90,23 +90,26 @@
                             @endif
                         </li>
                         <li class="p-3 bg-light my-3">
-
-                            <h5 class="h6 font-weight-bold">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="h6 font-weight-bold">
+                                    @if ($partner->footer && $partner->footer->is_enabled)
+                                        <i class="far fa-check-square"></i>
+                                    @else
+                                        <i class="far fa-square"></i>
+                                    @endif
+                                    Footer
+                                </h5>
                                 @if ($partner->footer && $partner->footer->is_enabled)
-                                    <i class="far fa-check-square"></i>
-                                @else
-                                    <i class="far fa-square"></i>
+                                    <a href={{ $partner->footer->referral_url }}>
+                                        <img
+                                            class="rounded mr-3"
+                                            src="{{ $partner->footer->logo }}"
+                                            alt="Logo of {{ $partner->name }}"
+                                        >
+                                    </a>
                                 @endif
-                                Footer
-                            </h5>
+                            </div>
                             @if ($partner->footer && $partner->footer->is_enabled)
-                                <a href={{ $partner->footer->referral_url }}>
-                                    <img
-                                        class="rounded mr-3"
-                                        src="{{ $partner->footer->logo }}"
-                                        alt="Logo of {{ $partner->name }}"
-                                    >
-                                </a>
                                 <p>
 
                                     This partner's logo is shown in our footer
@@ -144,11 +147,26 @@
                         <li class="p-3 bg-light my-3">
 
                             <h5 class="h6 font-weight-bold">
-                                Job opportunities
+                                Vacancies
                             </h5>
-                            <p>
-                                This partner's has no job opportunities
-                            </p>
+
+                            <ul class="list-unstyled">
+                                @forelse($partner->vacancies as $vacancy)
+                                    @include('admin.extern.partners._vacancy', ['vacancy' => $vacancy])
+                                @empty
+                                    <p>
+                                        This partner's has no vacancies
+                                    </p>
+                                @endforelse
+                            </ul>
+
+                            <a
+                                href="{{ action([\Francken\Extern\Http\AdminVacanciesController::class, 'create'], ['partner' => $partner]) }}"
+                                class="btn btn-text btn-sm"
+                            >
+                                <i class="fas fa-plus"></i>
+                                Add vacancy
+                            </a>
                         </li>
                         <li class="p-3 bg-light my-3">
                             <h5 class="h6 font-weight-bold">

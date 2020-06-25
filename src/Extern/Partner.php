@@ -6,6 +6,7 @@ namespace Francken\Extern;
 
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Francken\Extern\SponsorOptions\Footer;
+use Francken\Extern\SponsorOptions\Vacancy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -62,8 +63,18 @@ final class Partner extends Model
         return $this->hasOne(Footer::class);
     }
 
+    public function vacancies() : HasMany
+    {
+        return $this->hasMany(Vacancy::class);
+    }
+
     public function notes() : HasMany
     {
         return $this->hasMany(Note::class);
+    }
+
+    public function getRefferralUrlAttribute() : string
+    {
+        return $this->attributes['referral_url'] ?? $this->homepage_url ?? '';
     }
 }
