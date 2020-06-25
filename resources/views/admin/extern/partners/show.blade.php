@@ -94,10 +94,11 @@
                                 <h5 class="h6 font-weight-bold">
                                     @if ($partner->footer && $partner->footer->is_enabled)
                                         <i class="far fa-check-square"></i>
+                                        Footer <small>({{ $partner->footer->referral_url }})</small>
                                     @else
                                         <i class="far fa-square"></i>
-                                    @endif
                                     Footer
+                                    @endif
                                 </h5>
                                 @if ($partner->footer && $partner->footer->is_enabled)
                                     <a href={{ $partner->footer->referral_url }}>
@@ -109,16 +110,6 @@
                                     </a>
                                 @endif
                             </div>
-                            @if ($partner->footer && $partner->footer->is_enabled)
-                                <p>
-
-                                    This partner's logo is shown in our footer
-                                </p>
-                            @else
-                                <p>
-                                    This partner's logo is not shown in our footer
-                                </p>
-                            @endif
                             @if ($partner->footer === null)
                                 <a
                                     href="{{ action([\Francken\Extern\Http\AdminFootersController::class, 'create'], ['partner' => $partner]) }}"
