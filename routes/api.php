@@ -18,6 +18,7 @@ use Francken\Association\Activities\Http\ApiActivitiesController;
 use Francken\Extern\Http\ApiJobOpeningsController;
 use Francken\PlusOne\Http as PlusOne;
 use Francken\Shared\Http\Controllers\JasController;
+use Francken\Study\BooksSale\Http\ApiBooksController;
 
 Route::get('jas-events', [JasController::class, 'index']);
 Route::post('store-jas-events', [JasController::class, 'store']);

@@ -47,7 +47,7 @@ final class JobOpeningRepository
 
         if ( ! is_null($sector)) {
             $jobs = $jobs->filter(function ($job) use ($sector) {
-                return $job['sector'] == (string) $sector;
+                return $job['sector'] == (string) $sector->name;
             });
         }
 

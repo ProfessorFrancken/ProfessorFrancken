@@ -41,7 +41,9 @@ final class CompaniesController
             ->with('companies', $this->companies->profiles())
             ->with('company', $company)
             ->with('jobs', $jobs)
-            ->with('sectors', Sector::SECTORS)
+            ->with('sectors', Sector::all()->mapWithKeys(function (Sector $sector) {
+                return [$sector->name => $sector->icon];
+            }))
             ->with('types', JobType::TYPES)
             ->with('breadcrumbs', [
                 ['url' => '/career', 'text' => 'Career'],

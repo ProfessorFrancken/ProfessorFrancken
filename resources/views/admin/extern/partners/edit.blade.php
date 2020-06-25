@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', 'Boards / ' . $board->name)
+@section('page-title', 'Partners / ' . $partner->name)
 
 @section('content')
     <div class="row">
@@ -7,14 +7,14 @@
             <div class="card">
                 <div class="card-body bg-light">
                     {!!
-                       Form::model($board, [
-                           'url' => action([\Francken\Association\Boards\Http\Controllers\AdminBoardsController::class, 'update'], $board->id),
+                       Form::model($partner, [
+                           'url' => action([\Francken\Extern\Http\AdminPartnersController::class, 'update'], ['partner' => $partner->id]),
                            'method' => 'PUT',
                            'enctype' => 'multipart/form-data'
                        ])
                     !!}
 
-                        @include('admin.association.boards._form', ['board' => $board])
+                        @include('admin.extern.partners._form', ['partner' => $partner])
 
                         {!! Form::submit('Save', ['class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}

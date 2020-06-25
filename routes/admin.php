@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
+use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
@@ -17,12 +18,12 @@ use Francken\Auth\Http\Controllers\Admin\AccountRolesController;
 use Francken\Auth\Http\Controllers\Admin\AccountsController;
 use Francken\Auth\Http\Controllers\Admin\RolePermissionsController;
 use Francken\Auth\Http\Controllers\Admin\RolesController;
+use Francken\Extern\Http\AdminAlumniController;
 use Francken\Extern\Http\FactSheetController;
 use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateCrewController;
 use Francken\Shared\Http\Controllers\Admin\AdminController;
-use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Shared\Http\Controllers\DashboardController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
 use Francken\Shared\Settings\Http\Controllers\SettingsController;
@@ -60,6 +61,10 @@ Route::group(['prefix' => 'extern', ], function () : void {
     Route::get('companies', $unavailable);
     Route::get('events', $unavailable);
     Route::get('job-openings', $unavailable);
+
+    Route::group(['middleware' => ['can:dashboard:companies-read']], function () : void {
+        Route::resource('partners', AdminPartnersController::class);
+    });
 });
 
 Route::group(['prefix' => 'association'], function () : void {

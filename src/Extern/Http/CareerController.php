@@ -13,11 +13,6 @@ use Francken\Shared\Clock\Clock;
 
 final class CareerController
 {
-    public function __construct()
-    {
-        // perhaps we can bind the BoardYear route here?
-    }
-
     public function index()
     {
         return view('career.index');
@@ -28,7 +23,7 @@ final class CareerController
         $jobs = $repo->search(
             request()->input('job-title', null),
             request()->input('company', null),
-            Sector::fromString((string)request()->input('sector', '')),
+            Sector::whereName((string)request()->input('sector', ''))->first(),
             JobType::fromString((string)request()->input('jobType', ''))
         );
 
@@ -36,7 +31,9 @@ final class CareerController
             ->with([
                 'jobs' => $jobs,
                 'companies' => $repo->companies(),
-                'sectors' => Sector::SECTORS,
+                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) {
+                    return [$sector->name => $sector->icon];
+                })->all(),
                 'types' => JobType::TYPES
             ])
             ->with('breadcrumbs', [
