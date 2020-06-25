@@ -277,23 +277,10 @@
 @section('actions')
     <div class="d-flex align-items-end">
         <a href="{{ action([\Francken\Extern\Http\AdminPartnersController::class, 'edit'], ['partner' => $partner]) }}"
-           class="btn btn-primary mx-3"
+           class="btn btn-primary"
         >
             <i class="fas fa-edit"></i>
             Edit
-        </a>
-
-        <a href="{{ action([\Francken\Extern\Http\AdminPartnersController::class, 'create']) }}"
-           class="btn btn-primary mx-3"
-        >
-            <i class="fas fa-plus"></i>
-            Add job opportunity
-        </a>
-        <a href="{{ action([\Francken\Extern\Http\AdminPartnersController::class, 'create']) }}"
-           class="btn btn-primary mx-3"
-        >
-            <i class="fas fa-plus"></i>
-            Add contact
         </a>
     </div>
 @endsection
