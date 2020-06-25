@@ -40,6 +40,7 @@
 
         <small  class="form-text text-muted">
             We will use this logo when displaying the partner's logo in the footer.
+            Images for the footer should have a size of 200x80 pixels and should not include any color.
         </small>
     </div>
 </div>
