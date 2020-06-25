@@ -126,7 +126,7 @@ final class Board extends Model
 
     public function getPhotoAttribute() : ?string
     {
-        $photo = $this->getMedia(static::BOARD_PHOTO_TAG)->first();
+        $photo = $this->getMedia(static::BOARD_PHOTO_TAG)->last();
 
         if ($photo !== null) {
             return $photo->getUrl();

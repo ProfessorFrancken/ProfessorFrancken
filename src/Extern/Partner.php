@@ -32,7 +32,7 @@ final class Partner extends Model
 
     public function getLogoAttribute() : ?string
     {
-        $photo = $this->getMedia(static::PARTNER_LOGO_TAG)->first();
+        $photo = $this->getMedia(static::PARTNER_LOGO_TAG)->last();
 
         if ($photo !== null) {
             return $photo->getUrl();
