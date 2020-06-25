@@ -9,6 +9,7 @@ final class PartnerStatus
     public const ACTIVE_PARTNER = 'active_partner';
     public const POTENTIAL_PARTNER = 'potential_partner';
     public const PAST_PARTNER = 'past_partner';
+    public const OTHER_PARTNER = 'other_partner';
 
     public static function all() : array
     {
@@ -16,6 +17,7 @@ final class PartnerStatus
                 self::ACTIVE_PARTNER => 'Active partner',
                 self::PAST_PARTNER => 'Past partner',
                 self::POTENTIAL_PARTNER => 'Potential partner',
+                self::OTHER_PARTNER => 'Other',
             ];
-        }
+    }
 }
