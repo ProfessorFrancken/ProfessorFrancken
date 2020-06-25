@@ -46,9 +46,9 @@ final class AdminFootersController
             'referral_url' => $request->referralUrl(),
             'logo_media_id' => $logo->id,
         ]);
-        $footer->attachMedia($logo, Footer::PARTNER_FOOTER_LOGO_TAG);
 
         $partner->footer()->save($footer);
+        $footer->attachMedia($logo, Footer::PARTNER_FOOTER_LOGO_TAG);
 
         return redirect()->action(
             [AdminPartnersController::class, 'show'],

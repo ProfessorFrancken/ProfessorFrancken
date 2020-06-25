@@ -6,15 +6,7 @@
         <div class="col-9">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-start">
-                        <div>
-                            <img
-                                class="rounded mr-3"
-                                src="{{ $partner->logo }}"
-                                alt="Logo of {{ $partner->name }}"
-                                style="width: 90px; height: 90px; object-fit: cover;"
-                            >
-                        </div>
+                    <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-column">
                             <h6 class="font-weight-bold">
                                 <i class="fas fa-building"></i>
@@ -34,6 +26,14 @@
                                 Last updated:
                                 <small>{{ $partner->updated_at->diffForHumans() }}</small>
                             </h6>
+                        </div>
+                        <div>
+                            <img
+                                class="rounded mr-3"
+                                src="{{ $partner->logo }}"
+                                alt="Logo of {{ $partner->name }}"
+                                style="max-height: 90px;"
+                            >
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,9 @@
                             @else
                                 <div class='p-3 bg-white mt-3'>
                                     <h5 class="h6">Content:</h5>
+                                    <div style="max-height: 330px; overflow: auto;">
                                     {!!  $partner->companyProfile->compiled_content !!}
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-end">
                                     <p class="mb-0 mt-3">
