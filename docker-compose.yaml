@@ -59,11 +59,6 @@ services:
       - MAIL_HOST=mailhog
       - MAIL_PORT=1025
 
-  # data:
-  #   image: busybox
-  #   volumes:
-  #     - /var/www/francken/storage
-
   nginx:
     image: francken/nginx
     links:
