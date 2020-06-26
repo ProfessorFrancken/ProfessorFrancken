@@ -18,7 +18,7 @@ class PopulatePartnerSectorsTable extends Migration
             ["name" => "Manufacturing", 'icon' => 'industry'],
             ["name" => "High tech electronics", 'icon' => 'microchip'],
             ["name" => "Financial services", 'icon' => 'line-chart'],
-            ["name" => "Education", 'icon' => 'graduation-gap'],
+            ["name" => "Education", 'icon' => 'graduation-cap'],
             ["name" => "IT and programming", 'icon' => 'terminal'],
             ["name" => "Consulting and advisory", 'icon' => 'suitcase'],
             ["name" => "Gas, oil and petrochemical", 'icon' => 'tint'],
@@ -29,8 +29,6 @@ class PopulatePartnerSectorsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

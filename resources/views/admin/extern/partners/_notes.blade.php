@@ -7,7 +7,7 @@
 
         <ul class='list-unstyled'>
             @forelse ($partner->notes as $note)
-                <li class="d-flex flex-column {{ $loop->last ? '' : 'border-bottom  my-3 py-3' }}">
+                <li class="d-flex flex-column my-3 {{ $loop->last ? '' : 'border-bottom py-3' }}">
                     <small class="text-muted">
                         On {{ $note->created_at->format('Y-m-d') }}, {{ $note->member->fullname }} wrote:
                     </small>
