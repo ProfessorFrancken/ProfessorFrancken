@@ -12,6 +12,7 @@ final class CompanyProfile extends Model
 {
     protected $table = 'extern_partner_company_profiles';
     protected $fillable = [
+        'display_name',
         'is_enabled',
         'source_content',
         'compiled_content',
@@ -23,5 +24,16 @@ final class CompanyProfile extends Model
     public function partner() : BelongsTo
     {
         return $this->belongsTo(Partner::class);
+    }
+
+    public function getDisplayNameAttribute() : string
+    {
+        $displayName = $this->attributes['display_name'] ?? null;
+
+        if ($displayName !== null && $displayName !== '') {
+            return $displayName;
+        }
+
+        return $this->partner->name ?? '';
     }
 }

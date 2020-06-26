@@ -16,9 +16,15 @@ class CompanyProfileRequest extends FormRequest
     public function rules()
     {
         return [
+            'display_name' => ['nullable', 'min:1'],
             'is_enabled' => ['nullable', 'boolean'],
             'source_content' => ['required', 'min:1'],
         ];
+    }
+
+    public function displayName() : ?string
+    {
+        return $this->input('display_name', '');
     }
 
     public function isActive() : bool

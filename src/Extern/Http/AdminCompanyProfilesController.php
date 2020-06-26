@@ -35,6 +35,7 @@ final class AdminCompanyProfilesController
         $markdown = $compiler->content($request->content());
         $partner->companyProfile()->save(
             new CompanyProfile([
+                'display_name' => $request->displayName(),
                 'is_enabled' => $request->isActive(),
                 'source_content' => $markdown->originalMarkdown(),
                 'compiled_content' => $markdown->compiledContent(),
@@ -69,6 +70,7 @@ final class AdminCompanyProfilesController
         $markdown = $compiler->content($request->content());
         $partner->companyProfile()->update(
             [
+                'display_name' => $request->displayName(),
                 'is_enabled' => $request->isActive(),
                 'source_content' => $markdown->originalMarkdown(),
                 'compiled_content' => $markdown->compiledContent(),

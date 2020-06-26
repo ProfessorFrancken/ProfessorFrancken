@@ -34,7 +34,9 @@
     </p>
 @else
     <div class='p-3 bg-light mt-3'>
-        <h5 class="h6">Content:</h5>
+        <h5 class="h6">
+            {{ $partner->companyProfile->display_name }}
+        </h5>
         <div style="max-height: 330px; overflow: auto;">
             {!!  $partner->companyProfile->compiled_content !!}
         </div>

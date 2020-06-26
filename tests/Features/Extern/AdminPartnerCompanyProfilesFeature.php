@@ -53,6 +53,7 @@ class AdminCompanyProfilesFeature extends TestCase
         $profile = $partner->companyProfile;
         $this->assertFalse($profile->is_enabled);
         $this->assertEquals('# Hoi', $profile->source_content);
+        $this->assertEquals('S[ck]rip(t|t?c)ie In[ck]', $profile->display_name);
         $this->assertEquals("<h1>Hoi</h1>\n", $profile->compiled_content);
     }
 }

@@ -19,6 +19,7 @@ class CreateExternPartnerCompanyProfilesTable extends Migration
             $table->bigInteger('partner_id')->unsigned();
             $table->foreign('partner_id')->references('id')->on('extern_partners');
 
+            $table->string('display_name')->nullable();
             $table->text('source_content');
             $table->text('compiled_content');
 
