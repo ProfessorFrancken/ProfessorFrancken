@@ -8,15 +8,17 @@
             @forelse ($partner->contacts as $contact)
                 <li class="d-flex flex-column my-3 {{ $loop->last ? '' : 'border-bottom  py-3' }}">
                     <div class="d-flex justify-content-start">
-                        <div class="mr-3">
-                            <img
-                                id="contact-photo"
-                                alt="Photo of {{ $contact->fullname }}"
-                                src="{{ optional($contact)->photo }}"
-                                class="mb-3 img-fluid rounded"
-                                style="max-height: 40px; object-fit: cover"
-                            />
-                        </div>
+                        @if ($contact->photo)
+                            <div class="mr-3">
+                                <img
+                                    id="contact-photo"
+                                    alt="Photo of {{ $contact->fullname }}"
+                                    src="{{ $contact->photo }}"
+                                    class="mb-3 img-fluid rounded"
+                                    style="max-height: 40px; object-fit: cover"
+                                />
+                            </div>
+                        @endif
                         <div>
                             <h6>
                                 {{ $contact->fullname }}
