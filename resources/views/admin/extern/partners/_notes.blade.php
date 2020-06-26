@@ -11,9 +11,7 @@
                     <small class="text-muted">
                         On {{ $note->created_at->format('Y-m-d') }}, {{ $note->member->fullname }} wrote:
                     </small>
-                    <p class="bg-light p-3 my-1">
-                        {{ $note->note }}
-                    </p>
+                    <p class="bg-light p-3 my-1" style="white-space: pre-line;">{!!  $note->note !!}</p>
                 </li>
             @empty
                 <li class="d-flex flex-column my-3">
