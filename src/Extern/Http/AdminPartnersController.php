@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Extern\Http;
 
 use Francken\Extern\ContactDetails;
+use Francken\Extern\Http\Requests\AdminSearchPartnersRequest;
 use Francken\Extern\Http\Requests\ContactDetailsRequest;
 use Francken\Extern\Http\Requests\PartnerRequest;
-use Francken\Extern\Http\Requests\SearchRequest;
 use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
@@ -28,7 +28,7 @@ final class AdminPartnersController
         $this->uploader = $uploader;
     }
 
-    public function index(SearchRequest $request)
+    public function index(AdminSearchPartnersRequest $request)
     {
         $partners = Partner::query()
             ->when($request->showArchived(), function (Builder $query, bool $showArchived) : void {
@@ -77,8 +77,8 @@ final class AdminPartnersController
                 'partners' => $partners,
                 'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) {
                     return [$sector->id => $sector->name];
-                })->prepend("All"),
-                'statuses' => collect(PartnerStatus::all())->prepend("All"),
+                })->prepend("All", 0),
+                'statuses' => collect(PartnerStatus::all())->prepend("All", 0),
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Partners'],
                 ]

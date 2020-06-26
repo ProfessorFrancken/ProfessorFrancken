@@ -8,7 +8,7 @@ use Francken\Extern\PartnerStatus;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class SearchRequest extends FormRequest
+class AdminSearchPartnersRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
