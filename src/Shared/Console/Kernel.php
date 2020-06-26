@@ -11,6 +11,7 @@ use Francken\Association\Photos\SynchronizeFlickrAlbums;
 use Francken\Association\Symposium\SendInformationEmail;
 use Francken\Auth\ImportPermissionsFromConfig;
 use Francken\Auth\SetupPermissions;
+use Francken\Extern\Commands\ImportPartnersFromLegacy;
 use Francken\Treasurer\ImportOldDeductions;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -32,6 +33,7 @@ class Kernel extends ConsoleKernel
         SynchronizeFlickrAlbums::class,
         UpdateBoardMemberStatus::class,
         MigrateSqliteToMysql::class,
+        ImportPartnersFromLegacy::class,
     ];
 
     /**
