@@ -56,6 +56,8 @@
     </div>
 </div>
 
+@include('admin.extern.partners._contact_details_form', ['partner' => $partner])
+
 @push('scripts')
 <script>
  (function() {

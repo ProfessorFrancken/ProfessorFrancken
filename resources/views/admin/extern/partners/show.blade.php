@@ -1,47 +1,51 @@
 @extends('admin.layout')
 @section('page-title', 'Partners / ' . $partner->name)
 
-@section('content')
-    <div class="row">
-        <div class="col-9">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-column">
-                            <h6 class="font-weight-bold">
-                                <i class="fas fa-building"></i>
-                                {{ $partner->sector->name }}
-                            </h6>
-                            <p>
-                                <a href="{{ $partner->homepage_url }}">
+    @section('content')
+        <div class="row">
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-body">
+                                <img
+                                    class="rounded mr-3 float-right"
+                                    src="{{ $partner->logo }}"
+                                    alt="Logo of {{ $partner->name }}"
+                                    style="max-height: 90px;"
+                                >
+                        <div class="row">
+                            <div class="col">
+
+                                <h6>
+                                    <i class="fas fa-building"></i> Sector
+                                    <small class="d-block mt-2">
+                                        {{ $partner->sector->name }}
+                                    </small>
+                                </h6>
+                                <h6 class="mt-3">
                                     <i class="fas fa-globe"></i>
                                     Website
-                                </a>
-                                <small>
-                                    (<a class="text-muted" href="{{ $partner->referral_url }}">Referral</a>)
-                                </small>
-                            </p>
-                            <h6 class="font-weight-bold">
-                                <i class="fas fa-clock"></i>
-                                Last updated:
-                                <small>{{ $partner->updated_at->diffForHumans() }}</small>
-                            </h6>
+                                    <small class="d-block mt-2">
+                                        <a href="{{ $partner->homepage_url }}">
+                                            {{ $partner->homepage_url }}
+                                        </a>
+                                    </small>
+                                    <small class="d-block mt-2">
+                                        <a href="{{ $partner->referral_url }}">
+                                            {{ $partner->referral_url }} (referral)
+                                        </a>
+                                    </small>
+                                </h6>
+                            </div>
+                            @include('admin.extern.partners._contact_details', ['partner' => $partner])
                         </div>
-                        <div>
-                            <img
-                                class="rounded mr-3"
-                                src="{{ $partner->logo }}"
-                                alt="Logo of {{ $partner->name }}"
-                                style="max-height: 90px;"
-                            >
-                        </div>
+                        <p class="mt-3 mb-0 text-muted text-right">
+                            Last changed {{ $partner->updated_at->diffForHumans() }}
+                        </p>
                     </div>
                 </div>
-            </div>
             <div class="card my-3">
                 <div class="card-body">
                     <h4 class="font-weight-bold">Sponsor options</h4>
-
                     <p>
                         Below varous sponsor options are listed that you can enable for a partner.
                     </p>
@@ -155,7 +159,7 @@
                 <div class="card-body">
                     <h4 class="font-weight-bold">
                         <i class="fas fa-users"></i>
-                        Contacts
+                        Partner contacts
                     </h4>
                 </div>
 

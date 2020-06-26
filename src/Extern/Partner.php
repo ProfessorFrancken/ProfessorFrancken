@@ -63,6 +63,13 @@ final class Partner extends Model
         return $this->hasOne(Footer::class);
     }
 
+    public function contactDetails() : HasOne
+    {
+        return $this->hasOne(ContactDetails::class)
+            ->whereNull('contact_id')
+            ->withDefault();
+    }
+
     public function vacancies() : HasMany
     {
         return $this->hasMany(Vacancy::class);

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Francken\Extern\ContactDetails;
+use Francken\Extern\Http\Requests\ContactDetailsRequest;
 use Francken\Extern\Http\Requests\PartnerRequest;
 use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
@@ -37,6 +39,7 @@ final class AdminPartnersController
     {
         return view('admin.extern.partners.create', [
             'partner' => new Partner(),
+            'contactDetails' => new ContactDetails(),
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) {
                 return [$sector->id => $sector->name];
             }),
@@ -48,7 +51,7 @@ final class AdminPartnersController
         ]);
     }
 
-    public function store(PartnerRequest $request)
+    public function store(PartnerRequest $request, ContactDetailsRequest $contactDetailsRequest)
     {
         $logo = $this->uploader->uploadPrimaryLogo($request->logo, $request->name());
 
@@ -65,6 +68,9 @@ final class AdminPartnersController
             $partner->update(['logo_media_id' => $logo->id]);
             $partner->attachMedia($logo, Partner::PARTNER_LOGO_TAG);
         }
+        $partner->contactDetails()->save(
+            $contactDetailsRequest->contactDetails()
+        );
 
         return redirect()->action(
             [self::class, 'show'],
@@ -87,6 +93,7 @@ final class AdminPartnersController
     {
         return view('admin.extern.partners.edit', [
             'partner' => $partner,
+            'contactDetails' => $partner->contactDetails,
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) {
                 return [$sector->id => $sector->name];
             }),
@@ -98,7 +105,7 @@ final class AdminPartnersController
         ]);
     }
 
-    public function update(PartnerRequest $request, Partner $partner)
+    public function update(PartnerRequest $request, ContactDetailsRequest $contactDetailsRequest, Partner $partner)
     {
         $logo = $this->uploader->uploadPrimaryLogo($request->logo, $request->name());
 
@@ -115,6 +122,10 @@ final class AdminPartnersController
             'homepage_url' => $request->homepageUrl(),
             'referral_url' => $request->referralUrl(),
         ]);
+
+        $partner->contactDetails()->update(
+            $contactDetailsRequest->contactDetails()->toArray()
+        );
 
         return redirect()->action(
             [self::class, 'show'],
