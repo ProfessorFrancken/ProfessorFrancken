@@ -31,7 +31,7 @@
 @if ($partner->footer && $partner->footer->is_enabled)
     <a href={{ $partner->footer->referral_url }} class="my-3">
         <img
-            class="rounded mr-3 my-3"
+            class="rounded m-3"
             src="{{ $partner->footer->logo }}"
             alt="Logo of {{ $partner->name }}"
             style="max-height: 150px; max-width: 300px;"

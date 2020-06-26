@@ -6,12 +6,12 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                                <img
-                                    class="rounded mr-3 float-right"
-                                    src="{{ $partner->logo }}"
-                                    alt="Logo of {{ $partner->name }}"
-                                    style="max-height: 90px;"
-                                >
+                        <img
+                            class="rounded m-3 float-right"
+                            src="{{ $partner->logo }}"
+                            alt="Logo of {{ $partner->name }}"
+                            style="max-height: 90px;"
+                        >
                         <div class="row">
                             <div class="col">
 

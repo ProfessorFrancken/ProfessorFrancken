@@ -12,10 +12,10 @@
 <div class="form-group">
     <label for="description">Description</label>
     {!!
-       Form::text(
+       Form::textarea(
            'description',
            null,
-           ['class' => 'form-control', 'placeholder' => 'Doing engineering things', 'id' => 'description']
+           ['class' => 'form-control', 'placeholder' => 'Doing engineering things', 'id' => 'description', 'rows' => 3]
        )
     !!}
 </div>
