@@ -24,7 +24,7 @@ class CreateExternVacanciesTable extends Migration
 
             $table->string('type');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('vacancy_url');
 
             $table->softDeletes();

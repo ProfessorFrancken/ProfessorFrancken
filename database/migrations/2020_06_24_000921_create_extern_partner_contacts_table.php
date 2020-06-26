@@ -29,7 +29,7 @@ class CreateExternPartnerContactsTable extends Migration
             $table->string('surname');
             $table->string('position')->nullable();
 
-            $table->string('notes')->nullable();
+            $table->text('notes')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
