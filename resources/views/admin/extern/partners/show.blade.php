@@ -107,6 +107,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="font-weight-bold">
+                        <i class="fas fa-sticky-note"></i>
                         Extern notes
                     </h4>
 
