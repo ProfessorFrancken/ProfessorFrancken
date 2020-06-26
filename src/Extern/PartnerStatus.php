@@ -16,10 +16,12 @@ final class PartnerStatus
     public static function all() : array
     {
         return [
-                self::ACTIVE_PARTNER => 'Active partner',
-                self::PAST_PARTNER => 'Past partner',
-                self::POTENTIAL_PARTNER => 'Potential partner',
-                self::OTHER_PARTNER => 'Other',
-            ];
+            self::PRIMARY_PARTNER => 'Main partner',
+            self::SECONDARY_PARTNER => 'Secondary partner',
+            self::ACTIVE_PARTNER => 'Active partner',
+            self::PAST_PARTNER => 'Past partner',
+            self::POTENTIAL_PARTNER => 'Potential partner',
+            self::OTHER_PARTNER => 'Other',
+        ];
     }
 }
