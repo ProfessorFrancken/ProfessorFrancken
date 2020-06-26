@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', 'Partners / ' . $partner->name)
+@section('page-title', 'Partners / ' . $partner->name . ' / Edit')
 
 @section('content')
     <div class="row">

@@ -1,5 +1,5 @@
 @extends('admin.extern.partners.sponsor-options.layout')
-@section('page-title', 'Partners / ' . $partner->name . ' / Edit contact')
+@section('page-title', 'Partners / ' . $partner->name . ' / Edit ' . $contact->fullname)
 
 @section('content')
     <div class="row">
