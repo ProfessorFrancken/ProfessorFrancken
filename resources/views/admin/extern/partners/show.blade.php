@@ -106,22 +106,7 @@
         <div class="col-3">
             @include('admin.extern.partners._notes', ['partner' => $partner])
             @include('admin.extern.partners._contacts', ['partner' => $partner])
-
-            @if (1 == 2)
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h4 class="font-weight-bold">
-                        Alumni
-                    </h4>
-                </div>
-
-                <div class="card-footer">
-                    <h4>
-                        Add alumni
-                    </h4>
-                </div>
-            </div>
-            @endif
+            @include('admin.extern.partners._alumni', ['partner' => $partner])
         </div>
     </div>
 

@@ -80,6 +80,11 @@ final class Partner extends Model
         return $this->hasMany(Contact::class);
     }
 
+    public function alumni() : HasMany
+    {
+        return $this->hasMany(Alumnus::class);
+    }
+
     public function notes() : HasMany
     {
         return $this->hasMany(Note::class);

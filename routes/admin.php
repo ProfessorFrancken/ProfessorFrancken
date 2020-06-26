@@ -18,9 +18,9 @@ use Francken\Auth\Http\Controllers\Admin\AccountRolesController;
 use Francken\Auth\Http\Controllers\Admin\AccountsController;
 use Francken\Auth\Http\Controllers\Admin\RolePermissionsController;
 use Francken\Auth\Http\Controllers\Admin\RolesController;
-use Francken\Extern\Http\AdminAlumniController;
 use Francken\Extern\Http\AdminCompanyProfilesController;
 use Francken\Extern\Http\AdminFootersController;
+use Francken\Extern\Http\AdminPartnerAlumniController;
 use Francken\Extern\Http\AdminPartnerContactsController;
 use Francken\Extern\Http\AdminPartnerNotesController;
 use Francken\Extern\Http\AdminPartnersController;
@@ -87,6 +87,7 @@ Route::group(['prefix' => 'extern', ], function () : void {
 
         Route::resource('partners/{partner}/vacancies', AdminVacanciesController::class);
         Route::resource('partners/{partner}/contacts', AdminPartnerContactsController::class);
+        Route::resource('partners/{partner}/alumni', AdminPartnerAlumniController::class);
     });
 });
 
