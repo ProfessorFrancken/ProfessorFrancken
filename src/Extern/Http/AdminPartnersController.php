@@ -14,6 +14,8 @@ use Francken\Extern\Sector;
 
 final class AdminPartnersController
 {
+    private const PARTNERS_PER_PAGE = 50;
+
     /**
      * @var LogoUploader
      */
@@ -26,9 +28,21 @@ final class AdminPartnersController
 
     public function index()
     {
+        $partners = Partner::query()
+                  ->with([
+                      'logoMedia',
+                      'companyProfile',
+                      'footer',
+                  ])
+                  ->withCount([
+                      'vacancies'
+                  ])
+                  ->orderBy('name', 'ASC')
+                  ->paginate(self::PARTNERS_PER_PAGE);
+
         return view('admin.extern.partners.index')
             ->with([
-                'partners' => Partner::paginate(),
+                'partners' => $partners,
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Partners'],
                 ]
