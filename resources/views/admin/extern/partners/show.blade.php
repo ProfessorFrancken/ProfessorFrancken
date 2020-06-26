@@ -111,7 +111,6 @@
                     </h4>
 
                     <ul class='list-unstyled'>
-
                         @forelse ($partner->notes as $note)
                             <li class="d-flex flex-column {{ $loop->last ? '' : 'border-bottom  my-3 py-3' }}">
                                 <small class="text-muted">
@@ -147,7 +146,7 @@
                            )
                         !!}
                     </div>
-                    <button class='btn btn-text'>
+                    <button class='btn btn-text btn-sm'>
                         <i class="fas fa-check"></i>
                         Save note
                     </button>

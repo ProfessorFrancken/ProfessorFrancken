@@ -12,7 +12,13 @@
 
 <div class="form-group">
     <label for="referral_url">Referral url</label>
-    {!! Form::text('referral_url', null, ['class' => 'form-control', 'placeholder' => 'https://scriptcie.nl', 'id' => 'referral_url']) !!}
+    {!!
+       Form::text(
+           'referral_url',
+           $footer->referral_url ?? $partner->referral_url,
+           ['class' => 'form-control', 'placeholder' => 'https://scriptcie.nl', 'id' => 'referral_url']
+       )
+    !!}
 
     <small  class="form-text text-muted">
         The refferal url is used when linking to the partner's website in our footer.

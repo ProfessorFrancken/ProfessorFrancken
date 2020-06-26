@@ -34,6 +34,7 @@
             class="rounded mr-3 my-3"
             src="{{ $partner->footer->logo }}"
             alt="Logo of {{ $partner->name }}"
+            style="max-height: 150px; max-width: 300px;"
         >
     </a>
 @endif

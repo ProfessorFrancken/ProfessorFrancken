@@ -24,25 +24,24 @@
         </div>
     </div>
 
-            {!!
-               Form::model(
-                   $partner,
-                   [
-                       'url' => action(
-                           [\Francken\Extern\Http\AdminVacanciesController::class, 'destroy'],
-                           ['partner' => $partner, 'vacancy' => $vacancy]
-                       ),
-                       'method' => 'post'
-                   ]
-               )
-            !!}
-            @method('DELETE')
-            <p class="mt-2 text-muted d-flex align-items-center justify-content-end">
-    Click <button
-              class="btn btn-text px-1"
-              onclick='return confirm("Are you sure you want to remove this vacancy?");'
-          >here</button> to remove this vacancy.
-
+    {!!
+       Form::model(
+           $partner,
+           [
+               'url' => action(
+                   [\Francken\Extern\Http\AdminVacanciesController::class, 'destroy'],
+                   ['partner' => $partner, 'vacancy' => $vacancy]
+               ),
+               'method' => 'post'
+           ]
+       )
+    !!}
+    @method('DELETE')
+    <p class="mt-2 text-muted d-flex align-items-center justify-content-end">
+        Click <button
+                  class="btn btn-text px-1"
+                  onclick='return confirm("Are you sure you want to remove this vacancy?");'
+              >here</button> to remove this vacancy.
     </p>
-            {!! Form::close() !!}
+    {!! Form::close() !!}
 @endsection

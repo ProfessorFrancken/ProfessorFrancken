@@ -80,7 +80,7 @@ final class Partner extends Model
         return $this->hasMany(Note::class);
     }
 
-    public function getRefferralUrlAttribute() : string
+    public function getReferralUrlAttribute() : string
     {
         return $this->attributes['referral_url'] ?? $this->homepage_url ?? '';
     }
