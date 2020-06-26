@@ -75,6 +75,11 @@ final class Partner extends Model
         return $this->hasMany(Vacancy::class);
     }
 
+    public function contacts() : HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
+
     public function notes() : HasMany
     {
         return $this->hasMany(Note::class);

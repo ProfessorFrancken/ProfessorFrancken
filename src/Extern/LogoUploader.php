@@ -47,4 +47,19 @@ final class LogoUploader
             ->useFilename("logo_footer_{$slug}")
             ->upload();
     }
+
+    public function uploadContactPhoto(?UploadedFile $photo, Partner $partner, Contact $contact) : ?Media
+    {
+        if ($photo === null) {
+            return null;
+        }
+
+        $partner_slug = str_slug($partner->name);
+        $contact_slug = str_slug($contact->fullname);
+
+        return $this->uploader->fromSource($photo)
+            ->toDirectory("images/partners/{$partner_slug}/contacts/")
+            ->useFilename("contact_{$contact_slug}")
+            ->upload();
+    }
 }

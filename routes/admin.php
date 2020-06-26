@@ -21,7 +21,9 @@ use Francken\Auth\Http\Controllers\Admin\RolesController;
 use Francken\Extern\Http\AdminAlumniController;
 use Francken\Extern\Http\AdminCompanyProfilesController;
 use Francken\Extern\Http\AdminFootersController;
+use Francken\Extern\Http\AdminPartnerContactsController;
 use Francken\Extern\Http\AdminPartnerNotesController;
+use Francken\Extern\Http\AdminPartnersController;
 use Francken\Extern\Http\AdminVacanciesController;
 use Francken\Extern\Http\FactSheetController;
 use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
@@ -84,6 +86,7 @@ Route::group(['prefix' => 'extern', ], function () : void {
         Route::delete('partners/{partner}/footer', [AdminFootersController::class, 'destroy']);
 
         Route::resource('partners/{partner}/vacancies', AdminVacanciesController::class);
+        Route::resource('partners/{partner}/contacts', AdminPartnerContactsController::class);
     });
 });
 

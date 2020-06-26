@@ -154,21 +154,7 @@
                 </div>
             </div>
 
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h4 class="font-weight-bold">
-                        <i class="fas fa-users"></i>
-                        Partner contacts
-                    </h4>
-                </div>
-
-                <div class="card-footer">
-                    <button class='btn btn-text'>
-                        <i class="fas fa-plus"></i>
-                        Add contact
-                    </button>
-                </div>
-            </div>
+            @include('admin.extern.partners._contacts', ['partner' => $partner])
 
             @if (1 == 2)
             <div class="card mt-5">

@@ -19,15 +19,19 @@ class CreateExternPartnerContactsTable extends Migration
             $table->bigInteger('partner_id')->unsigned();
             $table->foreign('partner_id')->references('id')->on('extern_partners');
 
-            $table->string('gender');
-            $table->string('title');
-            $table->string('initials');
+            $table->integer('photo_media_id')->unsigned()->nullable();
+            $table->foreign('photo_media_id')->references('id')->on('media');
+
+            $table->string('gender')->nullable();
+            $table->string('title')->nullable();
+            $table->string('initials')->nullable();
             $table->string('firstname');
             $table->string('surname');
-            $table->string('position');
-            $table->string('email');
-            $table->string('phone_number');
+            $table->string('position')->nullable();
 
+            $table->string('notes')->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
