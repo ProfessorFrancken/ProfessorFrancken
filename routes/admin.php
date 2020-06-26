@@ -85,9 +85,9 @@ Route::group(['prefix' => 'extern', ], function () : void {
         Route::put('partners/{partner}/footer', [AdminFootersController::class, 'update']);
         Route::delete('partners/{partner}/footer', [AdminFootersController::class, 'destroy']);
 
-        Route::resource('partners/{partner}/vacancies', AdminVacanciesController::class);
-        Route::resource('partners/{partner}/contacts', AdminPartnerContactsController::class);
-        Route::resource('partners/{partner}/alumni', AdminPartnerAlumniController::class);
+        Route::resource('partners.vacancies', AdminVacanciesController::class);
+        Route::resource('partners.contacts', AdminPartnerContactsController::class);
+        Route::resource('partners.alumni', AdminPartnerAlumniController::class);
     });
 });
 
