@@ -19,7 +19,7 @@ class CreateExternPartnerFootersTable extends Migration
             $table->bigInteger('partner_id')->unsigned();
             $table->foreign('partner_id')->references('id')->on('extern_partners');
 
-            $table->integer('logo_media_id')->unsigned()->nullable();
+            $table->integer('logo_media_id')->unsigned();
             $table->foreign('logo_media_id')->references('id')->on('media');
 
             $table->string('referral_url');
