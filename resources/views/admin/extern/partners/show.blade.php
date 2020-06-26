@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <h4 class="font-weight-bold">Sponsor options</h4>
                     <p>
-                        Below varous sponsor options are listed that you can enable for a partner.
+                        Below various sponsor options are listed that you can enable for a partner.
                     </p>
                 </div>
 
