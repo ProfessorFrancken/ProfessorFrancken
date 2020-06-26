@@ -139,6 +139,12 @@ return [
             "url" => "extern",
             "items" => [
                 [
+                    "name" => "Partners",
+                    "url" => "partners",
+                    "works" => true,
+                    "can" => "dashboard:companies-read",
+                ],
+                [
                     "name" => "Companies",
                     "url" => "companies",
                     "works" => false,
