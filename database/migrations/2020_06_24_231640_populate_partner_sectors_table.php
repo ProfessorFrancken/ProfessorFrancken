@@ -12,25 +12,25 @@ class PopulatePartnerSectorsTable extends Migration
     public function up() : void
     {
         DB::table('extern_partner_sectors')->insert([
-            ["name" => "Energy and sustainability", 'icon' => 'tree'],
             ["name" => "Engineering", 'icon' => 'wrench'],
+            ["name" => "High tech electronics", 'icon' => 'microchip'],
             ["name" => "Industry and utilities", 'icon' => 'industry'],
             ["name" => "Manufacturing", 'icon' => 'industry'],
-            ["name" => "High tech electronics", 'icon' => 'microchip'],
             ["name" => "Financial services", 'icon' => 'line-chart'],
-            ["name" => "Education", 'icon' => 'graduation-cap'],
             ["name" => "IT and programming", 'icon' => 'terminal'],
-            ["name" => "Consulting and advisory", 'icon' => 'suitcase'],
+            ["name" => "Energy and sustainability", 'icon' => 'tree'],
+            ["name" => "Defense and security", 'icon' => 'shield'],
             ["name" => "Gas, oil and petrochemical", 'icon' => 'tint'],
             ["name" => "Healthcare", 'icon' => 'medkit'],
-            ["name" => "Defense and security", 'icon' => 'shield'],
+            ["name" => "Consulting and advisory", 'icon' => 'suitcase'],
+            ["name" => "Education", 'icon' => 'graduation-cap'],
         ]);
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down() : void
     {
         DB::table('extern_partner_sectors')->delete();
     }
