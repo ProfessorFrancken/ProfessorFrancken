@@ -43,7 +43,7 @@
                         </p>
                     </div>
                 </div>
-            <div class="card my-3">
+            <div class="card my-4">
                 <div class="card-body">
                     <h4 class="font-weight-bold">Sponsor options</h4>
                     <p>
@@ -108,7 +108,7 @@
             @include('admin.extern.partners._contacts', ['partner' => $partner])
 
             @if (1 == 2)
-            <div class="card mt-5">
+            <div class="card mt-4">
                 <div class="card-body">
                     <h4 class="font-weight-bold">
                         Alumni
