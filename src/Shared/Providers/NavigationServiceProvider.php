@@ -94,7 +94,7 @@ final class NavigationServiceProvider extends ServiceProvider
                         ($user->can('can-access-dashboard')
                          ? ['url' => action([DashboardController::class, 'redirectToDashboard']), 'icon' => 'fa fa-database', 'title' => 'Admin', 'can' => 'can-access-dashboard']
                          : []),
-                        ['url' => route('logout'), 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
+                        ['url' => route('get-logout'), 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
                     ]),
                 ];
             } else {
