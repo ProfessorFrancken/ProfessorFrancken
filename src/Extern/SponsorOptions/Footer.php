@@ -7,6 +7,7 @@ namespace Francken\Extern\SponsorOptions;
 use Francken\Extern\Partner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 
 final class Footer extends Model
@@ -32,13 +33,18 @@ final class Footer extends Model
 
     public function getLogoAttribute() : ?string
     {
-        $photo = $this->getMedia(static::PARTNER_FOOTER_LOGO_TAG)->last();
+        $logo = $this->logoMedia;
 
-        if ($photo !== null) {
-            return $photo->getUrl();
+        if ($logo !== null) {
+            return $logo->getUrl();
         }
 
         return null;
+    }
+
+    public function logoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'logo_media_id');
     }
 
     public function scopeWithPhotos($query)

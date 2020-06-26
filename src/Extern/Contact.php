@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Francken\Extern;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 
 final class Contact extends Model
@@ -36,13 +38,18 @@ final class Contact extends Model
 
     public function getPhotoAttribute() : ?string
     {
-        $photo = $this->getMedia(static::CONTACT_PHOTO_TAG)->last();
+        $photo = $this->photoMedia;
 
         if ($photo !== null) {
             return $photo->getUrl();
         }
 
         return null;
+    }
+
+    public function photoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'photo_media_id');
     }
 
     public function scopeWithPhotos($query)

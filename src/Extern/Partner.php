@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 
 final class Partner extends Model
@@ -34,13 +35,18 @@ final class Partner extends Model
 
     public function getLogoAttribute() : ?string
     {
-        $photo = $this->getMedia(static::PARTNER_LOGO_TAG)->last();
+        $logo = $this->logoMedia;
 
-        if ($photo !== null) {
-            return $photo->getUrl();
+        if ($logo !== null) {
+            return $logo->getUrl();
         }
 
         return null;
+    }
+
+    public function logoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'logo_media_id');
     }
 
     public function scopeWithPhotos($query)
@@ -93,5 +99,12 @@ final class Partner extends Model
     public function getReferralUrlAttribute() : string
     {
         return $this->attributes['referral_url'] ?? $this->homepage_url ?? '';
+    }
+
+    public function getDisplayStatusAttribute() : string
+    {
+        $status = PartnerStatus::all();
+
+        return $status[$this->status] ?? '';
     }
 }
