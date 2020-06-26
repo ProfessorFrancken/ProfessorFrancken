@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\SponsorOptions;
 
+use Francken\Extern\Partner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -20,7 +21,6 @@ final class Vacancy extends Model
 
     public function partner() : BelongsTo
     {
-        return $this->belongsTo(self::class);
+        return $this->belongsTo(Partner::class);
     }
 }
-
