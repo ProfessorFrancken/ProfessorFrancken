@@ -50,6 +50,10 @@
                         {!! Form::checkbox('has_footer', true, $request->hasFooter(), ['class' => 'form-check-input', 'id' => 'has_footer'])  !!}
                         <label class="form-check-label" for="has_footer">Only show partners with footer</label>
                     </div>
+                    <div class="form-group form-check mx-2">
+                        {!! Form::checkbox('show_archived', true, $request->showArchived(), ['class' => 'form-check-input', 'id' => 'show_archived'])  !!}
+                        <label class="form-check-label" for="show_archived">Include archived partners</label>
+                    </div>
                 </div>
             </form>
         </div>

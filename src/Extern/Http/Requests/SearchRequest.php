@@ -26,6 +26,7 @@ class SearchRequest extends FormRequest
             'has_company_profile' => ['nullable', 'boolean'],
             'has_footer' => ['nullable', 'boolean'],
             'has_vacancies' => ['nullable', 'boolean'],
+            'show_archived' => ['nullable', 'boolean'],
         ];
     }
 
@@ -66,6 +67,13 @@ class SearchRequest extends FormRequest
     {
         return $this->exists('has_vacancies')
             ? (bool)$this->input('has_vacancies')
+            : null;
+    }
+
+    public function showArchived() : ?bool
+    {
+        return $this->exists('show_archived')
+            ? (bool)$this->input('show_archived')
             : null;
     }
 }

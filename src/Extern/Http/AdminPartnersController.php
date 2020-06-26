@@ -31,13 +31,18 @@ final class AdminPartnersController
     public function index(SearchRequest $request)
     {
         $partners = Partner::query()
+            ->when($request->showArchived(), function (Builder $query, bool $showArchived) : void {
+                if ($showArchived) {
+                    $query->withTrashed();
+                }
+            })
             ->when($request->name(), function (Builder $query, string $name) : void {
                 $query->where('name', 'LIKE', "%{$name}%");
             })
-            ->when($request->sectorId(), function (Builder $query, int $sectorId): void {
+            ->when($request->sectorId(), function (Builder $query, int $sectorId) : void {
                 $query->where('sector_id', '=', $sectorId);
             })
-            ->when($request->status(), function (Builder $query, string $status): void {
+            ->when($request->status(), function (Builder $query, string $status) : void {
                 $query->where('status', '=', $status);
             })
             ->when($request->hasCompanyProfile(), function (Builder $query, bool $hasCompanyProfile) : void {
