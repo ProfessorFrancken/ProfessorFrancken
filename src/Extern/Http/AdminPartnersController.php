@@ -7,10 +7,12 @@ namespace Francken\Extern\Http;
 use Francken\Extern\ContactDetails;
 use Francken\Extern\Http\Requests\ContactDetailsRequest;
 use Francken\Extern\Http\Requests\PartnerRequest;
+use Francken\Extern\Http\Requests\SearchRequest;
 use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Extern\Sector;
+use Illuminate\Database\Eloquent\Builder;
 
 final class AdminPartnersController
 {
@@ -26,23 +28,52 @@ final class AdminPartnersController
         $this->uploader = $uploader;
     }
 
-    public function index()
+    public function index(SearchRequest $request)
     {
         $partners = Partner::query()
-                  ->with([
-                      'logoMedia',
-                      'companyProfile',
-                      'footer',
-                  ])
-                  ->withCount([
-                      'vacancies'
-                  ])
-                  ->orderBy('name', 'ASC')
-                  ->paginate(self::PARTNERS_PER_PAGE);
+            ->when($request->name(), function (Builder $query, string $name) : void {
+                $query->where('name', 'LIKE', "%{$name}%");
+            })
+            ->when($request->sectorId(), function (Builder $query, int $sectorId): void {
+                $query->where('sector_id', '=', $sectorId);
+            })
+            ->when($request->status(), function (Builder $query, string $status): void {
+                $query->where('status', '=', $status);
+            })
+            ->when($request->hasCompanyProfile(), function (Builder $query, bool $hasCompanyProfile) : void {
+                if ($hasCompanyProfile) {
+                    $query->whereHas('companyProfile');
+                }
+            })
+            ->when($request->hasFooter(), function (Builder $query, bool $hasFooter) : void {
+                if ($hasFooter) {
+                    $query->whereHas('footer');
+                }
+            })
+            ->when($request->hasVacancies(), function (Builder $query, bool $hasVacancies) : void {
+                if ($hasVacancies) {
+                    $query->whereHas('vacancies');
+                }
+            })
+            ->with([
+                'logoMedia',
+                'companyProfile',
+                'footer',
+            ])
+            ->withCount([
+                'vacancies'
+            ])
+            ->orderBy('name', 'ASC')
+            ->paginate(self::PARTNERS_PER_PAGE);
 
         return view('admin.extern.partners.index')
             ->with([
+                'request' => $request,
                 'partners' => $partners,
+                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) {
+                    return [$sector->id => $sector->name];
+                })->prepend("All"),
+                'statuses' => collect(PartnerStatus::all())->prepend("All"),
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Partners'],
                 ]
