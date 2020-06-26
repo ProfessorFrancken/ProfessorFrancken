@@ -6,6 +6,8 @@ namespace Francken\Extern;
 
 final class PartnerStatus
 {
+    public const PRIMARY_PARTNER = 'main_partner';
+    public const SECONDARY_PARTNER = 'secondary_partner';
     public const ACTIVE_PARTNER = 'active_partner';
     public const POTENTIAL_PARTNER = 'potential_partner';
     public const PAST_PARTNER = 'past_partner';
