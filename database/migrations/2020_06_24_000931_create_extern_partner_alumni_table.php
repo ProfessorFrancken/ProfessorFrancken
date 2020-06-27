@@ -21,10 +21,10 @@ class CreateExternPartnerAlumniTable extends Migration
             $table->bigInteger('partner_id')->unsigned();
             $table->foreign('partner_id')->references('id')->on('extern_partners');
 
-            $table->string('position');
-            $table->dateTime('started_position_at');
+            $table->string('position')->nullable();
+            $table->dateTime('started_position_at')->nullable();
             $table->dateTime('stopped_position_at')->nullable();
-            $table->text('notes');
+            $table->text('notes')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

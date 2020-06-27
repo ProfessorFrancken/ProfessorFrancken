@@ -20,7 +20,7 @@ class AlumnusRequest extends FormRequest
         return [
             'member_id' => ['required', 'integer', 'exists:francken-legacy.leden,id'],
             'position' => ['nullable', 'regex:/[a-zA-Z0-9\s]+/', 'min:1'],
-            'started_position_at' => ['required', 'date_format:Y-m-d'],
+            'started_position_at' => ['nullable', 'date_format:Y-m-d', 'required_with:started_position_at'],
             'stopped_position_at' => ['nullable', 'date_format:Y-m-d', 'after:started_position_at'],
             'notes' => ['nullable', 'regex:/[a-zA-Z0-9\s]+/', 'min:1'],
         ];
