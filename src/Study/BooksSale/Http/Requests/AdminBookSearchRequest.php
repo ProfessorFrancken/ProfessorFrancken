@@ -16,7 +16,7 @@ class AdminBookSearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['nullable', 'min:1', ],
+            'title' => ['nullable', 'min:1', ],
             'seller_id' => ['nullable', 'integer', 'exists:francken-legacy.leden,id'],
             'buyer_id' => ['nullable', 'integer', 'exists:francken-legacy.leden,id'],
             'show_sold_books' => ['nullable', 'boolean'],
