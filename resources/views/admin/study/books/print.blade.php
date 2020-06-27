@@ -76,7 +76,7 @@
             <div class="card-body">
                 <h4 class="h5 font-weight-bold">Book</h4>
                 <div class="row">
-                    @include('admin.study.books._print-input', ['name' => 'Name book', 'value' => $book->name])
+                    @include('admin.study.books._print-input', ['name' => 'Name book', 'value' => $book->title])
                     @include('admin.study.books._print-input', ['name' => 'ISBN', 'value' => $book->isbn])
                 </div>
                 <div class="row mt-5">

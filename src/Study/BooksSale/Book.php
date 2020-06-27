@@ -189,11 +189,6 @@ final class Book extends Model
         return $this->id;
     }
 
-    public function getNameAttribute() : string
-    {
-        return $this->naam ?? '';
-    }
-
     public function getPriceBySellerAttribute() : int
     {
         // In euros
