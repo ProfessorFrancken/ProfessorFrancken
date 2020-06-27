@@ -51,6 +51,8 @@ Route::group(['prefix' => 'study'], function () : void {
         Route::post('books', [AdminBooksController::class, 'store']);
         Route::put('books/{book}', [AdminBooksController::class, 'update']);
         Route::delete('books/{book}', [AdminBooksController::class, 'remove']);
+
+        Route::get('books/{book}/print', [AdminBooksController::class, 'print']);
     });
 
     Route::group(['middleware' => 'can:dashboard:books-read'], function () : void {

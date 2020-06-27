@@ -142,6 +142,17 @@ final class AdminBooksController
         return redirect()->action([self::class, 'index']);
     }
 
+    public function print(Book $book)
+    {
+        return view('admin.study.books.print', [
+            'book' => $book,
+            'members' => $this->members(),
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Books'],
+                ['url' => action([self::class, 'show'], $book->id), 'text' => $book->title],
+            ]
+        ]);
+    }
     private function members()
     {
         return DB::connection('francken-legacy')

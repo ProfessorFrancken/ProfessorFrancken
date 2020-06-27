@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * This code is somewhat odd, on the write side it uses our legacy, Dutch datbase.
- * 
+ *
  * On the read side it uses an English interface which we will migrate to.
  *
  * @property int $id
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $vakid
  * @property int|null $verkoperid
  * @property int|null $koperid
- * @property int|null $prijs
+ * @property int|null $prijs price in whole euros
  * @property string|null $beschrijving
  * @property string|null $inkoopdatum
  * @property string|null $verkoopdatum
@@ -187,5 +187,26 @@ final class Book extends Model
     public function bookId() : int
     {
         return $this->id;
+    }
+
+    public function getNameAttribute() : string
+    {
+        return $this->naam ?? '';
+    }
+
+    public function getPriceBySellerAttribute() : int
+    {
+        // In euros
+        return $this->prijs;
+    }
+
+    public function getTakenInFromSellerAtAttribute() : ?DateTimeImmutable
+    {
+        return null;
+    }
+
+    public function getTakenInByBuyerAtAttribute() : ?DateTimeImmutable
+    {
+        return null;
     }
 }
