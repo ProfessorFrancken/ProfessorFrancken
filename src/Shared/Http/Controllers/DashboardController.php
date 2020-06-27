@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Controllers;
 
-use DB;
-
 class DashboardController extends Controller
 {
     public function redirectToDashboard()
@@ -15,12 +13,9 @@ class DashboardController extends Controller
 
     public function overview()
     {
-        $events = DB::table('event_store')->orderBy('recorded_on', 'desc')->take(25)->get();
-
         return view('admin.overview', [
-            'events' => $events,
             'breadcrumbs' => [
-                ['url' => action([self::class, 'overview']), 'text' => 'Dashboard'],
+                ['url' => action([self::class, 'overview']), 'text' => 'Adtministration'],
             ]
         ]);
     }
