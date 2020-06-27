@@ -14,28 +14,34 @@
                           method="GET"
                           class="form"
                     >
-                        <div class="form-group form-check mx-2">
-                            {!! Form::checkbox('show_sold_books', true, request()->get('show_sold_books', false), ['class' => 'form-check-input', 'id' => 'show_sold_books'])  !!}
-                            <label class="form-check-label" for="show_sold_books">Show sold books</label>
-                        </div>
-                        <div class="d-flex">
+                        <div class="d-flex mb-3">
                             <div class="form-group mr-2 mb-0">
-                                {!! Form::text('title', request()->get('title', null), ['placeholder' => 'Search by title', 'class' => 'form-control'])  !!}
+                                {!! Form::text('title', $request->title(), ['placeholder' => 'Search by title', 'class' => 'form-control'])  !!}
                             </div>
                             <div class="form-group mx-2 mb-0">
-                                {!! Form::text('seller', request()->get('seller', null), ['placeholder' => 'Search by seller', 'class' => 'form-control book-seller', 'id' => 'seller'])  !!}
-                                {!! Form::hidden('seller_id', request()->get('seller_id', null), ['class' => 'book-seller-id']) !!}
+                                {!! Form::text('seller', $seller, ['placeholder' => 'Search by seller', 'class' => 'form-control book-seller', 'id' => 'seller'])  !!}
+                                {!! Form::hidden('seller_id', $request->sellerId(), ['class' => 'book-seller-id']) !!}
                             </div>
                             <div class="form-group mx-2 mb-0">
-                                {!! Form::text('buyer', request()->get('buyer', null), ['placeholder' => 'Search by buyer', 'class' => 'form-control book-buyer', 'id' => 'buyer'])  !!}
-                                {!! Form::hidden('buyer_id', request()->get('buyer_id', null), ['class' => 'book-buyer-id']) !!}
+                                {!! Form::text('buyer', $buyer, ['placeholder' => 'Search by buyer', 'class' => 'form-control book-buyer', 'id' => 'buyer'])  !!}
+                                {!! Form::hidden('buyer_id', $request->buyerId(), ['class' => 'book-buyer-id']) !!}
                             </div>
-                            <button type="submit" class="mx-2 btn btn-sm btn-primary">Apply filters</button>
+                            <button type="submit" class="mx-2 btn btn-sm btn-primary">
+                                <i class="fas fa-search"></i>
+                                Apply filters
+                            </button>
                             <a href="{{ action([\Francken\Study\BooksSale\Http\AdminBooksController::class, 'index'])  }}"
                                class="btn btn-sm btn-text text-primary d-flex align-items-center"
                             >
+                                <i class="fas fa-times"></i>
                                 Clear filters
                             </a>
+                        </div>
+                        <div class="d-flex justify-conten-between">
+                            <div class="form-group form-check mx-2">
+                                {!! Form::checkbox('show_sold_books', true, $request->showSoldBooks(), ['class' => 'form-check-input', 'id' => 'show_sold_books'])  !!}
+                                <label class="form-check-label" for="show_sold_books">Show sold books</label>
+                            </div>
                         </div>
                     </form>
                 </div>

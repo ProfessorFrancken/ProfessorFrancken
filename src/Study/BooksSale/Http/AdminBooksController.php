@@ -7,33 +7,48 @@ namespace Francken\Study\BooksSale\Http;
 use DateTimeImmutable;
 use DB;
 use Francken\Study\BooksSale\Book;
+use Francken\Study\BooksSale\BookBuyer;
+use Francken\Study\BooksSale\BookSeller;
+use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 final class AdminBooksController
 {
-    public function index(Request $request)
+    public function index(AdminBookSearchRequest $request)
     {
-        $books = Book::with(['seller', 'buyer'])->orderBy('id', 'desc');
-
-        if ($request->has('title') && $request->get('title') !== null) {
-            $books->where('naam', 'LIKE', '%' . $request->get('title') . '%');
-        }
-        if ($request->has('seller_id') && $request->get('seller') !== null) {
-            $books->where('verkoperid', $request->get('seller_id'));
-        }
-        if ($request->has('buyer_id') && $request->get('buyer') !== null) {
-            $books->where('koperid', $request->get('buyer_id'));
-        }
-        if ( ! $request->has('show_sold_books')) {
-            $books->where(function ($query) {
-                return $query->where('verkoopdatum', null)
-                    ->orWhere('koperid', null)
-                    ->orWhere('verkocht', false);
-            });
-        }
+        $books = Book::query()
+            ->when($request->title(), function (Builder $query, string $title) : void {
+                $query->where('naam', 'LIKE', '%' . $title . '%');
+            })
+            ->when(!$request->showSoldBooks(), function (Builder $query, bool $dontShowSoldBooks): void {
+                if ($dontShowSoldBooks) {
+                    $query->where(function ($query) {
+                        return $query->where('verkoopdatum', null)
+                            ->orWhere('koperid', null)
+                            ->orWhere('verkocht', false);
+                    });
+                }
+            })
+            ->when($request->sellerId(), function (Builder $query, int $sellerId) {
+                $query->where('verkoperid', $sellerId);
+            })
+            ->when($request->buyerId(), function (Builder $query, int $buyerId) {
+                $query->where('koperId', $buyerId);
+            })
+            ->with(['seller', 'buyer'])
+            ->orderBy('id', 'desc')
+            ->paginate(30)
+            ->appends($request->except('page'));
+        
+        $seller = BookSeller::find($request->sellerId());
+        $buyer = BookBuyer::find($request->buyerId());
 
         return view('admin.study.books.index', [
-            'books' => $books->paginate(30),
+            'request' => $request,
+            'seller' => optional($seller)->full_name,
+            'buyer' => optional($buyer)->full_name,
+            'books' => $books,                
             'members' => $this->members(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
