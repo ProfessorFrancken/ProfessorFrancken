@@ -140,12 +140,12 @@ final class Book extends Model
 
     public function getSoldAttribute() : bool
     {
-        return $this->verkocht === 1;
+        return (bool)$this->verkocht;
     }
 
     public function getPaidOffAttribute() : bool
     {
-        return $this->verkocht === 1;
+        return (bool)$this->afgerekend;
     }
 
     public function putOnSaleAt()
@@ -204,11 +204,6 @@ final class Book extends Model
             ->when($request->title(), function (Builder $query, string $title) : void {
                 $query->where('naam', 'LIKE', '%' . $title . '%');
             })
-            ->when( ! $request->showSoldBooks(), function (Builder $query, bool $dontShowSoldBooks) : void {
-                if ($dontShowSoldBooks) {
-                    $query->available();
-                }
-            })
             ->when($request->sellerId(), function (Builder $query, int $sellerId) : void {
                 $query->where('verkoperid', $sellerId);
             })
@@ -224,5 +219,20 @@ final class Book extends Model
             ->where('koperid', null)
             ->where('verkocht', false)
             ->where('afgerekend', false);
+    }
+
+    public function scopeSold(Builder $query) : Builder
+    {
+        return $query->where('afgerekend', false)
+            ->where(function (Builder $query) : Builder {
+                return $query->whereNotNull('verkoopdatum')
+                    ->orWhereNotNull('koperid')
+                    ->orWhere('verkocht', true);
+            });
+    }
+
+    public function scopePaidOff(Builder $query) : Builder
+    {
+        return $query->where('afgerekend', true);
     }
 }

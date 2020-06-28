@@ -71,4 +71,11 @@ class AdminBookSearchRequest extends FormRequest
             ? (bool)$this->input('show_sold_books')
             : null;
     }
+
+    public function selected(string $select) : bool
+    {
+        $selected = $this->input('select', 'available');
+
+        return $selected === $select;
+    }
 }

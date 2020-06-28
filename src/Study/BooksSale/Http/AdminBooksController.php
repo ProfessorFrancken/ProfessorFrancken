@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use DB;
 use Francken\Study\BooksSale\Book;
 use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 final class AdminBooksController
@@ -16,14 +17,27 @@ final class AdminBooksController
     {
         $books = Book::query()
             ->search($request)
+            ->when($request->selected('available'), function (Builder $query) : void {
+                $query->available();
+            })
+            ->when($request->selected('paid-off'), function (Builder $query) : void {
+                $query->paidOff();
+            })
+            ->when($request->selected('sold'), function (Builder $query) : void {
+                $query->sold();
+            })
             ->with(['seller', 'buyer'])
             ->orderBy('id', 'desc')
             ->paginate(30)
             ->appends($request->except('page'));
-                                              
+
         return view('admin.study.books.index', [
             'request' => $request,
             'books' => $books,
+            'available_books' => Book::available()->count(),
+            'sold_books' => Book::sold()->count(),
+            'paid_off_books' => Book::paidOff()->count(),
+            'all_books' => Book::count(),
             'members' => $this->members(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
