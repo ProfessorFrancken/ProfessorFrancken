@@ -146,7 +146,7 @@ final class Board extends Model
 
     public function getBoardNameAttribute() : BoardName
     {
-        return new BoardName($this->name);
+        return BoardName::fromNameOrYear($this->name, $this->board_year);
     }
 
     public function setBoardNameAttribute(BoardName $board_name) : void

@@ -18,7 +18,7 @@ final class BoardName
 
     public static function fromNameOrYear(?string $name, BoardYear $year)
     {
-        if (isset($name)) {
+        if ($name !== null && $name !== '') {
             return new static($name);
         }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
+use Francken\Association\Committees\Http\AdminCommitteesController;
 use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
@@ -117,6 +118,10 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
         Route::get('registration-requests/{registration}', [RegistrationRequestsController::class, 'show']);
         Route::get('registration-requests/{registration}/print', [RegistrationRequestsController::class, 'print']);
+    });
+
+    Route::group(['middleware' => 'can:dashboard:committees-read'], function () : void {
+        Route::resource('committees', AdminCommitteesController::class);
     });
 
     // Francken Vrij
