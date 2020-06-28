@@ -94,14 +94,18 @@ Route::group(['prefix' => 'extern', ], function () : void {
 });
 
 Route::group(['prefix' => 'association'], function () : void {
-    Route::put('/news/publish/{item}', [AdminNewsController::class, 'publish']);
-    Route::put('/news/archive/{item}', [AdminNewsController::class, 'archive']);
-    Route::get('/news/{item}/preview', [AdminNewsController::class, 'preview']);
-    Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
+    Route::group(['middleware' => 'can:dashboard:news-read'], function () : void {
+        Route::put('/news/publish/{item}', [AdminNewsController::class, 'publish']);
+        Route::put('/news/archive/{item}', [AdminNewsController::class, 'archive']);
+        Route::get('/news/{item}/preview', [AdminNewsController::class, 'preview']);
+        Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
+    });
 
-    Route::get('boards/export', [AdminExportsController::class, 'index']);
-    Route::post('boards/import', [AdminImportsController::class, 'store']);
-    Route::resource('boards', AdminBoardsController::class);
+    Route::group(['middleware' => 'dashboard:board-members-read'], function () : void {
+        Route::get('boards/export', [AdminExportsController::class, 'index']);
+        Route::post('boards/import', [AdminImportsController::class, 'store']);
+        Route::resource('boards', AdminBoardsController::class);
+    });
 
     Route::group(['middleware' => 'can:dashboard:registrations-write'], function () : void {
         Route::delete('registration-requests/{registration}', [RegistrationRequestsController::class, 'remove']);
