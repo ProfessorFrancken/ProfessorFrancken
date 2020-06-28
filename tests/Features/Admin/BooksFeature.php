@@ -18,7 +18,7 @@ class BooksFeature extends TestCase
     private $books;
 
     /** @test */
-    public function a_list_of_news_is_shown() : void
+    public function a_list_of_books_are_shown() : void
     {
         $this->visit('/admin/study/books');
 

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http\Requests;
 
+use Francken\Study\BooksSale\BookBuyer;
+use Francken\Study\BooksSale\BookSeller;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminBookSearchRequest extends FormRequest
@@ -39,6 +41,12 @@ class AdminBookSearchRequest extends FormRequest
         return $sellerId === 0 ? null : $sellerId;
     }
 
+    public function seller() : ?BookSeller
+    {
+        return $this->sellerId() !== null
+            ? BookSeller::find($this->sellerId()) : null;
+    }
+
     public function buyerId() : ?int
     {
         if ($this->input('buyer', '') === null) {
@@ -48,6 +56,13 @@ class AdminBookSearchRequest extends FormRequest
         $buyerId = (int)$this->input('buyer_id', '');
 
         return $buyerId === 0 ? null : $buyerId;
+    }
+
+    public function buyer() : ?BookBuyer
+    {
+        return $this->buyerId() !== null
+            ? BookBuyer::find($this->buyerId())
+            : null;
     }
 
     public function showSoldBooks() : ?bool

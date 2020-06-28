@@ -19,11 +19,11 @@
                                 {!! Form::text('title', $request->title(), ['placeholder' => 'Search by title', 'class' => 'form-control'])  !!}
                             </div>
                             <div class="form-group mx-2 mb-0">
-                                {!! Form::text('seller', $seller, ['placeholder' => 'Search by seller', 'class' => 'form-control book-seller', 'id' => 'seller'])  !!}
+                                {!! Form::text('seller', optional($request->seller())->full_name, ['placeholder' => 'Search by seller', 'class' => 'form-control book-seller', 'id' => 'seller'])  !!}
                                 {!! Form::hidden('seller_id', $request->sellerId(), ['class' => 'book-seller-id']) !!}
                             </div>
                             <div class="form-group mx-2 mb-0">
-                                {!! Form::text('buyer', $buyer, ['placeholder' => 'Search by buyer', 'class' => 'form-control book-buyer', 'id' => 'buyer'])  !!}
+                                {!! Form::text('buyer', optional($request->buyer())->full_name, ['placeholder' => 'Search by buyer', 'class' => 'form-control book-buyer', 'id' => 'buyer'])  !!}
                                 {!! Form::hidden('buyer_id', $request->buyerId(), ['class' => 'book-buyer-id']) !!}
                             </div>
                             <button type="submit" class="mx-2 btn btn-sm btn-primary">

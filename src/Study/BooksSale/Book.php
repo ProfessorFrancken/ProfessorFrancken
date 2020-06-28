@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Study\BooksSale;
 
 use DateTimeImmutable;
+use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -83,14 +84,6 @@ final class Book extends Model
         'verkocht',
         'afgerekend',
     ];
-
-    public function scopeAvailable(Builder $query) : Builder
-    {
-        return $query
-            ->where('verkoopdatum', null)
-            ->where('verkocht', false)
-            ->where('afgerekend', false);
-    }
 
     public function seller()
     {
@@ -203,5 +196,33 @@ final class Book extends Model
     public function getTakenInByBuyerAtAttribute() : ?DateTimeImmutable
     {
         return null;
+    }
+
+    public function scopeSearch(Builder $query, AdminBookSearchRequest $request) : Builder
+    {
+        return $query
+            ->when($request->title(), function (Builder $query, string $title) : void {
+                $query->where('naam', 'LIKE', '%' . $title . '%');
+            })
+            ->when( ! $request->showSoldBooks(), function (Builder $query, bool $dontShowSoldBooks) : void {
+                if ($dontShowSoldBooks) {
+                    $query->available();
+                }
+            })
+            ->when($request->sellerId(), function (Builder $query, int $sellerId) : void {
+                $query->where('verkoperid', $sellerId);
+            })
+            ->when($request->buyerId(), function (Builder $query, int $buyerId) : void {
+                $query->where('koperId', $buyerId);
+            });
+    }
+
+    public function scopeAvailable(Builder $query) : Builder
+    {
+        return $query
+            ->where('verkoopdatum', null)
+            ->where('koperid', null)
+            ->where('verkocht', false)
+            ->where('afgerekend', false);
     }
 }
