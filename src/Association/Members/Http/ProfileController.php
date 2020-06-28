@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http;
 
-use Francken\Association\Committees\CommitteesRepository;
+use Francken\Association\Committees\HardcodedCommitteesRepository;
 use Francken\Association\Members\Member;
 
 final class ProfileController
 {
     private $profile;
 
-    public function index(CommitteesRepository $committees)
+    public function index(HardcodedCommitteesRepository $committees)
     {
         $member = $this->member(request()->user());
 

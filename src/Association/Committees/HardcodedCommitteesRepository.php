@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Francken\Association\Committees;
 
 use Francken\Shared\AcademicYear;
+use Francken\Association\Committees\HardcodedCommittee;
+use Francken\Association\Committees\HardcodedCommitteeMember;
 
-final class CommitteesRepository
+final class HardcodedCommitteesRepository
 {
     private $committees;
 
@@ -234,7 +236,7 @@ final class CommitteesRepository
 
         $this->committees = array_map(
             function ($committee) {
-                return new Committee(
+                return new HardcodedCommittee(
                     $committee['id'],
                     $committee['title'],
                     $committee['email'],
@@ -282,13 +284,13 @@ final class CommitteesRepository
             ->where('commissie_id', $committee->id())
             ->get()
             ->map(function ($member) {
-                return new CommitteeMember(
+                return new HardcodedCommitteeMember(
                     $member->id,
                     implode(' ', array_filter([$member->voornaam, $member->tussenvoegsel, $member->achternaam]))
                 );
             });
 
-        return new Committee(
+        return new HardcodedCommittee(
             $committee->id(),
             $committee->name(),
             $committee->email(),

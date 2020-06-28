@@ -10,8 +10,8 @@ use Francken\Association\Boards\BoardMemberWasDemissioned;
 use Francken\Association\Boards\BoardMemberWasDischarged;
 use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
-use Francken\Association\Committees\Committee;
-use Francken\Association\Committees\CommitteesRepository;
+use Francken\Association\Committees\HardcodedCommittee;
+use Francken\Association\Committees\HardcodedCommitteesRepository;
 use Spatie\Permission\Models\Role;
 
 final class ChangeRolesListener
@@ -27,7 +27,7 @@ final class ChangeRolesListener
      */
     private $committees;
 
-    public function __construct(CommitteesRepository $committees)
+    public function __construct(HardcodedCommitteesRepository $committees)
     {
         $this->committees = $committees;
     }
@@ -152,14 +152,14 @@ final class ChangeRolesListener
             }
     }
 
-    private function roleForCommittee(Committee $committee)
+    private function roleForCommittee(HardcodedCommittee $committee)
     {
         return Role::firstOrCreate([
             'name' => $this->committeeRoleName($committee)
         ]);
     }
 
-    private function committeeRoleName(Committee $committee) : string
+    private function committeeRoleName(HardcodedCommittee $committee) : string
     {
         return 'Committee ' . $committee->name();
     }

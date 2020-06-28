@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
-use Francken\Association\Committees\CommitteesRepository;
+use Francken\Association\Committees\HardcodedCommitteesRepository;
 
 final class CommitteesController
 {
     private $committees;
 
-    public function __construct(CommitteesRepository $repo)
+    public function __construct(HardcodedCommitteesRepository $repo)
     {
         $this->committees = $repo;
     }

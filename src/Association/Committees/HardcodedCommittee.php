@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees;
 
-final class Committee
+final class HardcodedCommittee
 {
     private $members = [];
     private $id;
