@@ -19,14 +19,4 @@ class DashboardController extends Controller
             ]
         ]);
     }
-
-    public function analytics()
-    {
-        return view('admin.analytics');
-    }
-
-    public function export()
-    {
-        return view('admin.export');
-    }
 }

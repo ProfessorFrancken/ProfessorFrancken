@@ -40,8 +40,6 @@ use Francken\Treasurer\Http\Controllers\DeductionsController;
 
 Route::get('/', [DashboardController::class, 'redirectToDashboard']);
 Route::get('overview', [DashboardController::class, 'overview']);
-Route::get('analytics', [DashboardController::class, 'analytics']);
-Route::get('export', [DashboardController::class, 'export']);
 
 Route::group(['prefix' => 'study'], function () : void {
     Route::get('research-groups', [AdminController::class, 'showPageIsUnavailable']);
