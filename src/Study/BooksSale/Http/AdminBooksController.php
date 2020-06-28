@@ -52,7 +52,7 @@ final class AdminBooksController
             'members' => $this->members(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
-                ['url' => action([self::class, 'show'], $book->id), 'text' => $book->title],
+                ['url' => action([self::class, 'show'], ['book' => $book]), 'text' => $book->title],
             ]
         ]);
     }
@@ -134,14 +134,18 @@ final class AdminBooksController
             "afgerekend" => $request->has('paid_off'),
         ]);
 
-        return redirect()->action([self::class, 'show'], $book->id);
+        return redirect()->action([self::class, 'show'], ['book' => $book]);
     }
 
-    public function remove(Request $request, Book $book)
+    public function remove(Book $book)
     {
-        if ($book->buyer === null) {
-            $book->delete();
+        if ($book->buyer !== null) {
+            return redirect()->action([self::class, 'show'], ['book' => $book])->with([
+                'error' => "You are not allowed to remove a book that has been sold"
+            ]);
         }
+
+        $book->delete();
 
         return redirect()->action([self::class, 'index']);
     }
@@ -153,7 +157,7 @@ final class AdminBooksController
             'members' => $this->members(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
-                ['url' => action([self::class, 'show'], $book->id), 'text' => $book->title],
+                ['url' => action([self::class, 'show'], ['book' => $book]), 'text' => $book->title],
             ]
         ]);
     }
