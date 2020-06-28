@@ -7,6 +7,7 @@
                 <th>Sold by</th>
                 <th>Bought by</th>
                 <th class="text-left">Price</th>
+                <th class="text-right">Actions</th>
             </tr>
         </thead>
         @foreach ($books as $book)
@@ -46,6 +47,29 @@
                 </td>
                 <td class="text-left align-middle">
                     €{{ number_format($book->price, 2, ",", "") }}
+                </td>
+                <td class="text-right align-middle">
+                    <a
+                        class="btn btn-text text-muted font-weight-light"
+                        href="{{ action(
+                                 [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'print'],
+                                 ['book' => $book]
+                                 ) }}"
+                        target="_blank"
+                    >
+                        <i class="fas fa-print"></i>
+                        Print
+                    </a>
+                    <a
+                        class="btn btn-text text-muted font-weight-light"
+                        href="{{ action(
+                                 [\Francken\Study\BooksSale\Http\AdminBooksController::class, 'show'],
+                                 ['book' => $book]
+                                 ) }}"
+                    >
+                        <i class="fas fa-edit"></i>
+                        Edit
+                    </a>
                 </td>
             </tr>
         @endforeach

@@ -39,7 +39,6 @@
 
 
 @section('actions')
-    @if ($book->buyer === null)
     <div class="d-flex align-items-start">
         <a
             class="btn btn-outline-primary"
@@ -53,7 +52,6 @@
             Print
         </a>
     </div>
-    @endif
 @endsection
 
 @push('css')
