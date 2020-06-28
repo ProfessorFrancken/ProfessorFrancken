@@ -6,6 +6,7 @@ namespace Francken\Association\Committees;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 final class Committee extends Model
 {
@@ -29,5 +30,15 @@ final class Committee extends Model
     public function getEmailAttribute()
     {
         return $this->emailadres;
+    }
+
+    public function committeeMembers() : Collection
+    {
+        return $this->members->sortBy(function ($member) {
+            return [
+                $member->board_year,
+                $member->member->full_name
+            ];
+        });
     }
 }
