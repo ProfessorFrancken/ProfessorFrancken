@@ -145,24 +145,6 @@ return [
                     "can" => "dashboard:companies-read",
                 ],
                 [
-                    "name" => "Companies",
-                    "url" => "companies",
-                    "works" => false,
-                    "can" => "dashboard:companies-read",
-                ],
-                [
-                    "name" => "Events",
-                    "url" => "events",
-                    "works" => false,
-                    "can" => "dashboard:companies-read",
-                ],
-                [
-                    "name" => "Jop openings",
-                    "url" => "jop-openings",
-                    "works" => false,
-                    "can" => "dashboard:companies-read",
-                ],
-                [
                     "name" => "Factsheet",
                     "url" => "fact-sheet",
                     "works" => true,
