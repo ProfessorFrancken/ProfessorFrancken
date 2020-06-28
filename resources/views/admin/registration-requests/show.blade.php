@@ -91,6 +91,29 @@
             @endif
         </div>
     </div>
+
+    {!!
+       Form::model(
+           $registration,
+           [
+               'url' => action(
+                   [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'remove'],
+                   ['registration' => $registration->id]
+               ),
+               'method' => 'post'
+           ]
+       )
+    !!}
+    @method('DELETE')
+
+    <p class="mt-2 text-muted d-flex align-items-center justify-content-end">
+        Click <button
+                  class="btn btn-text px-1"
+                  onclick='return confirm("Are you sure you want to remove this registration request?");'
+              >here</button> to remove this registration.
+    </p>
+
+    {!! Form::close() !!}
 @endsection
 
 @section('actions')
@@ -108,7 +131,7 @@
             Print
         </a>
         <a
-            class="btn btn-outline-primary mr-3"
+            class="btn btn-outline-primary"
             href="{{ action(
                        [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'edit'],
                        ['registration' => $registration->id]
@@ -117,22 +140,6 @@
             <i class="fas fa-user-edit"></i>
             Edit
         </a>
-        {!!
-           Form::model(
-               $registration,
-               [
-                   'url' => action(
-                       [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'remove'],
-                       ['registration' => $registration->id]
-                   ),
-                   'method' => 'post'
-               ]
-           )
-        !!}
-        @method('DELETE')
-
-        {!! Form::submit('Remove', ['class' => 'btn btn-outline-danger', 'onClick' => 'return confirm("Are you sure you want to remove this registration request?");']) !!}
-        {!! Form::close() !!}
     </div>
     @endif
 @endsection

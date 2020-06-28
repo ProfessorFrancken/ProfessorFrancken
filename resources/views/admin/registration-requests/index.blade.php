@@ -20,15 +20,20 @@
                 @foreach ($requests as $request)
                     <tr>
                         <th scope="row">
-                            <div>
-                                {{ $request->fullname->toString() }}
-                            </div>
-                            <small>
-                                {{ $request->email->toString() }}
-                                @if ($request->email_verified_at === null)
-                                    <small class="text-danger font-weight-bold">(not yet verified)</small>
-                                @endif
-                            </small>
+                            <a href="{{ action(
+                                        [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'show'],
+                                        ['registration' => $request]
+                                        )}}">
+                                <div>
+                                    {{ $request->fullname->toString() }}
+                                </div>
+                                <small>
+                                    {{ $request->email->toString() }}
+                                    @if ($request->email_verified_at === null)
+                                        <small class="text-danger font-weight-bold">(not yet verified)</small>
+                                    @endif
+                                </small>
+                            </a>
                         </th>
                         <td class="text-right">
                             {{ $request->created_at->format('Y-m-d') }}
@@ -40,19 +45,13 @@
                             {{ optional($request->registration_accepted_at)->format('Y-m-d') }}
                         </td>
                         <td class="text-right">
-                            <a class="btn btn-outline-success" href="/admin/association/registration-requests/{{ $request->id }}">
+                            <a class="btn btn-outline-success" href="{{ action(
+                                        [\Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController::class, 'show'],
+                                        ['registration' => $request]
+                                        )}}">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                                 Inspect
                             </a>
-
-                            {!! Form::open(['url' => '/admin/association/registration-requests/' . $request->id, 'method' => 'delete', 'class' => 'd-inline']) !!}
-
-                            <button class="btn btn-link text-danger btn-xs">
-                                <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                                Mark as spam
-                            </button>
-
-                            {!! Form::close() !!}
                         </td>
                     </tr>
                 @endforeach
