@@ -1,8 +1,7 @@
-<div class="row">
-    <div class="col-md-12">
         <h4 class="h5 font-weight-bold">Book info</h4>
-
-        <div class="form-row">
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
             <div class="form-group col-5">
                 <label for="title">Book name</label>
                 {!!
@@ -49,7 +48,7 @@
                 @enderror
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="form-group col">
                 <label for="isbn">ISBN</label>
                 {!!
@@ -59,7 +58,7 @@
                        ['class' => 'form-control book-isbn', 'placeholder' => 'Isbn', 'required']
                    )
                 !!}
-                <p class="form-text text-muted">
+                <p class="form-text text-muted mb-0">
                     Can either be isbn10, or isbn13. Symbols that aren't numbers or "x" will be ignored.
                 </p>
                 @error('isbn')
@@ -77,7 +76,7 @@
                        ['class' => 'form-control book-price', 'placeholder' => 'Price', 'id' => 'price', 'required']
                    )
                 !!}
-                <p class='form-text text-muted'>
+                <p class='form-text text-muted mb-0'>
                     Must be in whole euros
                 </p>
                 @error('price')
@@ -87,8 +86,8 @@
                 @enderror
             </div>
         </div>
-        <div class="form-row">
-            <div class="form-group col-9">
+        <div class="row">
+            <div class="form-group col-12">
                 <label for="description">Description</label>
                 {!!
                    Form::text(
@@ -108,6 +107,11 @@
             </div>
         </div>
     </div>
+
+            <div class="col-md-3">
+                <img alt="" src="{{ $book->cover_path }}" class="book-image" />
+            </div>
+
 
     <div class="col-md-6"">
         <h4 class="h6 font-weight-bold">
@@ -250,9 +254,6 @@
             </p>
             @enderror
         </div>
-    </div>
-    <div class="col-md-3">
-        <img alt="" src="{{ $book->cover_path }}" class="book-image" />
     </div>
 </div>
 
