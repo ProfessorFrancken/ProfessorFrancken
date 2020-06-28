@@ -36,7 +36,7 @@ final class BoardsImport implements ToCollection, WithHeadingRow
                 'updated_at' => $row['updated_at'],
             ]);
 
-            $this->uploadPhoto($board, $row['photo']);
+            $this->uploadPhoto($board, $row['photo'] ?? null);
         });
     }
 

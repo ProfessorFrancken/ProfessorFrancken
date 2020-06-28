@@ -38,7 +38,7 @@ final class BoardMembersImport implements ToCollection, WithHeadingRow
                 'created_at' => $row['created_at'],
                 'updated_at' => $row['updated_at'],
             ]);
-            $this->uploadPhoto($member, $row['photo']);
+            $this->uploadPhoto($member, $row['photo'] ?? null);
         });
     }
 

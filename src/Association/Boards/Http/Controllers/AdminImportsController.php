@@ -21,6 +21,6 @@ final class AdminImportsController
 
         Excel::import($import, $file);
 
-        return redirect(action([self::class, 'index']));
+        return redirect(action([AdminBoardsController::class, 'index']));
     }
 }
