@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b28e2d8a136b90096fb46d3373feb5c",
+    "content-hash": "ace1633400646c5674dc05a324713d23",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -879,53 +879,6 @@
                 "ignition"
             ],
             "time": "2019-08-30T14:06:08+00:00"
-        },
-        {
-            "name": "fale/isbn",
-            "version": "3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Fale/isbn.git",
-                "reference": "9bfc2a81ccf9ce2c79077a37816784ff09d59b80"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Fale/isbn/zipball/9bfc2a81ccf9ce2c79077a37816784ff09d59b80",
-                "reference": "9bfc2a81ccf9ce2c79077a37816784ff09d59b80",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Isbn": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Fabio Alessandro Locati",
-                    "email": "me@fale.io",
-                    "homepage": "https://fale.io",
-                    "role": "lead"
-                }
-            ],
-            "description": "ISBN library",
-            "homepage": "http://github.com/fale/isbn",
-            "keywords": [
-                "ISBN",
-                "ISBN-10",
-                "ISBN-13"
-            ],
-            "time": "2019-09-16T21:09:41+00:00"
         },
         {
             "name": "fideloper/proxy",

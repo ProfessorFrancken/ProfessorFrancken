@@ -6,7 +6,6 @@
     "cmpayments/iban": "^1.1",
     "doctrine/dbal": "^2.10",
     "facade/ignition": "^2.0",
-    "fale/isbn": "^3.1",
     "fideloper/proxy": "^4.4",
     "guzzlehttp/guzzle": "^6.5",
     "intervention/validation": "^2.4",
