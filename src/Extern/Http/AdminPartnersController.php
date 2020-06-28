@@ -61,6 +61,7 @@ final class AdminPartnersController
                 }
             })
             ->with([
+                'sector',
                 'logoMedia',
                 'companyProfile',
                 'footer',
