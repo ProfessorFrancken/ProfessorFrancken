@@ -131,6 +131,12 @@ final class AdminPartnersController
 
     public function show(Partner $partner)
     {
+        $partner->load([
+            'contacts.photoMedia',
+            'alumni.member',
+            'notes.member',
+        ]);
+
         return view('admin.extern.partners.show', [
             'partner' => $partner,
             'breadcrumbs' => [
