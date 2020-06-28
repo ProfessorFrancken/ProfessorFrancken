@@ -1,5 +1,5 @@
 @if (count($books) > 0)
-    <table class="table table-hover table-small table-striped">
+    <table class="table table-hover table-small table-striped mb-0">
         <thead>
             <tr>
                 <th>Title</th>
@@ -50,7 +50,9 @@
             </tr>
         @endforeach
     </table>
-    <div class="card-footer">
-        {!! $books->links() !!}
-    </div>
+    @if($books->hasMorePages())
+        <div class="card-footer">
+            {!! $books->links() !!}
+        </div>
+    @endif
 @endif
