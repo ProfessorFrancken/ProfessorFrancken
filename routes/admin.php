@@ -99,7 +99,7 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
     });
 
-    Route::group(['middleware' => 'dashboard:board-members-read'], function () : void {
+    Route::group(['middleware' => 'can:dashboard:board-members-read'], function () : void {
         Route::get('boards/export', [AdminExportsController::class, 'index']);
         Route::post('boards/import', [AdminImportsController::class, 'store']);
         Route::resource('boards', AdminBoardsController::class);
