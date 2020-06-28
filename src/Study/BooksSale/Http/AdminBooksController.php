@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http;
 
-use DateTimeImmutable;
 use DB;
 use Francken\Study\BooksSale\Book;
+use Francken\Study\BooksSale\Http\Requests\AdminBookRequest;
 use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 final class AdminBooksController
 {
@@ -69,69 +68,49 @@ final class AdminBooksController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(AdminBookRequest $request)
     {
-        $now = new DateTimeImmutable();
-
-        $inkoopdatum = ($request->filled('purchase_date'))
-            ? (new DateTimeImmutable($request->get('purchase_date')))->format('Y-m-d H:i:s')
-            : $now->format('Y-m-d H:i:s');
-
-        $verkoopdatum = ($request->filled('sale_date'))
-            ? (new DateTimeImmutable($request->get('sale_date')))->format('Y-m-d H:i:s')
-            : null;
-
         $book = [
-            "naam" => $request->input('title'),
-            "editie" => $request->input('edition'),
-            'auteur' => $request->input('author'),
-            'beschrijving' => $request->input('description'),
-            'isbn' => $request->input('isbn'),
-            'prijs' => $request->input('price'),
+            "naam" => $request->title(),
+            "editie" => $request->edition(),
+            'auteur' => $request->author(),
+            'beschrijving' => $request->description(),
+            'isbn' => $request->isbn(),
+            'prijs' => $request->price(),
 
-            'verkoperid' => $request->input('seller_id'),
-            'koperid' => $request->input('buyer_id'),
+            'verkoperid' => $request->sellerId(),
+            'koperid' => $request->buyerId(),
 
-            'inkoopdatum' => $inkoopdatum,
-            'verkoopdatum' => $verkoopdatum,
+            'inkoopdatum' => $request->purchaseDate(),
+            'verkoopdatum' => $request->saleDate(),
 
-            "verkocht" => $request->has('sold'),
-            "afgerekend" => $request->has('paid_off'),
+            "verkocht" => $request->hasBeenSold(),
+            "afgerekend" => $request->hasBeenPaidOff(),
         ];
 
         $book = Book::create($book);
 
-        return redirect()->action([self::class, 'index']);
+        return redirect()->action([self::class, 'show'], ['book' => $book]);
     }
 
-    public function update(Request $request, Book $book)
+    public function update(AdminBookRequest $request, Book $book)
     {
-        $now = new DateTimeImmutable();
-
-        $inkoopdatum = ($request->filled('purchase_date'))
-            ? (new DateTimeImmutable($request->get('purchase_date')))->format('Y-m-d H:i:s')
-            : $now->format('Y-m-d H:i:s');
-
-        $verkoopdatum = ($request->filled('sale_date'))
-            ? (new DateTimeImmutable($request->get('sale_date')))->format('Y-m-d H:i:s')
-            : null;
-
         $book->update([
-            "naam" => $request->input('title'),
-            "editie" => $request->input('edition'),
-            'auteur' => $request->input('author'),
-            'beschrijving' => $request->input('description'),
-            'isbn' => $request->input('isbn'),
-            'prijs' => $request->input('price'),
+            "naam" => $request->title(),
+            "editie" => $request->edition(),
+            'auteur' => $request->author(),
+            'beschrijving' => $request->description(),
+            'isbn' => $request->isbn(),
+            'prijs' => $request->price(),
 
-            'verkoperid' => $request->input('seller_id'),
-            'koperid' => $request->input('buyer_id'),
+            'verkoperid' => $request->sellerId(),
+            'koperid' => $request->buyerId(),
 
-            'inkoopdatum' => $inkoopdatum,
-            'verkoopdatum' => $verkoopdatum,
+            'inkoopdatum' => $request->purchaseDate(),
+            'verkoopdatum' => $request->saleDate(),
 
-            "verkocht" => $request->has('sold'),
-            "afgerekend" => $request->has('paid_off'),
+            "verkocht" => $request->hasBeenSold(),
+            "afgerekend" => $request->hasBeenPaidOff(),
         ]);
 
         return redirect()->action([self::class, 'show'], ['book' => $book]);

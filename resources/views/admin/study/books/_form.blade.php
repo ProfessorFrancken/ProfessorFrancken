@@ -182,7 +182,7 @@
                        ['class' => 'book-buyer-id']
                    )
                 !!}
-                @error('purchase_date')
+                @error('buyer_id')
                 <p class="invalid-feedback">
                     {{ $message  }}
                 </p>
