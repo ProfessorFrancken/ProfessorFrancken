@@ -9,6 +9,8 @@ use Laravel\BrowserKitTesting\TestCase as LaravelTestCase;
 
 abstract class TestCase extends LaravelTestCase
 {
+    public $connectionsToTransact = [null, 'francken-legacy'];
+
     /**
      * The base URL to use while testing the application.
      *
