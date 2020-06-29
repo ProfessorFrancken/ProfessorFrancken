@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Francken\Association\Boards;
 
 use DateTimeImmutable;
+use Francken\Association\Committees\Committee;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
@@ -179,5 +181,10 @@ final class Board extends Model
     public function scopeWithPhotos($query)
     {
         return $query->withMedia([static::BOARD_PHOTO_TAG]);
+    }
+
+    public function committees() : HasMany
+    {
+        return $this->hasMany(Committee::class);
     }
 }

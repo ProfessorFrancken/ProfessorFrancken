@@ -121,7 +121,8 @@ Route::group(['prefix' => 'association'], function () : void {
     });
 
     Route::group(['middleware' => 'can:dashboard:committees-read'], function () : void {
-        Route::resource('committees', AdminCommitteesController::class);
+        Route::get('committees', [AdminCommitteesController::class, 'redirect']);
+        Route::resource('boards.committees', AdminCommitteesController::class);
     });
 
     // Francken Vrij

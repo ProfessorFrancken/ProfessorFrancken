@@ -28,7 +28,7 @@
                             <td>
                                 <a href="{{ action(
                                             [\Francken\Association\Committees\Http\AdminCommitteesController::class, 'show'],
-                                            ['committee' => $committee, 'board_id' => $selected_board_id]
+                                            ['committee' => $committee, 'board' => $board]
                                             ) }}"
                                 >
                                     <h4 class='d-flex flex-column h6'>
@@ -52,11 +52,7 @@
                             <td colspan="2" class="border-top-0 bg-light">
                                 @foreach ($committee->committeeMembers() as $member)
                                     <span class="badge badge-light bg-white font-weight-light font-weight-light">
-
                                         {{ $member->member->full_name }}
-                                        @unless ($selected_board)
-                                            ({{ $member->board_year }})
-                                        @endunless
                                     </span>
                                 @endforeach
                             </td>
@@ -75,7 +71,7 @@
            Form::open(
                [
                    'url' => action(
-                       [\Francken\Association\Committees\Http\AdminCommitteesController::class, 'index']
+                       [\Francken\Association\Committees\Http\AdminCommitteesController::class, 'redirect']
                    ),
                    'method' => 'get',
                    'class' => 'form-inline mr-3',
@@ -85,7 +81,7 @@
         <div class="form-group mr-3">
             <label for="board_id" class="mx-3">Board</label>
             {!!
-               Form::select('board_id', $board_years, $selected_board_id, ['class' => 'form-control', 'id' => 'board_id']);
+               Form::select('board_id', $board_years, $board->id, ['class' => 'form-control', 'id' => 'board_id']);
             !!}
         </div>
         <button class='btn btn-primary btn-sm'>
@@ -94,7 +90,7 @@
         </button>
         {!! Form::close() !!}
 
-        <a href="{{ action([\Francken\Association\Committees\Http\AdminCommitteesController::class, 'create']) }}"
+        <a href="{{ action([\Francken\Association\Committees\Http\AdminCommitteesController::class, 'create'], ['board' => $board]) }}"
            class="btn btn-primary btn-sm"
         >
             <i class="fas fa-plus"></i>
