@@ -6,17 +6,9 @@ namespace Francken\Association\Committees\Http;
 
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
-use Francken\Association\Committees\HardcodedCommitteesRepository;
 
 final class CommitteesController
 {
-    private $committees;
-
-    public function __construct(HardcodedCommitteesRepository $repo)
-    {
-        $this->committees = $repo;
-    }
-
     public function redirect()
     {
         $board = Board::find(request('board_id'));
@@ -48,13 +40,11 @@ final class CommitteesController
     public function index(string $boardYear)
     {
         $board = $this->boardFromBoardYear($boardYear);
-        $committees = $this->committees->list();
-        $committees = $board->committees;
-        $committees->load(['board', 'members.member']);
 
         return view('committees.index')
             ->with([
-                'committees' => $committees,
+                'board' => $board,
+                'committees' => $board->committees,
                 'breadcrumbs' => [
                     ['url' => '/association', 'text' => 'Association'],
                     ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => $board->board_year->toString()],
@@ -65,13 +55,13 @@ final class CommitteesController
 
     public function show(string $boardYear, Committee $committee)
     {
-        $committee->load(['members.member']);
         $board = $this->boardFromBoardYear($boardYear);
-        $committees = $this->committees->list();
+        $committee->load(['members.member']);
 
         return view($committee->page())->with([
+            'board' => $board,
             'committee' => $committee,
-            'committees' => $committees,
+            'committees' => $board->committees,
             'breadcrumbs' => [
                 ['url' => '/association', 'text' => 'Association'],
                 ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => $board->board_year->toString()],
@@ -84,7 +74,8 @@ final class CommitteesController
     private function boardFromBoardYear(string $boardYear) : Board
     {
         preg_match("/(\d{4})-(\d{4})/", $boardYear, $matches);
-        $startOfBoardYear = (int)$matches[0];
+
+        $startOfBoardYear = $matches[0];
         return Board::whereYear('installed_at', $startOfBoardYear)->firstOrFail();
     }
 }

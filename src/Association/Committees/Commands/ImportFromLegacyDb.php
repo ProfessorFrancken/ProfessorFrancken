@@ -61,14 +61,14 @@ final class ImportFromLegacyDb extends Command
                     'parent_committee_id' => $perviousCommitteeId,
 
                     'name' => $legacyCommittee->naam,
-                    'name' => str_slug($legacyCommittee->naam),
+                    'slug' => str_slug($legacyCommittee->naam),
                     'email' => $legacyCommittee->emailadres,
                     'is_public' => $fallbackPage !== null,
                     'fallback_page' => $fallbackPage ?? 'association.committees.fallback',
                 ]);
 
-                $committeeMembers = $members->map(function ($member) use ($committee, $board) : CommitteeMember {
-                    return CommitteeMember::create([
+                $members->each(function ($member) use ($committee, $board) : void {
+                    CommitteeMember::create([
                         'committee_id' => $committee->id,
                         'member_id' => $member->lid_id,
                         'function' => $member->functie,
@@ -83,8 +83,5 @@ final class ImportFromLegacyDb extends Command
                 return $committee;
             });
         });
-
-        return;
-        $this->info("Imported {$committees->count()} committees");
     }
 }
