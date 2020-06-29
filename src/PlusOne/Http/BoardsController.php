@@ -4,25 +4,21 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Database\DatabaseManager;
+use Francken\Association\Boards\BoardMember;
 
 final class BoardsController
 {
-    private $boards;
-
-    public function __construct(DatabaseManager $db)
-    {
-        $this->boards = $db->connection('francken-legacy')
-                      ->table('commissie_lid');
-    }
-
     public function index()
     {
-        $selects = ['lid_id', 'jaar', 'functie'];
-        $members = $this->boards->leftJoin('commissies', 'commissies.id', 'commissie_lid.commissie_id')
-                 ->select($selects)
-                 ->where('commissies.naam', 'Bestuur')
-                 ->get();
+        $members = BoardMember::with('member')->get()->filter(function (BoardMember $member) {
+            return $member->member_id !== null;
+        })->map(function (BoardMember $member) {
+            return [
+                'lid_id' => $member->member_id,
+                'jaar' => (int) $member->installed_at->format('Y'),
+                'functie' => $member->title,
+            ];
+        });
 
         return collect(['boardMembers' => $members]);
     }
