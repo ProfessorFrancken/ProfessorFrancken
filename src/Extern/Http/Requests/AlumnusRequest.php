@@ -36,8 +36,12 @@ class AlumnusRequest extends FormRequest
         return $this->input('position', '');
     }
 
-    public function startedPositionAt() : DateTimeImmutable
+    public function startedPositionAt() : ?DateTimeImmutable
     {
+        if ($this->input('started_position_at') === null) {
+            return null;
+        }
+
         $datetime = DateTimeImmutable::createFromFormat(
             'Y-m-d',
             $this->input('started_position_at')

@@ -18,7 +18,9 @@
                                     {{ $alumnus->position }}
                                 </li>
                                 <li>
-                                    {{ $alumnus->started_position_at->format("Y-m-d") }}
+                                    @if ($alumnus->started_position_at)
+                                        {{ $alumnus->started_position_at->format("Y-m-d") }}
+                                    @endif
                                     @if ($alumnus->stopped_position_at)
                                     - {{ $alumnus->stopped_position_at->format("Y-m-d") }}
                                     @endif
