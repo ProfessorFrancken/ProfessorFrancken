@@ -15,7 +15,7 @@
 
     <hr/>
 
-    @include('committees._members', ['members' => $committee->members() ])
+    @include('committees._members', ['members' => $committee->members ])
 @endsection
 
 @section('aside')
@@ -38,7 +38,7 @@
 
                 <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
                     <a
-                        href="/association/committees/{{ $committee->link() }}"
+                        href="{{ $committee->link() }}"
                         class="aside-link {{ $committee->id() == $id ? 'aside-link--active' : '' }}"
                     >
                         <div class="media align-items-center">

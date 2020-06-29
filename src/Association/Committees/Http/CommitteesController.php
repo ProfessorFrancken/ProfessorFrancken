@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Committees\Http;
 
 use Francken\Association\Boards\Board;
+use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\HardcodedCommitteesRepository;
 
 final class CommitteesController
@@ -48,33 +49,36 @@ final class CommitteesController
     {
         $board = $this->boardFromBoardYear($boardYear);
         $committees = $this->committees->list();
+        $committees = $board->committees;
+        $committees->load(['board', 'members.member']);
 
         return view('committees.index')
-            ->with('committees', $committees)
-            ->with('breadcrumbs', [
-                ['url' => '/association', 'text' => 'Association'],
-                ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => $board->board_year->toString()],
-                ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => 'Committees'],
+            ->with([
+                'committees' => $committees,
+                'breadcrumbs' => [
+                    ['url' => '/association', 'text' => 'Association'],
+                    ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => $board->board_year->toString()],
+                    ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => 'Committees'],
+                ]
             ]);
     }
 
-    public function show(string $boardYear, string $committee)
+    public function show(string $boardYear, Committee $committee)
     {
-        $link = $committee;
+        $committee->load(['members.member']);
         $board = $this->boardFromBoardYear($boardYear);
         $committees = $this->committees->list();
-        $committee = $this->committees->findByLink($link);
 
-        $view = view($committee->page());
-
-        return $view->with('committee', $committee)
-            ->with('committees', $committees)
-            ->with('breadcrumbs', [
+        return view($committee->page())->with([
+            'committee' => $committee,
+            'committees' => $committees,
+            'breadcrumbs' => [
                 ['url' => '/association', 'text' => 'Association'],
                 ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => $board->board_year->toString()],
                 ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => 'Committees'],
                 ['text' => $committee->name()],
-            ]);
+            ]
+        ]);
     }
 
     private function boardFromBoardYear(string $boardYear) : Board
