@@ -23,7 +23,7 @@ final class ChangeRolesListener
     public const DECHARGED_BOARD_ROLE = 'Decharged Board';
 
     /**
-     * @var CommitteesRepository
+     * @var HardcodedCommitteesRepository
      */
     private $committees;
 

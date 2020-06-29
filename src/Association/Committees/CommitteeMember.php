@@ -10,15 +10,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class CommitteeMember extends Model
 {
-    protected $table = 'commissie_lid';
-    protected $connection = 'francken-legacy';
+    protected $table = 'association_committee_members';
     protected $fillable = [
-        'commissie_id',
-        'lid_id',
-        'jaar',
-        'functie',
+        'committee_id',
+        'member_id',
+        'function',
+        'installed_at',
+        'decharged_at',
     ];
     protected $touches = ['committee'];
+    protected $dates = [
+        'installed_at',
+        'decharged_at',
+    ];
 
     public function committee() : BelongsTo
     {
@@ -30,13 +34,13 @@ final class CommitteeMember extends Model
         return $this->belongsTo(LegacyMember::class, 'lid_id');
     }
 
-    public function getFuncationAttribute()
+    public function getFunctionAttribute() : ?string
     {
-        return $this->functie;
+        return $this->attributes['functie'] ?? null;
     }
 
     public function getBoardYearAttribute() : int
     {
-        return (int)$this->jaar;
+        return (int)$this->attributes['jaar'];
     }
 }

@@ -4,41 +4,51 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees;
 
+use Francken\Auth\Role;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
+use Plank\Mediable\Mediable;
 
 final class Committee extends Model
 {
-    protected $table = 'commissies';
-    protected $connection = 'francken-legacy';
+    use Mediable;
+
+    protected $table = 'association_committees';
     protected $fillable = [
-        'naam',
-        'emailadres'
+        'board_id',
+        'parent_committee_id',
+        'logo_media_id',
+        'photo_media_id',
+        'name',
+        'slug',
+        'email',
+        'is_public',
+
+        'source_content',
+        'compiled_content',
+        'fallback_page',
     ];
 
     public function members() : HasMany
     {
-        return $this->hasMany(CommitteeMember::class, 'commissie_id');
-    }
-
-    public function getNameAttribute()
-    {
-        return $this->naam;
-    }
-
-    public function getEmailAttribute()
-    {
-        return $this->emailadres;
+        return $this->hasMany(CommitteeMember::class);
     }
 
     public function committeeMembers() : Collection
     {
-        return $this->members->sortBy(function ($member) {
-            return [
-                $member->board_year,
-                $member->member->full_name
-            ];
+        return $this->members->sortBy(function (CommitteeMember $member) : string {
+            return $member->member->full_name;
         });
+    }
+
+    public function getRoleAttribute() : Role
+    {
+        return Role::fromCommittee($this);
+    }
+
+    public function getPermissionsAttribute() : Collection
+    {
+        return $this->role->permissions;
     }
 }

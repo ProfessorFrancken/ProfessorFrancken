@@ -34,6 +34,7 @@ class Kernel extends ConsoleKernel
         UpdateBoardMemberStatus::class,
         MigrateSqliteToMysql::class,
         ImportPartnersFromLegacy::class,
+        \Francken\Association\Committees\Commands\ImportFromLegacyDb::class,
     ];
 
     /**

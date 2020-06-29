@@ -45,6 +45,6 @@ class CreateExternPartnerContactDetails extends Migration
      */
     public function down() : void
     {
-        Schema::dropIfExists('extern_partner_addresses');
+        Schema::dropIfExists('extern_partner_contact_details');
     }
 }
