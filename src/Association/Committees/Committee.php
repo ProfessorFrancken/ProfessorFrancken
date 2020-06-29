@@ -17,6 +17,10 @@ final class Committee extends Model
 {
     use Mediable;
 
+    public const COMMIEE_LOGO_TAG = 'committee_logo';
+
+    public const COMMITEE_PHOTO_TAG = 'committee_photo';
+
     protected $table = 'association_committees';
     protected $fillable = [
         'board_id',
@@ -93,7 +97,7 @@ final class Committee extends Model
 
     public function page() : string
     {
-        return is_null($this->fallback_page)
+        return (is_null($this->fallback_page) || $this->fallback_page === '')
             ? 'committees.show'
             : $this->fallback_page;
     }
