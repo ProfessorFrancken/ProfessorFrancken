@@ -109,4 +109,13 @@ final class BoardYear
             $this->period->getEndDate()->format('Y')
         );
     }
+
+    public function toSlug() : string
+    {
+        return sprintf(
+            '%d-%d',
+            $this->period->getStartDate()->format('Y'),
+            $this->period->getEndDate()->format('Y')
+        );
+    }
 }

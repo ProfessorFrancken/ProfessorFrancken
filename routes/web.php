@@ -79,8 +79,11 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('activities/ical/all', [IcalController::class, 'show']);
     Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
 
-    Route::get('committees', [CommitteesController::class, 'index']);
-    Route::get('committees/{committee}', [CommitteesController::class, 'show']);
+    Route::get('committees', [CommitteesController::class, 'redirect']);
+    Route::get('committees/{committee}', [CommitteesController::class, 'redirectCommittee']);
+    Route::get('{boardYear}/committees', [CommitteesController::class, 'index'])
+        ->where(['boardYear' => '\d{4}-\d{4}']);
+    Route::get('{boardYear}/committees/{committee}', [CommitteesController::class, 'show']);
 
     Route::get('francken-vrij', [FranckenVrijController::class, 'index']);
 

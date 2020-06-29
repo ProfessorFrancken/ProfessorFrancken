@@ -41,7 +41,8 @@ final class AdminCommitteesController
                 'selected_board_id' => $board->id,
                 'board_years' => $board_years,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees / ' . $board->name],
+                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                 ]
             ]);
     }
@@ -52,7 +53,8 @@ final class AdminCommitteesController
             ->with([
                 'committee' => $committee,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees / ' . $board->name],
+                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                     ['url' => action([static::class, 'show'], ['board' => $board, 'committee' => $committee]), 'text' => $committee->name],
                 ]
             ]);
@@ -64,7 +66,8 @@ final class AdminCommitteesController
             ->with([
                 'board' => $board,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees / ' . $board->name],
+                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                     ['url' => action([static::class, 'create']), 'text' => 'Add committee'],
                 ]
             ]);
@@ -101,7 +104,8 @@ final class AdminCommitteesController
                 'board' => $board,
                 'committee' => $committee,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees / ' . $board->name],
+                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                     ['url' => action([static::class, 'show'], ['board' => $board, 'committee' => $committee]), 'text' => $committee->name],
                 ]
             ]);
