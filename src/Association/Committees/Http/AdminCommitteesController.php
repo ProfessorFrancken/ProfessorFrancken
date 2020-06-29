@@ -6,10 +6,19 @@ namespace Francken\Association\Committees\Http;
 
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\FileUploader;
 use Francken\Asssociation\Committees\Http\Requests\AdminCommitteeRequest;
 
 final class AdminCommitteesController
 {
+    /** @var FileUploader */
+    private $uploader;
+
+    public function __construct(FileUploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
     public function redirect()
     {
         $board = Board::find(request('board_id'));
