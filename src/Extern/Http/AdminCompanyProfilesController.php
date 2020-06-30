@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Francken\Extern\ContentCompiler;
+use Francken\Shared\Markdown\ContentCompiler;
 use Francken\Extern\Http\Requests\CompanyProfileRequest;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Extern;
+namespace Francken\Shared\Markdown;
 
 use Francken\Association\News\CompiledMarkdown;
 use Francken\Shared\Markdown\ResponsiveImageRenderer;
