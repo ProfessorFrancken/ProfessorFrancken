@@ -7,7 +7,6 @@ namespace Francken\Extern\Http;
 use DateInterval;
 use DateTimeImmutable;
 use DB;
-use Francken\Association\Committees\HardcodedCommitteesRepository;
 use Francken\Extern\FactSheet\ActiveMembersStatistics;
 use Francken\Extern\FactSheet\FirstYearStudentsPerYear;
 use Francken\Extern\FactSheet\StudentsByStudyAndStudyPhase;
@@ -15,13 +14,11 @@ use League\Period\Period;
 
 final class FactSheetController
 {
-    private $committees;
     private $today;
 
-    public function __construct(HardcodedCommitteesRepository $committees)
+    public function __construct()
     {
         $this->today = new DateTimeImmutable();
-        $this->committees = $committees;
     }
 
     public function index()
