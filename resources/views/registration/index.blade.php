@@ -88,7 +88,7 @@
             Joining a committee is a good opportunity to get to know your fellow students as well as improve your resume.
             You can find more information about each committee on our
             <a
-                href="{{action([\Francken\Association\Committees\Http\CommitteesController::class, 'index'])}}"
+                href="{{action([\Francken\Association\Committees\Http\RedirectToBoardCommitteesController::class, 'index'])}}"
             >
                 committees page
             </a>.

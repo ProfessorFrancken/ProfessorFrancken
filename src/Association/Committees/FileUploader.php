@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\Committees;
 
 use Illuminate\Http\UploadedFile;
-use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
 
 final class FileUploader
@@ -39,10 +38,10 @@ final class FileUploader
         }
     }
 
-    public function uploadPhoto(?UploadedFile $photo, Committee $committee) : ?Media
+    public function uploadPhoto(?UploadedFile $photo, Committee $committee) : void
     {
         if ($photo === null) {
-            return null;
+            return;
         }
 
         $slug = str_slug($committee->name);
