@@ -1,39 +1,55 @@
 @extends('admin.layout')
-@section('page-title', 'Committees / ' . $committee->name)
+@section('page-title', 'Committees / ' . $committee->board->board_name->toString() . ' / ' . $committee->name)
 
 @section('content')
     <div class="row">
         <div class="col-9">
             <div class="card">
                 <div class="card-body">
-                    <p>
-                        Hoi
-                    </p>
-                    <pre>
+                    <img
+                        class="rounded ml-2 my-2"
+                        src="{{ $committee->logo }}"
+                        alt="Logo of {{ $committee->name }}"
+                        style="
+                               max-width: 300px;
+                               max-height: 160px;
+                               object-fit: contain;"
+                    />
+                    <div class="float-right text-right">
+                        @if ($committee->email)
+                        <a href="mailto:{{ $committee->email }}">
+                            {{ $committee->email ?? 'markredeman@mgail.com' }}"
+                        </a>
+                        @endif
+                        <div>
+                        @if ($committee->is_public)
+                            <i class="far fa-check-square"></i>
+                            Is public
+                        @else
+                            <i class="far fa-square"></i>
+                            Is public
+                        @endif
+                        </div>
+                    </div>
+                    <div class='p-3 bg-light my-3'>
+                        <h5 class="h6">
+                            Page content
+                        </h5>
+                        <div
+                            style="max-height: 330px; height: 330px; overflow: auto;"
+                            class="d-flex justify-content-center align-items-center"
+                        >
+                            @if ($committee->compiled_content)
+                                {!! $committee->compiled_content !!}
+                            @else
+                                <h5 class="text-muted font-weight-light">
+                                    Edit this committee's page content with a useful description
+                                </h5>
+                            @endif
+                        </div>
+                    </div>
 
-- Committee logo
-- Committee photo image
-- Members
-- Board year
-- Activities
-- Photo albums
-
-* Committee
-
-- id
-- name
-- slug
-- board_id
-- parent_committee (nullable)
-- logo
-- photo (nullable)
-- page_contents (nullable)
-- email (nullable)
-- members
-- installed at
-- decharged at
-- is_public
-                    </pre>
+                    @include('admin.association.committees.members._index', ['committee' => $committee])
                 </div>
             </div>
             {!!
@@ -58,7 +74,7 @@
             {!! Form::close() !!}
         </div>
         <div class="col-3">
-            @include('admin.association.committees.members._index', ['committee' => $committee])
+            @include('admin.association.committees.members._suggestions', ['committee' => $committee])
             @include('admin.association.committees.permissions._index', ['committee' => $committee])
         </div>
     </div>
@@ -72,6 +88,7 @@
                     ['committee' => $committee->parentCommittee, 'board' => $committee->parentCommittee->board]
                     ) }}"
            class="btn btn-text text-muted mr-3 d-flex justify-content-center align-items-center"
+           title="View this committee from the previous board"
         >
             <div class="mr-2">
                 <i class="fas fa-eye"></i>

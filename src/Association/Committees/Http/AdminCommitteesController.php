@@ -21,8 +21,10 @@ final class AdminCommitteesController
 
     public function index(Board $board)
     {
-        $committees = $board->committees;
-        $committees->load(['logoMedia', 'members.member']);
+        $committees = $board->committees()
+            ->with(['logoMedia', 'members.member'])
+            ->orderBy('name', 'asc')
+            ->get();
 
         $boards = Board::orderBy('installed_at', 'desc')->get();
         $board_years = $boards->mapWithKeys(function (Board $board) {
@@ -53,6 +55,8 @@ final class AdminCommitteesController
 
     public function show(Board $board, Committee $committee)
     {
+        $committee->load(['members.member']);
+
         return view('admin.association.committees.show')
             ->with([
                 'committee' => $committee,
@@ -128,7 +132,6 @@ final class AdminCommitteesController
             ['board' => $board, 'committee' => $committee]
         );
     }
-
 
     public function destroy(Board $board, Committee $committee)
     {

@@ -84,14 +84,10 @@ final class ImportFromLegacyDb extends Command
                     ]);
                 });
 
-                // TODO: uplaod committee logo
                 $logo = $this->downloadFile($hardcodedCommittee);
-
                 if ($logo) {
                     $uploader->uploadLogo($logo, $committee);
                 }
-
-                // dump($committee->toArray(), $committeeMembers->toArray());
 
                 $perviousCommitteeId = $committee->id;
                 return $committee;
