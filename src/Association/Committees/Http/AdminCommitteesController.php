@@ -128,4 +128,12 @@ final class AdminCommitteesController
             ['board' => $board, 'committee' => $committee]
         );
     }
+
+
+    public function destroy(Board $board, Committee $committee)
+    {
+        $committee->delete();
+
+        return redirect()->action([self::class, 'index']);
+    }
 }

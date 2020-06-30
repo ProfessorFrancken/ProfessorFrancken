@@ -76,6 +76,11 @@ final class Committee extends Model
         return $this->hasMany(CommitteeMember::class);
     }
 
+    public function parentCommittee() : BelongsTo
+    {
+        return $this->belongsTo(self::class, 'parent_committee_id');
+    }
+
     public function childCommittee() : HasOne
     {
         return $this->hasOne(self::class, 'parent_committee_id');
