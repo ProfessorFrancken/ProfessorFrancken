@@ -34,6 +34,9 @@ final class AdminCommitteesController
         $continuableCommittees =  Committee::query()
             ->with(['board', 'logoMedia'])
             ->whereDoesntHave('childCommittee')
+            // HACK here we assume boards are always in order so that we don't select
+            // committees from future boards when looking at an older board's committee page
+            ->where('board_id', '<', $board->id)
             ->orderBy('board_id', 'desc')
             ->orderBy('name', 'asc')
             ->get();
