@@ -43,6 +43,10 @@ final class ImportFromLegacyDb extends Command
         $legacyCommitteeMembers->groupBy(['commissie_id', 'jaar'])->map(function ($committeeMembersByYear, $committeeId) use ($hardcodedCommittees) {
             $legacyCommittee = DB::connection('francken-legacy')->table('commissies')->find($committeeId);
 
+            if ($legacyCommittee->naam === 'bestuur') {
+                return;
+            }
+
             $this->info("Importing {$legacyCommittee->naam}");
             $perviousCommitteeId = null;
             return $committeeMembersByYear->map(function ($members, $year) use (&$perviousCommitteeId, $legacyCommittee, $hardcodedCommittees) : Committee {
