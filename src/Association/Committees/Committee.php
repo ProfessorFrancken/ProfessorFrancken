@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\Committees;
 
 use Francken\Association\Boards\Board;
-use Francken\Association\Committees\Http\CommitteesController;
 use Francken\Auth\Role;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -99,43 +98,12 @@ final class Committee extends Model
         return $this->role->permissions;
     }
 
-    public function id()
-    {
-        return $this->id;
-    }
-
-    public function name() : string
-    {
-        return $this->name;
-    }
-
-    public function email() : string
-    {
-        return $this->email;
-    }
-
-    public function logo() : ?string
-    {
-        return $this->logo;
-    }
-
-    public function link() : string
-    {
-        return action(
-            [CommitteesController::class, 'show'],
-            [
-                'board' => $this->board,
-                'committee' => $this
-            ]
-        );
-    }
-
     public function board() : BelongsTo
     {
         return $this->belongsTo(Board::class);
     }
 
-    public function page() : string
+    public function getPageAttribute() : string
     {
         return (is_null($this->fallback_page) || $this->fallback_page === '')
             ? 'committees.show'

@@ -11,7 +11,9 @@ final class CommitteesController
 {
     public function index(Board $board)
     {
-        $committees = $board->committees()->with(['board'])->orderBy('name', 'asc')->get();
+        $committees = $board->committees()
+            ->with(['board', 'logoMedia'])
+            ->orderBy('name', 'asc')->get();
 
         return view('committees.index')
             ->with([
@@ -27,19 +29,24 @@ final class CommitteesController
 
     public function show(Board $board, Committee $committee)
     {
-        $committees = $board->committees()->with(['board'])->orderBy('name', 'asc')->get();
+        $committees = $board->committees()
+            ->with(['board', 'logoMedia'])
+            ->orderBy('name', 'asc')
+            ->get();
+
         $committee->load(['members.member']);
 
-        return view($committee->page())->with([
-            'board' => $board,
-            'committee' => $committee,
-            'committees' => $committees,
-            'breadcrumbs' => [
-                ['url' => '/association', 'text' => 'Association'],
-                ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->board_year->toString()],
-                ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees'],
-                ['text' => $committee->name()],
-            ]
-        ]);
+        return view($committee->page)
+            ->with([
+                'board' => $board,
+                'committee' => $committee,
+                'committees' => $committees,
+                'breadcrumbs' => [
+                    ['url' => '/association', 'text' => 'Association'],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->board_year->toString()],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees'],
+                    ['text' => $committee->name],
+                ]
+            ]);
     }
 }
