@@ -22,7 +22,7 @@ final class AdminCommitteesController
     public function index(Board $board)
     {
         $committees = $board->committees;
-        $committees->load(['members.member']);
+        $committees->load(['logoMedia', 'members.member']);
 
         $boards = Board::orderBy('installed_at', 'desc')->get();
         $board_years = $boards->mapWithKeys(function (Board $board) {

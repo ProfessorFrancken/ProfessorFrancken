@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
+use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 
 final class Committee extends Model
@@ -36,6 +37,39 @@ final class Committee extends Model
         'compiled_content',
         'fallback_page',
     ];
+
+
+    public function getLogoAttribute() : ?string
+    {
+        $logo = $this->logoMedia;
+
+        if ($logo !== null) {
+            return $logo->getUrl();
+        }
+
+        return null;
+    }
+
+    public function logoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'logo_media_id');
+    }
+
+    public function getPhotoAttribute() : ?string
+    {
+        $photo = $this->photoMedia;
+
+        if ($photo !== null) {
+            return $photo->getUrl();
+        }
+
+        return null;
+    }
+
+    public function photoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'photo_media_id');
+    }
 
     public function members() : HasMany
     {
@@ -76,7 +110,7 @@ final class Committee extends Model
 
     public function logo() : ?string
     {
-        return '';
+        return $this->logo;
     }
 
     public function link() : string

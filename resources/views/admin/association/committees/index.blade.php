@@ -22,7 +22,7 @@
                                            width: 150px;
                                            max-width: 150px;
                                            max-height: 80px;
-                                           object-fit: cover;"
+                                           object-fit: contain;"
                                 />
                             </td>
                             <td>
