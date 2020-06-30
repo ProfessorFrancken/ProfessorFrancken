@@ -24,13 +24,6 @@
             Committees
         </h3>
         <ul class="agenda-list list-unstyled">
-            <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="search-committees" placeholder="Search committees">
-                </div>
-
-            </li>
-
             {{-- Mark the active committee with a highlighted background --}}
             <?php $id = $committee->id(); ?>
 
@@ -60,19 +53,6 @@
 
                 </li>
             @endforeach
-
-            <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
-                <div class="form-group">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" checked>
-                            Only show committees of current studyyear
-                        </label>
-                    </div>
-
-                </div>
-
-            </li>
         </ul>
     </div>
 @endsection
