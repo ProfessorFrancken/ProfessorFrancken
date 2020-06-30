@@ -8,7 +8,7 @@
             This will keep the logo, photo, description etc. from the previous committee so that you don't have to reuplaod all of their settings.
         </p>
         <p>
-            The list below shows all of our previous committees, which may also [act as] inspiration for starting new committees.
+            The list below shows all of our previous committees, which may be useful as inspiration for starting new committees.
         </p>
         <ul class="list-unstyled">
             @foreach ($continueable_committees as $committee)
