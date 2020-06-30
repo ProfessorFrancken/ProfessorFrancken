@@ -8,8 +8,11 @@ use DB;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
+use Francken\Association\Committees\FileUploader;
+use Francken\Association\Committees\HardcodedCommittee;
 use Francken\Association\Committees\HardcodedCommitteesRepository;
 use Illuminate\Console\Command;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Schema;
 
 final class ImportFromLegacyDb extends Command
@@ -31,7 +34,7 @@ final class ImportFromLegacyDb extends Command
     /**
      * Execute the console command.
      */
-    public function handle(HardcodedCommitteesRepository $hardcodedCommittees) : void
+    public function handle(HardcodedCommitteesRepository $hardcodedCommittees, FileUploader $uploader) : void
     {
         Schema::disableForeignKeyConstraints();
         CommitteeMember::query()->delete();
@@ -40,25 +43,25 @@ final class ImportFromLegacyDb extends Command
         $hardcodedCommittees = app(\Francken\Association\Committees\HardcodedCommitteesRepository::class);
         $legacyCommitteeMembers = DB::connection('francken-legacy')->table('commissie_lid')->get();
 
-        $legacyCommitteeMembers->groupBy(['commissie_id', 'jaar'])->map(function ($committeeMembersByYear, $committeeId) use ($hardcodedCommittees) {
+        $legacyCommitteeMembers->groupBy(['commissie_id', 'jaar'])->map(function ($committeeMembersByYear, $committeeId) use ($hardcodedCommittees, $uploader) {
             $legacyCommittee = DB::connection('francken-legacy')->table('commissies')->find($committeeId);
 
-            if ($legacyCommittee->naam === 'bestuur') {
+            if ($legacyCommittee->naam === 'bestuur' || $legacyCommittee->naam === 'Bestuur') {
                 return;
             }
 
             $this->info("Importing {$legacyCommittee->naam}");
             $perviousCommitteeId = null;
-            return $committeeMembersByYear->map(function ($members, $year) use (&$perviousCommitteeId, $legacyCommittee, $hardcodedCommittees) : Committee {
+            return $committeeMembersByYear->map(function ($members, $year) use (&$perviousCommitteeId, $legacyCommittee, $hardcodedCommittees, $uploader) : Committee {
                 $board = Board::whereYear('installed_at', $year)->first();
 
-                $fallbackPage = collect($hardcodedCommittees->list())->filter(
+                $hardcodedCommittee = collect($hardcodedCommittees->list())->first(
                     function ($committee) use ($legacyCommittee) {
                         return $legacyCommittee->id === $committee->id() ?? null;
                     }
-                )->map(function ($committee) {
-                    return $committee->page();
-                })->first();
+                );
+                $fallbackPage = optional($hardcodedCommittee)->page();
+
 
                 $committee = Committee::create([
                     'board_id' => $board->id,
@@ -81,11 +84,43 @@ final class ImportFromLegacyDb extends Command
                     ]);
                 });
 
+                // TODO: uplaod committee logo
+                $logo = $this->downloadFile($hardcodedCommittee);
+
+                if ($logo) {
+                    $uploader->uploadLogo($logo, $committee);
+                }
+
                 // dump($committee->toArray(), $committeeMembers->toArray());
 
                 $perviousCommitteeId = $committee->id;
                 return $committee;
             });
         });
+
+        \Storage::deleteDirectory('import-committees');
+    }
+
+    private function downloadFile(?HardcodedCommittee $committee) : ?UploadedFile
+    {
+        if ($committee === null) {
+            return null;
+        }
+
+        $url = $committee->logo();
+
+        if ($url === null || $url === '') {
+            return null;
+        }
+
+        try {
+            $contents = file_get_contents($url);
+            $basename = substr($url, strrpos($url, '/') + 1);
+            $name = 'import-committees/' . $basename;
+            \Storage::put($name, $contents);
+            return new UploadedFile(storage_path('app/' . $name), $basename, null, null, true);
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }
