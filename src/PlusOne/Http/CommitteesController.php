@@ -4,28 +4,32 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Database\DatabaseManager;
+use Francken\Association\Boards\Board;
+use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\CommitteeMember;
 
 final class CommitteesController
 {
-    private $committees;
-
-    public function __construct(DatabaseManager $db)
-    {
-        $this->committees = $db->connection('francken-legacy')
-                      ->table('commissie_lid');
-    }
-
     public function index()
     {
-        $selects = ['commissie_id', 'lid_id', 'jaar', 'functie', 'commissies.naam'];
-        $members = $this->committees->leftJoin('commissies', 'commissies.id', 'commissie_lid.commissie_id')
-                 ->select($selects)
-                 ->where('commissies.naam', '<>', 'bestuur')
-                 ->orderBy('commissies.naam', 'ASC')
-                 // ->where('jaar', '2016')
-                 ->get();
+        $board = Board::with(['committees.members.member'])
+               ->whereNotNull('installed_at')
+               ->orderBy('installed_at', 'desc')
+               ->first();
 
-        return collect(['committees' => $members]);
+        return collect([
+            'committees' =>
+            $board->committees->flatMap(function (Committee $committee) use ($board) {
+                return $committee->members->map(function (CommitteeMember $member) use ($committee, $board) {
+                    return [
+                        'commissie_id' => $member->committee_id,
+                        'lid_id' => $member->member_id,
+                        'jaar' => (int)$board->installed_at->format('Y'),
+                        'functie' => $member->function,
+                        'naam' => $committee->name
+                    ];
+                });
+            })
+        ]);
     }
 }
