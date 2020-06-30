@@ -7,6 +7,7 @@ namespace Francken\Association\Boards;
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 
@@ -110,7 +111,7 @@ final class BoardMember extends Model
 
     public function getPhotoAttribute() : ?string
     {
-        $photo = $this->getMedia(static::BOARD_MEMBER_PHOTO_TAG)->last();
+        $photo = $this->photoMedia;
 
         if ($photo !== null) {
             return $photo->getUrl();
@@ -203,6 +204,11 @@ final class BoardMember extends Model
                 event(new BoardMemberWasDischarged($this->board_id, $this->member_id));
                 break;
         }
+    }
+
+    public function photoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'photo_media_id');
     }
 
     public function scopeWithPhotos($query)

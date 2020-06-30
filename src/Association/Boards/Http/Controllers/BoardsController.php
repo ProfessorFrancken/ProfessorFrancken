@@ -11,7 +11,8 @@ final class BoardsController
 {
     public function index(Clock $clock)
     {
-        $boards = Board::orderBy('installed_at', 'desc')
+        $boards = Board::with(['photoMedia', 'members', 'members.photoMedia'])
+            ->orderBy('installed_at', 'desc')
             ->where('installed_at', '<', $clock->now())
             ->get();
 

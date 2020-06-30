@@ -7,6 +7,7 @@ namespace Francken\Association\Boards;
 use DateTimeImmutable;
 use Francken\Association\Committees\Committee;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
@@ -129,9 +130,14 @@ final class Board extends Model
         return $this->hasMany(BoardMember::class)->orderBy('id', 'desc');
     }
 
+    public function photoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'photo_media_id');
+    }
+
     public function getPhotoAttribute() : ?string
     {
-        $photo = $this->getMedia(static::BOARD_PHOTO_TAG)->last();
+        $photo = $this->photoMedia;
 
         if ($photo !== null) {
             return $photo->getUrl();
