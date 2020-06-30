@@ -19,19 +19,6 @@ final class AdminCommitteesController
         $this->uploader = $uploader;
     }
 
-    public function redirect()
-    {
-        $board = Board::find(request('board_id'));
-
-        if ($board === null) {
-            $board = Board::latest()->first();
-        }
-
-        return redirect()->action(
-            [self::class, 'index'],
-            ['board' => $board]
-        );
-    }
     public function index(Board $board)
     {
         $committees = $board->committees;
@@ -50,7 +37,7 @@ final class AdminCommitteesController
                 'selected_board_id' => $board->id,
                 'board_years' => $board_years,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
                     ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                 ]
             ]);
@@ -62,7 +49,7 @@ final class AdminCommitteesController
             ->with([
                 'committee' => $committee,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
                     ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                     ['url' => action([static::class, 'show'], ['board' => $board, 'committee' => $committee]), 'text' => $committee->name],
                 ]
@@ -75,7 +62,7 @@ final class AdminCommitteesController
             ->with([
                 'board' => $board,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
                     ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                     ['url' => action([static::class, 'create']), 'text' => 'Add committee'],
                 ]
@@ -113,7 +100,7 @@ final class AdminCommitteesController
                 'board' => $board,
                 'committee' => $committee,
                 'breadcrumbs' => [
-                    ['url' => action([static::class, 'redirect']), 'text' => 'Committees'],
+                    ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
                     ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
                     ['url' => action([static::class, 'show'], ['board' => $board, 'committee' => $committee]), 'text' => $committee->name],
                 ]

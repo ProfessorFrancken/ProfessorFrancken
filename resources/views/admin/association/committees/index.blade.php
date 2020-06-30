@@ -71,7 +71,7 @@
            Form::open(
                [
                    'url' => action(
-                       [\Francken\Association\Committees\Http\AdminCommitteesController::class, 'redirect']
+                       [\Francken\Association\Committees\Http\AdminRedirectCommitteesController::class, 'index']
                    ),
                    'method' => 'get',
                    'class' => 'form-inline mr-3',

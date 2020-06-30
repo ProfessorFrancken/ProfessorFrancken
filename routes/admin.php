@@ -6,6 +6,7 @@ use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
 use Francken\Association\Committees\Http\AdminCommitteesController;
+use Francken\Association\Committees\Http\AdminRedirectCommitteesController;
 use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
@@ -121,7 +122,7 @@ Route::group(['prefix' => 'association'], function () : void {
     });
 
     Route::group(['middleware' => 'can:dashboard:committees-read'], function () : void {
-        Route::get('committees', [AdminCommitteesController::class, 'redirect']);
+        Route::get('committees', [AdminRedirectCommitteesController::class, 'index']);
         Route::resource('boards.committees', AdminCommitteesController::class);
     });
 
