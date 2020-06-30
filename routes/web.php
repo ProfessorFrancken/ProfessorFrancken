@@ -81,9 +81,9 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::get('committees', [CommitteesController::class, 'redirect']);
     Route::get('committees/{committee:slug}', [CommitteesController::class, 'redirectCommittee']);
-    Route::get('{boardYear}/committees', [CommitteesController::class, 'index'])
-        ->where(['boardYear' => '\d{4}-\d{4}']);
-    Route::get('{boardYear}/committees/{committee:slug}', [CommitteesController::class, 'show']);
+
+    Route::get('{board:board_year_slug}/committees', [CommitteesController::class, 'index']);
+    Route::get('{board:board_year_slug}/committees/{committee:slug}', [CommitteesController::class, 'show']);
 
     Route::get('francken-vrij', [FranckenVrijController::class, 'index']);
 

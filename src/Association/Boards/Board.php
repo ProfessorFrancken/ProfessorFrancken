@@ -68,6 +68,8 @@ final class Board extends Model
         'demissioned_at',
         'decharged_at',
 
+        'board_year_slug',
+
         'photo_media_id',
     ];
 
@@ -101,6 +103,7 @@ final class Board extends Model
             'name' => $name->toString(),
             'photo_position' => $photo_position,
             'installed_at' => $installed_at,
+            'board_year_slug' => BoardYear::fromInstallDate($installed_at)->toSlug(),
             'photo_media_id' => $photo->id ?? null,
         ]);
         $board->attachMedia($photo, static::BOARD_PHOTO_TAG);

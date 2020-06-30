@@ -6,76 +6,75 @@ namespace Francken\Association\Committees\Http;
 
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
+use Francken\Shared\Clock\Clock;
 
 final class CommitteesController
 {
-    public function redirect()
+    public function redirect(Clock $clock)
     {
-        $board = Board::find(request('board_id'));
+        $board = Board::where('installed_at', '<', $clock->now())
+               ->find(request('board_id'));
 
         if ($board === null) {
-            $board = Board::latest()->first();
+            $board = Board::where('installed_at', '<', $clock->now())
+                   ->latest()
+                   ->first();
         }
 
         return redirect()->action(
             [self::class, 'index'],
-            ['boardYear' => $board->board_year->toSlug()]
+            ['board' => $board]
         );
     }
 
-    public function redirectCommittee(string $committeeLink)
+    public function redirectCommittee(Clock $clock, string $committeeLink)
     {
-        $board = Board::find(request('board_id'));
+        $board = Board::where('installed_at', '<', $clock->now())
+               ->find(request('board_id'));
 
         if ($board === null) {
-            $board = Board::latest()->first();
+            $board = Board::where('installed_at', '<', $clock->now())
+                   ->latest()
+                   ->first();
         }
 
         return redirect()->action(
             [self::class, 'show'],
-            ['boardYear' => $board->board_year->toSlug(), 'committee' => $committeeLink]
+            ['board' => $board, 'committee' => $committeeLink]
         );
     }
 
-    public function index(string $boardYear)
+    public function index(Board $board)
     {
-        $board = $this->boardFromBoardYear($boardYear);
+        $committees = $board->committees()->with(['board'])->orderBy('name', 'asc')->get();
 
         return view('committees.index')
             ->with([
                 'board' => $board,
-                'committees' => $board->committees,
+                'committees' => $committees,
                 'breadcrumbs' => [
                     ['url' => '/association', 'text' => 'Association'],
-                    ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => $board->board_year->toString()],
-                    ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => 'Committees'],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->board_year->toString()],
+                    ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees'],
                 ]
             ]);
     }
 
-    public function show(string $boardYear, Committee $committee)
+    public function show(Board $board, Committee $committee)
     {
-        $board = $this->boardFromBoardYear($boardYear);
+        $committees = $board->committees()->with(['board'])->orderBy('name', 'asc')->get();
         $committee->load(['members.member']);
 
         return view($committee->page())->with([
             'board' => $board,
             'committee' => $committee,
-            'committees' => $board->committees,
+            'committees' => $committees,
             'breadcrumbs' => [
                 ['url' => '/association', 'text' => 'Association'],
-                ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => $board->board_year->toString()],
-                ['url' => action([static::class, 'index'], ['boardYear' => $board->board_year->toSlug()]), 'text' => 'Committees'],
+                ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->board_year->toString()],
+                ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => 'Committees'],
                 ['text' => $committee->name()],
             ]
         ]);
-    }
-
-    private function boardFromBoardYear(string $boardYear) : Board
-    {
-        preg_match("/(\d{4})-(\d{4})/", $boardYear, $matches);
-
-        $startOfBoardYear = $matches[0];
-        return Board::whereYear('installed_at', $startOfBoardYear)->firstOrFail();
     }
 }

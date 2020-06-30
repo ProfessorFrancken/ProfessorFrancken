@@ -84,7 +84,7 @@ final class Committee extends Model
         return action(
             [CommitteesController::class, 'show'],
             [
-                'boardYear' => $this->board->board_year->toSlug(),
+                'board' => $this->board,
                 'committee' => $this
             ]
         );
