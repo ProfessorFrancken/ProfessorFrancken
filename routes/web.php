@@ -8,6 +8,7 @@ use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
 use Francken\Association\Committees\Http\CommitteesController;
+use Francken\Association\Committees\Http\RedirectToBoardCommitteesController;
 use Francken\Association\FranckenVrij\Http\FranckenVrijController;
 use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
@@ -79,8 +80,8 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('activities/ical/all', [IcalController::class, 'show']);
     Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
 
-    Route::get('committees', [CommitteesController::class, 'redirect']);
-    Route::get('committees/{committee:slug}', [CommitteesController::class, 'redirectCommittee']);
+    Route::get('committees', [RedirectToBoardCommitteesController::class, 'index']);
+    Route::get('committees/{committee:slug}', [RedirectToBoardCommitteesController::class, 'show']);
 
     Route::get('{board:board_year_slug}/committees', [CommitteesController::class, 'index']);
     Route::get('{board:board_year_slug}/committees/{committee:slug}', [CommitteesController::class, 'show']);

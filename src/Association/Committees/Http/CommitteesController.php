@@ -6,44 +6,9 @@ namespace Francken\Association\Committees\Http;
 
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
-use Francken\Shared\Clock\Clock;
 
 final class CommitteesController
 {
-    public function redirect(Clock $clock)
-    {
-        $board = Board::where('installed_at', '<', $clock->now())
-               ->find(request('board_id'));
-
-        if ($board === null) {
-            $board = Board::where('installed_at', '<', $clock->now())
-                   ->latest()
-                   ->first();
-        }
-
-        return redirect()->action(
-            [self::class, 'index'],
-            ['board' => $board]
-        );
-    }
-
-    public function redirectCommittee(Clock $clock, string $committeeLink)
-    {
-        $board = Board::where('installed_at', '<', $clock->now())
-               ->find(request('board_id'));
-
-        if ($board === null) {
-            $board = Board::where('installed_at', '<', $clock->now())
-                   ->latest()
-                   ->first();
-        }
-
-        return redirect()->action(
-            [self::class, 'show'],
-            ['board' => $board, 'committee' => $committeeLink]
-        );
-    }
-
     public function index(Board $board)
     {
         $committees = $board->committees()->with(['board'])->orderBy('name', 'asc')->get();
