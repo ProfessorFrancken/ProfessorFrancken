@@ -32,7 +32,7 @@
 <div class="container my-4">
     <ul class="list-unstyled row">
         @foreach($board->members as $member)
-            <li class="col board-member">
+            <li class="col-12 col-sm-6 col-md board-member">
                 <h4>
                     {{ $member->name }}
                 </h4>
