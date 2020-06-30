@@ -29,10 +29,18 @@ final class AdminCommitteesController
             return [$board->id => $board->board_name->toString()];
         });
 
+        $continuableCommittees =  Committee::query()
+            ->with(['board', 'logoMedia'])
+            ->whereDoesntHave('childCommittee')
+            ->orderBy('board_id', 'desc')
+            ->orderBy('name', 'asc')
+            ->get();
+
         return view('admin.association.committees.index')
             ->with([
                 'board' => $board,
                 'committees' => $committees,
+                'continueable_committees' => $continuableCommittees,
                 'selected_board' => $board,
                 'selected_board_id' => $board->id,
                 'board_years' => $board_years,

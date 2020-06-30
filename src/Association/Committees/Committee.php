@@ -10,6 +10,7 @@ use Francken\Auth\Role;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
@@ -74,6 +75,11 @@ final class Committee extends Model
     public function members() : HasMany
     {
         return $this->hasMany(CommitteeMember::class);
+    }
+
+    public function childCommittee() : HasOne
+    {
+        return $this->hasOne(self::class, 'parent_committee_id');
     }
 
     public function committeeMembers() : Collection
