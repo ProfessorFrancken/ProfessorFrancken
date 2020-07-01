@@ -94,6 +94,14 @@ final class Committee extends Model
         return $this->hasMany(CommitteeMember::class);
     }
 
+    public function getSuggestedCommitteeMembersAttribute()
+    {
+        return CommitteeMember::with('member')
+            ->where('committee_id', '=', $this->parent_committee_id)
+            ->whereNotIn('member_id', $this->members->pluck('member_id'))
+            ->get();
+    }
+
     public function parentCommittee() : BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_committee_id');
