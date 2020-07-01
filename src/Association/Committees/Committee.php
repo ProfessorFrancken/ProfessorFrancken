@@ -39,6 +39,23 @@ final class Committee extends Model
         'fallback_page',
     ];
 
+    public static function continueFrom(self $previousCommittee, Board $toBoardYear) : self
+    {
+        $committee = self::create(
+            array_merge(
+                $previousCommittee->toArray(),
+                [
+                    'board_id' => $toBoardYear->id,
+                    'parent_committee_id' => $previousCommittee->id,
+                ]
+            )
+        );
+
+        $committee->attachmedia($previousCommittee->logoMedia, self::COMMITTEE_LOGO_TAG);
+        $committee->attachmedia($previousCommittee->photoMedia, self::COMMITEE_PHOTO_TAG);
+
+        return $committee;
+    }
 
     public function getLogoAttribute() : ?string
     {

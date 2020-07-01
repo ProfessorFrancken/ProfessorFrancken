@@ -10,9 +10,23 @@
         <p>
             The list below shows all of our previous committees, which may be useful as inspiration for starting new committees.
         </p>
-        <ul class="list-unstyled">
+        <ul class="list-unstyled" id="continuable-committees">
             @foreach ($continueable_committees as $committee)
-                <li class="p-2 my-2 bg-light d-flex justify-content-between align-items-center">
+                <li class="p-2 my-2 bg-light">
+            {!!
+               Form::model(
+                   $committee,
+                   [
+                       'url' => action(
+                           [\Francken\Association\Committees\Http\AdminContinueCommitteesController::class, 'store'],
+                           ['board' => $board]
+                       ),
+                       'method' => 'post',
+                       'class' =>  'd-flex justify-content-between align-items-center'
+                   ]
+               )
+            !!}
+                    {!! Form::hidden("committee_id", $committee->id) !!}
                     <a href="{{ action(
                                 [\Francken\Association\Committees\Http\AdminCommitteesController::class, 'show'],
                                 ['committee' => $committee, 'board' => $committee->board]
@@ -39,10 +53,15 @@
                         </div>
                     </a>
                     <div class="ml-auto d-flex align-items-center">
-                        <button class="btn btn-text text-primary btn-sm">
-                            <i class="fas fa-plus"></i>
+                        <button class="btn btn-text text-primary btn-sm" type="submit">
+                            {{-- Added for tests.. --}}
+                            <small class="text-primary mr-2 d-none">
+                                Restart committee
+                            </small>
+                            <i class="fas fa-plus text-muted"></i>
                         </button>
                     </div>
+                    {!!  Form::close() !!}
                 </li>
             @endforeach
         </ul>
