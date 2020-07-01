@@ -63,16 +63,10 @@ return [
                     "can" => "dashboard:registrations-read",
                 ],
                 [
-                    "name" => "News",
-                    "url" => "news",
+                    "name" => "Boards",
+                    "url" => "boards",
                     "works" => true,
-                    "can" => "dashboard:news-read",
-                ],
-                [
-                    "name" => "Activities",
-                    "url" => "activities",
-                    "works" => false,
-                    "can" => "dashboard:activities-read",
+                    "can" => "dashboard:board-members-read",
                 ],
                 [
                     "name" => "Members",
@@ -81,16 +75,22 @@ return [
                     "can" => "dashboard:members-read",
                 ],
                 [
-                    "name" => "Boards",
-                    "url" => "boards",
-                    "works" => true,
-                    "can" => "dashboard:board-members-read",
-                ],
-                [
                     "name" => "Committees",
                     "url" => "committees",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:committees-read",
+                ],
+                [
+                    "name" => "Activities",
+                    "url" => "activities",
+                    "works" => false,
+                    "can" => "dashboard:activities-read",
+                ],
+                [
+                    "name" => "News",
+                    "url" => "news",
+                    "works" => true,
+                    "can" => "dashboard:news-read",
                 ],
                 [
                     "name" => "Francken Vrij",
