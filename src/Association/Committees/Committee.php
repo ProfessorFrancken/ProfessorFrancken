@@ -18,7 +18,7 @@ final class Committee extends Model
 {
     use Mediable;
 
-    public const COMMIEE_LOGO_TAG = 'committee_logo';
+    public const COMMITTEE_LOGO_TAG = 'committee_logo';
 
     public const COMMITEE_PHOTO_TAG = 'committee_photo';
 
@@ -29,6 +29,7 @@ final class Committee extends Model
         'logo_media_id',
         'photo_media_id',
         'name',
+        'goal',
         'slug',
         'email',
         'is_public',

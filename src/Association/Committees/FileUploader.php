@@ -34,7 +34,7 @@ final class FileUploader
 
         if ($logo !== null) {
             $committee->update(['logo_media_id' => $logo->id]);
-            $committee->attachmedia($logo, Committee::COMMIEE_LOGO_TAG);
+            $committee->attachmedia($logo, Committee::COMMITTEE_LOGO_TAG);
         }
     }
 
