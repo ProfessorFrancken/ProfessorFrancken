@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Auth\Http\Controllers\Admin;
 
 use DB;
+use Francken\Association\LegacyMember;
 use Francken\Auth\Account;
 use Francken\Auth\Mail\NotifyAboutAccountActivation;
 use Illuminate\Contracts\Mail\Mailer;
@@ -47,7 +48,7 @@ final class AccountsController
     {
         return view('admin.compucie.accounts.create', [
             'account' => new Account(),
-            'members' => $this->members(), // TODO: only sellect members that do not yet have an account
+            'members' => LegacyMember::autocomplete(Account::pluck('member_id')),
         ]);
     }
 
@@ -81,18 +82,5 @@ final class AccountsController
             self::class,
             'index'
         ]);
-    }
-
-    private function members()
-    {
-        $activated_accounts = Account::pluck('member_id');
-
-        return DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('is_lid', true)
-            ->whereNotIn('id', $activated_accounts)
-            ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
-            ->orderBy('id', 'desc')
-            ->get();
     }
 }

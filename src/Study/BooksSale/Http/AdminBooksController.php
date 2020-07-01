@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http;
 
-use DB;
+use Francken\Association\LegacyMember;
 use Francken\Study\BooksSale\Book;
 use Francken\Study\BooksSale\Http\Requests\AdminBookRequest;
 use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
@@ -37,7 +37,7 @@ final class AdminBooksController
             'sold_books' => Book::sold()->count(),
             'paid_off_books' => Book::paidOff()->count(),
             'all_books' => Book::count(),
-            'members' => $this->members(),
+            'members' => LegacyMember::autocomplete(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
             ]
@@ -48,7 +48,7 @@ final class AdminBooksController
     {
         return view('admin.study.books.show', [
             'book' => $book,
-            'members' => $this->members(),
+            'members' => LegacyMember::autocomplete(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
                 ['url' => action([self::class, 'show'], ['book' => $book]), 'text' => $book->title],
@@ -60,7 +60,7 @@ final class AdminBooksController
     {
         return view('admin.study.books.create', [
             'book' => new Book(),
-            'members' => $this->members(),
+            'members' => LegacyMember::autocomplete(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
                 ['url' => action([self::class, 'create']), 'text' => 'Add'],
@@ -133,20 +133,11 @@ final class AdminBooksController
     {
         return view('admin.study.books.print', [
             'book' => $book,
-            'members' => $this->members(),
+            'members' => LegacyMember::autocomplete(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],
                 ['url' => action([self::class, 'show'], ['book' => $book]), 'text' => $book->title],
             ]
         ]);
-    }
-    private function members()
-    {
-        return DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('is_lid', true)
-            ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
-            ->orderBy('id', 'desc')
-            ->get();
     }
 }

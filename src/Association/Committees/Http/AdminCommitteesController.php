@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
-use DB;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\FileUploader;
+use Francken\Association\LegacyMember;
 use Francken\Asssociation\Committees\Http\Requests\AdminCommitteeRequest;
 use Francken\Shared\Markdown\ContentCompiler;
 
@@ -64,7 +64,7 @@ final class AdminCommitteesController
 
         return view('admin.association.committees.show')
             ->with([
-                'members' => $this->members(),
+                'members' => LegacyMember::autocomplete(),
                 'committee' => $committee,
                 'breadcrumbs' => [
                     ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
@@ -208,15 +208,5 @@ final class AdminCommitteesController
         $committee->delete();
 
         return redirect()->action([self::class, 'index'], ['board' => $board]);
-    }
-
-    private function members()
-    {
-        return DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('is_lid', true)
-            ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
-            ->orderBy('id', 'desc')
-            ->get();
     }
 }

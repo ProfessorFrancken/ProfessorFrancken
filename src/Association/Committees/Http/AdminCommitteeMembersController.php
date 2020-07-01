@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
-use DB;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
+use Francken\Association\LegacyMember;
 use Francken\Asssociation\Committees\Http\Requests\AdminCommitteeMemberRequest;
 
 final class AdminCommitteeMembersController
@@ -37,7 +37,7 @@ final class AdminCommitteeMembersController
                 'board' => $board,
                 'committee' => $committee,
                 'member' => $member,
-                'members' => $this->members(),
+                'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
                     ['url' => action([AdminCommitteesController::class, 'index'], ['board' => $board]), 'text' => $board->name],
@@ -69,15 +69,5 @@ final class AdminCommitteeMembersController
             [AdminCommitteesController::class, 'show'],
             ['board' => $board, 'committee' => $committee]
         );
-    }
-
-    private function members()
-    {
-        return DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('is_lid', true)
-            ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
-            ->orderBy('id', 'desc')
-            ->get();
     }
 }

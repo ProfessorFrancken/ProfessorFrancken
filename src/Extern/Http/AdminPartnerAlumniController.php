@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use DB;
+use Francken\Association\LegacyMember;
 use Francken\Extern\Alumnus;
 use Francken\Extern\Http\Requests\AlumnusRequest;
 use Francken\Extern\Partner;
@@ -15,7 +15,7 @@ final class AdminPartnerAlumniController
     {
         return view('admin.extern.partners.alumni.create', [
             'partner' => $partner,
-            'members' => $this->members(),
+            'members' => LegacyMember::autocomplete(),
             'alumnus' => new Alumnus(),
             'breadcrumbs' => [
                 ['url' => action([AdminPartnersController::class, 'index']), 'text' => 'Partners'],
@@ -47,7 +47,7 @@ final class AdminPartnerAlumniController
     {
         return view('admin.extern.partners.alumni.edit', [
             'partner' => $partner,
-            'members' => $this->members(),
+            'members' => LegacyMember::autocomplete(),
             'alumnus' => $alumnus,
             'breadcrumbs' => [
                 ['url' => action([AdminPartnersController::class, 'index']), 'text' => 'Partners'],
@@ -81,15 +81,5 @@ final class AdminPartnerAlumniController
             [AdminPartnersController::class, 'show'],
             ['partner' => $partner]
         );
-    }
-
-    private function members()
-    {
-        return DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('is_lid', true)
-            ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
-            ->orderBy('id', 'desc')
-            ->get();
     }
 }

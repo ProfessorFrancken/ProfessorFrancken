@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Association;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Francken\Association\LegacyMember
@@ -129,5 +131,21 @@ final class LegacyMember extends Model
             return $this->tussenvoegsel . ' ' . $this->achternaam;
         }
         return $this->achternaam;
+    }
+
+    public static function autocomplete(Collection $except = null) : Collection
+    {
+        $query = DB::connection('francken-legacy')
+            ->table('leden');
+
+        if ($except !== null && $except->isNotEmpty()) {
+            $query = $query->whereNotIn('id', $except);
+        }
+
+        return $query
+            ->where('is_lid', true)
+            ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
+            ->orderBy('id', 'desc')
+            ->get();
     }
 }
