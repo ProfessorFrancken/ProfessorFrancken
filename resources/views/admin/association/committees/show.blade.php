@@ -6,29 +6,50 @@
         <div class="col-9">
             <div class="card">
                 <div class="card-body">
-                    <img
-                        class="rounded ml-2 my-2"
-                        src="{{ $committee->logo }}"
-                        alt="Logo of {{ $committee->name }}"
-                        style="
-                               max-width: 300px;
-                               max-height: 160px;
-                               object-fit: contain;"
-                    />
-                    <div class="float-right text-right">
-                        @if ($committee->email)
-                        <a href="mailto:{{ $committee->email }}">
-                            {{ $committee->email ?? 'markredeman@mgail.com' }}"
-                        </a>
-                        @endif
-                        <div>
-                        @if ($committee->is_public)
-                            <i class="far fa-check-square"></i>
-                            Is public
-                        @else
-                            <i class="far fa-square"></i>
-                            Is public
-                        @endif
+                    <div class="d-flex justify-content-start">
+                        <img
+                            class="rounded m-3 mr-4"
+                            src="{{ $committee->logo }}"
+                            alt="Logo of {{ $committee->name }}"
+                            style="
+                                   max-width: 300px;
+                                   max-height: 160px;
+                                   object-fit: contain;"
+                        />
+                        <div class="">
+                            @if ($committee->email)
+                                <p class="mb-1">
+                                    <a href="mailto:{{ $committee->email }}">
+                                        {{ $committee->email }}
+                                    </a>
+                                </p>
+                            @endif
+                            @if ($committee->goal)
+                                <p class="my-1">
+                                    {{ $committee->goal }}
+                                </p>
+                            @endif
+                            <div>
+                                @if ($committee->is_public)
+                                    <p class="my-1">
+                                        <i class="far fa-check-square"></i>
+                                        This committe is shown on the <a href={{ action(
+                                                                                 [\Francken\Association\Committees\Http\CommitteesController::class, 'show'],
+                                                                                 ['committee' => $committee, 'board' => $committee->board]
+                                                                                 ) }}>
+                                            committees page
+                                        </a>.
+                                    </p>
+                                @else
+                                    <i class="far fa-square"></i>
+                                    This committe is not shown on the <a href={{ action(
+                                                                                 [\Francken\Association\Committees\Http\CommitteesController::class, 'index'],
+                                                                                 ['board' => $committee->board]
+                                                                                 ) }}>
+                                        committees page
+                                    </a>.
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class='p-3 bg-light my-3'>
@@ -49,7 +70,7 @@
                         </div>
                     </div>
 
-                    @include('admin.association.committees.members._index', ['committee' => $committee])
+                    @include('admin.association.committees.members._index', ['committee' => $committee, 'members' => $members])
                 </div>
             </div>
             {!!

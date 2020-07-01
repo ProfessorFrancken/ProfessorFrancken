@@ -111,7 +111,7 @@ final class Committee extends Model
 
     public function getPageAttribute() : string
     {
-        return (is_null($this->fallback_page) || $this->fallback_page === '')
+        return ($this->fallback_page === null || $this->fallback_page === '')
             ? 'committees.show'
             : $this->fallback_page;
     }
