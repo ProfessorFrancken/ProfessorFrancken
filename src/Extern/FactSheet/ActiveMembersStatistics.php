@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Francken\Extern\FactSheet;
 
 use DateTimeImmutable;
+use Francken\Association\Boards\Board;
+use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\CommitteeMember;
 use Francken\Shared\AcademicYear;
 
 final class ActiveMembersStatistics
@@ -22,15 +25,20 @@ final class ActiveMembersStatistics
             $this->today
         );
 
+        $board = Board::orderBy('installed_at', 'desc')->first();
+
         // Select all members that are in at least one committee
+        $activeMemberIds = $board->committees->flatMap(function (Committee $committee) {
+            return $committee->members->map(function (CommitteeMember $member) : int {
+                return $member->member_id;
+            });
+        })->unique();
+
+
         $members = \DB::connection('francken-legacy')
-                 ->table('commissie_lid')
-                 ->join('leden', 'leden.id', 'commissie_lid.lid_id')
-                 ->where('jaar', (int)$year->start()->format('Y') - 1)
-                 ->get()
-                 ->unique(function ($member) {
-                     return $member->lid_id;
-                 });
+                 ->table('leden')
+                 ->whereIn('id', $activeMemberIds)
+                 ->get();
 
         return new ActiveMembers($members);
     }
