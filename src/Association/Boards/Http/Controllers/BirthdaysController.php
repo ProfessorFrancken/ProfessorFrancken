@@ -8,18 +8,9 @@ use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Shared\Clock\Clock;
-use Illuminate\Database\DatabaseManager;
 
 final class BirthdaysController
 {
-    private $boards;
-
-    public function __construct(DatabaseManager $db)
-    {
-        $this->boards = $db->connection('francken-legacy')
-                      ->table('commissie_lid');
-    }
-
     public function index(Clock $clock)
     {
         $today = $clock->now()->sub(new DateInterval('P1D'));
