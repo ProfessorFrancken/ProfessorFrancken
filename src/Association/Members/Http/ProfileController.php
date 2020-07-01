@@ -38,8 +38,6 @@ final class ProfileController
             ->where('id', $user->member_id)
             ->first();
 
-        $this->profile = $lid;
-
         return $lid;
     }
 }
