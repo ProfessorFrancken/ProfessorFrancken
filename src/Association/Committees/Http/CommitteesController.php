@@ -12,6 +12,7 @@ final class CommitteesController
     public function index(Board $board)
     {
         $committees = $board->committees()
+            ->where('is_public', true)
             ->with(['board', 'logoMedia'])
             ->orderBy('name', 'asc')->get();
 
@@ -30,6 +31,7 @@ final class CommitteesController
     public function show(Board $board, Committee $committee)
     {
         $committees = $board->committees()
+            ->where('is_public', true)
             ->with(['board', 'logoMedia'])
             ->orderBy('name', 'asc')
             ->get();
