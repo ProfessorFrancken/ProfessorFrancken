@@ -74,7 +74,7 @@ final class NewsController
         }
 
         if (request()->has('before')) {
-            $before_string = str_replace('/', '', request()->input('before', 'now'));
+            $before_string = str_replace('/', '', request()->input('before', '-2 years'));
             $before = new DateTimeImmutable($before_string);
 
             return new Period(

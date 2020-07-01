@@ -64,8 +64,6 @@ function image($url = '', $options = [], $addAppUrl = false)
     $options = array_merge(['crop' => '1'], $options);
 
     $proxy = 'imaginary';
-    //   $server = 'https://images.scriptcie.nl';
-    // return $url;
     switch ($proxy) {
         case 'imaginary': {
 

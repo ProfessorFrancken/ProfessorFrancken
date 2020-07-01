@@ -98,16 +98,6 @@ final class PirateCrew extends Model
            ->orderBy('total_points', 'DESC')
            ->first();
 
-        $adtchievement = $this->earnedAdtchievements()
-           ->groupBy('lustrum_pirate_adtchievements.pirate_id')
-           // ->where('lustrum_pirate_adtchievements.created_at', $today)
-           ->select([
-               'pirate_id',
-               DB::raw('lustrum_pirate_adtchievements.points as total_points'),
-           ])
-           ->orderBy('total_points')
-            ->first();
-
         if ($adtchievement !== null) {
             return $adtchievement->pirate;
         }
