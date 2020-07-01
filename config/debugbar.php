@@ -103,7 +103,7 @@ return [
      */
 
     'collectors' => [
-        'phpinfo'         => true,  // Php version
+        'phpinfo'         => false,  // Php version
         'messages'        => true,  // Messages
         'time'            => true,  // Time Datalogger
         'memory'          => true,  // Memory usage
@@ -112,7 +112,7 @@ return [
         'db'              => true,  // Show database (PDO) queries and bindings
         'views'           => true,  // Views with their data
         'route'           => true,  // Current route information
-        'auth'            => true, // Display Laravel authentication status
+        'auth'            => false, // Display Laravel authentication status
         'gate'            => true, // Display Laravel Gate checks
         'session'         => true,  // Display session data
         'symfony_request' => true,  // Only one can be enabled..
@@ -121,7 +121,7 @@ return [
         'events'          => false, // All events fired
         'default_request' => false, // Regular or special Symfony request logger
         'logs'            => false, // Add the latest log messages
-        'files'           => true, // Show the included files
+        'files'           => false, // Show the included files
         'config'          => false, // Display config settings
         'cache'           => false, // Display cache events
     ],
