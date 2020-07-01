@@ -3,7 +3,7 @@
     @slot('header')
         @component('mail::header', ['url' => config('app.url'), 'src' => url('/images/mail/symposium/in-a-materialistic-world.jpeg')])
             Symposium<br/>
-            'In a materialistic world'
+            'Cognitive Matters - Physics of cognitive advancements'
         @endcomponent
     @endslot
 

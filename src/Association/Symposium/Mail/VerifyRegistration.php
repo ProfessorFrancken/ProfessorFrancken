@@ -42,7 +42,7 @@ class VerifyRegistration extends Mailable
             ->markdown('symposium.mails.verify', [
             'full_name' => $this->participant->full_name,
             'participant' => $this->participant,
-            'location_url' => 'https://www.google.com/maps/dir/?api=1&destination=EM2+VENUE,+Suikerlaan,+Groningen&travelmode=bicycling',
+            'location_url' => 'https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling',
             'url' => $this->verificationUrl($this->participant),
             'is_francken_member' => $this->participant->is_francken_member,
             'is_nnv_member' => $this->participant->is_nnv_member,

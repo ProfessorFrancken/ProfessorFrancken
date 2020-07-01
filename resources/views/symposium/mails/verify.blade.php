@@ -3,14 +3,14 @@
     @slot('header')
         @component('mail::header', ['url' => config('app.url'), 'src' => url('/images/mail/symposium/in-a-materialistic-world.jpeg')])
             Symposium<br/>
-            'In a materialistic world'
+            'Cognitive Matters - Physics of cognitive advancements'
         @endcomponent
     @endslot
 
     {{-- Body --}}
 # Hi {{ $full_name }},
 
-Thank you for signing up for the Symposium 'In a materialistic world'.
+Thank you for signing up for the Symposium 'Cognitive Matters - Physics of cognitive advancements'.
 
 ### Verify your registration
 
@@ -22,7 +22,7 @@ Verify registration
 
 ### About the symposium
 
-The symposium will be held on Wednesday the <strong>8th of May</strong> located at <a href="{{ $location_url }}" target="_blank">the EM2 Venue</a> in Groningen.
+The symposium will be held on Wednesday the <strong>13th of May</strong> located at <a href="{{ $location_url }}" target="_blank">the Puddingfabriek</a> in Groningen.
 We will gradually update the website with more information about speakers and the Symposium's schedule.
 
 ### Payment information
@@ -43,7 +43,7 @@ The entrance fee will be deducted from your bank account by the treasurer of  T.
 @endif
 
 We hope you will enjoy the symposium,<br>
-Symposium committee 18'-19'
+Symposium committee 19'-20'
 
     {{-- Subcopy --}}
     @isset($subcopy)

@@ -27,10 +27,7 @@ class NotifySymposiumCommittee implements ShouldQueue
 
 
         $who_needs_to_take_an_adt = Arr::random([
-            'Eva',
-            'Sibren',
-            'Mark',
-            'Bradley'
+            'Carla', 'Leon', 'Jeanne', 'Braadslee', 'Justin', 'Rosa',
         ]);
 
         // This is very important
