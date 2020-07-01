@@ -152,35 +152,6 @@ return [
                 ]
             ]
         ], [
-            "name" => "Committees",
-            "url" => "committees",
-            "items" => [
-                [
-                    "name" => "Borrelcie",
-                    "url" => "borrelcie",
-                    "works" => false,
-                    "can" => "dashboard:borrelcie-read",
-                ],
-                [
-                    "name" => "Francken Vrij",
-                    "url" => "francken-vrij",
-                    "works" => true,
-                    "can" => "dashboard:francken-vrij-read",
-                ],
-                [
-                    "name" => "Brouwcie",
-                    "url" => "brouwcie",
-                    "works" => false,
-                    "can" => "dashboard:brouwcie-read",
-                ],
-                [
-                    "name" => "Fotocie",
-                    "url" => "fotocie",
-                    "works" => false,
-                    "can" => "dashboard:fotocie-read",
-                ],
-            ]
-        ], [
             "name" => "Compucie",
             "url" => "compucie",
             "items" => [
