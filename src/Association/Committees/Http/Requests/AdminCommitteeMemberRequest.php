@@ -21,7 +21,7 @@ final class AdminCommitteeMemberRequest extends FormRequest
             'member_id' => ['required', 'integer', 'exists:francken-legacy.leden,id'],
             'function' => ['nullable', 'min:1'],
             'installed_at' => ['required', 'date_format:Y-m-d'],
-            'decharged_at' => ['nullalbe', 'date_format:Y-m-d'],
+            'decharged_at' => ['nullable', 'date_format:Y-m-d'],
         ];
     }
 

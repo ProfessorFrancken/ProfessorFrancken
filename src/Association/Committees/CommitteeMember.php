@@ -33,14 +33,4 @@ final class CommitteeMember extends Model
     {
         return $this->belongsTo(LegacyMember::class, 'member_id');
     }
-
-    public function getFunctionAttribute() : ?string
-    {
-        return $this->attributes['functie'] ?? null;
-    }
-
-    public function getBoardYearAttribute() : int
-    {
-        return (int)$this->attributes['jaar'];
-    }
 }

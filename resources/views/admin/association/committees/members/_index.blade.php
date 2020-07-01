@@ -27,7 +27,11 @@
                 @endif
                 <a
                     class="btn btn-text text-primary btn-sm"
-                    href=""
+                    href="{{  action(
+                                  [Francken\Association\Committees\Http\AdminCommitteeMembersController::class, 'edit'],
+                                  ['board' => $committee->board, 'committee' => $committee, 'member' => $committeeMember]
+                              )
+                           }}"
                 >
                     <i class="fas fa-edit"></i>
                 </a>
