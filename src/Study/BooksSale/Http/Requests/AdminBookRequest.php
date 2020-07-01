@@ -128,9 +128,9 @@ class AdminBookRequest extends FormRequest
         return $saleDate;
     }
 
-    public function hasBeenSold() : ?bool
+    public function hasBeenSold() : bool
     {
-        return  (bool)$this->input('sold');
+        return (bool)$this->input('sold');
     }
 
     public function hasBeenPaidOff() : ?bool
