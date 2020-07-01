@@ -19,7 +19,7 @@
     <h3>Your committees</h3>
     <ul>
         @foreach ($committees as $committee)
-            <li>{{ $committee->name()  }}</li>
+            <li>{{ $committee->name  }} ({{ $committee->board->board_name->toString() }})</li>
         @endforeach
     </ul>
 @endsection

@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\Committees;
 
 use Francken\Shared\AcademicYear;
-use Francken\Association\Committees\HardcodedCommittee;
-use Francken\Association\Committees\HardcodedCommitteeMember;
 
 final class HardcodedCommitteesRepository
 {

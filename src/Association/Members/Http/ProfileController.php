@@ -4,18 +4,23 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http;
 
-use Francken\Association\Committees\HardcodedCommitteesRepository;
-use Francken\Association\Members\Member;
+use Francken\Association\Committees\Committee;
+use Illuminate\Database\Eloquent\Builder;
 
 final class ProfileController
 {
-    private $profile;
-
-    public function index(HardcodedCommitteesRepository $committees)
+    public function index()
     {
         $member = $this->member(request()->user());
 
-        $committees = $committees->ofMember($member->id);
+        $committees = Committee::with(['board'])
+            ->whereHas('members', function (Builder $query) use ($member) : Builder {
+                return $query->where('member_id', $member->id);
+            })
+            ->get()
+            ->sortByDesc(function (Committee $committee) {
+                return $committee->board->installed_at;
+            });
 
         return view('profile.index')
             ->with([

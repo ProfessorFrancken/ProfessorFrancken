@@ -84,7 +84,7 @@
 
         @include('profile._payment-info', ['member' => $member, 'paymentInfo' => $member->paymentDetails()])
 
-        @if (count($committees) > 0)
+        @if ($committees->isNotEmpty())
             @component('profile._profile', ['icon' => 'fas fa-users'])
                 <h6 class="text-body font-weight-light">
                     Committees
@@ -93,8 +93,12 @@
                 <ul class="">
                     @foreach ($committees as $committee)
                         <li>
-                            <a href="{{ $committee->link() }}">
-                                {{ $committee->name() }}
+                            <a href="{{ action(
+                                        [\Francken\Association\Committees\Http\CommitteesController::class, 'show'],
+                                        ['board' => $committee->board, 'committee' => $committee]
+                                        ) }}"
+                            >
+                                {{ $committee->name  }} ({{ $committee->board->board_name->toString() }})
                             </a>
                         </li>
                     @endforeach
