@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Boards\BoardMemberWasDemissioned;
 use Francken\Association\Boards\BoardMemberWasDischarged;
 use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
-use Francken\Association\Committees\HardcodedCommittee;
-use Francken\Association\Committees\HardcodedCommitteesRepository;
+use Francken\Association\Committees\Committee;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 use Spatie\Permission\Models\Role;
 
 final class ChangeRolesListener
@@ -21,16 +23,6 @@ final class ChangeRolesListener
     public const CANDIDATE_BOARD_ROLE = 'Candidate Board';
     public const DEMISSIONED_BOARD_ROLE = 'Demissioned Board';
     public const DECHARGED_BOARD_ROLE = 'Decharged Board';
-
-    /**
-     * @var HardcodedCommitteesRepository
-     */
-    private $committees;
-
-    public function __construct(HardcodedCommitteesRepository $committees)
-    {
-        $this->committees = $committees;
-    }
 
     public function handle($event) : void
     {
@@ -50,15 +42,7 @@ final class ChangeRolesListener
         /** @var Account */
         $account = Account::findOrFail($event->accountId());
 
-        $committees = $this->committees->ofMember(
-            (int)$account->member_id
-        );
-
-        foreach ($committees as $committee) {
-            $account->assignRole(
-                $this->roleForCommittee($committee)
-            );
-        }
+        $this->assignRolesForActiveCommittees($account);
 
         /** @var \Illuminate\Support\Collection */
         $as_board_members = BoardMember::where(
@@ -73,9 +57,10 @@ final class ChangeRolesListener
             $account->assignRole($this->boardMemberRole($member));
         });
 
+
         // Anyone who is in a committee or (will be) a board member is
         // considered an active member
-        if (count($committees) > 0 ||
+        if (
             $account->hasRole(static::BOARD_ROLE) ||
             $account->hasRole(static::CANDIDATE_BOARD_ROLE)
         ) {
@@ -119,8 +104,8 @@ final class ChangeRolesListener
 
             // Since this member is no longer in the board nor a member of a committee
             // their active member role will be removed
-            $committees = $this->committees->ofMember((int)$account->member_id);
-            if (count($committees) === 0) {
+            $committees = $this->activeCommitteesOfMember($account);
+            if ($committees->isEmpty()) {
                 $account->removeRole(static::ACTIVE_MEMBER_ROLE);
             }
         }
@@ -152,16 +137,44 @@ final class ChangeRolesListener
             }
     }
 
-    private function roleForCommittee(HardcodedCommittee $committee)
+    private function assignRolesForActiveCommittees(Account $account) : void
+    {
+        $committees = $this->activeCommitteesOfMember($account);
+
+        foreach ($committees as $committee) {
+            $account->assignRole(
+                $this->roleForCommittee($committee)
+            );
+        }
+
+        if ($committees->isNotEmpty()) {
+            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+        }
+    }
+
+    private function activeCommitteesOfMember(Account $account) : Collection
+    {
+        $board = Board::orderBy('installed_at', 'desc')->firstOrFail();
+
+        $committees = $board->committees()
+            ->whereHas('members', function (Builder $query) use ($account) : Builder {
+                return $query->where('member_id', $account->member_id);
+            })
+            ->get();
+
+        return collect($committees);
+    }
+
+    private function roleForCommittee(Committee $committee) : Role
     {
         return Role::firstOrCreate([
             'name' => $this->committeeRoleName($committee)
         ]);
     }
 
-    private function committeeRoleName(HardcodedCommittee $committee) : string
+    private function committeeRoleName(Committee $committee) : string
     {
-        return 'Committee ' . $committee->name();
+        return 'Committee ' . $committee->name;
     }
 
     private function getHandleMethod($event)
