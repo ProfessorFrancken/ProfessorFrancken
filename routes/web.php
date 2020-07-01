@@ -73,7 +73,7 @@ Route::group(['prefix' => 'study'], function () : void {
 Route::group(['prefix' => 'association'], function () : void {
     Route::get('/news', [NewsController::class, 'index']);
     Route::get('/news/archive', [NewsController::class, 'archive']);
-    Route::get('/news/{item}', [NewsController::class, 'show']);
+    Route::get('/news/{news:slug}', [NewsController::class, 'show']);
 
     Route::get('activities', [ActivitiesController::class, 'index']);
     Route::get('activities/ical', [IcalController::class, 'index']);

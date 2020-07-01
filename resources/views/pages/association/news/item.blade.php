@@ -1,47 +1,47 @@
 @extends('layout.two-column-layout')
 
-@section('title', $newsItem->title() . " - T.F.V. 'Professor Francken'")
-@section('description', $newsItem->exerpt())
+@section('title', $newsItem->title . " - T.F.V. 'Professor Francken'")
+@section('description', $newsItem->exerpt)
 
 @section('content')
 
     <h2 class="section-header">
-        {{ $newsItem->title() }}
+        {{ $newsItem->title }}
     </h2>
 
     <span>
-        Posted on {{ $newsItem->publicationDate()->format('d M Y') }}
+        Posted on {{ $newsItem->published_at->format('d M Y') }}
     </span>
 
     <hr>
 
 
     <div class="news-item__content justified-paragraphs">
-        {!! $newsItem->content() !!}
+        {!! $newsItem->compiled_contents !!}
     </div>
 
     <hr class="my-4">
 
     <div class="d-flex justify-content-between mb-5">
-        @unless ($newsItem->previousNewsItem() === null)
+        @unless ($previous === null)
         <div class="d-flex flex-column">
             <strong>
                 Previous news
             </strong>
-            <a class="" href="{{ $newsItem->previousNewsItem()->url() }}">
-                {{ $newsItem->previousNewsItem()->title() }}
+            <a class="" href="/association/news/{{ $previous->slug }}">
+                {{ $previous->title }}
             </a>
         </div>
         @endunless
 
-        @unless ($newsItem->nextNewsItem() === null)
+        @unless ($next === null)
         {{-- Note: the latest news item does not have any next news item --}}
         <div class="d-flex flex-column text-right">
             <strong>
                 Next news
             </strong>
-            <a class="" href="{{ $newsItem->nextNewsItem()->url() }}">
-                {{ $newsItem->nextNewsItem()->title() }}
+            <a class="" href="/association/news/{{ $next->slug }}">
+                {{ $next->title }}
             </a>
         </div>
         @endunless
@@ -60,39 +60,16 @@
             <div class="media align-items-center">
                 <div class="media-body">
                     <h5 class="agenda-item__header">
-                        {{ $newsItem->authorName() }}
+                        {{ $newsItem->author_name }}
                     </h5>
                 </div>
                 <img
                     class="rounded d-flex ml-3"
-                    src="{{image($newsItem->authorPhoto(), ['height' => '75', 'width' => '75']) }}"
+                    src="{{image($newsItem->author_photo, ['height' => '75', 'width' => '75']) }}"
                     style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"
                 >
             </div>
         </li>
     </ul>
-
-    @if (count($newsItem->relatedNewsItems()) > 0)
-        <h5>
-            Related articles
-        </h5>
-
-        <ul class="agenda-list list-unstyled">
-            @foreach ($newsItem->relatedNewsItems() as $related)
-                <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
-                    <a
-                        href="{{ $related->url() }}"
-                        class="aside-link"
-                    >
-                        <div class="media align-items-center">
-                            <div class="media-body">
-                                {{ $related->title() }}
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            @endforeach
-        </ul>
-    @endif
 </div>
 @endsection

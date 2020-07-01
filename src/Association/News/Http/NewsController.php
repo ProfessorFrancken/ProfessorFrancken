@@ -7,22 +7,13 @@ namespace Francken\Association\News\Http;
 use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\News\Eloquent\News;
-use Francken\Association\News\Repository as NewsRepository;
 use League\Period\Period;
 
 final class NewsController
 {
-    private $news;
-
-    public function __construct(NewsRepository $news)
-    {
-        $this->news = $news;
-    }
-
     public function index()
     {
         $news = News::recent()->paginate(12);
-
 
         return view('pages.association.news')
             ->with([
@@ -52,16 +43,18 @@ final class NewsController
             ]);
     }
 
-    public function show($link)
+    public function show(News $news)
     {
-        $newsItem = $this->news->byLink($link);
-
         return view('pages.association.news.item')
-            ->with('newsItem', $newsItem)
-            ->with('breadcrumbs', [
-                ['url' => '/association', 'text' => 'Association'],
-                ['url' => '/association/news', 'text' => 'News'],
-                ['text' => $newsItem->title()],
+            ->with([
+                'newsItem' => $news,
+                'previous' => $news->previous(),
+                'next' => $news->next(),
+                'breadcrumbs' => [
+                    ['url' => '/association', 'text' => 'Association'],
+                    ['url' => '/association/news', 'text' => 'News'],
+                    ['text' => $news->title],
+                ]
             ]);
     }
 
