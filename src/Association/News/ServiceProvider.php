@@ -26,10 +26,7 @@ final class ServiceProvider extends BaseServiceProvider
             });
         } elseif (config('francken.news.type') == 'eloquent') {
             $this->app->bind(Repository::class, function ($app) {
-                return new CachedNewsRepository(
-                    $app->make(EloquentNewsRepository::class),
-                    $app->make(CacheRepository::class)
-                );
+                return $app->make(EloquentNewsRepository::class);
             });
 
             $this->app->when(\Francken\Association\News\Http\AdminNewsController::class)

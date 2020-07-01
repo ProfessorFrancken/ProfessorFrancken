@@ -30,23 +30,11 @@ use Francken\Association\News\Http\AdminNewsController;
 
                 @include('admin.news._table', ['news' => $news])
 
-                <div class="card-body d-flex justify-content-between">
-                    @if (count($news) > 0)
-                        <a
-                            class="card-link"
-                            href="/admin/association/news?after={{ array_first($news)->publicationDate()->format('d-m-Y') }}"
-                        >
-                            Newer news
-                        </a>
-
-                        <a
-                            class="card-link"
-                            href="/admin/association/news?before={{ array_last($news)->publicationDate()->format('d-m-Y') }}"
-                        >
-                            Older news
-                        </a>
-                    @endif
-                </div>
+                @if ($news->hasMorePages())
+                    <div class="card-footer">
+                        {!! $news->links() !!}
+                    </div>
+                @endif
             </div>
 
 

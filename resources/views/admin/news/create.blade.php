@@ -2,7 +2,15 @@
 @section('page-title', 'News / create')
 
 @section('content')
-    {!! Form::model($news, ['url' => 'admin/association/news', 'method' => 'post']) !!}
+    {!!
+       Form::model(
+           $news,
+           [
+               'url' => action([\Francken\Association\News\Http\AdminNewsController::class, 'store']),
+               'method' => 'post'
+           ]
+       )
+    !!}
     <div class="row">
         <div class="col-md-8">
             @include('admin.news._form', ['action' => 'Save'])

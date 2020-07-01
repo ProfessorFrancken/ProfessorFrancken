@@ -7,6 +7,7 @@ namespace Francken\Features\Admin;
 use Faker\Factory;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\Fake\FakeNews;
+use Francken\Association\News\Http\AdminNewsController;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -39,7 +40,7 @@ class NewsFeature extends TestCase
     /** @test */
     public function a_list_of_news_is_shown() : void
     {
-        $this->visit('/admin/association/news');
+        $this->visit(action([AdminNewsController::class, 'index']));
 
         $this->assertResponseOk();
     }
@@ -47,10 +48,12 @@ class NewsFeature extends TestCase
     /** @test */
     public function a_news_item_can_be_changed() : void
     {
-        $news = $this->news[0];
-        $id = News::byLink($news->link())->first()->id;
-        $this->visit('/admin' . $news->url())
-             ->see($news->title());
+        $newsItem = $this->news[0];
+        $news = News::byLink($newsItem->link())->first();
+        $this->visit(
+            action([AdminNewsController::class, 'show'], ['news' => $news])
+        )
+             ->see($news->title);
 
         $this->assertResponseOk();
 
@@ -59,49 +62,48 @@ class NewsFeature extends TestCase
             ->press('Update')
             ->see('Mooie gekken')
             ->see('Franckenleden');
-        // ->see('"New title" was succesfully updated.');
-        $updated = News::find($id)->toNewsItem();
-
-        // Recently there was a bug where the publication date was changed
-        $this->assertEquals($news->publicationDate(), $updated->publicationDate());
     }
 
     /** @test */
     public function uploading_an_author_image() : void
     {
-        $news = $this->news[0];
-        $id = News::byLink($news->link())->first()->id;
-        $this->visit('/admin' . $news->url())
-             ->see($news->title());
+        $newsItem = $this->news[0];
+        $news = News::byLink($newsItem->link())->first();
+        $this->visit(
+            action([AdminNewsController::class, 'show'], ['news' => $news])
+        )
+             ->see($news->title);
 
         $this->type('Mark', 'author-name')
              ->type('a_picture.png', 'author-photo')
              ->press('Update')
              ->see('Mark');
 
-        $updated = News::find($id)->toNewsItem();
-        $this->assertEquals($updated->authorName(), 'Mark');
-        $this->assertEquals($updated->authorPhoto(), 'a_picture.png');
+        $news->refresh();
+        $this->assertEquals($news->author_name, 'Mark');
+        $this->assertEquals($news->author_photo, 'a_picture.png');
     }
 
     /** @test */
     public function chaning_the_publication_date() : void
     {
-        $news = $this->news[0];
-        $id = News::byLink($news->link())->first()->id;
-        $this->visit('/admin' . $news->url())
+        $newsItem = $this->news[0];
+        $news = News::byLink($newsItem->link())->first();
+        $this->visit(
+            action([AdminNewsController::class, 'show'], ['news' => $news])
+        )
             ->type('2018-01-07', 'publish-at')
             ->press('Publish');
 
-        $updated = News::find($id)->toNewsItem();
+        $news->refresh();
 
-        $this->assertEquals($updated->publicationDate(), new \DateTimeImmutable('2018-01-07'));
+        $this->assertEquals($news->published_at, new \DateTimeImmutable('2018-01-07'));
     }
 
     /** @test */
     public function creating_a_new_news_post() : void
     {
-        $this->visit('/admin/association/news/create')
+        $this->visit(action([AdminNewsController::class, 'create']))
             ->type('Bitterballen dibs machines', 'title')
             ->type('Bitterballen are nice', 'content')
             ->type('About bitterballen', 'exerpt')

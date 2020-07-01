@@ -65,9 +65,6 @@ final class News extends Eloquent
         'related_news_items' => 'array',
     ];
 
-
-    // waarschijnlijk gaat er wat mis bij het converteren van string naar object oid
-
     protected $dates = [
         'created_at',
         'updated_at',
@@ -186,8 +183,8 @@ final class News extends Eloquent
 
     /**
      * Scope a query to only include news only news before the current news
-     */           
-    public function next(): ?News
+     */
+    public function next() : ?self
     {
         if ($this->published_at === null) {
             return null;
@@ -250,8 +247,8 @@ final class News extends Eloquent
     private function contents() : CompiledMarkdown
     {
         return CompiledMarkdown::withSource(
-            $this->compiled_contents,
-            $this->source_contents
+            $this->compiled_contents ?? '',
+            $this->source_contents ?? ''
         );
     }
 

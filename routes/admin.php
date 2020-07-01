@@ -97,9 +97,9 @@ Route::group(['prefix' => 'extern', ], function () : void {
 
 Route::group(['prefix' => 'association'], function () : void {
     Route::group(['middleware' => 'can:dashboard:news-read'], function () : void {
-        Route::put('/news/publish/{item}', [AdminNewsController::class, 'publish']);
-        Route::put('/news/archive/{item}', [AdminNewsController::class, 'archive']);
-        Route::get('/news/{item}/preview', [AdminNewsController::class, 'preview']);
+        Route::put('/news/publish/{news}', [AdminNewsController::class, 'publish']);
+        Route::put('/news/archive/{news}', [AdminNewsController::class, 'archive']);
+        Route::get('/news/{news}/preview', [AdminNewsController::class, 'preview']);
         Route::resource('news', '\Francken\Association\News\Http\AdminNewsController');
     });
 

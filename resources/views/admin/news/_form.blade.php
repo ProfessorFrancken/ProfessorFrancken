@@ -5,7 +5,7 @@
         </h3>
 
         <div class="form-group mt-3">
-            {!! Form::text('title', $news->title(), ['class' => 'form-control']) !!}
+            {!! Form::text('title', $news->title, ['class' => 'form-control']) !!}
         </div>
 
         <h3 class="card-title">
@@ -14,13 +14,13 @@
 
         <div class="row d-flex align-items-stretch">
             <div class="col">
-                {!! Form::textarea('content', $news->content()->originalMarkdown(), ['class' => 'form-control', 'id' => 'news-item-content']) !!}
+                {!! Form::textarea('content', $news->source_contents, ['class' => 'form-control', 'id' => 'news-item-content']) !!}
             </div>
             <div class="col-md-6 d-none">
                 <div style="overflow-y: scroll" class="card">
                     <div class="card-body" id="news-item-preview">
 
-                        {!! $news->content() !!}
+                        {!! $news->compiled_contents !!}
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         </h4>
 
         <div class="form-group mt-3">
-            {!! Form::textarea('exerpt', $news->exerpt(), ['class' => 'form-control', 'rows' => 3]) !!}
+            {!! Form::textarea('exerpt', $news->exerpt, ['class' => 'form-control', 'rows' => 3]) !!}
 
             <span class="form-help">
                 Note try to keep the exerpt short and make it either a nice summary or a short introduction to the news post. Don't use any Markdown formatting.
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="card-body">
-        @if (! is_null($news->publicationDate()) && $news->publicationDate() < (new DateTimeImmutable('2017-08-24')))
+        @if (! is_null($news->published_at) && $news->published_at < (new DateTimeImmutable('2017-08-24')))
             <div class="alert alert-warning">
 
                 <strong>
@@ -52,24 +52,19 @@
         @endif
 
         <div class="d-flex justify-content-between">
-            @if (is_null($news->publicationDate()) || $news->publicationDate() > (new DateTimeImmutable('2017-08-24')))
+            @if (is_null($news->published_at) || $news->published_at > (new DateTimeImmutable('2017-08-24')))
                 <button type="submit" class="btn btn-outline-success">
                     <i class="fa fa-check" aria-hidden="true"></i>
 
                     {{ $action }}
                 </button>
             @else
-
                 <button type="submit" class="btn btn-outline-warning" onclick="return confirm('Saving this news item might override import setting. Are you sure you want to save?')">
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 
                     {{ $action }}
                 </button>
             @endif
-
-            {{--
-            {!! Form::submit('Archive', ['class' => 'btn btn-link text-warning pull-right', 'formaction' => 'admin/association/news/archive/' . $news->link()]) !!}
-            --}}
         </div>
     </div>
 </div>
@@ -89,15 +84,15 @@
      spellChecker: false,
      autoSave: {
          enabled: true,
-         uniqueId: "news-{{ $news->link()  }}"
+         uniqueId: "news-{{ $news->id  }}"
      },
      promptURLs: true,
      /* previewRender: ,*/
      /* previewRender: function(plainText) {*/
      /* console.log(plainText);*/
-		 /* return customMarkdownParser(plainText); // Returns HTML from a custom parser*/
-	   /* },*/
-	   previewRender: function(plainText) { // Async method
+         /* return customMarkdownParser(plainText); // Returns HTML from a custom parser*/
+       /* },*/
+       previewRender: function(plainText) { // Async method
          var that = this;
          var parent = that.parent;
 
@@ -105,7 +100,7 @@
          var compiled = this.parent.markdown(plainText);
          preview.innerHTML = compiled;
          return compiled;
-	   },
+       },
 
      toolbar: [
          "bold", "italic", "strikethrough",

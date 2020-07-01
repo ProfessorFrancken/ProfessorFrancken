@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', 'News / ' . $news->title())
+@section('page-title', 'News / ' . $news->title)
 
 @section('content')
 
@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    {!! Form::model($news, ['url' => ['admin/association/news', $news->link()], 'method' => 'put']) !!}
+    {!! Form::model($news, ['url' => action([\Francken\Association\News\Http\AdminNewsController::class, 'update'], ['news' => $news]), 'method' => 'put']) !!}
     <div class="row">
         <div class="col-md-8">
             @include('admin.news._form', ['action' => 'Update'])

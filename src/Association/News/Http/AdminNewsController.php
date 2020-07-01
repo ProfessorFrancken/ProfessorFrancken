@@ -10,7 +10,6 @@ use Francken\Association\News\Author;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\NewsContentCompiler;
 use Francken\Association\News\NewsItem;
-use Francken\Association\News\Repository as NewsRepository;
 use Illuminate\Http\Request;
 use League\Period\Period;
 
@@ -20,22 +19,16 @@ use League\Period\Period;
  */
 final class AdminNewsController
 {
-    private $news;
-
-    public function __construct(NewsRepository $news)
-    {
-        $this->news = $news;
-    }
-
     public function index()
     {
         $drafts = $this->drafts();
 
-        $news = $this->news->search(
-            $this->periodForPagination(),
-            request()->input('subject', null),
-            request()->input('author', null)
-        );
+        $news = News::recent()
+            ->inPeriod($this->periodForPagination())
+            ->withSubject(request()->input('subject', null))
+            ->withAuthorName(request()->input('author', null))
+            ->paginate()
+            ->appends(request()->except('page'));
 
         return view('admin.news.index', [
             'news' => $news,
@@ -49,7 +42,7 @@ final class AdminNewsController
     public function create()
     {
         return view('admin.news.create', [
-            'news' => NewsItem::empty(),
+            'news' => new News(),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'News'],
                 ['url' => action([static::class, 'create']), 'text' => 'Create'],
@@ -75,31 +68,29 @@ final class AdminNewsController
 
         $news->save();
 
-        return redirect('/admin' . $news->toNewsItem()->url());
+        return redirect()->action([static::class, 'show'], ['news' => $news]);
     }
 
-    public function show($link)
+    public function show(News $news)
     {
-        $news = $this->news->byLink($link);
-
         return view('admin.news.show', [
             'news' => $news,
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'News'],
-                ['url' => action([static::class, 'show'], $news->id()), 'text' => $news->title()],
+                ['url' => action([static::class, 'show'], ['news' => $news]), 'text' => $news->title],
             ]
         ]);
     }
 
-    public function preview(string $item)
+    public function preview(News $news)
     {
-        $newsItem = $this->news->byLink($item);
-
         return view('pages.association.news.item')
-            ->with('newsItem', $newsItem);
+            ->with([
+                'news' => $news->toNewsItem()
+            ]);
     }
 
-    public function update(Request $req, $link)
+    public function update(Request $req, News $news)
     {
         // We assume that the request gives all necessary data,
         // except for the author image.
@@ -108,7 +99,6 @@ final class AdminNewsController
         // Note that for read actions we normally use the news repository
         // however since now we want to make changes we will use an eloquent model
         // $news = News::byLink($link)->firstOrNew([]);
-        $news = News::byLink($link)->firstOrFail();
         $news->changeAuthor(
             new Author(
                 $req->input('author-name', $news->author_name),
@@ -124,56 +114,50 @@ final class AdminNewsController
 
         $news->save();
 
-        return redirect('/admin' . $news->toNewsItem()->url());
+        return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
 
-    public function publish(Request $req, $link)
+    public function publish(Request $req, News $news)
     {
-        $news = News::byLink($link)->firstOrFail();
         $publishAt = new \DateTimeImmutable($req->input('publish-at'));
 
         $news->publish($publishAt);
         $news->save();
 
-        return redirect('/admin' . $news->toNewsItem()->url());
+        return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
 
-    public function archive(Request $req, $link)
+    public function archive(News $news)
     {
-        $news = News::byLink($link)->firstOrFail();
-        $news->archive();
-        $news->save();
-        dd($news);
-
-        return redirect('/admin' . $news->toNewsItem()->url());
-    }
-
-    public function destroy($id)
-    {
-        // Note that for read actions we normally use the news repository
-        // however since now we want to make changes we will use an eloquent model
-        $news = News::byLink($id)->firstOrFail();
         $news->archive();
         $news->save();
 
-        return redirect('/admin/association/news/' . $news->toNewsItem()->link());
+        return redirect()->action([self::class, 'index']);
+    }
+
+    public function destroy(News $news)
+    {
+        $news->archive();
+        $news->save();
+
+        return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
 
     private function periodForPagination() : Period
     {
         // Enable artificial pagination
         if (request()->has('before') && request()->has('after')) {
-            $before = new DateTimeImmutable(request()->input('before', '-2 years'));
-            $after = new DateTimeImmutable(request()->input('after', 'now'));
+            $before = new DateTimeImmutable(request()->input('before') ?? '-2 years');
+            $after = new DateTimeImmutable(request()->input('after') ?? 'now');
 
             return new Period(
-                $after,
-                $before
+                $before,
+                $after
             );
         }
 
         if (request()->has('before')) {
-            $before = new DateTimeImmutable(request()->input('before', '-2 years'));
+            $before = new DateTimeImmutable(request()->input('before') ?? '-2 years');
 
             return new Period(
                 $before->sub(DateInterval::createFromDateString('2 years')),
@@ -182,7 +166,7 @@ final class AdminNewsController
         }
 
         if (request()->has('after')) {
-            $after = new DateTimeImmutable(request()->input('after', 'now'));
+            $after = new DateTimeImmutable(request()->input('after') ?? 'now');
 
             return new Period(
                 $after,
@@ -191,15 +175,13 @@ final class AdminNewsController
         }
 
         return new Period(
-            $start = new DateTimeImmutable('-2 years'),
-            $end = new DateTimeImmutable('now')
+            new DateTimeImmutable('-2 years'),
+            new DateTimeImmutable('now')
         );
     }
 
     private function drafts()
     {
-        return News::whereNull('published_at')->get()->map(function ($news) {
-            return $news->toNewsItem();
-        });
+        return News::whereNull('published_at')->get();
     }
 }
