@@ -43,11 +43,18 @@
                                                 </small>
                                             </h4>
                                         </a>
+                                        @if ($committee->email)
                                         <small class="mt-1">
                                             <a class="text-muted" href="malto: {{ $committee-> email }}">
                                                 {{ $committee->email }}
                                             </a>
                                         </small>
+                                        @endif
+                                        @if ($committee->goal)
+                                        <small class="mt-1">
+                                            {{ $committee->goal }}
+                                        </small>
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="border-top-0">

@@ -13,7 +13,6 @@ class CreateAssociationCommitteesTable extends Migration
      */
     public function up() : void
     {
-        Schema::dropIfExists('association_committees');
         Schema::create('association_committees', function (Blueprint $table) : void {
             $table->id();
 
@@ -31,6 +30,7 @@ class CreateAssociationCommitteesTable extends Migration
 
             $table->string('name');
             $table->string('slug');
+            $table->string('goal')->nullable();
             $table->string('email')->nullable();
             $table->boolean('is_public');
 
