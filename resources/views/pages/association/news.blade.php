@@ -15,25 +15,25 @@
                     <div>
                         <div class="news-item__header">
                             <span class="news-item__date badge preview-item__date">
-                                {{ $newsItem->publicationDate()->format('d M Y') }}
+                                {{ $newsItem->published_at->format('d M Y') }}
                             </span>
                             <span class="news-item__written-by">
                                 Posted by
                                 <span class="news-item__author">
-                                    {{ $newsItem->authorName() }}
+                                    {{ $newsItem->author_name }}
                                 </span>
                             </span>
                         </div>
                         <h4 class="news-item__title preview-item__title">
-                            {{ $newsItem->title() }}
+                            {{ $newsItem->title }}
                         </h4>
                         <p class="news-item__body">
-                            {!! $newsItem->exerpt() !!}
+                            {!! $newsItem->exerpt !!}
                         </p>
                     </div>
 
                     <div>
-                        <a class="btn btn-inverse" href="{{ $newsItem->url() }}">Read more</a>
+                        <a class="btn btn-inverse" href="/association/news/{{ $newsItem->slug }}">Read more</a>
                     </div>
                 </article>
             </div>

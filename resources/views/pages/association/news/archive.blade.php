@@ -14,10 +14,10 @@
         <ul class="list-unstyled agenda-list">
             @foreach ($news as $item)
                 <li class="agenda-item">
-                    <a href="{{ $item->url() }}" class="d-flex justify-content-between">
-                        {{ $item->title() }}
+                    <a href="/association/news/{{ $item->slug }}" class="d-flex justify-content-between">
+                        {{ $item->title }}
                         <small class="text-muted">
-                            {{ $item->publicationDate()->format('d M Y')}}
+                            {{ $item->published_at->format('d M Y')}}
                         </small>
                     </a>
                 </li>
@@ -32,21 +32,7 @@
     <hr>
 
     <div class="d-flex justify-content-between mb-5">
-        @if (count($news) > 0)
-            <a
-                class="link-to-all-dark arrow"
-                href="/association/news/archive?after={{ array_first($news)->publicationDate()->format('d-m-Y') }}"
-            >
-                Newer news
-            </a>
-
-            <a
-                class="link-to-all-dark arrow"
-                href="/association/news/archive?before={{ array_last($news)->publicationDate()->format('d-m-Y') }}"
-        >
-                Older news
-            </a>
-        @endif
+        {!! $news->links() !!}
     </div>
 @endsection
 

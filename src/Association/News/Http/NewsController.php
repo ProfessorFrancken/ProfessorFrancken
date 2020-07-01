@@ -6,6 +6,7 @@ namespace Francken\Association\News\Http;
 
 use DateInterval;
 use DateTimeImmutable;
+use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\Repository as NewsRepository;
 use League\Period\Period;
 
@@ -20,21 +21,27 @@ final class NewsController
 
     public function index()
     {
+        $news = News::recent()->paginate(12);
+
+
         return view('pages.association.news')
-            ->with('news', $this->news->recent(12))
-            ->with('breadcrumbs', [
-                ['url' => '/association', 'text' => 'Association'],
-                ['url' => '/association/news', 'text' => 'News'],
+            ->with([
+                'news' => $news,
+                'breadcrumbs' => [
+                    ['url' => '/association', 'text' => 'Association'],
+                    ['url' => action([self::class, 'index']), 'text' => 'News'],
+                ]
             ]);
     }
 
     public function archive()
     {
-        $news = $this->news->search(
-            $this->periodForPagination(),
-            request()->input('subject', null),
-            request()->input('author', null)
-        );
+        $news = News::recent()
+            ->inPeriod($this->periodForPagination())
+            ->withSubject(request()->input('subject', null))
+            ->withAuthorName(request()->input('author', null))
+            ->paginate()
+            ->appends(request()->except('page'));
 
         return view('pages.association.news.archive')
             ->with('news', $news)
