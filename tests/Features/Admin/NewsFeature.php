@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features\Admin;
 
 use Faker\Factory;
-use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\News;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Features\LoggedInAsAdmin;

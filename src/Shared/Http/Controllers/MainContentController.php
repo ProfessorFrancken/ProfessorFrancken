@@ -6,7 +6,7 @@ namespace Francken\Shared\Http\Controllers;
 
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\FranckenVrij\Edition;
-use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\News;
 
 class MainContentController extends Controller
 {

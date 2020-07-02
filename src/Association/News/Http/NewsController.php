@@ -6,7 +6,7 @@ namespace Francken\Association\News\Http;
 
 use DateInterval;
 use DateTimeImmutable;
-use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\News;
 use League\Period\Period;
 
 final class NewsController

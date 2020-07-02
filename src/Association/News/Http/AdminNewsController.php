@@ -7,7 +7,7 @@ namespace Francken\Association\News\Http;
 use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\News\Author;
-use Francken\Association\News\Eloquent\News;
+use Francken\Association\News\News;
 use Francken\Association\News\NewsContentCompiler;
 use Illuminate\Http\Request;
 use League\Period\Period;
