@@ -33,7 +33,7 @@
                     </div>
 
                     <div>
-                        <a class="btn btn-inverse" href="/association/news/{{ $newsItem->slug }}">Read more</a>
+                        <a class="btn btn-inverse" href="{{ action([\Francken\Association\News\Http\NewsController::class, 'show'], ['news' => $newsItem]) }}">Read more</a>
                     </div>
                 </article>
             </div>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="text-center">
-            <a href="/association/news/archive" class="link-to-all-dark">
+            <a href="{{ action([\Francken\Association\News\Http\NewsController::class, 'archive']) }}" class="link-to-all-dark">
                 Visit the news archive
             </a>
         </div>

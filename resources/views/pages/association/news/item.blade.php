@@ -28,7 +28,7 @@
             <strong>
                 Previous news
             </strong>
-            <a class="" href="/association/news/{{ $previous->slug }}">
+            <a class="" href="{{ action([\Francken\Association\News\Http\NewsController::class, 'show'], ['news' => $previous]) }}">
                 {{ $previous->title }}
             </a>
         </div>
@@ -40,7 +40,7 @@
             <strong>
                 Next news
             </strong>
-            <a class="" href="/association/news/{{ $next->slug }}">
+            <a class="" href="{{ action([\Francken\Association\News\Http\NewsController::class, 'show'], ['news' => $next]) }}">
                 {{ $next->title }}
             </a>
         </div>

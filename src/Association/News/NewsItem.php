@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\News;
 
 use DateTimeImmutable;
+use Francken\Association\News\Http\NewsController;
 use Francken\Shared\Url;
 
 final class NewsItemId
@@ -89,7 +90,7 @@ final class NewsItem
 
     public function url() : string
     {
-        return '/association/news/' . $this->link();
+        return action([NewsController::class, 'show'], ['news' => $this]);
     }
 
     public function exerpt() : string

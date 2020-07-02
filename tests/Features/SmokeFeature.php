@@ -8,6 +8,7 @@ use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
+use Francken\Association\News\Http\NewsController;
 use Francken\Shared\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -64,7 +65,7 @@ final class SmokeFeature extends TestCase
             ["/study/representation/faculty-council", 200],
             ["/study/internationals", 200],
             ["/association", 200],
-            ["/association/news", 200],
+            [action([NewsController::class, 'index']), 200],
             ["/association/activities", 200],
             ["/association/history", 200],
             ["/association/honorary-members", 200],

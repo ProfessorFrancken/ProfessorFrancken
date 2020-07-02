@@ -17,7 +17,7 @@
 
         <div class="row">
             <div style="text-align: center" class="col-md-4">
-                <a href="/association/news">
+                <a href="{{ action([\Francken\Association\News\Http\NewsController::class, 'index']) }}">
                     <img
                         alt="News related to Francken and other associations"
                         src="{{ image('http://borrelcie.vodka/img/bcie1516.JPG', ['height' => 150, 'width' => 150]) }}"

@@ -50,7 +50,7 @@ use Francken\Association\News\Http\AdminNewsController;
                     <ul class="agenda-list list-unstyled">
                         <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
 
-                            <form action="{{ url('/admin/association/news') }}" method="GET" class="form-horizontal">
+                            <form action="{{ action([AdminNewsController::class, 'index']) }}" method="GET" class="form-horizontal">
 
                                 <div class="form-group">
                                     {!! Form::text('subject', null, ['placeholder' => 'Search by subject', 'class' => 'form-control'])  !!}

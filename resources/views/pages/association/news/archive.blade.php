@@ -14,7 +14,7 @@
         <ul class="list-unstyled agenda-list">
             @foreach ($news as $item)
                 <li class="agenda-item">
-                    <a href="/association/news/{{ $item->slug }}" class="d-flex justify-content-between">
+                    <a href="{{ action([\Francken\Association\News\Http\NewsController::class, 'show'], ['news' => $item]) }}" class="d-flex justify-content-between">
                         {{ $item->title }}
                         <small class="text-muted">
                             {{ $item->published_at->format('d M Y')}}
@@ -46,7 +46,7 @@
     <ul class="agenda-list list-unstyled">
         <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
 
-            <form action="{{ url('/association/news/archive') }}" method="GET" class="form-horizontal">
+            <form action="{{ action([\Francken\Association\News\Http\NewsController::class, 'archive']) }}" method="GET" class="form-horizontal">
 
                 <div class="form-group">
                     {!! Form::text('subject', null, ['placeholder' => 'Search by subject', 'class' => 'form-control'])  !!}

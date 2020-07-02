@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="alert alert-secondary">
-        <a href="/admin/association/news/" >
+        <a href="{{ action([\Francken\Association\News\Http\AdminNewsController::class, 'index']) }}" >
             <i class="fa fa-angle-double-left" aria-hidden="true"></i>
             Back to news
         </a>
