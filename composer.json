@@ -3,6 +3,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
+    "blade-ui-kit/blade-icons": "^0.4.2",
     "cmpayments/iban": "^1.1",
     "doctrine/dbal": "^2.10",
     "facade/ignition": "^2.0",
@@ -21,7 +22,6 @@
     "league/html-to-markdown": "^4.9",
     "league/period": "^4.10",
     "maatwebsite/excel": "^3.1",
-    "nothingworks/blade-svg": "^0.3.0",
     "plank/laravel-mediable": "^4.2",
     "predis/predis": "^1.1",
     "ramsey/uuid": "^3.0",

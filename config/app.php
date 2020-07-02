@@ -164,7 +164,7 @@ return [
          */
         Francken\Shared\Providers\TelescopeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        BladeSvg\BladeSvgServiceProvider::class,
+        BladeUI\Icons\BladeIconsServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         // Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Plank\Mediable\MediableServiceProvider::class,
