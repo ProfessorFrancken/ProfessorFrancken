@@ -45,7 +45,7 @@ final class FakeNews
             })
             ->values();
 
-        return $publishedNews->map(function ($news, int $key) use ($publishedNews) {
+        return $publishedNews->map(function ($news) {
             $content = (new FakeNewsContent($this->faker))->generate();
             $markdown = CompiledMarkdown::withSource(
                 $content,
