@@ -55,7 +55,7 @@ final class AdminCommitteeMemberRequest extends FormRequest
 
         $dechargedAt = DateTimeImmutable::createFromFormat(
             'Y-m-d',
-            $this->input('sale_date')
+            $this->input('decharged_at')
         );
 
         Assert::isInstanceOf($dechargedAt, DateTimeImmutable::class);
