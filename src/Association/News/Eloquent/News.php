@@ -7,7 +7,6 @@ namespace Francken\Association\News\Eloquent;
 use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
-use Francken\Association\News\NewsItem;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use League\Period\Period;
 
@@ -111,36 +110,6 @@ final class News extends Eloquent
     {
         $this->exerpt = $exerpt;
     }
-
-    public static function fromNewsItem(NewsItem $news) : self
-    {
-        $content = $news->content();
-
-        $item = new self([
-            'title' => $news->title(),
-            'exerpt' => $news->exerpt(),
-            'author_name' => $news->authorName(),
-            'author_photo' => $news->authorPhoto(),
-            'source_contents' => $content->originalMarkdown(),
-            'compiled_contents' => (string)$content,
-            'related_news_items' => collect(
-                $news->relatedNewsItems()
-            )->map(function ($news) {
-                return (string)$news->id();
-            }),
-        ]);
-
-        $item->published_at = $news->publicationDate();
-        $item->slug = $news->link();
-
-        return $item;
-    }
-
-
-    // To published news item
-
-
-    // Specific eloquent stuff
 
     /**
      * Scope a query to only include news with the given slug
