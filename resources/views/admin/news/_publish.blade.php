@@ -11,8 +11,8 @@
             <div class="d-flex justify-content-between align-items-end">
                 <div class="form-group mb-0">
                     <i class="fa fa-calendar" aria-hidden="true"></i>
-                    {!! Form::label('publish-at', 'Publish at:', ['class' => 'control-label-col']) !!}
-                    {!! Form::date('publish-at', optional($news->published_at)->format('Y-m-d'), ['class' => 'form-control']) !!}
+                    {!! Form::label('published_at', 'Publish at:', ['class' => 'control-label-col']) !!}
+                    {!! Form::date('published_at', optional($news->published_at)->format('Y-m-d'), ['class' => 'form-control']) !!}
                 </div>
 
                 <button type="submit" formaction="{{  action([\Francken\Association\News\Http\AdminNewsController::class, 'publish'], ['news' => $news]) }}" class="btn btn-outline-primary pull-right">

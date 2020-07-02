@@ -1,6 +1,5 @@
 <div class="card mt-3">
     <div class="card-body">
-
         <h3>
             Author
         </h3>
@@ -11,11 +10,11 @@
             </div>
             <div class="col-md-9">
                 <div class="form-group">
-                    {!! Form::text('author-name', $news->author_name, ['class' => 'form-control', 'placeholder' => 'Author name']) !!}
+                    {!! Form::text('author_name', $news->author_name, ['class' => 'form-control', 'placeholder' => 'Author name']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::text('author-photo', $news->author_photo, ['class' => 'form-control', 'placeholder' => 'Url to picture of author']) !!}
+                    {!! Form::text('author_photo', $news->author_photo, ['class' => 'form-control', 'placeholder' => 'Url to picture of author']) !!}
                 </div>
             </div>
         </div>

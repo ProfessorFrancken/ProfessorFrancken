@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Features\Admin;
 
 use Faker\Factory;
-use Francken\Association\News\News;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\Http\AdminNewsController;
+use Francken\Association\News\News;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -72,8 +72,8 @@ class NewsFeature extends TestCase
         )
              ->see($news->title);
 
-        $this->type('Mark', 'author-name')
-             ->type('a_picture.png', 'author-photo')
+        $this->type('Mark', 'author_name')
+             ->type('a_picture.png', 'author_photo')
              ->press('Update')
              ->see('Mark');
 
@@ -89,7 +89,7 @@ class NewsFeature extends TestCase
         $this->visit(
             action([AdminNewsController::class, 'show'], ['news' => $news])
         )
-            ->type('2018-01-07', 'publish-at')
+            ->type('2018-01-07', 'published_at')
             ->press('Publish');
 
         $news->refresh();
@@ -104,8 +104,8 @@ class NewsFeature extends TestCase
             ->type('Bitterballen dibs machines', 'title')
             ->type('Bitterballen are nice', 'content')
             ->type('About bitterballen', 'exerpt')
-            ->type('Mark', 'author-name')
-            ->type('picture', 'author-photo')
+            ->type('Mark', 'author_name')
+            ->type('picture', 'author_photo')
             ->press('Save');
 
         $news = News::orderBy('id', 'desc')->first();
