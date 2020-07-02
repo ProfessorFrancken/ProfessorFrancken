@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace Francken\Association\News;
 
 use Faker\Generator;
-use Francken\Association\News\Cache\Repository as CachedNewsRepository;
 use Francken\Association\News\Eloquent\Repository as EloquentNewsRepository;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
 use Francken\Association\News\Xml\WordpressNewsIterator;
-use Illuminate\Cache\Repository as CacheRepository;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 final class ServiceProvider extends BaseServiceProvider
@@ -40,17 +38,14 @@ final class ServiceProvider extends BaseServiceProvider
                 $filename = config('francken.news.xml');
                 $authors = config('francken.news.authors');
 
-                return new CachedNewsRepository(
-                    new InMemoryNewsRepository(
+                return new InMemoryNewsRepository(
                         iterator_to_array(
                             new WordpressNewsIterator(
                                 $filename,
                                 $authors
                             )
                         )
-                    ),
-                    $app->make(CacheRepository::class)
-                );
+                    );
             });
         }
     }
