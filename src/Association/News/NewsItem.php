@@ -6,7 +6,6 @@ namespace Francken\Association\News;
 
 use DateTimeImmutable;
 use Francken\Association\News\Http\NewsController;
-use Francken\Shared\Url;
 
 final class NewsItemId
 {
@@ -32,8 +31,6 @@ final class NewsItem
     private $author;
     private $content;
     private $related;
-    private $next;
-    private $previous;
 
     public function __construct(
         string $title,
@@ -41,9 +38,7 @@ final class NewsItem
         Author $author,
         CompiledMarkdown $content,
         DateTimeImmutable $publicationDate = null,
-        array $related = [],
-        NewsItemLink $previous = null,
-        NewsItemLink $next = null
+        array $related = []
     ) {
         $this->id = '1';
         $this->title = $title;
@@ -52,8 +47,6 @@ final class NewsItem
         $this->author = $author;
         $this->content = $content;
         $this->related = $related;
-        $this->next = $next;
-        $this->previous = $previous;
     }
 
     public static function empty()
@@ -121,15 +114,5 @@ final class NewsItem
     public function relatedNewsItems() : array
     {
         return [];
-    }
-
-    public function nextNewsItem() : ?NewsItemLink
-    {
-        return $this->next;
-    }
-
-    public function previousNewsItem() : ?NewsItemLink
-    {
-        return $this->previous;
     }
 }

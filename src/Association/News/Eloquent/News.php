@@ -8,7 +8,6 @@ use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\NewsItem;
-use Francken\Association\News\NewsItemLink;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use League\Period\Period;
 
@@ -118,10 +117,7 @@ final class News extends Eloquent
             $this->exerpt,
             $this->author(),
             $this->contents(),
-            new DateTimeImmutable((string) $this->published_at),
-            [],   // related
-            $this->previousNewsLink(),
-            $this->nextNewsLink()
+            new DateTimeImmutable((string) $this->published_at)
         );
     }
 
@@ -257,34 +253,6 @@ final class News extends Eloquent
         return new Author(
             $this->author_name,
             $this->author_photo
-        );
-    }
-
-    private function previousNewsLink() : ?NewsItemLink
-    {
-        $previous = $this->previous();
-
-        if ($previous === null) {
-            return null;
-        }
-
-        return new NewsItemLink(
-            $previous->title,
-            new DateTimeImmutable((string) $previous->published_at)
-        );
-    }
-
-    private function nextNewsLink() : ?NewsItemLink
-    {
-        $next = $this->next();
-
-        if ($next === null) {
-            return null;
-        }
-
-        return new NewsItemLink(
-            $next->title,
-            new DateTimeImmutable((string) $next->published_at)
         );
     }
 }

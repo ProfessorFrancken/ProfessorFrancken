@@ -10,7 +10,6 @@ use Faker\Generator;
 use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\NewsItem;
-use Francken\Association\News\NewsItemLink;
 
 final class FakeNews
 {
@@ -47,25 +46,6 @@ final class FakeNews
             ->values();
 
         return $publishedNews->map(function ($news, int $key) use ($publishedNews) {
-            $previous = null;
-            $next = null;
-
-            if ($key !== 0) {
-                $next = $publishedNews[$key - 1];
-                $next = new NewsItemLink(
-                    $next['title'],
-                    $next['published_at']
-                );
-            }
-
-            if (($key + 1) !== count($publishedNews)) {
-                $previous = $publishedNews[$key + 1];
-                $previous = new NewsItemLink(
-                    $previous['title'],
-                    $previous['published_at']
-                );
-            }
-
             $content = (new FakeNewsContent($this->faker))->generate();
 
             return new NewsItem(
@@ -79,10 +59,7 @@ final class FakeNews
                     $content,
                     $content
                 ),
-                $news['published_at'],
-                [], // no related articles
-                $previous,
-                $next
+                $news['published_at']
             );
         })->toArray();
     }

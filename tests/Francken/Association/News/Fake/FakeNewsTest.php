@@ -27,8 +27,6 @@ final class FakeNewsTest extends TestCase
         $news = $fakeNews->all();
 
         // The last news item can't have a previous news item
-        $this->assertNull($news[4]->previousNewsItem());
-
         $this->assertPreviousNewsItemIsEqualTo($news[3], $news[4]);
         $this->assertPreviousNewsItemIsEqualTo($news[2], $news[3]);
         $this->assertPreviousNewsItemIsEqualTo($news[1], $news[2]);
@@ -42,7 +40,6 @@ final class FakeNewsTest extends TestCase
 
         $news = $fakeNews->all();
 
-        $this->assertNull($news[0]->nextNewsItem());
         $this->assertNextNewsItemIsEqualTo($news[1], $news[0]);
         $this->assertNextNewsItemIsEqualTo($news[2], $news[1]);
         $this->assertNextNewsItemIsEqualTo($news[3], $news[2]);
@@ -71,16 +68,6 @@ final class FakeNewsTest extends TestCase
 
     private function assertPreviousNewsItemIsEqualTo(NewsItem $item, NewsItem $previous) : void
     {
-        $this->assertEquals(
-            $item->previousNewsItem()->url(),
-            $previous->url()
-        );
-
-        $this->assertEquals(
-            $item->previousNewsItem()->title(),
-            $previous->title()
-        );
-
         $this->assertTrue(
             $previous->publicationDate() <= $item->publicationDate(),
             "The previous news item should be published before the current one"
@@ -89,16 +76,6 @@ final class FakeNewsTest extends TestCase
 
     private function assertNextNewsItemIsEqualTo(NewsItem $item, NewsItem $next) : void
     {
-        $this->assertEquals(
-            $item->nextNewsItem()->url(),
-            $next->url()
-        );
-
-        $this->assertEquals(
-            $item->nextNewsItem()->title(),
-            $next->title()
-        );
-
         $this->assertTrue(
             $next->publicationDate() >= $item->publicationDate(),
             "The previous news item should be published before the current one"
