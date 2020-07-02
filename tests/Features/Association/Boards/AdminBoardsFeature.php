@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Features\Association\Boards;
 
-use Faker\Factory;
 use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMemberWasDemissioned;
 use Francken\Association\Boards\BoardMemberWasDischarged;
@@ -12,8 +11,6 @@ use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\BoardWasInstalled;
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
-use Francken\Association\News\Eloquent\News;
-use Francken\Association\News\Fake\FakeNews;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -26,24 +23,6 @@ class AdminBoardsFeature extends TestCase
     use DatabaseMigrations;
     use LoggedInAsAdmin;
     use DatabaseTransactions;
-
-    private $news;
-
-    // inmemory with fakes
-    /** @before */
-    public function setupBoards() : void
-    {
-        // $this->afterApplicationCreated(function () : void {
-        //     $faker = Factory::create();
-        //     $faker->seed(31415);
-        //     $fakeNews = new FakeNews($faker, 10);
-        //     $this->news = $fakeNews->all();
-
-        //     foreach ($this->news as $news) {
-        //         News::fromNewsItem($news)->save();
-        //     }
-        // });
-    }
 
     /** @test */
     public function a_list_of_boards_is_shown() : void

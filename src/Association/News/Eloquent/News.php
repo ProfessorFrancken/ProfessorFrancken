@@ -75,13 +75,13 @@ final class News extends Eloquent
     public function publish(DateTimeImmutable $publicationDate) : void
     {
         $this->published_at = $publicationDate;
-        $this->slug = $this->toNewsItem()->link();
+        $this->slug = $this->published_at->format('y-m-d-') . str_slug($this->title);
     }
 
     public function archive() : void
     {
         $this->published_at = null;
-        $this->slug = $this->toNewsItem()->link();
+        $this->slug = $this->id . '-' . str_slug($this->title);
     }
 
     public function changeAuthor(Author $author) : void
@@ -93,7 +93,12 @@ final class News extends Eloquent
     public function changeTitle(string $title) : void
     {
         $this->title = $title;
-        $this->slug = $this->toNewsItem()->link();
+
+        if ($this->published_at !== null) {
+            $this->slug = $this->published_at->format('y-m-d-') . str_slug($this->title);
+        } else {
+            $this->slug = $this->id . '-' . str_slug($this->title);
+        }
     }
 
     public function changeContents(CompiledMarkdown $markdown) : void
@@ -105,22 +110,6 @@ final class News extends Eloquent
     public function changeExerpt(string $exerpt) : void
     {
         $this->exerpt = $exerpt;
-    }
-
-    /**
-     * This method is used by the Repository class so that we can
-     * use a plain old php object (the NewsItem) instead of an
-     * Eloquent object inside of our views
-     */
-    public function toNewsItem() : NewsItem
-    {
-        return new NewsItem(
-            $this->title,
-            $this->exerpt,
-            $this->author(),
-            $this->contents(),
-            new DateTimeImmutable((string) $this->published_at)
-        );
     }
 
     public static function fromNewsItem(NewsItem $news) : self

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Faker\Factory;
-use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\Fake\FakeNews;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -23,7 +22,7 @@ class NewsFeature extends TestCase
             $news = $fakeNews->all();
 
             foreach ($news as $newsItem) {
-                News::fromNewsItem($newsItem)->save();
+                $newsItem->save();
             }
         });
     }

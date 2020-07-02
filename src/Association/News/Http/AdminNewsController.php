@@ -9,7 +9,6 @@ use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\NewsContentCompiler;
-use Francken\Association\News\NewsItem;
 use Illuminate\Http\Request;
 use League\Period\Period;
 
@@ -52,7 +51,15 @@ final class AdminNewsController
 
     public function store(Request $req)
     {
-        $news = News::fromNewsItem(NewsItem::empty());
+        $news = new News([
+            'title' => '',
+            'exerpt' => '',
+            'author_name' => '',
+            'author_photo' => '',
+            'source_contents' => '',
+            'compiled_contents' => '',
+            'related_news_items' => [],
+        ]);
         $news->changeAuthor(
             new Author(
                 $req->input('author-name', $news->author_name),

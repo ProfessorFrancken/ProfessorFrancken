@@ -32,7 +32,7 @@ class NewsFeature extends TestCase
             $this->news = $fakeNews->all();
 
             foreach ($this->news as $news) {
-                News::fromNewsItem($news)->save();
+                $news->save();
             }
         });
     }
@@ -48,8 +48,7 @@ class NewsFeature extends TestCase
     /** @test */
     public function a_news_item_can_be_changed() : void
     {
-        $newsItem = $this->news[0];
-        $news = News::byLink($newsItem->link())->first();
+        $news = $this->news[0];
         $this->visit(
             action([AdminNewsController::class, 'show'], ['news' => $news])
         )
@@ -67,8 +66,7 @@ class NewsFeature extends TestCase
     /** @test */
     public function uploading_an_author_image() : void
     {
-        $newsItem = $this->news[0];
-        $news = News::byLink($newsItem->link())->first();
+        $news = $this->news[0];
         $this->visit(
             action([AdminNewsController::class, 'show'], ['news' => $news])
         )
@@ -87,8 +85,7 @@ class NewsFeature extends TestCase
     /** @test */
     public function chaning_the_publication_date() : void
     {
-        $newsItem = $this->news[0];
-        $news = News::byLink($newsItem->link())->first();
+        $news = $this->news[0];
         $this->visit(
             action([AdminNewsController::class, 'show'], ['news' => $news])
         )
