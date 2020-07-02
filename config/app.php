@@ -150,7 +150,6 @@ return [
         Francken\Extern\ExternServiceProvider::class,
         Francken\Shared\Providers\ViewServiceProvider::class,
 
-        Francken\Association\News\ServiceProvider::class,
         Francken\Association\Activities\ServiceProvider::class,
         Francken\Association\Members\ServiceProvider::class,
         Francken\Association\Photos\PhotosServiceProvider::class,
