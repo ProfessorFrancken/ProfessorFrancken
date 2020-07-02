@@ -86,7 +86,9 @@ final class AdminNewsController
     {
         return view('pages.association.news.item')
             ->with([
-                'news' => $news->toNewsItem()
+                'newsItem' => $news,
+                'previous' => null,
+                'next' => null,
             ]);
     }
 
