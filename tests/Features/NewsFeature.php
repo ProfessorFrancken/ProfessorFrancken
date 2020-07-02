@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace Francken\Features;
 
 use Faker\Factory;
+use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\Fake\FakeNews;
-use Francken\Association\News\InMemory\Repository as InMemoryNewsRepository;
-use Francken\Association\News\Repository as NewsRepository;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class NewsFeature extends TestCase
 {
-    private $news;
-
-    // inmemory with fakes
+    use DatabaseMigrations;
 
     /** @before */
     public function setupNews() : void
@@ -22,17 +20,20 @@ class NewsFeature extends TestCase
             $faker = Factory::create();
             $faker->seed(31415);
             $fakeNews = new FakeNews($faker, 10);
+            $news = $fakeNews->all();
 
-            $this->news = new InMemoryNewsRepository($fakeNews->all());
-
-            \App::instance(NewsRepository::class, $this->news);
+            foreach ($news as $newsItem) {
+                News::fromNewsItem($newsItem)->save();
+            }
         });
     }
 
     /** @test */
     public function the_latest_news_is_shown() : void
     {
-        $this->visit('/association/news')
+        $this->visit(
+            action([\Francken\Association\News\Http\NewsController::class, 'index'])
+        )
             ->click('Read more')
 
             // Check that we now are on a news item page
@@ -45,7 +46,9 @@ class NewsFeature extends TestCase
     /** @test */
     public function the_archive_can_be_used_to_search_for_old_news() : void
     {
-        $this->visit('/association/news/archive');
+        $this->visit(
+            action([\Francken\Association\News\Http\NewsController::class, 'archive'])
+        );
 
         $this->assertResponseOk();
     }

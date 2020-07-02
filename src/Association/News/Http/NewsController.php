@@ -14,7 +14,7 @@ final class NewsController
     public function index()
     {
         $news = News::recent()->paginate(12);
-
+   
         return view('pages.association.news')
             ->with([
                 'news' => $news,
@@ -38,8 +38,8 @@ final class NewsController
             ->with('news', $news)
             ->with('breadcrumbs', [
                 ['url' => '/association', 'text' => 'Association'],
-                ['url' => '/association/news', 'text' => 'News'],
-                ['url' => '/association/news/archive', 'text' => 'Archive'],
+                ['url' => action([self::class, 'index']), 'text' => 'News'],
+                ['url' => action([self::class, 'archive']), 'text' => 'Archive'],
             ]);
     }
 
@@ -52,7 +52,7 @@ final class NewsController
                 'next' => $news->next(),
                 'breadcrumbs' => [
                     ['url' => '/association', 'text' => 'Association'],
-                    ['url' => '/association/news', 'text' => 'News'],
+                    ['url' => action([self::class, 'index']), 'text' => 'News'],
                     ['text' => $news->title],
                 ]
             ]);
