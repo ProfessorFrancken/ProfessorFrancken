@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
-use DateInterval;
-use DateTimeImmutable;
 use Francken\Association\News\Author;
+use Francken\Association\News\Http\Requests\SearchNewsRequest;
 use Francken\Association\News\News;
 use Francken\Association\News\NewsContentCompiler;
 use Illuminate\Http\Request;
-use League\Period\Period;
 
 /**
  * Note that since the logic of news is quite trivial
@@ -18,14 +16,14 @@ use League\Period\Period;
  */
 final class AdminNewsController
 {
-    public function index()
+    public function index(SearchNewsRequest $request)
     {
         $drafts = $this->drafts();
 
         $news = News::recent()
-            ->inPeriod($this->periodForPagination())
-            ->withSubject(request()->input('subject', null))
-            ->withAuthorName(request()->input('author', null))
+            ->inPeriod($request->period())
+            ->withSubject($request->subject())
+            ->withAuthorName($request->author())
             ->paginate()
             ->appends(request()->except('page'));
 
@@ -151,44 +149,7 @@ final class AdminNewsController
 
         return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
-
-    private function periodForPagination() : Period
-    {
-        // Enable artificial pagination
-        if (request()->has('before') && request()->has('after')) {
-            $before = new DateTimeImmutable(request()->input('before') ?? '-2 years');
-            $after = new DateTimeImmutable(request()->input('after') ?? 'now');
-
-            return new Period(
-                $before,
-                $after
-            );
-        }
-
-        if (request()->has('before')) {
-            $before = new DateTimeImmutable(request()->input('before') ?? '-2 years');
-
-            return new Period(
-                $before->sub(DateInterval::createFromDateString('2 years')),
-                $before
-            );
-        }
-
-        if (request()->has('after')) {
-            $after = new DateTimeImmutable(request()->input('after') ?? 'now');
-
-            return new Period(
-                $after,
-                $after->add(DateInterval::createFromDateString('2 years'))
-            );
-        }
-
-        return new Period(
-            new DateTimeImmutable('-2 years'),
-            new DateTimeImmutable('now')
-        );
-    }
-
+        
     private function drafts()
     {
         return News::whereNull('published_at')->get();

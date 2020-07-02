@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
-use DateInterval;
-use DateTimeImmutable;
+use Francken\Association\News\Http\Requests\SearchNewsRequest;
 use Francken\Association\News\News;
-use League\Period\Period;
 
 final class NewsController
 {
@@ -25,12 +23,12 @@ final class NewsController
             ]);
     }
 
-    public function archive()
+    public function archive(SearchNewsRequest $request)
     {
         $news = News::recent()
-            ->inPeriod($this->periodForPagination())
-            ->withSubject(request()->input('subject', null))
-            ->withAuthorName(request()->input('author', null))
+            ->inPeriod($request->period())
+            ->withSubject($request->subject())
+            ->withAuthorName($request->author())
             ->paginate()
             ->appends(request()->except('page'));
 
@@ -56,46 +54,5 @@ final class NewsController
                     ['text' => $news->title],
                 ]
             ]);
-    }
-
-    private function periodForPagination() : Period
-    {
-        // Enable artificial pagination
-        if (request()->has('before') && request()->has('after')) {
-            $before_string = str_replace('/', '', request()->input('before', '-2 years'));
-            $before = new DateTimeImmutable($before_string);
-
-            $after = new DateTimeImmutable(request()->input('after', 'now'));
-
-            return new Period(
-                $after,
-                $before
-            );
-        }
-
-        if (request()->has('before')) {
-            $before_string = str_replace('/', '', request()->input('before', '-2 years'));
-            $before = new DateTimeImmutable($before_string);
-
-            return new Period(
-                $before->sub(DateInterval::createFromDateString('2 years')),
-                $before
-            );
-        }
-
-        if (request()->has('after')) {
-            $after_string = str_replace('/', '', request()->input('after', 'now'));
-            $after = new DateTimeImmutable($after_string);
-
-            return new Period(
-                $after,
-                $after->add(DateInterval::createFromDateString('2 years'))
-            );
-        }
-
-        return new Period(
-            $start = new DateTimeImmutable('-2 years'),
-            $end = new DateTimeImmutable('now')
-        );
     }
 }
