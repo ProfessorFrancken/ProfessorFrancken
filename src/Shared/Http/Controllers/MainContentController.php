@@ -6,14 +6,11 @@ namespace Francken\Shared\Http\Controllers;
 
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\FranckenVrij\Edition;
-use Francken\Association\News\Repository as NewsRepository;
+use Francken\Association\News\Eloquent\News;
 
 class MainContentController extends Controller
 {
-    public function index(
-        NewsRepository $news,
-        ActivitiesRepository $activities
-    ) {
+    public function index(ActivitiesRepository $activities) {
         $today = new \DateTimeImmutable(
             'now', new \DateTimeZone('Europe/Amsterdam')
         );
@@ -22,8 +19,11 @@ class MainContentController extends Controller
             ->latestEdition()
             ->first();
 
+
+        $news = News::recent()->take(3)->get();
+
         return view('homepage/homepage', [
-            'news' => $news->recent(3),
+            'news' => $news,
             'activities' => $activities->after($today, 5),
             'latest_edition' => $latestEdition,
         ]);

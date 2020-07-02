@@ -10,7 +10,7 @@
             @endforeach
         </div>
         <div class="text-md-right">
-            <a class="link-to-all arrow" href="/association/news">
+            <a class="link-to-all arrow" href="{{ action([\Francken\Association\News\Http\NewsController::class, 'index']) }}">
                 View all news
             </a>
         </div>
