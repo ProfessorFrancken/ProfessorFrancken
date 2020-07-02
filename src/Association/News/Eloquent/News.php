@@ -52,11 +52,13 @@ final class News extends Eloquent
 {
     protected $fillable = [
         'title',
+        'slug',
         'exerpt',
         'author_name',
         'author_photo',
         'source_contents',
         'compiled_contents',
+        'published_at',
         'related_news_items',
     ];
 

@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace Francken\Tests\Association\News\Fake;
 
 use Faker\Factory;
+use Francken\Association\News\Eloquent\News;
 use Francken\Association\News\Fake\FakeNews;
-use Francken\Association\News\NewsItem;
-use PHPUnit\Framework\TestCase as TestCase;
+use Francken\Features\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 final class FakeNewsTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /** @test */
     public function it_generates_fake_news_items() : void
     {
@@ -55,10 +58,10 @@ final class FakeNewsTest extends TestCase
 
         $news = $fakeNews->all();
 
-        $publishedAt = $news[0]->publicationDate();
+        $publishedAt = $news[0]->published_at;
 
-        foreach (array_slice($news, 1) as $item) {
-            $publishedAtNow = $item->publicationDate();
+        foreach ($news->slice(1) as $item) {
+            $publishedAtNow = $item->published_at;
             $this->assertTrue(
                 $publishedAt > $publishedAtNow
             );
@@ -66,18 +69,18 @@ final class FakeNewsTest extends TestCase
         }
     }
 
-    private function assertPreviousNewsItemIsEqualTo(NewsItem $item, NewsItem $previous) : void
+    private function assertPreviousNewsItemIsEqualTo(News $item, News $previous) : void
     {
         $this->assertTrue(
-            $previous->publicationDate() <= $item->publicationDate(),
+            $previous->published_at <= $item->published_at,
             "The previous news item should be published before the current one"
         );
     }
 
-    private function assertNextNewsItemIsEqualTo(NewsItem $item, NewsItem $next) : void
+    private function assertNextNewsItemIsEqualTo(News $item, News $next) : void
     {
         $this->assertTrue(
-            $next->publicationDate() >= $item->publicationDate(),
+            $next->published_at >= $item->published_at,
             "The previous news item should be published before the current one"
         );
     }

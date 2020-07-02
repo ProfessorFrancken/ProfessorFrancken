@@ -7,9 +7,9 @@ namespace Francken\Association\News\Fake;
 use DateTimeImmutable;
 use Faker\Generator;
 
-use Francken\Association\News\Author;
 use Francken\Association\News\CompiledMarkdown;
-use Francken\Association\News\NewsItem;
+use Francken\Association\News\Eloquent\News;
+use Illuminate\Support\Collection;
 
 final class FakeNews
 {
@@ -22,12 +22,12 @@ final class FakeNews
         $this->news = $this->generateNews($amount);
     }
 
-    public function all() : array
+    public function all() : Collection
     {
         return $this->news;
     }
 
-    private function generateNews(int $amount) : array
+    private function generateNews(int $amount) : Collection
     {
         // First create a set of titles with associated publication dates
         // we use this to set the next and previous news items
@@ -47,20 +47,22 @@ final class FakeNews
 
         return $publishedNews->map(function ($news, int $key) use ($publishedNews) {
             $content = (new FakeNewsContent($this->faker))->generate();
-
-            return new NewsItem(
-                $news['title'],
-                $this->faker->paragraph(),
-                new Author(
-                    $this->faker->name(),
-                    'https://api.adorable.io/avatars/75/' . $this->faker->randomNumber() . '.png'
-                ),
-                CompiledMarkdown::withSource(
-                    $content,
-                    $content
-                ),
-                $news['published_at']
+            $markdown = CompiledMarkdown::withSource(
+                $content,
+                $content
             );
-        })->toArray();
+
+            return new News([
+                'title' => $news['title'],
+                'slug' => str_slug($news['title']),
+                'exerpt' => $this->faker->paragraph(),
+                'author_name' => $this->faker->name(),
+                'author_photo' => 'https://api.adorable.io/avatars/75/' . $this->faker->randomNumber() . '.png',
+                'source_contents' => $markdown->originalMarkdown(),
+                'compiled_contents' => $markdown->compiledContent(),
+                'published_at' => $news['published_at'],
+                'related_news_items' => [],
+            ]);
+        });
     }
 }

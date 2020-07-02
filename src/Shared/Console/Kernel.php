@@ -6,7 +6,6 @@ namespace Francken\Shared\Console;
 
 use Francken\Association\Activities\FetchLatestFranckenIcal;
 use Francken\Association\Boards\UpdateBoardMemberStatus;
-use Francken\Association\News\Xml\ImportIntoEloquent;
 use Francken\Association\Photos\SynchronizeFlickrAlbums;
 use Francken\Association\Symposium\SendInformationEmail;
 use Francken\Auth\ImportPermissionsFromConfig;
@@ -26,7 +25,6 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         ImportOldDeductions::class,
         FetchLatestFranckenIcal::class,
-        ImportIntoEloquent::class,
         ImportPermissionsFromConfig::class,
         SendInformationEmail::class,
         SetupPermissions::class,
