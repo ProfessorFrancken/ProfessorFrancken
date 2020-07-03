@@ -8,7 +8,6 @@ use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Http\Controllers\Controller;
-use Francken\Shared\Url;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -93,10 +92,8 @@ final class AdminFranckenVrijController extends Controller
             'edition' => $editionNumber,
         ]);
 
-        list($coverMedia, $pdfMedia) = $this->uploadPdf($request, $edition);
+        $this->uploadPdf($request, $edition);
 
-        $edition->cover = $coverMedia->getUrl();
-        $edition->pdf = $pdfMedia->getUrl();
         $edition->save();
 
         return redirect('/admin/association/francken-vrij');
@@ -120,9 +117,7 @@ final class AdminFranckenVrijController extends Controller
         $editionNumber = (int)$request->get('edition');
 
         if ($request->hasFile('pdf')) {
-            list($coverMedia, $pdfMedia) = $this->uploadPdf($request, $edition);
-            $edition->cover = $coverMedia->getUrl();
-            $edition->pdf = $pdfMedia->getUrl();
+            $this->uploadPdf($request, $edition);
         }
 
         $edition->update([
@@ -141,7 +136,7 @@ final class AdminFranckenVrijController extends Controller
         return redirect('/admin/association/francken-vrij');
     }
 
-    private function uploadPdf(Request $request, Edition $edition) : array
+    private function uploadPdf(Request $request, Edition $edition) : void
     {
         /** @var Media */
         $franckenVrijMedia = $this->uploader->fromSource($request->file('pdf'))
@@ -156,12 +151,8 @@ final class AdminFranckenVrijController extends Controller
             $franckenVrijMedia
         );
 
-        return [$coverMedia, $franckenVrijMedia];
-
-        return [
-            new Url($coverMedia->getUrl()),
-            new Url($franckenVrijMedia->getUrl())
-        ];
+        $edition->cover = $coverMedia->getUrl();
+        $edition->pdf = $franckenVrijMedia->getUrl();
     }
 
     private function generateCoverMedia(
