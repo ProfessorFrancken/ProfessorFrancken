@@ -74,11 +74,11 @@ final class AdminFranckenVrijController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'volume' => 'required|min:1',
-            'edition' => 'required|min:1|max:3',
-            'pdf' => 'required|file',
-            'cover' => 'file'
+            'title' => ['required'],
+            'volume' => ['required', 'min:1'],
+            'edition' => ['required', 'min:1', 'max:3'],
+            'pdf' => ['required', 'file'],
+            'cover' => ['nullable', 'image']
         ]);
 
         $volume = (int)$request->get('volume');
@@ -107,10 +107,11 @@ final class AdminFranckenVrijController extends Controller
     public function update(Edition $edition, Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'volume' => 'required|min:1',
-            'edition' => 'required|min:1|max:3',
-            'pdf' => 'file'
+            'title' => ['required'],
+            'volume' => ['required', 'min:1'],
+            'edition' => ['required', 'min:1', 'max:3'],
+            'pdf' => ['nullable', 'file'],
+            'cover' => ['nullable', 'image']
         ]);
 
         $volume = (int)$request->get('volume');
