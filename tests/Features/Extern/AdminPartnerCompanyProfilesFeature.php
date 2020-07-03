@@ -12,7 +12,7 @@ use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class AdminCompanyProfilesFeature extends TestCase
+class AdminPartnerCompanyProfilesFeature extends TestCase
 {
     use DatabaseMigrations;
     use LoggedInAsAdmin;

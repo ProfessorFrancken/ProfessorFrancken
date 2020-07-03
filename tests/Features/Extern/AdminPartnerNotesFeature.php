@@ -11,7 +11,7 @@ use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class AdminPartnerNotes extends TestCase
+class AdminPartnerNotesFeature extends TestCase
 {
     use DatabaseMigrations;
     use LoggedInAsAdmin;
