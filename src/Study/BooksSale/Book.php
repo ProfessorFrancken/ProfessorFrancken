@@ -155,7 +155,9 @@ final class Book extends Model
 
     public function getCoverPathAttribute() : string
     {
-        return 'http://images.amazon.com/images/P/' . $this->isbn . '.jpg';
+        $isbn = preg_replace("/[^0-9x]/i", '', $this->isbn);
+
+        return 'http://images.amazon.com/images/P/' . $isbn . '.jpg';
     }
 
     public function title() : string
