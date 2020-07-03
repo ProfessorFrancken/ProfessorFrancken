@@ -66,7 +66,7 @@
 @section('actions')
     <div class="d-flex align-items-start">
         <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijController::class, 'index']) }}"
-           class="btn btn-text btn-sm text-primary"
+           class="btn btn-primary btn-sm"
         >
             <i class="fas fa-eye"></i>
             View francken vrij page
