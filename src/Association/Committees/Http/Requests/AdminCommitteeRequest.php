@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Asssociation\Committees\Http\Requests;
+namespace Francken\Association\Committees\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

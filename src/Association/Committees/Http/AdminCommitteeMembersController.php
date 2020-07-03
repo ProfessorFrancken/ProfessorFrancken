@@ -8,7 +8,7 @@ use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\LegacyMember;
-use Francken\Asssociation\Committees\Http\Requests\AdminCommitteeMemberRequest;
+use Francken\Association\Committees\Http\Requests\AdminCommitteeMemberRequest;
 
 final class AdminCommitteeMembersController
 {
