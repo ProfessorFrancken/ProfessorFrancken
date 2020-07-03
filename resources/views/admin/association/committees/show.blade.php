@@ -58,14 +58,15 @@
                         </h5>
                         <div
                             style="max-height: 330px; height: 330px; overflow: auto;"
-                            class="d-flex justify-content-center align-items-center"
                         >
                             @if ($committee->compiled_content)
                                 {!! $committee->compiled_content !!}
                             @else
-                                <h5 class="text-muted font-weight-light">
-                                    Edit this committee's page content with a useful description
-                                </h5>
+                                <div class="d-flex justify-content-center align-items-center" >
+                                    <h5 class="text-muted font-weight-light">
+                                        Edit this committee's page content with a useful description
+                                    </h5>
+                                </div>
                             @endif
                         </div>
                     </div>
