@@ -8,7 +8,7 @@ use Francken\Shared\Url;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
+use Webmozart\Assert\Assert;
 
 /**
  * Francken\Association\FranckenVrij\Edition
@@ -36,13 +36,22 @@ final class Edition extends Model
     public $timestamps = false;
     public $incrementing = false;
     protected $table = 'francken_vrij';
+
     /**
      * The "type" of the auto-incrementing ID.
      *
      * @var string
      */
     protected $keyType = 'string';
-    protected $fillable = ['title', 'volume', ' edition', 'cover', 'pdf'];
+
+    protected $fillable = [
+        'id',
+        'title',
+        'volume',
+        'edition',
+        'cover',
+        'pdf'
+    ];
 
 
     public static function publish(
@@ -55,13 +64,9 @@ final class Edition extends Model
     ) : self {
         $vrij = new self();
 
-        if ($volume <= 0) {
-            throw new InvalidargumentException("Volume must be positive, [{$volume}] given");
-        }
-
-        if (($edition <= 0) || ($edition > 3)) {
-            throw new InvalidargumentException("Edition number must be between 1 and 3, [{$edition}]");
-        }
+        Assert::greaterThan($volume, 0, "Volume must be positive, [{$volume}] given");
+        Assert::greaterThan($edition, 0, "Edition number must be between 1 and 3, [{$edition}]");
+        Assert::lessThanEq($edition, 3, "Edition number must be between 1 and 3, [{$edition}]");
 
         $vrij->title = $title;
         $vrij->volume = $volume;

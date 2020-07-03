@@ -83,22 +83,24 @@ final class AdminFranckenVrijController extends Controller
         ]);
 
         $volume = (int)$request->get('volume');
-        $edition= (int)$request->get('edition');
+        $editionNumber = (int)$request->get('edition');
+        $id = EditionId::generate();
+
+        $edition = new Edition([
+            'id' => $id,
+            'title' => $request->get('title'),
+            'volume' => $volume,
+            'edition' => $editionNumber,
+        ]);
 
         list($coverPath, $pdfPath) = $this->uploadPdf(
             $request,
             $volume,
-            $edition
+            $editionNumber
         );
-
-        Edition::publish(
-            EditionId::generate(),
-            $request->get('title'),
-            $volume,
-            $edition,
-            $coverPath,
-            $pdfPath
-        );
+        $edition->cover = $coverPath;
+        $edition->pdf = $pdfPath;
+        $edition->save();
 
         return redirect('/admin/association/francken-vrij');
     }
@@ -123,7 +125,6 @@ final class AdminFranckenVrijController extends Controller
         list($cover, $pdf) = $request->hasFile('pdf')
             ? $this->uploadPdf($request, $volume, $editionNumber)
             : [$edition->cover(), $edition->pdf()];
-
 
         $edition->update([
             'title' => $request->input('title'),
