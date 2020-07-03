@@ -109,7 +109,7 @@
                     [\Francken\Association\Committees\Http\AdminCommitteesController::class, 'show'],
                     ['committee' => $committee->parentCommittee, 'board' => $committee->parentCommittee->board]
                     ) }}"
-           class="btn btn-text text-muted mr-3 d-flex justify-content-center align-items-center"
+           class="btn btn-text text-muted d-flex justify-content-center align-items-center"
            title="View this committee from the previous board"
         >
             <div class="mr-2">
@@ -117,6 +117,17 @@
             </div>
             {{ $committee->parentCommittee->board->board_name->toString() }}
         </a>
+        @endif
+        @if ($committee->is_public)
+            <a href="{{ action(
+                       [\Francken\Association\Committees\Http\CommitteesController::class, 'show'],
+                       ['committee' => $committee, 'board' => $committee->board]
+                       ) }}"
+               class="btn btn-primary mx-3"
+            >
+                <i class="fas fa-eye"></i>
+                View committee page
+            </a>
         @endif
         <a href="{{ action(
                     [\Francken\Association\Committees\Http\AdminCommitteesController::class, 'edit'],
