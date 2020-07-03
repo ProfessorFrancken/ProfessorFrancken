@@ -30,7 +30,6 @@ class Kernel extends ConsoleKernel
         SetupPermissions::class,
         SynchronizeFlickrAlbums::class,
         UpdateBoardMemberStatus::class,
-        MigrateSqliteToMysql::class,
         ImportPartnersFromLegacy::class,
         \Francken\Association\Committees\Commands\ImportFromLegacyDb::class,
     ];
