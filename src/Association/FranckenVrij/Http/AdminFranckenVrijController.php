@@ -93,13 +93,10 @@ final class AdminFranckenVrijController extends Controller
             'edition' => $editionNumber,
         ]);
 
-        list($coverPath, $pdfPath) = $this->uploadPdf(
-            $request,
-            $volume,
-            $editionNumber
-        );
-        $edition->cover = $coverPath;
-        $edition->pdf = $pdfPath;
+        list($coverMedia, $pdfMedia) = $this->uploadPdf($request, $edition);
+
+        $edition->cover = $coverMedia->getUrl();
+        $edition->pdf = $pdfMedia->getUrl();
         $edition->save();
 
         return redirect('/admin/association/francken-vrij');
@@ -122,16 +119,16 @@ final class AdminFranckenVrijController extends Controller
         $volume = (int)$request->get('volume');
         $editionNumber = (int)$request->get('edition');
 
-        list($cover, $pdf) = $request->hasFile('pdf')
-            ? $this->uploadPdf($request, $volume, $editionNumber)
-            : [$edition->cover(), $edition->pdf()];
+        if ($request->hasFile('pdf')) {
+            list($coverMedia, $pdfMedia) = $this->uploadPdf($request, $edition);
+            $edition->cover = $coverMedia->getUrl();
+            $edition->pdf = $pdfMedia->getUrl();
+        }
 
         $edition->update([
             'title' => $request->input('title'),
             'volume' => $volume,
             'edition' => $editionNumber,
-            'cover' => (string)$cover,
-            'pdf' => (string)$pdf
         ]);
 
         return redirect('/admin/association/francken-vrij');
@@ -144,21 +141,22 @@ final class AdminFranckenVrijController extends Controller
         return redirect('/admin/association/francken-vrij');
     }
 
-    private function uploadPdf(Request $request, int $volume, int $edition) : array
+    private function uploadPdf(Request $request, Edition $edition) : array
     {
         /** @var Media */
         $franckenVrijMedia = $this->uploader->fromSource($request->file('pdf'))
             ->toDirectory('francken-vrij')
-            ->useFilename($volume . '-' . $edition)
+            ->useFilename($edition->volume . '-' . $edition->edition)
             ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
 
         $coverMedia = $this->generateCoverMedia(
             $request,
-            $volume,
             $edition,
             $franckenVrijMedia
         );
+
+        return [$coverMedia, $franckenVrijMedia];
 
         return [
             new Url($coverMedia->getUrl()),
@@ -168,8 +166,7 @@ final class AdminFranckenVrijController extends Controller
 
     private function generateCoverMedia(
         Request $request,
-        int $volume,
-        int $edition,
+        Edition $edition,
         Media $franckenVrijMedia
     ) : Media {
         /** @var string|UploadedFile */
@@ -181,7 +178,7 @@ final class AdminFranckenVrijController extends Controller
 
         return $this->uploader->fromSource($cover_file)
             ->toDirectory('francken-vrij/covers/')
-            ->useFilename($volume . '-' . $edition . '-cover')
+            ->useFilename($edition->volume . '-' . $edition->edition . '-cover')
             ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
     }
