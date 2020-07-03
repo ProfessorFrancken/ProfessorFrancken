@@ -7,10 +7,10 @@ namespace Francken\Association\FranckenVrij\Http;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FileUploader;
+use Francken\Association\FranckenVrij\Http\Requests\FranckenVrijRequest;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
 
 final class AdminFranckenVrijController extends Controller
 {
@@ -69,32 +69,21 @@ final class AdminFranckenVrijController extends Controller
     /**
      * Store a new Francken Vrij edition
      */
-    public function store(Request $request)
+    public function store(FranckenVrijRequest $request)
     {
-        $this->validate($request, [
-            'title' => ['required'],
-            'volume' => ['required', 'min:1'],
-            'edition' => ['required', 'min:1', 'max:3'],
-            'pdf' => ['required', 'file'],
-            'cover' => ['nullable', 'image']
-        ]);
-
-        $volume = (int)$request->get('volume');
-        $editionNumber = (int)$request->get('edition');
-        $id = EditionId::generate();
+        $request->validate(['pdf' => ['required']]);
 
         $edition = new Edition([
-            'id' => $id,
-            'title' => $request->get('title'),
-            'volume' => $volume,
-            'edition' => $editionNumber,
+            'id' => EditionId::generate(),
+            'title' => $request->title(),
+            'volume' => $request->volume(),
+            'edition' => $request->edition(),
         ]);
 
         $this->uploader->uploadPdf($request, $edition);
-
         $edition->save();
 
-        return redirect('/admin/association/francken-vrij');
+        return redirect()->action([self::class, 'index']);
     }
 
     public function edit(Edition $edition)
@@ -102,36 +91,26 @@ final class AdminFranckenVrijController extends Controller
         return view('admin.francken-vrij.edit', ['edition' => $edition]);
     }
 
-    public function update(Edition $edition, Request $request)
+    public function update(FranckenVrijRequest $request, Edition $edition)
     {
-        $this->validate($request, [
-            'title' => ['required'],
-            'volume' => ['required', 'min:1'],
-            'edition' => ['required', 'min:1', 'max:3'],
-            'pdf' => ['nullable', 'file'],
-            'cover' => ['nullable', 'image']
+        $edition->update([
+            'title' => $request->title(),
+            'volume' => $request->volume(),
+            'edition' => $request->edition(),
         ]);
-
-        $volume = (int)$request->get('volume');
-        $editionNumber = (int)$request->get('edition');
 
         if ($request->hasFile('pdf')) {
             $this->uploader->uploadPdf($request, $edition);
+            $edition->save();
         }
 
-        $edition->update([
-            'title' => $request->input('title'),
-            'volume' => $volume,
-            'edition' => $editionNumber,
-        ]);
-
-        return redirect('/admin/association/francken-vrij');
+        return redirect()->action([self::class, 'index']);
     }
 
     public function destroy(Edition $edition)
     {
         $edition->delete();
 
-        return redirect('/admin/association/francken-vrij');
+        return redirect()->action([self::class, 'index']);
     }
 }
