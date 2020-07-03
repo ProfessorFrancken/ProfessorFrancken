@@ -39,6 +39,10 @@
                 <div class="form-group">
                     <label for="goal">Goal</label>
                     {!! Form::text('goal', null, ['class' => 'form-control', 'placeholder' => 'Digital anarchy at Francken', 'id' => 'goal']) !!}
+                    <small class="form-text text-muted">
+                        Fill in a short description of the committee.
+                        This text is used as a description for the committee page and will be shown in google search results.
+                    </small>
                 </div>
 
                 <div class="form-group form-check">
