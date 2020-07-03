@@ -13,8 +13,8 @@ class BooksController extends Controller
     {
         $books = Book::query()
             ->available()
-            ->orderBy('naam', 'asc')
-            ->orderBy('editie', 'desc')
+            ->orderBy('title', 'asc')
+            ->orderBy('edition', 'desc')
             ->paginate(20);
 
         return view('book.index')

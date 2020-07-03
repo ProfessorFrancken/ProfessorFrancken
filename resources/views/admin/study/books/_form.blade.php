@@ -149,7 +149,7 @@
                 {!!
                    Form::date(
                        'purchase_date',
-                       optional($book->purchase_date)->format('Y-m-d'),
+                       optional($book->taken_in_from_seller_at)->format('Y-m-d'),
                        ['class' => 'form-control', 'id' => 'purchase_date']
                    )
                 !!}
@@ -197,7 +197,7 @@
                 {!!
                    Form::date(
                        'sale_date',
-                       optional($book->sale_date)->format('Y-m-d'),
+                       optional($book->taken_in_by_buyer_at)->format('Y-m-d'),
                        ['class' => 'form-control', 'id' => 'sale_date']
                    )
                 !!}
@@ -214,7 +214,7 @@
                Form::checkbox(
                    'sold',
                    true,
-                   $book->sold,
+                   $book->has_been_sold,
                    ['class' => 'form-check-input', 'id' => 'sold']
                )
             !!}

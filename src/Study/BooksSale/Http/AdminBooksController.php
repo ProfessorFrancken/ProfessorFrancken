@@ -71,21 +71,21 @@ final class AdminBooksController
     public function store(AdminBookRequest $request)
     {
         $book = [
-            "naam" => $request->title(),
-            "editie" => $request->edition(),
-            'auteur' => $request->author(),
-            'beschrijving' => $request->description(),
+            "title" => $request->title(),
+            "edition" => $request->edition(),
+            'author' => $request->author(),
+            'description' => $request->description(),
             'isbn' => $request->isbn(),
-            'prijs' => $request->price(),
+            'price' => $request->price(),
 
-            'verkoperid' => $request->sellerId(),
-            'koperid' => $request->buyerId(),
+            'seller_id' => $request->sellerId(),
+            'buyer_id' => $request->buyerId(),
 
-            'inkoopdatum' => $request->purchaseDate(),
-            'verkoopdatum' => $request->saleDate(),
+            'taken_in_from_seller_at' => $request->purchaseDate(),
+            'taken_in_by_buyer_at' => $request->saleDate(),
 
-            "verkocht" => $request->hasBeenSold(),
-            "afgerekend" => $request->hasBeenPaidOff(),
+            "has_been_sold" => $request->hasBeenSold(),
+            "paid_off" => $request->hasBeenPaidOff(),
         ];
 
         $book = Book::create($book);
@@ -96,21 +96,21 @@ final class AdminBooksController
     public function update(AdminBookRequest $request, Book $book)
     {
         $book->update([
-            "naam" => $request->title(),
-            "editie" => $request->edition(),
-            'auteur' => $request->author(),
-            'beschrijving' => $request->description(),
+            "title" => $request->title(),
+            "edition" => $request->edition(),
+            'author' => $request->author(),
+            'description' => $request->description(),
             'isbn' => $request->isbn(),
-            'prijs' => $request->price(),
+            'price' => $request->price(),
 
-            'verkoperid' => $request->sellerId(),
-            'koperid' => $request->buyerId(),
+            'seller_id' => $request->sellerId(),
+            'buyer_id' => $request->buyerId(),
 
-            'inkoopdatum' => $request->purchaseDate(),
-            'verkoopdatum' => $request->saleDate(),
+            'taken_in_from_seller_at' => $request->purchaseDate(),
+            'taken_in_by_buyer_at' => $request->saleDate(),
 
-            "verkocht" => $request->hasBeenSold(),
-            "afgerekend" => $request->hasBeenPaidOff(),
+            "has_been_sold" => $request->hasBeenSold(),
+            "paid_off" => $request->hasBeenPaidOff(),
         ]);
 
         return redirect()->action([self::class, 'show'], ['book' => $book]);

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale;
 
-use DateTimeImmutable;
 use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -64,93 +63,39 @@ use Illuminate\Database\Eloquent\Model;
  */
 final class Book extends Model
 {
-    public $timestamps = false;
-    protected $table = 'boeken';
-    protected $connection = 'francken-legacy';
+    protected $table = 'study_booksale_books';
     protected $fillable = [
-        'naam',
-        'editie',
-        'auteur',
-        'beschrijving',
+        'title',
+        'edition',
+        'author',
+        'description',
         'isbn',
-        'prijs',
+        'price',
+        'cover_url',
 
-        'verkoperid',
-        'koperid',
+        'buyer_id',
+        'seller_id',
 
-        'inkoopdatum',
-        'verkoopdatum',
+        'taken_in_from_seller_at',
+        'taken_in_by_buyer_at',
 
-        'verkocht',
-        'afgerekend',
+        'has_been_sold',
+        'paid_off',
+    ];
+
+    protected $dates = [
+        'taken_in_from_seller_at',
+        'taken_in_by_buyer_at',
     ];
 
     public function seller()
     {
-        return $this->belongsTo(BookSeller::class, 'verkoperid');
+        return $this->belongsTo(BookSeller::class);
     }
 
     public function buyer()
     {
-        return $this->belongsTo(BookBuyer::class, 'koperid');
-    }
-
-    public function getTitleAttribute()
-    {
-        return $this->naam;
-    }
-
-    public function getDescriptionAttribute()
-    {
-        return $this->beschrijving;
-    }
-
-    public function getAuthorAttribute()
-    {
-        return $this->auteur;
-    }
-
-    public function getPriceAttribute()
-    {
-        return $this->prijs;
-    }
-
-    public function getPurchaseDateAttribute()
-    {
-        if ($this->inkoopdatum) {
-            return new DateTimeImmutable($this->inkoopdatum);
-        }
-
-        return null;
-    }
-
-    public function getSaleDateAttribute()
-    {
-        if ($this->verkoopdatum) {
-            return new DateTimeImmutable($this->verkoopdatum);
-        }
-
-        return null;
-    }
-
-    public function getEditionAttribute()
-    {
-        return (string)$this->editie;
-    }
-
-    public function getSoldAttribute() : bool
-    {
-        return (bool)$this->verkocht;
-    }
-
-    public function getPaidOffAttribute() : bool
-    {
-        return (bool)$this->afgerekend;
-    }
-
-    public function putOnSaleAt()
-    {
-        return null;
+        return $this->belongsTo(BookBuyer::class);
     }
 
     public function getCoverPathAttribute() : string
@@ -160,81 +105,41 @@ final class Book extends Model
         return 'http://images.amazon.com/images/P/' . $isbn . '.jpg';
     }
 
-    public function title() : string
-    {
-        return $this->naam ?? '';
-    }
-
-    public function author() : string
-    {
-        return $this->auteur ?? '';
-    }
-
-    public function pathToCover() : string
-    {
-        return $this->cover_path;
-    }
-
-    public function price() : int
-    {
-        return $this->prijs * 100;
-    }
-    public function bookId() : int
-    {
-        return $this->id;
-    }
-
-    public function getPriceBySellerAttribute() : int
-    {
-        // In euros
-        return $this->prijs;
-    }
-
-    public function getTakenInFromSellerAtAttribute() : ?DateTimeImmutable
-    {
-        return null;
-    }
-
-    public function getTakenInByBuyerAtAttribute() : ?DateTimeImmutable
-    {
-        return null;
-    }
-
     public function scopeSearch(Builder $query, AdminBookSearchRequest $request) : Builder
     {
         return $query
             ->when($request->title(), function (Builder $query, string $title) : void {
-                $query->where('naam', 'LIKE', '%' . $title . '%');
+                $query->where('title', 'LIKE', '%' . $title . '%');
             })
             ->when($request->sellerId(), function (Builder $query, int $sellerId) : void {
-                $query->where('verkoperid', $sellerId);
+                $query->where('seller_id', $sellerId);
             })
             ->when($request->buyerId(), function (Builder $query, int $buyerId) : void {
-                $query->where('koperId', $buyerId);
+                $query->where('buyer_id', $buyerId);
             });
     }
 
     public function scopeAvailable(Builder $query) : Builder
     {
         return $query
-            ->where('verkoopdatum', null)
-            ->where('koperid', null)
-            ->where('verkocht', false)
-            ->where('afgerekend', false);
+            ->where('taken_in_by_buyer_at', null)
+            ->where('buyer_id', null)
+            ->where('has_been_sold', false)
+            ->where('paid_off', false);
     }
 
     public function scopeSold(Builder $query) : Builder
     {
-        return $query->where('afgerekend', false)
+        return $query->where('paid_off', false)
             ->where(function (Builder $query) : Builder {
-                return $query->whereNotNull('verkoopdatum')
-                    ->orWhereNotNull('koperid')
-                    ->orWhere('verkocht', true);
+                return $query->whereNotNull('taken_in_by_buyer_at')
+                    ->orWhereNotNull('buyer_id')
+                    ->orWhere('has_been_sold', true);
             });
     }
 
     public function scopePaidOff(Builder $query) : Builder
     {
-        return $query->where('afgerekend', true);
+        return $query->where('paid_off', true);
     }
 }

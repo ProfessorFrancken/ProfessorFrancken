@@ -25,12 +25,12 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="border-bottom: thin solid #eee; border-top: thin solid #eee;">
                 <article class="h-100 preview-item d-flex flex-column justify-content-between">
                     <div>
-                        <img src="{{ image($book->pathToCover(), ['height' => 300, 'width' => 220]) }}" alt="Cover of {{ $book->title() }}" class="img-fluid mb-2" style="height: 300px;">
+                        <img src="{{ image($book->cover_path, ['height' => 300, 'width' => 220]) }}" alt="Cover of {{ $book->title }}" class="img-fluid mb-2" style="height: 300px;">
                         <h3 class="h5">
-                            {{ $book->title() }}
+                            {{ $book->title }}
                             <br/>
                             <small class="text-muted">
-                                {{ $book->author() }}
+                                {{ $book->author }}
                             </small>
                         </h3>
                         <p class="text-muted">
@@ -43,12 +43,12 @@
                         <a href="{{
                                  action(
                                      [\Francken\Study\BooksSale\Http\BooksController::class, 'show'],
-                                     ['book' => $book->bookId()]
+                                     ['book' => $book]
                                  )
                                  }}"
                            class="btn btn-outline-primary btn-block"
                         >
-                            Buy for €{{ number_format($book->price()/100, 2, ",", "") }}
+                            Buy for €{{ number_format($book->price, 2, ",", "") }}
                         </a>
                     </div>
                 </article>

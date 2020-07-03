@@ -81,7 +81,7 @@
                 </div>
                 <div class="row mt-5">
                     @include('admin.study.books._print-input', ['name' => 'Author book', 'value' => $book->author])
-                    @include('admin.study.books._print-input', ['name' => 'Price by seller', 'value' => '&euro;' . number_format($book->price_by_seller, 2, ',', '.')])
+                    @include('admin.study.books._print-input', ['name' => 'Price by seller', 'value' => '&euro;' . number_format($book->price, 2, ',', '.')])
                 </div>
             </div>
         </div>
