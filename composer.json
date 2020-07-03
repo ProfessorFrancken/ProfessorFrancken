@@ -1,7 +1,7 @@
 {
   "name": "professorfrancken/professorfrancken",
-  "license": "MIT",
   "type": "project",
+  "license": "MIT",
   "require": {
     "blade-ui-kit/blade-icons": "^0.4.2",
     "cmpayments/iban": "^1.1",
@@ -52,18 +52,10 @@
     "roave/security-advisories": "dev-master",
     "vimeo/psalm": "^3.12"
   },
-  "autoload": {
-    "files": ["src/helpers.php"],
-    "classmap": ["database"],
-    "psr-4": {
-      "Francken\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Francken\\Features\\": "tests/Features",
-      "Francken\\Tests\\": "tests/Francken"
-    }
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
   },
   "extra": {
     "laravel": {
@@ -73,25 +65,41 @@
       ]
     }
   },
+  "autoload": {
+    "psr-4": {
+      "Francken\\": "src"
+    },
+    "classmap": [
+      "database"
+    ],
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Francken\\Features\\": "tests/Features",
+      "Francken\\Tests\\": "tests/Francken"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "scripts": {
-    "post-root-package-install": ["php -r \"copy('.env.example', '.env');\""],
-    "post-create-project-cmd": ["@php artisan key:generate --ansi"],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover --ansi"
     ],
-    "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'",
-    "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",
+    "post-root-package-install": [
+      "php -r \"copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "@php artisan key:generate --ansi"
+    ],
     "cs": "vendor/bin/php-cs-fixer fix --dry-run",
+    "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",
     "phpstan": "vendor/bin/phpstan analyze src",
     "psalm": "vendor/bin/psalm",
-    "test": "composer run cs && composer run units && composer run features"
-  },
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true,
-    "optimize-autoloader": true
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "test": "composer run cs && composer run units && composer run features",
+    "units": "vendor/bin/phpunit --testsuite 'Unit Test Suite'"
+  }
 }
