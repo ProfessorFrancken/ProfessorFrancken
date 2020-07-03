@@ -3,7 +3,17 @@
 
 @section('content')
     <div class="card my-3">
-        {!! Form::open(['url' => "/admin/association/francken-vrij/" . $edition->getId(), 'files' => true, 'method' => 'put', 'class' => 'card-body']) !!}
+        {!!
+           Form::open([
+               'url' => action(
+                   [\Francken\Association\FranckenVrij\Http\AdminFranckenVrijController::class, 'destroy'],
+                   ['edition' => $edition]
+               ),
+               'files' => true,
+               'method' => 'PUT',
+               'class' => 'card-body'
+           ])
+        !!}
 
         <h2 class="card-title">Edit {{ $edition->title() }}</h2>
 
@@ -51,24 +61,28 @@
 
     </div>
 
-    @include('admin._errors')
-
-    <div class="card my-3">
-        <div class="card-body">
-            <h3 class="card-title">
-                Other actions
-            </h3>
-
-            <p>
-                Archiving a Francken Vrij will directly remove it from our datbase. The associated files (pdf and cover image) won't be removed.
-            </p>
-
-            {!! Form::open(['url' => '/admin/association/francken-vrij/' . $edition->getId(), 'method' => 'delete']) !!}
-            <button class="btn btn-outline-danger">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                Archive
-            </button>
-            {!! Form::close() !!}
-        </div>
-    </div>
+    {!!
+       Form::model(
+           $edition,
+           [
+               'url' => action(
+                   [\Francken\Association\FranckenVrij\Http\AdminFranckenVrijController::class, 'destroy'],
+                   ['edition' => $edition]
+               ),
+               'method' => 'post'
+           ]
+       )
+    !!}
+    @method('DELETE')
+    <p class="mt-2 mb-0 text-muted d-flex align-items-center justify-content-end">
+        Click <button
+                  type="submit"
+                  class="btn btn-text px-1"
+                  onclick='return confirm("Are you sure you want to remove this partner?");'
+              >here</button> to remove this francken vrij.
+    </p>
+    <p class="mt-0 text-muted d-flex align-items-center justify-content-end">
+        Note this only removes the francken vrij from the database, it does not remove its associated files.
+    </p>
+    {!! Form::close() !!}
 @endsection

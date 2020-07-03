@@ -40,3 +40,14 @@
         </div>
     </div>
 @endsection
+
+@section('actions')
+    <div class="d-flex align-items-start">
+        <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijController::class, 'index']) }}"
+           class="btn btn-text text-primary"
+        >
+            <i class="fas fa-eye"></i>
+            View francken vrij page
+        </a>
+    </div>
+@endsection

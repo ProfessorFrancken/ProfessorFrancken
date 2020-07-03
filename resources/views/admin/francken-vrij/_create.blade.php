@@ -42,4 +42,3 @@
 
     {!! Form::close() !!}
 </div>
-@include('admin._errors')

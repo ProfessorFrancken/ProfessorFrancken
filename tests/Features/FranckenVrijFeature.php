@@ -100,7 +100,7 @@ class FranckenVrijFeature extends TestCase
         );
 
         $this->visit("/admin/association/francken-vrij/{$edition->getId()}")
-            ->press('Archive');
+            ->press('here');
 
         $this->dontSee('Clinical');
     }
