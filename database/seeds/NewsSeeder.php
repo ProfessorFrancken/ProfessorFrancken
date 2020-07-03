@@ -6,7 +6,7 @@ use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Illuminate\Database\Seeder;
 
-class RolesSeeder extends Seeder
+class NewsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
