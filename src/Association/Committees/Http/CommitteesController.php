@@ -38,8 +38,11 @@ final class CommitteesController
 
         $committee->load(['members.member']);
 
-        return view($committee->page)
-            ->with([
+        $view = ($committee->compiled_content ?? '') !== ''
+              ? view('committees.content')
+              : view($committee->page);
+
+        return $view->with([
                 'board' => $board,
                 'committee' => $committee,
                 'committees' => $committees,
