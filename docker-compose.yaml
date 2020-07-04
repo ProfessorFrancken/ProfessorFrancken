@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 networks:
   traefik:
@@ -12,20 +12,24 @@ services:
       context: ./docker/php
     image: francken/php-base
 
-  composer:
-    image: composer:1.7
-    volumes_from:
-      - php
-    working_dir: /var/www/francken
-
   npm:
     image: node:14.5
-    volumes_from:
-      - php
+    volumes:
+      - ./:/var/www/francken
     working_dir: /var/www/francken
 
   php:
-    image: francken/php
+    image: francken/v2-php
+    build:
+      dockerfile: Dockerfile
+      context: ./docker/php
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    user: $USER_ID
+    env_file:
+      - .docker.env
+      - .env
     links:
       - mysql
       - legacy-db
@@ -34,18 +38,19 @@ services:
     working_dir: /var/www/francken
     volumes:
       - ./:/var/www/francken
-    environment:
-      - CACHE_DRIVER=redis
-      - SESSION_DRIVER=redis
-      - QUEUE_DRIVER=redis
-      - QUEUE_CONNECTION=redis
-      - REDIS_HOST=redis
-      - APP_URL=http://francken.nl.localhost
-      - MAIL_HOST=mailhog
-      - MAIL_PORT=1025
 
   scheduler:
-    image: francken/scheduler
+    image: francken/v2-scheduler
+    build:
+      dockerfile: Dockerfile-scheduler
+      context: ./docker/php
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    user: $USER_ID
+    env_file:
+      - .docker.env
+      - .env
     links:
       - legacy-db
       - redis
@@ -55,7 +60,17 @@ services:
     restart: always
 
   queue-worker:
-    image: francken/scheduler
+    image: francken/v2-queue
+    build:
+      dockerfile: Dockerfile-queue
+      context: ./docker/php
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    user: $USER_ID
+    env_file:
+      - .docker.env
+      - .env
     links:
       - legacy-db
       - redis
@@ -65,15 +80,6 @@ services:
       - ./:/var/www/francken
     restart: always
     command: php artisan horizon
-    environment:
-      - CACHE_DRIVER=redis
-      - SESSION_DRIVER=redis
-      - QUEUE_DRIVER=redis
-      - QUEUE_CONNECTION=redis
-      - REDIS_HOST=redis
-      - APP_URL=http://francken.nl.localhost
-      - MAIL_HOST=mailhog
-      - MAIL_PORT=1025
 
   nginx:
     build:
@@ -82,10 +88,9 @@ services:
     image: francken/v2-nginx
     links:
       - php
-    volumes_from:
-      - php
     volumes:
       - ./docker/nginx/francken.conf:/etc/nginx/conf.d/francken.conf
+      - ./:/var/www/francken
     restart: always
     networks:
       - default
