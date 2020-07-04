@@ -5,6 +5,12 @@ networks:
     external:
       name: traefik_webgateway
 
+volumes:
+  mysql:
+    driver: "local"
+  redis:
+    driver: "local"
+
 services:
   php-base:
     build:
@@ -138,7 +144,7 @@ services:
       - mysql:/var/lib/mysql
 
   legacy-db:
-    image: francken/mysql
+    image: mysql:5.7
     volumes:
       - ./database/francken-db.sql:/docker-entrypoint-initdb.d/dump.sql
     environment:
@@ -154,9 +160,3 @@ services:
       - 16379:6379
     volumes:
       - redis:/data
-
-volumes:
-  mysql:
-    driver: "local"
-  redis:
-    driver: "local"
