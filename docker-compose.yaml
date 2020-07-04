@@ -12,6 +12,18 @@ services:
       context: ./docker/php
     image: francken/php-base
 
+  composer:
+    image: composer:1.7
+    volumes_from:
+      - php
+    working_dir: /var/www/francken
+
+  npm:
+    image: node:14.5
+    volumes_from:
+      - php
+    working_dir: /var/www/francken
+
   php:
     image: francken/php
     links:
@@ -96,18 +108,6 @@ services:
       MYSQL_DATABASE: francken
     volumes:
       - mysql:/var/lib/mysql
-
-  composer:
-    image: composer:1.7
-    volumes_from:
-      - php
-    working_dir: /var/www/francken
-
-  npm:
-    image: node:14.5
-    volumes_from:
-      - php
-    working_dir: /var/www/francken
 
   fly-images:
     image: flyimg/flyimg-build
