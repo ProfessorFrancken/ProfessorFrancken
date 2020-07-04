@@ -69,7 +69,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./docker/nginx
-    image: francken/nginx
+    image: francken/v2-nginx
     links:
       - php
     volumes_from:
