@@ -10,4 +10,6 @@ RUN install-php-extensions gd redis igbinary apcu imagick \
     intl zip pdo_mysql pdo_pgsql soap opcache mysqli bcmath pcntl \
     pdo_sqlite mbstring
 
+ADD imagemagick-policy.xml /etc/ImageMagick-6/policy.xml
+
 WORKDIR /var/www/francken
