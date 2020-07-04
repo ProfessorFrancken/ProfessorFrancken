@@ -66,11 +66,16 @@ services:
       - MAIL_PORT=1025
 
   nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./docker/nginx
     image: francken/nginx
     links:
       - php
     volumes_from:
       - php
+    volumes:
+      - ./docker/nginx/francken.conf:/etc/nginx/conf.d/francken.conf
     restart: always
     networks:
       - default
