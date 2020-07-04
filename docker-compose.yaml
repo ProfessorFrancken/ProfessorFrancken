@@ -6,6 +6,12 @@ networks:
       name: traefik_webgateway
 
 services:
+  php-base:
+    build:
+      dockerfile: Dockerfile-base
+      context: ./docker/php
+    image: francken/php-base
+
   php:
     image: francken/php
     links:
