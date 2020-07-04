@@ -43,8 +43,6 @@ services:
       - APP_URL=http://francken.nl.localhost
       - MAIL_HOST=mailhog
       - MAIL_PORT=1025
-    # volumes_from:
-    #   - data
 
   scheduler:
     image: francken/scheduler
@@ -99,16 +97,6 @@ services:
       - "traefik.port=80"
       - "traefik.docker.network=traefik_webgateway"
 
-  mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: francken
-      MYSQL_PASSWORD: leden
-      MYSQL_DATABASE: francken
-    volumes:
-      - mysql:/var/lib/mysql
-
   fly-images:
     image: flyimg/flyimg-build
     restart: always
@@ -122,35 +110,6 @@ services:
       - "traefik.port=80"
       - "traefik.docker.network=traefik_webgateway"
 
-  legacy-db:
-    image: francken/mysql
-    volumes:
-      - ./database/francken-db.sql:/docker-entrypoint-initdb.d/dump.sql
-    environment:
-      - MYSQL_USER=francken
-      - MYSQL_PASSWORD=password
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=francken
-    restart: always
-
-# This service is mostly identical to the php service except that it also
-# intalls xdebug so we can check for coverage
-  test_coverage:
-    image: francken/php:with-xdebug
-    volumes_from:
-      - php
-    links:
-      - mysql
-    environment:
-      DB_CONNECTION: testing
-
-  redis:
-    image: redis:4-alpine
-    ports:
-      - 16379:6379
-    volumes:
-      - redis:/data
-
   mailhog:
     image: mailhog/mailhog
     networks:
@@ -162,6 +121,34 @@ services:
       - "traefik.frontend.rule=Host:francken-mail.nl.localhost"
       - "traefik.port=8025"
       - "traefik.docker.network=traefik_webgateway"
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: francken
+      MYSQL_PASSWORD: leden
+      MYSQL_DATABASE: francken
+    volumes:
+      - mysql:/var/lib/mysql
+
+  legacy-db:
+    image: francken/mysql
+    volumes:
+      - ./database/francken-db.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      - MYSQL_USER=francken
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=francken
+    restart: always
+
+  redis:
+    image: redis:4-alpine
+    ports:
+      - 16379:6379
+    volumes:
+      - redis:/data
 
 volumes:
   mysql:
