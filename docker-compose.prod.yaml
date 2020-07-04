@@ -1,0 +1,115 @@
+version: '3'
+
+volumes:
+  redis:
+    driver: "local"
+
+services:
+  php-base:
+    build:
+      dockerfile: Dockerfile-base
+      context: ./docker/php
+    image: francken/php-base
+
+  npm:
+    image: node:14.5
+    volumes:
+      - ./:/var/www/francken
+    working_dir: /var/www/francken
+
+  php:
+    image: francken/v2-php
+    build:
+      dockerfile: Dockerfile
+      context: ./docker/php
+      args:
+        USER_ID: "33"
+        GROUP_ID: "33"
+    user: "33"
+    env_file:
+      - .docker.env
+      - .env
+    links:
+      - legacy-db
+      - redis
+      - mailhog
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+    environment:
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_DRIVER=redis
+      - QUEUE_CONNECTION=redis
+      - REDIS_HOST=redis
+      - APP_URL=https://professorfrancken.nl
+
+  scheduler:
+    image: francken/v2-scheduler
+    build:
+      dockerfile: Dockerfile-scheduler
+      context: ./docker/php
+      args:
+        USER_ID: "33"
+        GROUP_ID: "33"
+    user: "33"
+    env_file:
+      - .docker.env
+      - .env
+    links:
+      - redis
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+    restart: always
+
+  queue-worker:
+    image: francken/v2-queue
+    build:
+      dockerfile: Dockerfile-queue
+      context: ./docker/php
+      args:
+        USER_ID: "33"
+        GROUP_ID: "33"
+    user: "33"
+    env_file:
+      - .docker.env
+      - .env
+    links:
+      - redis
+      - mailhog
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+    restart: always
+    command: php artisan horizon
+
+  nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./docker/nginx
+    image: francken/v2-nginx
+    ports:
+      - 81:80
+    links:
+      - php
+    volumes:
+      - ./nginx/francken.conf:/etc/nginx/conf.d/francken.conf
+      - ./:/var/www/francken
+    restart: always
+
+  imaginary:
+    image: h2non/imaginary
+    restart: always
+    ports:
+      - 82:9000
+    command: -enable-url-source -mount /mnt/data
+    volumes:
+      - ./docker/volumes/fly-images/:/mnt/data
+
+  redis:
+    image: redis:4-alpine
+    ports:
+      - 16379:6379
+    volumes:
+      - redis:/data
