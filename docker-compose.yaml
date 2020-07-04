@@ -108,19 +108,6 @@ services:
       - "traefik.port=80"
       - "traefik.docker.network=traefik_webgateway"
 
-  fly-images:
-    image: flyimg/flyimg-build
-    restart: always
-    networks:
-      - default
-      - traefik
-    labels:
-      - "traefik.enable=true"
-      - "traefik.backend=francken-images-web"
-      - "traefik.frontend.rule=Host:francken-images.nl.localhost"
-      - "traefik.port=80"
-      - "traefik.docker.network=traefik_webgateway"
-
   imaginary:
     image: h2non/imaginary
     restart: always
