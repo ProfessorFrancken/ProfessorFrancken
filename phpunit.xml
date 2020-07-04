@@ -35,8 +35,6 @@
         <server name="DB_CONNECTION" value="testing"/>
         <server name="MAIL_DRIVER" value="log"/>
 
-        <server name="NEWS_TYPE" value="eloquent"/>
-
         <server name="PLUS_ONE_PASSWORD" value="$2y$10$G8JBEHEjzVQYmazk2AzekujDYHIH4JIP9KKbblzTust1VXXQFa4Aa"/>
         <server name="PLUS_ONE_KEY" value="VCNdSDNlfjZbeJxDzRI0G3Ho7cLzPN7g"/>
     </php>
