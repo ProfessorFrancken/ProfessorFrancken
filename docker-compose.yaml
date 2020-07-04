@@ -121,6 +121,19 @@ services:
       - "traefik.port=80"
       - "traefik.docker.network=traefik_webgateway"
 
+  imaginary:
+    image: h2non/imaginary
+    restart: always
+    command: -enable-url-source -mount /mnt/data
+    volumes:
+      - ./docker/volumes/fly-images/:/mnt/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=francken-images-web"
+      - "traefik.frontend.rule=Host:francken-images.nl.localhost"
+      - "traefik.port=9000"
+      - "traefik.docker.network=traefik_webgateway"
+
   mailhog:
     image: mailhog/mailhog
     networks:
