@@ -32,7 +32,7 @@ class BooksController extends Controller
             ->with('breadcrumbs', [
                 ['url' => '/study', 'text' => 'Study'],
                 ['url' => '/study/books', 'text' => 'Books'],
-                ['text' => $book->title()],
+                ['text' => $book->title],
             ]);
     }
 }
