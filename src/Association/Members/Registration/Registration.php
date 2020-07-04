@@ -6,6 +6,7 @@ namespace Francken\Association\Members\Registration;
 
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
+use Francken\Association\LegacyMember;
 use Francken\Association\Members\Birthdate;
 use Francken\Association\Members\ContactDetails;
 use Francken\Association\Members\Email;
@@ -149,9 +150,15 @@ final class Registration extends Model
         $this->registration_accepted_at = $at;
         $this->save();
        
-        event(
-            new Events\RegistrationWasApproved($this, $byMember)
-        );
+        event(new Events\RegistrationWasApproved($this, $byMember));
+    }
+
+    public function register(LegacyMember $member) : void
+    {
+        $this->member_id = $member->id;
+        $this->save();
+
+        event(new Events\MemberWasRegistered($this));
     }
 
     public function signRegistrationForm(DateTimeImmutable $at) : void

@@ -18,8 +18,7 @@ final class RegisterMember implements ShouldQueue
         $registration = $event->registration;
 
         $member = $this->registerMemberToLegacyDatabase($registration);
-        $registration->member_id = $member->id;
-        $registration->save();
+        $registration->register($member);
 
         // TODO
         $this->activateMemberAccount($registration, $member);
