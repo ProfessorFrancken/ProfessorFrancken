@@ -19,22 +19,13 @@ final class CalendarEvent
     private DateTimeImmutable $start;
     private DateTimeImmutable $end;
     private string $status;
-    private string $google_id;
-    private $last_modified_at_google;
-    private $event;
 
     public function __construct(VEvent $event)
     {
-        $this->event = $event;
-
-        $this->summary = (string)$event->SUMMARY;
-        $this->description = (string)$event->DESCRIPTION;
-        $this->location = (string)$event->LOCATION;
-        $this->status = (string)$event->STATUS;
-        $this->google_id = (string)$event->UID;
-
-        $lastModified = $event->select('LAST-MODIFIED');
-        $this->last_modified_at_google = Arr::first($lastModified)->getDateTime();
+        $this->summary = (string)Arr::first($event->select('SUMMARY'));
+        $this->description = (string)Arr::first($event->select('DESCRIPTION'));
+        $this->location = (string)Arr::first($event->select('LOCATION'));
+        $this->status = (string)Arr::first($event->select('STATUS'));
 
         $this->parseSchedule($event);
     }
