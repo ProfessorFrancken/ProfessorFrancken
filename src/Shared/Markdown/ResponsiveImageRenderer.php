@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Markdown;
 
+use League\CommonMark\HtmlElement;
 use InvalidArgumentException;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Inline\Element\AbstractInline;
@@ -22,7 +23,7 @@ class ResponsiveImageRenderer implements InlineRendererInterface, ConfigurationA
         $this->imageRenderer = $imageRenderer;
     }
 
-    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
+    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer): HtmlElement
     {
         if ( ! ($inline instanceof Image)) {
             throw new InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));

@@ -28,7 +28,7 @@ class BoardMembersExport implements FromQuery, WithTitle, WithHeadings
         'updated_at',
     ];
 
-    public function query()
+    public function query(): Builder
     {
         /** @var Builder */
         $query = BoardMember::query()->select(self::FIELDS);

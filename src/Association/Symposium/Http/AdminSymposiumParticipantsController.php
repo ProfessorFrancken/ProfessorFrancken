@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Association\Symposium\Participant;
 use Francken\Association\Symposium\Symposium;
 use Francken\Shared\Email;
@@ -38,7 +39,7 @@ final class AdminSymposiumParticipantsController
         ]);
     }
 
-    public function store(Symposium $symposium, Request $request)
+    public function store(Symposium $symposium, Request $request): RedirectResponse
     {
         $participant = $symposium->registerParticipant(
             $request->input('firstname'),
@@ -60,7 +61,7 @@ final class AdminSymposiumParticipantsController
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
     }
 
-    public function update(Symposium $symposium, Participant $participant, Request $request)
+    public function update(Symposium $symposium, Participant $participant, Request $request): RedirectResponse
     {
         $pays_with_iban = $request->has('pays_with_bian');
         $is_francken_member = $request->has('is_francken_member');
@@ -81,14 +82,14 @@ final class AdminSymposiumParticipantsController
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
     }
 
-    public function remove(Symposium $symposium, Participant $participant)
+    public function remove(Symposium $symposium, Participant $participant): RedirectResponse
     {
         $participant->delete();
 
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
     }
 
-    public function toggleSpam(Symposium $symposium, Participant $participant)
+    public function toggleSpam(Symposium $symposium, Participant $participant): RedirectResponse
     {
         $participant->update([
             'is_spam' => ! $participant->is_spam

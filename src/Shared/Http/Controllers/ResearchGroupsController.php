@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
@@ -296,7 +297,7 @@ The research has a strong instrumentation development component. For our experim
         ];
     }
 
-    public function index()
+    public function index(): View
     {
         return view('study.research-groups.index')
             ->with('groups', $this->groups)
@@ -306,9 +307,9 @@ The research has a strong instrumentation development component. For our experim
             ]);
     }
 
-    public function show($slug)
+    public function show($slug): View
     {
-        $group = Arr::first(array_filter($this->groups, function ($group) use ($slug) {
+        $group = Arr::first(array_filter($this->groups, function ($group) use ($slug): bool {
             return Str::slug($group['title']) === $slug;
         }));
 

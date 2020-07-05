@@ -17,12 +17,12 @@ final class BirthdaysController
 
         $members = BoardMember::with(['member'])->get()->filter(function (BoardMember $member) : bool {
             return $member->member !== null && $member->member->geboortedatum !== null;
-        })->map(function (BoardMember $member) {
+        })->map(function (BoardMember $member): array {
             return [
                 'name' => $member->member->full_name,
                 'birthday' => new DateTimeImmutable($member->member->geboortedatum)
             ];
-        })->map(function ($member) use ($today) {
+        })->map(function ($member) use ($today): array {
             $birthdayInSameYearAsNow = $member['birthday']->setDate(
                 (int) $today->format('Y'),
                 (int) $member['birthday']->format('m'),

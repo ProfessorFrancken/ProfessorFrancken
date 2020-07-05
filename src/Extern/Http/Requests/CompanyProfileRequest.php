@@ -10,10 +10,8 @@ class CompanyProfileRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'display_name' => ['nullable', 'min:1'],

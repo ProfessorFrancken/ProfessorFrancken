@@ -37,7 +37,7 @@ final class FlickrRepository
             $photosets = $photoset->photosets['photoset'];
 
 
-            return collect($photosets)->map(function ($album) {
+            return collect($photosets)->map(function ($album): Collection {
                 $primary_photos = $album['primary_photo_extras'];
                 $width = (int) ($primary_photos['width_m'] ?? $primary_photos['width_o']);
                 $height = (int) ($primary_photos['height_m'] ?? $primary_photos['height_o']);
@@ -86,7 +86,7 @@ final class FlickrRepository
             return collect([
                 'id' => $album['id'],
                 'title' => $album['title'],
-                'photos' => collect($album['photo'])->map(function ($photo) {
+                'photos' => collect($album['photo'])->map(function ($photo): Collection {
                     return collect([
                         'id' => $photo['id'],
                         'title' => $photo['title'],

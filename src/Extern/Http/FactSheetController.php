@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\View\View;
+use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use DateInterval;
 use DateTimeImmutable;
@@ -22,7 +24,7 @@ final class FactSheetController
         $this->today = new DateTimeImmutable();
     }
 
-    public function index()
+    public function index(): View
     {
         // Use preseneters to decorate the dispatched queries?
         // use iterators instead?
@@ -45,7 +47,7 @@ final class FactSheetController
             ]);
     }
 
-    private function weeklyStats()
+    private function weeklyStats(): Collection
     {
         $today = new DateTimeImmutable('now');
         $lastWeek = $today->sub(new DateInterval('P7D'));
@@ -53,7 +55,7 @@ final class FactSheetController
         $today = Carbon::now();
         $lastWeek = Carbon::now()->subWeeks(1);
 
-        return collect(range(0, 24))->map(function ($weeksBeforeToday) {
+        return collect(range(0, 24))->map(function ($weeksBeforeToday): array {
             $target = Carbon::now()->subWeeks($weeksBeforeToday);
             return [
                 'week' => (int)$target->format('W'),
@@ -65,9 +67,9 @@ final class FactSheetController
         });
     }
 
-    private function monthlyStats()
+    private function monthlyStats(): Collection
     {
-        return collect(range(0, 12 * 4))->map(function ($weeksBeforeToday) {
+        return collect(range(0, 12 * 4))->map(function ($weeksBeforeToday): array {
             $target = Carbon::now()->subMonths($weeksBeforeToday);
             return [
                 'week' => $target->format('Y') . ' ' . $target->format('M'),
@@ -93,17 +95,17 @@ final class FactSheetController
         // $datePeriod = '1 WEEK';
         // $format = 'W';
 
-        $weeks = collect($period->getDatePeriod('1 WEEK'))->mapWithKeys(function ($week) {
+        $weeks = collect($period->getDatePeriod('1 WEEK'))->mapWithKeys(function ($week): array {
             return [$week->format('W') => null];
         });
 
-        $days = collect($period->getDatePeriod('1 DAY'))->mapWithKeys(function ($day) {
+        $days = collect($period->getDatePeriod('1 DAY'))->mapWithKeys(function ($day): array {
             return [$day->format('l') => null];
         });
 
         // Should change to transactiosn per week
         $transactionsPerDay =
-            $transactions->groupBy(function ($transaction) {
+            $transactions->groupBy(function ($transaction): string {
                 $purchaseDate = new DateTimeImmutable($transaction->tijd);
 
                 // Let transactions between 00:00 and 06:00 count for the previous day
@@ -112,7 +114,7 @@ final class FactSheetController
 
 
         return $transactionsPerDay->map(
-            function ($transactions, $day) {
+            function ($transactions, $day): array {
                 return [
                     "day" => $day, // this is day?
                     "members" => collect($transactions)->unique('lid_id')->count()
@@ -128,7 +130,7 @@ final class FactSheetController
         ]);
     }
 
-    private function transactionsDuringWeek(int $year, int $weekNumber)
+    private function transactionsDuringWeek(int $year, int $weekNumber): Collection
     {
         // Note that since sometimes a product is purchased after midnight
         // we will have to "shift" the time of a transaction when we group
@@ -138,12 +140,12 @@ final class FactSheetController
 
         $transactions = $this->transactionsInPeriod($period);
 
-        $days = collect($period->getDatePeriod('1 DAY'))->mapWithKeys(function ($day) {
+        $days = collect($period->getDatePeriod('1 DAY'))->mapWithKeys(function ($day): array {
             return [$day->format('l') => null];
         });
 
         $transactionsPerDay = $days->merge(
-            $transactions->groupBy(function ($transaction) {
+            $transactions->groupBy(function ($transaction): string {
                 $purchaseDate = new DateTimeImmutable($transaction->tijd);
 
                 // Let transactions between 00:00 and 06:00 count for the previous day
@@ -152,13 +154,13 @@ final class FactSheetController
         );
 
         return $transactionsPerDay->map(
-            function ($transactions, $day) {
+            function ($transactions, $day): array {
                 return [
                     "day" => $day,
                     "members" => collect($transactions)->unique('lid_id')->count()
                 ];
             }
-        )->sortBy(function ($day) {
+        )->sortBy(function ($day): int {
             $dayToNumber = [
                 "Monday" => 0,
                 "Tuesday" => 1,

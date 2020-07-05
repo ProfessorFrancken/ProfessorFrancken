@@ -12,10 +12,8 @@ class VacancyRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => ['required', 'min:1'],
@@ -38,7 +36,7 @@ class VacancyRequest extends FormRequest
         return $this->input('description', '');
     }
 
-    public function sectorId() : ?int
+    public function sectorId() : int
     {
         return (int)$this->input('sector_id');
     }

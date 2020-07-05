@@ -60,10 +60,8 @@ class Api
 
     /**
      * Compile the standard API part of the REST request.
-     *
-     * @return string
      */
-    protected function api()
+    protected function api(): string
     {
         return '?api_key=' . $this->key . '&format=' . $this->format;
     }
@@ -72,9 +70,8 @@ class Api
      * Compile the parameters from an array into a string.
      *
      * @param  array  $array
-     * @return string
      */
-    protected function parameters(array $array)
+    protected function parameters(array $array): string
     {
         if ( ! is_array($array)) {
             return '';

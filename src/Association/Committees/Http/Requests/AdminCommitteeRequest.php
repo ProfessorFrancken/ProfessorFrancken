@@ -16,10 +16,8 @@ final class AdminCommitteeRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'parent_committee_id' => ['nullable', 'exists:association_committees,id'],

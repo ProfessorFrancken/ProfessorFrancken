@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Connection;
 use Illuminate\Database\ConnectionResolverInterface;
@@ -22,7 +23,7 @@ final class MembersController
                        ->table('leden');
     }
 
-    public function index()
+    public function index(): Collection
     {
         $selects = ['id', 'voornaam', 'initialen', 'tussenvoegsel', 'achternaam', 'geboortedatum', 'prominent', 'kleur', 'afbeelding', 'bijnaam', 'button_width', 'button_height', 'transacties.latest_purchase_at'];
 

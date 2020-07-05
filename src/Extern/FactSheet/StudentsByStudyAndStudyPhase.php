@@ -16,7 +16,7 @@ final class StudentsByStudyAndStudyPhase
         $this->today = $today;
     }
 
-    public function handle()
+    public function handle(): StudiesStatistic
     {
         $students = DB::connection('francken-legacy')->table('leden')
                   ->where('is_lid', true)
@@ -33,8 +33,8 @@ final class StudentsByStudyAndStudyPhase
     {
         return $students->groupBy(function ($student) {
             return $student->studierichting;
-        })->map(function ($students, $study) {
-            $probablyDoingBachelors = function ($student) {
+        })->map(function ($students, $study): StudyPhaseStatistic {
+            $probablyDoingBachelors = function ($student): bool {
                 return ((int)$student->jaar_van_inschrijving) >= (int)$this->today->format('Y') - 5;
             };
 

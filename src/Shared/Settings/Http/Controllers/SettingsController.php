@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Settings\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Shared\Settings\Settings;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class SettingsController
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         // Make sure that we only pass settings which are expected
         $this->settings->updateSettings(

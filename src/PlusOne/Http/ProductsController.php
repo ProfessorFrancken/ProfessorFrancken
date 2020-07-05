@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Database\DatabaseManager;
@@ -18,7 +19,7 @@ final class ProductsController
                         ->table('producten');
     }
 
-    public function index()
+    public function index(): Collection
     {
         $products = $this->products->where('beschikbaar', 1)
                   ->leftJoin('producten_extras', 'producten.id', 'producten_extras.product_id')

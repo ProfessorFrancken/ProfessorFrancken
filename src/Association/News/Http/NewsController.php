@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
+use Illuminate\View\View;
 use Francken\Association\News\Http\Requests\SearchNewsRequest;
 use Francken\Association\News\News;
 
 final class NewsController
 {
-    public function index()
+    public function index(): View
     {
         $news = News::recent()->paginate(12);
    
@@ -23,7 +24,7 @@ final class NewsController
             ]);
     }
 
-    public function archive(SearchNewsRequest $request)
+    public function archive(SearchNewsRequest $request): View
     {
         $news = News::recent()
             ->inPeriod($request->period())
@@ -41,7 +42,7 @@ final class NewsController
             ]);
     }
 
-    public function show(News $news)
+    public function show(News $news): View
     {
         return view('pages.association.news.item')
             ->with([

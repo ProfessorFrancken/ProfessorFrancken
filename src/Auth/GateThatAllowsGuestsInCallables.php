@@ -14,9 +14,8 @@ final class GateThatAllowsGuestsInCallables extends Gate implements GateContract
      *
      * @param  \Illuminate\Contracts\Auth\Authenticatable|null  $user
      * @param  string  $ability
-     * @return bool
      */
-    protected function callAuthCallback($user, $ability, array $arguments)
+    protected function callAuthCallback($user, $ability, array $arguments): bool
     {
         $callback = $this->resolveAuthCallback($user, $ability, $arguments);
 

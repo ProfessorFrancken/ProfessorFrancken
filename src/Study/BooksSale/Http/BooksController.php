@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http;
 
+use Illuminate\View\View;
 use Francken\Shared\Http\Controllers\Controller;
 use Francken\Study\BooksSale\Book;
 
 class BooksController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $books = Book::query()
             ->available()
@@ -25,7 +26,7 @@ class BooksController extends Controller
             ]);
     }
 
-    public function show(Book $book)
+    public function show(Book $book): View
     {
         return view('book.show')
             ->with(['book' => $book])

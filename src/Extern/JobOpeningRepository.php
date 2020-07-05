@@ -36,25 +36,25 @@ final class JobOpeningRepository
         $jobs = collect($this->jobs);
 
         if ( ! is_null($title) && $title != '') {
-            $jobs = $jobs->filter(function ($job) use ($title) {
+            $jobs = $jobs->filter(function ($job) use ($title): bool {
                 return Str::contains($job['job'], $title);
             });
         }
 
         if ( ! is_null($company) && $company != '') {
-            $jobs = $jobs->filter(function ($job) use ($company) {
+            $jobs = $jobs->filter(function ($job) use ($company): bool {
                 return Str::contains($job['name'], $company);
             });
         }
 
         if ( ! is_null($sector)) {
-            $jobs = $jobs->filter(function ($job) use ($sector) {
+            $jobs = $jobs->filter(function ($job) use ($sector): bool {
                 return $job['sector'] == (string) $sector->name;
             });
         }
 
         if ( ! is_null($type)) {
-            $jobs = $jobs->filter(function ($job) use ($type) {
+            $jobs = $jobs->filter(function ($job) use ($type): bool {
                 return $job['type'] == (string) $type;
             });
         }

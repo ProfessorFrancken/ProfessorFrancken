@@ -123,12 +123,12 @@ final class BoardMember extends Model
         return null;
     }
 
-    public function board()
+    public function board(): BelongsTo
     {
         return $this->belongsTo(Board::class);
     }
 
-    public function member()
+    public function member(): BelongsTo
     {
         return $this->belongsTo(LegacyMember::class, 'member_id');
     }

@@ -21,7 +21,7 @@ final class ServiceProvider extends BaseServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton(Gate::class, function ($app) {
+        $this->app->singleton(Gate::class, function ($app): GateThatAllowsGuestsInCallables {
             return new GateThatAllowsGuestsInCallables($app, function () use ($app) {
                 return call_user_func($app['auth']->userResolver());
             });
@@ -40,7 +40,7 @@ final class ServiceProvider extends BaseServiceProvider
 
     public function boot(Gate $gate) : void
     {
-        $gate->before(function ($user, $ability) {
+        $gate->before(function ($user, $ability): ?bool {
             return $user->hasRole('Admin') ? true : null;
         });
 

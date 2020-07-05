@@ -31,7 +31,7 @@ class ConfirmRegistrationRequest extends Mailable
      *
      * @return $this
      */
-    public function build(UrlGenerator $urlGenerator)
+    public function build(UrlGenerator $urlGenerator): self
     {
         $url = $urlGenerator->signedRoute(
             'registration.verify',

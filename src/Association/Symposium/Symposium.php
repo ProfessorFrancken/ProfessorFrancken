@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Model;
 
@@ -84,7 +85,7 @@ final class Symposium extends Model
         return $participant;
     }
 
-    public function participants()
+    public function participants(): HasMany
     {
         return $this->hasMany(Participant::class);
     }

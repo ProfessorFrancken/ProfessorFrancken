@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\View\View;
 use Francken\Extern\CompanyRepository;
 use Francken\Extern\JobOpeningRepository;
 use Francken\Extern\JobType;
@@ -20,7 +21,7 @@ final class CompaniesController
         $this->jobs = $jobs;
     }
 
-    public function index()
+    public function index(): View
     {
         return view('career.companies.index')
             ->with('companies', $this->companies->profiles())
@@ -30,7 +31,7 @@ final class CompaniesController
             ]);
     }
 
-    public function show($slug)
+    public function show($slug): View
     {
         $company = $this->companies->findByLink($slug);
         $jobs = $this->jobs->search(
@@ -41,7 +42,7 @@ final class CompaniesController
             ->with('companies', $this->companies->profiles())
             ->with('company', $company)
             ->with('jobs', $jobs)
-            ->with('sectors', Sector::all()->mapWithKeys(function (Sector $sector) {
+            ->with('sectors', Sector::all()->mapWithKeys(function (Sector $sector): array {
                 return [$sector->name => $sector->icon];
             }))
             ->with('types', JobType::TYPES)

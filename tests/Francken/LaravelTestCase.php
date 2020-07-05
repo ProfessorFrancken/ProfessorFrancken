@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Testing\TestCase;
 
@@ -13,10 +14,8 @@ abstract class LaravelTestCase extends TestCase
 
     /**
      * Creates the application.
-     *
-     * @return \Illuminate\Foundation\Application
      */
-    public function createApplication()
+    public function createApplication(): Application
     {
         $app = require __DIR__ . '/../../bootstrap/app.php';
 

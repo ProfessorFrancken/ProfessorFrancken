@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use DateTimeImmutable;
 use DB;
 use Francken\Association\LegacyMember;
@@ -48,17 +49,17 @@ final class PirateCrew extends Model
         'pirate_crew_id'
     ];
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
 
-    public function crewMembers()
+    public function crewMembers(): HasMany
     {
         return $this->hasMany(Pirate::class, 'pirate_crew_id');
     }
 
-    public function earnedAdtchievements()
+    public function earnedAdtchievements(): HasMany
     {
         return $this->hasMany(EarnedAdtchievement::class, 'pirate_crew_id');
     }

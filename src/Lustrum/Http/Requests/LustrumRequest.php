@@ -42,9 +42,9 @@ class LustrumRequest extends FormRequest
 
     public function members() : Collection
     {
-        return collect($this->members)->reject(function (array $member) {
+        return collect($this->members)->reject(function (array $member): bool {
             return $member['member_id'] === null;
-        })->map(function (array $member) {
+        })->map(function (array $member): array {
             if (isset($member['installed_at'])) {
                 $member['installed_at'] = $this->toDateTimeImmutable($member['installed_at']);
             }
@@ -81,20 +81,16 @@ class LustrumRequest extends FormRequest
 
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $max_file_size = 10 * 1024;
         return [

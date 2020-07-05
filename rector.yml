@@ -31,3 +31,7 @@ services:
     Rector\CodingStyle\Rector\ClassMethod\MakeInheritedMethodVisibilitySameAsParentRector: null
     Rector\CodingStyle\Rector\FuncCall\CallUserFuncCallToVariadicRector: null
     Rector\CodingStyle\Rector\Use_\SplitGroupedUseImportsRector: null
+    Rector\Php74\Rector\Double\RealToFloatTypeCastRector: null
+    # Return types
+    Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector: null
+    Rector\TypeDeclaration\Rector\Closure\AddClosureReturnTypeRector: null

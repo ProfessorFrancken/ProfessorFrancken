@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use DateTimeImmutable;
 use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\DeductionEmailToMember;
@@ -19,7 +20,7 @@ final class DeductionEmailsController
         $this->mail = $mail;
     }
 
-    public function create(DeductionEmail $deduction)
+    public function create(DeductionEmail $deduction): RedirectResponse
     {
         if ( ! $deduction->was_verified) {
             return redirect()->action([DeductionsController::class, 'show'], $deduction->id)

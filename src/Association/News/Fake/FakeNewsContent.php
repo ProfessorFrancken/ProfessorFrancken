@@ -71,12 +71,12 @@ final class FakeNewsContent
 
         return array_reduce(
             array_map(
-                function () use ($header, $smallHeader, $paragraph, $equations, $image) {
+                function () use ($header, $smallHeader, $paragraph, $equations, $image): string {
                     return $header() . $smallHeader() . $paragraph() . $equations() . $image();
                 },
                 range(0, $this->faker->numberBetween(3, 8))
             ),
-            function ($content, $current) {
+            function ($content, $current): string {
                 return $content .= $current;
             },
             ''

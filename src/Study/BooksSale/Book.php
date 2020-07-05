@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -88,12 +89,12 @@ final class Book extends Model
         'taken_in_by_buyer_at',
     ];
 
-    public function seller()
+    public function seller(): BelongsTo
     {
         return $this->belongsTo(BookSeller::class);
     }
 
-    public function buyer()
+    public function buyer(): BelongsTo
     {
         return $this->belongsTo(BookBuyer::class);
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium\Http;
 
+use Illuminate\Http\RedirectResponse;
 use DateTimeImmutable;
 use Francken\Association\Symposium\Symposium;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ final class AdminSymposiaController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $open_for_registration = $request->has('open_for_registration');
         $promote_on_agenda = $request->has('promote_on_agenda');
@@ -82,7 +83,7 @@ final class AdminSymposiaController
         ]);
     }
 
-    public function update(Symposium $symposium, Request $request)
+    public function update(Symposium $symposium, Request $request): RedirectResponse
     {
         $open_for_registration = $request->has('open_for_registration');
         $promote_on_agenda = $request->has('promote_on_agenda');

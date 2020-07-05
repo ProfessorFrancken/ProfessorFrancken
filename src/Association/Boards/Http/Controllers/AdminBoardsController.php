@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use DateTimeImmutable;
 use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
@@ -55,7 +56,7 @@ final class AdminBoardsController
         ]);
     }
 
-    public function store(BoardRequest $request)
+    public function store(BoardRequest $request): RedirectResponse
     {
         $board_photo = $this->uploadPhoto(
             $request->photo,
@@ -70,7 +71,7 @@ final class AdminBoardsController
             $photo_position,
             $request->installedAt(),
             $request->members()->map(
-                function (array $member) use ($request) {
+                function (array $member) use ($request): array {
                     $photo = $this->uploadPhoto(
                         $member['photo'] ?? null,
                         $request->boardYear(),
@@ -102,7 +103,7 @@ final class AdminBoardsController
         ]);
     }
 
-    public function update(BoardRequest $request, Board $board)
+    public function update(BoardRequest $request, Board $board): RedirectResponse
     {
         $photo = $this->uploadPhoto(
             $request->photo,

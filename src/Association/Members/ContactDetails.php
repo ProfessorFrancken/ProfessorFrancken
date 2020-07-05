@@ -27,7 +27,7 @@ final class ContactDetails
         return $this->address;
     }
 
-    public function phoneNumber()
+    public function phoneNumber(): ?string
     {
         return $this->phoneNumber;
     }

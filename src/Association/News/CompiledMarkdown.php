@@ -54,7 +54,7 @@ final class CompiledMarkdown
         return $converter->convert($this->contents);
     }
 
-    public function compiledContent() : string
+    public function compiledContent() : ?string
     {
         // Lazy compile
         if ($this->contents === null && $this->compiler !== null && $this->source !== null) {

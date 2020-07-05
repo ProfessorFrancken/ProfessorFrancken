@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards\Exports;
 
+use Illuminate\Database\Eloquent\Builder;
 use Francken\Association\Boards\Board;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -24,7 +25,7 @@ class BoardsExport implements FromQuery, WithTitle, WithHeadings
         'updated_at'
     ];
 
-    public function query()
+    public function query(): Builder
     {
         return Board::query()->select(self::FIELDS);
     }

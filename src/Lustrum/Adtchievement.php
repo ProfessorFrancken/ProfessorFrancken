@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -73,7 +74,7 @@ final class Adtchievement extends Model
             );
     }
 
-    public function earnedBy()
+    public function earnedBy(): BelongsToMany
     {
         return $this->belongsToMany(Pirate::class, 'lustrum_pirate_adtchievements')
             ->withPivot(['pirate_crew_id']);

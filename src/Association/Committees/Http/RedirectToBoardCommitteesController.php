@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Francken\Association\Boards\Board;
 use Francken\Shared\Clock\Clock;
 
 final class RedirectToBoardCommitteesController
 {
-    public function index(Clock $clock, Request $request)
+    public function index(Clock $clock, Request $request): RedirectResponse
     {
         $board = Board::where('installed_at', '<', $clock->now())
                ->find($request->input('board_id'));
@@ -27,7 +28,7 @@ final class RedirectToBoardCommitteesController
         );
     }
 
-    public function show(Clock $clock, string $committeeLink, Request $request)
+    public function show(Clock $clock, string $committeeLink, Request $request): RedirectResponse
     {
         $board = Board::where('installed_at', '<', $clock->now())
                ->find($request->input('board_id'));

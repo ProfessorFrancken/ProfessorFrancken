@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Association\LegacyMember;
 use Francken\Extern\Alumnus;
 use Francken\Extern\Http\Requests\AlumnusRequest;
@@ -25,7 +26,7 @@ final class AdminPartnerAlumniController
         ]);
     }
 
-    public function store(AlumnusRequest $request, Partner $partner)
+    public function store(AlumnusRequest $request, Partner $partner): RedirectResponse
     {
         $alumnus = new Alumnus([
             'member_id' => $request->memberId(),
@@ -57,7 +58,7 @@ final class AdminPartnerAlumniController
         ]);
     }
 
-    public function update(AlumnusRequest $request, Partner $partner, Alumnus $alumnus)
+    public function update(AlumnusRequest $request, Partner $partner, Alumnus $alumnus): RedirectResponse
     {
         $alumnus->update([
             'member_id' => $request->memberId(),
@@ -73,7 +74,7 @@ final class AdminPartnerAlumniController
         );
     }
 
-    public function destroy(Partner $partner, Alumnus $alumnus)
+    public function destroy(Partner $partner, Alumnus $alumnus): RedirectResponse
     {
         $alumnus->delete();
 

@@ -19,11 +19,12 @@ class ActivitiesFeature extends TestCase
         $tomorrow = new DateTimeImmutable('tomorrow +1day');
         $this->start = $tomorrow;
         $start = $tomorrow->format('Ymd');
+
         $end = $tomorrow->format('Ymd');
 
         $this->app->bind(
             ActivitiesRepository::class,
-            function ($app) use ($start, $end) {
+            function ($app) use ($start, $end): ActivitiesRepository {
                 $data = <<<CALENDAR
 BEGIN:VCALENDAR
 BEGIN:VEVENT

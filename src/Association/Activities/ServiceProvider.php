@@ -25,7 +25,7 @@ final class ServiceProvider extends BaseServiceProvider
 
         $this->app->bind(
             ActivitiesRepository::class,
-            function ($app) {
+            function ($app): ActivitiesRepository {
                 return new ActivitiesRepository(
                     fopen(storage_path('app/calendar.ics'), 'r')
                 );

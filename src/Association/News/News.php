@@ -115,9 +115,8 @@ final class News extends Model
      * Scope a query to only include news with the given slug
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeByLink(Builder $query, string $slug)
+    public function scopeByLink(Builder $query, string $slug): Builder
     {
         return $query->whereSlug($slug);
     }
@@ -156,9 +155,8 @@ final class News extends Model
      * Sort the query by most recent news
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeRecent(Builder $query)
+    public function scopeRecent(Builder $query): Builder
     {
         return $query->orderBy('published_at', 'desc');
     }
@@ -168,9 +166,8 @@ final class News extends Model
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param \League\Period\Period $period
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeInPeriod(Builder $query, Period $period = null)
+    public function scopeInPeriod(Builder $query, Period $period = null): Builder
     {
         return (isset($period) ? $query->whereBetween('published_at', [$period->getStartDate(), $period->getEndDate()]) : $query);
     }
@@ -181,9 +178,8 @@ final class News extends Model
      * the given subject string
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithSubject(Builder $query, string $subject = null)
+    public function scopeWithSubject(Builder $query, string $subject = null): Builder
     {
         return (isset($subject) ? $query->whereTitle($subject) : $query);
     }
@@ -193,9 +189,8 @@ final class News extends Model
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $author
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithAuthorName(Builder $query, string $author = null)
+    public function scopeWithAuthorName(Builder $query, string $author = null): Builder
     {
         return (isset($author) ? $query->whereAuthorName($author) : $query);
     }

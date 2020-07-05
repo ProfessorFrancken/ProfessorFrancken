@@ -100,7 +100,7 @@ final class RegisterMember implements ShouldQueue
             $registration->postal_code,
             $registration->city,
             $registration->country
-        ])->every(function (?string $field) {
+        ])->every(function (?string $field): bool {
             return $field !== null;
         });
     }

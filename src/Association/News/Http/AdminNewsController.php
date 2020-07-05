@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\Http\Requests\AdminNewsRequest;
@@ -49,7 +51,7 @@ final class AdminNewsController
         ]);
     }
 
-    public function store(AdminNewsRequest $request)
+    public function store(AdminNewsRequest $request): RedirectResponse
     {
         $news = new News([
             'title' => '',
@@ -89,7 +91,7 @@ final class AdminNewsController
         ]);
     }
 
-    public function preview(News $news)
+    public function preview(News $news): View
     {
         return view('pages.association.news.item')
             ->with([
@@ -99,7 +101,7 @@ final class AdminNewsController
             ]);
     }
 
-    public function update(AdminNewsRequest $request, News $news)
+    public function update(AdminNewsRequest $request, News $news): RedirectResponse
     {
         $news->changeAuthor(
             new Author(
@@ -119,7 +121,7 @@ final class AdminNewsController
         return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
 
-    public function publish(Request $req, News $news)
+    public function publish(Request $req, News $news): RedirectResponse
     {
         $publishAt = new DateTimeImmutable($req->input('published_at'));
 
@@ -129,7 +131,7 @@ final class AdminNewsController
         return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
 
-    public function archive(News $news)
+    public function archive(News $news): RedirectResponse
     {
         $news->archive();
         $news->save();
@@ -137,7 +139,7 @@ final class AdminNewsController
         return redirect()->action([self::class, 'index']);
     }
 
-    public function destroy(News $news)
+    public function destroy(News $news): RedirectResponse
     {
         $news->archive();
         $news->save();

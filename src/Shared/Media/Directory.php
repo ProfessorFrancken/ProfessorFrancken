@@ -41,7 +41,7 @@ final class Directory
         return $this->name;
     }
 
-    public function url()
+    public function url(): string
     {
         return action(
             [MediaController::class, 'index'],
@@ -54,7 +54,7 @@ final class Directory
         string $directory
     ) : Collection {
         $directories = collect($storage->disk(static::DISK)->directories($directory))
-            ->map(function ($directory) {
+            ->map(function ($directory): \Francken\Shared\Media\Directory {
                 return new self($directory);
             });
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Extern\Http\Requests\FooterRequest;
 use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
@@ -31,7 +32,7 @@ final class AdminFootersController
         ]);
     }
 
-    public function store(FooterRequest $request, Partner $partner)
+    public function store(FooterRequest $request, Partner $partner): RedirectResponse
     {
         $request->validate([
             'logo' => ['required', 'image', 'max:' . FooterRequest::MAX_FILE_SIZE],
@@ -66,7 +67,7 @@ final class AdminFootersController
         ]);
     }
 
-    public function update(FooterRequest $request, Partner $partner)
+    public function update(FooterRequest $request, Partner $partner): RedirectResponse
     {
         $footer = $partner->footer;
         $logo = $this->uploader->uploadFooterLogo($request->logo, $partner->name);

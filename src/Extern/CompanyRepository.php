@@ -29,7 +29,7 @@ final class CompanyRepository
     {
         return array_filter(
             $this->companies,
-            function ($company) {
+            function ($company): bool {
                 return $company['show-profile'] == true;
             }
         );
@@ -37,7 +37,7 @@ final class CompanyRepository
 
     public function findByLink($slug) : array
     {
-        return Arr::first(array_filter($this->profiles(), function ($company) use ($slug) {
+        return Arr::first(array_filter($this->profiles(), function ($company) use ($slug): bool {
             return Str::slug($company['name']) === $slug;
         }));
     }
@@ -49,7 +49,7 @@ final class CompanyRepository
     {
         return array_filter(
             $this->companies,
-            function ($company) {
+            function ($company): bool {
                 return $company['show-in-footer'] == true;
             }
         );

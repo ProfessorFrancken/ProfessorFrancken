@@ -32,7 +32,7 @@ final class Student
         return $this->studies[0];
     }
 
-    public static function fromDb($member)
+    public static function fromDb($member) : self
     {
         return new self(
             new StudentNumber($member->studentnummer),

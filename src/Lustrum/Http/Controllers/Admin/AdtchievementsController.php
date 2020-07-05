@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum\Http\Controllers\Admin;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use Francken\Lustrum\Adtchievement;
 use Illuminate\Http\Request;
 
 class AdtchievementsController
 {
-    public function index()
+    public function index(): View
     {
         $adtchievements = Adtchievement::all();
 
@@ -50,7 +52,7 @@ class AdtchievementsController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $adtchievement = Adtchievement::create([
             'title' => $request->input('title'),
@@ -67,7 +69,7 @@ class AdtchievementsController
     }
 
 
-    public function update(Adtchievement $adtchievement, Request $request)
+    public function update(Adtchievement $adtchievement, Request $request): RedirectResponse
     {
         $adtchievement = $adtchievement->update([
             'title' => $request->input('title'),

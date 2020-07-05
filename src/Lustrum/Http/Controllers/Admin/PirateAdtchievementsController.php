@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum\Http\Controllers\Admin;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Lustrum\Adtchievement;
 use Francken\Lustrum\EarnedAdtchievement;
 use Francken\Lustrum\Pirate;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 
 class PirateAdtchievementsController
 {
-    public function store(PirateCrew $pirateCrew, Request $request)
+    public function store(PirateCrew $pirateCrew, Request $request): RedirectResponse
     {
         $points = $request->input('points');
 
@@ -34,7 +35,7 @@ class PirateAdtchievementsController
         return redirect()->action([PirateCrewController::class, 'index'], ['pirateCrew' => $pirateCrew->slug]);
     }
 
-    public function remove(PirateCrew $pirateCrew, EarnedAdtchievement $adtchievement)
+    public function remove(PirateCrew $pirateCrew, EarnedAdtchievement $adtchievement): RedirectResponse
     {
         $adtchievement->delete();
 

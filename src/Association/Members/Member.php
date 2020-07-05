@@ -17,7 +17,7 @@ final class Member
         $this->member = $member;
     }
 
-    public function fullName()
+    public function fullName(): string
     {
         return implode(' ', array_filter([
             $this->member->voornaam, $this->member->tussenvoegsel, $this->member->achternaam

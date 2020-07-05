@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -45,17 +46,17 @@ final class EarnedAdtchievement extends Model
         'updated_at',
     ];
 
-    public function adtchievement()
+    public function adtchievement(): BelongsTo
     {
         return $this->belongsTo(Adtchievement::class);
     }
 
-    public function pirate()
+    public function pirate(): BelongsTo
     {
         return $this->belongsTo(Pirate::class);
     }
 
-    public function pirateCrew()
+    public function pirateCrew(): BelongsTo
     {
         return $this->belongsTo(PirateCrew::class);
     }

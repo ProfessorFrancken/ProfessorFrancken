@@ -33,10 +33,8 @@ class Response
 
     /**
      * Get the status of the Flickr API call.
-     *
-     * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->contents['stat'];
     }
@@ -45,9 +43,8 @@ class Response
      * Get a '_content' value from the contents of the Flickr API call.
      *
      * @param  string $method
-     * @return string
      */
-    public function getContent(string $method)
+    public function getContent(string $method): string
     {
         return $this->contents[$method]['_content'];
     }

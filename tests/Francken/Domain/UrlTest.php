@@ -23,7 +23,7 @@ class UrlTest extends TestCase
         $this->assertEquals($url, (string)(new Url($url)));
     }
 
-    public function urlProvider()
+    public function urlProvider(): array
     {
         return [
             ['http://test.com'],

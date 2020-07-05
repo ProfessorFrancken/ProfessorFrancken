@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\FileUploader;
@@ -34,7 +35,7 @@ final class AdminFranckenVrijController extends Controller
 
         // Predict the next volume and edition numbers
         $currentVolume = $volumes->reduce(
-            function (Volume $max, Volume $volume) {
+            function (Volume $max, Volume $volume): Volume {
                 return $volume->volume() > $max->volume() ? $volume : $max;
             },
             new Volume(1, [])
@@ -42,7 +43,7 @@ final class AdminFranckenVrijController extends Controller
 
         $currentEdition = array_reduce(
             $currentVolume->editions(),
-            function (int $max, Edition $edition) {
+            function (int $max, Edition $edition): int {
                 return $edition->edition() > $max ? $edition->edition() : $max;
             },
             0
@@ -72,7 +73,7 @@ final class AdminFranckenVrijController extends Controller
     /**
      * Store a new Francken Vrij edition
      */
-    public function store(FranckenVrijRequest $request)
+    public function store(FranckenVrijRequest $request): RedirectResponse
     {
         $request->validate(['pdf' => ['required']]);
 
@@ -94,7 +95,7 @@ final class AdminFranckenVrijController extends Controller
         return view('admin.francken-vrij.edit', ['edition' => $edition]);
     }
 
-    public function update(FranckenVrijRequest $request, Edition $edition)
+    public function update(FranckenVrijRequest $request, Edition $edition): RedirectResponse
     {
         $edition->update([
             'title' => $request->title(),
@@ -110,7 +111,7 @@ final class AdminFranckenVrijController extends Controller
         return redirect()->action([self::class, 'index']);
     }
 
-    public function destroy(Edition $edition)
+    public function destroy(Edition $edition): RedirectResponse
     {
         $edition->delete();
 

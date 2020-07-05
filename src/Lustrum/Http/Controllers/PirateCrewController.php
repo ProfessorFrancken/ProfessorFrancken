@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use Francken\Lustrum\Adtchievement;
 use Francken\Lustrum\Http\Requests\LustrumRequest;
 use Francken\Lustrum\Pirate;
@@ -11,7 +13,7 @@ use Francken\Lustrum\PirateCrew;
 
 class PirateCrewController
 {
-    public function index(PirateCrew $pirateCrew)
+    public function index(PirateCrew $pirateCrew): View
     {
         $pirateCrew->load([
             'crewMembers' => function ($query) : void {
@@ -41,7 +43,7 @@ class PirateCrewController
             ]);
     }
 
-    public function store(PirateCrew $crew, LustrumRequest $request)
+    public function store(PirateCrew $crew, LustrumRequest $request): RedirectResponse
     {
         $member = $request->user()->member;
 

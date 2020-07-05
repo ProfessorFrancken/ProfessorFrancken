@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Extern\Http\Requests\VacancyRequest;
 use Francken\Extern\JobType;
 use Francken\Extern\Partner;
@@ -17,7 +18,7 @@ final class AdminVacanciesController
         return view('admin.extern.partners.sponsor-options.vacancies.create', [
             'partner' => $partner,
             'vacancy' => new Vacancy(),
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) {
+            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
                 return [$sector->id => $sector->name];
             }),
             'types' => JobType::all(),
@@ -29,7 +30,7 @@ final class AdminVacanciesController
         ]);
     }
 
-    public function store(VacancyRequest $request, Partner $partner)
+    public function store(VacancyRequest $request, Partner $partner): RedirectResponse
     {
         $partner->vacancies()->save(
             new Vacancy([
@@ -52,7 +53,7 @@ final class AdminVacanciesController
         return view('admin.extern.partners.sponsor-options.vacancies.edit', [
             'partner' => $partner,
             'vacancy' => $vacancy,
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) {
+            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
                 return [$sector->id => $sector->name];
             }),
             'types' => JobType::all(),
@@ -64,7 +65,7 @@ final class AdminVacanciesController
         ]);
     }
 
-    public function update(VacancyRequest $request, Partner $partner, Vacancy $vacancy)
+    public function update(VacancyRequest $request, Partner $partner, Vacancy $vacancy): RedirectResponse
     {
         $vacancy->update([
             'title' => $request->title(),
@@ -80,7 +81,7 @@ final class AdminVacanciesController
         );
     }
 
-    public function destroy(Partner $partner, Vacancy $vacancy)
+    public function destroy(Partner $partner, Vacancy $vacancy): RedirectResponse
     {
         $vacancy->delete();
 

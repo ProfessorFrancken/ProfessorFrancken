@@ -10,7 +10,7 @@ final class ExternServiceProvider extends ServiceProvider
 {
     public function register() : void
     {
-        $this->app->bind(JobOpeningRepository::class, function ($app) {
+        $this->app->bind(JobOpeningRepository::class, function ($app): JobOpeningRepository {
             $jobs = file_exists(database_path('vacancies.php'))
                 ? require database_path('vacancies.php')
                 : [];
@@ -20,7 +20,7 @@ final class ExternServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bind(CompanyRepository::class, function ($app) {
+        $this->app->bind(CompanyRepository::class, function ($app): CompanyRepository {
             $companies = file_exists(database_path('companies.php'))
                 ? require database_path('companies.php')
                 : [];
@@ -30,7 +30,7 @@ final class ExternServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bind(EventRepository::class, function ($app) {
+        $this->app->bind(EventRepository::class, function ($app): EventRepository {
             $events = file_exists(database_path('events.php'))
                 ? require database_path('events.php')
                 : [];

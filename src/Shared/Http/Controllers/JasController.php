@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use DB;
 
@@ -14,7 +15,7 @@ final class JasController
         return DB::table('jas_events')->get();
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $id = $request->input('id');
         $name = $request->input('name');

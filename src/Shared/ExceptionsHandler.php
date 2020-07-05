@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared;
 
+use Symfony\Component\HttpFoundation\Response;
 use Whoops\Handler\HandlerInterface;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Exception;
@@ -42,9 +43,8 @@ class ExceptionsHandler extends Handler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function render($request, Throwable $e)
+    public function render($request, Throwable $e): Response
     {
         return parent::render($request, $e);
     }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 
@@ -69,12 +71,12 @@ final class Pirate extends Model
     // Claim points
 
 
-    public function crew()
+    public function crew(): BelongsTo
     {
         return $this->belongsTo(PirateCrew::class, 'pirate_crew_id');
     }
 
-    public function earnedAdtchievements()
+    public function earnedAdtchievements(): HasMany
     {
         return $this->hasMany(EarnedAdtchievement::class, 'pirate_id');
     }

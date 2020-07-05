@@ -194,7 +194,7 @@ final class ChangeRolesListener
         return 'Committee ' . $committee->name;
     }
 
-    private function getHandleMethod($event)
+    private function getHandleMethod($event): string
     {
         $classParts = explode('\\', get_class($event));
 

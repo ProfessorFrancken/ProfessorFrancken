@@ -11,7 +11,7 @@ use DB;
 
 final class CategoryStatisticsController
 {
-    public function index(Request $request)
+    public function index(Request $request): array
     {
         // By default use the period between today and 6 months ago
         $endDate = DateTimeImmutable::createFromFormat(
@@ -41,16 +41,16 @@ final class CategoryStatisticsController
         return [
             'statistics' => $stats->groupBy(function ($statistic) {
                 return $statistic->date;
-            })->map(function ($statByDate, $date) {
+            })->map(function ($statByDate, $date): array {
                 // For each date we probably have a category for beer, soda and food unless said category
                 // wasn't purchased that day
-                $beer = $statByDate->first(function ($stat) {
+                $beer = $statByDate->first(function ($stat): bool {
                     return 'Bier' === $stat->categorie;
                 });
-                $soda = $statByDate->first(function ($stat) {
+                $soda = $statByDate->first(function ($stat): bool {
                     return 'Fris' === $stat->categorie;
                 });
-                $food = $statByDate->first(function ($stat) {
+                $food = $statByDate->first(function ($stat): bool {
                     return 'Eten' === $stat->categorie;
                 });
 

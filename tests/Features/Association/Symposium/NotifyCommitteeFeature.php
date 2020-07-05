@@ -51,7 +51,7 @@ class NotifyCommitteeFeature extends TestCase
 
         Mail::assertSent(
             NotifyCommittee::class,
-            function ($mail) use ($participant) {
+            function ($mail) use ($participant): bool {
                 return $mail->participant == $participant;
             });
     }

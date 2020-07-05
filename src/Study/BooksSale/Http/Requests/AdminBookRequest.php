@@ -12,10 +12,8 @@ class AdminBookRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => ['required', 'min:3', ],
@@ -133,7 +131,7 @@ class AdminBookRequest extends FormRequest
         return (bool)$this->input('sold');
     }
 
-    public function hasBeenPaidOff() : ?bool
+    public function hasBeenPaidOff() : bool
     {
         return  (bool)$this->input('paid_off');
     }

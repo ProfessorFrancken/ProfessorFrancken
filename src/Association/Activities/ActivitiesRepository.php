@@ -24,7 +24,7 @@ final class ActivitiesRepository
             $this->activities[] = new CalendarEvent($event);
         }
 
-        $this->activities = $this->activities->filter(function ($event) {
+        $this->activities = $this->activities->filter(function ($event): bool {
             return $event->status() === 'CONFIRMED';
         });
     }
@@ -36,7 +36,7 @@ final class ActivitiesRepository
 
     public function after(DateTimeImmutable $after, int $amount = 5)
     {
-        return $this->activities->filter(function ($activity) use ($after) {
+        return $this->activities->filter(function ($activity) use ($after): bool {
             return $activity->endDate() > $after;
         })->sortBy(function ($event) {
             return $event->startDate();
@@ -45,7 +45,7 @@ final class ActivitiesRepository
 
     public function between(DateTimeImmutable $after, DateTimeImmutable $before)
     {
-        return $this->activities->filter(function ($activity) use ($after, $before) {
+        return $this->activities->filter(function ($activity) use ($after, $before): bool {
             return $activity->endDate() > $after && $activity->startDate() < $before;
         })->sortBy(function ($event) {
             return $event->startDate();
@@ -54,7 +54,7 @@ final class ActivitiesRepository
 
     public function inMonth(int $year, int $month)
     {
-        return $this->activities->filter(function ($activity) use ($year, $month) {
+        return $this->activities->filter(function ($activity) use ($year, $month): bool {
             return (
                 (int)$activity->startDate()->format('Y') === $year &&
                 (int)$activity->startDate()->format('m') === $month

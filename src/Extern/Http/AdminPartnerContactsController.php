@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Extern\Contact;
 use Francken\Extern\ContactDetails;
 use Francken\Extern\Http\Requests\ContactDetailsRequest;
@@ -34,7 +35,7 @@ final class AdminPartnerContactsController
         ]);
     }
 
-    public function store(ContactRequest $request, ContactDetailsRequest $contactDetailsRequest, Partner $partner)
+    public function store(ContactRequest $request, ContactDetailsRequest $contactDetailsRequest, Partner $partner): RedirectResponse
     {
         $contact = new Contact([
             'firstname' => $request->firstname(),
@@ -82,7 +83,7 @@ final class AdminPartnerContactsController
         ]);
     }
 
-    public function update(ContactRequest $request, ContactDetailsRequest $contactDetailsRequest, Partner $partner, Contact $contact)
+    public function update(ContactRequest $request, ContactDetailsRequest $contactDetailsRequest, Partner $partner, Contact $contact): RedirectResponse
     {
         $contact->update([
             'firstname' => $request->firstname(),
@@ -114,7 +115,7 @@ final class AdminPartnerContactsController
         );
     }
 
-    public function destroy(Partner $partner, Contact $contact)
+    public function destroy(Partner $partner, Contact $contact): RedirectResponse
     {
         $contact->delete();
 

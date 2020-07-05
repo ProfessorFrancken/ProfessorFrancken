@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Extern\Note;
 use Francken\Extern\Partner;
 use Illuminate\Http\Request;
 
 final class AdminPartnerNotesController
 {
-    public function store(Request $request, Partner $partner)
+    public function store(Request $request, Partner $partner): RedirectResponse
     {
         $memberId = $request->user()->member_id;
 

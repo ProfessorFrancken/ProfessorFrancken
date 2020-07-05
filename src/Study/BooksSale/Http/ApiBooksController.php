@@ -8,13 +8,13 @@ use Francken\Study\BooksSale\Book;
 
 final class ApiBooksController
 {
-    public function index()
+    public function index(): array
     {
         $legacy_books = Book::all();
 
         return [
             'books' => $legacy_books->map(
-                function (Book $book) {
+                function (Book $book): array {
                     return [
                         'title' => $book->naam,
                         'author' => $book->auteur,

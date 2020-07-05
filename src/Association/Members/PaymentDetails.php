@@ -63,7 +63,7 @@ final class PaymentDetails
         return $this->deduct_additional_costs;
     }
 
-    public static function fromDb($member)
+    public static function fromDb($member): \Francken\Association\Members\PaymentDetails
     {
         $deduct_additional_costs = $member->streeplijst === 'Afschrijven';
 

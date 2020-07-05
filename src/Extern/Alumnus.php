@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -36,7 +37,7 @@ final class Alumnus extends Model
         return $this->member->full_name;
     }
 
-    public function member()
+    public function member(): BelongsTo
     {
         return $this->belongsTo(LegacyMember::class, 'member_id');
     }

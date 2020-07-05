@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use DateTimeImmutable;
 use Francken\Treasurer\Imports\ImportDeductions;
 use Illuminate\Database\Eloquent\Model;
@@ -93,7 +95,7 @@ final class DeductionEmail extends Model
 
         // We don't have to verify the deduction if  conflicts were found
         $was_verified = $import->errors()
-            ->reject(function (Collection $errors) {
+            ->reject(function (Collection $errors): bool {
                 return $errors->isEmpty();
             })
             ->isEmpty();
@@ -109,7 +111,7 @@ final class DeductionEmail extends Model
         ]);
 
         $deduction_email->deductionToMembers()->createMany(
-            $import->deductions()->map(function (Collection $deduction) {
+            $import->deductions()->map(function (Collection $deduction): array {
                 return [
                     'member_id' => $deduction['member']->id,
                     'description' => $deduction['omschrijving_2'],
@@ -122,19 +124,19 @@ final class DeductionEmail extends Model
         return $deduction_email;
     }
 
-    public function deductionFile()
+    public function deductionFile(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'file_media_id');
     }
 
-    public function deductionToMembers()
+    public function deductionToMembers(): HasMany
     {
         return $this->hasMany(DeductionEmailToMember::class);
     }
 
     public function getTotalAmountAttribute() : float
     {
-        return $this->deductionToMembers->map(function (DeductionEmailToMember $member) {
+        return $this->deductionToMembers->map(function (DeductionEmailToMember $member): int {
             return $member->amount_in_cents;
         })->sum() / 100;
     }

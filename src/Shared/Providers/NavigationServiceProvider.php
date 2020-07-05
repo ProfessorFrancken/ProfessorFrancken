@@ -109,7 +109,7 @@ final class NavigationServiceProvider extends ServiceProvider
             }
 
             $gate = $this->app->make(Gate::class);
-            $view->with('items', array_filter($menu, function ($item) use ($gate) {
+            $view->with('items', array_filter($menu, function ($item) use ($gate): bool {
                 // If no permission rule is set always allow showing the item
                 return ! isset($item['can']) || $gate->allows($item['can']);
             }));
@@ -126,7 +126,7 @@ final class NavigationServiceProvider extends ServiceProvider
         });
     }
 
-    public function associationIcon()
+    public function associationIcon(): string
     {
         $now = (new DateTimeImmutable())
             ->setTimeZone(new DateTimeZone('Europe/Amsterdam'));

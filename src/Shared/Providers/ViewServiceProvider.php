@@ -28,7 +28,7 @@ final class ViewServiceProvider extends ServiceProvider
         );
     }
 
-    public function associationIcon()
+    public function associationIcon(): string
     {
         $now = new DateTimeImmutable();
         $fourOClock = DateTimeImmutable::createFromFormat('H a', '4 pm');

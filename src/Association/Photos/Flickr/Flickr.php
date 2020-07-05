@@ -35,9 +35,8 @@ class Flickr
      * Flickr echo request, for testing purposes.
      *
      * @param  string                   $string
-     * @return Response
      */
-    public function echoThis(string $string)
+    public function echoThis(string $string): Response
     {
         return $this->request('flickr.test.echo', ['this' => $string]);
     }
@@ -46,9 +45,8 @@ class Flickr
      * Get a list of photosets.
      *
      * @param  array|null               $parameters
-     * @return Response
      */
-    public function listSets(?array $parameters = null)
+    public function listSets(?array $parameters = null): Response
     {
         return $this->request('flickr.photosets.getList', $parameters);
     }
@@ -59,9 +57,8 @@ class Flickr
      * @param  string                   $setId
      * @param  string                   $userId
      * @param  array|null               $otherParameters
-     * @return Response
      */
-    public function photosForSet(string $setId, string $userId, ?array $otherParameters = null)
+    public function photosForSet(string $setId, string $userId, ?array $otherParameters = null): Response
     {
         $parameters['photoset_id'] = $setId;
         $parameters['user_id'] = $userId;
@@ -78,9 +75,8 @@ class Flickr
      *
      * @param  string                   $photoId
      * @param  string|null              $secretId
-     * @return Response
      */
-    public function photoInfo(string $photoId, ?string $secretId = null)
+    public function photoInfo(string $photoId, ?string $secretId = null): Response
     {
         $parameters['photo_id'] = $photoId;
 

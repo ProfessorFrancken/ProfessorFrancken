@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Support\Collection;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
 
 final class CommitteesController
 {
-    public function index()
+    public function index(): Collection
     {
         $board = Board::with(['committees.members.member'])
                ->whereNotNull('installed_at')
@@ -20,7 +21,7 @@ final class CommitteesController
         return collect([
             'committees' =>
             $board->committees->flatMap(function (Committee $committee) use ($board) {
-                return $committee->members->map(function (CommitteeMember $member) use ($committee, $board) {
+                return $committee->members->map(function (CommitteeMember $member) use ($committee, $board): array {
                     return [
                         'commissie_id' => $member->committee_id,
                         'lid_id' => $member->member_id,

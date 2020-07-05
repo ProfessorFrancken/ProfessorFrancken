@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Connection;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Http\Request;
@@ -20,13 +21,13 @@ final class OrdersController
         $this->orders = $db->connection('francken-legacy');
     }
 
-    public function index()
+    public function index(): Collection
     {
         return $this->orders->table('transacties')
             ->take(100)
             ->orderBy('tijd', 'DESC')
             ->get()
-            ->map(function ($transactie) {
+            ->map(function ($transactie): array {
                 return [
                     'id' => $transactie->id,
                     'member_id' => $transactie->lid_id,

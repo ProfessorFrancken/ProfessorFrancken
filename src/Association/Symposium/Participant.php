@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -114,12 +116,12 @@ final class Participant extends Model
         $this->save();
     }
 
-    public function symposium()
+    public function symposium(): BelongsTo
     {
         return $this->belongsTo(Symposium::class);
     }
 
-    public function adCount()
+    public function adCount(): HasOne
     {
         return $this->hasOne(AdCount::class);
     }

@@ -62,7 +62,7 @@ final class FileUploader
             ->upload();
     }
 
-    private function generateCoverImageFromPdf(string $pdf_path) : string
+    private function generateCoverImageFromPdf(string $pdf_path) : ?string
     {
         $cover_path = preg_replace('"\.pdf$"', '-cover.png', $pdf_path);
 

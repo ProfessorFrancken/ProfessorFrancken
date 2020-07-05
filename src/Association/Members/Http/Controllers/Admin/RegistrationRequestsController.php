@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http\Controllers\Admin;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Http\Requests\RegistrationRequest;
@@ -62,7 +63,7 @@ final class RegistrationRequestsController extends Controller
         ]);
     }
 
-    public function update(RegistrationRequest $request, Registration $registration)
+    public function update(RegistrationRequest $request, Registration $registration): RedirectResponse
     {
         $registration->personal_details = $request->personalDetails();
         $registration->contact_details = $request->contactDetails();
@@ -78,7 +79,7 @@ final class RegistrationRequestsController extends Controller
             ]);
     }
 
-    public function remove(Registration $registration)
+    public function remove(Registration $registration): RedirectResponse
     {
         $registration->delete();
 
@@ -88,7 +89,7 @@ final class RegistrationRequestsController extends Controller
             ]);
     }
 
-    public function approve(Registration $registration, Clock $clock)
+    public function approve(Registration $registration, Clock $clock): RedirectResponse
     {
         $boardMember = BoardMember::whereMemberId(auth()->user()->member_id)
             ->whereIn('board_member_status', [
@@ -109,7 +110,7 @@ final class RegistrationRequestsController extends Controller
             ]);
     }
 
-    public function sign(Registration $registration, Clock $clock)
+    public function sign(Registration $registration, Clock $clock): RedirectResponse
     {
         $boardMember = BoardMember::whereMemberId(auth()->user()->member_id)
             ->whereIn('board_member_status', [

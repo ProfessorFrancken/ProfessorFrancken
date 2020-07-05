@@ -74,7 +74,7 @@ class EditionTest extends TestCase
     }
 
 
-    protected function createInstance()
+    protected function createInstance(): Edition
     {
         return Edition::publish(
             EditionId::generate(),

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Auth\Http\Controllers\Admin;
 
+use Illuminate\Http\RedirectResponse;
 use Hash;
 use DB;
 use Francken\Association\LegacyMember;
@@ -54,7 +55,7 @@ final class AccountsController
         ]);
     }
 
-    public function store(Request $request, Mailer $mail)
+    public function store(Request $request, Mailer $mail): RedirectResponse
     {
         $member_id = $request->input('member_id');
 

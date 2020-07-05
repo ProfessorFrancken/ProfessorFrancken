@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Francken\Treasurer\Deduction;
 use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\DeductionEmailToMember;
@@ -40,12 +41,12 @@ final class DeductionsController
         ]);
     }
 
-    public function create()
+    public function create(): RedirectResponse
     {
         return redirect()->action([static::class, 'index']);
     }
 
-    public function store(DeductionRequest $request, MediaUploader $uploader)
+    public function store(DeductionRequest $request, MediaUploader $uploader): RedirectResponse
     {
         /** @var Media */
         $deduction_file = $uploader->fromSource($request->deduction())
@@ -73,7 +74,7 @@ final class DeductionsController
         ]);
 
         $members = $deduction->deductionToMembers
-            ->sortBy(function (DeductionEmailToMember $deduction) {
+            ->sortBy(function (DeductionEmailToMember $deduction): string {
                 return $deduction->member->achternaam;
             });
 
@@ -90,7 +91,7 @@ final class DeductionsController
         ]);
     }
 
-    public function update(Request $request, DeductionEmail $deduction) //, MailDeduction $deduction)
+    public function update(Request $request, DeductionEmail $deduction): RedirectResponse //, MailDeduction $deduction)
     {
         if ($request->input('action', '') === 'resolve-conflict') {
             $deduction->update(['was_verified' => true]);
@@ -118,7 +119,7 @@ final class DeductionsController
             $deduction->deductionFile->disk
         );
 
-        return $import->errors()->reject(function (Collection $errors) {
+        return $import->errors()->reject(function (Collection $errors): bool {
             return $errors->isEmpty();
         });
     }
