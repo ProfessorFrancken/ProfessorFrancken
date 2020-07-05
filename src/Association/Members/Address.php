@@ -7,8 +7,11 @@ namespace Francken\Association\Members;
 final class Address
 {
     private string $city;
+    
     private string $postalCode;
+
     private string $address;
+
     private string $country;
 
     public function __construct(

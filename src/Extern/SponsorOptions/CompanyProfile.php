@@ -10,13 +10,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class CompanyProfile extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_company_profiles';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'display_name',
         'is_enabled',
         'source_content',
         'compiled_content',
     ];
+
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'is_enabled' => 'boolean',
     ];

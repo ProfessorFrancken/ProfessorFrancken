@@ -9,6 +9,7 @@ use Webmozart\Assert\Assert;
 final class Fullname
 {
     private string $firstname;
+
     private string $surname;
 
     private function __construct(string $firstname, string $surname)

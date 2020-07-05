@@ -10,6 +10,9 @@ use Illuminate\Foundation\Testing\TestCase;
 
 abstract class LaravelTestCase extends TestCase
 {
+    /**
+     * @var string[]|null[]
+     */
     public array $connectionsToTransact = [null, 'francken-legacy'];
 
     /**

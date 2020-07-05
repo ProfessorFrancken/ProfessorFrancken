@@ -7,8 +7,10 @@ namespace Francken\Lustrum;
 use DateTimeImmutable;
 use DB;
 use Francken\Association\LegacyMember;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Lustrum\PirateCrew
@@ -18,13 +20,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $slug
  * @property string $logo
  * @property int $total_points
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Lustrum\Pirate[] $crewMembers
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Pirate[] $crewMembers
  * @property-read int|null $crew_members_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Lustrum\EarnedAdtchievement[] $earnedAdtchievements
+ * @property-read Collection|EarnedAdtchievement[] $earnedAdtchievements
  * @property-read int|null $earned_adtchievements_count
- * @property-read \Francken\Lustrum\Pirate|null $pirate_of_the_day
+ * @property-read Pirate|null $pirate_of_the_day
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\PirateCrew query()
@@ -39,8 +41,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 final class PirateCrew extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'lustrum_pirate_crews';
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'slug',

@@ -13,7 +13,10 @@ use PHPUnit\Framework\TestCase as TestCase;
 
 class VolumeTest extends TestCase
 {
-    private array $editions;
+    /**
+     * @var Edition[]
+     */
+    private array $editions = [];
 
     protected function setUp() : void
     {

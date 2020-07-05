@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Association\Symposium\Participant
@@ -27,17 +30,17 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $iban
  * @property bool $has_registration
  * @property bool $has_paid
- * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $email_verified_at
+ * @property Carbon|null $deleted_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property bool $is_spam
  * @property bool $received_information_mail
- * @property-read \Francken\Association\Symposium\AdCount $adCount
+ * @property-read AdCount $adCount
  * @property-read mixed $full_name
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \Francken\Association\Symposium\Symposium $symposium
+ * @property-read Symposium $symposium
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Participant newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Participant newQuery()
@@ -72,8 +75,14 @@ final class Participant extends Model
     use Notifiable;
     use SoftDeletes;
 
+    /**
+     * @var string
+     */
     protected $table = 'association_symposium_participants';
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'received_information_mail' => 'boolean',
         "is_francken_member" => 'boolean',
@@ -85,6 +94,9 @@ final class Participant extends Model
         'email_verified_at' => 'date',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'firstname',
         'lastname',
@@ -103,6 +115,9 @@ final class Participant extends Model
         'received_information_mail',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $dates = ['email_verified_at'];
 
     public function getFullNameAttribute() : string

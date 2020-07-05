@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 final class ContactDetails extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_contact_details';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'email',
         'phone_number',

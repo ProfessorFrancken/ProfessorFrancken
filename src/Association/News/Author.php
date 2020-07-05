@@ -10,6 +10,7 @@ use Francken\Association\Boards\Board;
 final class Author
 {
     private ?string $name = null;
+
     private ?string $photo = null;
 
     public function __construct(?string $name = '', ?string $photo = '')

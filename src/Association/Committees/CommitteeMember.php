@@ -10,7 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class CommitteeMember extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'association_committee_members';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'committee_id',
         'member_id',
@@ -18,7 +25,15 @@ final class CommitteeMember extends Model
         'installed_at',
         'decharged_at',
     ];
+
+    /**
+     * @var string[]
+     */
     protected $touches = ['committee'];
+
+    /**
+     * @var string[]
+     */
     protected $dates = [
         'installed_at',
         'decharged_at',

@@ -10,7 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Vacancy extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_vacancies';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'title',
         'description',

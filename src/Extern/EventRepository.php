@@ -8,8 +8,15 @@ use Francken\Shared\AcademicYear;
 
 final class EventRepository
 {
-    private array $plannedEvents;
-    private array $pastEvents;
+    /**
+     * @var mixed[]
+     */
+    private array $plannedEvents = [];
+
+    /**
+     * @var mixed[]
+     */
+    private array $pastEvents = [];
 
     public function __construct(array $plannedEvents, array $pastEvents)
     {

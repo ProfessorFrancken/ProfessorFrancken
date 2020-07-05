@@ -19,12 +19,23 @@ final class Footer extends Model
      */
     public const PARTNER_FOOTER_LOGO_TAG = 'partner_footer_logo';
 
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_footers';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'is_enabled',
         'referral_url',
         'logo_media_id',
     ];
+
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'is_enabled' => 'boolean',
     ];

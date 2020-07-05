@@ -8,6 +8,8 @@ final class BoardMemberWasDischarged
 {
     private int $board_id;
 
+    
+    
     private int $member_id;
 
 

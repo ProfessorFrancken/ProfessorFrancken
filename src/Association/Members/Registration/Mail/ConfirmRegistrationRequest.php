@@ -14,6 +14,7 @@ class ConfirmRegistrationRequest extends Mailable
 {
     use Queueable;
     use SerializesModels;
+
     public Registration $registration;
 
     /**

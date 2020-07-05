@@ -5,7 +5,7 @@
 parameters:
    auto_import_names: true
    import_short_classes: true
-   import_doc_blocks: false
+   import_doc_blocks: true
    paths:
         - 'src'
         - 'tests'

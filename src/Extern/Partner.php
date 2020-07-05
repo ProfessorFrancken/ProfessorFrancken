@@ -25,7 +25,14 @@ final class Partner extends Model
      */
     public const PARTNER_LOGO_TAG = 'partner_logo';
 
+    /**
+     * @var string
+     */
     protected $table = 'extern_partners';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'sector_id',

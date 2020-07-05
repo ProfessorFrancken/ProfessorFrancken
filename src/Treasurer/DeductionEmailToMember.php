@@ -7,6 +7,7 @@ namespace Francken\Treasurer;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Treasurer\DeductionEmailToMember
@@ -17,11 +18,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $description
  * @property int $amount_in_cents
  * @property int $contained_errors
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Francken\Treasurer\DeductionEmail $deduction
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read DeductionEmail $deduction
  * @property-read mixed $amount
- * @property-read \Francken\Association\LegacyMember $member
+ * @property-read LegacyMember $member
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmailToMember newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmailToMember newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmailToMember query()
@@ -37,13 +38,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 final class DeductionEmailToMember extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'treasurer_deduction_email_to_members';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'member_id',
         'description',
         'amount_in_cents',
         'contained_errors',
     ];
+
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'amount_in_cents' => 'int',
         'contained_errors' => 'int',

@@ -18,7 +18,9 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustomCsvSettings
 {
     private ?DeductionEmail $deduction = null;
+
     private Collection $deductions;
+
     private Collection $errors;
 
     public function __construct(?DeductionEmail $deduction = null)

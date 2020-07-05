@@ -5,23 +5,25 @@ declare(strict_types=1);
 namespace Francken\Association\Symposium;
 
 use Francken\Shared\Email;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Association\Symposium\Symposium
  *
  * @property int $id
- * @property \Illuminate\Support\Carbon $start_date
- * @property \Illuminate\Support\Carbon $end_date
+ * @property Carbon $start_date
+ * @property Carbon $end_date
  * @property string $name
  * @property string $location
  * @property string $website_url
  * @property int $open_for_registration
  * @property int $promote_on_agenda
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Association\Symposium\Participant[] $participants
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Participant[] $participants
  * @property-read int|null $participants_count
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\Symposium newQuery()
@@ -40,7 +42,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 final class Symposium extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'association_symposia';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'location',
@@ -51,6 +60,9 @@ final class Symposium extends Model
         'promote_on_agenda'
     ];
 
+    /**
+     * @var string[]
+     */
     protected $dates = [
         'start_date',
         'end_date'

@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Francken\Lustrum;
 
 use DateTimeImmutable;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Lustrum\Adtchievement
@@ -19,9 +21,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int $is_repeatable
  * @property int $is_team_effort
  * @property int $is_hidden
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Lustrum\Pirate[] $earnedBy
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Pirate[] $earnedBy
  * @property-read int|null $earned_by_count
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement earnedByPirateCrew(\Francken\Lustrum\PirateCrew $crew)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement newModelQuery()
@@ -41,8 +43,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 final class Adtchievement extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'lustrum_adtchievements';
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'title',
         'description',

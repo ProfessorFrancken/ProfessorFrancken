@@ -7,7 +7,9 @@ namespace Francken\Association\Members;
 final class PaymentDetails
 {
     private ?string $iban = null;
+
     private ?string $bic = null;
+
     private bool $deduct_additional_costs = false;
 
     /**

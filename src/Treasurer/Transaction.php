@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Treasurer;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Treasurer\Transaction
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $aantal
  * @property float $prijs
  * @property float $totaalprijs
- * @property \Illuminate\Support\Carbon $tijd
+ * @property Carbon $tijd
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Transaction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Transaction newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Transaction query()
@@ -30,10 +31,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 final class Transaction extends Model
 {
+    /**
+     * @var bool
+     */
     public $timestamps = true;
+
+    /**
+     * @var string
+     */
     protected $table = 'transacties';
+
+    /**
+     * @var string
+     */
     protected $connection = 'francken-legacy';
+
+    /**
+     * @var string[]
+     */
     protected $dates = ['tijd'];
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         "id",
         "lid_id",

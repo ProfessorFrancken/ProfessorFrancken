@@ -6,13 +6,14 @@ namespace Francken\Auth;
 
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 final class GateThatAllowsGuestsInCallables extends Gate implements GateContract
 {
     /**
      * Resolve and call the appropriate authorization callback.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|null  $user
+     * @param  Authenticatable|null  $user
      * @param  string  $ability
      */
     protected function callAuthCallback($user, $ability, array $arguments) : bool

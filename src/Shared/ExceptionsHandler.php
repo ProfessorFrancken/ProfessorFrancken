@@ -9,6 +9,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler;
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -42,7 +43,7 @@ class ExceptionsHandler extends Handler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      */
     public function render($request, Throwable $e) : Response
     {
@@ -52,7 +53,7 @@ class ExceptionsHandler extends Handler
     /**
      * Overwrite the whoopsHandler so that we can use the new ignition error handler
      *
-     * @return \Whoops\Handler\HandlerInterface
+     * @return HandlerInterface
      */
     protected function whoopsHandler()
     {

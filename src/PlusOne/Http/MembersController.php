@@ -13,6 +13,7 @@ use Illuminate\Support\Collection;
 final class MembersController
 {
     private Builder $members;
+    
     private ConnectionInterface $db;
 
     public function __construct(ConnectionResolverInterface $db)

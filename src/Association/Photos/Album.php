@@ -5,16 +5,18 @@ declare(strict_types=1);
 namespace Francken\Association\Photos;
 
 use Francken\Association\Photos\Http\Controllers\PhotosController;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Association\Photos\Album
  *
  * @property int $id
- * @property \Illuminate\Support\Carbon $published_at
- * @property \Illuminate\Support\Carbon $activity_date
+ * @property Carbon $published_at
+ * @property Carbon $activity_date
  * @property string $title
  * @property string $description
  * @property string $slug
@@ -23,10 +25,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $cover_photo
  * @property int $views
  * @property int $amount_of_photos
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Francken\Association\Photos\Photo $coverPhoto
- * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Association\Photos\Photo[] $photos
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Photo $coverPhoto
+ * @property-read Collection|Photo[] $photos
  * @property-read int|null $photos_count
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Album newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Album newQuery()
@@ -48,6 +50,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 final class Album extends Model
 {
+    /**
+     * @var string[]
+     */
     protected $dates = [
         'created_at',
         'updated_at',

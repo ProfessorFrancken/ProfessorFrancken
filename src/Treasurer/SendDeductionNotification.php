@@ -12,6 +12,10 @@ class SendDeductionNotification extends Mailable
 {
     use Queueable;
     use SerializesModels;
+
+    /**
+     * @var string
+     */
     public $theme = 'francken';
 
     private int $deduction_member_id;

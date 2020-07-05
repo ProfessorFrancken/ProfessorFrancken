@@ -7,7 +7,9 @@ namespace Francken\Association\Members;
 final class ContactDetails
 {
     private Email $email;
+    
     private ?Address $address = null;
+
     private ?string $phoneNumber = null;
 
     public function __construct(Email $email, ?Address $address, ?string $phoneNumber)

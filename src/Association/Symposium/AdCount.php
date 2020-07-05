@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Symposium;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Association\Symposium\AdCount
@@ -14,8 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $symposium_id
  * @property string $name
  * @property int $consumed
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\AdCount newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\AdCount newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Symposium\AdCount query()
@@ -30,7 +31,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 final class AdCount extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'association_symposium_ad_counts';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'symposium_id',
         'participant_id',

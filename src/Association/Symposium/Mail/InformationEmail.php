@@ -13,8 +13,12 @@ class InformationEmail extends Mailable
 {
     use Queueable;
     use SerializesModels;
+    
     public Participant $participant;
 
+    /**
+     * @var string
+     */
     public $theme = 'symposium';
 
     /**

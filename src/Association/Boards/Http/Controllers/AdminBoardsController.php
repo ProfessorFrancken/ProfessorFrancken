@@ -20,6 +20,7 @@ final class AdminBoardsController
     public const PHOTO_POSITIONS = [
         '', 'NorthWest', 'North', 'NorthEast', 'West', 'Center', 'East', 'SouthWest', 'South', 'SouthEast'
     ];
+
     private MediaUploader $uploader;
 
     public function __construct(MediaUploader $uploader)

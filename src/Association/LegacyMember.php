@@ -6,6 +6,7 @@ namespace Francken\Association;
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -54,8 +55,8 @@ use Illuminate\Support\Collection;
  * @property int|null $mailinglist_franckenvrij
  * @property int|null $erelid
  * @property string|null $notities
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property string|null $deleted_at
  * @property-read mixed $full_name
  * @property-read mixed $surname
@@ -112,8 +113,19 @@ use Illuminate\Support\Collection;
  */
 final class LegacyMember extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'leden';
+
+    /**
+     * @var string
+     */
     protected $connection = 'francken-legacy';
+
+    /**
+     * @var mixed[]
+     */
     protected $guarded = [];
 
     public function getFullNameAttribute() : string

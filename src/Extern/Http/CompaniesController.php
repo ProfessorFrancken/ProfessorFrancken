@@ -13,6 +13,7 @@ use Illuminate\View\View;
 final class CompaniesController
 {
     private CompanyRepository $companies;
+
     private JobOpeningRepository $jobs;
 
     public function __construct(CompanyRepository $companies, JobOpeningRepository $jobs)

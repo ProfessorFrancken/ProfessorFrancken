@@ -7,10 +7,15 @@ namespace Francken\Association\Members;
 final class PersonalDetails
 {
     private Fullname $fullname;
+    
     private string $initials;
+    
     private Gender $gender;
+    
     private Birthdate $birthdate;
+
     private string $nationality;
+
     private bool $has_dutch_diploma;
 
     public function __construct(

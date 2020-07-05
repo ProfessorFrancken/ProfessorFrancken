@@ -28,6 +28,7 @@ final class SynchronizeFlickrAlbums extends Command
     protected $description = 'Fetch and store all albums from Flickr';
 
     private FlickrRepository $flickr_repo;
+
     private ConnectionInterface $db;
 
     /**

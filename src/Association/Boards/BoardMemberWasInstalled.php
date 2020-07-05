@@ -10,7 +10,6 @@ final class BoardMemberWasInstalled
 
     private int $member_id;
 
-
     public function __construct(int $board_id, int $member_id)
     {
         $this->board_id = $board_id;

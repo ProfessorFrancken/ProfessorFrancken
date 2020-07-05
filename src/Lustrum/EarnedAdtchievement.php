@@ -6,6 +6,7 @@ namespace Francken\Lustrum;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Lustrum\EarnedAdtchievement
@@ -16,11 +17,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $pirate_id
  * @property int $points
  * @property string|null $reason
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Francken\Lustrum\Adtchievement $adtchievement
- * @property-read \Francken\Lustrum\Pirate $pirate
- * @property-read \Francken\Lustrum\PirateCrew $pirateCrew
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Adtchievement $adtchievement
+ * @property-read Pirate $pirate
+ * @property-read PirateCrew $pirateCrew
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\EarnedAdtchievement newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\EarnedAdtchievement newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\EarnedAdtchievement query()
@@ -36,8 +37,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 final class EarnedAdtchievement extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'lustrum_pirate_adtchievements';
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'points',
         'pirate_crew_id',

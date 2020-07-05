@@ -21,6 +21,7 @@ use Francken\Association\Members\Study;
 use Francken\Association\Members\StudyDetails;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Association\Members\Registration\Registration
@@ -33,7 +34,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed $birthdate
  * @property bool $has_dutch_diploma
  * @property string $nationality
- * @property \Francken\Association\Members\Email $email
+ * @property Email $email
  * @property string|null $city
  * @property string|null $address
  * @property string|null $postal_code
@@ -50,12 +51,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed|null $registration_accepted_at
  * @property mixed|null $registration_form_signed_at
  * @property int|null $member_id
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Francken\Association\Members\Fullname $fullname
- * @property-read \Francken\Association\Members\Study|null $most_recent_study
- * @property \Francken\Association\Members\PaymentDetails $payment_details
+ * @property Carbon|null $deleted_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Fullname $fullname
+ * @property-read Study|null $most_recent_study
+ * @property PaymentDetails $payment_details
  * @property-read array $study_graduation_date
  * @property-read array $study_name
  * @property-read array $study_starting_date
@@ -102,8 +103,14 @@ final class Registration extends Model
 {
     use SoftDeletes;
 
+    /**
+     * @var string
+     */
     protected $table = 'members_registrations';
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'email_verified_at' => 'datetime:Y-m-d',
         'registration_accepted_at' => 'datetime:Y-m-d',

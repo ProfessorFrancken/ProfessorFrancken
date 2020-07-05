@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace Francken\Treasurer;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use League\Period\Period;
 
 /**
  * Francken\Treasurer\Deduction
  *
  * @property int $id
- * @property \Illuminate\Support\Carbon $tijd
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property Carbon $tijd
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property-read mixed $period
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\Deduction newQuery()
@@ -26,10 +27,29 @@ use League\Period\Period;
  */
 final class Deduction extends Model
 {
+    /**
+     * @var bool
+     */
     public $timestamps = true;
+
+    /**
+     * @var string
+     */
     protected $table = 'afschrijvingen';
+
+    /**
+     * @var string
+     */
     protected $connection = 'francken-legacy';
+
+    /**
+     * @var string[]
+     */
     protected $dates = ['tijd'];
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'id', 'tijd', 'created_at', 'updated_at'
     ];

@@ -14,10 +14,15 @@ use Sabre\VObject\Component\VEvent;
 final class CalendarEvent
 {
     private string $summary;
+
     private string $description;
+
     private string $location;
+
     private DateTimeImmutable $start;
+   
     private DateTimeImmutable $end;
+
     private string $status;
 
     public function __construct(VEvent $event)

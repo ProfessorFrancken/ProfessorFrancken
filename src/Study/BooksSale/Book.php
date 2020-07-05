@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $link
  * @property int|null $afgerekend
  * @property int|null $verkocht
- * @property-read \Francken\Study\BooksSale\BookBuyer|null $buyer
+ * @property-read BookBuyer|null $buyer
  * @property-read mixed $author
  * @property-read mixed $cover_path
  * @property-read mixed $description
@@ -40,7 +40,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read mixed $sale_date
  * @property-read mixed $sold
  * @property-read mixed $title
- * @property-read \Francken\Study\BooksSale\BookSeller|null $seller
+ * @property-read BookSeller|null $seller
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Study\BooksSale\Book query()
@@ -64,7 +64,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 final class Book extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'study_booksale_books';
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'title',
         'edition',
@@ -84,6 +90,9 @@ final class Book extends Model
         'paid_off',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $dates = [
         'taken_in_from_seller_at',
         'taken_in_by_buyer_at',

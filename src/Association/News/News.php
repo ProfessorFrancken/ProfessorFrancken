@@ -7,6 +7,7 @@ namespace Francken\Association\News;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use League\Period\Period;
 
@@ -22,9 +23,9 @@ use League\Period\Period;
  * @property string $author_name
  * @property string $author_photo
  * @property array $related_news_items
- * @property \Illuminate\Support\Carbon|null $published_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $published_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News byLink($slug)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News inPeriod(\League\Period\Period $period = null)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News newModelQuery()
@@ -49,6 +50,9 @@ use League\Period\Period;
  */
 final class News extends Model
 {
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'title',
         'slug',
@@ -61,10 +65,16 @@ final class News extends Model
         'related_news_items',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'related_news_items' => 'array',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $dates = [
         'created_at',
         'updated_at',
@@ -160,7 +170,7 @@ final class News extends Model
     /**
      * Scope a query to only include news published in a given period
      *
-     * @param \League\Period\Period $period
+     * @param Period $period
      */
     public function scopeInPeriod(Builder $query, Period $period = null) : Builder
     {

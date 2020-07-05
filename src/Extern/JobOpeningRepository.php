@@ -8,7 +8,10 @@ use Illuminate\Support\Str;
 
 final class JobOpeningRepository
 {
-    private array $jobs;
+    /**
+     * @var mixed[]
+     */
+    private array $jobs = [];
 
     public function __construct(array $jobs = [])
     {

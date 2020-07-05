@@ -21,7 +21,13 @@ final class Contact extends Model
      */
     public const CONTACT_PHOTO_TAG = 'partner_contact_photo';
 
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_contacts';
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'firstname',
         'surname',

@@ -10,7 +10,10 @@ use League\CommonMark\CommonMarkConverter;
 
 final class CompanyRepository
 {
-    private array $companies;
+    /**
+     * @var mixed[]
+     */
+    private array $companies = [];
 
     public function __construct(array $companies)
     {

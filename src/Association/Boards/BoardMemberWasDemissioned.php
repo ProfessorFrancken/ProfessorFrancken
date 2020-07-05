@@ -7,9 +7,8 @@ namespace Francken\Association\Boards;
 final class BoardMemberWasDemissioned
 {
     private int $board_id;
-
+   
     private int $member_id;
-
 
     public function __construct(int $board_id, int $member_id)
     {

@@ -14,6 +14,10 @@ class NotifyAboutAccountActivation extends Mailable
 {
     use Queueable;
     use SerializesModels;
+
+    /**
+     * @var string
+     */
     public $theme = 'francken';
 
     private int $account_id;

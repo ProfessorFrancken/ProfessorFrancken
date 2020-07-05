@@ -9,8 +9,15 @@ use InvalidArgumentException;
 final class Volume
 {
     private int $volume;
-    private array $editions;
 
+    /**
+     * @var Edition[]
+     */
+    private array $editions = [];
+
+    /**
+     * @var array<Edition>
+     */
     public function __construct(int $volume, array $editions)
     {
         $this->volume = $volume;
@@ -27,7 +34,7 @@ final class Volume
         return $this->editions;
     }
 
-    private function setEditions(...$editions) : void
+    private function setEditions(Edition ...$editions) : void
     {
         foreach ($editions as $edition) {
             if ($edition->volume() !== $this->volume) {

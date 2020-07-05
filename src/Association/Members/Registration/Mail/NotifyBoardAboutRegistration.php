@@ -14,7 +14,9 @@ class NotifyBoardAboutRegistration extends Mailable
 {
     use Queueable;
     use SerializesModels;
+    
     public Registration $registration;
+
     /**
      * Create a new message instance.
      *

@@ -7,7 +7,11 @@ namespace Francken\Association\Members;
 final class StudyDetails
 {
     private string $studentNumber;
-    private array $studies;
+
+    /**
+     * @var mixed[]
+     */
+    private array $studies = [];
 
     public function __construct(
         string $studentNumber,

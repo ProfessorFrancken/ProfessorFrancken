@@ -9,7 +9,10 @@ use DateTimeImmutable;
 final class Student
 {
     private StudentNumber $studentNumber;
-    private array $studies;
+    /**
+     * @var mixed[]
+     */
+    private array $studies = [];
 
     public function __construct(StudentNumber $studentNumber, array $studies)
     {

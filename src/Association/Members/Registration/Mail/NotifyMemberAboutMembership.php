@@ -20,6 +20,7 @@ class NotifyMemberAboutMembership extends Mailable
 {
     use Queueable;
     use SerializesModels;
+    
     public Registration $registration;
 
     /**

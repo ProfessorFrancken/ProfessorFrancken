@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Study\BooksSale;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Association\LegacyMember
@@ -52,8 +53,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $mailinglist_franckenvrij
  * @property int|null $erelid
  * @property string|null $notities
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property string|null $deleted_at
  * @property-read mixed $full_name
  * @property-read mixed $surname
@@ -110,7 +111,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 final class BookBuyer extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'leden';
+
+    /**
+     * @var string
+     */
     protected $connection = 'francken-legacy';
     public function getFullNameAttribute() : string
     {

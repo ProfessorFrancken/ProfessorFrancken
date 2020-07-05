@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 final class Sector extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_sectors';
 }

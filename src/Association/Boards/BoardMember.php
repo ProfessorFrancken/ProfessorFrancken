@@ -6,8 +6,10 @@ namespace Francken\Association\Boards;
 
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 use Webmozart\Assert\Assert;
@@ -24,15 +26,15 @@ use Webmozart\Assert\Assert;
  * @property mixed $installed_at
  * @property mixed|null $demissioned_at
  * @property mixed|null $decharged_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property int|null $photo_media_id
- * @property-read \Francken\Association\Boards\Board $board
+ * @property-read Board $board
  * @property-read mixed $full_name
  * @property-read mixed $photo
- * @property-read \Illuminate\Database\Eloquent\Collection|\Plank\Mediable\Media[] $media
+ * @property-read Collection|Media[] $media
  * @property-read int|null $media_count
- * @property-read \Francken\Association\LegacyMember|null $member
+ * @property-read LegacyMember|null $member
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember query()
@@ -65,8 +67,14 @@ final class BoardMember extends Model
      * @var string
      */
     private const BOARD_MEMBER_PHOTO_TAG =  'board_member_photo';
+    /**
+     * @var string
+     */
     protected $table = 'association_board_members';
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'board_id',
         'member_id',
@@ -81,6 +89,9 @@ final class BoardMember extends Model
         'photo_media_id',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'board_id' => 'integer',
         'installed_at' => 'date:Y-m-d',
@@ -88,6 +99,9 @@ final class BoardMember extends Model
         'decharged_at' => 'date:Y-m-d',
     ];
 
+    /**
+     * @var mixed[]
+     */
     protected $dates = [
     ];
 

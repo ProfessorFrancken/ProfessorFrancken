@@ -10,7 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Note extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_notes';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'note',
         'member_id',

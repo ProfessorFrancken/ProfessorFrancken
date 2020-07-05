@@ -9,7 +9,9 @@ use DateTimeImmutable;
 final class Study
 {
     private string $study;
+
     private DateTimeImmutable $startDate;
+
     private ?DateTimeImmutable $graduationDate = null;
 
     public function __construct(

@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Francken\Lustrum;
 
 use Francken\Association\LegacyMember;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Lustrum\Pirate
@@ -18,10 +20,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $name
  * @property string $title
  * @property int $earned_points
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Francken\Lustrum\PirateCrew $crew
- * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Lustrum\EarnedAdtchievement[] $earnedAdtchievements
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read PirateCrew $crew
+ * @property-read Collection|EarnedAdtchievement[] $earnedAdtchievements
  * @property-read int|null $earned_adtchievements_count
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Pirate newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Pirate newQuery()
@@ -38,8 +40,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 final class Pirate extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'lustrum_pirates';
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'pirate_crew_id',
         'member_id',

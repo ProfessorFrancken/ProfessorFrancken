@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Treasurer;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Francken\Treasurer\MailDeduction
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int|null $aantalleden
  * @property string|null $bestand
- * @property \Illuminate\Support\Carbon|null $datum
+ * @property Carbon|null $datum
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\MailDeduction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\MailDeduction newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\MailDeduction query()
@@ -24,10 +25,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 final class MailDeduction extends Model
 {
+    /**
+     * @var bool
+     */
     public $timestamps = false;
+
+    /**
+     * @var string
+     */
     protected $table = 'afschrijvingen_mail';
+
+    /**
+     * @var string
+     */
     protected $connection = 'francken-legacy';
+
+    /**
+     * @var string[]
+     */
     protected $dates = ['datum'];
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'id', 'aantal_leden', 'bestand', 'datum'
     ];

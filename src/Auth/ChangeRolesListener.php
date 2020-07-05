@@ -61,7 +61,7 @@ final class ChangeRolesListener
 
         $this->assignRolesForActiveCommittees($account);
 
-        /** @var \Illuminate\Support\Collection */
+        /** @var Collection */
         $as_board_members = BoardMember::where(
             'member_id', '=', (int)$account->member_id
         )->get();

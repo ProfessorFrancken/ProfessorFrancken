@@ -10,6 +10,9 @@ use Laravel\BrowserKitTesting\TestCase as LaravelTestCase;
 
 abstract class TestCase extends LaravelTestCase
 {
+    /**
+     * @var string[]|null[]
+     */
     public array $connectionsToTransact = [null, 'francken-legacy'];
 
     /**

@@ -11,8 +11,9 @@ use Illuminate\Queue\SerializesModels;
 final class RegistrationWasApproved
 {
     use SerializesModels;
-
+   
     public Registration $registration;
+    
     public BoardMember $boardMember;
 
     public function __construct(Registration $registration, BoardMember $boardMember)

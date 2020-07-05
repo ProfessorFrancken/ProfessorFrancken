@@ -28,7 +28,14 @@ final class Committee extends Model
      */
     public const COMMITEE_PHOTO_TAG = 'committee_photo';
 
+    /**
+     * @var string
+     */
+
     protected $table = 'association_committees';
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'board_id',
         'parent_committee_id',

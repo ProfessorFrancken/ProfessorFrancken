@@ -13,7 +13,14 @@ final class Alumnus extends Model
 {
     use SoftDeletes;
 
+    /**
+     * @var string
+     */
     protected $table = 'extern_partner_alumni';
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'member_id',
         'position',
@@ -21,6 +28,10 @@ final class Alumnus extends Model
         'stopped_position_at',
         'notes'
     ];
+
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'member_id' => 'int',
         'started_position_at' => 'datetime:Y-m-d',

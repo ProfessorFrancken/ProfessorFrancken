@@ -10,6 +10,9 @@ use Illuminate\View\View;
 
 final class ResearchGroupsController
 {
+    /**
+     * @var string[][][][]|string[][]
+     */
     private array $groups;
 
     public function __construct()

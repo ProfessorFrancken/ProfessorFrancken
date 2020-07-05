@@ -6,16 +6,20 @@ namespace Francken\Association\Activities;
 
 use DateTimeImmutable;
 use Illuminate\Support\Collection;
+use Sabre\VObject\Component\VCalendar;
 use Sabre\VObject\Reader;
 
 final class ActivitiesRepository
 {
+    /**
+     * @var Collection|CalendarEvent[]
+     */
     private $activities;
 
     public function __construct($calendar)
     {
         $this->activities = new Collection();
-        /** @var \Sabre\VObject\Component\VCalendar $vcalendar */
+        /** @var VCalendar $vcalendar */
         $vcalendar = Reader::read(
             $calendar
         );

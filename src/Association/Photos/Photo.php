@@ -6,6 +6,7 @@ namespace Francken\Association\Photos;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
@@ -24,9 +25,9 @@ use Illuminate\Support\Str;
  * @property string $taken_at
  * @property int $latitude
  * @property int $longitude
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Francken\Association\Photos\Album $album
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Album $album
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo query()

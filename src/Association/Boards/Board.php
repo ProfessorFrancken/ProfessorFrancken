@@ -9,9 +9,11 @@ use Francken\Association\Committees\Committee;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
+use Plank\Mediable\MediableCollection;
 use Webmozart\Assert\Assert;
 
 /**
@@ -20,18 +22,18 @@ use Webmozart\Assert\Assert;
  * @property int $id
  * @property string|null $name
  * @property string $photo_position
- * @property \Illuminate\Support\Carbon $installed_at
- * @property \Illuminate\Support\Carbon|null $demissioned_at
- * @property \Illuminate\Support\Carbon|null $decharged_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon $installed_at
+ * @property Carbon|null $demissioned_at
+ * @property Carbon|null $decharged_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property int|null $photo_media_id
  * @property mixed $board_name
  * @property-read mixed $board_year
  * @property-read mixed $photo
- * @property-read \Illuminate\Database\Eloquent\Collection|\Plank\Mediable\Media[] $media
+ * @property-read \Illuminate\Database\Eloquent\Collection|Media[] $media
  * @property-read int|null $media_count
- * @property-read \Plank\Mediable\MediableCollection|\Francken\Association\Boards\BoardMember[] $members
+ * @property-read MediableCollection|BoardMember[] $members
  * @property-read int|null $members_count
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board newQuery()
@@ -63,7 +65,13 @@ final class Board extends Model
      */
     private const BOARD_PHOTO_TAG = 'board_photo';
 
+    /**
+     * @var string
+     */
     protected $table = 'association_boards';
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'name',
         'photo_position',
@@ -77,6 +85,9 @@ final class Board extends Model
         'photo_media_id',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $dates = [
         'installed_at',
         'demissioned_at',

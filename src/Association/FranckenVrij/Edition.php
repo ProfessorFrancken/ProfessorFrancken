@@ -33,8 +33,19 @@ use Webmozart\Assert\Assert;
  */
 final class Edition extends Model
 {
+    /**
+     * @var bool
+     */
     public $timestamps = false;
+
+    /**
+     * @var bool
+     */
     public $incrementing = false;
+
+    /**
+     * @var string
+     */
     protected $table = 'francken_vrij';
 
     /**
@@ -44,6 +55,9 @@ final class Edition extends Model
      */
     protected $keyType = 'string';
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'id',
         'title',
