@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16620db4420369b513c00cc91466c5f9",
+    "content-hash": "eb9d826fa5baf5bd9420da2b11f81e4b",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -7661,6 +7661,136 @@
                 "source": "https://github.com/beyondcode/laravel-dump-server/tree/master"
             },
             "time": "2020-03-04T15:23:26+00:00"
+        },
+        {
+            "name": "christophrumpel/laravel-command-file-picker",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/christophrumpel/laravel-command-file-picker.git",
+                "reference": "5ac5402b14016229efa0e605abd628eaf36316c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/christophrumpel/laravel-command-file-picker/zipball/5ac5402b14016229efa0e605abd628eaf36316c8",
+                "reference": "5ac5402b14016229efa0e605abd628eaf36316c8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0|^7.0",
+                "laravel/framework": "^6.0|^7.0",
+                "nikic/php-parser": "^4.3",
+                "php": "^7.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "orchestra/testbench": "^4.0|^5.0",
+                "phpunit/phpunit": "^8.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Christophrumpel\\LaravelCommandFilePicker\\LaravelCommandFilePickerServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelCommandFilePicker": "Christophrumpel\\LaravelCommandFilePicker\\LaravelCommandFilePickerFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Christophrumpel\\LaravelCommandFilePicker\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Rumpel",
+                    "email": "christoph@christoph-rumpel.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package lets a user pick a file or class from a list during a Laravel command.",
+            "homepage": "https://github.com/christophrumpel/laravel-command-file-picker",
+            "keywords": [
+                "christophrumpel",
+                "laravel-command-file-picker"
+            ],
+            "support": {
+                "issues": "https://github.com/christophrumpel/laravel-command-file-picker/issues",
+                "source": "https://github.com/christophrumpel/laravel-command-file-picker/tree/v0.0.10"
+            },
+            "time": "2020-03-27T15:03:44+00:00"
+        },
+        {
+            "name": "christophrumpel/laravel-factories-reloaded",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/christophrumpel/laravel-factories-reloaded.git",
+                "reference": "bd4fdfc7b96dd4edd6c83d329019ecadb1656e67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/christophrumpel/laravel-factories-reloaded/zipball/bd4fdfc7b96dd4edd6c83d329019ecadb1656e67",
+                "reference": "bd4fdfc7b96dd4edd6c83d329019ecadb1656e67",
+                "shasum": ""
+            },
+            "require": {
+                "christophrumpel/laravel-command-file-picker": "^1.0",
+                "illuminate/support": "^6.0|^7.0",
+                "laravel/framework": "^6.0|^7.0",
+                "nikic/php-parser": "^4.3",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "mockery/mockery": "^1.2",
+                "orchestra/testbench": "^4.0|^5.0",
+                "phpunit/phpunit": "^8.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Christophrumpel\\LaravelFactoriesReloaded\\LaravelFactoriesReloadedServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelFactoriesReloaded": "Christophrumpel\\LaravelFactoriesReloaded\\LaravelFactoriesReloadedFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Christophrumpel\\LaravelFactoriesReloaded\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Rumpel",
+                    "email": "christoph@christoph-rumpel.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package sits on top of Laravel factories and provides you with dedicated factory classes for every model.",
+            "homepage": "https://github.com/christophrumpel/laravel-factories-reloaded",
+            "keywords": [
+                "christophrumpel",
+                "laravel-factories-reloaded"
+            ],
+            "support": {
+                "issues": "https://github.com/christophrumpel/laravel-factories-reloaded/issues",
+                "source": "https://github.com/christophrumpel/laravel-factories-reloaded/tree/v1.2.0"
+            },
+            "time": "2020-07-02T07:43:32+00:00"
         },
         {
             "name": "codedungeon/php-cli-colors",
