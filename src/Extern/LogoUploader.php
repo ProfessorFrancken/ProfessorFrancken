@@ -7,6 +7,7 @@ namespace Francken\Extern;
 use Illuminate\Http\UploadedFile;
 use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
+use Str;
 
 final class LogoUploader
 {
@@ -26,7 +27,7 @@ final class LogoUploader
             return null;
         }
 
-        $slug = str_slug($name);
+        $slug = Str::slug($name);
 
         return $this->uploader->fromSource($logo)
             ->toDirectory("images/partners/{$slug}/")
@@ -40,7 +41,7 @@ final class LogoUploader
             return null;
         }
 
-        $slug = str_slug($name);
+        $slug = Str::slug($name);
 
         return $this->uploader->fromSource($logo)
             ->toDirectory("images/partners/{$slug}/")
@@ -54,8 +55,8 @@ final class LogoUploader
             return null;
         }
 
-        $partner_slug = str_slug($partner->name);
-        $contact_slug = str_slug($contact->fullname);
+        $partner_slug = Str::slug($partner->name);
+        $contact_slug = Str::slug($contact->fullname);
 
         return $this->uploader->fromSource($photo)
             ->toDirectory("images/partners/{$partner_slug}/contacts/")

@@ -10,7 +10,8 @@ use Francken\Association\News\News;
 
 class MainContentController extends Controller
 {
-    public function index(ActivitiesRepository $activities) {
+    public function index(ActivitiesRepository $activities)
+    {
         $today = new \DateTimeImmutable(
             'now', new \DateTimeZone('Europe/Amsterdam')
         );

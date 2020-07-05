@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace Francken\Association\News;
 
 use DateTimeImmutable;
-use Francken\Association\News\Author;
-use Francken\Association\News\CompiledMarkdown;
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Support\Str;
 use League\Period\Period;
 
 /**
@@ -74,13 +73,13 @@ final class News extends Eloquent
     public function publish(DateTimeImmutable $publicationDate) : void
     {
         $this->published_at = $publicationDate;
-        $this->slug = $this->published_at->format('y-m-d-') . str_slug($this->title);
+        $this->slug = $this->published_at->format('y-m-d-') . Str::slug($this->title);
     }
 
     public function archive() : void
     {
         $this->published_at = null;
-        $this->slug = $this->id . '-' . str_slug($this->title);
+        $this->slug = $this->id . '-' . Str::slug($this->title);
     }
 
     public function changeAuthor(Author $author) : void
@@ -94,9 +93,9 @@ final class News extends Eloquent
         $this->title = $title;
 
         if ($this->published_at !== null) {
-            $this->slug = $this->published_at->format('y-m-d-') . str_slug($this->title);
+            $this->slug = $this->published_at->format('y-m-d-') . Str::slug($this->title);
         } else {
-            $this->slug = $this->id . '-' . str_slug($this->title);
+            $this->slug = $this->id . '-' . Str::slug($this->title);
         }
     }
 

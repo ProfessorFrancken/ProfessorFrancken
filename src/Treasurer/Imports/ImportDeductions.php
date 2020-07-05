@@ -9,6 +9,7 @@ use Francken\Treasurer\DeductionEmail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -105,7 +106,7 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
     private function addDeduction(Collection $deduction) : void
     {
         try {
-            $possible_member_id = (int) str_after($deduction['machtigingskenmerk'], 'ref.  ');
+            $possible_member_id = (int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
             $member = LegacyMember::findOrFail($possible_member_id);
         } catch (ModelNotFoundException $e) {
             \Log::error("Could not retrieve deduction information", $deduction->toArray());

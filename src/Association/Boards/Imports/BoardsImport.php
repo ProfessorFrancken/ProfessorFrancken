@@ -6,6 +6,7 @@ namespace Francken\Association\Boards\Imports;
 
 use Francken\Association\Boards\Board;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Plank\Mediable\MediaUploader;
@@ -46,11 +47,11 @@ final class BoardsImport implements ToCollection, WithHeadingRow
             return;
         }
 
-        $directory = "images/boards/" . str_slug($board->board_year->toString()) . "/";
+        $directory = "images/boards/" . Str::slug($board->board_year->toString()) . "/";
 
         $media = $this->uploader->fromSource($photo)
             ->toDirectory($directory)
-            ->useFilename(str_slug($board->board_name->toString()))
+            ->useFilename(Str::slug($board->board_name->toString()))
             ->upload();
 
         $board->attachMedia($media, 'board_photo');

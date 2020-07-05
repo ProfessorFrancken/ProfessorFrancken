@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Committees\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 final class AdminCommitteeRequest extends FormRequest
 {
@@ -36,7 +37,7 @@ final class AdminCommitteeRequest extends FormRequest
 
     public function slug() : string
     {
-        return str_slug($this->name);
+        return Str::slug($this->name);
     }
 
     public function goal() : ?string

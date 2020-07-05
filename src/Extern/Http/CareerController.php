@@ -10,6 +10,7 @@ use Francken\Extern\JobType;
 use Francken\Extern\Sector;
 use Francken\Shared\AcademicYear;
 use Francken\Shared\Clock\Clock;
+use Illuminate\Support\Str;
 
 final class CareerController
 {
@@ -46,7 +47,7 @@ final class CareerController
     {
         $academicYear = AcademicYear::fromDate($clock->now());
 
-        return redirect('/career/events/' . str_slug($academicYear->toString()));
+        return redirect('/career/events/' . Str::slug($academicYear->toString()));
     }
 
     public function events(EventRepository $repo, Clock $clock, AcademicYear $year = null)

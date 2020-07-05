@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
+use Illuminate\Support\Str;
+
 final class JobOpeningRepository
 {
     private $jobs;
@@ -35,13 +37,13 @@ final class JobOpeningRepository
 
         if ( ! is_null($title) && $title != '') {
             $jobs = $jobs->filter(function ($job) use ($title) {
-                return str_contains($job['job'], $title);
+                return Str::contains($job['job'], $title);
             });
         }
 
         if ( ! is_null($company) && $company != '') {
             $jobs = $jobs->filter(function ($job) use ($company) {
-                return str_contains($job['name'], $company);
+                return Str::contains($job['name'], $company);
             });
         }
 

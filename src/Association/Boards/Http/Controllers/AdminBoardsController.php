@@ -10,6 +10,7 @@ use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardYear;
 use Francken\Association\Boards\Http\Requests\BoardRequest;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
 
@@ -172,11 +173,11 @@ final class AdminBoardsController
             return null;
         }
 
-        $directory = "images/boards/" . str_slug($board_year->toString()) . "/";
+        $directory = "images/boards/" . Str::slug($board_year->toString()) . "/";
 
         return $this->uploader->fromSource($photo)
             ->toDirectory($directory)
-            ->useFilename(str_slug($name))
+            ->useFilename(Str::slug($name))
             ->upload();
     }
 }

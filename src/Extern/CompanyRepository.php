@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
+use Arr;
+use Illuminate\Support\Str;
 use League\CommonMark\CommonMarkConverter;
 
 final class CompanyRepository
@@ -35,11 +37,9 @@ final class CompanyRepository
 
     public function findByLink($slug) : array
     {
-        return array_first(
-            array_filter($this->profiles(), function ($company) use ($slug) {
-                return str_slug($company['name']) === $slug;
-            })
-        );
+        return Arr::first(array_filter($this->profiles(), function ($company) use ($slug) {
+            return Str::slug($company['name']) === $slug;
+        }));
     }
 
     /**

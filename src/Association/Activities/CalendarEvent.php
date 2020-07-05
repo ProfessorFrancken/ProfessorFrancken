@@ -7,6 +7,7 @@ namespace Francken\Association\Activities;
 use Carbon\Carbon;
 use DateTimeImmutable;
 use DateTimeZone;
+use Illuminate\Support\Arr;
 use Sabre\VObject\Component\VEvent;
 
 final class CalendarEvent
@@ -30,9 +31,7 @@ final class CalendarEvent
         $this->location = (string)$event->LOCATION;
         $this->status = (string)$event->STATUS;
         $this->google_id = (string)$event->UID;
-        $this->last_modified_at_google = array_first(
-            $event->select('LAST-MODIFIED')
-        )->getDateTime();
+        $this->last_modified_at_google = Arr::first($event->select('LAST-MODIFIED'))->getDateTime();
 
         $this->parseSchedule($event);
     }
@@ -73,7 +72,7 @@ final class CalendarEvent
 
     public function shortDescription() : string
     {
-        return str_limit($this->description, 150);
+        return \Illuminate\Support\Str::limit($this->description, 150);
     }
 
     public function url() : string

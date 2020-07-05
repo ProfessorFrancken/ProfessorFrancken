@@ -10,6 +10,7 @@ use Faker\Generator;
 use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\News;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 final class FakeNews
 {
@@ -54,7 +55,7 @@ final class FakeNews
 
             return new News([
                 'title' => $news['title'],
-                'slug' => str_slug($news['title']),
+                'slug' => Str::slug($news['title']),
                 'exerpt' => $this->faker->paragraph(),
                 'author_name' => $this->faker->name(),
                 'author_photo' => 'https://api.adorable.io/avatars/75/' . $this->faker->randomNumber() . '.png',

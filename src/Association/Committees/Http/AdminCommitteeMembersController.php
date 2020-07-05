@@ -7,8 +7,8 @@ namespace Francken\Association\Committees\Http;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
-use Francken\Association\LegacyMember;
 use Francken\Association\Committees\Http\Requests\AdminCommitteeMemberRequest;
+use Francken\Association\LegacyMember;
 
 final class AdminCommitteeMembersController
 {

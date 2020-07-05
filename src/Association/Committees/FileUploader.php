@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Committees;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 use Plank\Mediable\MediaUploader;
 
 final class FileUploader
@@ -25,7 +26,7 @@ final class FileUploader
             return;
         }
 
-        $slug = str_slug($committee->name);
+        $slug = Str::slug($committee->name);
 
         $logo = $this->uploader->fromSource($logo)
             ->toDirectory("images/association/committees/{$slug}/")
@@ -44,7 +45,7 @@ final class FileUploader
             return;
         }
 
-        $slug = str_slug($committee->name);
+        $slug = Str::slug($committee->name);
 
         $photo = $this->uploader->fromSource($photo)
             ->toDirectory("images/association/committees/{$slug}/")

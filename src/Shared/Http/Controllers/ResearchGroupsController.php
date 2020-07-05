@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Controllers;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 final class ResearchGroupsController
 {
     private $groups;
@@ -305,11 +308,9 @@ The research has a strong instrumentation development component. For our experim
 
     public function show($slug)
     {
-        $group = array_first(
-            array_filter($this->groups, function ($group) use ($slug) {
-                return str_slug($group['title']) === $slug;
-            })
-        );
+        $group = Arr::first(array_filter($this->groups, function ($group) use ($slug) {
+            return Str::slug($group['title']) === $slug;
+        }));
 
         return view('study.research-groups.show')
             ->with('groups', $this->groups)

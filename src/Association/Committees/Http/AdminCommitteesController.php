@@ -7,8 +7,8 @@ namespace Francken\Association\Committees\Http;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\FileUploader;
-use Francken\Association\LegacyMember;
 use Francken\Association\Committees\Http\Requests\AdminCommitteeRequest;
+use Francken\Association\LegacyMember;
 use Francken\Shared\Markdown\ContentCompiler;
 
 final class AdminCommitteesController

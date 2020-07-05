@@ -6,6 +6,7 @@ namespace Francken\Extern\Http\Requests;
 
 use Francken\Extern\PartnerStatus;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class PartnerRequest extends FormRequest
@@ -38,7 +39,7 @@ class PartnerRequest extends FormRequest
 
     public function slug() : string
     {
-        return str_slug($this->name());
+        return Str::slug($this->name());
     }
 
     public function sectorId() : int

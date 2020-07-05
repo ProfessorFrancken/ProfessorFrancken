@@ -6,6 +6,7 @@ namespace Francken\Association\Symposium\Http;
 
 use Francken\Association\Symposium\Exports\SymposiumExport;
 use Francken\Association\Symposium\Symposium;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Excel;
 
 final class ExportController
@@ -14,7 +15,7 @@ final class ExportController
     {
         return $excel->download(
             new SymposiumExport($symposium),
-            str_slug($symposium->name) . '.xlsx'
+            Str::slug($symposium->name) . '.xlsx'
         );
     }
 }

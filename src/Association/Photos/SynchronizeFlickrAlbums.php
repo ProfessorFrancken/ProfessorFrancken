@@ -8,6 +8,7 @@ use DateInterval;
 use Illuminate\Console\Command;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 final class SynchronizeFlickrAlbums extends Command
 {
@@ -76,7 +77,7 @@ final class SynchronizeFlickrAlbums extends Command
 
         $photos = $photo_album['photos']->map(function ($photo) use ($album) {
             $parse_title = function ($title) {
-                return starts_with($title, 'IMG_') ? '' : $title;
+                return Str::startsWith($title, 'IMG_') ? '' : $title;
             };
 
             $width = (int)$photo['width'];
@@ -102,8 +103,8 @@ final class SynchronizeFlickrAlbums extends Command
             ];
         });
 
-        $title = str_after($album['title'], $activity_date . " ");
-        $slug = str_slug($activity_date . '-' . $title);
+        $title = Str::after($album['title'], $activity_date . " ");
+        $slug = Str::slug($activity_date . '-' . $title);
 
         try {
             $this->db->table('albums')->insert([

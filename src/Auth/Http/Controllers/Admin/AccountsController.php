@@ -10,6 +10,7 @@ use Francken\Auth\Account;
 use Francken\Auth\Mail\NotifyAboutAccountActivation;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -70,7 +71,7 @@ final class AccountsController
         $account = Account::activate(
             $member_id,
             $email,
-            \Hash::make(str_random(32))
+            \Hash::make(Str::random(32))
         );
 
         if ($request->input('send_notification_email', null) === '1') {

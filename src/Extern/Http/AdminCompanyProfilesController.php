@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Francken\Shared\Markdown\ContentCompiler;
 use Francken\Extern\Http\Requests\CompanyProfileRequest;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Extern\Sector;
 use Francken\Extern\SponsorOptions\CompanyProfile;
+use Francken\Shared\Markdown\ContentCompiler;
 
 final class AdminCompanyProfilesController
 {

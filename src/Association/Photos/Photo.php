@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Photos;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * Francken\Association\Photos\Photo
@@ -64,7 +65,7 @@ final class Photo extends Model
 
     public function src($quality = 1024) : string
     {
-        $base_url = str_before($this->flickr_base_url, '.jpg');
+        $base_url = Str::before($this->flickr_base_url, '.jpg');
 
         return sprintf(
             "%s%s.jpg",
@@ -78,7 +79,7 @@ final class Photo extends Model
      */
     public function srcset(float $divider = 2.0) : string
     {
-        $base_url = str_before($this->flickr_base_url, '.jpg');
+        $base_url = Str::before($this->flickr_base_url, '.jpg');
 
         // Give a list of srces
         return collect(self::SIZES)
