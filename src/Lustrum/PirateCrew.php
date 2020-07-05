@@ -49,12 +49,12 @@ final class PirateCrew extends Model
         'pirate_crew_id'
     ];
 
-    public function getRouteKeyName(): string
+    public function getRouteKeyName() : string
     {
         return 'slug';
     }
 
-    public function crewMembers(): HasMany
+    public function crewMembers() : HasMany
     {
         return $this->hasMany(Pirate::class, 'pirate_crew_id');
     }
@@ -64,7 +64,7 @@ final class PirateCrew extends Model
         return $this->hasMany(EarnedAdtchievement::class, 'pirate_crew_id');
     }
 
-    public function initiate(LegacyMember $member): self
+    public function initiate(LegacyMember $member): Pirate
     {
         return $this->crewMembers()->create([
             'member_id' => $member->id,

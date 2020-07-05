@@ -8,7 +8,6 @@ use Francken\Shared\AcademicYear;
 
 final class EventRepository
 {
-    private $events;
     private array $plannedEvents;
     private array $pastEvents;
 
@@ -25,10 +24,6 @@ final class EventRepository
             $this->filterByAcademicYear($year)
         );
 
-        if ($pastEvents === null) {
-            return [];
-        }
-
         return $pastEvents;
     }
 
@@ -39,16 +34,12 @@ final class EventRepository
             $this->filterByAcademicYear($year)
         );
 
-        if ($plannedEvents === null) {
-            return [];
-        }
-
         return $plannedEvents;
     }
 
-    private function filterByAcademicYear($year): callable
+    private function filterByAcademicYear($year) : callable
     {
-        return function (array $event) use ($year): bool {
+        return function (array $event) use ($year) : bool {
             return AcademicYear::fromString($event['academicYear']) == $year;
         };
     }

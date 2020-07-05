@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Support\Collection;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Connection;
-use Illuminate\Database\ConnectionResolverInterface;
 use DB;
-use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\ConnectionInterface;
+use Illuminate\Database\ConnectionResolverInterface;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
 
 final class MembersController
 {
     private Builder $members;
-    private Connection $db;
+    private ConnectionInterface $db;
 
     public function __construct(ConnectionResolverInterface $db)
     {
@@ -23,7 +22,7 @@ final class MembersController
                        ->table('leden');
     }
 
-    public function index(): Collection
+    public function index() : Collection
     {
         $selects = ['id', 'voornaam', 'initialen', 'tussenvoegsel', 'achternaam', 'geboortedatum', 'prominent', 'kleur', 'afbeelding', 'bijnaam', 'button_width', 'button_height', 'transacties.latest_purchase_at'];
 

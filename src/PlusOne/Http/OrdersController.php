@@ -4,24 +4,23 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Support\Collection;
-use Illuminate\Database\Connection;
+use DateTimeImmutable;
+use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Log;
-use DateTimeImmutable;
-use Illuminate\Database\DatabaseManager;
 
 final class OrdersController
 {
-    private Connection $orders;
+    private ConnectionInterface $orders;
 
     public function __construct(ConnectionResolverInterface $db)
     {
         $this->orders = $db->connection('francken-legacy');
     }
 
-    public function index(): Collection
+    public function index() : Collection
     {
         return $this->orders->table('transacties')
             ->take(100)

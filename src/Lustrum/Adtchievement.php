@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Francken\Lustrum\Adtchievement
@@ -53,7 +53,7 @@ final class Adtchievement extends Model
         'is_hidden',
     ];
 
-    public function earnBy(Pirate $pirate, ?int $points = null, string $reason = ''): void
+    public function earnBy(Pirate $pirate, ?int $points = null, string $reason = '') : void
     {
         // TODO:
         // Based on this adtchievement's settings eck if the pirate is allowed to earn this adtchievemnet
@@ -61,7 +61,7 @@ final class Adtchievement extends Model
             $points = $this->points;
         }
 
-        return $this->earnedBy()
+        $this->earnedBy()
             ->attach(
                 $pirate->id,
                 [

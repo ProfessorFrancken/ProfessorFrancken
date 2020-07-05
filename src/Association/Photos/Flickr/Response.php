@@ -6,6 +6,10 @@ namespace Francken\Association\Photos\Flickr;
 
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * @property array $photosets
+ * @property array $photoset
+ */
 class Response
 {
     /**
@@ -23,8 +27,6 @@ class Response
 
     /**
      * Get magically a regular value from the contents of the Flickr API call.
-     *
-     * @param  string $variable
      */
     public function __get(string $variable)
     {
@@ -34,15 +36,13 @@ class Response
     /**
      * Get the status of the Flickr API call.
      */
-    public function getStatus(): string
+    public function getStatus() : string
     {
         return $this->contents['stat'];
     }
 
     /**
      * Get a '_content' value from the contents of the Flickr API call.
-     *
-     * @param  string $method
      */
     public function getContent(string $method): string
     {

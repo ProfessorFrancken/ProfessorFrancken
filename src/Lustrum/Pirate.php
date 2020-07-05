@@ -58,9 +58,9 @@ final class Pirate extends Model
         ]);
     }
 
-    public function joinCrew(PirateCrew $crew): self
+    public function joinCrew(PirateCrew $crew) : void
     {
-        return $this->crew()->associate($crew);
+        $this->crew()->associate($crew);
     }
 
     public function claimPoints(int $amount, string $reason) : void
@@ -71,7 +71,7 @@ final class Pirate extends Model
     // Claim points
 
 
-    public function crew(): BelongsTo
+    public function crew() : BelongsTo
     {
         return $this->belongsTo(PirateCrew::class, 'pirate_crew_id');
     }

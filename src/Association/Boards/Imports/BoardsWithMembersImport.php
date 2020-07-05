@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards\Imports;
 
-use Illuminate\Database\ConnectionInterface;
 use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
-use Illuminate\Database\Connection;
+use Illuminate\Database\ConnectionInterface;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Events\BeforeImport;
@@ -15,7 +14,7 @@ use Plank\Mediable\MediaUploader;
 
 final class BoardsWithMembersImport implements WithMultipleSheets, WithEvents
 {
-    private Connection $db;
+    private ConnectionInterface $db;
 
     private MediaUploader $uploader;
 

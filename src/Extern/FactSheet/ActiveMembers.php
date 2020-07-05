@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Extern\FactSheet;
 
-use AnonymousClass41efac37f75e81de554632a0849a4fd1;
 use Illuminate\Support\Collection;
 
 final class ActiveMembers
@@ -54,7 +53,7 @@ final class ActiveMembers
                     /*
                      * Used to create "Total" and "Other" statistics
                      */
-                    public static function fromMultipleStatistics(string $name, ...$others): AnonymousClass41efac37f75e81de554632a0849a4fd1
+                    public static function fromMultipleStatistics(string $name, ...$others)
                     {
                         return new self(
                             $name,

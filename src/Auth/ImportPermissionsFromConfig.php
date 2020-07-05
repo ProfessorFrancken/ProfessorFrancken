@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-use Illuminate\Config\Repository;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Config\Repository;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -35,7 +35,7 @@ final class ImportPermissionsFromConfig extends Command
      *
      * @return void
      */
-    public function __construct(\Illuminate\Contracts\Config\Repository $config)
+    public function __construct(Repository $config)
     {
         parent::__construct();
         $this->config = $config;

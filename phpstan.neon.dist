@@ -10,4 +10,4 @@ parameters:
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable\|null#'
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'
         - '#Property .* \(Illuminate\\Support\\Carbon\) does not accept DateTimeImmutable#'
-        - '#query\(\) should return Illuminate\\Database\\Query\\Builder but returns Illuminate\\Database\\Eloquent\\Builder#'
+        - '#Parameter \#1 \$columns of method Illuminate\\Database\\Eloquent\\Relations\\HasMany\<Francken\\Lustrum\\EarnedAdtchievement\>::count\(\) expects string, Illuminate\\Database\\Query\\Expression given.#'

@@ -5,9 +5,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Session\Store;
+use Illuminate\Contracts\Session\Session;
 
 /**
  * We use this class to check whether someone has succesfully loged into the
@@ -20,7 +19,7 @@ class PhotosAuthentication
      */
     private const SESSION_KEY = 'authenticated-for-viewing-albums';
 
-    private Store $sessions;
+    private Session $sessions;
 
     private Hasher $hasher;
 
