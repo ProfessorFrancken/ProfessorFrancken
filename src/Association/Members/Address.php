@@ -6,10 +6,10 @@ namespace Francken\Association\Members;
 
 final class Address
 {
-    private $city;
-    private $postalCode;
-    private $address;
-    private $country;
+    private string $city;
+    private string $postalCode;
+    private string $address;
+    private string $country;
 
     public function __construct(
         string $city,

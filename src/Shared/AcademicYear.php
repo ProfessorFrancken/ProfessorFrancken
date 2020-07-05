@@ -9,7 +9,7 @@ use League\Period\Period;
 
 final class AcademicYear
 {
-    private $period;
+    private Period $period;
 
     private function __construct(Period $period)
     {

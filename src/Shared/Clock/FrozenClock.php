@@ -11,7 +11,7 @@ use DateTimeImmutable;
  */
 final class FrozenClock implements Clock
 {
-    private $time;
+    private DateTimeImmutable $time;
 
     public function __construct(DateTimeImmutable $time)
     {

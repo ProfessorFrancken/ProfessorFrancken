@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http;
 
+use Illuminate\Http\Request;
 use DateTimeImmutable;
 use Francken\Association\Members\Member;
 use Illuminate\View\Factory as View;
 
 final class FinancesController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $member = $this->member(request()->user());
+        $member = $this->member($request->user());
         $id = $member->id;
 
         $transactions = \DB::connection('francken-legacy')->table('transacties')
@@ -61,9 +62,9 @@ final class FinancesController
                 ]);
     }
 
-    public function show($year, $month)
+    public function show($year, $month, Request $request)
     {
-        $member = $this->member(request()->user());
+        $member = $this->member($request->user());
         $id = $member->id;
 
         $deductions = \DB::connection('francken-legacy')
@@ -71,7 +72,7 @@ final class FinancesController
                 ->orderBy('tijd', 'desc')
                 ->get()
                 ->map(function ($deduction) {
-                    return new \DateTimeImmutable($deduction->tijd);
+                    return new DateTimeImmutable($deduction->tijd);
                 });
 
         $transactions = \DB::connection('francken-legacy')->table('transacties')

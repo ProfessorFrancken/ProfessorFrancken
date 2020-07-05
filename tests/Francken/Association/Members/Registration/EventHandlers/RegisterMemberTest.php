@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members\Registration\EventHandlers;
 
+use Francken\Tests\LaravelTestCase;
+use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
+use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
@@ -25,14 +28,14 @@ use Illuminate\Support\Facades\Event;
 
 // use Francken\Association\Members\Study;
 
-class RegisterMemberTest extends \Francken\Tests\LaravelTestCase
+class RegisterMemberTest extends LaravelTestCase
 {
     use DatabaseMigrations;
 
     /** @test */
     public function a_registration_can_be_submitted() : void
     {
-        Event::fake([Events\RegistrationWasSubmitted::class]);
+        Event::fake([RegistrationWasSubmitted::class]);
 
         $registration = $this->submitRegistration();
         $approvedAt = new DateTimeImmutable('2020-02-02');
@@ -42,10 +45,10 @@ class RegisterMemberTest extends \Francken\Tests\LaravelTestCase
             'name' => 'Mark',
             'title' => 'Mark',
             'board_member_status' => BoardMemberStatus::BOARD_MEMBER,
-            'installed_at' => new \DateTimeImmutable(),
+            'installed_at' => new DateTimeImmutable(),
         ]);
         $registration->approve($boardMember, $approvedAt);
-        $approveEvent = new Events\RegistrationWasApproved($registration, $boardMember);
+        $approveEvent = new RegistrationWasApproved($registration, $boardMember);
         $handler = new RegisterMember();
         $handler->handle($approveEvent);
 

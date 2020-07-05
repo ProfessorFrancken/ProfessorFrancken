@@ -13,7 +13,7 @@ use Webuni\CommonMark\AttributesExtension\AttributesExtension;
 
 final class ContentCompiler
 {
-    private $compiler;
+    private CommonMarkConverter $compiler;
 
     public function __construct()
     {

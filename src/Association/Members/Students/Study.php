@@ -8,9 +8,9 @@ use DateTimeImmutable;
 
 final class Study
 {
-    private $name;
-    private $startDate;
-    private $endDate;
+    private string $name;
+    private DateTimeImmutable $startDate;
+    private ?DateTimeImmutable $endDate = null;
 
     public function __construct(
         string $name,
@@ -34,7 +34,7 @@ final class Study
 
     public function endYear() : string
     {
-        return $this->endDate
+        return $this->endDate !== null
             ? $this->endDate->format('Y')
             : "current";
     }

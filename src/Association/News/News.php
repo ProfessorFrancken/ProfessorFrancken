@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\News;
 
+use Illuminate\Database\Eloquent\Builder;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Str;
@@ -116,7 +117,7 @@ final class News extends Eloquent
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeByLink($query, string $slug)
+    public function scopeByLink(Builder $query, string $slug)
     {
         return $query->whereSlug($slug);
     }
@@ -157,7 +158,7 @@ final class News extends Eloquent
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeRecent($query)
+    public function scopeRecent(Builder $query)
     {
         return $query->orderBy('published_at', 'desc');
     }
@@ -169,7 +170,7 @@ final class News extends Eloquent
      * @param \League\Period\Period $period
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeInPeriod($query, Period $period = null)
+    public function scopeInPeriod(Builder $query, Period $period = null)
     {
         return (isset($period) ? $query->whereBetween('published_at', [$period->getStartDate(), $period->getEndDate()]) : $query);
     }
@@ -182,7 +183,7 @@ final class News extends Eloquent
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithSubject($query, string $subject = null)
+    public function scopeWithSubject(Builder $query, string $subject = null)
     {
         return (isset($subject) ? $query->whereTitle($subject) : $query);
     }
@@ -194,7 +195,7 @@ final class News extends Eloquent
      * @param string $author
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithAuthorName($query, string $author = null)
+    public function scopeWithAuthorName(Builder $query, string $author = null)
     {
         return (isset($author) ? $query->whereAuthorName($author) : $query);
     }

@@ -6,9 +6,9 @@ namespace Francken\Extern\FactSheet;
 
 final class StudyPhaseStatistic implements StudyStatistic
 {
-    private $study;
-    private $bachelor = 0;
-    private $master = 0;
+    private string $study;
+    private int $bachelor = 0;
+    private int $master = 0;
 
     public function __construct(
         string $study,

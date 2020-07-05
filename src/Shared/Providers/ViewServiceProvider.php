@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
+use Francken\Shared\ViewComposers\MemberSelectionComposer;
 use DateTimeImmutable;
 use Francken\Extern\CompanyRepository;
 use Illuminate\Support\Facades\View;
@@ -19,11 +20,11 @@ final class ViewServiceProvider extends ServiceProvider
             $view->with('footer', $companies->forFooter());
         });
 
-        $this->app->singleton(\Francken\Shared\ViewComposers\MemberSelectionComposer::class);
+        $this->app->singleton(MemberSelectionComposer::class);
 
         View::composer(
             'admin.association.boards._member-selection',
-            \Francken\Shared\ViewComposers\MemberSelectionComposer::class
+            MemberSelectionComposer::class
         );
     }
 

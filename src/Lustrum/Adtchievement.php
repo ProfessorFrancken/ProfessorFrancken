@@ -92,7 +92,7 @@ final class Adtchievement extends Model
 
     public function isHiddenForCrew(PirateCrew $crew) : bool
     {
-        if ( ! $this->is_hidden) {
+        if ( $this->is_hidden === 0) {
             return false;
         }
 

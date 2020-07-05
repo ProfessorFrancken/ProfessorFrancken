@@ -18,10 +18,7 @@ use Plank\Mediable\MediaUploader;
 
 final class DeductionsController
 {
-    /**
-     * @var Importer
-     */
-    private $importer;
+    private Importer $importer;
 
     public function __construct(Importer $importer)
     {

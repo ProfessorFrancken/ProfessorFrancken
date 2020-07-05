@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij;
 
+use Imagick;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Plank\Mediable\Media;
@@ -13,10 +14,7 @@ final class FileUploader
 {
     private const ONE_HUNDRED_MB = 100 * 1024 * 1024;
 
-    /**
-     * @var MediaUploader
-     */
-    private $uploader;
+    private MediaUploader $uploader;
 
     public function __construct(MediaUploader $uploader)
     {
@@ -65,12 +63,12 @@ final class FileUploader
     {
         $cover_path = preg_replace('"\.pdf$"', '-cover.png', $pdf_path);
 
-        $imagick = new \Imagick();
+        $imagick = new Imagick();
         $imagick->setCompressionQuality(100);
         $imagick->setResolution(300, 300);
         $imagick->readImage($pdf_path . '[0]');
-        $imagick->resizeImage(175, 245, \Imagick::FILTER_LANCZOS, 0.9);
-        $imagick->transformImageColorspace(\Imagick::COLORSPACE_SRGB);
+        $imagick->resizeImage(175, 245, Imagick::FILTER_LANCZOS, 0.9);
+        $imagick->transformImageColorspace(Imagick::COLORSPACE_SRGB);
         $imagick->setFormat('png');
         $imagick->writeImage($cover_path);
 

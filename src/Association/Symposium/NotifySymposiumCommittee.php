@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
+use Francken\Association\Symposium\Mail\NotifyCommittee;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Arr;
 
 class NotifySymposiumCommittee implements ShouldQueue
 {
-    /**
-     * @var Mailer
-     */
-    private $mail;
+    private Mailer $mail;
 
     public function __construct(Mailer $mail)
     {
@@ -40,7 +38,7 @@ class NotifySymposiumCommittee implements ShouldQueue
 
 
         $this->mail->to('sympfr@gmail.com')
-            ->send(new Mail\NotifyCommittee(
+            ->send(new NotifyCommittee(
                 $participant,
                 $who_needs_to_take_an_adt
             ));

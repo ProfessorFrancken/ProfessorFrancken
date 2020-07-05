@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin;
 
+use Illuminate\Support\Collection;
+use DateTimeImmutable;
 use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\Http\AdminNewsController;
@@ -19,7 +21,7 @@ class NewsFeature extends TestCase
     use LoggedInAsAdmin;
     use DatabaseTransactions;
 
-    private $news;
+    private Collection $news;
 
     // inmemory with fakes
     /** @before */
@@ -94,7 +96,7 @@ class NewsFeature extends TestCase
 
         $news->refresh();
 
-        $this->assertEquals($news->published_at, new \DateTimeImmutable('2018-01-07'));
+        $this->assertEquals($news->published_at, new DateTimeImmutable('2018-01-07'));
     }
 
     /** @test */

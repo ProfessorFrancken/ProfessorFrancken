@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
+use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\Http\Requests\AdminNewsRequest;
 use Francken\Association\News\Http\Requests\SearchNewsRequest;
@@ -26,7 +27,7 @@ final class AdminNewsController
             ->withSubject($request->subject())
             ->withAuthorName($request->author())
             ->paginate()
-            ->appends(request()->except('page'));
+            ->appends($request->except('page'));
 
         return view('admin.news.index', [
             'news' => $news,
@@ -120,7 +121,7 @@ final class AdminNewsController
 
     public function publish(Request $req, News $news)
     {
-        $publishAt = new \DateTimeImmutable($req->input('published_at'));
+        $publishAt = new DateTimeImmutable($req->input('published_at'));
 
         $news->publish($publishAt);
         $news->save();

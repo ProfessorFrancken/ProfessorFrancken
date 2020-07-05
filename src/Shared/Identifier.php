@@ -9,7 +9,7 @@ use Webmozart\Assert\Assert;
 
 abstract class Identifier
 {
-    protected $id;
+    protected string $id;
 
     final public function __construct(string $id)
     {

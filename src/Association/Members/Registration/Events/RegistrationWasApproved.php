@@ -12,8 +12,8 @@ final class RegistrationWasApproved
 {
     use SerializesModels;
 
-    public $registration;
-    public $boardMember;
+    public Registration $registration;
+    public BoardMember $boardMember;
 
     public function __construct(Registration $registration, BoardMember $boardMember)
     {

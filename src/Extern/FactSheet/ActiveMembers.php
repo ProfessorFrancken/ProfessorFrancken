@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 final class ActiveMembers
 {
-    private $members;
+    private Collection $members;
 
     public function __construct(Collection $members)
     {
@@ -32,8 +32,8 @@ final class ActiveMembers
         $studies = $this->members->groupBy('studierichting')
             ->map(function ($students, $study) {
                 return new class($study, $students->count()) implements StudyStatistic {
-                    private $study;
-                    private $amount;
+                    private string $study;
+                    private int $amount;
                     public function __construct(string $study, int $amount)
                     {
                         $this->study = $study;

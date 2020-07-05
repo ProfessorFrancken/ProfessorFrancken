@@ -18,10 +18,7 @@ final class AdminPartnersController
 {
     private const PARTNERS_PER_PAGE = 50;
 
-    /**
-     * @var LogoUploader
-     */
-    private $uploader;
+    private LogoUploader $uploader;
 
     public function __construct(LogoUploader $uploader)
     {

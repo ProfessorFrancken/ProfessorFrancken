@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 final class ResearchGroupsController
 {
-    private $groups;
+    private array $groups;
 
     public function __construct()
     {

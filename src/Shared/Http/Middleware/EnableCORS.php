@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Middleware;
 
+use Illuminate\Http\Request;
 use Closure;
 
 final class EnableCORS
@@ -13,7 +14,7 @@ final class EnableCORS
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
 

@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Registration;
 
+use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
+use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
+use Francken\Association\Members\Registration\Events\MemberWasRegistered;
+use Exception;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\LegacyMember;
@@ -130,7 +134,7 @@ final class Registration extends Model
 
         $registration->save();
 
-        event(new Events\RegistrationWasSubmitted($registration));
+        event(new RegistrationWasSubmitted($registration));
 
         return $registration;
     }
@@ -150,7 +154,7 @@ final class Registration extends Model
         $this->registration_accepted_at = $at;
         $this->save();
        
-        event(new Events\RegistrationWasApproved($this, $byMember));
+        event(new RegistrationWasApproved($this, $byMember));
     }
 
     public function register(LegacyMember $member) : void
@@ -158,7 +162,7 @@ final class Registration extends Model
         $this->member_id = $member->id;
         $this->save();
 
-        event(new Events\MemberWasRegistered($this));
+        event(new MemberWasRegistered($this));
     }
 
     public function signRegistrationForm(DateTimeImmutable $at) : void
@@ -216,9 +220,9 @@ final class Registration extends Model
         $this->phone_number = $contactDetails->phoneNumber();
     }
 
-    public function getStudiesAttribute() : array
+    public function getStudiesAttribute(): array
     {
-        $studies = array_map(
+        return array_map(
             function (array $study) : Study {
                 $start = DateTimeImmutable::createFromFormat('!Y-m-d', $study['start_date']);
                 $end = ($study['graduation_date'] !== null)
@@ -229,7 +233,6 @@ final class Registration extends Model
             },
             json_decode($this->attributes['studies'], true, 512, JSON_THROW_ON_ERROR)
         );
-        return $studies;
     }
 
     public function getMostRecentStudyAttribute() : ?Study
@@ -250,7 +253,7 @@ final class Registration extends Model
                     return [
                         'study' => $study->study(),
                         'start_date' => $study->startDate()->format('Y-m-d'),
-                        'graduation_date' => $study->graduationDate() ? $study->graduationDate()->format('Y-m-d') : null,
+                        'graduation_date' => $study->graduationDate() !== null ? $study->graduationDate()->format('Y-m-d') : null,
                     ];
                 },
                 $studyDetails->studies()

@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Spatie\Permission\PermissionRegistrar;
 use DB;
 use Illuminate\Console\Command;
 use Spatie\Permission\Models\Role;
@@ -52,7 +53,7 @@ final class SetupPermissions extends Command
     private function seedRolesAndPermissions() : void
     {
         // Reset cached roles and permissions
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Make sure to import all permissions
         $role = Role::create(['name' => 'Admin']);

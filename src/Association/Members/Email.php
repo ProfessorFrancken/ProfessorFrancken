@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members;
 
+use InvalidArgumentException;
 final class Email
 {
-    private $email;
+    private string $email;
 
     public function __construct(string $email)
     {
         if ( ! filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new \InvalidArgumentException('"' . $email . '" is not a valid email');
+            throw new InvalidArgumentException('"' . $email . '" is not a valid email');
         }
 
         $this->email = $email;

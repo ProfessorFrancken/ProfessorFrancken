@@ -28,17 +28,14 @@ final class ImportPermissionsFromConfig extends Command
      */
     protected $description = 'Import missing permissions from the permissions configuration files';
 
-    /**
-     * @var Repository
-     */
-    private $config;
+    private Repository $config;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(Repository $config)
+    public function __construct(\Illuminate\Contracts\Config\Repository $config)
     {
         parent::__construct();
         $this->config = $config;

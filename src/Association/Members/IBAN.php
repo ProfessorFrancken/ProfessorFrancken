@@ -8,7 +8,7 @@ use CMPayments\IBAN as CMPayments_IBAN;
 
 final class IBAN
 {
-    private $iban;
+    private CMPayments_IBAN $iban;
 
     public function __construct(string $iban)
     {

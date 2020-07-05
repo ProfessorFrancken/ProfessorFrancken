@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RegistrationRequestFeature extends TestCase
@@ -55,7 +56,7 @@ class RegistrationRequestFeature extends TestCase
     public function a_registration_request_must_have_valid_data() : void
     {
         $this->withoutExceptionHandling();
-        $this->expectException(\Illuminate\Validation\ValidationException::class);
+        $this->expectException(ValidationException::class);
         $this->visit('/register')
             ->press('Register');
     }
@@ -74,7 +75,7 @@ class RegistrationRequestFeature extends TestCase
             // ->dump()
             //  ->assertResponseStatus(402)
             //  ->assertViewHas('errors')
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             $errors = $e->errors();
 
             $missing_fields = [

@@ -10,7 +10,7 @@ use InvalidArgumentException;
 
 final class ActivitiesPerMonthController
 {
-    private $activities;
+    private ActivitiesRepository $activities;
 
     public function __construct(ActivitiesRepository $activities)
     {

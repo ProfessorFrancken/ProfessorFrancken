@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
+use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use Francken\Association\Members\Study;
 use Francken\Association\Members\StudyDetails;
 
-class StudyDetailsTest extends \PHPUnit\Framework\TestCase
+class StudyDetailsTest extends TestCase
 {
     /** @test */
     public function it_is_constructed_with_study_details() : void

@@ -21,12 +21,9 @@ final class ValueStoreSettings implements Settings
     private const IS_LUSTRUM_SHOWN_IN_NAVIGATION = 'navigation_show_lustrum';
     private const IS_EXPEDITION_SHOWN_IN_NAVIGATION = 'navigation_show_expedition';
 
-    /**
-     * @var ValueStore
-     */
-    private $store;
+    private Valuestore $store;
 
-    public function __construct(ValueStore $store)
+    public function __construct(Valuestore $store)
     {
         $this->store = $store;
     }

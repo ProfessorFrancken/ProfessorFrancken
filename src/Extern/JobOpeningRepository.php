@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 final class JobOpeningRepository
 {
-    private $jobs;
+    private array $jobs;
 
     public function __construct(array $jobs = [])
     {

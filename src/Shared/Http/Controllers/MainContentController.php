@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Controllers;
 
+use DateTimeImmutable;
+use DateTimeZone;
+use InvalidArgumentException;
+use Exception;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\News\News;
@@ -12,8 +16,8 @@ class MainContentController extends Controller
 {
     public function index(ActivitiesRepository $activities)
     {
-        $today = new \DateTimeImmutable(
-            'now', new \DateTimeZone('Europe/Amsterdam')
+        $today = new DateTimeImmutable(
+            'now', new DateTimeZone('Europe/Amsterdam')
         );
 
         $latestEdition = Edition::query()
@@ -88,7 +92,7 @@ class MainContentController extends Controller
     {
         try {
             if ($this->pageCorrespondsToPartialView($page)) {
-                throw new \InvalidArgumentException();
+                throw new InvalidArgumentException();
             }
 
 
@@ -96,7 +100,7 @@ class MainContentController extends Controller
                 'posts' => [],
                 'editPageUrl' => $this->getEditUrlForThisPage($page)
             ]);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             return response()->view('errors.404', [], 404);
         }
     }
@@ -125,7 +129,7 @@ class MainContentController extends Controller
             $firstLine = $stringfromfile[0];
             $explodedstring = explode("/", $firstLine, 3);
             $branchname = trim(preg_replace('/\s+/', ' ', $explodedstring[2]));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $branchname = 'master';
         }
 

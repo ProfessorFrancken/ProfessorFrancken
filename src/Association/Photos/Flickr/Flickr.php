@@ -8,10 +8,8 @@ class Flickr
 {
     /**
      * Flickr API class instance.
-     *
-     * @var Api
      */
-    public $api;
+    public Api $api;
 
     /**
      * Create a new Flickr instance.
@@ -28,7 +26,7 @@ class Flickr
      * @param  array|null               $parameters
      * @return Response
      */
-    public function request($method, $parameters = null)
+    public function request(string $method, ?array $parameters = null)
     {
         return $this->api->request($method, $parameters);
     }
@@ -39,7 +37,7 @@ class Flickr
      * @param  string                   $string
      * @return Response
      */
-    public function echoThis($string)
+    public function echoThis(string $string)
     {
         return $this->request('flickr.test.echo', ['this' => $string]);
     }
@@ -50,7 +48,7 @@ class Flickr
      * @param  array|null               $parameters
      * @return Response
      */
-    public function listSets($parameters = null)
+    public function listSets(?array $parameters = null)
     {
         return $this->request('flickr.photosets.getList', $parameters);
     }
@@ -63,7 +61,7 @@ class Flickr
      * @param  array|null               $otherParameters
      * @return Response
      */
-    public function photosForSet($setId, $userId, $otherParameters = null)
+    public function photosForSet(string $setId, string $userId, ?array $otherParameters = null)
     {
         $parameters['photoset_id'] = $setId;
         $parameters['user_id'] = $userId;
@@ -82,7 +80,7 @@ class Flickr
      * @param  string|null              $secretId
      * @return Response
      */
-    public function photoInfo($photoId, $secretId = null)
+    public function photoInfo(string $photoId, ?string $secretId = null)
     {
         $parameters['photo_id'] = $photoId;
 

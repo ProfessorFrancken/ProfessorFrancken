@@ -6,7 +6,7 @@ namespace Francken\Auth;
 
 final class AccountWasActivated
 {
-    private $account_id;
+    private int $account_id;
 
     public function __construct(Account $account)
     {

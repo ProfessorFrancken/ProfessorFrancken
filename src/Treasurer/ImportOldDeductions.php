@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer;
 
+use DateTimeImmutable;
+use Exception;
 use Illuminate\Console\Command;
 use League\Period\Period;
 use Maatwebsite\Excel\Importer;
@@ -26,15 +28,9 @@ final class ImportOldDeductions extends Command
      */
     protected $description = 'Migrate the old deductions table to new email deductions table';
 
-    /**
-     * @var Importer
-     */
-    private $importer;
+    private Importer $importer;
 
-    /**
-     * @var MediaUploader
-     */
-    private $uploader;
+    private MediaUploader $uploader;
 
     public function __construct(Importer $importer, MediaUploader $uploader)
     {
@@ -69,16 +65,16 @@ final class ImportOldDeductions extends Command
 
                 $deduction = DeductionEmail::upload(
                     $deduction_file,
-                    new \DateTimeImmutable($mail_deduction->datum->format("Y-m-d")),
+                    new DateTimeImmutable($mail_deduction->datum->format("Y-m-d")),
                     $deduction_period->getStartDate(),
                     $deduction_period->getEndDate(),
                     $this->importer
                 );
 
                 $deduction->was_verified = true;
-                $deduction->emails_sent_at = new \DateTimeImmutable($mail_deduction->datum->format("Y-m-d"));
+                $deduction->emails_sent_at = new DateTimeImmutable($mail_deduction->datum->format("Y-m-d"));
                 $deduction->save();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 dump($e);
             }
         });

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Exception;
 use DateTimeImmutable;
 use Francken\Association\Photos\Flickr\Api;
 use Francken\Association\Photos\Flickr\Flickr;
@@ -11,7 +12,7 @@ use Illuminate\Support\Collection;
 
 final class FlickrRepository
 {
-    private $flickr;
+    private Flickr $flickr;
     private $user_id;
     private $secret;
 
@@ -65,7 +66,7 @@ final class FlickrRepository
                     'photos' => $album['photos'],
                 ]);
             });
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return collect();
         }
     }
@@ -104,7 +105,7 @@ final class FlickrRepository
                     ]);
                 })
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return collect([
                 'id' => $album['id'] ?? '',
                 'title' => $album['title'] ?? '',

@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 
 final class AuthenticationController
 {
-    /**
-     * @var PhotosAuthentication
-     */
-    private $auth;
+    private PhotosAuthentication $auth;
 
     public function __construct(PhotosAuthentication $auth)
     {

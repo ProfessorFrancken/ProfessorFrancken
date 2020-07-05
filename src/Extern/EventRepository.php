@@ -9,8 +9,8 @@ use Francken\Shared\AcademicYear;
 final class EventRepository
 {
     private $events;
-    private $plannedEvents;
-    private $pastEvents;
+    private array $plannedEvents;
+    private array $pastEvents;
 
     public function __construct(array $plannedEvents, array $pastEvents)
     {

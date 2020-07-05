@@ -11,7 +11,7 @@ final class RegistrationWasSubmitted
 {
     use SerializesModels;
 
-    public $registration;
+    public Registration $registration;
 
     public function __construct(Registration $registration)
     {

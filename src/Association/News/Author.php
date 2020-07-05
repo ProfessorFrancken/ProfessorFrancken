@@ -9,8 +9,8 @@ use Francken\Association\Boards\Board;
 // Should include AuthorId, Link, Photo, Biography
 final class Author
 {
-    private $name;
-    private $photo;
+    private ?string $name = null;
+    private ?string $photo = null;
 
     public function __construct(?string $name = '', ?string $photo = '')
     {

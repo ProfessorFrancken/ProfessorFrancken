@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
+use InvalidArgumentException;
 class JobType
 {
     public const TYPES = [
@@ -12,12 +13,12 @@ class JobType
         "Internship" => "info-circle"
     ];
 
-    private $type;
+    private string $type;
 
     public function __construct(string $type)
     {
         if ( ! array_key_exists($type, self::TYPES)) {
-            throw new \InvalidArgumentException(sprintf('[%s] is not a valid job type', $type));
+            throw new InvalidArgumentException(sprintf('[%s] is not a valid job type', $type));
         }
 
         $this->type = $type;
@@ -39,7 +40,7 @@ class JobType
     {
         try {
             return new self($type);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             return null;
         }
     }

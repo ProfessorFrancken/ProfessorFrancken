@@ -6,7 +6,7 @@ namespace Francken\Association\Members\Students;
 
 final class StudentNumber
 {
-    private $studentNumber;
+    private string $studentNumber;
 
     public function __construct(string $number)
     {

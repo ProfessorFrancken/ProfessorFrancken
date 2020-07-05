@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities;
 
+use Sabre\VObject\Reader;
+use DateTimeImmutable;
 use Illuminate\Support\Collection;
 
 final class ActivitiesRepository
@@ -14,7 +16,7 @@ final class ActivitiesRepository
     {
         $this->activities = new Collection();
         /** @var \Sabre\VObject\Component\VCalendar $vcalendar */
-        $vcalendar = \Sabre\VObject\Reader::read(
+        $vcalendar = Reader::read(
             $calendar
         );
 
@@ -32,7 +34,7 @@ final class ActivitiesRepository
         return $this->activities;
     }
 
-    public function after(\DateTimeImmutable $after, int $amount = 5)
+    public function after(DateTimeImmutable $after, int $amount = 5)
     {
         return $this->activities->filter(function ($activity) use ($after) {
             return $activity->endDate() > $after;
@@ -41,7 +43,7 @@ final class ActivitiesRepository
         })->take($amount);
     }
 
-    public function between(\DateTimeImmutable $after, \DateTimeImmutable $before)
+    public function between(DateTimeImmutable $after, DateTimeImmutable $before)
     {
         return $this->activities->filter(function ($activity) use ($after, $before) {
             return $activity->endDate() > $after && $activity->startDate() < $before;

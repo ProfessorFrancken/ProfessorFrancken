@@ -94,7 +94,7 @@ final class BoardMember extends Model
         DateTimeImmutable $installed_at,
         ?Media $photo
     ) : self {
-        $legacy_member = \Francken\Association\LegacyMember::find($member_id);
+        $legacy_member = LegacyMember::find($member_id);
 
         $member = $board->members()->make([
             'member_id' => $member_id,
@@ -149,7 +149,7 @@ final class BoardMember extends Model
         ?DateTimeImmutable $decharged_at,
         ?Media $photo
     ) : void {
-        $legacy_member = \Francken\Association\LegacyMember::find($member_id);
+        $legacy_member = LegacyMember::find($member_id);
         $this->member_id = $member_id;
         $this->name = optional($legacy_member)->full_name ?? '';
         $this->title = $title;

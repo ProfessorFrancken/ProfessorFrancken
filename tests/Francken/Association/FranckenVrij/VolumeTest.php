@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\FranckenVrij;
 
+use InvalidArgumentException;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\Volume;
@@ -12,7 +13,7 @@ use PHPUnit\Framework\TestCase as TestCase;
 
 class VolumeTest extends TestCase
 {
-    private $editions;
+    private array $editions;
 
     public function setUp() : void
     {
@@ -55,7 +56,7 @@ class VolumeTest extends TestCase
     /** @test */
     public function a_volume_cant_contain_editions_that_dont_belong_to_the_same_volume() : void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new Volume(21, $this->editions);
     }
 }

@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Database\Connection;
+use Illuminate\Database\ConnectionResolverInterface;
+use Illuminate\Http\Request;
+use Log;
+use DateTimeImmutable;
 use Illuminate\Database\DatabaseManager;
 
 final class OrdersController
 {
-    private $orders;
+    private Connection $orders;
 
-    public function __construct(DatabaseManager $db)
+    public function __construct(ConnectionResolverInterface $db)
     {
         $this->orders = $db->connection('francken-legacy');
     }
@@ -33,14 +38,14 @@ final class OrdersController
             });
     }
 
-    public function post()
+    public function post(Request $request)
     {
-        \Log::info(
+        Log::info(
             'Buying an order',
-            ['ip' => request()->ip(), 'order' => request()->get('order')]
+            ['ip' => $request->ip(), 'order' => $request->get('order')]
         );
 
-        $order = request()->get('order');
+        $order = $request->get('order');
 
         foreach ($order['products'] as $product) {
             $productFromDb = $this->orders->table('producten')
@@ -54,7 +59,7 @@ final class OrdersController
                     "aantal" =>	1,
                     "prijs" => $productFromDb->prijs,
                     "totaalprijs" => $productFromDb->prijs,
-                    "tijd" => (new \DateTimeImmutable())->setTimestamp(
+                    "tijd" => (new DateTimeImmutable())->setTimestamp(
                         (int)($order['ordered_at'] / 1000)
                     )
                 ]);

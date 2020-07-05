@@ -10,7 +10,7 @@ use Webmozart\Assert\Assert;
 
 final class Birthdate
 {
-    private $date;
+    private DateTimeImmutable $date;
 
     private function __construct(DateTimeImmutable $date)
     {

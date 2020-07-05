@@ -13,14 +13,14 @@ class GenderTest extends TestCase
     public function it_represents_female_gender() : void
     {
         $gender = Gender::female();
-        $this->assertSame(GENDER::FEMALE, $gender->toString());
+        $this->assertSame(Gender::FEMALE, $gender->toString());
     }
 
     /** @test */
     public function it_represents_male_gender() : void
     {
         $gender = Gender::male();
-        $this->assertSame(GENDER::MALE, $gender->toString());
+        $this->assertSame(Gender::MALE, $gender->toString());
     }
     
     /** @test */

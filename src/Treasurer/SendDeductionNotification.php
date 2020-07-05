@@ -14,10 +14,7 @@ class SendDeductionNotification extends Mailable
 
     public $theme = 'francken';
 
-    /**
-     * @var int
-     */
-    private $deduction_member_id;
+    private int $deduction_member_id;
 
     /**
      * Create a new message instance.

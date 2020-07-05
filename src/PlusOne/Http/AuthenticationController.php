@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Hash;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Http\Request;
 use Lcobucci\JWT\Builder;
@@ -13,7 +14,7 @@ final class AuthenticationController
 {
     public function post(Request $request, Config $config)
     {
-        if ( ! \Hash::check(
+        if ( ! Hash::check(
             $request->get('password'),
             $config->get('francken.plus_one.password')
         )) {
@@ -32,14 +33,13 @@ final class AuthenticationController
         $now = time();
 
         $signer = new Sha256();
-        $token = (new Builder())
+
+        return (new Builder())
                ->setIssuedAt($now)
                ->setExpiration($this->expiration($now))
                ->set('plus-one', true)
                ->sign($signer, $key)
                ->getToken();
-
-        return $token;
     }
 
     private function expiration(int $now)

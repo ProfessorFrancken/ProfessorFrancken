@@ -9,10 +9,7 @@ use Plank\Mediable\Media;
 
 final class MediaPresenter
 {
-    /**
-     * @var Media
-     */
-    private $media;
+    private Media $media;
 
     public function __construct(Media $media)
     {

@@ -9,7 +9,7 @@ use DB;
 
 final class StudentsByStudyAndStudyPhase
 {
-    private $today;
+    private DateTimeImmutable $today;
 
     public function __construct(DateTimeImmutable $today)
     {

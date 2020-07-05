@@ -14,8 +14,8 @@ use Illuminate\Support\Str;
 
 final class FakeNews
 {
-    private $faker;
-    private $news;
+    private Generator $faker;
+    private Collection $news;
 
     public function __construct(Generator $faker, int $amount)
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Auth\Http\Controllers\Admin;
 
+use Hash;
 use DB;
 use Francken\Association\LegacyMember;
 use Francken\Auth\Account;
@@ -71,7 +72,7 @@ final class AccountsController
         $account = Account::activate(
             $member_id,
             $email,
-            \Hash::make(Str::random(32))
+            Hash::make(Str::random(32))
         );
 
         if ($request->input('send_notification_email', null) === '1') {

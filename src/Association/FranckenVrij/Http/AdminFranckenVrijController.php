@@ -18,7 +18,7 @@ final class AdminFranckenVrijController extends Controller
 
     private const ONE_HUNDRED_MB = 100 * 1024 * 1024;
 
-    private $uploader;
+    private FileUploader $uploader;
 
     public function __construct(FileUploader $uploader)
     {

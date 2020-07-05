@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Shared;
 
+use Whoops\Handler\HandlerInterface;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -55,8 +57,8 @@ class ExceptionsHandler extends ExceptionHandler
     protected function whoopsHandler()
     {
         try {
-            return app(\Whoops\Handler\HandlerInterface::class);
-        } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+            return app(HandlerInterface::class);
+        } catch (BindingResolutionException $e) {
             return parent::whoopsHandler();
         }
     }

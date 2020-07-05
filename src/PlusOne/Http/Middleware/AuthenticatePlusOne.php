@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http\Middleware;
 
+use Illuminate\Http\Request;
+use Log;
+use Exception;
 use Closure;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
@@ -16,13 +19,13 @@ final class AuthenticatePlusOne
      *
      * @param  \Illuminate\Http\Request $request
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $token = $request->bearerToken();
 
         if ( ! $token) {
             $ip = $request->ip();
-            \Log::warning('Unauthorized plus one request', ['ip' => $ip]);
+            Log::warning('Unauthorized plus one request', ['ip' => $ip]);
 
             return response('Unauthorized.', 403);
         }
@@ -32,7 +35,7 @@ final class AuthenticatePlusOne
 
             if ( ! $token->validate(new ValidationData())) {
                 $ip = $request->ip();
-                \Log::warning('Unauthorized token request', ['ip' => $ip]);
+                Log::warning('Unauthorized token request', ['ip' => $ip]);
                 return response('Unauthorized data', 401);
             }
 
@@ -41,15 +44,15 @@ final class AuthenticatePlusOne
                 config('francken.plus_one.key')
             )) {
                 $ip = $request->ip();
-                \Log::warning('Unauthorized token request', ['ip' => $ip]);
+                Log::warning('Unauthorized token request', ['ip' => $ip]);
 
                 return response('Unauthorized sign', 401);
             }
 
             return $next($request);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $ip = $request->ip();
-            \Log::warning('Unauthorized token request', ['ip' => $ip]);
+            Log::warning('Unauthorized token request', ['ip' => $ip]);
 
             return response('Unauthorized: ' . $e->getMessage(), 403);
         }

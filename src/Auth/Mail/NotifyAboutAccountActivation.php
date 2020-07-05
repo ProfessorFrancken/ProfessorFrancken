@@ -16,10 +16,7 @@ class NotifyAboutAccountActivation extends Mailable
 
     public $theme = 'francken';
 
-    /**
-     * @var int
-     */
-    private $account_id;
+    private int $account_id;
 
     /**
      * Create a new message instance.

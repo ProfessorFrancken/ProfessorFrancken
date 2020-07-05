@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Auth;
 
 final class SessionController
@@ -13,13 +14,13 @@ final class SessionController
         return view('login');
     }
 
-    public function login()
+    public function login(Request $request)
     {
         $rememberUser = true;
 
         $loggedIn = Auth::attempt([
-            'email' => request()->input('email'),
-            'password' => request()->input('passphrase'),
+            'email' => $request->input('email'),
+            'password' => $request->input('passphrase'),
         ], $rememberUser);
 
         if ($loggedIn) {

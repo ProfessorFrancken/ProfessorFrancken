@@ -11,10 +11,7 @@ use Str;
 
 final class LogoUploader
 {
-    /**
-     * @var MediaUploader
-     */
-    private $uploader;
+    private MediaUploader $uploader;
 
     public function __construct(MediaUploader $uploader)
     {

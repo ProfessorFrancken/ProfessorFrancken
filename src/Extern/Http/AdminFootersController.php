@@ -11,10 +11,7 @@ use Francken\Extern\SponsorOptions\Footer;
 
 final class AdminFootersController
 {
-    /**
-     * @var LogoUploader
-     */
-    private $uploader;
+    private LogoUploader $uploader;
 
     public function __construct(LogoUploader $uploader)
     {

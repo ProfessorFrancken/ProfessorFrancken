@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Illuminate\Http\Request;
 use Francken\Extern\EventRepository;
 use Francken\Extern\JobOpeningRepository;
 use Francken\Extern\JobType;
@@ -19,13 +20,13 @@ final class CareerController
         return view('career.index');
     }
 
-    public function jobs(JobOpeningRepository $repo)
+    public function jobs(JobOpeningRepository $repo, Request $request)
     {
         $jobs = $repo->search(
-            request()->input('job-title', null),
-            request()->input('company', null),
-            Sector::whereName((string)request()->input('sector', ''))->first(),
-            JobType::fromString((string)request()->input('jobType', ''))
+            $request->input('job-title', null),
+            $request->input('company', null),
+            Sector::whereName((string)$request->input('sector', ''))->first(),
+            JobType::fromString((string)$request->input('jobType', ''))
         );
 
         return view('career.job-openings')

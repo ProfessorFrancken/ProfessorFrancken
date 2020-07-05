@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 final class MemberSelectionComposer
 {
-    private $composed_once = false;
+    private bool $composed_once = false;
     /**
      * Bind data to the view.
      */

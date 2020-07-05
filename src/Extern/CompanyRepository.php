@@ -10,7 +10,7 @@ use League\CommonMark\CommonMarkConverter;
 
 final class CompanyRepository
 {
-    private $companies;
+    private array $companies;
 
     public function __construct(array $companies)
     {

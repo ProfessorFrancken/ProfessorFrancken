@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 
 class SettingsController
 {
-    /**
-     * @var Settings
-     */
-    private $settings;
+    private Settings $settings;
 
     public function __construct(Settings $settings)
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
+use Carbon\Carbon;
 use DateInterval;
 use DateTimeImmutable;
 use DB;
@@ -14,7 +15,7 @@ use League\Period\Period;
 
 final class FactSheetController
 {
-    private $today;
+    private DateTimeImmutable $today;
 
     public function __construct()
     {
@@ -46,14 +47,14 @@ final class FactSheetController
 
     private function weeklyStats()
     {
-        $today = new \DateTimeImmutable('now');
+        $today = new DateTimeImmutable('now');
         $lastWeek = $today->sub(new DateInterval('P7D'));
 
-        $today = \Carbon\Carbon::now();
-        $lastWeek = \Carbon\Carbon::now()->subWeeks(1);
+        $today = Carbon::now();
+        $lastWeek = Carbon::now()->subWeeks(1);
 
         return collect(range(0, 24))->map(function ($weeksBeforeToday) {
-            $target = \Carbon\Carbon::now()->subWeeks($weeksBeforeToday);
+            $target = Carbon::now()->subWeeks($weeksBeforeToday);
             return [
                 'week' => (int)$target->format('W'),
                 'stats' => $this->transactionsDuringWeek(
@@ -67,7 +68,7 @@ final class FactSheetController
     private function monthlyStats()
     {
         return collect(range(0, 12 * 4))->map(function ($weeksBeforeToday) {
-            $target = \Carbon\Carbon::now()->subMonths($weeksBeforeToday);
+            $target = Carbon::now()->subMonths($weeksBeforeToday);
             return [
                 'week' => $target->format('Y') . ' ' . $target->format('M'),
                 'stats' => $this->transactionsDuringMonth(

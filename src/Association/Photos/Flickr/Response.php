@@ -10,10 +10,8 @@ class Response
 {
     /**
      * The contents of the Guzzle response.
-     *
-     * @var object
      */
-    protected $contents;
+    protected object $contents;
 
     /**
      * Create a new Response instance.
@@ -28,7 +26,7 @@ class Response
      *
      * @param  string $variable
      */
-    public function __get($variable)
+    public function __get(string $variable)
     {
         return $this->contents[$variable];
     }
@@ -49,7 +47,7 @@ class Response
      * @param  string $method
      * @return string
      */
-    public function getContent($method)
+    public function getContent(string $method)
     {
         return $this->contents[$method]['_content'];
     }

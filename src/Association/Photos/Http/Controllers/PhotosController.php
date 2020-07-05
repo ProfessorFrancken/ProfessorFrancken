@@ -10,10 +10,7 @@ use Illuminate\Http\Request;
 final class PhotosController
 {
     private const PHOTOS_PER_PAGE = 40;
-    /**
-     * @var AlbumsRepository
-     */
-    private $albums;
+    private AlbumsRepository $albums;
 
     public function __construct(AlbumsRepository $albums)
     {
@@ -27,11 +24,11 @@ final class PhotosController
         return view('association.photos.index', ['albums' => $albums]);
     }
 
-    public function show(string $album_slug)
+    public function show(string $album_slug, Request $request)
     {
         $album = $this->albums->bySlug($album_slug);
 
-        if ( ! request()->has('page')) {
+        if ( ! $request->has('page')) {
             $album->addView();
         }
 

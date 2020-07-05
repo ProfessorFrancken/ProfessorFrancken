@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\FranckenVrij;
 
+use InvalidArgumentException;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Features\TestCase;
@@ -44,7 +45,7 @@ class EditionTest extends TestCase
         $id = EditionId::generate();
 
         if ($throws) {
-            $this->expectException(\InvalidArgumentException::class);
+            $this->expectException(InvalidArgumentException::class);
         }
 
         $edition = Edition::publish(

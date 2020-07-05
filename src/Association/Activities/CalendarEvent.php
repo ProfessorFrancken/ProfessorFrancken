@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities;
 
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 use DateTimeImmutable;
 use DateTimeZone;
@@ -12,13 +13,13 @@ use Sabre\VObject\Component\VEvent;
 
 final class CalendarEvent
 {
-    private $summary;
-    private $description;
-    private $location;
-    private $start;
-    private $end;
-    private $status;
-    private $google_id;
+    private string $summary;
+    private string $description;
+    private string $location;
+    private DateTimeImmutable $start;
+    private DateTimeImmutable $end;
+    private string $status;
+    private string $google_id;
     private $last_modified_at_google;
     private $event;
 
@@ -72,7 +73,7 @@ final class CalendarEvent
 
     public function shortDescription() : string
     {
-        return \Illuminate\Support\Str::limit($this->description, 150);
+        return Str::limit($this->description, 150);
     }
 
     public function url() : string

@@ -13,10 +13,7 @@ use Plank\Mediable\MediaUploader;
 
 final class BoardsImport implements ToCollection, WithHeadingRow
 {
-    /**
-     * @var MediaUploader
-     */
-    private $uploader;
+    private MediaUploader $uploader;
 
     public function __construct(MediaUploader $uploader)
     {

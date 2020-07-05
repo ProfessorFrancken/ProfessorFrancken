@@ -12,7 +12,7 @@ use Francken\Shared\AcademicYear;
 
 final class ActiveMembersStatistics
 {
-    private $today;
+    private DateTimeImmutable $today;
 
     public function __construct(DateTimeImmutable $today)
     {

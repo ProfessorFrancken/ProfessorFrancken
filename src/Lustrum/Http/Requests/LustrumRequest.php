@@ -13,7 +13,7 @@ use InvalidArgumentException;
 
 class LustrumRequest extends FormRequest
 {
-    private $board_year;
+    private BoardYear $board_year;
 
     private $board_name;
 

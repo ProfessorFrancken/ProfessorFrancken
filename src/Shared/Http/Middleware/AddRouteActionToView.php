@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Middleware;
 
+use Illuminate\Http\Request;
+use Route;
 use Closure;
 
 /**
@@ -19,10 +21,10 @@ final class AddRouteActionToView
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
-        $action = \Route::getCurrentRoute()->getAction();
+        $action = Route::getCurrentRoute()->getAction();
 
         [$controller, $method] = explode('@', $action['controller']);
 

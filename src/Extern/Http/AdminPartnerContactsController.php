@@ -13,10 +13,7 @@ use Francken\Extern\Partner;
 
 final class AdminPartnerContactsController
 {
-    /**
-     * @var LogoUploader
-     */
-    private $uploader;
+    private LogoUploader $uploader;
 
     public function __construct(LogoUploader $uploader)
     {

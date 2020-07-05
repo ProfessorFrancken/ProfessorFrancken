@@ -9,7 +9,7 @@ final class Gender
     public const FEMALE = 'female';
     public const MALE = 'male';
 
-    private $gender;
+    private string $gender;
 
     private function __construct(string $gender)
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Exception;
 use DateInterval;
 use Illuminate\Console\Command;
 use Illuminate\Database\ConnectionInterface as DatabaseConnection;
@@ -26,8 +27,8 @@ final class SynchronizeFlickrAlbums extends Command
      */
     protected $description = 'Fetch and store all albums from Flickr';
 
-    private $flickr_repo;
-    private $db;
+    private FlickrRepository $flickr_repo;
+    private DatabaseConnection $db;
 
     /**
      * Create a new command instance.
@@ -125,7 +126,7 @@ final class SynchronizeFlickrAlbums extends Command
                 'created_at' => $album['date_created'],
                 'updated_at' => $album['date_update'],
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->info("Something went wrong {$album['title']} - {$album['id']}");
             return;
         }
@@ -133,7 +134,7 @@ final class SynchronizeFlickrAlbums extends Command
         foreach ($photos as $photo) {
             try {
                 $this->db->table('photos')->insert($photo);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->info("Something went wrong {$album['title']} - {$album['id']} - {$photo['id']}");
             }
         }

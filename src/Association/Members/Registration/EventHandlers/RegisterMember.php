@@ -29,8 +29,8 @@ final class RegisterMember implements ShouldQueue
     {
         [$study_track, $year_of_registration] = $this->study($registration);
         $hasAddress =$this->hasAddress($registration);
-                                                            
-        $legacyMember = LegacyMember::create([
+        
+        return LegacyMember::create([
             "geslacht" => $this->gender($registration),
             "initialen" => $registration->initials,
             "voornaam" => $registration->fullname->firstname(),
@@ -69,8 +69,6 @@ final class RegisterMember implements ShouldQueue
             // erelid
             // notities
         ]);
-        
-        return $legacyMember;
     }
 
     private function gender(Registration $registration) : string

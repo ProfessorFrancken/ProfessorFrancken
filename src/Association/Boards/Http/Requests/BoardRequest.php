@@ -13,9 +13,9 @@ use InvalidArgumentException;
 
 class BoardRequest extends FormRequest
 {
-    private $board_year;
+    private ?BoardYear $board_year = null;
 
-    private $board_name;
+    private ?BoardName $board_name = null;
 
     public function installedAt() : DateTimeImmutable
     {

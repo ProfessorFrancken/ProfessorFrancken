@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
+use Francken\Association\Symposium\Mail\InformationEmail;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Mail\Mailer;
 use Webmozart\Assert\Assert;
@@ -24,10 +25,7 @@ final class SendInformationEmail extends Command
      */
     protected $description = 'Send an information email to new participants';
 
-    /**
-     * @var Mailer
-     */
-    private $mail;
+    private Mailer $mail;
 
     /**
      * Create a new command instance.
@@ -65,7 +63,7 @@ final class SendInformationEmail extends Command
         Assert::false($participant->received_information_mail);
 
         $this->mail->to($participant->email)
-            ->send(new Mail\InformationEmail($participant));
+            ->send(new InformationEmail($participant));
 
         $participant->received_information_mail = true;
         $participant->save();

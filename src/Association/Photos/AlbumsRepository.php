@@ -15,10 +15,7 @@ use Illuminate\Pagination\Paginator;
  */
 final class AlbumsRepository
 {
-    /**
-     * @var Gate
-     */
-    private $gate;
+    private Gate $gate;
 
     public function __construct(Gate $gate)
     {
@@ -33,9 +30,7 @@ final class AlbumsRepository
 
         $query = $this->filterPrivateAlbums($query);
 
-        $albums = $query->simplePaginate(16);
-
-        return $albums;
+        return $query->simplePaginate(16);
     }
 
     public function bySlug(string $album_slug) : Album
@@ -46,9 +41,7 @@ final class AlbumsRepository
 
         $query = $this->filterPrivateAlbums($query);
 
-        $album = $query->firstOrFail();
-
-        return $album;
+        return $query->firstOrFail();
     }
 
     private function filterPrivateAlbums($query)

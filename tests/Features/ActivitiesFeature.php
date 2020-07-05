@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use DateTimeImmutable;
+use DateInterval;
 use Francken\Association\Activities\ActivitiesRepository;
 
 class ActivitiesFeature extends TestCase
 {
-    private $start;
+    private DateTimeImmutable $start;
 
     public function setUp() : void
     {
         parent::setUp();
 
-        $tomorrow = new \DateTimeImmutable('tomorrow +1day');
+        $tomorrow = new DateTimeImmutable('tomorrow +1day');
         $this->start = $tomorrow;
         $start = $tomorrow->format('Ymd');
         $end = $tomorrow->format('Ymd');
@@ -67,7 +69,7 @@ CALENDAR;
     /** @test */
     public function if_no_activities_are_planned_it_shows_nothing() : void
     {
-        $this->visit('/association/activities/' . $this->start->add(new \DateInterval('P1Y'))->format('Y/m'))
+        $this->visit('/association/activities/' . $this->start->add(new DateInterval('P1Y'))->format('Y/m'))
              ->dontSee("Lunch lecture: Demcon");
     }
 }

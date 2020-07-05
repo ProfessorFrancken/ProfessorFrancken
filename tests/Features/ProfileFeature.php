@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use DateTimeImmutable;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
@@ -24,7 +25,7 @@ class ProfileFeature extends TestCase
     /** @test */
     public function it_shows_expenses_of_a_member() : void
     {
-        $now = new \DateTimeImmutable();
+        $now = new DateTimeImmutable();
         $ids = \DB::connection('francken-legacy')->table('transacties')
             ->insert([
                 "lid_id" => 1403,
@@ -48,7 +49,7 @@ class ProfileFeature extends TestCase
     /** @test */
     public function it_shows_expenses_of_a_certain_month() : void
     {
-        $now = new \DateTimeImmutable();
+        $now = new DateTimeImmutable();
         \DB::connection('francken-legacy')->table('transacties')
             ->whereYear('tijd', $now->format('Y'))
             ->whereMonth('tijd', $now->format('m'))

@@ -8,8 +8,8 @@ use InvalidArgumentException;
 
 final class Volume
 {
-    private $volume;
-    private $editions;
+    private int $volume;
+    private array $editions;
 
     public function __construct(int $volume, array $editions)
     {

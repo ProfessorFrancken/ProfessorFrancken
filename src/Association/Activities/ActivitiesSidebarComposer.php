@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class ActivitiesSidebarComposer
 {
-    private $today;
+    private DateTimeImmutable $today;
 
     public function __construct()
     {

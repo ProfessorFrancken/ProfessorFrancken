@@ -6,8 +6,8 @@ namespace Francken\Association\Members;
 
 final class StudyDetails
 {
-    private $studentNumber;
-    private $studies;
+    private string $studentNumber;
+    private array $studies;
 
     public function __construct(
         string $studentNumber,

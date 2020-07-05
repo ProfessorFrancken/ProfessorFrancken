@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Middleware;
 
+use Illuminate\Http\Request;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
@@ -11,10 +12,8 @@ class Authenticate
 {
     /**
      * The Guard implementation.
-     *
-     * @var Guard
      */
-    protected $guard;
+    protected Guard $guard;
 
     /**
      * Create a new middleware instance.
@@ -32,7 +31,7 @@ class Authenticate
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         if ($this->guard->check()) {
             return $next($request);

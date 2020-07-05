@@ -10,23 +10,17 @@ class Api
 {
     /**
      * Flickr API response format.
-     *
-     * @var string
      */
-    public $format;
+    public string $format;
     /**
      * Flickr API key.
-     *
-     * @var string
      */
-    protected $key;
+    protected string $key;
 
     /**
      * Guzzle Client instance.
-     *
-     * @var \GuzzleHttp\Client
      */
-    protected $client;
+    protected Client $client;
 
     /**
      * Create a new Flickr Api instance.
@@ -36,7 +30,7 @@ class Api
      * @param  string $endpoint
      * @return void
      */
-    public function __construct($apiKey, $format = 'php_serial', $endpoint = 'https://api.flickr.com/services/rest/')
+    public function __construct(string $apiKey, string $format = 'php_serial', string $endpoint = 'https://api.flickr.com/services/rest/')
     {
         $this->key = $apiKey;
         $this->format = $format;
@@ -54,7 +48,7 @@ class Api
      * @param  array|null               $parameters
      * @return Response|string
      */
-    public function request($call, $parameters = null)
+    public function request(string $call, ?array $parameters = null)
     {
         $guzzleResponse = $this->client->get($this->api() . '&method=' . $call . $this->parameters($parameters));
 
@@ -80,7 +74,7 @@ class Api
      * @param  array  $array
      * @return string
      */
-    protected function parameters($array)
+    protected function parameters(array $array)
     {
         if ( ! is_array($array)) {
             return '';

@@ -12,15 +12,9 @@ final class PhotosPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * @var PhotosAuthentication
-     */
-    private $auth;
+    private PhotosAuthentication $auth;
 
-    /**
-     * @var bool
-     */
-    private $are_albums_public;
+    private bool $are_albums_public;
 
     public function __construct(PhotosAuthentication $auth, Settings $settings)
     {

@@ -11,10 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 final class NotifyBoardAboutRegistration implements ShouldQueue
 {
-    /**
-     * @var Mailer
-     */
-    private $mail;
+    private Mailer $mail;
 
     public function __construct(Mailer $mail)
     {

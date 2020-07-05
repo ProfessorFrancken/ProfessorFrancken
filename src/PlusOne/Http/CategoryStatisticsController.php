@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Http\Request;
 use DateInterval;
 use DateTimeImmutable;
 use DB;
 
 final class CategoryStatisticsController
 {
-    public function index()
+    public function index(Request $request)
     {
         // By default use the period between today and 6 months ago
         $endDate = DateTimeImmutable::createFromFormat(
             'Y-m-d',
-            request()->get('endDate', (new DateTimeImmutable())->format('Y-m-d'))
+            $request->get('endDate', (new DateTimeImmutable())->format('Y-m-d'))
         );
 
         $startDate = DateTimeImmutable::createFromFormat(
             'Y-m-d',
-            request()->get('startDate', $endDate->sub(new DateInterval('P6M'))->format('Y-m-d'))
+            $request->get('startDate', $endDate->sub(new DateInterval('P6M'))->format('Y-m-d'))
         );
 
         $stats = DB::connection('francken-legacy')

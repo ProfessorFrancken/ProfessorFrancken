@@ -98,7 +98,7 @@ class AcademicYearTest extends TestCase
     /** @test */
     public function it_can_return_the_academic_year_associated_to_a_date() : void
     {
-        $year = AcademicYear::fromDate(new \DateTimeImmutable('17-07-2017'));
+        $year = AcademicYear::fromDate(new DateTimeImmutable('17-07-2017'));
 
         $this->assertEquals('2017 - 2018', $year->toString());
     }

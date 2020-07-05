@@ -6,10 +6,7 @@ namespace Francken\Association\Boards;
 
 final class BoardWasInstalled
 {
-    /**
-     * @var int
-     */
-    private $board_id;
+    private int $board_id;
 
     public function __construct(int $board_id)
     {

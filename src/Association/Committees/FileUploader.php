@@ -10,10 +10,7 @@ use Plank\Mediable\MediaUploader;
 
 final class FileUploader
 {
-    /**
-     * @var MediaUploader
-     */
-    private $uploader;
+    private MediaUploader $uploader;
 
     public function __construct(MediaUploader $uploader)
     {

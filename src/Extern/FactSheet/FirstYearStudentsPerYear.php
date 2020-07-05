@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Extern\FactSheet;
 
+use DateTimeImmutable;
 use DB;
 use Illuminate\Support\Collection;
 
 final class FirstYearStudentsPerYear
 {
-    /**
-     * @var Collection
-     */
-    private $years;
+    private Collection $years;
 
     public function __construct(Collection $years)
     {
@@ -24,7 +22,7 @@ final class FirstYearStudentsPerYear
         return $this->years->map(function ($year) {
             $members = DB::connection('francken-legacy')
                 ->table('leden')
-                ->whereBetween('start_lidmaatschap', [new \DateTimeImmutable("$year-08-01"), new \DateTimeImmutable(($year + 1) . "-08-01")])
+                ->whereBetween('start_lidmaatschap', [new DateTimeImmutable("$year-08-01"), new DateTimeImmutable(($year + 1) . "-08-01")])
                 ->where("jaar_van_inschrijving", $year)
                 ->get();
 

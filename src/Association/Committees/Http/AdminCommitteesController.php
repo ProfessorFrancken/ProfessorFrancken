@@ -13,8 +13,7 @@ use Francken\Shared\Markdown\ContentCompiler;
 
 final class AdminCommitteesController
 {
-    /** @var FileUploader */
-    private $uploader;
+    private FileUploader $uploader;
 
     public function __construct(FileUploader $uploader)
     {

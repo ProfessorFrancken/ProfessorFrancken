@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
+use Francken\Shared\Settings\Settings;
 use DateTimeImmutable;
 use DateTimeZone;
 use Francken\Shared\Http\Controllers\DashboardController;
@@ -20,7 +21,7 @@ final class NavigationServiceProvider extends ServiceProvider
             $menu = $this->app->config->get('francken.navigation.menu');
             $menu[1]['icon'] = $this->associationIcon();
 
-            $settings = $this->app->make(\Francken\Shared\Settings\Settings::class);
+            $settings = $this->app->make(Settings::class);
             if ($settings->isPienterShownInNavigation()) {
                 $menu[] = [
                     'url' => 'http://pienterkamp.nl/',
@@ -97,16 +98,14 @@ final class NavigationServiceProvider extends ServiceProvider
                         ['url' => route('get-logout'), 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
                     ]),
                 ];
-            } else {
-                if ($settings->isLoginShownInNavigation()) {
-                    $menu[] = [
-                        'url' => route('login'),
-                        'title' => 'Login',
-                        'subItems' => [],
-                        'icon' => '',
-                        'class' => 'login-link',
-                    ];
-                }
+            } elseif ($settings->isLoginShownInNavigation()) {
+                $menu[] = [
+                    'url' => route('login'),
+                    'title' => 'Login',
+                    'subItems' => [],
+                    'icon' => '',
+                    'class' => 'login-link',
+                ];
             }
 
             $gate = $this->app->make(Gate::class);

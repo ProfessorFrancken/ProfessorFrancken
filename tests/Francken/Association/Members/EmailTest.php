@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
+use PHPUnit\Framework\TestCase;
 use Francken\Association\Members\Email;
 use InvalidArgumentException;
 
-class EmailTest extends \PHPUnit\Framework\TestCase
+class EmailTest extends TestCase
 {
     /** @test */
     public function it_stores_an_email() : void

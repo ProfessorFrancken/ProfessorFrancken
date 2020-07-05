@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Imports;
 
+use Log;
 use Francken\Association\LegacyMember;
 use Francken\Treasurer\DeductionEmail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -16,9 +17,9 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustomCsvSettings
 {
-    private $deduction;
-    private $deductions;
-    private $errors;
+    private ?DeductionEmail $deduction = null;
+    private Collection $deductions;
+    private Collection $errors;
 
     public function __construct(?DeductionEmail $deduction = null)
     {
@@ -109,7 +110,7 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
             $possible_member_id = (int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
             $member = LegacyMember::findOrFail($possible_member_id);
         } catch (ModelNotFoundException $e) {
-            \Log::error("Could not retrieve deduction information", $deduction->toArray());
+            Log::error("Could not retrieve deduction information", $deduction->toArray());
             return;
         }
 

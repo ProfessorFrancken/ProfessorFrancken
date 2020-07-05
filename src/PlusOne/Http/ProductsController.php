@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Database\DatabaseManager;
 
 final class ProductsController
 {
-    private $products;
+    private Builder $products;
 
-    public function __construct(DatabaseManager $db)
+    public function __construct(ConnectionResolverInterface $db)
     {
         $this->products = $db->connection('francken-legacy')
                         ->table('producten');

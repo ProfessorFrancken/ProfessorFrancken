@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Session\Store;
 
@@ -16,22 +17,13 @@ class PhotosAuthentication
 {
     private const SESSION_KEY = 'authenticated-for-viewing-albums';
 
-    /**
-     * @var Store
-     */
-    private $sessions;
+    private Store $sessions;
 
-    /**
-     * @var Hasher
-     */
-    private $hasher;
+    private Hasher $hasher;
 
-    /**
-     * @var string
-     */
-    private $password_hash;
+    private string $password_hash;
 
-    public function __construct(Store $sessions, Hasher $hasher, string $password_hash)
+    public function __construct(Session $sessions, Hasher $hasher, string $password_hash)
     {
         $this->sessions = $sessions;
         $this->hasher = $hasher;

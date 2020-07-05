@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class LaravelTestCase extends BaseTestCase
 {
-    public $connectionsToTransact = [null, 'francken-legacy'];
+    public array $connectionsToTransact = [null, 'francken-legacy'];
 
     /**
      * Creates the application.

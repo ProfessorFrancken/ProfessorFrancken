@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared;
 
-abstract class DomainException extends \LogicException
+use LogicException;
+abstract class DomainException extends LogicException
 {
 }

@@ -9,9 +9,9 @@ use League\HTMLToMarkdown\HtmlConverter;
 
 final class CompiledMarkdown
 {
-    private $contents = null;
-    private $compiler = null;
-    private $source = null;
+    private ?string $contents = null;
+    private ?CommonMarkConverter $compiler = null;
+    private ?string $source = null;
 
     public function __construct(string $contents)
     {

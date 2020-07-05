@@ -102,14 +102,10 @@ class AdminBoardsFeature extends TestCase
             $file = [$segment => $file];
         }
 
-        if (isset($uploads[$newKey])) {
-            $uploads[$newKey] = array_merge(
-                $uploads[$newKey],
-                $file
-            );
-        } else {
-            $uploads[$newKey] = $file;
-        }
+        $uploads[$newKey] = isset($uploads[$newKey]) ? array_merge(
+            $uploads[$newKey],
+            $file
+        ) : $file;
 
         unset($uploads[$key]);
     }

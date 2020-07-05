@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
+use PHPUnit\Framework\TestCase;
 use Francken\Association\Members\Address;
 
-class AddressTest extends \PHPUnit\Framework\TestCase
+class AddressTest extends TestCase
 {
     /** @test */
     public function an_address_consists_of_a_city_a_postal_code_and_street_naeme_with_a_street_number() : void

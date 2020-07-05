@@ -6,8 +6,8 @@ namespace Francken\Extern\FactSheet;
 
 final class StudentsPerStudy implements StudyStatistic
 {
-    private $study;
-    private $amount;
+    private string $study;
+    private int $amount;
 
     public function __construct(string $study, int $amount)
     {

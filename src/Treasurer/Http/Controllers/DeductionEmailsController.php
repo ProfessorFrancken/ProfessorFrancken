@@ -12,10 +12,7 @@ use Illuminate\Contracts\Mail\Mailer;
 
 final class DeductionEmailsController
 {
-    /**
-     * @var Mailer
-     */
-    private $mail;
+    private Mailer $mail;
 
     public function __construct(Mailer $mail)
     {

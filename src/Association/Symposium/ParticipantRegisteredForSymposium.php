@@ -10,7 +10,7 @@ final class ParticipantRegisteredForSymposium
 {
     use SerializesModels;
 
-    public $participant;
+    public Participant $participant;
 
     public function __construct(Participant $participant)
     {

@@ -8,8 +8,8 @@ use DateTimeImmutable;
 
 final class Student
 {
-    private $studentNumber;
-    private $studies;
+    private StudentNumber $studentNumber;
+    private array $studies;
 
     public function __construct(StudentNumber $studentNumber, array $studies)
     {

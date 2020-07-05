@@ -1,0 +1,19 @@
+parameters:
+   auto_import_names: true
+   import_short_classes: true
+   import_doc_blocks: false
+   paths:
+        - 'src'
+        - 'tests'
+   sets:
+       - code-quality
+   exclude_rectors:
+       # Would be nice to have but not sure if we can make it work with
+       # Eloquent's attributes
+       - 'Rector\CodingStyle\Rector\Variable\UnderscoreToPascalCaseVariableAndPropertyNameRector'
+       # This seemed to give incorrect results, needs some research
+       - 'Rector\Laravel\Rector\Class_\InlineValidationRulesToArrayDefinitionRector'
+
+services:
+    Rector\Php74\Rector\Property\TypedPropertyRector: null
+    Rector\Laravel\Rector\StaticCall\RequestStaticValidateToInjectRector: null

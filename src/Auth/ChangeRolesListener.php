@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Log;
+use UnexpectedValueException;
 use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
@@ -38,7 +40,7 @@ final class ChangeRolesListener
     public function whenAccountWasActivated(
         AccountWasActivated $event
     ) : void {
-        \Log::info('Activating an account');
+        Log::info('Activating an account');
         /** @var Account */
         $account = Account::findOrFail($event->accountId());
 
@@ -81,7 +83,7 @@ final class ChangeRolesListener
     }
 
     public function whenBoardMemberWasInstalled(
-        BoardMemberwasInstalled $event
+        BoardMemberWasInstalled $event
     ) : void {
         /** @var Account|null */
         $account = Account::ofMember($event->memberId())->first();
@@ -131,7 +133,7 @@ final class ChangeRolesListener
                 case BoardMemberStatus::DEMISSIONED_BOARD_MEMBER: return static::DEMISSIONED_BOARD_ROLE;
                 case BoardMemberStatus::DECHARGED_BOARD_MEMBER: return static::DECHARGED_BOARD_ROLE;
                 default:
-                    throw new \UnexpectedValueException(
+                    throw new UnexpectedValueException(
                         "Member has an unkown board member status: [{$member->board_member_status}]"
                     );
             }

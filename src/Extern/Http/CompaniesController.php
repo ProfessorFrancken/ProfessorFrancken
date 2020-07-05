@@ -11,8 +11,8 @@ use Francken\Extern\Sector;
 
 final class CompaniesController
 {
-    private $companies;
-    private $jobs;
+    private CompanyRepository $companies;
+    private JobOpeningRepository $jobs;
 
     public function __construct(CompanyRepository $companies, JobOpeningRepository $jobs)
     {

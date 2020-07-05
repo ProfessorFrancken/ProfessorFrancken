@@ -9,10 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class VerifyRegistration implements ShouldQueue
 {
-    /**
-     * @var Mailer
-     */
-    private $mail;
+    private Mailer $mail;
 
     public function __construct(Mailer $mail)
     {

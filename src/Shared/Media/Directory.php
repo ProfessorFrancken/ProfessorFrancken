@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Media;
 
+use Francken\Shared\Media\Http\Controllers\MediaController;
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Support\Collection;
 
@@ -11,15 +12,9 @@ final class Directory
 {
     private const DISK = 'uploads';
 
-    /**
-     * @var string
-     */
-    private $directory;
+    private string $directory;
 
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
     public function __construct(string $directory, ?string $name = null)
     {
@@ -46,7 +41,7 @@ final class Directory
     public function url()
     {
         return action(
-            [\Francken\Shared\Media\Http\Controllers\MediaController::class, 'index'],
+            [MediaController::class, 'index'],
             $this->directory
         );
     }

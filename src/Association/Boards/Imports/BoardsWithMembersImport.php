@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards\Imports;
 
+use Illuminate\Database\ConnectionInterface;
 use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Illuminate\Database\Connection;
@@ -14,17 +15,11 @@ use Plank\Mediable\MediaUploader;
 
 final class BoardsWithMembersImport implements WithMultipleSheets, WithEvents
 {
-    /**
-     * @var Connection
-     */
-    private $db;
+    private Connection $db;
 
-    /**
-     * @var MediaUploader
-     */
-    private $uploader;
+    private MediaUploader $uploader;
 
-    public function __construct(Connection $db, MediaUploader $uploader)
+    public function __construct(ConnectionInterface $db, MediaUploader $uploader)
     {
         $this->db = $db;
         $this->uploader = $uploader;

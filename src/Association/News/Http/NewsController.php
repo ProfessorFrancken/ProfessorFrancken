@@ -30,7 +30,7 @@ final class NewsController
             ->withSubject($request->subject())
             ->withAuthorName($request->author())
             ->paginate()
-            ->appends(request()->except('page'));
+            ->appends($request->except('page'));
 
         return view('pages.association.news.archive')
             ->with('news', $news)

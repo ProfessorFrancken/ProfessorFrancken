@@ -12,10 +12,7 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 final class SymposiumExport implements FromView //, FromCollection
 {
-    /**
-     * @var Symposium
-     */
-    private $symposium;
+    private Symposium $symposium;
 
     public function __construct(Symposium $symposium)
     {

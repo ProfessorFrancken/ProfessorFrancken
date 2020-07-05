@@ -6,9 +6,9 @@ namespace Francken\Association\Members;
 
 final class PaymentDetails
 {
-    private $iban;
-    private $bic = null;
-    private $deduct_additional_costs = false;
+    private ?string $iban = null;
+    private ?string $bic = null;
+    private bool $deduct_additional_costs = false;
 
     /**
      * In the future we will also store the bic code, but as that would require

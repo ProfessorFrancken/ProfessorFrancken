@@ -13,17 +13,11 @@ class NotifyCommittee extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * @var Participant
-     */
-    public $participant;
+    public Participant $participant;
 
     public $theme = 'symposium';
 
-    /**
-     * @var string
-     */
-    private $who_needs_to_take_an_adt;
+    private string $who_needs_to_take_an_adt;
 
     /**
      * Create a new message instance.

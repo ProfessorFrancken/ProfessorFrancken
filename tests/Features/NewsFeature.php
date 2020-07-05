@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use Francken\Association\News\Http\NewsController;
 use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -31,7 +32,7 @@ class NewsFeature extends TestCase
     public function the_latest_news_is_shown() : void
     {
         $this->visit(
-            action([\Francken\Association\News\Http\NewsController::class, 'index'])
+            action([NewsController::class, 'index'])
         )
             ->click('Read more')
 
@@ -46,7 +47,7 @@ class NewsFeature extends TestCase
     public function the_archive_can_be_used_to_search_for_old_news() : void
     {
         $this->visit(
-            action([\Francken\Association\News\Http\NewsController::class, 'archive'])
+            action([NewsController::class, 'archive'])
         );
 
         $this->assertResponseOk();

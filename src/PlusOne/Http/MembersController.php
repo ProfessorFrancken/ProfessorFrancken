@@ -4,15 +4,18 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Connection;
+use Illuminate\Database\ConnectionResolverInterface;
 use DB;
 use Illuminate\Database\DatabaseManager;
 
 final class MembersController
 {
-    private $members;
-    private $db;
+    private Builder $members;
+    private Connection $db;
 
-    public function __construct(DatabaseManager $db)
+    public function __construct(ConnectionResolverInterface $db)
     {
         $this->db = $db->connection('francken-legacy');
         $this->members = $db->connection('francken-legacy')

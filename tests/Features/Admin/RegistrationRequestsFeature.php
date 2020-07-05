@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin;
 
+use Francken\Auth\Account;
+use DateTimeImmutable;
+use Laravel\BrowserKitTesting\HttpException;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Address;
@@ -73,7 +76,7 @@ class RegistrationRequestsFeature extends TestCase
     public function signing_a_registration_by_a_board_member() : void
     {
         $registration = $this->submitRegistration();
-        $account = \Francken\Auth\Account::first();
+        $account = Account::first();
         $boardMember = BoardMember::create([
             'board_id' => 0,
             'member_id' => $account->member_id,
@@ -81,7 +84,7 @@ class RegistrationRequestsFeature extends TestCase
             'title' => 'Mark',
 
             'board_member_status' => BoardMemberStatus::BOARD_MEMBER,
-            'installed_at' => new \DateTimeImmutable(),
+            'installed_at' => new DateTimeImmutable(),
         ]);
 
         $this->visit(action(
@@ -102,7 +105,7 @@ class RegistrationRequestsFeature extends TestCase
     public function approving_a_registration_by_a_board_member() : void
     {
         $registration = $this->submitRegistration();
-        $account = \Francken\Auth\Account::first();
+        $account = Account::first();
         $boardMember = BoardMember::create([
             'board_id' => 0,
             'member_id' => $account->member_id,
@@ -110,7 +113,7 @@ class RegistrationRequestsFeature extends TestCase
             'title' => 'Mark',
 
             'board_member_status' => BoardMemberStatus::BOARD_MEMBER,
-            'installed_at' => new \DateTimeImmutable(),
+            'installed_at' => new DateTimeImmutable(),
         ]);
 
         $this->visit(action(
@@ -143,7 +146,7 @@ class RegistrationRequestsFeature extends TestCase
     {
         $registration = $this->submitRegistration();
 
-        $this->expectException(\Laravel\BrowserKitTesting\HttpException::class);
+        $this->expectException(HttpException::class);
         $this->visit(action(
             [RegistrationRequestsController::class, 'show'],
             ['registration' => $registration->id]

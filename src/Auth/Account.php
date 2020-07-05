@@ -61,7 +61,7 @@ final class Account extends Model implements
 
     use HasRoles;
 
-    protected $guard_name = 'web';
+    protected string $guard_name = 'web';
 
     protected $table = 'auth_accounts';
 
