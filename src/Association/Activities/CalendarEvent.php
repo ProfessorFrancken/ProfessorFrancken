@@ -115,7 +115,7 @@ final class CalendarEvent
     }
 
 
-    private function parseSchedule($event) : void
+    private function parseSchedule(VEvent $event) : void
     {
         $this->start = $event->DTSTART->getDateTime();
         $this->end = $event->DTEND->getDateTime();

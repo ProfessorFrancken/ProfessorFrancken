@@ -22,7 +22,7 @@ class Flickr
     /**
      * Make a Flickr API request.
      *
-     * @return Response
+     * @return Response|string
      */
     public function request(string $method, ?array $parameters = null)
     {
@@ -31,24 +31,30 @@ class Flickr
 
     /**
      * Flickr echo request, for testing purposes.
+     *
+     * @return Response|string
      */
-    public function echoThis(string $string) : Response
+    public function echoThis(string $string) 
     {
         return $this->request('flickr.test.echo', ['this' => $string]);
     }
 
     /**
      * Get a list of photosets.
+     *
+     * @return Response|string
      */
-    public function listSets(?array $parameters = null) : Response
+    public function listSets(?array $parameters = null) 
     {
         return $this->request('flickr.photosets.getList', $parameters);
     }
 
     /**
      * Get all photos in a photoset.
+     *
+     * @return Response|string
      */
-    public function photosForSet(string $setId, string $userId, ?array $otherParameters = null) : Response
+    public function photosForSet(string $setId, string $userId, ?array $otherParameters = null) 
     {
         $parameters['photoset_id'] = $setId;
         $parameters['user_id'] = $userId;
@@ -62,8 +68,10 @@ class Flickr
 
     /**
      * Get all info on a photo.
+     *
+     * @return Response|string
      */
-    public function photoInfo(string $photoId, ?string $secretId = null) : Response
+    public function photoInfo(string $photoId, ?string $secretId = null) 
     {
         $parameters['photo_id'] = $photoId;
 

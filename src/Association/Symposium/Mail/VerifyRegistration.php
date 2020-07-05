@@ -54,7 +54,7 @@ class VerifyRegistration extends Mailable
     /**
      * Get the verification URL for the given notifiable.
      */
-    protected function verificationUrl($participant) : string
+    protected function verificationUrl(Participant $participant) : string
     {
         return URL::signedRoute(
             'symposium.participant.verify',

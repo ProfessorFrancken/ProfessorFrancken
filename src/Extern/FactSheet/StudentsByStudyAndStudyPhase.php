@@ -29,7 +29,7 @@ final class StudentsByStudyAndStudyPhase
         ));
     }
 
-    private function studyPhaseStatistics($students)
+    private function studyPhaseStatistics(\Illuminate\Support\Collection $students)
     {
         return $students->groupBy(function ($student) {
             return $student->studierichting;

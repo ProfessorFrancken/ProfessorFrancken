@@ -40,7 +40,7 @@ final class EventRepository
         );
     }
 
-    private function filterByAcademicYear($year) : callable
+    private function filterByAcademicYear(AcademicYear $year) : callable
     {
         return function (array $event) use ($year) : bool {
             return AcademicYear::fromString($event['academicYear']) == $year;

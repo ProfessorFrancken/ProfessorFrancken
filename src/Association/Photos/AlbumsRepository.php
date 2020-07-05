@@ -44,7 +44,10 @@ final class AlbumsRepository
         return $query->firstOrFail();
     }
 
-    private function filterPrivateAlbums($query)
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     */
+    private function filterPrivateAlbums(\Illuminate\Database\Eloquent\Builder $query)
     {
         // Check whether the user is either authenticated or authenticated by entering
         // the photos password

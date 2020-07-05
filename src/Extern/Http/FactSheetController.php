@@ -180,7 +180,7 @@ final class FactSheetController
         ]);
     }
 
-    private function transactionsInPeriod($period)
+    private function transactionsInPeriod(Period $period)
     {
         $fromDate = $period->getStartDate();
         $tillDate = $period->getEndDate();
