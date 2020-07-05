@@ -22,6 +22,8 @@ services:
     image: node:14.5
     volumes:
       - ./:/var/www/francken
+      - ./docker/volumes/npm/:/var/www/.npm
+      - ./docker/volumes/config/:/var/www/.config
     working_dir: /var/www/francken
 
   php:
@@ -44,6 +46,7 @@ services:
     working_dir: /var/www/francken
     volumes:
       - ./:/var/www/francken
+      - ./docker/volumes/config/:/var/www/.config
 
   scheduler:
     image: francken/v2-scheduler

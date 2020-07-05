@@ -13,8 +13,11 @@ services:
 
   npm:
     image: node:14.5
+    user: "33"
     volumes:
       - ./:/var/www/francken
+      - ./docker/volumes/npm/:/var/www/.npm
+      - ./docker/volumes/config/:/var/www/.config
     working_dir: /var/www/francken
 
   php:
@@ -34,6 +37,7 @@ services:
     working_dir: /var/www/francken
     volumes:
       - ./:/var/www/francken
+      - ./docker/volumes/config/:/var/www/.config
     environment:
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
@@ -85,7 +89,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./docker/nginx
-    image: francken/v2-nginx
+    image: francken/nginx
     ports:
       - 81:80
     links:
