@@ -300,35 +300,3 @@ final class Registration extends Model
         }, $this->studies);
     }
 }
-
-namespace Francken\Association\Members\Registration;
-
-use Exception;
-
-final class RegistrationException extends Exception
-{
-    public static function alreadyApproved() : self
-    {
-        return new self("Tried approving a registration that's been approved before");
-    }
-
-
-    // /**
-    //  * Report the exception.
-    //  */
-    // public function report() : void
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Render the exception into an HTTP response.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function render($request)
-    // {
-    //     // return response(...);
-    // }
-}
