@@ -44,6 +44,10 @@ final class DeductionEmailToMember extends Model
         'amount_in_cents',
         'contained_errors',
     ];
+    protected $casts = [
+        'amount_in_cents' => 'int',
+        'contained_errors' => 'int',
+    ];
 
     public function getAmountAttribute()
     {
