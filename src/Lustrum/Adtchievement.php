@@ -53,7 +53,7 @@ final class Adtchievement extends Model
         'is_hidden',
     ];
 
-    public function earnBy(Pirate $pirate, ?int $points = null, string $reason = '')
+    public function earnBy(Pirate $pirate, ?int $points = null, string $reason = ''): void
     {
         // TODO:
         // Based on this adtchievement's settings eck if the pirate is allowed to earn this adtchievemnet
@@ -80,7 +80,7 @@ final class Adtchievement extends Model
             ->withPivot(['pirate_crew_id']);
     }
 
-    public function scopeEarnedByPirateCrew($builder, PirateCrew $crew)
+    public function scopeEarnedByPirateCrew($builder, PirateCrew $crew): BelongsToMany
     {
         return $this->earnedBy()
             ->where('lustrum_pirate_adtchievements.pirate_crew_id', $crew->id);

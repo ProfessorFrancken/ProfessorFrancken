@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Francken\Lustrum\Pirate
@@ -58,7 +58,7 @@ final class Pirate extends Model
         ]);
     }
 
-    public function joinCrew(PirateCrew $crew)
+    public function joinCrew(PirateCrew $crew): self
     {
         return $this->crew()->associate($crew);
     }

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use DateTimeImmutable;
 use DB;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Francken\Lustrum\PirateCrew
@@ -64,7 +64,7 @@ final class PirateCrew extends Model
         return $this->hasMany(EarnedAdtchievement::class, 'pirate_crew_id');
     }
 
-    public function initiate(LegacyMember $member)
+    public function initiate(LegacyMember $member): self
     {
         return $this->crewMembers()->create([
             'member_id' => $member->id,
@@ -74,7 +74,7 @@ final class PirateCrew extends Model
         ]);
     }
 
-    public function total_earned_adtchievements()
+    public function total_earned_adtchievements(): int
     {
         return $this->earnedAdtchievements()
             ->count(\DB::raw('DISTINCT adtchievement_id'));

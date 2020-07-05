@@ -123,7 +123,7 @@ final class BoardMember extends Model
         return null;
     }
 
-    public function board(): BelongsTo
+    public function board() : BelongsTo
     {
         return $this->belongsTo(Board::class);
     }

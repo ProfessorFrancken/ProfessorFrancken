@@ -20,7 +20,7 @@ final class CompiledMarkdown
 
     public function __toString() : string
     {
-        return $this->compiledContent();
+        return $this->compiledContent() ?? '';
     }
 
     public static function withSource(string $contents, string $source) : self
