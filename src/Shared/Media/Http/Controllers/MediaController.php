@@ -12,6 +12,9 @@ use Plank\Mediable\Media;
 
 final class MediaController
 {
+    /**
+     * @var string
+     */
     private const DISK = 'uploads';
     public function index(FilesystemManager $storage, string $directory = '')
     {

@@ -9,6 +9,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ContactRequest extends FormRequest
 {
+    /**
+     * @var int
+     */
     public const MAX_FILE_SIZE = 10 * 1024;
 
     /**

@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class IcalController
 {
+    /**
+     * @var string
+     */
     public const CALENDAR_URL = 'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
 
     public function index()

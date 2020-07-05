@@ -11,6 +11,9 @@ use Illuminate\Validation\Rule;
 
 class PartnerRequest extends FormRequest
 {
+    /**
+     * @var int
+     */
     private const MAX_FILE_SIZE = 10 * 1024;
 
     /**

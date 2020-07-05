@@ -20,6 +20,9 @@ final class Partner extends Model
     use SoftDeletes;
     use Mediable;
 
+    /**
+     * @var string
+     */
     public const PARTNER_LOGO_TAG = 'partner_logo';
 
     protected $table = 'extern_partners';

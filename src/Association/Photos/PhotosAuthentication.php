@@ -15,6 +15,9 @@ use Illuminate\Session\Store;
  */
 class PhotosAuthentication
 {
+    /**
+     * @var string
+     */
     private const SESSION_KEY = 'authenticated-for-viewing-albums';
 
     private Store $sessions;

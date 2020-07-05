@@ -12,8 +12,8 @@ use Illuminate\Queue\SerializesModels;
 
 class NotifyAboutAccountActivation extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public $theme = 'francken';
 
     private int $account_id;

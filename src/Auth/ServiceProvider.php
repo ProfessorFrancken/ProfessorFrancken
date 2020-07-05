@@ -9,7 +9,7 @@ use Francken\Association\Boards\BoardMemberWasDemissioned;
 use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
 use Francken\Association\Boards;
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
@@ -21,7 +21,7 @@ final class ServiceProvider extends BaseServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton(GateContract::class, function ($app) {
+        $this->app->singleton(Gate::class, function ($app) {
             return new GateThatAllowsGuestsInCallables($app, function () use ($app) {
                 return call_user_func($app['auth']->userResolver());
             });
@@ -38,7 +38,7 @@ final class ServiceProvider extends BaseServiceProvider
         });
     }
 
-    public function boot(GateContract $gate) : void
+    public function boot(Gate $gate) : void
     {
         $gate->before(function ($user, $ability) {
             return $user->hasRole('Admin') ? true : null;

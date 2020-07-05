@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features\Association\Symposium;
 
 use DateTimeImmutable;
-use Francken\Association\Symposium\Mail\NotifyCommittee as NotifyCommitteeMail;
+use Francken\Association\Symposium\Mail\NotifyCommittee;
 use Francken\Association\Symposium\NotifySymposiumCommittee;
 use Francken\Association\Symposium\ParticipantRegisteredForSymposium;
 use Francken\Association\Symposium\Symposium;
@@ -50,7 +50,7 @@ class NotifyCommitteeFeature extends TestCase
         $listener->handle($event);
 
         Mail::assertSent(
-            NotifyCommitteeMail::class,
+            NotifyCommittee::class,
             function ($mail) use ($participant) {
                 return $mail->participant == $participant;
             });

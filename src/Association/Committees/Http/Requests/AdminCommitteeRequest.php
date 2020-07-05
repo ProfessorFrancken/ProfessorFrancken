@@ -9,6 +9,9 @@ use Illuminate\Support\Str;
 
 final class AdminCommitteeRequest extends FormRequest
 {
+    /**
+     * @var int
+     */
     private const MAX_FILE_SIZE = 10 * 1024;
 
     /**

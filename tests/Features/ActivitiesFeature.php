@@ -12,7 +12,7 @@ class ActivitiesFeature extends TestCase
 {
     private DateTimeImmutable $start;
 
-    public function setUp() : void
+    protected function setUp() : void
     {
         parent::setUp();
 

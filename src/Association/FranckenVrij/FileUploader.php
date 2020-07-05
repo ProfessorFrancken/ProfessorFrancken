@@ -12,6 +12,9 @@ use Plank\Mediable\MediaUploader;
 
 final class FileUploader
 {
+    /**
+     * @var int
+     */
     private const ONE_HUNDRED_MB = 100 * 1024 * 1024;
 
     private MediaUploader $uploader;

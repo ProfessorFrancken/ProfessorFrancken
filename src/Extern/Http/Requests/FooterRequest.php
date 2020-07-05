@@ -8,6 +8,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class FooterRequest extends FormRequest
 {
+    /**
+     * @var int
+     */
     public const MAX_FILE_SIZE = 10 * 1024;
 
     /**

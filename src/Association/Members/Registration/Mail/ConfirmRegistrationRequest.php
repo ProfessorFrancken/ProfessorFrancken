@@ -12,8 +12,8 @@ use Illuminate\Routing\UrlGenerator;
 
 class ConfirmRegistrationRequest extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public Registration $registration;
 
     /**

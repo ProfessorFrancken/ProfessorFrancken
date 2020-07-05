@@ -9,12 +9,12 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Foundation\Exceptions\Handler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
-class ExceptionsHandler extends ExceptionHandler
+class ExceptionsHandler extends Handler
 {
     /**
      * A list of the exception types that should not be reported.

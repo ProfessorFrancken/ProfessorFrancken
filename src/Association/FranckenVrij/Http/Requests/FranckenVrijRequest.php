@@ -8,6 +8,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class FranckenVrijRequest extends FormRequest
 {
+    /**
+     * @var int
+     */
     private const ONE_HUNDRED_MB = 100 * 1024 * 1024;
 
     /**

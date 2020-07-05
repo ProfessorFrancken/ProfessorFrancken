@@ -18,8 +18,8 @@ use Illuminate\Queue\SerializesModels;
 
 class NotifyMemberAboutMembership extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public Registration $registration;
 
     /**

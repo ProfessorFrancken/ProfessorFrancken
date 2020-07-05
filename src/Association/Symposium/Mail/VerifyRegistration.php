@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\URL;
 
 class VerifyRegistration extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public Participant $participant;
 
     public $theme = 'symposium';

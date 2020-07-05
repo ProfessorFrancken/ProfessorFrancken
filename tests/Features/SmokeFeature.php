@@ -16,7 +16,7 @@ final class SmokeFeature extends TestCase
     use DatabaseMigrations;
     use LoggedInAsAdmin;
 
-    public function setUp() : void
+    protected function setUp() : void
     {
         parent::setUp();
         Edition::publish(

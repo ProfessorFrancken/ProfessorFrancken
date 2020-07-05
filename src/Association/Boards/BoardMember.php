@@ -60,6 +60,9 @@ final class BoardMember extends Model
 {
     use Mediable;
 
+    /**
+     * @var string
+     */
     private const BOARD_MEMBER_PHOTO_TAG =  'board_member_photo';
     protected $table = 'association_board_members';
 

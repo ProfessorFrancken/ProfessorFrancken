@@ -10,8 +10,8 @@ use Illuminate\Queue\SerializesModels;
 
 class SendDeductionNotification extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public $theme = 'francken';
 
     private int $deduction_member_id;

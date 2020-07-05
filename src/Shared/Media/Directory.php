@@ -10,6 +10,9 @@ use Illuminate\Support\Collection;
 
 final class Directory
 {
+    /**
+     * @var string
+     */
     private const DISK = 'uploads';
 
     private string $directory;

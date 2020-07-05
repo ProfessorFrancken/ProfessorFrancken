@@ -11,8 +11,8 @@ use Illuminate\Queue\SerializesModels;
 
 class InformationEmail extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public Participant $participant;
 
     public $theme = 'symposium';

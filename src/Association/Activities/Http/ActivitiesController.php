@@ -9,6 +9,9 @@ use Francken\Association\Activities\ActivitiesRepository;
 
 final class ActivitiesController
 {
+    /**
+     * @var string
+     */
     public const CALENDAR_URL = 'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
 
     private ActivitiesRepository $activities;

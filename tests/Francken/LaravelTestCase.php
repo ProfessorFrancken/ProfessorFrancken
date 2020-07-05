@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Tests;
 
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Foundation\Testing\TestCase;
 
-abstract class LaravelTestCase extends BaseTestCase
+abstract class LaravelTestCase extends TestCase
 {
     public array $connectionsToTransact = [null, 'francken-legacy'];
 

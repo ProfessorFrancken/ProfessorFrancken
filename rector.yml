@@ -1,3 +1,7 @@
+  #
+  # TODO : return types
+  # php 74
+  #
 parameters:
    auto_import_names: true
    import_short_classes: true
@@ -17,3 +21,13 @@ parameters:
 services:
     Rector\Php74\Rector\Property\TypedPropertyRector: null
     Rector\Laravel\Rector\StaticCall\RequestStaticValidateToInjectRector: null
+    Rector\CodingStyle\Rector\Use_\RemoveUnusedAliasRector: null
+    Rector\CodingStyle\Rector\ClassConst\SplitGroupedConstantsAndPropertiesRector: null
+    Rector\Php55\Rector\String_\StringClassNameToClassConstantRector: null
+    Rector\CodingStyle\Rector\Assign\SplitDoubleAssignRector: null
+    Rector\CodingStyle\Rector\ClassConst\VarConstantCommentRector: null
+    Rector\CodingStyle\Rector\ClassMethod\NewlineBeforeNewAssignSetRector: null
+    Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector: null
+    Rector\CodingStyle\Rector\ClassMethod\MakeInheritedMethodVisibilitySameAsParentRector: null
+    Rector\CodingStyle\Rector\FuncCall\CallUserFuncCallToVariadicRector: null
+    Rector\CodingStyle\Rector\Use_\SplitGroupedUseImportsRector: null

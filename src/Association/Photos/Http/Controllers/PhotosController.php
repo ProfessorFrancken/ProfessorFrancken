@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 final class PhotosController
 {
+    /**
+     * @var int
+     */
     private const PHOTOS_PER_PAGE = 40;
     private AlbumsRepository $albums;
 

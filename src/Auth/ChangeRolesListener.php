@@ -20,10 +20,25 @@ use Spatie\Permission\Models\Role;
 
 final class ChangeRolesListener
 {
+    /**
+     * @var string
+     */
     public const ACTIVE_MEMBER_ROLE = 'Active Member';
+    /**
+     * @var string
+     */
     public const BOARD_ROLE = 'Board';
+    /**
+     * @var string
+     */
     public const CANDIDATE_BOARD_ROLE = 'Candidate Board';
+    /**
+     * @var string
+     */
     public const DEMISSIONED_BOARD_ROLE = 'Demissioned Board';
+    /**
+     * @var string
+     */
     public const DECHARGED_BOARD_ROLE = 'Decharged Board';
 
     public function handle($event) : void

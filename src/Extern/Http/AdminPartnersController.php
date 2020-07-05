@@ -16,6 +16,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class AdminPartnersController
 {
+    /**
+     * @var int
+     */
     private const PARTNERS_PER_PAGE = 50;
 
     private LogoUploader $uploader;

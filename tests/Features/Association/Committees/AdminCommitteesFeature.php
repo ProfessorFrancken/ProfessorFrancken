@@ -21,7 +21,7 @@ class AdminCommitteesFeature extends TestCase
 
     private $board;
 
-    public function setUp() : void
+    protected function setUp() : void
     {
         parent::setUp();
         $this->board = Board::create([

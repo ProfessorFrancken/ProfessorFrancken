@@ -14,7 +14,7 @@ final class MemberSelectionComposer
      */
     public function compose(View $view) : void
     {
-        if ($this->composed_once === true) {
+        if ($this->composed_once) {
             return;
         }
         $this->composed_once = true;

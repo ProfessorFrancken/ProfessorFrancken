@@ -19,6 +19,7 @@ class NewsFeature extends TestCase
         $this->afterApplicationCreated(function () : void {
             $faker = Factory::create();
             $faker->seed(31415);
+
             $fakeNews = new FakeNews($faker, 10);
             $news = $fakeNews->all();
 

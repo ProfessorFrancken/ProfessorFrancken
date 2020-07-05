@@ -18,8 +18,14 @@ final class Committee extends Model
 {
     use Mediable;
 
+    /**
+     * @var string
+     */
     public const COMMITTEE_LOGO_TAG = 'committee_logo';
 
+    /**
+     * @var string
+     */
     public const COMMITEE_PHOTO_TAG = 'committee_photo';
 
     protected $table = 'association_committees';

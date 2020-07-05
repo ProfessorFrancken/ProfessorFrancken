@@ -6,11 +6,29 @@ namespace Francken\Extern;
 
 final class PartnerStatus
 {
+    /**
+     * @var string
+     */
     public const PRIMARY_PARTNER = 'main_partner';
+    /**
+     * @var string
+     */
     public const SECONDARY_PARTNER = 'secondary_partner';
+    /**
+     * @var string
+     */
     public const ACTIVE_PARTNER = 'active_partner';
+    /**
+     * @var string
+     */
     public const POTENTIAL_PARTNER = 'potential_partner';
+    /**
+     * @var string
+     */
     public const PAST_PARTNER = 'past_partner';
+    /**
+     * @var string
+     */
     public const OTHER_PARTNER = 'other_partner';
 
     public static function all() : array

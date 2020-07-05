@@ -14,6 +14,9 @@ final class Footer extends Model
 {
     use Mediable;
 
+    /**
+     * @var string
+     */
     public const PARTNER_FOOTER_LOGO_TAG = 'partner_footer_logo';
 
     protected $table = 'extern_partner_footers';

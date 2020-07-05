@@ -7,7 +7,7 @@ namespace Francken\Association\Photos;
 use Exception;
 use DateInterval;
 use Illuminate\Console\Command;
-use Illuminate\Database\ConnectionInterface as DatabaseConnection;
+use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
@@ -28,14 +28,14 @@ final class SynchronizeFlickrAlbums extends Command
     protected $description = 'Fetch and store all albums from Flickr';
 
     private FlickrRepository $flickr_repo;
-    private DatabaseConnection $db;
+    private ConnectionInterface $db;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(DatabaseConnection $db)
+    public function __construct(ConnectionInterface $db)
     {
         // We will need to have a database connection
         // and flikr api

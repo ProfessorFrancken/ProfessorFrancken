@@ -7,7 +7,7 @@ namespace Francken\Association\Members\Http;
 use Illuminate\Http\Request;
 use DateTimeImmutable;
 use Francken\Association\Members\Member;
-use Illuminate\View\Factory as View;
+use Illuminate\View\Factory;
 
 final class ExpensesController
 {

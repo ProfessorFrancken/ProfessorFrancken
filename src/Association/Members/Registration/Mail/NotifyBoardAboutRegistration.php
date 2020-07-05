@@ -12,10 +12,9 @@ use Illuminate\Queue\SerializesModels;
 
 class NotifyBoardAboutRegistration extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable;
+    use SerializesModels;
     public Registration $registration;
-
     /**
      * Create a new message instance.
      *

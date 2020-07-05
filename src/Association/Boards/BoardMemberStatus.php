@@ -8,9 +8,21 @@ use DateTimeImmutable;
 
 class BoardMemberStatus
 {
+    /**
+     * @var string
+     */
     public const CANDIDATE = 'candidate';
+    /**
+     * @var string
+     */
     public const BOARD_MEMBER = 'board_member';
+    /**
+     * @var string
+     */
     public const DEMISSIONED_BOARD_MEMBER = 'demissioned_board_member';
+    /**
+     * @var string
+     */
     public const DECHARGED_BOARD_MEMBER = 'decharged_board_member';
 
     public static function fromDates(

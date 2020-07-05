@@ -15,7 +15,7 @@ class VolumeTest extends TestCase
 {
     private array $editions;
 
-    public function setUp() : void
+    protected function setUp() : void
     {
         $this->editions = [
             new Edition([

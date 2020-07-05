@@ -11,14 +11,41 @@ use Spatie\Valuestore\Valuestore;
  */
 final class ValueStoreSettings implements Settings
 {
+    /**
+     * @var string
+     */
     private const NUMBER_OF_EXTERN = 'number_of_extern';
+    /**
+     * @var string
+     */
     private const HEADER_IMAGE = 'header_image';
+    /**
+     * @var string
+     */
     private const PRIVATE_ALBUMS = 'private_albums';
+    /**
+     * @var string
+     */
     private const IS_LOGIN_SHOWN_IN_NAVIGATION = 'navigation_show_login';
+    /**
+     * @var string
+     */
     private const IS_SLEF_SHOWN_IN_NAVIGATION = 'navigation_show_slef';
+    /**
+     * @var string
+     */
     private const IS_SYMPOSIUM_SHOWN_IN_NAVIGATION = 'navigation_show_symposium';
+    /**
+     * @var string
+     */
     private const IS_PIENTER_SHOWN_IN_NAVIGATION = 'navigation_show_pienter';
+    /**
+     * @var string
+     */
     private const IS_LUSTRUM_SHOWN_IN_NAVIGATION = 'navigation_show_lustrum';
+    /**
+     * @var string
+     */
     private const IS_EXPEDITION_SHOWN_IN_NAVIGATION = 'navigation_show_expedition';
 
     private Valuestore $store;

@@ -6,7 +6,13 @@ namespace Francken\Association\Members;
 
 final class Gender
 {
+    /**
+     * @var string
+     */
     public const FEMALE = 'female';
+    /**
+     * @var string
+     */
     public const MALE = 'male';
 
     private string $gender;

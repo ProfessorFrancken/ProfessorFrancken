@@ -16,6 +16,9 @@ final class Contact extends Model
     use Mediable;
     use SoftDeletes;
 
+    /**
+     * @var string
+     */
     public const CONTACT_PHOTO_TAG = 'partner_contact_photo';
 
     protected $table = 'extern_partner_contacts';

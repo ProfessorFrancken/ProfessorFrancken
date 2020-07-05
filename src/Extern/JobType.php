@@ -7,6 +7,9 @@ namespace Francken\Extern;
 use InvalidArgumentException;
 class JobType
 {
+    /**
+     * @var string[]
+     */
     public const TYPES = [
         "Fulltime" => "hourglass",
         "Part-time" => "hourglass-half",

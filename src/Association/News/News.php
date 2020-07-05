@@ -6,7 +6,7 @@ namespace Francken\Association\News;
 
 use Illuminate\Database\Eloquent\Builder;
 use DateTimeImmutable;
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use League\Period\Period;
 
@@ -47,7 +47,7 @@ use League\Period\Period;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\Eloquent\News withSubject($subject = null)
  * @mixin \Eloquent
  */
-final class News extends Eloquent
+final class News extends Model
 {
     protected $fillable = [
         'title',
