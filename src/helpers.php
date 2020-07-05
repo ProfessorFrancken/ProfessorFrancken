@@ -101,7 +101,7 @@ function image($url = '', $options = [], $addAppUrl = false)
             return sprintf(
                 '%s/%s&url=%s',
                 $server,
-                implode($result, ','),
+                implode(',', $result),
                 $url
             );
         }
@@ -129,7 +129,7 @@ function image($url = '', $options = [], $addAppUrl = false)
             return sprintf(
                 '%s/upload/q_75,%s/%s',
                 $server,
-                implode($result, ','),
+                implode(',', $result),
                 $url
             );
         }
