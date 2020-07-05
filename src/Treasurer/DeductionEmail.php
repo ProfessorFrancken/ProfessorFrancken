@@ -48,8 +48,8 @@ use Plank\Mediable\Mediable;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereWasVerified($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMedia($tags = array(), $matchAll = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMediaMatchAll($tags = array())
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMedia($tags = [], $matchAll = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMediaMatchAll($tags = [])
  * @mixin \Eloquent
  * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
  * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])

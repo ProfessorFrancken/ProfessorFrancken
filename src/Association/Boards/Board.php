@@ -47,8 +47,8 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board wherePhotoMediaId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board wherePhotoPosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withMedia($tags = array(), $matchAll = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withMediaMatchAll($tags = array())
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withMedia($tags = [], $matchAll = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withMediaMatchAll($tags = [])
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withPhotos()
  * @mixin \Eloquent
  * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])

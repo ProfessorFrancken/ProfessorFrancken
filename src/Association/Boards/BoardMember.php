@@ -49,8 +49,8 @@ use Plank\Mediable\Mediable;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember wherePhotoMediaId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withMedia($tags = array(), $matchAll = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withMediaMatchAll($tags = array())
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withMedia($tags = [], $matchAll = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withMediaMatchAll($tags = [])
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withPhotos()
  * @mixin \Eloquent
  * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
