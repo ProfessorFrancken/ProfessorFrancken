@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Francken\Association\Members;
+namespace Francken\Tests\Association\Members;
 
 use Francken\Association\Members\PaymentDetails;
 
