@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
+use Webmozart\Assert\Assert;
 
 final class Committee extends Model
 {
@@ -54,6 +55,7 @@ final class Committee extends Model
 
     public static function continueFrom(self $previousCommittee, Board $toBoardYear) : self
     {
+        /** @var Committee $committee */
         $committee = self::create(
             array_merge(
                 $previousCommittee->toArray(),
@@ -63,6 +65,8 @@ final class Committee extends Model
                 ]
             )
         );
+
+        Assert::isInstanceOf($committee, self::class);
 
         $committee->attachmedia($previousCommittee->logoMedia, self::COMMITTEE_LOGO_TAG);
         $committee->attachmedia($previousCommittee->photoMedia, self::COMMITEE_PHOTO_TAG);

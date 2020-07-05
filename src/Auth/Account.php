@@ -22,6 +22,7 @@ use Illuminate\Support\Carbon;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use Webmozart\Assert\Assert;
 
 /**
  * Francken\Auth\Account
@@ -87,11 +88,14 @@ final class Account extends Model implements
         string $email,
         string $password
     ) : self {
+        /** @var Account $account */
         $account = self::create([
             'member_id' => $member_id,
             'email' => $email,
             'password' => $password
         ]);
+
+        Assert::isInstanceOf($account, self::class);
 
         event(new AccountWasActivated($account));
 

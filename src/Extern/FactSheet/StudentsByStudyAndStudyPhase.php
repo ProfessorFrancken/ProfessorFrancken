@@ -6,6 +6,7 @@ namespace Francken\Extern\FactSheet;
 
 use DateTimeImmutable;
 use DB;
+use Illuminate\Support\Collection;
 
 final class StudentsByStudyAndStudyPhase
 {
@@ -29,7 +30,7 @@ final class StudentsByStudyAndStudyPhase
         ));
     }
 
-    private function studyPhaseStatistics(\Illuminate\Support\Collection $students)
+    private function studyPhaseStatistics(Collection $students) : Collection
     {
         return $students->groupBy(function ($student) {
             return $student->studierichting;

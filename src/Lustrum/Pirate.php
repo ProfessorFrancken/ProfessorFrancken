@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Webmozart\Assert\Assert;
 
 /**
  * Francken\Lustrum\Pirate
@@ -56,14 +57,19 @@ final class Pirate extends Model
         'title'
     ];
 
-    public static function initiate(LegacyMember $member)
+    public static function initiate(LegacyMember $member) : self
     {
-        return self::create([
+        /** @var Pirate $pirate */
+        $pirate = self::create([
             'member_id' => $member->id,
             'name' => $member->full_name,
             'earned_points' => 0,
             'title' => 'Noobie'
         ]);
+
+        Assert::isInstanceOf($pirate, self::class);
+
+        return $pirate;
     }
 
     public function joinCrew(PirateCrew $crew) : void

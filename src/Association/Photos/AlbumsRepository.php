@@ -7,6 +7,7 @@ namespace Francken\Association\Photos;
 use DateInterval;
 use DateTimeImmutable;
 use Illuminate\Contracts\Auth\Access\Gate;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\Paginator;
 
 /**
@@ -44,10 +45,8 @@ final class AlbumsRepository
         return $query->firstOrFail();
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     */
-    private function filterPrivateAlbums(\Illuminate\Database\Eloquent\Builder $query)
+    
+    private function filterPrivateAlbums(Builder $query) : Builder
     {
         // Check whether the user is either authenticated or authenticated by entering
         // the photos password

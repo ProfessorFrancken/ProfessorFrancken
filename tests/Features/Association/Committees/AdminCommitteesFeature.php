@@ -19,7 +19,7 @@ class AdminCommitteesFeature extends TestCase
     use DatabaseMigrations;
     use LoggedInAsAdmin;
 
-    private $board;
+    private Board $board;
 
     protected function setUp() : void
     {

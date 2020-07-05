@@ -25,11 +25,11 @@ class DeductionRequest extends FormRequest
     }
 
     /**
-     * @return (UploadedFile|mixed)[]|UploadedFile|null
+     * @return ((UploadedFile|mixed)[]|UploadedFile|null)
      *
      * @psalm-return UploadedFile|array<array-key, UploadedFile|mixed>|null
      */
-    public function deduction() 
+    public function deduction()
     {
         return $this->file('deduction');
     }

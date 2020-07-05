@@ -72,24 +72,30 @@ final class Album extends Model
         return $this->hasOne(Photo::class, 'id', 'cover_photo');
     }
 
-    public function nextAlbum()
+    public function nextAlbum() : ?self
     {
-        return self::orderBy('activity_date', 'asc')
+        /** @var Album|null $album */
+        $album = self::orderBy('activity_date', 'asc')
             ->where('is_public', true)
             ->where('activity_date', '>', $this->activity_date)
             ->where('id', '!=', $this->id)
             ->with('coverPhoto')
             ->first();
+
+        return $album;
     }
 
-    public function previousAlbum()
+    public function previousAlbum() : ?self
     {
-        return self::orderBy('activity_date', 'desc')
+        /** @var Album|null $album */
+        $album = self::orderBy('activity_date', 'asc')
             ->where('is_public', true)
             ->where('activity_date', '<', $this->activity_date)
             ->where('id', '!=', $this->id)
             ->with('coverPhoto')
             ->first();
+
+        return $album;
     }
 
     public function url() : string
