@@ -227,7 +227,7 @@ final class Registration extends Model
 
                 return new Study($study['study'], $start, $end);
             },
-            json_decode($this->attributes['studies'], true)
+            json_decode($this->attributes['studies'], true, 512, JSON_THROW_ON_ERROR)
         );
         return $studies;
     }
@@ -254,7 +254,7 @@ final class Registration extends Model
                     ];
                 },
                 $studyDetails->studies()
-            )
+            ), JSON_THROW_ON_ERROR
         );
     }
 

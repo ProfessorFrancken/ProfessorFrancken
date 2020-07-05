@@ -24,7 +24,7 @@ final class JasController
             'uuid' => $id,
             'name' => $name,
             'date' => $date,
-            'payload' => json_encode($payload)
+            'payload' => json_encode($payload, JSON_THROW_ON_ERROR)
         ]);
 
         return response()->json([

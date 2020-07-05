@@ -36,7 +36,7 @@ final class MemberSelectionComposer
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 EOT
             );
-        $json_members = json_encode($members);
+        $json_members = json_encode($members, JSON_THROW_ON_ERROR);
         $factory->startPush(
             'scripts',
             <<<EOT
