@@ -19,22 +19,18 @@ final class EventRepository
 
     public function pastInYear(AcademicYear $year) : array
     {
-        $pastEvents = array_filter(
+        return array_filter(
             $this->pastEvents,
             $this->filterByAcademicYear($year)
         );
-
-        return $pastEvents;
     }
 
     public function plannedInYear(AcademicYear $year) : array
     {
-        $plannedEvents = array_filter(
+        return array_filter(
             $this->plannedEvents,
             $this->filterByAcademicYear($year)
         );
-
-        return $plannedEvents;
     }
 
     private function filterByAcademicYear($year) : callable
