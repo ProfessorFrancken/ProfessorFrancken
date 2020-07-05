@@ -12,11 +12,9 @@ final class StudiesStatistic
 
     public function __construct(StudyStatistic ...$studies)
     {
-        $this->studies = $this->sort(
-            $this->filterUnrelatedStudies(
-                collect($studies)
-            )
-        );
+        $relatedStudies = $this->filterUnrelatedStudies(collect($studies));
+
+        $this->studies = $this->sort($relatedStudies);
     }
 
     public function studies()

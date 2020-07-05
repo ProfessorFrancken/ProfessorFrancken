@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities;
 
-use Illuminate\Support\Str;
 use Carbon\Carbon;
 use DateTimeImmutable;
 use DateTimeZone;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Sabre\VObject\Component\VEvent;
 
 final class CalendarEvent
@@ -32,7 +32,9 @@ final class CalendarEvent
         $this->location = (string)$event->LOCATION;
         $this->status = (string)$event->STATUS;
         $this->google_id = (string)$event->UID;
-        $this->last_modified_at_google = Arr::first($event->select('LAST-MODIFIED'))->getDateTime();
+
+        $lastModified = $event->select('LAST-MODIFIED');
+        $this->last_modified_at_google = Arr::first($lastModified)->getDateTime();
 
         $this->parseSchedule($event);
     }
