@@ -28,7 +28,7 @@ final class StudentsPerStudy implements StudyStatistic
     /*
      * Used to create "Total" and "Other" statistics
      */
-    public static function fromMultipleStatistics(string $name, ...$others): \Francken\Extern\FactSheet\StudentsPerStudy
+    public static function fromMultipleStatistics(string $name, ...$others) : self
     {
         return new self(
             $name,

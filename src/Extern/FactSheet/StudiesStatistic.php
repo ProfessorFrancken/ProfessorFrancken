@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 final class StudiesStatistic
 {
-    private $studies;
+    private Collection $studies;
 
     public function __construct(StudyStatistic ...$studies)
     {
@@ -17,12 +17,12 @@ final class StudiesStatistic
         $this->studies = $this->sort($relatedStudies);
     }
 
-    public function studies()
+    public function studies() : Collection
     {
         return $this->studies;
     }
 
-    public function total()
+    public function total() : StudyStatistic
     {
         return $this->studies[0]::fromMultipleStatistics(
             "Total",
@@ -30,7 +30,7 @@ final class StudiesStatistic
         );
     }
 
-    private function sort(Collection $studies)
+    private function sort(Collection $studies): Collection
     {
         $relatedStudies = [
             "Technische Natuurkunde",
@@ -65,7 +65,7 @@ final class StudiesStatistic
         }
 
         $grouped = $studies->groupBy(
-            function (StudyStatistic $study) use ($relatedStudies) {
+            function (StudyStatistic $study) use ($relatedStudies): bool {
                 return in_array($study->study(), $relatedStudies, true);
             }
         );

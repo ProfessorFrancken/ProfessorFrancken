@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
+use Webmozart\Assert\Assert;
 
 /**
  * Francken\Association\Boards\BoardMember
@@ -99,6 +100,7 @@ final class BoardMember extends Model
     ) : self {
         $legacy_member = LegacyMember::find($member_id);
 
+        /** @var self $member */
         $member = $board->members()->make([
             'member_id' => $member_id,
             'name' => optional($legacy_member)->full_name ?? '',
@@ -106,8 +108,11 @@ final class BoardMember extends Model
             'installed_at' => $installed_at,
             'photo_media_id' => $photo->id ?? null,
         ]);
+        Assert::isInstanceOf($member, self::class);
+
         $member->refreshStatus();
         $member->attachMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
+
 
         return $member;
     }
@@ -128,7 +133,7 @@ final class BoardMember extends Model
         return $this->belongsTo(Board::class);
     }
 
-    public function member(): BelongsTo
+    public function member() : BelongsTo
     {
         return $this->belongsTo(LegacyMember::class, 'member_id');
     }

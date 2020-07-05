@@ -11,5 +11,5 @@ interface StudyStatistic
     /*
      * Used to create "Total" and "Other" statistics
      */
-    public static function fromMultipleStatistics(string $name, ...$others);
+    public static function fromMultipleStatistics(string $name, ...$others) : self;
 }

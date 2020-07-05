@@ -35,7 +35,7 @@ final class StudyPhaseStatistic implements StudyStatistic
         return $this->master;
     }
 
-    public static function fromMultipleStatistics(string $name, ...$others): \Francken\Extern\FactSheet\StudyPhaseStatistic
+    public static function fromMultipleStatistics(string $name, ...$others) : self
     {
         return new self(
             $name,

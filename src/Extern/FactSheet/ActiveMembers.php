@@ -53,7 +53,7 @@ final class ActiveMembers
                     /*
                      * Used to create "Total" and "Other" statistics
                      */
-                    public static function fromMultipleStatistics(string $name, ...$others) : object
+                    public static function fromMultipleStatistics(string $name, ...$others) : StudyStatistic
                     {
                         return new self(
                             $name,
