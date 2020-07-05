@@ -24,7 +24,12 @@ class DeductionRequest extends FormRequest
         return $this->toDateTimeImmutable($this->input('deduction_to'));
     }
 
-    public function deduction() : UploadedFile
+    /**
+     * @return (UploadedFile|mixed)[]|UploadedFile|null
+     *
+     * @psalm-return UploadedFile|array<array-key, UploadedFile|mixed>|null
+     */
+    public function deduction() 
     {
         return $this->file('deduction');
     }
