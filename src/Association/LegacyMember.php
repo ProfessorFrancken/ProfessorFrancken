@@ -116,7 +116,7 @@ final class LegacyMember extends Model
     protected $connection = 'francken-legacy';
     protected $guarded = [];
 
-    public function getFullNameAttribute(): string
+    public function getFullNameAttribute() : string
     {
         return collect([
             $this->voornaam,

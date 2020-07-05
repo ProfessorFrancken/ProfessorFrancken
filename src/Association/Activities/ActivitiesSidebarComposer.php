@@ -33,7 +33,7 @@ class ActivitiesSidebarComposer
         ]);
     }
 
-    private function visibleYears($year): array
+    private function visibleYears($year) : array
     {
         // Create list of visible years
         $yearsList = [];
@@ -56,7 +56,7 @@ class ActivitiesSidebarComposer
 
     private function monthNames() : Collection
     {
-        return collect(range(1, 12))->map(function ($month): array {
+        return collect(range(1, 12))->map(function ($month) : array {
             return [
                 'number' => date('m', mktime(0, 0, 0, $month, 1)),
                 'name' => date('F', mktime(0, 0, 0, $month, 1))

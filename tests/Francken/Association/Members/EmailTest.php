@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
-use PHPUnit\Framework\TestCase;
 use Francken\Association\Members\Email;
 use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 
 class EmailTest extends TestCase
 {

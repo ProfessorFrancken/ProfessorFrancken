@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij;
 
-use Imagick;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Imagick;
 use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
 

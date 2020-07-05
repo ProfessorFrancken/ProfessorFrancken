@@ -39,7 +39,7 @@ class CompaniesFeature extends TestCase
 
     private function addDNBToCompanies() : void
     {
-        $this->app->bind(CompanyRepository::class, function ($app): CompanyRepository {
+        $this->app->bind(CompanyRepository::class, function ($app) : CompanyRepository {
             return new CompanyRepository(
                 [
                     [

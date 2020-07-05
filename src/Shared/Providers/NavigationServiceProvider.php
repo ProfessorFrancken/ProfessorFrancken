@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
-use Francken\Shared\Settings\Settings;
 use DateTimeImmutable;
 use DateTimeZone;
 use Francken\Shared\Http\Controllers\DashboardController;
+use Francken\Shared\Settings\Settings;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -109,7 +109,7 @@ final class NavigationServiceProvider extends ServiceProvider
             }
 
             $gate = $this->app->make(Gate::class);
-            $view->with('items', array_filter($menu, function ($item) use ($gate): bool {
+            $view->with('items', array_filter($menu, function ($item) use ($gate) : bool {
                 // If no permission rule is set always allow showing the item
                 return ! isset($item['can']) || $gate->allows($item['can']);
             }));
@@ -126,7 +126,7 @@ final class NavigationServiceProvider extends ServiceProvider
         });
     }
 
-    public function associationIcon(): string
+    public function associationIcon() : string
     {
         $now = (new DateTimeImmutable())
             ->setTimeZone(new DateTimeZone('Europe/Amsterdam'));

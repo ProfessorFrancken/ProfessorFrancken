@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\Committees\Http\Requests\AdminCommitteeMemberRequest;
 use Francken\Association\LegacyMember;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminCommitteeMembersController
 {
-    public function store(AdminCommitteeMemberRequest $request, Board $board, Committee $committee): RedirectResponse
+    public function store(AdminCommitteeMemberRequest $request, Board $board, Committee $committee) : RedirectResponse
     {
         $committee->members()->save(
             new CommitteeMember([
@@ -32,7 +32,7 @@ final class AdminCommitteeMembersController
         );
     }
 
-    public function edit(Board $board, Committee $committee, CommitteeMember $member): View
+    public function edit(Board $board, Committee $committee, CommitteeMember $member) : View
     {
         return view('admin.association.committees.members.edit')
             ->with([
@@ -49,7 +49,7 @@ final class AdminCommitteeMembersController
             ]);
     }
 
-    public function update(AdminCommitteeMemberRequest $request, Board $board, Committee $committee, CommitteeMember $member): RedirectResponse
+    public function update(AdminCommitteeMemberRequest $request, Board $board, Committee $committee, CommitteeMember $member) : RedirectResponse
     {
         $member->update([
                 'function' => $request->function(),
@@ -63,7 +63,7 @@ final class AdminCommitteeMembersController
         );
     }
 
-    public function destroy(Board $board, Committee $committee, CommitteeMember $member): RedirectResponse
+    public function destroy(Board $board, Committee $committee, CommitteeMember $member) : RedirectResponse
     {
         $member->delete();
 

@@ -180,7 +180,7 @@ final class ValueStoreSettings implements Settings
         return (bool) $value;
     }
 
-    public function getIterator(): iterable
+    public function getIterator() : iterable
     {
         yield static::NUMBER_OF_EXTERN => [
             'text' => 'Telephone number of extern',

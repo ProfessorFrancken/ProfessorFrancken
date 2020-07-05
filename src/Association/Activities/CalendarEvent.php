@@ -78,7 +78,7 @@ final class CalendarEvent
      * [day] [mnth] to [day] [mnth]
      * Shows first month only when it is different
      */
-    public function schedule(): string
+    public function schedule() : string
     {
         $string = '';
         $from = Carbon::createFromFormat('Y-m-d', $this->startDate()->format('Y-m-d'));

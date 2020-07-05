@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\FileUploader;
 use Francken\Association\Committees\Http\Requests\AdminCommitteeRequest;
 use Francken\Association\LegacyMember;
 use Francken\Shared\Markdown\ContentCompiler;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminCommitteesController
 {
@@ -22,7 +22,7 @@ final class AdminCommitteesController
         $this->uploader = $uploader;
     }
 
-    public function index(Board $board): View
+    public function index(Board $board) : View
     {
         $committees = $board->committees()
             ->with(['logoMedia', 'members.member'])
@@ -30,7 +30,7 @@ final class AdminCommitteesController
             ->get();
 
         $boards = Board::orderBy('installed_at', 'desc')->get();
-        $board_years = $boards->mapWithKeys(function (Board $board): array {
+        $board_years = $boards->mapWithKeys(function (Board $board) : array {
             return [$board->id => $board->board_name->toString()];
         });
 
@@ -59,7 +59,7 @@ final class AdminCommitteesController
             ]);
     }
 
-    public function show(Board $board, Committee $committee): View
+    public function show(Board $board, Committee $committee) : View
     {
         $committee->load(['members.member']);
 
@@ -75,7 +75,7 @@ final class AdminCommitteesController
             ]);
     }
 
-    public function create(Board $board): View
+    public function create(Board $board) : View
     {
         $continuableCommittees =  Committee::query()
             ->with(['board', 'logoMedia'])
@@ -88,7 +88,7 @@ final class AdminCommitteesController
             ->get();
 
         $parentCommittees = $continuableCommittees->mapWithKeys(
-            function ($c): array {
+            function ($c) : array {
                 return [
                     $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
                 ];
@@ -109,7 +109,7 @@ final class AdminCommitteesController
             ]);
     }
 
-    public function store(AdminCommitteeRequest $request, Board $board, ContentCompiler $compiler): RedirectResponse
+    public function store(AdminCommitteeRequest $request, Board $board, ContentCompiler $compiler) : RedirectResponse
     {
         $markdown = $compiler->content($request->content());
         $committee = Committee::create([
@@ -135,7 +135,7 @@ final class AdminCommitteesController
         );
     }
 
-    public function edit(Board $board, Committee $committee): View
+    public function edit(Board $board, Committee $committee) : View
     {
         $continuableCommittees =  Committee::query()
             ->with(['board', 'logoMedia'])
@@ -148,7 +148,7 @@ final class AdminCommitteesController
             ->get();
 
         $parentCommittees = $continuableCommittees->mapWithKeys(
-            function ($c): array {
+            function ($c) : array {
                 return [
                     $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
                 ];
@@ -178,7 +178,7 @@ final class AdminCommitteesController
             ]);
     }
 
-    public function update(AdminCommitteeRequest $request, Board $board, Committee $committee, ContentCompiler $compiler): RedirectResponse
+    public function update(AdminCommitteeRequest $request, Board $board, Committee $committee, ContentCompiler $compiler) : RedirectResponse
     {
         $markdown = $compiler->content($request->content());
 
@@ -204,7 +204,7 @@ final class AdminCommitteesController
         );
     }
 
-    public function destroy(Board $board, Committee $committee): RedirectResponse
+    public function destroy(Board $board, Committee $committee) : RedirectResponse
     {
         $committee->delete();
 

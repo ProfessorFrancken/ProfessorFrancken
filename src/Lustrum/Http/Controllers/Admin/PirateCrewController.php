@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum\Http\Controllers\Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Francken\Association\LegacyMember;
 use Francken\Lustrum\Adtchievement;
 use Francken\Lustrum\Pirate;
 use Francken\Lustrum\PirateCrew;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PirateCrewController
 {
-    public function index(PirateCrew $pirateCrew): View
+    public function index(PirateCrew $pirateCrew) : View
     {
         $pirateCrew->load([
                 'crewMembers',
@@ -38,7 +38,7 @@ class PirateCrewController
             ]);
     }
 
-    public function store(PirateCrew $pirateCrew, Request $request): RedirectResponse
+    public function store(PirateCrew $pirateCrew, Request $request) : RedirectResponse
     {
         $member = LegacyMember::findOrFail($request->input('pirate.member_id'));
 

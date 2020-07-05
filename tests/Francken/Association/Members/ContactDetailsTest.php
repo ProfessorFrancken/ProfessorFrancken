@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
-use PHPUnit\Framework\TestCase;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\ContactDetails;
 use Francken\Association\Members\Email;
+use PHPUnit\Framework\TestCase;
 
 class ContactDetailsTest extends TestCase
 {

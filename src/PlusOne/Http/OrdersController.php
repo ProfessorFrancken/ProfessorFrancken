@@ -26,7 +26,7 @@ final class OrdersController
             ->take(100)
             ->orderBy('tijd', 'DESC')
             ->get()
-            ->map(function ($transactie): array {
+            ->map(function ($transactie) : array {
                 return [
                     'id' => $transactie->id,
                     'member_id' => $transactie->lid_id,

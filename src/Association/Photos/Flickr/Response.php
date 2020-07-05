@@ -44,7 +44,7 @@ class Response
     /**
      * Get a '_content' value from the contents of the Flickr API call.
      */
-    public function getContent(string $method): string
+    public function getContent(string $method) : string
     {
         return $this->contents[$method]['_content'];
     }

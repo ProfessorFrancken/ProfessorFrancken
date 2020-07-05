@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association\FranckenVrij\Http;
 
-use Illuminate\View\View;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Shared\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 final class FranckenVrijController extends Controller
 {
-    public function index(): View
+    public function index() : View
     {
         $volumes = Edition::volumes();
 

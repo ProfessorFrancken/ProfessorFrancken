@@ -59,12 +59,12 @@ final class PirateCrew extends Model
         return $this->hasMany(Pirate::class, 'pirate_crew_id');
     }
 
-    public function earnedAdtchievements(): HasMany
+    public function earnedAdtchievements() : HasMany
     {
         return $this->hasMany(EarnedAdtchievement::class, 'pirate_crew_id');
     }
 
-    public function initiate(LegacyMember $member): Pirate
+    public function initiate(LegacyMember $member) : Pirate
     {
         return $this->crewMembers()->create([
             'member_id' => $member->id,
@@ -74,7 +74,7 @@ final class PirateCrew extends Model
         ]);
     }
 
-    public function total_earned_adtchievements(): int
+    public function total_earned_adtchievements() : int
     {
         return $this->earnedAdtchievements()
             ->count(\DB::raw('DISTINCT adtchievement_id'));

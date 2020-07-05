@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
-use Francken\Shared\ViewComposers\MemberSelectionComposer;
 use DateTimeImmutable;
 use Francken\Extern\CompanyRepository;
+use Francken\Shared\ViewComposers\MemberSelectionComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,7 +28,7 @@ final class ViewServiceProvider extends ServiceProvider
         );
     }
 
-    public function associationIcon(): string
+    public function associationIcon() : string
     {
         $now = new DateTimeImmutable();
         $fourOClock = DateTimeImmutable::createFromFormat('H a', '4 pm');

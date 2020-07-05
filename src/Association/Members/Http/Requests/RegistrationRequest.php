@@ -22,7 +22,7 @@ class RegistrationRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize() : bool
     {
         return true;
     }
@@ -30,7 +30,7 @@ class RegistrationRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules(): array
+    public function rules() : array
     {
         return [
             'firstname' => ['required', 'regex:/[a-zA-Z0-9\s]+/', 'min:1'],
@@ -70,7 +70,7 @@ class RegistrationRequest extends FormRequest
     /**
      * Get the error messages for the defined validation rules.
      */
-    public function messages(): array
+    public function messages() : array
     {
         return [
             'study_name.*.required' => 'We need to know your study',
@@ -95,7 +95,7 @@ class RegistrationRequest extends FormRequest
         $address = null;
         if (collect([
             'city', 'postal_code', 'address', 'country'
-        ])->every(function (string $field): bool {
+        ])->every(function (string $field) : bool {
             return $this->input($field, null) !== null;
         })) {
             $address = new Address(

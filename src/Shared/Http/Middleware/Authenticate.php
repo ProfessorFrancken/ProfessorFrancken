@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 
 class Authenticate
 {
@@ -28,8 +28,6 @@ class Authenticate
 
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
      */
     public function handle(Request $request, Closure $next)
     {

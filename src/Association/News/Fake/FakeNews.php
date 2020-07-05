@@ -33,7 +33,7 @@ final class FakeNews
         // First create a set of titles with associated publication dates
         // we use this to set the next and previous news items
         $publishedNews = collect(range(1, $amount))
-            ->map(function (): array {
+            ->map(function () : array {
                 return [
                     'title' => $this->faker->sentence(),
                     'published_at' => DateTimeImmutable::createFromMutable(
@@ -46,7 +46,7 @@ final class FakeNews
             })
             ->values();
 
-        return $publishedNews->map(function ($news): News {
+        return $publishedNews->map(function ($news) : News {
             $content = (new FakeNewsContent($this->faker))->generate();
             $markdown = CompiledMarkdown::withSource(
                 $content,

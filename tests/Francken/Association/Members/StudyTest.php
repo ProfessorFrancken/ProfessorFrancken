@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
-use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use Francken\Association\Members\Study;
+use PHPUnit\Framework\TestCase;
 
 class StudyTest extends TestCase
 {

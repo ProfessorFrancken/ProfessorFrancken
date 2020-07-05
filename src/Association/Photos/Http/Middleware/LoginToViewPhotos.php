@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Closure;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
 use Illuminate\Contracts\Auth\Access\Gate;
+use Illuminate\Http\Request;
 
 final class LoginToViewPhotos
 {
@@ -20,8 +20,6 @@ final class LoginToViewPhotos
 
     /**
      * Handle an incoming reques And verify if token exists and is valid
-     *
-     * @param  \Illuminate\Http\Request $request
      */
     public function handle(Request $request, Closure $next)
     {

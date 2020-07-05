@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Registration;
 
-use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
-use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
-use Francken\Association\Members\Registration\Events\MemberWasRegistered;
-use Exception;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\LegacyMember;
@@ -18,6 +14,9 @@ use Francken\Association\Members\Fullname;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\PersonalDetails;
+use Francken\Association\Members\Registration\Events\MemberWasRegistered;
+use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
+use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
 use Francken\Association\Members\Study;
 use Francken\Association\Members\StudyDetails;
 use Illuminate\Database\Eloquent\Model;
@@ -220,7 +219,7 @@ final class Registration extends Model
         $this->phone_number = $contactDetails->phoneNumber();
     }
 
-    public function getStudiesAttribute(): array
+    public function getStudiesAttribute() : array
     {
         return array_map(
             function (array $study) : Study {

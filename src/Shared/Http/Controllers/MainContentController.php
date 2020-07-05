@@ -6,11 +6,11 @@ namespace Francken\Shared\Http\Controllers;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use InvalidArgumentException;
 use Exception;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\News\News;
+use InvalidArgumentException;
 
 class MainContentController extends Controller
 {

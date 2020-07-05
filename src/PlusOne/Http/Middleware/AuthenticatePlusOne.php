@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http\Middleware;
 
-use Illuminate\Http\Request;
-use Log;
-use Exception;
 use Closure;
+use Exception;
+use Illuminate\Http\Request;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\ValidationData;
+use Log;
 
 final class AuthenticatePlusOne
 {
     /**
      * Handle an incoming reques And verify if token exists and is valid
-     *
-     * @param  \Illuminate\Http\Request $request
      */
     public function handle(Request $request, Closure $next)
     {

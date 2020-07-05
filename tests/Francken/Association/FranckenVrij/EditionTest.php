@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\FranckenVrij;
 
-use InvalidArgumentException;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Features\TestCase;
 use Francken\Shared\Url;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use InvalidArgumentException;
 
 class EditionTest extends TestCase
 {
@@ -74,7 +74,7 @@ class EditionTest extends TestCase
     }
 
 
-    protected function createInstance(): Edition
+    protected function createInstance() : Edition
     {
         return Edition::publish(
             EditionId::generate(),

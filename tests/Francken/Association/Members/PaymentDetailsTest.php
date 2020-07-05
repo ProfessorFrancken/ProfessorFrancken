@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
-use PHPUnit\Framework\TestCase;
 use Francken\Association\Members\PaymentDetails;
+use PHPUnit\Framework\TestCase;
 
 class PaymentDetailsTest extends TestCase
 {

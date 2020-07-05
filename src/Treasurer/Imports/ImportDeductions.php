@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Imports;
 
-use Log;
 use Francken\Association\LegacyMember;
 use Francken\Treasurer\DeductionEmail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Log;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;

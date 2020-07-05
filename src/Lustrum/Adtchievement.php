@@ -74,13 +74,13 @@ final class Adtchievement extends Model
             );
     }
 
-    public function earnedBy(): BelongsToMany
+    public function earnedBy() : BelongsToMany
     {
         return $this->belongsToMany(Pirate::class, 'lustrum_pirate_adtchievements')
             ->withPivot(['pirate_crew_id']);
     }
 
-    public function scopeEarnedByPirateCrew($builder, PirateCrew $crew): BelongsToMany
+    public function scopeEarnedByPirateCrew($builder, PirateCrew $crew) : BelongsToMany
     {
         return $this->earnedBy()
             ->where('lustrum_pirate_adtchievements.pirate_crew_id', $crew->id);
@@ -93,7 +93,7 @@ final class Adtchievement extends Model
 
     public function isHiddenForCrew(PirateCrew $crew) : bool
     {
-        if ( $this->is_hidden === 0) {
+        if ($this->is_hidden === 0) {
             return false;
         }
 

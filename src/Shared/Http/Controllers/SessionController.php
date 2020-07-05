@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Auth;
 
 final class SessionController
 {
@@ -15,7 +15,7 @@ final class SessionController
         return view('login');
     }
 
-    public function login(Request $request): RedirectResponse
+    public function login(Request $request) : RedirectResponse
     {
         $rememberUser = true;
 

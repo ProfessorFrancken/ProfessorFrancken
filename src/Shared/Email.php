@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared;
 
 use InvalidArgumentException;
+
 final class Email
 {
     private string $email;

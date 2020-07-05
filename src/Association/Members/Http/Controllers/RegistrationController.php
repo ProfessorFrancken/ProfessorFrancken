@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Francken\Association\Members\Http\Requests\RegistrationRequest;
 use Francken\Association\Members\Registration\Registration;
 use Francken\Shared\Clock\Clock;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\View\View;
 
 final class RegistrationController
 {
-    public function index(): View
+    public function index() : View
     {
         return view('registration.index')
             ->with([
@@ -22,7 +22,7 @@ final class RegistrationController
             ]);
     }
 
-    public function store(RegistrationRequest $request, UrlGenerator $urlGenerator, Clock $clock): RedirectResponse
+    public function store(RegistrationRequest $request, UrlGenerator $urlGenerator, Clock $clock) : RedirectResponse
     {
         $registration = Registration::submit(
             // PersonalDetails
@@ -49,14 +49,14 @@ final class RegistrationController
         return redirect()->to($url);
     }
 
-    public function show(Registration $registration): View
+    public function show(Registration $registration) : View
     {
         return view('registration.show')->with([
             'registration' => $registration
         ]);
     }
 
-    public function verify(Registration $registration, UrlGenerator $urlGenerator, Clock $clock): RedirectResponse
+    public function verify(Registration $registration, UrlGenerator $urlGenerator, Clock $clock) : RedirectResponse
     {
         $registration->confirmEmail($clock->now());
 

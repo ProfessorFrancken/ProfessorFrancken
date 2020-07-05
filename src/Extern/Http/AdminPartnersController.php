@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Francken\Extern\ContactDetails;
 use Francken\Extern\Http\Requests\AdminSearchPartnersRequest;
 use Francken\Extern\Http\Requests\ContactDetailsRequest;
@@ -15,6 +13,8 @@ use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Extern\Sector;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminPartnersController
 {
@@ -30,7 +30,7 @@ final class AdminPartnersController
         $this->uploader = $uploader;
     }
 
-    public function index(AdminSearchPartnersRequest $request): View
+    public function index(AdminSearchPartnersRequest $request) : View
     {
         $partners = Partner::query()
             ->when($request->showArchived(), function (Builder $query, bool $showArchived) : void {
@@ -78,7 +78,7 @@ final class AdminPartnersController
             ->with([
                 'request' => $request,
                 'partners' => $partners,
-                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
+                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                     return [$sector->id => $sector->name];
                 })->prepend("All", 0),
                 'statuses' => collect(PartnerStatus::all())->prepend("All", 0),
@@ -93,7 +93,7 @@ final class AdminPartnersController
         return view('admin.extern.partners.create', [
             'partner' => new Partner(),
             'contactDetails' => new ContactDetails(),
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
+            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                 return [$sector->id => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
@@ -104,7 +104,7 @@ final class AdminPartnersController
         ]);
     }
 
-    public function store(PartnerRequest $request, ContactDetailsRequest $contactDetailsRequest): RedirectResponse
+    public function store(PartnerRequest $request, ContactDetailsRequest $contactDetailsRequest) : RedirectResponse
     {
         $logo = $this->uploader->uploadPrimaryLogo($request->logo, $request->name());
 
@@ -153,7 +153,7 @@ final class AdminPartnersController
         return view('admin.extern.partners.edit', [
             'partner' => $partner,
             'contactDetails' => $partner->contactDetails,
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
+            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                 return [$sector->id => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
@@ -164,7 +164,7 @@ final class AdminPartnersController
         ]);
     }
 
-    public function update(PartnerRequest $request, ContactDetailsRequest $contactDetailsRequest, Partner $partner): RedirectResponse
+    public function update(PartnerRequest $request, ContactDetailsRequest $contactDetailsRequest, Partner $partner) : RedirectResponse
     {
         $logo = $this->uploader->uploadPrimaryLogo($request->logo, $request->name());
 
@@ -192,7 +192,7 @@ final class AdminPartnersController
         );
     }
 
-    public function destroy(Partner $partner): RedirectResponse
+    public function destroy(Partner $partner) : RedirectResponse
     {
         $partner->delete();
 

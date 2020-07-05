@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Validation\ValidationException;
 
 class RegistrationRequestFeature extends TestCase
 {

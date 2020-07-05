@@ -30,7 +30,7 @@ final class StudiesStatistic
         );
     }
 
-    private function sort(Collection $studies): Collection
+    private function sort(Collection $studies) : Collection
     {
         $relatedStudies = [
             "Technische Natuurkunde",
@@ -65,7 +65,7 @@ final class StudiesStatistic
         }
 
         $grouped = $studies->groupBy(
-            function (StudyStatistic $study) use ($relatedStudies): bool {
+            function (StudyStatistic $study) use ($relatedStudies) : bool {
                 return in_array($study->study(), $relatedStudies, true);
             }
         );

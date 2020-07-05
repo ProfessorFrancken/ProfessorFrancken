@@ -4,31 +4,31 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http;
 
-use Francken\Shared\Http\Middleware\CheckForMaintenanceMode;
-use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
-use Francken\Shared\Http\Middleware\TrimStrings;
-use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Fideloper\Proxy\TrustProxies;
+use Francken\Association\Photos\Http\Middleware\LoginToViewPhotos;
+use Francken\PlusOne\Http\Middleware\AuthenticatePlusOne;
+use Francken\Shared\Http\Middleware\Authenticate;
+use Francken\Shared\Http\Middleware\CheckForMaintenanceMode;
 use Francken\Shared\Http\Middleware\EnableCORS;
 use Francken\Shared\Http\Middleware\EncryptCookies;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Francken\Shared\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Francken\Shared\Http\Middleware\Authenticate;
-use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
-use Illuminate\Http\Middleware\SetCacheHeaders;
-use Illuminate\Auth\Middleware\Authorize;
-use Spatie\Permission\Middlewares\RoleMiddleware;
 use Francken\Shared\Http\Middleware\RedirectIfAuthenticated;
-use Illuminate\Routing\Middleware\ValidateSignature;
-use Illuminate\Routing\Middleware\ThrottleRequests;
+use Francken\Shared\Http\Middleware\TrimStrings;
+use Francken\Shared\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
+use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
-use Francken\PlusOne\Http\Middleware\AuthenticatePlusOne;
-use Francken\Association\Photos\Http\Middleware\LoginToViewPhotos;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
+use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
+use Illuminate\Http\Middleware\SetCacheHeaders;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Routing\Middleware\ThrottleRequests;
+use Illuminate\Routing\Middleware\ValidateSignature;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Spatie\Permission\Middlewares\RoleMiddleware;
 
 class Kernel extends HttpKernel
 {

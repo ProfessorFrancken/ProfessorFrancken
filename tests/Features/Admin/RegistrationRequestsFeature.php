@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin;
 
-use Francken\Auth\Account;
 use DateTimeImmutable;
-use Laravel\BrowserKitTesting\HttpException;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Address;
@@ -20,9 +18,11 @@ use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\PersonalDetails;
 use Francken\Association\Members\Registration\Registration;
 use Francken\Association\Members\StudyDetails;
+use Francken\Auth\Account;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\BrowserKitTesting\HttpException;
 
 class RegistrationRequestsFeature extends TestCase
 {

@@ -33,7 +33,7 @@ class VerifyRegistration extends Mailable
      *
      * @return $this
      */
-    public function build(): self
+    public function build() : self
     {
         return $this->subject("Please verify your registration for the '" . $this->participant->symposium->name . "' symposium")
             ->markdown('symposium.mails.verify', [
@@ -50,7 +50,7 @@ class VerifyRegistration extends Mailable
     /**
      * Get the verification URL for the given notifiable.
      */
-    protected function verificationUrl($participant): string
+    protected function verificationUrl($participant) : string
     {
         return URL::signedRoute(
             'symposium.participant.verify',

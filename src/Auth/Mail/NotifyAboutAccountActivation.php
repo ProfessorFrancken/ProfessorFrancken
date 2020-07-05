@@ -33,7 +33,7 @@ class NotifyAboutAccountActivation extends Mailable
      *
      * @return $this
      */
-    public function build(PasswordBroker $broker): self
+    public function build(PasswordBroker $broker) : self
     {
         $account = Account::findOrFail($this->account_id);
 

@@ -8,11 +8,11 @@ use Francken\Extern\JobOpeningRepository;
 
 final class ApiJobOpeningsController
 {
-    public function index(JobOpeningRepository $jobOpenings): array
+    public function index(JobOpeningRepository $jobOpenings) : array
     {
         return [
             'job-openings' => collect($jobOpenings->search())->map(
-                function (array $job): array {
+                function (array $job) : array {
                     return [
                         'name' => $job['job'],
                         'link' => $job['link'],

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Support\Collection;
 use Francken\Association\Boards\BoardMember;
+use Illuminate\Support\Collection;
 
 final class BoardsController
 {
-    public function index(): Collection
+    public function index() : Collection
     {
-        $members = BoardMember::with('member')->get()->filter(function (BoardMember $member): bool {
+        $members = BoardMember::with('member')->get()->filter(function (BoardMember $member) : bool {
             return $member->member_id !== null;
-        })->map(function (BoardMember $member): array {
+        })->map(function (BoardMember $member) : array {
             return [
                 'lid_id' => $member->member_id,
                 'jaar' => (int) $member->installed_at->format('Y'),

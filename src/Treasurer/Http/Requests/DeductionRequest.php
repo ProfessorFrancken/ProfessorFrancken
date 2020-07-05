@@ -32,7 +32,7 @@ class DeductionRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize() : bool
     {
         return true;
     }
@@ -40,7 +40,7 @@ class DeductionRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules(): array
+    public function rules() : array
     {
         return [
             'deducted_at' => ['required', 'date_format:Y-m-d', 'after:deduction_to'],

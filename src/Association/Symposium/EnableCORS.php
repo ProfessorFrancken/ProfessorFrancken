@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
-use Illuminate\Http\Request;
 use Closure;
+use Illuminate\Http\Request;
 
 final class EnableCORS
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
      */
     public function handle(Request $request, Closure $next)
     {

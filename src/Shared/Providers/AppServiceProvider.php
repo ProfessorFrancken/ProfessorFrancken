@@ -21,7 +21,7 @@ final class AppServiceProvider extends ServiceProvider
     {
         $this->app->instance('path', 'src');
 
-        $this->app->bind(Valuestore::class, function (): Valuestore {
+        $this->app->bind(Valuestore::class, function () : Valuestore {
             return Valuestore::make(
                 storage_path('app/settings.json')
             );

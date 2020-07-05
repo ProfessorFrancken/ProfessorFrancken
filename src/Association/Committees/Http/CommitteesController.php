@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
-use Illuminate\View\View;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
+use Illuminate\View\View;
 
 final class CommitteesController
 {
-    public function index(Board $board): View
+    public function index(Board $board) : View
     {
         $committees = $board->committees()
             ->where('is_public', true)
@@ -29,7 +29,7 @@ final class CommitteesController
             ]);
     }
 
-    public function show(Board $board, Committee $committee): View
+    public function show(Board $board, Committee $committee) : View
     {
         $committees = $board->committees()
             ->where('is_public', true)

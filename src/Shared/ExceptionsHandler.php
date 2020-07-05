@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\Shared;
 
-use Symfony\Component\HttpFoundation\Response;
-use Whoops\Handler\HandlerInterface;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
+use Whoops\Handler\HandlerInterface;
 
 class ExceptionsHandler extends Handler
 {
@@ -44,7 +44,7 @@ class ExceptionsHandler extends Handler
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function render($request, Throwable $e): Response
+    public function render($request, Throwable $e) : Response
     {
         return parent::render($request, $e);
     }

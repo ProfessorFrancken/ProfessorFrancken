@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use DateTimeImmutable;
 use Francken\Association\Members\Member;
-use Illuminate\View\Factory;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 final class ExpensesController
 {
     private $profile;
 
-    public function index(Request $request): View
+    public function index(Request $request) : View
     {
         $member = $this->member($request->user());
         $id = $member->id;
@@ -25,7 +24,7 @@ final class ExpensesController
             ->where('lid_id', $id)
             ->limit(100)
             ->get()
-            ->map(function ($transaction): array {
+            ->map(function ($transaction) : array {
                 $name = $transaction->naam;
 
                 if ($transaction->aantal > 1) {
@@ -51,7 +50,7 @@ final class ExpensesController
             ->limit(100)
             ->groupby('year', 'month')
             ->get()
-            ->map(function ($month): array {
+            ->map(function ($month) : array {
                 return [
                     "time" => new DateTimeImmutable($month->tijd),
                     "price" => $month->price
@@ -69,7 +68,7 @@ final class ExpensesController
             ]);
     }
 
-    public function show($year, $month, Request $request): View
+    public function show($year, $month, Request $request) : View
     {
         $member = $this->member($request->user());
         $id = $member->id;
@@ -78,7 +77,7 @@ final class ExpensesController
                 ->table('afschrijvingen')
                 ->orderBy('tijd', 'desc')
                 ->get()
-                ->map(function ($deduction): DateTimeImmutable {
+                ->map(function ($deduction) : DateTimeImmutable {
                     return new DateTimeImmutable($deduction->tijd);
                 });
 
@@ -89,7 +88,7 @@ final class ExpensesController
             ->whereYear('tijd', $year)
             ->whereMonth('tijd', $month)
             ->get()
-            ->map(function ($transaction) use ($deductions): array {
+            ->map(function ($transaction) use ($deductions) : array {
                 $name = $transaction->naam;
 
                 if ($transaction->aantal > 1) {

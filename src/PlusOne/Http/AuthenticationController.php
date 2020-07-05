@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Lcobucci\JWT\Token;
 use Hash;
 use Illuminate\Config\Repository;
 use Illuminate\Http\Request;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
+use Lcobucci\JWT\Token;
 
 final class AuthenticationController
 {
-    public function post(Request $request, Repository $config): array
+    public function post(Request $request, Repository $config) : array
     {
         if ( ! Hash::check(
             $request->get('password'),
@@ -29,7 +29,7 @@ final class AuthenticationController
         ];
     }
 
-    private function token($key): Token
+    private function token($key) : Token
     {
         $now = time();
 
@@ -43,7 +43,7 @@ final class AuthenticationController
                ->getToken();
     }
 
-    private function expiration(int $now): int
+    private function expiration(int $now) : int
     {
         // Currently set the expiration date to next year, later we could change
         // this to be dependent on the user who's trying to login

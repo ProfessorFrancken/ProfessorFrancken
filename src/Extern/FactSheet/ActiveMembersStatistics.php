@@ -19,7 +19,7 @@ final class ActiveMembersStatistics
         $this->today = $today;
     }
 
-    public function handle(): ActiveMembers
+    public function handle() : ActiveMembers
     {
         $year = AcademicYear::fromDate(
             $this->today

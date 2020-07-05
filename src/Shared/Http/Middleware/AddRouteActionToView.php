@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http\Middleware;
 
+use Closure;
 use Illuminate\Http\Request;
 use Route;
-use Closure;
 
 /**
  * This middelware adds the action belonging to the current route, e.g.
@@ -18,8 +18,6 @@ final class AddRouteActionToView
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
      */
     public function handle(Request $request, Closure $next)
     {

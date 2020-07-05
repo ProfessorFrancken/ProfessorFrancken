@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Illuminate\Http\RedirectResponse;
 use Francken\Extern\Http\Requests\CompanyProfileRequest;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Extern\Sector;
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Francken\Shared\Markdown\ContentCompiler;
+use Illuminate\Http\RedirectResponse;
 
 final class AdminCompanyProfilesController
 {
@@ -19,7 +19,7 @@ final class AdminCompanyProfilesController
         return view('admin.extern.partners.sponsor-options.company-profile.create', [
             'partner' => $partner,
             'profile' => $partner->companyProfile ?? new CompanyProfile(),
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
+            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                 return [$sector->id => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
@@ -31,7 +31,7 @@ final class AdminCompanyProfilesController
         ]);
     }
 
-    public function store(CompanyProfileRequest $request, Partner $partner, ContentCompiler $compiler): RedirectResponse
+    public function store(CompanyProfileRequest $request, Partner $partner, ContentCompiler $compiler) : RedirectResponse
     {
         $markdown = $compiler->content($request->content());
         $partner->companyProfile()->save(
@@ -54,7 +54,7 @@ final class AdminCompanyProfilesController
         return view('admin.extern.partners.sponsor-options.company-profile.edit', [
             'partner' => $partner,
             'profile' => $partner->companyProfile,
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
+            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                 return [$sector->id => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
@@ -66,7 +66,7 @@ final class AdminCompanyProfilesController
         ]);
     }
 
-    public function update(CompanyProfileRequest $request, Partner $partner, ContentCompiler $compiler): RedirectResponse
+    public function update(CompanyProfileRequest $request, Partner $partner, ContentCompiler $compiler) : RedirectResponse
     {
         $markdown = $compiler->content($request->content());
         $partner->companyProfile()->update(

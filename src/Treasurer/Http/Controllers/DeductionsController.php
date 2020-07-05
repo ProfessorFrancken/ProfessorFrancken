@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Francken\Treasurer\Deduction;
 use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\DeductionEmailToMember;
 use Francken\Treasurer\Http\Requests\DeductionRequest;
 use Francken\Treasurer\Imports\ImportDeductions;
 use Francken\Treasurer\MailDeduction;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Importer;
@@ -41,12 +41,12 @@ final class DeductionsController
         ]);
     }
 
-    public function create(): RedirectResponse
+    public function create() : RedirectResponse
     {
         return redirect()->action([static::class, 'index']);
     }
 
-    public function store(DeductionRequest $request, MediaUploader $uploader): RedirectResponse
+    public function store(DeductionRequest $request, MediaUploader $uploader) : RedirectResponse
     {
         /** @var Media */
         $deduction_file = $uploader->fromSource($request->deduction())
@@ -74,7 +74,7 @@ final class DeductionsController
         ]);
 
         $members = $deduction->deductionToMembers
-            ->sortBy(function (DeductionEmailToMember $deduction): string {
+            ->sortBy(function (DeductionEmailToMember $deduction) : string {
                 return $deduction->member->achternaam;
             });
 
@@ -91,7 +91,7 @@ final class DeductionsController
         ]);
     }
 
-    public function update(Request $request, DeductionEmail $deduction): RedirectResponse //, MailDeduction $deduction)
+    public function update(Request $request, DeductionEmail $deduction) : RedirectResponse //, MailDeduction $deduction)
     {
         if ($request->input('action', '') === 'resolve-conflict') {
             $deduction->update(['was_verified' => true]);
@@ -119,7 +119,7 @@ final class DeductionsController
             $deduction->deductionFile->disk
         );
 
-        return $import->errors()->reject(function (Collection $errors): bool {
+        return $import->errors()->reject(function (Collection $errors) : bool {
             return $errors->isEmpty();
         });
     }

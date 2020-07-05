@@ -11,10 +11,10 @@ use Francken\Treasurer\SendDeductionNotification;
 
 final class DeductionMembersController
 {
-    public function show(DeductionEmail $deduction, int $member_id): SendDeductionNotification
+    public function show(DeductionEmail $deduction, int $member_id) : SendDeductionNotification
     {
         $member = $deduction->deductionToMembers
-            ->first(function (DeductionEmailToMember $member) use ($member_id): bool {
+            ->first(function (DeductionEmailToMember $member) use ($member_id) : bool {
                 return (int)$member->member_id === $member_id;
             });
 

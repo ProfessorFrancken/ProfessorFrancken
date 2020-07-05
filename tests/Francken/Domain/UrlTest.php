@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Domain;
 
-use InvalidArgumentException;
 use Francken\Shared\Url;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase as TestCase;
 
 class UrlTest extends TestCase
@@ -23,7 +23,7 @@ class UrlTest extends TestCase
         $this->assertEquals($url, (string)(new Url($url)));
     }
 
-    public function urlProvider(): array
+    public function urlProvider() : array
     {
         return [
             ['http://test.com'],

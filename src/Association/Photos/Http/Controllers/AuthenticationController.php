@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Francken\Association\Photos\PhotosAuthentication;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 final class AuthenticationController
@@ -22,7 +22,7 @@ final class AuthenticationController
         return view('association.photos.login');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request) : RedirectResponse
     {
         $password = $request->get('password', '');
 

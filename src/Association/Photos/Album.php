@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Francken\Association\Photos\Http\Controllers\PhotosController;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Francken\Association\Photos\Album
@@ -55,14 +55,14 @@ final class Album extends Model
         'activity_date',
     ];
 
-    public function photos(): HasMany
+    public function photos() : HasMany
     {
         return $this->hasMany(Photo::class)
             ->where('is_public', true)
             ->orderBy('taken_at');
     }
 
-    public function coverPhoto(): HasOne
+    public function coverPhoto() : HasOne
     {
         return $this->hasOne(Photo::class, 'id', 'cover_photo');
     }
@@ -87,7 +87,7 @@ final class Album extends Model
             ->first();
     }
 
-    public function url(): string
+    public function url() : string
     {
         return action([PhotosController::class, 'show'], $this->slug);
     }

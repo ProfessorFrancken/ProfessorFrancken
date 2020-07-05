@@ -12,7 +12,7 @@ class ContactDetailsRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules(): array
+    public function rules() : array
     {
         return [
             'email' => ['nullable', 'email'],

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\FranckenVrij;
 
-use InvalidArgumentException;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Url;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase as TestCase;
 
 class VolumeTest extends TestCase

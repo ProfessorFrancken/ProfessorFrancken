@@ -13,7 +13,7 @@ final class AdminCommitteeMemberRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules(): array
+    public function rules() : array
     {
         return [
             'member_id' => ['required', 'integer', 'exists:francken-legacy.leden,id'],

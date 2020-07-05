@@ -76,7 +76,7 @@ final class Pirate extends Model
         return $this->belongsTo(PirateCrew::class, 'pirate_crew_id');
     }
 
-    public function earnedAdtchievements(): HasMany
+    public function earnedAdtchievements() : HasMany
     {
         return $this->hasMany(EarnedAdtchievement::class, 'pirate_id');
     }

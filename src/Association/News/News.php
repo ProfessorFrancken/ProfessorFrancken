@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\News;
 
-use Illuminate\Database\Eloquent\Builder;
 use DateTimeImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use League\Period\Period;
@@ -113,10 +113,8 @@ final class News extends Model
 
     /**
      * Scope a query to only include news with the given slug
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      */
-    public function scopeByLink(Builder $query, string $slug): Builder
+    public function scopeByLink(Builder $query, string $slug) : Builder
     {
         return $query->whereSlug($slug);
     }
@@ -153,10 +151,8 @@ final class News extends Model
 
     /**
      * Sort the query by most recent news
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      */
-    public function scopeRecent(Builder $query): Builder
+    public function scopeRecent(Builder $query) : Builder
     {
         return $query->orderBy('published_at', 'desc');
     }
@@ -164,10 +160,9 @@ final class News extends Model
     /**
      * Scope a query to only include news published in a given period
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      * @param \League\Period\Period $period
      */
-    public function scopeInPeriod(Builder $query, Period $period = null): Builder
+    public function scopeInPeriod(Builder $query, Period $period = null) : Builder
     {
         return (isset($period) ? $query->whereBetween('published_at', [$period->getStartDate(), $period->getEndDate()]) : $query);
     }
@@ -176,10 +171,8 @@ final class News extends Model
     /**
      * Scope a query to only include news with a whose subject includes
      * the given subject string
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      */
-    public function scopeWithSubject(Builder $query, string $subject = null): Builder
+    public function scopeWithSubject(Builder $query, string $subject = null) : Builder
     {
         return (isset($subject) ? $query->whereTitle($subject) : $query);
     }
@@ -187,10 +180,9 @@ final class News extends Model
     /**
      * Scope a query to only include a given author
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $author
      */
-    public function scopeWithAuthorName(Builder $query, string $author = null): Builder
+    public function scopeWithAuthorName(Builder $query, string $author = null) : Builder
     {
         return (isset($author) ? $query->whereAuthorName($author) : $query);
     }

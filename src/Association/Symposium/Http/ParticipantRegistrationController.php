@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium\Http;
 
-use Illuminate\Http\JsonResponse;
 use DateTimeImmutable;
 use Francken\Association\Symposium\Participant;
 use Francken\Association\Symposium\Symposium;
 use Francken\Shared\Email;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 final class ParticipantRegistrationController
 {
-    public function store(Symposium $symposium, Request $request): JsonResponse
+    public function store(Symposium $symposium, Request $request) : JsonResponse
     {
         $participant = $symposium->registerParticipant(
             $request->input('firstname'),

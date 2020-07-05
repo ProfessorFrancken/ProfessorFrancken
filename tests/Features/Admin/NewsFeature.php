@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin;
 
-use Illuminate\Support\Collection;
 use DateTimeImmutable;
 use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
@@ -14,6 +13,7 @@ use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Collection;
 
 class NewsFeature extends TestCase
 {

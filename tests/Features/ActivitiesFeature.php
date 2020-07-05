@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use DateTimeImmutable;
 use DateInterval;
+use DateTimeImmutable;
 use Francken\Association\Activities\ActivitiesRepository;
 
 class ActivitiesFeature extends TestCase
@@ -24,7 +24,7 @@ class ActivitiesFeature extends TestCase
 
         $this->app->bind(
             ActivitiesRepository::class,
-            function ($app) use ($start, $end): ActivitiesRepository {
+            function ($app) use ($start, $end) : ActivitiesRepository {
                 $data = <<<CALENDAR
 BEGIN:VCALENDAR
 BEGIN:VEVENT

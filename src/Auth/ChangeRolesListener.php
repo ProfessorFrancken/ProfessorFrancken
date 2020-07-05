@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-use Log;
-use UnexpectedValueException;
 use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
@@ -16,7 +14,9 @@ use Francken\Association\Boards\MemberBecameCandidateBoardMember;
 use Francken\Association\Committees\Committee;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use Log;
 use Spatie\Permission\Models\Role;
+use UnexpectedValueException;
 
 final class ChangeRolesListener
 {
@@ -194,7 +194,7 @@ final class ChangeRolesListener
         return 'Committee ' . $committee->name;
     }
 
-    private function getHandleMethod($event): string
+    private function getHandleMethod($event) : string
     {
         $classParts = explode('\\', get_class($event));
 

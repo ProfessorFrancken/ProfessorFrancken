@@ -127,7 +127,7 @@ final class Board extends Model
         return $board;
     }
 
-    public function members(): HasMany
+    public function members() : HasMany
     {
         // Order the BoardMembers by id so that their position on the boards page is shown correctly
         return $this->hasMany(BoardMember::class)->orderBy('id', 'desc');

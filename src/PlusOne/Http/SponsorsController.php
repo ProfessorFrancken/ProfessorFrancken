@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Francken\PlusOne\Http;
 
 use Illuminate\Support\Collection;
+
 final class SponsorsController
 {
-    public function index(): Collection
+    public function index() : Collection
     {
         return collect(['sponsors' => [
             [

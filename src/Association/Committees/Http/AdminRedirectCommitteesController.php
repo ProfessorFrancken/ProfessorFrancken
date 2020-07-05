@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association\Committees\Http;
 
+use Francken\Association\Boards\Board;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Francken\Association\Boards\Board;
 
 final class AdminRedirectCommitteesController
 {
-    public function index(Request $request): RedirectResponse
+    public function index(Request $request) : RedirectResponse
     {
         $board = Board::find($request->input('board_id'));
 

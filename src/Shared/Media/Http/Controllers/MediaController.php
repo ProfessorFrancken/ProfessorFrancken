@@ -20,7 +20,7 @@ final class MediaController
     {
         $directors = collect(explode('/', $directory));
         $path = '';
-        $breadcrumbs = collect(explode('/', $directory))->map(function ($directory, $key) use (&$path): array {
+        $breadcrumbs = collect(explode('/', $directory))->map(function ($directory, $key) use (&$path) : array {
             $path .= $directory . '/';
 
             return ['url' => action([static::class, 'index'], $path), 'text' => $directory];
@@ -29,7 +29,7 @@ final class MediaController
         $media = Media::inDirectory(static::DISK, $directory)
             ->paginate(100);
 
-        $media->transform(function (Media $media): MediaPresenter {
+        $media->transform(function (Media $media) : MediaPresenter {
             return new MediaPresenter($media);
         });
 
@@ -48,7 +48,7 @@ final class MediaController
             ->select('mediable_type')
             ->get();
 
-        $mediables = $mediable_types->mapWithKeys(function ($type) use ($media): array {
+        $mediables = $mediable_types->mapWithKeys(function ($type) use ($media) : array {
             return [
                 $type->mediable_type =>
                 $media->models($type->mediable_type)->get()
@@ -65,11 +65,11 @@ final class MediaController
         ]);
     }
 
-    private function breadcrumbs(string $directory): array
+    private function breadcrumbs(string $directory) : array
     {
         $directors = collect(explode('/', $directory));
         $path = '';
-        $breadcrumbs = collect(explode('/', $directory))->map(function ($directory, $key) use (&$path): array {
+        $breadcrumbs = collect(explode('/', $directory))->map(function ($directory, $key) use (&$path) : array {
             $path .= $directory . '/';
 
             return ['url' => action([static::class, 'index'], $path), 'text' => $directory];
@@ -81,7 +81,7 @@ final class MediaController
     private function directories(FilesystemManager $storage, string $directory) : Collection
     {
         $directories = collect($storage->disk(static::DISK)->directories($directory))
-            ->map(function ($directory): Directory {
+            ->map(function ($directory) : Directory {
                 return new Directory($directory);
             });
 

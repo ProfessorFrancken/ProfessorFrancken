@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members\Http;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use Francken\Association\Committees\Committee;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 final class ProfileController
 {
-    public function index(Request $request): View
+    public function index(Request $request) : View
     {
         $member = $this->member($request->user());
 

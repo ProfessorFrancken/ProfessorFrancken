@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Study\BooksSale\Http;
 
-use Illuminate\Http\RedirectResponse;
 use Francken\Association\LegacyMember;
 use Francken\Study\BooksSale\Book;
 use Francken\Study\BooksSale\Http\Requests\AdminBookRequest;
 use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 
 final class AdminBooksController
 {
@@ -69,7 +69,7 @@ final class AdminBooksController
         ]);
     }
 
-    public function store(AdminBookRequest $request): RedirectResponse
+    public function store(AdminBookRequest $request) : RedirectResponse
     {
         $book = [
             "title" => $request->title(),
@@ -94,7 +94,7 @@ final class AdminBooksController
         return redirect()->action([self::class, 'show'], ['book' => $book]);
     }
 
-    public function update(AdminBookRequest $request, Book $book): RedirectResponse
+    public function update(AdminBookRequest $request, Book $book) : RedirectResponse
     {
         $book->update([
             "title" => $request->title(),
@@ -117,7 +117,7 @@ final class AdminBooksController
         return redirect()->action([self::class, 'show'], ['book' => $book]);
     }
 
-    public function remove(Book $book): RedirectResponse
+    public function remove(Book $book) : RedirectResponse
     {
         if ($book->buyer !== null) {
             return redirect()->action([self::class, 'show'], ['book' => $book])->with([

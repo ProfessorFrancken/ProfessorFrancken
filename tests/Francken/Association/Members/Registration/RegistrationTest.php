@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members\Registration;
 
-use Francken\Tests\LaravelTestCase;
-use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
-use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Members\Address;
@@ -17,10 +14,12 @@ use Francken\Association\Members\Fullname;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\PersonalDetails;
-use Francken\Association\Members\Registration\Events;
+use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
+use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
 use Francken\Association\Members\Registration\Registration;
 use Francken\Association\Members\Registration\RegistrationException;
 use Francken\Association\Members\StudyDetails;
+use Francken\Tests\LaravelTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Event;
 

@@ -31,7 +31,7 @@ class SendDeductionNotification extends Mailable
      *
      * @return $this
      */
-    public function build(): self
+    public function build() : self
     {
         /** @var DeductionEmailToMember */
         $member = DeductionEmailToMember::findOrFail($this->deduction_member_id);

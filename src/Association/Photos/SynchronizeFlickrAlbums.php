@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
-use Exception;
 use DateInterval;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Collection;
@@ -63,7 +63,7 @@ final class SynchronizeFlickrAlbums extends Command
 
     private function missingAlbums(Collection $albums, Collection $albums_in_db) : Collection
     {
-        return $albums->filter(function ($album) use ($albums_in_db): bool {
+        return $albums->filter(function ($album) use ($albums_in_db) : bool {
             return ! $albums_in_db->contains($album['id']);
         });
     }
@@ -76,7 +76,7 @@ final class SynchronizeFlickrAlbums extends Command
         $photo_album = $this->flickr_repo->findAlbum($album['id']);
 
 
-        $photos = $photo_album['photos']->map(function ($photo) use ($album): array {
+        $photos = $photo_album['photos']->map(function ($photo) use ($album) : array {
             $parse_title = function ($title) {
                 return Str::startsWith($title, 'IMG_') ? '' : $title;
             };

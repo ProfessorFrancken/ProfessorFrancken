@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-use Francken\Association\Boards\BoardMemberWasDischarged;
 use Francken\Association\Boards\BoardMemberWasDemissioned;
+use Francken\Association\Boards\BoardMemberWasDischarged;
 use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
-use Francken\Association\Boards;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
@@ -21,7 +20,7 @@ final class ServiceProvider extends BaseServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton(Gate::class, function ($app): GateThatAllowsGuestsInCallables {
+        $this->app->singleton(Gate::class, function ($app) : GateThatAllowsGuestsInCallables {
             return new GateThatAllowsGuestsInCallables($app, function () use ($app) {
                 return call_user_func($app['auth']->userResolver());
             });
@@ -40,7 +39,7 @@ final class ServiceProvider extends BaseServiceProvider
 
     public function boot(Gate $gate) : void
     {
-        $gate->before(function ($user, $ability): ?bool {
+        $gate->before(function ($user, $ability) : ?bool {
             return $user->hasRole('Admin') ? true : null;
         });
 

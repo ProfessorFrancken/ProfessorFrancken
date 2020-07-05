@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 /**
@@ -59,7 +59,7 @@ final class Photo extends Model
         1024 => "_b",
     ];
 
-    public function album(): BelongsTo
+    public function album() : BelongsTo
     {
         return $this->belongsTo(Album::class);
     }
@@ -84,7 +84,7 @@ final class Photo extends Model
 
         // Give a list of srces
         return collect(self::SIZES)
-            ->map(function ($value, $key) use ($base_url): string {
+            ->map(function ($value, $key) use ($base_url) : string {
                 return sprintf(
                     "%s%s.jpg %sw",
                     $base_url,

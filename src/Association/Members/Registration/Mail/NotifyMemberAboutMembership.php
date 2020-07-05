@@ -37,7 +37,7 @@ class NotifyMemberAboutMembership extends Mailable
      *
      * @return $this
      */
-    public function build(): self
+    public function build() : self
     {
         return $this->subject(
             "Your membership at T.F.V. 'Professor Francken' has been approved"

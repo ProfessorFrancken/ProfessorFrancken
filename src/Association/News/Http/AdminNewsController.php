@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Http;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use DateTimeImmutable;
 use Francken\Association\News\Author;
 use Francken\Association\News\Http\Requests\AdminNewsRequest;
 use Francken\Association\News\Http\Requests\SearchNewsRequest;
 use Francken\Association\News\News;
 use Francken\Association\News\NewsContentCompiler;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Note that since the logic of news is quite trivial
@@ -51,7 +51,7 @@ final class AdminNewsController
         ]);
     }
 
-    public function store(AdminNewsRequest $request): RedirectResponse
+    public function store(AdminNewsRequest $request) : RedirectResponse
     {
         $news = new News([
             'title' => '',
@@ -91,7 +91,7 @@ final class AdminNewsController
         ]);
     }
 
-    public function preview(News $news): View
+    public function preview(News $news) : View
     {
         return view('pages.association.news.item')
             ->with([
@@ -101,7 +101,7 @@ final class AdminNewsController
             ]);
     }
 
-    public function update(AdminNewsRequest $request, News $news): RedirectResponse
+    public function update(AdminNewsRequest $request, News $news) : RedirectResponse
     {
         $news->changeAuthor(
             new Author(
@@ -121,7 +121,7 @@ final class AdminNewsController
         return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
 
-    public function publish(Request $req, News $news): RedirectResponse
+    public function publish(Request $req, News $news) : RedirectResponse
     {
         $publishAt = new DateTimeImmutable($req->input('published_at'));
 
@@ -131,7 +131,7 @@ final class AdminNewsController
         return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
 
-    public function archive(News $news): RedirectResponse
+    public function archive(News $news) : RedirectResponse
     {
         $news->archive();
         $news->save();
@@ -139,7 +139,7 @@ final class AdminNewsController
         return redirect()->action([self::class, 'index']);
     }
 
-    public function destroy(News $news): RedirectResponse
+    public function destroy(News $news) : RedirectResponse
     {
         $news->archive();
         $news->save();

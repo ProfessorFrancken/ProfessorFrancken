@@ -17,9 +17,9 @@ final class FirstYearStudentsPerYear
         $this->years = $years;
     }
 
-    public function handle(): Collection
+    public function handle() : Collection
     {
-        return $this->years->map(function ($year): array {
+        return $this->years->map(function ($year) : array {
             $members = DB::connection('francken-legacy')
                 ->table('leden')
                 ->whereBetween('start_lidmaatschap', [new DateTimeImmutable("$year-08-01"), new DateTimeImmutable(($year + 1) . "-08-01")])
@@ -28,7 +28,7 @@ final class FirstYearStudentsPerYear
 
 
             $studies = $members->groupBy('studierichting')
-                ->map(function ($students, $study): StudentsPerStudy {
+                ->map(function ($students, $study) : StudentsPerStudy {
                     return new StudentsPerStudy($study, $students->count());
                 })
                 ->values();

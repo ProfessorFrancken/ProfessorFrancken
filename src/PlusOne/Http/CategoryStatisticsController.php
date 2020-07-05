@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Http\Request;
 use DateInterval;
 use DateTimeImmutable;
 use DB;
+use Illuminate\Http\Request;
 
 final class CategoryStatisticsController
 {
-    public function index(Request $request): array
+    public function index(Request $request) : array
     {
         // By default use the period between today and 6 months ago
         $endDate = DateTimeImmutable::createFromFormat(
@@ -41,16 +41,16 @@ final class CategoryStatisticsController
         return [
             'statistics' => $stats->groupBy(function ($statistic) {
                 return $statistic->date;
-            })->map(function ($statByDate, $date): array {
+            })->map(function ($statByDate, $date) : array {
                 // For each date we probably have a category for beer, soda and food unless said category
                 // wasn't purchased that day
-                $beer = $statByDate->first(function ($stat): bool {
+                $beer = $statByDate->first(function ($stat) : bool {
                     return 'Bier' === $stat->categorie;
                 });
-                $soda = $statByDate->first(function ($stat): bool {
+                $soda = $statByDate->first(function ($stat) : bool {
                     return 'Fris' === $stat->categorie;
                 });
-                $food = $statByDate->first(function ($stat): bool {
+                $food = $statByDate->first(function ($stat) : bool {
                     return 'Eten' === $stat->categorie;
                 });
 

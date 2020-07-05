@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use Francken\Extern\EventRepository;
 use Francken\Extern\JobOpeningRepository;
 use Francken\Extern\JobType;
 use Francken\Extern\Sector;
 use Francken\Shared\AcademicYear;
 use Francken\Shared\Clock\Clock;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 final class CareerController
 {
@@ -21,7 +21,7 @@ final class CareerController
         return view('career.index');
     }
 
-    public function jobs(JobOpeningRepository $repo, Request $request): View
+    public function jobs(JobOpeningRepository $repo, Request $request) : View
     {
         $jobs = $repo->search(
             $request->input('job-title', null),
@@ -34,7 +34,7 @@ final class CareerController
             ->with([
                 'jobs' => $jobs,
                 'companies' => $repo->companies(),
-                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector): array {
+                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                     return [$sector->name => $sector->icon];
                 })->all(),
                 'types' => JobType::TYPES
@@ -52,7 +52,7 @@ final class CareerController
         return redirect('/career/events/' . Str::slug($academicYear->toString()));
     }
 
-    public function events(EventRepository $repo, Clock $clock, AcademicYear $year = null): View
+    public function events(EventRepository $repo, Clock $clock, AcademicYear $year = null) : View
     {
         $plannedEvents = $repo->plannedInYear($year);
         $pastEvents = $repo->pastInYear($year);

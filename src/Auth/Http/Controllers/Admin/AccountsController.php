@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Auth\Http\Controllers\Admin;
 
-use Illuminate\Http\RedirectResponse;
-use Hash;
 use DB;
 use Francken\Association\LegacyMember;
 use Francken\Auth\Account;
 use Francken\Auth\Mail\NotifyAboutAccountActivation;
+use Hash;
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
@@ -55,7 +55,7 @@ final class AccountsController
         ]);
     }
 
-    public function store(Request $request, Mailer $mail): RedirectResponse
+    public function store(Request $request, Mailer $mail) : RedirectResponse
     {
         $member_id = $request->input('member_id');
 

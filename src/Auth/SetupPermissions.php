@@ -5,10 +5,10 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-use Spatie\Permission\PermissionRegistrar;
 use DB;
 use Illuminate\Console\Command;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 /**
  * Used

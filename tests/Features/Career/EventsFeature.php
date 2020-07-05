@@ -15,7 +15,7 @@ final class EventsFeature extends TestCase
     /** @test */
     public function if_no_year_is_given_events_from_the_current_board_are_shown() : void
     {
-        $this->app->bind(EventRepository::class, function ($app): EventRepository {
+        $this->app->bind(EventRepository::class, function ($app) : EventRepository {
             return new EventRepository([], []);
         });
         $this->app->instance(

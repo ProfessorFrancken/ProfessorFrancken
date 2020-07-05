@@ -28,7 +28,7 @@ class BoardMembersExport implements FromQuery, WithTitle, WithHeadings
         'updated_at',
     ];
 
-    public function query(): Builder
+    public function query() : Builder
     {
         return DB::table('association_board_members')
                ->orderBy('installed_at', 'asc')

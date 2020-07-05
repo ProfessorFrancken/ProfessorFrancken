@@ -32,7 +32,7 @@ class InformationEmail extends Mailable
      *
      * @return $this
      */
-    public function build(): self
+    public function build() : self
     {
         return $this->subject(
             "Symposium May 8th '" . $this->participant->symposium->name . "'"
