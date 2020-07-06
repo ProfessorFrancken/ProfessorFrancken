@@ -19,7 +19,7 @@ final class AppServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
-        $this->app->instance('path', 'src');
+        $this->app->useAppPath('src');
 
         $this->app->bind(Valuestore::class, function () : Valuestore {
             return Valuestore::make(
