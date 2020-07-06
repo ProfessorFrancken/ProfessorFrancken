@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
@@ -60,6 +61,7 @@ use Webmozart\Assert\Assert;
 final class Board extends Model
 {
     use Mediable;
+    use Notifiable;
 
     /**
      * @var string
@@ -216,5 +218,13 @@ final class Board extends Model
     public function committees() : HasMany
     {
         return $this->hasMany(Committee::class);
+    }
+
+    /**
+     * This getter is used indirectly by the RoutesNotifications trait
+     */
+    public function getEmailAttribute() : string
+    {
+        return 'board@professorfrancken.nl';
     }
 }
