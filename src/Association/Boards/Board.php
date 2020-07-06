@@ -6,6 +6,7 @@ namespace Francken\Association\Boards;
 
 use DateTimeImmutable;
 use Francken\Association\Committees\Committee;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -201,9 +202,15 @@ final class Board extends Model
         $this->save();
     }
 
-    public function scopeWithPhotos($query)
+    public function scopeWithPhotos(Builder $query) : Builder
     {
         return $query->withMedia([static::BOARD_PHOTO_TAG]);
+    }
+
+    public function scopeCurrent(Builder $query) : Builder
+    {
+        return $query->whereNotNull('installed_at')
+            ->orderBy('installed_at', 'desc');
     }
 
     public function committees() : HasMany

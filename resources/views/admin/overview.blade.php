@@ -1,23 +1,48 @@
 @extends('admin.layout')
-@section('page-title', 'Administration panel')
+@section('page-title', 'Hoi, ' . $board->board_name->toString())
 
 @section('content')
-    <p class="lead">
-        Welcome to the administration page of T.F.V. 'Professor Francken'.
-        Currently only board members are allowed to use these pages. If you're not a board member, you're probably lost.
-        At some point committee members will be allowed access to these pages so that they can do their committee member business and not bother the board with their tedious and often boring tasks (Digital Anarchy ftw).
-    </p>
+    <div class="row">
+        <div class="col">
+            <p class="lead">
+                Welcome to the administration page of T.F.V. 'Professor Francken'.
+            </p>
 
-    <p class="lead">
-        As you might have noticed these admin pages lack much functionallity (all menu items that have a <i class="fa fa-times" aria-hidden="true"></i> icon in front of it are currently disabled). Over time more functionallity will be added and the use of our old database system should no longer be necessary. The following is a prioritized list of stuff that will be added.
-    </p>
+            <p>
+                This page is currently quite empty as I'm not sure what to put here yet.
+                On the right you can find notifications as well as a short to do list of the website.
+            </p>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class='card-body'>
+                    <h4 class="h5 font-weight-bold">
+                        Notifications
+                    </h4>
+                    <div>
+                        <div class="bg-light mt-4 p-5 text-muted text-center">
+                            <pan class="h6 text-muted">Nothing to see here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <ol>
-        <li>Publishing and maintaining Francken Vrij</li>
-        <li>Managing committees and their members</li>
-        <li>Selling and buying books</li>
-        <li>Managing memberships</li>
-        <li>Customer Relationship Management (e.g. doing company stuff)</li>
-        <li>Streepsysteem 2.0</li>
-    </ol>
+            <div class="card my-4">
+                <div class='card-body'>
+                    <h4 class="h5 font-weight-bold">
+                        Website todo list
+                    </h4>
+                    <ul class="pl-4">
+                        <li>Board notifications</li>
+                        <li>Member login system</li>
+                        <li>Managing members</li>
+                        <li>Streepsysteem 2.0</li>
+                        <li>Research groups</li>
+                        <li>Sister & brother associations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
