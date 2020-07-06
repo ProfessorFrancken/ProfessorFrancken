@@ -14,7 +14,6 @@ $menu[] = ['link' => '/logout', 'icon' => 'fas fa-sign-out-alt', 'text' => 'Logo
 @endphp
 <div class="agenda">
     <div class="d-flex justify-content-start">
-        <img src="{{ image('/images/person.png', ['width' => '50', 'height' => '30'], true) }}" class="rounded-circle border border-dark" style="width: 50px; height: 50px"/>
         <h3 class="section-header agenda-header ml-2">
             {{ $profile->voornaam }}
             {{ $profile->achternaam }}
