@@ -7,8 +7,9 @@ namespace Francken\Association\Photos;
 use DateInterval;
 use DateTimeImmutable;
 use Illuminate\Contracts\Auth\Access\Gate;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Pagination\Paginator;
+use Webmozart\Assert\Assert;
 
 /**
  * We don't want unauthenticated people to view old albums, therefore
@@ -42,10 +43,15 @@ final class AlbumsRepository
 
         $query = $this->filterPrivateAlbums($query);
 
-        return $query->firstOrFail();
+        /** @var Album $album */
+        $album = $query->firstOrFail();
+
+        Assert::isInstanceOf($album, Album::class);
+
+        return $album;
     }
 
-    
+
     private function filterPrivateAlbums(Builder $query) : Builder
     {
         // Check whether the user is either authenticated or authenticated by entering
