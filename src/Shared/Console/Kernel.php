@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         SetupPermissions::class,
         SynchronizeFlickrAlbums::class,
         UpdateBoardMemberStatus::class,
+        MigrateLegacyDb::class,
     ];
 
     /**
