@@ -18,7 +18,7 @@ final class RedirectToBoardCommitteesController
 
         if ($board === null) {
             $board = Board::where('installed_at', '<', $clock->now())
-                   ->latest()
+                   ->current()
                    ->first();
         }
 

@@ -15,7 +15,7 @@ final class AdminRedirectCommitteesController
         $board = Board::find($request->input('board_id'));
 
         if ($board === null) {
-            $board = Board::latest()->first();
+            $board = Board::current()->first();
         }
 
         return redirect()->action(
