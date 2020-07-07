@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards;
 
-use DateTimeImmutable;
+use DateTimeInterface;
 
 class BoardMemberStatus
 {
@@ -26,10 +26,10 @@ class BoardMemberStatus
     public const DECHARGED_BOARD_MEMBER = 'decharged_board_member';
 
     public static function fromDates(
-        DateTimeImmutable $current_date,
-        DateTimeImmutable $installed_at,
-        ?DateTimeImmutable $demissioned_at = null,
-        ?DateTimeImmutable $decharged_at = null
+        DateTimeInterface $current_date,
+        DateTimeInterface $installed_at,
+        ?DateTimeInterface $demissioned_at = null,
+        ?DateTimeInterface $decharged_at = null
     ) : string {
         if (isset($decharged_at) && $current_date > $decharged_at) {
             return static::DECHARGED_BOARD_MEMBER;
