@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1cc2d6ed0237437f0fdb35ded831b90e",
+    "content-hash": "497cbfaf762bd2e57ee5374ebd01b328",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -7391,68 +7391,6 @@
             "time": "2020-03-27T15:03:44+00:00"
         },
         {
-            "name": "christophrumpel/laravel-factories-reloaded",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/christophrumpel/laravel-factories-reloaded.git",
-                "reference": "bd4fdfc7b96dd4edd6c83d329019ecadb1656e67"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/christophrumpel/laravel-factories-reloaded/zipball/bd4fdfc7b96dd4edd6c83d329019ecadb1656e67",
-                "reference": "bd4fdfc7b96dd4edd6c83d329019ecadb1656e67",
-                "shasum": ""
-            },
-            "require": {
-                "christophrumpel/laravel-command-file-picker": "^1.0",
-                "illuminate/support": "^6.0|^7.0",
-                "laravel/framework": "^6.0|^7.0",
-                "nikic/php-parser": "^4.3",
-                "php": "^7.4"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16",
-                "mockery/mockery": "^1.2",
-                "orchestra/testbench": "^4.0|^5.0",
-                "phpunit/phpunit": "^8.4"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Christophrumpel\\LaravelFactoriesReloaded\\LaravelFactoriesReloadedServiceProvider"
-                    ],
-                    "aliases": {
-                        "LaravelFactoriesReloaded": "Christophrumpel\\LaravelFactoriesReloaded\\LaravelFactoriesReloadedFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Christophrumpel\\LaravelFactoriesReloaded\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christoph Rumpel",
-                    "email": "christoph@christoph-rumpel.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "This package sits on top of Laravel factories and provides you with dedicated factory classes for every model.",
-            "homepage": "https://github.com/christophrumpel/laravel-factories-reloaded",
-            "keywords": [
-                "christophrumpel",
-                "laravel-factories-reloaded"
-            ],
-            "time": "2020-07-02T07:43:32+00:00"
-        },
-        {
             "name": "codedungeon/php-cli-colors",
             "version": "1.11.0",
             "source": {
@@ -13957,5 +13895,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

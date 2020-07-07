@@ -36,7 +36,6 @@
     "barryvdh/laravel-debugbar": "^3.3",
     "barryvdh/laravel-ide-helper": "^2.7",
     "beyondcode/laravel-dump-server": "^1.4",
-    "christophrumpel/laravel-factories-reloaded": "^1.2",
     "codedungeon/phpunit-result-printer": "0.28.*",
     "ergebnis/composer-normalize": "^2.6",
     "friendsofphp/php-cs-fixer": "^2.10",
@@ -81,7 +80,6 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Francken\\Factories\\": "tests/Factories",
       "Francken\\Features\\": "tests/Features",
       "Francken\\Tests\\": "tests/Francken"
     }
