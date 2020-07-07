@@ -11,6 +11,7 @@ use Francken\Association\Members\Email;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\Students\Student;
+use Francken\Auth\Account;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -167,6 +168,30 @@ final class LegacyMember extends Model
             ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
             ->orderBy('id', 'desc')
             ->get();
+    }
+
+    public function changeEmail(Email $email) : void
+    {
+        $oldEmail = $this->email;
+        $this->emailadres = $email->toString();
+        $this->save();
+
+        $account = Account::ofMember($this->id);
+        $account->email = $email->toString();
+        $account->save();
+
+        // notify board..
+        event(new MemberEmailWasChanged($this, $email, $oldEmail));
+    }
+
+    public function changeAddress(Address $address) : void
+    {
+        $oldAddress = $this->address;
+
+        $this->emailadres = $email->toString();
+        $this->save();
+
+        event(new MemberAddressWasChanged($this, $address, $oldAddress));
     }
 
     public function getInitialsAttribute() : string
