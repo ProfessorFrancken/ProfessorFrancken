@@ -9,14 +9,14 @@
     @if (count($byDay) > 0)
         @foreach($byDay as $transactions)
             <div class="card my-3">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class='mb-0 font-weight-bold'>
                             {{ $transactions->first()['time']->format('l') }}
                             <small>
                                 {{ $transactions->first()['time']->format('j F') }}
                             </small>
-                        </h3>
+                        </h5>
                         <strong>
                             €{{
                                 $transactions->reduce(function ($total, $transaction) {
