@@ -136,6 +136,22 @@ services:
       - "traefik.port=8025"
       - "traefik.docker.network=traefik_webgateway"
 
+
+  adminer:
+    image: adminer
+    links:
+      - mysql
+      - legacy-db
+    networks:
+      - default
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=francken-adminer-web"
+      - "traefik.frontend.rule=Host:adminer.nl.localhost"
+      - "traefik.port=8080"
+      - "traefik.docker.network=traefik_webgateway"
+
   mysql:
     image: mysql:5.7
     environment:
