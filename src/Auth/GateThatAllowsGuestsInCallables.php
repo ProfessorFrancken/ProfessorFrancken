@@ -23,9 +23,9 @@ final class GateThatAllowsGuestsInCallables extends Gate implements GateContract
         if (is_array($callback)) {
             $instance = $this->resolvePolicy($callback[0]);
             $method = $callback[1];
-            return $instance->{$method}($user, ...$arguments);
+            return (bool)$instance->{$method}($user, ...$arguments);
         }
 
-        return $callback($user, ...$arguments);
+        return (bool)$callback($user, ...$arguments);
     }
 }
