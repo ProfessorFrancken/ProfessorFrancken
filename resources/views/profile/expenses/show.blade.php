@@ -1,10 +1,10 @@
 @extends('profile.layout')
 
 @section('content')
-    <h2 class="section-header">
+    <h4 class="font-weight-bold section-header">
         <i class="fa fa-chart-bar text-primary text-center" aria-hidden="true"></i>
         Expenses in {{ $date }}
-    </h2>
+    </h4>
 
     @if (count($byDay) > 0)
         @foreach($byDay as $transactions)

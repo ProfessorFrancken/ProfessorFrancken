@@ -1,112 +1,188 @@
 @extends('profile.layout')
 
 @section('content')
-    <div class="alert alert-warning" role="alert">
-        Currently it is not possible to change your data using our website.
-        If you'd like to change or remove any of your personal information then please send an email to the <a href="mailto:board@professorfrancken.nl">board</a>.
+    <div class="d-flex justify-content-between">
+        <h4 class="font-weight-bold section-header">
+            {{ $member->full_name }} ({{ $member->initials }} {{ $member->surname }})
+        </h4>
+        <div class="text-right d-flex justify-content-between">
+            <p class="text-muted mx-3">
+                @if ($member->gender === \Francken\Association\Members\Gender::FEMALE)
+                    <i class="fas fa-venus"></i>
+                @elseif ($member->gender === \Francken\Association\Members\Gender::MALE)
+                    <i class="fas fa-mars"></i>
+                @else
+                    {{ $member->gender }}
+                @endif
+            </p>
+            <p class="text-muted ml-3">
+                <i class="fas fa-birthday-cake"></i>
+                {{ $member->birthdate->format('Y-m-d') }}
+            </p>
+        </div>
     </div>
 
-    <ul class="list-unstyled profile-container border rounded" style="">
-        @component('profile._profile', ['icon' => 'fas fa-user'])
-            <div>
-                <img
-                    src="{{ image('/images/person.png', ['width' => '100', 'height' => '100'], true) }}"
-                    class="rounded-circle border border-dark float-right bg-light"
-                    style="width: 100px; height: 100px; margin-top: -2em; margin-right: -2em;"
-                />
+    <div class="card my-3">
+        <div class="card-body">
+            <a href="" class="float-right text-muted d-none">
+                <i class="fas fa-edit"></i>
+                Edit
+            </a>
+            <h5 class="">
+                <i class="fas fa-envelope-open-text"></i>
+                Email
+            </h5>
+            <p class="mb-0">
+                {{ $member->email }}
+            </p>
+            @if ($member->address)
+                <h5 class="mt-4">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Address
+                </h5>
+                <address class="mb-0 mt-2">
+                    {{ $member->address->city() }}
+                    <br/>
+                    {{ $member->address->postalCode() }} {{ $member->address->address() }}
+                    <br/>
+                    {{ $member->address->country() }}
+                </address>
+            @endif
+            @if ($member->phone_number !== null)
+                <h5 class="mt-4">
+                    <i class="fas fa-mobile"></i>
+                    Phonenumber
+                </h5>
+                <p class="mb-0 mt-2">
+                    {{ $member->phone_number }}
+                </p>
+            @endif
+        </div>
+    </div>
 
-                <h4 class="text-body font-weight-light">
-                    {{ $member->fullName() }}
-                </h4>
-                <ul class="list-unstyled">
-                    <li>
-                        <i class="far fa-calendar-alt fa-xs text-primary"></i>
-                        <strong>Member since</strong>: {{ $member->startMembership()->diffForHumans()  }}
-                    </li>
-                    <li>
-                        <i class="fas fa-birthday-cake fa-xs text-primary"></i>
-                        <strong>Birthday</strong>: {{ $member->birthDate()->format('F j Y') }}
-                    </li>
-                    @if ($member->nnvNumber())
-                        <li>
-                            <i class="fas fa-passport fa-xs text-primary"></i>
-                            <strong>NNV Number</strong>: {{ $member->nnvNumber() }}
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        @endcomponent
-
-        @include('profile._study-profile', ['student' => $member->student()])
-
-        @component('profile._profile', ['icon' => 'fas fa-at'])
-            <h6 class="text-body font-weight-light">
-                {{ $member->email() }}
-            </h6>
-
+    <div class="card my-3">
+        <div class="card-body">
+            <a href="" class="float-right text-muted d-none">
+                <i class="fas fa-edit"></i>
+                Edit
+            </a>
+            <h5>
+                <i class="fas fa-graduation-cap"></i>
+                <strong>
+                    Student number
+                </strong>:
+                <span class="font-weight-light">
+                    {{ $member->student_number }}
+                </span>
+            </h5>
             <ul class="list-unstyled">
+                @foreach ($member->student->studies() as $study)
+                    <li class="my-3 bg-light p-3">
+                        <h6 class="mb-0">
+                            {{ $study }}
+                        </h6>
+                        {{ $study->startYear() }} - {{ $study->endYear() }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+    </div>
+    <div class="card my-3">
+        <div class="card-body">
+            <a href="" class="float-right text-muted d-none">
+                <i class="fas fa-edit"></i>
+                Edit
+            </a>
+            <h5>
+                <i class="fas fa-money-check-alt"></i>
+                Finances
+            </h5>
+
+            <p>
+                You've authorized T.F.V. 'Professor Francken' to withdraw money from the bank account listed above, due to:
+            </p>
+            <ul class="list-unstyled">
+                @if (! $member->gratis_lidmaatschap)
+                    <li>
+                        <i class="far fa-check-square"></i>
+                        Membership (€5,- per year)
+                    </li>
+                @endif
                 <li>
-                    @if ($member->receivesBiWeeklyMailing())
-                        <i class="fas fa-check fa-xs text-primary"></i> Receive our biweekly newsletter
+
+                    @if ($member->payment_details->deductAdditionalCosts())
+                        <i class="far fa-check-square"></i>
                     @else
-                        <i class="fas fa-times fa-xs text-primary"></i> You are not subscribed to our biweekly newsletter
+                        <i class="far fa-square"></i>
                     @endif
+                    Drinking and eating expenses and any potential costs incurred at other activities of the association.
                 </li>
             </ul>
-        @endcomponent
+            <p>
+                These costs will be deducted from {{ $member->payment_details->maskedIban() }}.
+            </p>
+        </div>
+    </div>
 
-        @component('profile._profile', ['icon' => 'fas fa-map-marker'])
-            <h6 class="text-body font-weight-light">
-                {{ $member->address()->toString() }}
-            </h6>
+    <div class="card my-3">
+        <div class="card-body">
+            <h5>
+                <i class="fas fa-key"></i>
+                Password
+            </h5>
+            <p>
+                Click <a href="/" class="font-weight-bold">here</a> to change your password.
+            </p>
+        </div>
+    </div>
 
-            <ul class="list-unstyled">
-                <li>
-                    @if ($member->receivesFranckenVrij())
-                        <i class="fas fa-check fa-xs text-primary"></i> Receive the <a href="/association/francken-vrij">Francken Vrij</a> per mail
-                    @else
-                        <i class="fas fa-times fa-xs text-primary"></i> You won't receive the <a href="/association/francken-vrij">Francken Vrij</a> per mail
-                    @endif
-                </li>
-            </ul>
-        @endcomponent
-
-        @component('profile._profile', ['icon' => 'fas fa-phone'])
-
-            <h6 class="text-body font-weight-light">
-                {{ $member->phoneNumber()  }}
-            </h6>
-
-            {{--
-            <i class="fas fa-check fa-xs text-primary"></i> Subscribe to the Francken whatsapp broadcast
-            --}}
-        @endcomponent
-
-        @include('profile._payment-info', ['member' => $member, 'paymentInfo' => $member->paymentDetails()])
-
-        @if ($committees->isNotEmpty())
-            @component('profile._profile', ['icon' => 'fas fa-users'])
-                <h6 class="text-body font-weight-light">
+    @if ($committees->isNotEmpty())
+        <div class="card my-3">
+            <div class="card-body">
+                <h5>
+                    <i class="fas fa-users"></i>
                     Committees
-                </h6>
+                </h5>
 
-                <ul class="">
+                <ul class="list-unstyled">
                     @foreach ($committees as $committee)
-                        <li>
+                        <li class="my-3 bg-light p-3">
                             <a href="{{ action(
-                                        [\Francken\Association\Committees\Http\CommitteesController::class, 'show'],
-                                        ['board' => $committee->board, 'committee' => $committee]
-                                        ) }}"
+                                            [\Francken\Association\Committees\Http\CommitteesController::class, 'show'],
+                                            ['board' => $committee->board, 'committee' => $committee]
+                                            ) }}"
+                                class="d-flex justify-content-start align-items-center text-left"
                             >
-                                {{ $committee->name  }} ({{ $committee->board->board_name->toString() }})
+                                <img
+                                    class="rounded text-left mr-2"
+                                    src="{{ $committee->logo }}"
+                                    style="
+                                    width: 50px;
+                                    max-width: 50px;
+                                    max-height: 40px;
+                                    object-fit: contain;"
+                                />
+
+                                <div class="d-flex flex-column justify-content-between" >
+                                    <span class="font-weight-bold">
+                                        {{ $committee->name }}
+                                    </span>
+
+                                    <small class="text-muted">
+                                        {{ $committee->board->board_name->toString() }}
+                                        ({{ $committee->board->board_year->toString() }})
+                                    </small>
+                                </div>
                             </a>
                         </li>
                     @endforeach
                 </ul>
-            @endcomponent
-        @endif
+            </div>
+        </div>
+    @endif
 
-        @if (1 == 2)
+    @if (1 == 2)
         @component('profile._profile', ['icon' => 'fas fa-user-secret'])
             <h6 class="text-body font-weight-light">
                 Privacy settings
@@ -124,16 +200,5 @@
                 </li>
             </ul>
         @endcomponent
-        @endif
-
-        @component('profile._profile', ['icon' => 'fas fa-cogs'])
-            <h6 class="text-body font-weight-light">
-                Settings
-            </h6>
-
-            Change password
-        @endcomponent
-
-        {{-- Settings: reset password --}}
-    </ul>
+    @endif
 @endsection

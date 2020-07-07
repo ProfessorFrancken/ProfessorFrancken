@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association;
 
+use DateTimeImmutable;
 use DB;
+use Francken\Association\Members\Address;
+use Francken\Association\Members\Email;
+use Francken\Association\Members\Gender;
+use Francken\Association\Members\PaymentDetails;
+use Francken\Association\Members\Students\Student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -139,10 +145,7 @@ final class LegacyMember extends Model
 
     public function getSurnameAttribute() : string
     {
-        if ($this->tussenvoegsel !== '') {
-            return $this->tussenvoegsel . ' ' . $this->achternaam;
-        }
-        return $this->achternaam;
+        return collect([$this->tussenvoegsel, $this->achternaam])->filter()->implode(' ');
     }
 
     public static function autocomplete(Collection $except = null) : Collection
@@ -159,5 +162,80 @@ final class LegacyMember extends Model
             ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
             ->orderBy('id', 'desc')
             ->get();
+    }
+
+    public function getInitialsAttribute() : string
+    {
+        return $this->initialen ?? '';
+    }
+
+    public function getGenderAttribute() : string
+    {
+        if ($this->geslacht === 'V') {
+            return Gender::FEMALE;
+        }
+
+        if ($this->geslacht === 'M') {
+            return Gender::MALE;
+        }
+
+        return $this->geslacht;
+    }
+
+    public function getBirthdateAttribute() : ?DateTimeImmutable
+    {
+        if ($this->geboortedatum === null) {
+            return null;
+        }
+
+        $birthdate = DateTimeImmutable::createFromFormat(
+            'Y-m-d',
+            $this->geboortedatum
+        );
+
+        if ( ! ($birthdate instanceof DateTimeImmutable)) {
+            return null;
+        }
+
+        return $birthdate;
+    }
+
+    public function getEmailAttribute() : Email
+    {
+        return new Email($this->emailadres);
+    }
+
+    public function getAddressAttribute() : ?Address
+    {
+        if ($this->plaats && $this->postcode && $this->adres && $this->land) {
+            return new Address(
+                $this->plaats,
+                $this->postcode,
+                $this->adres,
+                $this->land
+            );
+        }
+
+        return null;
+    }
+
+    public function getPhoneNumberAttribute() : string
+    {
+        return $this->telefoonnummer_mobiel ?? '';
+    }
+
+    public function getStudentNumberAttribute() : string
+    {
+        return $this->studentnummer ?? '';
+    }
+
+    public function getStudentAttribute() : Student
+    {
+        return Student::fromDb($this);
+    }
+
+    public function getPaymentDetailsAttribute() : PaymentDetails
+    {
+        return PaymentDetails::fromDb($this);
     }
 }

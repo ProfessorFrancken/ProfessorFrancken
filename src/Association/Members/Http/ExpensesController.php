@@ -5,17 +5,14 @@ declare(strict_types=1);
 namespace Francken\Association\Members\Http;
 
 use DateTimeImmutable;
-use Francken\Association\Members\Member;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class ExpensesController
 {
-    private $profile;
-
     public function index(Request $request) : View
     {
-        $member = $this->member($request->user());
+        $member = $request->user()->member;
         $id = $member->id;
 
         $transactions = \DB::connection('francken-legacy')->table('transacties')
@@ -59,6 +56,7 @@ final class ExpensesController
 
         return view('profile.expenses.index')
             ->with([
+                'member' => $member,
                 'transactions' => $transactions,
                 'perMonth' => $perMonth,
                 'breadcrumbs' => [
@@ -70,7 +68,7 @@ final class ExpensesController
 
     public function show($year, $month, Request $request) : View
     {
-        $member = $this->member($request->user());
+        $member = $request->user()->member;
         $id = $member->id;
 
         $deductions = \DB::connection('francken-legacy')
@@ -119,6 +117,7 @@ final class ExpensesController
 
         return view('profile.expenses.show')
             ->with([
+                'member' => $member,
                 'byDay' => $byDay,
                 'date' => $date,
                 'breadcrumbs' => [
@@ -127,17 +126,5 @@ final class ExpensesController
                     ['text' => $date],
                 ],
             ]);
-    }
-
-    private function member($user)
-    {
-        $lid = \DB::connection('francken-legacy')
-            ->table('leden')
-            ->where('id', $user->member_id)
-            ->first();
-
-        $this->profile = $lid;
-
-        return $lid;
     }
 }
