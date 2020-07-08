@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use Francken\Association\LegacyMember;
+use Francken\Treasurer\Product;
+
 class PlusOneFeature extends TestCase
 {
     /** @test */
@@ -25,16 +28,27 @@ class PlusOneFeature extends TestCase
         ]);
         $token = $this->response->decodeResponseJson()['token'];
 
+        $member = factory(LegacyMember::class)->create();
+        $hertog = factory(Product::class)->create([
+            'naam' => 'Hertog Jan',
+            'prijs' => 68
+        ]);
+        $gebouw13 = factory(Product::class)->create([
+            'naam' => 'Gebouw 13',
+            'prijs' => 100
+        ]);
+        $this->withoutExceptionHandling();
+
         $order = [
             "order" => [
                 "member" => [
-                    "id" => 1403,
-                    "firstName" => "Mark",
-                    "surname" => "Redeman",
+                    "id" => $member->id,
+                    "firstName" => $member->firstname,
+                    "surname" => $member->surname,
                 ],
                 "products" => [
-                    ["id" => 3, "name" => "Hertog Jan", "price" => 68],
-                    ["id" => 172, "name" => "Gebouw 13", "price" => 100]
+                    ["id" => $hertog->id, "name" =>  $hertog->name, "price" => $hertog->price],
+                    ["id" => $gebouw13->id, "name" =>  $gebouw13->name, "price" => $gebouw13->price],
                 ],
                 "ordered_at" => 1522075374402
             ]
