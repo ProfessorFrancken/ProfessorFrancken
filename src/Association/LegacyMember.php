@@ -143,6 +143,11 @@ final class LegacyMember extends Model
         ])->filter()->implode(' ');
     }
 
+    public function getFirstnameAttribute() : string
+    {
+        return $this->voornaam;
+    }
+
     public function getSurnameAttribute() : string
     {
         return collect([$this->tussenvoegsel, $this->achternaam])->filter()->implode(' ');

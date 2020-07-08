@@ -52,7 +52,7 @@ class RegisterMemberTest extends LaravelTestCase
         $handler->handle($approveEvent);
 
         $legacyMember = LegacyMember::orderBy('id', 'desc')->first();
-        $this->assertEquals($legacyMember->voornaam, 'Mark');
+        $this->assertEquals($legacyMember->firstname, 'Mark');
         $legacyMember->delete();
     }
 
