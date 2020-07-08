@@ -20,7 +20,7 @@ final class CalendarEvent
     private string $location;
 
     private DateTimeImmutable $start;
-   
+
     private DateTimeImmutable $end;
 
     private string $status;
@@ -117,7 +117,7 @@ final class CalendarEvent
 
     private function parseSchedule(VEvent $event) : void
     {
-        $this->start = $event->DTSTART->getDateTime();
-        $this->end = $event->DTEND->getDateTime();
+        $this->start = Arr::first($event->select('DTSTART'))->getDateTime();
+        $this->end = Arr::first($event->select('DTEND'))->getDateTime();
     }
 }
