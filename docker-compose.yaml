@@ -114,6 +114,9 @@ services:
   imaginary:
     image: h2non/imaginary
     restart: always
+    networks:
+      - default
+      - traefik
     command: -enable-url-source -mount /mnt/data
     volumes:
       - ./docker/volumes/fly-images/:/mnt/data
