@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
+use DatabaseSeeder;
 use DateTimeImmutable;
+use Francken\Association\LegacyMember;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use LegacySeeder;
 
 /**
  * The following are test that check that basic features of the admin page are working
@@ -18,8 +21,9 @@ class ProfileFeature extends TestCase
     /** @test */
     public function it_shows_personal_information_of_a_member() : void
     {
+        $member = LegacyMember::find(DatabaseSeeder::MEMBER_ID);
         $this->visit('/profile')
-            ->see('Mark Redeman');
+            ->see($member->full_name);
     }
 
     /** @test */
