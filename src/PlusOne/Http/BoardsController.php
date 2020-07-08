@@ -19,7 +19,7 @@ final class BoardsController
                 'jaar' => (int) $member->installed_at->format('Y'),
                 'functie' => $member->title,
             ];
-        });
+        })->values();
 
         return collect(['boardMembers' => $members]);
     }

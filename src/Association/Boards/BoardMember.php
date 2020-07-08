@@ -67,6 +67,7 @@ final class BoardMember extends Model
      * @var string
      */
     private const BOARD_MEMBER_PHOTO_TAG =  'board_member_photo';
+
     /**
      * @var string
      */
@@ -93,6 +94,7 @@ final class BoardMember extends Model
      * @var string[]
      */
     protected $casts = [
+        'member_id' => 'integer',
         'board_id' => 'integer',
         'installed_at' => 'date:Y-m-d',
         'demissioned_at' => 'date:Y-m-d',
