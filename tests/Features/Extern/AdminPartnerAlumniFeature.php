@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Features\Extern;
 
+use Francken\Association\LegacyMember;
 use Francken\Extern\Http\AdminPartnerAlumniController;
 use Francken\Extern\Http\AdminPartnersController;
 use Francken\Extern\Partner;
-use Francken\Extern\PartnerStatus;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Str;
 
 class AdminPartnerAlumniFeature extends TestCase
 {
@@ -21,13 +20,8 @@ class AdminPartnerAlumniFeature extends TestCase
     /** @test */
     public function a_partners_logo_can_be_listed_in_the_alumnus() : void
     {
-        $partner = Partner::create([
-            'name' => 'S[ck]rip(t|t?c)ie In[ck]',
-            'slug' => Str::slug('S[ck]rip(t|t?c)ie In[ck]'),
-            'homepage_url' => 'https://scriptcie.nl',
-            'sector_id' => 1,
-            'status' => PartnerStatus::ACTIVE_PARTNER,
-        ]);
+        $partner = factory(Partner::class)->create();
+        $member = factory(LegacyMember::class)->create();
 
         $this->visit(action(
             [AdminPartnersController::class, 'show'],
@@ -38,7 +32,7 @@ class AdminPartnerAlumniFeature extends TestCase
                 [AdminPartnerAlumniController::class, 'create'],
                 ['partner' => $partner]
             )))
-             ->type('1403', 'member_id')
+             ->type($member->id, 'member_id')
              ->type('Senior engineer', 'position')
              ->type('2020-01-01', 'started_position_at')
              ->type('2020-02-01', 'stopped_position_at')
@@ -48,10 +42,10 @@ class AdminPartnerAlumniFeature extends TestCase
                 [AdminPartnersController::class, 'show'],
                 ['partner' => $partner]
             )))
-            ->see('Mark Redeman')
+            ->see($member->full_Name)
             ->see('Senior engineer')
             ->click('Edit alumnus')
-            ->see('Edit Mark Redeman')
+            ->see('Edit ' . $member->full_name)
             ->type('', 'stopped_position_at')
             ->press('Save alumnus');
 
