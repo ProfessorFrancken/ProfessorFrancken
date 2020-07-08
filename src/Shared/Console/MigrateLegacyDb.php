@@ -54,10 +54,8 @@ class MigrateLegacyDb extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle()
+    public function handle() : void
     {
         $this->info("Calling migration fiels for legacy db");
         foreach (self::MIGRATION_FILES as $migration) {
