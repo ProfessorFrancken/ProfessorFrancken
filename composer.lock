@@ -11051,16 +11051,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "v0.7.46",
+            "version": "v0.7.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "1e64eb9dfde3858e7872140e9787f2a05a2ff8f3"
+                "reference": "58e1c2599be2926539b3fe8ba349b035e6c07e65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/1e64eb9dfde3858e7872140e9787f2a05a2ff8f3",
-                "reference": "1e64eb9dfde3858e7872140e9787f2a05a2ff8f3",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/58e1c2599be2926539b3fe8ba349b035e6c07e65",
+                "reference": "58e1c2599be2926539b3fe8ba349b035e6c07e65",
                 "shasum": ""
             },
             "require": {
@@ -11198,6 +11198,7 @@
                     "Rector\\Performance\\": "rules/performance/src",
                     "Rector\\Naming\\": "rules/naming/src",
                     "Rector\\Order\\": "rules/order/src",
+                    "Rector\\MockeryToProphecy\\": "rules/mockery-to-prophecy/src",
                     "Rector\\MockistaToMockery\\": "rules/mockista-to-mockery/src",
                     "Rector\\NetteKdyby\\": "rules/nette-kdyby/src",
                     "Rector\\NetteUtilsCodeQuality\\": "rules/nette-utils-code-quality/src",
@@ -11235,7 +11236,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-06T20:58:10+00:00"
+            "time": "2020-07-07T20:30:40+00:00"
         },
         {
             "name": "roave/security-advisories",
