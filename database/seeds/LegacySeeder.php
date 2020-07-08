@@ -15,7 +15,9 @@ class LegacySeeder extends Seeder
         \Artisan::call('migrate:legacy-db');
 
         factory(LegacyMember::class)->create([
-            'id' => DatabaseSeeder::MEMBER_ID
+            'id' => DatabaseSeeder::MEMBER_ID,
+            'voornaam' => 'Mark',
+            'achternaam' => 'Redeman'
         ]);
     }
 }
