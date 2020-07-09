@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Features\Treasurer;
 
-use Francken\Association\LegacyMember;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Francken\Treasurer\DeductionEmail;
@@ -33,8 +32,6 @@ class EmailDeductionsFeature extends TestCase
     /** @test */
     public function a_new_deduction_can_be_uploaded() : void
     {
-        factory(LegacyMember::class)->create(['id' => 1402]);
-
         $this->visit(action([DeductionsController::class, 'create']))
             ->see('Start');
 

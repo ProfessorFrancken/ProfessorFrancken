@@ -19,5 +19,10 @@ class LegacySeeder extends Seeder
             'voornaam' => 'Mark',
             'achternaam' => 'Redeman'
         ]);
+
+        factory(LegacyMember::class)->create([
+            // This is uesd in the EmailDeductionsFeature
+            'id' => 1402,
+        ]);
     }
 }
