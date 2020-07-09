@@ -39,8 +39,8 @@ return [
     ],
 
     'flickr' => [
-        'api_key' => env('FLICKR_API_KEY'),
-        'secret' => env('FLICKR_SECRET'),
-        'user_id' => env('FLICKR_USER_ID'),
+        'api_key' => env('FLICKR_API_KEY', ''),
+        'secret' => env('FLICKR_SECRET', ''),
+        'user_id' => env('FLICKR_USER_ID', ''),
     ],
 ];

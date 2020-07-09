@@ -59,6 +59,7 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
+            'port'      => env('DB_PORT', '3306'),
             'database'  => env('DB_DATABASE', 'forge'),
             'username'  => env('DB_USERNAME', 'forge'),
             'password'  => env('DB_PASSWORD', ''),
@@ -75,6 +76,7 @@ return [
         'francken-legacy' => [
             'driver'    => 'mysql',
             'host'      => env('DB_LEGACY_HOST', 'localhost'),
+            'port'      => env('DB_PORT', '3306'),
             'database'  => env('DB_LEGACY_DATABASE', 'forge'),
             'username'  => env('DB_LEGACY_USERNAME', 'forge'),
             'password'  => env('DB_LEGACY_PASSWORD', ''),
