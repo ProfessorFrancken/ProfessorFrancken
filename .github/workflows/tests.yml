@@ -66,12 +66,7 @@ jobs:
         env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
-
       - name: Execute tests
         run: vendor/bin/phpunit
         env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
-
-      - name: Deploy
-        if: github.ref == 'refs/heads/master'
-        run: curl ${{ secrets.ENVOYER_HOOK }}?sha=${{ github.sha }}
