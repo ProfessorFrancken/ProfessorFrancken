@@ -8,7 +8,6 @@ use DatabaseSeeder;
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use LegacySeeder;
 
 /**
  * The following are test that check that basic features of the admin page are working

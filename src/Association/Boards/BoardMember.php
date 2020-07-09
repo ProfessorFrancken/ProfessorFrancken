@@ -8,7 +8,6 @@ use DateTimeImmutable;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Carbon;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 use Webmozart\Assert\Assert;

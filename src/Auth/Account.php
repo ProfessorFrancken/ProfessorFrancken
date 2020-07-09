@@ -14,12 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Notifications\DatabaseNotification;
-use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Carbon;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Webmozart\Assert\Assert;
 
