@@ -52,10 +52,8 @@ class ExceptionsHandler extends Handler
 
     /**
      * Overwrite the whoopsHandler so that we can use the new ignition error handler
-     *
-     * @return \Whoops\Handler\Handler
      */
-    protected function whoopsHandler()
+    protected function whoopsHandler() : \Whoops\Handler\Handler
     {
         try {
             /** @var \Whoops\Handler\Handler $handler */

@@ -14,7 +14,8 @@ parameters:
    exclude_rectors:
        # Would be nice to have but not sure if we can make it work with
        # Eloquent's attributes
-       - 'Rector\CodingStyle\Rector\Variable\UnderscoreToPascalCaseVariableAndPropertyNameRector'
+       - 'Rector\CodingStyle\Rector\Property\UnderscoreToPascalCasePropertyNameRector'
+       - 'Rector\CodingStyle\Rector\Variable\UnderscoreToPascalCaseVariableNameRector'
        # This seemed to give incorrect results, needs some research
        - 'Rector\Laravel\Rector\Class_\InlineValidationRulesToArrayDefinitionRector'
 
