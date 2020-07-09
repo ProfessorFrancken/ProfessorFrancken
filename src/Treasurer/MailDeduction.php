@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Treasurer;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 /**
  * Francken\Treasurer\MailDeduction
@@ -13,7 +12,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int|null $aantalleden
  * @property string|null $bestand
- * @property Carbon|null $datum
+ * @property \Illuminate\Support\Carbon|null $datum
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\MailDeduction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\MailDeduction newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\MailDeduction query()

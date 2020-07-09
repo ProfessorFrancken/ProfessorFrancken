@@ -9,7 +9,6 @@ use Francken\Treasurer\Imports\ImportDeductions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Importer;
 use Plank\Mediable\Media;
@@ -22,14 +21,14 @@ use Plank\Mediable\Mediable;
  *
  * @property int $id
  * @property int $amount_of_members
- * @property Carbon $deduction_from
- * @property Carbon $deduction_to
- * @property Carbon $deducted_at
- * @property Carbon|null $emails_sent_at
+ * @property \Illuminate\Support\Carbon $deduction_from
+ * @property \Illuminate\Support\Carbon $deduction_to
+ * @property \Illuminate\Support\Carbon $deducted_at
+ * @property \Illuminate\Support\Carbon|null $emails_sent_at
  * @property bool $was_verified
  * @property int $file_media_id
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read Media $deductionFile
  * @property-read \Illuminate\Database\Eloquent\Collection|DeductionEmailToMember[] $deductionToMembers
  * @property-read int|null $deduction_to_members_count

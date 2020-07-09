@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Members\Students;
 
 use DateTimeImmutable;
+use Francken\Association\LegacyMember;
 
 final class Student
 {
@@ -35,7 +36,7 @@ final class Student
         return $this->studies[0];
     }
 
-    public static function fromDb($member) : self
+    public static function fromDb(LegacyMember $member) : self
     {
         return new self(
             new StudentNumber($member->studentnummer),

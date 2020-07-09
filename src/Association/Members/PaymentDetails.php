@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members;
 
+use Francken\Association\LegacyMember;
+
 final class PaymentDetails
 {
     private ?string $iban = null;
@@ -65,7 +67,7 @@ final class PaymentDetails
         return $this->deduct_additional_costs;
     }
 
-    public static function fromDb($member) : self
+    public static function fromDb(LegacyMember $member) : self
     {
         $deduct_additional_costs = $member->streeplijst === 'Afschrijven';
 

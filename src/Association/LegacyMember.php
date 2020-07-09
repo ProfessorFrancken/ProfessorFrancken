@@ -145,7 +145,7 @@ final class LegacyMember extends Model
 
     public function getFirstnameAttribute() : string
     {
-        return $this->voornaam;
+        return $this->voornaam ?? '';
     }
 
     public function getSurnameAttribute() : string
@@ -184,7 +184,7 @@ final class LegacyMember extends Model
             return Gender::MALE;
         }
 
-        return $this->geslacht;
+        return $this->geslacht ?? '';
     }
 
     public function getBirthdateAttribute() : ?DateTimeImmutable
