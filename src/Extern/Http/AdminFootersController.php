@@ -9,6 +9,7 @@ use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
 use Francken\Extern\SponsorOptions\Footer;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminFootersController
 {
@@ -19,7 +20,7 @@ final class AdminFootersController
         $this->uploader = $uploader;
     }
 
-    public function create(Partner $partner)
+    public function create(Partner $partner) : View
     {
         return view('admin.extern.partners.sponsor-options.footer.create', [
             'partner' => $partner,
@@ -54,7 +55,7 @@ final class AdminFootersController
         );
     }
 
-    public function edit(Partner $partner)
+    public function edit(Partner $partner) : View
     {
         return view('admin.extern.partners.sponsor-options.footer.edit', [
             'partner' => $partner,

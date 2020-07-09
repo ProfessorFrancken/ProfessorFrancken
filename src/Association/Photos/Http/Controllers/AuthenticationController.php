@@ -7,6 +7,7 @@ namespace Francken\Association\Photos\Http\Controllers;
 use Francken\Association\Photos\PhotosAuthentication;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 final class AuthenticationController
 {
@@ -17,7 +18,7 @@ final class AuthenticationController
         $this->auth = $auth;
     }
 
-    public function index()
+    public function index() : View
     {
         return view('association.photos.login');
     }

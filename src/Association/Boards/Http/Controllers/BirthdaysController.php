@@ -8,10 +8,11 @@ use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Shared\Clock\Clock;
+use Illuminate\View\View;
 
 final class BirthdaysController
 {
-    public function index(Clock $clock)
+    public function index(Clock $clock) : View
     {
         $today = $clock->now()->sub(new DateInterval('P1D'));
 

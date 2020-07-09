@@ -9,10 +9,11 @@ use Francken\Association\Symposium\Symposium;
 use Francken\Shared\Email;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 final class AdminSymposiumParticipantsController
 {
-    public function create(Symposium $symposium)
+    public function create(Symposium $symposium) : View
     {
         return view('admin.association.symposia.participants.create', [
             'symposium' => $symposium,
@@ -25,7 +26,7 @@ final class AdminSymposiumParticipantsController
         ]);
     }
 
-    public function edit(Symposium $symposium, Participant $participant)
+    public function edit(Symposium $symposium, Participant $participant) : View
     {
         return view('admin.association.symposia.participants.edit', [
             'symposium' => $symposium,

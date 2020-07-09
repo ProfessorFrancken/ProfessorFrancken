@@ -38,7 +38,7 @@ final class ActivitiesRepository
         return $this->activities;
     }
 
-    public function after(DateTimeImmutable $after, int $amount = 5)
+    public function after(DateTimeImmutable $after, int $amount = 5) : Collection
     {
         return $this->activities->filter(function ($activity) use ($after) : bool {
             return $activity->endDate() > $after;
@@ -47,7 +47,7 @@ final class ActivitiesRepository
         })->take($amount);
     }
 
-    public function between(DateTimeImmutable $after, DateTimeImmutable $before)
+    public function between(DateTimeImmutable $after, DateTimeImmutable $before) : Collection
     {
         return $this->activities->filter(function ($activity) use ($after, $before) : bool {
             return $activity->endDate() > $after && $activity->startDate() < $before;
@@ -56,7 +56,7 @@ final class ActivitiesRepository
         });
     }
 
-    public function inMonth(int $year, int $month)
+    public function inMonth(int $year, int $month) : Collection
     {
         return $this->activities->filter(function ($activity) use ($year, $month) : bool {
             return (

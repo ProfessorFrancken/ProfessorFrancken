@@ -7,6 +7,7 @@ namespace Francken\Shared\Settings\Http\Controllers;
 use Francken\Shared\Settings\Settings;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class SettingsController
 {
@@ -17,7 +18,7 @@ class SettingsController
         $this->settings = $settings;
     }
 
-    public function index()
+    public function index() : View
     {
         return view('admin.compucie.settings.index', [
             'settings' => $this->settings,

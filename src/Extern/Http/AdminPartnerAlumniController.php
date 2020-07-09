@@ -9,10 +9,11 @@ use Francken\Extern\Alumnus;
 use Francken\Extern\Http\Requests\AlumnusRequest;
 use Francken\Extern\Partner;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminPartnerAlumniController
 {
-    public function create(Partner $partner)
+    public function create(Partner $partner) : View
     {
         return view('admin.extern.partners.alumni.create', [
             'partner' => $partner,
@@ -44,7 +45,7 @@ final class AdminPartnerAlumniController
         );
     }
 
-    public function edit(Partner $partner, Alumnus $alumnus)
+    public function edit(Partner $partner, Alumnus $alumnus) : View
     {
         return view('admin.extern.partners.alumni.edit', [
             'partner' => $partner,

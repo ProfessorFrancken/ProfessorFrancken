@@ -88,7 +88,7 @@ final class AdminPartnersController
             ]);
     }
 
-    public function create()
+    public function create() : View
     {
         return view('admin.extern.partners.create', [
             'partner' => new Partner(),
@@ -131,7 +131,7 @@ final class AdminPartnersController
         );
     }
 
-    public function show(Partner $partner)
+    public function show(Partner $partner) : View
     {
         $partner->load([
             'contacts.photoMedia',
@@ -148,7 +148,7 @@ final class AdminPartnersController
         ]);
     }
 
-    public function edit(Partner $partner)
+    public function edit(Partner $partner) : View
     {
         return view('admin.extern.partners.edit', [
             'partner' => $partner,

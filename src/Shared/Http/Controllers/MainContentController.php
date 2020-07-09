@@ -10,11 +10,12 @@ use Exception;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\News\News;
+use Illuminate\View\View;
 use InvalidArgumentException;
 
 class MainContentController extends Controller
 {
-    public function index(ActivitiesRepository $activities)
+    public function index(ActivitiesRepository $activities) : View
     {
         $today = new DateTimeImmutable(
             'now', new DateTimeZone('Europe/Amsterdam')
@@ -34,51 +35,51 @@ class MainContentController extends Controller
         ]);
     }
 
-    public function about()
+    public function about() : View
     {
         return view('about');
     }
 
-    public function post()
+    public function post() : View
     {
         return view('news');
     }
 
-    public function news()
+    public function news() : View
     {
         return view('news', [
             'posts' => []
         ]);
     }
 
-    public function blog()
+    public function blog() : View
     {
         return view('news', [
             'posts' => []
         ]);
     }
 
-    public function study()
+    public function study() : View
     {
         return view('study');
     }
 
-    public function career()
+    public function career() : View
     {
         return view('career');
     }
 
-    public function association()
+    public function association() : View
     {
         return view('association');
     }
 
-    public function boards()
+    public function boards() : View
     {
         return view('boards');
     }
 
-    public function history()
+    public function history() : View
     {
         return view('history');
     }
@@ -87,6 +88,8 @@ class MainContentController extends Controller
      * This is a quick and dirty way of making it easy to add new (static pages)
      * it comes with the disadvantage that you cannot control the data passed to
      * the views, though you can possibly fix this by using view composers
+     *
+     * @return \Illuminate\Http\Response|\Illuminate\View\View
      */
     public function page(string $page)
     {

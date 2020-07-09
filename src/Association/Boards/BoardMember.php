@@ -107,7 +107,7 @@ final class BoardMember extends Model
         return $this->belongsTo(LegacyMember::class, 'member_id');
     }
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute() : string
     {
         return $this->member->full_name;
     }

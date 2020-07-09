@@ -6,10 +6,11 @@ namespace Francken\Association\Boards\Http\Controllers;
 
 use Francken\Association\Boards\Board;
 use Francken\Shared\Clock\Clock;
+use Illuminate\View\View;
 
 final class BoardsController
 {
-    public function index(Clock $clock)
+    public function index(Clock $clock) : View
     {
         $boards = Board::with(['photoMedia', 'members', 'members.photoMedia'])
             ->orderBy('installed_at', 'desc')

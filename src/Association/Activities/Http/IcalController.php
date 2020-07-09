@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities\Http;
 
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 // use Illuminate\Http\Response;
@@ -15,7 +16,7 @@ final class IcalController
      */
     public const CALENDAR_URL = 'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
 
-    public function index()
+    public function index() : View
     {
         return view('association.activities.ical', [
             'breadcrumbs' => [

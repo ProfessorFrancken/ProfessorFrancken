@@ -12,6 +12,7 @@ use Francken\Association\FranckenVrij\Volume;
 use Francken\Shared\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminFranckenVrijController extends Controller
 {
@@ -29,7 +30,7 @@ final class AdminFranckenVrijController extends Controller
         $this->uploader = $uploader;
     }
 
-    public function index()
+    public function index() : View
     {
         $volumes = Edition::volumes();
 
@@ -90,7 +91,7 @@ final class AdminFranckenVrijController extends Controller
         return redirect()->action([self::class, 'index']);
     }
 
-    public function edit(Edition $edition)
+    public function edit(Edition $edition) : View
     {
         return view('admin.francken-vrij.edit', ['edition' => $edition]);
     }

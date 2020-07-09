@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Auth\Http\Controllers\Admin;
 
+use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 final class RolesController
 {
-    public function index()
+    public function index() : View
     {
         $roles = Role::with(['users', 'permissions'])
             ->paginate(30);
@@ -22,7 +23,7 @@ final class RolesController
         ]);
     }
 
-    public function show(Role $role)
+    public function show(Role $role) : View
     {
         $permissions = Permission::where('guard_name', 'web')->get();
 

@@ -13,6 +13,7 @@ use Francken\Treasurer\MailDeduction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Importer;
 use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
@@ -26,7 +27,7 @@ final class DeductionsController
         $this->importer = $importer;
     }
 
-    public function index()
+    public function index() : View
     {
         $deductions = DeductionEmail::orderBy('deducted_at', 'desc')
             ->with('deductionToMembers')
@@ -66,7 +67,7 @@ final class DeductionsController
         return redirect()->action([self::class, 'show'], $deduction->id);
     }
 
-    public function show(DeductionEmail $deduction) //, MailDeduction $deduction)
+    public function show(DeductionEmail $deduction) : View
     {
         $deduction->load([
             'deductionToMembers',

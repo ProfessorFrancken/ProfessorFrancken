@@ -8,10 +8,11 @@ use DateTimeImmutable;
 use Francken\Association\Symposium\Symposium;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 final class AdminSymposiaController
 {
-    public function index()
+    public function index() : View
     {
         $symposia = Symposium::orderBy('start_date', 'DESC')
             ->withCount(['participants' => function ($query) : void {
@@ -27,7 +28,7 @@ final class AdminSymposiaController
         ]);
     }
 
-    public function create()
+    public function create() : View
     {
         return view('admin.association.symposia.create', [
             'symposium' => new Symposium(),
@@ -56,7 +57,7 @@ final class AdminSymposiaController
         return redirect()->action([self::class, 'show'], $symposium->id);
     }
 
-    public function show(Symposium $symposium)
+    public function show(Symposium $symposium) : View
     {
         $symposium->load(['participants' => function ($query) {
             return $query->orderBy('id', 'desc');
@@ -71,7 +72,7 @@ final class AdminSymposiaController
         ]);
     }
 
-    public function edit(Symposium $symposium)
+    public function edit(Symposium $symposium) : View
     {
         return view('admin.association.symposia.edit', [
             'symposium' => $symposium,

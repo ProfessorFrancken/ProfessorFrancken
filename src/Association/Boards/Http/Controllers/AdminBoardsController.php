@@ -12,6 +12,7 @@ use Francken\Association\Boards\Http\Requests\BoardRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Plank\Mediable\Media;
 use Plank\Mediable\MediaUploader;
 
@@ -28,7 +29,7 @@ final class AdminBoardsController
         $this->uploader = $uploader;
     }
 
-    public function index()
+    public function index() : View
     {
         $boards = Board::orderBy('installed_at', 'desc')
             ->withPhotos()
@@ -45,7 +46,7 @@ final class AdminBoardsController
         ]);
     }
 
-    public function create()
+    public function create() : View
     {
         return view('admin.association.boards.create', [
             'board' => new Board(),
@@ -91,7 +92,7 @@ final class AdminBoardsController
         return redirect()->action([self::class, 'index']);
     }
 
-    public function edit(Board $board)
+    public function edit(Board $board) : View
     {
         return view('admin.association.boards.edit', [
             'board' => $board,

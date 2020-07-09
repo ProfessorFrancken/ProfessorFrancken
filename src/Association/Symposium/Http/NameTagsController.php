@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Francken\Association\Symposium\Http;
 
 use Francken\Association\Symposium\Symposium;
+use Illuminate\View\View;
 
 final class NameTagsController
 {
-    public function index(Symposium $symposium)
+    public function index(Symposium $symposium) : View
     {
         $participants = $symposium->participants()
             ->orderBy('lastname', 'desc')

@@ -81,6 +81,8 @@ class BoardRequest extends FormRequest
 
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return true
      */
     public function authorize() : bool
     {

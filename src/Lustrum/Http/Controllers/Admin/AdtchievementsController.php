@@ -28,7 +28,7 @@ class AdtchievementsController
             ]);
     }
 
-    public function create()
+    public function create() : View
     {
         return view('lustrum.admin.adtchievements.create', [
             'adtchievement' => new Adtchievement(),
@@ -40,7 +40,7 @@ class AdtchievementsController
         ]);
     }
 
-    public function edit(Adtchievement $adtchievement)
+    public function edit(Adtchievement $adtchievement) : View
     {
         return view('lustrum.admin.adtchievements.edit', [
             'adtchievement' => $adtchievement,

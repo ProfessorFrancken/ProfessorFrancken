@@ -81,7 +81,7 @@ final class FactSheetController
         });
     }
 
-    private function transactionsDuringMonth(int $year, int $monthNumber)
+    private function transactionsDuringMonth(int $year, int $monthNumber) : Collection
     {
         // Note that since sometimes a product is purchased after midnight
         // we will have to "shift" the time of a transaction when we group
@@ -180,7 +180,7 @@ final class FactSheetController
         ]);
     }
 
-    private function transactionsInPeriod(Period $period)
+    private function transactionsInPeriod(Period $period) : Collection
     {
         $fromDate = $period->getStartDate();
         $tillDate = $period->getEndDate();

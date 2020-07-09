@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Francken\Lustrum\Http\Controllers;
 
 use Francken\Lustrum\PirateCrew;
+use Illuminate\View\View;
 
 class LustrumController
 {
-    public function index()
+    public function index() : View
     {
         $blueBeards = PirateCrew::where('name', 'Blue beards')->firstOrFail();
         $redBeards = PirateCrew::where('name', 'Red beards')->firstOrFail();

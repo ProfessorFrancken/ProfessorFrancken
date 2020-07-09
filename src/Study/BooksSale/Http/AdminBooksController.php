@@ -10,10 +10,11 @@ use Francken\Study\BooksSale\Http\Requests\AdminBookRequest;
 use Francken\Study\BooksSale\Http\Requests\AdminBookSearchRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminBooksController
 {
-    public function index(AdminBookSearchRequest $request)
+    public function index(AdminBookSearchRequest $request) : View
     {
         $books = Book::query()
             ->search($request)
@@ -45,7 +46,7 @@ final class AdminBooksController
         ]);
     }
 
-    public function show(Book $book)
+    public function show(Book $book) : View
     {
         return view('admin.study.books.show', [
             'book' => $book,
@@ -57,7 +58,7 @@ final class AdminBooksController
         ]);
     }
 
-    public function create()
+    public function create() : View
     {
         return view('admin.study.books.create', [
             'book' => new Book(),
@@ -130,7 +131,7 @@ final class AdminBooksController
         return redirect()->action([self::class, 'index']);
     }
 
-    public function print(Book $book)
+    public function print(Book $book) : View
     {
         return view('admin.study.books.print', [
             'book' => $book,

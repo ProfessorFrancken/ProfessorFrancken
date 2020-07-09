@@ -11,10 +11,11 @@ use Francken\Association\Members\Registration\Registration;
 use Francken\Shared\Clock\Clock;
 use Francken\Shared\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class RegistrationRequestsController extends Controller
 {
-    public function index()
+    public function index() : View
     {
         $requests = Registration::orderBy('created_at', 'desc')
                                  ->paginate();
@@ -27,7 +28,7 @@ final class RegistrationRequestsController extends Controller
         ]);
     }
 
-    public function show(Registration $registration)
+    public function show(Registration $registration) : View
     {
         return view('admin.registration-requests.show', [
             'registration' => $registration,
@@ -38,7 +39,7 @@ final class RegistrationRequestsController extends Controller
         ]);
     }
 
-    public function edit(Registration $registration)
+    public function edit(Registration $registration) : View
     {
         return view('admin.registration-requests.edit', [
             'registration' => $registration,
@@ -51,7 +52,7 @@ final class RegistrationRequestsController extends Controller
         ]);
     }
 
-    public function print(Registration $registration)
+    public function print(Registration $registration) : View
     {
         $mostRecentStudy = $registration->most_recent_study;
         $startingDateStudy = optional(optional($mostRecentStudy)->startDate())->format("Y");

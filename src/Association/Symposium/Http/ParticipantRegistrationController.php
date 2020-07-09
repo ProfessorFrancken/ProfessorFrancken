@@ -9,6 +9,7 @@ use Francken\Association\Symposium\Participant;
 use Francken\Association\Symposium\Symposium;
 use Francken\Shared\Email;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 final class ParticipantRegistrationController
@@ -34,7 +35,7 @@ final class ParticipantRegistrationController
     /**
      * Called when verifying the registration status of a participant
      */
-    public function verify(Symposium $symposium, Participant $participant)
+    public function verify(Symposium $symposium, Participant $participant) : RedirectResponse
     {
         $participant->verifyRegistration(new DateTimeImmutable());
 

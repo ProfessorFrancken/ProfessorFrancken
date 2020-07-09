@@ -7,10 +7,11 @@ namespace Francken\Shared\Http\Controllers;
 use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 final class JasController
 {
-    public function index()
+    public function index() : Collection
     {
         return DB::table('jas_events')->get();
     }

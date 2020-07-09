@@ -6,6 +6,7 @@ namespace Francken\Association\Photos\Http\Controllers;
 
 use Francken\Association\Photos\AlbumsRepository;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 final class PhotosController
 {
@@ -21,14 +22,14 @@ final class PhotosController
         $this->albums = $albums;
     }
 
-    public function index()
+    public function index() : View
     {
         $albums = $this->albums->albums();
 
         return view('association.photos.index', ['albums' => $albums]);
     }
 
-    public function show(string $albumSlug, Request $request)
+    public function show(string $albumSlug, Request $request) : View
     {
         $album = $this->albums->bySlug($albumSlug);
 

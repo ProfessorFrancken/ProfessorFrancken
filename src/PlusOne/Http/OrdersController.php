@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Log;
 
@@ -38,7 +39,7 @@ final class OrdersController
             });
     }
 
-    public function post(Request $request)
+    public function post(Request $request) : Response
     {
         Log::info(
             'Buying an order',

@@ -6,6 +6,7 @@ namespace Francken\Association\Activities\Http;
 
 use DateTimeImmutable;
 use Francken\Association\Activities\ActivitiesRepository;
+use Illuminate\View\View;
 
 final class ActivitiesController
 {
@@ -21,7 +22,7 @@ final class ActivitiesController
         $this->activities = $activities;
     }
 
-    public function index()
+    public function index() : View
     {
         $today = new DateTimeImmutable('now');
 

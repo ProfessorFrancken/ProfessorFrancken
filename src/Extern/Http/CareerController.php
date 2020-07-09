@@ -10,13 +10,14 @@ use Francken\Extern\JobType;
 use Francken\Extern\Sector;
 use Francken\Shared\AcademicYear;
 use Francken\Shared\Clock\Clock;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 final class CareerController
 {
-    public function index()
+    public function index() : View
     {
         return view('career.index');
     }
@@ -45,7 +46,7 @@ final class CareerController
             ]);
     }
 
-    public function redirectEvents(Clock $clock)
+    public function redirectEvents(Clock $clock) : RedirectResponse
     {
         $academicYear = AcademicYear::fromDate($clock->now());
 

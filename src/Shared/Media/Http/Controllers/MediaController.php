@@ -8,6 +8,7 @@ use Francken\Shared\Media\Directory;
 use Francken\Shared\Media\MediaPresenter;
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Plank\Mediable\Media;
 
 final class MediaController
@@ -17,7 +18,7 @@ final class MediaController
      */
     private const DISK = 'uploads';
 
-    public function index(FilesystemManager $storage, string $directory = '')
+    public function index(FilesystemManager $storage, string $directory = '') : View
     {
         $directors = collect(explode('/', $directory));
         $path = '';
@@ -43,7 +44,7 @@ final class MediaController
         ]);
     }
 
-    public function show(Media $media)
+    public function show(Media $media) : View
     {
         $mediableTypes = \DB::table('mediables')
             ->where('media_id', $media->id)

@@ -11,6 +11,7 @@ use Francken\Extern\Http\Requests\ContactRequest;
 use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminPartnerContactsController
 {
@@ -21,7 +22,7 @@ final class AdminPartnerContactsController
         $this->uploader = $uploader;
     }
 
-    public function create(Partner $partner)
+    public function create(Partner $partner) : View
     {
         return view('admin.extern.partners.contacts.create', [
             'partner' => $partner,
@@ -69,7 +70,7 @@ final class AdminPartnerContactsController
         );
     }
 
-    public function edit(Partner $partner, Contact $contact)
+    public function edit(Partner $partner, Contact $contact) : View
     {
         return view('admin.extern.partners.contacts.edit', [
             'partner' => $partner,

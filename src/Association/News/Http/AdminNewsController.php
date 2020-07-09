@@ -10,6 +10,7 @@ use Francken\Association\News\Http\Requests\AdminNewsRequest;
 use Francken\Association\News\Http\Requests\SearchNewsRequest;
 use Francken\Association\News\News;
 use Francken\Association\News\NewsContentCompiler;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,7 +21,7 @@ use Illuminate\View\View;
  */
 final class AdminNewsController
 {
-    public function index(SearchNewsRequest $request)
+    public function index(SearchNewsRequest $request) : View
     {
         $drafts = $this->drafts();
 
@@ -40,7 +41,7 @@ final class AdminNewsController
         ]);
     }
 
-    public function create()
+    public function create() : View
     {
         return view('admin.news.create', [
             'news' => new News(),
@@ -80,7 +81,7 @@ final class AdminNewsController
         return redirect()->action([static::class, 'show'], ['news' => $news]);
     }
 
-    public function show(News $news)
+    public function show(News $news) : View
     {
         return view('admin.news.show', [
             'news' => $news,
@@ -146,8 +147,8 @@ final class AdminNewsController
 
         return redirect()->action([self::class, 'show'], ['news' => $news]);
     }
-        
-    private function drafts()
+
+    private function drafts() : Collection
     {
         return News::whereNull('published_at')->get();
     }

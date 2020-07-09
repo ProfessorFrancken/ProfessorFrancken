@@ -116,11 +116,12 @@ final class FinancesController
             ]);
     }
 
-    public function adtcievements()
+    public function adtcievements() : View
     {
         return view('profile.adtcievements');
     }
-    private function member($user)
+
+    private function member($user) : ?object
     {
         return \DB::connection('francken-legacy')
             ->table('leden')

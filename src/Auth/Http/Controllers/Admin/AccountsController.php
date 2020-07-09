@@ -13,12 +13,13 @@ use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 final class AccountsController
 {
-    public function index()
+    public function index() : View
     {
         $accounts = Account::with(['roles', 'permissions'])
             ->paginate(30);
@@ -31,7 +32,7 @@ final class AccountsController
         ]);
     }
 
-    public function show(Account $account)
+    public function show(Account $account) : View
     {
         $roles = Role::where('guard_name', 'web')->get();
         $permissions = Permission::where('guard_name', 'web')->get();
@@ -47,7 +48,7 @@ final class AccountsController
         ]);
     }
 
-    public function create()
+    public function create() : View
     {
         return view('admin.compucie.accounts.create', [
             'account' => new Account(),

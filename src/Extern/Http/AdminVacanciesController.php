@@ -10,10 +10,11 @@ use Francken\Extern\Partner;
 use Francken\Extern\Sector;
 use Francken\Extern\SponsorOptions\Vacancy;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminVacanciesController
 {
-    public function create(Partner $partner)
+    public function create(Partner $partner) : View
     {
         return view('admin.extern.partners.sponsor-options.vacancies.create', [
             'partner' => $partner,
@@ -48,7 +49,7 @@ final class AdminVacanciesController
         );
     }
 
-    public function edit(Partner $partner, Vacancy $vacancy)
+    public function edit(Partner $partner, Vacancy $vacancy) : View
     {
         return view('admin.extern.partners.sponsor-options.vacancies.edit', [
             'partner' => $partner,

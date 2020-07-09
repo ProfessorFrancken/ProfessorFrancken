@@ -11,10 +11,11 @@ use Francken\Extern\Sector;
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Francken\Shared\Markdown\ContentCompiler;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class AdminCompanyProfilesController
 {
-    public function create(Partner $partner)
+    public function create(Partner $partner) : View
     {
         return view('admin.extern.partners.sponsor-options.company-profile.create', [
             'partner' => $partner,
@@ -49,7 +50,7 @@ final class AdminCompanyProfilesController
         );
     }
 
-    public function edit(Partner $partner)
+    public function edit(Partner $partner) : View
     {
         return view('admin.extern.partners.sponsor-options.company-profile.edit', [
             'partner' => $partner,

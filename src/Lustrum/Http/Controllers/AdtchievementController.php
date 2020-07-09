@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Francken\Lustrum\Http\Controllers;
 
 use Francken\Lustrum\EarnedAdtchievement;
+use Illuminate\View\View;
 
 final class AdtchievementController
 {
-    public function index()
+    public function index() : View
     {
         $adtchievements = EarnedAdtchievement::with([
             'adtchievement',

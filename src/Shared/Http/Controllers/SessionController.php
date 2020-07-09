@@ -7,10 +7,11 @@ namespace Francken\Shared\Http\Controllers;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 final class SessionController
 {
-    public function getLogin()
+    public function getLogin() : View
     {
         return view('login');
     }
@@ -31,7 +32,7 @@ final class SessionController
         return redirect('login')->withInput();
     }
 
-    public function logout()
+    public function logout() : RedirectResponse
     {
         try {
             Auth::logOut();

@@ -6,6 +6,7 @@ namespace Francken\Association\Activities\Http;
 
 use DateTimeImmutable;
 use Francken\Association\Activities\ActivitiesRepository;
+use Illuminate\View\View;
 use InvalidArgumentException;
 
 final class ActivitiesPerMonthController
@@ -17,7 +18,7 @@ final class ActivitiesPerMonthController
         $this->activities = $activities;
     }
 
-    public function index(int $year, string $month)
+    public function index(int $year, string $month) : View
     {
         $date = DateTimeImmutable::createFromFormat(
             'Y-m', $year . '-' . $month
