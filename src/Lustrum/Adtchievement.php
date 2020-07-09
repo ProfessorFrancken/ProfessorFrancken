@@ -5,42 +5,9 @@ declare(strict_types=1);
 namespace Francken\Lustrum;
 
 use DateTimeImmutable;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Carbon;
 
-/**
- * Francken\Lustrum\Adtchievement
- *
- * @property int $id
- * @property string $title
- * @property string $description
- * @property string|null $past_tense
- * @property int $points
- * @property int $is_repeatable
- * @property int $is_team_effort
- * @property int $is_hidden
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read Collection|Pirate[] $earnedBy
- * @property-read int|null $earned_by_count
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement earnedByPirateCrew(\Francken\Lustrum\PirateCrew $crew)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereIsHidden($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereIsRepeatable($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereIsTeamEffort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement wherePastTense($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement wherePoints($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Lustrum\Adtchievement whereUpdatedAt($value)
- * @mixin \Eloquent
- */
 final class Adtchievement extends Model
 {
     /**
@@ -59,6 +26,13 @@ final class Adtchievement extends Model
         'is_repeatable',
         'is_team_effort',
         'is_hidden',
+    ];
+
+    protected $casts = [
+        'is_team_effort' => 'bool',
+        'is_repeatable' => 'bool',
+        'is_hidden' => 'bool',
+        'points' => 'int',
     ];
 
     public function earnBy(Pirate $pirate, ?int $points = null, string $reason = '') : void
@@ -101,7 +75,7 @@ final class Adtchievement extends Model
 
     public function isHiddenForCrew(PirateCrew $crew) : bool
     {
-        if ($this->is_hidden === 0) {
+        if ( ! $this->is_hidden) {
             return false;
         }
 

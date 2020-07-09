@@ -11,6 +11,7 @@ use Francken\Lustrum\PirateCrew;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 class PirateCrewController
 {
@@ -41,6 +42,8 @@ class PirateCrewController
     public function store(PirateCrew $pirateCrew, Request $request) : RedirectResponse
     {
         $member = LegacyMember::findOrFail($request->input('pirate.member_id'));
+
+        Assert::isInstanceOf($member, LegacyMember::class);
 
         if ($pirateCrew->crewMembers->where('member_id', $member->id)->first() !== null) {
             return redirect()->action([self::class, 'index'], ['pirateCrew' => $pirateCrew->slug]);

@@ -6,6 +6,7 @@ namespace Francken\Shared\Providers;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use Francken\Auth\Account;
 use Francken\Shared\Http\Controllers\DashboardController;
 use Francken\Shared\Settings\Settings;
 use Illuminate\Contracts\Auth\Access\Gate;
@@ -18,7 +19,8 @@ final class NavigationServiceProvider extends ServiceProvider
     public function boot() : void
     {
         View::composer('layout._header', function ($view) : void {
-            $menu = $this->app->config->get('francken.navigation.menu');
+            /** @var array $menu */
+            $menu = config('francken.navigation.menu');
             $menu[1]['icon'] = $this->associationIcon();
 
             $settings = $this->app->make(Settings::class);
@@ -82,8 +84,8 @@ final class NavigationServiceProvider extends ServiceProvider
                 ];
             }
 
-            $user = Auth::user();
-            if ($user !== null) {
+            $account = Auth::user();
+            if ($account !== null && $account instanceof Account) {
                 $menu[] = [
                     'url' => '/profile',
                     'title' => 'Profile',
@@ -92,7 +94,7 @@ final class NavigationServiceProvider extends ServiceProvider
                         // Job prospects
                         ['url' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'title' => 'Expenses'],
 
-                        ($user->can('can-access-dashboard')
+                        ($account->can('can-access-dashboard')
                          ? ['url' => action([DashboardController::class, 'redirectToDashboard']), 'icon' => 'fa fa-database', 'title' => 'Admin', 'can' => 'can-access-dashboard']
                          : []),
                         ['url' => route('get-logout'), 'icon' => 'fas fa-sign-out-alt', 'title' => 'Logout']
@@ -116,7 +118,7 @@ final class NavigationServiceProvider extends ServiceProvider
         });
 
         View::composer('admin.layout', function ($view) : void {
-            $menu = $this->app->config->get('francken.navigation.admin-menu');
+            $menu = config('francken.navigation.admin-menu');
 
             $view->with('menu', $menu);
         });

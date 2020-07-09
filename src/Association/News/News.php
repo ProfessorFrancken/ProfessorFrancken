@@ -10,43 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use League\Period\Period;
 
-/**
- * Francken\Association\News\Eloquent\News
- *
- * @property int $id
- * @property string $title
- * @property string $exerpt
- * @property string $slug
- * @property string $source_contents
- * @property string $compiled_contents
- * @property string $author_name
- * @property string $author_photo
- * @property array $related_news_items
- * @property \Illuminate\Support\Carbon|null $published_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News byLink($slug)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News inPeriod(\League\Period\Period $period = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News recent()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereAuthorName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereAuthorPhoto($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereCompiledContents($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereExerpt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereRelatedNewsItems($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereSourceContents($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News withAuthorName($author = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\News\News withSubject($subject = null)
- * @mixin \Eloquent
- */
 final class News extends Model
 {
     /**
@@ -69,15 +32,9 @@ final class News extends Model
      */
     protected $casts = [
         'related_news_items' => 'array',
-    ];
-
-    /**
-     * @var string[]
-     */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'published_at'
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'published_at' => 'datetime',
     ];
 
     public function publish(DateTimeImmutable $publicationDate) : void

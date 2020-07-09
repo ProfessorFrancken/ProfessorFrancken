@@ -16,6 +16,7 @@ final class MediaController
      * @var string
      */
     private const DISK = 'uploads';
+
     public function index(FilesystemManager $storage, string $directory = '')
     {
         $directors = collect(explode('/', $directory));
@@ -26,8 +27,10 @@ final class MediaController
             return ['url' => action([static::class, 'index'], $path), 'text' => $directory];
         });
 
+        /** @var \Illuminate\Pagination\LengthAwarePaginator $media */
         $media = Media::inDirectory(static::DISK, $directory)
-            ->paginate(100);
+               ->paginate(100);
+
 
         $media->transform(function (Media $media) : MediaPresenter {
             return new MediaPresenter($media);

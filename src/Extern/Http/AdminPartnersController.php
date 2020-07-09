@@ -79,7 +79,7 @@ final class AdminPartnersController
                 'request' => $request,
                 'partners' => $partners,
                 'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                    return [$sector->id => $sector->name];
+                    return [$sector->getKey() => $sector->name];
                 })->prepend("All", 0),
                 'statuses' => collect(PartnerStatus::all())->prepend("All", 0),
                 'breadcrumbs' => [
@@ -94,7 +94,7 @@ final class AdminPartnersController
             'partner' => new Partner(),
             'contactDetails' => new ContactDetails(),
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->id => $sector->name];
+                return [$sector->getKey() => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
@@ -154,7 +154,7 @@ final class AdminPartnersController
             'partner' => $partner,
             'contactDetails' => $partner->contactDetails,
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->id => $sector->name];
+                return [$sector->getKey() => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [

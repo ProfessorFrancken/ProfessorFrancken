@@ -53,12 +53,15 @@ class ExceptionsHandler extends Handler
     /**
      * Overwrite the whoopsHandler so that we can use the new ignition error handler
      *
-     * @return HandlerInterface
+     * @return \Whoops\Handler\Handler
      */
     protected function whoopsHandler()
     {
         try {
-            return app(HandlerInterface::class);
+            /** @var \Whoops\Handler\Handler $handler */
+            $handler = app(HandlerInterface::class);
+
+            return $handler;
         } catch (BindingResolutionException $e) {
             return parent::whoopsHandler();
         }

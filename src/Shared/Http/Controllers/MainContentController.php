@@ -25,7 +25,7 @@ class MainContentController extends Controller
             ->first();
 
 
-        $news = News::recent()->take(3)->get();
+        $news = News::recent()->limit(3)->get();
 
         return view('homepage/homepage', [
             'news' => $news,

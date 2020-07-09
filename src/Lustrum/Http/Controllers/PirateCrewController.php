@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Lustrum\Http\Controllers;
 
+use Francken\Association\LegacyMember;
 use Francken\Lustrum\Adtchievement;
 use Francken\Lustrum\Http\Requests\LustrumRequest;
 use Francken\Lustrum\Pirate;
@@ -47,7 +48,7 @@ class PirateCrewController
     {
         $member = $request->user()->member;
 
-        if ($member === null) {
+        if ( ! $member instanceof LegacyMember) {
             return redirect()->action([self::class, 'index'])
                 ->with('error', "Whoops");
         }

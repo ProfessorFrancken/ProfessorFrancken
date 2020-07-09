@@ -56,7 +56,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read Fullname $fullname
  * @property-read Study|null $most_recent_study
- * @property PaymentDetails $payment_details
+ * @property \Francken\Association\Members\PaymentDetails $payment_details
  * @property-read array $study_graduation_date
  * @property-read array $study_name
  * @property-read array $study_starting_date
@@ -159,7 +159,7 @@ final class Registration extends Model
 
         $this->registration_accepted_at = $at;
         $this->save();
-       
+
         event(new RegistrationWasApproved($this, $byMember));
     }
 
@@ -299,7 +299,7 @@ final class Registration extends Model
             return $study->startDate()->format('Y-m');
         }, $this->studies);
     }
-                       
+
     public function getStudyGraduationDateAttribute() : array
     {
         return array_map(function (Study $study) : ?string {

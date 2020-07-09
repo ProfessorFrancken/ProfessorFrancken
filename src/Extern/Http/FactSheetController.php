@@ -187,12 +187,12 @@ final class FactSheetController
 
         return DB::connection('francken-legacy')->table('transacties')
             ->join('producten', 'transacties.product_id', '=', 'producten.id')
-            ->select(
+            ->select([
                 'tijd',
                 'lid_id',
                 'producten.categorie',
                 'aantal'
-            )
+            ])
             ->whereBetween('tijd', [$fromDate, $tillDate])
             ->get();
     }

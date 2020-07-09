@@ -61,7 +61,7 @@ final class Committee extends Model
                 $previousCommittee->toArray(),
                 [
                     'board_id' => $toBoardYear->id,
-                    'parent_committee_id' => $previousCommittee->id,
+                    'parent_committee_id' => $previousCommittee->getKey(),
                 ]
             )
         );

@@ -63,7 +63,6 @@ function image($url = '', $options = [], $addAppUrl = false)
 
     $options = array_merge(['crop' => '1'], $options);
 
-    $proxy = 'imaginary';
     switch ($proxy) {
         case 'imaginary': {
 

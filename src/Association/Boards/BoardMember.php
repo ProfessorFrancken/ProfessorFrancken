@@ -6,7 +6,6 @@ namespace Francken\Association\Boards;
 
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
@@ -14,51 +13,6 @@ use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 use Webmozart\Assert\Assert;
 
-/**
- * Francken\Association\Boards\BoardMember
- *
- * @property int $id
- * @property int $board_id
- * @property int|null $member_id
- * @property string $title
- * @property string $name
- * @property string $board_member_status
- * @property mixed $installed_at
- * @property mixed|null $demissioned_at
- * @property mixed|null $decharged_at
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property int|null $photo_media_id
- * @property-read Board $board
- * @property-read mixed $full_name
- * @property-read mixed $photo
- * @property-read Collection|Media[] $media
- * @property-read int|null $media_count
- * @property-read LegacyMember|null $member
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereBoardId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereBoardMemberStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereDechargedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereDemissionedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereHasMedia($tags, $matchAll = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereHasMediaMatchAll($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereInstalledAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereMemberId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember wherePhotoMediaId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withMedia($tags = [], $matchAll = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withMediaMatchAll($tags = [])
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\BoardMember withPhotos()
- * @mixin \Eloquent
- * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
- * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
- */
 final class BoardMember extends Model
 {
     use Mediable;

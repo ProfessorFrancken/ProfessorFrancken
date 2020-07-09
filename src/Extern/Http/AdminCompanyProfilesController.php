@@ -20,7 +20,7 @@ final class AdminCompanyProfilesController
             'partner' => $partner,
             'profile' => $partner->companyProfile ?? new CompanyProfile(),
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->id => $sector->name];
+                return [$sector->getKey() => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
@@ -55,7 +55,7 @@ final class AdminCompanyProfilesController
             'partner' => $partner,
             'profile' => $partner->companyProfile,
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->id => $sector->name];
+                return [$sector->getKey() => $sector->name];
             }),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [

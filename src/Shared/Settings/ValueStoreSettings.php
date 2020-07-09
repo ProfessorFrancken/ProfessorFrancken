@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Settings;
 
 use Spatie\Valuestore\Valuestore;
+use Traversable;
 
 /**
  * This class acts as a wrapper around a Spatie\ValueStore\ValueStore
@@ -180,7 +181,7 @@ final class ValueStoreSettings implements Settings
         return (bool) $value;
     }
 
-    public function getIterator() : iterable
+    public function getIterator() : Traversable
     {
         yield static::NUMBER_OF_EXTERN => [
             'text' => 'Telephone number of extern',

@@ -30,10 +30,8 @@ final class FileUploader
             ->useFilename("logo_{$slug}")
             ->upload();
 
-        if ($logo !== null) {
-            $committee->update(['logo_media_id' => $logo->id]);
-            $committee->attachmedia($logo, Committee::COMMITTEE_LOGO_TAG);
-        }
+        $committee->update(['logo_media_id' => $logo->id]);
+        $committee->attachmedia($logo, Committee::COMMITTEE_LOGO_TAG);
     }
 
     public function uploadPhoto(?UploadedFile $photo, Committee $committee) : void
@@ -49,9 +47,7 @@ final class FileUploader
             ->useFilename("photo_{$slug}")
             ->upload();
 
-        if ($photo !== null) {
-            $committee->update(['photo_media_id' => $photo->id]);
-            $committee->attachmedia($photo, Committee::COMMITEE_PHOTO_TAG);
-        }
+        $committee->update(['photo_media_id' => $photo->id]);
+        $committee->attachmedia($photo, Committee::COMMITEE_PHOTO_TAG);
     }
 }

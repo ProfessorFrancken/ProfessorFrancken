@@ -7,11 +7,11 @@ namespace Francken\Association\Boards\Http\Controllers;
 use Francken\Association\Boards\Imports\BoardsWithMembersImport;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Importer;
 
 final class AdminImportsController
 {
-    public function store(Request $request, BoardsWithMembersImport $import)
+    public function store(Request $request, BoardsWithMembersImport $import, Importer $excel)
     {
         $file = $request->file('import');
 
@@ -19,7 +19,7 @@ final class AdminImportsController
             return redirect(action([self::class, 'index']));
         }
 
-        Excel::import($import, $file);
+        $excel->import($import, $file);
 
         return redirect(action([AdminBoardsController::class, 'index']));
     }

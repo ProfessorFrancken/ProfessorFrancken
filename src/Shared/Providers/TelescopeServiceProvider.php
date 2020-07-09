@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
@@ -21,7 +22,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         $this->hideSensitiveRequestDetails();
 
         Telescope::filter(function (IncomingEntry $entry) : bool {
-            if ($this->app->isLocal()) {
+            if ($this->app instanceof Application && $this->app->isLocal()) {
                 return true;
             }
 
@@ -37,7 +38,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     protected function hideSensitiveRequestDetails() : void
     {
-        if ($this->app->isLocal()) {
+        if ($this->app instanceof Application && $this->app->isLocal()) {
             return;
         }
 

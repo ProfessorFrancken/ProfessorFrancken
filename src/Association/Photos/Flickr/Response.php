@@ -15,7 +15,7 @@ class Response
     /**
      * The contents of the Guzzle response.
      */
-    protected object $contents;
+    protected array $contents;
 
     /**
      * Create a new Response instance.

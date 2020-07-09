@@ -18,7 +18,7 @@ final class AdminCommitteeMembersController
     {
         $committee->members()->save(
             new CommitteeMember([
-                'committee_id' => $committee->id,
+                'committee_id' => $committee->getKey(),
                 'member_id' => $request->memberId(),
                 'function' => $request->function(),
                 'installed_at' => $request->installedAt(),

@@ -60,7 +60,7 @@ final class AdminPartnerContactsController
         }
 
         $contactDetails = $contactDetailsRequest->contactDetails();
-        $contactDetails->partner_id = $partner->id;
+        $contactDetails->partner_id = $partner->getKey();
         $contact->contactDetails()->save($contactDetails);
 
         return redirect()->action(

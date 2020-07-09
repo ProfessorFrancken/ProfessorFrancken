@@ -19,7 +19,7 @@ final class AdminVacanciesController
             'partner' => $partner,
             'vacancy' => new Vacancy(),
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->id => $sector->name];
+                return [$sector->getKey() => $sector->name];
             }),
             'types' => JobType::all(),
             'breadcrumbs' => [
@@ -54,7 +54,7 @@ final class AdminVacanciesController
             'partner' => $partner,
             'vacancy' => $vacancy,
             'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->id => $sector->name];
+                return [$sector->getKey() => $sector->name];
             }),
             'types' => JobType::all(),
             'breadcrumbs' => [

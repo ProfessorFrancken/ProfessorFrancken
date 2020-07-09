@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
@@ -24,11 +23,11 @@ use Webmozart\Assert\Assert;
  * @property int $id
  * @property string|null $name
  * @property string $photo_position
- * @property Carbon $installed_at
- * @property Carbon|null $demissioned_at
- * @property Carbon|null $decharged_at
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon $installed_at
+ * @property \Illuminate\Support\Carbon|null $demissioned_at
+ * @property \Illuminate\Support\Carbon|null $decharged_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $photo_media_id
  * @property mixed $board_name
  * @property-read mixed $board_year

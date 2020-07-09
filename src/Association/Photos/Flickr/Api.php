@@ -64,9 +64,9 @@ class Api
     /**
      * Compile the parameters from an array into a string.
      */
-    protected function parameters(array $array) : string
+    protected function parameters(?array $array = null) : string
     {
-        if ( ! is_array($array)) {
+        if ($array === null) {
             return '';
         }
         $encoded = [];

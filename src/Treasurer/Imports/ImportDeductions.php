@@ -118,9 +118,9 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
         $deduction->put('member', $member);
 
-        $deduction_name = (string)$deduction["naam_betaler"] ?? '';
-        $deduction_address = (string)$deduction["adres_betaler"] ?? '';
-        $deduction_city = (string)$deduction["woonplaats_betaler"] ?? '';
+        $deduction_name = (string)($deduction["naam_betaler"] ?? '');
+        $deduction_address = (string)($deduction["adres_betaler"] ?? '');
+        $deduction_city = (string)($deduction["woonplaats_betaler"] ?? '');
         $deduction_iban = $deduction["iban_rekeningnr"];
 
         $checks = [

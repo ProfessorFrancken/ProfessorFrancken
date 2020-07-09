@@ -37,12 +37,12 @@ final class FinancesController
             });
 
         $perMonth = \DB::connection('francken-legacy')->table('transacties')
-            ->select(
+            ->select([
                 'tijd',
                 'lid_id',
                 \DB::raw('count(prijs) as price'),
                 \DB::raw('YEAR(tijd) year, MONTH(tijd) month')
-            )
+            ])
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)
             ->limit(100)

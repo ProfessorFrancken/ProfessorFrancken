@@ -19,16 +19,16 @@ use Webmozart\Assert\Assert;
  * @property int $edition
  * @property string $pdf
  * @property string $cover
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition latestEdition()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereCover($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereEdition($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition wherePdf($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\FranckenVrij\Edition whereVolume($value)
+ * @method static \Illuminate\Database\Eloquent\Builder latestEdition()
+ * @method static \Illuminate\Database\Eloquent\Builder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder query()
+ * @method static \Illuminate\Database\Eloquent\Builder whereCover($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereEdition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder wherePdf($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereVolume($value)
  * @mixin \Eloquent
  */
 final class Edition extends Model
