@@ -62,19 +62,19 @@ final class BoardMember extends Model
 
     public static function install(
         Board $board,
-        int $member_id,
+        int $memberId,
         string $title,
-        DateTimeImmutable $installed_at,
+        DateTimeImmutable $installedAt,
         ?Media $photo
     ) : self {
-        $legacy_member = LegacyMember::find($member_id);
+        $legacyMember = LegacyMember::find($memberId);
 
         /** @var self $member */
         $member = $board->members()->make([
-            'member_id' => $member_id,
-            'name' => optional($legacy_member)->full_name ?? '',
+            'member_id' => $memberId,
+            'name' => optional($legacyMember)->full_name ?? '',
             'title' => $title,
-            'installed_at' => $installed_at,
+            'installed_at' => $installedAt,
             'photo_media_id' => $photo->id ?? null,
         ]);
         Assert::isInstanceOf($member, self::class);
@@ -119,20 +119,20 @@ final class BoardMember extends Model
      * and decharged dates
      */
     public function updateBoardMemberAttributes(
-        int $member_id,
+        int $memberId,
         string $title,
-        DateTimeImmutable $installed_at,
-        ?DateTimeImmutable $demissioned_at,
-        ?DateTimeImmutable $decharged_at,
+        DateTimeImmutable $installedAt,
+        ?DateTimeImmutable $demissionedAt,
+        ?DateTimeImmutable $dechargedAt,
         ?Media $photo
     ) : void {
-        $legacy_member = LegacyMember::find($member_id);
-        $this->member_id = $member_id;
-        $this->name = optional($legacy_member)->full_name ?? '';
+        $legacyMember = LegacyMember::find($memberId);
+        $this->member_id = $memberId;
+        $this->name = optional($legacyMember)->full_name ?? '';
         $this->title = $title;
-        $this->installed_at = $installed_at;
-        $this->demissioned_at = $demissioned_at;
-        $this->decharged_at = $decharged_at;
+        $this->installed_at = $installedAt;
+        $this->demissioned_at = $demissionedAt;
+        $this->decharged_at = $dechargedAt;
         $this->refreshStatus();
 
         if ($photo !== null) {

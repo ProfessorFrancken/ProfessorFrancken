@@ -10,10 +10,10 @@ final class BoardMemberWasDemissioned
    
     private int $member_id;
 
-    public function __construct(int $board_id, int $member_id)
+    public function __construct(int $boardId, int $memberId)
     {
-        $this->board_id = $board_id;
-        $this->member_id = $member_id;
+        $this->board_id = $boardId;
+        $this->member_id = $memberId;
     }
 
     public function boardId() : int

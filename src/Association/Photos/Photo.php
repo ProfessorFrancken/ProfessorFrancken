@@ -67,11 +67,11 @@ final class Photo extends Model
 
     public function src($quality = 1024) : string
     {
-        $base_url = Str::before($this->flickr_base_url, '.jpg');
+        $baseUrl = Str::before($this->flickr_base_url, '.jpg');
 
         return sprintf(
             "%s%s.jpg",
-            $base_url,
+            $baseUrl,
             self::SIZES[$quality]
         );
     }
@@ -81,14 +81,14 @@ final class Photo extends Model
      */
     public function srcset(float $divider = 2.0) : string
     {
-        $base_url = Str::before($this->flickr_base_url, '.jpg');
+        $baseUrl = Str::before($this->flickr_base_url, '.jpg');
 
         // Give a list of srces
         return collect(self::SIZES)
-            ->map(function ($value, $key) use ($base_url) : string {
+            ->map(function ($value, $key) use ($baseUrl) : string {
                 return sprintf(
                     "%s%s.jpg %sw",
-                    $base_url,
+                    $baseUrl,
                     $value,
                     round($key * 1.5)
                 );

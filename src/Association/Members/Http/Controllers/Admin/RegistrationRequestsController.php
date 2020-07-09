@@ -53,13 +53,13 @@ final class RegistrationRequestsController extends Controller
 
     public function print(Registration $registration)
     {
-        $most_recent_study = $registration->most_recent_study;
-        $starting_date_study = optional(optional($most_recent_study)->startDate())->format("Y");
+        $mostRecentStudy = $registration->most_recent_study;
+        $startingDateStudy = optional(optional($mostRecentStudy)->startDate())->format("Y");
 
         return view('admin.registration-requests.print', [
             'registration' => $registration,
-            'study' => optional($most_recent_study)->study(),
-            'starting_date_study' => $starting_date_study,
+            'study' => optional($mostRecentStudy)->study(),
+            'starting_date_study' => $startingDateStudy,
         ]);
     }
 

@@ -78,7 +78,7 @@ class RegistrationRequestFeature extends TestCase
         } catch (ValidationException $e) {
             $errors = $e->errors();
 
-            $missing_fields = [
+            $missingFields = [
                 'firstname',
                 'surname',
                 'birthdate',
@@ -91,7 +91,7 @@ class RegistrationRequestFeature extends TestCase
                 'study_starting_date.0',
             ];
 
-            foreach ($missing_fields as $field) {
+            foreach ($missingFields as $field) {
                 $this->assertArrayHasKey($field, $errors);
             }
         }

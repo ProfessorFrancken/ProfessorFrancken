@@ -10,12 +10,12 @@ class LustrumController
 {
     public function index()
     {
-        $blue_beards = PirateCrew::where('name', 'Blue beards')->firstOrFail();
-        $red_beards = PirateCrew::where('name', 'Red beards')->firstOrFail();
+        $blueBeards = PirateCrew::where('name', 'Blue beards')->firstOrFail();
+        $redBeards = PirateCrew::where('name', 'Red beards')->firstOrFail();
 
         return view('lustrum.index', [
-            'blue_beards_points' => $blue_beards->total_points,
-            'red_beards_points' => $red_beards->total_points
+            'blue_beards_points' => $blueBeards->total_points,
+            'red_beards_points' => $redBeards->total_points
         ]);
     }
 }

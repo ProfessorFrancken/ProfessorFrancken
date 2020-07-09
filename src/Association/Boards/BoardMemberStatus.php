@@ -26,20 +26,20 @@ class BoardMemberStatus
     public const DECHARGED_BOARD_MEMBER = 'decharged_board_member';
 
     public static function fromDates(
-        DateTimeInterface $current_date,
-        DateTimeInterface $installed_at,
-        ?DateTimeInterface $demissioned_at = null,
-        ?DateTimeInterface $decharged_at = null
+        DateTimeInterface $currentDate,
+        DateTimeInterface $installedAt,
+        ?DateTimeInterface $demissionedAt = null,
+        ?DateTimeInterface $dechargedAt = null
     ) : string {
-        if (isset($decharged_at) && $current_date > $decharged_at) {
+        if (isset($dechargedAt) && $currentDate > $dechargedAt) {
             return static::DECHARGED_BOARD_MEMBER;
         }
 
-        if (isset($demissioned_at) && $current_date > $demissioned_at) {
+        if (isset($demissionedAt) && $currentDate > $demissionedAt) {
             return static::DEMISSIONED_BOARD_MEMBER;
         }
 
-        if ($current_date > $installed_at) {
+        if ($currentDate > $installedAt) {
             return static::BOARD_MEMBER;
         }
 

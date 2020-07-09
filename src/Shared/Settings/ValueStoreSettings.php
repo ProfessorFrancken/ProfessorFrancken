@@ -58,7 +58,7 @@ final class ValueStoreSettings implements Settings
 
     public function updateSettings(array $settings) : void
     {
-        $allowed_keys = [
+        $allowedKeys = [
             static::NUMBER_OF_EXTERN,
             static::HEADER_IMAGE,
             static::PRIVATE_ALBUMS,
@@ -72,7 +72,7 @@ final class ValueStoreSettings implements Settings
 
         foreach ($settings as $key => $value) {
             // We don't want to store settings that aren't supported
-            if ( ! in_array($key, $allowed_keys, true)) {
+            if ( ! in_array($key, $allowedKeys, true)) {
                 continue;
             }
             $this->store->put($key, $value);
@@ -103,13 +103,13 @@ final class ValueStoreSettings implements Settings
 
     public function headerImage() : string
     {
-        $header_image = $this->store->get(self::HEADER_IMAGE);
+        $headerImage = $this->store->get(self::HEADER_IMAGE);
 
-        if ( ! is_string($header_image)) {
+        if ( ! is_string($headerImage)) {
             return '';
         }
 
-        return $header_image;
+        return $headerImage;
     }
 
     /**

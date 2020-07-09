@@ -48,7 +48,7 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
         // In this case we will merge the deducitons into 1 deduction
         $this->deductions = $this->deductions->groupBy(function ($deduction) : int {
             return $deduction['member']->id;
-        })->map(function ($deductions, $member_id) {
+        })->map(function ($deductions, $memberId) {
             if ($deductions->count() > 1) {
                 $description = $deductions->map(function (Collection $deduction) : string {
                     return $deduction['omschrijving_2'];
@@ -109,8 +109,8 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
     private function addDeduction(Collection $deduction) : void
     {
         try {
-            $possible_member_id = (int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
-            $member = LegacyMember::findOrFail($possible_member_id);
+            $possibleMemberId = (int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
+            $member = LegacyMember::findOrFail($possibleMemberId);
         } catch (ModelNotFoundException $e) {
             Log::error("Could not retrieve deduction information", $deduction->toArray());
             return;
@@ -118,15 +118,15 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
         $deduction->put('member', $member);
 
-        $deduction_name = (string)($deduction["naam_betaler"] ?? '');
-        $deduction_address = (string)($deduction["adres_betaler"] ?? '');
-        $deduction_city = (string)($deduction["woonplaats_betaler"] ?? '');
-        $deduction_iban = $deduction["iban_rekeningnr"];
+        $deductionName = (string)($deduction["naam_betaler"] ?? '');
+        $deductionAddress = (string)($deduction["adres_betaler"] ?? '');
+        $deductionCity = (string)($deduction["woonplaats_betaler"] ?? '');
+        $deductionIban = $deduction["iban_rekeningnr"];
 
         $checks = [
-            "name" => "{$member->initialen} {$member->surname}" === $deduction_name,
-            "address" => (string)$member->adres === $deduction_address || (string)$member->plaats === $deduction_city,
-            "iban" => $this->checkIban($member->rekeningnummer, $deduction_iban),
+            "name" => "{$member->initialen} {$member->surname}" === $deductionName,
+            "address" => (string)$member->adres === $deductionAddress || (string)$member->plaats === $deductionCity,
+            "iban" => $this->checkIban($member->rekeningnummer, $deductionIban),
         ];
 
         $errors = collect();

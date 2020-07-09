@@ -72,20 +72,20 @@ final class Symposium extends Model
         string $firstname,
         string $lastname,
         Email $email,
-        bool $is_francken_member,
-        bool $is_nnv_member,
-        ?string $nnv_number,
-        bool $pays_with_iban = false,
+        bool $isFranckenMember,
+        bool $isNnvMember,
+        ?string $nnvNumber,
+        bool $paysWithIban = false,
         ?string $iban = null
     ) : Participant {
         $participant = $this->participants()->create([
             'firstname' => $firstname,
             'lastname' => $lastname,
             'email' => (string)$email,
-            'is_francken_member' => $is_francken_member,
-            'is_nnv_member' => $is_nnv_member,
-            'nnv_number' => $nnv_number,
-            'pays_with_iban' => $pays_with_iban,
+            'is_francken_member' => $isFranckenMember,
+            'is_nnv_member' => $isNnvMember,
+            'nnv_number' => $nnvNumber,
+            'pays_with_iban' => $paysWithIban,
             'iban' => encrypt($iban),
 
             'has_verified_email' => false,

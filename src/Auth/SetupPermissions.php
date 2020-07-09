@@ -35,9 +35,9 @@ final class SetupPermissions extends Command
     public function handle() : void
     {
         $this->seedRolesAndPermissions();
-        $old_users = DB::table('users')->get();
+        $oldUsers = DB::table('users')->get();
 
-        foreach ($old_users as $user) {
+        foreach ($oldUsers as $user) {
             $account = Account::create([
                 'email' => $user->email,
                 'password' => $user->password,

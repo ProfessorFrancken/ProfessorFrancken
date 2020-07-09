@@ -52,12 +52,12 @@ final class LogoUploader
             return null;
         }
 
-        $partner_slug = Str::slug($partner->name);
-        $contact_slug = Str::slug($contact->fullname);
+        $partnerSlug = Str::slug($partner->name);
+        $contactSlug = Str::slug($contact->fullname);
 
         return $this->uploader->fromSource($photo)
-            ->toDirectory("images/partners/{$partner_slug}/contacts/")
-            ->useFilename("contact_{$contact_slug}")
+            ->toDirectory("images/partners/{$partnerSlug}/contacts/")
+            ->useFilename("contact_{$contactSlug}")
             ->upload();
     }
 }

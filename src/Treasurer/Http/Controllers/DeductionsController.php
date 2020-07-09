@@ -49,14 +49,14 @@ final class DeductionsController
     public function store(DeductionRequest $request, MediaUploader $uploader) : RedirectResponse
     {
         /** @var Media */
-        $deduction_file = $uploader->fromSource($request->deduction())
+        $deductionFile = $uploader->fromSource($request->deduction())
             ->setAllowUnrecognizedTypes(true)
             ->toDestination('local', 'deductions')
             ->useHashForFilename()
             ->upload();
 
         $deduction = DeductionEmail::upload(
-            $deduction_file,
+            $deductionFile,
             $request->deductedAt(),
             $request->deductionFrom(),
             $request->deductionTo(),

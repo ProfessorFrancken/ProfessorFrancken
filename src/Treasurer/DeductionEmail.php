@@ -96,9 +96,9 @@ final class DeductionEmail extends Model
 
     public static function upload(
         Media $deduction,
-        DateTimeImmutable $deducted_at,
-        DateTimeImmutable $deduction_from,
-        DateTimeImmutable $deduction_to,
+        DateTimeImmutable $deductedAt,
+        DateTimeImmutable $deductionFrom,
+        DateTimeImmutable $deductionTo,
         Importer $importer
     ) : self {
         $import = new ImportDeductions();
@@ -109,23 +109,23 @@ final class DeductionEmail extends Model
         );
 
         // We don't have to verify the deduction if  conflicts were found
-        $was_verified = $import->errors()
+        $wasVerified = $import->errors()
             ->reject(function (Collection $errors) : bool {
                 return $errors->isEmpty();
             })
             ->isEmpty();
 
         /** @var DeductionEmail */
-        $deduction_email = static::create([
-            'deducted_at' => $deducted_at,
-            'deduction_from' => $deduction_from,
-            'deduction_to' => $deduction_to,
+        $deductionEmail = static::create([
+            'deducted_at' => $deductedAt,
+            'deduction_from' => $deductionFrom,
+            'deduction_to' => $deductionTo,
             'amount_of_members' => $import->deductions()->count(),
             'file_media_id' => $deduction->id,
-            'was_verified' => $was_verified,
+            'was_verified' => $wasVerified,
         ]);
 
-        $deduction_email->deductionToMembers()->createMany(
+        $deductionEmail->deductionToMembers()->createMany(
             $import->deductions()->map(function (Collection $deduction) : array {
                 return [
                     'member_id' => $deduction['member']->id,
@@ -136,7 +136,7 @@ final class DeductionEmail extends Model
             })->toArray()
         );
 
-        return $deduction_email;
+        return $deductionEmail;
     }
 
     public function deductionFile() : BelongsTo

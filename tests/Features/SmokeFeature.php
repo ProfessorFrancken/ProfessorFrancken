@@ -46,10 +46,10 @@ final class SmokeFeature extends TestCase
      * @dataProvider pagesProvider
      * @test
      */
-    public function it_should_be_able_to_serve_all_pages(string $url, int $expected_status) : void
+    public function it_should_be_able_to_serve_all_pages(string $url, int $expectedStatus) : void
     {
         $this->get($url)
-            ->seeStatusCode($expected_status);
+            ->seeStatusCode($expectedStatus);
     }
 
     public function pagesProvider() : array

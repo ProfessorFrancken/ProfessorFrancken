@@ -61,9 +61,9 @@ final class Participant extends Model
         return "{$this->firstname} {$this->lastname}";
     }
 
-    public function verifyRegistration(DateTimeImmutable $verified_at) : void
+    public function verifyRegistration(DateTimeImmutable $verifiedAt) : void
     {
-        $this->email_verified_at = $verified_at;
+        $this->email_verified_at = $verifiedAt;
         $this->save();
     }
 

@@ -57,21 +57,21 @@ final class AccountsController
 
     public function store(Request $request, Mailer $mail) : RedirectResponse
     {
-        $member_id = $request->input('member_id');
+        $memberId = $request->input('member_id');
 
-        if ( ! $member_id) {
+        if ( ! $memberId) {
             return redirect()->back();
         }
 
         $email = DB::connection('francken-legacy')
             ->table('leden')
             ->where('is_lid', true)
-            ->where('id', $member_id)
+            ->where('id', $memberId)
             ->first()
             ->emailadres;
 
         $account = Account::activate(
-            $member_id,
+            $memberId,
             $email,
             Hash::make(Str::random(32))
         );

@@ -53,32 +53,32 @@ final class SynchronizeFlickrAlbums extends Command
     public function handle() : void
     {
         $albums = $this->flickr_repo->albums();
-        $albums_in_db = $this->db->table('albums')->get();
+        $albumsInDb = $this->db->table('albums')->get();
 
         // Check which albums have already been synchronized
-        foreach ($this->missingAlbums($albums, $albums_in_db->pluck('id')) as $album) {
+        foreach ($this->missingAlbums($albums, $albumsInDb->pluck('id')) as $album) {
             $this->info("Adding a missing album");
             $this->storeAlbum($album);
         }
     }
 
-    private function missingAlbums(Collection $albums, Collection $albums_in_db) : Collection
+    private function missingAlbums(Collection $albums, Collection $albumsInDb) : Collection
     {
-        return $albums->filter(function ($album) use ($albums_in_db) : bool {
-            return ! $albums_in_db->contains($album['id']);
+        return $albums->filter(function ($album) use ($albumsInDb) : bool {
+            return ! $albumsInDb->contains($album['id']);
         });
     }
 
     private function storeAlbum($album) : void
     {
-        $publication_date = $album['date_created'];
-        $activity_date = $album['primary']['date_taken']->sub(new DateInterval('PT6H'))->format('Y-m-d');
+        $publicationDate = $album['date_created'];
+        $activityDate = $album['primary']['date_taken']->sub(new DateInterval('PT6H'))->format('Y-m-d');
 
-        $photo_album = $this->flickr_repo->findAlbum($album['id']);
+        $photoAlbum = $this->flickr_repo->findAlbum($album['id']);
 
 
-        $photos = $photo_album['photos']->map(function ($photo) use ($album) : array {
-            $parse_title = function ($title) {
+        $photos = $photoAlbum['photos']->map(function ($photo) use ($album) : array {
+            $parseTitle = function ($title) {
                 return Str::startsWith($title, 'IMG_') ? '' : $title;
             };
 
@@ -88,7 +88,7 @@ final class SynchronizeFlickrAlbums extends Command
             return [
                 'id' => $photo['id'],
                 'album_id' => $album['id'],
-                'title' => $parse_title($photo['title']),
+                'title' => $parseTitle($photo['title']),
                 'is_public' => $photo['is_public'],
                 'views' => $photo['views'],
                 'flickr_base_url' => $photo['url'],
@@ -105,14 +105,14 @@ final class SynchronizeFlickrAlbums extends Command
             ];
         });
 
-        $title = Str::after($album['title'], $activity_date . " ");
-        $slug = Str::slug($activity_date . '-' . $title);
+        $title = Str::after($album['title'], $activityDate . " ");
+        $slug = Str::slug($activityDate . '-' . $title);
 
         try {
             $this->db->table('albums')->insert([
                 'id' => $album['id'],
                 'published_at' => $album['date_created'],
-                'activity_date' => $activity_date,
+                'activity_date' => $activityDate,
 
                 'title' => $title,
                 'description' => $album['description'],

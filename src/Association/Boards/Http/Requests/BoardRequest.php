@@ -19,15 +19,15 @@ class BoardRequest extends FormRequest
 
     public function installedAt() : DateTimeImmutable
     {
-        $installed_at =  $this->toDateTimeImmutable(
+        $installedAt =  $this->toDateTimeImmutable(
             $this->input('installed_at')
         );
 
-        if ($installed_at === null) {
+        if ($installedAt === null) {
             throw new InvalidArgumentException();
         }
 
-        return $installed_at;
+        return $installedAt;
     }
 
     public function demissionedAt() : ?DateTimeImmutable
@@ -92,19 +92,19 @@ class BoardRequest extends FormRequest
      */
     public function rules() : array
     {
-        $max_file_size = 10 * 1024;
+        $maxFileSize = 10 * 1024;
         return [
             'name' => ['required', 'regex:/[a-zA-Z0-9\s]+/', ],
             'installed_at' => ['required', 'date_format:Y-m-d'],
             'demissioned_at' => ['nullable', 'date_format:Y-m-d', 'after:installed_at', 'before_or_equal:decharged_at'],
             'decharged_at' => ['nullable', 'date_format:Y-m-d', 'after:installed_at', 'after_or_equal:demissioned_at'],
             'photo_position' => ['required', 'integer'],
-            'photo' => ['image', 'max:' . $max_file_size],
+            'photo' => ['image', 'max:' . $maxFileSize],
 
             // We only want to validate member input if the member_id is present
             'members.*.member_id' => ['sometimes', 'nullable', 'integer'],
             'members.*.title' => ['required_with:members.*.member_id'],
-            'members.*.photo' => ['image', 'max:' . $max_file_size],
+            'members.*.photo' => ['image', 'max:' . $maxFileSize],
 
             'members.*.installed_at' => ['sometimes', 'nullable', 'date_format:Y-m-d'],
             'members.*.demissioned_at' => ['sometimes', 'nullable', 'date_format:Y-m-d', 'after:members.*.installed_at', 'before_or_equal:members.*.decharged_at'],
@@ -119,12 +119,12 @@ class BoardRequest extends FormRequest
             return null;
         }
 
-        $date_time = DateTimeImmutable::createFromFormat('Y-m-d', $input);
+        $dateTime = DateTimeImmutable::createFromFormat('Y-m-d', $input);
 
-        if ($date_time === false) {
+        if ($dateTime === false) {
             return null;
         }
 
-        return $date_time;
+        return $dateTime;
     }
 }

@@ -46,13 +46,13 @@ final class Account extends Model implements
     ];
 
     public static function activate(
-        string $member_id,
+        string $memberId,
         string $email,
         string $password
     ) : self {
         /** @var Account $account */
         $account = self::create([
-            'member_id' => $member_id,
+            'member_id' => $memberId,
             'email' => $email,
             'password' => $password
         ]);
@@ -64,11 +64,11 @@ final class Account extends Model implements
         return $account;
     }
 
-    public function scopeOfMember(Builder $query, int $member_id) : Builder
+    public function scopeOfMember(Builder $query, int $memberId) : Builder
     {
         // If we do want to have users that can represent members, alumni and
         // companies, then we could add an additional type check
-        return $query->whereMemberId($member_id);
+        return $query->whereMemberId($memberId);
     }
 
     public function member() : BelongsTo

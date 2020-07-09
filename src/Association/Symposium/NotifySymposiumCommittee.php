@@ -24,7 +24,7 @@ class NotifySymposiumCommittee implements ShouldQueue
         $participant = $event->participant;
 
 
-        $who_needs_to_take_an_adt = Arr::random([
+        $whoNeedsToTakeAnAdt = Arr::random([
             'Carla', 'Leon', 'Jeanne', 'Braadslee', 'Justin', 'Rosa',
         ]);
 
@@ -32,7 +32,7 @@ class NotifySymposiumCommittee implements ShouldQueue
         AdCount::create([
             'symposium_id' => $participant->symposium_id,
             'participant_id' => $participant->id,
-            'name' => $who_needs_to_take_an_adt,
+            'name' => $whoNeedsToTakeAnAdt,
             'consumed' => false,
         ]);
 
@@ -40,7 +40,7 @@ class NotifySymposiumCommittee implements ShouldQueue
         $this->mail->to('sympfr@gmail.com')
             ->send(new NotifyCommittee(
                 $participant,
-                $who_needs_to_take_an_adt
+                $whoNeedsToTakeAnAdt
             ));
     }
 }

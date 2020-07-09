@@ -21,8 +21,8 @@ final class FlickrRepository
         $this->secret = config('services.flickr.secret');
         $this->user_id = config('services.flickr.user_id');
 
-        $api_key = config('services.flickr.api_key');
-        $this->flickr = new Flickr(new Api($api_key));
+        $apiKey = config('services.flickr.api_key');
+        $this->flickr = new Flickr(new Api($apiKey));
     }
 
 
@@ -38,11 +38,11 @@ final class FlickrRepository
 
 
             return collect($photosets)->map(function ($album) : Collection {
-                $primary_photos = $album['primary_photo_extras'];
-                $width = (int) ($primary_photos['width_m'] ?? $primary_photos['width_o']);
-                $height = (int) ($primary_photos['height_m'] ?? $primary_photos['height_o']);
-                $original_url = $primary_photos['url_o'];
-                $url = $primary_photos['url_m'] ?? $primary_photos['url_o'];
+                $primaryPhotos = $album['primary_photo_extras'];
+                $width = (int) ($primaryPhotos['width_m'] ?? $primaryPhotos['width_o']);
+                $height = (int) ($primaryPhotos['height_m'] ?? $primaryPhotos['height_o']);
+                $originalUrl = $primaryPhotos['url_o'];
+                $url = $primaryPhotos['url_m'] ?? $primaryPhotos['url_o'];
 
                 return collect([
                     'id' => $album['id'],
@@ -54,7 +54,7 @@ final class FlickrRepository
                     'primary' => [
                         'id' => $album['primary'],
                         'url' => $url,
-                        'original_url' => $original_url,
+                        'original_url' => $originalUrl,
                         'width' => $width,
                         'height' => $height,
                         'date_upload' => DateTimeImmutable::createFromFormat('U', $album['primary_photo_extras']['dateupload']),
@@ -71,11 +71,11 @@ final class FlickrRepository
         }
     }
 
-    public function findAlbum($album_id) : Collection
+    public function findAlbum($albumId) : Collection
     {
         try {
             $album = $this->flickr->photosForSet(
-                $album_id, // set id
+                $albumId, // set id
                 $this->user_id, // user id
                 [
                     'extras' => 'icon_server,machine_tags,o_dims,views,media,path_alias,url_sq,url_t,url_s,url_m,url_o,original_format,date_upload,last_update,date_taken,geo',

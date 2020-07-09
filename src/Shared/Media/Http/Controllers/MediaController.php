@@ -45,13 +45,13 @@ final class MediaController
 
     public function show(Media $media)
     {
-        $mediable_types = \DB::table('mediables')
+        $mediableTypes = \DB::table('mediables')
             ->where('media_id', $media->id)
             ->groupBy('mediable_type')
             ->select('mediable_type')
             ->get();
 
-        $mediables = $mediable_types->mapWithKeys(function ($type) use ($media) : array {
+        $mediables = $mediableTypes->mapWithKeys(function ($type) use ($media) : array {
             return [
                 $type->mediable_type =>
                 $media->models($type->mediable_type)->get()

@@ -46,16 +46,16 @@ class EmailDeductionsFeature extends TestCase
             ->press('Upload');
         $this->assertResponseOk();
 
-        $deduction_email = DeductionEmail::whereDate('deducted_at', '2019-07-24')->first();
+        $deductionEmail = DeductionEmail::whereDate('deducted_at', '2019-07-24')->first();
 
-        $this->assertNotNull($deduction_email);
-        $to_members = $deduction_email->deductionToMembers;
-        $this->assertCount(2, $to_members);
+        $this->assertNotNull($deductionEmail);
+        $toMembers = $deductionEmail->deductionToMembers;
+        $this->assertCount(2, $toMembers);
 
-        $this->assertEquals(1403, $to_members[0]->member_id);
-        $this->assertEquals("Food and drinks until June 18, Being board", $to_members[0]->description);
-        $this->assertEquals(3333, $to_members[0]->amount_in_cents);
-        $this->assertEquals(3140, $to_members[1]->amount_in_cents);
+        $this->assertEquals(1403, $toMembers[0]->member_id);
+        $this->assertEquals("Food and drinks until June 18, Being board", $toMembers[0]->description);
+        $this->assertEquals(3333, $toMembers[0]->amount_in_cents);
+        $this->assertEquals(3140, $toMembers[1]->amount_in_cents);
     }
 
     /** @test */

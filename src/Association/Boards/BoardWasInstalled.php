@@ -8,9 +8,9 @@ final class BoardWasInstalled
 {
     private int $board_id;
 
-    public function __construct(int $board_id)
+    public function __construct(int $boardId)
     {
-        $this->board_id = $board_id;
+        $this->board_id = $boardId;
     }
 
     public function boardId() : int

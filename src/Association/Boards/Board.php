@@ -102,11 +102,11 @@ final class Board extends Model
     public static function install(
         BoardName $name,
         ?Media $photo,
-        string $photo_position,
-        DateTimeImmutable $installed_at,
+        string $photoPosition,
+        DateTimeImmutable $installedAt,
         Collection $members
     ) : self {
-        Assert::oneOf($photo_position, [
+        Assert::oneOf($photoPosition, [
             '', 'NorthWest', 'North', 'NorthEast', 'West', 'Center', 'East', 'SouthWest', 'South', 'SouthEast'
         ]);
         $members->each(function (array $member) : void {
@@ -118,19 +118,19 @@ final class Board extends Model
         /** @var Board $board */
         $board = static::create([
             'name' => $name->toString(),
-            'photo_position' => $photo_position,
-            'installed_at' => $installed_at,
-            'board_year_slug' => BoardYear::fromInstallDate($installed_at)->toSlug(),
+            'photo_position' => $photoPosition,
+            'installed_at' => $installedAt,
+            'board_year_slug' => BoardYear::fromInstallDate($installedAt)->toSlug(),
             'photo_media_id' => $photo->id ?? null,
         ]);
         $board->attachMedia($photo, static::BOARD_PHOTO_TAG);
 
-        $members->each(function ($member) use ($board, $installed_at) : void {
+        $members->each(function ($member) use ($board, $installedAt) : void {
             BoardMember::install(
                 $board,
                 $member['member_id'],
                 $member['title'],
-                $installed_at,
+                $installedAt,
                 $member['photo']
             );
         });
@@ -176,24 +176,24 @@ final class Board extends Model
         return BoardName::fromNameOrYear($this->name, $this->board_year);
     }
 
-    public function setBoardNameAttribute(BoardName $board_name) : void
+    public function setBoardNameAttribute(BoardName $boardName) : void
     {
-        $this->name = $board_name->toString();
+        $this->name = $boardName->toString();
     }
 
     public function updateBoardAttributes(
         BoardName $name,
-        string $photo_position,
-        DateTimeImmutable $installed_at,
-        ?DateTimeImmutable $demissioned_at,
-        ?DateTimeImmutable $decharged_at,
+        string $photoPosition,
+        DateTimeImmutable $installedAt,
+        ?DateTimeImmutable $demissionedAt,
+        ?DateTimeImmutable $dechargedAt,
         ?Media $photo
     ) : void {
         $this->board_name = $name;
-        $this->photo_position = $photo_position;
-        $this->installed_at = $installed_at;
-        $this->demissioned_at = $demissioned_at;
-        $this->decharged_at = $decharged_at;
+        $this->photo_position = $photoPosition;
+        $this->installed_at = $installedAt;
+        $this->demissioned_at = $demissionedAt;
+        $this->decharged_at = $dechargedAt;
 
         if ($photo !== null) {
             $this->syncMedia($photo, static::BOARD_PHOTO_TAG);

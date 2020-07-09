@@ -27,9 +27,9 @@ class NotifyAboutAccountActivation extends Mailable
      *
      * @return void
      */
-    public function __construct(int $account_id)
+    public function __construct(int $accountId)
     {
-        $this->account_id = $account_id;
+        $this->account_id = $accountId;
     }
 
     /**

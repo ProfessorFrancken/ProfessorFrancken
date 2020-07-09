@@ -27,7 +27,7 @@ final class RegisterMember implements ShouldQueue
 
     private function registerMemberToLegacyDatabase(Registration $registration) : LegacyMember
     {
-        [$study_track, $year_of_registration] = $this->study($registration);
+        [$studyTrack, $yearOfRegistration] = $this->study($registration);
         $hasAddress =$this->hasAddress($registration);
         
         return LegacyMember::create([
@@ -54,8 +54,8 @@ final class RegisterMember implements ShouldQueue
             "is_lid" => true,
             "type_lid" => "Student RUG",
             "studentnummer" => $registration->student_number,
-            "studierichting" => $study_track,
-            "jaar_van_inschrijving" => $year_of_registration,
+            "studierichting" => $studyTrack,
+            "jaar_van_inschrijving" => $yearOfRegistration,
             // afstudeerplek
             // afgestudeerd
             // werkgever

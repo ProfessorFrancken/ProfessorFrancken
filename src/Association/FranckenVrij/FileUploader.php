@@ -49,32 +49,32 @@ final class FileUploader
         Media $franckenVrijMedia
     ) : Media {
         /** @var string|UploadedFile */
-        $cover_file = $request->hasFile('cover')
+        $coverFile = $request->hasFile('cover')
             ? $request->file('cover')
             : $this->generateCoverImageFromPdf(
                 $franckenVrijMedia->getAbsolutePath()
             );
 
-        return $this->uploader->fromSource($cover_file)
+        return $this->uploader->fromSource($coverFile)
             ->toDirectory('francken-vrij/covers/')
             ->useFilename($edition->volume . '-' . $edition->edition . '-cover')
             ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
     }
 
-    private function generateCoverImageFromPdf(string $pdf_path) : ?string
+    private function generateCoverImageFromPdf(string $pdfPath) : ?string
     {
-        $cover_path = preg_replace('"\.pdf$"', '-cover.png', $pdf_path);
+        $coverPath = preg_replace('"\.pdf$"', '-cover.png', $pdfPath);
 
         $imagick = new Imagick();
         $imagick->setCompressionQuality(100);
         $imagick->setResolution(300, 300);
-        $imagick->readImage($pdf_path . '[0]');
+        $imagick->readImage($pdfPath . '[0]');
         $imagick->resizeImage(175, 245, Imagick::FILTER_LANCZOS, 0.9);
         $imagick->transformImageColorspace(Imagick::COLORSPACE_SRGB);
         $imagick->setFormat('png');
-        $imagick->writeImage($cover_path);
+        $imagick->writeImage($coverPath);
 
-        return $cover_path;
+        return $coverPath;
     }
 }

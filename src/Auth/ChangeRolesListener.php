@@ -62,7 +62,7 @@ final class ChangeRolesListener
         $this->assignRolesForActiveCommittees($account);
 
         /** @var Collection */
-        $as_board_members = BoardMember::where(
+        $asBoardMembers = BoardMember::where(
             'member_id', '=', (int)$account->member_id
         )->get();
 
@@ -70,7 +70,7 @@ final class ChangeRolesListener
         // this is the case as otherwise wed things will happen where an account
         // can have both an board and an candidate board role
         // If this happens we can simply fix that by manually changing the account's roles
-        $as_board_members->each(function (BoardMember $member) use ($account) : void {
+        $asBoardMembers->each(function (BoardMember $member) use ($account) : void {
             $account->assignRole($this->boardMemberRole($member));
         });
 

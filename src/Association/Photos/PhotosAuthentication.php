@@ -25,11 +25,11 @@ class PhotosAuthentication
 
     private string $password_hash;
 
-    public function __construct(Session $sessions, Hasher $hasher, string $password_hash)
+    public function __construct(Session $sessions, Hasher $hasher, string $passwordHash)
     {
         $this->sessions = $sessions;
         $this->hasher = $hasher;
-        $this->password_hash = $password_hash;
+        $this->password_hash = $passwordHash;
     }
 
     public function isLoggedIn() : bool

@@ -28,9 +28,9 @@ final class PhotosController
         return view('association.photos.index', ['albums' => $albums]);
     }
 
-    public function show(string $album_slug, Request $request)
+    public function show(string $albumSlug, Request $request)
     {
-        $album = $this->albums->bySlug($album_slug);
+        $album = $this->albums->bySlug($albumSlug);
 
         if ( ! $request->has('page')) {
             $album->addView();

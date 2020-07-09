@@ -35,9 +35,9 @@ final class AlbumsRepository
         return $query->simplePaginate(16);
     }
 
-    public function bySlug(string $album_slug) : Album
+    public function bySlug(string $albumSlug) : Album
     {
-        $query = Album::where('slug', $album_slug)
+        $query = Album::where('slug', $albumSlug)
             ->where('is_public', true)
             ->with('photos');
 
@@ -59,9 +59,9 @@ final class AlbumsRepository
         $authenticated = $this->gate->allows('view-private-albums');
 
         if ( ! $authenticated) {
-            $one_year_ago = (new DateTimeImmutable())->sub(new DateInterval('P1Y'));
+            $oneYearAgo = (new DateTimeImmutable())->sub(new DateInterval('P1Y'));
 
-            $query = $query->whereDate('activity_date', '>=', $one_year_ago);
+            $query = $query->whereDate('activity_date', '>=', $oneYearAgo);
         }
 
         return $query;

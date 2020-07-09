@@ -40,8 +40,8 @@ final class AdminSymposiaController
 
     public function store(Request $request) : RedirectResponse
     {
-        $open_for_registration = $request->has('open_for_registration');
-        $promote_on_agenda = $request->has('promote_on_agenda');
+        $openForRegistration = $request->has('open_for_registration');
+        $promoteOnAgenda = $request->has('promote_on_agenda');
 
         $symposium = Symposium::create([
             'name' => $request->input('name'),
@@ -49,8 +49,8 @@ final class AdminSymposiaController
             'end_date' => new DateTimeImmutable($request->input('end_date')),
             'location' => $request->input('location'),
             'website_url' => $request->input('website_url'),
-            'open_for_registration' => $open_for_registration,
-            'promote_on_agenda' => $promote_on_agenda,
+            'open_for_registration' => $openForRegistration,
+            'promote_on_agenda' => $promoteOnAgenda,
         ]);
 
         return redirect()->action([self::class, 'show'], $symposium->id);
@@ -85,8 +85,8 @@ final class AdminSymposiaController
 
     public function update(Symposium $symposium, Request $request) : RedirectResponse
     {
-        $open_for_registration = $request->has('open_for_registration');
-        $promote_on_agenda = $request->has('promote_on_agenda');
+        $openForRegistration = $request->has('open_for_registration');
+        $promoteOnAgenda = $request->has('promote_on_agenda');
 
         $symposium->update([
             'name' => $request->input('name'),
@@ -94,8 +94,8 @@ final class AdminSymposiaController
             'end_date' => new DateTimeImmutable($request->input('end_date')),
             'location' => $request->input('location'),
             'website_url' => $request->input('website_url'),
-            'open_for_registration' => $open_for_registration,
-            'promote_on_agenda' => $promote_on_agenda,
+            'open_for_registration' => $openForRegistration,
+            'promote_on_agenda' => $promoteOnAgenda,
         ]);
 
         return redirect()->action([self::class, 'show'], $symposium->id);

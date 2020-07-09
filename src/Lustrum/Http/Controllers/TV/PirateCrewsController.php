@@ -10,12 +10,12 @@ class PirateCrewsController
 {
     public function index()
     {
-        $blue_beards = PirateCrew::where('name', 'Blue beards')->firstOrFail();
-        $red_beards = PirateCrew::where('name', 'Red beards')->firstOrFail();
+        $blueBeards = PirateCrew::where('name', 'Blue beards')->firstOrFail();
+        $redBeards = PirateCrew::where('name', 'Red beards')->firstOrFail();
 
         return view('lustrum.tv.pirate_crews', [
-            'blue_beards' => $blue_beards,
-            'red_beards' => $red_beards
+            'blue_beards' => $blueBeards,
+            'red_beards' => $redBeards
         ]);
     }
 }

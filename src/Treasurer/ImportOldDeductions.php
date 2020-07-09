@@ -45,34 +45,34 @@ final class ImportOldDeductions extends Command
      */
     public function handle() : void
     {
-        MailDeduction::all()->each(function (MailDeduction $mail_deduction) : void {
+        MailDeduction::all()->each(function (MailDeduction $mailDeduction) : void {
 
             /** @var Deduction */
-            $deduction = $mail_deduction->deduction();
+            $deduction = $mailDeduction->deduction();
 
             /** @var Period */
-            $deduction_period = $deduction->period;
+            $deductionPeriod = $deduction->period;
 
             try {
-                $file = storage_path('app/deductions/' . $mail_deduction->bestand);
+                $file = storage_path('app/deductions/' . $mailDeduction->bestand);
 
                 /** @var Media */
-                $deduction_file = $this->uploader->fromSource($file)
+                $deductionFile = $this->uploader->fromSource($file)
                     ->setAllowUnrecognizedTypes(true)
                     ->toDestination('local', 'deductions')
                     ->useHashForFilename()
                     ->upload();
 
                 $deduction = DeductionEmail::upload(
-                    $deduction_file,
-                    new DateTimeImmutable($mail_deduction->datum->format("Y-m-d")),
-                    $deduction_period->getStartDate(),
-                    $deduction_period->getEndDate(),
+                    $deductionFile,
+                    new DateTimeImmutable($mailDeduction->datum->format("Y-m-d")),
+                    $deductionPeriod->getStartDate(),
+                    $deductionPeriod->getEndDate(),
                     $this->importer
                 );
 
                 $deduction->was_verified = true;
-                $deduction->emails_sent_at = new DateTimeImmutable($mail_deduction->datum->format("Y-m-d"));
+                $deduction->emails_sent_at = new DateTimeImmutable($mailDeduction->datum->format("Y-m-d"));
                 $deduction->save();
             } catch (Exception $e) {
                 dump($e);

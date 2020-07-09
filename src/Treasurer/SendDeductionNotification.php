@@ -25,9 +25,9 @@ class SendDeductionNotification extends Mailable
      *
      * @return void
      */
-    public function __construct(int $deduction_member_id)
+    public function __construct(int $deductionMemberId)
     {
-        $this->deduction_member_id = $deduction_member_id;
+        $this->deduction_member_id = $deductionMemberId;
     }
 
     /**

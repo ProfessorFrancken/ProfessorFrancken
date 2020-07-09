@@ -28,10 +28,10 @@ class NotifyCommittee extends Mailable
      *
      * @return void
      */
-    public function __construct(Participant $participant, string $who_needs_to_take_an_adt)
+    public function __construct(Participant $participant, string $whoNeedsToTakeAnAdt)
     {
         $this->participant = $participant;
-        $this->who_needs_to_take_an_adt = $who_needs_to_take_an_adt;
+        $this->who_needs_to_take_an_adt = $whoNeedsToTakeAnAdt;
     }
 
     /**

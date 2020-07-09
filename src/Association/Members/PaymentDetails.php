@@ -21,11 +21,11 @@ final class PaymentDetails
     public function __construct(
         ?string $iban,
         ?string $bic = null,
-        bool $deduct_additional_costs = false
+        bool $deductAdditionalCosts = false
     ) {
         $this->iban = $iban;
         $this->bic = $bic;
-        $this->deduct_additional_costs = $deduct_additional_costs;
+        $this->deduct_additional_costs = $deductAdditionalCosts;
     }
 
     public function iban() : ?string
@@ -69,8 +69,8 @@ final class PaymentDetails
 
     public static function fromDb(LegacyMember $member) : self
     {
-        $deduct_additional_costs = $member->streeplijst === 'Afschrijven';
+        $deductAdditionalCosts = $member->streeplijst === 'Afschrijven';
 
-        return new self($member->rekeningnummer, null, $deduct_additional_costs);
+        return new self($member->rekeningnummer, null, $deductAdditionalCosts);
     }
 }

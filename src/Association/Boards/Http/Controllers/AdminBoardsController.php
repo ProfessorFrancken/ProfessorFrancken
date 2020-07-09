@@ -59,17 +59,17 @@ final class AdminBoardsController
 
     public function store(BoardRequest $request) : RedirectResponse
     {
-        $board_photo = $this->uploadPhoto(
+        $boardPhoto = $this->uploadPhoto(
             $request->photo,
             $request->boardYear(),
             $request->boardName()->toString()
         );
-        $photo_position = self::PHOTO_POSITIONS[$request->get('photo_position')];
+        $photoPosition = self::PHOTO_POSITIONS[$request->get('photo_position')];
 
         $board = Board::install(
             $request->boardName(),
-            $board_photo,
-            $photo_position,
+            $boardPhoto,
+            $photoPosition,
             $request->installedAt(),
             $request->members()->map(
                 function (array $member) use ($request) : array {
@@ -121,36 +121,36 @@ final class AdminBoardsController
             $photo
         );
 
-        $request->members()->each(function (array $member_data) use ($board) : void {
-            $member = $board->members()->where('id', $member_data['id'])->first();
+        $request->members()->each(function (array $memberData) use ($board) : void {
+            $member = $board->members()->where('id', $memberData['id'])->first();
 
             $photo = $this->uploadPhoto(
-                $member_data['photo'] ?? null,
+                $memberData['photo'] ?? null,
                 $board->board_year,
-                $member_data['title']
+                $memberData['title']
             );
 
             // install new member
             if ($member === null) {
                 // If no install date was given, default to the install date of the board
-                $installed_at = $member_data['installed_at'] ?? DateTimeImmutable::createFromMutable(
+                $installedAt = $memberData['installed_at'] ?? DateTimeImmutable::createFromMutable(
                     $board->installed_at
                 );
 
                 BoardMember::install(
                     $board,
-                    (int)$member_data['member_id'],
-                    $member_data['title'],
-                    $installed_at,
+                    (int)$memberData['member_id'],
+                    $memberData['title'],
+                    $installedAt,
                     $photo
                 );
             } else {
                 $member->updateBoardMemberAttributes(
-                    (int)$member_data['member_id'],
-                    $member_data['title'],
-                    $member_data['installed_at'],
-                    $member_data['demissioned_at'],
-                    $member_data['decharged_at'],
+                    (int)$memberData['member_id'],
+                    $memberData['title'],
+                    $memberData['installed_at'],
+                    $memberData['demissioned_at'],
+                    $memberData['decharged_at'],
                     $photo
                 );
             }
@@ -165,14 +165,14 @@ final class AdminBoardsController
 
     private function uploadPhoto(
         ?UploadedFile $photo,
-        BoardYear $board_year,
+        BoardYear $boardYear,
         string $name
     ) : ?Media {
         if ($photo === null) {
             return null;
         }
 
-        $directory = "images/boards/" . Str::slug($board_year->toString()) . "/";
+        $directory = "images/boards/" . Str::slug($boardYear->toString()) . "/";
 
         return $this->uploader->fromSource($photo)
             ->toDirectory($directory)

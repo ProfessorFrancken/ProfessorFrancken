@@ -63,19 +63,19 @@ final class AdminSymposiumParticipantsController
 
     public function update(Symposium $symposium, Participant $participant, Request $request) : RedirectResponse
     {
-        $pays_with_iban = $request->has('pays_with_bian');
-        $is_francken_member = $request->has('is_francken_member');
-        $is_nnv_member = $request->has('is_nnv_member');
+        $paysWithIban = $request->has('pays_with_bian');
+        $isFranckenMember = $request->has('is_francken_member');
+        $isNnvMember = $request->has('is_nnv_member');
 
         $participant->update([
             'firstname' => $request->input('firstname'),
             'lastname' => $request->input('lastname'),
             'email' => $request->input('email'),
-            'is_francken_member' => $is_francken_member,
-            'is_nnv_member' => $is_nnv_member,
+            'is_francken_member' => $isFranckenMember,
+            'is_nnv_member' => $isNnvMember,
             'nnv_number' => $request->input('nnv_number'),
             'member_id' => $request->input('member_id'),
-            'pays_with_iban' => $pays_with_iban,
+            'pays_with_iban' => $paysWithIban,
             'iban' => encrypt($request->input('iban')),
         ]);
 

@@ -58,7 +58,7 @@ class AdminCommitteesFeature extends TestCase
              ->press('Start committee');
 
         $committee = Committee::where('name', 'S[ck]rip(t|t?c)ie')->firstOrFail();
-        $previous_logo_id = $committee->logo_media_id;
+        $previousLogoId = $committee->logo_media_id;
 
         $this->assertEquals('S[ck]rip(t|t?c)ie', $committee->name);
         $this->assertEquals('sckripttcie', $committee->slug);
@@ -85,7 +85,7 @@ class AdminCommitteesFeature extends TestCase
 
         $committee->refresh();
 
-        $this->assertEquals($previous_logo_id, $committee->logo_media_id);
+        $this->assertEquals($previousLogoId, $committee->logo_media_id);
         $this
             ->see('Suggested committee members')
             ->see('Members')

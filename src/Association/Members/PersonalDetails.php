@@ -24,14 +24,14 @@ final class PersonalDetails
         Gender $gender,
         Birthdate $birthdate,
         string $nationality,
-        bool $has_dutch_diploma
+        bool $hasDutchDiploma
     ) {
         $this->fullname = $fullname;
         $this->initials = $initials;
         $this->gender = $gender;
         $this->birthdate = $birthdate;
         $this->nationality = $nationality;
-        $this->has_dutch_diploma = $has_dutch_diploma;
+        $this->has_dutch_diploma = $hasDutchDiploma;
     }
 
     public function fullname() : Fullname

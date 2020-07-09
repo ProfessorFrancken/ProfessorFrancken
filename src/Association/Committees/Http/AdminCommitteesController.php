@@ -30,7 +30,7 @@ final class AdminCommitteesController
             ->get();
 
         $boards = Board::orderBy('installed_at', 'desc')->get();
-        $board_years = $boards->mapWithKeys(function (Board $board) : array {
+        $boardYears = $boards->mapWithKeys(function (Board $board) : array {
             return [$board->id => $board->board_name->toString()];
         });
 
@@ -51,7 +51,7 @@ final class AdminCommitteesController
                 'continueable_committees' => $continuableCommittees,
                 'selected_board' => $board,
                 'selected_board_id' => $board->id,
-                'board_years' => $board_years,
+                'board_years' => $boardYears,
                 'breadcrumbs' => [
                     ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
                     ['url' => action([static::class, 'index'], ['board' => $board]), 'text' => $board->name],
@@ -155,11 +155,11 @@ final class AdminCommitteesController
             }
         );
 
-        $parent_committee = $committee->parentCommittee;
-        if ($parent_committee) {
+        $parentCommittee = $committee->parentCommittee;
+        if ($parentCommittee) {
             $parentCommittees->prepend(
-                $parent_committee->name . '(' . $parent_committee->board->board_name->toString() . ')',
-                $parent_committee->id
+                $parentCommittee->name . '(' . $parentCommittee->board->board_name->toString() . ')',
+                $parentCommittee->id
             );
         }
 

@@ -31,7 +31,7 @@ class AdminPartnersFeature extends TestCase
     public function a_partner_can_be_added() : void
     {
         $this->withoutExceptionHandling();
-        $sector_id = Sector::where('name', 'IT and programming')
+        $sectorId = Sector::where('name', 'IT and programming')
             ->firstOrFail()
             ->id;
 
@@ -39,7 +39,7 @@ class AdminPartnersFeature extends TestCase
             ->click('Add a partner')
             ->see('Add a new partner')
             ->type('S[ck]rip(t|t?c)ie In[ck]', 'name')
-            ->select($sector_id, 'sector_id')
+            ->select($sectorId, 'sector_id')
             ->type('https://scriptcie.nl', 'homepage_url')
             ->type('https://scriptcie.nl?referal=francken', 'referral_url')
             ->select(PartnerStatus::ACTIVE_PARTNER, 'status')
@@ -48,7 +48,7 @@ class AdminPartnersFeature extends TestCase
             ->press('Add');
 
         $partner = Partner::where('name', 'S[ck]rip(t|t?c)ie In[ck]')->firstOrFail();
-        $previous_logo_id = $partner->logo_media_id;
+        $previousLogoId = $partner->logo_media_id;
 
         $this->assertEquals('S[ck]rip(t|t?c)ie In[ck]', $partner->name);
         $this->assertEquals('https://scriptcie.nl', $partner->homepage_url);
@@ -82,7 +82,7 @@ class AdminPartnersFeature extends TestCase
 
         $this->assertEquals('Francken', $partner->contactDetails->department);
         $this->assertEquals(1, ContactDetails::count());
-        $this->assertEquals($previous_logo_id, $partner->logo_media_id);
+        $this->assertEquals($previousLogoId, $partner->logo_media_id);
         $this
             ->see('Save note')
             ->see('Enable company profile')

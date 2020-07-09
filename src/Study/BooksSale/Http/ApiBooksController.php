@@ -10,10 +10,10 @@ final class ApiBooksController
 {
     public function index() : array
     {
-        $legacy_books = Book::all();
+        $legacyBooks = Book::all();
 
         return [
-            'books' => $legacy_books->map(
+            'books' => $legacyBooks->map(
                 function (Book $book) : array {
                     return [
                         'title' => $book->naam,
