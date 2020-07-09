@@ -10897,16 +10897,16 @@
         },
         {
             "name": "psalm/plugin-laravel",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-laravel.git",
-                "reference": "5315836374c510aa615debbbb9e7882063f6bb24"
+                "reference": "58a444c30f6710b90ac2e1fd986097df4f35806b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/5315836374c510aa615debbbb9e7882063f6bb24",
-                "reference": "5315836374c510aa615debbbb9e7882063f6bb24",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/58a444c30f6710b90ac2e1fd986097df4f35806b",
+                "reference": "58a444c30f6710b90ac2e1fd986097df4f35806b",
                 "shasum": ""
             },
             "require": {
@@ -10919,7 +10919,7 @@
                 "illuminate/support": "5.8.* || ^6.0 || ^7.0",
                 "orchestra/testbench": "^3.8 || ^4.0 || ^5.0",
                 "php": "^7.2|^8",
-                "vimeo/psalm": "^3.11.6"
+                "vimeo/psalm": "^3.11.7"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1.6",
@@ -10927,7 +10927,7 @@
                 "codeception/module-phpbrowser": "^1.0.0",
                 "slevomat/coding-standard": "^6.2",
                 "squizlabs/php_codesniffer": "*",
-                "weirdan/codeception-psalm-module": "^0.7.2"
+                "weirdan/codeception-psalm-module": "^0.8"
             },
             "type": "psalm-plugin",
             "extra": {
@@ -10954,7 +10954,7 @@
                 }
             ],
             "description": "A Laravel plugin for Psalm",
-            "time": "2020-06-18T14:00:27+00:00"
+            "time": "2020-06-22T14:35:17+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
