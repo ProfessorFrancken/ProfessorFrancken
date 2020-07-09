@@ -20,7 +20,7 @@ class NotifyAboutAccountActivation extends Mailable
      */
     public $theme = 'francken';
 
-    private int $account_id;
+    private int $accountId;
 
     /**
      * Create a new message instance.
@@ -29,7 +29,7 @@ class NotifyAboutAccountActivation extends Mailable
      */
     public function __construct(int $accountId)
     {
-        $this->account_id = $accountId;
+        $this->accountId = $accountId;
     }
 
     /**
@@ -39,7 +39,7 @@ class NotifyAboutAccountActivation extends Mailable
      */
     public function build(PasswordBroker $broker) : self
     {
-        $account = Account::findOrFail($this->account_id);
+        $account = Account::findOrFail($this->accountId);
 
         return $this->subject("Your Francken website account was activated")
             ->markdown('auth.mails.notify-about-account-activation', [

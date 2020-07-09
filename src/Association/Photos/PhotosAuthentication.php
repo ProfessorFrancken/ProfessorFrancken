@@ -23,13 +23,13 @@ class PhotosAuthentication
 
     private Hasher $hasher;
 
-    private string $password_hash;
+    private string $passwordHash;
 
     public function __construct(Session $sessions, Hasher $hasher, string $passwordHash)
     {
         $this->sessions = $sessions;
         $this->hasher = $hasher;
-        $this->password_hash = $passwordHash;
+        $this->passwordHash = $passwordHash;
     }
 
     public function isLoggedIn() : bool
@@ -39,7 +39,7 @@ class PhotosAuthentication
 
     public function login(string $password) : bool
     {
-        if ($this->hasher->check($password, $this->password_hash)) {
+        if ($this->hasher->check($password, $this->passwordHash)) {
             $this->sessions->put(self::SESSION_KEY, true);
 
             return true;

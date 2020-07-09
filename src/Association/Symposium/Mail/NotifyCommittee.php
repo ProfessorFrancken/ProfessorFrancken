@@ -21,7 +21,7 @@ class NotifyCommittee extends Mailable
      */
     public $theme = 'symposium';
 
-    private string $who_needs_to_take_an_adt;
+    private string $whoNeedsToTakeAnAdt;
 
     /**
      * Create a new message instance.
@@ -31,7 +31,7 @@ class NotifyCommittee extends Mailable
     public function __construct(Participant $participant, string $whoNeedsToTakeAnAdt)
     {
         $this->participant = $participant;
-        $this->who_needs_to_take_an_adt = $whoNeedsToTakeAnAdt;
+        $this->whoNeedsToTakeAnAdt = $whoNeedsToTakeAnAdt;
     }
 
     /**
@@ -45,11 +45,11 @@ class NotifyCommittee extends Mailable
             sprintf(
                 "%s has registered, %s take a drink",
                 $this->participant->full_name,
-                $this->who_needs_to_take_an_adt
+                $this->whoNeedsToTakeAnAdt
             )
         )->markdown('symposium.mails.notify_committee', [
             'full_name' => $this->participant->full_name,
-            'who_needs_to_take_an_adt' => $this->who_needs_to_take_an_adt
+            'who_needs_to_take_an_adt' => $this->whoNeedsToTakeAnAdt
         ]);
     }
 }

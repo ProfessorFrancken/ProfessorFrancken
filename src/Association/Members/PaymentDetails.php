@@ -12,7 +12,7 @@ final class PaymentDetails
 
     private ?string $bic = null;
 
-    private bool $deduct_additional_costs = false;
+    private bool $deductAdditionalCosts = false;
 
     /**
      * In the future we will also store the bic code, but as that would require
@@ -25,7 +25,7 @@ final class PaymentDetails
     ) {
         $this->iban = $iban;
         $this->bic = $bic;
-        $this->deduct_additional_costs = $deductAdditionalCosts;
+        $this->deductAdditionalCosts = $deductAdditionalCosts;
     }
 
     public function iban() : ?string
@@ -54,7 +54,7 @@ final class PaymentDetails
 
     public function paymentMethod() : string
     {
-        return $this->deduct_additional_costs ? 'Afschrijven' : 'Contant';
+        return $this->deductAdditionalCosts ? 'Afschrijven' : 'Contant';
     }
 
     public function freeMembership() : bool
@@ -64,7 +64,7 @@ final class PaymentDetails
 
     public function deductAdditionalCosts() : bool
     {
-        return $this->deduct_additional_costs;
+        return $this->deductAdditionalCosts;
     }
 
     public static function fromDb(LegacyMember $member) : self

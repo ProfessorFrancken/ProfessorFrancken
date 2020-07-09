@@ -8,16 +8,16 @@ use Illuminate\View\View;
 
 final class MemberSelectionComposer
 {
-    private bool $composed_once = false;
+    private bool $composedOnce = false;
     /**
      * Bind data to the view.
      */
     public function compose(View $view) : void
     {
-        if ($this->composed_once) {
+        if ($this->composedOnce) {
             return;
         }
-        $this->composed_once = true;
+        $this->composedOnce = true;
 
         $members = \DB::connection('francken-legacy')
                 ->table('leden')

@@ -13,13 +13,13 @@ use Illuminate\Support\Collection;
 final class FlickrRepository
 {
     private Flickr $flickr;
-    private $user_id;
+    private $userId;
     private $secret;
 
     public function __construct()
     {
         $this->secret = config('services.flickr.secret');
-        $this->user_id = config('services.flickr.user_id');
+        $this->userId = config('services.flickr.user_id');
 
         $apiKey = config('services.flickr.api_key');
         $this->flickr = new Flickr(new Api($apiKey));
@@ -30,7 +30,7 @@ final class FlickrRepository
     {
         try {
             $photoset = $this->flickr->listSets([
-                'user_id' => $this->user_id,
+                'user_id' => $this->userId,
                 'secret' => $this->secret,
                 'primary_photo_extras' => 'url_sq,url_t,url_s,url_m,url_o,date_upload,date_taken,last_update'
             ]);
@@ -76,7 +76,7 @@ final class FlickrRepository
         try {
             $album = $this->flickr->photosForSet(
                 $albumId, // set id
-                $this->user_id, // user id
+                $this->userId, // user id
                 [
                     'extras' => 'icon_server,machine_tags,o_dims,views,media,path_alias,url_sq,url_t,url_s,url_m,url_o,original_format,date_upload,last_update,date_taken,geo',
                     'privacy_filter' => '1'

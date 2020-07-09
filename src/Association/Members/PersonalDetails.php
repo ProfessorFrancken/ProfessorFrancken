@@ -16,7 +16,7 @@ final class PersonalDetails
 
     private string $nationality;
 
-    private bool $has_dutch_diploma;
+    private bool $hasDutchDiploma;
 
     public function __construct(
         Fullname $fullname,
@@ -31,7 +31,7 @@ final class PersonalDetails
         $this->gender = $gender;
         $this->birthdate = $birthdate;
         $this->nationality = $nationality;
-        $this->has_dutch_diploma = $hasDutchDiploma;
+        $this->hasDutchDiploma = $hasDutchDiploma;
     }
 
     public function fullname() : Fullname
@@ -61,6 +61,6 @@ final class PersonalDetails
 
     public function hasDutchDiploma() : bool
     {
-        return $this->has_dutch_diploma;
+        return $this->hasDutchDiploma;
     }
 }

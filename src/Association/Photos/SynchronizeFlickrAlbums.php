@@ -27,7 +27,7 @@ final class SynchronizeFlickrAlbums extends Command
      */
     protected $description = 'Fetch and store all albums from Flickr';
 
-    private FlickrRepository $flickr_repo;
+    private FlickrRepository $flickrRepo;
 
     private ConnectionInterface $db;
 
@@ -43,7 +43,7 @@ final class SynchronizeFlickrAlbums extends Command
 
         parent::__construct();
 
-        $this->flickr_repo = new FlickrRepository();
+        $this->flickrRepo = new FlickrRepository();
         $this->db = $db;
     }
 
@@ -52,7 +52,7 @@ final class SynchronizeFlickrAlbums extends Command
      */
     public function handle() : void
     {
-        $albums = $this->flickr_repo->albums();
+        $albums = $this->flickrRepo->albums();
         $albumsInDb = $this->db->table('albums')->get();
 
         // Check which albums have already been synchronized
@@ -74,7 +74,7 @@ final class SynchronizeFlickrAlbums extends Command
         $publicationDate = $album['date_created'];
         $activityDate = $album['primary']['date_taken']->sub(new DateInterval('PT6H'))->format('Y-m-d');
 
-        $photoAlbum = $this->flickr_repo->findAlbum($album['id']);
+        $photoAlbum = $this->flickrRepo->findAlbum($album['id']);
 
 
         $photos = $photoAlbum['photos']->map(function ($photo) use ($album) : array {

@@ -14,17 +14,17 @@ final class PhotosPolicy
 
     private PhotosAuthentication $auth;
 
-    private bool $are_albums_public;
+    private bool $areAlbumsPublic;
 
     public function __construct(PhotosAuthentication $auth, Settings $settings)
     {
         $this->auth = $auth;
-        $this->are_albums_public = ! $settings->areAlbumsPrivate();
+        $this->areAlbumsPublic = ! $settings->areAlbumsPrivate();
     }
 
     public function view(?Account $account) : bool
     {
-        return $this->are_albums_public || $this->viewPrivate($account);
+        return $this->areAlbumsPublic || $this->viewPrivate($account);
     }
 
     public function viewPrivate(?Account $account) : bool

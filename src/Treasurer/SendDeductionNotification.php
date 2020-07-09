@@ -18,7 +18,7 @@ class SendDeductionNotification extends Mailable
      */
     public $theme = 'francken';
 
-    private int $deduction_member_id;
+    private int $deductionMemberId;
 
     /**
      * Create a new message instance.
@@ -27,7 +27,7 @@ class SendDeductionNotification extends Mailable
      */
     public function __construct(int $deductionMemberId)
     {
-        $this->deduction_member_id = $deductionMemberId;
+        $this->deductionMemberId = $deductionMemberId;
     }
 
     /**
@@ -38,7 +38,7 @@ class SendDeductionNotification extends Mailable
     public function build() : self
     {
         /** @var DeductionEmailToMember */
-        $member = DeductionEmailToMember::findOrFail($this->deduction_member_id);
+        $member = DeductionEmailToMember::findOrFail($this->deductionMemberId);
         $date = $member->deduction->deducted_at;
 
         // $date = $member->deduction->

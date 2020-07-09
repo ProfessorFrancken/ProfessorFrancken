@@ -6,23 +6,23 @@ namespace Francken\Association\Boards;
 
 final class BoardMemberWasInstalled
 {
-    private int $board_id;
+    private int $boardId;
 
-    private int $member_id;
+    private int $memberId;
 
     public function __construct(int $boardId, int $memberId)
     {
-        $this->board_id = $boardId;
-        $this->member_id = $memberId;
+        $this->boardId = $boardId;
+        $this->memberId = $memberId;
     }
 
     public function boardId() : int
     {
-        return $this->board_id;
+        return $this->boardId;
     }
 
     public function memberId() : int
     {
-        return $this->member_id;
+        return $this->memberId;
     }
 }
