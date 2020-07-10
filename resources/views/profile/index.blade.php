@@ -132,7 +132,7 @@
                 Password
             </h5>
             <p>
-                Click <a href="/" class="font-weight-bold">here</a> to change your password.
+                Click <a href="{{ action([\Francken\Association\Members\Http\PasswordController::class, 'index']) }}" class="font-weight-bold">here</a> to change your password.
             </p>
         </div>
     </div>
