@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\Members;
 
 use DateTimeImmutable;
-use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
 final class Birthdate
@@ -16,7 +15,7 @@ final class Birthdate
     {
         $this->date = $date;
     }
-   
+
     public function toString() : string
     {
         return $this->date->format('Y-m-d');
@@ -37,10 +36,6 @@ final class Birthdate
         $date = DateTimeImmutable::createFromFormat('!Y-m-d', $birthday);
 
         Assert::isInstanceOf($date, DateTimeImmutable::class);
-
-        if ( ! $date) {
-            throw new InvalidArgumentException("Given date was not in Y-m-d format");
-        }
 
         return self::fromDateTime($date);
     }
