@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
-            "version": "0.4.2",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blade-ui-kit/blade-icons.git",
-                "reference": "2bd05e9cbe026f38a11cd26221e287f5ce678af4"
+                "reference": "709cc25c732f0e88c103af2ee423e7220e53c5bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/2bd05e9cbe026f38a11cd26221e287f5ce678af4",
-                "reference": "2bd05e9cbe026f38a11cd26221e287f5ce678af4",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/709cc25c732f0e88c103af2ee423e7220e53c5bd",
+                "reference": "709cc25c732f0e88c103af2ee423e7220e53c5bd",
                 "shasum": ""
             },
             "require": {
@@ -79,7 +79,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-06-27T17:30:25+00:00"
+            "time": "2020-07-09T20:12:04+00:00"
         },
         {
             "name": "brick/math",
@@ -10328,10 +10328,6 @@
                 "MIT"
             ],
             "description": "Composer plugin for automatic installation of PHPStan extensions",
-            "support": {
-                "issues": "https://github.com/phpstan/extension-installer/issues",
-                "source": "https://github.com/phpstan/extension-installer/tree/master"
-            },
             "time": "2020-03-31T16:00:42+00:00"
         },
         {
@@ -10546,10 +10542,6 @@
                 "MIT"
             ],
             "description": "PHPStan webmozart/assert extension",
-            "support": {
-                "issues": "https://github.com/phpstan/phpstan-webmozart-assert/issues",
-                "source": "https://github.com/phpstan/phpstan-webmozart-assert/tree/0.12.6"
-            },
             "time": "2020-06-06T18:10:56+00:00"
         },
         {
@@ -14046,5 +14038,5 @@
         "ext-json": "^7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
