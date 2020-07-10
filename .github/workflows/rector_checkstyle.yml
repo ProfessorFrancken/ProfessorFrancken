@@ -14,7 +14,8 @@ jobs:
 
             -   uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '7.4'
+                    php-version: 7.4
+                    extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, imagick
                     coverage: none
                     tools: cs2pr
 
