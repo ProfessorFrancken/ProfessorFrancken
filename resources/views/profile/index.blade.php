@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-between">
         <h4 class="font-weight-bold section-header">
-            {{ $member->full_name }} ({{ $member->initials }} {{ $member->surname }})
+            {{ $member->fullname }} ({{ $member->initials }} {{ $member->surname }})
         </h4>
         <div class="text-right d-flex justify-content-between">
             <p class="text-muted mx-3">

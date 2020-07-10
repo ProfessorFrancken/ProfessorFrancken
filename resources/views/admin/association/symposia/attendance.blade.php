@@ -26,7 +26,7 @@
                             <tr>
                                 <td class="d-flex align-items-end">
                                     <h4 class="mr-2 mb-0">
-                                        {{ $participant->full_name }}
+                                        {{ $participant->fullname }}
                                     </h4>
                                     <span>{{ $participant->email }}</span>
                                 </td>

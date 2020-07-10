@@ -45,7 +45,7 @@ final class Alumnus extends Model
 
     public function getFullnameAttribute() : string
     {
-        return $this->member->full_name;
+        return $this->member->fullname;
     }
 
     public function member() : BelongsTo

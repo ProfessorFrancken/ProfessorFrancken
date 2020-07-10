@@ -1,6 +1,6 @@
 @component('mail::message')
     {{-- Body --}}
-# Hi {{ $full_name }},
+# Hi {{ $fullname }},
 
 You have been given an account which you can use to login to the website of our association [T.F.V. 'Professor Francken'](https://professorfrancken.nl).
 

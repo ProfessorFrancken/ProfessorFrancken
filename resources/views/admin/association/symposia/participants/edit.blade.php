@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', $symposium->name . ' / ' . $participant->full_name)
+@section('page-title', $symposium->name . ' / ' . $participant->fullname)
 
 @section('content')
     <div class="row">

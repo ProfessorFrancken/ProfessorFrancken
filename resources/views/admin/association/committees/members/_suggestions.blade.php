@@ -28,7 +28,7 @@
             {!! Form::hidden("installed_at", $committee->board->installed_at->format('Y-m-d')) !!}
             <div class="d-flex flex-column justify-content-between" >
                 <span class="font-weight-bold">
-                    {{ $member->member->full_name }}
+                    {{ $member->member->fullname }}
                 </span>
 
                 <small class="text-muted">

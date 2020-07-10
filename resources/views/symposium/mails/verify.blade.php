@@ -8,7 +8,7 @@
     @endslot
 
     {{-- Body --}}
-# Hi {{ $full_name }},
+# Hi {{ $fullname }},
 
 Thank you for signing up for the Symposium 'Cognitive Matters - Physics of cognitive advancements'.
 

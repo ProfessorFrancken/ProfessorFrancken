@@ -12,7 +12,7 @@
         <li class="p-2 my-2 bg-light d-flex justify-content-between align-items-center">
             <div class="d-flex flex-column justify-content-between" >
                 <span class="font-weight-bold">
-                    {{ $committeeMember->member->full_name }}
+                    {{ $committeeMember->member->fullname }}
                 </span>
 
                 <small class="text-muted">

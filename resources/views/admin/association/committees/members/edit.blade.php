@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', 'Committees / ' . $board->board_name->toString() . ' / ' . $committee->name . ' / Members / ' . $member->member->full_name)
+@section('page-title', 'Committees / ' . $board->board_name->toString() . ' / ' . $committee->name . ' / Members / ' . $member->member->fullname)
 
 @section('content')
     <div class="row">

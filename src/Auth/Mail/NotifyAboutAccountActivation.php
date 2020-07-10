@@ -43,7 +43,7 @@ class NotifyAboutAccountActivation extends Mailable
 
         return $this->subject("Your Francken website account was activated")
             ->markdown('auth.mails.notify-about-account-activation', [
-                'full_name' => $account->member->full_name,
+                'fullname' => $account->member->fullname,
                 'email' => $account->email,
                 'url' => $this->resetLink($account, $broker),
             ]);

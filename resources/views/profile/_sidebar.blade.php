@@ -15,7 +15,7 @@ $menu[] = ['link' => '/logout', 'icon' => 'fas fa-sign-out-alt', 'text' => 'Logo
 <div class="agenda">
     <div class="d-flex justify-content-start">
         <h3 class="section-header agenda-header ml-2">
-            {{ $member->full_name }}
+            {{ $member->fullname }}
         </h3>
     </div>
 

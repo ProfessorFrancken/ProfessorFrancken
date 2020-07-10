@@ -13,7 +13,7 @@
             <tr>
                 <td>
                     <h4>
-                        {{ $participant->full_name }}
+                        {{ $participant->fullname }}
                     </h4>
                     <span>{{ $participant->email }}</span>
                     @if (is_null($participant->email_verified_at))

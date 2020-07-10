@@ -62,7 +62,7 @@ final class Pirate extends Model
         /** @var Pirate $pirate */
         $pirate = self::create([
             'member_id' => $member->id,
-            'name' => $member->full_name,
+            'name' => $member->fullname,
             'earned_points' => 0,
             'title' => 'Noobie'
         ]);

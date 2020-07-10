@@ -41,7 +41,7 @@ class VerifyRegistration extends Mailable
     {
         return $this->subject("Please verify your registration for the '" . $this->participant->symposium->name . "' symposium")
             ->markdown('symposium.mails.verify', [
-            'full_name' => $this->participant->full_name,
+            'fullname' => $this->participant->fullname,
             'participant' => $this->participant,
             'location_url' => 'https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling',
             'url' => $this->verificationUrl($this->participant),

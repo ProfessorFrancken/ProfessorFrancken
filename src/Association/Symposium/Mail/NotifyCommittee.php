@@ -44,11 +44,11 @@ class NotifyCommittee extends Mailable
         return $this->subject(
             sprintf(
                 "%s has registered, %s take a drink",
-                $this->participant->full_name,
+                $this->participant->fullname,
                 $this->whoNeedsToTakeAnAdt
             )
         )->markdown('symposium.mails.notify_committee', [
-            'full_name' => $this->participant->full_name,
+            'fullname' => $this->participant->fullname,
             'who_needs_to_take_an_adt' => $this->whoNeedsToTakeAnAdt
         ]);
     }

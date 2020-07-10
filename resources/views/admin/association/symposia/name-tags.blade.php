@@ -20,7 +20,7 @@
                                 />
                                 <div class="d-flex flex-column justify-content-between">
                                 <h3 class="">
-                                    {{ $participant->full_name }}
+                                    {{ $participant->fullname }}
                                 </h3>
                                     <h5 class="text-muted h6">
                                         In a Materialistic World
