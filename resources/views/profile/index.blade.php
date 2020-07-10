@@ -181,24 +181,4 @@
             </div>
         </div>
     @endif
-
-    @if (1 == 2)
-        @component('profile._profile', ['icon' => 'fas fa-user-secret'])
-            <h6 class="text-body font-weight-light">
-                Privacy settings
-            </h6>
-
-            <ul class="list-unstyled">
-                <li>
-                    <i class="fas fa-check fa-xs text-primary"></i> Let others know what activities I've signed up
-                </li>
-                <li>
-                    <i class="fas fa-check fa-xs text-primary"></i> Share my <em>streep-statistics</em> on <a href="https://borrelcie.vodka">borrelcie.vodka</a>.
-                </li>
-                <li>
-                    <i class="fas fa-check fa-xs text-primary"></i> Track my phone location in the Francken Room
-                </li>
-            </ul>
-        @endcomponent
-    @endif
 @endsection
