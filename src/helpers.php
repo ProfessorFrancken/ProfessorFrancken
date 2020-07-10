@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function banner_image($url, $options)
+function banner_image(string $url, array $options) : string
 {
     if ( ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
@@ -14,7 +14,7 @@ function banner_image($url, $options)
     ]));
 }
 
-function board_banner_image($url = '', $options = [])
+function board_banner_image(string $url = '', array $options = []) : string
 {
     return image($url, array_merge($options, [
         'width' => 930,
@@ -22,29 +22,11 @@ function board_banner_image($url = '', $options = [])
     ]));
 }
 
-function board_full_image($url)
-{
-    return image($url, [
-        'width' => 1600,
-        'height' => 900
-    ]);
-}
-
-function board_member_image($url, $number)
-{
-    return image($url, [
-        'width' => 300,
-        'height' => 300,
-        'face' => $number
-    ]);
-}
-
-function news_image($url)
+function news_image(string $url) : string
 {
     if ( ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
     }
-
 
     return image($url, [
         'width' => 600,
@@ -52,8 +34,12 @@ function news_image($url)
     ]);
 }
 
-function image($url = '', $options = [], $addAppUrl = false)
+function image(?string $url = '', array $options = [], bool $addAppUrl = false) : string
 {
+    if ($url === null) {
+        return '';
+    }
+
     if ($addAppUrl && ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
     }
