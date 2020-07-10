@@ -8,6 +8,7 @@ use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Webmozart\Assert\Assert;
 
 final class AdminContinueCommitteesController
 {
@@ -16,6 +17,7 @@ final class AdminContinueCommitteesController
         $committeeId = $request->input('committee_id');
 
         $committeeToContinue = Committee::findOrFail($committeeId);
+        Assert::isInstanceOf($committeeToContinue, Committee::class);
 
         $committee = Committee::continueFrom($committeeToContinue, $board);
 

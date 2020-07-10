@@ -12,6 +12,7 @@ use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\News\News;
 use Illuminate\View\View;
 use InvalidArgumentException;
+use Webmozart\Assert\Assert;
 
 class MainContentController extends Controller
 {
@@ -116,7 +117,12 @@ class MainContentController extends Controller
     {
         $parts = explode('/', $page);
 
-        return end($parts)[0] === '_';
+        if (count($parts) > 0) {
+            $view = $parts[count($parts) - 1];
+            return strlen($view) > 0 && $view[0] === '_';
+        }
+
+        return false;
     }
 
     /**
@@ -129,6 +135,8 @@ class MainContentController extends Controller
 
         try {
             $stringfromfile = file(base_path('.git/HEAD'), FILE_USE_INCLUDE_PATH);
+            Assert::isArray($stringfromfile);
+
             $firstLine = $stringfromfile[0];
             $explodedstring = explode("/", $firstLine, 3);
             $branchname = trim(preg_replace('/\s+/', ' ', $explodedstring[2]));

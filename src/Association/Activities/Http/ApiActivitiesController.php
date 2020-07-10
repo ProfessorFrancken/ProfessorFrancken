@@ -9,6 +9,7 @@ use DateTimeImmutable;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\Activities\CalendarEvent;
 use Illuminate\Http\Request;
+use Webmozart\Assert\Assert;
 
 final class ApiActivitiesController
 {
@@ -18,6 +19,8 @@ final class ApiActivitiesController
         $after = DateTimeImmutable::createFromFormat(
             'Y-m-d', $request->get('after', (new DateTimeImmutable())->format('Y-m-d'))
         );
+        Assert::isInstanceOf($after, DateTimeImmutable::class);
+
 
         $map = function (CalendarEvent $activity) : array {
             return [
@@ -33,6 +36,7 @@ final class ApiActivitiesController
             $before = DateTimeImmutable::createFromFormat(
                 'Y-m-d', $request->get('before')
             );
+            Assert::isInstanceOf($before, DateTimeImmutable::class);
 
             return [
                 'activities' => $activities->between($after, $before)->map($map)->values()

@@ -10,6 +10,7 @@ use Francken\Auth\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class FinancesController
 {
@@ -111,10 +112,13 @@ final class FinancesController
             return $transaction['time']->format('d');
         });
 
+        $date = DateTimeImmutable::createFromFormat("Y-m", "$year-$month");
+        Assert::isInstanceOf($date, DateTimeImmutable::class);
+
         return view('profile.finances-in-month')
             ->with([
                 'byDay' => $byDay,
-                'date' => (DateTimeImmutable::createFromFormat("Y-m", "$year-$month"))->format('F Y')
+                'date' => $date->format('F Y')
             ]);
     }
 

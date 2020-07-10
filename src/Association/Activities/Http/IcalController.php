@@ -39,6 +39,10 @@ final class IcalController
         $url = static::CALENDAR_URL;
         $file = file_get_contents($url);
 
+        if ( ! $file) {
+            abort(404);
+        }
+
         return new Response(
             $file,
             200,

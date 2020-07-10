@@ -22,6 +22,7 @@ use Francken\Association\Members\StudyDetails;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Webmozart\Assert\Assert;
 
 /**
  * Francken\Association\Members\Registration\Registration
@@ -234,6 +235,11 @@ final class Registration extends Model
                 $end = ($study['graduation_date'] !== null)
                     ? DateTimeImmutable::createFromFormat('!Y-m-d', $study['graduation_date'])
                     : null;
+
+                Assert::isInstanceOf($start, DateTimeImmutable::class);
+                if ($end !== null) {
+                    Assert::isInstanceOf($end, DateTimeImmutable::class);
+                }
 
                 return new Study($study['study'], $start, $end);
             },

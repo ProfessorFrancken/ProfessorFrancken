@@ -16,6 +16,7 @@ use Francken\Association\Members\PersonalDetails;
 use Francken\Association\Members\Study;
 use Francken\Association\Members\StudyDetails;
 use Illuminate\Foundation\Http\FormRequest;
+use Webmozart\Assert\Assert;
 
 class RegistrationRequest extends FormRequest
 {
@@ -118,16 +119,14 @@ class RegistrationRequest extends FormRequest
         $studies = array_map(
             function (string $name, string $start, ?string $end) : Study {
                 $start = DateTimeImmutable::createFromFormat('!Y-m', $start);
+                Assert::isInstanceOf($start, DateTimeImmutable::class);
 
                 if ($end !== null) {
                     $end = DateTimeImmutable::createFromFormat('!Y-m', $end);
+                    Assert::isInstanceOf($end, DateTimeImmutable::class);
                 }
 
-                return new Study(
-                    $name,
-                    $start,
-                    $end
-                );
+                return new Study($name, $start, $end);
             },
             $this->input('study_name'),
             $this->input('study_starting_date'),

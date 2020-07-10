@@ -55,10 +55,13 @@ final class Committee extends Model
 
     public static function continueFrom(self $previousCommittee, Board $toBoardYear) : self
     {
+        /** @var array<string, mixed> $previousCommitteeAttributes*/
+        $previousCommitteeAttributes = $previousCommittee->toArray();
+
         /** @var Committee $committee */
         $committee = self::create(
             array_merge(
-                $previousCommittee->toArray(),
+                $previousCommitteeAttributes,
                 [
                     'board_id' => $toBoardYear->id,
                     'parent_committee_id' => $previousCommittee->getKey(),

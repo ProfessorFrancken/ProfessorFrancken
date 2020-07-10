@@ -138,7 +138,13 @@ class AdminBookRequest extends FormRequest
 
     public function isbn() : ?string
     {
-        return preg_replace("/[^0-9x]/i", '', $this->input('isbn'));
+        $isbn = $this->input('isbn') ?? '';
+
+        $sanitizedIsbn = preg_replace("/[^0-9x]/i", '', $isbn);
+
+        Assert::string($sanitizedIsbn, 'An error occured while sanitizing the isbn');
+
+        return $sanitizedIsbn;
     }
 
     public function isbn10() : ?string

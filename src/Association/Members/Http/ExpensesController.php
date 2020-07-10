@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class ExpensesController
 {
@@ -114,17 +115,18 @@ final class ExpensesController
             return $transaction['time']->format('d');
         });
 
-        $date = (DateTimeImmutable::createFromFormat("Y-m", "$year-$month"))->format('F Y');
+        $date = DateTimeImmutable::createFromFormat("Y-m", "$year-$month");
+        Assert::isInstanceOf($date, DateTimeImmutable::class);
 
         return view('profile.expenses.show')
             ->with([
                 'member' => $member,
                 'byDay' => $byDay,
-                'date' => $date,
+                'date' => $date->format('F Y'),
                 'breadcrumbs' => [
                     ['url' => '/profile', 'text' => 'Profile'],
                     ['url' => '/profile/expenses', 'text' => 'Expenses'],
-                    ['text' => $date],
+                    ['text' => $date->format('F Y')],
                 ],
             ]);
     }

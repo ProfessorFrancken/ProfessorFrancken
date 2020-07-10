@@ -6,6 +6,7 @@ namespace Francken\Association\Members\Students;
 
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
+use Webmozart\Assert\Assert;
 
 final class Student
 {
@@ -38,15 +39,19 @@ final class Student
 
     public static function fromDb(LegacyMember $member) : self
     {
+        $yearOfRegistration = DateTimeImmutable::createFromFormat(
+            'Y-m-d',
+            $member->jaar_van_inschrijving . '-09-01'
+        );
+        Assert::isInstanceOf($yearOfRegistration, DateTimeImmutable::class);
+
+
         return new self(
             new StudentNumber($member->studentnummer),
             [
                 new Study(
                     $member->studierichting,
-                    DateTimeImmutable::createFromFormat(
-                        'Y-m-d',
-                        $member->jaar_van_inschrijving . '-09-01'
-                    )
+                    $yearOfRegistration
                 )
             ]
         );

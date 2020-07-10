@@ -39,6 +39,9 @@ class FetchLatestFranckenIcal extends Command
     {
         $url = 'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
         $file = file_get_contents($url);
-        \Storage::put('calendar.ics', $file);
+
+        if ($file) {
+            \Storage::put('calendar.ics', $file);
+        }
     }
 }

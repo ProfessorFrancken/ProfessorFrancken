@@ -7,6 +7,7 @@ namespace Francken\Shared\Http\Controllers;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class ResearchGroupsController
 {
@@ -313,6 +314,8 @@ The research has a strong instrumentation development component. For our experim
     public function show(string $slug) : View
     {
         $group = Arr::first(array_filter($this->groups, function ($group) use ($slug) : bool {
+            Assert::string($group['title']);
+
             return Str::slug($group['title']) === $slug;
         }));
 

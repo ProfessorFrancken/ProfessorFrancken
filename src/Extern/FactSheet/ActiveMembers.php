@@ -30,7 +30,7 @@ final class ActiveMembers
     public function studies() : Collection
     {
         $studies = $this->members->groupBy('studierichting')
-            ->map(function ($students, $study) : object {
+            ->map(function ($students, $study) : StudyStatistic {
                 return new class($study, $students->count()) implements StudyStatistic {
                     private string $study;
                     private int $amount;

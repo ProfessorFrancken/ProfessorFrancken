@@ -8,7 +8,9 @@ use DateTimeImmutable;
 use Exception;
 use Francken\Association\Photos\Flickr\Api;
 use Francken\Association\Photos\Flickr\Flickr;
+use Francken\Association\Photos\Flickr\Response;
 use Illuminate\Support\Collection;
+use Webmozart\Assert\Assert;
 
 final class FlickrRepository
 {
@@ -34,6 +36,8 @@ final class FlickrRepository
                 'secret' => $this->secret,
                 'primary_photo_extras' => 'url_sq,url_t,url_s,url_m,url_o,date_upload,date_taken,last_update'
             ]);
+
+            Assert::isInstanceOf($photoset, Response::class);
             $photosets = $photoset->photosets['photoset'];
 
 
@@ -74,14 +78,16 @@ final class FlickrRepository
     public function findAlbum(string $albumId) : Collection
     {
         try {
-            $album = $this->flickr->photosForSet(
-                $albumId, // set id
-                $this->userId, // user id
+            $response = $this->flickr->photosForSet(
+                $albumId,
+                $this->userId,
                 [
                     'extras' => 'icon_server,machine_tags,o_dims,views,media,path_alias,url_sq,url_t,url_s,url_m,url_o,original_format,date_upload,last_update,date_taken,geo',
                     'privacy_filter' => '1'
                 ]
-            )->photoset;
+            );
+            Assert::isInstanceOf($response, Response::class);
+            $album = $response->photoset;
 
             return collect([
                 'id' => $album['id'],

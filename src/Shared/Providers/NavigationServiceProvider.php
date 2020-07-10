@@ -133,10 +133,10 @@ final class NavigationServiceProvider extends ServiceProvider
         $now = (new DateTimeImmutable())
             ->setTimeZone(new DateTimeZone('Europe/Amsterdam'));
 
-        $fourOClock = DateTimeImmutable::createFromFormat('H a', '4 pm')
+        $fourOClock = (new DateTimeImmutable('4 pm'))
             ->setTimeZone(new DateTimeZone('Europe/Amsterdam'));
 
-        $fourOClockMorning = DateTimeImmutable::createFromFormat('H a', '4 am')
+        $fourOClockMorning = ( new DateTimeImmutable('4 am'))
             ->setTimeZone(new DateTimeZone('Europe/Amsterdam'));
 
         if ($fourOClockMorning < $now && $now < $fourOClock) {

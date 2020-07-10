@@ -8,6 +8,7 @@ use DateInterval;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Webmozart\Assert\Assert;
 
 final class CategoryStatisticsController
 {
@@ -18,11 +19,13 @@ final class CategoryStatisticsController
             'Y-m-d',
             $request->get('endDate', (new DateTimeImmutable())->format('Y-m-d'))
         );
+        Assert::isInstanceOf($endDate, DateTimeImmutable::class);
 
         $startDate = DateTimeImmutable::createFromFormat(
             'Y-m-d',
             $request->get('startDate', $endDate->sub(new DateInterval('P6M'))->format('Y-m-d'))
         );
+        Assert::isInstanceOf($startDate, DateTimeImmutable::class);
 
         $stats = DB::connection('francken-legacy')
             ->table('transacties')

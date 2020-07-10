@@ -72,7 +72,7 @@ class Api
         $encoded = [];
 
         foreach ($array as $k => $v) {
-            $encoded[] = urlencode($k) . '=' . urlencode($v);
+            $encoded[] = urlencode((string)$k) . '=' . urlencode((string)$v);
         }
 
         return '&' . implode('&', $encoded);

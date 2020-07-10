@@ -10,6 +10,7 @@ use Francken\Lustrum\Pirate;
 use Francken\Lustrum\PirateCrew;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Webmozart\Assert\Assert;
 
 class PirateAdtchievementsController
 {
@@ -22,9 +23,12 @@ class PirateAdtchievementsController
         }
 
         $adtchievement = Adtchievement::findOrFail($request->adtchievement_id);
+        Assert::isInstanceOf($adtchievement, Adtchievement::class);
 
         $pirate = Pirate::where('member_id', $request->input('adtchievement.member_id'))
             ->firstOrFail();
+
+        Assert::isInstanceOf($pirate, Pirate::class);
 
         $adtchievement->earnBy(
             $pirate,

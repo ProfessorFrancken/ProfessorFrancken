@@ -6,6 +6,7 @@ namespace Francken\Association\Activities;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Factory;
+use Webmozart\Assert\Assert;
 
 final class ServiceProvider extends BaseServiceProvider
 {
@@ -25,10 +26,10 @@ final class ServiceProvider extends BaseServiceProvider
 
         $this->app->bind(
             ActivitiesRepository::class,
-            function ($app) : ActivitiesRepository {
-                return new ActivitiesRepository(
-                    fopen(storage_path('app/calendar.ics'), 'r')
-                );
+            function () : ActivitiesRepository {
+                $calendarFile = fopen(storage_path('app/calendar.ics'), 'r');
+                Assert::resource($calendarFile);
+                return new ActivitiesRepository($calendarFile);
             }
         );
     }
