@@ -10,6 +10,7 @@ use Francken\Lustrum\Http\Requests\LustrumRequest;
 use Francken\Lustrum\Pirate;
 use Francken\Lustrum\PirateCrew;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class PirateCrewController
@@ -21,7 +22,7 @@ class PirateCrewController
                 // TODO: eager load in priatecrew member
                 $query->withCount([
                     'earnedAdtchievements AS total_points' => function ($query) : void {
-                        $query->select(\DB::raw("SUM(points) as total_points"));
+                        $query->select(DB::raw("SUM(points) as total_points"));
                     }
                 ]);
             },
