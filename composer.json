@@ -3,6 +3,10 @@
   "type": "project",
   "license": "MIT",
   "require": {
+    "php": "^7.4",
+    "ext-filter": "^7.4",
+    "ext-imagick": "^3.4",
+    "ext-json": "^7.4",
     "blade-ui-kit/blade-icons": "^0.4.2",
     "cmpayments/iban": "^1.1",
     "doctrine/dbal": "^2.10",
