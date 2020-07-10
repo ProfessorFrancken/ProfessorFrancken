@@ -6,8 +6,8 @@ namespace Francken\PlusOne\Http;
 
 use DateInterval;
 use DateTimeImmutable;
-use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 final class CategoryStatisticsController
 {

@@ -7,6 +7,7 @@ namespace Francken\Association\Members\Http;
 use DateTimeImmutable;
 use Francken\Association\Members\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 final class FinancesController
@@ -16,7 +17,7 @@ final class FinancesController
         $member = $this->member($request->user());
         $id = $member->id;
 
-        $transactions = \DB::connection('francken-legacy')->table('transacties')
+        $transactions = DB::connection('francken-legacy')->table('transacties')
             ->join('producten', 'transacties.product_id', '=', 'producten.id')
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)
@@ -36,12 +37,12 @@ final class FinancesController
                 ];
             });
 
-        $perMonth = \DB::connection('francken-legacy')->table('transacties')
+        $perMonth = DB::connection('francken-legacy')->table('transacties')
             ->select([
                 'tijd',
                 'lid_id',
-                \DB::raw('count(prijs) as price'),
-                \DB::raw('YEAR(tijd) year, MONTH(tijd) month')
+                DB::raw('count(prijs) as price'),
+                DB::raw('YEAR(tijd) year, MONTH(tijd) month')
             ])
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)
@@ -67,7 +68,7 @@ final class FinancesController
         $member = $this->member($request->user());
         $id = $member->id;
 
-        $deductions = \DB::connection('francken-legacy')
+        $deductions = DB::connection('francken-legacy')
                 ->table('afschrijvingen')
                 ->orderBy('tijd', 'desc')
                 ->get()
@@ -75,7 +76,7 @@ final class FinancesController
                     return new DateTimeImmutable($deduction->tijd);
                 });
 
-        $transactions = \DB::connection('francken-legacy')->table('transacties')
+        $transactions = DB::connection('francken-legacy')->table('transacties')
             ->join('producten', 'transacties.product_id', '=', 'producten.id')
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)
@@ -123,7 +124,7 @@ final class FinancesController
 
     private function member($user) : ?object
     {
-        return \DB::connection('francken-legacy')
+        return DB::connection('francken-legacy')
             ->table('leden')
             ->where('id', $user->francken_id)
             ->first();

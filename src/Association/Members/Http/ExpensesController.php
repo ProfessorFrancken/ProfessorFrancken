@@ -6,6 +6,7 @@ namespace Francken\Association\Members\Http;
 
 use DateTimeImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 final class ExpensesController
@@ -35,12 +36,12 @@ final class ExpensesController
                 ];
             });
 
-        $perMonth = \DB::connection('francken-legacy')->table('transacties')
+        $perMonth = DB::connection('francken-legacy')->table('transacties')
             ->select([
                 'tijd',
                 'lid_id',
-                \DB::raw('sum(prijs) as price'),
-                \DB::raw('YEAR(tijd) year, MONTH(tijd) month')
+                DB::raw('sum(prijs) as price'),
+                DB::raw('YEAR(tijd) year, MONTH(tijd) month')
             ])
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)
@@ -71,7 +72,7 @@ final class ExpensesController
         $member = $request->user()->member;
         $id = $member->id;
 
-        $deductions = \DB::connection('francken-legacy')
+        $deductions = DB::connection('francken-legacy')
                 ->table('afschrijvingen')
                 ->orderBy('tijd', 'desc')
                 ->get()
@@ -79,7 +80,7 @@ final class ExpensesController
                     return new DateTimeImmutable($deduction->tijd);
                 });
 
-        $transactions = \DB::connection('francken-legacy')->table('transacties')
+        $transactions = DB::connection('francken-legacy')->table('transacties')
             ->join('producten', 'transacties.product_id', '=', 'producten.id')
             ->orderBy('tijd', 'desc')
             ->where('lid_id', $id)

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Francken\Lustrum;
 
 use DateTimeImmutable;
-use DB;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
 
 final class PirateCrew extends Model
 {
@@ -56,7 +56,7 @@ final class PirateCrew extends Model
     public function total_earned_adtchievements() : int
     {
         return $this->earnedAdtchievements()
-            ->count(\DB::raw('DISTINCT adtchievement_id'));
+            ->count(DB::raw('DISTINCT adtchievement_id'));
     }
 
     public function getTotalPointsAttribute() : int

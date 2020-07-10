@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use DB;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 final class MembersController
 {
     private Builder $members;
-    
+
     private ConnectionInterface $db;
 
     public function __construct(ConnectionResolverInterface $db)
