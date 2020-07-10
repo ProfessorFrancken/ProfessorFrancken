@@ -13,7 +13,7 @@
         {!!
            Form::text(
                'member',
-               isset($member) ? $member->member->full_name : null,
+               isset($member) ? $member->member->fullname : null,
                ['class' => 'form-control member', 'placeholder' => 'Member', 'id' => 'member']
            )
         !!}

@@ -35,7 +35,7 @@ final class AdminSymposiumParticipantsController
                 ['url' => action([AdminSymposiaController::class, 'index']), 'text' => 'Symposia'],
                 ['url' => action([AdminSymposiaController::class, 'show'], $symposium->id), 'text' => $symposium->name],
                 ['url' => action([AdminSymposiaController::class, 'show'], $symposium->id), 'text' => 'Participants'],
-                ['url' => action([static::class, 'edit'], [$symposium->id, $participant->id]), 'text' => $participant->full_name],
+                ['url' => action([static::class, 'edit'], [$symposium->id, $participant->id]), 'text' => $participant->fullname],
             ]
         ]);
     }

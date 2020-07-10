@@ -42,10 +42,10 @@ class AdminPartnerAlumniFeature extends TestCase
                 [AdminPartnersController::class, 'show'],
                 ['partner' => $partner]
             )))
-            ->see($member->full_Name)
+            ->see($member->fullname)
             ->see('Senior engineer')
             ->click('Edit alumnus')
-            ->see('Edit ' . $member->full_name)
+            ->see('Edit ' . $member->fullname)
             ->type('', 'stopped_position_at')
             ->press('Save alumnus');
 

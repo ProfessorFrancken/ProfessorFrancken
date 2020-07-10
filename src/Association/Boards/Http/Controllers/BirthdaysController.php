@@ -20,7 +20,7 @@ final class BirthdaysController
             return $member->member !== null && $member->member->geboortedatum !== null;
         })->map(function (BoardMember $member) : array {
             return [
-                'name' => $member->member->full_name,
+                'name' => $member->member->fullname,
                 'birthday' => new DateTimeImmutable($member->member->geboortedatum)
             ];
         })->map(function ($member) use ($today) : array {

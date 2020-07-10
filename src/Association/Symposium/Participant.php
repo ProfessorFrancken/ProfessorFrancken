@@ -56,14 +56,14 @@ final class Participant extends Model
         'received_information_mail',
     ];
 
-    public function getFullNameAttribute() : string
+    public function getFullnameAttribute() : string
     {
         return "{$this->firstname} {$this->lastname}";
     }
 
-    public function verifyRegistration(DateTimeImmutable $verifiedAt) : void
+    public function verifyRegistration(DateTimeImmutable $verified_at) : void
     {
-        $this->email_verified_at = $verifiedAt;
+        $this->email_verified_at = $verified_at;
         $this->save();
     }
 

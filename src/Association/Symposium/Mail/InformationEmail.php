@@ -41,7 +41,7 @@ class InformationEmail extends Mailable
         return $this->subject(
             "Symposium May 8th '" . $this->participant->symposium->name . "'"
         )->markdown('symposium.mails.information', [
-            'full_name' => $this->participant->full_name,
+            'fullname' => $this->participant->fullname,
             'participant' => $this->participant,
             'location_url' => 'https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling',
             'schedule' => [

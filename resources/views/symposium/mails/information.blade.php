@@ -8,7 +8,7 @@
     @endslot
 
     {{-- Body --}}
-# Hi {{ $full_name }},
+# Hi {{ $fullname }},
 
 Thank you once again for signing up for the Symposium 'In a materialistic world'.
 With this email we would like to inform you about the location, dresscode and schedule of the symposium.

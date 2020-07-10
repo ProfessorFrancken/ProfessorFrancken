@@ -22,7 +22,7 @@ class ProfileFeature extends TestCase
     {
         $member = LegacyMember::find(DatabaseSeeder::MEMBER_ID);
         $this->visit('/profile')
-            ->see($member->full_name);
+            ->see($member->fullname);
     }
 
     /** @test */

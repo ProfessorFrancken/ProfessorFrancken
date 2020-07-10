@@ -6,7 +6,7 @@
     @foreach ($members as $member)
         <li>
             <h5>
-                {{ $member->member->full_name }}
+                {{ $member->member->fullname }}
             </h5>
         </li>
     @endforeach

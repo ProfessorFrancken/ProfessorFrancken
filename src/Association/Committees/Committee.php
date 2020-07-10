@@ -132,7 +132,7 @@ final class Committee extends Model
     public function committeeMembers() : Collection
     {
         return $this->members->sortBy(function (CommitteeMember $member) : string {
-            return $member->member->full_name;
+            return $member->member->fullname;
         });
     }
 

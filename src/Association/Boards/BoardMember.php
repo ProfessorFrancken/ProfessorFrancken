@@ -72,7 +72,7 @@ final class BoardMember extends Model
         /** @var self $member */
         $member = $board->members()->make([
             'member_id' => $memberId,
-            'name' => optional($legacyMember)->full_name ?? '',
+            'name' => optional($legacyMember)->fullname ?? '',
             'title' => $title,
             'installed_at' => $installedAt,
             'photo_media_id' => $photo->id ?? null,
@@ -107,9 +107,9 @@ final class BoardMember extends Model
         return $this->belongsTo(LegacyMember::class, 'member_id');
     }
 
-    public function getFullNameAttribute() : string
+    public function getFullnameAttribute() : string
     {
-        return $this->member->full_name;
+        return $this->member->fullname;
     }
 
     /**
@@ -128,7 +128,7 @@ final class BoardMember extends Model
     ) : void {
         $legacyMember = LegacyMember::find($memberId);
         $this->member_id = $memberId;
-        $this->name = optional($legacyMember)->full_name ?? '';
+        $this->name = optional($legacyMember)->fullname ?? '';
         $this->title = $title;
         $this->installed_at = $installedAt;
         $this->demissioned_at = $demissionedAt;

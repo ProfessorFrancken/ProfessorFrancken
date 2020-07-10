@@ -6,7 +6,7 @@
     <div class="card-body">
         <ul>
             <li>Picture</li>
-            <li>Firstname, lastname: {{ $profile->full_name }}</li>
+            <li>Firstname, lastname: {{ $profile->fullname }}</li>
             <li>Mother Tongue: {{ $profile->land }}</li>
             <li>Birthdate: {{ $profile->geboortedatum }}</li>
             <li>Gender: {{ $profile->geslacht }}</li>

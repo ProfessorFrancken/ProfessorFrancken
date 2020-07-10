@@ -47,7 +47,7 @@ final class PirateCrew extends Model
     {
         return $this->crewMembers()->create([
             'member_id' => $member->id,
-            'name' => $member->full_name,
+            'name' => $member->fullname,
             'earned_points' => 0,
             'title' => 'Noobie',
         ]);

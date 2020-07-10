@@ -3,7 +3,7 @@
     {!!
        Form::text(
            'member',
-           optional($alumnus->member)->full_name,
+           optional($alumnus->member)->fullname,
            ['class' => 'form-control member', 'placeholder' => 'Member', 'id' => 'member']
        )
     !!}

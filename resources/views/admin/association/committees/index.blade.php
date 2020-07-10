@@ -61,7 +61,7 @@
                                     <td colspan="2" class="border-top-0 bg-light">
                                         @foreach ($committee->committeeMembers() as $member)
                                             <span class="badge badge-light bg-white font-weight-light font-weight-light">
-                                                {{ $member->member->full_name }}
+                                                {{ $member->member->fullname }}
                                             </span>
                                         @endforeach
                                     </td>

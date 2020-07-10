@@ -56,7 +56,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
- * @property-read mixed $full_name
+ * @property-read mixed $fullname
  * @property-read mixed $surname
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember newQuery()
@@ -121,7 +121,7 @@ final class BookSeller extends Model
      */
     protected $connection = 'francken-legacy';
 
-    public function getFullNameAttribute() : string
+    public function getFullnameAttribute() : string
     {
         return collect([$this->voornaam, $this->tussenvoegsel, $this->achternaam])
             ->filter()
