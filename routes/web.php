@@ -12,6 +12,7 @@ use Francken\Association\Committees\Http\RedirectToBoardCommitteesController;
 use Francken\Association\FranckenVrij\Http\FranckenVrijController;
 use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
+use Francken\Association\Members\Http\PasswordController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
@@ -114,6 +115,9 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth']], function 
 
     Route::get('expenses', [ExpensesController::class, 'index']);
     Route::get('expenses/{year}/{month}', [ExpensesController::class, 'show']);
+
+    Route::get('password', [PasswordController::class, 'index']);
+    Route::put('password', [PasswordController::class, 'update']);
 });
 
 Route::get('/symposia/{symposium}/participants/{participant}', [
