@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Francken\Association\News\Fake;
 
+use Faker\Generator;
+
 final class FakeNewsContent
 {
-    private $faker;
+    private Generator $faker;
 
-    public function __construct($faker)
+    public function __construct(Generator $faker)
     {
         $this->faker = $faker;
     }

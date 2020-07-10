@@ -16,16 +16,6 @@ final class MediaPresenter
         $this->media = $media;
     }
 
-    public function __call($method, $args)
-    {
-        return call_user_func_array([$this->media, $method], $args);
-    }
-
-    public function __get($name)
-    {
-        return $this->media->$name;
-    }
-
     public function iconClass() : string
     {
         switch ($this->media->aggregate_type) {
@@ -54,5 +44,15 @@ final class MediaPresenter
     public function mediaUrl() : string
     {
         return action([MediaController::class, 'show'], $this->media->id);
+    }
+
+    public function readableSize() : string
+    {
+        return $this->media->readableSize(1);
+    }
+
+    public function basename() : string
+    {
+        return $this->media->basename;
     }
 }

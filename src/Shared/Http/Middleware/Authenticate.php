@@ -7,6 +7,7 @@ namespace Francken\Shared\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class Authenticate
 {
@@ -29,7 +30,7 @@ class Authenticate
     /**
      * Handle an incoming request.
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next) : Response
     {
         if ($this->guard->check()) {
             return $next($request);

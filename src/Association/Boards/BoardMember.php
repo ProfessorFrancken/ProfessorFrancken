@@ -6,6 +6,7 @@ namespace Francken\Association\Boards;
 
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Plank\Mediable\Media;
@@ -188,7 +189,7 @@ final class BoardMember extends Model
         return $this->belongsTo(Media::class, 'photo_media_id');
     }
 
-    public function scopeWithPhotos($query)
+    public function scopeWithPhotos(Builder $query) : Builder
     {
         return $query->withMedia([static::BOARD_MEMBER_PHOTO_TAG]);
     }

@@ -32,7 +32,6 @@ final class MediaController
         $media = Media::inDirectory(static::DISK, $directory)
                ->paginate(100);
 
-
         $media->transform(function (Media $media) : MediaPresenter {
             return new MediaPresenter($media);
         });

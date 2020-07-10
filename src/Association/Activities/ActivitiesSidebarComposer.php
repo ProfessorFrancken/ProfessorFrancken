@@ -6,6 +6,7 @@ namespace Francken\Association\Activities;
 
 use DateTimeImmutable;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 class ActivitiesSidebarComposer
 {
@@ -16,7 +17,7 @@ class ActivitiesSidebarComposer
         $this->today = new DateTimeImmutable();
     }
 
-    public function compose($view) : void
+    public function compose(View $view) : void
     {
         $viewData = $view->getData();
         $year = $viewData['selectedYear'] ?? (int) $this->today->format('Y');
@@ -33,7 +34,7 @@ class ActivitiesSidebarComposer
         ]);
     }
 
-    private function visibleYears($year) : array
+    private function visibleYears(int $year) : array
     {
         // Create list of visible years
         $yearsList = [];

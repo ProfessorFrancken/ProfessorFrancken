@@ -33,10 +33,10 @@
                                         <i class="{{ $file->iconClass() }} h3"></i>
                                         <div class="ml-3 d-flex flex-column justify-content-center">
                                             <small class="text-monospace">
-                                                {{ $file->basename }}
+                                                {{ $file->basename() }}
                                             </small>
                                             <small class="text-muted">
-                                                {{ $file->readableSize(1) }}
+                                                {{ $file->readableSize() }}
                                             </small>
                                         </div>
                                     </a>

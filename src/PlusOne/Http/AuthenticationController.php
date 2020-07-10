@@ -29,7 +29,7 @@ final class AuthenticationController
         ];
     }
 
-    private function token($key) : Token
+    private function token(string $key) : Token
     {
         $now = time();
 

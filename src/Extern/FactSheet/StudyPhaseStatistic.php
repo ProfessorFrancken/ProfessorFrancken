@@ -25,6 +25,11 @@ final class StudyPhaseStatistic implements StudyStatistic
         return $this->study;
     }
 
+    public function amount() : int
+    {
+        return $this->bachelor() + $this->master();
+    }
+
     public function bachelor() : int
     {
         return $this->bachelor;
@@ -35,16 +40,19 @@ final class StudyPhaseStatistic implements StudyStatistic
         return $this->master;
     }
 
-    public static function fromMultipleStatistics(string $name, ...$others) : self
+    public static function fromMultipleStatistics(string $name, StudyStatistic ...$others) : StudyStatistic
     {
+        $studies = collect($others)->filter(fn (StudyStatistic $study) => $study instanceof self);
         return new self(
             $name,
-            collect($others)->reduce(function ($amount, $study) {
-                return $amount + $study->bachelor();
-            }, 0),
-            collect($others)->reduce(function ($amount, $study) {
-                return $amount + $study->master();
-            }, 0)
+            $studies->reduce(
+                fn (int $amount, self $study) : int => $amount + $study->bachelor(),
+                0
+            ),
+            $studies->reduce(
+                fn (int $amount, self $study) : int => $amount + $study->master(),
+                0
+            )
         );
     }
 }

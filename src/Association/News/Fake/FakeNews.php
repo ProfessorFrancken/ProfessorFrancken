@@ -6,7 +6,6 @@ namespace Francken\Association\News\Fake;
 
 use DateTimeImmutable;
 use Faker\Generator;
-
 use Francken\Association\News\CompiledMarkdown;
 use Francken\Association\News\News;
 use Illuminate\Support\Collection;

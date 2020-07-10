@@ -41,7 +41,7 @@ final class ChangeRolesListener
      */
     public const DECHARGED_BOARD_ROLE = 'Decharged Board';
 
-    public function handle($event) : void
+    public function handle(object $event) : void
     {
         $method = $this->getHandleMethod($event);
 
@@ -194,7 +194,7 @@ final class ChangeRolesListener
         return 'Committee ' . $committee->name;
     }
 
-    private function getHandleMethod($event) : string
+    private function getHandleMethod(object $event) : string
     {
         $classParts = explode('\\', get_class($event));
 

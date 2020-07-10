@@ -2,8 +2,12 @@
 
 declare(strict_types=1);
 
-function banner_image(string $url, array $options) : string
+function banner_image(?string $url, array $options) : string
 {
+    if ($url === null) {
+        return '';
+    }
+
     if ( ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
     }
@@ -14,16 +18,24 @@ function banner_image(string $url, array $options) : string
     ]));
 }
 
-function board_banner_image(string $url = '', array $options = []) : string
+function board_banner_image(?string $url = '', array $options = []) : string
 {
+    if ($url === null) {
+        return '';
+    }
+
     return image($url, array_merge($options, [
         'width' => 930,
         'height' => 350
     ]));
 }
 
-function news_image(string $url) : string
+function news_image(?string $url) : string
 {
+    if ($url === null) {
+        return '';
+    }
+
     if ( ! filter_var($url, FILTER_VALIDATE_URL)) {
         $url = config('app.url') . $url;
     }

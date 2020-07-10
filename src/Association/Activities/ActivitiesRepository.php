@@ -11,11 +11,11 @@ use Sabre\VObject\Reader;
 
 final class ActivitiesRepository
 {
-    /**
-     * @var Collection|CalendarEvent[]
-     */
-    private $activities;
+    private Collection $activities;
 
+    /**
+     * @param resource $calendar opened ical file
+     */
     public function __construct($calendar)
     {
         $this->activities = new Collection();
@@ -33,7 +33,7 @@ final class ActivitiesRepository
         });
     }
 
-    public function all()
+    public function all() : Collection
     {
         return $this->activities;
     }

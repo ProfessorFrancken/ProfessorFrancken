@@ -8,6 +8,7 @@ use Closure;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 final class LoginToViewPhotos
 {
@@ -21,7 +22,7 @@ final class LoginToViewPhotos
     /**
      * Handle an incoming reques And verify if token exists and is valid
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next) : Response
     {
         if ( ! $this->gate->allows('view-albums')) {
             return redirect()->action([AuthenticationController::class, 'index']);

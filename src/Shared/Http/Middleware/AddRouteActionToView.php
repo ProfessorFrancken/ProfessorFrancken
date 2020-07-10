@@ -7,6 +7,7 @@ namespace Francken\Shared\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * This middelware adds the action belonging to the current route, e.g.
@@ -19,7 +20,7 @@ final class AddRouteActionToView
     /**
      * Handle an incoming request.
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next) : Response
     {
         $response = $next($request);
         $action = Route::getCurrentRoute()->getAction();

@@ -61,10 +61,11 @@ final class DeductionEmailToMember extends Model
         'contained_errors' => 'int',
     ];
 
-    public function getAmountAttribute()
+    public function getAmountAttribute() : float
     {
-        return $this->amount_in_cents / 100;
+        return (float)$this->amount_in_cents / 100;
     }
+
     public function member() : BelongsTo
     {
         return $this->belongsTo(LegacyMember::class, 'member_id');

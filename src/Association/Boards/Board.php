@@ -14,49 +14,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
-use Plank\Mediable\MediableCollection;
 use Webmozart\Assert\Assert;
 
-/**
- * Francken\Association\Boards\Board
- *
- * @property int $id
- * @property string|null $name
- * @property string $photo_position
- * @property \Illuminate\Support\Carbon $installed_at
- * @property \Illuminate\Support\Carbon|null $demissioned_at
- * @property \Illuminate\Support\Carbon|null $decharged_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property int|null $photo_media_id
- * @property mixed $board_name
- * @property-read mixed $board_year
- * @property-read mixed $photo
- * @property-read \Illuminate\Database\Eloquent\Collection|Media[] $media
- * @property-read int|null $media_count
- * @property-read MediableCollection|BoardMember[] $members
- * @property-read int|null $members_count
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereDechargedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereDemissionedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereHasMedia($tags, $matchAll = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereHasMediaMatchAll($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereInstalledAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board wherePhotoMediaId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board wherePhotoPosition($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withMedia($tags = [], $matchAll = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withMediaMatchAll($tags = [])
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Boards\Board withPhotos()
- * @mixin \Eloquent
- * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
- * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
- */
 final class Board extends Model
 {
     use Mediable;
@@ -90,10 +49,10 @@ final class Board extends Model
     /**
      * @var string[]
      */
-    protected $dates = [
-        'installed_at',
-        'demissioned_at',
-        'decharged_at',
+    protected $casts = [
+        'installed_at' => 'datetime',
+        'demissioned_at' => 'datetime',
+        'decharged_at' => 'datetime',
     ];
 
     /**
@@ -176,11 +135,6 @@ final class Board extends Model
         return BoardName::fromNameOrYear($this->name, $this->board_year);
     }
 
-    public function setBoardNameAttribute(BoardName $boardName) : void
-    {
-        $this->name = $boardName->toString();
-    }
-
     public function updateBoardAttributes(
         BoardName $name,
         string $photoPosition,
@@ -189,7 +143,7 @@ final class Board extends Model
         ?DateTimeImmutable $dechargedAt,
         ?Media $photo
     ) : void {
-        $this->board_name = $name;
+        $this->name = $name->toString();
         $this->photo_position = $photoPosition;
         $this->installed_at = $installedAt;
         $this->demissioned_at = $demissionedAt;

@@ -1,13 +1,12 @@
 includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 parameters:
-    level: 5
+    level: 6
     paths:
         - src
+    checkMissingIterableValueType: false
     ignoreErrors:
         - '#Access to an undefined property Spatie\\Permission\\Models\\Role::\$name.#'
         - '#Access to an undefined property Spatie\\Permission\\Models\\Role::\$guard_name.#'
-        - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable\|null#'
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'
-        - '#Property .* \(Illuminate\\Support\\Carbon\) does not accept DateTimeImmutable#'
         - '#Parameter \#1 \$columns of method Illuminate\\Database\\Eloquent\\Relations\\HasMany\<Francken\\Lustrum\\EarnedAdtchievement\>::count\(\) expects string, Illuminate\\Database\\Query\\Expression given.#'

@@ -28,8 +28,9 @@ class Response
     /**
      * Get magically a regular value from the contents of the Flickr API call.
      */
-    public function __get(string $variable)
+    public function __get(string $variable) : array
     {
+        dump($variable);
         return $this->contents[$variable];
     }
 

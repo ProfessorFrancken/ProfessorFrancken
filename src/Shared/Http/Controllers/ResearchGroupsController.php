@@ -310,7 +310,7 @@ The research has a strong instrumentation development component. For our experim
             ]);
     }
 
-    public function show($slug) : View
+    public function show(string $slug) : View
     {
         $group = Arr::first(array_filter($this->groups, function ($group) use ($slug) : bool {
             return Str::slug($group['title']) === $slug;

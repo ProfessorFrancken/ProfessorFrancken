@@ -6,6 +6,7 @@ namespace Francken\Association\Members\Http;
 
 use DateTimeImmutable;
 use Francken\Association\Members\Member;
+use Francken\Auth\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -63,7 +64,7 @@ final class FinancesController
                 ]);
     }
 
-    public function show($year, $month, Request $request) : View
+    public function show(string $year, string $month, Request $request) : View
     {
         $member = $this->member($request->user());
         $id = $member->id;
@@ -122,11 +123,11 @@ final class FinancesController
         return view('profile.adtcievements');
     }
 
-    private function member($user) : ?object
+    private function member(Account $user) : ?object
     {
         return DB::connection('francken-legacy')
             ->table('leden')
-            ->where('id', $user->francken_id)
+            ->where('id', $user->member_id)
             ->first();
     }
 }

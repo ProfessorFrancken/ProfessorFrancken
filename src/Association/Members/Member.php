@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace Francken\Association\Members;
 
 use DateTimeImmutable;
+use Francken\Association\LegacyMember;
 use Francken\Association\Members\Students\Student;
 use Illuminate\Support\Carbon;
 
 final class Member
 {
-    private $member;
+    private ?LegacyMember $member;
 
-    public function __construct($member)
+    public function __construct(?LegacyMember $member)
     {
         $this->member = $member;
     }
@@ -26,12 +27,12 @@ final class Member
 
     public function email() : string
     {
-        return $this->member->emailadres;
+        return $this->member->emailadres ?? '';
     }
 
     public function phoneNumber() : string
     {
-        return $this->member->telefoonnummer_mobiel;
+        return $this->member->telefoonnummer_mobiel ?? '';
     }
 
     public function iban() : IBAN

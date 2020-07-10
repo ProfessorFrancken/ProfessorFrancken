@@ -11,13 +11,14 @@ use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\ValidationData;
 use Log;
+use Symfony\Component\HttpFoundation\Response;
 
 final class AuthenticatePlusOne
 {
     /**
      * Handle an incoming reques And verify if token exists and is valid
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next) : Response
     {
         $token = $request->bearerToken();
 

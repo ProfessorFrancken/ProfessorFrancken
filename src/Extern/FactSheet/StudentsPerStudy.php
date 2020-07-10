@@ -28,13 +28,14 @@ final class StudentsPerStudy implements StudyStatistic
     /*
      * Used to create "Total" and "Other" statistics
      */
-    public static function fromMultipleStatistics(string $name, ...$others) : self
+    public static function fromMultipleStatistics(string $name, StudyStatistic ...$others) : StudyStatistic
     {
         return new self(
             $name,
-            collect($others)->reduce(function ($amount, $study) {
-                return $amount + $study->amount();
-            }, 0)
+            collect($others)->reduce(
+                fn (int $amount, StudyStatistic $study) : int => $amount + $study->amount(),
+                0
+            )
         );
     }
 }

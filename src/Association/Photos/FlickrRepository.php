@@ -13,8 +13,8 @@ use Illuminate\Support\Collection;
 final class FlickrRepository
 {
     private Flickr $flickr;
-    private $userId;
-    private $secret;
+    private string $userId;
+    private string $secret;
 
     public function __construct()
     {
@@ -71,7 +71,7 @@ final class FlickrRepository
         }
     }
 
-    public function findAlbum($albumId) : Collection
+    public function findAlbum(string $albumId) : Collection
     {
         try {
             $album = $this->flickr->photosForSet(

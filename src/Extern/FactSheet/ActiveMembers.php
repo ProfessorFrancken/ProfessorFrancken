@@ -53,13 +53,14 @@ final class ActiveMembers
                     /*
                      * Used to create "Total" and "Other" statistics
                      */
-                    public static function fromMultipleStatistics(string $name, ...$others) : StudyStatistic
+                    public static function fromMultipleStatistics(string $name, StudyStatistic ...$others) : StudyStatistic
                     {
                         return new self(
                             $name,
-                            collect($others)->reduce(function ($amount, $study) {
-                                return $amount + $study->amount();
-                            }, 0)
+                            collect($others)->reduce(
+                                fn ($amount, StudyStatistic $study) => $amount + $study->amount(),
+                                0
+                            )
                         );
                     }
                 };

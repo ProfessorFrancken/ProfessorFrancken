@@ -69,7 +69,7 @@ final class SynchronizeFlickrAlbums extends Command
         });
     }
 
-    private function storeAlbum($album) : void
+    private function storeAlbum(Collection $album) : void
     {
         $publicationDate = $album['date_created'];
         $activityDate = $album['primary']['date_taken']->sub(new DateInterval('PT6H'))->format('Y-m-d');

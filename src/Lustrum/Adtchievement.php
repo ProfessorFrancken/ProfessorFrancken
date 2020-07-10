@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Lustrum;
 
 use DateTimeImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -62,7 +63,7 @@ final class Adtchievement extends Model
             ->withPivot(['pirate_crew_id']);
     }
 
-    public function scopeEarnedByPirateCrew($builder, PirateCrew $crew) : BelongsToMany
+    public function scopeEarnedByPirateCrew(Builder $builder, PirateCrew $crew) : BelongsToMany
     {
         return $this->earnedBy()
             ->where('lustrum_pirate_adtchievements.pirate_crew_id', $crew->id);

@@ -67,7 +67,7 @@ final class ExpensesController
             ]);
     }
 
-    public function show($year, $month, Request $request) : View
+    public function show(string $year, string $month, Request $request) : View
     {
         $member = $request->user()->member;
         $id = $member->id;

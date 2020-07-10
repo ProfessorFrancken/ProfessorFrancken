@@ -32,7 +32,7 @@ final class CompaniesController
             ]);
     }
 
-    public function show($slug) : View
+    public function show(string $slug) : View
     {
         $company = $this->companies->findByLink($slug);
         $jobs = $this->jobs->search(

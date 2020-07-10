@@ -29,32 +29,21 @@ use Plank\Mediable\Mediable;
  * @property int $file_media_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read Media $deductionFile
- * @property-read \Illuminate\Database\Eloquent\Collection|DeductionEmailToMember[] $deductionToMembers
+ * @property-read \Plank\Mediable\Media $deductionFile
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Treasurer\DeductionEmailToMember[] $deductionToMembers
  * @property-read int|null $deduction_to_members_count
- * @property-read mixed $total_amount
- * @property-read \Illuminate\Database\Eloquent\Collection|Media[] $media
+ * @property-read float $total_amount
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Plank\Mediable\Media[] $media
  * @property-read int|null $media_count
+ * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
+ * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereAmountOfMembers($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereDeductedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereDeductionFrom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereDeductionTo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereEmailsSentAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereFileMediaId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereHasMedia($tags, $matchAll = false)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereHasMediaMatchAll($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail whereWasVerified($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMedia($tags = [], $matchAll = false)
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Treasurer\DeductionEmail withMediaMatchAll($tags = [])
- * @mixin \Eloquent
- * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
- * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
  */
 final class DeductionEmail extends Model
 {
@@ -80,18 +69,12 @@ final class DeductionEmail extends Model
     /**
      * @var string[]
      */
-    protected $dates = [
-        'deducted_at',
-        'deduction_from',
-        'deduction_to',
-        'emails_sent_at'
-    ];
-
-    /**
-     * @var string[]
-     */
     protected $casts = [
         'was_verified' => 'boolean',
+        'deducted_at' => 'datetime',
+        'deduction_from' => 'datetime',
+        'deduction_to' => 'datetime',
+        'emails_sent_at' => 'datetime',
     ];
 
     public static function upload(

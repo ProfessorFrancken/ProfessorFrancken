@@ -38,7 +38,7 @@ final class CompanyRepository
         );
     }
 
-    public function findByLink($slug) : array
+    public function findByLink(string $slug) : array
     {
         return Arr::first(array_filter($this->profiles(), function ($company) use ($slug) : bool {
             return Str::slug($company['name']) === $slug;

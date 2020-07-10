@@ -49,7 +49,7 @@ final class StudiesStatistic
         );
     }
 
-    private function filterUnrelatedStudies(Collection $studies)
+    private function filterUnrelatedStudies(Collection $studies) : Collection
     {
         $relatedStudies = [
             "Technische Natuurkunde",

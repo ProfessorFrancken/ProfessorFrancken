@@ -65,7 +65,7 @@ final class Photo extends Model
         return $this->belongsTo(Album::class);
     }
 
-    public function src($quality = 1024) : string
+    public function src(int $quality = 1024) : string
     {
         $baseUrl = Str::before($this->flickr_base_url, '.jpg');
 
