@@ -114,8 +114,6 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth']], function 
 
     Route::get('expenses', [ExpensesController::class, 'index']);
     Route::get('expenses/{year}/{month}', [ExpensesController::class, 'show']);
-    // Route::get('settings', 'SettingsController::class, 'index');
-    // Route::get('members', 'MembersController::class, 'index');
 });
 
 Route::get('/symposia/{symposium}/participants/{participant}', [
