@@ -61,15 +61,15 @@
                     @enderror
                 </div>
 
-                {!! Form::submit('Change password', ['class' => 'btn btn-outline-success']) !!}
+                {!! Form::submit('Change password', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
-                <p class="mt-3">
-                <small>
-                    <a class="text-muted" href="{{ route('password.request') }}" tabindex="-1">
-                        Did you forgot your password? Click here to reset it.
-                    </a>
-                </small>
-                </p>
         </div>
     </div>
+    <p class="mt-3">
+        <small>
+            <a class="text-muted" href="{{ route('password.request') }}" tabindex="-1">
+                Did you forgot your password? Click <strong>here</strong> to reset it.
+            </a>
+        </small>
+    </p>
 @endsection
