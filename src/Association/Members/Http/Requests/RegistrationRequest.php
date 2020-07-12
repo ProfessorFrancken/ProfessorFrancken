@@ -103,7 +103,7 @@ class RegistrationRequest extends FormRequest
                 $this->input('city', null),
                 $this->input('postal_code'),
                 $this->input('address'),
-                $this->input('address', 'Netherlands')
+                $this->input('country', 'Netherlands')
             );
         }
 

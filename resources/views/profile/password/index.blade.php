@@ -8,12 +8,12 @@
 
 
     <div class="card my-3">
+        {!!
+               Form::open([
+                   'url' => action([\Francken\Association\Members\Http\PasswordController::class, 'update']),
+               ])
+        !!}
         <div class="card-body">
-            {!!
-                   Form::open([
-                       'url' => action([\Francken\Association\Members\Http\PasswordController::class, 'update']),
-                   ])
-            !!}
 
             @method('PUT')
                 <div class="form-group">
@@ -61,9 +61,11 @@
                     @enderror
                 </div>
 
-                {!! Form::submit('Change password', ['class' => 'btn btn-primary']) !!}
-            {!! Form::close() !!}
         </div>
+        <div class="card-footer">
+            {!! Form::submit('Change password', ['class' => 'btn btn-primary']) !!}
+        </div>
+        {!! Form::close() !!}
     </div>
     <p class="mt-3">
         <small>
