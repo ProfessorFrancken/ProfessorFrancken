@@ -21,6 +21,7 @@ final class PasswordController
                 'member' => $member,
                 'breadcrumbs' => [
                     ['url' => '/profile', 'text' => 'Profile'],
+                    ['url' => action([self::class, 'index']), 'text' => 'Password'],
                 ]
             ]);
     }

@@ -8,6 +8,9 @@ use DateTimeImmutable;
 use DB;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\Email;
+use Francken\Association\Members\Events\MemberAddressWasChanged;
+use Francken\Association\Members\Events\MemberEmailWasChanged;
+use Francken\Association\Members\Events\MemberPhoneNumberWasChanged;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\Students\Student;
@@ -120,6 +123,14 @@ use Illuminate\Support\Collection;
  */
 final class LegacyMember extends Model
 {
+    protected $casts = [
+        'mailinglist_email' => 'bool',
+        'mailinglist_post' => 'bool',
+        'mailinglist_sms' => 'bool',
+        'mailinglist_constitutiekaart' => 'bool',
+        'mailinglist_franckenvrij' => 'bool',
+    ];
+
     /**
      * @var string
      */
@@ -168,30 +179,6 @@ final class LegacyMember extends Model
             ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
             ->orderBy('id', 'desc')
             ->get();
-    }
-
-    public function changeEmail(Email $email) : void
-    {
-        $oldEmail = $this->email;
-        $this->emailadres = $email->toString();
-        $this->save();
-
-        $account = Account::ofMember($this->id);
-        $account->email = $email->toString();
-        $account->save();
-
-        // notify board..
-        event(new MemberEmailWasChanged($this, $email, $oldEmail));
-    }
-
-    public function changeAddress(Address $address) : void
-    {
-        $oldAddress = $this->address;
-
-        $this->emailadres = $email->toString();
-        $this->save();
-
-        event(new MemberAddressWasChanged($this, $address, $oldAddress));
     }
 
     public function getInitialsAttribute() : string
@@ -267,5 +254,73 @@ final class LegacyMember extends Model
     public function getPaymentDetailsAttribute() : PaymentDetails
     {
         return PaymentDetails::fromDb($this);
+    }
+
+    public function getReceiveNewsletterAttribute() : bool
+    {
+        return (bool)$this->mailinglist_email;
+    }
+
+    public function getReceiveFranckenVrijAttribute() : bool
+    {
+        return (bool)$this->mailinglist_franckenvrij;
+    }
+
+    public function changeEmail(Email $email, bool $mailinglistMail) : void
+    {
+        $oldEmail = $this->email;
+        $oldMailinglistMail = $this->mailinglist_email;
+        $updateNewsletterSubscription = $oldMailinglistMail !== $mailinglistMail;
+
+        if ($oldEmail == $email && ! $updateNewsletterSubscription) {
+            return;
+        }
+
+        $this->emailadres = $email->toString();
+        $this->mailinglist_email = $mailinglistMail;
+        $this->save();
+
+        $account = Account::ofMember($this->id)->first();
+        if ($account) {
+            $account->email = $email->toString();
+            $account->save();
+        }
+
+        event(new MemberEmailWasChanged($this, $email, $oldEmail, $updateNewsletterSubscription));
+    }
+
+    public function changeAddress(Address $address, bool $mailinglistFranckenVrij) : void
+    {
+        $oldAddress = $this->address;
+
+        $oldMailinglistFranckenVrij = $this->mailinglist_franckenvrij;
+        $updateFranckenVrijSubscription = $oldMailinglistFranckenVrij !== $mailinglistFranckenVrij;
+
+        if ($oldAddress == $address && ! $updateFranckenVrijSubscription) {
+            return;
+        }
+
+        $this->plaats = $address->city();
+        $this->land = $address->country();
+        $this->adres = $address->address();
+        $this->postcode = $address->postalCode();
+        $this->mailinglist_franckenvrij = $mailinglistFranckenVrij;
+        $this->save();
+
+        event(new MemberAddressWasChanged($this, $address, $oldAddress, $mailinglistFranckenVrij));
+    }
+
+    public function changePhoneNumber(string $phoneNumber) : void
+    {
+        $oldPhoneNumber = $this->telefoonnummer_mobiel;
+
+        if ($oldPhoneNumber === $phoneNumber) {
+            return;
+        }
+
+        $this->telefoonnummer_mobiel = $phoneNumber;
+        $this->save();
+
+        event(new MemberPhoneNumberWasChanged($this, $phoneNumber, $oldPhoneNumber));
     }
 }
