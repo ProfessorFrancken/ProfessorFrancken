@@ -26,20 +26,16 @@ class NotifyBoardAboutAddressChange extends Notification
 
     /**
      * Get the notification's delivery channels.
-     *
-     * @return array
      */
-    public function via()
+    public function via() : array
     {
         return ['database'];
     }
 
     /**
      * Get the array representation of the notification.
-     *
-     * @return array
      */
-    public function toArray()
+    public function toArray() : array
     {
         $member = $this->event->member();
         $from = $this->event->oldAddress()->toString();
