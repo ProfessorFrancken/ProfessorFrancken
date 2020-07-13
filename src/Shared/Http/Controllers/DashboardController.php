@@ -5,26 +5,23 @@ declare(strict_types=1);
 namespace Francken\Shared\Http\Controllers;
 
 use Francken\Association\Boards\Board;
+use Francken\Association\Boards\BoardMember;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function redirectToDashboard() : RedirectResponse
+    public function redirectToDashboard(Request $request) : RedirectResponse
     {
-        return redirect('/admin/overview');
-    }
+        $account = $request->user();
+        $isBoardMember = Board::current()->firstOrFail()
+            ->members
+            ->contains(fn (BoardMember $member) => $member->member_id === $account->member_id);
 
-    public function overview() : View
-    {
-        $board = Board::current()->firstOrFail();
+        if ($isBoardMember) {
+            return redirect()->action([BoardDashboardController::class, 'index']);
+        }
 
-        return view('admin.overview', [
-            'board' => $board,
-            'notifications' => $board->notifications,
-            'breadcrumbs' => [
-                ['url' => action([self::class, 'overview']), 'text' => 'Adtministration'],
-            ]
-        ]);
+        return redirect()->action([MemberDashboardController::class, 'index']);
     }
 }
