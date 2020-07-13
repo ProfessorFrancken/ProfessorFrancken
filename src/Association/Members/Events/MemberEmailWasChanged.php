@@ -39,12 +39,12 @@ final class MemberEmailWasChanged
         return $this->email;
     }
 
-    public function oldEmail(): Email
+    public function oldEmail() : Email
     {
         return $this->oldEmail;
     }
 
-    public function subscriptionPreferenceWasChanged(): bool
+    public function subscriptionPreferenceWasChanged() : bool
     {
         return $this->subscriptionPreferenceWasChanged;
     }

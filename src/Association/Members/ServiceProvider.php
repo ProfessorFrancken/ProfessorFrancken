@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members;
 
+use Francken\Association\Members\EventHandlers\NotifyBoardAboutProfileChanges;
+use Francken\Association\Members\Events\MemberAddressWasChanged;
+use Francken\Association\Members\Events\MemberEmailWasChanged;
+use Francken\Association\Members\Events\MemberPhoneNumberWasChanged;
 use Francken\Association\Members\Registration\EventHandlers\ConfirmRegistrationRequest;
 use Francken\Association\Members\Registration\EventHandlers\NotifyBoardAboutRegistration;
 use Francken\Association\Members\Registration\EventHandlers\NotifyMemberAboutMembership;
@@ -38,6 +42,20 @@ final class ServiceProvider extends BaseServiceProvider
         $events->listen(
             RegistrationWasApproved::class,
             RegisterMember::class
+        );
+
+
+        $events->listen(
+            MemberEmailWasChanged::class,
+            NotifyBoardAboutProfileChanges::class
+        );
+        $events->listen(
+            MemberAddressWasChanged::class,
+            NotifyBoardAboutProfileChanges::class
+        );
+        $events->listen(
+            MemberPhoneNumberWasChanged::class,
+            NotifyBoardAboutProfileChanges::class
         );
     }
 }
