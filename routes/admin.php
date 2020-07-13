@@ -34,7 +34,9 @@ use Francken\Lustrum\Http\Controllers\Admin\AdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateAdtchievementsController;
 use Francken\Lustrum\Http\Controllers\Admin\PirateCrewController;
 use Francken\Shared\Http\Controllers\Admin\AdminController;
+use Francken\Shared\Http\Controllers\BoardDashboardController;
 use Francken\Shared\Http\Controllers\DashboardController;
+use Francken\Shared\Http\Controllers\MemberDashboardController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
 use Francken\Shared\Settings\Http\Controllers\SettingsController;
 use Francken\Study\BooksSale\Http\AdminBooksController;
@@ -43,7 +45,9 @@ use Francken\Treasurer\Http\Controllers\DeductionMembersController;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
 
 Route::get('/', [DashboardController::class, 'redirectToDashboard']);
-Route::get('overview', [DashboardController::class, 'overview']);
+Route::get('overview', [DashboardController::class, 'redirectToDashboard']);
+Route::get('dashboard/board', [BoardDashboardController::class, 'index']);
+Route::get('dashboard/member', [MemberDashboardController::class, 'index']);
 
 Route::group(['prefix' => 'study'], function () : void {
     Route::get('research-groups', [AdminController::class, 'showPageIsUnavailable']);
