@@ -44,7 +44,7 @@ jobs:
         with:
           php-version: 7.4
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, imagick
-          coverage: none
+          coverage: pcov
           tools: composer:v2
 
       - name: Install Composer dependencies
@@ -68,6 +68,13 @@ jobs:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
       - name: Execute tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
         env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
+
+      - name: Upload coverage results to Coveralls
+        env:
+            COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            composer global require twinh/php-coveralls
+            php-coveralls --coverage_clover=build/logs/clover.xml -v
