@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             <p class="lead">
-                Welcome to the administration page of T.F.V. 'Professor Francken'.
+                Welcome to the adtministration page of T.F.V. 'Professor Francken'.
             </p>
 
             <p>
@@ -13,16 +13,53 @@
                 On the right you can find notifications as well as a short to do list of the website.
             </p>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <div class="card">
                 <div class='card-body'>
                     <h4 class="h5 font-weight-bold">
                         Notifications
                     </h4>
                     <div>
-                        <div class="bg-light mt-4 p-5 text-muted text-center">
-                            <pan class="h6 text-muted">Nothing to see here</span>
-                        </div>
+                        @if ($notifications->isEmpty())
+                            <div class="bg-light mt-4 p-5 text-muted text-center">
+                                <span class="h6 text-muted">
+                                    Nothing to see here
+                                </span>
+                            </div>
+                        @else
+                            <ul class="mt-4 text-muted list-unstyled">
+                                @foreach ($notifications as $notification)
+                                    <li class="bg-light p-3 my-3">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <h5 class="h6 d-flex flex-column">
+                                                <span class='mb-1'>
+                                                    {{ $notification->data['headline'] ?? '' }}
+                                                </span>
+                                                <small class="text-muted">
+                                                    {{ $notification->created_at->diffForHumans() }}
+                                                </small>
+                                            </h5>
+                                            <div class="d-flex align-items-start">
+                                                <button class="btn btn-sm btn-text p-0  m-0 rounded">
+                                                    <i class="far fa-check-circle"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <p style="font-size: 0.8rem; line-height: 2.3" class="mb-0">
+                                            From
+                                            <span class="bg-white p-1 my-1">
+                                            {{ $notification->data['from'] ?? '' }}
+                                            </span>
+                                            to
+                                            <span class="bg-white p-1 my-1">
+                                            {{ $notification->data['to'] ?? '' }}
+                                            </span>.
+                                        </p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>

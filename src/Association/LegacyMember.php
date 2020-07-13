@@ -16,7 +16,6 @@ use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\Students\Student;
 use Francken\Auth\Account;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -58,68 +57,33 @@ use Illuminate\Support\Collection;
  * @property string|null $werkgever
  * @property string|null $nnvnummer
  * @property string|null $streeplijst
- * @property int|null $mailinglist_email
- * @property int|null $mailinglist_post
- * @property int|null $mailinglist_sms
- * @property int|null $mailinglist_constitutiekaart
- * @property int|null $mailinglist_franckenvrij
+ * @property bool|null $mailinglist_email
+ * @property bool|null $mailinglist_post
+ * @property bool|null $mailinglist_sms
+ * @property bool|null $mailinglist_constitutiekaart
+ * @property bool|null $mailinglist_franckenvrij
  * @property int|null $erelid
  * @property string|null $notities
- * @property Carbon $created_at
- * @property Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  * @property string|null $deleted_at
- * @property-read mixed $fullname
- * @property-read mixed $surname
+ * @property-read \Francken\Association\Members\Address|null $address
+ * @property-read \DateTimeImmutable|null $birthdate
+ * @property-read \Francken\Association\Members\Email $email
+ * @property-read string $firstname
+ * @property-read string $fullname
+ * @property-read string $gender
+ * @property-read string $initials
+ * @property-read \Francken\Association\Members\PaymentDetails $payment_details
+ * @property-read string $phone_number
+ * @property-read bool $receive_francken_vrij
+ * @property-read bool $receive_newsletter
+ * @property-read \Francken\Association\Members\Students\Student $student
+ * @property-read string $student_number
+ * @property-read string $surname
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereAchternaam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereAdres($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereAfgestudeerd($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereAfstudeerplek($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereEindeLidmaatschap($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereEmailadres($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereErelid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereFoto($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereGeboortedatum($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereGeslacht($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereGratisLidmaatschap($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereInitialen($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereIsLid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereIsNederland($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereJaarVanInschrijving($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereLand($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereMachtiging($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereMailinglistConstitutiekaart($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereMailinglistEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereMailinglistFranckenvrij($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereMailinglistPost($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereMailinglistSms($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereNederlands($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereNnvnummer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereNotities($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember wherePlaats($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember wherePlaatsBank($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember wherePostcode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereRekeningnummer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereStartLidmaatschap($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereStreeplijst($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereStudentnummer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereStudierichting($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereTelefoonnummerMobiel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereTelefoonnummerThuis($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereTelefoonnummerWerk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereTitel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereTussenvoegsel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereTypeLid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereVoornaam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereWanbetaler($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember whereWerkgever($value)
- * @mixin \Eloquent
  */
 final class LegacyMember extends Model
 {
@@ -272,7 +236,7 @@ final class LegacyMember extends Model
         $oldMailinglistMail = $this->mailinglist_email;
         $updateNewsletterSubscription = $oldMailinglistMail !== $mailinglistMail;
 
-        if ($oldEmail == $email && ! $updateNewsletterSubscription) {
+        if ($oldEmail == $email && ( ! $updateNewsletterSubscription)) {
             return;
         }
 

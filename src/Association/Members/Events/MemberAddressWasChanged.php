@@ -44,7 +44,7 @@ final class MemberAddressWasChanged
         return $this->oldAddress;
     }
 
-    public function subscriptionPreferenceWasChanged(): bool
+    public function subscriptionPreferenceWasChanged() : bool
     {
         return $this->subscriptionPreferenceWasChanged;
     }

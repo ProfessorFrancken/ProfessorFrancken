@@ -21,6 +21,7 @@ class DashboardController extends Controller
 
         return view('admin.overview', [
             'board' => $board,
+            'notifications' => $board->notifications,
             'breadcrumbs' => [
                 ['url' => action([self::class, 'overview']), 'text' => 'Adtministration'],
             ]
