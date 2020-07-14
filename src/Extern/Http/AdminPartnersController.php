@@ -12,6 +12,7 @@ use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Extern\Sector;
+use Francken\Shared\Clock\Clock;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -30,10 +31,28 @@ final class AdminPartnersController
         $this->uploader = $uploader;
     }
 
-    public function index(AdminSearchPartnersRequest $request) : View
+    public function index(AdminSearchPartnersRequest $request, Clock $clock) : View
     {
+        $now = $clock->now();
+
         $partners = Partner::query()
             ->search($request)
+            ->when(
+                $request->selected('active-contract'),
+                fn (Builder $query) : Builder => $query->withActiveContract($now)
+            )
+            ->when(
+                $request->selected('recently-expired-contract'),
+                fn (Builder $query) : Builder => $query->withRecentlyExpiredContract($now)
+            )
+            ->when(
+                $request->selected('expired-contract'),
+                fn (Builder $query) : Builder => $query->withExpiredContract($now)
+            )
+            ->when(
+                $request->selected('having-alumni'),
+                fn (Builder $query) : Builder => $query->withAlumni()
+            )
             ->with([
                 'sector',
                 'logoMedia',
@@ -44,12 +63,28 @@ final class AdminPartnersController
                 'vacancies'
             ])
             ->orderBy('name', 'ASC')
-            ->paginate(self::PARTNERS_PER_PAGE);
+            ->paginate(self::PARTNERS_PER_PAGE)
+            ->appends($request->except('page'));
 
         return view('admin.extern.partners.index')
             ->with([
                 'request' => $request,
                 'partners' => $partners,
+                'all_partners' => Partner::query()
+                    ->count(),
+                'active_partners' => Partner::query()
+                    ->withActiveContract($now)
+                    ->count(),
+                'recently_expired_partners' => Partner::query()
+                    ->withRecentlyExpiredContract($now)
+                    ->count(),
+                'expired_partners' => Partner::query()
+                    ->withExpiredContract($now)
+                    ->count(),
+                'with_alumni_partners' => Partner::query()
+                    ->withAlumni()
+                    ->count(),
+
                 'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                     return [$sector->getKey() => $sector->name];
                 })->prepend("All", 0),

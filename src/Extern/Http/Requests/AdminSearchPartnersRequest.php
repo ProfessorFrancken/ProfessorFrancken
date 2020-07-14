@@ -74,4 +74,11 @@ class AdminSearchPartnersRequest extends FormRequest
             ? (bool)$this->input('show_archived')
             : null;
     }
+
+    public function selected(string $select) : bool
+    {
+        $selected = $this->input('select', 'all');
+
+        return $selected === $select;
+    }
 }
