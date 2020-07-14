@@ -60,4 +60,44 @@ class AdminPartnerContactsFeature extends TestCase
 
         $this->assertCount(1, $partner->contacts);
     }
+
+    /** @test */
+    public function adding_a_contact_without_a_photo() : void
+    {
+        $partner = factory(Partner::class)->create();
+
+        $this->visit(action(
+            [AdminPartnersController::class, 'show'],
+            ['partner' => $partner]
+        ))
+            ->click('Add contact')
+            ->seePageIs((action(
+                [AdminPartnerContactsController::class, 'create'],
+                ['partner' => $partner]
+            )))
+            ->select('male', 'gender')
+             ->type('Corporate Recruiter', 'position')
+             ->type('John', 'firstname')
+             ->type('Snow', 'surname')
+             ->type('john@scriptcie.nl', 'email')
+            ->press('Add contact')
+             ->seePageIs((action(
+                [AdminPartnersController::class, 'show'],
+                ['partner' => $partner]
+            )))
+            ->see('John Snow');
+
+
+        $this->assertCount(1, $partner->contacts);
+        $this
+            ->click('Edit contact')
+            ->press('here')
+            ->seePageIs((action(
+                [AdminPartnersController::class, 'show'],
+                ['partner' => $partner]
+            )));
+
+        $partner->refresh();
+        $this->assertCount(0, $partner->contacts);
+    }
 }

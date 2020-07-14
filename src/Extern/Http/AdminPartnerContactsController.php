@@ -103,7 +103,7 @@ final class AdminPartnerContactsController
         );
 
         if ($photo !== null) {
-            $partner->syncMedia($photo, Partner::PARTNER_LOGO_TAG);
+            $contact->syncMedia($photo, Contact::CONTACT_PHOTO_TAG);
             $contact->update(['photo_media_id' => $photo->id]);
         }
         $contact->contactDetails()->update(
