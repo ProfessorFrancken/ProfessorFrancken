@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Members\Events;
 
 use Francken\Association\LegacyMember;
-use Francken\Association\Members\Email;
+use Francken\Shared\Email;
 use Illuminate\Queue\SerializesModels;
 
 final class MemberEmailWasChanged

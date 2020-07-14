@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Members\Http\Requests;
 
 use Francken\Association\Members\Address;
-use Francken\Association\Members\Email;
+use Francken\Shared\Email;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ContactDetailsRequest extends FormRequest

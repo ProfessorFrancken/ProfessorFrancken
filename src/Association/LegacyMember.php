@@ -7,7 +7,6 @@ namespace Francken\Association;
 use DateTimeImmutable;
 use DB;
 use Francken\Association\Members\Address;
-use Francken\Association\Members\Email;
 use Francken\Association\Members\Events\MemberAddressWasChanged;
 use Francken\Association\Members\Events\MemberEmailWasChanged;
 use Francken\Association\Members\Events\MemberPhoneNumberWasChanged;
@@ -15,6 +14,7 @@ use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\Students\Student;
 use Francken\Auth\Account;
+use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 

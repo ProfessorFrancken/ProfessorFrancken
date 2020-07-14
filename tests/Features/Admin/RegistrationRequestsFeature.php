@@ -10,7 +10,6 @@ use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\Birthdate;
 use Francken\Association\Members\ContactDetails;
-use Francken\Association\Members\Email;
 use Francken\Association\Members\Fullname;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
@@ -21,6 +20,7 @@ use Francken\Association\Members\StudyDetails;
 use Francken\Auth\Account;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
+use Francken\Shared\Email;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\BrowserKitTesting\HttpException;
 

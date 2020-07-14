@@ -23,4 +23,9 @@ final class Email
     {
         return $this->email;
     }
+
+    public function toString() : string
+    {
+        return $this->email;
+    }
 }

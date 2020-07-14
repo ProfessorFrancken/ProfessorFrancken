@@ -8,13 +8,13 @@ use DateTimeImmutable;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\Birthdate;
 use Francken\Association\Members\ContactDetails;
-use Francken\Association\Members\Email;
 use Francken\Association\Members\Fullname;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\PersonalDetails;
 use Francken\Association\Members\Study;
 use Francken\Association\Members\StudyDetails;
+use Francken\Shared\Email;
 use Illuminate\Foundation\Http\FormRequest;
 use Webmozart\Assert\Assert;
 

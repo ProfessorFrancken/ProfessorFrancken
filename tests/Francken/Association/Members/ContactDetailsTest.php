@@ -6,7 +6,7 @@ namespace Francken\Tests\Association\Members;
 
 use Francken\Association\Members\Address;
 use Francken\Association\Members\ContactDetails;
-use Francken\Association\Members\Email;
+use Francken\Shared\Email;
 use PHPUnit\Framework\TestCase;
 
 class ContactDetailsTest extends TestCase

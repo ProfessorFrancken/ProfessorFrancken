@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members;
 
+use Francken\Shared\Email;
+
 final class ContactDetails
 {
     private Email $email;

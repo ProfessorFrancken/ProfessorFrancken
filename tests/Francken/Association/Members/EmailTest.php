@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Association\Members;
 
-use Francken\Association\Members\Email;
+use Francken\Shared\Email;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
