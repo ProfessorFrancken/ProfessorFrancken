@@ -16,7 +16,10 @@
         <div class="col-4">
             <div class="card">
                 <div class='card-body'>
-                    <h4 class="h5 font-weight-bold">
+                    <h4 class="h5 font-weight-bold d-flex justify-content-start">
+                        <span class="mr-1 badge badge-primary text-white">
+                            {{ $total_notifications }}
+                        </span>
                         Notifications
                     </h4>
                     <div>
@@ -58,6 +61,9 @@
                                         </p>
                                     </li>
                                 @endforeach
+                                <li class="my-3">
+                                    {{ $notifications->links() }}
+                                </li>
                             </ul>
                         @endif
                     </div>
