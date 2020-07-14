@@ -33,35 +33,7 @@ final class AdminPartnersController
     public function index(AdminSearchPartnersRequest $request) : View
     {
         $partners = Partner::query()
-            ->when($request->showArchived(), function (Builder $query, bool $showArchived) : void {
-                if ($showArchived) {
-                    $query->withTrashed();
-                }
-            })
-            ->when($request->name(), function (Builder $query, string $name) : void {
-                $query->where('name', 'LIKE', "%{$name}%");
-            })
-            ->when($request->sectorId(), function (Builder $query, int $sectorId) : void {
-                $query->where('sector_id', '=', $sectorId);
-            })
-            ->when($request->status(), function (Builder $query, string $status) : void {
-                $query->where('status', '=', $status);
-            })
-            ->when($request->hasCompanyProfile(), function (Builder $query, bool $hasCompanyProfile) : void {
-                if ($hasCompanyProfile) {
-                    $query->whereHas('companyProfile');
-                }
-            })
-            ->when($request->hasFooter(), function (Builder $query, bool $hasFooter) : void {
-                if ($hasFooter) {
-                    $query->whereHas('footer');
-                }
-            })
-            ->when($request->hasVacancies(), function (Builder $query, bool $hasVacancies) : void {
-                if ($hasVacancies) {
-                    $query->whereHas('vacancies');
-                }
-            })
+            ->search($request)
             ->with([
                 'sector',
                 'logoMedia',
