@@ -13,6 +13,7 @@ use Francken\Association\Members\Events\MemberPhoneNumberWasChanged;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\Students\Student;
+use Francken\Association\Members\StudyDetails;
 use Francken\Auth\Account;
 use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Model;
@@ -210,9 +211,9 @@ final class LegacyMember extends Model
         return $this->studentnummer ?? '';
     }
 
-    public function getStudentAttribute() : Student
+    public function getStudentAttribute() : StudyDetails
     {
-        return Student::fromDb($this);
+        return StudyDetails::fromDb($this);
     }
 
     public function getPaymentDetailsAttribute() : PaymentDetails

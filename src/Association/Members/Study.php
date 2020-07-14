@@ -24,6 +24,11 @@ final class Study
         $this->graduationDate = $graduationDate;
     }
 
+    public function __toString() : string
+    {
+        return $this->study;
+    }
+
     public function study() : string
     {
         return $this->study;
@@ -37,5 +42,17 @@ final class Study
     public function graduationDate() : ?DateTimeImmutable
     {
         return $this->graduationDate;
+    }
+
+    public function startYear() : string
+    {
+        return $this->startDate->format('Y');
+    }
+
+    public function endYear() : string
+    {
+        return $this->graduationDate !== null
+            ? $this->graduationDate->format('Y')
+            : "current";
     }
 }
