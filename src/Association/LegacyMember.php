@@ -12,7 +12,6 @@ use Francken\Association\Members\Events\MemberEmailWasChanged;
 use Francken\Association\Members\Events\MemberPhoneNumberWasChanged;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
-use Francken\Association\Members\Students\Student;
 use Francken\Association\Members\StudyDetails;
 use Francken\Auth\Account;
 use Francken\Shared\Email;
