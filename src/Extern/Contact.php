@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -60,11 +59,6 @@ final class Contact extends Model
     public function photoMedia() : BelongsTo
     {
         return $this->belongsTo(Media::class, 'photo_media_id');
-    }
-
-    public function scopeWithPhotos(Builder $query) : Builder
-    {
-        return $query->withMedia([static::CONTACT_PHOTO_TAG]);
     }
 
     public function getFullnameAttribute() : string

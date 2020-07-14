@@ -7,7 +7,6 @@ namespace Francken\Extern;
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Francken\Extern\SponsorOptions\Footer;
 use Francken\Extern\SponsorOptions\Vacancy;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -58,11 +57,6 @@ final class Partner extends Model
     public function logoMedia() : BelongsTo
     {
         return $this->belongsTo(Media::class, 'logo_media_id');
-    }
-
-    public function scopeWithPhotos(Builder $query) : Builder
-    {
-        return $query->withMedia([static::PARTNER_LOGO_TAG]);
     }
 
     public function sector() : BelongsTo

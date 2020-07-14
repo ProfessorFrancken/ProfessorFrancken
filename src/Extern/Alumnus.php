@@ -38,11 +38,6 @@ final class Alumnus extends Model
         'stopped_position_at' => 'datetime:Y-m-d',
     ];
 
-    public function getPhotoAttribute() : ?string
-    {
-        return null;
-    }
-
     public function getFullnameAttribute() : string
     {
         return $this->member->fullname;
