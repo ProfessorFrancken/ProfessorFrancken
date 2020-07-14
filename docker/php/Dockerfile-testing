@@ -1,0 +1,15 @@
+FROM francken/php-base
+
+RUN install-php-extensions pcov
+
+ADD php.ini /usr/local/etc/php/
+ADD example.pool.conf /etc/php5/fpm/pool.d/
+
+ARG USER_ID
+ARG GROUP_ID
+
+RUN addgroup --gid $GROUP_ID user
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
+USER $USER_ID
+
+CMD ["bash"]

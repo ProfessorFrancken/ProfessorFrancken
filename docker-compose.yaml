@@ -182,3 +182,25 @@ services:
       - 16379:6379
     volumes:
       - redis:/data
+
+  php-coverage:
+    image: francken/v2-php-testing
+    build:
+      dockerfile: Dockerfile-testing
+      context: ./docker/php
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    user: $USER_ID
+    env_file:
+      - .docker.env
+      - .env
+    links:
+      - mysql
+      - legacy-db
+      - redis
+      - mailhog
+    working_dir: /var/www/francken
+    volumes:
+      - ./:/var/www/francken
+      - ./docker/volumes/config/:/var/www/.config
