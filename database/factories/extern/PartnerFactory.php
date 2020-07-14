@@ -26,5 +26,7 @@ $factory->define(Partner::class, function (Faker $faker) {
         'homepage_url' => $faker->word,
         'referral_url' => $faker->word,
         'logo_media_id' => null, //factory(Plank\Mediable\Media::class),
+        'last_contract_ends_at' => $faker->date(),
+        'deleted_at' => null,
     ];
 });

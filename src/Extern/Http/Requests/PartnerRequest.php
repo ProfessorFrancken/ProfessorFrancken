@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http\Requests;
 
+use DateTimeImmutable;
 use Francken\Extern\PartnerStatus;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Webmozart\Assert\Assert;
 
 class PartnerRequest extends FormRequest
 {
@@ -30,6 +32,7 @@ class PartnerRequest extends FormRequest
             'homepage_url' => ['required', 'url'],
             'referral_url' => ['nullable', 'url'],
             'logo' => ['image', 'max:' . self::MAX_FILE_SIZE],
+            'last_contract_ends_at' => ['nullable', 'date_format:Y-m-d']
         ];
     }
 
@@ -61,5 +64,21 @@ class PartnerRequest extends FormRequest
     public function referralUrl() : ?string
     {
         return $this->input('referral_url');
+    }
+
+    public function lastContractEndsAt() : ?DateTimeImmutable
+    {
+        if ($this->input('last_contract_ends_at') === null) {
+            return null;
+        }
+
+        $lastContractEndsAt = DateTimeImmutable::createFromFormat(
+            'Y-m-d',
+            $this->input('last_contract_ends_at')
+        );
+
+        Assert::isInstanceOf($lastContractEndsAt, DateTimeImmutable::class);
+
+        return $lastContractEndsAt;
     }
 }

@@ -3,6 +3,41 @@
 
 @section('content')
     <div class="card">
+        <div class="card-header p-0">
+            <ul class="nav nav-tabs card-header-tabs m-0">
+                @component('admin.extern.partners._tab-navigation', ['request' => $request, 'select' => 'all', 'class' => 'border-left-0'])
+                    All partners
+                    <span class="badge badge-secondary text-white">
+                        {{ $all_partners }}
+                    </span>
+                @endcomponent
+                @component('admin.extern.partners._tab-navigation', ['request' => $request, 'select' => 'active-contract'])
+                    Active contract
+                    <span class="badge badge-secondary text-white">
+                        {{ $active_partners }}
+                    </span>
+                @endcomponent
+                @component('admin.extern.partners._tab-navigation', ['request' => $request, 'select' => 'recently-expired-contract'])
+                    Recently expired contract
+                    <span class="badge badge-secondary text-white">
+                        {{ $recently_expired_partners }}
+                    </span>
+                @endcomponent
+                @component('admin.extern.partners._tab-navigation', ['request' => $request, 'select' => 'expired-contract'])
+                    Expired contract
+                    <span class="badge badge-secondary text-white">
+                        {{ $expired_partners }}
+                    </span>
+                @endcomponent
+                @component('admin.extern.partners._tab-navigation', ['request' => $request, 'select' => 'having-alumni'])
+                    With alumni
+                    <span class="badge badge-secondary text-white">
+                        {{ $with_alumni_partners }}
+                    </span>
+                @endcomponent
+            </ul>
+        </div>
+
         <div class="card-body">
             <h4 class="font-weight-bold">
                 Search
@@ -88,7 +123,15 @@
                                     <span>
                                         {{ $partner->name }}
                                     </span>
+                                    @if ($partner->last_contract_ends_at)
                                     <small class="text-muted mt-1">
+                                        <i class="fas fa-file-contract fa-fw"></i>
+                                        Contract ends in
+                                        {{ $partner->last_contract_ends_at->diffForHumans() }}
+                                    </small>
+                                    @endif
+                                    <small class="text-muted mt-1">
+                                        <i class="fas fa-clock fa-fw"></i>
                                         Last updated
                                         {{ $partner->updated_at->diffForHumans() }}
                                     </small>

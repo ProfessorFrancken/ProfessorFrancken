@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features\Extern;
 
+use DateTimeImmutable;
 use Francken\Extern\ContactDetails;
 use Francken\Extern\Http\AdminPartnersController;
 use Francken\Extern\Partner;
@@ -42,6 +43,7 @@ class AdminPartnersFeature extends TestCase
             ->select($sectorId, 'sector_id')
             ->type('https://scriptcie.nl', 'homepage_url')
             ->type('https://scriptcie.nl?referal=francken', 'referral_url')
+            ->type('2021-07-14', 'last_contract_ends_at')
             ->select(PartnerStatus::ACTIVE_PARTNER, 'status')
             ->attach(UploadedFile::fake()->image('scriptcie.png'), 'logo')
             ->type('kathinka@scriptcie.nl', 'email')
@@ -56,6 +58,7 @@ class AdminPartnersFeature extends TestCase
         $this->assertEquals(PartnerStatus::ACTIVE_PARTNER, $partner->status);
         $this->assertEquals('IT and programming', $partner->sector->name);
         $this->assertEquals('sckripttcie-inck', $partner->slug);
+        $this->assertEquals(DateTimeImmutable::createFromFormat('!Y-m-d', '2021-07-14'), $partner->last_contract_ends_at);
 
         // Contact details can be addded
         $this->assertEquals('kathinka@scriptcie.nl', $partner->contactDetails->email);

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
+use DateTimeImmutable;
+use Francken\Extern\Http\Requests\AdminSearchPartnersRequest;
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Francken\Extern\SponsorOptions\Footer;
 use Francken\Extern\SponsorOptions\Vacancy;
@@ -42,6 +44,13 @@ final class Partner extends Model
         'referral_url',
         'slug',
         'status',
+        'last_contract_ends_at',
+    ];
+
+    protected $casts = [
+        'sector_id' => 'int',
+        'logo_media_id' => 'int',
+        'last_contract_ends_at' => 'date',
     ];
 
     public function getLogoAttribute() : ?string
@@ -58,11 +67,6 @@ final class Partner extends Model
     public function logoMedia() : BelongsTo
     {
         return $this->belongsTo(Media::class, 'logo_media_id');
-    }
-
-    public function scopeWithPhotos(Builder $query) : Builder
-    {
-        return $query->withMedia([static::PARTNER_LOGO_TAG]);
     }
 
     public function sector() : BelongsTo
@@ -117,5 +121,60 @@ final class Partner extends Model
         $status = PartnerStatus::all();
 
         return $status[$this->status] ?? '';
+    }
+
+    public function scopeSearch(Builder $query, AdminSearchPartnersRequest $request) : Builder
+    {
+        return $query
+            ->when($request->showArchived(), function (Builder $query, bool $showArchived) : void {
+                if ($showArchived) {
+                    $query->withTrashed();
+                }
+            })
+            ->when($request->name(), function (Builder $query, string $name) : void {
+                $query->where('name', 'LIKE', "%{$name}%");
+            })
+            ->when($request->sectorId(), function (Builder $query, int $sectorId) : void {
+                $query->where('sector_id', '=', $sectorId);
+            })
+            ->when($request->status(), function (Builder $query, string $status) : void {
+                $query->where('status', '=', $status);
+            })
+            ->when($request->hasCompanyProfile(), function (Builder $query, bool $hasCompanyProfile) : void {
+                if ($hasCompanyProfile) {
+                    $query->whereHas('companyProfile');
+                }
+            })
+            ->when($request->hasFooter(), function (Builder $query, bool $hasFooter) : void {
+                if ($hasFooter) {
+                    $query->whereHas('footer');
+                }
+            })
+            ->when($request->hasVacancies(), function (Builder $query, bool $hasVacancies) : void {
+                if ($hasVacancies) {
+                    $query->whereHas('vacancies');
+                }
+            });
+    }
+
+    public function scopeWithActiveContract(Builder $query, DateTimeImmutable $at) : Builder
+    {
+        return $query->whereDate('last_contract_ends_at', '>', $at);
+    }
+
+    public function scopeWithRecentlyExpiredContract(Builder $query, DateTimeImmutable $at) : Builder
+    {
+        return $query->whereDate('last_contract_ends_at', '>', $at->modify('-1 year'))
+            ->whereDate('last_contract_ends_at', '<', $at);
+    }
+
+    public function scopeWithExpiredContract(Builder $query, DateTimeImmutable $at) : Builder
+    {
+        return $query->whereDate('last_contract_ends_at', '<', $at);
+    }
+
+    public function scopeWithAlumni(Builder $query) : Builder
+    {
+        return $query->whereHas('alumni');
     }
 }

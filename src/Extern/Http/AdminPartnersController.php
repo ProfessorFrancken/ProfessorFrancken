@@ -12,6 +12,7 @@ use Francken\Extern\LogoUploader;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Extern\Sector;
+use Francken\Shared\Clock\Clock;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -30,38 +31,28 @@ final class AdminPartnersController
         $this->uploader = $uploader;
     }
 
-    public function index(AdminSearchPartnersRequest $request) : View
+    public function index(AdminSearchPartnersRequest $request, Clock $clock) : View
     {
+        $now = $clock->now();
+
         $partners = Partner::query()
-            ->when($request->showArchived(), function (Builder $query, bool $showArchived) : void {
-                if ($showArchived) {
-                    $query->withTrashed();
-                }
-            })
-            ->when($request->name(), function (Builder $query, string $name) : void {
-                $query->where('name', 'LIKE', "%{$name}%");
-            })
-            ->when($request->sectorId(), function (Builder $query, int $sectorId) : void {
-                $query->where('sector_id', '=', $sectorId);
-            })
-            ->when($request->status(), function (Builder $query, string $status) : void {
-                $query->where('status', '=', $status);
-            })
-            ->when($request->hasCompanyProfile(), function (Builder $query, bool $hasCompanyProfile) : void {
-                if ($hasCompanyProfile) {
-                    $query->whereHas('companyProfile');
-                }
-            })
-            ->when($request->hasFooter(), function (Builder $query, bool $hasFooter) : void {
-                if ($hasFooter) {
-                    $query->whereHas('footer');
-                }
-            })
-            ->when($request->hasVacancies(), function (Builder $query, bool $hasVacancies) : void {
-                if ($hasVacancies) {
-                    $query->whereHas('vacancies');
-                }
-            })
+            ->search($request)
+            ->when(
+                $request->selected('active-contract'),
+                fn (Builder $query) : Builder => $query->withActiveContract($now)
+            )
+            ->when(
+                $request->selected('recently-expired-contract'),
+                fn (Builder $query) : Builder => $query->withRecentlyExpiredContract($now)
+            )
+            ->when(
+                $request->selected('expired-contract'),
+                fn (Builder $query) : Builder => $query->withExpiredContract($now)
+            )
+            ->when(
+                $request->selected('having-alumni'),
+                fn (Builder $query) : Builder => $query->withAlumni()
+            )
             ->with([
                 'sector',
                 'logoMedia',
@@ -72,12 +63,28 @@ final class AdminPartnersController
                 'vacancies'
             ])
             ->orderBy('name', 'ASC')
-            ->paginate(self::PARTNERS_PER_PAGE);
+            ->paginate(self::PARTNERS_PER_PAGE)
+            ->appends($request->except('page'));
 
         return view('admin.extern.partners.index')
             ->with([
                 'request' => $request,
                 'partners' => $partners,
+                'all_partners' => Partner::query()
+                    ->count(),
+                'active_partners' => Partner::query()
+                    ->withActiveContract($now)
+                    ->count(),
+                'recently_expired_partners' => Partner::query()
+                    ->withRecentlyExpiredContract($now)
+                    ->count(),
+                'expired_partners' => Partner::query()
+                    ->withExpiredContract($now)
+                    ->count(),
+                'with_alumni_partners' => Partner::query()
+                    ->withAlumni()
+                    ->count(),
+
                 'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                     return [$sector->getKey() => $sector->name];
                 })->prepend("All", 0),
@@ -115,6 +122,7 @@ final class AdminPartnersController
             'status' => $request->status(),
             'homepage_url' => $request->homepageUrl(),
             'referral_url' => $request->referralUrl(),
+            'last_contract_ends_at' => $request->lastContractEndsAt(),
         ]);
 
         if ($logo !== null) {
@@ -159,7 +167,8 @@ final class AdminPartnersController
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Partners'],
-                ['url' => action([static::class, 'edit'], ['partner' => $partner]), 'text' => $partner->name . ' / Edit'],
+                ['url' => action([static::class, 'show'], ['partner' => $partner]), 'text' => $partner->name],
+                ['url' => action([static::class, 'edit'], ['partner' => $partner]), 'text' => 'Edit'],
             ]
         ]);
     }
@@ -180,6 +189,7 @@ final class AdminPartnersController
             'status' => $request->status(),
             'homepage_url' => $request->homepageUrl(),
             'referral_url' => $request->referralUrl(),
+            'last_contract_ends_at' => $request->lastContractEndsAt(),
         ]);
 
         $partner->contactDetails()->update(

@@ -29,6 +29,14 @@
             <label for="status">Partner status</label>
             {!! Form::select('status', $statuses, null, ['class' =>'form-control', 'id' => 'status']) !!}
         </div>
+
+        <div class="form-group">
+            <label for="last_contract_ends_at">(Last) Contract ends at</label>
+            {!! Form::date('last_contract_ends_at', optional($partner->last_contract_ends_at)->format('Y-m-d'), ['class' =>'form-control', 'id' => 'last_contract_ends_at']) !!}
+            <small class="form-text text-muted">
+                Use this field to keep track of partners with an active contract.
+            </small>
+        </div>
     </div>
     <div class="col">
         <div class="d-flex flex-column justify-content-end h-100">
