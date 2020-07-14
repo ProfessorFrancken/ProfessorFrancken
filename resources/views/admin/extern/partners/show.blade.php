@@ -35,6 +35,15 @@
                                         </a>
                                     </small>
                                 </h6>
+                                @if ($partner->last_contract_ends_at)
+                                <h6 class="mt-3">
+                                    <i class="fas fa-file-contract"></i>
+                                    Contract ends at
+                                    <small class="d-block mt-2">
+                                        {{ $partner->last_contract_ends_at->format('Y-m-d') }}
+                                    </small>
+                                </h6>
+                                @endif
                             </div>
                             @include('admin.extern.partners._contact_details', ['partner' => $partner])
                         </div>

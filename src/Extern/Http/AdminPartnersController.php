@@ -115,6 +115,7 @@ final class AdminPartnersController
             'status' => $request->status(),
             'homepage_url' => $request->homepageUrl(),
             'referral_url' => $request->referralUrl(),
+            'last_contract_ends_at' => $request->lastContractEndsAt(),
         ]);
 
         if ($logo !== null) {
@@ -159,7 +160,8 @@ final class AdminPartnersController
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Partners'],
-                ['url' => action([static::class, 'edit'], ['partner' => $partner]), 'text' => $partner->name . ' / Edit'],
+                ['url' => action([static::class, 'show'], ['partner' => $partner]), 'text' => $partner->name],
+                ['url' => action([static::class, 'edit'], ['partner' => $partner]), 'text' => 'Edit'],
             ]
         ]);
     }
@@ -180,6 +182,7 @@ final class AdminPartnersController
             'status' => $request->status(),
             'homepage_url' => $request->homepageUrl(),
             'referral_url' => $request->referralUrl(),
+            'last_contract_ends_at' => $request->lastContractEndsAt(),
         ]);
 
         $partner->contactDetails()->update(

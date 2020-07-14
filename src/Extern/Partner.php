@@ -41,6 +41,13 @@ final class Partner extends Model
         'referral_url',
         'slug',
         'status',
+        'last_contract_ends_at',
+    ];
+
+    protected $casts = [
+        'sector_id' => 'int',
+        'logo_media_id' => 'int',
+        'last_contract_ends_at' => 'date',
     ];
 
     public function getLogoAttribute() : ?string
