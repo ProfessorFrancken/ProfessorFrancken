@@ -9,7 +9,6 @@ use Francken\Extern\Http\FactSheetController;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Http\UploadedFile;
 
 class FactsheetFeature extends TestCase
 {
@@ -25,4 +24,3 @@ class FactsheetFeature extends TestCase
         $this->assertResponseOk();
     }
 }
-
