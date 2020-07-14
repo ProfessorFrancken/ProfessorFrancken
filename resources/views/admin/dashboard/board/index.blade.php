@@ -43,9 +43,23 @@
                                                 </small>
                                             </h5>
                                             <div class="d-flex align-items-start">
+                                                {!!
+                                                       Form::model(
+                                                           $notification,
+                                                           [
+                                                               'url' => action(
+                                                                   [\Francken\Shared\Http\Controllers\BoardNotificationsController::class, 'destroy'],
+                                                                   ['notification' => $notification]
+                                                               ),
+                                                               'method' => 'post'
+                                                           ]
+                                                       )
+                                                !!}
+                                                @method('DELETE')
                                                 <button class="btn btn-sm btn-text p-0  m-0 rounded">
                                                     <i class="far fa-check-circle"></i>
                                                 </button>
+                                                {!! Form::close() !!}
                                             </div>
                                         </div>
 
