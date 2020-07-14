@@ -5,6 +5,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Extern;
 
+use DateTimeImmutable;
+use Francken\Extern\Alumnus;
 use Francken\Extern\Http\Requests\AdminSearchPartnersRequest;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
@@ -162,6 +164,116 @@ class PartnerTest extends LaravelTestCase
             ]))
             ->get();
 
+        $this->assertCount(1, $partners);
+    }
+
+    /** @test */
+    public function it_can_filter_based_on_active_contract() : void
+    {
+        factory(Partner::class)->create([
+            'name' => 'Borrelcie',
+            'sector_id' => 10,
+            'status' => PartnerStatus::SECONDARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2020-07-14')
+        ]);
+        $scriptcie = factory(Partner::class)->create([
+            'name' => 'S[ck]rip(t|t?c)ie In[ck]',
+            'sector_id' => 6,
+            'status' => PartnerStatus::PRIMARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2022-07-14')
+        ]);
+
+        $at = new DateTimeImmutable('2021-07-14');
+
+        $partners = Partner::query()
+            ->withActiveContract($at)
+            ->get();
+
+        $this->assertCount(1, $partners);
+        $this->assertEquals($scriptcie->id, $partners[0]->id);
+    }
+
+    /** @test */
+    public function it_can_filter_based_on_recently_expired_contract() : void
+    {
+        factory(Partner::class)->create([
+            'name' => 'Borrelcie',
+            'sector_id' => 10,
+            'status' => PartnerStatus::SECONDARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2020-07-14')
+        ]);
+        $scriptcie = factory(Partner::class)->create([
+            'name' => 'S[ck]rip(t|t?c)ie In[ck]',
+            'sector_id' => 6,
+            'status' => PartnerStatus::PRIMARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2021-05-14')
+        ]);
+        factory(Partner::class)->create([
+            'name' => 'Borrelcie',
+            'sector_id' => 10,
+            'status' => PartnerStatus::SECONDARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2022-07-14')
+        ]);
+        $at = new DateTimeImmutable('2021-07-14');
+
+        $partners = Partner::query()
+            ->withRecentlyExpiredContract($at)
+            ->get();
+
+        $this->assertCount(1, $partners);
+        $this->assertEquals($scriptcie->id, $partners[0]->id);
+    }
+
+    /** @test */
+    public function it_can_filter_based_on_expired_contract() : void
+    {
+        factory(Partner::class)->create([
+            'name' => 'Borrelcie',
+            'sector_id' => 10,
+            'status' => PartnerStatus::SECONDARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2020-07-14')
+        ]);
+        factory(Partner::class)->create([
+            'name' => 'S[ck]rip(t|t?c)ie In[ck]',
+            'sector_id' => 6,
+            'status' => PartnerStatus::PRIMARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2021-05-14')
+        ]);
+        factory(Partner::class)->create([
+            'name' => 'Borrelcie',
+            'sector_id' => 10,
+            'status' => PartnerStatus::SECONDARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2022-07-14')
+        ]);
+        $at = new DateTimeImmutable('2021-07-14');
+
+        $partners = Partner::query()
+            ->withExpiredContract($at)
+            ->get();
+
+        $this->assertCount(2, $partners);
+    }
+
+    /** @test */
+    public function it_can_filter_based_on_having_alumni() : void
+    {
+        factory(Partner::class)->create([
+            'name' => 'Borrelcie',
+            'sector_id' => 10,
+            'status' => PartnerStatus::SECONDARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2020-07-14')
+        ]);
+        $scriptcie = factory(Partner::class)->create([
+            'name' => 'S[ck]rip(t|t?c)ie In[ck]',
+            'sector_id' => 6,
+            'status' => PartnerStatus::PRIMARY_PARTNER,
+            'last_contract_ends_at' => new DateTimeImmutable('2022-07-14')
+        ]);
+        factory(Alumnus::class)->create([
+            'partner_id' => $scriptcie->id
+        ]);
+
+        $partners = Partner::query()->withAlumni()->get();
         $this->assertCount(1, $partners);
     }
 }

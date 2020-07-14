@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
+use DateTimeImmutable;
 use Francken\Extern\Http\Requests\AdminSearchPartnersRequest;
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Francken\Extern\SponsorOptions\Footer;
@@ -154,5 +155,26 @@ final class Partner extends Model
                     $query->whereHas('vacancies');
                 }
             });
+    }
+
+    public function scopeWithActiveContract(Builder $query, DateTimeImmutable $at) : Builder
+    {
+        return $query->whereDate('last_contract_ends_at', '>', $at);
+    }
+
+    public function scopeWithRecentlyExpiredContract(Builder $query, DateTimeImmutable $at) : Builder
+    {
+        return $query->whereDate('last_contract_ends_at', '>', $at->modify('-1 year'))
+            ->whereDate('last_contract_ends_at', '<', $at);
+    }
+
+    public function scopeWithExpiredContract(Builder $query, DateTimeImmutable $at) : Builder
+    {
+        return $query->whereDate('last_contract_ends_at', '<', $at);
+    }
+
+    public function scopeWithAlumni(Builder $query) : Builder
+    {
+        return $query->whereHas('alumni');
     }
 }
