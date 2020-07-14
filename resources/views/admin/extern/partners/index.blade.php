@@ -88,7 +88,15 @@
                                     <span>
                                         {{ $partner->name }}
                                     </span>
+                                    @if ($partner->last_contract_ends_at)
                                     <small class="text-muted mt-1">
+                                        <i class="fas fa-file-contract fa-fw"></i>
+                                        Contract ends in
+                                        {{ $partner->last_contract_ends_at->diffForHumans() }}
+                                    </small>
+                                    @endif
+                                    <small class="text-muted mt-1">
+                                        <i class="fas fa-clock fa-fw"></i>
                                         Last updated
                                         {{ $partner->updated_at->diffForHumans() }}
                                     </small>
