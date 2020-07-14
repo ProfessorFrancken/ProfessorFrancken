@@ -50,5 +50,14 @@ class AdminPartnerAlumniFeature extends TestCase
             ->press('Save alumnus');
 
         $this->assertCount(1, $partner->alumni);
+        $this->click('Edit alumnus')
+            ->press('here')
+            ->seePageIs((action(
+                [AdminPartnersController::class, 'show'],
+                ['partner' => $partner]
+            )));
+
+        $partner->refresh();
+        $this->assertCount(0, $partner->alumni);
     }
 }
