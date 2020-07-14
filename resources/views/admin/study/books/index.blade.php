@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header p-0">
                     <ul class="nav nav-tabs card-header-tabs m-0">
-                        @component('admin.study.books._tab-navigation', ['request' => $request, 'select' => 'available'])
+                        @component('admin.study.books._tab-navigation', ['request' => $request, 'select' => 'available', 'class' => 'border-left-0'])
                         Available books
                             @if ($available_books > 0)
                                 <span class="badge badge-secondary text-white">
