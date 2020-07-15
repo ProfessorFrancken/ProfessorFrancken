@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
-use Francken\Extern\Components\FooterSponsorsComponent;
+use Francken\Shared\ViewComponents\FooterSponsorsComponent;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 

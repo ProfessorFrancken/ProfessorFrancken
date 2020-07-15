@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Tests\Extern;
 
 use Francken\Extern\CompanyRepository;
-use Francken\Extern\Components\FooterSponsorsComponent;
+use Francken\Shared\ViewComponents\FooterSponsorsComponent;
 use Francken\Tests\LaravelTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Extern\Components;
+namespace Francken\Shared\ViewComponents;
 
 use Francken\Extern\CompanyRepository;
 use Illuminate\View\Component;
