@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Tests\Extern;
+namespace Francken\Tests\Shared\ViewComponents;
 
 use Francken\Extern\CompanyRepository;
 use Francken\Shared\ViewComponents\FooterSponsorsComponent;
