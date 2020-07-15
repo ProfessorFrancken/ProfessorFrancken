@@ -8,8 +8,10 @@ use Francken\Shared\Clock\Clock;
 use Francken\Shared\Clock\SystemClock;
 use Francken\Shared\Settings\Settings;
 use Francken\Shared\Settings\ValueStoreSettings;
+use Francken\Shared\ViewComponents\FooterSponsorsComponent;
 use Illuminate\Foundation\Application;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Valuestore\Valuestore;
 
@@ -38,5 +40,7 @@ final class AppServiceProvider extends ServiceProvider
         Paginator::defaultView('components.pagination.default');
 
         Paginator::defaultSimpleView('components.pagination.simple-default');
+
+        Blade::component('footer-sponsors', FooterSponsorsComponent::class);
     }
 }

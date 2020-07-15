@@ -4,17 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Extern;
 
-use Francken\Shared\ViewComponents\FooterSponsorsComponent;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 final class ExternServiceProvider extends ServiceProvider
 {
-    public function boot() : void
-    {
-        Blade::component('footer-sponsors', FooterSponsorsComponent::class);
-    }
-
     public function register() : void
     {
         $this->app->bind(JobOpeningRepository::class, function ($app) : JobOpeningRepository {
