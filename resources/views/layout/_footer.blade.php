@@ -84,5 +84,5 @@
     </div>
 
 
-    @include('layout._sponsors')
+    <x-footer-sponsors/>
 </footer>

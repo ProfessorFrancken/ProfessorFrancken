@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use DateTimeImmutable;
-use Francken\Extern\CompanyRepository;
 use Francken\Shared\ViewComposers\MemberSelectionComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -14,12 +13,6 @@ final class ViewServiceProvider extends ServiceProvider
 {
     public function boot() : void
     {
-        View::composer('layout._sponsors', function ($view) : void {
-            $companies = $this->app->make(CompanyRepository::class);
-
-            $view->with('footer', $companies->forFooter());
-        });
-
         $this->app->singleton(MemberSelectionComposer::class);
 
         View::composer(
