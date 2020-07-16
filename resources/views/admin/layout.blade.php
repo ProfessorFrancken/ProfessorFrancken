@@ -25,10 +25,10 @@
                             <i class="fas fa-bars"></i>
                         </div>
                     </div>
-                    <ul class="navigation-items list-unstyled text-left d-md-flex flex-column mb-0 pb-2 bg-lighter-primary text-black list-unstyled w-100 border-right">
+                    <ul class="navigation-items list-unstyled text-left d-md-flex flex-column mb-0 pb-2 text-muted bg-primary list-unstyled w-100">
                         @foreach ($menu as $item)
                             <li class="pb-4">
-                                <span class="d-block font-weight-bold text-black h5 mb-0 p-3 bg-light-primary">
+                                <span class="d-block font-weight-bold text-white h5 mb-0 p-3 bg-dark-primary">
                                     {{ $item['name'] }}
                                 </span>
 
@@ -37,8 +37,8 @@
                                         <?php $active = Request::segment(3) == $subItem['url'] ? 'active' : ''; ?>
                                         @can($subItem['can'] ?? 'can-access-dashboard')
                                         @if ($subItem['works'] || Auth::user()->can('super-admin-read'))
-                                            <li class="{{ $active }} text-black">
-                                                <a  href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}" class="d-block px-3 py-2 admin-navigation-item d-flex justify-content-between align-items-center text-black text-dark">
+                                            <li class="{{ $active }} text-white">
+                                                <a  href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}" class="d-block px-3 py-2 admin-navigation-item d-flex justify-content-between align-items-center">
                                                     <span>
                                                         @if (! $subItem['works'])
                                                             <i class="fa fa-times" aria-hidden="true"></i>
