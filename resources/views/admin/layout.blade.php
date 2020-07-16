@@ -59,11 +59,9 @@
                     </ul>
                 </nav>
 
-
-            <main class="francken-content">
                 @isset ($breadcrumbs)
-                <div class="francken-breadcrumbs ">
-                    <nav aria-label="breadcrumb" class="d-print-none d-flex justify-content-between bg-white rounded-0">
+                <div class="francken-breadcrumbs">
+                    <nav aria-label="breadcrumb" class="d-print-none d-flex justify-content-between bg-white rounded-0 pl-5 pl-md-0 bg-white">
                         <ol class="breadcrumb bg-white py-4 mb-0" style="">
                             @foreach ($breadcrumbs as $breadcrumb)
                                 @if (! $loop->last)
@@ -86,6 +84,8 @@
                     </nav>
                 </div>
                 @endisset
+
+            <main class="francken-content">
 
                 <div class="p-4 pt-2">
                     <div class="d-flex justify-content-between align-itmes-center mb-4">
