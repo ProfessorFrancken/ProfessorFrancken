@@ -9,19 +9,18 @@
         @include('layout._favicon')
         @include('admin._styles')
     </head>
-    <body class="h-100">
-        <div class="row no-gutters h-100 order-2">
-            <div class="col-12 col-lg-2 col-md-3 bg-primary order-2 order-md-0 d-print-none">
-                <a class="p-3 d-flex align-items-center justify-content-start text-white" href="/admin" style="background-color: #0a1d2d !important">
-                    <span class="font-weight-bold h3 text-white mb-0 pb-0 w-100">
-                        Francken
-                        Admin
-                    </span>
-                    @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '50px'])
-                </a>
+    <body class=" admin-page">
+        <div class="francken-layout">
+                <div class="styled-header francken-header">
+                    <div class="styled_header__logo text-white bg-primary">
+                        <a class="d-inline-flex flex-column text-center">
+                            @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '120px'])
+                        </a>
+                    </div>
+                </div>
 
-                <nav>
-                    <ul class="list-unstyled">
+                <nav class="styled-navigation francken-navigation bg-primary">
+                    <ul class="list-unstyled w-100">
                         @foreach ($menu as $item)
                             <li class="pb-4">
                                 <span class="d-block font-weight-bold text-white h5 mb-0 p-3" style="background-color: #0e283e !important">
@@ -54,31 +53,35 @@
                         @endforeach
                     </ul>
                 </nav>
-            </div>
-            <main class="col bd-content order-1">
-                @isset ($breadcrumbs)
-                <nav aria-label="breadcrumb" class="d-print-none d-flex justify-content-between bg-white rounded-0">
-                    <ol class="breadcrumb bg-white py-4 mb-0" style="">
-                        @foreach ($breadcrumbs as $breadcrumb)
-                            @if (! $loop->last)
-                                <li class="breadcrumb-item">
-                                    <a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['text'] }}</a>
-                                </li>
-                            @else
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    {{ $breadcrumb['text'] }}
-                                </li>
-                            @endif
-                        @endforeach
-                    </ol>
 
-                    <div class="breadcrumb-item">
-                        <a href="/" class="h-100 d-flex align-items-center px-4 text-muted">
-                            Back to Francken
-                        </a>
-                    </div>
-                </nav>
+
+            <main class="francken-content">
+                @isset ($breadcrumbs)
+                <div class="francken-breadcrumbs ">
+                    <nav aria-label="breadcrumb" class="d-print-none d-flex justify-content-between bg-white rounded-0">
+                        <ol class="breadcrumb bg-white py-4 mb-0" style="">
+                            @foreach ($breadcrumbs as $breadcrumb)
+                                @if (! $loop->last)
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['text'] }}</a>
+                                    </li>
+                                @else
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        {{ $breadcrumb['text'] }}
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ol>
+
+                        <div class="breadcrumb-item">
+                            <a href="/" class=" d-flex align-items-center px-4 text-muted">
+                                Back to Francken
+                            </a>
+                        </div>
+                    </nav>
+                </div>
                 @endisset
+
                 <div class="p-4 pt-2">
                     <div class="d-flex justify-content-between align-itmes-center mb-4">
                         <h1 class="section-header">
@@ -121,6 +124,9 @@
                     @yield('content')
                 </div>
             </main>
+            <footer class="francken-footer">
+                HOI
+            </footer>
         </div>
 
         @include('admin._scripts')
