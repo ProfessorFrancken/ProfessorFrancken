@@ -1,9 +1,19 @@
 .admin-page {
 
+    .bg-light-primary {
+        background-color: hsla(173, 32%, 82%, 0.15) !important;
+    }
+    .bg-lighter-primary {
+        background-color: hsla(173, 45%, 94%, 0.15) !important;
+    }
+
 .francken-layout {
   // Set the border width of the border above the navigation
   --top-stroke-width: 0.75em;
   --navigation-margin-right: 0em;
+  // --border-color: #173249;
+  --border-color: #9edad3;
+  --border-color: #7ebcb5;
   --border-color: #173249;
 
   border-top: var(--top-stroke-width) solid var(--border-color);
@@ -33,7 +43,8 @@
   .francken-navigation {
     position: sticky;
     grid-row: 1;
-    grid-column: 1/3;
+    // grid-column: 1/3;
+    grid-area: nav;
 
     margin-right: var(--navigation-margin-right);
   }
@@ -96,15 +107,16 @@
 .styled-header {
   --skew-degrees: 30deg;
   --negative-skew-degrees: -30deg;
-  --bg-color: #173249;
+  --bg-color: #0e283e; //#173249;
 
   background-color: var(--bg-color);
   position: relative;
 
-  height: 8em;
+  height: 7em;
   z-index: 1;
 
   &:before {
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     content: '';
     position: absolute;
     top: 0;
@@ -137,6 +149,8 @@
   }
 
   @include media-breakpoint-up(md) {
+    height: 9em;
+
     &:before {
       width: unset;
       margin-left: 0em;
@@ -145,22 +159,25 @@
 }
 
 .styled-navigation {
-    --primary-dark: #011842;
+    --primary-dark: #0e283e;
   .bg-dark-primary {
       background-color: var(--primary-dark);
   }
 
   .navigation-items {
+      padding-top: 5em;
+
     transition: margin-top 400ms ease-in-out;
-    margin-top: -150%;
+    // margin-top: -150%;
 
     @include media-breakpoint-up(sm) {
-        margin-top: -100%;
+        // margin-top: -100%;
     }
 
     @include media-breakpoint-up(md) {
       height: 100%;
       margin-top: 0;
+      padding-top: 0em;
     }
   }
 

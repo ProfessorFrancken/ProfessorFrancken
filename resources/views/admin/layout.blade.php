@@ -11,8 +11,8 @@
     </head>
     <body class=" admin-page">
         <div class="francken-layout">
-                <div class="styled-header francken-header">
-                    <div class="styled_header__logo text-white bg-primary">
+                <div class="styled-header francken-header shadow-sm">
+                    <div class="styled_header__logo text-white bg-dark-primary">
                         <a class="d-inline-flex flex-column text-center">
                             @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '120px'])
                         </a>
@@ -20,15 +20,15 @@
                 </div>
 
                 <nav class="styled-navigation francken-navigation">
-                    <div class="d-flex d-md-none justify-content-end align-items-center bg-primary">
+                    <div class="d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
                         <div class="ml-3 py-2 px-3 bg-primary text-white">
                             <i class="fas fa-bars"></i>
                         </div>
                     </div>
-                    <ul class="navigation-items list-unstyled text-left d-none d-md-flex flex-column mb-0 pt-5 pt-md-4 pb-2 text-muted bg-primary list-unstyled w-100">
+                    <ul class="navigation-items list-unstyled text-left d-md-flex flex-column mb-0 pb-2 text-muted bg-primary list-unstyled w-100">
                         @foreach ($menu as $item)
                             <li class="pb-4">
-                                <span class="d-block font-weight-bold text-white h5 mb-0 p-3" style="background-color: #0e283e !important">
+                                <span class="d-block font-weight-bold text-black h5 mb-0 p-3 bg-dark-primary">
                                     {{ $item['name'] }}
                                 </span>
 
@@ -61,7 +61,8 @@
 
                 @isset ($breadcrumbs)
                 <div class="francken-breadcrumbs">
-                    <nav aria-label="breadcrumb" class="d-print-none d-flex justify-content-between bg-white rounded-0 pl-5 pl-md-0 bg-white">
+                    <nav aria-label="breadcrumb" class="d-print-none bg-white rounded-0 pl-4 pl-md-0 bg-white">
+                        <div class=" container-fluid d-flex justify-content-between">
                         <ol class="breadcrumb bg-white py-4 mb-0" style="">
                             @foreach ($breadcrumbs as $breadcrumb)
                                 @if (! $loop->last)
@@ -80,6 +81,7 @@
                             <a href="/" class=" d-flex align-items-center px-4 text-muted">
                                 Back to Francken
                             </a>
+                        </div>
                         </div>
                     </nav>
                 </div>
