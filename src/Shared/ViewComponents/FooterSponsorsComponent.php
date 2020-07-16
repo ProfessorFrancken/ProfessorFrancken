@@ -9,7 +9,7 @@ use Illuminate\View\Component;
 
 class FooterSponsorsComponent extends Component
 {
-    public $footer = [];
+    public array $footer = [];
 
     /**
      * Create a new component instance.
@@ -19,7 +19,7 @@ class FooterSponsorsComponent extends Component
     public function __construct(CompanyRepository $companies)
     {
         $this->footer = array_map(
-            function (array $company) {
+            function (array $company): array {
                 return [
                     'footer-link' => $company['footer-link'],
                     'footer-logo' => $company['footer-logo'],
