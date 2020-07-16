@@ -19,8 +19,13 @@
                     </div>
                 </div>
 
-                <nav class="styled-navigation francken-navigation bg-primary">
-                    <ul class="list-unstyled w-100">
+                <nav class="styled-navigation francken-navigation">
+                    <div class="d-flex d-md-none justify-content-end align-items-center bg-primary">
+                        <div class="ml-3 py-2 px-3 bg-primary text-white">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                    </div>
+                    <ul class="navigation-items list-unstyled text-left d-none d-md-flex flex-column mb-0 pt-5 pt-md-4 pb-2 text-muted bg-primary list-unstyled w-100">
                         @foreach ($menu as $item)
                             <li class="pb-4">
                                 <span class="d-block font-weight-bold text-white h5 mb-0 p-3" style="background-color: #0e283e !important">
