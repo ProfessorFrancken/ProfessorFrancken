@@ -19,12 +19,15 @@
                     </div>
                 </div>
 
-                <nav class="styled-navigation francken-navigation">
+                <div class="mobile-navigation">
                     <div class="d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
                         <div class="ml-3 py-2 px-3 bg-primary text-white">
                             <i class="fas fa-bars"></i>
                         </div>
                     </div>
+                </div>
+
+                <nav class="styled-navigation francken-navigation">
                     <ul class="navigation-items list-unstyled text-left d-md-flex flex-column mb-0 pb-2 text-muted bg-primary list-unstyled w-100">
                         @foreach ($menu as $item)
                             <li class="pb-4">
