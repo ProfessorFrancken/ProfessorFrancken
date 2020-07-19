@@ -9,6 +9,7 @@ use Francken\Shared\Clock\SystemClock;
 use Francken\Shared\Settings\Settings;
 use Francken\Shared\Settings\ValueStoreSettings;
 use Francken\Shared\ViewComponents\Admin\Navigation;
+use Francken\Shared\ViewComponents\Admin\NavigationGroup;
 use Francken\Shared\ViewComponents\FooterSponsorsComponent;
 use Illuminate\Foundation\Application;
 use Illuminate\Pagination\Paginator;
@@ -43,6 +44,10 @@ final class AppServiceProvider extends ServiceProvider
         Paginator::defaultSimpleView('components.pagination.simple-default');
 
         Blade::component('footer-sponsors', FooterSponsorsComponent::class);
-        Blade::component('admin-navigation', Navigation::class);
+
+        Blade::components([
+            Navigation::class,
+            NavigationGroup::class,
+        ], 'admin');
     }
 }
