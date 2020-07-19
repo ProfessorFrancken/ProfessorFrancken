@@ -1,12 +1,17 @@
 <div class="mobile-navigation">
     <div class="d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
-        <div class="ml-3 py-3 px-4 bg-primary text-white" id="mobile-menu-button">
+        <div class="ml-3 py-3 px-4 bg-primary text-white mobile-menu-button">
             <i class="fas fa-bars"></i>
         </div>
     </div>
 </div>
 
 <nav class="styled-navigation francken-navigation">
+    <div class="d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
+        <div class="ml-3 py-3 px-4 bg-primary text-white mobile-menu-button">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
     <ul class="navigation-items list-unstyled text-left d-md-flex flex-column mb-0 pb-2 text-muted bg-primary list-unstyled w-100">
         @foreach ($menu as $item)
             <x-admin-navigation-group :item="$item" />
@@ -112,7 +117,7 @@
     function overall() {
         $mainMenu = $('.francken-navigation');
 
-        Menu.init($mainMenu, $('.navigation-sub-list__toggle'), $('#mobile-menu-button'));
+        Menu.init($mainMenu, $('.navigation-sub-list__toggle'), $('.mobile-menu-button'));
     }
 
     overall();
