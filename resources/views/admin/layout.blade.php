@@ -19,14 +19,6 @@
                     </div>
                 </div>
 
-                <div class="mobile-navigation">
-                    <div class="d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
-                        <div class="ml-3 py-2 px-3 bg-primary text-white">
-                            <i class="fas fa-bars"></i>
-                        </div>
-                    </div>
-                </div>
-
                 <x-admin-navigation />
 
                 @isset ($breadcrumbs)
@@ -102,7 +94,9 @@
                 </div>
             </main>
             <footer class="francken-footer">
-                HOI
+                <p className="text-muted">
+                    Hoi
+                </p>
             </footer>
         </div>
 

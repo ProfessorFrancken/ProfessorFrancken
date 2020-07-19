@@ -30,10 +30,8 @@
     grid-template-areas:
         'header mobile-nav'
         'header breadcrumbs'
-        'nav nav'
         'content content'
         'footer footer';
-    // 'side side'
 
     .mobile-navigation {
         grid-area: mobile-nav;
@@ -45,10 +43,6 @@
   }
 
   .francken-navigation {
-    grid-row: 1;
-    // grid-column: 1/3;
-    grid-area: nav;
-
     margin-right: var(--navigation-margin-right);
   }
 
@@ -170,8 +164,18 @@
     transition: height 400ms ease-in-out;
     height: 0;
     overflow: hidden;
+    grid-column-start: footer-start;
+    grid-column-end: footer-end;
+    grid-row-start: breadcrumbs-start;
+    grid-row-end: footer-end;
+    z-index: 100;
+
+    &.navigation-active {
+        height: 100%;
+    }
     @include media-breakpoint-up(md) {
       height: 100%;
+        grid-row-start: nav;
     }
 
   .navigation-items {
