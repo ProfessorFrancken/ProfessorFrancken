@@ -18,7 +18,7 @@ class FactsheetFeature extends TestCase
     /** @test */
     public function a_factsheet_is_shown() : void
     {
-        $board = factory(Board::class)->create(['installed_at' => '2020-06-06']);
+        factory(Board::class)->create(['installed_at' => '2020-06-06']);
         $this->visit(action([FactSheetController::class, 'index']));
 
         $this->assertResponseOk();
