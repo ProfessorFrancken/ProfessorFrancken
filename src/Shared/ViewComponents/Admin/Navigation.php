@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace Francken\Shared\ViewComponents\Admin;
 
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class Navigation extends Component
 {
@@ -20,10 +21,8 @@ class Navigation extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render() : View
     {
         $menu = config('francken.navigation.admin-menu');
 

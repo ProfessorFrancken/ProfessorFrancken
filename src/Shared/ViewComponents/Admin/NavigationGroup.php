@@ -4,21 +4,28 @@ declare(strict_types=1);
 
 namespace Francken\Shared\ViewComponents\Admin;
 
+use Francken\Auth\Account;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
+use Webmozart\Assert\Assert;
 
 class NavigationGroup extends Component
 {
     public array $item;
+    private string $activeSegment;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(array $item, Guard $auth)
+    public function __construct(array $item, Guard $auth, Request $request)
     {
+        $this->activeSegment = $request->segment(3);
         $account = $auth->user();
+
+        Assert::isInstanceOf($account, Account::class);
 
         $this->item = $item;
         $this->item['items'] = array_filter($this->item['items'], function (array $item) use ($account) : bool {
@@ -32,7 +39,7 @@ class NavigationGroup extends Component
 
     public function isActive(array $item) : bool
     {
-        return request()->segment(3) == $item['url'];
+        return $this->activeSegment == $item['url'];
     }
 
     /**
