@@ -1,6 +1,6 @@
 <div class="mobile-navigation">
     <div class="d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
-        <div class="ml-3 py-2 px-3 bg-primary text-white" id="mobile-menu-button">
+        <div class="ml-3 py-3 px-4 bg-primary text-white" id="mobile-menu-button">
             <i class="fas fa-bars"></i>
         </div>
     </div>
