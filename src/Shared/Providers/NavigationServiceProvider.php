@@ -117,12 +117,6 @@ final class NavigationServiceProvider extends ServiceProvider
             }));
         });
 
-        View::composer('admin.layout', function ($view) : void {
-            $menu = config('francken.navigation.admin-menu');
-
-            $view->with('menu', $menu);
-        });
-
         View::composer('homepage._pillars', function ($view) : void {
             $view->with('associationIcon', $this->associationIcon());
         });
