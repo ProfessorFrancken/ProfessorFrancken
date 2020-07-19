@@ -49,6 +49,13 @@
       grid-area: announcement;
   }
 
+  .francken-breadcrumbs-background {
+      grid-row-start: breadcrumbs-start;
+      grid-row-end: breadcrumbs-end;
+      grid-column-start: header-start;
+      grid-column-end: breadcrumbs-end;
+  }
+
   .francken-breadcrumbs {
     grid-area: breadcrumbs;
   }

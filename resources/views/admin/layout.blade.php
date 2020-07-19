@@ -22,10 +22,16 @@
                 <x-admin-navigation />
 
                 @isset ($breadcrumbs)
+                <div class="francken-breadcrumbs-background bg-white">
+                {{--
+                     This empty space is used to make sure that the white
+                     background of the breadcrumbs continue underneath the logo
+                --}}
+                </div>
                 <div class="francken-breadcrumbs">
-                    <nav aria-label="breadcrumb" class="d-print-none bg-white rounded-0 pl-4 pl-md-0 bg-white">
+                    <nav aria-label="breadcrumb" class="d-print-none bg-white rounded-0 pl-4 pl-md-0">
                         <div class=" container-fluid d-flex justify-content-between">
-                        <ol class="breadcrumb bg-white py-4 mb-0" style="">
+                        <ol class="breadcrumb bg-white py-2 py-md-4 mb-0" style="">
                             @foreach ($breadcrumbs as $breadcrumb)
                                 @if (! $loop->last)
                                     <li class="breadcrumb-item">
