@@ -29,7 +29,7 @@
                 --}}
                 </div>
                 <div class="francken-breadcrumbs">
-                    <nav aria-label="breadcrumb" class="d-print-none bg-white rounded-0 pl-4 pl-md-0">
+                    <nav aria-label="breadcrumb" class="d-print-none bg-white rounded-0 pl-4 pl-md-0 h-100 d-flex align-items-center">
                         <div class=" container-fluid d-flex justify-content-between">
                         <ol class="breadcrumb bg-white py-2 py-md-4 mb-0" style="">
                             @foreach ($breadcrumbs as $breadcrumb)

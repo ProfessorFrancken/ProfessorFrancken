@@ -24,7 +24,7 @@
   grid-column-gap: 0em;
   grid-template-columns: 5em auto;
 
-    grid-template-rows: auto auto minmax(0px, 100%) 1fr auto;
+    grid-template-rows: auto 1fr minmax(0px, 100%) 1fr;
     // 'announcement announcement'
     grid-template-areas:
         'header mobile-nav'

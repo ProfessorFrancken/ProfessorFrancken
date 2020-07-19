@@ -1,8 +1,11 @@
-<div class="mobile-navigation">
-    <div class="d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
-        <div class="ml-3 py-3 px-4 bg-primary text-white mobile-menu-button">
-            <i class="fas fa-bars"></i>
-        </div>
+<div class="mobile-navigation d-flex d-md-none justify-content-end align-items-center bg-dark-primary">
+    {{--
+    <div class="mx-auto text-white d-none">
+        T.F.V. 'Professor Francken'
+    </div>
+    --}}
+    <div class="ml-3 py-3 px-4 bg-primary text-white mobile-menu-button">
+        <i class="fas fa-bars"></i>
     </div>
 </div>
 
