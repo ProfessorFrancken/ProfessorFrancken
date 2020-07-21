@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="display_name">Dispaly name</label>
+    <label for="display_name">Display name</label>
     {!!
        Form::text(
            'display_name',
