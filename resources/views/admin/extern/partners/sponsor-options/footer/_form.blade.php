@@ -44,10 +44,16 @@
         </label>
         {!! Form::file('logo', ['class' => 'sr-only form-control-file', 'id' => 'add-footer-logo']) !!}
 
-        <small  class="form-text text-muted">
+        <p class="form-text text-muted">
             We will use this logo when displaying the partner's logo in the footer.
             Images for the footer should have a size of 200x80 pixels and should not include any color.
-        </small>
+        </p>
+        <p class="form-text text-muted">
+            if you're on linux you can use the following command to convert any image to a grayscale 200x80 image:
+        </p>
+        <pre>
+<code>convert optiver.png -background none -resize 200x80 -gravity center -extent 200x80 -colorspace Gray optiver-gray.png</code>
+        </pre>
     </div>
 </div>
 
