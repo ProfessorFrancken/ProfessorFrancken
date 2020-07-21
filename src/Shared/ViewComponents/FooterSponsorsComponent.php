@@ -19,7 +19,7 @@ class FooterSponsorsComponent extends Component
     public function __construct(CompanyRepository $companies)
     {
         $this->footer = array_map(
-            function (array $company): array {
+            function (array $company) : array {
                 return [
                     'footer-link' => $company['footer-link'],
                     'footer-logo' => $company['footer-logo'],
