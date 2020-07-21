@@ -10,7 +10,7 @@
                             class="rounded m-3 float-right"
                             src="{{ $partner->logo }}"
                             alt="Logo of {{ $partner->name }}"
-                            style="max-height: 90px;"
+                            style="max-height: 90px; max-width: 100%;"
                         >
                         <div class="row">
                             <div class="col">
