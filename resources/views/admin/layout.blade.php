@@ -11,26 +11,26 @@
     </head>
     <body class=" admin-page">
         <div class="francken-layout">
-                <div class="styled-header francken-header shadow-sm">
-                    <div class="styled_header__logo text-white bg-dark-primary">
-                        <a class="d-inline-flex flex-column text-center">
-                            @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '120px'])
-                        </a>
-                    </div>
+            <div class="styled-header francken-header shadow-sm">
+                <div class="styled_header__logo text-white bg-dark-primary d-flex justify-content-center aligh-items-center h-100 px-2 mx-1 mx-md-0 px-md-0">
+                    <a class="d-inline-flex align-items-center" href="/admin">
+                        @svg('LOGO_KAAL', 'svg-logo scaleUp--hover', ['height' => '120px'])
+                    </a>
                 </div>
+            </div>
 
-                <x-admin-navigation />
+            <x-admin-navigation />
 
-                @isset ($breadcrumbs)
-                <div class="francken-breadcrumbs-background bg-white">
+            @isset ($breadcrumbs)
+            <div class="francken-breadcrumbs-background bg-white">
                 {{--
-                     This empty space is used to make sure that the white
-                     background of the breadcrumbs continue underneath the logo
+                    This empty space is used to make sure that the white
+                    background of the breadcrumbs continue underneath the logo
                 --}}
-                </div>
-                <div class="francken-breadcrumbs">
-                    <nav aria-label="breadcrumb" class="d-print-none bg-white rounded-0 pl-4 pl-md-0 h-100 d-flex align-items-center">
-                        <div class=" container-fluid d-flex justify-content-between">
+            </div>
+            <div class="francken-breadcrumbs">
+                <nav aria-label="breadcrumb" class="d-print-none bg-white rounded-0 pl-4 pl-md-0 h-100 d-flex align-items-center">
+                    <div class=" container-fluid d-flex justify-content-between">
                         <ol class="breadcrumb bg-white py-2 py-md-4 mb-0" style="">
                             @foreach ($breadcrumbs as $breadcrumb)
                                 @if (! $loop->last)
@@ -50,10 +50,10 @@
                                 Back to Francken
                             </a>
                         </div>
-                        </div>
-                    </nav>
-                </div>
-                @endisset
+                    </div>
+                </nav>
+            </div>
+            @endisset
 
             <main class="francken-content">
 
@@ -99,11 +99,6 @@
                     @yield('content')
                 </div>
             </main>
-            <footer class="francken-footer">
-                <p className="text-muted">
-                    Hoi
-                </p>
-            </footer>
         </div>
 
         @include('admin._scripts')

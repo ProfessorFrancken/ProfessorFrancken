@@ -13,7 +13,7 @@ use Webmozart\Assert\Assert;
 class NavigationGroup extends Component
 {
     public array $item;
-    private string $activeSegment;
+    private ?string $activeSegment;
 
     /**
      * Create a new component instance.
@@ -28,13 +28,15 @@ class NavigationGroup extends Component
         Assert::isInstanceOf($account, Account::class);
 
         $this->item = $item;
-        $this->item['items'] = array_filter($this->item['items'], function (array $item) use ($account) : bool {
-            if ( ! $item['works']) {
-                return $account->can('super-admin-read');
-            }
+        $this->item['items'] = array_filter(
+            $this->item['items'] ?? $this->item['subItems'],
+            function (array $item) use ($account) : bool {
+                if (isset($item['works']) && ! $item['works']) {
+                    return $account->can('super-admin-read');
+                }
 
-            return $account->can($item['can'] ?? 'can-access-dashboard');
-        });
+                return $account->can($item['can'] ?? 'can-access-dashboard');
+            });
     }
 
     public function isActive(array $item) : bool

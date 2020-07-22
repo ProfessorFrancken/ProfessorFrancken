@@ -8,10 +8,10 @@
             <li class="{{ $isActive($subItem) ? 'active' : '' }} text-white">
                 <a
                     href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}"
-                    class="d-block px-3 py-2 admin-navigation-item d-flex justify-content-between align-items-center"
+                    class="d-block px-3 py-2 admin-navigation-item d-flex justify-content-between align-items-center text-white"
                 >
                     <span>
-                        @if (! $subItem['works'])
+                        @if (isset($subItem['works']) && ! $subItem['works'])
                             <i class="fa fa-times" aria-hidden="true"></i>
                         @endif
 
