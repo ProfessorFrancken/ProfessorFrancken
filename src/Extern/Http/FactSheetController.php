@@ -38,7 +38,7 @@ final class FactSheetController
             ->with([
                 'studies' => (new StudentsByStudyAndStudyPhase($this->today))->handle(),
                 'activeMembers' => (new ActiveMembersStatistics($this->today))->handle(),
-                'firstYearStudentsPerYear' => (new FirstYearStudentsPerYear(collect(range(2011, 2018))))->handle(),
+                'firstYearStudentsPerYear' => (new FirstYearStudentsPerYear(collect(range(2013, 2020))))->handle(),
                 'weeklyStats' => $this->weeklyStats(),
                 'monthlyStats' => $this->monthlyStats(),
                 'breadcrumbs' => [

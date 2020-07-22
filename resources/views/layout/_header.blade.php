@@ -17,7 +17,7 @@
     </div>
 
     <div
-        class="d-none flex-md-grow-1 d-md-block bg-white navigation-container__wrapper h-100"
+        class="d-none d-md-block flex-md-grow-1 bg-white navigation-container__wrapper h-100"
         style="
         box-shadow: 0 0px 5px rgba(0,0,0,0.2);
         z-index:1;"

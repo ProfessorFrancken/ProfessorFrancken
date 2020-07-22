@@ -70,7 +70,7 @@ final class StudiesStatistic
             }
         );
 
-        if ($grouped->has(0)) {
+        if ($grouped->has(0) && $grouped->has(1)) {
             $grouped[1]->push(
                 $studies[0]::fromMultipleStatistics("Other", ...$grouped[0])
             );

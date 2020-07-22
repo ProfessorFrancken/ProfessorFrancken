@@ -27,7 +27,8 @@ class AdminBoardsFeature extends TestCase
     /** @test */
     public function a_list_of_boards_is_shown() : void
     {
-        $this->visit(action([AdminBoardsController::class, 'index']));
+        $this->visit(action([AdminBoardsController::class, 'index']))
+            ->see('Import');
 
         $this->assertResponseOk();
     }
@@ -36,8 +37,7 @@ class AdminBoardsFeature extends TestCase
     public function a_board_can_be_installed() : void
     {
         Event::fake();
-        $this->visit(action([AdminBoardsController::class, 'create']))
-            ->see('Import');
+        $this->visit(action([AdminBoardsController::class, 'create']));
 
         $this->assertResponseOk();
         $this->type('Hè Watt?', 'name')
