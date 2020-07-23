@@ -1,22 +1,21 @@
-﻿@extends('layout.two-column-layout')
+@extends('layout.two-column-layout')
 @section('header-image-url', '/images/header/oslo.jpg')
-@section('title', $company['name'] . " - T.F.V. 'Professor Francken'")
+@section('title', $partner->companyProfile->display_name . " - T.F.V. 'Professor Francken'")
 
 @section('content')
 
     <h1 class="section-header">
-        {{  $company['name']}}
+        {{ $partner->companyProfile->display_name }}
     </h1>
 
     <div class="text-justify">
-		    {!!  $company['summary'] !!}
+        {!! $partner->companyProfile->compiled_content !!}
     </div>
 
     @if (count($jobs) > 0)
-
         <h2 class="mb-3 mt-4">
             <i class="fa fa-suitcase" aria-hidden="true"></i>
-            Job openings from {{ $company['name'] }}
+            Job openings from {{ $partner->companyProfile->display_name }}
         </h2>
 
         <ul class="list-unstyled">
@@ -38,42 +37,33 @@
 
 @section('aside')
 <div class="agenda">
-		<table class="infobox vcard" style="width:22em">
-			<tbody>
-				<tr>
-					<img src="{{ $company['logo'] }}" class="img-fluid" alt="{{ $company['name'] }}'s logo"/>
-				</tr>
-			@foreach ($company['metadata'] as $metadata)
-				<tr>
-					<th>{{ $metadata['term'] }} </th>
-					<td>{{ $metadata['description'] }} </td>
-				</tr>
-			@endforeach
-			</tbody>
-		</table>
-	</div>
+        <table class="infobox vcard" style="width:22em">
+            <tbody>
+                <tr>
+                    <img src="{{ $partner->logo }}" class="img-fluid" alt="{{ $partner->companyProfile->display_name }}'s logo"/>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="agenda mt-5">
         <h3 class="section-header agenda-header">
             Companies
         </h3>
         <ul class="agenda-list list-unstyled">
-            @foreach ($companies as $company)
-
+            @foreach ($partners as $partner)
                 <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
                     <a
-                        href="/career/companies/{{ str_slug($company['name'])  }}"
+                        href="{{ action([Francken\Extern\Http\CompaniesController::class, 'show'], ['partner' => $partner])}}"
                         class="aside-link"
                     >
                         <div class="media align-items-center">
                             <div class="media-body">
                                 <h5 class="agenda-item__header">
-                                    {{ $company['name'] }}
+                                    {{ $partner->companyProfile->display_name }}
                                 </h5>
                             </div>
-
                         </div>
                     </a>
-
                 </li>
             @endforeach
         </ul>

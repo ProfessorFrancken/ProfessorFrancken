@@ -106,7 +106,7 @@ Route::group(['prefix' => 'career'], function () : void {
     Route::get('/', [CareerController::class, 'index']);
     Route::get('job-openings', [CareerController::class, 'jobs'])->name('job-openings');
     Route::get('companies', [CompaniesController::class, 'index']);
-    Route::get('companies/{company}', [CompaniesController::class, 'show']);
+    Route::get('companies/{partner:slug}', [CompaniesController::class, 'show']);
     Route::get('events', [CareerController::class, 'redirectEvents']);
     Route::get('events/{academic_year}', [CareerController::class, 'events']);
 });
