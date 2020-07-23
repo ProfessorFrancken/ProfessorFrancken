@@ -15,8 +15,6 @@ class SearchVacanciesRequest extends FormRequest
     {
         return [
             'title' => ['nullable', 'min:1', ],
-            // 'partner_id' => ['nullable', 'exists:extern_partners,id'],
-            // 'sector_id' => ['nullable', 'exists:extern_partner_sectors,id'],
             'job_type' => ['nullable', 'min:1'],
         ];
     }
