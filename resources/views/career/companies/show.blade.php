@@ -12,20 +12,20 @@
         {!! $partner->companyProfile->compiled_content !!}
     </div>
 
-    @if (count($jobs) > 0)
+    @if ($partner->vacancies->isNotEmpty())
         <h2 class="mb-3 mt-4">
             <i class="fa fa-suitcase" aria-hidden="true"></i>
             Job openings from {{ $partner->companyProfile->display_name }}
         </h2>
 
         <ul class="list-unstyled">
-        @foreach ($jobs as $job)
+        @foreach ($partner->vacancies as $vacancy)
             <li class="job-opening py-3">
-                <a href="{{ $job['link'] }}" class="mb-0">
+                <a href="{{ $vacancy->vacancy_url }}" class="mb-0">
                     <h3 class="h5 job-opening__title mb-0">
-                        {{ $job['job'] }}
+                        {{ $vacancy->title }}
                         <small class="text-muted h5 mb-0">
-                            ({{ $job['type'] }})
+                            ({{ $vacancy->type }})
                         </small>
                     </h3>
                 </a>
@@ -36,7 +36,7 @@
 @endsection
 
 @section('aside')
-<div class="agenda">
+    <div class="agenda">
         <table class="infobox vcard" style="width:22em">
             <tbody>
                 <tr>

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Francken\Extern\JobOpeningRepository;
 use Francken\Extern\JobType;
 use Francken\Extern\Partner;
 use Francken\Extern\Sector;
@@ -13,13 +12,6 @@ use Illuminate\View\View;
 
 final class CompaniesController
 {
-    private JobOpeningRepository $jobs;
-
-    public function __construct(JobOpeningRepository $jobs)
-    {
-        $this->jobs = $jobs;
-    }
-
     public function index() : View
     {
         $partners = Partner::query()
@@ -51,13 +43,11 @@ final class CompaniesController
             ->with(['logoMedia'])
             ->get();
 
-        $jobs = $this->jobs->search(null, $partner->name);
 
         return view('career.companies.show')
             ->with([
                 'partners' => $partners,
                 'partner' => $partner,
-                'jobs' => $jobs,
                 'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                     return [$sector->name => $sector->icon];
                 }),
