@@ -20,16 +20,6 @@ final class ExternServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bind(CompanyRepository::class, function ($app) : CompanyRepository {
-            $companies = file_exists(database_path('companies.php'))
-                ? require database_path('companies.php')
-                : [];
-
-            return new CompanyRepository(
-                $companies
-            );
-        });
-
         $this->app->bind(EventRepository::class, function ($app) : EventRepository {
             $events = file_exists(database_path('events.php'))
                 ? require database_path('events.php')
