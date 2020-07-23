@@ -10,14 +10,5 @@ final class ExternServiceProvider extends ServiceProvider
 {
     public function register() : void
     {
-        $this->app->bind(JobOpeningRepository::class, function ($app) : JobOpeningRepository {
-            $jobs = file_exists(database_path('vacancies.php'))
-                ? require database_path('vacancies.php')
-                : [];
-
-            return new JobOpeningRepository(
-                $jobs
-            );
-        });
     }
 }
