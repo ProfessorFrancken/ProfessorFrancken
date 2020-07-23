@@ -36,10 +36,6 @@ final class CareerController
                 'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
                     return [$sector->getKey() => $sector->name];
                 })->prepend("Any", 0),
-
-                'sector_icons' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                    return [$sector->getKey() => $sector->icon];
-                })->all(),
                 'types' => JobType::TYPES
             ])
             ->with('breadcrumbs', [
