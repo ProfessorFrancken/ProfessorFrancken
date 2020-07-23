@@ -11,7 +11,7 @@ final class ApiJobOpeningsController
     public function index() : array
     {
         $vacancies = Vacancy::query()
-            ->with(['sector', 'partner', 'partner.logoMdeia'])
+            ->with(['sector', 'partner', 'partner.logoMedia'])
             ->get();
 
         return [
@@ -22,7 +22,7 @@ final class ApiJobOpeningsController
                         'link' => $vacancy->vacancy_url,
                         'type' => $vacancy->type,
                         'sector' => $vacancy->sector->name,
-                        'description' => $vacancy->descriptoin,
+                        'description' => $vacancy->description,
                         'company' => [
                             'name' => $vacancy->partner->name,
                             'logo' => $vacancy->partner->logo,
