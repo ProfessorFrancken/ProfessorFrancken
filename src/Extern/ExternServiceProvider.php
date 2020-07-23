@@ -19,16 +19,5 @@ final class ExternServiceProvider extends ServiceProvider
                 $jobs
             );
         });
-
-        $this->app->bind(EventRepository::class, function ($app) : EventRepository {
-            $events = file_exists(database_path('events.php'))
-                ? require database_path('events.php')
-                : [];
-
-            return new EventRepository(
-                $events['planned'] ?? [],
-                $events['past'] ?? []
-            );
-        });
     }
 }

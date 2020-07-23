@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Francken\Extern\EventRepository;
 use Francken\Extern\JobOpeningRepository;
 use Francken\Extern\JobType;
 use Francken\Extern\Sector;
@@ -43,32 +42,6 @@ final class CareerController
             ->with('breadcrumbs', [
                 ['url' => '/career', 'text' => 'Career'],
                 ['url' => '/career/job-openings', 'text' => 'Job openings'],
-            ]);
-    }
-
-    public function redirectEvents(Clock $clock) : RedirectResponse
-    {
-        $academicYear = AcademicYear::fromDate($clock->now());
-
-        return redirect('/career/events/' . Str::slug($academicYear->toString()));
-    }
-
-    public function events(EventRepository $repo, Clock $clock, AcademicYear $year = null) : View
-    {
-        $plannedEvents = $repo->plannedInYear($year);
-        $pastEvents = $repo->pastInYear($year);
-        $today = $clock->now();
-
-        return view('career.events')
-            ->with([
-                'pastEvents' => $pastEvents,
-                'plannedEvents' => $plannedEvents,
-                'year' => $year,
-                'showNextYear' => $today > $year->end()
-            ])
-            ->with('breadcrumbs', [
-                ['url' => '/career', 'text' => 'Career'],
-                ['url' => '/career/events', 'text' => 'Career events'],
             ]);
     }
 }

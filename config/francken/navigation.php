@@ -38,7 +38,6 @@ return [
                 // Job prospects
                 ['url' => "/career/job-openings", 'title' => 'Job openings', 'icon' => 'fas fa-search-dollar', 'description' => 'Curious about your job opportunities, check these job openings!'],
                 ['url' => "/career/companies", 'title' => 'Company profiles', 'icon' => 'fas fa-building', 'description' => ''],
-                ['url' => "/career/events", 'title' => 'Career events', 'icon' => 'fas fa-calendar-check', 'description' => '']
             ],
             'icon' => 'suitcase',
         ],
