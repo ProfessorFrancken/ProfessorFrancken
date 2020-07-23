@@ -6,10 +6,13 @@ namespace Francken\Features;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\BrowserKitTesting\TestCase as LaravelTestCase;
 
 abstract class TestCase extends LaravelTestCase
 {
+    use DatabaseMigrations;
+
     /**
      * @var string[]|null[]
      */
