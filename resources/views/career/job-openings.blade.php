@@ -17,7 +17,7 @@
                   class="pull-right img-fluid job-opening__company-logo job-opening__company-logo "
                   style="max-width: 100px;"
                   alt="{{ $vacancy->title }}"
-                  src="{{ image($vacancy->partner->logo, ['width' => 100, 'height' => 100, 'crop' => 0]) }}"
+                  src="{{ $vacancy->partner->logo }}"
               />
 
               <h3 class="h4 job-opening__title">
