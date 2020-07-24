@@ -4,53 +4,67 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Francken\Extern\CompanyRepository;
-use Francken\Extern\JobOpeningRepository;
 use Francken\Extern\JobType;
+use Francken\Extern\Partner;
 use Francken\Extern\Sector;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 
 final class CompaniesController
 {
-    private CompanyRepository $companies;
-
-    private JobOpeningRepository $jobs;
-
-    public function __construct(CompanyRepository $companies, JobOpeningRepository $jobs)
-    {
-        $this->companies = $companies;
-        $this->jobs = $jobs;
-    }
-
     public function index() : View
     {
+        $partners = Partner::query()
+            ->orderBy('name', 'asc')
+            ->whereHas('companyProfile', function (Builder $query) : void {
+                $query->where('is_enabled', true);
+            })
+            ->with(['logoMedia'])
+            ->get();
+
         return view('career.companies.index')
-            ->with('companies', $this->companies->profiles())
-            ->with('breadcrumbs', [
-                ['url' => '/career', 'text' => 'Career'],
-                ['url' => '/career/companies', 'text' => 'Company profiles'],
+            ->with([
+                'partners' => $partners,
+                'keywords' => $partners->map(fn (Partner $partner) : string => $partner->name)->implode(', '),
+                'breadcrumbs' => [
+                    ['url' => '/career', 'text' => 'Career'],
+                    ['url' => action([self::class, 'index']), 'text' => 'Company profiles'],
+                ],
             ]);
     }
 
-    public function show(string $slug) : View
+    public function show(Partner $partner) : View
     {
-        $company = $this->companies->findByLink($slug);
-        $jobs = $this->jobs->search(
-            null, $company['name']
-        );
+        $this->assertPartnerHasPublicProfile($partner);
+
+        $partners = Partner::query()
+            ->whereHas('companyProfile', function (Builder $query) : void {
+                $query->where('is_enabled', true);
+            })
+            ->with(['logoMedia'])
+            ->get();
+
 
         return view('career.companies.show')
-            ->with('companies', $this->companies->profiles())
-            ->with('company', $company)
-            ->with('jobs', $jobs)
-            ->with('sectors', Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->name => $sector->icon];
-            }))
-            ->with('types', JobType::TYPES)
-            ->with('breadcrumbs', [
-                ['url' => '/career', 'text' => 'Career'],
-                ['url' => '/career/companies', 'text' => 'Company profiles'],
-                ['text' => $company['name']],
+            ->with([
+                'partners' => $partners,
+                'partner' => $partner,
+                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
+                    return [$sector->name => $sector->icon];
+                }),
+                'types' => JobType::TYPES,
+                'breadcrumbs' => [
+                    ['url' => '/career', 'text' => 'Career'],
+                    ['url' => action([self::class, 'index']), 'text' => 'Company profiles'],
+                    ['text' => $partner->name],
+                ]
             ]);
+    }
+
+    private function assertPartnerHasPublicProfile(Partner $partner) : void
+    {
+        if ($partner->companyProfile === null || ! $partner->companyProfile->is_enabled) {
+            abort(404);
+        }
     }
 }

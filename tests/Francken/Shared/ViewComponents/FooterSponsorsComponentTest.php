@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Shared\ViewComponents;
 
-use Francken\Extern\CompanyRepository;
+use Francken\Extern\Partner;
+use Francken\Extern\SponsorOptions\Footer;
 use Francken\Shared\ViewComponents\FooterSponsorsComponent;
 use Francken\Tests\LaravelTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -16,24 +17,20 @@ class FooterSponsorsComponentTest extends LaravelTestCase
     /** @test */
     public function it_shows_company_logos_in_our_footer() : void
     {
-        $companies = new CompanyRepository([
-            [
-                'name' => 'Zernike Institute for Advanced Materials',
-                'summary' => '',
-                'footer-link' => 'http://www.rug.nl/zernike/',
-                'footer-logo' => '/images/footer/ziam.png',
-                'show-in-footer' => true,
-            ]
+        $partner = factory(Partner::class)->create();
+        $footer = factory(Footer::class)->create([
+            'partner_id' => $partner->id,
+            'is_enabled' => true,
         ]);
-        $component = new FooterSponsorsComponent($companies);
 
+        $component = new FooterSponsorsComponent();
         $data = $component->data();
         $this->assertEquals(
             [
                 [
-                    'name' => 'Zernike Institute for Advanced Materials',
-                    'footer-link' => 'http://www.rug.nl/zernike/',
-                    'footer-logo' => '/images/footer/ziam.png',
+                    'name' => $partner->name,
+                    'footer-link' => $footer->referral_url,
+                    'footer-logo' => $footer->logo,
                 ]
             ],
             $data['footer']

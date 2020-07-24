@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Francken\Extern\CompanyRepository;
+use Francken\Extern\Http\CompaniesController;
+use Francken\Extern\Partner;
+use Francken\Extern\SponsorOptions\CompanyProfile;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Plank\Mediable\Media;
 
 class CompaniesFeature extends TestCase
 {
@@ -14,12 +17,16 @@ class CompaniesFeature extends TestCase
     /** @test */
     public function companies_are_listed() : void
     {
-        $this->addDNBToCompanies();
+        factory(CompanyProfile::class)->create([
+            'partner_id' => factory(Partner::class)->create([
+                'name' => 'S[ck]rip(t|t?c)ie In[ck]'
+            ])->id,
+            'is_enabled' => true,
+        ]);
 
-        $this->visit('/career/companies')
+        $this->visit(action([CompaniesController::class, 'index']))
             ->see('Companies')
-            ->see('De Nederlandsche Bank');
-
+            ->see('S[ck]rip(t|t?c)ie In[ck]');
 
         $this->assertResponseOk();
     }
@@ -27,9 +34,15 @@ class CompaniesFeature extends TestCase
     /** @test */
     public function more_info_about_a_companie_can_be_shown() : void
     {
-        $this->addDNBToCompanies();
+        factory(CompanyProfile::class)->create([
+            'partner_id' => factory(Partner::class)->create([
+                'name' => 'S[ck]rip(t|t?c)ie In[ck]',
+                'logo_media_id' => factory(Media::class)->create(),
+            ])->id,
+            'is_enabled' => true,
+        ]);
 
-        $this->visit('/career/companies');
+        $this->visit(action([CompaniesController::class, 'index']));
 
         $company = $this->crawler()->filter('.company-card a')->first();
         $companyName = $company->filter('img')->first()->attr('alt');
@@ -37,25 +50,37 @@ class CompaniesFeature extends TestCase
         $this->visit($company->link()->getUri())->see($companyName);
     }
 
-    private function addDNBToCompanies() : void
+    /** @test */
+    public function it_doest_show_partners_without_a_company_profile() : void
     {
-        $this->app->bind(CompanyRepository::class, function ($app) : CompanyRepository {
-            return new CompanyRepository(
-                [
-                    [
-                        'name' => 'De Nederlandsche Bank',
-                        'summary' => '',
-                        'read-more-at' => '',
-                        'logo' => 'http://www.professorfrancken.nl/wordpress/media/images/carriereplaza/dnb.png',
-                        'footer-link' => '',
-                        'footer-logo' => '',
-                        'show-in-footer' => true,
-                        'show-profile' => true,
-                        'metadata' => [
-                        ]
-                    ]
-                ]
-            );
-        });
+        factory(CompanyProfile::class)->create([
+            'partner_id' => factory(Partner::class)->create([
+                'name' => 'S[ck]rip(t|t?c)ie In[ck]'
+            ])->id,
+            'is_enabled' => false,
+        ]);
+
+        $this->visit(action([CompaniesController::class, 'index']))
+            ->see('Companies')
+            ->dontSee('S[ck]rip(t|t?c)ie In[ck]');
+
+        $this->assertResponseOk();
+    }
+
+    /** @test */
+    public function it_doest_show_a_partner_without_a_company_profile() : void
+    {
+        $scriptcie = factory(Partner::class)->create([
+            'name' => 'S[ck]rip(t|t?c)ie In[ck]'
+        ]);
+        factory(CompanyProfile::class)->create([
+            'partner_id' => $scriptcie->id,
+            'is_enabled' => false,
+        ]);
+
+
+
+        $this->get(action([CompaniesController::class, 'show'], ['partner' => $scriptcie]));
+        $this->assertResponseStatus(404);
     }
 }

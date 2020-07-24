@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\ViewComponents;
 
-use Francken\Extern\CompanyRepository;
+use Francken\Extern\SponsorOptions\Footer;
 use Illuminate\View\Component;
 
 class FooterSponsorsComponent extends Component
@@ -16,18 +16,18 @@ class FooterSponsorsComponent extends Component
      *
      * @return void
      */
-    public function __construct(CompanyRepository $companies)
+    public function __construct()
     {
-        $this->footer = array_map(
-            function (array $company) : array {
-                return [
-                    'footer-link' => $company['footer-link'],
-                    'footer-logo' => $company['footer-logo'],
-                    'name' => $company['name'],
-                ];
-            },
-            $companies->forFooter()
-        );
+        $this->footer = Footer::query()
+            ->where('is_enabled', true)
+            ->with(['partner'])
+            ->get()
+            ->map(fn (Footer $footer) => [
+                'footer-link' => $footer->referral_url,
+                'footer-logo' => $footer->logo,
+                'name' => $footer->partner->name,
+            ])
+            ->toArray();
     }
 
     /**

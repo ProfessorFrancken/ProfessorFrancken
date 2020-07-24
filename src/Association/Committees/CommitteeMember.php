@@ -10,6 +10,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class CommitteeMember extends Model
 {
+    protected $casts = [
+        'member_id' => 'int',
+        'committee_id' => 'int',
+        'installed_at' => 'datetime',
+        'decharged_at' => 'datetime',
+    ];
+
     /**
      * @var string
      */

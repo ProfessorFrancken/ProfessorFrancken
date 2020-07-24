@@ -17,7 +17,7 @@ class VacancyRequest extends FormRequest
     {
         return [
             'title' => ['required', 'min:1'],
-            'description' => ['required', 'min:1'],
+            'description' => ['nullable', 'min:1'],
             'sector_id' => ['nullable',  'exists:extern_partner_sectors,id'],
             'type' => ['required', Rule::in(
                 JobType::all()
@@ -33,7 +33,7 @@ class VacancyRequest extends FormRequest
 
     public function description() : string
     {
-        return $this->input('description', '');
+        return $this->input('description', '') ?? '';
     }
 
     public function sectorId() : int

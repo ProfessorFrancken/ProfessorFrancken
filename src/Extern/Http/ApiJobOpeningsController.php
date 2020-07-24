@@ -4,24 +4,28 @@ declare(strict_types=1);
 
 namespace Francken\Extern\Http;
 
-use Francken\Extern\JobOpeningRepository;
+use Francken\Extern\SponsorOptions\Vacancy;
 
 final class ApiJobOpeningsController
 {
-    public function index(JobOpeningRepository $jobOpenings) : array
+    public function index() : array
     {
+        $vacancies = Vacancy::query()
+            ->with(['sector', 'partner', 'partner.logoMedia'])
+            ->get();
+
         return [
-            'job-openings' => collect($jobOpenings->search())->map(
-                function (array $job) : array {
+            'job-openings' => $vacancies->map(
+                function (Vacancy $vacancy) : array {
                     return [
-                        'name' => $job['job'],
-                        'link' => $job['link'],
-                        'type' => $job['type'],
-                        'sector' => $job['sector'],
-                        'description' => $job['description'] ?? '',
+                        'name' => $vacancy->title,
+                        'link' => $vacancy->vacancy_url,
+                        'type' => $vacancy->type,
+                        'sector' => $vacancy->sector->name,
+                        'description' => $vacancy->description,
                         'company' => [
-                            'name' => $job['name'],
-                            'logo' => $job['logo'],
+                            'name' => $vacancy->partner->name,
+                            'logo' => $vacancy->partner->logo,
                         ],
                     ];
                 })->values()

@@ -76,8 +76,6 @@ final class SmokeFeature extends TestCase
             ["/career", 200],
             ["/career/companies", 200],
             ["/career/job-openings", 200],
-            ["/career/events", 302],
-            ["/career/events/2017-2018", 200],
             ["photos", 302],
         ];
     }

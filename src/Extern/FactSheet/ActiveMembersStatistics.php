@@ -34,7 +34,6 @@ final class ActiveMembersStatistics
             });
         })->unique();
 
-
         $members = \DB::connection('francken-legacy')
                  ->table('leden')
                  ->whereIn('id', $activeMemberIds)
