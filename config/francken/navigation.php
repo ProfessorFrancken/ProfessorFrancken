@@ -192,29 +192,5 @@ return [
                 ],
             ]
         ],
-        [
-            "name" => "Lustrum",
-            "url" => "lustrum",
-            "items" => [
-                [
-                    "name" => "Adtcheivements",
-                    "url" => "adtchievements",
-                    "works" => true,
-                    "can" => "dashboard:manage-lustrum",
-                ],
-                [
-                    "name" => "Blue beards",
-                    "url" => "blue-beard-pirates",
-                    "works" => true,
-                    "can" => "dashboard:manage-lustrum",
-                ],
-                [
-                    "name" => "Red beards",
-                    "url" => "red-beard-pirates",
-                    "works" => true,
-                    "can" => "dashboard:manage-lustrum",
-                ],
-            ]
-        ]
     ]
 ];

@@ -28,7 +28,5 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt($passphrase),
         ]);
         $mark->assignrole('Admin');
-
-        $this->call(LustrumSeeder::class);
     }
 }
