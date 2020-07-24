@@ -20,7 +20,6 @@ return [
         base_path("src/Auth"),
         base_path("src/Extern"),
         base_path("src/Extern/SponsorOptions"),
-        base_path("src/Lustrum"),
         base_path("src/Study"),
         base_path("src/Study/BooksSale"),
         base_path("src/Treasurer"),

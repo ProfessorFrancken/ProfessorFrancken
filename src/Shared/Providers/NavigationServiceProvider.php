@@ -48,33 +48,6 @@ final class NavigationServiceProvider extends ServiceProvider
                     'icon' => 'globe-europe',
                 ];
             }
-            if ($settings->isLustrumShownInNavigation()) {
-                $menu[] = [
-                    'url' => '/lustrum',
-                    'title' => 'Lustrum',
-                    'subItems' => [
-                        [
-                            'url' => '/lustrum/blue-beard-pirates',
-                            'icon' => 'fa fa-skull-crossbones',
-                            'title' => 'Blue beards',
-                            'description' => 'Join the blue team and win the Lustrum week',
-                        ],
-                        [
-                            'url' => '/lustrum/red-beard-pirates',
-                            'icon' => 'fa fa-skull-crossbones',
-                            'title' => 'Red beards',
-                            'description' => "Join the red team and don't win the Lustrum week",
-                        ],
-                        [
-                            'url' => '/lustrum/adtchievements',
-                            'icon' => 'fa fa-trophy',
-                            'title' => 'Adtchievements',
-                            'description' => "",
-                        ]
-                    ],
-                    'icon' => 'water',
-                ];
-            }
             if ($settings->isExpeditionShownInNavigation()) {
                 $menu[] = [
                     'url' => 'https://expeditionstrategy.nl/',

@@ -43,10 +43,6 @@ final class ValueStoreSettings implements Settings
     /**
      * @var string
      */
-    private const IS_LUSTRUM_SHOWN_IN_NAVIGATION = 'navigation_show_lustrum';
-    /**
-     * @var string
-     */
     private const IS_EXPEDITION_SHOWN_IN_NAVIGATION = 'navigation_show_expedition';
 
     private Valuestore $store;
@@ -66,7 +62,6 @@ final class ValueStoreSettings implements Settings
             static::IS_SLEF_SHOWN_IN_NAVIGATION,
             static::IS_SYMPOSIUM_SHOWN_IN_NAVIGATION,
             static::IS_PIENTER_SHOWN_IN_NAVIGATION,
-            static::IS_LUSTRUM_SHOWN_IN_NAVIGATION,
             static::IS_EXPEDITION_SHOWN_IN_NAVIGATION,
         ];
 
@@ -159,17 +154,6 @@ final class ValueStoreSettings implements Settings
         return (bool) $value;
     }
 
-    public function isLustrumShownInNavigation() : bool
-    {
-        $value = $this->store->get(self::IS_LUSTRUM_SHOWN_IN_NAVIGATION);
-
-        if ($value === null) {
-            return false;
-        }
-
-        return (bool) $value;
-    }
-
     public function isExpeditionShownInNavigation() : bool
     {
         $value = $this->store->get(self::IS_EXPEDITION_SHOWN_IN_NAVIGATION);
@@ -216,11 +200,6 @@ final class ValueStoreSettings implements Settings
         yield static::IS_PIENTER_SHOWN_IN_NAVIGATION => [
             'text' => 'Add a link to pienterkamp.nl in the navigation menu',
             'value' => $this->isPienterShownInNavigation(),
-            'type' => 'toggle'
-        ];
-        yield static::IS_LUSTRUM_SHOWN_IN_NAVIGATION => [
-            'text' => 'Add a link to the lustrum page in the navigation menu',
-            'value' => $this->isLustrumShownInNavigation(),
             'type' => 'toggle'
         ];
         yield static::IS_EXPEDITION_SHOWN_IN_NAVIGATION => [
