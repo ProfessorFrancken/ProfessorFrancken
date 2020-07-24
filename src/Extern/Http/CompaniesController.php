@@ -15,6 +15,7 @@ final class CompaniesController
     public function index() : View
     {
         $partners = Partner::query()
+            ->orderBy('name', 'asc')
             ->whereHas('companyProfile', function (Builder $query) : void {
                 $query->where('is_enabled', true);
             })
