@@ -35,6 +35,10 @@ final class AppServiceProvider extends ServiceProvider
         });
         $this->app->bind(Settings::class, ValueStoreSettings::class);
         $this->app->bind(Clock::class, SystemClock::class);
+
+        if ($this->app instanceof Application && $this->app->isLocal()) {
+            $this->app->register(DevelopmentServiceProvider::class);
+        }
     }
 
     public function boot() : void

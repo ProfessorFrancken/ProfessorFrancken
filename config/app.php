@@ -168,9 +168,6 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         // Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Plank\Mediable\MediableServiceProvider::class,
-
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Facade\Ignition\IgnitionServiceProvider::class,
     ],
 
     /*
