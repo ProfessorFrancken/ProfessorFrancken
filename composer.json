@@ -33,8 +33,7 @@
     "spatie/laravel-newsletter": "^4.8",
     "spatie/laravel-permission": "^3.13",
     "spatie/valuestore": "^1.2",
-    "webmozart/assert": "^1.9",
-    "webuni/commonmark-attributes-extension": "^1.0"
+    "webmozart/assert": "^1.9"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.3",
