@@ -153,6 +153,7 @@ return [
         Francken\Association\Members\ServiceProvider::class,
         Francken\Association\Photos\PhotosServiceProvider::class,
         Francken\Association\Symposium\ServiceProvider::class,
+        Francken\Association\Newsletter\ServiceProvider::class,
 
         Francken\Auth\ServiceProvider::class,
 

@@ -50,6 +50,7 @@
     "nunomaduro/collision": "^4.0",
     "nunomaduro/larastan": "^0.6.1",
     "php-coveralls/php-coveralls": "^2.0",
+    "phpspec/prophecy-phpunit": "^2.0",
     "phpstan/extension-installer": "^1.0",
     "phpstan/phpstan": "^0.12.30",
     "phpstan/phpstan-webmozart-assert": "^0.12.6",
