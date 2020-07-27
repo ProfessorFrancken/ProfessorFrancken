@@ -7,9 +7,9 @@ namespace Francken\Shared\Markdown;
 use Francken\Association\News\CompiledMarkdown;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
+use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Inline\Element\Image;
 use League\CommonMark\Inline\Renderer\ImageRenderer;
-use Webuni\CommonMark\AttributesExtension\AttributesExtension;
 
 final class ContentCompiler
 {

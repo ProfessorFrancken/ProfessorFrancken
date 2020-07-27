@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "296ffb190266370bfe67b497b3fffa89",
+    "content-hash": "b0b823a1d82421d865eaea34ba450a5c",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -7074,67 +7074,6 @@
                 "validate"
             ],
             "time": "2020-07-08T17:02:28+00:00"
-        },
-        {
-            "name": "webuni/commonmark-attributes-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webuni/commonmark-attributes-extension.git",
-                "reference": "428c5ad073558a7ee0887b3017f161af59de29e0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webuni/commonmark-attributes-extension/zipball/428c5ad073558a7ee0887b3017f161af59de29e0",
-                "reference": "428c5ad073558a7ee0887b3017f161af59de29e0",
-                "shasum": ""
-            },
-            "require": {
-                "league/commonmark": "^1.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "league/commonmark-ext-table": "^1.0|^2.0",
-                "phpstan/phpstan": "~0.11",
-                "phpunit/phpunit": "^7.0|^8.0",
-                "symfony/var-dumper": "^4.3",
-                "vimeo/psalm": "^3.5"
-            },
-            "type": "commonmark-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Webuni\\CommonMark\\AttributesExtension\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Martin Hasoň",
-                    "email": "martin.hason@gmail.com"
-                },
-                {
-                    "name": "Webuni s.r.o.",
-                    "homepage": "https://www.webuni.cz"
-                }
-            ],
-            "description": "The attributes extension adds a syntax to define attributes on the various HTML elements in CommonMark PHP implementation.",
-            "homepage": "https://github.com/webuni/commonmark-attributes-extension",
-            "keywords": [
-                "attributes",
-                "commonmark",
-                "markdown"
-            ],
-            "abandoned": "league/commonmark",
-            "time": "2019-09-11T21:27:00+00:00"
         }
     ],
     "packages-dev": [
@@ -14221,5 +14160,5 @@
         "ext-json": "^7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
