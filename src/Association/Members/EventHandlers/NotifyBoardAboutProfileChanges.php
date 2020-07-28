@@ -7,9 +7,11 @@ namespace Francken\Association\Members\EventHandlers;
 use Francken\Association\Boards\Board;
 use Francken\Association\Members\Events\MemberAddressWasChanged;
 use Francken\Association\Members\Events\MemberEmailWasChanged;
+use Francken\Association\Members\Events\MemberPaymentDetailsWereChanged;
 use Francken\Association\Members\Events\MemberPhoneNumberWasChanged;
 use Francken\Association\Members\Notifications\NotifyBoardAboutAddressChange;
 use Francken\Association\Members\Notifications\NotifyBoardAboutEmailChange;
+use Francken\Association\Members\Notifications\NotifyBoardAboutPaymentDetailsChange;
 use Francken\Association\Members\Notifications\NotifyBoardAboutPhoneNumberChange;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -47,6 +49,14 @@ final class NotifyBoardAboutProfileChanges //implements ShouldQueue
         $currentBoard = Board::current()->firstOrFail();
         $currentBoard->notify(
             new NotifyBoardAboutPhoneNumberChange($event)
+        );
+    }
+
+    public function whenMemberPaymentDetailsWereChanged(MemberPaymentDetailsWereChanged $event) : void
+    {
+        $currentBoard = Board::current()->firstOrFail();
+        $currentBoard->notify(
+            new NotifyBoardAboutPaymentDetailsChange($event)
         );
     }
 
