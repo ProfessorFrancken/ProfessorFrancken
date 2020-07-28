@@ -38,18 +38,28 @@ final class PaymentDetails
         return $this->bic;
     }
 
+    /**
+     * For privacy reasons we mask the member's iban account number
+     */
     public function maskedIban() : ?string
     {
         if ($this->iban === null) {
             return null;
         }
 
-        // For privacy reasons we mask the member's iban account number
-        return str_replace(
-            ' ',
-            '-',
-            substr_replace($this->iban, 'XXXX-XXXX-XXXX-XX', 0, 17)
+        // Take only alpha numerical characters from the iban
+        $iban = preg_replace('/[^\d\w]+/', '', $this->iban);
+
+        // Separate the iban into pieces of 4 characters
+        $pieces = (int)floor(strlen($iban) / 4);
+
+        // Mask the first 3 pieces
+        $maskedPieces = array_map(
+            fn (int $idx) => ($idx < 3) ? 'XXXX' : substr($iban, $idx * 4, 4),
+            range(0, $pieces)
         );
+
+        return implode('-', $maskedPieces);
     }
 
     public function paymentMethod() : string

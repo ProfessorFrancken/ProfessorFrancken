@@ -21,7 +21,7 @@ class PaymentDetailsTest extends TestCase
             $paymentDetails->iban()
         );
         $this->assertEquals(
-            'XXXX-XXXX-XXXX-XX43-00',
+            'XXXX-XXXX-XXXX-1643-00',
             $paymentDetails->maskediban()
         );
 
