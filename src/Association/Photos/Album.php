@@ -8,7 +8,6 @@ use Francken\Association\Photos\Http\Controllers\PhotosController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Carbon;
 
 final class Album extends Model
 {
