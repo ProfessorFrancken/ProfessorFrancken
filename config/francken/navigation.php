@@ -98,6 +98,12 @@ return [
                     "can" => "dashboard:francken-vrij-read",
                 ],
                 [
+                    "name" => "Photos",
+                    "url" => "photo-albums",
+                    "works" => false,
+                    "can" => "dashboard:photos-read",
+                ],
+                [
                     "name" => "Symposium",
                     "url" => "symposia",
                     "works" => true,

@@ -12,6 +12,7 @@ use Francken\Association\Committees\Http\AdminRedirectCommitteesController;
 use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
+use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
 use Francken\Association\Symposium\Http\AdminSymposiumParticipantsController;
 use Francken\Association\Symposium\Http\AttendanceController;
@@ -143,6 +144,8 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('activities', [AdminController::class, 'showPageIsUnavailable']);
     Route::get('members', [AdminController::class, 'showPageIsUnavailable']);
 
+    Route::get('photo-albums', [AdminPhotoAlbumsController::class, 'index']);
+    Route::post('photo-albums/refresh', [AdminPhotoAlbumsController::class, 'refresh']);
     Route::group(['prefix' => 'symposia'], function () : void {
         Route::group(['middleware' => 'can:dashboard:symposia-write'], function () : void {
             Route::get('/create', [AdminSymposiaController::class, 'create']);
