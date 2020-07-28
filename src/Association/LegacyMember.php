@@ -9,6 +9,7 @@ use DB;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\Events\MemberAddressWasChanged;
 use Francken\Association\Members\Events\MemberEmailWasChanged;
+use Francken\Association\Members\Events\MemberPaymentDetailsWereChanged;
 use Francken\Association\Members\Events\MemberPhoneNumberWasChanged;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
@@ -286,5 +287,27 @@ final class LegacyMember extends Model
         $this->save();
 
         event(new MemberPhoneNumberWasChanged($this, $phoneNumber, $oldPhoneNumber));
+    }
+
+    public function changePaymentDetails(PaymentDetails $paymentDetails) : void
+    {
+        $oldIban = $this->rekeningnummer;
+        $oldConsumptionCounter = $this->streeplijst;
+        $consumptionCounter = $paymentDetails->deductAdditionalCosts()? "Afschrijven" : "Non-actief";
+        $iban = $paymentDetails->iban();
+
+        if ($oldIban === $iban && $oldConsumptionCounter == $consumptionCounter) {
+            return;
+        }
+
+        $this->rekeningnummer = $iban;
+        $this->streeplijst = $consumptionCounter;
+        $this->save();
+
+        event(
+            new MemberPaymentDetailsWereChanged(
+                $this, $iban, $oldIban, $consumptionCounter, $oldConsumptionCounter
+            )
+        );
     }
 }

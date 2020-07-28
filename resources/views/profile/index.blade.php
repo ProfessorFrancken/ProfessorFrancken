@@ -24,7 +24,7 @@
 
     <div class="card my-3">
         <div class="card-body">
-            <a href="" class="float-right text-muted d-none">
+            <a href="{{ action([\Francken\Association\Members\Http\ContactDetailsController::class, 'index'])}}" class="float-right text-muted">
                 <i class="fas fa-edit"></i>
                 Edit
             </a>
@@ -90,7 +90,7 @@
     </div>
     <div class="card my-3">
         <div class="card-body">
-            <a href="" class="float-right text-muted d-none">
+            <a href="{{ action([\Francken\Association\Members\Http\PaymentDetailsController::class, 'index'])}}" class="float-right text-muted">
                 <i class="fas fa-edit"></i>
                 Edit
             </a>
@@ -110,7 +110,6 @@
                     </li>
                 @endif
                 <li>
-
                     @if ($member->payment_details->deductAdditionalCosts())
                         <i class="far fa-check-square"></i>
                     @else
