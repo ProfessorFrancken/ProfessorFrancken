@@ -104,6 +104,13 @@
         </button>
         {!! Form::close() !!}
 
+        <a href="{{ action([\Francken\Association\Committees\Http\AdminActiveMembersExportController::class, 'index'], ['board' => $board]) }}"
+           class="btn btn-primary btn-sm mr-3"
+        >
+            <i class="fas fa-cloud-download-alt"></i>
+            Export active members
+        </a>
+
         <a href="{{ action([\Francken\Association\Committees\Http\AdminCommitteesController::class, 'create'], ['board' => $board]) }}"
            class="btn btn-primary btn-sm"
         >

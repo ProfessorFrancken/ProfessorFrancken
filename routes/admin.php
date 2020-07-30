@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
+use Francken\Association\Committees\Http\AdminActiveMembersExportController;
 use Francken\Association\Committees\Http\AdminCommitteeMembersController;
 use Francken\Association\Committees\Http\AdminCommitteesController;
 use Francken\Association\Committees\Http\AdminContinueCommitteesController;
@@ -130,6 +131,7 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::group(['middleware' => 'can:dashboard:committees-read'], function () : void {
         Route::get('committees', [AdminRedirectCommitteesController::class, 'index']);
         Route::post('boards/{board}/committees/continue', [AdminContinueCommitteesController::class, 'store']);
+        Route::get('boards/{board}/committees/export', [AdminActiveMembersExportController::class, 'index']);
         Route::resource('boards.committees', AdminCommitteesController::class);
         Route::resource('boards.committees.members', AdminCommitteeMembersController::class);
     });
