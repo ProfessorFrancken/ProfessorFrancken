@@ -23,7 +23,7 @@ final class DevelopmentServiceProvider extends ServiceProvider
     {
         $driver = config('newsletter.driver', 'api');
         if (is_null($driver) || $driver === 'log') {
-            $this->app->singleton(Newsletter::class, function (): NullDriver {
+            $this->app->singleton(Newsletter::class, function () : NullDriver {
                 return new NullDriver();
             });
         }
