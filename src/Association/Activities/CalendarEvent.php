@@ -8,11 +8,17 @@ use Carbon\Carbon;
 use DateTimeImmutable;
 use DateTimeZone;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Sabre\VObject\Component\VEvent;
 
 final class CalendarEvent
 {
+    public string $id;
+
+    public Collection $notes;
+    private string $uid;
+    private string $recurrence;
     private string $summary;
 
     private string $description;
@@ -25,14 +31,31 @@ final class CalendarEvent
 
     private string $status;
 
-    public function __construct(VEvent $event)
+    public function __toString() : string
     {
-        $this->summary = (string)Arr::first($event->select('SUMMARY'));
-        $this->description = (string)Arr::first($event->select('DESCRIPTION'));
-        $this->location = (string)Arr::first($event->select('LOCATION'));
-        $this->status = (string)Arr::first($event->select('STATUS'));
+        return $this->id;
+    }
 
-        $this->parseSchedule($event);
+    public static function fromEvent(VEvent $event) : self
+    {
+        $calendarEvent = new self();
+        $calendarEvent->id = (string)Arr::first($event->select('UID'));
+        $calendarEvent->uid = $calendarEvent->id;
+        $calendarEvent->recurrence = ((string)Arr::first($event->select('RECURRENCE-ID')));
+        $calendarEvent->summary = (string)Arr::first($event->select('SUMMARY'));
+        $calendarEvent->description = (string)Arr::first($event->select('DESCRIPTION'));
+        $calendarEvent->location = (string)Arr::first($event->select('LOCATION'));
+        $calendarEvent->status = (string)Arr::first($event->select('STATUS'));
+        $calendarEvent->notes = collect();
+        $calendarEvent->parseSchedule($event);
+        return $calendarEvent;
+    }
+    public function uid() : string
+    {
+        if ($this->recurrence !== '') {
+            return $this->uid . '_' . $this->recurrence;
+        }
+        return $this->uid;
     }
 
     public function startDate() : DateTimeImmutable
@@ -55,6 +78,11 @@ final class CalendarEvent
         return $this->summary;
     }
 
+    public function name() : string
+    {
+        return $this->summary;
+    }
+
     public function description() : string
     {
         return $this->description;
@@ -67,6 +95,15 @@ final class CalendarEvent
         }
 
         return $this->location;
+    }
+
+    public function googleMapsEmbedUri() : string
+    {
+        return 'https://www.google.com/maps/embed/v1/place?' . http_build_query([
+            'q' => $this->location,
+            'zoom' => 13,
+            'key' => 'AIzaSyBmxy9LR0IeIDPmfVY_2ZQOLSbgNz_jDpw'
+        ]);
     }
 
     public function shortDescription() : string
@@ -113,7 +150,6 @@ final class CalendarEvent
 
         return $string;
     }
-
 
     private function parseSchedule(VEvent $event) : void
     {

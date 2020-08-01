@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Console;
 
 use Francken\Association\Activities\FetchLatestFranckenIcal;
+use Francken\Association\Activities\ImportActivitiesFromCalendar;
 use Francken\Association\Boards\UpdateBoardMemberStatus;
 use Francken\Association\Photos\SynchronizeFlickrAlbums;
 use Francken\Association\Symposium\SendInformationEmail;
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         ImportOldDeductions::class,
         FetchLatestFranckenIcal::class,
+        ImportActivitiesFromCalendar::class,
         ImportPermissionsFromConfig::class,
         SendInformationEmail::class,
         SetupPermissions::class,
@@ -37,7 +39,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule) : void
     {
-        $schedule->command('activities:update-ical')->hourly();
+        $schedule->command('activities:update-ical')
+            ->hourly()
+            ->after(fn () => $this->call('activities:import'));
+
         $schedule->command('photos:synchronize')->hourly();
         $schedule->command('boards:update-board-member-status')->daily();
     }

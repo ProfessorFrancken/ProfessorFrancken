@@ -82,7 +82,7 @@ return [
                 [
                     "name" => "Activities",
                     "url" => "activities",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:activities-read",
                 ],
                 [
