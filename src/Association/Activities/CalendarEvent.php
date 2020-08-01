@@ -8,11 +8,15 @@ use Carbon\Carbon;
 use DateTimeImmutable;
 use DateTimeZone;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Sabre\VObject\Component\VEvent;
 
 final class CalendarEvent
 {
+    public string $id;
+
+    public Collection $notes;
     private string $summary;
 
     private string $description;
@@ -27,12 +31,19 @@ final class CalendarEvent
 
     public function __construct(VEvent $event)
     {
+        $this->id = (string)Arr::first($event->select('UID'));
         $this->summary = (string)Arr::first($event->select('SUMMARY'));
         $this->description = (string)Arr::first($event->select('DESCRIPTION'));
         $this->location = (string)Arr::first($event->select('LOCATION'));
         $this->status = (string)Arr::first($event->select('STATUS'));
+        $this->notes = collect();
 
         $this->parseSchedule($event);
+    }
+
+    public function __toString()
+    {
+        return $this->id;
     }
 
     public function startDate() : DateTimeImmutable
@@ -55,6 +66,11 @@ final class CalendarEvent
         return $this->summary;
     }
 
+    public function name() : string
+    {
+        return $this->summary;
+    }
+
     public function description() : string
     {
         return $this->description;
@@ -67,6 +83,15 @@ final class CalendarEvent
         }
 
         return $this->location;
+    }
+
+    public function googleMapsEmbedUri() : string
+    {
+        return 'https://www.google.com/maps/embed/v1/place?' . http_build_query([
+            'q' => $this->location,
+            'zoom' => 13,
+            'key' => 'AIzaSyBmxy9LR0IeIDPmfVY_2ZQOLSbgNz_jDpw'
+        ]);
     }
 
     public function shortDescription() : string
@@ -114,6 +139,10 @@ final class CalendarEvent
         return $string;
     }
 
+    public function registrationDeadline() : Carbon
+    {
+        return new Carbon($this->endDate());
+    }
 
     private function parseSchedule(VEvent $event) : void
     {

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Francken\Association\Activities\Http\AdminActivitiesController;
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
@@ -143,7 +144,7 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::delete('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'destroy']);
     Route::post('francken-vrij', [AdminFranckenVrijController::class, 'store']);
 
-    Route::get('activities', [AdminController::class, 'showPageIsUnavailable']);
+    Route::resource('activities', AdminActivitiesController::class);
     Route::get('members', [AdminController::class, 'showPageIsUnavailable']);
 
     Route::get('photo-albums', [AdminPhotoAlbumsController::class, 'index']);
