@@ -6,7 +6,9 @@ namespace Francken\Shared\Providers;
 
 use Barryvdh\Debugbar\ServiceProvider as DebugbarServiceProvider;
 use Facade\Ignition\IgnitionServiceProvider;
+use Francken\Tests\Association\Newsletter\NullDriver;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Newsletter\Newsletter;
 
 final class DevelopmentServiceProvider extends ServiceProvider
 {
@@ -14,5 +16,16 @@ final class DevelopmentServiceProvider extends ServiceProvider
     {
         $this->app->register(DebugbarServiceProvider::class);
         $this->app->register(IgnitionServiceProvider::class);
+        $this->registerNewsletter();
+    }
+
+    private function registerNewsletter() : void
+    {
+        $driver = config('newsletter.driver', 'api');
+        if (is_null($driver) || $driver === 'log') {
+            $this->app->singleton(Newsletter::class, function (): NullDriver {
+                return new NullDriver();
+            });
+        }
     }
 }
