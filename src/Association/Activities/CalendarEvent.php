@@ -17,6 +17,8 @@ final class CalendarEvent
     public string $id;
 
     public Collection $notes;
+    private string $uid;
+    private string $recurrence;
     private string $summary;
 
     private string $description;
@@ -29,21 +31,31 @@ final class CalendarEvent
 
     private string $status;
 
-    public function __construct(VEvent $event)
-    {
-        $this->id = (string)Arr::first($event->select('UID'));
-        $this->summary = (string)Arr::first($event->select('SUMMARY'));
-        $this->description = (string)Arr::first($event->select('DESCRIPTION'));
-        $this->location = (string)Arr::first($event->select('LOCATION'));
-        $this->status = (string)Arr::first($event->select('STATUS'));
-        $this->notes = collect();
-
-        $this->parseSchedule($event);
-    }
-
     public function __toString()
     {
         return $this->id;
+    }
+
+    public static function fromEvent(VEvent $event)
+    {
+        $calendarEvent = new self();
+        $calendarEvent->id = (string)Arr::first($event->select('UID'));
+        $calendarEvent->uid = $calendarEvent->id;
+        $calendarEvent->recurrence = ((string)Arr::first($event->select('RECURRENCE-ID')));
+        $calendarEvent->summary = (string)Arr::first($event->select('SUMMARY'));
+        $calendarEvent->description = (string)Arr::first($event->select('DESCRIPTION'));
+        $calendarEvent->location = (string)Arr::first($event->select('LOCATION'));
+        $calendarEvent->status = (string)Arr::first($event->select('STATUS'));
+        $calendarEvent->notes = collect();
+        $calendarEvent->parseSchedule($event);
+        return $calendarEvent;
+    }
+    public function uid() : string
+    {
+        if ($this->recurrence !== '') {
+            return $this->uid . '_' . $this->recurrence;
+        }
+        return $this->uid;
     }
 
     public function startDate() : DateTimeImmutable

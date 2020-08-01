@@ -25,7 +25,7 @@ final class ActivitiesRepository
         );
 
         foreach ($vcalendar->select('VEVENT') as $event) {
-            $this->activities[] = new CalendarEvent($event);
+            $this->activities[] = CalendarEvent::fromEvent($event);
         }
 
         $this->activities = $this->activities->filter(function ($event) : bool {

@@ -8,6 +8,8 @@ use Illuminate\Console\Command;
 
 class FetchLatestFranckenIcal extends Command
 {
+    private const GOOGLE_CALENDAR_URL =  'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
+
     /**
      * The name and signature of the console command.
      *
@@ -37,8 +39,7 @@ class FetchLatestFranckenIcal extends Command
      */
     public function handle() : void
     {
-        $url = 'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
-        $file = file_get_contents($url);
+        $file = file_get_contents(self::GOOGLE_CALENDAR_URL);
 
         if ($file) {
             \Storage::put('calendar.ics', $file);
