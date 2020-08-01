@@ -61,6 +61,7 @@ CALENDAR;
 
         $repo = app(ActivitiesRepository::class);
         $repo = new ActivitiesRepository($data);
+
         $this->app->instance(ActivitiesRepository::class, $repo);
 
         Artisan::call('activities:import');

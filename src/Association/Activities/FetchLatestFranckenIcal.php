@@ -8,6 +8,9 @@ use Illuminate\Console\Command;
 
 class FetchLatestFranckenIcal extends Command
 {
+    /**
+     * @var string
+     */
     private const GOOGLE_CALENDAR_URL =  'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
 
     /**

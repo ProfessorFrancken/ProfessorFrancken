@@ -31,12 +31,12 @@ final class CalendarEvent
 
     private string $status;
 
-    public function __toString()
+    public function __toString() : string
     {
         return $this->id;
     }
 
-    public static function fromEvent(VEvent $event)
+    public static function fromEvent(VEvent $event) : self
     {
         $calendarEvent = new self();
         $calendarEvent->id = (string)Arr::first($event->select('UID'));
@@ -149,11 +149,6 @@ final class CalendarEvent
         }
 
         return $string;
-    }
-
-    public function registrationDeadline() : Carbon
-    {
-        return new Carbon($this->endDate());
     }
 
     private function parseSchedule(VEvent $event) : void

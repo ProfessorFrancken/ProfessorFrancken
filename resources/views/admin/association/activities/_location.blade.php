@@ -5,14 +5,14 @@
             Location
         </h4>
         <p>
-            {{ $activity->location() }}
+            {{ $activity->location }}
         </p>
 
         <div>
             <iframe
                 frameborder="0"
                 style="border:0; width: 100%; height: 500px"
-                src="{{ $activity->googleMapsEmbedUri() }}" allowfullscreen
+                src="{{ $activity->google_maps_embed_uri }}" allowfullscreen
             ></iframe>
         </div>
     </div>

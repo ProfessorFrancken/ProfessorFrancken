@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', 'Activities / ' . $activity->name())
+@section('page-title', 'Activities / ' . $activity->name)
 
 @section('content')
 <div class="row">
@@ -8,15 +8,17 @@
             <div class="card-body">
                 <p>
                     <i class="fas fa-clock"></i>
-                    {{ $activity->startDate()->format("d F H:i") }}
+                    {{ $activity->start_date->format("d F H:i") }}
                     to
-                    {{ $activity->endDate()->format("d F H:i") }}
+                    {{ $activity->end_date->format("d F H:i") }}
                 </p>
 
                 <div>
-                    {!! $activity->description() !!}
+                    {!! $activity->compiled_content !!}
                 </div>
             </div>
+
+            @include('admin.association.activities._sign_ups', ['activity' => $activity])
         </div>
 
         {!!
@@ -42,6 +44,12 @@
     </div>
 
     <div class="col-3">
+        {{--
+        @include('admin.association.activities._notes', ['activity' => $activity])
+        @include('admin.association.activities._organizers', ['activity' => $activity])
+        @include('admin.association.activities._news', ['activity' => $activity])
+        @include('admin.association.activities._photo_album', ['activity' => $activity])
+        --}}
         @include('admin.association.activities._location', ['activity' => $activity])
     </div>
 </div>
