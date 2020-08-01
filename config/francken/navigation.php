@@ -100,7 +100,7 @@ return [
                 [
                     "name" => "Photos",
                     "url" => "photo-albums",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:photos-read",
                 ],
                 [
