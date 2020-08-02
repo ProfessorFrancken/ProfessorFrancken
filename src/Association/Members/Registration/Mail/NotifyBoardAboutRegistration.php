@@ -14,7 +14,7 @@ class NotifyBoardAboutRegistration extends Mailable
 {
     use Queueable;
     use SerializesModels;
-    
+
     public Registration $registration;
 
     /**
@@ -36,7 +36,7 @@ class NotifyBoardAboutRegistration extends Mailable
     {
         return $this->subject(
             sprintf(
-                "%s has subbmited a registration request",
+                "%s has submited a registration request",
                 $this->registration->fullname->toString()
             )
         )->markdown('association.members.registration.mail.notify-board-about-registration', [
