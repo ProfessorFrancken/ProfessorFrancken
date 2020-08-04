@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Francken\Features\Association\Committees;
+namespace Francken\Features\Association\Activities;
 
 use Francken\Association\Activities\Activity;
 use Francken\Association\Activities\Http\AdminActivitiesController;
