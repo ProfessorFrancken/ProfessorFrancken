@@ -29,8 +29,21 @@ final class AdminActivitiesController
     {
         return view('admin.association.activities.show')
             ->with([
-                'members' => LegacyMember::autocomplete(),
                 'activity' => $activity,
+                'breadcrumbs' => [
+                    ['url' => action([self::class, 'index']), 'text' => 'Activities'],
+                    ['url' => action([static::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
+                ]
+            ]);
+    }
+
+
+    public function edit(Activity $activity) : View
+    {
+        return view('admin.association.activities.edit')
+            ->with([
+                'activity' => $activity,
+                'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([static::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
