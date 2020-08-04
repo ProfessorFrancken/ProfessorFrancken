@@ -60,12 +60,12 @@ final class CalendarEvent
 
     public function startDate() : DateTimeImmutable
     {
-        return $this->start;
+        return $this->start->setTimeZone(new DateTimeZone('Europe/Amsterdam'));
     }
 
     public function endDate() : DateTimeImmutable
     {
-        return $this->end;
+        return $this->end->setTimeZone(new DateTimeZone('Europe/Amsterdam'));
     }
 
     public function status() : string
