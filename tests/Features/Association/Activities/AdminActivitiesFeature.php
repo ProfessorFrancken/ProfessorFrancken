@@ -23,4 +23,15 @@ class AdminActivitiesFeature extends TestCase
 
         $this->assertResponseOk();
     }
+
+    /** @test */
+    public function a_shows_an_activity() : void
+    {
+        $activity = factory(Activity::class)->create();
+
+        $this->visit(action([AdminActivitiesController::class, 'show'], ['activity' => $activity]))
+            ->see($activity->name);
+
+        $this->assertResponseOk();
+    }
 }
