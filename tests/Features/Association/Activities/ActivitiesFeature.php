@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Francken\Features;
+namespace Francken\Features\Association\Activities;
 
 use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\Activities\Activity;
+use Francken\Features\TestCase;
 
 class ActivitiesFeature extends TestCase
 {
