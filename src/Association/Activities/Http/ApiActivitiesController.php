@@ -6,45 +6,43 @@ namespace Francken\Association\Activities\Http;
 
 use DateTime;
 use DateTimeImmutable;
-use Francken\Association\Activities\ActivitiesRepository;
-use Francken\Association\Activities\CalendarEvent;
+use Francken\Association\Activities\Activity;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Webmozart\Assert\Assert;
 
 final class ApiActivitiesController
 {
-    public function index(ActivitiesRepository $activities, Request $request) : array
+    public function index(Request $request) : array
     {
-        $limit = (int) $request->get('limit', 10);
         $after = DateTimeImmutable::createFromFormat(
             'Y-m-d', $request->get('after', (new DateTimeImmutable())->format('Y-m-d'))
         );
         Assert::isInstanceOf($after, DateTimeImmutable::class);
 
 
-        $map = function (CalendarEvent $activity) : array {
-            return [
-                'title' => $activity->title(),
-                'description' => $activity->description(),
-                'location' => $activity->location(),
-                'startDate' => $activity->startDate()->format(DateTime::ATOM),
-                'endDate' => $activity->endDate()->format(DateTime::ATOM),
-            ];
-        };
-
-        if ($request->has('before')) {
-            $before = DateTimeImmutable::createFromFormat(
-                'Y-m-d', $request->get('before')
-            );
-            Assert::isInstanceOf($before, DateTimeImmutable::class);
-
-            return [
-                'activities' => $activities->between($after, $before)->map($map)->values()
-            ];
-        }
+        $activities = Activity::query()
+            ->orderBy('start_date', 'asc')
+            ->where('start_date', '>', $after)
+            ->when($request->input('before'), function (Builder $query, string $before) : void {
+                $before = DateTimeImmutable::createFromFormat('Y-m-d', $before);
+                Assert::isInstanceOf($before, DateTimeImmutable::class);
+                $query->where('start_date', '<', $before);
+            })
+            ->get()
+            ->map(function (Activity $activity) : array {
+                return [
+                    'title' => $activity->name,
+                    'description' => $activity->compiled_content,
+                    'location' => $activity->location,
+                    'startDate' => $activity->start_date->format(DateTime::ATOM),
+                    'endDate' => $activity->end_date->format(DateTime::ATOM),
+                ];
+            })
+            ->values();
 
         return [
-            'activities' => $activities->after($after, $limit)->map($map)->values()
+            'activities' => $activities
         ];
     }
 }

@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Francken\Features;
+namespace Francken\Features\Association\Activities;
 
 use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\Activities\Activity;
+use Francken\Association\Activities\Http\IcalController;
+use Francken\Features\TestCase;
 
 class ActivitiesFeature extends TestCase
 {
@@ -45,5 +47,20 @@ class ActivitiesFeature extends TestCase
     {
         $this->visit('/association/activities/' . $this->start->add(new DateInterval('P1Y'))->format('Y/m'))
              ->dontSee("Lunch lecture: Demcon");
+    }
+
+    /** @test */
+    public function it_shows_instructions_to_import_activities_in_a_calendar() : void
+    {
+        $this->visit(action([IcalController::class, 'index']))
+            ->see('Google Calendar')
+            ->see('Outlook Calendar');
+    }
+
+    /** @test */
+    public function it_downloads_a_calendar() : void
+    {
+        $this->visit(action([IcalController::class, 'show']))
+            ->assertResponseOk();
     }
 }
