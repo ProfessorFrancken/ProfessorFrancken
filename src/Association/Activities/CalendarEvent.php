@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities;
 
-use Carbon\Carbon;
 use DateTimeImmutable;
 use DateTimeZone;
 use Illuminate\Support\Arr;
@@ -73,11 +72,6 @@ final class CalendarEvent
         return $this->status;
     }
 
-    public function title() : string
-    {
-        return $this->summary;
-    }
-
     public function name() : string
     {
         return $this->summary;
@@ -97,58 +91,9 @@ final class CalendarEvent
         return $this->location;
     }
 
-    public function googleMapsEmbedUri() : string
-    {
-        return 'https://www.google.com/maps/embed/v1/place?' . http_build_query([
-            'q' => $this->location,
-            'zoom' => 13,
-            'key' => 'AIzaSyBmxy9LR0IeIDPmfVY_2ZQOLSbgNz_jDpw'
-        ]);
-    }
-
     public function shortDescription() : string
     {
         return Str::limit($this->description, 150);
-    }
-
-    public function url() : string
-    {
-        return '';
-    }
-
-    /*
-     * [day] [mnth] to [day] [mnth]
-     * Shows first month only when it is different
-     */
-    public function schedule() : string
-    {
-        $string = '';
-        $from = Carbon::createFromFormat('Y-m-d', $this->startDate()->format('Y-m-d'));
-        $to = Carbon::createFromFormat('Y-m-d', $this->endDate()->format('Y-m-d'));
-
-        $start = $this->startDate()->setTimeZone(new DateTimeZone('Europe/Amsterdam'));
-        $end = $this->endDate()->setTimeZone(new DateTimeZone('Europe/Amsterdam'));
-
-        $string .= $start->format('d');
-
-        // Display month and year only twice if necessary
-        if ($from->month !== $to->month) {
-            $string .= $start->format(' F');
-        }
-
-        // Check if the end date is different
-        if ($from->format('Y-m-d') !== $to->format('Y-m-d')) {
-            $string .= ' - ' . $end->format('d F');
-        } else {
-            $string .= $end->format(' F');
-        }
-
-        // Show time if the activity isn't on the whole day
-        if ($this->startDate()->format('H:i') !== '00:00') {
-            $string .= ' at ' . $start->format('H:i');
-        }
-
-        return $string;
     }
 
     private function parseSchedule(VEvent $event) : void
