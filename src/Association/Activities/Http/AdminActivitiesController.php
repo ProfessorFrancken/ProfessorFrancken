@@ -6,6 +6,7 @@ namespace Francken\Association\Activities\Http;
 
 use Francken\Association\Activities\Activity;
 use Francken\Association\LegacyMember;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 final class AdminActivitiesController
@@ -62,5 +63,10 @@ final class AdminActivitiesController
                     ['url' => action([static::class, 'edit'], ['activity' => $activity]), 'text' => 'Edit'],
                 ]
             ]);
+    }
+
+    public function update(Activity $activity) : RedirectResponse
+    {
+        return redirect()->action([self::class, 'show'], ['activity' => $activity]);
     }
 }
