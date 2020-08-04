@@ -49,12 +49,18 @@
                                 </a>
                             </td>
                             <td class="text-right">
+                                @if ($activity->signUpSettings)
                                 <p class="my-0">
-                                    10 / 33
+                                    0 / {{ $activity->signUpSettings->max_sign_ups }}
                                 </p>
                                 <small class="text-muted my-0">
-                                    Registration closed
+                                    @if ($activity->signUpSettings->deadline_at->isFuture())
+                                        Registration ends in {{ $activity->signUpSettings->deadline_at->diffForHumans() }}
+                                    @else
+                                        Registration closed
+                                    @endif
                                 </small>
+                                @endif
                             </td>
                         </tr>
                     </tbody>

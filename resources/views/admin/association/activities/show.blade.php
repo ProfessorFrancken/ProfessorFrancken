@@ -17,6 +17,8 @@
                     {!! $activity->compiled_content !!}
                 </div>
             </div>
+
+            @include('admin.association.activities.sign-up-settings.index', ['activity' => $activity])
         </div>
 
         {!!

@@ -14,6 +14,7 @@ final class AdminActivitiesController
     public function index() : View
     {
         $activities = Activity::query()
+            ->with(['signUpSettings'])
             ->orderBy('start_date', 'desc')
             ->paginate(50);
 
