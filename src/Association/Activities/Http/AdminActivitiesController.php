@@ -37,6 +37,18 @@ final class AdminActivitiesController
             ]);
     }
 
+    public function create() : View
+    {
+        return view('admin.association.activities.create')
+            ->with([
+                'activity' => new Activity(),
+                'members' => LegacyMember::autocomplete(),
+                'breadcrumbs' => [
+                    ['url' => action([self::class, 'index']), 'text' => 'Activities'],
+                    ['url' => action([static::class, 'create']), 'text' => 'Create'],
+                ]
+            ]);
+    }
 
     public function edit(Activity $activity) : View
     {
@@ -47,6 +59,7 @@ final class AdminActivitiesController
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([static::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
+                    ['url' => action([static::class, 'edit'], ['activity' => $activity]), 'text' => 'Edit'],
                 ]
             ]);
     }

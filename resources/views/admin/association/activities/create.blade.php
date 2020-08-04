@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', 'Activities / ' . $activity->name . ' / Edit')
+@section('page-title', 'Activities / Create')
 
 @section('content')
     <div class="row">
@@ -9,15 +9,14 @@
                     {!!
                        Form::model($activity, [
                            'url' => action(
-                               [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'update'] ,
+                               [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'store'] ,
                                ['activity' => $activity]
                            ),
-                           'method' => 'PUT',
                        ])
                     !!}
                         @include('admin.association.activities._form', ['committee' => $activity])
 
-                        {!! Form::submit('Save', ['class' => 'btn btn-outline-success']) !!}
+                        {!! Form::submit('Plan activity', ['class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
