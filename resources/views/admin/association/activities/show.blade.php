@@ -17,8 +17,6 @@
                     {!! $activity->compiled_content !!}
                 </div>
             </div>
-
-            @include('admin.association.activities._sign_ups', ['activity' => $activity])
         </div>
 
         {!!
