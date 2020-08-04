@@ -6,7 +6,7 @@ namespace Francken\Features;
 
 use DateInterval;
 use DateTimeImmutable;
-use Francken\Association\Activities\ActivitiesRepository;
+use Francken\Association\Activities\Activity;
 
 class ActivitiesFeature extends TestCase
 {
@@ -18,39 +18,12 @@ class ActivitiesFeature extends TestCase
 
         $tomorrow = new DateTimeImmutable('tomorrow +1day');
         $this->start = $tomorrow;
-        $start = $tomorrow->format('Ymd');
 
-        $end = $tomorrow->format('Ymd');
-
-        $this->app->bind(
-            ActivitiesRepository::class,
-            function ($app) use ($start, $end) : ActivitiesRepository {
-                $data = <<<CALENDAR
-BEGIN:VCALENDAR
-BEGIN:VEVENT
-DTSTART:{$start}
-DTEND:{$end}
-DTSTAMP:20180503T094905Z
-UID:1id4gr64bsncqjk5dgbnodecoo@google.com
-ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Activi
- teitenkalender T.F.V. 'Professor Francken';X-NUM-GUESTS=0:mailto:g8f50ild2k
- df49bgathcdhvcqc@group.calendar.google.com
-CREATED:20180411T143903Z
-DESCRIPTION:
-LAST-MODIFIED:20180430T132554Z
-LOCATION:5113.0202
-SEQUENCE:0
-STATUS:CONFIRMED
-SUMMARY:Lunch lecture: Demcon
-TRANSP:OPAQUE
-END:VEVENT
-END:VCALENDAR
-CALENDAR;
-                return new ActivitiesRepository(
-                    $data
-                );
-            }
-        );
+        factory(Activity::class)->create([
+            'start_date' => $tomorrow,
+            'end_date' => $tomorrow,
+            'name' => 'Lunch lecture: Demcon'
+        ]);
     }
 
     /** @test */

@@ -5,20 +5,13 @@ declare(strict_types=1);
 namespace Francken\Association\Activities\Http;
 
 use DateTimeImmutable;
-use Francken\Association\Activities\ActivitiesRepository;
+use Francken\Association\Activities\Activity;
 use Illuminate\View\View;
 use InvalidArgumentException;
 
 final class ActivitiesPerMonthController
 {
-    private ActivitiesRepository $activities;
-
-    public function __construct(ActivitiesRepository $activities)
-    {
-        $this->activities = $activities;
-    }
-
-    public function index(int $year, string $month) : View
+    public function index(string $year, string $month) : View
     {
         $date = DateTimeImmutable::createFromFormat(
             'Y-m', $year . '-' . $month
@@ -28,8 +21,14 @@ final class ActivitiesPerMonthController
             throw new InvalidArgumentException("Invalid year and month combination");
         }
 
+        $activities = Activity::query()
+            ->orderBy('start_date', 'asc')
+            ->whereMonth('start_date', $month)
+            ->whereYear('start_date', $year)
+            ->get();
+
         return view('association.activities.index', [
-            'activities' => $this->activities->inMonth($year, (int)$month),
+            'activities' => $activities,
             'selectedYear' => $year,
             'selectedMonth' => $month,
             'selectedDate' => $date,
