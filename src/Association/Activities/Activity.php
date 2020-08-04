@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities;
 
+use DateTimeImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
@@ -49,5 +51,40 @@ final class Activity extends Model
     public function getRegistrationDeadlineAttribute() : Carbon
     {
         return $this->start_date;
+    }
+
+    public function scopeAfter(Builder $query, DateTimeImmutable $date) : Builder
+    {
+        return $query->where('start_date', '>', $date);
+    }
+
+    public function getScheduleAttribute() : string
+    {
+        $string = '';
+        $from = $this->start_date;
+        $to = $this->end_date;
+        $start = $this->start_date;
+        $end = $this->end_date;
+
+        $string .= $start->format('d');
+
+        // Display month and year only twice if necessary
+        if ($from->month !== $to->month) {
+            $string .= $start->format(' F');
+        }
+
+        // Check if the end date is different
+        if ($from->format('Y-m-d') !== $to->format('Y-m-d')) {
+            $string .= ' - ' . $end->format('d F');
+        } else {
+            $string .= $end->format(' F');
+        }
+
+        // Show time if the activity isn't on the whole day
+        if ($this->start_date->format('H:i') !== '00:00') {
+            $string .= ' at ' . $start->format('H:i');
+        }
+
+        return $string;
     }
 }
