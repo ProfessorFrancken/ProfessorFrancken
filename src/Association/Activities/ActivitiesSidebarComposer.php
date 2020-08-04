@@ -20,8 +20,8 @@ class ActivitiesSidebarComposer
     public function compose(View $view) : void
     {
         $viewData = $view->getData();
-        $year = $viewData['selectedYear'] ?? (int) $this->today->format('Y');
-        $month = $viewData['selectedMonth'] ?? (int)$this->today->format('m');
+        $year = (int) ($viewData['selectedYear'] ?? $this->today->format('Y'));
+        $month = (int) ($viewData['selectedMonth'] ?? $this->today->format('m'));
 
         $view->with([
             'selectedYear' => $year,

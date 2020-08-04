@@ -4,30 +4,22 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities\Http;
 
-use DateTimeImmutable;
-use Francken\Association\Activities\ActivitiesRepository;
+use Francken\Association\Activities\Activity;
+use Francken\Shared\Clock\Clock;
 use Illuminate\View\View;
 
 final class ActivitiesController
 {
-    /**
-     * @var string
-     */
-    public const CALENDAR_URL = 'https://calendar.google.com/calendar/ical/g8f50ild2kdf49bgathcdhvcqc%40group.calendar.google.com/public/basic.ics';
-
-    private ActivitiesRepository $activities;
-
-    public function __construct(ActivitiesRepository $activities)
+    public function index(Clock $clock) : View
     {
-        $this->activities = $activities;
-    }
-
-    public function index() : View
-    {
-        $today = new DateTimeImmutable('now');
+        $activities = Activity::query()
+            ->after($clock->now())
+            ->orderBy('start_date', 'asc')
+            ->limit(5)
+            ->get();
 
         return view('association.activities.index', [
-            'activities' => $this->activities->after($today, 15),
+            'activities' => $activities,
             'searchTimeRange' => false,
             'breadcrumbs' => [
                 ['url' => '/association/', 'text' => 'Association'],

@@ -69,7 +69,9 @@ CALENDAR;
         $existingActivity->refresh();
         $this->assertCount(2, Activity::all());
         $this->assertEquals('Bitterballen Borrel', $existingActivity->name);
-        $this->assertEquals('20200202T180000', $existingActivity->start_date->format('Ymd\THis'));
-        $this->assertEquals('20200202T210000', $existingActivity->end_date->format('Ymd\THis'));
+
+        // Check that the timezone is set correctly
+        $this->assertEquals('20200202T190000', $existingActivity->start_date->format('Ymd\THis'));
+        $this->assertEquals('20200202T220000', $existingActivity->end_date->format('Ymd\THis'));
     }
 }

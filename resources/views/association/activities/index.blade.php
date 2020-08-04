@@ -22,22 +22,22 @@
             <li class="d-flex d-flex align-items-center mb-4 bg-white p-4 rounded" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.125)">
                 <div class=" d-flex d-flex align-items-center">
                     <div class="agenda-item__date align-self-start">
-                        <h5 class="agenda-item__date-day">{{ $activity->startDate()->format('d') }}</h5>
-                        <span class="agenda-item__date-month">{{ $activity->startDate()->format('M') }}</span>
+                        <h5 class="agenda-item__date-day">{{ $activity->start_date->format('d') }}</h5>
+                        <span class="agenda-item__date-month">{{ $activity->start_date->format('M') }}</span>
                     </div>
                     <div class="agenda-item__body">
-                        <h5 class="agenda-item__header">{{ $activity->title() }}</h5>
+                        <h5 class="agenda-item__header">{{ $activity->name }}</h5>
                         <p class="agenda-item__description">
-                            {!! $activity->description() !!}
+                            {!! $activity->compiled_content !!}
                         </p>
                         <small class="mt-1 text-muted font-weight-light d-block">
                             <i class="fas fa-clock"></i>
-                            {{ $activity->schedule() }}
+                            {{ $activity->schedule }}
                         </small>
-                        @if ($activity->location() !== '')
+                        @if ($activity->location !== '')
                             <small class="mt-1 text-muted font-weight-light">
                                 <i class="fas fa-map-marker"></i>
-                                {{ $activity->location()  }}
+                                {{ $activity->location  }}
                             </small>
                         @endif
                     </div>
