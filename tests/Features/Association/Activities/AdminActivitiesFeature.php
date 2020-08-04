@@ -34,4 +34,19 @@ class AdminActivitiesFeature extends TestCase
 
         $this->assertResponseOk();
     }
+
+    /** @test */
+    public function a_edits_an_activity() : void
+    {
+        $activity = factory(Activity::class)->create();
+
+        $this->visit(action([AdminActivitiesController::class, 'edit'], ['activity' => $activity]))
+            ->see($activity->name)
+             ->type('Something else', 'name')
+             ->press('Save')
+                                                                                    ->assertResponseOk();
+
+        $activity->refresh();
+        $this->assertNotEquals('Something else', $activity->name);
+    }
 }
