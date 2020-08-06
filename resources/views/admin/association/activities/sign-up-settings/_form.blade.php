@@ -23,7 +23,7 @@
                    Form::number(
                        'max_sign_ups',
                        null,
-                       ['class' => 'form-control', 'id' => 'max_plus_ones_per_member']
+                       ['class' => 'form-control', 'id' => 'max_sign_ups']
                    )
             !!}
             <small class="form-text text-muted">
