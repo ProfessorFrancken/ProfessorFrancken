@@ -12,16 +12,26 @@
     @endif
 
     @if ($activity->signUpSettings !== null)
-        <div class="d-flex justify-content-between mb-2">
+        <div class="d-flex justify-content-between mb-3">
             <div class="d-flex justify-content-start align-items-center">
                 <h4 class="font-weight-bold mb-0">
-                    Signups
+                    Sign ups
+                    @if ($activity->signUpSettings->max_sign_ups === null)
+                        <small class="mx-1 mb-0 text-muted">({{ $activity->totalSignUps }} / ∞)</small>
+                    @else
+                        <small class="mx-1 mb-0 text-muted">({{ $activity->totalSignUps }} / {{ $activity->signUpSettings->max_sign_ups }})</small>
+                    @endif
+                    @if ($activity->signUpSettings->ask_for_dietary_wishes)
+                        <small class="mx-1">
+                            <i class="fas fa-utensils fa-xs text-muted" title="Members are asked about dietary wishes"></i>
+                        </small>
+                    @endif
+                    @if ($activity->signUpSettings->ask_for_drivers_license)
+                        <small class="mx-1">
+                            <i class="fas fa-car fa-xs text-muted" title="Members are asked if they have a drivers license"></i>
+                        </small>
+                    @endif
                 </h4>
-                @if ($activity->signUpSettings->max_sign_ups !== null)
-                    <small class="ml-2 mb-0 d-none">(0 / {{ $activity->signUpSettings->max_sign_ups }})</small>
-                @else
-                    <small class="ml-2 mb-0">(0 / ∞)</small>
-                @endif
             </div>
 
             <div class="mb-0">
@@ -38,95 +48,24 @@
         </div>
 
         <p>
+            <strong>Registration deadline</strong>:
             @if ($activity->registration_deadline->isFuture())
-                <p class="text-muted mb-0">
-                    Registration deadline ends in {{ $activity->registration_deadline->diffForHumans() }}
-                </p>
+                 ends in {{ $activity->registration_deadline->diffForHumans() }}
             @else
-                <p class="text-muted mb-0">
-                    Registration deadline ended {{ $activity->registration_deadline->diffForHumans() }}
-                </p>
+                ended {{ $activity->registration_deadline->diffForHumans() }}
             @endif
         </p>
         <p>
-            <strong>Max plus ones per member</strong> {{ $activity->signUpSettings->max_plus_ones_per_member }}
+            <strong>Registration costs</strong>:
+            &euro;{{ number_format($activity->signUpSettings->costs_per_person, 2) }}
         </p>
-        <p>
-            <strong>Registration costs</strong>: &euro;{{ number_format($activity->signUpSettings->costs_per_person, 2) }}
-        </p>
-        @if ($activity->signUpSettings->ask_for_dietary_wishes)
+        @if ($activity->signUpSettings->max_plus_ones_per_member !== null)
             <p>
-                <strong>Dieatary wishes</strong> are asked about
-            </p>
-        @endif
-        @if ($activity->signUpSettings->ask_for_drivers_license)
-            <p>
-                <strong>Drivers license</strong> is asked about
+                <strong>Max plus ones per member</strong>:
+                {{ $activity->signUpSettings->max_plus_ones_per_member }}
             </p>
         @endif
 
-        <ul class="list-unstyled">
-            <li class="p-2 my-2 bg-light d-flex justify-content-between align-items-center">
-                <span>
-                    Su-Elle Kamps
-                </span>
-                <div class="ml-auto d-flex align-items-center">
-                    <a
-                        class="btn btn-text text-primary btn-sm"
-                        href="{{  action(
-                                      [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'edit'],
-                                      ['activity' => $activity, 'member' => null]
-                                      )
-                              }}"
-                    >
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </div>
-            </li>
-            <li class="p-2 my-2 bg-light d-flex justify-content-between align-items-center">
-                <span>
-                    Anna Kenbeek <strong>(+1)</strong>
-                </span>
-                <div class="ml-auto d-flex align-items-center">
-                    <a
-                        class="btn btn-text text-primary btn-sm"
-                        href="{{  action(
-                                      [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'edit'],
-                                      ['activity' => $activity, 'member' => null]
-                                      )
-                              }}"
-                    >
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </div>
-            </li>
-            <li class="p-2 my-2 bg-light d-flex justify-content-between align-items-center">
-                <span>
-                    Mark Redeman
-                    <small class="text-muted">
-                        (markredeman@gmail.com)
-                    </small>
-                </span>
-                <div class="ml-auto d-flex align-items-center">
-                    <a
-                        class="btn btn-text text-primary btn-sm"
-                        href="{{  action(
-                                      [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'edit'],
-                                      ['activity' => $activity, 'member' => null]
-                                      )
-                              }}"
-                    >
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </div>
-            </li>
-        </ul>
-
-        <div class="d-flex justify-content-between">
-            <button class="btn btn-text text-primary">
-                <i class="fas fa-plus"></i>
-                Add signup
-            </button>
-        </div>
+        @include('admin.association.activities.sign-ups.index', ['activity' => $activity])
     @endif
 </div>

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Francken\Association\Activities\Http\AdminActivitiesController;
+use Francken\Association\Activities\Http\AdminSignUpsController;
 use Francken\Association\Activities\Http\AdminSignUpSettingsController;
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
@@ -151,6 +152,7 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::put('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'update']);
     Route::delete('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'destroy']);
 
+    Route::resource('activities.sign-ups', AdminSignUpsController::class);
     Route::resource('activities', AdminActivitiesController::class);
 
     Route::get('members', [AdminController::class, 'showPageIsUnavailable']);

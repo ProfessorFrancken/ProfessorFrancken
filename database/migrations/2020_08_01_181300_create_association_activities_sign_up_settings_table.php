@@ -19,10 +19,10 @@ class CreateAssociationActivitiesSignUpSettingsTable extends Migration
             $table->bigInteger('activity_id')->unsigned();
             $table->foreign('activity_id')->references('id')->on('association_activities');
 
-            $table->integer('max_sign_ups')->unsigned();
+            $table->integer('max_sign_ups')->unsigned()->nullable();
+            $table->integer('max_plus_ones_per_member')->unsigned()->nullable();
             $table->dateTime('deadline_at');
             $table->integer('costs_per_person')->unsigned();
-            $table->integer('max_plus_ones_per_member')->unsigned();
             $table->boolean('ask_for_dietary_wishes');
             $table->boolean('ask_for_drivers_license');
 
