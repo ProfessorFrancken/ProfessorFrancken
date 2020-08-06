@@ -50,16 +50,12 @@ final class PaymentDetails
         // Take only alpha numerical characters from the iban
         $iban = preg_replace('/[^\d\w]+/', '', $this->iban);
 
-        // Separate the iban into pieces of 4 characters
-        $pieces = (int)floor(strlen($iban) / 4);
+        // Mask the first three pieces of the iban
+        $mask = fn (string $ibanPiece, int $idx) : string => ($idx < 3) ? 'XXXX' : $ibanPiece;
 
-        // Mask the first 3 pieces
-        $maskedPieces = array_map(
-            fn (int $idx) => ($idx < 3) ? 'XXXX' : substr($iban, $idx * 4, 4),
-            range(0, $pieces)
-        );
-
-        return implode('-', $maskedPieces);
+        return collect(str_split($iban, 4))
+            ->map($mask)
+            ->implode('-');
     }
 
     public function paymentMethod() : string
