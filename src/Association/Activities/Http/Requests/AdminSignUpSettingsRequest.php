@@ -27,7 +27,7 @@ class AdminSignUpSettingsRequest extends FormRequest
 
     public function maxSignUps() : ?int
     {
-        if ( ! $this->has('max_sign_ups')) {
+        if ($this->input('max_sign_ups') === null) {
             return null;
         }
 
@@ -45,7 +45,7 @@ class AdminSignUpSettingsRequest extends FormRequest
 
     public function maxPlusOnesPerMember() : ?int
     {
-        if ( ! $this->has('max_plus_ones_per_member')) {
+        if ($this->input('max_plus_ones_per_member') === null) {
             return null;
         }
 

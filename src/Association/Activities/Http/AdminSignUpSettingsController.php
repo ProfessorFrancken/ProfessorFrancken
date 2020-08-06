@@ -50,7 +50,7 @@ final class AdminSignUpSettingsController
         return view('admin.association.activities.sign-up-settings.edit')
             ->with([
                 'activity' => $activity,
-                'signUpSettings' => $signUpSettings,
+                'signUpSettings' => $activity->signUpSettings,
                 'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([AdminActivitiesController::class, 'index']), 'text' => 'Activities'],

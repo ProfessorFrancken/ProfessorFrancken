@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\Activities;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class SignUpSettings extends Model
 {
@@ -35,20 +34,4 @@ final class SignUpSettings extends Model
         'ask_for_dietary_wishes' => 'boolean',
         'ask_for_drivers_license' => 'boolean',
     ];
-
-    public function signUps() : HasMany
-    {
-        return $this->hasMany(SignUp::class);
-    }
-
-    public function getTotalSignupsAttribute() : int
-    {
-        return $this->attendees
-            ->map(fn (SignUp $signUp) => 1 + $signUp->plus_ones)
-            ->sum();
-    }
-
-    public function signUp(Attendee $attendee) : void
-    {
-    }
 }
