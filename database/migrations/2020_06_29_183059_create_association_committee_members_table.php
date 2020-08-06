@@ -13,7 +13,6 @@ class CreateAssociationCommitteeMembersTable extends Migration
      */
     public function up() : void
     {
-        Schema::dropIfExists('association_committee_members');
         Schema::create('association_committee_members', function (Blueprint $table) : void {
             $table->id();
 
