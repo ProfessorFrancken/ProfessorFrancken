@@ -7,6 +7,7 @@ namespace Francken\Association\Activities;
 use DateTimeImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
@@ -92,5 +93,17 @@ final class Activity extends Model
     public function signUpSettings() : HasOne
     {
         return $this->hasOne(SignUpSettings::class);
+    }
+
+    public function signUps() : HasMany
+    {
+        return $this->hasMany(SignUp::class);
+    }
+
+    public function getTotalSignUpsAttribute() : int
+    {
+        return $this->signUps
+                ->map(fn (SignUp $signUp) : int => 1 + (int)$signUp->plus_ones)
+                ->sum();
     }
 }

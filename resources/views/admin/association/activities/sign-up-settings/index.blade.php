@@ -111,8 +111,8 @@
                     <a
                         class="btn btn-text text-primary btn-sm"
                         href="{{  action(
-                                      [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'edit'],
-                                      ['activity' => $activity, 'member' => null]
+                                      [\Francken\Association\Activities\Http\AdminSignUpsController::class, 'edit'],
+                                      ['activity' => $activity, 'sign_up' => 'hoi']
                                       )
                               }}"
                     >
@@ -123,10 +123,16 @@
         </ul>
 
         <div class="d-flex justify-content-between">
-            <button class="btn btn-text text-primary">
+            <a class="btn btn-text text-primary"
+                href="{{  action(
+                              [\Francken\Association\Activities\Http\AdminSignUpsController::class, 'create'],
+                              ['activity' => $activity]
+                              )
+                      }}"
+            >
                 <i class="fas fa-plus"></i>
-                Add signup
-            </button>
+                Add sign up
+            </a>
         </div>
     @endif
 </div>
