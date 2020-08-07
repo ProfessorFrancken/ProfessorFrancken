@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities;
 
+use Francken\Shared\Markdown\ContentCompiler;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -26,10 +27,12 @@ class ImportActivitiesFromCalendar extends Command
     /**
      * Execute the console command.
      */
-    public function handle(ActivitiesRepository $repo) : void
+    public function handle(ActivitiesRepository $repo, ContentCompiler $markdown) : void
     {
         $calendarEvents = $repo->all();
-        $calendarEvents->each(function (CalendarEvent $calendarEvent) : void {
+        $calendarEvents->each(function (CalendarEvent $calendarEvent) use ($markdown) : void {
+            $content = $markdown->content(trim($calendarEvent->description()));
+
             Activity::updateOrCreate(
                 ['google_calendar_uid' => $calendarEvent->uid()],
                 [
@@ -40,8 +43,8 @@ class ImportActivitiesFromCalendar extends Command
                         Str::slug($calendarEvent->name())
                     ),
                     'summary' => $calendarEvent->shortDescription(),
-                    'source_content' => $calendarEvent->description(),
-                    'compiled_content' => $calendarEvent->description(),
+                    'source_content' => $content->originalMarkdown(),
+                    'compiled_content' => $content->compiledContent(),
                     'location' => $calendarEvent->location(),
                     'start_date' => $calendarEvent->startDate(),
                     'end_date' => $calendarEvent->endDate(),
