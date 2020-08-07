@@ -39,4 +39,9 @@ final class SignUpSettings extends Model
     {
         return $this->costs_per_person === 0;
     }
+
+    public function getAllowsPlusOnesAttribute() : bool
+    {
+        return $this->max_plus_ones_per_member > 0;
+    }
 }

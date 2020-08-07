@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Activities\Http;
 
 use Francken\Association\Activities\Activity;
+use Francken\Association\Activities\Http\Requests\SignUpRequest;
 use Francken\Shared\Clock\Clock;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,6 +50,18 @@ final class ActivitiesController
 
     public function redirect(Activity $activity) : RedirectResponse
     {
+        return redirect()->action([self::class, 'show'], ['activity' => $activity]);
+    }
+
+    public function store(SignUpRequest $request, Activity $activity) : RedirectResponse
+    {
+        $activity->signUp(
+            $request->user()->member,
+            $request->plusOnes(),
+            $request->dietaryWishes(),
+            $request->hasDriversLicense()
+        );
+
         return redirect()->action([self::class, 'show'], ['activity' => $activity]);
     }
 }

@@ -70,6 +70,12 @@
                     @endforeach
                 </ul>
             </div>
+
+            @if ($account !== null && $activity->memberCanSignUp($account->member))
+                <div class="bg-light p-4 pt-0 border-top">
+                    @include('association.activities._sign-up-form')
+                </div>
+            @endif
         @endif
         @else
         <div class="bg-light p-4">

@@ -80,6 +80,7 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::get('activities', [ActivitiesController::class, 'index']);
     Route::get('activities/{activity:slug}', [ActivitiesController::class, 'show']);
+    Route::post('activities/{activity:slug}', [ActivitiesController::class, 'store']);
     Route::get('activities/ical', [IcalController::class, 'index']);
     Route::get('activities/ical/all', [IcalController::class, 'show']);
     Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
