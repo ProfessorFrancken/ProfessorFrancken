@@ -57,7 +57,7 @@
         </p>
         <p>
             <strong>Registration costs</strong>:
-            &euro;{{ number_format($activity->signUpSettings->costs_per_person, 2) }}
+            &euro;{{ number_format($activity->signUpSettings->costs_per_person / 100, 2) }}
         </p>
         @if ($activity->signUpSettings->max_plus_ones_per_member !== null)
             <p>

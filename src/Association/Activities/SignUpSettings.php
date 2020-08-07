@@ -34,4 +34,9 @@ final class SignUpSettings extends Model
         'ask_for_dietary_wishes' => 'boolean',
         'ask_for_drivers_license' => 'boolean',
     ];
+
+    public function getIsFreeAttribute() : bool
+    {
+        return $this->costs_per_person === 0;
+    }
 }

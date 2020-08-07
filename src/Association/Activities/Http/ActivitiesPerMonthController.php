@@ -22,6 +22,7 @@ final class ActivitiesPerMonthController
         }
 
         $activities = Activity::query()
+            ->with(['signUpSettings', 'signUps', 'signUps.member'])
             ->orderBy('start_date', 'asc')
             ->whereMonth('start_date', $month)
             ->whereYear('start_date', $year)

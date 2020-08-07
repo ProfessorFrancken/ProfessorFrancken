@@ -13,6 +13,7 @@ final class ActivitiesController
     public function index(Clock $clock) : View
     {
         $activities = Activity::query()
+            ->with(['signUpSettings', 'signUps', 'signUps.member'])
             ->after($clock->now())
             ->orderBy('start_date', 'asc')
             ->limit(5)
