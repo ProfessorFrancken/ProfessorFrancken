@@ -7,8 +7,8 @@
 
         <div class="agenda-item__body">
             <a href="{{ action(
-                            [\Francken\Association\Activities\Http\ActivitiesPerMonthController::class, 'index'] ,
-                            [$activity->start_date->format('Y'), $activity->start_date->format('m')]
+                            [\Francken\Association\Activities\Http\ActivitiesController::class, 'show'] ,
+                            ['activity' => $activity]
                         ) }}">
                 <h5 class="agenda-item__header">{{ $activity->name }}</h5>
                 <p class="agenda-item__description">

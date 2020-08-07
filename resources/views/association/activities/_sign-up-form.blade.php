@@ -1,7 +1,7 @@
 {!!
        Form::open([
            'url' => action(
-               [\Francken\Association\Activities\Http\ActivitiesController::class, 'store'],
+               [\Francken\Association\Activities\Http\SignUpsController::class, 'store'],
                ['activity' => $activity]
            ),
        ])
