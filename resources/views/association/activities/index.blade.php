@@ -20,6 +20,7 @@
     <ul class="agenda-list list-unstyled">
         @forelse ($activities as $activity)
             <li class=" mb-4 bg-white p-4 rounded shadow-sm">
+                <a href="{{ action([\Francken\Association\Activities\Http\ActivitiesController::class, 'show'], ['activity' => $activity]) }}">
                 <div class="d-flex align-items-center">
                     <div class="agenda-item__date align-self-start">
                         <h5 class="agenda-item__date-day">
@@ -33,29 +34,31 @@
                         <h5 class="agenda-item__header">
                             {{ $activity->name }}
                         </h5>
-                        <div class="d-flex justify-content-start mt-2">
-                            <small class="text-muted font-weight-light d-block">
-                                @if ($activity->signUpSettings !== null)
-                                    @if (! $activity->signUpSettings->is_free)
-                                        <span class="mr-2">
-                                            <i class="fas fa-euro-sign"></i>
-                                            {{ number_format($activity->signUpSettings->costs_per_person / 100, 2) }}
-                                        </span>
-                                    @endif
+                        <div class="d-flex flex-column justify-content-start">
+                            @if ($activity->signUpSettings !== null)
+                                @if (! $activity->signUpSettings->is_free)
+                                    <small class="text-muted font-weight-light d-block mt-2">
+                                        <i class="fas fa-euro-sign"></i>
+                                        {{ number_format($activity->signUpSettings->costs_per_person / 100, 2) }}
+
+                                    </small>
                                 @endif
+                            @endif
+                            <small class="text-muted font-weight-light d-block mt-2">
                                 <i class="fas fa-clock"></i>
                                 {{ $activity->schedule }}
-                                @if ($activity->location !== '')
-                                    <span class="ml-2">
-                                        <i class="fas fa-map-marker"></i>
-                                        {{ $activity->location  }}
-                                    </span>
-                                @endif
-
                             </small>
+                            @if ($activity->location !== '')
+                                <small class="text-muted font-weight-light d-block mt-2">
+                                    <i class="fas fa-map-marker"></i>
+                                    {{ $activity->location  }}
+                                </small>
+                            @endif
                         </div>
                     </div>
                 </div>
+                </a>
+                <div class="d-none">
                 <div class="mt-3">
                     {!! $activity->compiled_content !!}
                 </div>
@@ -88,6 +91,7 @@
                         @endif
                     </div>
                 @endif
+                </div>
             </li>
         @empty
             <li class="d-flex d-flex align-items-center mb-4 bg-white p-4 rounded" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.125)">

@@ -20,6 +20,11 @@ final class ServiceProvider extends BaseServiceProvider
         );
 
         $view->composer(
+            'association.activities.show',
+            ActivitiesSidebarComposer::class
+        );
+
+        $view->composer(
             'association.activities.ical',
             ActivitiesSidebarComposer::class
         );

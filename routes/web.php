@@ -69,12 +69,17 @@ Route::group(['prefix' => 'study'], function () : void {
     Route::get('research-groups/{group}', [ResearchGroupsController::class, 'show']);
 });
 
+// Use permanent links in agenda, newletters etc
+Route::get('activities/{activity}', [ActivitiesController::class, 'redirect'])
+    ->where('activity', '[0-9]+');
+
 Route::group(['prefix' => 'association'], function () : void {
     Route::get('/news', [NewsController::class, 'index']);
     Route::get('/news/archive', [NewsController::class, 'archive']);
     Route::get('/news/{news:slug}', [NewsController::class, 'show']);
 
     Route::get('activities', [ActivitiesController::class, 'index']);
+    Route::get('activities/{activity:slug}', [ActivitiesController::class, 'show']);
     Route::get('activities/ical', [IcalController::class, 'index']);
     Route::get('activities/ical/all', [IcalController::class, 'show']);
     Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
