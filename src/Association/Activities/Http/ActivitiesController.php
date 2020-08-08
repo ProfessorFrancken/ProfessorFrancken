@@ -31,7 +31,7 @@ final class ActivitiesController
         ]);
     }
 
-    public function show(Request $request, Activity $activity)
+    public function show(Request $request, Activity $activity) : View
     {
         $activity->load(['signUps.member']);
         $account = $request->user();

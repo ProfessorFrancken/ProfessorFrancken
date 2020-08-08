@@ -42,6 +42,7 @@ final class SignUpSettings extends Model
 
     public function getAllowsPlusOnesAttribute() : bool
     {
-        return $this->max_plus_ones_per_member > 0;
+        return $this->max_plus_ones_per_member === null ||
+            $this->max_plus_ones_per_member > 0;
     }
 }

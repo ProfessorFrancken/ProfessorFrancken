@@ -61,11 +61,27 @@
 
                 <ul class="list-unstyled mt-3">
                     @foreach ($activity->signUps as $signUp)
-                        <li class="p-2 bg-light my-2 rounded">
-                            {{ $signUp->member->fullname }}
-                            @if ($signUp->plus_ones > 0)
-                                (+{{ $signUp->plus_ones }})
-                            @endif
+                        <li class="p-2 bg-light my-2 rounded d-flex justify-content-between align-items-center">
+                            <span>
+                                {{ $signUp->member->fullname }}
+                                @if ($signUp->plus_ones > 0)
+                                    (+{{ $signUp->plus_ones }})
+                                @endif
+                            </span>
+                            <div>
+                                @if ($account->member_id === $signUp->member_id)
+                                    <a
+                                        class="btn btn-text py-0 text-muted"
+                                        href="{{ action(
+                                                     [\Francken\Association\Activities\Http\SignUpsController::class, 'edit'],
+                                                     ['activity' => $activity, 'sign_up' => $signUp])
+                                              }}"
+                                    >
+                                        <i class="fas fa-edit"></i>
+                                        Edit
+                                    </a>
+                                @endif
+                            </div>
                         </li>
                     @endforeach
                 </ul>
@@ -73,7 +89,7 @@
 
             @if ($account !== null && $activity->memberCanSignUp($account->member))
                 <div class="bg-light p-4 pt-0 border-top">
-                    @include('association.activities._sign-up-form')
+                    @include('association.activities.sign-ups._create')
                 </div>
             @endif
         @endif

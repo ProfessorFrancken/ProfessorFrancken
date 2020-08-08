@@ -27,6 +27,8 @@ final class SignUp extends Model
     ];
 
     protected $casts = [
+        'member_id' => 'int',
+        'activity_id' => 'int',
         'plus_ones' => 'int',
         'has_drivers_license' => 'boolean',
     ];
