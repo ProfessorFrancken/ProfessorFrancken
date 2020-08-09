@@ -110,6 +110,8 @@
 
         @endauth
     </div>
+
+    @include('association.activities.comments._index')
 @endsection
 
 @section('aside')
