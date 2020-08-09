@@ -82,10 +82,14 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::get('activities', [ActivitiesController::class, 'index']);
     Route::get('activities/{activity:slug}', [ActivitiesController::class, 'show']);
-    Route::post('activities/{activity:slug}', [SignUpsController::class, 'store']);
-    Route::get('activities/{activity:slug}/{sign_up}/edit', [SignUpsController::class, 'edit']);
-    Route::put('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'update']);
-    Route::delete('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'destroy']);
+    Route::post('activities/{activity:slug}', [SignUpsController::class, 'store'])
+        ->middleware('can:create,Francken\Association\Activities\SignUp,activity');
+    Route::get('activities/{activity:slug}/{sign_up}/edit', [SignUpsController::class, 'edit'])
+        ->middleware('can:update,sign_up');
+    Route::put('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'update'])
+        ->middleware('can:update,sign_up');
+    Route::delete('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'destroy'])
+        ->middleware('can:delete,sign_up');
 
     Route::get('activities/ical', [IcalController::class, 'index']);
     Route::get('activities/ical/all', [IcalController::class, 'show']);

@@ -78,7 +78,8 @@ class SignUpsFeature extends TestCase
         factory(SignUpSettings::class)->create([
             'activity_id' => $activity->id,
             'max_sign_ups' => 34,
-            'max_plus_ones_per_member' => null
+            'max_plus_ones_per_member' => null,
+            'deadline_at' => new DateTimeImmutable('tomorrow +1day'),
         ]);
 
         $account = factory(Account::class)->create();
@@ -113,7 +114,8 @@ class SignUpsFeature extends TestCase
         factory(SignUpSettings::class)->create([
             'activity_id' => $activity->id,
             'max_sign_ups' => 34,
-            'max_plus_ones_per_member' => null
+            'max_plus_ones_per_member' => null,
+            'deadline_at' => new DateTimeImmutable('tomorrow +1day'),
         ]);
 
         $account = factory(Account::class)->create();

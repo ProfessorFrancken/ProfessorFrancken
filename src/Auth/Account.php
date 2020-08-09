@@ -45,6 +45,10 @@ final class Account extends Model implements
         'member_id',
     ];
 
+    protected $casts = [
+        'member_id' => 'int',
+    ];
+
     public static function activate(
         string $memberId,
         string $email,

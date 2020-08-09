@@ -69,7 +69,7 @@
                                 @endif
                             </span>
                             <div>
-                                @if ($account->member_id === $signUp->member_id)
+                                @can('update', $signUp)
                                     <a
                                         class="btn btn-text py-0 text-muted"
                                         href="{{ action(
@@ -80,18 +80,18 @@
                                         <i class="fas fa-edit"></i>
                                         Edit
                                     </a>
-                                @endif
+                                @endcan
                             </div>
                         </li>
                     @endforeach
                 </ul>
             </div>
 
-            @if ($account !== null && $activity->memberCanSignUp($account->member))
+            @can('create', [\Francken\Association\Activities\SignUp::class, $activity])
                 <div class="bg-light p-4 pt-0 border-top">
                     @include('association.activities.sign-ups._create')
                 </div>
-            @endif
+            @endcan
         @endif
         @else
         <div class="bg-light p-4">

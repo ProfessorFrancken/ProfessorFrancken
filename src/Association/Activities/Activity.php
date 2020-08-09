@@ -54,6 +54,10 @@ final class Activity extends Model
 
     public function getRegistrationDeadlineAttribute() : Carbon
     {
+        if ($this->signUpSettings !== null) {
+            return $this->signUpSettings->deadline_at;
+        }
+
         return $this->start_date;
     }
 

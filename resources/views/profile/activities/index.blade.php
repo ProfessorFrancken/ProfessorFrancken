@@ -9,6 +9,9 @@
 
     <ul class="list-unstyled mt-3">
         @foreach ($activities as $activity)
+            @php
+            $signUp = $activity->signUps->where('member_id', $member->id)->first();
+            @endphp
             <li class=" mb-4 bg-white p-4 rounded shadow-sm">
                 <div class="d-flex align-items-center">
                     <div class="agenda-item__date align-self-start">
@@ -21,23 +24,25 @@
                     </div>
                     <div class="agenda-item__body w-100">
                         <div class="d-flex justify-content-between">
-                <a href="{{ action([\Francken\Association\Activities\Http\ActivitiesController::class, 'show'], ['activity' => $activity]) }}">
-                            <h5 class="agenda-item__header">
-                                {{ $activity->name }}
-                            </h5>
-                </a>
-                            <div>
-                            <a
-                                class="btn btn-text py-0 text-muted"
-                                href="{{ action(
-                                             [\Francken\Association\Activities\Http\SignUpsController::class, 'edit'],
-                                             ['activity' => $activity, 'sign_up' => $activity->signUps->where('member_id', $member->id)->first()])
-                                      }}"
-                            >
-                                <i class="fas fa-edit"></i>
-                                Edit
+                            <a href="{{ action([\Francken\Association\Activities\Http\ActivitiesController::class, 'show'], ['activity' => $activity]) }}">
+                                <h5 class="agenda-item__header">
+                                    {{ $activity->name }}
+                                </h5>
                             </a>
+                            @can('update', $signUp)
+                            <div>
+                                <a
+                                    class="btn btn-text py-0 text-muted"
+                                    href="{{ action(
+                                                 [\Francken\Association\Activities\Http\SignUpsController::class, 'edit'],
+                                                 ['activity' => $activity, 'sign_up' => $signUp])
+                                          }}"
+                                >
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </a>
                             </div>
+                            @endcan
                         </div>
                         <div class="d-flex flex-column justify-content-start">
                             @if ($activity->signUpSettings !== null)

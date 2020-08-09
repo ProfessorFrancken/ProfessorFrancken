@@ -37,4 +37,9 @@ final class SignUp extends Model
     {
         return $this->belongsTo(LegacyMember::class);
     }
+
+    public function activity() : BelongsTo
+    {
+        return $this->belongsTo(Activity::class);
+    }
 }
