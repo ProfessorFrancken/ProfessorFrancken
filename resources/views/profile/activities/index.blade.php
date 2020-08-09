@@ -8,7 +8,7 @@
     </div>
 
     <ul class="list-unstyled mt-3">
-        @foreach ($activities as $activity)
+        @forelse ($activities as $activity)
             @php
             $signUp = $activity->signUps->where('member_id', $member->id)->first();
             @endphp
@@ -67,7 +67,14 @@
                     </div>
                 </div>
             </li>
-        @endforeach
+        @empty
+            <li class="bg-white p-5 rounded shadow-sm text-center">
+                <p class="mb-0">
+                    You have not yet signed up for any activities.<br/>
+                    Go to the <a href="{{ action([\Francken\Association\Activities\Http\ActivitiesController::class, 'index']) }}">activities page</a> to find upcoming activities and sign up.
+                </p>
+            </li>
+        @endforelse
     </ul>
 
     {!! $activities->links() !!}
