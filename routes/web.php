@@ -81,6 +81,9 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('/news/{news:slug}', [NewsController::class, 'show']);
 
     Route::get('activities', [ActivitiesController::class, 'index']);
+    Route::get('activities/ical', [IcalController::class, 'index']);
+    Route::get('activities/ical/all', [IcalController::class, 'show']);
+
     Route::get('activities/{activity:slug}', [ActivitiesController::class, 'show']);
     Route::post('activities/{activity:slug}', [SignUpsController::class, 'store'])
         ->middleware('can:create,Francken\Association\Activities\SignUp,activity');
@@ -91,8 +94,6 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::delete('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'destroy'])
         ->middleware('can:delete,sign_up');
 
-    Route::get('activities/ical', [IcalController::class, 'index']);
-    Route::get('activities/ical/all', [IcalController::class, 'show']);
     Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
 
     Route::get('committees', [RedirectToBoardCommitteesController::class, 'index']);
