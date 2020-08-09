@@ -1,15 +1,16 @@
 @php
 
 $menu = [
-    ['link' => '/profile', 'icon' => 'fa fa-user', 'text' => 'Profile'],
-    ['link' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
+    ['url' => '/profile', 'icon' => 'fa fa-user', 'text' => 'Profile'],
+    ['url' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
+    ['url' => action([\Francken\Association\Members\Http\ProfileActivitiesController::class, 'index']), 'icon' => 'fa fa-calendar', 'text' => 'Activities'],
 ];
 
 if (Auth::user()->can('can-access-dashboard')) {
-    $menu[] = ['link' => '/admin', 'icon' => 'fas fa-database', 'text' => 'Admin'];
+    $menu[] = ['url' => '/admin', 'icon' => 'fas fa-database', 'text' => 'Admin'];
 }
 
-$menu[] = ['link' => '/logout', 'icon' => 'fas fa-sign-out-alt', 'text' => 'Logout'];
+$menu[] = ['url' => '/logout', 'icon' => 'fas fa-sign-out-alt', 'text' => 'Logout'];
 
 @endphp
 <div class="agenda">
@@ -25,7 +26,7 @@ $menu[] = ['link' => '/logout', 'icon' => 'fas fa-sign-out-alt', 'text' => 'Logo
         @foreach ($menu as $item)
 <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
             <a
-                href={{ $item['link'] }}
+                href={{ $item['url'] }}
                 class="aside-link"
             >
                 <div class="media align-items-center">

@@ -20,7 +20,7 @@ class FooterSponsorsComponent extends Component
     {
         $this->footer = Footer::query()
             ->where('is_enabled', true)
-            ->with(['partner'])
+            ->with(['partner', 'logoMedia'])
             ->get()
             ->map(fn (Footer $footer) => [
                 'footer-link' => $footer->referral_url,

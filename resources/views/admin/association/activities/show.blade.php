@@ -58,6 +58,15 @@
 @section('actions')
     <div class="d-flex align-items-start">
         <a href="{{ action(
+                        [\Francken\Association\Activities\Http\ActivitiesController::class, 'show'],
+                        ['activity' => $activity]
+                        ) }}"
+            class="btn btn-primary mr-2"
+        >
+            <i class="fas fa-eye"></i>
+            Show activity page
+        </a>
+        <a href="{{ action(
                         [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'edit'],
                         ['activity' => $activity]
                         ) }}"

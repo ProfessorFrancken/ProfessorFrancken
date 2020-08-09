@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Francken\Association\Activities\SignUp;
+use Francken\Association\Activities\SignUpPolicy;
 use Francken\Association\Boards\BoardMemberWasDemissioned;
 use Francken\Association\Boards\BoardMemberWasDischarged;
 use Francken\Association\Boards\BoardMemberWasInstalled;
@@ -11,10 +13,19 @@ use Francken\Association\Boards\MemberBecameCandidateBoardMember;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 
-final class ServiceProvider extends BaseServiceProvider
+final class ServiceProvider extends AuthServiceProvider
 {
+    /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        SignUp::class => SignUpPolicy::class,
+    ];
+
     /**
      * Register any application services.
      */
@@ -49,5 +60,6 @@ final class ServiceProvider extends BaseServiceProvider
         $dispatcher->listen(BoardMemberWasDemissioned::class, ChangeRolesListener::class);
         $dispatcher->listen(BoardMemberWasInstalled::class, ChangeRolesListener::class);
         $dispatcher->listen(MemberBecameCandidateBoardMember::class, ChangeRolesListener::class);
+        $this->registerPolicies();
     }
 }

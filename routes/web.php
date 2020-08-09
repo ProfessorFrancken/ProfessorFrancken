@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Francken\Association\Activities\Http\ActivitiesController;
 use Francken\Association\Activities\Http\ActivitiesPerMonthController;
 use Francken\Association\Activities\Http\IcalController;
+use Francken\Association\Activities\Http\SignUpsController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
 use Francken\Association\Committees\Http\CommitteesController;
@@ -15,6 +16,7 @@ use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
 use Francken\Association\Members\Http\PasswordController;
 use Francken\Association\Members\Http\PaymentDetailsController;
+use Francken\Association\Members\Http\ProfileActivitiesController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
@@ -69,6 +71,10 @@ Route::group(['prefix' => 'study'], function () : void {
     Route::get('research-groups/{group}', [ResearchGroupsController::class, 'show']);
 });
 
+// Use permanent links in agenda, newletters etc
+Route::get('activities/{activity}', [ActivitiesController::class, 'redirect'])
+    ->where('activity', '[0-9]+');
+
 Route::group(['prefix' => 'association'], function () : void {
     Route::get('/news', [NewsController::class, 'index']);
     Route::get('/news/archive', [NewsController::class, 'archive']);
@@ -77,6 +83,17 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('activities', [ActivitiesController::class, 'index']);
     Route::get('activities/ical', [IcalController::class, 'index']);
     Route::get('activities/ical/all', [IcalController::class, 'show']);
+
+    Route::get('activities/{activity:slug}', [ActivitiesController::class, 'show']);
+    Route::post('activities/{activity:slug}', [SignUpsController::class, 'store'])
+        ->middleware('can:create,Francken\Association\Activities\SignUp,activity');
+    Route::get('activities/{activity:slug}/{sign_up}/edit', [SignUpsController::class, 'edit'])
+        ->middleware('can:update,sign_up');
+    Route::put('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'update'])
+        ->middleware('can:update,sign_up');
+    Route::delete('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'destroy'])
+        ->middleware('can:delete,sign_up');
+
     Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
 
     Route::get('committees', [RedirectToBoardCommitteesController::class, 'index']);
@@ -120,6 +137,8 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth']], function 
 
     Route::get('payment-details', [PaymentDetailsController::class, 'index']);
     Route::put('payment-details', [PaymentDetailsController::class, 'update']);
+
+    Route::get('activities', [ProfileActivitiesController::class, 'index']);
 });
 
 Route::get('/symposia/{symposium}/participants/{participant}', [

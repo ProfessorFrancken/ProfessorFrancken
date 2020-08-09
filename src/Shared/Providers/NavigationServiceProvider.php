@@ -6,6 +6,7 @@ namespace Francken\Shared\Providers;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use Francken\Association\Members\Http\ProfileActivitiesController;
 use Francken\Auth\Account;
 use Francken\Shared\Http\Controllers\DashboardController;
 use Francken\Shared\Settings\Settings;
@@ -66,6 +67,7 @@ final class NavigationServiceProvider extends ServiceProvider
                     'subItems' => array_filter([
                         // Job prospects
                         ['url' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'title' => 'Expenses'],
+                        ['url' => action([ProfileActivitiesController::class, 'index']), 'icon' => 'fa fa-calendar', 'title' => 'Activities'],
 
                         ($account->can('can-access-dashboard')
                          ? ['url' => action([DashboardController::class, 'redirectToDashboard']), 'icon' => 'fa fa-database', 'title' => 'Admin', 'can' => 'can-access-dashboard']

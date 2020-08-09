@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Francken\Association\Activities;
 
 use DateTimeImmutable;
+use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Webmozart\Assert\Assert;
 
 final class Activity extends Model
 {
@@ -52,6 +54,10 @@ final class Activity extends Model
 
     public function getRegistrationDeadlineAttribute() : Carbon
     {
+        if ($this->signUpSettings !== null) {
+            return $this->signUpSettings->deadline_at;
+        }
+
         return $this->start_date;
     }
 
@@ -105,5 +111,33 @@ final class Activity extends Model
         return $this->signUps
                 ->map(fn (SignUp $signUp) : int => 1 + (int)$signUp->plus_ones)
                 ->sum();
+    }
+
+    public function memberCanSignUp(LegacyMember $member) : bool
+    {
+        if ($this->signUpSettings->max_sign_ups !== null && $this->total_sign_ups >= $this->signUpSettings->max_sign_ups) {
+            return false;
+        }
+
+        return ! $this->signUps->pluck('member_id')->contains($member->id);
+    }
+
+    public function signUp(
+        LegacyMember $member,
+        int $plusOnes = 0,
+        string $dietaryWishes = '',
+        bool $hasDriversLicense = false
+    ) : void {
+        Assert::true($this->memberCanSignUp($member));
+
+        $this->signUps()->save(
+            new SignUp([
+                'member_id' => $member->id,
+                'plus_ones' => $plusOnes,
+                'dietary_wishes' => $dietaryWishes,
+                'has_drivers_license' => $hasDriversLicense,
+                'notes' => ''
+            ])
+        );
     }
 }
