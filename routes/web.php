@@ -16,6 +16,7 @@ use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
 use Francken\Association\Members\Http\PasswordController;
 use Francken\Association\Members\Http\PaymentDetailsController;
+use Francken\Association\Members\Http\ProfileActivitiesController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
@@ -131,6 +132,8 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth']], function 
 
     Route::get('payment-details', [PaymentDetailsController::class, 'index']);
     Route::put('payment-details', [PaymentDetailsController::class, 'update']);
+
+    Route::get('activities', [ProfileActivitiesController::class, 'index']);
 });
 
 Route::get('/symposia/{symposium}/participants/{participant}', [
