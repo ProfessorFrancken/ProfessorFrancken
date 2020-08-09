@@ -106,6 +106,11 @@ final class Activity extends Model
         return $this->hasMany(SignUp::class);
     }
 
+    public function comments() : HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getTotalSignUpsAttribute() : int
     {
         return $this->signUps

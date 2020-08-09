@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Francken\Association\Activities\Http\ActivitiesController;
 use Francken\Association\Activities\Http\ActivitiesPerMonthController;
+use Francken\Association\Activities\Http\CommentsController;
 use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Activities\Http\SignUpsController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
@@ -85,14 +86,22 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('activities/ical/all', [IcalController::class, 'show']);
 
     Route::get('activities/{activity:slug}', [ActivitiesController::class, 'show']);
-    Route::post('activities/{activity:slug}', [SignUpsController::class, 'store'])
+    Route::post('activities/{activity:slug}/sign-ups/', [SignUpsController::class, 'store'])
         ->middleware('can:create,Francken\Association\Activities\SignUp,activity');
-    Route::get('activities/{activity:slug}/{sign_up}/edit', [SignUpsController::class, 'edit'])
+    Route::get('activities/{activity:slug}/sign-ups/{sign_up}/edit', [SignUpsController::class, 'edit'])
         ->middleware('can:update,sign_up');
-    Route::put('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'update'])
+    Route::put('activities/{activity:slug}/sign-ups/{sign_up}', [SignUpsController::class, 'update'])
         ->middleware('can:update,sign_up');
-    Route::delete('activities/{activity:slug}/{sign_up}', [SignUpsController::class, 'destroy'])
+    Route::delete('activities/{activity:slug}/sign-ups/{sign_up}', [SignUpsController::class, 'destroy'])
         ->middleware('can:delete,sign_up');
+
+    Route::post('activities/{activity:slug}/comments/', [CommentsController::class, 'store']);
+    Route::get('activities/{activity:slug}/comments/{comment}/edit', [CommentsController::class, 'edit'])
+        ->middleware('can:update,comment');
+    Route::put('activities/{activity:slug}/comments/{comment}', [CommentsController::class, 'update'])
+        ->middleware('can:update,comment');
+    Route::delete('activities/{activity:slug}/comments/{comment}', [CommentsController::class, 'destroy'])
+        ->middleware('can:delete,comment');
 
     Route::get('activities/{year}/{month}', [ActivitiesPerMonthController::class, 'index']);
 

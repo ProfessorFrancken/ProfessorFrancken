@@ -29,10 +29,6 @@ final class SignUpsController
     {
         $account = $request->user();
 
-        if ($account->member_id !== $signUp->member_id) {
-            abort(403);
-        }
-
         return view('association.activities.sign-ups.edit', [
             'activity' => $activity,
             'signUp' => $signUp,
@@ -49,12 +45,6 @@ final class SignUpsController
 
     public function update(SignUpRequest $request, Activity $activity, SignUp $signUp) : RedirectResponse
     {
-        $account = $request->user();
-
-        if ($account->member_id !== $signUp->member_id) {
-            abort(403);
-        }
-
         $signUp->update([
             'plus_ones' => $request->plusOnes(),
             'dietary_wishes' => $request->dietaryWishes(),
@@ -64,14 +54,8 @@ final class SignUpsController
         return redirect()->action([ActivitiesController::class, 'show'], ['activity' => $activity]);
     }
 
-    public function destroy(Request $request, Activity $activity, SignUp $signUp) : RedirectResponse
+    public function destroy(Activity $activity, SignUp $signUp) : RedirectResponse
     {
-        $account = $request->user();
-
-        if ($account->member_id !== $signUp->member_id) {
-            abort(403);
-        }
-
         $signUp->delete();
 
         return redirect()->action([ActivitiesController::class, 'show'], ['activity' => $activity]);

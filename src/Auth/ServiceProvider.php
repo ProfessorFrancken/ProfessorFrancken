@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Francken\Association\Activities\Comment;
+use Francken\Association\Activities\CommentPolicy;
 use Francken\Association\Activities\SignUp;
 use Francken\Association\Activities\SignUpPolicy;
 use Francken\Association\Boards\BoardMemberWasDemissioned;
@@ -24,6 +26,7 @@ final class ServiceProvider extends AuthServiceProvider
      */
     protected $policies = [
         SignUp::class => SignUpPolicy::class,
+        Comment::class => CommentPolicy::class,
     ];
 
     /**
