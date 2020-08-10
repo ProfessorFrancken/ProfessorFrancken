@@ -122,27 +122,15 @@
         </p>
 
         <div class="form-row">
-            <div class="form-group col-6">
-                <label for="seller">Sold by</label>
-                {!!
-                   Form::text(
-                       'seller',
-                       optional($book->seller)->fullName,
-                       ['class' => 'form-control book-seller', 'placeholder' => 'Seller', 'id' => 'seller']
-                   )
-                !!}
-                {!!
-                   Form::hidden(
-                       'seller_id',
-                       optional($book->seller)->id,
-                       ['class' => 'book-seller-id']
-                   )
-                !!}
-                @error('seller')
-                <p class="invalid-feedback">
-                    {{ $message  }}
-                </p>
-                @enderror
+            <div class="col-6">
+                <x-forms.autocomplete-member
+                    name="seller"
+                    nameId="seller_id"
+                    :value="optional($book->seller)->fullname"
+                    :valueId="optional($book->seller)->id"
+                    :members="$members"
+                    label="Sold by"
+                />
             </div>
             <div class="form-group col-6">
                 <label for="purchase_date">Purchase date</label>
@@ -170,27 +158,15 @@
             Fill out these forms once the book has been bought by a member
         </p>
         <div class="form-row">
-            <div class="form-group col-6">
-                <label for="seller">Bought by</label>
-                {!!
-                   Form::text(
-                       'buyer',
-                       optional($book->buyer)->fullName,
-                       ['class' => 'form-control book-buyer', 'placeholder' => 'Buyer', 'id' => 'buyer']
-                   )
-                !!}
-                {!!
-                   Form::hidden(
-                       'buyer_id',
-                       optional($book->buyer)->id,
-                       ['class' => 'book-buyer-id']
-                   )
-                !!}
-                @error('buyer_id')
-                <p class="invalid-feedback">
-                    {{ $message  }}
-                </p>
-                @enderror
+            <div class="col-6">
+                <x-forms.autocomplete-member
+                    name="buyer"
+                    nameId="buyer_id"
+                    :value="optional($book->buyer)->fullname"
+                    :valueId="optional($book->buyer)->id"
+                    :members="$members"
+                    label="Bought by"
+                />
             </div>
             <div class="form-group col-6">
                 <label for="sale_date">Sale date</label>
@@ -256,33 +232,3 @@
         </div>
     </div>
 </div>
-
-@push('scripts')
-<script type="text/javascript">
- $(document).ready(function () {
-     var members = {!! json_encode($members) !!};
-     var membersSource = members.map(function (member) {
-         return {
-             label: [member.voornaam, member.tussenvoegsel, member.achternaam].filter(function (val) { return val }).join(' '),
-             id: member.id
-         };
-     });
-
-     $('.book-seller').autocomplete({
-         source: membersSource,
-         select: function (event, ui) {
-             $('.book-seller-id').val(ui.item.id);
-         },
-         minLength: 2
-     });
-
-     $('.book-buyer').autocomplete({
-         source: membersSource,
-         select: function (event, ui) {
-             $('.book-buyer-id').val(ui.item.id);
-         },
-         minLength: 2
-     });
- });
-</script>
-@endpush
