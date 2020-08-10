@@ -12,7 +12,7 @@
             Content
         </h3>
 
-        <x-forms.markdown />
+        <x-forms.markdown name="content" :value="$news->source_contents"/>
 
         <h4 class="card-title my-3">
             Exerpt

@@ -1,11 +1,11 @@
-@props(['label' => 'Content', 'name' => 'source_content'])
+@props(['label' => 'Content', 'name' => 'source_content', 'value' => null])
 
 <div class="form-group">
     <label for="{{ $id ?? $name }}">{{ $label }}</label>
     {!!
            Form::textarea(
                $name,
-               null,
+               $value,
                ['class' => 'form-control', 'id' => $id ?? $name]
            )
     !!}
