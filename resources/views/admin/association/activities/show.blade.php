@@ -51,6 +51,27 @@
         @include('admin.association.activities._photo_album', ['activity' => $activity])
         --}}
         @include('admin.association.activities._location', ['activity' => $activity])
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="font-weight-bold">
+                    <i class="fas fa-qrcode"></i>
+                    QR Code
+                </h4>
+
+                <p>
+                    This QR code sends people to the public activity page. Use it for posters and such.
+                </p>
+
+                <div class="text-center">
+                    <img
+                        class="my-3"
+                        src="data:image/png;base64, {!! $qrCode !!} "
+                    />
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection

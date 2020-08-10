@@ -8,6 +8,7 @@ use Francken\Association\Activities\Activity;
 use Francken\Association\LegacyMember;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use SimpleSoftwareIO\QrCode\Generator;
 
 final class AdminActivitiesController
 {
@@ -27,11 +28,14 @@ final class AdminActivitiesController
             ]);
     }
 
-    public function show(Activity $activity) : View
+    public function show(Activity $activity, Generator $qrCodeGenerator) : View
     {
+        $qrCode = base64_encode($this->qrCode($activity, $qrCodeGenerator));
+
         return view('admin.association.activities.show')
             ->with([
                 'activity' => $activity,
+                'qrCode' => $qrCode,
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([static::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
@@ -69,5 +73,18 @@ final class AdminActivitiesController
     public function update(Activity $activity) : RedirectResponse
     {
         return redirect()->action([self::class, 'show'], ['activity' => $activity]);
+    }
+
+    private function qrCode(Activity $activity, Generator $qrCodeGenerator) : string
+    {
+        return $qrCodeGenerator
+            ->format('png')
+            ->size(330)
+            ->generate(
+                action(
+                    [ActivitiesController::class, 'redirect'],
+                    ['activity' => $activity]
+                )
+            );
     }
 }

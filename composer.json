@@ -30,6 +30,7 @@
     "predis/predis": "^1.1",
     "ramsey/uuid": "^4.0",
     "sabre/vobject": "^4.1",
+    "simplesoftwareio/simple-qrcode": "^3.0",
     "spatie/laravel-newsletter": "^4.8",
     "spatie/laravel-permission": "^3.13",
     "spatie/valuestore": "^1.2",
