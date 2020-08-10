@@ -77,7 +77,7 @@ final class AdminActivitiesController
 
     private function qrCode(Activity $activity, Generator $qrCodeGenerator) : string
     {
-        return $qrCodeGenerator
+        $qrCodeImage = $qrCodeGenerator
             ->format('png')
             ->size(330)
             ->generate(
@@ -86,5 +86,7 @@ final class AdminActivitiesController
                     ['activity' => $activity]
                 )
             );
+
+        return is_string($qrCodeImage) ? $qrCodeImage : '';
     }
 }

@@ -32,9 +32,6 @@
             </div>
         </div>
 
-
-
-
         <div class="row">
             <div class="form-group col-6">
                 <label for="start_date">Start date</label>
@@ -75,30 +72,6 @@
         </div>
     </div>
     <div class="col-6">
-        <div class="row d-flex align-items-stretch">
-            <div class="col">
-                <div class="form-group">
-                    <label for="source_content">Content</label>
-                    {!!
-                           Form::textarea(
-                               'source_content',
-                               null,
-                               ['class' => 'form-control', 'id' => 'source_content', 'disabled' => 'disabled']
-                           )
-                    !!}
-                    <small class="form-text text-muted">
-                        Use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">
-                        Markdown</a> to format the activity page.
-                    </small>
-                </div>
-            </div>
-            <div class="col-md-6 d-none">
-                <div style="overflow-y: scroll" class="card">
-                    <div class="card-body" id="preview">
-                        {!! $activity->compiled_content !!}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-forms.markdown />
     </div>
 </div>

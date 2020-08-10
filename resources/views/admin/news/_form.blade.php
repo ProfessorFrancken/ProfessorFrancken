@@ -12,19 +12,7 @@
             Content
         </h3>
 
-        <div class="row d-flex align-items-stretch">
-            <div class="col">
-                {!! Form::textarea('content', $news->source_contents, ['class' => 'form-control', 'id' => 'news-item-content']) !!}
-            </div>
-            <div class="col-md-6 d-none">
-                <div style="overflow-y: scroll" class="card">
-                    <div class="card-body" id="news-item-preview">
-
-                        {!! $news->compiled_contents !!}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-forms.markdown name="content" :value="$news->source_contents"/>
 
         <h4 class="card-title my-3">
             Exerpt
@@ -70,58 +58,6 @@
 </div>
 
 @push('scripts')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-
-{{-- Syntax highlighting --}}
-<script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
-
-
-<script>
- var simplemde = new SimpleMDE({
-     element: document.getElementById("news-item-content"),
-     spellChecker: false,
-     autoSave: {
-         enabled: true,
-         uniqueId: "news-{{ $news->id  }}"
-     },
-     promptURLs: true,
-     /* previewRender: ,*/
-     /* previewRender: function(plainText) {*/
-     /* console.log(plainText);*/
-         /* return customMarkdownParser(plainText); // Returns HTML from a custom parser*/
-       /* },*/
-       previewRender: function(plainText) { // Async method
-         var that = this;
-         var parent = that.parent;
-
-         var preview = document.getElementById("news-item-preview");
-         var compiled = this.parent.markdown(plainText);
-         preview.innerHTML = compiled;
-         return compiled;
-       },
-
-     toolbar: [
-         "bold", "italic", "strikethrough",
-         "|",
-         "heading-1", "heading-2", "heading-3",
-         "|",
-         "code", "quote", "link", "image", "table",
-         "|",
-         "unordered-list", "ordered-list",
-         "|",
-         "preview", "side-by-side", "fullscreen",
-         "guide"
-     ]
- });
-</script>
-<style type="text/css">
- .CodeMirror, .CodeMirror-scroll {
-     max-height: 300px;
- }
-</style>
-
 <script type="text/javascript">
  function confirmSavingOfImportedScript(e) {
      if (confirm('Saving this news item might override import setting')) {
