@@ -51,43 +51,20 @@
                     style="object-fit: cover"
                 />
             </div>
-            <div class="form-group">
-                <label for="add-partner-logo" class="btn btn-block btn-sm btn-primary mb-0">
-                    <i class="fas fa-upload"></i>
-                    Partner logo
-                </label>
-                {!! Form::file('logo', ['class' => 'sr-only form-control-file', 'id' => 'add-partner-logo']) !!}
 
-                <small  class="form-text text-muted">
+            <x-forms.image-upload
+                name="logo"
+                label="Partner logo"
+                output-image-id="partner-logo"
+            >
+                <x-slot name="help">
+                    <small  class="form-text text-muted">
                     We will use this logo when displaying the partner's logo in the company profiles pages.
-                </small>
-            </div>
+                    </small>
+                </x-slot>
+            </x-forms.image-upload>
         </div>
     </div>
 </div>
 
 @include('admin.extern.partners._contact_details_form', ['partner' => $partner])
-
-@push('scripts')
-<script>
- (function() {
-     var loadFile = function(event) {
-         var reader = new FileReader();
-         reader.onload = function(){
-             var output = document.getElementById('partner-logo');
-             output.src = reader.result;
-         };
-         reader.readAsDataURL(event.target.files[0]);
-     };
-
-     var addPartnerLogo = document.getElementById('add-partner-logo');
-     addPartnerLogo.addEventListener('change', loadFile);
-
-     console.log()
-     var partnerLogo = document.getElementById('partner-logo');
-     partnerLogo.addEventListener('click', function() {
-         addPartnerLogo.click();
-     });
- })()
-</script>
-@endpush
