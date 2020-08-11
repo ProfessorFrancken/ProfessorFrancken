@@ -73,7 +73,6 @@
                                     name-id="seller_id"
                                     :value="optional($request->seller())->fullname"
                                     :value-id="$request->sellerId()"
-                                    :members="$members"
                                     :label="null"
                                 />
                             </div>
@@ -83,7 +82,6 @@
                                     name-id="buyer_id"
                                     :value="optional($request->buyer())->fullname"
                                     :value-id="$request->buyerId()"
-                                    :members="$members"
                                     :label="null"
                                 />
                             </div>

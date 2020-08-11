@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association\Activities\Http;
 
 use Francken\Association\Activities\Activity;
-use Francken\Association\LegacyMember;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use SimpleSoftwareIO\QrCode\Generator;
@@ -48,7 +47,6 @@ final class AdminActivitiesController
         return view('admin.association.activities.create')
             ->with([
                 'activity' => new Activity(),
-                'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([static::class, 'create']), 'text' => 'Create'],
@@ -61,7 +59,6 @@ final class AdminActivitiesController
         return view('admin.association.activities.edit')
             ->with([
                 'activity' => $activity,
-                'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([static::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],

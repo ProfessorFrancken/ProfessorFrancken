@@ -7,7 +7,6 @@ namespace Francken\Association\Activities\Http;
 use Francken\Association\Activities\Activity;
 use Francken\Association\Activities\Http\Requests\AdminSignUpRequest;
 use Francken\Association\Activities\SignUp;
-use Francken\Association\LegacyMember;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -19,7 +18,6 @@ final class AdminSignUpsController
             ->with([
                 'activity' => $activity,
                 'signUp' => new SignUP(),
-                'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([AdminActivitiesController::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([AdminActivitiesController::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
@@ -49,7 +47,6 @@ final class AdminSignUpsController
             ->with([
                 'activity' => $activity,
                 'signUp' => $signUp,
-                'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([AdminActivitiesController::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([AdminActivitiesController::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],

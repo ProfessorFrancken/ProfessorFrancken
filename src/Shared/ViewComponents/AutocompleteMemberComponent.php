@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Shared\ViewComponents;
 
+use Francken\Association\LegacyMember;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
@@ -37,7 +38,17 @@ class AutocompleteMemberComponent extends Component
         $this->valueId = $valueId;
         $this->placeholder = $placeholder;
         $this->label = $label;
-        $this->members = $members ?? collect();
+
+        if ($members === null) {
+            $this->members = collect();
+        } else {
+            // Laravel automatically injects an empty Collection if we omit the
+            // members attribute. In this case we want to default to a
+            // autocomplete containing all members
+            $this->members = $members->isNotEmpty()
+                ? $members
+                : LegacyMember::autocomplete();
+        }
     }
 
     /**

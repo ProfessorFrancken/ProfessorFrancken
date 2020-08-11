@@ -126,10 +126,9 @@
                 <x-forms-autocomplete-member
                     name="seller"
                     name-id="seller_id"
+                    label="Sold by"
                     :value="optional($book->seller)->fullname"
                     :value-id="optional($book->seller)->id"
-                    :members="$members"
-                    label="Sold by"
                 />
             </div>
             <div class="form-group col-6">
@@ -162,10 +161,9 @@
                 <x-forms-autocomplete-member
                     name="buyer"
                     name-id="buyer_id"
+                    label="Bought by"
                     :value="optional($book->buyer)->fullname"
                     :value-id="optional($book->buyer)->id"
-                    :members="$members"
-                    label="Bought by"
                 />
             </div>
             <div class="form-group col-6">

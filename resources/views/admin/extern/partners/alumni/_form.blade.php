@@ -1,5 +1,4 @@
 <x-forms-autocomplete-member
-    :members="$members"
     :value="isset($alumnus) ? optional($alumnus->member)->fullname : null"
     :value-id="isset($alumnus) ? optional($alumnus->member)->id : null"
 />
