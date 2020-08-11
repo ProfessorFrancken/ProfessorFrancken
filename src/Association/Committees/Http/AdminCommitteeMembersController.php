@@ -8,7 +8,6 @@ use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\Committees\Http\Requests\AdminCommitteeMemberRequest;
-use Francken\Association\LegacyMember;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -39,7 +38,6 @@ final class AdminCommitteeMembersController
                 'board' => $board,
                 'committee' => $committee,
                 'member' => $member,
-                'members' => LegacyMember::autocomplete(),
                 'breadcrumbs' => [
                     ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],
                     ['url' => action([AdminCommitteesController::class, 'index'], ['board' => $board]), 'text' => $board->name],

@@ -18,7 +18,7 @@ class AdminPartnerAlumniFeature extends TestCase
     use LoggedInAsAdmin;
 
     /** @test */
-    public function a_partners_logo_can_be_listed_in_the_alumnus() : void
+    public function a_list_of_a_partners_alumni_is_shwon() : void
     {
         $partner = factory(Partner::class)->create();
         $member = factory(LegacyMember::class)->create();

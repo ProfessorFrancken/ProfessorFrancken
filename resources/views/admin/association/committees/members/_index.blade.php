@@ -40,4 +40,4 @@
     @endforeach
 </ul>
 
-@include('admin.association.committees.members._create', ['committee' => $committee, 'members' => $members])
+@include('admin.association.committees.members._create', ['committee' => $committee])

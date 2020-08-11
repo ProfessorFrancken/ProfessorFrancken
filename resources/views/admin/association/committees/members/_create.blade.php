@@ -15,7 +15,7 @@
        ]
    )
 !!}
-    @include('admin.association.committees.members._form', ['committee' => $committee, 'members' => $members])
+    @include('admin.association.committees.members._form', ['committee' => $committee])
 
 {{--
     <div class="form-group form-check mt-3 mb-4">

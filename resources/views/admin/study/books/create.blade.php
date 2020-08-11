@@ -37,8 +37,6 @@
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script type="text/javascript">
-     var members = {!! json_encode($members) !!};
-
      // from https://www.librarieshacked.org/tutorials/autocompletewithapi
           $(document).ready(function () {
               $('.search-for-book').autocomplete({
@@ -80,21 +78,6 @@
                       $('.book-image').attr("src", ui.item.image);
                   },
                   minLength: 3 // set minimum length of text the user must enter
-              });
-
-              var membersSource = members.map(function (member) {
-                  return {
-                      label: [member.voornaam, member.tussenvoegsel, member.achternaam].filter(function (val) { return val }).join(' '),
-                      id: member.id
-                  };
-              });
-
-              $('.book-seller').autocomplete({
-                  source: membersSource,
-                  select: function (event, ui) {
-                      $('.book-seller-id').val(ui.item.id);
-                  },
-                  minLength: 2
               });
           });
     </script>

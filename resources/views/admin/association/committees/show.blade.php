@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    @include('admin.association.committees.members._index', ['committee' => $committee, 'members' => $members])
+                    @include('admin.association.committees.members._index', ['committee' => $committee])
                 </div>
             </div>
             {!!

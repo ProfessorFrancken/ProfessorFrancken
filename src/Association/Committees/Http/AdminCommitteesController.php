@@ -8,7 +8,6 @@ use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\FileUploader;
 use Francken\Association\Committees\Http\Requests\AdminCommitteeRequest;
-use Francken\Association\LegacyMember;
 use Francken\Shared\Markdown\ContentCompiler;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -65,7 +64,6 @@ final class AdminCommitteesController
 
         return view('admin.association.committees.show')
             ->with([
-                'members' => LegacyMember::autocomplete(),
                 'committee' => $committee,
                 'breadcrumbs' => [
                     ['url' => action([AdminRedirectCommitteesController::class, 'index']), 'text' => 'Committees'],

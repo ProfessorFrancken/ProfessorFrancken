@@ -53,31 +53,3 @@
         </a>
     </div>
 @endsection
-
-@push('css')
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-@endpush
-
-@push('scripts')
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script type="text/javascript">
- var members = {!! json_encode($members) !!};
- $(document).ready(function () {
-     var membersSource = members.map(function (member) {
-         return {
-             label: [member.voornaam, member.tussenvoegsel, member.achternaam].filter(function (val) { return val }).join(' '),
-             id: member.id
-         };
-     });
-
-     $('.book-seller').autocomplete({
-         source: membersSource,
-         select: function (event, ui) {
-             $('.book-seller-id').val(ui.item.id);
-         },
-         minLength: 2
-     });
- });
-</script>
-@endpush
