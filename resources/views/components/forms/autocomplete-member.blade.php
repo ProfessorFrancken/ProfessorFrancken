@@ -1,13 +1,3 @@
-@props([
-    'name' => 'member',
-    'nameId' => 'member_id',
-    'value' => null,
-    'valueId' => null,
-    'placeholder' => 'Member',
-    'label' => 'Member',
-    'members',
-])
-
 <div class="form-group">
     @if ($label)
         <label for="{{ $name }}">{{ $label }}</label>

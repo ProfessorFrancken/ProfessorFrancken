@@ -9,7 +9,7 @@
         !!}
     @else
     <div class="col">
-        <x-forms.autocomplete-member :members="$members" />
+        <x-forms-autocomplete-member :members="$members" />
     </div>
     @endisset
 

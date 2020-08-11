@@ -68,23 +68,23 @@
                             </div>
 
                             <div class="mx-2 mb-0">
-                                <x-forms.autocomplete-member
+                                <x-forms-autocomplete-member
                                     name="seller"
-                                    nameId="seller_id"
+                                    name-id="seller_id"
                                     :value="optional($request->seller())->fullname"
-                                    :valueId="$request->sellerId()"
+                                    :value-id="$request->sellerId()"
                                     :members="$members"
-                                    :label="false"
+                                    :label="null"
                                 />
                             </div>
                             <div class="mx-2 mb-0">
-                                <x-forms.autocomplete-member
+                                <x-forms-autocomplete-member
                                     name="buyer"
-                                    nameId="buyer_id"
+                                    name-id="buyer_id"
                                     :value="optional($request->buyer())->fullname"
-                                    :valueId="$request->buyerId()"
+                                    :value-id="$request->buyerId()"
                                     :members="$members"
-                                    :label="false"
+                                    :label="null"
                                 />
                             </div>
                             <div class="d-flex align-items-center">

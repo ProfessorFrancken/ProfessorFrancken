@@ -10,7 +10,7 @@
                    )
             !!}
         @else
-            <x-forms.autocomplete-member :members="$members"/>
+            <x-forms-autocomplete-member :members="$members"/>
         @endif
 
         <div class="form-group">

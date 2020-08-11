@@ -123,11 +123,11 @@
 
         <div class="form-row">
             <div class="col-6">
-                <x-forms.autocomplete-member
+                <x-forms-autocomplete-member
                     name="seller"
-                    nameId="seller_id"
+                    name-id="seller_id"
                     :value="optional($book->seller)->fullname"
-                    :valueId="optional($book->seller)->id"
+                    :value-id="optional($book->seller)->id"
                     :members="$members"
                     label="Sold by"
                 />
@@ -159,11 +159,11 @@
         </p>
         <div class="form-row">
             <div class="col-6">
-                <x-forms.autocomplete-member
+                <x-forms-autocomplete-member
                     name="buyer"
-                    nameId="buyer_id"
+                    name-id="buyer_id"
                     :value="optional($book->buyer)->fullname"
-                    :valueId="optional($book->buyer)->id"
+                    :value-id="optional($book->buyer)->id"
                     :members="$members"
                     label="Bought by"
                 />

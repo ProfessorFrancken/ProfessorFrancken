@@ -14,7 +14,7 @@
                     {!! Form::model($account, ['url' => action([\Francken\Auth\Http\Controllers\Admin\AccountsController::class, 'store']), 'method' => 'psot', 'autocomplete' => 'new-password']) !!}
 
 
-                    <x-forms.autocomplete-member :members="$members" />
+                    <x-forms-autocomplete-member :members="$members" />
 
                     <div class="form-group">
                         {!! Form::checkbox('send_notification_email', true, null, ['id' => 'send_notification_email']); !!}

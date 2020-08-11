@@ -1,7 +1,7 @@
-<x-forms.autocomplete-member
+<x-forms-autocomplete-member
     :members="$members"
     :value="isset($alumnus) ? optional($alumnus->member)->fullname : null"
-    :valueId="isset($alumnus) ? optional($alumnus->member)->id : null"
+    :value-id="isset($alumnus) ? optional($alumnus->member)->id : null"
 />
 
 <div class="form-group">
