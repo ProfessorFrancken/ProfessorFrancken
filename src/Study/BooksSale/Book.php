@@ -9,59 +9,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * This code is somewhat odd, on the write side it uses our legacy, Dutch datbase.
- *
- * On the read side it uses an English interface which we will migrate to.
- *
- * @property int $id
- * @property string|null $naam
- * @property int|null $editie
- * @property string|null $isbn
- * @property string|null $auteur
- * @property int|null $vakid
- * @property int|null $verkoperid
- * @property int|null $koperid
- * @property int|null $prijs price in whole euros
- * @property string|null $beschrijving
- * @property string|null $inkoopdatum
- * @property string|null $verkoopdatum
- * @property string|null $link
- * @property int|null $afgerekend
- * @property int|null $verkocht
- * @property-read BookBuyer|null $buyer
- * @property-read mixed $author
- * @property-read mixed $cover_path
- * @property-read mixed $description
- * @property-read mixed $edition
- * @property-read mixed $paid_off
- * @property-read mixed $price
- * @property-read mixed $purchase_date
- * @property-read mixed $sale_date
- * @property-read mixed $sold
- * @property-read mixed $title
- * @property-read BookSeller|null $seller
- * @method static \Illuminate\Database\Eloquent\Builder newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder query()
- * @method static \Illuminate\Database\Eloquent\Builder whereAfgerekend($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereAuteur($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereBeschrijving($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereEditie($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereInkoopdatum($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereIsbn($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereKoperid($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereLink($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereNaam($value)
- * @method static \Illuminate\Database\Eloquent\Builder wherePrijs($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereVakid($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereVerkocht($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereVerkoopdatum($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereVerkoperid($value)
- * @method static \Illuminate\Database\Eloquent\Builder available()
- * @mixin \Eloquent
- */
 final class Book extends Model
 {
     /**

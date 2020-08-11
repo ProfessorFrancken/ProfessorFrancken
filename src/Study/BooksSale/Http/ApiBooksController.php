@@ -16,11 +16,11 @@ final class ApiBooksController
             'books' => $legacyBooks->map(
                 function (Book $book) : array {
                     return [
-                        'title' => $book->naam,
-                        'author' => $book->auteur,
+                        'title' => $book->title,
+                        'author' => $book->author,
                         'isbn' => $book->isbn,
                         'cover' => '',
-                        'price_in_cents' => $book->price * 100,
+                        'price_in_cents' => $book->price,
                     ];
                 }
             )->values()
