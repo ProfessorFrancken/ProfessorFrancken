@@ -14,21 +14,11 @@
             style="height: 150px; object-fit: cover"
         />
 
-        <div class="form-group">
-            <label for='{{ "members[{$member_idx}][photo]" }}'  class="btn btn-block btn-sm btn-primary mb-0">
-                <i class="fas fa-upload"></i>
-                Board member photo
-            </label>
-            {!!
-               Form::file(
-                   "members[{$member_idx}][photo]",
-                   [
-                   'class' => 'sr-only form-control-file mt-3',
-                   'id' => "members[{$member_idx}][photo]"
-                   ]
-               )
-            !!}
-        </div>
+        <x-forms.image-upload
+            :name='"members[{$member_idx}][photo]"'
+            :output-image-id='"members-photo[{$member_idx}]"'
+            label="Board member photo"
+        />
 
         <div class="form-group">
             @include('admin.association.boards._member-selection', [
@@ -85,29 +75,3 @@
         @endif
     </div>
 </li>
-
-@push('scripts')
-<script>
- (function() {
-     var loadFile = function(event) {
-         console.log(event);
-         var reader = new FileReader();
-         reader.onload = function(){
-             var output = document.getElementById('{{ "members-photo[{$member_idx}]" }}');
-             output.src = reader.result;
-             console.log(output);
-         };
-         reader.readAsDataURL(event.target.files[0]);
-     };
-
-     var addBoardPhoto = document.getElementById('{{ "members[{$member_idx}][photo]" }}');
-     addBoardPhoto.addEventListener('change', loadFile);
-
-     console.log()
-     var boardPhoto = document.getElementById('{{ "members-photo[{$member_idx}]" }}');
-     boardPhoto.addEventListener('click', function() {
-         addBoardPhoto.click();
-     });
- })()
-</script>
-@endpush

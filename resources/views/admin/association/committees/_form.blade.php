@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
         <div class="row">
-<div class="col-3">
+            <div class="col-3">
                 <div class="d-flex flex-column justify-content-end h-100">
                     <div>
                         <img
@@ -12,17 +12,18 @@
                             style="object-fit: cover"
                         />
                     </div>
-                    <div class="form-group">
-                        <label for="add-committee-logo" class="btn btn-block btn-sm btn-primary mb-0">
-                            <i class="fas fa-upload"></i>
-                            Committee logo
-                        </label>
-                        {!! Form::file('logo', ['class' => 'sr-only form-control-file', 'id' => 'add-committee-logo']) !!}
 
-                        <small  class="form-text text-muted">
-                            We will use this logo when displaying the committee's logo in the company profiles pages.
-                        </small>
-                    </div>
+                    <x-forms.image-upload
+                        name="logo"
+                        label="Committee logo"
+                        output-image-id="committee-logo"
+                    >
+                        <x-slot name="help">
+                            <small  class="form-text text-muted">
+                                We will use this photo when displaying the committee's photo in the company profiles pages.
+                            </small>
+                        </x-slot>
+                    </x-forms.image-upload>
                 </div>
             </div>
             <div class="col">
@@ -79,17 +80,17 @@
                             style="object-fit: cover"
                         />
                     </div>
-                    <div class="form-group">
-                        <label for="add-committee-photo" class="btn btn-block btn-sm btn-primary mb-0">
-                            <i class="fas fa-upload"></i>
-                            Committee photo
-                        </label>
-                        {!! Form::file('photo', ['class' => 'sr-only form-control-file', 'id' => 'add-committee-photo']) !!}
-
-                        <small  class="form-text text-muted">
-                            We will use this photo when displaying the committee's photo in the company profiles pages.
-                        </small>
-                    </div>
+                    <x-forms.image-upload
+                        name="photo"
+                        label="Committee photo"
+                        output-image-id="committee-photo"
+                    >
+                        <x-slot name="help">
+                            <small  class="form-text text-muted">
+                                We will use this photo when displaying the committee's photo in the company profiles pages.
+                            </small>
+                        </x-slot>
+                    </x-forms.image-upload>
                 </div>
             </div>
         </div>
@@ -97,47 +98,3 @@
         <x-forms.markdown />
     </div>
 </div>
-
-@push('scripts')
-<script>
- (function() {
-     var loadFile = function(event) {
-         var reader = new FileReader();
-         reader.onload = function(){
-             var output = document.getElementById('committee-logo');
-             output.src = reader.result;
-         };
-         reader.readAsDataURL(event.target.files[0]);
-     };
-
-     var addCommitteeLogo = document.getElementById('add-committee-logo');
-     addCommitteeLogo.addEventListener('change', loadFile);
-
-     var committeeLogo = document.getElementById('committee-logo');
-     committeeLogo.addEventListener('click', function() {
-         addCommitteeLogo.click();
-     });
- })()
-</script>
-
-<script>
- (function() {
-     var loadFile = function(event) {
-         var reader = new FileReader();
-         reader.onload = function(){
-             var output = document.getElementById('committee-photo');
-             output.src = reader.result;
-         };
-         reader.readAsDataURL(event.target.files[0]);
-     };
-
-     var addCommitteePhoto = document.getElementById('add-committee-photo');
-     addCommitteePhoto.addEventListener('change', loadFile);
-
-     var committeePhoto = document.getElementById('committee-photo');
-     committeePhoto.addEventListener('click', function() {
-         addCommitteePhoto.click();
-     });
- })()
-</script>
-@endpush

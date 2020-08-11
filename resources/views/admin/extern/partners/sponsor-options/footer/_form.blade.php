@@ -26,7 +26,6 @@
     </small>
 </div>
 
-
 <div class="d-flex flex-column justify-content-end h-100">
     <div>
         <img
@@ -37,45 +36,23 @@
             style="object-fit: cover"
         />
     </div>
-    <div class="form-group">
-        <label for="add-footer-logo" class="btn btn-block btn-sm btn-primary mb-0">
-            <i class="fas fa-upload"></i>
-            Footer logo
-        </label>
-        {!! Form::file('logo', ['class' => 'sr-only form-control-file', 'id' => 'add-footer-logo']) !!}
 
-        <p class="form-text text-muted">
-            We will use this logo when displaying the partner's logo in the footer.
-            Images for the footer should have a size of 200x80 pixels and should not include any color.
-        </p>
-        <p class="form-text text-muted">
-            if you're on linux you can use the following command to convert any image to a grayscale 200x80 image:
-        </p>
-        <pre>
-<code>convert optiver.png -background none -resize 200x80 -gravity center -extent 200x80 -colorspace Gray optiver-gray.png</code>
-        </pre>
-    </div>
+    <x-forms.image-upload
+        name="logo"
+        label="Footer logo"
+        output-image-id="footer-logo"
+    >
+        <x-slot name="help">
+            <p class="form-text text-muted">
+                We will use this logo when displaying the partner's logo in the footer.
+                Images for the footer should have a size of 200x80 pixels and should not include any color.
+            </p>
+            <p class="form-text text-muted">
+                if you're on linux you can use the following command to convert any image to a grayscale 200x80 image:
+            </p>
+            <pre>
+                <code>convert optiver.png -background none -resize 200x80 -gravity center -extent 200x80 -colorspace Gray optiver-gray.png</code>
+            </pre>
+        </x-slot>
+    </x-forms.image-upload>
 </div>
-
-@push('scripts')
-<script>
- (function() {
-     var loadFile = function(event) {
-         var reader = new FileReader();
-         reader.onload = function(){
-             var output = document.getElementById('footer-logo');
-             output.src = reader.result;
-         };
-         reader.readAsDataURL(event.target.files[0]);
-     };
-
-     var addFooterLogo = document.getElementById('add-footer-logo');
-     addFooterLogo.addEventListener('change', loadFile);
-
-     var footerLogo = document.getElementById('footer-logo');
-     footerLogo.addEventListener('click', function() {
-         addFooterLogo.click();
-     });
- })()
-</script>
-@endpush

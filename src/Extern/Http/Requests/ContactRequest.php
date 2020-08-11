@@ -52,7 +52,7 @@ class ContactRequest extends FormRequest
 
     public function position() : string
     {
-        return $this->input('position', '');
+        return $this->input('position') ?? '';
     }
 
     public function title() : ?string

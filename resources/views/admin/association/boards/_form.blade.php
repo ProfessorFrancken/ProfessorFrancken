@@ -40,13 +40,11 @@
     </div>
     <div class="col">
         <div class="d-flex flex-column justify-content-end h-100">
-        <div class="form-group">
-            <label for="add-board-photo" class="btn btn-block btn-sm btn-primary mb-0">
-                <i class="fas fa-upload"></i>
-                Board photo
-            </label>
-            {!! Form::file('photo', ['class' => 'sr-only form-control-file', 'id' => 'add-board-photo']) !!}
-        </div>
+        <x-forms.image-upload
+            name="photo"
+            label="Board logo"
+            output-image-id="board-photo"
+        />
 
         <div class="form-group">
             <label for="photo-position">Photo position</label>
@@ -83,29 +81,3 @@
         ])
     @endforeach
 </ul>
-
-@push('scripts')
-<script>
- (function() {
-     var loadFile = function(event) {
-         console.log(event);
-         var reader = new FileReader();
-         reader.onload = function(){
-             var output = document.getElementById('board-photo');
-             output.src = reader.result;
-             console.log(output);
-         };
-         reader.readAsDataURL(event.target.files[0]);
-     };
-
-     var addBoardPhoto = document.getElementById('add-board-photo');
-     addBoardPhoto.addEventListener('change', loadFile);
-
-     console.log()
-     var boardPhoto = document.getElementById('board-photo');
-     boardPhoto.addEventListener('click', function() {
-         addBoardPhoto.click();
-     });
- })()
-</script>
-@endpush

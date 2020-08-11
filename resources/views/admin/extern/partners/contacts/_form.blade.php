@@ -201,36 +201,13 @@
             style="object-fit: cover"
         />
     </div>
-    <div class="form-group">
-        <label for="add-contact-photo" class="btn btn-block btn-sm btn-primary mb-0">
-            <i class="fas fa-upload"></i>
-            Contact photo
-        </label>
-        {!! Form::file('photo', ['class' => 'sr-only form-control-file', 'id' => 'add-contact-photo']) !!}
-    </div>
+
+    <x-forms.image-upload
+        name="photo"
+        label="Contact logo"
+        output-image-id="contact-photo"
+    >
+    </x-forms.image-upload>
 </div>
 
 @include('admin.extern.partners._contact_details_form', ['contactDetails' => $contact->contactDetails])
-
-@push('scripts')
-<script>
- (function() {
-     var loadFile = function(event) {
-         var reader = new FileReader();
-         reader.onload = function(){
-             var output = document.getElementById('contact-photo');
-             output.src = reader.result;
-         };
-         reader.readAsDataURL(event.target.files[0]);
-     };
-
-     var addContactPhoto = document.getElementById('add-contact-photo');
-     addContactPhoto.addEventListener('change', loadFile);
-
-     var contactPhoto = document.getElementById('contact-photo');
-     contactPhoto.addEventListener('click', function() {
-         addContactPhoto.click();
-     });
- })()
-</script>
-@endpush
