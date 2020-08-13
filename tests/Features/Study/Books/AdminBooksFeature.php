@@ -44,8 +44,16 @@ class AdminBooksFeature extends TestCase
 
         $book = Book::where('title', 'Partial Differential Equations')->first();
 
+        $buyer = factory(LegacyMember::class)->create();
+        $seller = factory(LegacyMember::class)->create();
+
         $this->seePageIs(action([AdminBooksController::class, 'show'], ['book' => $book]))
             ->type(2, 'edition')
+            ->type($seller->id, 'seller_id')
+            ->type($buyer->id, 'buyer_id')
+            ->type('2020-01-01', 'purchase_date')
+            ->type('2020-01-02', 'sale_date')
+            ->check('sold')
             ->press('Update');
 
         $book->refresh();
@@ -97,6 +105,16 @@ class AdminBooksFeature extends TestCase
             ->dontSee($availableBook->title)
             ->dontSee($soldBook->title)
             ->see($paidOffBook->title);
+
+        // We can search for a book's title, buyer or seller
+        $this->visit(action([AdminBooksController::class, 'index'], ['select' => 'all']))
+            ->type($paidOffBook->title, 'title')
+            ->type($paidOffBook->buyer_id, 'buyer_id')
+            ->type($paidOffBook->seller_id, 'seller_id')
+            ->press('Apply filters')
+            ->see($paidOffBook->title)
+            ->dontSee($soldBook->title)
+            ->dontSee($availableBook->title);
     }
 
     /** @test */
