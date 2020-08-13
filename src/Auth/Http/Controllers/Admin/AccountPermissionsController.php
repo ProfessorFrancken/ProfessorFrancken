@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Auth\Http\Controllers\Admin;
 
 use Francken\Auth\Account;
+use Francken\Auth\Permission;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
 
 final class AccountPermissionsController
 {

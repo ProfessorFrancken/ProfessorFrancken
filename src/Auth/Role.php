@@ -11,6 +11,8 @@ use Webmozart\Assert\Assert;
 
 final class Role extends SpatieRole
 {
+    protected $guarded = [];
+
     public static function fromCommittee(Committee $committee) : self
     {
         /** @var Role $role */

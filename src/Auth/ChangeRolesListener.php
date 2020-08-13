@@ -15,7 +15,6 @@ use Francken\Association\Committees\Committee;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Log;
-use Spatie\Permission\Models\Role;
 use UnexpectedValueException;
 
 final class ChangeRolesListener
