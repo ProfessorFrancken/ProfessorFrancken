@@ -4,6 +4,6 @@ parameters:
         - src
     checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Access to an undefined property Spatie\\Permission\\Models\\Role::\$name.#'
-        - '#Access to an undefined property Spatie\\Permission\\Models\\Role::\$guard_name.#'
+        - '#Access to an undefined property Francken\\Auth\\Role::\$name.#'
+        - '#Access to an undefined property Francken\\Auth\\Role::\$guard_name.#'
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'

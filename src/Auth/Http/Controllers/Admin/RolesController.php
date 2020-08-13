@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Auth\Http\Controllers\Admin;
 
+use Francken\Auth\Permission;
+use Francken\Auth\Role;
 use Illuminate\View\View;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 final class RolesController
 {

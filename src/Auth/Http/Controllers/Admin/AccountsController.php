@@ -8,14 +8,14 @@ use DB;
 use Francken\Association\LegacyMember;
 use Francken\Auth\Account;
 use Francken\Auth\Mail\NotifyAboutAccountActivation;
+use Francken\Auth\Permission;
+use Francken\Auth\Role;
 use Hash;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 final class AccountsController
 {

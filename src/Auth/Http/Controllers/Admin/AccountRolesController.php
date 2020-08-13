@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Francken\Auth\Http\Controllers\Admin;
 
 use Francken\Auth\Account;
+use Francken\Auth\Role;
 use Illuminate\Http\RedirectResponse;
-use Spatie\Permission\Models\Role;
 
 final class AccountRolesController
 {

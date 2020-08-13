@@ -6,8 +6,6 @@ namespace Francken\Auth;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Config\Repository;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 /**
  * Check whether there are new permissions in our configuration and add these
