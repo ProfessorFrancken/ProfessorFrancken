@@ -27,7 +27,7 @@ final class CategoryStatisticsController
         );
         Assert::isInstanceOf($startDate, DateTimeImmutable::class);
 
-        $stats = DB::connection('francken-legacy')
+        $transactions = DB::connection('francken-legacy')
             ->table('transacties')
             ->orderBy('tijd', 'desc')
             ->join('producten', 'transacties.product_id', '=', 'producten.id')
@@ -41,21 +41,14 @@ final class CategoryStatisticsController
             ->whereBetween('tijd', [$startDate, $endDate])
             ->get();
 
-        return [
-            'statistics' => $stats->groupBy(function ($statistic) {
-                return $statistic->date;
-            })->map(function ($statByDate, $date) : array {
+        $statistics = $transactions
+            ->groupBy(fn ($statistic) => $statistic->date)
+            ->map(function ($statByDate, $date) : array {
                 // For each date we probably have a category for beer, soda and food unless said category
                 // wasn't purchased that day
-                $beer = $statByDate->first(function ($stat) : bool {
-                    return 'Bier' === $stat->categorie;
-                });
-                $soda = $statByDate->first(function ($stat) : bool {
-                    return 'Fris' === $stat->categorie;
-                });
-                $food = $statByDate->first(function ($stat) : bool {
-                    return 'Eten' === $stat->categorie;
-                });
+                $beer = $statByDate->first(fn ($stat) : bool => 'Bier' === $stat->categorie);
+                $soda = $statByDate->first(fn ($stat) : bool => 'Fris' === $stat->categorie);
+                $food = $statByDate->first(fn ($stat) : bool => 'Eten' === $stat->categorie);
 
                 return [
                     'date' => $date,
@@ -63,7 +56,11 @@ final class CategoryStatisticsController
                     'soda' => $soda ? $soda->amount : 0,
                     'food' => $food ? $food->amount : 0,
                 ];
-            })->values(),
+            })
+            ->values();
+
+        return [
+            'statistics' => $statistics,
         ];
     }
 }
