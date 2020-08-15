@@ -133,7 +133,7 @@ class AdminBookRequest extends FormRequest
 
     public function hasBeenPaidOff() : bool
     {
-        return  (bool)$this->input('paid_off');
+        return (bool)$this->input('paid_off');
     }
 
     public function isbn() : ?string
@@ -145,19 +145,5 @@ class AdminBookRequest extends FormRequest
         Assert::string($sanitizedIsbn, 'An error occured while sanitizing the isbn');
 
         return $sanitizedIsbn;
-    }
-
-    public function isbn10() : ?string
-    {
-        $isbn = $this->isbn();
-
-        return (strlen($isbn) === 10) ? $isbn : null;
-    }
-
-    public function isbn13() : ?string
-    {
-        $isbn = $this->isbn();
-
-        return (strlen($isbn) === 13) ? $isbn : null;
     }
 }

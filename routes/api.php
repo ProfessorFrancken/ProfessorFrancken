@@ -37,7 +37,7 @@ Route::group(['prefix' => '/api'], function () : void {
 
     Route::group(['prefix' => '/plus-one', 'middleware' => 'plus-one'], function () : void {
         Route::get('orders', [PlusOne\OrdersController::class, 'index']);
-        Route::post('orders', [PlusOne\OrdersController::class, 'post']);
+        Route::post('orders', [PlusOne\OrdersController::class, 'store']);
 
         Route::get('products', [PlusOne\ProductsController::class, 'index']);
         Route::get('members', [PlusOne\MembersController::class, 'index']);

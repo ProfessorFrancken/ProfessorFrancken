@@ -23,7 +23,7 @@ final class OrdersController
 
     public function index() : Collection
     {
-        return $this->orders->table('transacties')
+        $orders = $this->orders->table('transacties')
             ->take(100)
             ->orderBy('tijd', 'DESC')
             ->get()
@@ -33,13 +33,15 @@ final class OrdersController
                     'member_id' => $transactie->lid_id,
                     'product_id' => $transactie->product_id,
                     'amount' => $transactie->aantal,
-                    'orderd_at' => $transactie->tijd,
+                    'ordered_at' => $transactie->tijd,
                     'price' => $transactie->totaalprijs,
                 ];
             });
+
+        return collect(['orders' => $orders]);
     }
 
-    public function post(Request $request) : Response
+    public function store(Request $request) : Response
     {
         Log::info(
             'Buying an order',

@@ -30,7 +30,7 @@ class AdminBookSearchRequest extends FormRequest
 
     public function sellerId() : ?int
     {
-        if ($this->input('seller', '') === null) {
+        if ($this->input('seller_id') === null) {
             return null;
         }
 
@@ -42,12 +42,13 @@ class AdminBookSearchRequest extends FormRequest
     public function seller() : ?BookSeller
     {
         return $this->sellerId() !== null
-            ? BookSeller::find($this->sellerId()) : null;
+            ? BookSeller::find($this->sellerId())
+            : null;
     }
 
     public function buyerId() : ?int
     {
-        if ($this->input('buyer', '') === null) {
+        if ($this->input('buyer_id') === null) {
             return null;
         }
 
@@ -60,13 +61,6 @@ class AdminBookSearchRequest extends FormRequest
     {
         return $this->buyerId() !== null
             ? BookBuyer::find($this->buyerId())
-            : null;
-    }
-
-    public function showSoldBooks() : ?bool
-    {
-        return $this->exists('show_sold_books')
-            ? (bool)$this->input('show_sold_books')
             : null;
     }
 

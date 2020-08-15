@@ -2,32 +2,40 @@
 
 declare(strict_types=1);
 
-namespace Francken\Features;
+namespace Francken\Features\PlusOne;
 
 use Francken\Association\LegacyMember;
+use Francken\Features\TestCase;
+use Francken\PlusOne\Http\OrdersController;
+use Francken\PlusOne\JwtToken;
 use Francken\Treasurer\Product;
+use Francken\Treasurer\Transaction;
 
-class PlusOneFeature extends TestCase
+class OrdersFeature extends TestCase
 {
     /** @test */
-    public function it_retrieves_a_jwt_token_when_autenticating() : void
+    public function it_returns_lastest_orders() : void
     {
-        $this->json('POST', '/api/plus-one/authenticate', [
-            'password' => 'hoi',
-        ]);
+        $token = new JwtToken(config('francken.plus_one.key'));
+        factory(Transaction::class, 10)->create();
 
-        $this->seeJsonStructure(['token']);
+        $this->json('GET', action([OrdersController::class, 'index']), [], ['Authorization' => 'Bearer ' . (string)$token->token()])
+            ->assertResponseStatus(200)
+            ->seeJsonStructure([
+                'orders' => [[
+                    'id',
+                    'member_id',
+                    'product_id',
+                    'amount',
+                    'ordered_at',
+                    'price',
+                ]]
+            ]);
     }
-
 
     /** @test */
     public function it_can_buy_an_order() : void
     {
-        $this->json('POST', '/api/plus-one/authenticate', [
-            'password' => 'hoi',
-        ]);
-        $token = $this->response->decodeResponseJson()['token'];
-
         $member = factory(LegacyMember::class)->create();
         $hertog = factory(Product::class)->create([
             'naam' => 'Hertog Jan',
@@ -37,7 +45,6 @@ class PlusOneFeature extends TestCase
             'naam' => 'Gebouw 13',
             'prijs' => 100
         ]);
-        $this->withoutExceptionHandling();
 
         $order = [
             "order" => [
@@ -54,8 +61,8 @@ class PlusOneFeature extends TestCase
             ]
         ];
 
-        $this->post('/api/plus-one/orders', $order, ['Authorization' => 'Bearer ' . $token]);
-
+        $token = new JwtToken(config('francken.plus_one.key'));
+        $this->post(action([OrdersController::class, 'store']), $order, ['Authorization' => 'Bearer ' . (string)$token->token()]);
         $this->assertResponseStatus(201);
     }
 }
