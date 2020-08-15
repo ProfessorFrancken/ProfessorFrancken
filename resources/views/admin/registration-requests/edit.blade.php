@@ -73,7 +73,7 @@
                                Form::checkbox(
                                    'wants_to_join_a_committee',
                                    true,
-                                   false,
+                                   null,
                                    [
                                        'id' => 'wants_to_join_a_committee',
                                        'class' => 'form-check-input',

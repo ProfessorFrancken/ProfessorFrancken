@@ -20,6 +20,28 @@
             @include('registration.show._contact-details', ['registration' => $registration])
             @include('registration.show._study-details', ['registration' => $registration])
             @include('registration.show._billing-details', ['registration' => $registration])
+
+            <h5 class="mt-4 mx-2">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                Active member
+            </h5>
+
+            <p>
+                @if ($registration->wants_to_join_a_committee)
+                    <i class="far fa-check-square"></i>
+                    Is interested in joining a committee
+                @else
+                    <i class="far fa-square"></i>
+                    Is not interested in joining a committee
+                @endif
+            </p>
+
+            @if ($registration->comments !== '')
+                <h6>Comments</h6>
+                <p class="bg-light p-3">
+                    {{ $registration->comments }}
+                </p>
+            @endif
         </div>
 
         <div class="card-footer">
