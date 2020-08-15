@@ -28,6 +28,6 @@ final class SponsorsController
 
     private function image(string $url) : string
     {
-        return image($url);
+        return image($url, ['width' => 300, 'height' => 300]);
     }
 }
