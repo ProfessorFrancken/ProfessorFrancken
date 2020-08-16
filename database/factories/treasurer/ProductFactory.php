@@ -9,11 +9,11 @@ use Francken\Treasurer\Product;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-        'naam' => $faker->word,
+        'naam' => $faker->name,
         'prijs' => $faker->randomFloat(),
-        'categorie' => $faker->word,
+        'categorie' => $faker->randomElement(['Bier', 'Eten', 'Fris']),
         'positie' => $faker->randomNumber(),
-        'beschikbaar' => $faker->boolean,
+        'beschikbaar' => true,
         'afbeelding' => $faker->word,
         'btw' => $faker->randomFloat(),
         'eenheden' => $faker->randomNumber(),

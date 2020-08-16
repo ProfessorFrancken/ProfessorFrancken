@@ -6,4 +6,5 @@ parameters:
     ignoreErrors:
         - '#Access to an undefined property Francken\\Auth\\Role::\$name.#'
         - '#Access to an undefined property Francken\\Auth\\Role::\$guard_name.#'
+        - '#Access to an undefined property Francken\\Treasurer\\Product::\$.*.#'
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'

@@ -43,6 +43,8 @@ use Francken\Shared\Http\Controllers\MemberDashboardController;
 use Francken\Shared\Media\Http\Controllers\MediaController;
 use Francken\Shared\Settings\Http\Controllers\SettingsController;
 use Francken\Study\BooksSale\Http\AdminBooksController;
+use Francken\Treasurer\Http\Controllers\AdminProductExtrasController;
+use Francken\Treasurer\Http\Controllers\AdminProductsController;
 use Francken\Treasurer\Http\Controllers\DeductionEmailsController;
 use Francken\Treasurer\Http\Controllers\DeductionMembersController;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
@@ -193,6 +195,12 @@ Route::group(['prefix' => 'treasurer', 'can:board-treasurer'], function () : voi
     Route::put('deductions/{deduction}', [DeductionsController::class, 'update']);
     Route::post('deductions/{deduction}/send', [DeductionEmailsController::class, 'create']);
     Route::get('deductions/{deduction}/member/{member}', [DeductionMembersController::class, 'show']);
+
+    Route::resource('products', AdminProductsController::class);
+    Route::get('products/{product}/extra/create', [AdminProductExtrasController::class, 'create']);
+    Route::get('products/{product}/extra/edit', [AdminProductExtrasController::class, 'edit']);
+    Route::post('products/{product}/extra', [AdminProductExtrasController::class, 'store']);
+    Route::put('products/{product}/extra', [AdminProductExtrasController::class, 'update']);
 });
 
 Route::group(['prefix' => 'compucie'], function () : void {
