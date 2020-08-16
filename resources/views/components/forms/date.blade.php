@@ -22,11 +22,7 @@
            )
     !!}
 
-    @error($name)
-    <p class="invalid-feedback">
-        {{ $message  }}
-    </p>
-    @enderror
+    <x-forms.error :name="$name" />
 
     {!! $help !!}
 </div>

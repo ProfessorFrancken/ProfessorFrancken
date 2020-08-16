@@ -9,6 +9,9 @@
                ['class' => 'form-control', 'id' => $id ?? $name]
            )
     !!}
+
+    <x-forms.error :name="$name" />
+
     <small class="form-text text-muted">
         Use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">
         Markdown</a> to format this text.
