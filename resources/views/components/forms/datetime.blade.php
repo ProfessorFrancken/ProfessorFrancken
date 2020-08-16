@@ -3,7 +3,7 @@
     'label',
     'value' => null,
     'help' => '',
-    'placeholder',
+    'placeholder' => 'yyyy-mm-dd hh:mm:ss',
     'required' => false,
 ])
 
