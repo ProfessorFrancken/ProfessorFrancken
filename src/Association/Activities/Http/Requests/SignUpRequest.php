@@ -38,6 +38,18 @@ class SignUpRequest extends FormRequest
         return (bool)$this->input('has_drivers_license', false);
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'plus_ones.max' => "You can't bring more than :max people",
+        ];
+    }
+
     private function maxPlusOnes() : int
     {
         $activity = $this->route('activity');

@@ -13,42 +13,13 @@
 </h5>
 
 @if ($activity->signUpSettings->allows_plus_ones)
-    <div class="form-group">
-        <label for="plus_ones">Are you brining anyone?</label>
-        {!!
-               Form::number(
-                   'plus_ones',
-                   null,
-                   ['class' => 'form-control', 'id' => 'plus_ones']
-               )
-        !!}
-    </div>
+    <x-forms.number name="plus_ones" label="Are you bringing anyone?" />
 @endif
 
 @if ($activity->signUpSettings->ask_for_dietary_wishes)
-    <div class="form-group">
-        <label for="dietary_wishes">Dietary wishes</label>
-        {!!
-               Form::text(
-                   'dietary_wishes',
-                   null,
-                   ['class' => 'form-control', 'id' => 'dietary_wishes']
-               )
-        !!}
-    </div>
+    <x-forms.text name="dietary_wishes" label="Dietary wishes" />
 @endif
+
 @if ($activity->signUpSettings->ask_for_drivers_license)
-    <div class="form-group form-check">
-        {!!
-               Form::checkbox(
-                   'has_drivers_license',
-                   true,
-                   null,
-                   ['class' => 'form-check-input', 'id' => 'has_drivers_license']
-               )
-        !!}
-        <label class="form-check-label" for="has_drivers_license">
-            Do you have a drivers license?
-        </label>
-    </div>
+    <x-forms.checkbox name="has_drivers_license" label="Do you have a drivers license?" />
 @endif
