@@ -27,46 +27,26 @@
                 </div>
             </div>
             <div class="col">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'S[ck]rip(t|t?c)ie', 'id' => 'name']) !!}
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'kathinka@scriptcie.nl', 'id' => 'email']) !!}
-                </div>
-
-                <div class="form-group">
-                    <label for="goal">Goal</label>
-                    {!! Form::text('goal', null, ['class' => 'form-control', 'placeholder' => 'Digital anarchy at Francken', 'id' => 'goal']) !!}
-                    <small class="form-text text-muted">
+                <x-forms.text name="name" label="Name" placeholder="S[ck]rip(t|t?c)ie" required />
+                <x-forms.email name="email" label="Email" placeholder="kathinka@scriptcie.nl" />
+                <x-forms.text name="goal" label="Goal" placeholder="Digital anarchy at Francken">
+                    <x-slot name="help">
                         Fill in a short description of the committee.
                         This text is used as a description for the committee page and will be shown in google search results.
-                    </small>
-                </div>
+                    </x-slot>
+                </x-forms.text>
 
-                <div class="form-group form-check">
-                    {!! Form::checkbox('is_public', true, null, ['class' => 'form-check-input', 'id' => 'is_public'])  !!}
-                    <label class="form-check-label" for="is_public">Show committee page on website</label>
-                </div>
-
-                <div class="form-group">
-                    <label for="parent_committee_id">
-                        Parent committee
-                    </label>
-                    {!!
-                       Form::select(
-                           'parent_committee_id',
-                           $parent_committees,
-                           null,
-                           ['class' => 'form-control', 'placeholder' => 'Select a committee from a previous board year', 'id' => 'parent_committee_id']
-                       )
-                    !!}
-                    <small class="form-text text-muted">
+                <x-forms.checkbox name="is_public" label="Show committee page on website" />
+                <x-forms.select
+                    name="parent_committee_id"
+                    label="Parent committee"
+                    placeholder="Select a committee from a previous board year"
+                    :options="$parent_committees"
+                >
+                    <x-slot name="help">
                         Setting the parent committee to a pervious committee will allow us to suggest members for this committee based on its previous committee members.
-                    </small>
-                </div>
+                    </x-slot>
+                </x-forms.select>
             </div>
 
             <div class='col-12'>

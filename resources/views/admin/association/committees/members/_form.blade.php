@@ -13,23 +13,18 @@
     </div>
     @endisset
 
-    <div class="form-group col">
-        <label for="function">Function</label>
-        {!! Form::text('function', null, ['class' => 'form-control', 'placeholder' => 'President', 'id' => 'function']) !!}
+
+    <div class="col">
+        <x-forms.text name="function" label="Function" placeholder="President" />
     </div>
-    <div class="form-group col">
-        <label>Install date</label>
-        {!!
-           Form::date(
-               'installed_at',
-               $committee->board->installed_at->format('Y-m-d'),
-               ['class' => 'form-control', 'id' => 'installed_at']
-           );
-        !!}
-        <small class="form-text text-muted">
-            By defautl we've selected the install dater of the board, but you can ofcourse choose a different install date
-        </small>
+    <div class="col">
+        <x-forms.date name="installed_at" label="Install date" :value="$committee->board->installed_at->format('Y-m-d')">
+            <x-slot name="help">
+                By defautl we've selected the install dater of the board, but you can ofcourse choose a different install date
+            </x-slot>
+        </x-forms.date>
     </div>
+
     @isset ($member)
     <div class="form-group col">
         <label>Decharge date</label>
