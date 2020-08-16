@@ -13,6 +13,7 @@
                $value,
                [
                    'class' => 'form-check-input' . ($errors->has($name) ? ' is-invalid' : ''),
+                   'checked' => $value,
                    'id' => $name
                ]
            )

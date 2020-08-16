@@ -5,12 +5,15 @@
     'placeholder' => '',
     'help' => '',
     'required' => false,
+                       'rows' => 3,
 ])
 
 <div class="form-group">
+    @isset($label)
     <label for="{{ $name }}">{{ $label }}</label>
+    @endisset
     {!!
-           Form::text(
+           Form::textarea(
                $name,
                $value,
                [
@@ -18,6 +21,7 @@
                    'placeholder' => $placeholder,
                    'id' => $name,
                    'required' => $required,
+                   'rows' => $rows,
                ]
            )
     !!}
