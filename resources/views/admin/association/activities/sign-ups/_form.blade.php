@@ -13,60 +13,21 @@
             <x-forms-autocomplete-member />
         @endif
 
-        <div class="form-group">
-            <label for="plus_ones">Plus ones</label>
-            {!!
-                   Form::number(
-                       'plus_ones',
-                       0,
-                       ['class' => 'form-control', 'id' => 'plus_ones']
-                   )
-            !!}
-        </div>
-
+        <x-forms.number name="plus_ones" label="Plus ones" />
 
 
         @if ($activity->signUpSettings->ask_for_dietary_wishes)
-            <div class="form-group">
-                <label for="dietary_wishes">Dietary wishes</label>
-                {!!
-                       Form::text(
-                           'dietary_wishes',
-                           null,
-                           ['class' => 'form-control', 'id' => 'dietary_wishes']
-                       )
-                !!}
-            </div>
+            <x-forms.text name="dietary_wishes" label="Dietary wishes" />
         @endif
         @if ($activity->signUpSettings->ask_for_drivers_license)
-            <div class="form-group form-check">
-                {!!
-                       Form::checkbox(
-                           'has_drivers_license',
-                           true,
-                           null,
-                           ['class' => 'form-check-input', 'id' => 'has_drivers_license']
-                       )
-                !!}
-                <label class="form-check-label" for="has_drivers_license">
-                    Has drivers license
-                </label>
-            </div>
+            <x-forms.checkbox name="has_drivers_license" label="Has drivers license" />
         @endif
     </div>
     <div class="col-6">
-        <div class="form-group">
-            <label for="notes">Board notes</label>
-            {!!
-                   Form::textarea(
-                       'notes',
-                       null,
-                       ['class' => 'form-control', 'id' => 'notes', 'rows' => 4]
-                   )
-            !!}
-            <small class="form-text text-muted">
+        <x-forms.textarea name="notes" label="Board notes" rows="4">
+            <x-slot name="help">
                 Use this field to keep track of any notes related to this member.
-            </small>
-        </div>
+            </x-slot>
+        </x-forms.textarea>
     </div>
 </div>

@@ -14,16 +14,7 @@
                    ])
             !!}
 
-            <div class="form-group">
-                <label for="content" class="d-none">Comment</label>
-                {!!
-                       Form::textarea(
-                           'content',
-                           null,
-                           ['class' => 'form-control', 'id' => 'content', 'rows' => 2]
-                       )
-                !!}
-            </div>
+            <x-forms.textarea name="content" label="Comment" :rows="2" />
 
             <div class="d-flex justify-content-between mt-4">
                 <div>
