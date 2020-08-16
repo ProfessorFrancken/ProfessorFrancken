@@ -4,34 +4,35 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne\Http;
 
-use Illuminate\Database\ConnectionResolverInterface;
-use Illuminate\Database\Query\Builder;
+use Francken\Treasurer\Product;
 use Illuminate\Support\Collection;
 
 final class ProductsController
 {
-    private Builder $products;
-
-    public function __construct(ConnectionResolverInterface $db)
-    {
-        $this->products = $db->connection('francken-legacy')
-                        ->table('producten');
-    }
-
     public function index() : Collection
     {
-        $products = $this->products->where('beschikbaar', 1)
-                  ->leftJoin('producten_extras', 'producten.id', 'producten_extras.product_id')
-                  ->get()
-                  ->map(function ($product) {
-                      if ($product->afbeelding !== null) {
-                          $product->afbeelding = "https://old.professorfrancken.nl/database/streep/afbeeldingen/{$product->afbeelding}";
-                      }
-                      if ($product->splash_afbeelding !== null) {
-                          $product->splash_afbeelding = "https://old.professorfrancken.nl/database/streep/afbeeldingen/{$product->splash_afbeelding}";
-                      }
-                      return $product;
-                  });
+        $products = Product::query()
+            ->where('beschikbaar', true)
+            ->with(['extra'])
+            ->get()
+            ->map(function (Product $product) : array {
+                return [
+                    'id' => $product->id,
+                    'naam' => $product->name,
+                    'prijs' => $product->price / 100,
+                    'categorie' => $product->categorie,
+                    "positie" => $product->position,
+                    "beschikbaar" => $product->available,
+                    "afbeelding" => $product->photo_url,
+                    "btw" => $product->btw,
+                    "eenheden" => $product->eenheden,
+                    "created_at" => $product->created_at,
+                    "updated_at" => $product->updated_at,
+                    "product_id" => $product->id,
+                    "splash_afbeelding" => $product->splash_url,
+                    "kleur" => $product->color,
+                ];
+            });
 
         return collect(['products' => $products]);
     }
