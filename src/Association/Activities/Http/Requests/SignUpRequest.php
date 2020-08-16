@@ -40,10 +40,8 @@ class SignUpRequest extends FormRequest
 
     /**
      * Get the error messages for the defined validation rules.
-     *
-     * @return array
      */
-    public function messages()
+    public function messages() : array
     {
         return [
             'plus_ones.max' => "You can't bring more than :max people",
