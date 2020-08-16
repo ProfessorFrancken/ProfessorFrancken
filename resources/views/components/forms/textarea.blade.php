@@ -1,17 +1,14 @@
 @props([
     'name',
-    'label',
+    'label' => null,
     'value' => null,
     'placeholder' => '',
     'help' => '',
     'required' => false,
-                       'rows' => 3,
+    'rows' => 3,
 ])
 
-<div class="form-group">
-    @isset($label)
-    <label for="{{ $name }}">{{ $label }}</label>
-    @endisset
+<x-forms.form-group :name="$name" :label="$label" :help="$help">
     {!!
            Form::textarea(
                $name,
@@ -25,8 +22,4 @@
                ]
            )
     !!}
-
-    <x-forms.error :name="$name" />
-
-    {!! $help !!}
-</div>
+</x-forms.form-group>

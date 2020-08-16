@@ -5,7 +5,7 @@
     'help' => '',
 ])
 
-<div class="form-group form-check">
+<x-forms.form-group :name="$name" :label="null" :help="$help" form-group-class="form-check">
     {!!
            Form::checkbox(
                $name,
@@ -21,8 +21,4 @@
     <label class="form-check-label" for="{{ $name }}">
         {!! $label !!}
     </label>
-
-    <x-forms.error :name="$name" />
-
-    {!! $help !!}
-</div>
+</x-forms.form-group>

@@ -1,7 +1,6 @@
 @props(['label' => 'Content', 'name' => 'source_content', 'value' => null])
 
-<div class="form-group">
-    <label for="{{ $id ?? $name }}">{{ $label }}</label>
+<x-forms.form-group :name="$name" :label="$label">
     {!!
            Form::textarea(
                $name,
@@ -10,13 +9,11 @@
            )
     !!}
 
-    <x-forms.error :name="$name" />
-
-    <small class="form-text text-muted">
+    <x-slot name="help">
         Use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">
         Markdown</a> to format this text.
-    </small>
-</div>
+    </x-slot>
+</x-forms.form-group>
 
 @push('scripts')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">

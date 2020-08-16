@@ -7,8 +7,7 @@
     'required' => false,
 ])
 
-<div class="form-group">
-    <label for="{{ $name }}">{{ $label }}</label>
+<x-forms.form-group :name="$name" :label="$label" :help="$help">
     {!!
            Form::input(
                'month',
@@ -22,8 +21,4 @@
                ]
            )
     !!}
-
-    <x-forms.error :name="$name" />
-
-    {!! $help !!}
-</div>
+</x-forms.form-group>
