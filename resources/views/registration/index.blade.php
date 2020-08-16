@@ -94,29 +94,20 @@
             </a>.
         </p>
 
-        <div class="form-check">
-            {!!
-               Form::checkbox(
-                   'wants_to_join_a_committee',
-                   true,
-                   false,
-                   [
-                       'id' => 'wants_to_join_a_committee',
-                       'class' => 'form-check-input'
-                   ]
-               )
-            !!}
-            <label class="form-check-label" for="wants_to_join_a_committee">
-                Yes I would like to join a committee!
-            </label>
-        </div>
+        <x-forms.checkbox
+            name="wants_to_join_a_committee"
+            label="Yes I would like to join a committee!"
+        />
 
         <h4 class="mt-3">
             Do you have any comments or questions? Let us know!
         </h4>
-        <textarea name="comments" id="" rows="4" cols="" tabindex="" class="form-control" placeholder="Put your comments / questions here">
 
-        </textarea>
+        <x-forms.textarea
+            name="comments"
+            rows="4"
+            placeholder="Put your comments / questions here"
+        />
     </fieldset>
 
     <p>
