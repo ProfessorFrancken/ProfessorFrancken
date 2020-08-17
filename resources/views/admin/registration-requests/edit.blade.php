@@ -68,28 +68,13 @@
                             </h3>
                         </legend>
 
-                        <div class="form-check">
-                            {!!
-                               Form::checkbox(
-                                   'wants_to_join_a_committee',
-                                   true,
-                                   null,
-                                   [
-                                       'id' => 'wants_to_join_a_committee',
-                                       'class' => 'form-check-input',
-                                       'checked' => isset($registration) ? $registration->wants_to_join_committee : false
-                                   ]
-                               )
-                            !!}
-                            <label class="form-check-label" for="wants_to_join_a_committee">
-                                Yes I would like to join a committee!
-                            </label>
-                        </div>
+                        <x-forms.checkbox
+                            name="wants_to_join_a_committee"
+                            label="Yes I would like to join a committee!"
+                            :value="isset($registration) ? $registration->wants_to_join_committee : false"
+                        />
 
-                        <h4 class="mt-3">
-                            Comments
-                        </h4>
-                        <textarea name="comments" id="" rows="4" cols="" tabindex="" class="form-control" placeholder="Put your comments / questions here">{{ $registration->comments }}</textarea>
+                        <x-forms.textarea name="comments" label="Comments" rows="4" />
                     </fieldset>
                 </div>
                 <div class="card-footer">
