@@ -28,50 +28,26 @@
             ])
         </div>
 
-        <div class="form-group">
-            <label for="members[{$member_idx}][title]">Title</label>
-            {!!
-               Form::text(
-                   "members[{$member_idx}][title]",
-                   optional($member)->title,
-                   ['class' => 'form-control', 'id' => 'title']
-               )
-            !!}
-        </div>
+        <x-forms.text :name='"members[{$member_idx}][title]"' label="Title" :value="optional($member)->title" />
 
         @if ($board->exists)
-        <div class="form-group">
-            <label for="members[{$member_idx}][installed_at]">Install date</label>
-            {!!
-               Form::date(
-                   "members[{$member_idx}][installed_at]",
-                   optional($member)->installed_at,
-                   ['class' => 'form-control', 'id' => 'installed_at']
-               );
-            !!}
-        </div>
-        @if ($member->exists)
-            <div class="form-group">
-                <label for="members[{$member_idx}][demissioned_at]">Demissioned date</label>
-                {!!
-                   Form::date(
-                       "members[{$member_idx}][demissioned_at]",
-                       optional($member)->demissioned_at,
-                       ['class' => 'form-control', 'id' => 'demissioned_at']
-                   );
-                !!}
-            </div>
-            <div class="form-group">
-                <label for="members[{$member_idx}][decharged_at]">Decharge date</label>
-                {!!
-                   Form::date(
-                       "members[{$member_idx}][decharged_at]",
-                       optional($member)->decharged_at,
-                       ['class' => 'form-control', 'id' => 'decharged_at']
-                   );
-                !!}
-            </div>
-        @endif
+            <x-forms.date
+                :name='"members[{$member_idx}][installed_at]"'
+                label="Install date"
+                :value="optional($member)->installed_at"
+            />
+            @if ($member->exists)
+                <x-forms.date
+                    :name='"members[{$member_idx}][demissioned_at]"'
+                    label="Demissioned date"
+                    :value="optional($member)->demissioned_at"
+                />
+                <x-forms.date
+                    :name='"members[{$member_idx}][decharged_at]"'
+                    label="Decharge date"
+                    :value="optional($member)->decharged_at"
+                />
+            @endif
         @endif
     </div>
 </li>

@@ -10,31 +10,10 @@
     </div>
 
     <div class="col">
-        <div class="form-group">
-            <label for="name">Board name</label>
-            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Hè Watt?', 'id' => 'name']) !!}
-        </div>
-        <div class="form-group">
-            <label for="installed_at">Installed at</label>
-            {!!
-               Form::date(
-                   'installed_at',
-                   optional($board->installed_at)->format('Y-m-d'),
-                   ['class' => 'form-control', 'id' => 'installed_at']
-               );
-            !!}
-        </div>
+        <x-forms.text name="name" label="Board name" placeholder="Hè Watt?" />
+        <x-forms.date name="installed_at" label="Installed at" :value="optional($board->installed_at)->format('Y-m-d')"/>
         @if ($board->exists)
-            <div class="form-group">
-            <label for="demissioned_at">Demissioned at</label>
-            {!!
-               Form::date(
-                   'demissioned_at',
-                   optional($board->demissioned_at)->format('Y-m-d'),
-                   ['class' => 'form-control', 'id' => 'demissioned_at']
-               );
-            !!}
-        </div>
+            <x-forms.date name="demissioned_at" label="Demissioned at" :value="optional($board->demissioned_at)->format('Y-m-d')"/>
         @endif
 
     </div>
@@ -46,23 +25,9 @@
             output-image-id="board-photo"
         />
 
-        <div class="form-group">
-            <label for="photo-position">Photo position</label>
-            {!!
-               Form::select('photo_position', $photo_positions, null, ['class' => 'form-control', 'id' => 'photo-position']);
-            !!}
-        </div>
+        <x-forms.select name="photo_position" label="Photo position" :options="$photo_positions" />
         @if ($board->exists)
-        <div class="form-group">
-            <label for="decharged_at">Decharged at</label>
-            {!!
-               Form::date(
-                   'decharged_at',
-                   optional($board->decharged_at)->format('Y-m-d'),
-                   ['class' => 'form-control', 'id' => 'decharged_at']
-               )
-            !!}
-        </div>
+            <x-forms.date name="decharged_at" label="Decharged at" :value="optional($board->decharged_at)->format('Y-m-d')"/>
         @endif
         </div>
     </div>
