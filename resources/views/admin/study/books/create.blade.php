@@ -71,10 +71,10 @@
                   },
                   select: function (event, ui) {
                       console.log(event, ui)
-                      $('.book-title').val(ui.item.title);
-                      $('.book-author').val(ui.item.author);
-                      $('.book-isbn').val(ui.item.isbn[1].identifier);
-                      $('.book-edition').val(ui.item.edition);
+                      $('[name="title"]').val(ui.item.title);
+                      $('[name="author"]').val(ui.item.author);
+                      $('[name="isbn"]').val(ui.item.isbn[1].identifier);
+                      $('[name="edition"]').val(ui.item.edition);
                       $('.book-image').attr("src", ui.item.image);
                   },
                   minLength: 3 // set minimum length of text the user must enter
