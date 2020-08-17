@@ -5,6 +5,7 @@
     'help' => '',
     'placeholder' => 'yyyy-mm-dd hh:mm:ss',
     'required' => false,
+    'disabled' => false,
 ])
 
 <x-forms.form-group :name="$name" :label="$label" :help="$help">
@@ -17,6 +18,7 @@
                    'placeholder' => $placeholder,
                    'id' => $name,
                    'required' => $required,
+                   'disabled' => $disabled,
                ]
            )
     !!}

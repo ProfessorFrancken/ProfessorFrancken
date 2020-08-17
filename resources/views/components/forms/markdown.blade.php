@@ -1,11 +1,22 @@
-@props(['label' => 'Content', 'name' => 'source_content', 'value' => null])
+@props([
+    'label' => 'Content',
+    'name' => 'source_content',
+    'value' => null,
+    'required' => false,
+    'disabled' => false,
+])
 
 <x-forms.form-group :name="$name" :label="$label">
     {!!
            Form::textarea(
                $name,
                $value,
-               ['class' => 'form-control', 'id' => $id ?? $name]
+               [
+                   'class' => 'form-control',
+                   'id' => $name,
+                   'required' => $required,
+                   'disabled' => $disabled,
+               ]
            )
     !!}
 
@@ -23,7 +34,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
 <script>
  var simplemde = new SimpleMDE({
-     element: document.getElementById("source_content"),
+     element: document.getElementById("{{ $name }}"),
      spellChecker: false,
      promptURLs: true,
      /* previewRender: ,*/
