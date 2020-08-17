@@ -1,6 +1,6 @@
 @props([
     'name',
-    'label',
+    'label' => null,
     'value' => null,
     'help' => '',
     'placeholder' => 'yyyy-mm-dd hh:mm:ss',
