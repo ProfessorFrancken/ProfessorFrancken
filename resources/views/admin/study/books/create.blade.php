@@ -12,11 +12,9 @@
                         For your convenience you can use the search bar to search for books and automatically fill in all details.
                         Note that the edition number of the book is not filled in automatically.
                     </p>
-                    <div class="form-group mb-4">
-                        <label for="search">Search for books</label>
-                        {!! Form::text('search', null, ['class' => 'form-control search-for-book', 'placeholder' => 'Search by title, author and / or isbn']) !!}
+                    <div class="mb-4">
+                        <x-forms.text name="search" label="Search for books" placeholder="Search by title, author and / or isbn" />
                     </div>
-
 
                     @include('admin.study.books._form', ['book' => $book])
                 </div>

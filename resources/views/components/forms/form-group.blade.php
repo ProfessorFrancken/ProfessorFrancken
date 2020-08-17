@@ -1,14 +1,14 @@
 @props([
     'name',
-    'label',
+    'label' => null,
     'help' => '',
     'formGroupClass' => ''
 ])
 
 <div class="form-group {{ $formGroupClass }}">
-    @isset($label)
+    @if($label !== null)
         <label for="{{ $name }}">{{ $label }}</label>
-    @endisset
+    @endif
 
     {{-- Include the input field from our parent component --}}
     {!! $slot !!}
