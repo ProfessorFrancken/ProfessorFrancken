@@ -3,40 +3,34 @@
 
     <h4>Publish a Francken Vrij</h4>
 
-    <div class="form-group">
-        {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}
-        {!! Form::text('title', $title, ['class' => 'form-control']) !!}
-    </div>
+    <x-forms.text name="title" label="Title" :value="$title" />
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="form-group">
-                {!! Form::label('volume', 'Volume:', ['class' => 'control-label']) !!}
-                {!! Form::number('volume', $volume, ['class' => 'form-control', 'min' => 1]) !!}
-            </div>
+            <x-forms.text name="volume" label="Volume" :value="$volume" />
         </div>
 
         <div class="col-sm-6">
-            <div class="form-group">
-                {!! Form::label('edition', 'Edition:', ['class' => 'control-label']) !!}
-                {!! Form::number('edition', $edition, ['class' => 'form-control', 'min' => 1, 'max' => 3]) !!}
-            </div>
+            <x-forms.text name="edition" label="Edition" :value="$edition" />
         </div>
     </div>
 
-    <div class="form-group">
-        <p>
-            Upload the pdf of the new Francken Vrij. Note we currently only support uploading files which are less than 40MB.
-        </p>
-        {!! Form::label('pdf', 'Francken Vrij PDF', ['class' => 'control-label']) !!}
+    <x-forms.form-group name="pdf" label="Fancken Vrij Pdf">
         {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
-        <p>
+
+        <x-slot name="help">
+            Upload the pdf of the new Francken Vrij. Note we currently only support uploading files which are less than 40MB.
+        </x-slot>
+    </x-forms.form-group>
+
+    <x-forms.form-group name="cover" label="Cover">
+        {!! Form::file('cover', ['class' => 'form-control-file']) !!}
+
+        <x-slot name="help">
             The cover is optional. If no cover is given then we will generate one from the pdf.
             The cover image should have a size of 175x245 pixels.
-        </p>
-        {!! Form::label('cover', 'Cover', ['class' => 'control-label']) !!}
-        {!! Form::file('cover', ['class' => 'form-control-file']) !!}
-    </div>
+        </x-slot>
+    </x-forms.form-group>
 
     {!! Form::submit('Publish', ['class' => 'btn btn-block btn-outline-success']) !!}
 
