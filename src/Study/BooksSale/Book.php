@@ -37,12 +37,22 @@ final class Book extends Model
         'paid_off',
     ];
 
+    protected $casts = [
+        'taken_in_from_seller_at' => 'date',
+        'taken_in_by_buyer_at' => 'date',
+
+        'price' => 'int',
+        'buyer_id' => 'int',
+        'seller_id' => 'int',
+
+        'has_been_sold' => 'boolean',
+        'paid_off' => 'boolean',
+    ];
+
     /**
      * @var string[]
      */
     protected $dates = [
-        'taken_in_from_seller_at',
-        'taken_in_by_buyer_at',
     ];
 
     public function seller() : BelongsTo
