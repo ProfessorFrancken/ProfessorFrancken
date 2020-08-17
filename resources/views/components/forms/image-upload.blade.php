@@ -7,10 +7,10 @@
 
 <x-forms.form-group :name="$name" :help="$help">
     <x-slot name="label">
-        <button class="btn btn-block btn-sm btn-primary mb-0">
+        <span class="btn btn-block btn-sm btn-primary mb-0">
             <i class="fas fa-upload"></i>
             {{ $label }}
-        </button>
+        </span>
     </x-slot>
 
     {!!

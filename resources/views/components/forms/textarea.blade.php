@@ -2,7 +2,7 @@
     'name',
     'label' => null,
     'value' => null,
-    'placeholder' => '',
+    'placeholder' => null,
     'help' => '',
     'required' => false,
     'rows' => 3,
