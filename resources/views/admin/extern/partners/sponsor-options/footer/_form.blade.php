@@ -1,30 +1,15 @@
-<div class="form-group form-check">
-    {!!
-       Form::checkbox(
-           'is_enabled',
-           true,
-           $footer->is_enabled,
-           ['class' => 'form-check-input', 'id' => 'is_enabled']
-       )
-    !!}
-    <label class="form-check-label" for="is_enabled">Show on website</label>
-</div>
-
-<div class="form-group">
-    <label for="referral_url">Referral url</label>
-    {!!
-       Form::text(
-           'referral_url',
-           $footer->referral_url ?? $partner->referral_url,
-           ['class' => 'form-control', 'placeholder' => 'https://scriptcie.nl', 'id' => 'referral_url']
-       )
-    !!}
-
-    <small  class="form-text text-muted">
+<x-forms.checkbox name="is_enabled" label="Show on website" :value="$footer->is_enabled" />
+<x-forms.text
+    name="referral_url"
+    label="Referral url"
+    placeholder="https://scriptcie.nl"
+    :value="$footer->referral_url ?? $partner->referral_url"
+>
+    <x-slot name="help">
         The refferal url is used when linking to the partner's website in our footer.
         Partners can use this to determine the amount of trafick that they receive from out website.
-    </small>
-</div>
+    </x-slot>
+</x-forms.text>
 
 <div class="d-flex flex-column justify-content-end h-100">
     <div>
