@@ -95,7 +95,7 @@
         </div>
 
         <div class="card-footer">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            <x-forms.submit>Save</x-forms.submit>
         </div>
 
         {!! Form::close() !!}

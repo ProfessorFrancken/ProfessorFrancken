@@ -15,7 +15,7 @@
                     !!}
                         @include('admin.extern.partners._form', ['partner' => $partner])
 
-                        {!! Form::submit('Add', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Add</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

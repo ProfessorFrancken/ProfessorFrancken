@@ -16,7 +16,7 @@
                     !!}
                         @include('admin.association.activities._form', ['committee' => $activity])
 
-                        {!! Form::submit('Plan activity', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Plan activity</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -15,7 +15,7 @@
                     !!}
                         @include('admin.treasurer.products.extras._form', ['product' => $product])
 
-                        {!! Form::submit('Add', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Add</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

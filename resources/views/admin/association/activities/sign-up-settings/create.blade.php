@@ -13,7 +13,7 @@
             >
                 @include('admin.association.activities.sign-up-settings._form', ['committee' => $activity])
 
-                <x-forms.submit text="Add sign up settings"/>
+                <x-forms.submit>Add sign up settings</x-forms.submit>
             </x-forms.form>
         </div>
     </div>

@@ -10,7 +10,7 @@
 
                         @include('admin.association.symposia._form', ['symposium' => $symposium])
 
-                        {!! Form::submit('Add symposium', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Add symposium</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

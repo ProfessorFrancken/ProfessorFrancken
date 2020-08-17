@@ -45,7 +45,7 @@
             </x-slot>
         </x-forms.form-group>
 
-        {!! Form::submit('Update', ['class' => 'btn btn-outline-success']) !!}
+        <x-forms.submit>Update</x-forms.submit>
 
         {!! Form::close() !!}
 

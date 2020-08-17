@@ -1,6 +1,15 @@
 @props([
-    'text' => 'Save',
     'class' => 'btn btn-outline-success',
+    'disabled' => false,
+    'block' => false,
 ])
 
-{!! Form::submit($text, ['class' => $class]) !!}
+{!!
+       Form::submit(
+           $slot == '' ? $text : $slot,
+           [
+               'class' => $class . ($block ? ' btn-block' : ''),
+               'disabled' => $disabled
+           ]
+       )
+!!}

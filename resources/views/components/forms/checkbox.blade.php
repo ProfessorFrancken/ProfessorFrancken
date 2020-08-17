@@ -6,7 +6,7 @@
     'formGroupClass' => ''
 ])
 
-<x-forms.form-group :name="$name" :label="null" :help="$help" form-group-class="form-check {{ $formGroupClass }}">
+<x-forms.form-group :name="$name" :help="$help" form-group-class="form-check {{ $formGroupClass }}">
     {!!
            Form::checkbox(
                $name,

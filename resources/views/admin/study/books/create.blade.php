@@ -19,7 +19,7 @@
                     @include('admin.study.books._form', ['book' => $book])
                 </div>
                 <div class="card-footer">
-                        {!! Form::submit('Add book', ['class' => 'btn btn-outline-success']) !!}
+                    <x-forms.submit>Add book</x-forms.submit>
                 </div>
                 {!! Form::close() !!}
             </div>

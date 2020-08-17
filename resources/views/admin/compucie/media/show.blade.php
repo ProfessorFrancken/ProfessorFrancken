@@ -61,21 +61,13 @@
 @section('actions')
     <div class="d-flex align-items-end">
         <div class="btn-group">
-            {!!
-               Form::submit('Move', [
-                   'class' => 'btn btn-info',
-                   'disabled' => 'disabled',
-                   'onClick' => ''
-               ])
-            !!}
+            <x-forms.submit class="btn btn-info" disabled>
+                Move
+            </x-forms.submit>
 
-            {!!
-               Form::submit('Delete', [
-                   'class' => 'btn btn-danger',
-                   'disabled' => 'disabled',
-                   'onClick' => ''
-               ])
-            !!}
+            <x-forms.submit class="btn btn-danger" disabled>
+                Delete
+            </x-forms.submit>
         </div>
     </div>
 @endsection

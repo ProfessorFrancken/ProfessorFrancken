@@ -32,7 +32,7 @@
         </x-slot>
     </x-forms.form-group>
 
-    {!! Form::submit('Publish', ['class' => 'btn btn-block btn-outline-success']) !!}
+    <x-forms.submit block>Publish</x-forms.submit>
 
     {!! Form::close() !!}
 </div>
