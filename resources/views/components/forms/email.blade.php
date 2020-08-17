@@ -5,12 +5,11 @@
     'placeholder' => '',
     'help' => '',
     'required' => false,
-    'disabled' => false,
 ])
 
 <x-forms.form-group :name="$name" :label="$label" :help="$help">
     {!!
-           Form::text(
+           Form::email(
                $name,
                $value,
                [
@@ -18,7 +17,6 @@
                    'placeholder' => $placeholder,
                    'id' => $name,
                    'required' => $required,
-                   'disabled' => $disabled,
                ]
            )
     !!}

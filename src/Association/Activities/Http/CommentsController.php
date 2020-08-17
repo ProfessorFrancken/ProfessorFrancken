@@ -14,6 +14,8 @@ final class CommentsController
 {
     public function store(Request $request, Activity $activity) : RedirectResponse
     {
+        $request->validate(['content' => ['required', 'min:1']]);
+
         $activity->comments()->save(
             new Comment([
                 'member_id' => $request->user()->member_id,
@@ -44,6 +46,8 @@ final class CommentsController
 
     public function update(Request $request, Activity $activity, Comment $comment) : RedirectResponse
     {
+        $request->validate(['content' => ['required', 'min:1']]);
+
         $comment->update(['content' => $request->input('content')]);
 
         return redirect()->action([ActivitiesController::class, 'show'], ['activity' => $activity]);

@@ -17,16 +17,8 @@
        Form::hidden($nameId, $valueId, ['id' => $nameId])
     !!}
 
-    @error($nameId)
-    <p class="invalid-feedback">
-        {{ $message  }}
-    </p>
-    @enderror
-    @error($name)
-    <p class="invalid-feedback">
-        {{ $message  }}
-    </p>
-    @enderror
+    <x-forms.error :name="$nameId" />
+    <x-forms.error :name="$name" />
 </div>
 
 @push('css')

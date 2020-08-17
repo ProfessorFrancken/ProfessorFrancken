@@ -11,16 +11,7 @@
            ])
     !!}
 
-    <div class="form-group">
-        <label for="content" class="d-none">Comment</label>
-        {!!
-               Form::textarea(
-                   'content',
-                   null,
-                   ['class' => 'form-control', 'id' => 'content', 'rows' => 2]
-               )
-        !!}
-    </div>
+    <x-forms.textarea name="content" label="Comment" rows="2" />
 
     <p class="mt-3">
         <button class="btn btn-primary" type="submit">

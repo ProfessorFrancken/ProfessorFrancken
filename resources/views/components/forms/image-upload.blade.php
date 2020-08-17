@@ -5,11 +5,14 @@
     'help' => '',
 ])
 
-<div class="form-group">
-    <label for="{{ $name }}" class="btn btn-block btn-sm btn-primary mb-0">
-        <i class="fas fa-upload"></i>
-        {{ $label }}
-    </label>
+<x-forms.form-group :name="$name" :help="$help">
+    <x-slot name="label">
+        <span class="btn btn-block btn-sm btn-primary mb-0">
+            <i class="fas fa-upload"></i>
+            {{ $label }}
+        </span>
+    </x-slot>
+
     {!!
            Form::file(
                $name,
@@ -19,15 +22,7 @@
                ]
            )
     !!}
-
-    @error($name)
-    <p class="invalid-feedback">
-        {{ $message  }}
-    </p>
-    @enderror
-
-    {!! $help !!}
-</div>
+</x-forms.form-group>
 
 @push('scripts')
 <script>

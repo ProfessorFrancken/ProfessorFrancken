@@ -18,7 +18,7 @@
                     !!}
                         @include('admin.extern.partners.contacts._form', ['partner' => $partner, 'contact' => $contact])
 
-                        {!! Form::submit('Save contact', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Save contact</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

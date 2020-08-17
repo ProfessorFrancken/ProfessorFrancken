@@ -15,47 +15,37 @@
            ])
         !!}
 
-        <h2 class="card-title">Edit {{ $edition->title() }}</h2>
 
-        <div class="form-group">
-            {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}
-            {!! Form::text('title', $edition->title(), ['class' => 'form-control']) !!}
-        </div>
+        <x-forms.text name="title" label="Title" :value="$edition->title()" />
 
         <div class="row">
             <div class="col-sm-6">
-                <div class="form-group">
-                    {!! Form::label('volume', 'Volume:', ['class' => 'control-label']) !!}
-                    {!! Form::number('volume', $edition->volume(), ['class' => 'form-control', 'min' => 1]) !!}
-                </div>
+                <x-forms.text name="volume" label="Volume" :value="$edition->volume()" />
             </div>
 
             <div class="col-sm-6">
-                <div class="form-group">
-                    {!! Form::label('edition', 'Edition:', ['class' => 'control-label']) !!}
-                    {!! Form::number('edition', $edition->edition(), ['class' => 'form-control', 'min' => 1, 'max' => 3]) !!}
-                </div>
+                <x-forms.text name="edition" label="Edition" :value="$edition->edition()" />
             </div>
         </div>
 
-        <div class="form-group">
-            <p>
-                You may optionally reupload the Francken Vrij Pdf
-            </p>
-            {!! Form::label('pdf', 'Francken Vrij PDF', ['class' => 'control-label']) !!}
+        <x-forms.form-group name="pdf" label="Fancken Vrij Pdf">
             {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
-        </div>
 
-        <div class="form-group">
-            <p>
+            <x-slot name="help">
+                You may optionally reupload the Francken Vrij Pdf
+            </x-slot>
+        </x-forms.form-group>
+
+        <x-forms.form-group name="cover" label="Cover">
+            {!! Form::file('cover', ['class' => 'form-control-file']) !!}
+
+            <x-slot name="help">
                 You may optionally reupload the cover image.
                 The cover image should have a size of 175x245 pixels.
-            </p>
-            {!! Form::label('cover', 'Cover', ['class' => 'control-label']) !!}
-            {!! Form::file('cover', ['class' => 'form-control-file']) !!}
-        </div>
+            </x-slot>
+        </x-forms.form-group>
 
-        {!! Form::submit('Update', ['class' => 'btn btn-outline-success']) !!}
+        <x-forms.submit>Update</x-forms.submit>
 
         {!! Form::close() !!}
 

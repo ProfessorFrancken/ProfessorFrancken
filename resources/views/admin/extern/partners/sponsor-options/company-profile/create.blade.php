@@ -17,7 +17,7 @@
                     !!}
                         @include('admin.extern.partners.sponsor-options.company-profile._form', ['partner' => $partner])
 
-                        {!! Form::submit('Add company profile', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Add company profile</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

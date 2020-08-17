@@ -61,6 +61,7 @@ class SignUpsFeature extends TestCase
         factory(SignUpSettings::class)->create([
             'activity_id' => $activity->id,
             'max_sign_ups' => 33,
+            'max_plus_ones_per_member' => null,
         ]);
         $account = factory(Account::class)->create();
         $this->actingAs($account)

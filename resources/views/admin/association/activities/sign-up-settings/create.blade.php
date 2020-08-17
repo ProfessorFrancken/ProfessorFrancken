@@ -12,9 +12,9 @@
                        ),
                    ])
             !!}
-            @include('admin.association.activities.sign-up-settings._form', ['committee' => $activity])
+                @include('admin.association.activities.sign-up-settings._form', ['committee' => $activity])
 
-            {!! Form::submit('Add sign up settings', ['class' => 'btn btn-outline-success']) !!}
+                <x-forms.submit>Add sign up settings</x-forms.submit>
             {!! Form::close() !!}
         </div>
     </div>

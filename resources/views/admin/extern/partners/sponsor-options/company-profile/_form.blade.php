@@ -1,26 +1,7 @@
-<div class="form-group">
-    <label for="display_name">Display name</label>
-    {!!
-       Form::text(
-           'display_name',
-           $profile->display_name,
-           ['class' => 'form-control', 'id' => 'diplay_name']
-       )
-    !!}
-    <p class="form-text text-muted">
+<x-forms.text name="display_name" label="Display name">
+    <x-slot name="help">
         Set a custom display name if this partner has a name such as "Thales Nederland B.V." and you'd rather show "Thales" when the partner is viewed on the website.
-    </p>
-</div>
-<div class="form-group form-check">
-    {!!
-       Form::checkbox(
-           'is_enabled',
-           true,
-           $profile->is_enabled,
-           ['class' => 'form-check-input', 'id' => 'is_enabled']
-       )
-    !!}
-    <label class="form-check-label" for="is_enabled">Show on website</label>
-</div>
-
+    </x-slot>
+</x-forms.text>
+<x-forms.checkbox name="is_enabled" label="Show on website" :value="$profile->is_enabled" />
 <x-forms.markdown />

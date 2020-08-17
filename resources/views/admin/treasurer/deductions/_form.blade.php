@@ -1,30 +1,26 @@
 <div class="row">
     <div class="col">
-        <div class="form-group">
-            <label for="deducted_at">Deducted at</label>
-            {!!
-               Form::date(
-                   'deducted_at',
-                   optional($deduction->deducted_at)->format('Y-m-d'),
-                   ['class' => 'form-control', 'id' => 'deducted_at']
-               );
-            !!}
-
-            <small class="form-text text-muted">
+        <x-forms.date
+            name="deducted_at"
+            label="Deducted at"
+            :value="optional($deduction->deducted_at)->format('Y-m-d')"
+        >
+            <x-slot name="help">
                 The approximate date at which the money will be deducted from our members' bank accounts.
-            </small>
-        </div>
+            </x-slot>
+        </x-forms.date>
 
-        <div class="form-group">
-            <label for="deduction" class="h5">
-                Deduction file
-            </label>
-
+        <x-forms.form-group name="deduction">
             {!! Form::file('deduction', ['class' => 'form-control-file']) !!}
-            <small class="form-text text-muted">
+
+            <x-slot name="label">
+                <h3 class="h5 mb-0">Deduction file</h3>
+            </x-slot>
+
+            <x-slot name="help">
                 The file that you've uploaded to ABN Amro.
-            </small>
-        </div>
+            </x-slot>
+        </x-forms.form-group>
 
         <h3 class="h5">Deduction period</h3>
 
@@ -33,25 +29,19 @@
             This period will be mentioned in the email sent to our members.
         </small>
         <div class="row">
-            <div class="form-group col">
-                <label for="deduction_from">Deduction from</label>
-                {!!
-                   Form::date(
-                       'deduction_from',
-                       optional($deduction->deduction_from)->format('Y-m-d'),
-                       ['class' => 'form-control', 'id' => 'deduction_from']
-                   );
-                !!}
+            <div class="col">
+                <x-forms.date
+                    name="deduction_from"
+                    label="Deduction from"
+                    :value="optional($deduction->deduction_from)->format('Y-m-d')"
+                />
             </div>
-            <div class="form-group col">
-                <label for="deduction_to">Deduction to</label>
-                {!!
-                   Form::date(
-                       'deduction_to',
-                       optional($deduction->deduction_to)->format('Y-m-d'),
-                       ['class' => 'form-control', 'id' => 'deduction_to']
-                   );
-                !!}
+            <div class="col">
+                <x-forms.date
+                    name="deduction_to"
+                    label="Deduction to"
+                    :value="optional($deduction->deduction_to)->format('Y-m-d')"
+                />
             </div>
         </div>
 

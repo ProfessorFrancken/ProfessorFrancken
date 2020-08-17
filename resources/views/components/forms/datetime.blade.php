@@ -2,15 +2,15 @@
     'name',
     'label' => null,
     'value' => null,
-    'placeholder' => '',
     'help' => '',
+    'placeholder' => 'yyyy-mm-dd hh:mm:ss',
     'required' => false,
     'disabled' => false,
 ])
 
 <x-forms.form-group :name="$name" :label="$label" :help="$help">
     {!!
-           Form::text(
+           Form::datetime(
                $name,
                $value,
                [

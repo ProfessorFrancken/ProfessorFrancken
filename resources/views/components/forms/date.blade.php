@@ -2,7 +2,7 @@
     'name',
     'label' => null,
     'value' => null,
-    'placeholder' => '',
+    'placeholder' => 'yyyy-mm-dd',
     'help' => '',
     'required' => false,
     'disabled' => false,
@@ -10,7 +10,7 @@
 
 <x-forms.form-group :name="$name" :label="$label" :help="$help">
     {!!
-           Form::text(
+           Form::date(
                $name,
                $value,
                [

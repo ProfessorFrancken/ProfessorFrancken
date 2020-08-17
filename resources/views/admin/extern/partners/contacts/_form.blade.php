@@ -3,102 +3,23 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label for="firstname">Firstname</label>
-                    {!!
-                       Form::text(
-                           'firstname',
-                           null,
-                           [
-                               'placeholder' => 'Jan',
-                               'class' => 'form-control',
-                               'required'
-                           ]
-                       )
-                    !!}
-                    @error('firstname')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
+                    <x-forms.text name="firstname" label="Firstname" placeholder="Jan" required />
                 </div>
                 <div class="col-sm-6">
-                    <label for="firstname">Surname</label>
-                    {!!
-                       Form::text(
-                           'surname',
-                           null,
-                           [
-                               'placeholder' => 'Francken',
-                               'class' => 'form-control',
-                               'required',
-                           ]
-                       )
-                    !!}
-                    @error('surname')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
+                    <x-forms.text name="surname" label="Surname" placeholder="Francken" required />
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6">
-                <label for="initials">Initials</label>
-                {!!
-                   Form::text(
-                       'initials',
-                       null,
-                       [
-                           'placeholder' => 'J.C.',
-                           'class' => 'form-control',
-                       ]
-                   )
-                !!}
-                @error('firstname')
-                <p class="invalid-feedback">
-                    {{ $message  }}
-                </p>
-                @enderror
+                <x-forms.text name="initials" label="Initials" placeholder="J.C." />
             </div>
             <div class="col-sm-6">
-                <label for="position">Position</label>
-                {!!
-                   Form::text(
-                       'position',
-                       null,
-                       [
-                           'placeholder' => 'Corporate recuiter',
-                           'class' => 'form-control',
-                           'id' => 'position'
-                       ]
-                   )
-                !!}
-                @error('position')
-                <p class="invalid-feedback">
-                    {{ $message  }}
-                </p>
-                @enderror
+                <x-forms.text name="position" label="Position" placeholder="Corporate reqruiter" />
             </div>
             <div class="col-sm-6">
-                <label for="title">Title</label>
-                {!!
-                   Form::text(
-                       'title',
-                       null,
-                       [
-                           'placeholder' => 'Dr. Ir.',
-                           'class' => 'form-control',
-                           'id' => 'title'
-                       ]
-                   )
-                !!}
-                @error('title')
-                <p class="invalid-feedback">
-                    {{ $message  }}
-                </p>
-                @enderror
+                <x-forms.text name="title" label="Title" placeholder="Dr. Ir." />
             </div>
         </div>
         <div class="form-group">
@@ -170,25 +91,16 @@
                         !!}
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
-<div class="form-group">
-    <label for="notes">Notes</label>
-    {!!
-       Form::textarea(
-           'notes',
-           null,
-           ['class' => 'form-control', 'id' => 'notes', 'rows' => 3]
-       )
-    !!}
-    <small class="form-text text-muted">
+<x-forms.textarea name="notes" label="Notes" rows="3">
+    <x-slot name="help">
         Keep specific notes for this contact.
-    </small>
-</div>
+    </x-slot>
+</x-forms.textarea>
 
 
 <div class="d-flex flex-column justify-content-end h-100">

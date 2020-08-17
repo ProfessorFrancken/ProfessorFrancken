@@ -63,11 +63,11 @@
                     >
                         {!! Form::hidden('select', $request->input('select', 'available'))  !!}
                         <div class="d-flex mb-3">
-                            <div class="form-group mr-2 mb-0">
-                                {!! Form::text('title', $request->title(), ['placeholder' => 'Search by title', 'class' => 'form-control'])  !!}
+                            <div class="mr-2">
+                                <x-forms.text name="title" placeholder="Search by title" :value="$request->title()" />
                             </div>
 
-                            <div class="mx-2 mb-0">
+                            <div class="mx-2">
                                 <x-forms-autocomplete-member
                                     name="seller"
                                     name-id="seller_id"
@@ -76,7 +76,7 @@
                                     :label="null"
                                 />
                             </div>
-                            <div class="mx-2 mb-0">
+                            <div class="mx-2">
                                 <x-forms-autocomplete-member
                                     name="buyer"
                                     name-id="buyer_id"
@@ -85,7 +85,7 @@
                                     :label="null"
                                 />
                             </div>
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center mb-3">
                                 <div>
                                     <button type="submit" class="mx-2 btn btn-sm btn-primary">
                                         <i class="fas fa-search"></i>

@@ -92,13 +92,13 @@
                ]
            )
         !!}
-        <div class="form-group mr-3">
-            <label for="board_id" class="mx-3">Board</label>
-            {!!
-               Form::select('board_id', $board_years, $board->id, ['class' => 'form-control', 'id' => 'board_id']);
-            !!}
-        </div>
-        <button class='btn btn-primary btn-sm'>
+        <x-forms.select name="board_id" :value="$board->id" :options="$board_years">
+            <x-slot name="label">
+                <span class="mx-3">Board</span>
+            </x-slot>
+        </x-forms.select>
+
+        <button class='btn btn-primary btn-sm ml-3'>
             <i class="fas fa-eye"></i>
             View
         </button>

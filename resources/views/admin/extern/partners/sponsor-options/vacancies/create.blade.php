@@ -17,7 +17,7 @@
                     !!}
                         @include('admin.extern.partners.sponsor-options.vacancies._form', ['partner' => $partner, 'vacancy' => $vacancy])
 
-                        {!! Form::submit('Add vacancy', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Add vacancy</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

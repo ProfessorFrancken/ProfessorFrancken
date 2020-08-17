@@ -2,15 +2,15 @@
     'name',
     'label' => null,
     'value' => null,
-    'placeholder' => '',
+    'placeholder' => null,
     'help' => '',
     'required' => false,
-    'disabled' => false,
+    'rows' => 3,
 ])
 
 <x-forms.form-group :name="$name" :label="$label" :help="$help">
     {!!
-           Form::text(
+           Form::textarea(
                $name,
                $value,
                [
@@ -18,7 +18,7 @@
                    'placeholder' => $placeholder,
                    'id' => $name,
                    'required' => $required,
-                   'disabled' => $disabled,
+                   'rows' => $rows,
                ]
            )
     !!}

@@ -12,16 +12,14 @@
                         For your convenience you can use the search bar to search for books and automatically fill in all details.
                         Note that the edition number of the book is not filled in automatically.
                     </p>
-                    <div class="form-group mb-4">
-                        <label for="search">Search for books</label>
-                        {!! Form::text('search', null, ['class' => 'form-control search-for-book', 'placeholder' => 'Search by title, author and / or isbn']) !!}
+                    <div class="mb-4">
+                        <x-forms.text name="search" label="Search for books" placeholder="Search by title, author and / or isbn" />
                     </div>
-
 
                     @include('admin.study.books._form', ['book' => $book])
                 </div>
                 <div class="card-footer">
-                        {!! Form::submit('Add book', ['class' => 'btn btn-outline-success']) !!}
+                    <x-forms.submit>Add book</x-forms.submit>
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -71,10 +69,10 @@
                   },
                   select: function (event, ui) {
                       console.log(event, ui)
-                      $('.book-title').val(ui.item.title);
-                      $('.book-author').val(ui.item.author);
-                      $('.book-isbn').val(ui.item.isbn[1].identifier);
-                      $('.book-edition').val(ui.item.edition);
+                      $('[name="title"]').val(ui.item.title);
+                      $('[name="author"]').val(ui.item.author);
+                      $('[name="isbn"]').val(ui.item.isbn[1].identifier);
+                      $('[name="edition"]').val(ui.item.edition);
                       $('.book-image').attr("src", ui.item.image);
                   },
                   minLength: 3 // set minimum length of text the user must enter

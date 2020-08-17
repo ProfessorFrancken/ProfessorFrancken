@@ -68,59 +68,18 @@
             Search for job openings
         </label>
     </h3>
-    <ul class="agenda-list list-unstyled">
-        <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
-            <form action="{{ url('/career/job-openings') }}" method="GET" class="form-horizontal">
+    <form action="{{ url('/career/job-openings') }}" method="GET" class="form-horizontal">
+        <x-forms.text name="title" label="Title" placeholder="Search by job title" :value="$request->title()" />
+        <x-forms.select name='partner_id' label="Company" :value="$request->partnerId()" :options="$partners" />
+        <x-forms.select name='sector_id' label="Sector" :value="$request->sectorId()" :options="$sectors" />
+        <x-forms.select
+            name='job_type'
+            label="Type of job"
+            :value="$request->jobType()"
+            :options="array_merge(['' => 'Any'], array_combine(array_keys($types), array_keys($types)))"
+        />
 
-                <div class="form-group">
-                    {!! Form::text('title', $request->title(), ['placeholder' => 'Search by job title', 'class' => 'form-control'])  !!}
-                </div>
-
-                <div class="form-group">
-                    {!!
-                       Form::select(
-                           'partner_id',
-                           $partners,
-                           $request->partnerId(),
-                           ['class' => 'form-control']
-                       )
-                    !!}
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-5 col-form-label" for="sector_id">Sector</label>
-                    <div class="col-7">
-                        {!!
-                           Form::select(
-                               'sector_id',
-                               $sectors,
-                               $request->sectorId(),
-                               ['class' =>'form-control', 'id' => 'sector_id']
-                           )
-                        !!}
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-5 col-form-label" for="job_type">Type of job</label>
-                    <div class="col-7">
-                        {!!
-                           Form::select(
-                               'job_type',
-                               array_merge(
-                                   ['' => 'Any'],
-                                   array_combine(array_keys($types), array_keys($types))
-                               ),
-                               $request->jobType(),
-                               ['class' => 'form-control', 'id' => 'job_type']
-                           )
-                        !!}
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-block btn-primary">Apply filters</button>
-            </form>
-        </li>
-    </ul>
+        <button type="submit" class="btn btn-block btn-primary">Apply filters</button>
+    </form>
 </div>
 @endsection

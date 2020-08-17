@@ -9,13 +9,19 @@
                 <img id="profilePicture" alt="" src="{{ $news->author_photo }}" style="cursor: pointer;" class="img-fluid rounded w-100"/>
             </div>
             <div class="col-md-9">
-                <div class="form-group">
-                    {!! Form::text('author_name', $news->author_name, ['class' => 'form-control', 'placeholder' => 'Author name']) !!}
-                </div>
+                <x-forms.text
+                    name="author_name"
+                    label="Author name"
+                    placeholder="Author name"
+                    :value="$news->author_name"
+                />
 
-                <div class="form-group">
-                    {!! Form::text('author_photo', $news->author_photo, ['class' => 'form-control', 'placeholder' => 'Url to picture of author']) !!}
-                </div>
+                <x-forms.text
+                    name="author_photo"
+                    label="Author photo"
+                    placeholder="Url to picture of author"
+                    :value="$news->author_photo"
+                />
             </div>
         </div>
     </div>

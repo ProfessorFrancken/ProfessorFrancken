@@ -18,7 +18,7 @@
                     !!}
                         @include('admin.extern.partners.sponsor-options.footer._form', ['partner' => $partner])
 
-                        {!! Form::submit('Save footer', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Save footer</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>

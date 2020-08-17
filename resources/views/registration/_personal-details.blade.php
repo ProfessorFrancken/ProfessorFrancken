@@ -3,90 +3,28 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label for="firstname">Firstname</label>
-                    {!!
-                       Form::text(
-                           'firstname',
-                           null,
-                           [
-                               'placeholder' => 'Jan',
-                               'class' => 'form-control',
-                               'required'
-                           ]
-                       )
-                    !!}
-                    @error('firstname')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
+                    <x-forms.text name="firstname" label="Firstname" placeholder="Jan" required />
                 </div>
                 <div class="col-sm-6">
-                    <label for="firstname">Surname</label>
-                    {!!
-                       Form::text(
-                           'surname',
-                           null,
-                           [
-                               'placeholder' => 'Francken',
-                               'class' => 'form-control',
-                               'required',
-                           ]
-                       )
-                    !!}
-                    @error('surname')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
+                    <x-forms.text name="surname" label="Surname" placeholder="Francken" required />
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6">
-                <label for="initials">Initials</label>
-                {!!
-                   Form::text(
-                       'initials',
-                       null,
-                       [
-                           'placeholder' => 'J.C.',
-                           'class' => 'form-control',
-                       ]
-                   )
-                !!}
-                @error('firstname')
-                <p class="invalid-feedback">
-                    {{ $message  }}
-                </p>
-                @enderror
+                <x-forms.text name="initials" label="Initials" placeholder="J.C." />
             </div>
             <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="birthdate">Birthdate</label>
-                    {!!
-                       Form::date(
-                           'birthdate',
-                           isset($registration) ? $registration->birthdate->format("Y-m-d") : null,
-                           [
-                               'placeholder' => 'yyyy-mm-dd',
-                               'class' => 'form-control',
-                               'required',
-                           ]
-                       )
-                    !!}
-                    @error('birthdate')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
-                </div>
+                <x-forms.date
+                    name="birthdate"
+                    label="Birthdate"
+                    :value='isset($registration) ? $registration->birthdate->format("Y-m-d") : null'
+                />
             </div>
         </div>
         <div class="form-group">
             Gender
-
 
             <div class="d-flex flex-column flex-sm-row align-items-start mt-2">
                 <div class="form-check mr-3">

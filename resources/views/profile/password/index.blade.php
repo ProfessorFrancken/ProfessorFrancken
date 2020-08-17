@@ -63,7 +63,7 @@
 
         </div>
         <div class="card-footer">
-            {!! Form::submit('Change password', ['class' => 'btn btn-primary']) !!}
+            <x-forms.submit class="btn btn-primary">Change password</x-forms.submit>
         </div>
         {!! Form::close() !!}
     </div>

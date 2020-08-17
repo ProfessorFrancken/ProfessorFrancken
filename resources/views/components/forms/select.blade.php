@@ -7,8 +7,7 @@
     'help' => '',
 ])
 
-<div class="form-group">
-    <label for="{{ $name }}">{{ $label }}</label>
+<x-forms.form-group :name="$name" :label="$label" :help="$help">
     {!!
            Form::select(
                $name,
@@ -20,12 +19,4 @@
                ]
            );
     !!}
-
-    @error($name)
-    <p class="invalid-feedback">
-        {{ $message  }}
-    </p>
-    @enderror
-
-    {!! $help !!}
-</div>
+</x-forms.form-group>

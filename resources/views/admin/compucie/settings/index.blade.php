@@ -27,9 +27,9 @@
                                     </div>
                                 @endif
                         @endforeach
-                        {!! Form::submit('Save', ['class' => 'btn btn-outline-success']) !!}
 
-                        {!! Form::close() !!}
+                        <x-forms.submit>Save</x-forms.submit>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

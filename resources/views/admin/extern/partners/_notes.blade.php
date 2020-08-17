@@ -30,15 +30,9 @@
                'method' => 'POST',
            ])
         !!}
-        <div class="form-group">
-            {!!
-               Form::textarea(
-                   'note',
-                   null,
-                   ['class' => 'form-control', 'id' => 'note', 'rows' => 3]
-               )
-            !!}
-        </div>
+
+        <x-forms.textarea name="note" rows="3" />
+
         <button class='btn btn-text btn-sm'>
             <i class="fas fa-check"></i>
             Save note

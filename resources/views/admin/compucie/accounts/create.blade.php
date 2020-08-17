@@ -15,10 +15,7 @@
 
                     <x-forms-autocomplete-member :members="$members" />
 
-                    <div class="form-group">
-                        {!! Form::checkbox('send_notification_email', true, null, ['id' => 'send_notification_email']); !!}
-                        <label for="send_notification_email">Send notification email</label>
-                    </div>
+                    <x-forms.checkbox name="send_notification_email" label="Send notification email" />
 
                     <button class="btn btn-primary">Activate</button>
 

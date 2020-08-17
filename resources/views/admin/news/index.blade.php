@@ -51,32 +51,25 @@ use Francken\Association\News\Http\AdminNewsController;
                         <li class="agenda-item" style="margin-bottom: .5em; padding-bottom: .5em;">
 
                             <form action="{{ action([AdminNewsController::class, 'index']) }}" method="GET" class="form-horizontal">
+                                <x-forms.text name="subject" label="Subject" placeholder="Search by subject" />
+                                <x-forms.text name="author" label="Author" placeholder="Search by author" />
 
-                                <div class="form-group">
-                                    {!! Form::text('subject', null, ['placeholder' => 'Search by subject', 'class' => 'form-control'])  !!}
-                                </div>
-
-                                <div class="form-group">
-                                    {!! Form::text('author', null, ['placeholder' => 'Search by author', 'class' => 'form-control'])  !!}
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="example-date-input" class="col-5 col-form-label">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        Published before
-                                    </label>
-                                    <div class="col-7">
-                                        {!! Form::date('before', null, ['class' => 'form-control'])  !!}
+                                <div class="row">
+                                    <div class="col">
+                                        <x-forms.date name="before">
+                                            <x-slot name="label">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                Published before
+                                            </x-slot>
+                                        </x-forms.date>
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="example-date-input" class="col-5 col-form-label">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        Published after
-                                    </label>
-                                    <div class="col-7">
-                                        {!! Form::date('after', null, ['class' => 'form-control'])  !!}
+                                    <div class="col">
+                                        <x-forms.date name="after">
+                                            <x-slot name="label">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                Published after
+                                            </x-slot>
+                                        </x-forms.date>
                                     </div>
                                 </div>
 

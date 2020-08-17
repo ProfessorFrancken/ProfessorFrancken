@@ -22,7 +22,7 @@
     </div>
 
     <div class="card-footer">
-        {!! Form::submit('Upload', ['class' => 'btn btn-outline-success']) !!}
+        <x-forms.submit>Upload</x-forms.submit>
     </div>
     {!! Form::close() !!}
 </div>

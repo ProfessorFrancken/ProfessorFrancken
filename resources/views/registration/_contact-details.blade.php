@@ -1,25 +1,10 @@
 <div class="row">
     <div class="col-sm-12 col-md-8">
-        <div class="form-group">
-            <label><i class="fas fa-envelope-open-text text-primary"></i> Email</label>
-            {!!
-               Form::email(
-                   'email',
-                   null,
-                   [
-                       'placeholder' => 'email@example.com',
-                       'class' => 'form-control',
-                       'required'
-                   ]
-               )
-            !!}
-
-            @error('email')
-            <p class="invalid-feedback">
-                {{ $message  }}
-            </p>
-            @enderror
-        </div>
+        <x-forms.email name="email" placeholder="email@example.com" required>
+            <x-slot name="label">
+                <i class="fas fa-envelope-open-text text-primary"></i> Email
+            </x-slot>
+        </x-forms.email>
     </div>
     <div class="col-sm-12">
         <h5 class="mt-3">
@@ -33,88 +18,18 @@
         </p>
         <div class="row">
             <div class="col-sm-4">
-                <div class="form-group">
-                    <label>City</label>
-                    {!!
-                       Form::text(
-                           'city',
-                           null,
-                           [
-                               'placeholder' => 'Groningen',
-                               'class' => 'form-control',
-                           ]
-                       )
-                    !!}
-
-                    @error('city')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
-                </div>
+                <x-forms.text name="city" label="City" placeholder="Groningen" />
             </div>
 
             <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="Address">Address</label>
-                    {!!
-                       Form::text(
-                           'address',
-                           null,
-                           [
-                               'placeholder' => 'Nijenborgh 9',
-                               'class' => 'form-control',
-                           ]
-                       )
-                    !!}
-                    @error('address')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
-                </div>
+                <x-forms.text name="address" label="Address" placeholder="Nijenborgh 9" />
             </div>
 
             <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="postal_code">Postal code</label>
-                    {!!
-                       Form::text(
-                           'postal_code',
-                           null,
-                           [
-                               'placeholder' => '9742 AG',
-                               'class' => 'form-control',
-                               'id' => 'postal_code',
-                           ]
-                       )
-                    !!}
-                    @error('postal_code')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
-                </div>
+                <x-forms.text name="postal_code" label="Postal code" placeholder="9742 AG" />
             </div>
             <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="country">Country</label>
-                    {!!
-                       Form::text(
-                           'country',
-                           null,
-                           [
-                               'placeholder' => 'Netherlands',
-                               'class' => 'form-control',
-                           ]
-                       )
-                    !!}
-                    @error('country')
-                    <p class="invalid-feedback">
-                        {{ $message  }}
-                    </p>
-                    @enderror
-                </div>
+                <x-forms.text name="country" label="Country" placeholder="Netherlands" />
             </div>
         </div>
     </div>
@@ -131,21 +46,7 @@
             </p>
             <div class="row">
                 <div class="col-md-4">
-
-                    <label for="phone_number">
-                        Phone number
-                    </label>
-                    {!!
-                       Form::text(
-                           'phone_number',
-                           null,
-                           [
-                               'placeholder' => '+31 50 363 4978',
-                               'class' => 'form-control',
-                               'id' => 'phone_number'
-                           ]
-                       )
-                    !!}
+                    <x-forms.text name="phone_number" label="Phone number" placeholder="+31 50 363 4978" />
                 </div>
             </div>
         </div>

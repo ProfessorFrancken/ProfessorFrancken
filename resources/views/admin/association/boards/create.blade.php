@@ -15,7 +15,7 @@
                     !!}
                         @include('admin.association.boards._form', ['board' => $board])
 
-                        {!! Form::submit('Install', ['class' => 'btn btn-outline-success']) !!}
+                        <x-forms.submit>Install</x-forms.submit>
                     {!! Form::close() !!}
                 </div>
             </div>
