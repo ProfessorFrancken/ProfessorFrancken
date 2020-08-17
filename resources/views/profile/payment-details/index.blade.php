@@ -18,51 +18,18 @@
 
             @method('PUT')
 
-            <label for="iban" class="form-control-label">
-                International Bank Account Number (IBAN)
-            </label>
-            {!!
-                   Form::text(
-                       'iban',
-                       $member->payment_details->iban(),
-                       [
-                           'placeholder' => 'NL91 ABNA 0417 1643 00',
-                           'class' => 'form-control' . ($errors->has('iban') ? ' is-invalid' : ''),
-                       ]
-                   )
-            !!}
-            @error('iban')
-            <p class="invalid-feedback">
-                {{ $message  }}
-            </p>
-            @enderror
+            <x-forms.text
+                name="iban"
+                label="International Bank Account Number (IBAN)"
+                help="We will use your IBAN to automatically withdraw your expenses."
+                :value="$member->payment_details->iban()"
+            />
 
-            <p class="form-text text-muted">
-                We will use your IBAN to automatically withdraw your expenses.
-            </p>
-
-            <div class="form-check">
-                {!!
-                       Form::checkbox(
-                           'deduct_additional_costs',
-                           true,
-                           $member->payment_details->deductAdditionalCosts(),
-                           [
-                               'id' => 'deduct_additional_costs',
-                               'class' => 'form-check-input' . ($errors->has('deduct_additional_costs') ? ' is-invalid' : ''),
-                               'checked' => $member->payment_details->deductAdditionalCosts()
-                           ]
-                       )
-                !!}
-                <label class="form-check-label" for="deduct_additional_costs">
-                    Allow deducting additional costs for buying food & drinks and attending activities
-                </label>
-                @error('deduct_additional_costs')
-                <p class="invalid-feedback">
-                    {{ $message  }}
-                </p>
-                @enderror
-            </div>
+            <x-forms.checkbox
+                name="deduct_additional_costs"
+                label="Allow deducting additional costs for buying food & drinks and attending activities"
+                :value="$member->payment_details->deductAdditionalCosts()"
+            />
         </div>
 
         <div class="card-footer">
