@@ -3,9 +3,10 @@
     'label',
     'value' => null,
     'help' => '',
+    'formGroupClass' => ''
 ])
 
-<x-forms.form-group :name="$name" :label="null" :help="$help" form-group-class="form-check">
+<x-forms.form-group :name="$name" :label="null" :help="$help" form-group-class="form-check {{ $formGroupClass }}">
     {!!
            Form::checkbox(
                $name,
