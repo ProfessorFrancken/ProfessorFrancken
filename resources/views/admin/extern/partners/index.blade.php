@@ -47,19 +47,32 @@
                   class="form"
             >
                 <div class="d-flex mb-3">
-                    <div class="form-group mr-2 mb-0">
-                        <label for="name">Name</label>
-                        {!! Form::text('name', $request->name(), ['placeholder' => 'Search by name', 'class' => 'form-control'])  !!}
+                    <div class="mr-2">
+                        <x-forms.text
+                            name="name"
+                            label="Name"
+                            placeholder="Search by name"
+                            :value="$request->name()"
+                        />
                     </div>
-                    <div class="form-group mx-2 mb-0">
-                        <label for="sector_id">Sector</label>
-                        {!! Form::select('sector_id', $sectors, $request->sectorId(), ['class' =>'form-control', 'id' => 'sector_id']) !!}
+                    <div class="mx-2">
+                        <x-forms.select
+                            name="sector"
+                            label="Sector"
+                            :value="$request->sectorId()"
+                            :options="$sectors"
+                        />
                     </div>
-                    <div class="form-group mx-2 mb-0">
-                        <label for="status">Partner status</label>
-                        {!! Form::select('status', $statuses, $request->status(), ['class' =>'form-control', 'id' => 'status']) !!}
+                    <div class="mx-2">
+                        <x-forms.select
+                            name="status"
+                            label="Partner status"
+                            :value="$request->status()"
+                            :options="$statuses"
+                        />
                     </div>
-                    <div class="d-flex justify-content-between align-items-end">
+
+                    <div class="d-flex justify-content-between align-items-end mb-3">
                         <button type="submit" class="mx-2 btn btn-sm btn-primary">
                             <i class="fas fa-search"></i>
                             Apply filters
@@ -73,21 +86,36 @@
                     </div>
                 </div>
                 <div class="d-flex justify-conten-between">
-                    <div class="form-group form-check mx-2">
-                        {!! Form::checkbox('has_company_profile', true, $request->hasCompanyProfile(), ['class' => 'form-check-input', 'id' => 'has_company_profile'])  !!}
-                        <label class="form-check-label" for="has_company_profile">Only show partners with company profile</label>
+                    <div class="mx-2">
+                        <x-forms.checkbox
+                            name="has_company_profile"
+                            label="Only show partners with company profile"
+                            :value="$request->hasCompanyProfile()"
+                        />
                     </div>
-                    <div class="form-group form-check mx-2">
-                        {!! Form::checkbox('has_vacancies', true, $request->hasVacancies(), ['class' => 'form-check-input', 'id' => 'has_vacancies'])  !!}
-                        <label class="form-check-label" for="has_vacancies">Only show partners with vacancies</label>
+
+                    <div class="mx-2">
+                        <x-forms.checkbox
+                            name="has_vacancies"
+                            label="Only show partners with vacancies"
+                            :value="$request->hasVacancies()"
+                        />
                     </div>
-                    <div class="form-group form-check mx-2">
-                        {!! Form::checkbox('has_footer', true, $request->hasFooter(), ['class' => 'form-check-input', 'id' => 'has_footer'])  !!}
-                        <label class="form-check-label" for="has_footer">Only show partners with footer</label>
+
+                    <div class="mx-2">
+                        <x-forms.checkbox
+                            name="has_footer"
+                            label="Only show partners with footer"
+                            :value="$request->hasFooter()"
+                        />
                     </div>
-                    <div class="form-group form-check mx-2">
-                        {!! Form::checkbox('show_archived', true, $request->showArchived(), ['class' => 'form-check-input', 'id' => 'show_archived'])  !!}
-                        <label class="form-check-label" for="show_archived">Include archived partners</label>
+
+                    <div class="mx-2">
+                        <x-forms.checkbox
+                            name="show_archived"
+                            label="Include archived partners"
+                            :value="$request->showArchived()"
+                        />
                     </div>
                 </div>
             </form>
