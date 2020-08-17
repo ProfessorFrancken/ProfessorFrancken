@@ -9,17 +9,20 @@
             </p>
 
             <div class="d-flex justify-content-between align-items-end">
-                <div class="form-group mb-0">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                    {!! Form::label('published_at', 'Publish at:', ['class' => 'control-label-col']) !!}
-                    {!! Form::date('published_at', optional($news->published_at)->format('Y-m-d'), ['class' => 'form-control']) !!}
+                <x-forms.date name="published_at" :value="optional($news->published_at)->format('Y-m-d')">
+                    <x-slot name="label">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        Published at
+                    </x-slot>
+                </x-forms.date>
+
+                <div class="mb-3">
+                    <button type="submit" formaction="{{  action([\Francken\Association\News\Http\AdminNewsController::class, 'publish'], ['news' => $news]) }}" class="btn btn-outline-primary pull-right">
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+
+                        Publish
+                    </button>
                 </div>
-
-                <button type="submit" formaction="{{  action([\Francken\Association\News\Http\AdminNewsController::class, 'publish'], ['news' => $news]) }}" class="btn btn-outline-primary pull-right">
-                    <i class="fa fa-upload" aria-hidden="true"></i>
-
-                    Publish
-                </button>
             </div>
         </div>
     </div>
