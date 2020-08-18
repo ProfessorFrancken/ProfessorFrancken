@@ -113,6 +113,7 @@ final class Registration extends Model
      * @var string[]
      */
     protected $casts = [
+        'member_id' => 'int',
         'email_verified_at' => 'datetime:Y-m-d',
         'registration_accepted_at' => 'datetime:Y-m-d',
         'registration_form_signed_at' => 'datetime:Y-m-d',
