@@ -26,10 +26,11 @@ class MainContentController extends Controller
             ->latestEdition()
             ->first();
 
-
         $news = News::recent()->limit(3)->get();
 
         $activities = Activity::query()
+             ->with(['signUpSettings', 'signUps'])
+             ->withCount(['comments'])
             ->after($today)
             ->orderBy('start_date', 'asc')
             ->limit(5)

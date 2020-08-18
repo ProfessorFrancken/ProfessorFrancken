@@ -42,6 +42,10 @@ final class ActivitiesController
             'breadcrumbs' => [
                 ['url' => '/association/', 'text' => 'Association'],
                 ['url' => action([self::class, 'index']), 'text' => 'Activities'],
+                ['url' => action(
+                    [ActivitiesPerMonthController::class, 'index'],
+                    ['year' => $activity->start_date->format('Y'), 'month' => $activity->start_date->format('m')]
+                ), 'text' => $activity->start_date->format('F') . ' ' . $activity->start_date->format('Y')],
                 ['url' => action([self::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
             ],
         ]);
