@@ -50,7 +50,7 @@ final class Account extends Model implements
     ];
 
     public static function activate(
-        string $memberId,
+        int $memberId,
         string $email,
         string $password
     ) : self {

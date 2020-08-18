@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Features\Admin;
 
 use DateTimeImmutable;
+use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\Members\Address;
@@ -97,17 +98,16 @@ class RegistrationRequestsFeature extends TestCase
             ->see('Signed');
     }
 
-
-    // TEST approving, deleting admin stuff
-    //
-
     /** @test */
     public function approving_a_registration_by_a_board_member() : void
     {
         $registration = $this->submitRegistration();
         $account = Account::first();
-        $boardMember = BoardMember::create([
-            'board_id' => 0,
+
+        // Make sure the current user is in the active board
+        $board = factory(Board::class)->create(['installed_at' => '2020-01-01']);
+        BoardMember::create([
+            'board_id' => $board->id,
             'member_id' => $account->member_id,
             'name' => 'Mark',
             'title' => 'Mark',

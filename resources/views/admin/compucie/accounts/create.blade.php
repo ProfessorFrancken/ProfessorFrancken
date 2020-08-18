@@ -15,8 +15,6 @@
 
                     <x-forms-autocomplete-member :members="$members" />
 
-                    <x-forms.checkbox name="send_notification_email" label="Send notification email" />
-
                     <button class="btn btn-primary">Activate</button>
 
                     {!! Form::close() !!}

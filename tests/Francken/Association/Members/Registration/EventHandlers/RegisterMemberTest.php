@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Tests\Association\Members\Registration\EventHandlers;
 
 use DateTimeImmutable;
+use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardMemberStatus;
 use Francken\Association\LegacyMember;
@@ -16,6 +17,7 @@ use Francken\Association\Members\Gender;
 use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\PersonalDetails;
 use Francken\Association\Members\Registration\EventHandlers\RegisterMember;
+use Francken\Association\Members\Registration\Events\MemberWasRegistered;
 use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
 use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
 use Francken\Association\Members\Registration\Registration;
@@ -34,12 +36,13 @@ class RegisterMemberTest extends LaravelTestCase
     /** @test */
     public function a_registration_can_be_submitted() : void
     {
-        Event::fake([RegistrationWasSubmitted::class]);
+        Event::fake([RegistrationWasSubmitted::class, MemberWasRegistered::class]);
 
         $registration = $this->submitRegistration();
         $approvedAt = new DateTimeImmutable('2020-02-02');
+        $board = factory(Board::class)->create(['installed_at' => '2020-01-01']);
         $boardMember = BoardMember::create([
-            'board_id' => 0,
+            'board_id' => $board->id,
             'member_id' => 0,
             'name' => 'Mark',
             'title' => 'Mark',
@@ -54,6 +57,8 @@ class RegisterMemberTest extends LaravelTestCase
         $legacyMember = LegacyMember::orderBy('id', 'desc')->first();
         $this->assertEquals($legacyMember->firstname, 'Mark');
         $legacyMember->delete();
+
+        Event::assertDispatched(MemberWasRegistered::class);
     }
 
     private function submitRegistration() : Registration
