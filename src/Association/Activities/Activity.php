@@ -120,6 +120,10 @@ final class Activity extends Model
 
     public function memberCanSignUp(LegacyMember $member) : bool
     {
+        if ($this->signUpSettings === null) {
+            return false;
+        }
+
         if ($this->signUpSettings->max_sign_ups !== null && $this->total_sign_ups >= $this->signUpSettings->max_sign_ups) {
             return false;
         }
