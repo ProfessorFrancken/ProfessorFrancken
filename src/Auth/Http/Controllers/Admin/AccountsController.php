@@ -7,11 +7,9 @@ namespace Francken\Auth\Http\Controllers\Admin;
 use DB;
 use Francken\Association\LegacyMember;
 use Francken\Auth\Account;
-use Francken\Auth\Mail\NotifyAboutAccountActivation;
 use Francken\Auth\Permission;
 use Francken\Auth\Role;
 use Hash;
-use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -56,7 +54,7 @@ final class AccountsController
         ]);
     }
 
-    public function store(Request $request, Mailer $mail) : RedirectResponse
+    public function store(Request $request) : RedirectResponse
     {
         $memberId = $request->input('member_id');
 
@@ -71,16 +69,7 @@ final class AccountsController
             ->first()
             ->emailadres;
 
-        $account = Account::activate(
-            $memberId,
-            $email,
-            Hash::make(Str::random(32))
-        );
-
-        if ($request->input('send_notification_email', null) === '1') {
-            $mail->to($account->email)
-                ->queue(new NotifyAboutAccountActivation($account->id));
-        }
+        Account::activate($memberId, $email, Hash::make(Str::random(32)));
 
         return redirect()->action([
             self::class,

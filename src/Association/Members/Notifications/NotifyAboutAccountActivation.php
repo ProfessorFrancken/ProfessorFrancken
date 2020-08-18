@@ -2,8 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Francken\Auth\Mail;
+namespace Francken\Association\Members\Notifications;
 
+use Francken\Association\Activities\Http\ActivitiesController;
+use Francken\Association\Members\Http\ExpensesController;
+use Francken\Association\Members\Http\ProfileController;
+use Francken\Association\Photos\Http\Controllers\PhotosController;
 use Francken\Auth\Account;
 use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Bus\Queueable;
@@ -42,17 +46,20 @@ class NotifyAboutAccountActivation extends Mailable
         $account = Account::findOrFail($this->accountId);
 
         return $this->subject("Your Francken website account was activated")
-            ->markdown('auth.mails.notify-about-account-activation', [
+            ->markdown('association.members.registration.mail.account-was-activated', [
                 'fullname' => $account->member->fullname,
                 'email' => $account->email,
-                'url' => $this->resetLink($account, $broker),
+                'password_reset_url'=> $this->resetLink($account, $broker),
+
+                'expenses_url' => action([ExpensesController::class, 'index']),
+                'photos_url' => action([PhotosController::class, 'index']),
+                'activities_url' => action([ActivitiesController::class, 'index']),
+                'profile_url' => action([ProfileController::class, 'index']),
             ]);
     }
 
     private function resetLink(Account $account, PasswordBroker $broker) : string
     {
-        // $broker = \App::make(PasswordBroker::class);
-
         return route('password.reset', ['token' => $broker->createToken($account)]);
     }
 }
