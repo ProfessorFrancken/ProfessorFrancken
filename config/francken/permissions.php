@@ -33,6 +33,12 @@ return [
         'dashboard:members-read',
         'dashboard:members-write',
 
+        'dashboard:activities-read',
+        'dashboard:activities-write',
+
+        'dashboard:photos-read',
+        'dashboard:photos-write',
+
         'dashboard:board-members-read',
         'dashboard:board-members-write',
 
