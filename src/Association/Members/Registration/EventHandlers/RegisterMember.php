@@ -29,12 +29,14 @@ final class RegisterMember implements ShouldQueue
     {
         [$studyTrack, $yearOfRegistration] = $this->study($registration);
         $hasAddress =$this->hasAddress($registration);
-        
+
         return LegacyMember::create([
             "geslacht" => $this->gender($registration),
             "initialen" => $registration->initials,
             "voornaam" => $registration->fullname->firstname(),
             "achternaam" => $registration->fullname->surname(),
+            "titel" => "",
+            "tussenvoegsel" => "",
             "geboortedatum" => $registration->birthdate->format("Y-m-d"),
             "nederlands" => $registration->has_dutch_diploma || in_array($registration->nationality, ['Nederland', 'Nederlands', 'Netherlands', 'Dutch'], true),
             "adres" => $registration->address,
