@@ -2,8 +2,7 @@ version: '3'
 
 networks:
   traefik:
-    external:
-      name: traefik_webgateway
+    internal:  true
 
 volumes:
   mysql:
@@ -12,6 +11,21 @@ volumes:
     driver: "local"
 
 services:
+  proxy:
+    image: traefik:v1.7.24
+    command: --web --docker --docker.domain=docker.localhost --logLevel=DEBUG --docker.exposedbydefault=false
+    networks:
+      - default
+      - traefik
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./certs/:/certs/
+
   php-base:
     build:
       dockerfile: Dockerfile-base
@@ -104,6 +118,9 @@ services:
     networks:
       - default
       - traefik
+    depends_on:
+      - proxy
+      - php
     labels:
       - "traefik.enable=true"
       - "traefik.backend=francken-web"
@@ -120,6 +137,8 @@ services:
     command: -enable-url-source -mount /mnt/data
     volumes:
       - ./docker/volumes/fly-images/:/mnt/data
+    depends_on:
+      - proxy
     labels:
       - "traefik.enable=true"
       - "traefik.backend=francken-images-web"
@@ -132,6 +151,8 @@ services:
     networks:
       - default
       - traefik
+    depends_on:
+      - proxy
     labels:
       - "traefik.enable=true"
       - "traefik.backend=francken-email-web"
@@ -148,6 +169,8 @@ services:
     networks:
       - default
       - traefik
+    depends_on:
+      - proxy
     labels:
       - "traefik.enable=true"
       - "traefik.backend=francken-adminer-web"
