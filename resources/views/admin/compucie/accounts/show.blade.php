@@ -35,7 +35,9 @@
                                               method="post"
                                         >
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-outline-primary">Add</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                                Add
+                                            </button>
                                         </form>
                                     @else
                                         <form action="{{ action([\Francken\Auth\Http\Controllers\Admin\AccountRolesController::class, 'remove'], [$account->id, $role->id]) }}"
@@ -44,7 +46,9 @@
                                         >
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-outline-primary">Remove</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                                Remove
+                                            </button>
                                         </form>
                                     @endif
                                 </td>
@@ -60,6 +64,7 @@
                     <form action="{{ action([\Francken\Auth\Http\Controllers\Admin\AccountPermissionsController::class, 'store'], [$account->id]) }}"
                           class="form"
                           method="post"
+                          id="permission-form"
                     >
                         @csrf
                         <div class="form-group">
@@ -74,8 +79,8 @@
                                     @endforeach
                                 </select>
                                 </div>
-                                <button type="submit" class="btn btn-sm btn-outline-primary">
-                                    <i class="fas fa-plus"></i>Add
+                                <button type="submit" class="btn btn-sm btn-outline-primary" id="add_permission">
+                                    <i class="fas fa-plus"></i> Add
                                 </button>
                             </div>
                         </div>

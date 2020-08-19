@@ -69,7 +69,7 @@ final class AccountsController
             ->first()
             ->emailadres;
 
-        Account::activate($memberId, $email, Hash::make(Str::random(32)));
+        Account::activate((int)$memberId, $email, Hash::make(Str::random(32)));
 
         return redirect()->action([
             self::class,
