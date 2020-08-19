@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Providers;
 
-use DateTimeImmutable;
 use Francken\Shared\ViewComposers\MemberSelectionComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -19,18 +18,5 @@ final class ViewServiceProvider extends ServiceProvider
             'admin.association.boards._member-selection',
             MemberSelectionComposer::class
         );
-    }
-
-    public function associationIcon() : string
-    {
-        $now = new DateTimeImmutable();
-        $fourOClock = DateTimeImmutable::createFromFormat('H a', '4 pm');
-        $fourOClockMorning = DateTimeImmutable::createFromFormat('H a', '4 am');
-
-        if ($fourOClockMorning < $now && $now < $fourOClock) {
-            return 'coffee';
-        }
-
-        return 'beer';
     }
 }
