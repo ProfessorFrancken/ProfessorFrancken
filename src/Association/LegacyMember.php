@@ -17,6 +17,7 @@ use Francken\Association\Members\StudyDetails;
 use Francken\Auth\Account;
 use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
 /**
@@ -88,6 +89,8 @@ use Illuminate\Support\Collection;
  */
 final class LegacyMember extends Model
 {
+    use SoftDeletes;
+
     protected $casts = [
         'mailinglist_email' => 'bool',
         'mailinglist_post' => 'bool',
