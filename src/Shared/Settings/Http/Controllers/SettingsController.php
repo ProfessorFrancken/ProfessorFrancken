@@ -30,12 +30,30 @@ class SettingsController
 
     public function update(Request $request) : RedirectResponse
     {
+        $request->validate([
+            "number_of_extern" => ['required'],
+            "header_image" => ['required'],
+            "private_albums" => ['required'],
+            "navigation_show_login" => ['nullable', 'boolean'],
+            "navigation_show_slef" => ['nullable', 'boolean'],
+            "navigation_show_symposium" => ['nullable', 'boolean'],
+            "navigation_show_pienter" => ['nullable', 'boolean'],
+            "navigation_show_expedition" => ['nullable', 'boolean'],
+        ]);
+
+        $settings = [
+            "number_of_extern" => $request->input("number_of_extern"),
+            "header_image" => $request->input("header_image"),
+            "private_albums" => (bool)$request->input("private_albums"),
+            "navigation_show_login" => (bool) $request->input("navigation_show_login"),
+            "navigation_show_slef" => (bool) $request->input("navigation_show_slef"),
+            "navigation_show_symposium" => (bool) $request->input("navigation_show_symposium"),
+            "navigation_show_pienter" => (bool) $request->input("navigation_show_pienter"),
+            "navigation_show_expedition" => (bool) $request->input("navigation_show_expedition"),
+        ];
+
         // Make sure that we only pass settings which are expected
-        $this->settings->updateSettings(
-            $request->only(
-                array_keys(iterator_to_array($this->settings))
-            )
-        );
+        $this->settings->updateSettings($settings);
 
         return redirect()->action([static::class, 'index']);
     }
