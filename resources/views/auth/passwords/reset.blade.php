@@ -29,7 +29,20 @@
 
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <p class="mb-1">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </p>
+                            @if ($errors->first('email') === trans('passwords.token'))
+                            <p>
+                                Your token may have expired. For security reasons tokens are valid for about 60 minutes after they've been created,
+                                <a
+                                    href="{{ action([Francken\Auth\Http\Controllers\ForgotPasswordController::class, 'showLinkRequestForm']) }}"
+                                    class="font-weight-bold"
+                                >
+                                    click here
+                                </a> to send a new reset password token to your email.
+                            </p>
+                            @endif
                         </span>
                     @endif
                 </div>
@@ -45,7 +58,9 @@
 
                     @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
+                            <p>
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </p>
                         </span>
                     @endif
                 </div>
