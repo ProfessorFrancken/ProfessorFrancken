@@ -46,7 +46,6 @@ return [
             'title' => 'Photos',
             'subItems' => [],
             'icon' => 'camera',
-            'can' => 'view-albums',
         ],
     ],
 
