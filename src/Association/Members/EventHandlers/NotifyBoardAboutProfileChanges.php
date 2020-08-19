@@ -13,21 +13,10 @@ use Francken\Association\Members\Notifications\NotifyBoardAboutAddressChange;
 use Francken\Association\Members\Notifications\NotifyBoardAboutEmailChange;
 use Francken\Association\Members\Notifications\NotifyBoardAboutPaymentDetailsChange;
 use Francken\Association\Members\Notifications\NotifyBoardAboutPhoneNumberChange;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Francken\Shared\EventHandler;
 
-final class NotifyBoardAboutProfileChanges //implements ShouldQueue
+final class NotifyBoardAboutProfileChanges extends EventHandler
 {
-    public function handle(object $event) : void
-    {
-        $method = $this->getHandleMethod($event);
-
-        if ( ! method_exists($this, $method)) {
-            return;
-        }
-
-        $this->$method($event);
-    }
-
     public function whenMemberEmailWasChanged(MemberEmailWasChanged $event) : void
     {
         $currentBoard = Board::current()->firstOrFail();
@@ -58,12 +47,5 @@ final class NotifyBoardAboutProfileChanges //implements ShouldQueue
         $currentBoard->notify(
             new NotifyBoardAboutPaymentDetailsChange($event)
         );
-    }
-
-    private function getHandleMethod(object $event) : string
-    {
-        $classParts = explode('\\', get_class($event));
-
-        return 'when' . end($classParts);
     }
 }

@@ -12,12 +12,13 @@ use Francken\Association\Boards\BoardMemberWasDischarged;
 use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
 use Francken\Association\Committees\Committee;
+use Francken\Shared\EventHandler;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Log;
 use UnexpectedValueException;
 
-final class ChangeRolesListener
+final class ChangeRolesListener extends EventHandler
 {
     /**
      * @var string
@@ -43,17 +44,6 @@ final class ChangeRolesListener
      * @var string
      */
     public const DECHARGED_BOARD_ROLE = 'Decharged Board';
-
-    public function handle(object $event) : void
-    {
-        $method = $this->getHandleMethod($event);
-
-        if ( ! method_exists($this, $method)) {
-            return;
-        }
-
-        $this->$method($event);
-    }
 
     public function whenAccountWasActivated(
         AccountWasActivated $event
@@ -202,12 +192,5 @@ final class ChangeRolesListener
     private function committeeRoleName(Committee $committee) : string
     {
         return 'Committee ' . $committee->name;
-    }
-
-    private function getHandleMethod(object $event) : string
-    {
-        $classParts = explode('\\', get_class($event));
-
-        return 'when' . end($classParts);
     }
 }
