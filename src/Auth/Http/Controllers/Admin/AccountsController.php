@@ -56,11 +56,11 @@ final class AccountsController
 
     public function store(Request $request) : RedirectResponse
     {
-        $memberId = $request->input('member_id');
+        $request->validate([
+            'member_id' => ['required', 'integer', 'exists:francken-legacy.leden,id'],
+        ]);
 
-        if ( ! $memberId) {
-            return redirect()->back();
-        }
+        $memberId = (int)$request->input('member_id');
 
         $email = DB::connection('francken-legacy')
             ->table('leden')

@@ -14,7 +14,7 @@ use Francken\Association\Boards\Board;
  * factory(Francken\Association\Boards\Board::class)->make(['installed_at' => '2020-01-01'])
  */
 $factory->define(Board::class, function (Faker $faker, array $board) {
-    $installedAt = $board['installed_at']
+    $installedAt = isset($board['installed_at'])
         ? DateTimeImmutable::createFromFormat('Y-m-d', $board['installed_at'])
         : $faker->dateTime('2030-01-01');
 

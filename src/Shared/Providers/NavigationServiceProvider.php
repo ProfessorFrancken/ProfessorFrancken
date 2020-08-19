@@ -97,7 +97,7 @@ final class NavigationServiceProvider extends ServiceProvider
         });
     }
 
-    public function associationIcon() : string
+    private function associationIcon() : string
     {
         $now = (new DateTimeImmutable())
             ->setTimeZone(new DateTimeZone('Europe/Amsterdam'));

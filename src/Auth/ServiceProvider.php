@@ -14,7 +14,6 @@ use Francken\Association\Boards\BoardMemberWasInstalled;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 
 final class ServiceProvider extends AuthServiceProvider
@@ -34,12 +33,6 @@ final class ServiceProvider extends AuthServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton(Gate::class, function ($app) : GateThatAllowsGuestsInCallables {
-            return new GateThatAllowsGuestsInCallables($app, function () use ($app) {
-                return call_user_func($app['auth']->userResolver());
-            });
-        });
-
         \Horizon::auth(function ($request) {
             $user = $request->user();
 

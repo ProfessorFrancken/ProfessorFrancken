@@ -8,10 +8,7 @@ final class BoardMemberWasDischarged
 {
     private int $boardId;
 
-    
-    
     private int $memberId;
-
 
     public function __construct(int $boardId, int $memberId)
     {

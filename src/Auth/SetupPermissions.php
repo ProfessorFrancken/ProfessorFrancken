@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
-use DB;
 use Illuminate\Console\Command;
 use Spatie\Permission\PermissionRegistrar;
 
@@ -34,19 +33,6 @@ final class SetupPermissions extends Command
     public function handle() : void
     {
         $this->seedRolesAndPermissions();
-        $oldUsers = DB::table('users')->get();
-
-        foreach ($oldUsers as $user) {
-            $account = Account::create([
-                'email' => $user->email,
-                'password' => $user->password,
-                'member_id' => $user->francken_id,
-            ]);
-
-            if ($user->can_access_admin) {
-                $account->assignrole('Board');
-            }
-        }
     }
 
     private function seedRolesAndPermissions() : void
