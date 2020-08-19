@@ -22,6 +22,7 @@
                 Membership is a must for physics students with a technical orientation.
             </p>
 
+            @guest
             <h3 class="font-weight-bold">
                 Become a member
             </h3>
@@ -33,6 +34,7 @@
             <div class="mt-2">
                 <a href="/register" class="btn btn-primary">Register</a>
             </div>
+            @endguest
         </div>
         <aside class="col-md-5 order-0 order-md-12 mt-n5">
             <div class="agenda-wrapper">

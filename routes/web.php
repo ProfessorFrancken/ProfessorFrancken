@@ -28,7 +28,7 @@ use Francken\Auth\Http\Controllers\LoginController;
 use Francken\Auth\Http\Controllers\ResetPasswordController;
 use Francken\Extern\Http\CareerController;
 use Francken\Extern\Http\CompaniesController;
-use Francken\Shared\Http\Controllers\MainContentController;
+use Francken\Shared\Http\Controllers\FrontPageController;
 use Francken\Shared\Http\Controllers\RedirectController;
 use Francken\Shared\Http\Controllers\ResearchGroupsController;
 use Francken\Study\BooksSale\Http\BooksController;
@@ -41,7 +41,7 @@ Route::redirect('/photos', '/association/photos');
 Route::get('/wordpress/{url}', [RedirectController::class, 'wordpress'])->where('url', '.*');
 Route::get('/scriptcie/{url}', [RedirectController::class, 'scriptcie'])->where('url', '.*');
 
-Route::get('/', [MainContentController::class, 'index'])->name('home');
+Route::get('/', [FrontPageController::class, 'index'])->name('home');
 
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'store']);
