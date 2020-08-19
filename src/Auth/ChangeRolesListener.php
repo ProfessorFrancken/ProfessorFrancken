@@ -23,18 +23,22 @@ final class ChangeRolesListener
      * @var string
      */
     public const ACTIVE_MEMBER_ROLE = 'Active Member';
+
     /**
      * @var string
      */
     public const BOARD_ROLE = 'Board';
+
     /**
      * @var string
      */
     public const CANDIDATE_BOARD_ROLE = 'Candidate Board';
+
     /**
      * @var string
      */
     public const DEMISSIONED_BOARD_ROLE = 'Demissioned Board';
+
     /**
      * @var string
      */
@@ -70,7 +74,7 @@ final class ChangeRolesListener
         // can have both an board and an candidate board role
         // If this happens we can simply fix that by manually changing the account's roles
         $asBoardMembers->each(function (BoardMember $member) use ($account) : void {
-            $account->assignRole($this->boardMemberRole($member));
+            $account->assignRole($this->role($this->boardMemberRole($member)));
         });
 
 
@@ -80,7 +84,7 @@ final class ChangeRolesListener
             $account->hasRole(static::BOARD_ROLE) ||
             $account->hasRole(static::CANDIDATE_BOARD_ROLE)
         ) {
-            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+            $account->assignRole($this->role(static::ACTIVE_MEMBER_ROLE));
         }
     }
 
@@ -91,8 +95,8 @@ final class ChangeRolesListener
         $account = Account::ofMember($event->memberId())->first();
 
         if ($account !== null) {
-            $account->assignRole(static::CANDIDATE_BOARD_ROLE);
-            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+            $account->assignRole($this->role(static::CANDIDATE_BOARD_ROLE));
+            $account->assignRole($this->role(static::ACTIVE_MEMBER_ROLE));
         }
     }
 
@@ -102,9 +106,9 @@ final class ChangeRolesListener
         /** @var Account|null */
         $account = Account::ofMember($event->memberId())->first();
         if ($account !== null) {
-            $account->assignRole(static::BOARD_ROLE);
-            $account->removeRole(static::CANDIDATE_BOARD_ROLE);
-            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+            $account->assignRole($this->role(static::BOARD_ROLE));
+            $account->removeRole($this->role(static::CANDIDATE_BOARD_ROLE));
+            $account->assignRole($this->role(static::ACTIVE_MEMBER_ROLE));
         }
     }
 
@@ -115,27 +119,27 @@ final class ChangeRolesListener
         $account = Account::ofMember($event->memberId())->first();
 
         if ($account !== null) {
-            $account->assignRole(static::DEMISSIONED_BOARD_ROLE);
-            $account->removeRole(static::BOARD_ROLE);
+            $account->assignRole($this->role(static::DEMISSIONED_BOARD_ROLE));
+            $account->removeRole($this->role(static::BOARD_ROLE));
 
             // Since this member is no longer in the board nor a member of a committee
             // their active member role will be removed
             $committees = $this->activeCommitteesOfMember($account);
             if ($committees->isEmpty()) {
-                $account->removeRole(static::ACTIVE_MEMBER_ROLE);
+                $account->removeRole($this->role(static::ACTIVE_MEMBER_ROLE));
             }
         }
     }
 
-    public function whenBoardMemberWasDecharged(
+    public function whenBoardMemberWasDischarged(
         BoardMemberWasDischarged $event
     ) : void {
         /** @var Account|null */
         $account = Account::ofMember($event->memberId())->first();
 
         if ($account !== null) {
-            $account->assignRole(static::DECHARGED_BOARD_ROLE);
-            $account->removeRole(static::DEMISSIONED_BOARD_ROLE);
+            $account->assignRole($this->role(static::DECHARGED_BOARD_ROLE));
+            $account->removeRole($this->role(static::DEMISSIONED_BOARD_ROLE));
         }
     }
 
@@ -164,13 +168,17 @@ final class ChangeRolesListener
         }
 
         if ($committees->isNotEmpty()) {
-            $account->assignRole(static::ACTIVE_MEMBER_ROLE);
+            $account->assignRole($this->role(static::ACTIVE_MEMBER_ROLE));
         }
     }
 
     private function activeCommitteesOfMember(Account $account) : Collection
     {
-        $board = Board::orderBy('installed_at', 'desc')->firstOrFail();
+        $board = Board::orderBy('installed_at', 'desc')->first();
+
+        if ($board === null) {
+            return collect();
+        }
 
         $committees = $board->committees()
             ->whereHas('members', function (Builder $query) use ($account) : Builder {
@@ -183,9 +191,12 @@ final class ChangeRolesListener
 
     private function roleForCommittee(Committee $committee) : Role
     {
-        return Role::firstOrCreate([
-            'name' => $this->committeeRoleName($committee)
-        ]);
+        return $this->role($this->committeeRoleName($committee));
+    }
+
+    private function role(string $name) : Role
+    {
+        return Role::firstOrCreate(['name' => $name]);
     }
 
     private function committeeRoleName(Committee $committee) : string
