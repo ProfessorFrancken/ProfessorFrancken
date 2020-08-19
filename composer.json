@@ -58,7 +58,7 @@
     "psalm/plugin-phpunit": "^0.10.1",
     "rector/rector": "^0.7.37",
     "roave/security-advisories": "dev-master",
-    "vimeo/psalm": "^3.12"
+    "vimeo/psalm": "~3.13.1"
   },
   "config": {
     "optimize-autoloader": true,
