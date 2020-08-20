@@ -26,8 +26,7 @@ final class Directory
         if ($name !== null) {
             $this->name = $name;
         } else {
-            $parts = explode('/', $this->directory);
-            $this->name = array_pop($parts);
+            $this->name = collect(explode('/', $this->directory))->pop();
         }
     }
 

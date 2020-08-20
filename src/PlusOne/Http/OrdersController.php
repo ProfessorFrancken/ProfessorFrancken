@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\PlusOne\Http;
 
 use DateTimeImmutable;
+use Francken\Treasurer\Product;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Http\Request;
@@ -51,9 +52,12 @@ final class OrdersController
         $order = $request->get('order');
 
         foreach ($order['products'] as $product) {
-            $productFromDb = $this->orders->table('producten')
-                     ->where('id', $product['id'])
-                     ->first();
+            $productFromDb = Product::findOrFail($product['id']);
+
+            if ( ! ($productFromDb instanceof Product)) {
+                Log::error("Tried to buy a non existing product", $product);
+                continue;
+            }
 
             $this->orders->table('transacties')
                 ->insert([

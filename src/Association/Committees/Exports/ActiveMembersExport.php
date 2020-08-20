@@ -7,6 +7,7 @@ namespace Francken\Association\Committees\Exports;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
+use Francken\Association\LegacyMember;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -50,6 +51,7 @@ class ActiveMembersExport implements FromCollection, WithTitle, WithHeadings, Wi
     public function map($committeeMember) : array
     {
         Assert::isInstanceOf($committeeMember, CommitteeMember::class);
+        Assert::isInstanceOf($committeeMember->member, LegacyMember::class);
 
         return [
             'member_id' => $committeeMember->member_id,

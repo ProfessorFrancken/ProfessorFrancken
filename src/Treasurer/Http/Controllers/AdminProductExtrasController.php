@@ -64,6 +64,8 @@ final class AdminProductExtrasController
         ProductFileUploader $uploader,
         Product $product
     ) : RedirectResponse {
+        Assert::notNull($product->extra);
+
         $product->extra->update([
             'kleur' => $request->color(),
         ]);

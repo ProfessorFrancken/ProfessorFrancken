@@ -145,16 +145,13 @@ final class AdminCommitteesController
             ->orderBy('name', 'asc')
             ->get();
 
-        $parentCommittees = $continuableCommittees->mapWithKeys(
-            function ($c) : array {
-                return [
-                    $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
-                ];
-            }
-        );
+        $parentCommittees = $continuableCommittees
+            ->mapWithKeys(fn ($c) : array => [
+                $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
+            ]);
 
         $parentCommittee = $committee->parentCommittee;
-        if ($parentCommittee) {
+        if ($parentCommittee && $parentCommittee->board instanceof Board) {
             $parentCommittees->prepend(
                 $parentCommittee->name . '(' . $parentCommittee->board->board_name->toString() . ')',
                 $parentCommittee->id

@@ -38,8 +38,12 @@ class NotifyBoardAboutAddressChange extends Notification
     public function toArray() : array
     {
         $member = $this->event->member();
-        $from = $this->event->oldAddress()->toString();
+
+        $from = $this->event->oldAddress() !== null
+              ? $this->event->oldAddress()->toString()
+              : "Unkown address";
         $to = $this->event->address()->toString();
+
         return [
             'member_id' => $member->id,
             'headline' => sprintf('%s changed their address', $member->fullname),

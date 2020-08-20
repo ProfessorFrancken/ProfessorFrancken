@@ -57,7 +57,7 @@ final class ImportPermissionsFromConfig extends Command
                         'name' => $permission
                     ]);
 
-                    if ($guard === $admin->guard_name) {
+                    if ($admin !== null && $guard === $admin->guard_name) {
                         $admin->givePermissionTo($permission);
                     }
                 }

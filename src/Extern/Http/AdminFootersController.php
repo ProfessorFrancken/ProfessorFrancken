@@ -10,6 +10,7 @@ use Francken\Extern\Partner;
 use Francken\Extern\SponsorOptions\Footer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class AdminFootersController
 {
@@ -40,6 +41,8 @@ final class AdminFootersController
         ]);
 
         $logo = $this->uploader->uploadFooterLogo($request->logo, $partner->name);
+        Assert::notNull($logo);
+
         $footer = new Footer([
             'is_enabled' => $request->isActive(),
             'referral_url' => $request->referralUrl(),
@@ -71,6 +74,8 @@ final class AdminFootersController
     public function update(FooterRequest $request, Partner $partner) : RedirectResponse
     {
         $footer = $partner->footer;
+        Assert::notNull($footer);
+
         $logo = $this->uploader->uploadFooterLogo($request->logo, $partner->name);
 
         if ($logo !== null) {

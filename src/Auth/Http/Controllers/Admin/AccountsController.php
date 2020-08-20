@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Auth\Http\Controllers\Admin;
 
-use DB;
 use Francken\Association\LegacyMember;
 use Francken\Auth\Account;
 use Francken\Auth\Permission;
@@ -14,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class AccountsController
 {
@@ -62,14 +62,14 @@ final class AccountsController
 
         $memberId = (int)$request->input('member_id');
 
-        $email = DB::connection('francken-legacy')
-            ->table('leden')
+        $member = LegacyMember::query()
             ->where('is_lid', true)
-            ->where('id', $memberId)
-            ->first()
-            ->emailadres;
+            ->where('emailadres', '<>', '')
+            ->findOrFail($memberId);
 
-        Account::activate($memberId, $email, Hash::make(Str::random(32)));
+        Assert::notNull($member->emailadres);
+
+        Account::activate($memberId, $member->emailadres, Hash::make(Str::random(32)));
 
         return redirect()->action([
             self::class,

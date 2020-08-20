@@ -16,6 +16,10 @@ class SignUpPolicy
      */
     public function create(Account $account, Activity $activity) : bool
     {
+        if ($account->member === null) {
+            return false;
+        }
+
         return $activity->memberCanSignUp($account->member);
     }
 
@@ -24,6 +28,10 @@ class SignUpPolicy
      */
     public function update(Account $account, SignUp $signUp) : bool
     {
+        if ($signUp->activity === null) {
+            return false;
+        }
+
         $deadlineAt = $signUp->activity->registration_deadline;
 
         if ($deadlineAt->isPast()) {

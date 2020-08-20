@@ -42,7 +42,7 @@ final class BoardMembersImport implements ToCollection, WithHeadingRow
 
     private function uploadPhoto(BoardMember $member, ?string $photo) : void
     {
-        if ($photo === null || $photo === "") {
+        if ($photo === null || $photo === "" || $member->board === null) {
             return;
         }
 

@@ -114,7 +114,7 @@ class MainContentController extends Controller
 
             $firstLine = $stringfromfile[0];
             $explodedstring = explode("/", $firstLine, 3);
-            $branchname = trim(preg_replace('/\s+/', ' ', $explodedstring[2]));
+            $branchname = trim(preg_replace('/\s+/', ' ', $explodedstring[2]) ?? '');
         } catch (Exception $e) {
             $branchname = 'master';
         }

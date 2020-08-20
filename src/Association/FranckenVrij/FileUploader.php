@@ -66,6 +66,10 @@ final class FileUploader
     {
         $coverPath = preg_replace('"\.pdf$"', '-cover.png', $pdfPath);
 
+        if ($coverPath === null) {
+            return null;
+        }
+
         $imagick = new Imagick();
         $imagick->setCompressionQuality(100);
         $imagick->setResolution(300, 300);

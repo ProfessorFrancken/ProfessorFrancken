@@ -97,17 +97,6 @@ class RegistrationRequestFeature extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function it_keeps_information_after_submitting_an_invalid_form() : void
-    {
-        // TODO: check that the study information remains
-    }
-
-    // TEST approving, deleting admin stuff
-    //
-
     private function submitRegistration() : Registration
     {
         return Registration::submit(

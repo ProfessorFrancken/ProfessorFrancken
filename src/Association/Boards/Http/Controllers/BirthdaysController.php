@@ -9,6 +9,7 @@ use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Shared\Clock\Clock;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class BirthdaysController
 {
@@ -16,36 +17,39 @@ final class BirthdaysController
     {
         $today = $clock->now()->sub(new DateInterval('P1D'));
 
-        $members = BoardMember::with(['member'])->get()->filter(function (BoardMember $member) : bool {
-            return $member->member !== null && $member->member->geboortedatum !== null;
-        })->map(function (BoardMember $member) : array {
-            return [
-                'name' => $member->member->fullname,
-                'birthday' => new DateTimeImmutable($member->member->geboortedatum)
-            ];
-        })->map(function ($member) use ($today) : array {
-            $birthdayInSameYearAsNow = $member['birthday']->setDate(
-                (int) $today->format('Y'),
-                (int) $member['birthday']->format('m'),
-                (int) $member['birthday']->format('d')
-            );
+        $members = BoardMember::with(['member'])
+            ->get()
+            ->filter(
+                fn (BoardMember $member) : bool =>
+                $member->member !== null && $member->member->geboortedatum !== null
+            )
+            ->map(function (BoardMember $member) : array {
+                Assert::notNull($member->member);
+                Assert::notNull($member->member->geboortedatum);
 
-            $birthday = $birthdayInSameYearAsNow->setDate(
-                (int) $birthdayInSameYearAsNow->format('Y') + ($today > $birthdayInSameYearAsNow ? 1 : 0),
-                (int) $birthdayInSameYearAsNow->format('m'),
-                (int) $birthdayInSameYearAsNow->format('d')
-            );
+                return [
+                    'name' => $member->member->fullname,
+                    'birthday' => new DateTimeImmutable($member->member->geboortedatum)
+                ];
+            })
+            ->map(function (array $member) use ($today) : array {
+                $birthdayInSameYearAsNow = $member['birthday']->setDate(
+                    (int) $today->format('Y'),
+                    (int) $member['birthday']->format('m'),
+                    (int) $member['birthday']->format('d')
+                );
 
-            return array_merge($member, ['day' => $birthday]);
-        })->sortBy(function ($member) use ($today) {
-            return ($member['day']->getTimestamp() - $today->getTimestamp());
-        })->groupBy(function ($member) {
-            return $member['day']->format('Y');
-        })->map(function ($year) {
-            return $year->groupBy(function ($member) {
-                return $member['day']->format('F');
-            });
-        });
+                $birthday = $birthdayInSameYearAsNow->setDate(
+                    (int) $birthdayInSameYearAsNow->format('Y') + ($today > $birthdayInSameYearAsNow ? 1 : 0),
+                    (int) $birthdayInSameYearAsNow->format('m'),
+                    (int) $birthdayInSameYearAsNow->format('d')
+                );
+
+                return array_merge($member, ['day' => $birthday]);
+            })
+            ->sortBy(fn ($member) => $member['day']->getTimestamp() - $today->getTimestamp())
+            ->groupBy(fn ($member) => $member['day']->format('Y'))
+            ->map(fn ($year) => $year->groupBy(fn ($member) => $member['day']->format('F')));
 
         return view('association.boards.birthdays', [
             'years' => $members, 'today' => new DateTimeImmutable(),

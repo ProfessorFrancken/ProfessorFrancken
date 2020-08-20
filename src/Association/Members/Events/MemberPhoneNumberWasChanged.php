@@ -13,12 +13,12 @@ final class MemberPhoneNumberWasChanged
 
     private LegacyMember $member;
     private string $phoneNumber;
-    private string $oldPhoneNumber;
+    private ?string $oldPhoneNumber;
 
     public function __construct(
         LegacyMember $member,
         string $phoneNumber,
-        string $oldPhoneNumber
+        ?string $oldPhoneNumber
     ) {
         $this->member = $member;
         $this->phoneNumber = $phoneNumber;
@@ -35,7 +35,7 @@ final class MemberPhoneNumberWasChanged
         return $this->phoneNumber;
     }
 
-    public function oldPhoneNumber() : string
+    public function oldPhoneNumber() : ?string
     {
         return $this->oldPhoneNumber;
     }

@@ -52,6 +52,7 @@ class SignUpRequest extends FormRequest
     {
         $activity = $this->route('activity');
         Assert::isInstanceOf($activity, Activity::class);
+        Assert::notNull($activity->signUpSettings);
 
         $maxPlusOnes = (int)$activity->signUpSettings->max_sign_ups - $activity->total_sign_ups - 1;
 

@@ -25,7 +25,7 @@ final class ActiveMembersStatistics
             $this->today
         );
 
-        $board = Board::orderBy('installed_at', 'desc')->first();
+        $board = Board::orderBy('installed_at', 'desc')->firstOrFail();
 
         // Select all members that are in at least one committee
         $activeMemberIds = $board->committees->flatMap(function (Committee $committee) {

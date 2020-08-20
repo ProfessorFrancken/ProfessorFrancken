@@ -81,7 +81,10 @@ final class BoardMember extends Model
         Assert::isInstanceOf($member, self::class);
 
         $member->refreshStatus();
-        $member->attachMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
+
+        if ($photo !== null) {
+            $member->attachMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
+        }
 
 
         return $member;
@@ -110,7 +113,7 @@ final class BoardMember extends Model
 
     public function getFullnameAttribute() : string
     {
-        return $this->member->fullname;
+        return optional($this->member)->fullname ?? 'Unkown member';
     }
 
     /**
