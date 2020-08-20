@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', "Media / {$media->basename}")
+@section('page-title', "Media / {$media->basename()}")
 
 @section('content')
     <div class="row">
@@ -8,9 +8,9 @@
                 <div class="card-body">
                     <dl>
                         <dt>Basename</dt>
-                        <dd>{{ $media->basename }}</dd>
+                        <dd>{{ $media->basename() }}</dd>
                         <dt>Directory</dt>
-                        <dd>{{ $media->directory }}</dd>
+                        <dd>{{ $media->directory() }}</dd>
                         @if ($media->isPubliclyAccessible())
                         <dt>Url</dt>
                         <dd>
@@ -20,7 +20,7 @@
                         </dd>
                         @endif
                         <dt>Mimetype</dt>
-                        <dd>{{ $media->mime_type }}</dd>
+                        <dd>{{ $media->mimeType() }}</dd>
                         <dt>Size</dt>
                         <dd>{{ $media->readableSize() }}</dd>
                         <dt>Publicly accessible?</dt>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="col-4">
-            @if ($media->aggregate_type)
+            @if ($media->isImage())
                 <img
                     src="{{ $media->getUrl() }}"
                     class="img-thumbnail"

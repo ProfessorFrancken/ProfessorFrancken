@@ -23,11 +23,9 @@ final class Directory
     {
         $this->directory = $directory;
 
-        if ($name !== null) {
-            $this->name = $name;
-        } else {
-            $this->name = collect(explode('/', $this->directory))->pop();
-        }
+        $this->name = $name !== null
+            ? $name
+            : collect(explode('/', $this->directory))->pop();
     }
 
     public function directory() : string
