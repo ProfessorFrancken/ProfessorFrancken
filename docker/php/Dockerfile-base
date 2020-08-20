@@ -6,7 +6,7 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 
-RUN install-php-extensions gd redis igbinary apcu imagick \
+RUN install-php-extensions zip gd redis igbinary apcu imagick \
     intl zip pdo_mysql pdo_pgsql soap opcache mysqli bcmath pcntl \
     pdo_sqlite mbstring
 
