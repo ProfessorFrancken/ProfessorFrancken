@@ -32,8 +32,8 @@ final class Committee extends Model
     /**
      * @var string
      */
-
     protected $table = 'association_committees';
+
     /**
      * @var string[]
      */
