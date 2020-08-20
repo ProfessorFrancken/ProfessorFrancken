@@ -12,6 +12,7 @@ use Francken\Shared\Clock\Clock;
 use Francken\Shared\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class RegistrationRequestsController extends Controller
 {
@@ -92,7 +93,10 @@ final class RegistrationRequestsController extends Controller
 
     public function approve(Registration $registration, Clock $clock) : RedirectResponse
     {
-        $boardMember = BoardMember::whereMemberId(auth()->user()->member_id)
+        $account = auth()->user();
+        Assert::notNull($account);
+
+        $boardMember = BoardMember::whereMemberId($account->member_id)
             ->whereIn('board_member_status', [
                 BoardMemberStatus::BOARD_MEMBER,
                 BoardMemberStatus::DEMISSIONED_BOARD_MEMBER
@@ -113,7 +117,10 @@ final class RegistrationRequestsController extends Controller
 
     public function sign(Registration $registration, Clock $clock) : RedirectResponse
     {
-        $boardMember = BoardMember::whereMemberId(auth()->user()->member_id)
+        $account = auth()->user();
+        Assert::notNull($account);
+
+        $boardMember = BoardMember::whereMemberId($account->member_id)
             ->whereIn('board_member_status', [
                 BoardMemberStatus::BOARD_MEMBER,
                 BoardMemberStatus::DEMISSIONED_BOARD_MEMBER

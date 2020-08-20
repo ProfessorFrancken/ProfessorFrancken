@@ -8,12 +8,13 @@ use Francken\Association\Symposium\Participant;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Webmozart\Assert\Assert;
 
 class InformationEmail extends Mailable
 {
     use Queueable;
     use SerializesModels;
-    
+
     public Participant $participant;
 
     /**
@@ -38,6 +39,8 @@ class InformationEmail extends Mailable
      */
     public function build() : self
     {
+        Assert::notNull($this->participant->symposium);
+
         return $this->subject(
             "Symposium May 8th '" . $this->participant->symposium->name . "'"
         )->markdown('symposium.mails.information', [

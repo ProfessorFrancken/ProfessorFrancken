@@ -25,7 +25,7 @@ class FooterSponsorsComponent extends Component
             ->map(fn (Footer $footer) => [
                 'footer-link' => $footer->referral_url,
                 'footer-logo' => $footer->logo,
-                'name' => $footer->partner->name,
+                'name' => optional($footer->partner)->name ?? '',
             ])
             ->toArray();
     }

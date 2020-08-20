@@ -187,7 +187,7 @@ final class LegacyMember extends Model
 
     public function getEmailAttribute() : Email
     {
-        return new Email($this->emailadres);
+        return new Email($this->emailadres ?? '');
     }
 
     public function getAddressAttribute() : ?Address
@@ -295,8 +295,8 @@ final class LegacyMember extends Model
     public function changePaymentDetails(PaymentDetails $paymentDetails) : void
     {
         $oldIban = $this->rekeningnummer;
-        $oldConsumptionCounter = $this->streeplijst;
-        $consumptionCounter = $paymentDetails->deductAdditionalCosts()? "Afschrijven" : "Non-actief";
+        $oldConsumptionCounter = $this->streeplijst ?? 'Non-actief';
+        $consumptionCounter = $paymentDetails->deductAdditionalCosts() ? "Afschrijven" : "Non-actief";
         $iban = $paymentDetails->iban();
 
         if ($oldIban === $iban && $oldConsumptionCounter == $consumptionCounter) {

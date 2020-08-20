@@ -53,7 +53,7 @@ final class CompiledMarkdown
         }
 
         $converter = new HtmlConverter();
-        return $converter->convert($this->contents);
+        return $converter->convert($this->contents ?? '');
     }
 
     public function compiledContent() : ?string

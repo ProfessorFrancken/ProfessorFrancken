@@ -9,6 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
+use Webmozart\Assert\Assert;
 
 class VerifyRegistration extends Mailable
 {
@@ -39,6 +40,8 @@ class VerifyRegistration extends Mailable
      */
     public function build() : self
     {
+        Assert::notNull($this->participant->symposium);
+
         return $this->subject("Please verify your registration for the '" . $this->participant->symposium->name . "' symposium")
             ->markdown('symposium.mails.verify', [
             'fullname' => $this->participant->fullname,

@@ -71,8 +71,12 @@ final class Committee extends Model
 
         Assert::isInstanceOf($committee, self::class);
 
-        $committee->attachmedia($previousCommittee->logoMedia, self::COMMITTEE_LOGO_TAG);
-        $committee->attachmedia($previousCommittee->photoMedia, self::COMMITEE_PHOTO_TAG);
+        if ($previousCommittee->logoMedia !== null) {
+            $committee->attachmedia($previousCommittee->logoMedia, self::COMMITTEE_LOGO_TAG);
+        }
+        if ($previousCommittee->photoMedia !== null) {
+            $committee->attachmedia($previousCommittee->photoMedia, self::COMMITEE_PHOTO_TAG);
+        }
 
         return $committee;
     }
@@ -135,7 +139,7 @@ final class Committee extends Model
     public function committeeMembers() : Collection
     {
         return $this->members->sortBy(function (CommitteeMember $member) : string {
-            return $member->member->fullname;
+            return optional($member->member)->fullname ?? '';
         });
     }
 

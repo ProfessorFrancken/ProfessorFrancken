@@ -53,7 +53,7 @@ final class PaymentDetails
         // Mask the first three pieces of the iban
         $mask = fn (string $ibanPiece, int $idx) : string => ($idx < 3) ? 'XXXX' : $ibanPiece;
 
-        return collect(str_split($iban, 4))
+        return collect(str_split($iban ?? '', 4))
             ->map($mask)
             ->implode('-');
     }

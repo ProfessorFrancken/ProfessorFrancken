@@ -12,15 +12,15 @@ final class MemberPaymentDetailsWereChanged
     use SerializesModels;
 
     private LegacyMember $member;
-    private string $iban;
-    private string $oldIban;
+    private ?string $iban;
+    private ?string $oldIban;
     private string $consumptionCounter;
     private string $oldConsumptionCounter;
 
     public function __construct(
         LegacyMember $member,
-        string $iban,
-        string $oldIban,
+        ?string $iban,
+        ?string $oldIban,
         string $consumptionCounter,
         string $oldConsumptionCounter
     ) {
@@ -36,12 +36,12 @@ final class MemberPaymentDetailsWereChanged
         return $this->member;
     }
 
-    public function iban() : string
+    public function iban() : ?string
     {
         return $this->iban;
     }
 
-    public function oldIban() : string
+    public function oldIban() : ?string
     {
         return $this->oldIban;
     }

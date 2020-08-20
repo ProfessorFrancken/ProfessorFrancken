@@ -13,6 +13,7 @@ use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Webmozart\Assert\Assert;
 
 class NotifyAboutAccountActivation extends Mailable
 {
@@ -44,6 +45,7 @@ class NotifyAboutAccountActivation extends Mailable
     public function build(PasswordBroker $broker) : self
     {
         $account = Account::findOrFail($this->accountId);
+        Assert::notNull($account->member);
 
         return $this->subject("Your Francken website account was activated")
             ->markdown('association.members.registration.mail.account-was-activated', [

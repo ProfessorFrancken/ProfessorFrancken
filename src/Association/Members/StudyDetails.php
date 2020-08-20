@@ -44,9 +44,9 @@ final class StudyDetails
         Assert::isInstanceOf($yearOfRegistration, DateTimeImmutable::class);
 
         return new self(
-            $member->studentnummer,
+            $member->studentnummer ?? '',
             new Study(
-                $member->studierichting,
+                $member->studierichting ?? '',
                 $yearOfRegistration
             )
         );

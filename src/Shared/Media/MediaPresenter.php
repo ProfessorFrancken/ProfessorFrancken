@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Media;
 
 use Francken\Shared\Media\Http\Controllers\MediaController;
+use League\Flysystem\FileNotFoundException;
 use Plank\Mediable\Media;
 
 final class MediaPresenter
@@ -18,27 +19,18 @@ final class MediaPresenter
 
     public function iconClass() : string
     {
-        switch ($this->media->aggregate_type) {
-            case Media::TYPE_IMAGE:
-            case Media::TYPE_IMAGE_VECTOR:
-                return 'fas fa-file-image';
-            case Media::TYPE_PDF:
-                return 'fas fa-file-pdf';
-            case Media::TYPE_AUDIO:
-                return 'fas fa-file-audio';
-            case Media::TYPE_ARCHIVE:
-                return 'fas fa-file-archive';
-            case Media::TYPE_DOCUMENT:
-                return 'fas fa-file-alt';
-            case Media::TYPE_SPREADSHEET:
-                return 'fas fa-file-excel';
-            case Media::TYPE_PRESENTATION:
-                return 'fas fa-file-presentation';
-            case Media::TYPE_OTHER:
-            case Media::TYPE_ALL:
-            default:
-                return 'fas fa-file';
-        }
+        $iconMap = [
+            Media::TYPE_IMAGE => 'fas fa-file-image',
+            Media::TYPE_IMAGE_VECTOR => 'fas fa-file-image',
+            Media::TYPE_PDF => 'fas fa-file-pdf',
+            Media::TYPE_AUDIO => 'fas fa-file-audio',
+            Media::TYPE_ARCHIVE => 'fas fa-file-archive',
+            Media::TYPE_DOCUMENT => 'fas fa-file-alt',
+            Media::TYPE_SPREADSHEET => 'fas fa-file-excel',
+            Media::TYPE_PRESENTATION => 'fas fa-file-presentation',
+        ];
+
+        return $iconMap[$this->media->aggregate_type] ?? 'fas fa-file';
     }
 
     public function mediaUrl() : string
@@ -54,5 +46,40 @@ final class MediaPresenter
     public function basename() : string
     {
         return $this->media->basename;
+    }
+
+    public function directory() : string
+    {
+        return $this->media->directory;
+    }
+
+    public function mimeType() : string
+    {
+        return $this->media->mime_type;
+    }
+
+    public function getUrl() : string
+    {
+        return $this->media->getUrl();
+    }
+
+    public function isImage() : bool
+    {
+        return in_array($this->media->aggregate_type, [
+            Media::TYPE_IMAGE,
+            Media::TYPE_IMAGE_VECTOR,
+        ], true);
+    }
+
+    /**
+     * Check if the file is located below the public webroot.
+     */
+    public function isPubliclyAccessible() : bool
+    {
+        try {
+            return $this->media->isPubliclyAccessible();
+        } catch (FileNotFoundException $e) {
+            return false;
+        }
     }
 }

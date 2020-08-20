@@ -30,22 +30,6 @@ function board_banner_image(?string $url = '', array $options = []) : string
     ]));
 }
 
-function news_image(?string $url) : string
-{
-    if ($url === null) {
-        return '';
-    }
-
-    if ( ! filter_var($url, FILTER_VALIDATE_URL)) {
-        $url = config('app.url') . $url;
-    }
-
-    return image($url, [
-        'width' => 600,
-        'height' => 600,
-    ]);
-}
-
 function image(?string $url = '', array $options = [], bool $addAppUrl = false) : string
 {
     if ($url === null) {

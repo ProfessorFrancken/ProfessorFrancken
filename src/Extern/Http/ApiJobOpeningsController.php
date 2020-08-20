@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Extern\Http;
 
 use Francken\Extern\SponsorOptions\Vacancy;
+use Webmozart\Assert\Assert;
 
 final class ApiJobOpeningsController
 {
@@ -17,6 +18,9 @@ final class ApiJobOpeningsController
         return [
             'job-openings' => $vacancies->map(
                 function (Vacancy $vacancy) : array {
+                    Assert::notNull($vacancy->sector);
+                    Assert::notNull($vacancy->partner);
+
                     return [
                         'name' => $vacancy->title,
                         'link' => $vacancy->vacancy_url,

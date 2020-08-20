@@ -16,13 +16,14 @@ final class ProfileController
         $member = $request->user()->member;
 
         $committees = Committee::with(['board'])
-            ->whereHas('members', function (Builder $query) use ($member) : Builder {
-                return $query->where('member_id', $member->id);
-            })
+            ->whereHas(
+                'members',
+                fn (Builder $query) : Builder => $query->where('member_id', $member->id)
+            )
             ->get()
-            ->sortByDesc(function (Committee $committee) {
-                return $committee->board->installed_at;
-            });
+            ->sortByDesc(
+                fn (Committee $committee) => optional($committee->board)->installed_at
+            );
 
         return view('profile.index')
             ->with([

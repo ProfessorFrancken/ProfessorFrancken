@@ -82,7 +82,10 @@ final class Board extends Model
             'board_year_slug' => BoardYear::fromInstallDate($installedAt)->toSlug(),
             'photo_media_id' => $photo->id ?? null,
         ]);
-        $board->attachMedia($photo, static::BOARD_PHOTO_TAG);
+
+        if ($photo !== null) {
+            $board->attachMedia($photo, static::BOARD_PHOTO_TAG);
+        }
 
         $members->each(function ($member) use ($board, $installedAt) : void {
             BoardMember::install(

@@ -38,7 +38,7 @@ final class SignUpsController
                 ['url' => '/association/', 'text' => 'Association'],
                 ['url' => action([ActivitiesController::class, 'index']), 'text' => 'Activities'],
                 ['url' => action([ActivitiesController::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
-                ['url' => action([self::class, 'edit'], ['activity' => $activity, 'sign_up' => $signUp]), 'text' => $signUp->member->fullname],
+                ['url' => action([self::class, 'edit'], ['activity' => $activity, 'sign_up' => $signUp]), 'text' => optional($signUp->member)->fullname],
             ],
         ]);
     }

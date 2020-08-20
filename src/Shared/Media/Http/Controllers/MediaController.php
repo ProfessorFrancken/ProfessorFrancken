@@ -7,7 +7,6 @@ namespace Francken\Shared\Media\Http\Controllers;
 use Francken\Shared\Media\Directory;
 use Francken\Shared\Media\MediaPresenter;
 use Illuminate\Filesystem\FilesystemManager;
-use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Plank\Mediable\Media;
 
@@ -20,14 +19,6 @@ final class MediaController
 
     public function index(FilesystemManager $storage, string $directory = '') : View
     {
-        $directors = collect(explode('/', $directory));
-        $path = '';
-        $breadcrumbs = collect(explode('/', $directory))->map(function ($directory, $key) use (&$path) : array {
-            $path .= $directory . '/';
-
-            return ['url' => action([static::class, 'index'], $path), 'text' => $directory];
-        });
-
         /** @var \Illuminate\Pagination\LengthAwarePaginator $media */
         $media = Media::inDirectory(static::DISK, $directory)
                ->paginate(100);
@@ -59,7 +50,7 @@ final class MediaController
         });
 
         return view('admin.compucie.media.show', [
-            'media' => $media,
+            'media' => new MediaPresenter($media),
             'mediables' => $mediables,
             'breadcrumbs' => array_merge(
                 $this->breadcrumbs($media->directory),
@@ -70,7 +61,6 @@ final class MediaController
 
     private function breadcrumbs(string $directory) : array
     {
-        $directors = collect(explode('/', $directory));
         $path = '';
         $breadcrumbs = collect(explode('/', $directory))->map(function ($directory, $key) use (&$path) : array {
             $path .= $directory . '/';
@@ -79,18 +69,5 @@ final class MediaController
         });
         $breadcrumbs->prepend(['url' => action([static::class, 'index']), 'text' => 'Media']);
         return $breadcrumbs->toArray();
-    }
-
-    private function directories(FilesystemManager $storage, string $directory) : Collection
-    {
-        $directories = collect($storage->disk(static::DISK)->directories($directory))
-            ->map(function ($directory) : Directory {
-                return new Directory($directory);
-            });
-
-        if ($directory !== '') {
-            $directories->prepend(new Directory(dirname($directory), '..'));
-        }
-        return $directories;
     }
 }

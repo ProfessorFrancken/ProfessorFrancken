@@ -16,7 +16,7 @@ final class CommitteesController
         $board = Board::with(['committees.members.member'])
                ->whereNotNull('installed_at')
                ->orderBy('installed_at', 'desc')
-               ->first();
+               ->firstOrFail();
 
         return collect([
             'committees' =>

@@ -25,17 +25,17 @@ class AdminNewsRequest extends FormRequest
         ];
     }
 
-    public function title() : ?string
+    public function title() : string
     {
         return $this->input('title');
     }
 
-    public function content() : ?string
+    public function content() : string
     {
         return $this->input('content');
     }
 
-    public function exerpt() : ?string
+    public function exerpt() : string
     {
         return $this->input('exerpt');
     }
