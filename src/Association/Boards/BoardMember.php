@@ -69,11 +69,14 @@ final class BoardMember extends Model
         ?Media $photo
     ) : self {
         $legacyMember = LegacyMember::find($memberId);
+        $fullname = $legacyMember !== null
+                  ? $legacyMember->fullname
+                  : '';
 
         /** @var self $member */
         $member = $board->members()->make([
             'member_id' => $memberId,
-            'name' => optional($legacyMember)->fullname ?? '',
+            'name' => $fullname,
             'title' => $title,
             'installed_at' => $installedAt,
             'photo_media_id' => $photo->id ?? null,
@@ -131,8 +134,12 @@ final class BoardMember extends Model
         ?Media $photo
     ) : void {
         $legacyMember = LegacyMember::find($memberId);
+        $fullname = $legacyMember !== null
+                  ? $legacyMember->fullname
+                  : '';
+
         $this->member_id = $memberId;
-        $this->name = optional($legacyMember)->fullname ?? '';
+        $this->name = $fullname;
         $this->title = $title;
         $this->installed_at = $installedAt;
         $this->demissioned_at = $demissionedAt;
