@@ -31,7 +31,17 @@ class ResponsiveImageRenderer implements InlineRendererInterface, ConfigurationA
 
         $element = $this->imageRenderer->render($inline, $htmlRenderer);
         $element->setAttribute('class', 'img-fluid');
-        $element->setAttribute('src', news_image($element->getAttribute('src')));
+        $element->setAttribute(
+            'src',
+            image(
+                $element->getAttribute('src'),
+                [
+                    'width' => 600,
+                    'height' => 600,
+                ],
+                true
+            )
+        );
 
         return $element;
     }
