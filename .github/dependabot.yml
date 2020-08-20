@@ -1,12 +1,18 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: composer
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # Update the npm manifest file to relax
+    # the version requirements
+    versioning-strategy: increase-if-necessary
+    open-pull-requests-limit: 10
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # Update the npm manifest file to relax
+    # the version requirements
+    versioning-strategy: increase-if-necessary
+    open-pull-requests-limit: 10
