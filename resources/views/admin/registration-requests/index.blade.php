@@ -57,5 +57,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="card-footer">
+            {{ $requests->links() }}
+        </div>
     </div>
 @endsection
