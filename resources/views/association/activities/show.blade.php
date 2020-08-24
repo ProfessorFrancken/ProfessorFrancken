@@ -14,9 +14,11 @@
 
         @auth
             @can('create', [\Francken\Association\Activities\SignUp::class, $activity])
+            @if ($activity->signUpSettings !== null)
             <div class="bg-light p-4 pt-0 border-top">
                 @include('association.activities.sign-ups._create')
             </div>
+            @endif
             @endcan
         @else
             @if ($activity->signUpSettings !== null)
