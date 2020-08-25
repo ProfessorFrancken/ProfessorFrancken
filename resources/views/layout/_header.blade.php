@@ -29,3 +29,7 @@
 </header>
 
 @include('layout._breadcrumbs')
+
+<div class="container">
+    @stack('notifications')
+</div>
