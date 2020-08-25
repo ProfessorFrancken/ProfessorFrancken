@@ -17,9 +17,7 @@ final class HasBorrelcieAccount
      */
     public function handle(Request $request, Closure $next) : Response
     {
-        $borrelcieAccount = BorrelcieAccount::query()
-            ->where('member_id', $request->user()->member_id)
-            ->first();
+        $borrelcieAccount = BorrelcieAccount::ofAccount($request->user())->first();
 
         return $borrelcieAccount === null
             ? redirect()->action([BorrelcieAccountActivationController::class, 'index'])
