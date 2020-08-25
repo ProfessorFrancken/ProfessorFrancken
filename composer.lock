@@ -10574,16 +10574,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.38",
+            "version": "0.12.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ad606c5f1c641b465b739e79a3a0f1a5a57cf1b4"
+                "reference": "f970cab80f0a681019dc669bf8c72905845dadaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ad606c5f1c641b465b739e79a3a0f1a5a57cf1b4",
-                "reference": "ad606c5f1c641b465b739e79a3a0f1a5a57cf1b4",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f970cab80f0a681019dc669bf8c72905845dadaa",
+                "reference": "f970cab80f0a681019dc669bf8c72905845dadaa",
                 "shasum": ""
             },
             "require": {
@@ -10626,7 +10626,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-19T08:13:30+00:00"
+            "time": "2020-08-24T21:34:53+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
@@ -14048,12 +14048,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "46013a35c84a0d547e0167b87e3a7da4f045cd8d"
+                "reference": "7dba9bc50ab16cd51fb381a4f1e54c5ada714a52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/46013a35c84a0d547e0167b87e3a7da4f045cd8d",
-                "reference": "46013a35c84a0d547e0167b87e3a7da4f045cd8d",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/7dba9bc50ab16cd51fb381a4f1e54c5ada714a52",
+                "reference": "7dba9bc50ab16cd51fb381a4f1e54c5ada714a52",
                 "shasum": ""
             },
             "require": {
@@ -14090,10 +14090,11 @@
                 "phpmyadmin/sql-parser": "5.1.0",
                 "phpspec/prophecy": ">=1.9.0",
                 "phpunit/phpunit": "^7.5.16 || ^8.5 || ^9.0",
-                "psalm/plugin-phpunit": "^0.10",
+                "psalm/plugin-phpunit": "^0.11",
                 "slevomat/coding-standard": "^5.0",
                 "squizlabs/php_codesniffer": "^3.5",
-                "symfony/process": "^4.3"
+                "symfony/process": "^4.3",
+                "weirdan/prophecy-shim": "^1.0 || ^2.0"
             },
             "suggest": {
                 "ext-igbinary": "^2.0.5"
@@ -14137,7 +14138,7 @@
                 "inspection",
                 "php"
             ],
-            "time": "2020-08-24T04:56:45+00:00"
+            "time": "2020-08-24T23:29:00+00:00"
         },
         {
             "name": "webmozart/glob",
