@@ -23,10 +23,21 @@
 
 @push('css')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<style type="text/css" media="screen">
+     .ui-autocomplete, .ui-front, .ui-menu, .ui-widget, .ui-widget-content, .ui-corner-all {
+         z-index: 1000;
+     }
+</style>
+>
 @endpush
 
 @push('styles')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<style type="text/css" media="screen">
+     .ui-autocomplete, .ui-front, .ui-menu, .ui-widget, .ui-widget-content, .ui-corner-all {
+         z-index: 1000;
+     }
+</style>
 @endpush
 
 @push('scripts')
