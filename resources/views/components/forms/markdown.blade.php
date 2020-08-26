@@ -37,6 +37,11 @@
 <script>
     var simplemde = new EasyMDE({
         element: document.getElementById("{{ $name }}"),
+        autosave: {
+            enabled: true,
+            // Try to make a unique id based on the input's name and the current page's url
+            uniqueId: "francken-{{ $name }}-{{ \Illuminate\Support\Str::slug(url()->current()) }}"
+        },
         spellChecker: false,
         promptURLs: true,
         toolbar: [
