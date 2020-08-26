@@ -82,7 +82,6 @@
 
                     // Remove menu when document clicked or when escape is pressed
                     $('html').on({
-                        click: closeModalHandler,
                         keyup: function(e) {
                             // Check for escape
                             if (e.keyCode == 27) { closeModalHandler(e); }
