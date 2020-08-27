@@ -7912,16 +7912,16 @@
         },
         {
             "name": "composer/package-versions-deprecated",
-            "version": "1.10.99.1",
+            "version": "1.11.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/package-versions-deprecated.git",
-                "reference": "68c9b502036e820c33445ff4d174327f6bb87486"
+                "reference": "c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/68c9b502036e820c33445ff4d174327f6bb87486",
-                "reference": "68c9b502036e820c33445ff4d174327f6bb87486",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855",
+                "reference": "c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855",
                 "shasum": ""
             },
             "require": {
@@ -7929,7 +7929,7 @@
                 "php": "^7 || ^8"
             },
             "replace": {
-                "ocramius/package-versions": "1.10.99"
+                "ocramius/package-versions": "1.11.99"
             },
             "require-dev": {
                 "composer/composer": "^1.9.3 || ^2.0@dev",
@@ -7977,7 +7977,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-13T12:55:41+00:00"
+            "time": "2020-08-25T05:50:16+00:00"
         },
         {
             "name": "composer/semver",
@@ -9184,6 +9184,46 @@
             "time": "2020-05-06T07:06:27+00:00"
         },
         {
+            "name": "migrify/php-config-printer",
+            "version": "v0.3.31",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/migrify/php-config-printer.git",
+                "reference": "6983174b27e3f6832bfa66c68a3142836cf3ef5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/migrify/php-config-printer/zipball/6983174b27e3f6832bfa66c68a3142836cf3ef5b",
+                "reference": "6983174b27e3f6832bfa66c68a3142836cf3ef5b",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.1",
+                "nikic/php-parser": "^4.9",
+                "php": "^7.2",
+                "symfony/http-kernel": "^4.4|^5.0",
+                "symplify/autowire-array-parameter": "^8.1.17",
+                "symplify/package-builder": "^8.1.17",
+                "symplify/smart-file-system": "^8.1.17"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5|^9.0",
+                "symplify/easy-testing": "^8.1.17"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Migrify\\PhpConfigPrinter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Print Symfony services array with configuration to to plain PHP file format thanks to this simple php-parser wrapper",
+            "time": "2020-08-24T20:58:17+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.4.2",
             "source": {
@@ -9734,16 +9774,16 @@
         },
         {
             "name": "ondram/ci-detector",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OndraM/ci-detector.git",
-                "reference": "0babf1cb71984f652498c6327a47d0081cd1e01b"
+                "reference": "789e9fcc7a8c3ef6d54f645fef744ad35946e896"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OndraM/ci-detector/zipball/0babf1cb71984f652498c6327a47d0081cd1e01b",
-                "reference": "0babf1cb71984f652498c6327a47d0081cd1e01b",
+                "url": "https://api.github.com/repos/OndraM/ci-detector/zipball/789e9fcc7a8c3ef6d54f645fef744ad35946e896",
+                "reference": "789e9fcc7a8c3ef6d54f645fef744ad35946e896",
                 "shasum": ""
             },
             "require": {
@@ -9779,6 +9819,7 @@
             "keywords": [
                 "CircleCI",
                 "Codeship",
+                "Wercker",
                 "adapter",
                 "appveyor",
                 "aws",
@@ -9786,6 +9827,7 @@
                 "bamboo",
                 "bitbucket",
                 "buddy",
+                "ci-info",
                 "codebuild",
                 "continuous integration",
                 "continuousphp",
@@ -9797,7 +9839,7 @@
                 "teamcity",
                 "travis"
             ],
-            "time": "2020-05-11T19:24:44+00:00"
+            "time": "2020-08-25T11:58:23+00:00"
         },
         {
             "name": "openlss/lib-array2xml",
@@ -11294,16 +11336,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "v0.7.64",
+            "version": "v0.7.65",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "b7f9a04177b2059a4fb4c6926857da8a2b59cce1"
+                "reference": "ac4e73b72f42273e019a91fb98b32b0c87ab08dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/b7f9a04177b2059a4fb4c6926857da8a2b59cce1",
-                "reference": "b7f9a04177b2059a4fb4c6926857da8a2b59cce1",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/ac4e73b72f42273e019a91fb98b32b0c87ab08dc",
+                "reference": "ac4e73b72f42273e019a91fb98b32b0c87ab08dc",
                 "shasum": ""
             },
             "require": {
@@ -11312,13 +11354,14 @@
                 "doctrine/inflector": "^1.4|^2.0",
                 "ext-json": "*",
                 "jean85/pretty-package-versions": "^1.2",
+                "migrify/php-config-printer": "^0.3.30",
                 "nette/robot-loader": "^3.2",
                 "nette/utils": "^3.1",
-                "nikic/php-parser": "^4.7",
+                "nikic/php-parser": "^4.9",
                 "ondram/ci-detector": "^3.4",
                 "php": "^7.2.4",
                 "phpstan/phpdoc-parser": "^0.4.9",
-                "phpstan/phpstan": "^0.12.36",
+                "phpstan/phpstan": "^0.12.38",
                 "phpstan/phpstan-phpunit": "^0.12.10",
                 "psr/simple-cache": "^1.0",
                 "sebastian/diff": "^3.0|^4.0",
@@ -11327,13 +11370,13 @@
                 "symfony/dependency-injection": "^4.4.8|^5.0.6",
                 "symfony/finder": "^4.4.8|^5.0.6",
                 "symfony/process": "^4.4.8|^5.0.6",
-                "symplify/auto-bind-parameter": "^8.2.2",
-                "symplify/autowire-array-parameter": "^8.2.2",
-                "symplify/console-color-diff": "^8.2.2",
-                "symplify/easy-testing": "^8.2.2",
-                "symplify/package-builder": "^8.2.2",
-                "symplify/set-config-resolver": "^8.2.2",
-                "symplify/smart-file-system": "^8.2.2",
+                "symplify/auto-bind-parameter": "^8.2.9",
+                "symplify/autowire-array-parameter": "^8.2.9",
+                "symplify/console-color-diff": "^8.2.9",
+                "symplify/easy-testing": "^8.2.9",
+                "symplify/package-builder": "^8.2.9",
+                "symplify/set-config-resolver": "^8.2.9",
+                "symplify/smart-file-system": "^8.2.9",
                 "tracy/tracy": "^2.7"
             },
             "replace": {
@@ -11342,19 +11385,19 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.16",
                 "johnkary/phpunit-speedtrap": "^3.2",
-                "migrify/config-transformer": "^0.3.25",
-                "migrify/easy-ci": "^0.3.25",
+                "migrify/config-transformer": "^0.3.30",
+                "migrify/easy-ci": "^0.3.30",
                 "nette/application": "^3.0",
                 "nette/forms": "^3.0",
                 "ocramius/package-versions": "^1.4|^1.5",
                 "phpunit/phpunit": "^8.5|^9.0",
                 "psr/event-dispatcher": "^1.0",
                 "slam/phpstan-extensions": "^5.0",
-                "symplify/changelog-linker": "^8.2.2",
-                "symplify/easy-coding-standard": "^8.2.2",
-                "symplify/easy-testing": "^8.2.2",
-                "symplify/monorepo-builder": "^8.2.2",
-                "symplify/phpstan-extensions": "^8.2.2",
+                "symplify/changelog-linker": "^8.2.9",
+                "symplify/easy-coding-standard": "^8.2.9",
+                "symplify/easy-testing": "^8.2.9",
+                "symplify/monorepo-builder": "^8.2.9",
+                "symplify/phpstan-extensions": "^8.2.9",
                 "thecodingmachine/phpstan-strict-rules": "^0.12"
             },
             "bin": [
@@ -11494,7 +11537,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-16T13:50:35+00:00"
+            "time": "2020-08-20T13:37:13+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -13581,16 +13624,16 @@
         },
         {
             "name": "symplify/auto-bind-parameter",
-            "version": "v8.2.9",
+            "version": "v8.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/auto-bind-parameter.git",
-                "reference": "2e58c6d593c916afecf63bdbf82fd13788136eaa"
+                "reference": "494c8093f9a49d01c5e4fa5ee2c019d1375ae782"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/auto-bind-parameter/zipball/2e58c6d593c916afecf63bdbf82fd13788136eaa",
-                "reference": "2e58c6d593c916afecf63bdbf82fd13788136eaa",
+                "url": "https://api.github.com/repos/symplify/auto-bind-parameter/zipball/494c8093f9a49d01c5e4fa5ee2c019d1375ae782",
+                "reference": "494c8093f9a49d01c5e4fa5ee2c019d1375ae782",
                 "shasum": ""
             },
             "require": {
@@ -13601,7 +13644,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0",
-                "symplify/package-builder": "^8.2.9"
+                "symplify/package-builder": "^8.2.13"
             },
             "type": "library",
             "extra": {
@@ -13625,27 +13668,27 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-18T16:19:10+00:00"
+            "time": "2020-08-24T19:21:48+00:00"
         },
         {
             "name": "symplify/autowire-array-parameter",
-            "version": "v8.2.9",
+            "version": "v8.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/autowire-array-parameter.git",
-                "reference": "7c63d257d235264392313928f038bc68f653edf8"
+                "reference": "e26e125b7e4c694413f0df7eb7af197493195208"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/autowire-array-parameter/zipball/7c63d257d235264392313928f038bc68f653edf8",
-                "reference": "7c63d257d235264392313928f038bc68f653edf8",
+                "url": "https://api.github.com/repos/symplify/autowire-array-parameter/zipball/e26e125b7e4c694413f0df7eb7af197493195208",
+                "reference": "e26e125b7e4c694413f0df7eb7af197493195208",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^3.0",
                 "php": "^7.2",
                 "symfony/dependency-injection": "^4.4|^5.0",
-                "symplify/package-builder": "^8.2.9"
+                "symplify/package-builder": "^8.2.13"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -13672,20 +13715,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-18T16:19:10+00:00"
+            "time": "2020-08-24T19:21:48+00:00"
         },
         {
             "name": "symplify/console-color-diff",
-            "version": "v8.2.9",
+            "version": "v8.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/console-color-diff.git",
-                "reference": "9867760fc3d61b8bf5b307b5a4ed94a1e62a43a3"
+                "reference": "fc0c3d37c5ccd4821407226ec967bbe397b40869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/console-color-diff/zipball/9867760fc3d61b8bf5b307b5a4ed94a1e62a43a3",
-                "reference": "9867760fc3d61b8bf5b307b5a4ed94a1e62a43a3",
+                "url": "https://api.github.com/repos/symplify/console-color-diff/zipball/fc0c3d37c5ccd4821407226ec967bbe397b40869",
+                "reference": "fc0c3d37c5ccd4821407226ec967bbe397b40869",
                 "shasum": ""
             },
             "require": {
@@ -13695,7 +13738,7 @@
                 "symfony/console": "^4.4|^5.0",
                 "symfony/dependency-injection": "^4.4|^5.0",
                 "symfony/http-kernel": "^4.4|^5.0",
-                "symplify/package-builder": "^8.2.9"
+                "symplify/package-builder": "^8.2.13"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -13722,28 +13765,28 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-18T16:19:10+00:00"
+            "time": "2020-08-24T19:21:48+00:00"
         },
         {
             "name": "symplify/easy-testing",
-            "version": "v8.2.9",
+            "version": "v8.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-testing.git",
-                "reference": "e6b085da0f461568720554274c2f0d8573efd98b"
+                "reference": "00cabe84cb39d460d6ead15aa076b95e6f0960b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-testing/zipball/e6b085da0f461568720554274c2f0d8573efd98b",
-                "reference": "e6b085da0f461568720554274c2f0d8573efd98b",
+                "url": "https://api.github.com/repos/symplify/easy-testing/zipball/00cabe84cb39d460d6ead15aa076b95e6f0960b6",
+                "reference": "00cabe84cb39d460d6ead15aa076b95e6f0960b6",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^3.0",
                 "php": "^7.2",
                 "symfony/finder": "^4.4|^5.0",
-                "symplify/package-builder": "^8.2.9",
-                "symplify/smart-file-system": "^8.2.9"
+                "symplify/package-builder": "^8.2.13",
+                "symplify/smart-file-system": "^8.2.13"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -13770,20 +13813,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-18T16:19:10+00:00"
+            "time": "2020-08-24T19:21:48+00:00"
         },
         {
             "name": "symplify/package-builder",
-            "version": "v8.2.9",
+            "version": "v8.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/package-builder.git",
-                "reference": "81b954b4b4c87b7795b5c8615b037797ee2b14cb"
+                "reference": "900dc34654b0788d4763f05aa138c97d4fb0151b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/package-builder/zipball/81b954b4b4c87b7795b5c8615b037797ee2b14cb",
-                "reference": "81b954b4b4c87b7795b5c8615b037797ee2b14cb",
+                "url": "https://api.github.com/repos/symplify/package-builder/zipball/900dc34654b0788d4763f05aa138c97d4fb0151b",
+                "reference": "900dc34654b0788d4763f05aa138c97d4fb0151b",
                 "shasum": ""
             },
             "require": {
@@ -13822,20 +13865,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-12T12:00:59+00:00"
+            "time": "2020-08-19T14:13:41+00:00"
         },
         {
             "name": "symplify/set-config-resolver",
-            "version": "v8.2.9",
+            "version": "v8.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/set-config-resolver.git",
-                "reference": "248a6adb60afef8326be290bf3475c7772cb9363"
+                "reference": "2429776908e4f8e2a506f7ecd8185dd693bc2a89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/set-config-resolver/zipball/248a6adb60afef8326be290bf3475c7772cb9363",
-                "reference": "248a6adb60afef8326be290bf3475c7772cb9363",
+                "url": "https://api.github.com/repos/symplify/set-config-resolver/zipball/2429776908e4f8e2a506f7ecd8185dd693bc2a89",
+                "reference": "2429776908e4f8e2a506f7ecd8185dd693bc2a89",
                 "shasum": ""
             },
             "require": {
@@ -13847,7 +13890,7 @@
                 "symfony/filesystem": "^4.4|^5.0",
                 "symfony/finder": "^4.4|^5.0",
                 "symfony/yaml": "^4.4|^5.0",
-                "symplify/smart-file-system": "^8.2.9"
+                "symplify/smart-file-system": "^8.2.13"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -13874,20 +13917,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-18T16:19:10+00:00"
+            "time": "2020-08-24T19:21:48+00:00"
         },
         {
             "name": "symplify/smart-file-system",
-            "version": "v8.2.9",
+            "version": "v8.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/smart-file-system.git",
-                "reference": "bce84f25577895d6bd47869a037936e67439399a"
+                "reference": "e4ec922b6d27de74a2eddaae5449ee320bc91757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/smart-file-system/zipball/bce84f25577895d6bd47869a037936e67439399a",
-                "reference": "bce84f25577895d6bd47869a037936e67439399a",
+                "url": "https://api.github.com/repos/symplify/smart-file-system/zipball/e4ec922b6d27de74a2eddaae5449ee320bc91757",
+                "reference": "e4ec922b6d27de74a2eddaae5449ee320bc91757",
                 "shasum": ""
             },
             "require": {
@@ -13922,7 +13965,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-12T12:00:59+00:00"
+            "time": "2020-08-24T13:39:46+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -14049,12 +14092,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "7dba9bc50ab16cd51fb381a4f1e54c5ada714a52"
+                "reference": "3f50fbc116b45330d33f092359c23428d3273f64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/7dba9bc50ab16cd51fb381a4f1e54c5ada714a52",
-                "reference": "7dba9bc50ab16cd51fb381a4f1e54c5ada714a52",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/3f50fbc116b45330d33f092359c23428d3273f64",
+                "reference": "3f50fbc116b45330d33f092359c23428d3273f64",
                 "shasum": ""
             },
             "require": {
@@ -14139,7 +14182,7 @@
                 "inspection",
                 "php"
             ],
-            "time": "2020-08-24T23:29:00+00:00"
+            "time": "2020-08-25T14:15:56+00:00"
         },
         {
             "name": "webmozart/glob",
