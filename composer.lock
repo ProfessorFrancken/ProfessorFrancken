@@ -8947,26 +8947,26 @@
         },
         {
             "name": "laravel/browser-kit-testing",
-            "version": "v6.0.0",
+            "version": "v6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/browser-kit-testing.git",
-                "reference": "ead8d337031ba41a8a5c38dac1a6d158d91a4551"
+                "reference": "7c7ddf11efc0fe9656f37554f06f69feef71b8a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/ead8d337031ba41a8a5c38dac1a6d158d91a4551",
-                "reference": "ead8d337031ba41a8a5c38dac1a6d158d91a4551",
+                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/7c7ddf11efc0fe9656f37554f06f69feef71b8a0",
+                "reference": "7c7ddf11efc0fe9656f37554f06f69feef71b8a0",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-json": "*",
-                "illuminate/contracts": "^7.0",
-                "illuminate/database": "^7.0",
-                "illuminate/http": "^7.0",
-                "illuminate/support": "^7.0",
-                "illuminate/testing": "^7.0",
+                "illuminate/contracts": "^7.0|^8.0",
+                "illuminate/database": "^7.0|^8.0",
+                "illuminate/http": "^7.0|^8.0",
+                "illuminate/support": "^7.0|^8.0",
+                "illuminate/testing": "^7.0|^8.0",
                 "mockery/mockery": "^1.0",
                 "php": "^7.2",
                 "phpunit/phpunit": "^8.5|^9.0",
@@ -8977,7 +8977,7 @@
                 "symfony/http-kernel": "^5.0"
             },
             "require-dev": {
-                "laravel/framework": "^7.0"
+                "laravel/framework": "^7.0|^8.0"
             },
             "type": "library",
             "extra": {
@@ -9005,7 +9005,7 @@
                 "laravel",
                 "testing"
             ],
-            "time": "2020-03-03T13:37:48+00:00"
+            "time": "2020-08-25T16:58:12+00:00"
         },
         {
             "name": "laravel/envoy",
