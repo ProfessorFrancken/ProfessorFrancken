@@ -147,7 +147,7 @@ final class LegacyMember extends Model
             ->get()
             ->map(fn (LegacyMember $member) => [
                 'label' => $member->fullname,
-                'id' => $member->id
+                'value' => $member->id
             ]);
     }
 
