@@ -51,7 +51,7 @@ final class Anytimer extends Model
     {
         return $query
             ->activeAnytimers()
-            ->where('owner_id', $account->id)
+            ->where('owner_id', $account->getKey())
             ->groupBy('drinker_id');
     }
 
@@ -59,7 +59,7 @@ final class Anytimer extends Model
     {
         return $query
             ->activeAnytimers()
-            ->where('drinker_id', $account->id)
+            ->where('drinker_id', $account->getKey())
             ->groupBy('owner_id');
     }
 

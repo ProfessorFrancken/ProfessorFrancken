@@ -41,7 +41,7 @@ final class AnytimersController
             ->get()
             ->map(fn (BorrelcieAccount $account) => [
                 'label' => optional($account->member)->fullname,
-                'value' => $account->id
+                'value' => $account->getKey()
             ]);
 
         return view('association.borrelcie.anytimers.index')->with([

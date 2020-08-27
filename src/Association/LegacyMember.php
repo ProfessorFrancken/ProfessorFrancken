@@ -137,6 +137,7 @@ final class LegacyMember extends Model
         $query = self::query();
 
         if ($except !== null && $except->isNotEmpty()) {
+            /** @psalm-suppress UndefinedMagicMethod */
             $query = $query->whereNotIn('id', $except);
         }
 

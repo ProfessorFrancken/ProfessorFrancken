@@ -42,8 +42,8 @@ final class BorrelcieAccountActivationController
         }
 
         Anytimer::create([
-            'drinker_id' => $from->id,
-            'owner_id' => $to->id,
+            'drinker_id' => $from->getKey(),
+            'owner_id' => $to->getKey(),
             'accepted' => false,
             'amount' => 1,
             'reason' => "Activating their borrelcie account.",
