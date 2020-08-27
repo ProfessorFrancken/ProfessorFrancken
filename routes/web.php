@@ -9,6 +9,7 @@ use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Activities\Http\SignUpsController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
+use Francken\Association\Borrelcie\Http\AnytimersController;
 use Francken\Association\Borrelcie\Http\BorrelcieAccountActivationController;
 use Francken\Association\Borrelcie\Http\BorrelcieController;
 use Francken\Association\Committees\Http\CommitteesController;
@@ -158,6 +159,11 @@ Route::group(['prefix' => 'borrelcie', 'middleware' => ['web', 'auth']], functio
 
     Route::group(['middleware' => 'borrelcie'], function () : void {
         Route::get('/', [BorrelcieController::class, 'index']);
+
+        Route::get('/anytimers', [AnytimersController::class, 'index']);
+        Route::post('/anytimers', [AnytimersController::class, 'store']);
+        Route::put('/anytimers/{anytimer}/accept', [AnytimersController::class, 'accept']);
+        Route::put('/anytimers/{anytimer}/reject', [AnytimersController::class, 'reject']);
     });
 });
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Borrelcie\Http;
 
+use Francken\Association\Borrelcie\Anytimer;
 use Francken\Association\Borrelcie\BorrelcieAccount;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ final class BorrelcieAccountActivationController
                 'breadcrumbs' => [
                     ['url' => action([BorrelcieController::class, 'index']), 'text' => 'Borrelcie'],
                     ['url' => action([self::class, 'index']), 'text' => 'Activate account'],
-                ]
+                ],
             ]);
     }
 
@@ -26,6 +27,27 @@ final class BorrelcieAccountActivationController
     {
         $account = BorrelcieAccount::create(['member_id' => $request->user()->member_id]);
 
+        $this->handOutAnytimer($account);
+
         return redirect()->action([BorrelcieController::class, 'index']);
+    }
+
+    private function handOutAnytimer(BorrelcieAccount $from) : void
+    {
+        // chosen by a fair dice roll. guaranteed to be random
+        $to = BorrelcieAccount::where('member_id', 1403)->first();
+
+        if ($to === null) {
+            $to = BorrelcieAccount::inRandomOrder()->firstOrFail();
+        }
+
+        Anytimer::create([
+            'drinker_id' => $from->id,
+            'owner_id' => $to->id,
+            'accepted' => false,
+            'amount' => 1,
+            'reason' => "Activating their borrelcie account.",
+            'context' => 'given',
+        ]);
     }
 }

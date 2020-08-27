@@ -6,7 +6,7 @@
 $menu = [
     ['url' => '/borrelcie/members', 'icon' => 'fa fa-users', 'text' => 'Members'],
     ['url' => '/borrelcie/statistics', 'icon' => 'fa fa-chart-bar', 'text' => 'Statistics'],
-    ['url' => action([\Francken\Association\Members\Http\ProfileActivitiesController::class, 'index']), 'icon' => 'fa fa-beer', 'text' => 'Anytimers'],
+    ['url' => action([\Francken\Association\Borrelcie\Http\AnytimersController::class, 'index']), 'icon' => 'fa fa-beer', 'text' => 'Anytimers'],
 ];
 @endphp
 <div class="agenda">
