@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Auth;
 
+use Francken\Association\Borrelcie\BorrelcieAccount;
 use Francken\Association\LegacyMember;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -13,6 +14,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -78,5 +80,10 @@ final class Account extends Model implements
     public function member() : BelongsTo
     {
         return $this->belongsTo(LegacyMember::class, 'member_id');
+    }
+
+    public function borrelcieAccount() : HasOne
+    {
+        return $this->hasOne(BorrelcieAccount::class, 'member_id', 'member_id');
     }
 }

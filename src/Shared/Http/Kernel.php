@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Http;
 
 use Fideloper\Proxy\TrustProxies;
+use Francken\Association\Borrelcie\Http\Middleware\HasBorrelcieAccount;
 use Francken\Association\Photos\Http\Middleware\LoginToViewPhotos;
 use Francken\PlusOne\Http\Middleware\AuthenticatePlusOne;
 use Francken\Shared\Http\Middleware\Authenticate;
@@ -91,6 +92,7 @@ class Kernel extends HttpKernel
         'plus-one' => AuthenticatePlusOne::class,
         'symposium-cors' => \Francken\Association\Symposium\EnableCORS::class,
         'login-to-view-photos' => LoginToViewPhotos::class,
+        'borrelcie' => HasBorrelcieAccount::class,
     ];
 
     /**

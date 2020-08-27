@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Association;
 
 use DateTimeImmutable;
-use DB;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\Events\MemberAddressWasChanged;
 use Francken\Association\Members\Events\MemberEmailWasChanged;
@@ -135,10 +134,10 @@ final class LegacyMember extends Model
 
     public static function autocomplete(Collection $except = null) : Collection
     {
-        $query = DB::connection('francken-legacy')
-            ->table('leden');
+        $query = self::query();
 
         if ($except !== null && $except->isNotEmpty()) {
+            /** @psalm-suppress UndefinedMagicMethod */
             $query = $query->whereNotIn('id', $except);
         }
 
@@ -146,7 +145,11 @@ final class LegacyMember extends Model
             ->where('is_lid', true)
             ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
             ->orderBy('id', 'desc')
-            ->get();
+            ->get()
+            ->map(fn (LegacyMember $member) => [
+                'label' => $member->fullname,
+                'value' => $member->id
+            ]);
     }
 
     public function getInitialsAttribute() : string

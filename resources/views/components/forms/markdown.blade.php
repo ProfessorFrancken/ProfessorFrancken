@@ -27,48 +27,37 @@
 </x-forms.form-group>
 
 @push('scripts')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+
 {{-- Syntax highlighting --}}
 <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
+
 <script>
- var simplemde = new SimpleMDE({
-     element: document.getElementById("{{ $name }}"),
-     spellChecker: false,
-     promptURLs: true,
-     /* previewRender: ,*/
-     /* previewRender: function(plainText) {*/
-     /* console.log(plainText);*/
-     /* return customMarkdownParser(plainText); // Returns HTML from a custom parser*/
-     /* },*/
-     previewRender: function(plainText) { // Async method
-         var that = this;
-         var parent = that.parent;
-
-         var preview = document.getElementById("preview");
-         var compiled = this.parent.markdown(plainText);
-         preview.innerHTML = compiled;
-         return compiled;
-     },
-
-     toolbar: [
-         "bold", "italic", "strikethrough",
-         "|",
-         "heading-1", "heading-2", "heading-3",
-         "|",
-         "code", "quote", "link", "image", "table",
-         "|",
-         "unordered-list", "ordered-list",
-         "|",
-         "preview", "side-by-side", "fullscreen",
-         "guide"
-     ]
- });
+    var simplemde = new EasyMDE({
+        element: document.getElementById("{{ $name }}"),
+        autosave: {
+            enabled: true,
+            // Try to make a unique id based on the input's name and the current page's url
+            uniqueId: "francken-{{ $name }}-{{ \Illuminate\Support\Str::slug(url()->current()) }}"
+        },
+        spellChecker: false,
+        promptURLs: true,
+        toolbar: [
+            "bold", "italic", "strikethrough",
+            "|",
+            "heading-1", "heading-2", "heading-3",
+            "|",
+            "code", "quote", "link", "image", "table",
+            "|",
+            "unordered-list", "ordered-list",
+            "|",
+            "preview",
+            "guide"
+        ],
+        status: false,
+        maxHeight: "300px"
+    });
 </script>
-<style type="text/css">
- .CodeMirror, .CodeMirror-scroll {
-     max-height: 300px;
- }
-</style>
 @endpush

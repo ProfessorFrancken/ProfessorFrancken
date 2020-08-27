@@ -29,3 +29,9 @@
 </header>
 
 @include('layout._breadcrumbs')
+
+@auth
+<div class="container">
+    @stack('notifications')
+</div>
+@endauth
