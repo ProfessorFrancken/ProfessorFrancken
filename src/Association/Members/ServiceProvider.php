@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Members;
 
+use Francken\Association\Borrelcie\EventHandlers\HandOutAnytimers;
 use Francken\Association\Members\EventHandlers\ActivateAccount;
 use Francken\Association\Members\EventHandlers\NotifyBoardAboutProfileChanges;
 use Francken\Association\Members\Events\MemberAddressWasChanged;
@@ -73,6 +74,10 @@ final class ServiceProvider extends BaseServiceProvider
         $events->listen(
             AccountWasActivated::class,
             ActivateAccount::class
+        );
+        $events->listen(
+            MemberWasRegistered::class,
+            HandOutAnytimers::class
         );
     }
 }

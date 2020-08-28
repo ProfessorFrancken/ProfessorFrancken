@@ -19,6 +19,7 @@ use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
 use Francken\Association\Members\Study;
 use Francken\Association\Members\StudyDetails;
 use Francken\Shared\Email;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
@@ -312,5 +313,10 @@ final class Registration extends Model
         return array_map(function (Study $study) : ?string {
             return optional($study->graduationDate())->format('Y-m');
         }, $this->studies);
+    }
+
+    public function scopeApproved(Builder $query) : Builder
+    {
+        return $query->whereNotNull('registration_accepted_at');
     }
 }
