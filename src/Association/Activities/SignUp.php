@@ -44,4 +44,22 @@ final class SignUp extends Model
     {
         return $this->belongsTo(Activity::class);
     }
+
+    public function getCostsAttribute() : int
+    {
+        $activityCostsPerPerson = $this->activity->signUpSettings->costs_per_person;
+
+        return $activityCostsPerPerson * (1 + $this->plus_ones) - $this->discount;
+    }
+
+    public function getExportNameAttribute() : string
+    {
+        return collect([
+                $this->member->achternaam,
+                $this->member->voornaam,
+                $this->member->tussenvoegsel
+            ])
+                ->filter()
+                ->implode(' ');
+    }
 }

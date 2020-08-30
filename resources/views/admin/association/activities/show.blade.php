@@ -88,6 +88,15 @@
             Show activity page
         </a>
         <a href="{{ action(
+                        [\Francken\Association\Activities\Http\AdminActivitySignUpsExportController::class, 'index'],
+                        ['activity' => $activity]
+                        ) }}"
+            class="btn btn-primary mx-2"
+        >
+            <i class="fas fa-file-export"></i>
+            Export
+        </a>
+        <a href="{{ action(
                         [\Francken\Association\Activities\Http\AdminActivitiesController::class, 'edit'],
                         ['activity' => $activity]
                         ) }}"
