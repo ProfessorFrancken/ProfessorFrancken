@@ -12,11 +12,9 @@ use Francken\Features\TestCase;
 use Francken\Shared\Http\Controllers\BoardDashboardController;
 use Francken\Shared\Http\Controllers\DashboardController;
 use Francken\Shared\Http\Controllers\MemberDashboardController;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DashboardFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

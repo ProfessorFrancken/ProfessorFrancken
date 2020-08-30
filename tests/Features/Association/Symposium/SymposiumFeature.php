@@ -13,12 +13,10 @@ use Francken\Association\Symposium\Symposium;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Francken\Shared\Email;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Event;
 
 class SymposiumFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

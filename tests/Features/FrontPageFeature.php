@@ -7,12 +7,9 @@ namespace Francken\Features;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Shared\Url;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class FrontPageFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /**
      * Checks if we can open the front page
      *
@@ -25,7 +22,6 @@ class FrontPageFeature extends TestCase
         $this->visit('/')
              ->see("T.F.V. 'Professor Francken'");
     }
-
 
     private function publishAFranckenVrij() : void
     {

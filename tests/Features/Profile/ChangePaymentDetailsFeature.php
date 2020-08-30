@@ -9,13 +9,10 @@ use Francken\Association\Members\Http\PaymentDetailsController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Auth\Account;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Event;
 
 class ChangePaymentDetailsFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_allows_changing_a_members_contact_details() : void
     {

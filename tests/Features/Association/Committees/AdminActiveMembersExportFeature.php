@@ -12,12 +12,10 @@ use Francken\Association\Committees\Http\AdminActiveMembersExportController;
 use Francken\Association\LegacyMember;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminActiveMembersExportFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

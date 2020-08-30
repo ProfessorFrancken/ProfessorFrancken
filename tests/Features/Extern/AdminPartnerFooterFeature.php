@@ -10,13 +10,11 @@ use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 class AdminPartnerFooterFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

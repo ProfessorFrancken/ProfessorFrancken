@@ -22,12 +22,10 @@ use Francken\Auth\Account;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Francken\Shared\Email;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\BrowserKitTesting\HttpException;
 
 class RegistrationRequestsFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

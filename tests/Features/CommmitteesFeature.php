@@ -6,12 +6,9 @@ namespace Francken\Features;
 
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CommmitteesFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function committees_are_listed() : void
     {

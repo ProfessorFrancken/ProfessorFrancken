@@ -11,12 +11,10 @@ use Francken\Association\Symposium\ParticipantRegisteredForSymposium;
 use Francken\Association\Symposium\Symposium;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 
 class NotifyCommitteeFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

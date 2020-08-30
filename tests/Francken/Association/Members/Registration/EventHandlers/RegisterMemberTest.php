@@ -22,17 +22,12 @@ use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
 use Francken\Association\Members\Registration\Events\RegistrationWasSubmitted;
 use Francken\Association\Members\Registration\Registration;
 use Francken\Association\Members\StudyDetails;
+use Francken\Features\TestCase;
 use Francken\Shared\Email;
-use Francken\Tests\LaravelTestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Event;
 
-// use Francken\Association\Members\Study;
-
-class RegisterMemberTest extends LaravelTestCase
+class RegisterMemberTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function a_registration_can_be_submitted() : void
     {

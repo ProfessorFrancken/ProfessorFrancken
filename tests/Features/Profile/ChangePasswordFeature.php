@@ -9,12 +9,9 @@ use Francken\Association\Members\Http\ProfileController;
 use Francken\Auth\Account;
 use Francken\Features\TestCase;
 use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ChangePasswordFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_allows_changing_a_members_password() : void
     {

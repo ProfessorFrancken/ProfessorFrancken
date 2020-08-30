@@ -10,11 +10,9 @@ use Francken\Extern\Http\AdminPartnersController;
 use Francken\Extern\Partner;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AdminPartnerAlumniFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */
