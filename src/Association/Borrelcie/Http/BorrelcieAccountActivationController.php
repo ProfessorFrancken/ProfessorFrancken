@@ -7,6 +7,7 @@ namespace Francken\Association\Borrelcie\Http;
 use Francken\Association\Borrelcie\Anytimer;
 use Francken\Association\Borrelcie\BorrelcieAccount;
 use Francken\Auth\Account;
+use Francken\Auth\Permission;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -36,7 +37,9 @@ final class BorrelcieAccountActivationController
 
     private function giveBorrelciePermission(Account $account) : void
     {
-        $account->givePermissionTo('borrelcie');
+        $account->givePermissionTo(
+            Permission::firstOrCreate(['name' => 'borrelcie'])
+        );
     }
 
     private function handOutAnytimer(BorrelcieAccount $from) : void
