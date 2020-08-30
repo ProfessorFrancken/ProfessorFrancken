@@ -80,7 +80,21 @@
             </div>
         </div>
 
+
         @if ($activity->signUpSettings !== null)
+            <div class="row my-3">
+                <div class="col-4">
+                    <strong>Registration deadline</strong>
+                </div>
+                <div class="col-8 text-right">
+                    {{ $activity->signUpSettings->deadline_at->format("F jS") }}
+                    <small class="text-muted mx-1">
+                        •
+                    </small>
+                    {{ $activity->signUpSettings->deadline_at->format("H:i") }}
+                </div>
+            </div>
+
             <div class="row my-3">
                 <div class="col-4">
                     <strong>Costs</strong>
