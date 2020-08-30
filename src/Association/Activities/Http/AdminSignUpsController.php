@@ -17,7 +17,7 @@ final class AdminSignUpsController
         return view('admin.association.activities.sign-ups.create')
             ->with([
                 'activity' => $activity,
-                'signUp' => new SignUP(),
+                'signUp' => new SignUp(),
                 'breadcrumbs' => [
                     ['url' => action([AdminActivitiesController::class, 'index']), 'text' => 'Activities'],
                     ['url' => action([AdminActivitiesController::class, 'show'], ['activity' => $activity]), 'text' => $activity->name],
@@ -32,6 +32,7 @@ final class AdminSignUpsController
             new SignUp([
                 'member_id' => $request->memberId(),
                 'plus_ones' => $request->plusOnes(),
+                'discount' => $request->discount(),
                 'dietary_wishes' => $request->dietaryWishes(),
                 'has_drivers_license' => $request->hasDriversLicense(),
                 'notes' => $request->notes()
@@ -59,6 +60,7 @@ final class AdminSignUpsController
     {
         $signUp->update([
             'plus_ones' => $request->plusOnes(),
+            'discount' => $request->discount(),
             'dietary_wishes' => $request->dietaryWishes(),
             'has_drivers_license' => $request->hasDriversLicense(),
             'notes' => $request->notes()

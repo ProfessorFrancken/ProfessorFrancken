@@ -23,6 +23,7 @@ final class SignUp extends Model
         'plus_ones',
         'dietary_wishes',
         'has_drivers_license',
+        'discount',
         'notes',
     ];
 
@@ -31,6 +32,7 @@ final class SignUp extends Model
         'activity_id' => 'int',
         'plus_ones' => 'int',
         'has_drivers_license' => 'boolean',
+        'discount' => 'int',
     ];
 
     public function member() : BelongsTo

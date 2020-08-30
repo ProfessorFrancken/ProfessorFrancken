@@ -28,6 +28,12 @@
                     </a>
                 </div>
             </div>
+
+            @if ($signUp->discount !== 0)
+                <strong>Discount</strong>
+                : <i class="fas fa-euro-sign text-muted ml-1" title="Discount"></i>
+                {{ number_format($signUp->discount / 100, 2) }}
+            @endif
             @if ($signUp->dietary_wishes !== '')
                 <p class="mb-0 mt-2">
                     <i class="fas fa-utensils fa-fw text-muted" title="Dietary wishes"></i>
