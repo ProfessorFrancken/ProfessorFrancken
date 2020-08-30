@@ -64,6 +64,9 @@ return [
 
         'dashboard:permissions-read',
         'dashboard:permissions-write',
+
+        // Given when a member activates their borrelcie account
+        'borrelcie',
     ],
 
     'api' => [
