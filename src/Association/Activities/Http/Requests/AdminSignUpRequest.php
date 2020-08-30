@@ -16,6 +16,7 @@ class AdminSignUpRequest extends FormRequest
         return [
             'member_id' => ['required', 'integer', 'exists:francken-legacy.leden,id'],
             'plus_ones' => ['required', 'integer'],
+            'discount' => ['nullable', 'integer'],
             'notes' => ['nullable'],
             'dietary_wishes' => ['nullable', 'min:1'],
             'has_drivers_license' => ['nullable', 'boolean'],
@@ -30,6 +31,11 @@ class AdminSignUpRequest extends FormRequest
     public function plusOnes() : int
     {
         return (int) $this->input('plus_ones');
+    }
+
+    public function discount() : int
+    {
+        return (int) $this->input('discount');
     }
 
     public function notes() : string

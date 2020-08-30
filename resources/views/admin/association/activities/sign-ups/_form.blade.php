@@ -14,7 +14,7 @@
         @endif
 
         <x-forms.number name="plus_ones" label="Plus ones" />
-
+        <x-forms.number name="discount" label="Discount" />
 
         @if ($activity->signUpSettings->ask_for_dietary_wishes)
             <x-forms.text name="dietary_wishes" label="Dietary wishes" />

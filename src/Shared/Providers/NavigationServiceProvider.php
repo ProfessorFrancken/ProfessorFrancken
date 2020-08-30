@@ -6,6 +6,7 @@ namespace Francken\Shared\Providers;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use Francken\Association\Borrelcie\Http\BorrelcieController;
 use Francken\Association\Members\Http\ProfileActivitiesController;
 use Francken\Auth\Account;
 use Francken\Shared\Http\Controllers\DashboardController;
@@ -68,7 +69,9 @@ final class NavigationServiceProvider extends ServiceProvider
                         // Job prospects
                         ['url' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'title' => 'Expenses'],
                         ['url' => action([ProfileActivitiesController::class, 'index']), 'icon' => 'fa fa-calendar', 'title' => 'Activities'],
-
+                        ($account->can('borrelcie')
+                         ? ['url' => action([BorrelcieController::class, 'index']), 'icon' => 'fa fa-beer', 'title' => 'Borrelcie', 'can' => 'borrelcie']
+                         : []),
                         ($account->can('can-access-dashboard')
                          ? ['url' => action([DashboardController::class, 'redirectToDashboard']), 'icon' => 'fa fa-database', 'title' => 'Admin', 'can' => 'can-access-dashboard']
                          : []),

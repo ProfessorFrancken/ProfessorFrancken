@@ -7,6 +7,7 @@ namespace Francken\Association\Activities;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Webmozart\Assert\Assert;
 
 final class SignUp extends Model
 {
@@ -23,6 +24,7 @@ final class SignUp extends Model
         'plus_ones',
         'dietary_wishes',
         'has_drivers_license',
+        'discount',
         'notes',
     ];
 
@@ -31,6 +33,7 @@ final class SignUp extends Model
         'activity_id' => 'int',
         'plus_ones' => 'int',
         'has_drivers_license' => 'boolean',
+        'discount' => 'int',
     ];
 
     public function member() : BelongsTo
@@ -41,5 +44,28 @@ final class SignUp extends Model
     public function activity() : BelongsTo
     {
         return $this->belongsTo(Activity::class);
+    }
+
+    public function getCostsAttribute() : int
+    {
+        Assert::notNull($this->activity);
+        Assert::notNull($this->activity->signUpSettings);
+
+        $activityCostsPerPerson = $this->activity->signUpSettings->costs_per_person;
+
+        return (int)($activityCostsPerPerson * (1 + $this->plus_ones) - $this->discount);
+    }
+
+    public function getExportNameAttribute() : string
+    {
+        Assert::notNull($this->member);
+
+        return collect([
+                $this->member->achternaam,
+                $this->member->voornaam,
+                $this->member->tussenvoegsel
+            ])
+                ->filter()
+                ->implode(' ');
     }
 }

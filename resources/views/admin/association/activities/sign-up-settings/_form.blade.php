@@ -4,7 +4,11 @@
 
 <div class="row">
     <div class="col-6">
-        <x-forms.datetime name="deadline_at" label="Sign up deadline" :value="optional($activity->start_date)->format('Y-m-d H:i:s')">
+        <x-forms.datetime
+            name="deadline_at"
+            label="Sign up deadline"
+            :value="optional($signUpSettings->deadline_at)->format('Y-m-d H:i:s') ?? optional($activity->start_date)->format('Y-m-d H:i:s')"
+        >
             <x-slot name="help">
                 After this deadline only board members can sign up members
             </x-slot>

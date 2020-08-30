@@ -51,7 +51,7 @@
                             <td class="text-right">
                                 @if ($activity->signUpSettings)
                                 <p class="my-0">
-                                    0 / {{ $activity->signUpSettings->max_sign_ups }}
+                                    {{ $activity->total_sign_ups }} / {{ $activity->signUpSettings->max_sign_ups }}
                                 </p>
                                 <small class="text-muted my-0">
                                     @if ($activity->signUpSettings->deadline_at->isFuture())

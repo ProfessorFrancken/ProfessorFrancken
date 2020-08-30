@@ -27,7 +27,7 @@ final class SignUpSettings extends Model
     ];
 
     protected $casts = [
-        'deadline_at' => 'date',
+        'deadline_at' => 'datetime',
         'max_sign_ups' => 'int',
         'costs_per_person' => 'int',
         'max_plus_ones_per_member' => 'int',
