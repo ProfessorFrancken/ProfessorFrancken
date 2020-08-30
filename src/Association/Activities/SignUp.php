@@ -7,6 +7,7 @@ namespace Francken\Association\Activities;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Webmozart\Assert\Assert;
 
 final class SignUp extends Model
 {
@@ -47,13 +48,18 @@ final class SignUp extends Model
 
     public function getCostsAttribute() : int
     {
+        Assert::notNull($this->activity);
+        Assert::notNull($this->activity->signUpSettings);
+
         $activityCostsPerPerson = $this->activity->signUpSettings->costs_per_person;
 
-        return $activityCostsPerPerson * (1 + $this->plus_ones) - $this->discount;
+        return (int)($activityCostsPerPerson * (1 + $this->plus_ones) - $this->discount);
     }
 
     public function getExportNameAttribute() : string
     {
+        Assert::notNull($this->member);
+
         return collect([
                 $this->member->achternaam,
                 $this->member->voornaam,

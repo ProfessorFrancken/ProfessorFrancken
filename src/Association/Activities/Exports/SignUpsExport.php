@@ -31,7 +31,7 @@ class SignUpsExport implements FromView, WithStyles, ShouldAutoSize, WithColumnF
         return view('admin.association.activities.sign-ups.export', [
             'activity' => $activity,
             'totalCosts' => $activity->signUps->map(fn (SignUp $signUp) => $signUp->costs)->sum(),
-            'signUps' => $activity->signUps->sortBy(fn (SignUp $signUp) => $signUp->member->achternaam)
+            'signUps' => $activity->signUps->sortBy(fn (SignUp $signUp) => optional($signUp->member)->achternaam)
         ]);
     }
 
