@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Tests\Shared\ViewComponents;
 
+use Francken\Features\TestCase;
 use Francken\Shared\ViewComponents\AutocompleteMemberComponent;
-use Francken\Tests\LaravelTestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class AutocompleteMemberComponentTest extends LaravelTestCase
+class AutocompleteMemberComponentTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_shows_company_logos_in_our_footer() : void
     {

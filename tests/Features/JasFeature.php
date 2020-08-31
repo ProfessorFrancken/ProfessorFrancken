@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-
 class JasFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /**
      * Checks if we can open the front page
      *

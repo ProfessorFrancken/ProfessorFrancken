@@ -12,12 +12,10 @@ use Francken\Extern\PartnerStatus;
 use Francken\Extern\Sector;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
 
 class AdminPartnersFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

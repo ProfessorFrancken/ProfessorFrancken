@@ -23,6 +23,13 @@
 
 @import "junk";
 
+.text-app-secondary {
+    color: $secondary-color;
+}
+.text-app-secondary-dark {
+    color: $secondary-color-dark;
+}
+
 html,
 body {
   overflow-x: hidden;

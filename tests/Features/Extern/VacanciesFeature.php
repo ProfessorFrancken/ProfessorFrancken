@@ -8,12 +8,9 @@ use Francken\Extern\Http\CareerController;
 use Francken\Extern\Partner;
 use Francken\Extern\SponsorOptions\Vacancy;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class VacanciesFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_shows_vacancies() : void
     {

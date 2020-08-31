@@ -10,12 +10,10 @@ use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Francken\Study\BooksSale\Book;
 use Francken\Study\BooksSale\Http\AdminBooksController;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AdminBooksFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
     use DatabaseTransactions;
 

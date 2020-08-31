@@ -10,12 +10,10 @@ use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Str;
 
 class AdminPartnerCompanyProfilesFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

@@ -13,14 +13,12 @@ use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\MemberBecameCandidateBoardMember;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
 
 class AdminBoardsFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
     use DatabaseTransactions;
 

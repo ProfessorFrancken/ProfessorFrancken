@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Features;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Validation\ValidationException;
 
 class RegistrationRequestFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /**
      * @test
      */

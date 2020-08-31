@@ -9,11 +9,9 @@ use Francken\Association\Committees\Committee;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Shared\Url;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 final class SmokeFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     protected function setUp() : void

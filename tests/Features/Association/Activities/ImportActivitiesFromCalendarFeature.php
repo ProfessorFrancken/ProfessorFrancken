@@ -7,13 +7,10 @@ namespace Francken\Features\Association\Activities;
 use Francken\Association\Activities\ActivitiesRepository;
 use Francken\Association\Activities\Activity;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
 
 class ImportActivitiesFromCalendarFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_imports_activities_from_calendar() : void
     {

@@ -10,11 +10,9 @@ use Francken\Association\Committees\CommitteeMember;
 use Francken\Extern\Http\FactSheetController;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class FactsheetFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

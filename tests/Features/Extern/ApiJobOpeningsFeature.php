@@ -7,12 +7,9 @@ namespace Francken\Features\Extern;
 use Francken\Extern\Http\ApiJobOpeningsController;
 use Francken\Extern\SponsorOptions\Vacancy;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ApiJobOpeningsFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_returns_current_job_openings() : void
     {

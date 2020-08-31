@@ -8,12 +8,9 @@ use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\News;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 final class FakeNewsTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_generates_fake_news_items() : void
     {

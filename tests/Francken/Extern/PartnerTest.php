@@ -12,13 +12,10 @@ use Francken\Extern\PartnerStatus;
 use Francken\Extern\SponsorOptions\CompanyProfile;
 use Francken\Extern\SponsorOptions\Footer;
 use Francken\Extern\SponsorOptions\Vacancy;
-use Francken\Tests\LaravelTestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Francken\Features\TestCase;
 
-class PartnerTest extends LaravelTestCase
+class PartnerTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function partners_can_be_searched_for() : void
     {

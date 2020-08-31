@@ -18,7 +18,7 @@ final class ActivitiesController
             ->with(['signUpSettings', 'signUps', 'signUps.member'])
             ->after($clock->now())
             ->orderBy('start_date', 'asc')
-            ->limit(5)
+            ->limit(20)
             ->get();
 
         return view('association.activities.index', [

@@ -12,13 +12,10 @@ use Francken\Association\Members\Http\ContactDetailsController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Auth\Account;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Event;
 
 class ChangeContactDetailsFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_allows_changing_a_members_contact_details() : void
     {

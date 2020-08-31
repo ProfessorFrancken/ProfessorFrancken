@@ -7,12 +7,9 @@ namespace Francken\Features\PlusOne;
 use Francken\Association\Boards\Board;
 use Francken\Association\Boards\BoardMember;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class BoardMembersFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function it_returns_board_members_with_a_known_member_id() : void
     {

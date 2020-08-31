@@ -7,12 +7,9 @@ namespace Francken\Features;
 use Faker\Factory;
 use Francken\Association\News\Fake\FakeNews;
 use Francken\Association\News\Http\NewsController;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class NewsFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @before */
     public function setupNews() : void
     {

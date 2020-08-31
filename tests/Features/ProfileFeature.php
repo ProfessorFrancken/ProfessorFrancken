@@ -7,14 +7,12 @@ namespace Francken\Features;
 use DatabaseSeeder;
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * The following are test that check that basic features of the admin page are working
  */
 class ProfileFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
 
     /** @test */

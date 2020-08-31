@@ -11,13 +11,11 @@ use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\News\News;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Collection;
 
 class NewsFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
     use DatabaseTransactions;
 

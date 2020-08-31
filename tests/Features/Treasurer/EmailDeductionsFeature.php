@@ -8,14 +8,12 @@ use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Validation\ValidationException;
 
 class EmailDeductionsFeature extends TestCase
 {
-    use DatabaseMigrations;
     use LoggedInAsAdmin;
     use DatabaseTransactions;
 

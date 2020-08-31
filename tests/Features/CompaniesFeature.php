@@ -7,13 +7,10 @@ namespace Francken\Features;
 use Francken\Extern\Http\CompaniesController;
 use Francken\Extern\Partner;
 use Francken\Extern\SponsorOptions\CompanyProfile;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Plank\Mediable\Media;
 
 class CompaniesFeature extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function companies_are_listed() : void
     {

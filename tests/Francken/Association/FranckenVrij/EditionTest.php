@@ -8,12 +8,10 @@ use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Features\TestCase;
 use Francken\Shared\Url;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use InvalidArgumentException;
 
 class EditionTest extends TestCase
 {
-    use DatabaseMigrations;
     /** @test */
     public function it_has_a_volume_and_edition_number() : void
     {
