@@ -30,7 +30,7 @@ final class HandOutAnytimers extends EventHandler
                 'drinker_id' => $markBorrelcieAccount->getKey(),
                 'owner_id' => $boardMemberAccount->getKey(),
                 'context' => 'given',
-                'reason' => 'Getting 33 registrations',
+                'reason' => 'Getting (another) 33 registrations',
                 'amount' => 1,
                 'accepted' => false,
             ]);
