@@ -38,7 +38,3 @@ $menu = [
     </ul>
 </div>
 @endsection
-
-@push('notifications')
-<x-borrelcie-notifications />
-@endpush

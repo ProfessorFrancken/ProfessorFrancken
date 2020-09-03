@@ -32,6 +32,7 @@
 
 @auth
 <div class="container">
+    <x-borrelcie-notifications />
     @stack('notifications')
 </div>
 @endauth
