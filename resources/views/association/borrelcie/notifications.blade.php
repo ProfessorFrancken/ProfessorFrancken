@@ -1,4 +1,4 @@
-<ul class="list-unstyled">
+<ul class="list-unstyled mb-0">
     @foreach($notifications as $anytimer)
         <li class="shadow-sm bg-white p-3 d-flex justify-content-between my-4">
             <div>
