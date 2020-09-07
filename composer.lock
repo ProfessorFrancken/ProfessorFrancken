@@ -1470,16 +1470,16 @@
         },
         {
             "name": "intervention/validation",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/validation.git",
-                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5"
+                "reference": "f49e6d621edd801bcaf1a40899a5529f9f938823"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/validation/zipball/1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
-                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
+                "url": "https://api.github.com/repos/Intervention/validation/zipball/f49e6d621edd801bcaf1a40899a5529f9f938823",
+                "reference": "f49e6d621edd801bcaf1a40899a5529f9f938823",
                 "shasum": ""
             },
             "require": {
@@ -1527,7 +1527,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-06-05T07:55:39+00:00"
+            "time": "2020-09-04T16:52:53+00:00"
         },
         {
             "name": "laravel/framework",
@@ -11519,12 +11519,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "efe42531c4f320f794e8f7db82afdd32ac8b893e"
+                "reference": "697cfbd44fa43ebb5cd9d5ce6d8fc0edcbce85b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/efe42531c4f320f794e8f7db82afdd32ac8b893e",
-                "reference": "efe42531c4f320f794e8f7db82afdd32ac8b893e",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/697cfbd44fa43ebb5cd9d5ce6d8fc0edcbce85b8",
+                "reference": "697cfbd44fa43ebb5cd9d5ce6d8fc0edcbce85b8",
                 "shasum": ""
             },
             "conflict": {
@@ -11558,6 +11558,7 @@
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "datadog/dd-trace": ">=0.30,<0.30.2",
                 "david-garcia/phpwhois": "<=4.3.1",
+                "derhansen/sf_event_mgt": "<4.3.1|>=5,<5.1.1",
                 "doctrine/annotations": ">=1,<1.2.7",
                 "doctrine/cache": ">=1,<1.3.2|>=1.4,<1.4.2",
                 "doctrine/common": ">=2,<2.4.3|>=2.5,<2.5.1",
@@ -11808,7 +11809,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-02T09:37:47+00:00"
+            "time": "2020-09-02T19:02:24+00:00"
         },
         {
             "name": "sebastian/cli-parser",
