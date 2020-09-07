@@ -1470,16 +1470,16 @@
         },
         {
             "name": "intervention/validation",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/validation.git",
-                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5"
+                "reference": "f49e6d621edd801bcaf1a40899a5529f9f938823"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/validation/zipball/1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
-                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
+                "url": "https://api.github.com/repos/Intervention/validation/zipball/f49e6d621edd801bcaf1a40899a5529f9f938823",
+                "reference": "f49e6d621edd801bcaf1a40899a5529f9f938823",
                 "shasum": ""
             },
             "require": {
@@ -1527,7 +1527,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-06-05T07:55:39+00:00"
+            "time": "2020-09-04T16:52:53+00:00"
         },
         {
             "name": "laravel/framework",
