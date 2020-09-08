@@ -36,6 +36,9 @@
     "spatie/valuestore": "^1.2",
     "webmozart/assert": "^1.9"
   },
+  "conflict": {
+    "doctrine/dbal": "2.10.3"
+  },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.3",
     "barryvdh/laravel-ide-helper": "^2.7",
@@ -58,7 +61,7 @@
     "psalm/plugin-phpunit": "^0.12.1",
     "rector/rector": "^0.7.37",
     "roave/security-advisories": "dev-master",
-    "vimeo/psalm": "dev-master"
+    "vimeo/psalm": "^3.15"
   },
   "config": {
     "optimize-autoloader": true,
