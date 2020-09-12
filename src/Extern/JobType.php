@@ -7,7 +7,7 @@ namespace Francken\Extern;
 class JobType
 {
     /**
-     * @var string[]
+     * @var array<string, string>
      */
     public const TYPES = [
         "Fulltime" => "hourglass",

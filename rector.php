@@ -19,8 +19,7 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
     $parameters->set(Option::IMPORT_DOC_BLOCKS, false);
     $parameters->set(Option::PHP_VERSION_FEATURES, '7.4');
     $parameters->set(Option::EXCLUDE_RECTORS, [
-        \Rector\CodingStyle\Rector\PropertyProperty\UnderscoreToPascalCasePropertyNameRector::class,
-        \Rector\Laravel\Rector\ArrayItem\InlineValidationRulesToArrayDefinitionRector::class,
+        \Rector\CodingStyle\Rector\PropertyProperty\UnderscoreToCamelCasePropertyNameRector::class,
     ]);
 
     $rectorServices = [

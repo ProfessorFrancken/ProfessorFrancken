@@ -13,7 +13,7 @@
     "facade/ignition": "^2.0",
     "fideloper/proxy": "^4.4",
     "guzzlehttp/guzzle": "^6.5",
-    "intervention/validation": "dev-master",
+    "intervention/validation": "^2.5.0",
     "laravel/framework": "^8.0",
     "laravel/helpers": "^1.2",
     "laravel/horizon": "^5.0",
