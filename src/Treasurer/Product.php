@@ -10,6 +10,49 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
+/**
+ * Francken\Treasurer\Product
+ *
+ * @property int $id
+ * @property string $naam
+ * @property float $prijs
+ * @property string $categorie
+ * @property int $positie
+ * @property bool $beschikbaar
+ * @property string $afbeelding
+ * @property string $btw
+ * @property int $eenheden
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property-read \Francken\Treasurer\ProductExtra|null $extra
+ * @property-read bool $available
+ * @property-read string $category
+ * @property-read string $category_icon
+ * @property-read string|null $color
+ * @property-read string $name
+ * @property-read string $photo_url
+ * @property-read int $position
+ * @property-read int $price
+ * @property-read string|null $splash_url
+ * @method static \Illuminate\Database\Eloquent\Builder beer()
+ * @method static \Illuminate\Database\Eloquent\Builder food()
+ * @method static \Illuminate\Database\Eloquent\Builder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder query()
+ * @method static \Illuminate\Database\Eloquent\Builder search(\Francken\Treasurer\Http\Requests\AdminSearchProductsRequest $request)
+ * @method static \Illuminate\Database\Eloquent\Builder soda()
+ * @method static \Illuminate\Database\Eloquent\Builder whereAfbeelding($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereBeschikbaar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereBtw($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereCategorie($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereEenheden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereNaam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder wherePositie($value)
+ * @method static \Illuminate\Database\Eloquent\Builder wherePrijs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder whereUpdatedAt($value)
+ */
 final class Product extends Model
 {
     /**

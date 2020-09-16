@@ -13,7 +13,7 @@ final class NewsController
     public function index() : View
     {
         $news = News::recent()->paginate(12);
-   
+
         return view('pages.association.news')
             ->with([
                 'news' => $news,
@@ -26,7 +26,8 @@ final class NewsController
 
     public function archive(SearchNewsRequest $request) : View
     {
-        $news = News::recent()
+        $news = News::query()
+            ->recent()
             ->inPeriod($request->period())
             ->withSubject($request->subject())
             ->withAuthorName($request->author())

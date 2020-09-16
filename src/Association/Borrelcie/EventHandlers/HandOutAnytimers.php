@@ -16,7 +16,7 @@ final class HandOutAnytimers extends EventHandler
 {
     public function whenMemberWasRegistered(MemberWasRegistered $event) : void
     {
-        $totalApprovedRegistrations = Registration::approved()->count();
+        $totalApprovedRegistrations = Registration::query()->approved()->count();
 
         if ($totalApprovedRegistrations % 33 !== 0) {
             return;

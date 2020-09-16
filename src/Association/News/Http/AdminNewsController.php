@@ -25,7 +25,8 @@ final class AdminNewsController
     {
         $drafts = $this->drafts();
 
-        $news = News::recent()
+        $news = News::query()
+            ->recent()
             ->inPeriod($request->period())
             ->withSubject($request->subject())
             ->withAuthorName($request->author())
