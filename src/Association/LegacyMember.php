@@ -15,6 +15,7 @@ use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\StudyDetails;
 use Francken\Auth\Account;
 use Francken\Shared\Email;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -134,14 +135,11 @@ final class LegacyMember extends Model
 
     public static function autocomplete(Collection $except = null) : Collection
     {
-        $query = self::query();
-
-        if ($except !== null && $except->isNotEmpty()) {
-            /** @psalm-suppress UndefinedMagicMethod */
-            $query = $query->whereNotIn('id', $except);
-        }
-
-        return $query
+        return self::query()
+            ->when(
+                $except !== null && $except->isNotEmpty(),
+                fn (Builder $query) : Builder => $query->whereNotIn('id', $except)
+            )
             ->where('is_lid', true)
             ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])
             ->orderBy('id', 'desc')
