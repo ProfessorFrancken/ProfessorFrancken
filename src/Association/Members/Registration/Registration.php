@@ -7,6 +7,7 @@ namespace Francken\Association\Members\Registration;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\LegacyMember;
+use Francken\Association\Members\Address;
 use Francken\Association\Members\Birthdate;
 use Francken\Association\Members\ContactDetails;
 use Francken\Association\Members\Fullname;
@@ -123,6 +124,11 @@ final class Registration extends Model
         );
     }
 
+    public function getPersonalDetailsAttribute() : PersonalDetails
+    {
+        return $this->personalDetails();
+    }
+
     public function setPersonalDetailsAttribute(PersonalDetails $personalDetails) : void
     {
         $this->firstname = $personalDetails->fullname()->firstname();
@@ -137,6 +143,21 @@ final class Registration extends Model
     public function getEmailAttribute() : Email
     {
         return new Email($this->attributes['email']);
+    }
+
+
+    public function getContactDetailsAttribute() : ContactDetails
+    {
+        return new ContactDetails(
+            $this->email,
+            new Address(
+                $this->city ?? '',
+                $this->postal_code ?? '',
+                $this->address ?? '',
+                $this->country ?? ''
+            ),
+            $this->phone_number
+        );
     }
 
     public function setContactDetailsAttribute(ContactDetails $contactDetails) : void
@@ -179,6 +200,11 @@ final class Registration extends Model
                 return $study->startDate();
             })
             ->first();
+    }
+
+    public function getStudyDetailsAttribute() : StudyDetails
+    {
+        return new StudyDetails($this->student_number, ...$this->studies);
     }
 
     public function setStudyDetailsAttribute(StudyDetails $studyDetails) : void

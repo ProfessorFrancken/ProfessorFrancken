@@ -139,7 +139,7 @@ final class Product extends Model
 
     public function getSplashUrlAttribute() : ?string
     {
-        if ( ! $this->extra) {
+        if ($this->extra === null) {
             return null;
         }
         return $this->extra->splash_url;
@@ -147,7 +147,7 @@ final class Product extends Model
 
     public function getColorAttribute() : ?string
     {
-        if ( ! $this->extra) {
+        if ($this->extra === null) {
             return null;
         }
         return $this->extra->color;
