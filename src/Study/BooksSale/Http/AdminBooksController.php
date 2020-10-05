@@ -34,9 +34,9 @@ final class AdminBooksController
         return view('admin.study.books.index', [
             'request' => $request,
             'books' => $books,
-            'available_books' => Book::available()->count(),
-            'sold_books' => Book::sold()->count(),
-            'paid_off_books' => Book::paidOff()->count(),
+            'available_books' => Book::query()->available()->count(),
+            'sold_books' => Book::query()->sold()->count(),
+            'paid_off_books' => Book::query()->paidOff()->count(),
             'all_books' => Book::count(),
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Books'],

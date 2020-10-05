@@ -162,7 +162,6 @@ return [
         /*
          * Third Party Service Providers
          */
-        Francken\Shared\Providers\TelescopeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         BladeUI\Icons\BladeIconsServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,

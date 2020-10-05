@@ -24,32 +24,32 @@ class ProductsFeature extends TestCase
         // Save since we're doing this in a transaction, but not nice..
         Product::all()->each->delete();
 
-        $beerProduct = factory(Product::class)->create(['categorie' => 'Bier']);
-        $foodProduct = factory(Product::class)->create(['categorie' => 'Eten']);
-        $sodaProduct = factory(Product::class)->create(['categorie' => 'Fris']);
+        $beerProduct = factory(Product::class)->create(['categorie' => 'Bier', 'beschikbaar' => true]);
+        $foodProduct = factory(Product::class)->create(['categorie' => 'Eten', 'beschikbaar' => true]);
+        $sodaProduct = factory(Product::class)->create(['categorie' => 'Fris', 'beschikbaar' => true]);
 
         $this->visit(action([AdminProductsController::class, 'index']))
              ->see($beerProduct->name)
              ->see($foodProduct->name)
-             ->see($sodaProduct->name)
-             ->visit(action([AdminProductsController::class, 'index'], ['category' => 'beer']))
+             ->see($sodaProduct->name);
+        $this->visit(action([AdminProductsController::class, 'index'], ['category' => 'beer']))
              ->see($beerProduct->name)
              ->dontSee($foodProduct->name)
-             ->dontSee($sodaProduct->name)
-             ->visit(action([AdminProductsController::class, 'index'], ['category' => 'soda']))
+             ->dontSee($sodaProduct->name);
+        $this->visit(action([AdminProductsController::class, 'index'], ['category' => 'soda']))
              ->dontSee($beerProduct->name)
              ->dontSee($foodProduct->name)
-             ->see($sodaProduct->name)
-             ->visit(action([AdminProductsController::class, 'index'], ['category' => 'food']))
+             ->see($sodaProduct->name);
+        $this->visit(action([AdminProductsController::class, 'index'], ['category' => 'food']))
              ->dontSee($beerProduct->name)
              ->see($foodProduct->name)
              ->dontSee($sodaProduct->name);
 
         $unavailableProduct = factory(Product::class)->create(['beschikbaar' => false]);
         $this->visit(action([AdminProductsController::class, 'index']))
-            ->check('unavailable')
+             ->check('unavailable')
              ->type($unavailableProduct->name, 'name')
-            ->press('Apply filters')
+             ->press('Apply filters')
              ->see($unavailableProduct->name)
              ->dontSee($beerProduct->name)
              ->dontSee($foodProduct->name)

@@ -7,6 +7,7 @@ namespace Francken\Association\Members\Registration;
 use DateTimeImmutable;
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\LegacyMember;
+use Francken\Association\Members\Address;
 use Francken\Association\Members\Birthdate;
 use Francken\Association\Members\ContactDetails;
 use Francken\Association\Members\Fullname;
@@ -22,85 +23,8 @@ use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
 use Webmozart\Assert\Assert;
 
-/**
- * Francken\Association\Members\Registration\Registration
- *
- * @property int $id
- * @property string $firstname
- * @property string $surname
- * @property string $initials
- * @property string $gender
- * @property mixed $birthdate
- * @property bool $has_dutch_diploma
- * @property string $nationality
- * @property Email $email
- * @property string|null $city
- * @property string|null $address
- * @property string|null $postal_code
- * @property string|null $country
- * @property string|null $phone_number
- * @property string $student_number
- * @property array $studies
- * @property string|null $iban
- * @property string|null $bic
- * @property bool $deduct_additional_costs
- * @property string $comments
- * @property bool $wants_to_join_a_committee
- * @property mixed|null $email_verified_at
- * @property mixed|null $registration_accepted_at
- * @property mixed|null $registration_form_signed_at
- * @property int|null $member_id
- * @property Carbon|null $deleted_at
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read Fullname $fullname
- * @property-read Study|null $most_recent_study
- * @property \Francken\Association\Members\PaymentDetails $payment_details
- * @property-read array $study_graduation_date
- * @property-read array $study_name
- * @property-read array $study_starting_date
- * @property-write mixed $contact_details
- * @property-write mixed $personal_details
- * @property-write mixed $study_details
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration newQuery()
- * @method static \Illuminate\Database\Query\Builder|\Francken\Association\Members\Registration\Registration onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereBic($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereBirthdate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereComments($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereDeductAdditionalCosts($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereFirstname($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereGender($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereHasDutchDiploma($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereIban($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereInitials($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereMemberId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereNationality($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration wherePhoneNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration wherePostalCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereRegistrationAcceptedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereRegistrationFormSignedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereStudentNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereStudies($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereSurname($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Members\Registration\Registration whereWantsToJoinACommittee($value)
- * @method static \Illuminate\Database\Query\Builder|\Francken\Association\Members\Registration\Registration withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\Francken\Association\Members\Registration\Registration withoutTrashed()
- * @mixin \Eloquent
- */
 final class Registration extends Model
 {
     use SoftDeletes;
@@ -200,6 +124,11 @@ final class Registration extends Model
         );
     }
 
+    public function getPersonalDetailsAttribute() : PersonalDetails
+    {
+        return $this->personalDetails();
+    }
+
     public function setPersonalDetailsAttribute(PersonalDetails $personalDetails) : void
     {
         $this->firstname = $personalDetails->fullname()->firstname();
@@ -214,6 +143,21 @@ final class Registration extends Model
     public function getEmailAttribute() : Email
     {
         return new Email($this->attributes['email']);
+    }
+
+
+    public function getContactDetailsAttribute() : ContactDetails
+    {
+        return new ContactDetails(
+            $this->email,
+            new Address(
+                $this->city ?? '',
+                $this->postal_code ?? '',
+                $this->address ?? '',
+                $this->country ?? ''
+            ),
+            $this->phone_number
+        );
     }
 
     public function setContactDetailsAttribute(ContactDetails $contactDetails) : void
@@ -256,6 +200,11 @@ final class Registration extends Model
                 return $study->startDate();
             })
             ->first();
+    }
+
+    public function getStudyDetailsAttribute() : StudyDetails
+    {
+        return new StudyDetails($this->student_number, ...$this->studies);
     }
 
     public function setStudyDetailsAttribute(StudyDetails $studyDetails) : void

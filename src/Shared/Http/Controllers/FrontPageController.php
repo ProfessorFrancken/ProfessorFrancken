@@ -23,7 +23,7 @@ class FrontPageController extends Controller
             ->latestEdition()
             ->first();
 
-        $news = News::recent()->limit(3)->get();
+        $news = News::query()->recent()->limit(3)->get();
 
         $activities = Activity::query()
              ->with(['signUpSettings', 'signUps'])

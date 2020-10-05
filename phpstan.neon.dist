@@ -4,5 +4,4 @@ parameters:
         - src
     checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Access to an undefined property Francken\\Treasurer\\Product::\$.*.#'
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'
