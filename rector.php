@@ -22,7 +22,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
         "src/Treasurer/SendDeductionNotification.php",
         "src/Extern/Http/FactSheetController.php",
         "src/Treasurer/Http/Controllers/DeductionsController.php",
-        "src/Association/Members/Http/StudyProfileController.php",
     ]);
 
 

@@ -139,7 +139,6 @@
 @endsection
 
 @section('actions')
-    @if ($registration->registration_accepted_at === null)
     <div class="d-flex align-items-start">
         <a
             class="btn btn-outline-primary mr-3"
@@ -152,6 +151,7 @@
             <i class="fas fa-print"></i>
             Print
         </a>
+        @if ($registration->registration_accepted_at === null)
         <a
             class="btn btn-outline-primary"
             href="{{ action(
@@ -162,6 +162,6 @@
             <i class="fas fa-user-edit"></i>
             Edit
         </a>
+        @endif
     </div>
-    @endif
 @endsection

@@ -63,7 +63,7 @@ final class Activity extends Model
 
     public function scopeAfter(Builder $query, DateTimeImmutable $date) : Builder
     {
-        return $query->where('start_date', '>', $date);
+        return $query->where('end_date', '>', $date);
     }
 
     public function getScheduleAttribute() : string

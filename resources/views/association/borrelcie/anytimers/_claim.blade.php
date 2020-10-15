@@ -16,7 +16,7 @@
         <div class="col-10">
             <x-forms-autocomplete-member :members="$accounts" name="drinker" nameId="drinker_id" />
         </div>
-        <div class="col-2">
+        <div class="col-md-2 col-12">
             <x-forms.number name="amount" label="Amount" :value="1" />
         </div>
     </div>

@@ -30,7 +30,7 @@ class FrontPageController extends Controller
              ->withCount(['comments'])
             ->after($today)
             ->orderBy('start_date', 'asc')
-            ->limit(5)
+            ->limit(8)
             ->get();
 
         return view('homepage/homepage', [

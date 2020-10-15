@@ -14,11 +14,13 @@ $margin-left-header-image: 5em;
 .header-image {
   width: 100%;
   background: $header-image-color;
+  background-position-y: 40%;
   position: relative;
   overflow: hidden;
   min-height: 200px;
 
   &::before {
+    background-position-y: 40%;
     background-color: $header-image-color;
     background-image: url($cta-image);
     background-size: cover;
@@ -77,7 +79,8 @@ $margin-left-header-image: 5em;
     &::after,
     &::before {
       width: 55%;
-      height: 120%; //$header-image-height;
+      background-position-y: 42%;
+      height: 100%; //$header-image-height;
     }
   }
 

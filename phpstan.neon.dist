@@ -5,3 +5,4 @@ parameters:
     checkMissingIterableValueType: false
     ignoreErrors:
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'
+        - '#Parameter .* \$view of function view expects view\-string\|null\, string given.#'
