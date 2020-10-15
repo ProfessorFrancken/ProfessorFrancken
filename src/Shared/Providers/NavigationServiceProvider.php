@@ -45,7 +45,7 @@ final class NavigationServiceProvider extends ServiceProvider
             if ($settings->isSlefShownInNavigation()) {
                 $menu[] = [
                     'url' => 'https://slef.nl',
-                    'title' => 'Slef',
+                    'title' => 'SLEF',
                     'subItems' => [],
                     'icon' => 'globe-europe',
                 ];
