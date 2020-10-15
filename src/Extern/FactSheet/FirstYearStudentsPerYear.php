@@ -22,7 +22,7 @@ final class FirstYearStudentsPerYear
         return $this->years->map(function ($year) : array {
             $members = DB::connection('francken-legacy')
                 ->table('leden')
-                ->whereBetween('start_lidmaatschap', [new DateTimeImmutable("$year-08-01"), new DateTimeImmutable(($year + 1) . "-08-01")])
+                ->whereBetween('start_lidmaatschap', [new DateTimeImmutable("$year-07-01"), new DateTimeImmutable(($year + 1) . "-07-01")])
                 ->where("jaar_van_inschrijving", $year)
                 ->get();
 
