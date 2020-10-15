@@ -74,6 +74,7 @@ final class AdminActivitiesController
 
     private function qrCode(Activity $activity, Generator $qrCodeGenerator) : string
     {
+        /** @psalm-suppress UndefinedDocblockClass */
         $qrCodeImage = $qrCodeGenerator
             ->format('png')
             ->size(330)
