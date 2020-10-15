@@ -39,9 +39,8 @@ final class CommitteesController
 
         $committee->load(['members.member']);
 
-        $view = ($committee->compiled_content ?? '') !== ''
-              ? view('committees.content')
-              : view($committee->page);
+        $viewName = $this->committeePage($committee);
+        $view = view($viewName);
 
         return $view->with([
                 'board' => $board,
@@ -54,5 +53,16 @@ final class CommitteesController
                     ['text' => $committee->name],
                 ]
             ]);
+    }
+
+    private function committeePage(Committee $committee) : string
+    {
+        if (($committee->compiled_content ?? '') !== '') {
+            return 'committees.content';
+        }
+
+        return view()->exists($committee->page)
+            ? $committee->page
+            : 'committees.show';
     }
 }

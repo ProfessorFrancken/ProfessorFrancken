@@ -11,55 +11,6 @@ use Webmozart\Assert\Assert;
 
 class MainContentController extends Controller
 {
-    public function about() : View
-    {
-        return view('about');
-    }
-
-    public function post() : View
-    {
-        return view('news');
-    }
-
-    public function news() : View
-    {
-        return view('news', [
-            'posts' => []
-        ]);
-    }
-
-    public function blog() : View
-    {
-        return view('news', [
-            'posts' => []
-        ]);
-    }
-
-    public function study() : View
-    {
-        return view('study');
-    }
-
-    public function career() : View
-    {
-        return view('career');
-    }
-
-    public function association() : View
-    {
-        return view('association');
-    }
-
-    public function boards() : View
-    {
-        return view('boards');
-    }
-
-    public function history() : View
-    {
-        return view('history');
-    }
-
     /**
      * This is a quick and dirty way of making it easy to add new (static pages)
      * it comes with the disadvantage that you cannot control the data passed to
@@ -75,7 +26,12 @@ class MainContentController extends Controller
             }
 
 
-            return view('pages.' . $page, [
+            $viewName = 'pages.' . $page;
+            if ( ! view()->exists($viewName)) {
+                throw new InvalidArgumentException();
+            }
+
+            return view($viewName, [
                 'posts' => [],
                 'editPageUrl' => $this->getEditUrlForThisPage($page)
             ]);
