@@ -23,9 +23,9 @@ final class AddRouteActionToView
     public function handle(Request $request, Closure $next) : Response
     {
         $response = $next($request);
-        $action = Route::getCurrentRoute()->getAction();
+        // $action = Route::getCurrentRoute()->getAction();
 
-        [$controller, $method] = explode('@', $action['controller']);
+        // [$controller, $method] = explode('@', $action['controller']);
 
 
         // dd($response->original);

@@ -16,10 +16,10 @@ final class BoardName
     public static function fromNameOrYear(?string $name, BoardYear $year) : self
     {
         if ($name !== null && $name !== '') {
-            return new static($name);
+            return new self($name);
         }
 
-        return new static($year->toString());
+        return new self($year->toString());
     }
 
     public function toString() : string

@@ -48,12 +48,8 @@ class MainContentController extends Controller
     {
         $parts = explode('/', $page);
 
-        if (count($parts) > 0) {
-            $view = $parts[count($parts) - 1];
-            return strlen($view) > 0 && $view[0] === '_';
-        }
-
-        return false;
+        $view = $parts[count($parts) - 1];
+        return strlen($view) > 0 && $view[0] === '_';
     }
 
     /**
