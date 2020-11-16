@@ -7,7 +7,7 @@
     "ext-filter": "^7.4",
     "ext-imagick": "^3.4",
     "ext-json": "^7.4",
-    "blade-ui-kit/blade-icons": "^0.4.2",
+    "blade-ui-kit/blade-icons": "^0.5.1",
     "cmpayments/iban": "^1.1",
     "doctrine/dbal": "^2.10",
     "facade/ignition": "^2.0",
@@ -57,10 +57,10 @@
     "phpstan/phpstan-webmozart-assert": "^0.12.6",
     "phpunit/phpunit": "~9.0",
     "psalm/plugin-laravel": "^1.4.0",
-    "psalm/plugin-phpunit": "^0.12.1",
+    "psalm/plugin-phpunit": "^0.13.0",
     "rector/rector": "^0.8.7",
     "roave/security-advisories": "dev-master",
-    "vimeo/psalm": "^3.16"
+    "vimeo/psalm": "^4.1.1"
   },
   "config": {
     "optimize-autoloader": true,
