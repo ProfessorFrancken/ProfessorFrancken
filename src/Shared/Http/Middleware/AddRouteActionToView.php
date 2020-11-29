@@ -22,7 +22,6 @@ final class AddRouteActionToView
      */
     public function handle(Request $request, Closure $next) : Response
     {
-        $response = $next($request);
         // $action = Route::getCurrentRoute()->getAction();
 
         // [$controller, $method] = explode('@', $action['controller']);
@@ -35,6 +34,6 @@ final class AddRouteActionToView
         //     'namespace' => $action['namespace'],
         // ]);
 
-        return $response;
+        return $next($request);
     }
 }
