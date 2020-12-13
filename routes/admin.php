@@ -37,6 +37,7 @@ use Francken\Extern\Http\AdminPartnersController;
 use Francken\Extern\Http\AdminVacanciesController;
 use Francken\Extern\Http\FactSheetController;
 use Francken\Shared\Http\Controllers\Admin\AdminController;
+use Francken\Shared\Http\Controllers\Admin\PagesController;
 use Francken\Shared\Http\Controllers\BoardDashboardController;
 use Francken\Shared\Http\Controllers\BoardNotificationsController;
 use Francken\Shared\Http\Controllers\DashboardController;
@@ -187,6 +188,11 @@ Route::group(['prefix' => 'association'], function () : void {
             Route::get('/{symposium}/export', [ExportController::class, 'index']);
         });
     });
+
+    Route::get('pages', [PagesController::class, 'index']);
+    Route::get('pages/{page}', [PagesController::class, 'show']);
+    Route::get('pages/{page}/edit', [PagesController::class, 'edit']);
+    Route::put('pages/{page}', [PagesController::class, 'update']);
 });
 
 Route::group(['prefix' => 'treasurer', 'can:board-treasurer'], function () : void {

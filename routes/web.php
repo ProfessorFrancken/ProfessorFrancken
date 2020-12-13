@@ -166,7 +166,6 @@ Route::group(['prefix' => 'borrelcie', 'middleware' => ['web', 'auth']], functio
         Route::put('/anytimers/{anytimer}/reject', [AnytimersController::class, 'reject']);
     });
 });
-
 Route::get('/symposia/{symposium}/participants/{participant}', [
     ParticipantRegistrationController::class,
     'verify'

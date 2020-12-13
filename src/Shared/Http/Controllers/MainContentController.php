@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Http\Controllers;
 
 use Exception;
+use Francken\Shared\Page;
 use Illuminate\View\View;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
@@ -21,6 +22,12 @@ class MainContentController extends Controller
     public function page(string $page)
     {
         try {
+            $pageModel = Page::public()->where('slug', '=', $page)->first();
+
+            if ($pageModel !== null) {
+                return $this->customPage($pageModel);
+            }
+
             if ($this->pageCorrespondsToPartialView($page)) {
                 throw new InvalidArgumentException();
             }
@@ -38,6 +45,16 @@ class MainContentController extends Controller
         } catch (InvalidArgumentException $e) {
             return response()->view('errors.404', [], 404);
         }
+    }
+
+    private function customPage(Page $page) : View
+    {
+        return view('show-page', [
+            'page' => $page,
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'page'], ['fallbackPlaceholder' => $page->slug]), 'text' => $page->title],
+            ]
+        ]);
     }
 
     /**
