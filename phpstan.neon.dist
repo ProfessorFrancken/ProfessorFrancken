@@ -6,3 +6,4 @@ parameters:
     ignoreErrors:
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'
         - '#Parameter .* \$view of function view expects view\-string\|null\, string given.#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder.*#'
