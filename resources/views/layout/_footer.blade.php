@@ -57,6 +57,10 @@
                         <i class="fa fa-user-secret text-primary" aria-hidden="true"></i>
                         Privacy policy<br>
                     </a>
+                    <a href="/code-of-conduct">
+                        <i class="fas fa-gavel text-primary" aria-hidden="true"></i>
+                        Code of conduct<br>
+                    </a>
                     <a href="/cookies-policy">
                         <i class="fa fa-cookie-bite text-primary" aria-hidden="true"></i>
                         Cookies<br>
