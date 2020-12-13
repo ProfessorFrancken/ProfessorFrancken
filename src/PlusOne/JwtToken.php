@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\PlusOne;
 
+use DateInterval;
+use DateTimeImmutable;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
+use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token;
 
 class JwtToken
@@ -19,22 +22,19 @@ class JwtToken
 
     public function token() : Token
     {
-        $now = time();
-
-        $signer = new Sha256();
+        $now = new DateTimeImmutable();
 
         return (new Builder())
                ->setIssuedAt($now)
                ->setExpiration($this->expiration($now))
                ->set('plus-one', true)
-               ->sign($signer, $this->key)
-               ->getToken();
+               ->getToken(new Sha256(), new InMemory($this->key));
     }
 
-    private function expiration(int $now) : int
+    private function expiration(DateTimeImmutable $now) : DateTimeImmutable
     {
         // Currently set the expiration date to next year, later we could change
         // this to be dependent on the user who's trying to login
-        return $now + 3600 * 24 * 365;
+        return $now->add(new DateInterval('P1Y'));
     }
 }

@@ -24,8 +24,8 @@ final class Album extends Model
     public function photos() : HasMany
     {
         return $this->hasMany(Photo::class)
-            ->where('is_public', true)
-            ->orderBy('taken_at');
+            ->orderBy('taken_at')
+            ->where('is_public', true);
     }
 
     public function coverPhoto() : HasOne

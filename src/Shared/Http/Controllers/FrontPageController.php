@@ -9,6 +9,7 @@ use DateTimeZone;
 use Francken\Association\Activities\Activity;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\News\News;
+use Francken\Shared\Page;
 use Illuminate\View\View;
 
 class FrontPageController extends Controller
@@ -33,10 +34,13 @@ class FrontPageController extends Controller
             ->limit(8)
             ->get();
 
+        $covid = Page::covid()->where('is_published', true)->first();
+
         return view('homepage/homepage', [
             'news' => $news,
             'activities' => $activities,
             'latest_edition' => $latestEdition,
+            'covid' => $covid,
         ]);
     }
 }

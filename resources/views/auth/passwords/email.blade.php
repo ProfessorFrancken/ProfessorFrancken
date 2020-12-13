@@ -13,23 +13,15 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-
-                    <input id="email"
-                           type="email"
-                           class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                           name="email"
-                           placeholder="member@professorfrancken.nl"
-                           value="{{ old('email') }}"
-                           required
-                           autofocus
-                    >
-
-                    @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
+                    <x-forms.email
+                        name="email"
+                        label="Email"
+                        help="Don't know your email? Contact the board at secretary@professorfrancken.nl."
+                        placeholder="member@professorfrancken.nl"
+                        value="{{ old('email') }}"
+                        required
+                        autofocus
+                    />
                 </div>
 
                 <div class="form-group">

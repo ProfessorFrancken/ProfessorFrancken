@@ -108,6 +108,12 @@ return [
                     "works" => true,
                     "can" => "dashboard:symposia-read",
                 ],
+                [
+                    "name" => "Custom pages",
+                    "url" => "pages",
+                    "works" => true,
+                    "can" => "dashboard:pages-read",
+                ],
             ]
         ],
         [

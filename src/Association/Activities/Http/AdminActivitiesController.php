@@ -72,6 +72,13 @@ final class AdminActivitiesController
         return redirect()->action([self::class, 'show'], ['activity' => $activity]);
     }
 
+    public function destroy(Activity $activity) : RedirectResponse
+    {
+        $activity->delete();
+
+        return redirect()->action([self::class, 'index']);
+    }
+
     private function qrCode(Activity $activity, Generator $qrCodeGenerator) : string
     {
         /** @psalm-suppress UndefinedDocblockClass */

@@ -1,5 +1,5 @@
 @extends('layout.one-column-layout')
-@section('title', "Cookie policy - T.F.V. 'Professor Francken'")
+@section('title', "Privacy policy - T.F.V. 'Professor Francken'")
 
 @section('content')
     <h1 class="section-header">

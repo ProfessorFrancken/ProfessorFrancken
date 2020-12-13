@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
+use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\ValidationData;
 use Log;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +41,7 @@ final class AuthenticatePlusOne
 
             if ( ! $token->verify(
                 new Sha256(),
-                config('francken.plus_one.key')
+                new InMemory(config('francken.plus_one.key'))
             )) {
                 $ip = $request->ip();
                 Log::warning('Unauthorized token request', ['ip' => $ip]);

@@ -51,6 +51,9 @@ return [
         'dashboard:symposia-read',
         'dashboard:symposia-write',
 
+        'dashboard:pages-read',
+        'dashboard:pages-write',
+
         'dashboard:companies-read',
         'dashboard:companies--write',
 

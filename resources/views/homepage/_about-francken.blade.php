@@ -23,18 +23,35 @@
             </p>
 
             @guest
-            <h3 class="font-weight-bold">
-                Become a member
-            </h3>
-            <p>
-                A membership at our association costs only &euro;5,- per year and comes with many benefits such as free coffee and tea from our members room.
-                Each year we organise many study and career related activities such as practice sessions for your exams as well lectures and excursions to companies to help you be informed about future job opportunities.
-            </p>
+            <div class="my-4">
+                <h4 class="font-weight-bold">
+                    Become a member
+                </h4>
+                <p>
+                    A membership at our association costs only &euro;5,- per year and comes with many benefits such as free coffee and tea from our members room.
+                    Each year we organise many study and career related activities such as practice sessions for your exams as well lectures and excursions to companies to help you be informed about future job opportunities.
+                </p>
 
-            <div class="mt-2">
-                <a href="/register" class="btn btn-primary">Register</a>
+                <div class="mt-2">
+                    <a href="/register" class="btn btn-secondary">Register</a>
+                </div>
             </div>
             @endguest
+
+            @if ($covid)
+            <h3 class="font-weight-bold mt-5">
+                <i class="fas fa-head-side-mask"></i>
+                COVID-19 updates
+                <br/>
+            </h3>
+            <p>
+            </p>
+            <div class="d-flex align-items-center">
+                <a class="btn btn-primary mr-3" href="{{ url($covid->slug) }}">Read the latest updates</a>
+                <small class="text-muted h6">Last updated {{ $covid->updated_at->diffForHumans() }}</small>
+            </div>
+            @endif
+
         </div>
         <aside class="col-md-5 order-0 order-md-12 mt-n5">
             <div class="agenda-wrapper">
