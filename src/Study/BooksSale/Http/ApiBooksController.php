@@ -14,15 +14,13 @@ final class ApiBooksController
 
         return [
             'books' => $legacyBooks->map(
-                function (Book $book) : array {
-                    return [
-                        'title' => $book->title,
-                        'author' => $book->author,
-                        'isbn' => $book->isbn,
-                        'cover' => '',
-                        'price_in_cents' => $book->price,
-                    ];
-                }
+                fn (Book $book) : array => [
+                    'title' => $book->title,
+                    'author' => $book->author,
+                    'isbn' => $book->isbn,
+                    'cover' => '',
+                    'price_in_cents' => $book->price,
+                ]
             )->values()
         ];
     }

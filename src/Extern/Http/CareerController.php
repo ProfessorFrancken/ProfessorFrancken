@@ -30,12 +30,8 @@ final class CareerController
             ->with([
                 'request' => $request,
                 'vacancies' => $vacancies,
-                'partners' => $partners->mapWithKeys(function (Partner $partner) : array {
-                    return [$partner->getKey() => $partner->name];
-                })->prepend("Any", 0),
-                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                    return [$sector->getKey() => $sector->name];
-                })->prepend("Any", 0),
+                'partners' => $partners->mapWithKeys(fn (Partner $partner) : array => [$partner->getKey() => $partner->name])->prepend("Any", 0),
+                'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])->prepend("Any", 0),
                 'types' => JobType::TYPES
             ])
             ->with('breadcrumbs', [

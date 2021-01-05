@@ -42,23 +42,23 @@ class BoardRequest extends FormRequest
 
     public function members() : Collection
     {
-        return collect($this->members)->reject(function (array $member) : bool {
-            return $member['member_id'] === null;
-        })->map(function (array $member) : array {
-            if (isset($member['installed_at'])) {
-                $member['installed_at'] = $this->toDateTimeImmutable($member['installed_at']);
-            }
+        return collect($this->members)
+            ->reject(fn (array $member) : bool => $member['member_id'] === null)
+            ->map(function (array $member) : array {
+                if (isset($member['installed_at'])) {
+                    $member['installed_at'] = $this->toDateTimeImmutable($member['installed_at']);
+                }
 
-            if (isset($member['demissioned_at'])) {
-                $member['demissioned_at'] = $this->toDateTimeImmutable($member['demissioned_at']);
-            }
+                if (isset($member['demissioned_at'])) {
+                    $member['demissioned_at'] = $this->toDateTimeImmutable($member['demissioned_at']);
+                }
 
-            if (isset($member['decharged_at'])) {
-                $member['decharged_at'] = $this->toDateTimeImmutable($member['decharged_at']);
-            }
+                if (isset($member['decharged_at'])) {
+                    $member['decharged_at'] = $this->toDateTimeImmutable($member['decharged_at']);
+                }
 
-            return $member;
-        });
+                return $member;
+            });
     }
 
     public function boardYear() : BoardYear

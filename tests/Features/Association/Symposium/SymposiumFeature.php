@@ -129,9 +129,7 @@ class SymposiumFeature extends TestCase
 
         Event::assertDispatched(
             ParticipantRegisteredForSymposium::class,
-            function ($e) use ($symposium) : bool {
-                return $e->participant->symposium_id === $symposium->id;
-            }
+            fn ($e) : bool => $e->participant->symposium_id === $symposium->id
         );
     }
 

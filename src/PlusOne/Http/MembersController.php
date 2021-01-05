@@ -37,9 +37,7 @@ final class MembersController
             ->leftJoinSub(
                 $latestPurchasePerMember,
                 'latest_transaction',
-                function ($join) {
-                    return $join->on('leden.id', '=', 'latest_transaction.lid_id');
-                }
+                fn ($join) => $join->on('leden.id', '=', 'latest_transaction.lid_id')
             )
             ->select([
                 'id',

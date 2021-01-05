@@ -171,9 +171,7 @@ final class ChangeRolesListener extends EventHandler
         }
 
         $committees = $board->committees()
-            ->whereHas('members', function (Builder $query) use ($account) : Builder {
-                return $query->where('member_id', $account->member_id);
-            })
+            ->whereHas('members', fn (Builder $query) : Builder => $query->where('member_id', $account->member_id))
             ->get();
 
         return collect($committees);

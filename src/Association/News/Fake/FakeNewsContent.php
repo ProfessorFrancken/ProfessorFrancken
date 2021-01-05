@@ -33,11 +33,9 @@ final class FakeNewsContent
             return '';
         };
 
-        $paragraph = function () : string {
-            return '<p>' . $this->faker->paragraph(
-                $this->faker->numberBetween(5, 11)
-            ) . '</p>';
-        };
+        $paragraph = fn () : string => '<p>' . $this->faker->paragraph(
+            $this->faker->numberBetween(5, 11)
+        ) . '</p>';
 
         $equations = function () : string {
             $equations = [
@@ -76,9 +74,7 @@ final class FakeNewsContent
                 fn (int $paragraphNumber) : string => $header() . $smallHeader() . $paragraph() . $equations() . $image(),
                 range(0, (int)$this->faker->numberBetween(3, 8))
             ),
-            function ($content, $current) : string {
-                return $content .= $current;
-            },
+            fn ($content, $current) : string => $content .= $current,
             ''
         );
     }

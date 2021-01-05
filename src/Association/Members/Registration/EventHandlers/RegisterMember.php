@@ -102,9 +102,7 @@ final class RegisterMember implements ShouldQueue
             $registration->postal_code,
             $registration->city,
             $registration->country
-        ])->every(function (?string $field) : bool {
-            return $field !== null;
-        });
+        ])->every(fn (?string $field) : bool => $field !== null);
     }
 
     private function subscribeToMailchimp(Registration $registration, LegacyMember $member) : void

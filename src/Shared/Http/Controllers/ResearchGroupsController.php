@@ -14,7 +14,7 @@ final class ResearchGroupsController
     /**
      * @var string[][][][]|string[][]
      */
-    private array $groups;
+    private array $groups = [];
 
     public function __construct()
     {

@@ -98,11 +98,9 @@ final class Book extends Model
     public function scopeSold(Builder $query) : Builder
     {
         return $query->where('paid_off', false)
-            ->where(function (Builder $query) : Builder {
-                return $query->whereNotNull('taken_in_by_buyer_at')
-                    ->orWhereNotNull('buyer_id')
-                    ->orWhere('has_been_sold', true);
-            });
+            ->where(fn (Builder $query) : Builder => $query->whereNotNull('taken_in_by_buyer_at')
+                ->orWhereNotNull('buyer_id')
+                ->orWhere('has_been_sold', true));
     }
 
     public function scopePaidOff(Builder $query) : Builder

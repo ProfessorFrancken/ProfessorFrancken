@@ -46,23 +46,13 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
         // Sometimes the same member can occur twice or more in one deduction.
         // This may happen when a member had a deduction for both food & drinks and activities
         // In this case we will merge the deducitons into 1 deduction
-        $this->deductions = $this->deductions->groupBy(function ($deduction) : int {
-            return $deduction['member']->id;
-        })->map(function ($deductions, $memberId) {
+        $this->deductions = $this->deductions->groupBy(fn ($deduction) : int => $deduction['member']->id)->map(function ($deductions, $memberId) {
             if ($deductions->count() > 1) {
-                $description = $deductions->map(function (Collection $deduction) : string {
-                    return $deduction['omschrijving_2'];
-                })->implode(', ');
+                $description = $deductions->map(fn (Collection $deduction) : string => $deduction['omschrijving_2'])->implode(', ');
 
-                $amount = $deductions->map(function (Collection $deduction) : int {
-                    return (int)(100 * $deduction['bedrag']);
-                })->sum();
+                $amount = $deductions->map(fn (Collection $deduction) : int => (int)(100 * $deduction['bedrag']))->sum();
 
-                $errors = $deductions->map(function (Collection $deduction) : Collection {
-                    return $deduction['errors'];
-                })->reduce(function (Collection $all, Collection $errors) : Collection {
-                    return $all->merge($errors);
-                }, new Collection());
+                $errors = $deductions->map(fn (Collection $deduction) : Collection => $deduction['errors'])->reduce(fn (Collection $all, Collection $errors) : Collection => $all->merge($errors), new Collection());
 
                 $deductions[0]['bedrag'] = $amount;
                 $deductions[0]['errors'] = $errors;

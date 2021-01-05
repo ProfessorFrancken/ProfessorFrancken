@@ -96,9 +96,7 @@ class RegistrationRequest extends FormRequest
         $address = null;
         if (collect([
             'city', 'postal_code', 'address', 'country'
-        ])->every(function (string $field) : bool {
-            return $this->input($field, null) !== null;
-        })) {
+        ])->every(fn (string $field) : bool => $this->input($field, null) !== null)) {
             $address = new Address(
                 $this->input('city', null),
                 $this->input('postal_code'),

@@ -89,10 +89,7 @@ final class NavigationServiceProvider extends ServiceProvider
             }
 
             $gate = $this->app->make(Gate::class);
-            $view->with('items', array_filter($menu, function ($item) use ($gate) : bool {
-                // If no permission rule is set always allow showing the item
-                return ! isset($item['can']) || $gate->allows($item['can']);
-            }));
+            $view->with('items', array_filter($menu, fn ($item) : bool => ! isset($item['can']) || $gate->allows($item['can'])));
         });
 
         View::composer('homepage._pillars', function ($view) : void {

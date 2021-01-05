@@ -196,9 +196,7 @@ final class Registration extends Model
     public function getMostRecentStudyAttribute() : ?Study
     {
         return collect($this->studies)
-            ->sortByDesc(function (Study $study) : DateTimeImmutable {
-                return $study->startDate();
-            })
+            ->sortByDesc(fn (Study $study) : DateTimeImmutable => $study->startDate())
             ->first();
     }
 
@@ -212,13 +210,11 @@ final class Registration extends Model
         $this->student_number = $studyDetails->studentNumber();
         $this->attributes['studies'] = json_encode(
             array_map(
-                function (Study $study) : array {
-                    return [
-                        'study' => $study->study(),
-                        'start_date' => $study->startDate()->format('Y-m-d'),
-                        'graduation_date' => $study->graduationDate() !== null ? $study->graduationDate()->format('Y-m-d') : null,
-                    ];
-                },
+                fn (Study $study) : array => [
+                    'study' => $study->study(),
+                    'start_date' => $study->startDate()->format('Y-m-d'),
+                    'graduation_date' => $study->graduationDate() !== null ? $study->graduationDate()->format('Y-m-d') : null,
+                ],
                 $studyDetails->studies()
             ), JSON_THROW_ON_ERROR
         );
@@ -245,23 +241,17 @@ final class Registration extends Model
      */
     public function getStudyNameAttribute() : array
     {
-        return array_map(function (Study $study) : string {
-            return $study->study();
-        }, $this->studies);
+        return array_map(fn (Study $study) : string => $study->study(), $this->studies);
     }
 
     public function getStudyStartingDateAttribute() : array
     {
-        return array_map(function (Study $study) : string {
-            return $study->startDate()->format('Y-m');
-        }, $this->studies);
+        return array_map(fn (Study $study) : string => $study->startDate()->format('Y-m'), $this->studies);
     }
 
     public function getStudyGraduationDateAttribute() : array
     {
-        return array_map(function (Study $study) : ?string {
-            return optional($study->graduationDate())->format('Y-m');
-        }, $this->studies);
+        return array_map(fn (Study $study) : ?string => optional($study->graduationDate())->format('Y-m'), $this->studies);
     }
 
     public function scopeApproved(Builder $query) : Builder

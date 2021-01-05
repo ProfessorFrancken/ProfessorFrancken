@@ -93,9 +93,7 @@ final class DeductionEmail extends Model
 
         // We don't have to verify the deduction if  conflicts were found
         $wasVerified = $import->errors()
-            ->reject(function (Collection $errors) : bool {
-                return $errors->isEmpty();
-            })
+            ->reject(fn (Collection $errors) : bool => $errors->isEmpty())
             ->isEmpty();
 
         /** @var DeductionEmail */
@@ -109,14 +107,12 @@ final class DeductionEmail extends Model
         ]);
 
         $deductionEmail->deductionToMembers()->createMany(
-            $import->deductions()->map(function (Collection $deduction) : array {
-                return [
-                    'member_id' => $deduction['member']->id,
-                    'description' => $deduction['omschrijving_2'],
-                    'amount_in_cents' => $deduction['bedrag'],
-                    'contained_errors' => $deduction['errors']->isNotEmpty(),
-                ];
-            })->toArray()
+            $import->deductions()->map(fn (Collection $deduction) : array => [
+                'member_id' => $deduction['member']->id,
+                'description' => $deduction['omschrijving_2'],
+                'amount_in_cents' => $deduction['bedrag'],
+                'contained_errors' => $deduction['errors']->isNotEmpty(),
+            ])->toArray()
         );
 
         return $deductionEmail;
@@ -134,8 +130,6 @@ final class DeductionEmail extends Model
 
     public function getTotalAmountAttribute() : float
     {
-        return $this->deductionToMembers->map(function (DeductionEmailToMember $member) : int {
-            return $member->amount_in_cents;
-        })->sum() / 100;
+        return $this->deductionToMembers->map(fn (DeductionEmailToMember $member) : int => $member->amount_in_cents)->sum() / 100;
     }
 }

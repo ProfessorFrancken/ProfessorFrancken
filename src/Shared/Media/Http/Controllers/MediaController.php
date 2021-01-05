@@ -23,9 +23,7 @@ final class MediaController
         $media = Media::inDirectory(static::DISK, $directory)
                ->paginate(100);
 
-        $media->transform(function (Media $media) : MediaPresenter {
-            return new MediaPresenter($media);
-        });
+        $media->transform(fn (Media $media) : MediaPresenter => new MediaPresenter($media));
 
         return view('admin.compucie.media.index', [
             'media' => $media,
@@ -42,12 +40,10 @@ final class MediaController
             ->select('mediable_type')
             ->get();
 
-        $mediables = $mediableTypes->mapWithKeys(function ($type) use ($media) : array {
-            return [
-                $type->mediable_type =>
-                $media->models($type->mediable_type)->get()
-            ];
-        });
+        $mediables = $mediableTypes->mapWithKeys(fn ($type) : array => [
+            $type->mediable_type =>
+            $media->models($type->mediable_type)->get()
+        ]);
 
         return view('admin.compucie.media.show', [
             'media' => new MediaPresenter($media),

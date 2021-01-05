@@ -20,9 +20,7 @@ final class AdminCompanyProfilesController
         return view('admin.extern.partners.sponsor-options.company-profile.create', [
             'partner' => $partner,
             'profile' => $partner->companyProfile ?? new CompanyProfile(),
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->getKey() => $sector->name];
-            }),
+            'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name]),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
                 ['url' => action([AdminPartnersController::class, 'index']), 'text' => 'Partners'],
@@ -55,9 +53,7 @@ final class AdminCompanyProfilesController
         return view('admin.extern.partners.sponsor-options.company-profile.edit', [
             'partner' => $partner,
             'profile' => $partner->companyProfile,
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->getKey() => $sector->name];
-            }),
+            'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name]),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
                 ['url' => action([AdminPartnersController::class, 'index']), 'text' => 'Partners'],

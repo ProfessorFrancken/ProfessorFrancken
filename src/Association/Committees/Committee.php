@@ -138,9 +138,9 @@ final class Committee extends Model
 
     public function committeeMembers() : Collection
     {
-        return $this->members->sortBy(function (CommitteeMember $member) : string {
-            return optional($member->member)->fullname ?? '';
-        });
+        return $this->members->sortBy(
+            fn (CommitteeMember $member) : string => optional($member->member)->fullname ?? ''
+        );
     }
 
     public function getRoleAttribute() : Role

@@ -34,9 +34,7 @@ abstract class TestCase extends LaravelTestCase
 
         $app->make(Kernel::class)->bootstrap();
 
-        $app->singleton(Newsletter::class, function () : NullDriver {
-            return new NullDriver();
-        });
+        $app->singleton(Newsletter::class, fn () : NullDriver => new NullDriver());
 
         return $app;
     }

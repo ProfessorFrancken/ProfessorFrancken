@@ -27,9 +27,7 @@ final class ActivitiesRepository
             $this->activities[] = CalendarEvent::fromEvent($event);
         }
 
-        $this->activities = $this->activities->filter(function ($event) : bool {
-            return $event->status() === 'CONFIRMED';
-        });
+        $this->activities = $this->activities->filter(fn ($event) : bool => $event->status() === 'CONFIRMED');
     }
 
     public function all() : Collection

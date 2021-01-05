@@ -64,9 +64,7 @@ final class SynchronizeFlickrAlbums extends Command
 
     private function missingAlbums(Collection $albums, Collection $albumsInDb) : Collection
     {
-        return $albums->filter(function ($album) use ($albumsInDb) : bool {
-            return ! $albumsInDb->contains($album['id']);
-        });
+        return $albums->filter(fn ($album) : bool => ! $albumsInDb->contains($album['id']));
     }
 
     private function storeAlbum(Collection $album) : void
@@ -78,9 +76,7 @@ final class SynchronizeFlickrAlbums extends Command
 
 
         $photos = $photoAlbum['photos']->map(function ($photo) use ($album) : array {
-            $parseTitle = function ($title) {
-                return Str::startsWith($title, 'IMG_') ? '' : $title;
-            };
+            $parseTitle = fn ($title) => Str::startsWith($title, 'IMG_') ? '' : $title;
 
             $width = (int)$photo['width'];
             $height = (int)$photo['height'];

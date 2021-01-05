@@ -28,11 +28,11 @@ final class ActiveMembersStatistics
         $board = Board::orderBy('installed_at', 'desc')->firstOrFail();
 
         // Select all members that are in at least one committee
-        $activeMemberIds = $board->committees->flatMap(function (Committee $committee) {
-            return $committee->members->map(function (CommitteeMember $member) : int {
-                return $member->member_id;
-            });
-        })->unique();
+        $activeMemberIds = $board->committees
+            ->flatMap(
+                fn (Committee $committee) => $committee->members->map(fn (CommitteeMember $member) : int => $member->member_id)
+            )
+            ->unique();
 
         $members = \DB::connection('francken-legacy')
                  ->table('leden')
