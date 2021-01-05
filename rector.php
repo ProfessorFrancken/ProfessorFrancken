@@ -18,18 +18,15 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ]);
-    $parameters->set(Option::EXCLUDE_PATHS, [
-        "src/Treasurer/SendDeductionNotification.php",
-        "src/Extern/Http/FactSheetController.php",
-        "src/Treasurer/Http/Controllers/DeductionsController.php",
-    ]);
-
 
     $parameters->set(Option::AUTO_IMPORT_NAMES, true);
     $parameters->set(Option::IMPORT_SHORT_CLASSES, true);
     $parameters->set(Option::IMPORT_DOC_BLOCKS, false);
     $parameters->set(Option::PHP_VERSION_FEATURES, '7.4');
-    $parameters->set(Option::EXCLUDE_RECTORS, [
+    $parameters->set(Option::SKIP, [
+        "src/Treasurer/SendDeductionNotification.php",
+        "src/Extern/Http/FactSheetController.php",
+        "src/Treasurer/Http/Controllers/DeductionsController.php",
         UnderscoreToCamelCasePropertyNameRector::class,
     ]);
 
