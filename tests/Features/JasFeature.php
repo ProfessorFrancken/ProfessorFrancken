@@ -17,7 +17,7 @@ class JasFeature extends TestCase
         $this->json('POST', '/store-jas-events', [
             'id' => $id,
             'name' => 'GameStarted',
-            'date' => 1503301742819,
+            'date' => 1_503_301_742_819,
             'payload' => [
                 'game_id' => 'hoi'
             ]
@@ -28,7 +28,7 @@ class JasFeature extends TestCase
         $this->seeInDatabase('jas_events', [
             'uuid' => $id,
             'name' => 'GameStarted',
-            'date' => 1503301742819,
+            'date' => 1_503_301_742_819,
         ]);
     }
 }

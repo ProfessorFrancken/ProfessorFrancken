@@ -57,7 +57,7 @@ class OrdersFeature extends TestCase
                     ["id" => $hertog->id, "name" =>  $hertog->name, "price" => $hertog->price],
                     ["id" => $gebouw13->id, "name" =>  $gebouw13->name, "price" => $gebouw13->price],
                 ],
-                "ordered_at" => 1522075374402
+                "ordered_at" => 1_522_075_374_402
             ]
         ];
 

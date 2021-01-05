@@ -13,6 +13,7 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::SETS, [
       SetList::CODE_QUALITY,
+      SetList::PHP_74
     ]);
 
     $parameters->set(Option::PATHS, [
