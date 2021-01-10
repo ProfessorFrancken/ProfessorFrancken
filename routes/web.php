@@ -9,6 +9,7 @@ use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Activities\Http\SignUpsController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
+use Francken\Association\Boards\Http\Controllers\KandiTotoController;
 use Francken\Association\Borrelcie\Http\AnytimersController;
 use Francken\Association\Borrelcie\Http\BorrelcieAccountActivationController;
 use Francken\Association\Borrelcie\Http\BorrelcieController;
@@ -118,6 +119,11 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::get('boards', [BoardsController::class, 'index']);
     Route::get('boards/birthdays', [BirthdaysController::class, 'index'])
+        ->middleware(['role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']);
+
+    Route::get('boards/kandi-toto', [KandiTotoController::class, 'index'])
+        ->middleware(['role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']);
+    Route::post('boards/kandi-toto', [KandiTotoController::class, 'store'])
         ->middleware(['role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']);
 
     Route::get('photos/login', [AuthenticationController::class, 'index']);

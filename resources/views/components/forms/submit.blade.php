@@ -2,6 +2,7 @@
     'class' => 'btn btn-outline-success',
     'disabled' => false,
     'block' => false,
+    'text' => '',
 ])
 
 {!!

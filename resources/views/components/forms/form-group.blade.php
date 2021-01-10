@@ -7,7 +7,7 @@
 
 <div class="form-group {{ $formGroupClass }}">
     @if($label !== null)
-        <label for="{{ $name }}">{{ $label }}</label>
+        <label for="{{ $name }}">{!! $label !!}</label>
     @endif
 
     {{-- Include the input field from our parent component --}}
