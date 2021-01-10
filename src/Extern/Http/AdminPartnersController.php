@@ -85,9 +85,7 @@ final class AdminPartnersController
                     ->withAlumni()
                     ->count(),
 
-                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                    return [$sector->getKey() => $sector->name];
-                })->prepend("All", 0),
+                'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])->prepend("All", 0),
                 'statuses' => collect(PartnerStatus::all())->prepend("All", 0),
                 'breadcrumbs' => [
                     ['url' => action([self::class, 'index']), 'text' => 'Partners'],
@@ -100,9 +98,7 @@ final class AdminPartnersController
         return view('admin.extern.partners.create', [
             'partner' => new Partner(),
             'contactDetails' => new ContactDetails(),
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->getKey() => $sector->name];
-            }),
+            'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name]),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Partners'],
@@ -161,9 +157,7 @@ final class AdminPartnersController
         return view('admin.extern.partners.edit', [
             'partner' => $partner,
             'contactDetails' => $partner->contactDetails,
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->getKey() => $sector->name];
-            }),
+            'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name]),
             'statuses' => PartnerStatus::all(),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Partners'],

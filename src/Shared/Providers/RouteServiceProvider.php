@@ -32,9 +32,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $router->bind(
             'academic_year',
-            function (string $year) : AcademicYear {
-                return AcademicYear::fromString($year);
-            }
+            fn (string $year) : AcademicYear => AcademicYear::fromString($year)
         );
     }
 

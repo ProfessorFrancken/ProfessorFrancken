@@ -14,9 +14,7 @@ final class DeductionMembersController
     public function show(DeductionEmail $deduction, int $memberId) : SendDeductionNotification
     {
         $member = $deduction->deductionToMembers
-            ->first(function (DeductionEmailToMember $member) use ($memberId) : bool {
-                return (int)$member->member_id === $memberId;
-            });
+            ->first(fn (DeductionEmailToMember $member) : bool => (int)$member->member_id === $memberId);
 
         if ($member === null) {
             abort(404);

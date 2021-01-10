@@ -30,11 +30,9 @@ final class AppServiceProvider extends ServiceProvider
             $this->app->useAppPath(base_path('src'));
         }
 
-        $this->app->bind(Valuestore::class, function () : Valuestore {
-            return Valuestore::make(
-                storage_path('app/settings.json')
-            );
-        });
+        $this->app->bind(Valuestore::class, fn () : Valuestore => Valuestore::make(
+            storage_path('app/settings.json')
+        ));
         $this->app->bind(Settings::class, ValueStoreSettings::class);
         $this->app->bind(Clock::class, SystemClock::class);
 

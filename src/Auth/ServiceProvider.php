@@ -46,9 +46,7 @@ final class ServiceProvider extends AuthServiceProvider
 
     public function boot(Gate $gate) : void
     {
-        $gate->before(function ($user, $ability) : ?bool {
-            return $user->hasRole('Admin') ? true : null;
-        });
+        $gate->before(fn ($user, $ability) : ?bool => $user->hasRole('Admin') ? true : null);
 
         $dispatcher = $this->app->make(Dispatcher::class);
         $dispatcher->listen(AccountWasActivated::class, ChangeRolesListener::class);

@@ -58,9 +58,11 @@ class ActivitiesSidebarComposer
     private function monthNames() : Collection
     {
         return collect(range(1, 12))->map(function ($month) : array {
+            /** @var int $time */
+            $time = mktime(0, 0, 0, $month, 1);
             return [
-                'number' => date('m', mktime(0, 0, 0, $month, 1)),
-                'name' => date('F', mktime(0, 0, 0, $month, 1))
+                'number' => date('m', $time),
+                'name' => date('F', $time)
             ];
         });
     }

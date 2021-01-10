@@ -20,17 +20,17 @@ final class CommitteesController
 
         return collect([
             'committees' =>
-            $board->committees->flatMap(function (Committee $committee) use ($board) {
-                return $committee->members->map(function (CommitteeMember $member) use ($committee, $board) : array {
-                    return [
+            $board->committees->flatMap(
+                fn (Committee $committee) => $committee->members->map(
+                    fn (CommitteeMember $member) : array => [
                         'commissie_id' => $member->committee_id,
                         'lid_id' => $member->member_id,
-                        'jaar' => (int)$board->installed_at->format('Y'),
+                        'jaar' => (int) $board->installed_at->format('Y'),
                         'functie' => $member->function,
                         'naam' => $committee->name
-                    ];
-                });
-            })
+                    ]
+                )
+            )
         ]);
     }
 }

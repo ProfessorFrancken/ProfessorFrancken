@@ -43,9 +43,7 @@ final class StudiesStatistic
         ];
 
         return $studies->sortBy(
-            function (StudyStatistic $study) use ($relatedStudies) {
-                return array_search($study->study(), $relatedStudies, true);
-            }
+            fn (StudyStatistic $study) => array_search($study->study(), $relatedStudies, true)
         );
     }
 
@@ -65,9 +63,7 @@ final class StudiesStatistic
         }
 
         $grouped = $studies->groupBy(
-            function (StudyStatistic $study) use ($relatedStudies) : bool {
-                return in_array($study->study(), $relatedStudies, true);
-            }
+            fn (StudyStatistic $study) : bool => in_array($study->study(), $relatedStudies, true)
         );
 
         if ($grouped->has(1)) {

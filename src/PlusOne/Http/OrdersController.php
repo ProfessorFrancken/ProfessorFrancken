@@ -28,16 +28,14 @@ final class OrdersController
             ->take(100)
             ->orderBy('tijd', 'DESC')
             ->get()
-            ->map(function ($transactie) : array {
-                return [
-                    'id' => $transactie->id,
-                    'member_id' => $transactie->lid_id,
-                    'product_id' => $transactie->product_id,
-                    'amount' => $transactie->aantal,
-                    'ordered_at' => $transactie->tijd,
-                    'price' => $transactie->totaalprijs,
-                ];
-            });
+            ->map(fn ($transactie) : array => [
+                'id' => $transactie->id,
+                'member_id' => $transactie->lid_id,
+                'product_id' => $transactie->product_id,
+                'amount' => $transactie->aantal,
+                'ordered_at' => $transactie->tijd,
+                'price' => $transactie->totaalprijs,
+            ]);
 
         return collect(['orders' => $orders]);
     }

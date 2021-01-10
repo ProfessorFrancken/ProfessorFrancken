@@ -33,17 +33,13 @@ final class FakeNews
         // First create a set of titles with associated publication dates
         // we use this to set the next and previous news items
         $publishedNews = collect(range(1, $amount))
-            ->map(function () : array {
-                return [
-                    'title' => $this->faker->sentence(),
-                    'published_at' => DateTimeImmutable::createFromMutable(
-                        $this->faker->dateTime()
-                    )
-                ];
-            })
-            ->sortByDesc(function ($news) {
-                return $news['published_at']->getTimestamp();
-            })
+            ->map(fn () : array => [
+                'title' => $this->faker->sentence(),
+                'published_at' => DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTime()
+                )
+            ])
+            ->sortByDesc(fn ($news) => $news['published_at']->getTimestamp())
             ->values();
 
         return $publishedNews->map(function ($news) : News {

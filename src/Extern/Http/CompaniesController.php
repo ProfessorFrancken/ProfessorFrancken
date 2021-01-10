@@ -49,9 +49,7 @@ final class CompaniesController
             ->with([
                 'partners' => $partners,
                 'partner' => $partner,
-                'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                    return [$sector->name => $sector->icon];
-                }),
+                'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->name => $sector->icon]),
                 'types' => JobType::TYPES,
                 'breadcrumbs' => [
                     ['url' => '/career', 'text' => 'Career'],

@@ -36,17 +36,13 @@ final class AdminFranckenVrijController extends Controller
 
         // Predict the next volume and edition numbers
         $currentVolume = $volumes->reduce(
-            function (Volume $max, Volume $volume) : Volume {
-                return $volume->volume() > $max->volume() ? $volume : $max;
-            },
+            fn (Volume $max, Volume $volume) : Volume => $volume->volume() > $max->volume() ? $volume : $max,
             new Volume(1, [])
         );
 
         $currentEdition = array_reduce(
             $currentVolume->editions(),
-            function (int $max, Edition $edition) : int {
-                return $edition->edition() > $max ? $edition->edition() : $max;
-            },
+            fn (int $max, Edition $edition) : int => $edition->edition() > $max ? $edition->edition() : $max,
             0
         );
 

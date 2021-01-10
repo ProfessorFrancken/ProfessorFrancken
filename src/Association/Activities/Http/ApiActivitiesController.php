@@ -30,15 +30,13 @@ final class ApiActivitiesController
                 $query->where('start_date', '<', $before);
             })
             ->get()
-            ->map(function (Activity $activity) : array {
-                return [
-                    'title' => $activity->name,
-                    'description' => $activity->compiled_content,
-                    'location' => $activity->location,
-                    'startDate' => $activity->start_date->format(DateTime::ATOM),
-                    'endDate' => $activity->end_date->format(DateTime::ATOM),
-                ];
-            })
+            ->map(fn (Activity $activity) : array => [
+                'title' => $activity->name,
+                'description' => $activity->compiled_content,
+                'location' => $activity->location,
+                'startDate' => $activity->start_date->format(DateTime::ATOM),
+                'endDate' => $activity->end_date->format(DateTime::ATOM),
+            ])
             ->values();
 
         return [

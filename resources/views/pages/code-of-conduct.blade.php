@@ -1,5 +1,10 @@
 @extends('layout.one-column-layout')
 @section('title', "Code of conduct - T.F.V. 'Professor Francken'")
+@php
+$breadcrumbs = [
+    ['url' => '/code-of-conduct', 'text' => 'Code of conduct'],
+];
+@endphp
 
 @section('content')
     <h1 class="section-header">

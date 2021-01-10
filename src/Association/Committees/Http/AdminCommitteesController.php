@@ -29,9 +29,7 @@ final class AdminCommitteesController
             ->get();
 
         $boards = Board::orderBy('installed_at', 'desc')->get();
-        $boardYears = $boards->mapWithKeys(function (Board $board) : array {
-            return [$board->id => $board->board_name->toString()];
-        });
+        $boardYears = $boards->mapWithKeys(fn (Board $board) : array => [$board->id => $board->board_name->toString()]);
 
         $continuableCommittees =  Committee::query()
             ->with(['board', 'logoMedia'])
@@ -86,11 +84,9 @@ final class AdminCommitteesController
             ->get();
 
         $parentCommittees = $continuableCommittees->mapWithKeys(
-            function ($c) : array {
-                return [
-                    $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
-                ];
-            }
+            fn ($c) : array => [
+                $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
+            ]
         );
 
         return view('admin.association.committees.create')

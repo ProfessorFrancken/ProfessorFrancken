@@ -49,12 +49,10 @@ final class ExpensesController
             ->limit(100)
             ->groupby('year', 'month')
             ->get()
-            ->map(function ($month) : array {
-                return [
-                    "time" => new DateTimeImmutable($month->tijd),
-                    "price" => $month->price
-                ];
-            });
+            ->map(fn ($month) : array => [
+                "time" => new DateTimeImmutable($month->tijd),
+                "price" => $month->price
+            ]);
 
         return view('profile.expenses.index')
             ->with([
@@ -77,9 +75,7 @@ final class ExpensesController
                 ->table('afschrijvingen')
                 ->orderBy('tijd', 'desc')
                 ->get()
-                ->map(function ($deduction) : DateTimeImmutable {
-                    return new DateTimeImmutable($deduction->tijd);
-                });
+                ->map(fn ($deduction) : DateTimeImmutable => new DateTimeImmutable($deduction->tijd));
 
         $transactions = DB::connection('francken-legacy')->table('transacties')
             ->join('producten', 'transacties.product_id', '=', 'producten.id')
@@ -98,9 +94,7 @@ final class ExpensesController
                 $time = new DateTimeImmutable($transaction->tijd);
 
                 // Find the date this transaction was deducted on
-                $deductedAt = $deductions->reduce(function ($current, $next) use ($time) {
-                    return $time < $next ? $next->format('Y-m-d') : $current;
-                }, null);
+                $deductedAt = $deductions->reduce(fn ($current, $next) => $time < $next ? $next->format('Y-m-d') : $current, null);
 
                 return [
                     'time' => $time,
@@ -111,9 +105,7 @@ final class ExpensesController
             });
 
 
-        $byDay = $transactions->groupBy(function ($transaction) {
-            return $transaction['time']->format('d');
-        });
+        $byDay = $transactions->groupBy(fn ($transaction) => $transaction['time']->format('d'));
 
         $date = DateTimeImmutable::createFromFormat("Y-m", "$year-$month");
         Assert::isInstanceOf($date, DateTimeImmutable::class);

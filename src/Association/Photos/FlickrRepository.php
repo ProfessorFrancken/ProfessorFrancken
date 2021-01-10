@@ -92,24 +92,22 @@ final class FlickrRepository
             return collect([
                 'id' => $album['id'],
                 'title' => $album['title'],
-                'photos' => collect($album['photo'])->map(function ($photo) : Collection {
-                    return collect([
-                        'id' => $photo['id'],
-                        'title' => $photo['title'],
-                        'is_primary' => $photo['isprimary'],
-                        'views' => $photo['views'],
-                        'url' => $photo['url_m'] ?? $photo['url_o'],
-                        'original_url' => $photo['url_o'],
-                        'width' => $photo['width_m'],
-                        'height' => $photo['height_m'],
-                        'is_public' => $photo['ispublic'],
-                        'date_taken' => new DateTimeImmutable($photo['datetaken']),
-                        'date_upload' => DateTimeImmutable::createFromFormat('U', $photo['dateupload']),
-                        'last_update' => DateTimeImmutable::createFromFormat('U', $photo['lastupdate']),
-                        'longitude' => $photo['longitude'],
-                        'latitude' => $photo['latitude'],
-                    ]);
-                })
+                'photos' => collect($album['photo'])->map(fn ($photo) : Collection => collect([
+                    'id' => $photo['id'],
+                    'title' => $photo['title'],
+                    'is_primary' => $photo['isprimary'],
+                    'views' => $photo['views'],
+                    'url' => $photo['url_m'] ?? $photo['url_o'],
+                    'original_url' => $photo['url_o'],
+                    'width' => $photo['width_m'],
+                    'height' => $photo['height_m'],
+                    'is_public' => $photo['ispublic'],
+                    'date_taken' => new DateTimeImmutable($photo['datetaken']),
+                    'date_upload' => DateTimeImmutable::createFromFormat('U', $photo['dateupload']),
+                    'last_update' => DateTimeImmutable::createFromFormat('U', $photo['lastupdate']),
+                    'longitude' => $photo['longitude'],
+                    'latitude' => $photo['latitude'],
+                ]))
             ]);
         } catch (Exception $e) {
             return collect([

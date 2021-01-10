@@ -32,12 +32,8 @@ final class StudentsByStudyAndStudyPhase
 
     private function studyPhaseStatistics(Collection $students) : Collection
     {
-        return $students->groupBy(function ($student) {
-            return $student->studierichting;
-        })->map(function ($students, $study) : StudyPhaseStatistic {
-            $probablyDoingBachelors = function ($student) : bool {
-                return ((int)$student->jaar_van_inschrijving) >= (int)$this->today->format('Y') - 5;
-            };
+        return $students->groupBy(fn ($student) => $student->studierichting)->map(function ($students, $study) : StudyPhaseStatistic {
+            $probablyDoingBachelors = fn ($student) : bool => ((int)$student->jaar_van_inschrijving) >= (int)$this->today->format('Y') - 5;
 
             return new StudyPhaseStatistic(
                 $study,

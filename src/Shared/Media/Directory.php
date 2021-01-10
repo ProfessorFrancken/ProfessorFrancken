@@ -51,9 +51,7 @@ final class Directory
         string $directory
     ) : Collection {
         $directories = collect($storage->disk(static::DISK)->directories($directory))
-            ->map(function ($directory) : self {
-                return new self($directory);
-            });
+            ->map(fn ($directory) : self => new self($directory));
 
         if ($directory !== '') {
             $directories->prepend(new self(dirname($directory), '..'));

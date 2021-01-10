@@ -28,9 +28,7 @@ final class FirstYearStudentsPerYear
 
 
             $studies = $members->groupBy('studierichting')
-                ->map(function ($students, $study) : StudentsPerStudy {
-                    return new StudentsPerStudy($study, $students->count());
-                })
+                ->map(fn ($students, $study) : StudentsPerStudy => new StudentsPerStudy($study, $students->count()))
                 ->values();
 
             return [

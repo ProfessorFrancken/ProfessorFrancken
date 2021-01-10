@@ -100,9 +100,7 @@ final class Edition extends Model
             ->get()
             ->groupBy('volume')
             ->map(
-                function (Collection $editions, int $volume) : Volume {
-                    return new Volume($volume, $editions->all());
-                }
+                fn (Collection $editions, int $volume) : Volume => new Volume($volume, $editions->all())
             );
     }
 

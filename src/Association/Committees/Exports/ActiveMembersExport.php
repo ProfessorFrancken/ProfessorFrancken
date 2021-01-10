@@ -43,9 +43,7 @@ class ActiveMembersExport implements FromCollection, WithTitle, WithHeadings, Wi
             ->hasManyThrough(CommitteeMember::class, Committee::class)
             ->with(['member'])
             ->get()
-            ->unique(function (CommitteeMember $member) {
-                return $member->member_id;
-            });
+            ->unique(fn (CommitteeMember $member) => $member->member_id);
     }
 
     public function map($committeeMember) : array

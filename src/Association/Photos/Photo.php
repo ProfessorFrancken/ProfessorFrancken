@@ -85,14 +85,12 @@ final class Photo extends Model
 
         // Give a list of srces
         return collect(self::SIZES)
-            ->map(function ($value, $key) use ($baseUrl) : string {
-                return sprintf(
-                    "%s%s.jpg %sw",
-                    $baseUrl,
-                    $value,
-                    round($key * 1.5)
-                );
-            })
+            ->map(fn ($value, $key) : string => sprintf(
+                "%s%s.jpg %sw",
+                $baseUrl,
+                $value,
+                round($key * 1.5)
+            ))
             ->implode(', ');
     }
 }

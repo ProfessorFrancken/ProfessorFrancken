@@ -19,9 +19,7 @@ final class AdminVacanciesController
         return view('admin.extern.partners.sponsor-options.vacancies.create', [
             'partner' => $partner,
             'vacancy' => new Vacancy(),
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->getKey() => $sector->name];
-            }),
+            'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name]),
             'types' => JobType::all(),
             'breadcrumbs' => [
                 ['url' => action([AdminPartnersController::class, 'index']), 'text' => 'Partners'],
@@ -54,9 +52,7 @@ final class AdminVacanciesController
         return view('admin.extern.partners.sponsor-options.vacancies.edit', [
             'partner' => $partner,
             'vacancy' => $vacancy,
-            'sectors' => Sector::all()->mapWithKeys(function (Sector $sector) : array {
-                return [$sector->getKey() => $sector->name];
-            }),
+            'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name]),
             'types' => JobType::all(),
             'breadcrumbs' => [
                 ['url' => action([AdminPartnersController::class, 'index']), 'text' => 'Partners'],

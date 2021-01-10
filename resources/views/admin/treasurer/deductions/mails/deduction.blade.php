@@ -15,6 +15,6 @@ Please make sure you have enough money on your bank account in time.
 Kind regards,
 
 
-Rosa de Graff<br/>
+Rosa de Graaff<br/>
 *Treasurer of  T.F.V. &#8216;Professor Francken&#8217;*
 @endcomponent

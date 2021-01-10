@@ -33,9 +33,7 @@ final class AdminBoardsController
     {
         $boards = Board::orderBy('installed_at', 'desc')
             ->withPhotos()
-            ->with(['members' => function ($query) {
-                return $query->withPhotos();
-            }])
+            ->with(['members' => fn ($query) => $query->withPhotos()])
             ->get();
 
         return view('admin.association.boards.index', [
