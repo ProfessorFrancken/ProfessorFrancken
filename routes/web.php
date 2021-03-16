@@ -23,7 +23,6 @@ use Francken\Association\Members\Http\FranckenVrijSubscriptionController;
 use Francken\Association\Members\Http\PasswordController;
 use Francken\Association\Members\Http\PaymentDetailsController;
 use Francken\Association\Members\Http\ProfileActivitiesController;
-use Francken\Association\Members\Http\FranckenVrijSubscriptionController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
