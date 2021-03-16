@@ -4,6 +4,7 @@ $menu = [
     ['url' => '/profile', 'icon' => 'fa fa-user', 'text' => 'Profile'],
     ['url' => '/profile/expenses', 'icon' => 'fa fa-chart-bar', 'text' => 'Expenses'],
     ['url' => action([\Francken\Association\Members\Http\ProfileActivitiesController::class, 'index']), 'icon' => 'fa fa-calendar', 'text' => 'Activities'],
+    ['url' => action([\Francken\Association\Members\Http\FranckenVrijSubscriptionController::class, 'index']), 'icon' => 'fas fa-book-open', 'text' => 'Francken Vrij'],
 ];
 
 if (Auth::user()->can('can-access-dashboard')) {

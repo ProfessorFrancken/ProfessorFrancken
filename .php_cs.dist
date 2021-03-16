@@ -5,6 +5,7 @@ $config = PhpCsFixer\Config::create();
 $finder = PhpCsFixer\Finder::create();
 $finder->in(__DIR__ . '/src/');
 $finder->in(__DIR__ . '/tests/');
+$finder->in(__DIR__ . '/routes/');
 
 $config->setFinder($finder);
 $config->setRiskyAllowed(true);

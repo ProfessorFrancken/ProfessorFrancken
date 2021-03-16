@@ -15,18 +15,15 @@ final class MemberAddressWasChanged
     private LegacyMember $member;
     private Address $address;
     private ?Address $oldAddress;
-    private bool $subscriptionPreferenceWasChanged;
 
     public function __construct(
         LegacyMember $member,
         Address $address,
-        ?Address $oldAddress,
-        bool $subscriptionPreferenceWasChanged
+        ?Address $oldAddress
     ) {
         $this->member = $member;
         $this->address = $address;
         $this->oldAddress = $oldAddress;
-        $this->subscriptionPreferenceWasChanged = $subscriptionPreferenceWasChanged;
     }
 
     public function member() : LegacyMember
@@ -42,10 +39,5 @@ final class MemberAddressWasChanged
     public function oldAddress() : ?Address
     {
         return $this->oldAddress;
-    }
-
-    public function subscriptionPreferenceWasChanged() : bool
-    {
-        return $this->subscriptionPreferenceWasChanged;
     }
 }

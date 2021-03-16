@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association;
 
 use DateTimeImmutable;
+use Francken\Association\FranckenVrij\Subscription;
 use Francken\Association\Members\Address;
 use Francken\Association\Members\Events\MemberAddressWasChanged;
 use Francken\Association\Members\Events\MemberEmailWasChanged;
@@ -17,6 +18,7 @@ use Francken\Auth\Account;
 use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
@@ -258,14 +260,11 @@ final class LegacyMember extends Model
         event(new MemberEmailWasChanged($this, $email, $oldEmail, $updateNewsletterSubscription));
     }
 
-    public function changeAddress(Address $address, bool $mailinglistFranckenVrij) : void
+    public function changeAddress(Address $address) : void
     {
         $oldAddress = $this->address;
 
-        $oldMailinglistFranckenVrij = $this->mailinglist_franckenvrij;
-        $updateFranckenVrijSubscription = $oldMailinglistFranckenVrij !== $mailinglistFranckenVrij;
-
-        if ($oldAddress == $address && ! $updateFranckenVrijSubscription) {
+        if ($oldAddress == $address) {
             return;
         }
 
@@ -273,10 +272,9 @@ final class LegacyMember extends Model
         $this->land = $address->country();
         $this->adres = $address->address();
         $this->postcode = $address->postalCode();
-        $this->mailinglist_franckenvrij = $mailinglistFranckenVrij;
         $this->save();
 
-        event(new MemberAddressWasChanged($this, $address, $oldAddress, $mailinglistFranckenVrij));
+        event(new MemberAddressWasChanged($this, $address, $oldAddress));
     }
 
     public function changePhoneNumber(string $phoneNumber) : void
@@ -313,5 +311,12 @@ final class LegacyMember extends Model
                 $this, $iban, $oldIban, $consumptionCounter, $oldConsumptionCounter
             )
         );
+    }
+
+    public function franckenVrijSubscription() : HasOne
+    {
+        return $this->hasOne(Subscription::class, 'member_id')->withDefault([
+            'subscription_ends_at' => null
+        ]);
     }
 }

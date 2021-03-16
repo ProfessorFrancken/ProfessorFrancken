@@ -19,9 +19,11 @@ use Francken\Association\FranckenVrij\Http\FranckenVrijController;
 use Francken\Association\Members\Http\ContactDetailsController;
 use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
+use Francken\Association\Members\Http\FranckenVrijSubscriptionController;
 use Francken\Association\Members\Http\PasswordController;
 use Francken\Association\Members\Http\PaymentDetailsController;
 use Francken\Association\Members\Http\ProfileActivitiesController;
+use Francken\Association\Members\Http\FranckenVrijSubscriptionController;
 use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
@@ -157,6 +159,9 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth']], function 
     Route::put('payment-details', [PaymentDetailsController::class, 'update']);
 
     Route::get('activities', [ProfileActivitiesController::class, 'index']);
+
+    Route::get('francken-vrij', [FranckenVrijSubscriptionController::class, 'index']);
+    Route::put('francken-vrij', [FranckenVrijSubscriptionController::class, 'update']);
 });
 
 Route::group(['prefix' => 'borrelcie', 'middleware' => ['web', 'auth']], function () : void {

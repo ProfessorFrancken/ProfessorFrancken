@@ -24,7 +24,6 @@ class ContactDetailsRequest extends FormRequest
             'phone_number' => ['nullable', 'min:1'],
 
             'newsletter' => [],
-            'francken_vrij' => [],
         ];
     }
 
@@ -51,10 +50,5 @@ class ContactDetailsRequest extends FormRequest
     public function mailinglistMail() : bool
     {
         return (bool) $this->input('newsletter');
-    }
-
-    public function mailinglistFranckenVrij() : bool
-    {
-        return (bool) $this->input('francken_vrij');
     }
 }

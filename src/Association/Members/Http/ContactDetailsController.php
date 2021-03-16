@@ -29,7 +29,7 @@ final class ContactDetailsController
     {
         $member = $request->user()->member;
         $member->changeEmail($request->email(), $request->mailinglistMail());
-        $member->changeAddress($request->address(), $request->mailinglistFranckenVrij());
+        $member->changeAddress($request->address());
         $member->changePhoneNumber($request->phoneNumber());
 
         return redirect()->action([ProfileController::class, 'index']);
