@@ -146,8 +146,10 @@ Route::group(['prefix' => 'association'], function () : void {
     });
 
     // Francken Vrij
-    Route::get('francken-vrij/subscriptions', [AdminSubscriptionsController::class, 'index']);
-    Route::get('francken-vrij/subscriptions/export', [AdminSubscriptionsExportController::class, 'index']);
+    Route::group(['middleware' => 'can:dashboard:francken-vrij-subscriptions-read'], function () : void {
+        Route::get('francken-vrij/subscriptions', [AdminSubscriptionsController::class, 'index']);
+        Route::get('francken-vrij/subscriptions/export', [AdminSubscriptionsExportController::class, 'index']);
+    });
     Route::get('francken-vrij/editions', [AdminFranckenVrijController::class, 'index']);
     Route::get('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'edit']);
     Route::put('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'update']);

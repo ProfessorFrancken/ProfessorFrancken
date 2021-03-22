@@ -86,7 +86,7 @@
             </thead>
             <tbody>
                 @foreach ($subscriptions as $subscription)
-                    <tr>
+                    <tr class="subscription">
                         <td>
                             {{ $subscription->member->fullname  }}
                         </td>
