@@ -45,6 +45,7 @@
                 <br/>
             </h3>
             <p>
+                Stay up to date with the latest RIVM and university measures, and precautions taken by the assocation.
             </p>
             <div class="d-flex align-items-center">
                 <a class="btn btn-primary mr-3" href="{{ url($covid->slug) }}">Read the latest updates</a>

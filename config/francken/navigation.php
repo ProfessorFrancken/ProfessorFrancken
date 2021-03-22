@@ -91,12 +91,6 @@ return [
                     "can" => "dashboard:news-read",
                 ],
                 [
-                    "name" => "Francken Vrij",
-                    "url" => "francken-vrij",
-                    "works" => true,
-                    "can" => "dashboard:francken-vrij-read",
-                ],
-                [
                     "name" => "Photos",
                     "url" => "photo-albums",
                     "works" => true,
@@ -134,6 +128,23 @@ return [
                 ],
             ]
         ], [
+            "name" => "Francken Vrij",
+            "url" => "association/francken-vrij",
+            "items" => [
+                [
+                    "name" => "Editions",
+                    "url" => "editions",
+                    "works" => true,
+                    "can" => "dashboard:francken-vrij-read",
+                ],
+                [
+                    "name" => "Subscriptions",
+                    "url" => "francken-vrij/subscriptions",
+                    "works" => true,
+                    "can" => "dashboard:francken-vrij-subscriptions-read",
+                ],
+                ],
+            ], [
             "name" => "Treasurer",
             "url" => "treasurer",
             "items" => [

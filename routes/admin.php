@@ -15,6 +15,8 @@ use Francken\Association\Committees\Http\AdminCommitteesController;
 use Francken\Association\Committees\Http\AdminContinueCommitteesController;
 use Francken\Association\Committees\Http\AdminRedirectCommitteesController;
 use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
+use Francken\Association\FranckenVrij\Http\AdminSubscriptionsController;
+use Francken\Association\FranckenVrij\Http\AdminSubscriptionsExportController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
@@ -144,11 +146,17 @@ Route::group(['prefix' => 'association'], function () : void {
     });
 
     // Francken Vrij
-    Route::get('francken-vrij', [AdminFranckenVrijController::class, 'index']);
-    Route::get('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'edit']);
-    Route::put('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'update']);
-    Route::delete('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'destroy']);
-    Route::post('francken-vrij', [AdminFranckenVrijController::class, 'store']);
+    Route::group(['middleware' => 'can:dashboard:francken-vrij-subscriptions-read'], function () : void {
+        Route::get('francken-vrij/subscriptions', [AdminSubscriptionsController::class, 'index']);
+        Route::get('francken-vrij/subscriptions/export', [AdminSubscriptionsExportController::class, 'index']);
+    });
+    Route::get('francken-vrij/editions', [AdminFranckenVrijController::class, 'index']);
+    Route::get('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'edit']);
+    Route::put('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'update']);
+    Route::delete('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'destroy']);
+    Route::post('francken-vrij/editions', [AdminFranckenVrijController::class, 'store']);
+
+
 
     Route::get('activities/{activity}/sign-up-settings/create', [AdminSignUpSettingsController::class, 'create']);
     Route::get('activities/{activity}/sign-up-settings/edit', [AdminSignUpSettingsController::class, 'edit']);

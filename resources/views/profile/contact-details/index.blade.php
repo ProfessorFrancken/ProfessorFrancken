@@ -75,15 +75,6 @@
                 :value="$member->address->country()"
             />
 
-            <div class="mt-2 mb-4 px-3 py-2 bg-light border rounded">
-                <x-forms.checkbox
-                    name="francken_vrij"
-                    label="Receive the Francken Vrij"
-                    form-group-class="mb-0"
-                    :value="$member->mailinglist_franckenvrij"
-                />
-            </div>
-
             <x-forms.text name="phone_number" placeholder="+31 50 363 4978">
                 <x-slot name="label">
                     <span class="h5">

@@ -6,6 +6,7 @@ namespace Francken\Features;
 
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
+use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Shared\Url;
 
 class FranckenVrijFeature extends TestCase
@@ -24,21 +25,21 @@ class FranckenVrijFeature extends TestCase
             new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
-        $this->visit('/association/francken-vrij')
+        $this->visit(action([AdminFranckenVrijController::class, 'index']))
             ->see("Francken Vrij 20.1");
     }
 
     /** @test */
     public function publishing_a_new_francken_vrij() : void
     {
-        $this->visit('/admin/association/francken-vrij')
+        $this->visit(action([AdminFranckenVrijController::class, 'index']))
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
             ->attach(__DIR__ . '/stubs/20-1.pdf', 'pdf')
             ->press('Publish');
 
-        $this->seePageIs('/admin/association/francken-vrij')
+        $this->seePageIs(action([AdminFranckenVrijController::class, 'index']))
             ->see('Clinical');
     }
 
@@ -54,7 +55,10 @@ class FranckenVrijFeature extends TestCase
             new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
-        $this->visit("/admin/association/francken-vrij/{$edition->getId()}")
+        $this->visit(action(
+            [AdminFranckenVrijController::class, 'edit'],
+            ['edition' => $edition->getId()]
+        ))
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
@@ -75,7 +79,10 @@ class FranckenVrijFeature extends TestCase
             new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
-        $this->visit("/admin/association/francken-vrij/{$edition->getId()}")
+        $this->visit(action(
+            [AdminFranckenVrijController::class, 'edit'],
+            ['edition' => $edition->getId()]
+        ))
             ->type('Clinical', 'title')
             ->type(20, 'volume')
             ->type(1, 'edition')
@@ -97,7 +104,10 @@ class FranckenVrijFeature extends TestCase
             new Url("http://www.professorfrancken.nl/franckenvrij/20.1.pdf")
         );
 
-        $this->visit("/admin/association/francken-vrij/{$edition->getId()}")
+        $this->visit(action(
+            [AdminFranckenVrijController::class, 'edit'],
+            ['edition' => $edition->getId()]
+        ))
             ->press('here');
 
         $this->dontSee('Clinical');

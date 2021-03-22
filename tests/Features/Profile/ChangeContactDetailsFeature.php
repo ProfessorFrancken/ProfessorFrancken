@@ -38,7 +38,6 @@ class ChangeContactDetailsFeature extends TestCase
             ->type('Groningen', 'city')
             ->type('9747AG', 'postal_code')
             ->type('Netherlands', 'country')
-            ->check('francken_vrij')
             ->type('+1-202-555-0178', 'phone_number')
             ->press('Save')
             ->seePageIs(action([ProfileController::class, 'index']));
@@ -53,7 +52,6 @@ class ChangeContactDetailsFeature extends TestCase
             ),
             $member->address
         );
-        $this->assertTrue($member->receive_francken_vrij);
         $this->assertEquals('+1-202-555-0178', $member->phone_number);
 
         Event::assertDispatched(MemberEmailWasChanged::class);

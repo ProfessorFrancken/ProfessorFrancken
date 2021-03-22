@@ -27,6 +27,9 @@ return [
         'dashboard:francken-vrij-read',
         'dashboard:francken-vrij-write',
 
+        'dashboard:francken-vrij-subscriptions-read',
+        'dashboard:francken-vrij-subscriptions-write',
+
         'dashboard:registrations-read',
         'dashboard:registrations-write',
 
