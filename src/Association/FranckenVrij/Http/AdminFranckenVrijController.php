@@ -62,7 +62,7 @@ final class AdminFranckenVrijController extends Controller
             'edition' => $currentEdition,
             'breadcrumbs' => [
                 ['url' => '/association', 'text' => 'Association'],
-                ['url' => '/association/francken-vrij', 'text' => 'Francken Vrij'],
+                ['url' => action([self::class, 'index']), 'text' => 'Francken Vrij'],
             ]
         ]);
     }

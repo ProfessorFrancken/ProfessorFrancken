@@ -148,11 +148,11 @@ Route::group(['prefix' => 'association'], function () : void {
     // Francken Vrij
     Route::get('francken-vrij/subscriptions', [AdminSubscriptionsController::class, 'index']);
     Route::get('francken-vrij/subscriptions/export', [AdminSubscriptionsExportController::class, 'index']);
-    Route::get('francken-vrij', [AdminFranckenVrijController::class, 'index']);
-    Route::get('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'edit']);
-    Route::put('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'update']);
-    Route::delete('francken-vrij/{edition}', [AdminFranckenVrijController::class, 'destroy']);
-    Route::post('francken-vrij', [AdminFranckenVrijController::class, 'store']);
+    Route::get('francken-vrij/editions', [AdminFranckenVrijController::class, 'index']);
+    Route::get('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'edit']);
+    Route::put('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'update']);
+    Route::delete('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'destroy']);
+    Route::post('francken-vrij/editions', [AdminFranckenVrijController::class, 'store']);
 
 
 
