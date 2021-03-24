@@ -27,6 +27,8 @@ use Francken\Association\Members\Http\ProfileController;
 use Francken\Association\News\Http\NewsController;
 use Francken\Association\Photos\Http\Controllers\AuthenticationController;
 use Francken\Association\Photos\Http\Controllers\PhotosController;
+use Francken\Association\Soundboards\Http\SoundboardsController;
+use Francken\Association\Soundboards\Http\SoundsController;
 use Francken\Association\Symposium\Http\ParticipantRegistrationController;
 use Francken\Auth\Http\Controllers\ForgotPasswordController;
 use Francken\Auth\Http\Controllers\LoginController;
@@ -121,6 +123,12 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('boards', [BoardsController::class, 'index']);
     Route::get('boards/birthdays', [BirthdaysController::class, 'index'])
         ->middleware(['auth', 'role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']);
+
+    Route::get('soundboards/', [SoundboardsController::class, 'index']);
+    Route::get('soundboards/{soundboard:slug}', [SoundboardsController::class, 'show']);
+    Route::group(['middleware' => ['auth', 'role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']], function () : void {
+        Route::post('soundboards/{soundboard:slug}', [SoundsController::class, 'store']);
+    });
 
     Route::get('boards/kandi-toto', [KandiTotoController::class, 'index'])
         ->middleware(['auth', 'role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']);
