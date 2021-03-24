@@ -38,5 +38,6 @@ class ChangeFranckenVrijSubscriptionFeature extends TestCase
 
         $this->assertNull($member->franckenVrijSubscription->subscription_ends_at);
         $this->assertFalse($member->franckenVrijSubscription->send_expiration_notification);
+        $this->assertFalse($member->franckenVrijSubscription->send_expiration_notification);
     }
 }

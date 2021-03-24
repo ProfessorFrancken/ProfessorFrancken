@@ -28,7 +28,9 @@ class SubscriptionsFeature extends TestCase
         /** @var Collection $subscriptions */
         $subscriptions = factory(Subscription::class, 20)->create();
         $activeSubscriptions = $subscriptions->filter(fn (Subscription $subscription) => $subscription->isActiveAt($today));
-        $expiredSubscriptions = $subscriptions->reject(fn (Subscription $subscription) => $subscription->isActiveAt($today));
+        $expiredSubscriptions = $subscriptions->reject(fn (Subscription $subscription) => $subscription->subscription_ends_at === null)
+                                              ->reject(fn (Subscription $subscription) => $subscription->isActiveAt($today));
+        $cancelledSubscriptions = $subscriptions->filter(fn (Subscription $subscription) => $subscription->subscription_ends_at === null);
 
         $recentlyExpiredSubscriptions = $subscriptions->filter(
             fn (Subscription $subscription) => $subscription->isActiveAt($previousYear) && ! $subscription->isActiveAt($today)
@@ -49,6 +51,9 @@ class SubscriptionsFeature extends TestCase
 
         $this->visit(action([AdminSubscriptionsController::class, 'index'], ['select' => 'soon-to-be-expired']));
         $this->seeElementCount('.subscription', $soonToBeExpiredSubscriptions->count());
+
+        $this->visit(action([AdminSubscriptionsController::class, 'index'], ['select' => 'cancelled']));
+        $this->seeElementCount('.subscription', $cancelledSubscriptions->count());
     }
 
     /** @test */
@@ -67,5 +72,37 @@ class SubscriptionsFeature extends TestCase
             $this->assertCount($expectedSubscriptions->count(), $subscriptions);
             return true;
         });
+    }
+
+
+    /** @test */
+    public function it_allows_a_board_member_to_update_ones_subscription() : void
+    {
+        $subscription = factory(Subscription::class)->create();
+
+        $date = new DateTimeImmutable();
+        $year = $date->format('Y');
+
+        $this->visit(action([AdminSubscriptionsController::class, 'edit'], ['subscription' => $subscription]))
+            ->select("September {$year}", 'subsription_ends_at')
+            ->check('send_expiration_notification')
+            ->press('Save');
+
+        $subscription->refresh();
+        $member = $subscription->member;
+        $this->assertTrue($member->receive_francken_vrij);
+        $this->assertEquals($subscription->subscription_ends_at->format("Y"), $year);
+        $this->assertTrue($subscription->send_expiration_notification);
+
+        $this->visit(action([AdminSubscriptionsController::class, 'edit'], ['subscription' => $subscription]));
+        $this->select("CANCEL", 'subsription_ends_at')
+            ->uncheck('send_expiration_notification')
+            ->press('Save');
+
+        $subscription->refresh();
+        $member = $subscription->member;
+        $this->assertNull($subscription->subscription_ends_at);
+        $this->assertFalse($subscription->send_expiration_notification);
+        $this->assertFalse($member->receive_francken_vrij);
     }
 }

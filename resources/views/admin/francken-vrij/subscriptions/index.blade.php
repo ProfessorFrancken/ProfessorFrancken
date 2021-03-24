@@ -33,6 +33,12 @@
                         {{ $soon_to_be_expired_subscriptions }}
                     </span>
                 @endcomponent
+                @component('admin.francken-vrij.subscriptions._tab-navigation', ['request' => $request, 'select' => 'cancelled', 'class' => 'border-left-0'])
+                    Cancelled
+                    <span class="badge badge-secondary text-white">
+                        {{ $cancelled_subscriptions }}
+                    </span>
+                @endcomponent
                 @component('admin.francken-vrij.subscriptions._tab-navigation', ['request' => $request, 'select' => 'all', 'class' => 'border-left-0'])
                     All subscriptions
                     <span class="badge badge-secondary text-white">
@@ -41,6 +47,21 @@
                 @endcomponent
             </ul>
         </div>
+        @if ($request->selected('soon-to-be-expired'))
+            <div class="card-body">
+                <strong>Soon to be expired subscriptions</strong>: Subscriptions that will expire within 1 year.
+            </div>
+        @endif
+        @if ($request->selected('recently-expired-subscription'))
+            <div class="card-body">
+                <strong>Recently expired subscriptions</strong>: Subscriptions that expired within 1 year.
+            </div>
+        @endif
+        @if ($request->selected('cancelled'))
+            <div class="card-body">
+                <strong>Cancelled subscriptions</strong>: These subscriptions were cancelled manually.
+            </div>
+        @endif
 
         <div class="card-body d-none">
             <h4 class="font-weight-bold">
@@ -82,6 +103,7 @@
                     <th>Receive expiration notification?</th>
                     <th>Subscription ends in</th>
                     <th>Last updated at</th>
+                    <th class="text-right">Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -101,10 +123,19 @@
                             @endif
                         </td>
                         <td>
+                            @if ($subscription->subscription_ends_at)
                             {{ $subscription->subscription_ends_at->diffForHumans()  }}
+                            @else
+                                Canceled
+                            @endif
                         </td>
                         <td>
                             {{ $subscription->updated_at->diffForHumans()  }}
+                        </td>
+                        <td class="text-right">
+                            <a href="{{ action([\Francken\Association\FranckenVrij\Http\AdminSubscriptionsController::class, 'edit'], ['subscription' => $subscription])  }}" class="text-muted">
+                                <i class="far fa-edit"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

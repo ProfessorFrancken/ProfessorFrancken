@@ -77,8 +77,9 @@
         <div class="card-body">
             <h6>Why do I need to extend my Francken Vrij subscription?</h6>
             <p class="mb-0">
-                While you will receive the Francken Vrij free of charge with your membership of T.F.V. 'Professor Francken' ,
-            </p>
+                We want to make sure the Francken Vrij is easily accessible to enjoy by all.
+                As the association looks to reduce its paper use, we would like to make sure that we don't send physical copies to members whose addresses changed or who no longer wish to receive the Francken Vrij.
+            </p> 
         </div>
     </div>
     

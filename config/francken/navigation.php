@@ -139,7 +139,7 @@ return [
                 ],
                 [
                     "name" => "Subscriptions",
-                    "url" => "francken-vrij/subscriptions",
+                    "url" => "subscriptions",
                     "works" => true,
                     "can" => "dashboard:francken-vrij-subscriptions-read",
                 ],

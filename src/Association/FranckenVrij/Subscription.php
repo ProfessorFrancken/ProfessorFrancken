@@ -51,18 +51,25 @@ final class Subscription extends Model
 
     public function scopeWithRecentlyExpiredSubscription(Builder $query, DateTimeImmutable $at) : Builder
     {
-        return $query->whereDate('subscription_ends_at', '>', $at->modify('-1 year'))
+        return $query
+            ->whereDate('subscription_ends_at', '>', $at->modify('-1 year'))
             ->whereDate('subscription_ends_at', '<', $at);
     }
 
     public function scopeWithExpiredSubscription(Builder $query, DateTimeImmutable $at) : Builder
     {
-        return $query->whereDate('subscription_ends_at', '<', $at);
+        return $query
+            ->whereDate('subscription_ends_at', '<', $at);
     }
 
     public function scopeWithSoonToBeExpried(Builder $query, DateTimeImmutable $at) : Builder
     {
         return $query->whereDate('subscription_ends_at', '>', $at)
             ->whereDate('subscription_ends_at', '<', $at->modify('+1 year'));
+    }
+
+    public function scopeCancelled(Builder $query) : Builder
+    {
+        return $query->whereNull('subscription_ends_at');
     }
 }
