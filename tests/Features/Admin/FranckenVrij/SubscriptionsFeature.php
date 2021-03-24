@@ -28,7 +28,9 @@ class SubscriptionsFeature extends TestCase
         /** @var Collection $subscriptions */
         $subscriptions = factory(Subscription::class, 20)->create();
         $activeSubscriptions = $subscriptions->filter(fn (Subscription $subscription) => $subscription->isActiveAt($today));
-        $expiredSubscriptions = $subscriptions->reject(fn (Subscription $subscription) => $subscription->isActiveAt($today));
+        $expiredSubscriptions = $subscriptions->reject(fn (Subscription $subscription) => $subscription->subscription_ends_at === null)
+                                              ->reject(fn (Subscription $subscription) => $subscription->isActiveAt($today));
+        $cancelledSubscriptions = $subscriptions->filter(fn (Subscription $subscription) => $subscription->subscription_ends_at === null);
 
         $recentlyExpiredSubscriptions = $subscriptions->filter(
             fn (Subscription $subscription) => $subscription->isActiveAt($previousYear) && ! $subscription->isActiveAt($today)
@@ -49,6 +51,9 @@ class SubscriptionsFeature extends TestCase
 
         $this->visit(action([AdminSubscriptionsController::class, 'index'], ['select' => 'soon-to-be-expired']));
         $this->seeElementCount('.subscription', $soonToBeExpiredSubscriptions->count());
+
+        $this->visit(action([AdminSubscriptionsController::class, 'index'], ['select' => 'cancelled']));
+        $this->seeElementCount('.subscription', $cancelledSubscriptions->count());
     }
 
     /** @test */

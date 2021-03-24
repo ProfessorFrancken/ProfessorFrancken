@@ -33,6 +33,12 @@
                         {{ $soon_to_be_expired_subscriptions }}
                     </span>
                 @endcomponent
+                @component('admin.francken-vrij.subscriptions._tab-navigation', ['request' => $request, 'select' => 'cancelled', 'class' => 'border-left-0'])
+                    Cancelled
+                    <span class="badge badge-secondary text-white">
+                        {{ $cancelled_subscriptions }}
+                    </span>
+                @endcomponent
                 @component('admin.francken-vrij.subscriptions._tab-navigation', ['request' => $request, 'select' => 'all', 'class' => 'border-left-0'])
                     All subscriptions
                     <span class="badge badge-secondary text-white">
@@ -101,7 +107,11 @@
                             @endif
                         </td>
                         <td>
+                            @if ($subscription->subscription_ends_at)
                             {{ $subscription->subscription_ends_at->diffForHumans()  }}
+                            @else
+                                Canceled
+                            @endif
                         </td>
                         <td>
                             {{ $subscription->updated_at->diffForHumans()  }}

@@ -39,6 +39,10 @@ final class AdminSubscriptionsController
                 $request->selected('soon-to-be-expired'),
                 fn (Builder $query) : Builder => $query->withSoonToBeExpried($now)
             )
+            ->when(
+                $request->selected('cancelled'),
+                fn (Builder $query) : Builder => $query->cancelled()
+            )
             ->with(['member'])
             ->orderBy('updated_at', 'desc')
             ->paginate(self::SUBSCRIPTIONS_PER_PAGE)
@@ -54,6 +58,7 @@ final class AdminSubscriptionsController
                 'recently_expired_subscriptions' =>  Subscription::query()->withRecentlyExpiredSubscription($now)->count(),
                 'expired_subscriptions' =>  Subscription::query()->withExpiredSubscription($now)->count(),
                 'soon_to_be_expired_subscriptions' =>  Subscription::query()->withSoonToBeExpried($now)->count(),
+                'cancelled_subscriptions' =>  Subscription::query()->cancelled()->count(),
 
                 'breadcrumbs' => [
                     ['url' => '/association', 'text' => 'Association'],
