@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class AdminSubscriptionsController
 {
@@ -73,6 +74,8 @@ final class AdminSubscriptionsController
 
     public function edit(Subscription $subscription, Clock $clock) : View
     {
+        Assert::notNull($subscription->member);
+
         $extensionOptions = array_merge(
                 ['CANCEL' => 'Cancel subscription'],
                 $this->subscriptionOptions($clock)
@@ -99,6 +102,8 @@ final class AdminSubscriptionsController
 
     public function update(Request $request, Subscription $subscription, Clock $clock) : RedirectResponse
     {
+        Assert::notNull($subscription->member);
+
         $member = $subscription->member;
 
         if ($request->input('subsription_ends_at') === 'CANCEL') {
