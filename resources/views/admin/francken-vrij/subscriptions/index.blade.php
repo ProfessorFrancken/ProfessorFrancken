@@ -47,6 +47,21 @@
                 @endcomponent
             </ul>
         </div>
+        @if ($request->selected('soon-to-be-expired'))
+            <div class="card-body">
+                <strong>Soon to be expired subscriptions</strong>: Subscriptions that will expire within 1 year.
+            </div>
+        @endif
+        @if ($request->selected('recently-expired-subscription'))
+            <div class="card-body">
+                <strong>Recently expired subscriptions</strong>: Subscriptions that expired within 1 year.
+            </div>
+        @endif
+        @if ($request->selected('cancelled'))
+            <div class="card-body">
+                <strong>Cancelled subscriptions</strong>: These subscriptions were cancelled manually.
+            </div>
+        @endif
 
         <div class="card-body d-none">
             <h4 class="font-weight-bold">
