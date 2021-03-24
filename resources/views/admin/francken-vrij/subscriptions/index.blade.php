@@ -103,6 +103,7 @@
                     <th>Receive expiration notification?</th>
                     <th>Subscription ends in</th>
                     <th>Last updated at</th>
+                    <th class="text-right">Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -130,6 +131,11 @@
                         </td>
                         <td>
                             {{ $subscription->updated_at->diffForHumans()  }}
+                        </td>
+                        <td class="text-right">
+                            <a href="{{ action([\Francken\Association\FranckenVrij\Http\AdminSubscriptionsController::class, 'edit'], ['subscription' => $subscription])  }}" class="text-muted">
+                                <i class="far fa-edit"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

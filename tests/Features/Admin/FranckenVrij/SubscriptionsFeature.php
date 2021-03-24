@@ -73,4 +73,36 @@ class SubscriptionsFeature extends TestCase
             return true;
         });
     }
+
+
+    /** @test */
+    public function it_allows_a_board_member_to_update_ones_subscription() : void
+    {
+        $subscription = factory(Subscription::class)->create();
+
+        $date = new DateTimeImmutable();
+        $year = $date->format('Y');
+
+        $this->visit(action([AdminSubscriptionsController::class, 'edit'], ['subscription' => $subscription]))
+            ->select("September {$year}", 'subsription_ends_at')
+            ->check('send_expiration_notification')
+            ->press('Save');
+
+        $subscription->refresh();
+        $member = $subscription->member;
+        $this->assertTrue($member->receive_francken_vrij);
+        $this->assertEquals($subscription->subscription_ends_at->format("Y"), $year);
+        $this->assertTrue($subscription->send_expiration_notification);
+
+        $this->visit(action([AdminSubscriptionsController::class, 'edit'], ['subscription' => $subscription]));
+        $this->select("CANCEL", 'subsription_ends_at')
+            ->uncheck('send_expiration_notification')
+            ->press('Save');
+
+        $subscription->refresh();
+        $member = $subscription->member;
+        $this->assertNull($subscription->subscription_ends_at);
+        $this->assertFalse($subscription->send_expiration_notification);
+        $this->assertFalse($member->receive_francken_vrij);
+    }
 }
