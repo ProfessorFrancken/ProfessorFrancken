@@ -115,7 +115,8 @@ return [
                 'audio/mpeg',
                 'audio/mp3',
                 'audio/mpeg',
-                'audio/wav'
+                'audio/wav',
+                'audio/x-m4a',
             ],
             'extensions' => [
                 'aac',
@@ -123,6 +124,7 @@ return [
                 'oga',
                 'mp3',
                 'wav',
+                'm4a'
             ]
         ],
         Plank\Mediable\Media::TYPE_VIDEO => [
