@@ -10,8 +10,18 @@
         <style>
             .soundboard-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
                 grid-gap: 1rem;
+                grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+            }
+            @media only screen and (max-width: 880px) {
+            .soundboard-grid {
+                grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
+            }
+            }
+            @media only screen and (max-width: 480px) {
+            .soundboard-grid {
+                grid-template-columns: repeat(auto-fill, minmax(6em, 1fr));
+            }
             }
             .soundboard-grid > button {
                 background: black;
@@ -60,12 +70,14 @@
             @foreach($soundboard->sounds as $s)
                 <button style="background: {{ $s->css_background ?? '#aaa' }}; color: {{ $s->css_foreground ?? 'black'  }};" class="overflow-hidden btn btn-text shadow-sm border-0" onclick="play('sound_{{ $s->id  }}')">
                     <audio id="sound_{{ $s->id }}" src="{{ $s->audio }}"></audio>
-                    <img src="{{$s->image}}" alt="" class="w-100 h-100">
+                    @if ($s->image)
+                        <img src="{{  $s->image }}" alt="" class="w-100 h-100">
+                    @endif
                     <span>
                         <i class="far fa-play-circle"></i>
                         {{ $s->name  }}
                     </span>
-                    <a href="/" class="p-2 pl-3 pb-3 soundboard-grid-edit">
+                    <a href="{{  action([\Francken\Association\Soundboards\Http\SoundsController::class, 'edit'], ['soundboard' => $soundboard, 'sound' => $s]) }}" class="p-2 pl-3 pb-3 soundboard-grid-edit">
                         <i class="fas fa-pen"></i>
                     </a>
                 </button>
@@ -87,7 +99,7 @@
                ])
         !!}
         <h4>Upload audio</h4>
-        @include('association.soundboards._form', ['soundboard' => $soundboard, 'sound' => null])
+        @include('association.soundboards._form', ['soundboard' => $soundboard, 'sound' => $sound])
 
         <x-forms.submit>Add sound</x-forms.submit>
         {!! Form::close() !!}

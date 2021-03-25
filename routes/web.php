@@ -126,8 +126,11 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::get('soundboards/', [SoundboardsController::class, 'index']);
     Route::get('soundboards/{soundboard:slug}', [SoundboardsController::class, 'show']);
-    Route::group(['middleware' => ['auth', 'role:Board|Old Board|Candidate Board|Demissioned Board|Decharged Board']], function () : void {
+    Route::group(['middleware' => ['auth', 'role:Old Board|Candidate Board|Demissioned Board|Decharged Board']], function () : void {
         Route::post('soundboards/{soundboard:slug}', [SoundsController::class, 'store']);
+        Route::get('soundboards/{soundboard:slug}/sounds/{sound}/edit', [SoundsController::class, 'edit']);
+        Route::put('soundboards/{soundboard:slug}/sounds/{sound}', [SoundsController::class, 'update']);
+        Route::delete('soundboards/{soundboard:slug}/sounds/{sound}', [SoundsController::class, 'destroy']);
     });
 
     Route::get('boards/kandi-toto', [KandiTotoController::class, 'index'])

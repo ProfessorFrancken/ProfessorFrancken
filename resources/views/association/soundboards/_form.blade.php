@@ -5,7 +5,7 @@
                 <img
                     id="sound-image"
                     alt="Image for the sound"
-                    src="{{ optional($sound)->background }}"
+                    src="{{ optional($sound)->image }}"
                     class="mb-3 img-fluid rounded"
                     style="object-fit: cover"
                 />
@@ -19,8 +19,8 @@
         </div>
     </div>
     <div class="col">
-        <x-forms.file name="audio" label="Audio file" required />
-        <x-forms.text name="name" label="Name" placeholder="Bestuuuuur" required />
+        <x-forms.file name="audio" label="Audio file" :required="$sound === null" />
+        <x-forms.text name="name" label="Name" placeholder="Bestuuuuur" />
         <x-forms.text name="css_background" label="Background color" placeholder="#000000" type="color"/>
         <x-forms.text name="css_foreground" label="Foreground color" placeholder="#ffffff"  type="color"/>
     </div>

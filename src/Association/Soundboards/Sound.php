@@ -7,12 +7,14 @@ namespace Francken\Association\Soundboards;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Plank\Mediable\Media;
 use Plank\Mediable\Mediable;
 
 final class Sound extends Model
 {
     use Mediable;
+    use SoftDeletes;
 
     /**
      * @var string
