@@ -93,7 +93,9 @@ final class Symposium extends Model
         bool $isNnvMember,
         ?string $nnvNumber,
         bool $paysWithIban = false,
-        ?string $iban = null
+        ?string $iban = null,
+        bool $freeLunch = false,
+        bool $freeBorrelbox = false
     ) : Participant {
         $participant = $this->participants()->create([
             'firstname' => $firstname,
@@ -107,6 +109,9 @@ final class Symposium extends Model
 
             'has_verified_email' => false,
             'has_paid' => false,
+
+            'free_lunch' => $freeLunch,
+            'free_borrelbox' => $freeBorrelbox,
         ]);
 
         event(new ParticipantRegisteredForSymposium($participant));

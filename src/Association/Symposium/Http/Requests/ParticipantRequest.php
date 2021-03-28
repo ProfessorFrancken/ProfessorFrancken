@@ -24,6 +24,9 @@ class ParticipantRequest extends FormRequest
             'nnv_number' => ['required_if:is_nnv_member,1'],
             'pays_with_iban' => ['nullable', 'boolean'],
             'iban' => ['nullable', 'required_if:is_pays_with_iban,1', 'iban'],
+
+            'free_lunch' => ['nullable', 'boolean'],
+            'free_borrelbox' => ['nullable', 'boolean'],
         ];
     }
 
@@ -73,5 +76,15 @@ class ParticipantRequest extends FormRequest
     public function iban() : string
     {
         return $this->input('iban') ?? '';
+    }
+
+    public function freeLunch() : bool
+    {
+        return (bool)$this->input('free_lunch', false);
+    }
+
+    public function freeBorrelbox() : bool
+    {
+        return (bool)$this->input('free_borrelbox', false);
     }
 }

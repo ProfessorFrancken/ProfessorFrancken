@@ -49,7 +49,9 @@ final class AdminSymposiumParticipantsController
             $request->isNNVMember(),
             $request->NNVNumber(),
             $request->paysWithIban(),
-            $request->iban()
+            $request->iban(),
+            $request->freeLunch(),
+            $request->freeBorrelbox()
         );
 
         if ($request->filled('member_id')) {
@@ -73,6 +75,9 @@ final class AdminSymposiumParticipantsController
             'member_id' => $request->memberId(),
             'pays_with_iban' => $request->paysWithIban(),
             'iban' => encrypt($request->iban()),
+
+            'free_lunch' => $request->freeLunch(),
+            'free_borrelbox' => $request->freeBorrelbox(),
         ]);
 
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
