@@ -18,6 +18,8 @@ final class SoundboardsController
 
     public function show(Soundboard $soundboard) : View
     {
+        $soundboard->load(['sounds.member', 'sounds.audioMedia', 'sounds.imageMedia']);
+
         return view('association.soundboards.show', [
             'soundboard' => $soundboard,
             'sound' => null,

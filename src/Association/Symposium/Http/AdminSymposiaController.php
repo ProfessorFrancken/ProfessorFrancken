@@ -19,6 +19,7 @@ final class AdminSymposiaController
             ->withCount(['participants' => function ($query) : void {
                 $query->where('is_spam', false);
             }])
+            ->with(['logoMedia'])
             ->paginate(10);
 
         return view('admin.association.symposia.index', [

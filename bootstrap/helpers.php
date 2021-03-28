@@ -52,6 +52,18 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
                 ? '&gravity=north'
                 : '';
 
+            if (isset($options['resize']) && $options['resize'] === true) {
+                // background, sign, gravity,
+                return sprintf(
+                    '%s/resize?extend=background,background=250,250,250&width=%d&height=%d%s&url=%s',
+                    $server,
+                    $options['width'],
+                    $options['height'],
+                    $additional,
+                    $url
+                );
+            }
+
             // background, sign, gravity,
             return sprintf(
                 '%s/crop?extend=background,background=250,250,250&width=%d&height=%d%s&url=%s',

@@ -25,7 +25,7 @@
 
                 <x-forms.select
                     name="subsription_ends_at"
-                    label="Subscrive for new physical issues of the Francken Vrij until"
+                    label="Subscribe for new physical issues of the Francken Vrij until"
                     placeholder=""
                     :options="$extensionOptions"
                     :value="'September ' . $subscription->subscription_ends_at->format('Y')"
@@ -37,7 +37,7 @@
 
                 <x-forms.select
                     name="subsription_ends_at"
-                    label="Subscrive for new physical issues of the Francken Vrij until"
+                    label="Subscribe for new physical issues of the Francken Vrij until"
                     placeholder=""
                     :options="$extensionOptions"
                 />
@@ -47,7 +47,7 @@
                 @if ($subscription->subscription_ends_at !== null)
                     We'll send the Francken Vrij to the address shown below:
                 @else
-                    Once activated we will send new issues of the Francken Vrij to the addres below:
+                    Once activated we will send new issues of the Francken Vrij to the address below:
                 @endif
 
                 <div class="p-2 bg-light">

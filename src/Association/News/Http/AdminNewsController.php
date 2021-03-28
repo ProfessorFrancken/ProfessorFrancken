@@ -125,7 +125,10 @@ final class AdminNewsController
 
     public function publish(Request $req, News $news) : RedirectResponse
     {
-        $publishAt = new DateTimeImmutable($req->input('published_at'));
+        $publishAt = $req->input('published_at')
+               ? new DateTimeImmutable($req->input('published_at'))
+               : new DateTimeImmutable();
+
 
         $news->publish($publishAt);
         $news->save();
