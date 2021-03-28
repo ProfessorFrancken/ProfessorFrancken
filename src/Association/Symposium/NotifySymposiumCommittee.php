@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
+use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\Symposium\Mail\NotifyCommittee;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,12 +22,13 @@ class NotifySymposiumCommittee implements ShouldQueue
     public function handle(
         ParticipantRegisteredForSymposium $event
     ) : void {
+        $board = Board::current()->first();
+        $committee = $board->committees()->where('name', 'Sympcie')->first();
+        $committeeMembers = $committee->load('members.member')->map(fn (CommitteeMember $m) => $m->member->fullnaame);
         $participant = $event->participant;
 
 
-        $whoNeedsToTakeAnAdt = Arr::random([
-            'Carla', 'Leon', 'Jeanne', 'Braadslee', 'Justin', 'Rosa',
-        ]);
+        $whoNeedsToTakeAnAdt = Arr::random($committeeMembers);
 
         // This is very important
         AdCount::create([

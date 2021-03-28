@@ -5,9 +5,9 @@
     @endslot
 
     {{-- Body --}}
-# Lieve commissie,
+# Dear committee,
 
-Er is een nieuwe inschrijving van <strong>{{ $fullname }}</strong>, wat betekent dat <strong>{{ $who_needs_to_take_an_adt }}</strong> een leermomentje krijgt.
+You've received a new sign up from <strong>{{ $fullname }}</strong>, which means that <strong>{{ $who_needs_to_take_an_adt }}</strong> deserves a learning opportunity, as is tradition.
 
     {{-- Subcopy --}}
     @isset($subcopy)
