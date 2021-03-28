@@ -16,6 +16,8 @@ class AddLogoToAssociationSymposiaTable extends Migration
         Schema::table('association_symposia', function (Blueprint $table) {
             $table->integer('logo_media_id')->unsigned()->nullable();
             $table->foreign('logo_media_id')->references('id')->on('media');
+
+            $table->string('location_google_maps_url')->nullable();
         });
     }
 
@@ -35,6 +37,9 @@ class AddLogoToAssociationSymposiaTable extends Migration
         } catch (\Exception $e) {} finally {
             Schema::table('association_symposia', function (Blueprint $table) {
                 $table->dropColumn('logo_media_id');
+            });
+            Schema::table('association_symposia', function (Blueprint $table) {
+                $table->dropColumn('location_google_maps_url');
             });
         }
     }

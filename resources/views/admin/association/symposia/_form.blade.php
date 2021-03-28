@@ -2,6 +2,11 @@
     <div class="col">
         <x-forms.text name="name" label="Name" placeholder="Cognitive Matters" />
         <x-forms.text name="location" label="Location" placeholder="Groningen" />
+        <x-forms.text name="location_google_maps_url" label="Google maps url for location" placeholder="https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling">
+            <x-slot name="help">
+                When we send an information email to participants of the symposium it will contain a link for directions toward the location. We use this url for that.
+            </x-slot>
+        </x-forms.text>
         <x-forms.text name="website_url" label="Website url" placeholder="https://franckensymposium.nl" />
 
         <x-forms.datetime name="start_date" label="Start date" :value="optional($symposium->start_date)->format('Y-m-d H:i')">

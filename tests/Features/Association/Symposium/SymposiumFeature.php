@@ -49,6 +49,7 @@ class SymposiumFeature extends TestCase
         $this->type('In a materialistic world', 'name')
             ->attach(UploadedFile::fake()->image('logo.png'), 'logo')
             ->type('EM2', 'location')
+            ->type('https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling', 'location_google_maps_url')
             ->type('https://franckensymposium.nl', 'website_url')
             ->type('2019-05-05 09:00', 'start_date')
             ->type('2019-05-05 18:00', 'end_date')
@@ -62,6 +63,7 @@ class SymposiumFeature extends TestCase
             'name' => 'In a materialistic world',
             'open_for_registration' => true,
             'promote_on_agenda' => false,
+            'location_google_maps_url' => 'https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling',
         ]);
 
         $symposium = Symposium::latest()->first();

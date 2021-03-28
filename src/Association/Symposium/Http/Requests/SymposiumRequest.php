@@ -24,6 +24,7 @@ class SymposiumRequest extends FormRequest
             'name' => ['required', 'min:1', ],
             'location' => ['string'],
             'website_url' => ['required', 'url'],
+            'location_google_maps_url' => ['nullable', 'url'],
             'logo' => ['nullable', 'image', 'file', 'max:' . self::MAX_FILE_SIZE],
             'start_date' => ['date_format:Y-m-d H:i'],
             'end_date' => ['date_format:Y-m-d H:i'],
@@ -40,6 +41,11 @@ class SymposiumRequest extends FormRequest
     public function location() : string
     {
         return $this->input('location', '');
+    }
+
+    public function locationGoogleMapsUrl() : string
+    {
+        return $this->input('location_google_maps_url', '') ?? '';
     }
 
     public function websiteUrl() : string

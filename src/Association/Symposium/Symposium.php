@@ -65,6 +65,7 @@ final class Symposium extends Model
     protected $fillable = [
         'name',
         'location',
+        'location_google_maps_url',
         'start_date',
         'end_date',
         'website_url',
