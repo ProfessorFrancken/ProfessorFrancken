@@ -1,16 +1,13 @@
 @component('mail::layout')
     {{-- Header --}}
     @slot('header')
-        @component('mail::header', ['url' => config('app.url'), 'src' => url('/images/mail/symposium/in-a-materialistic-world.jpeg')])
-            Symposium<br/>
-            'Cognitive Matters - Physics of cognitive advancements'
-        @endcomponent
+        @include('symposium.mails._header', ['symposium' => $symposium])
     @endslot
 
     {{-- Body --}}
 # Hi {{ $fullname }},
 
-Thank you for signing up for the Symposium 'Cognitive Matters - Physics of cognitive advancements'.
+Thank you for signing up for the Symposium '{{ $symposium->name }}'.
 
 ### Verify your registration
 
@@ -22,7 +19,9 @@ Verify registration
 
 ### About the symposium
 
-The symposium will be held on Wednesday the <strong>13th of May</strong> located at <a href="{{ $location_url }}" target="_blank">the Puddingfabriek</a> in Groningen.
+
+
+The symposium will be held on {{ $symposium->start_date->format("l")  }} the <strong>{{ $symposium->start_date->format("j")  }}th of {{ $symposium->start_date->format("F") }}</strong> located at <a href="{{ $location_url }}" target="_blank">{{ $symposium->location }}</a>.
 We will gradually update the website with more information about speakers and the Symposium's schedule.
 
 ### Payment information
@@ -42,8 +41,7 @@ Since you have chosen to pay in cash you will have to pay at the entrance of the
 The entrance fee will be deducted from your bank account by the treasurer of  T.F.V. 'Professor Francken'.
 @endif
 
-We hope you will enjoy the symposium,<br>
-Symposium committee 19'-20'
+@include('symposium.mails._footer', ['symposium' => $participant->symposium])
 
     {{-- Subcopy --}}
     @isset($subcopy)

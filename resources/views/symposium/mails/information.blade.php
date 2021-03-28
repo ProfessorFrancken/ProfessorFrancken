@@ -1,11 +1,7 @@
 @component('mail::layout')
     {{-- Header --}}
     @slot('header')
-        @component('mail::header', ['url' => config('app.url'), 'src' => url('/images/mail/symposium/in-a-materialistic-world.jpeg')])
-            Symposium<br/>
-            'In a materialistic world'
-        @endcomponent
-    @endslot
+        @include('symposium.mails._header', ['symposium' => $symposium]) @endslot
 
     {{-- Body --}}
 # Hi {{ $fullname }},
@@ -13,13 +9,13 @@
 Thank you once again for signing up for the Symposium 'In a materialistic world'.
 With this email we would like to inform you about the location, dresscode and schedule of the symposium.
 
-### The location: EM2
+### The location: {{ $symposium->location }}
 
-This year the Symposium is held at the <a href="https://em2groningen.nl/" target="_blank">EM2</a> venue.
+This year the Symposium is held at the <a href="{{ $symposium->location_google_maps_url }}" target="_blank">{{ $symposium->location }}</a>.
 Click the link below to get travel directions.
 
-@component('mail::button', ['url' => $location_url])
-    Travel directions to EM2
+@component('mail::button', ['url' => $symposium->location_google_maps_url])
+    Travel directions to {{ $symposium->location }}
 @endcomponent
 
 ### Colloquium points
@@ -45,8 +41,7 @@ If this doesn't suit you, you are of course welcome to join at any later moment.
 @endforeach
 @endcomponent
 
-We hope you will enjoy the symposium,<br>
-Symposium committee 18'-19'
+@include('symposium.mails._footer', ['symposium' => $participant->symposium])
 
     {{-- Subcopy --}}
     @isset($subcopy)

@@ -44,9 +44,10 @@ class VerifyRegistration extends Mailable
 
         return $this->subject("Please verify your registration for the '" . $this->participant->symposium->name . "' symposium")
             ->markdown('symposium.mails.verify', [
+            'symposium' => $this->participant->symposium,
             'fullname' => $this->participant->fullname,
             'participant' => $this->participant,
-            'location_url' => 'https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling',
+            'location_url' => $this->participant->symposium->location_google_maps_url,
             'url' => $this->verificationUrl($this->participant),
             'is_francken_member' => $this->participant->is_francken_member,
             'is_nnv_member' => $this->participant->is_nnv_member,
@@ -61,7 +62,7 @@ class VerifyRegistration extends Mailable
     {
         return URL::signedRoute(
             'symposium.participant.verify',
-            [$participant->symposium_id, $participant->id]
+            ["symposium" => $participant->symposium, "participant" => $participant]
         );
     }
 }

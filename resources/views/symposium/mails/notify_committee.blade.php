@@ -1,10 +1,7 @@
 @component('mail::layout')
     {{-- Header --}}
     @slot('header')
-        @component('mail::header', ['url' => config('app.url'), 'src' => url('/images/mail/symposium/in-a-materialistic-world.jpeg')])
-            Symposium<br/>
-            'Cognitive Matters - Physics of cognitive advancements'
-        @endcomponent
+        @include('symposium.mails._header', ['symposium' => $participant->symposium])
     @endslot
 
     {{-- Body --}}
