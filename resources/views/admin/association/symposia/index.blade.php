@@ -2,25 +2,21 @@
 @section('page-title', 'Symposia')
 
 @section('content')
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'create']) }}"
-                       class="btn btn-primary"
-                    >
-                        Create
-                    </a>
+    <div class="card">
+        @include('admin.association.symposia._table', ['symposia' => $symposia])
 
-                </div>
-
-                @include('admin.association.symposia._table', ['symposia' => $symposia])
-
-                {!! $symposia->links() !!}
-            </div>
+        <div class="card-footer">
+            {!! $symposia->links() !!}
         </div>
-        <div class="col-lg-4">
+    </div>
+@endsection
 
-        </div>
+@section('actions')
+    <div class="d-flex align-items-end">
+        <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'create']) }}"
+            class="btn btn-primary"
+        >
+            Start new symposium
+        </a>
     </div>
 @endsection

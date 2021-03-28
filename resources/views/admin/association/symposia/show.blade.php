@@ -6,33 +6,16 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="mb-4">
-                        <a href="{{ action([\Francken\Association\Symposium\Http\AttendanceController::class, 'index'], $symposium->id) }}"
-                           class="btn btn-primary"
-                        >
-                            <i class="fas fa-clipboard-list"></i>
-                            Attendance list
-                        </a>
-                        <a href="{{ action([\Francken\Association\Symposium\Http\NameTagsController::class, 'index'], $symposium->id) }}"
-                           class="btn btn-primary mx-2"
-                        >
-                            <i class="fas fa-user-tag"></i>
-                            Name tags
-                        </a>
+                    <div class="row">
+                        <div class="col-2">
+                        <img
+                            class="img-fluid"
+                            alt="{{ $symposium->name }} logo"
+                            src="{{ $symposium->logo }}"
+                        />
+                        </div>
+                        <div class="col">
 
-                        <a href="{{ action([\Francken\Association\Symposium\Http\ExportController::class, 'index'], $symposium->id) }}"
-                           class="btn btn-primary mx-2"
-                        >
-                            <i class="fas fa-file-export"></i>
-                            Export
-                        </a>
-                        <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'edit'], $symposium->id) }}"
-                           class="btn btn-primary mx-2"
-                        >
-                            <i class="far fa-edit"></i>
-                            Edit
-                        </a>
-                    </div>
                     <dl class="row">
                         <dt class="col-sm-3">Schedule</dt>
                         <dd class="col-sm-9">
@@ -60,6 +43,8 @@
 
 
                     </dl>
+                        </div>
+                    </div>
 
 
                     <h3>
@@ -90,5 +75,35 @@
                 </div>
             </div>
         </div>
+    </div>
+@endsection
+
+@section('actions')
+    <div class="d-flex align-items-start">
+        <a href="{{ action([\Francken\Association\Symposium\Http\AttendanceController::class, 'index'], $symposium->id) }}"
+            class="btn btn-primary"
+        >
+            <i class="fas fa-clipboard-list"></i>
+            Attendance list
+        </a>
+        <a href="{{ action([\Francken\Association\Symposium\Http\NameTagsController::class, 'index'], $symposium->id) }}"
+            class="btn btn-primary mx-2"
+        >
+            <i class="fas fa-user-tag"></i>
+            Name tags
+        </a>
+
+        <a href="{{ action([\Francken\Association\Symposium\Http\ExportController::class, 'index'], $symposium->id) }}"
+            class="btn btn-primary mx-2"
+        >
+            <i class="fas fa-file-export"></i>
+            Export
+        </a>
+        <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'edit'], $symposium->id) }}"
+            class="btn btn-primary mx-2"
+        >
+            <i class="far fa-edit"></i>
+            Edit
+        </a>
     </div>
 @endsection
