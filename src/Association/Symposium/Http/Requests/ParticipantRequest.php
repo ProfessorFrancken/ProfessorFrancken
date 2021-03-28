@@ -60,7 +60,7 @@ class ParticipantRequest extends FormRequest
         return (bool)$this->input('is_francken_member', false);
     }
 
-    public function NNVNumber()
+    public function NNVNumber() : string
     {
         return $this->input('nnv_number');
     }

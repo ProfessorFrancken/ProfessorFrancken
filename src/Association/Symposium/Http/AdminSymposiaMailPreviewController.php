@@ -40,6 +40,11 @@ final class AdminSymposiaMailPreviewController
             'firstname' => 'Mark',
             'lastname' => 'Redeman'
         ]);
+
+        /**
+         * @psalm-suppress UndefinedMagicPropertyAssignment
+         * @phpstan-ignore-next-line
+         */
         $participant->symposium = $symposium;
         $participant->id = 1;
 
