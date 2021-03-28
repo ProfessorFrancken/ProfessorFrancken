@@ -83,5 +83,7 @@
         <li class="my-3"><strong>2016</strong> &dash; drs. Dam </li>
         <li class="my-3"><strong>2017</strong> &dash; dhr. Groen </li>
         <li class="my-3"><strong>2018</strong> &dash; mevr. Zwanenburg </li>
+        <li class="my-3"><strong>2019</strong> &dash; dhr. F. Wobben, mej. Kamps, dhr. Redeman, mej. Kenbeek and ir. Boerma</li>
+        <li class="my-3"><strong>2020</strong> &dash; dhr. Trustam and ir. Boerma </li>
     </ul>
 @endsection
