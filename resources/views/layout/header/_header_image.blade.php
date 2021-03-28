@@ -1,6 +1,6 @@
 <style>
  .header-image::before {
-     background-image: url({{ banner_image($__env->yieldContent('header-image-url', '/uploads/images/boards/2020-2021/charming.jpeg'), ['vertical-offset' => 'North']) }}) !important;
+     background-image: url({{ banner_image($__env->yieldContent('header-image-url', '/uploads/images/boards/2020-2021/charming.jpeg'), []) }}) !important;
  }
 </style>
 <div class="stop-overflow">
