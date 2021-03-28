@@ -9,25 +9,24 @@ use Francken\Association\Symposium\Mail\NotifyCommittee;
 use Francken\Association\Symposium\Mail\VerifyRegistration;
 use Francken\Association\Symposium\Participant;
 use Francken\Association\Symposium\Symposium;
-use Illuminate\Mail\Mailable;
 
 final class AdminSymposiaMailPreviewController
 {
-    public function notifyCommittee(Symposium $symposium) : Mailable
+    public function notifyCommittee(Symposium $symposium) : NotifyCommittee
     {
         $mail = new NotifyCommittee($this->participant($symposium), 'hoi');
 
         return $mail->build();
     }
 
-    public function information(Symposium $symposium) : Mailable
+    public function information(Symposium $symposium) : InformationEmail
     {
         $mail = new InformationEmail($this->participant($symposium));
 
         return $mail->build();
     }
 
-    public function verify(Symposium $symposium) : Mailable
+    public function verify(Symposium $symposium) : VerifyRegistration
     {
         $mail = new VerifyRegistration($this->participant($symposium));
 

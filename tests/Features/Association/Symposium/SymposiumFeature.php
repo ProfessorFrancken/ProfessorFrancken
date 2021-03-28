@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Francken\Features\Association\Symposium;
 
 use DateTimeImmutable;
+use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
 use Francken\Association\Symposium\Http\AdminSymposiumParticipantsController;
 use Francken\Association\Symposium\Http\ParticipantRegistrationController;
@@ -145,6 +147,9 @@ class SymposiumFeature extends TestCase
     /** @test */
     public function it_shows_a_list_of_registered_participants() : void
     {
+        $committee = factory(Committee::class)->create(['name' => 'Sympcie']);
+        factory(CommitteeMember::class)->create(['committee_id' => $committee->id]);
+
         $symposium = Symposium::create([
             'name' => 'In a materialistic world',
             'start_date' => new DateTimeImmutable('05-05-2019 09:00'),
@@ -175,6 +180,9 @@ class SymposiumFeature extends TestCase
     /** @test */
     public function it_lets_us_manually_add_participants() : void
     {
+        $committee = factory(Committee::class)->create(['name' => 'Sympcie']);
+        factory(CommitteeMember::class)->create(['committee_id' => $committee->id]);
+
         $symposium = Symposium::create([
             'name' => 'In a materialistic world',
             'start_date' => new DateTimeImmutable('05-05-2019 09:00'),
@@ -203,6 +211,9 @@ class SymposiumFeature extends TestCase
     /** @test */
     public function it_allows_us_to_register_a_participant_using_an_api() : void
     {
+        $committee = factory(Committee::class)->create(['name' => 'Sympcie']);
+        factory(CommitteeMember::class)->create(['committee_id' => $committee->id]);
+
         $symposium = Symposium::create([
             'name' => 'In a materialistic world',
             'start_date' => new DateTimeImmutable('05-05-2019 09:00'),
