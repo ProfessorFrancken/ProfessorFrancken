@@ -5,6 +5,8 @@
             <th scope="col">NNV</th>
             <th scope="col">Francken</th>
             <th scope="col">Has paid</th>
+            <th scope="col">Free lunch</th>
+            <th scope="col">Free borrelbox</th>
             <th scope="col" class="text-right">Actions</th>
         </tr>
     </thead>
@@ -12,7 +14,7 @@
         @foreach ($participants as $participant)
             <tr>
                 <td>
-                    <h4>
+                    <h4 class="h6 mb-0">
                         {{ $participant->fullname }}
                     </h4>
                     <span>{{ $participant->email }}</span>
@@ -30,6 +32,12 @@
                 </td>
                 <td>
                     {{ $participant->has_paid ? "Yes" : "No" }}<br />
+                </td>
+                <td>
+                    {{ $participant->free_lunch ? "Yes" : "No" }}<br />
+                </td>
+                <td>
+                    {{ $participant->free_borrelbox ? "Yes" : "No" }}<br />
                 </td>
                 <td class="text-right d-flex justify-content-end">
                     <form method="POST" action="{{ action([\Francken\Association\Symposium\Http\AdminSymposiumParticipantsController::class, 'toggleSpam'], [$symposium->id, $participant->id]) }}">
@@ -61,4 +69,17 @@
             </tr>
         @endforeach
     </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="4" class="text-left">
+                Total:
+                <span class="font-weight-normal">
+                    {{ $participants->count() }}
+                </span>
+            </th>
+            <td>{{ $participants->filter(fn ($p) => $p->free_lunch)->count()  }}</td>
+            <td>{{ $participants->filter(fn ($p) => $p->free_borrelbox)->count()  }}</td>
+            <td></td>
+        </tr>
+    </tfoot>
 </table>

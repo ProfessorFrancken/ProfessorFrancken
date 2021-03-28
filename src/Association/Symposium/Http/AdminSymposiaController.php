@@ -8,6 +8,7 @@ use Francken\Association\Symposium\FileUploader;
 use Francken\Association\Symposium\Http\Requests\SymposiumRequest;
 use Francken\Association\Symposium\Symposium;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class AdminSymposiaController
@@ -57,12 +58,13 @@ final class AdminSymposiaController
         return redirect()->action([self::class, 'show'], $symposium->id);
     }
 
-    public function show(Symposium $symposium) : View
+    public function show(Request $request, Symposium $symposium) : View
     {
         $symposium->load(['participants' => fn ($query) => $query->orderBy('id', 'desc')]);
 
         return view('admin.association.symposia.show', [
             'symposium' => $symposium,
+            'show_spam' => $request->has('show_spam'),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Symposia'],
                 ['url' => action([static::class, 'show'], $symposium->id), 'text' => $symposium->name],

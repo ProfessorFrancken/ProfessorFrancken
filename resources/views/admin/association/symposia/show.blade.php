@@ -28,6 +28,11 @@
                         <dt class="col-sm-3">Location</dt>
                         <dd class="col-sm-9">{{ $symposium->location }}</dd>
 
+                        <dt class="col-sm-3">Google maps url</dt>
+                        <dd class="col-sm-9">
+                            <a href="{{ $symposium->location_google_maps_url }}">{{ $symposium->location_google_maps_url }}</a>
+                        </dd>
+
                         <dt class="col-sm-3">Website url</dt>
                         <dd class="col-sm-9">
                             <a href="{{ $symposium->website_url }}">
@@ -45,8 +50,11 @@
                     </dl>
                         </div>
                     </div>
+                </div>
+            </div>
 
-
+            <div class="card my-3">
+                <div class="card-header">
                     <h3>
                         Participants ({{ $symposium->participants->where('is_spam', false)->count() }})
                     </h3>
@@ -56,21 +64,24 @@
                     'participants' => $symposium->participants->where('is_spam', false)
                 ])
 
-                <div class="card-body">
-                    <h4>
-                        Spam
-                    </h4>
-                </div>
-                @include('admin.association.symposia._participants_table', [
-                    'participants' => $symposium->participants->where('is_spam', true)
-                ])
+                @if ($show_spam)
+                    <div class="card-body">
+                        <h4>
+                            Spam
+                        </h4>
+                    </div>
+                    @include('admin.association.symposia._participants_table', [
+                                    'participants' => $symposium->participants->where('is_spam', true)
+                    ])
+                @endif
 
-                <div class="card-body">
+                <div class="card-footer">
 
                     <a href="{{ action([\Francken\Association\Symposium\Http\AdminSymposiumParticipantsController::class, 'create'], $symposium->id) }}"
                        class="btn btn-outline-primary"
                     >
-                        Manually add a participant
+                        <i class="fas fa-plus"></i>
+                        Register a participant
                     </a>
                 </div>
             </div>
