@@ -45,17 +45,17 @@ final class FranckenVrijSubscriptionController
         if ($request->input('subsription_ends_at') === 'CANCEL') {
             $subscription->subscription_ends_at = null;
             $member->mailinglist_franckenvrij = false;
-            $member->save();
         } else {
             $date = new \DateTimeImmutable($request->input('subsription_ends_at'));
             $subscription->subscription_ends_at = $date;
             $member->mailinglist_franckenvrij = $subscription->subscription_ends_at > $clock->now();
-            $member->save();
         }
         $subscription->send_expiration_notification = (bool)$request->input('send_expiration_notification', false);
 
 
         $subscription->save();
+        $member->setConnection('francken-legacy');
+        $member->save();
 
         return redirect()->action([self::class, 'index']);
     }
