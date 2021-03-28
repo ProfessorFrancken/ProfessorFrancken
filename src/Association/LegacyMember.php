@@ -315,8 +315,10 @@ final class LegacyMember extends Model
 
     public function franckenVrijSubscription() : HasOne
     {
-        return $this->hasOne(Subscription::class, 'member_id')->withDefault([
-            'subscription_ends_at' => null
-        ]);
+        return $this->setConnection(config('database.default'))
+            ->hasOne(Subscription::class, 'member_id')
+            ->withDefault([
+                'subscription_ends_at' => null
+            ]);
     }
 }
