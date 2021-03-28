@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium\Http;
 
-use DateTimeImmutable;
+use Francken\Association\Symposium\FileUploader;
+use Francken\Association\Symposium\Http\Requests\SymposiumRequest;
 use Francken\Association\Symposium\Symposium;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,30 +40,31 @@ final class AdminSymposiaController
         ]);
     }
 
-    public function store(Request $request) : RedirectResponse
+    public function store(SymposiumRequest $request, FileUploader $uploader) : RedirectResponse
     {
-        $openForRegistration = $request->has('open_for_registration');
-        $promoteOnAgenda = $request->has('promote_on_agenda');
-
         $symposium = Symposium::create([
-            'name' => $request->input('name'),
-            'start_date' => new DateTimeImmutable($request->input('start_date')),
-            'end_date' => new DateTimeImmutable($request->input('end_date')),
-            'location' => $request->input('location'),
-            'website_url' => $request->input('website_url'),
-            'open_for_registration' => $openForRegistration,
-            'promote_on_agenda' => $promoteOnAgenda,
+            'name' => $request->name(),
+            'start_date' => $request->startDate(),
+            'end_date' => $request->endDate(),
+            'location' => $request->location(),
+            'location_google_maps_url' => $request->locationGoogleMapsUrl(),
+            'website_url' => $request->websiteUrl(),
+            'open_for_registration' => $request->openForRegistration(),
+            'promote_on_agenda' => $request->promoteOnAgenda(),
         ]);
+
+        $uploader->uploadLogo($request->logo, $symposium);
 
         return redirect()->action([self::class, 'show'], $symposium->id);
     }
 
-    public function show(Symposium $symposium) : View
+    public function show(Request $request, Symposium $symposium) : View
     {
         $symposium->load(['participants' => fn ($query) => $query->orderBy('id', 'desc')]);
 
         return view('admin.association.symposia.show', [
             'symposium' => $symposium,
+            'show_spam' => $request->has('show_spam'),
             'breadcrumbs' => [
                 ['url' => action([static::class, 'index']), 'text' => 'Symposia'],
                 ['url' => action([static::class, 'show'], $symposium->id), 'text' => $symposium->name],
@@ -82,20 +84,22 @@ final class AdminSymposiaController
         ]);
     }
 
-    public function update(Symposium $symposium, Request $request) : RedirectResponse
+    public function update(Symposium $symposium, SymposiumRequest $request, FileUploader $uploader) : RedirectResponse
     {
-        $openForRegistration = $request->has('open_for_registration');
-        $promoteOnAgenda = $request->has('promote_on_agenda');
-
         $symposium->update([
-            'name' => $request->input('name'),
-            'start_date' => new DateTimeImmutable($request->input('start_date')),
-            'end_date' => new DateTimeImmutable($request->input('end_date')),
-            'location' => $request->input('location'),
-            'website_url' => $request->input('website_url'),
-            'open_for_registration' => $openForRegistration,
-            'promote_on_agenda' => $promoteOnAgenda,
+            'name' => $request->name(),
+            'start_date' => $request->startDate(),
+            'end_date' => $request->endDate(),
+            'location' => $request->location(),
+            'location_google_maps_url' => $request->locationGoogleMapsUrl(),
+            'website_url' => $request->websiteUrl(),
+            'open_for_registration' => $request->openForRegistration(),
+            'promote_on_agenda' => $request->promoteOnAgenda(),
         ]);
+
+        if ($request->hasFile('logo')) {
+            $uploader->uploadLogo($request->logo, $symposium);
+        }
 
         return redirect()->action([self::class, 'show'], $symposium->id);
     }

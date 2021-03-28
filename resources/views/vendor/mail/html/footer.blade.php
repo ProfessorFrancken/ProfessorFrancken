@@ -29,9 +29,9 @@
                 <td class="footer-sponsor-cell">
                     <a href='https://www.asml.nl/careers'>
                         <img
-                            src='https://www.professorfrancken.nl/mailing/ASMLbanner200x80.gif'
+                            src='{{ url('images/mail/asml_mail_banner.jpg') }}'
                             alt='Careers at ASML'
-                            style='border:1px solid grey; margin-bottom: 45px;'
+                            style='border:1px solid grey;'
                             class="footer-sponsor"
                         >
                     </a>

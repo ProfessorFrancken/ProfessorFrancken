@@ -24,7 +24,9 @@ final class ParticipantRegistrationController
             $request->has('is_nnv_member'),
             $request->input('nnv_number'),
             $request->input('payment_method', 'debit') !== 'cash',
-            $request->input('iban')
+            $request->input('iban'),
+            $request->has('free_lunch'),
+            $request->has('free_borrelbox'),
         );
 
         return response()->json([

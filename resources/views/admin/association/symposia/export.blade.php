@@ -31,6 +31,8 @@
             <th>IBAN</th>
             <th>Has paid</th>
             <th>Received information mail</th>
+            <th>Free lunch</th>
+            <th>Free borrelbox</th>
         </tr>
     </thead>
     <tbody>
@@ -47,6 +49,8 @@
             <td>{{ decrypt($participant->iban) }}</td>
             <td>{{ $participant->has_paid }}</td>
             <td>{{ $participant->received_information_mail }}</td>
+            <td>{{ $participant->free_lunch ? "Yes" : "No" }}</td>
+            <td>{{ $participant->free_borrelbox ? "Yes" : "No" }}</td>
         </tr>
     @endforeach
     </tbody>

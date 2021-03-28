@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium\Http;
 
+use Francken\Association\Symposium\Http\Requests\ParticipantRequest;
 use Francken\Association\Symposium\Participant;
 use Francken\Association\Symposium\Symposium;
-use Francken\Shared\Email;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class AdminSymposiumParticipantsController
@@ -40,44 +39,45 @@ final class AdminSymposiumParticipantsController
         ]);
     }
 
-    public function store(Symposium $symposium, Request $request) : RedirectResponse
+    public function store(Symposium $symposium, ParticipantRequest $request) : RedirectResponse
     {
         $participant = $symposium->registerParticipant(
-            $request->input('firstname'),
-            $request->input('lastname'),
-            new Email($request->input('email')),
-            $request->has('is_francken_member'),
-            $request->has('is_nnv_member'),
-            $request->input('nnv_number'),
-            $request->has('pays_with_iban'),
-            $request->input('iban')
+            $request->firstname(),
+            $request->lastname(),
+            $request->email(),
+            $request->isFranckenMember(),
+            $request->isNNVMember(),
+            $request->NNVNumber(),
+            $request->paysWithIban(),
+            $request->iban(),
+            $request->freeLunch(),
+            $request->freeBorrelbox()
         );
 
         if ($request->filled('member_id')) {
             $participant->update([
-                'member_id' => $request->input('member_id')
+                'member_id' => $request->memberId()
             ]);
         }
 
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);
     }
 
-    public function update(Symposium $symposium, Participant $participant, Request $request) : RedirectResponse
+    public function update(Symposium $symposium, Participant $participant, ParticipantRequest $request) : RedirectResponse
     {
-        $paysWithIban = $request->has('pays_with_bian');
-        $isFranckenMember = $request->has('is_francken_member');
-        $isNnvMember = $request->has('is_nnv_member');
-
         $participant->update([
-            'firstname' => $request->input('firstname'),
-            'lastname' => $request->input('lastname'),
-            'email' => $request->input('email'),
-            'is_francken_member' => $isFranckenMember,
-            'is_nnv_member' => $isNnvMember,
-            'nnv_number' => $request->input('nnv_number'),
-            'member_id' => $request->input('member_id'),
-            'pays_with_iban' => $paysWithIban,
-            'iban' => encrypt($request->input('iban')),
+            'firstname' => $request->firstname(),
+            'lastname' => $request->lastname(),
+            'email' => $request->email()->toString(),
+            'is_francken_member' => $request->isFranckenMember(),
+            'is_nnv_member' => $request->isNNVMember(),
+            'nnv_number' => $request->NNVNumber(),
+            'member_id' => $request->memberId(),
+            'pays_with_iban' => $request->paysWithIban(),
+            'iban' => encrypt($request->iban()),
+
+            'free_lunch' => $request->freeLunch(),
+            'free_borrelbox' => $request->freeBorrelbox(),
         ]);
 
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);

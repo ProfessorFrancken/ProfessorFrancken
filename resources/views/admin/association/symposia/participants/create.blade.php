@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-body bg-light">
+                <div class="card-body">
                     {!! Form::model($participant, ['url' => action([\Francken\Association\Symposium\Http\AdminSymposiumParticipantsController::class, 'store'], $symposium->id), 'method' => 'post']) !!}
 
                         @include('admin.association.symposia.participants._form', ['symposium' => $symposium, 'participant' => $participant])

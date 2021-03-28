@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Francken\Features\Association\Symposium;
 
 use DateTimeImmutable;
+use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\Symposium\Mail\NotifyCommittee;
 use Francken\Association\Symposium\NotifySymposiumCommittee;
 use Francken\Association\Symposium\ParticipantRegisteredForSymposium;
@@ -20,6 +22,8 @@ class NotifyCommitteeFeature extends TestCase
     /** @test */
     public function it_sends_a_notification_email_to_the_committee() : void
     {
+        $committee = factory(Committee::class)->create(['name' => 'Sympcie']);
+        factory(CommitteeMember::class)->create(['committee_id' => $committee->id]);
         $symposium = Symposium::create([
             'name' => 'In a materialistic world',
             'start_date' => new DateTimeImmutable('05-05-2019 09:00'),

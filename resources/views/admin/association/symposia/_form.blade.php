@@ -1,39 +1,52 @@
 <div class="row mt-4">
     <div class="col">
-        <div class="form-group">
-            <label for="title">Symposium name</label>
-            {!! Form::text('name', null, ['class' => 'form-control symposium-name', 'placeholder' => 'Name', 'id' => 'name']) !!}
-        </div>
+        <x-forms.text name="name" label="Name" placeholder="Cognitive Matters" />
+        <x-forms.text name="location" label="Location" placeholder="Groningen" />
+        <x-forms.text name="location_google_maps_url" label="Google maps url for location" placeholder="https://www.google.com/maps/dir/?api=1&destination=De+Pudding,+Viaductstraat,+3-3,+Groningen&travelmode=bicycling">
+            <x-slot name="help">
+                When we send an information email to participants of the symposium it will contain a link for directions toward the location. We use this url for that.
+            </x-slot>
+        </x-forms.text>
+        <x-forms.text name="website_url" label="Website url" placeholder="https://franckensymposium.nl" />
 
-        <div class="form-group">
-            <label for="location">Location</label>
-            {!! Form::text('location', null, ['class' => 'form-control symposium-location', 'placeholder' => 'Location']) !!}
-        </div>
+        <x-forms.datetime name="start_date" label="Start date" :value="optional($symposium->start_date)->format('Y-m-d H:i')">
+            <x-slot name="help">
+                Should be in "YYYY-MM-DD HH:MM" format.
+            </x-slot>
+        </x-forms.date>
+        <x-forms.datetime name="end_date" label="Start date" :value="optional($symposium->end_date)->format('Y-m-d H:i')">
+            <x-slot name="help">
+                Should be in "YYYY-MM-DD HH:MM" format.
+            </x-slot>
+        </x-forms.date>
 
-        <div class="form-group">
-            <label for="Webstie url">Website url</label>
-            {!! Form::text('website_url', 'https://franckensymposium.nl', ['class' => 'form-control symposium-website-url', 'placeholder' => 'https://franckensymposium.nl']) !!}
-        </div>
+        <x-forms.checkbox name="open_for_registration" label='Open for registration' />
+        <x-forms.checkbox name="promote_on_agenda" label='Promote on agenda' />
+    </div>
 
-        <div class="form-group">
-            <label for="purchase_date">Start date</label>
-            {!! Form::datetime('start_date', optional($symposium->start_date)->format('Y-m-d'), ['class' => 'form-control', 'id' => 'start_date']) !!}
-        </div>
+    <div class="col-3">
+        <div class="d-flex flex-column h-100">
+            <div>
+                <img
+                    id="symposium-logo"
+                    alt="Logo of the symposium"
+                    src="{{ optional($symposium)->logo }}"
+                    class="mb-3 img-fluid rounded"
+                    style="object-fit: cover"
+                />
+            </div>
 
-        <div class="form-group">
-            <label for="purchase_date">End date</label>
-            {!! Form::datetime('end_date', optional($symposium->end_date)->format('Y-m-d'), ['class' => 'form-control', 'id' => 'end_date']) !!}
+            <x-forms.image-upload
+                name="logo"
+                label="Symposium logo"
+                output-image-id="symposium-logo"
+            >
+                <x-slot name="help">
+                    <small  class="form-text text-muted">
+                        The symposium's logo is used in emails send to participants.
+                    </small>
+                </x-slot>
+            </x-forms.image-upload>
         </div>
-
-        <div class="form-group form-check">
-            {!! Form::checkbox('open_for_registration', true, $symposium->open_for_registration, ['class' => 'form-check-input', 'id' => 'open_for_registration'])  !!}
-            <label class="form-check-label" for="open_for_registration">Open for registration</label>
-        </div>
-
-        <div class="form-group form-check">
-            {!! Form::checkbox('promote_on_agenda', true, $symposium->promote_on_agenda, ['class' => 'form-check-input', 'id' => 'promote_on_agenda'])  !!}
-            <label class="form-check-label" for="promote_on_agenda">Promote on agenda</label>
-        </div>
-
     </div>
 </div>

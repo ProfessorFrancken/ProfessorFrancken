@@ -21,6 +21,7 @@ use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsCont
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
+use Francken\Association\Symposium\Http\AdminSymposiaMailPreviewController;
 use Francken\Association\Symposium\Http\AdminSymposiumParticipantsController;
 use Francken\Association\Symposium\Http\AttendanceController;
 use Francken\Association\Symposium\Http\ExportController;
@@ -181,6 +182,10 @@ Route::group(['prefix' => 'association'], function () : void {
             Route::post('/', [AdminSymposiaController::class, 'store']);
             Route::get('/{symposium}/edit', [AdminSymposiaController::class, 'edit']);
             Route::put('/{symposium}', [AdminSymposiaController::class, 'update']);
+
+            Route::get('/{symposium}/mails/notify-committee', [AdminSymposiaMailPreviewController::class, 'notifyCommittee']);
+            Route::get('/{symposium}/mails/information', [AdminSymposiaMailPreviewController::class, 'information']);
+            Route::get('/{symposium}/mails/verify', [AdminSymposiaMailPreviewController::class, 'verify']);
 
             Route::get('/{symposium}/participants/create', [AdminSymposiumParticipantsController::class, 'create']);
             Route::post('/{symposium}/participants', [AdminSymposiumParticipantsController::class, 'store']);

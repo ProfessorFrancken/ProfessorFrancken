@@ -1,16 +1,13 @@
 @component('mail::layout')
     {{-- Header --}}
     @slot('header')
-        @component('mail::header', ['url' => config('app.url'), 'src' => url('/images/mail/symposium/in-a-materialistic-world.jpeg')])
-            Symposium<br/>
-            'Cognitive Matters - Physics of cognitive advancements'
-        @endcomponent
+        @include('symposium.mails._header', ['symposium' => $participant->symposium])
     @endslot
 
     {{-- Body --}}
-# Lieve commissie,
+# Dear committee,
 
-Er is een nieuwe inschrijving van <strong>{{ $fullname }}</strong>, wat betekent dat <strong>{{ $who_needs_to_take_an_adt }}</strong> een leermomentje krijgt.
+You've received a new sign up from <strong>{{ $fullname }}</strong>, which means that <strong>{{ $who_needs_to_take_an_adt }}</strong> deserves a learning opportunity, as is tradition.
 
     {{-- Subcopy --}}
     @isset($subcopy)

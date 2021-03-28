@@ -33,6 +33,8 @@ final class Participant extends Model
         "has_paid" => 'boolean',
         "is_spam" => 'boolean',
         'email_verified_at' => 'date',
+        'free_lunch' => 'boolean',
+        'free_borrelbox' => 'boolean',
     ];
 
     /**
@@ -54,6 +56,9 @@ final class Participant extends Model
 
         'is_spam',
         'received_information_mail',
+
+        'free_lunch',
+        'free_borrelbox',
     ];
 
     public function getFullnameAttribute() : string
