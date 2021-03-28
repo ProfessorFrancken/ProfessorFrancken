@@ -192,6 +192,7 @@ class SymposiumFeature extends TestCase
             ->type('1403', 'member_id')
             ->type('706116', 'nnv_number')
             ->check('pays_with_iban')
+            ->type('NL18ABNA0484869868', 'iban')
             ->press('Add participant')
             ->see('Mark Redeman')
             ->see('Not yet verified');
