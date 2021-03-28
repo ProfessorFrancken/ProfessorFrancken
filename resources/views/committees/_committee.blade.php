@@ -4,7 +4,7 @@
             @if ($logo != '')
                 <img
                     alt="{{ $name }}"
-                    src="{{ image($logo, ['height' => 200, 'width' => 300]) }}"
+                    src="{{ image($logo, ['height' => 200, 'width' => 300, 'resize' => true]) }}"
                     class="committee-card__logo"
                 />
             @else
