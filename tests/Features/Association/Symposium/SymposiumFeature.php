@@ -13,6 +13,7 @@ use Francken\Association\Symposium\Symposium;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Francken\Shared\Email;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
 
 class SymposiumFeature extends TestCase
@@ -44,14 +45,18 @@ class SymposiumFeature extends TestCase
     {
         $this->visit(action([AdminSymposiaController::class, 'create']));
 
+        $this->withoutExceptionHandling();
         $this->type('In a materialistic world', 'name')
+            ->attach(UploadedFile::fake()->image('logo.png'), 'logo')
             ->type('EM2', 'location')
             ->type('https://franckensymposium.nl', 'website_url')
-            ->type('05-05-2019 09:00', 'start_date')
-            ->type('05-05-2019 18:00', 'end_date')
+            ->type('2019-05-05 09:00', 'start_date')
+            ->type('2019-05-05 18:00', 'end_date')
             ->check('open_for_registration')
             ->uncheck('promote_on_agenda')
             ->press('Add symposium');
+
+        $this->assertResponseOk();
 
         $this->seeInDatabase('association_symposia', [
             'name' => 'In a materialistic world',
@@ -59,7 +64,8 @@ class SymposiumFeature extends TestCase
             'promote_on_agenda' => false,
         ]);
 
-        $this->assertResponseOk();
+        $symposium = Symposium::latest()->first();
+        $this->assertNotNull($symposium->logo);
     }
 
     /** @test */
@@ -78,10 +84,11 @@ class SymposiumFeature extends TestCase
         $this->visit(action([AdminSymposiaController::class, 'edit'], $symposium->id));
 
         $this->type('In a materialistic world', 'name')
+            ->attach(UploadedFile::fake()->image('logo-new.png'), 'logo')
             ->type('EM2', 'location')
             ->type('https://franckensymposium.nl', 'website_url')
-            ->type('05-05-2019 09:00', 'start_date')
-            ->type('05-05-2019 18:00', 'end_date')
+            ->type('2019-05-05 09:00', 'start_date')
+            ->type('2019-05-05 18:00', 'end_date')
             ->check('open_for_registration')
             ->check('promote_on_agenda')
             ->press('Save');

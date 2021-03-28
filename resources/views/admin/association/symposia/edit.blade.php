@@ -9,7 +9,12 @@
 
                 </div>
                 <div class="card-body bg-light">
-                    {!! Form::model($symposium, ['url' => action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'update'], $symposium->id), 'method' => 'put']) !!}
+                    {!! Form::model($symposium, [
+                            'url' => action([\Francken\Association\Symposium\Http\AdminSymposiaController::class, 'update'], $symposium->id),
+                            'method' => 'put',
+                            'enctype' => 'multipart/form-data',
+                            ])
+                    !!}
 
                         @include('admin.association.symposia._form', ['symposium' => $symposium])
 

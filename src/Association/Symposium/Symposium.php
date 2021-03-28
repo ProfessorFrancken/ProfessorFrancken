@@ -7,8 +7,12 @@ namespace Francken\Association\Symposium;
 use Francken\Shared\Email;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Plank\Mediable\Media;
+use Plank\Mediable\Mediable;
 
 /**
  * Francken\Association\Symposium\Symposium
@@ -42,6 +46,14 @@ use Illuminate\Support\Carbon;
  */
 final class Symposium extends Model
 {
+    use SoftDeletes;
+    use Mediable;
+
+    /**
+     * @var string
+     */
+    public const SYMPOSIUM_LOGO_TAG = 'symposium_logo';
+
     /**
      * @var string
      */
@@ -57,15 +69,19 @@ final class Symposium extends Model
         'end_date',
         'website_url',
         'open_for_registration',
-        'promote_on_agenda'
+        'promote_on_agenda',
+        'logo_media_id',
     ];
 
     /**
      * @var string[]
      */
-    protected $dates = [
-        'start_date',
-        'end_date'
+    protected $casts = [
+        'open_for_registration' => 'boolean',
+        'promote_on_agenda' => 'boolean',
+        'logo_media_id' => 'int',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
     ];
 
     public function registerParticipant(
@@ -95,6 +111,23 @@ final class Symposium extends Model
         event(new ParticipantRegisteredForSymposium($participant));
 
         return $participant;
+    }
+
+
+    public function getLogoAttribute() : ?string
+    {
+        $logo = $this->logoMedia;
+
+        if ($logo !== null) {
+            return $logo->getUrl();
+        }
+
+        return null;
+    }
+
+    public function logoMedia() : BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'logo_media_id');
     }
 
     public function participants() : HasMany
