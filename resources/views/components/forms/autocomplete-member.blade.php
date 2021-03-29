@@ -28,7 +28,6 @@
          z-index: 1000;
      }
 </style>
->
 @endpush
 
 @push('styles')
