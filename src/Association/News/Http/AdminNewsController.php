@@ -129,7 +129,6 @@ final class AdminNewsController
                ? new DateTimeImmutable($req->input('published_at'))
                : new DateTimeImmutable();
 
-
         $news->publish($publishAt);
         $news->save();
 
