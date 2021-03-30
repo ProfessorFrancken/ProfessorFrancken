@@ -1,0 +1,37 @@
+debug = true
+
+logLevel = "DEBUG"
+#defaultEntryPoints = ["httpSSL"]
+defaultEntryPoints = ["http", "https"]
+
+
+[web]
+address = ":8080"
+
+[entryPoints]
+  [entryPoints.httpSSL]
+    address = ":4000"
+    [entryPoints.httpSSL.tls]
+    [entryPoints.httpSSL.tls.defaultCertificate]
+      certFile = "/certs/cert.crt"
+      keyFile = "/certs/cert.key"
+  [entryPoints.http]
+    address = ":80"
+  #[entryPoints.http.redirect]
+  #entryPoint = "https"
+  [entryPoints.https]
+    address = ":443"
+    [entryPoints.https.tls]
+    [entryPoints.https.tls.defaultCertificate]
+      certFile = "/certs/cert.crt"
+      keyFile = "/certs/cert.key"
+
+[file]
+
+
+[[tls]]
+  entryPoints = ["httpSSL", "https"]
+  [tls.certificate]
+    certFile = "/certs/cert.crt"
+    keyFile = "/certs/cert.key"
+
