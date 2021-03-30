@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer;
 
+use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
@@ -49,7 +51,11 @@ final class Transaction extends Model
     /**
      * @var string[]
      */
-    protected $dates = ['tijd'];
+    protected $casts = [
+        'tijd' =>  'datetime',
+        'prijs' => 'float',
+        'totaalprijs' => 'float',
+    ];
 
     /**
      * @var string[]
@@ -63,4 +69,14 @@ final class Transaction extends Model
         "totaalprijs",
         "tijd",
     ];
+
+    public function purchasedBy() : BelongsTo
+    {
+        return $this->belongsTo(LegacyMember::class, 'lid_id');
+    }
+
+    public function product() : BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

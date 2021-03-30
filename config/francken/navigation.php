@@ -160,6 +160,12 @@ return [
                     "works" => true,
                     "can" => "board-treasurer",
                 ],
+                [
+                    "name" => "Transactions",
+                    "url" => "transactions",
+                    "works" => true,
+                    "can" => "board-treasurer",
+                ],
             ]
         ], [
             "name" => "Extern",
