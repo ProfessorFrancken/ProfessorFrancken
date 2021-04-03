@@ -7,6 +7,7 @@ use Francken\Association\Activities\Http\ActivitiesPerMonthController;
 use Francken\Association\Activities\Http\CommentsController;
 use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Activities\Http\SignUpsController;
+use Francken\Association\Almanak\Http\Controllers\AlmanakController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
 use Francken\Association\Boards\Http\Controllers\KandiTotoController;
@@ -187,6 +188,11 @@ Route::group(['prefix' => 'borrelcie', 'middleware' => ['web', 'auth']], functio
         Route::put('/anytimers/{anytimer}/reject', [AnytimersController::class, 'reject']);
     });
 });
+
+Route::group(['prefix' => 'association', 'middleware' => ['web', 'auth']], function () : void {
+    Route::get('almanak', [AlmanakController::class, 'index']);
+});
+
 Route::get('/symposia/{symposium}/participants/{participant}', [
     ParticipantRegistrationController::class,
     'verify'
