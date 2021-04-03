@@ -2,6 +2,7 @@
     <thead class="">
         <tr>
             <th scope="col">Particpant</th>
+            <th scope="col">Submitted</th>
             <th scope="col">NNV</th>
             <th scope="col">Francken</th>
             <th scope="col">Has paid</th>
@@ -21,6 +22,9 @@
                     @if (is_null($participant->email_verified_at))
                         (Not yet verified)
                     @endif
+                </td>
+                <td>
+                    {{ $participant->created_at->diffForHumans()  }}
                 </td>
                 <td>
                     {{ $participant->is_nnv_member ? "Yes" : "No" }}<br />
@@ -71,7 +75,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <th colspan="4" class="text-left">
+            <th colspan="5" class="text-left">
                 Total:
                 <span class="font-weight-normal">
                     {{ $participants->count() }}
