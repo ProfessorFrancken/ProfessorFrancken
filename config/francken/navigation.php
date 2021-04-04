@@ -69,7 +69,7 @@ return [
                 [
                     "name" => "Members",
                     "url" => "members",
-                    "works" => false,
+                    "works" => true,
                     "can" => "dashboard:members-read",
                 ],
                 [
