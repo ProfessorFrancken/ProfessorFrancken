@@ -78,8 +78,8 @@ final class AdminTransactionsController
             "lid_id" => $request->memberId(),
             "product_id" => $request->productId(),
             "aantal" => 1,
-            "prijs" => $product->price / 100,
-            "totaalprijs" => $product->price / 100,
+            "prijs" => $product->prijs,
+            "totaalprijs" => $product->prijs,
             "tijd" => $request->time(),
         ]);
 
