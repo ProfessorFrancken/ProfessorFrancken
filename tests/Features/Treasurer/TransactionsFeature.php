@@ -40,7 +40,9 @@ class TransactionsFeature extends TestCase
     /** @test */
     public function it_manages_transactions() : void
     {
-        $product = factory(Product::class)->create();
+        $product = factory(Product::class)->create([
+            'prijs' => 10000
+        ]);
         $member = factory(LegacyMember::class)->create();
         $time = new DateTimeImmutable();
 

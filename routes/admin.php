@@ -17,6 +17,7 @@ use Francken\Association\Committees\Http\AdminRedirectCommitteesController;
 use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Association\FranckenVrij\Http\AdminSubscriptionsController;
 use Francken\Association\FranckenVrij\Http\AdminSubscriptionsExportController;
+use Francken\Association\Members\Http\Controllers\Admin\MembersController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
@@ -133,6 +134,10 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::put('registration-requests/{registration}', [RegistrationRequestsController::class, 'update']);
     });
 
+    Route::group(['middleware' => 'can:dashboard:members-read'], function () : void {
+        Route::resource('members', MembersController::class);
+    });
+
     Route::group(['middleware' => 'can:dashboard:registrations-read'], function () : void {
         Route::get('registration-requests', [RegistrationRequestsController::class, 'index']);
         Route::get('registration-requests/{registration}', [RegistrationRequestsController::class, 'show']);
@@ -172,8 +177,6 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('activities/{activity}/sign-ups/export', [AdminActivitySignUpsExportController::class, 'index']);
     Route::resource('activities.sign-ups', AdminSignUpsController::class);
     Route::resource('activities', AdminActivitiesController::class);
-
-    Route::get('members', [AdminController::class, 'showPageIsUnavailable']);
 
     Route::get('photo-albums', [AdminPhotoAlbumsController::class, 'index']);
     Route::post('photo-albums/refresh', [AdminPhotoAlbumsController::class, 'refresh']);
