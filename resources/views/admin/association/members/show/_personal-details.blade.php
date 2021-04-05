@@ -1,6 +1,9 @@
 <h4>Personal details</h4>
 <div class="row">
     <div class="col col-md-4">
+        <h6>
+            Name
+        </h6>
         <ul class="list-unstyled">
             <li><strong>Initials</strong>: {{ $member->initialen  }}</li>
             <li><strong>Firstname</strong>: {{ $member->voornaam  }}</li>
@@ -16,6 +19,16 @@
         </h6>
 
         <ul class="list-unstyled">
+            <li>
+                <strong>Gender</strong>
+                @if ($member->gender === \Francken\Association\Members\Gender::FEMALE)
+                    <i class="fas fa-venus"></i>
+                @elseif ($member->gender === \Francken\Association\Members\Gender::MALE)
+                    <i class="fas fa-mars"></i>
+                @else
+                    {{ $member->gender }}
+                @endif
+            </li>
             <li>
                 <strong><i class="fas fa-birthday-cake"></i> Birthdate </strong>
                 {{ $member->birthdate->format('Y-m-d') }}

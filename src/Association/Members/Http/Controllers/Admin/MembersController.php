@@ -9,6 +9,8 @@ use Francken\Association\Boards\BoardMember;
 use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\LegacyMember;
+use Francken\Association\Members\Gender;
+use Francken\Association\Members\Http\Requests\AdminMemberRequest;
 use Francken\Association\Members\Http\Requests\AdminSearchMembersRequest;
 use Francken\Auth\Account;
 use Francken\Extern\Alumnus;
@@ -17,6 +19,7 @@ use Francken\Shared\Http\Controllers\Controller;
 use Francken\Study\BooksSale\Book;
 use Francken\Treasurer\MemberExtra;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Webmozart\Assert\Assert;
 
@@ -147,6 +150,77 @@ final class MembersController extends Controller
                 ['url' => action([self::class, 'show'], ['member' => $member]), 'text' => $member->fullname],
             ]
         ]);
+    }
+
+    public function edit(LegacyMember $member) : view
+    {
+        $memberTypeOptions = AdminMemberRequest::MEMBER_TYPE_OPTIONS;
+        $consumptionCounterOptions = AdminMemberRequest::CONSUMPTION_COUNTER_OPTIONS;
+
+        return view('admin.association.members.edit', [
+            'member' => $member,
+            'memberTypeOptions' => $memberTypeOptions,
+            'consumptionCounterOptions' => $consumptionCounterOptions,
+
+            'breadcrumbs' => [
+                ['url' => action([self::class, 'index']), 'text' => 'Members'],
+                ['url' => action([self::class, 'show'], ['member' => $member]), 'text' => $member->fullname],
+                ['url' => action([self::class, 'edit'], ['member' => $member]), 'text' => 'Edit'],
+            ]
+        ]);
+    }
+
+    public function update(AdminMemberRequest $request, LegacyMember $member) : RedirectResponse
+    {
+        $gender = $request->gender()->toString();
+        $geslacht = $gender === Gender::MALE
+                  ? 'M'
+                  : ($gender === Gender::FEMALE
+                  ? 'V'
+                  : $gender);
+        $member->update([
+            "titel" => $request->title(),
+            "initialen" => $request->initials(),
+            "voornaam" => $request->firstname(),
+            "tussenvoegsel" => $request->insertion(),
+            "achternaam" => $request->surname(),
+            "geboortedatum" => $request->birthDate()->format('Y-m-d'),
+            "nederlands" => $request->knowsDutch(),
+            'geslacht' => $geslacht,
+            "adres" => $request->address(),
+            "postcode" => $request->postalCode(),
+            "plaats" => $request->city(),
+            "land" => $request->country(),
+            "is_nederland" => $request->hasDutchNationality(),
+            "emailadres" => $request->email()->toString(),
+            "telefoonnummer_mobiel" => $request->phoneNumber(),
+            "rekeningnummer"  => $request->iban(),
+            "plaats_bank" => $request->bankLocation(),
+            "machtiging" => $request->hasAuthorizedDebit(),
+            "wanbetaler" => $request->isDefaulter(),
+            "gratis_lidmaatschap" => $request->hasFreeMembership(),
+            "start_lidmaatschap" => $request->startMembershipDate(),
+            "einde_lidmaatschap" => $request->endMembershipDate(),
+            "is_lid" => $request->isMember(),
+            "type_lid" => $request->memberType(),
+            "studentnummer" => $request->studentNumber(),
+            "studierichting" => $request->study(),
+            "jaar_van_inschrijving" => $request->yearOfRegistration(),
+            "afstudeerplek" => $request->placeOfGraduation(),
+            "afgestudeerd" => $request->isGraduated(),
+            "werkgever" => $request->empoloyer(),
+            "nnvnummer" => $request->nnvNumber(),
+            "streeplijst" => $request->consumptionCounterPaymentMethod(),
+            "mailinglist_email" => $request->mailingListEmail(),
+            "mailinglist_post" => $request->mailingListPost(),
+            "mailinglist_sms" => $request->mailingListSMS(),
+            "mailinglist_constitutiekaart" => $request->mailingListConstitutionalCard(),
+            "mailinglist_franckenvrij" => $request->mailingListFranckenVrij(),
+            "erelid" => $request->isMemberOfHonors(),
+            "notities" => $request->notes(),
+        ]);
+
+        return redirect()->action([self::class, 'show'], ['member' => $member]);
     }
 
     private function searchMemberQuery(Builder $query, AdminSearchMembersRequest $request) : Builder

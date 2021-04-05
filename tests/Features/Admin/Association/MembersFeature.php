@@ -127,7 +127,61 @@ class MembersFeature extends TestCase
             ->see($currentBoard->board_name->toString())
             ->see($previousBoard->board_name->toString())
             ->see($currentCommittee->name)
-            ->see($oldCommittee->name)
-                                                                          ;
+            ->see($oldCommittee->name);
+    }
+
+    /** @test */
+    public function it_updates_a_member() : void
+    {
+        $member = factory(LegacyMember::class)->create();
+        factory(Board::class)->create();
+
+        $this->visit(action([MembersController::class, 'edit'], ['member' => $member]))
+            ->see($member->voornaam)
+            ->see($member->achternaam)
+            ->check('erelid')
+            ->check("nederlands")
+            ->check("is_nederland")
+            ->check("machtiging")
+            ->check("gratis_lidmaatschap")
+            ->check("is_lid")
+            ->check("afgestudeerd")
+            ->check("wanbetaler")
+            ->check("mailinglist_franckenvrij")
+            ->check("mailinglist_email")
+            ->check("mailinglist_post")
+            ->check("mailinglist_sms")
+            ->check("mailinglist_constitutiekaart")
+            ->check("mailinglist_franckenvrij")
+            ->type('NL91 ABNA 0417 1643 00', 'rekeningnummer')
+            ->select('male', 'gender')
+            ->type('John', 'voornaam')
+            ->type('Snow', 'achternaam')
+            ->press('Save');
+
+        $member->refresh();
+        $this->assertEquals('John', $member->voornaam);
+        $this->assertEquals('Snow', $member->achternaam);
+    }
+
+    /** @test */
+    public function it_keeps_a_members_previous_data() : void
+    {
+        $member = factory(LegacyMember::class)->create();
+        factory(Board::class)->create();
+
+        $oldData =$member->toArray();
+        $this->visit(action([MembersController::class, 'edit'], ['member' => $member]))
+            ->type('', 'rekeningnummer')
+            ->press('Save');
+
+        $member->refresh();
+        $newData = $member->toArray();
+        foreach ($oldData as $key => $data) {
+            if (in_array($key, ['rekeningnummer', 'updated_at'], true)) {
+                continue;
+            }
+            $this->assertEquals($data, $newData[$key], "Did not keep the same value for ${key}");
+        }
     }
 }
