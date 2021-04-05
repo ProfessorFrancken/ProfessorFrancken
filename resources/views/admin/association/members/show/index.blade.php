@@ -29,3 +29,14 @@
             </div>
         </div>
 @endsection
+
+@section('actions')
+    <div class="d-flex align-items-start">
+        <a href="{{ action([\Francken\Association\Members\Http\Controllers\Admin\MembersController::class, 'edit'], ['member' => $member]) }}"
+           class="btn btn-primary btn-sm"
+        >
+            <i class="fas fa-edit"></i>
+            Edit
+        </a>
+    </div>
+@endsection

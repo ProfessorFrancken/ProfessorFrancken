@@ -41,7 +41,7 @@ $factory->define(Francken\Association\LegacyMember::class, function (Faker $fake
         'type_lid' => $faker->randomElement([
             'Student RUG', 'Student Hanze', 'Student Anders', 'Promovendus', 'Professor RUG',
             'Werknemer RUG', 'Alumnus TN/N', 'Alumnus niet TN/N', 'Gestopt met studeren',
-            'Donateur', 'Anders', 'Student (oud)', 'Alumni (oud)'
+            'Donateur', 'Anders', 'Student', 'Alumni'
         ]),
         'studentnummer' => $faker->word,
         'studierichting' => $faker->randomElement([

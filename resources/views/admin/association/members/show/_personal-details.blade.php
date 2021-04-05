@@ -1,29 +1,42 @@
 <h4>Personal details</h4>
 <div class="row">
     <div class="col col-md-4">
+        <h6>
+            Name
+        </h6>
         <ul class="list-unstyled">
             <li><strong>Initials</strong>: {{ $member->initialen  }}</li>
             <li><strong>Firstname</strong>: {{ $member->voornaam  }}</li>
             @if($member->tussenvoegsel)
                 <li><strong>Insertion (tussenvoegsel)</strong>: {{ $member->tussenvoegsel  }}</li>
             @endif
-            <li><strong>Surname</strong>: {{ $member->achternam  }}</li>
+            <li><strong>Surname</strong>: {{ $member->achternaam  }}</li>
         </ul>
     </div>
     <div class="col col-md-4">
         <h6>
-            Nationality & language
+            Birthdate & title
         </h6>
 
         <ul class="list-unstyled">
             <li>
-                <strong><i class="fas fa-birthday-cake"></i> Birthdate </strong>
-                {{ $member->birthdate->format('Y-m-d') }}f
+                <strong>Gender</strong>
+                @if ($member->gender === \Francken\Association\Members\Gender::FEMALE)
+                    <i class="fas fa-venus"></i>
+                @elseif ($member->gender === \Francken\Association\Members\Gender::MALE)
+                    <i class="fas fa-mars"></i>
+                @else
+                    {{ $member->gender }}
+                @endif
             </li>
-            @if ($member->title)
+            <li>
+                <strong><i class="fas fa-birthday-cake"></i> Birthdate </strong>
+                {{ $member->birthdate->format('Y-m-d') }}
+            </li>
+            @if ($member->titel)
                 <li>
                     <strong>Title</strong>
-                    {{ $member->title  }}
+                    {{ $member->titel  }}
                 </li>
             @endif
         </ul>
