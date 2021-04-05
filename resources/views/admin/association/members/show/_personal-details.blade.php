@@ -7,23 +7,23 @@
             @if($member->tussenvoegsel)
                 <li><strong>Insertion (tussenvoegsel)</strong>: {{ $member->tussenvoegsel  }}</li>
             @endif
-            <li><strong>Surname</strong>: {{ $member->achternam  }}</li>
+            <li><strong>Surname</strong>: {{ $member->achternaam  }}</li>
         </ul>
     </div>
     <div class="col col-md-4">
         <h6>
-            Nationality & language
+            Birthdate & title
         </h6>
 
         <ul class="list-unstyled">
             <li>
                 <strong><i class="fas fa-birthday-cake"></i> Birthdate </strong>
-                {{ $member->birthdate->format('Y-m-d') }}f
+                {{ $member->birthdate->format('Y-m-d') }}
             </li>
-            @if ($member->title)
+            @if ($member->titel)
                 <li>
                     <strong>Title</strong>
-                    {{ $member->title  }}
+                    {{ $member->titel  }}
                 </li>
             @endif
         </ul>
