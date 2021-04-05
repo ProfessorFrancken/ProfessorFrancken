@@ -113,8 +113,16 @@ final class MembersController extends Controller
 
                 return $member->committee->board_id;
             }
-        );
+        )->values()->sortByDesc(function ($committeeMembers) {
+            $aCommittee = $committeeMembers->first()->committee;
+            Assert::notNull($aCommittee);
 
+            $board = $aCommittee->board;
+
+            Assert::notNull($board);
+
+            return $board->installed_at;
+        });
 
         $subscription = $member->franckenVrijSubscription;
         $today = $clock->now();
