@@ -5,13 +5,20 @@ declare(strict_types=1);
 namespace Francken\Association\Members\Http\Controllers\Admin;
 
 use Francken\Association\Boards\Board;
+use Francken\Association\Boards\BoardMember;
+use Francken\Association\Committees\Committee;
 use Francken\Association\Committees\CommitteeMember;
 use Francken\Association\LegacyMember;
 use Francken\Association\Members\Http\Requests\AdminSearchMembersRequest;
+use Francken\Auth\Account;
+use Francken\Extern\Alumnus;
 use Francken\Shared\Clock\Clock;
 use Francken\Shared\Http\Controllers\Controller;
+use Francken\Study\BooksSale\Book;
+use Francken\Treasurer\MemberExtra;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
+use Webmozart\Assert\Assert;
 
 final class MembersController extends Controller
 {
@@ -81,10 +88,51 @@ final class MembersController extends Controller
         ]);
     }
 
-    public function show(LegacyMember $member) : view
+    public function show(LegacyMember $member, Clock $clock) : view
     {
-        return view('admin.association.members.show', [
+        $currentBoard = Board::current()->firstOrFail();
+        $boardMembers = BoardMember::where('member_id', $member->id)->with(['board'])->get();
+        $committeeMembers = CommitteeMember::where('member_id', $member->id)->with(['committee.board'])->get();
+
+        $books = Book::query()->where('buyer_id', $member->id)->orWhere('seller_id', $member->id)->get();
+        $alumni = Alumnus::where('member_id', $member->id)->with(['partner'])->get();
+        $account = Account::ofMember($member->id)->withCount(['roles', 'permissions'])->first();
+
+        $currentCommittees = $committeeMembers->filter(
+            fn (CommitteeMember $member) => $member->committee !== null && $member->committee->board_id === $currentBoard->id
+        )->map(function (CommitteeMember $member) : Committee {
+            Assert::notNull($member->committee);
+
+            return $member->committee;
+        }
+        );
+
+        $committeesByBoard = $committeeMembers->groupBy(
+            function (CommitteeMember $member) {
+                Assert::notNull($member->committee);
+
+                return $member->committee->board_id;
+            }
+        );
+
+
+        $subscription = $member->franckenVrijSubscription;
+        $today = $clock->now();
+        $consumptionCounterExtra = MemberExtra::ofMember($member->id)->first();
+
+
+        return view('admin.association.members.show.index', [
             'member' => $member,
+            'boardMembers' => $boardMembers,
+            'committeeMembers' => $committeeMembers,
+            'committeesByBoard' => $committeesByBoard,
+            'currentCommittees' => $currentCommittees,
+            'account' => $account,
+            'alumni' => $alumni,
+            'subscription' => $subscription,
+            'books' => $books,
+            'today' => $today,
+            'consumptionCounterExtra' => $consumptionCounterExtra,
 
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Members'],

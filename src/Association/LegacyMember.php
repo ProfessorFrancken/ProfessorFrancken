@@ -321,4 +321,9 @@ final class LegacyMember extends Model
                 'subscription_ends_at' => null
             ]);
     }
+
+    public function getNotesAttribute() : ?string
+    {
+        return $this->notities;
+    }
 }
