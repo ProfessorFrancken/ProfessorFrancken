@@ -97,4 +97,37 @@ class MembersFeature extends TestCase
             ->press('Apply filters')
             ->see($newMember->fullname);
     }
+
+    /** @test */
+    public function it_shows_a_members_information() : void
+    {
+        $member = factory(LegacyMember::class)->create();
+
+        $previousBoard = factory(Board::class)->create();
+        $currentBoard = factory(Board::class)->create([
+            'installed_at' => $previousBoard->installed_at->modify("+1 year")->format("Y-m-d")
+        ]);
+        $oldCommittee = factory(Committee::class)->create(['board_id' => $previousBoard->id]);
+        $currentCommittee = factory(Committee::class)->create(['board_id' => $currentBoard->id]);
+
+        factory(CommitteeMember::class)->create([
+            'committee_id' => $oldCommittee->id,
+            'member_id' => $member->id,
+        ]);
+
+        factory(CommitteeMember::class)->create([
+            'committee_id' => $currentCommittee->id,
+            'member_id' => $member->id,
+        ]);
+
+
+        $this->visit(action([MembersController::class, 'show'], ['member' => $member]))
+            ->see($member->voornaam)
+            ->see($member->achternaam)
+            ->see($currentBoard->board_name->toString())
+            ->see($previousBoard->board_name->toString())
+            ->see($currentCommittee->name)
+            ->see($oldCommittee->name)
+                                                                          ;
+    }
 }
