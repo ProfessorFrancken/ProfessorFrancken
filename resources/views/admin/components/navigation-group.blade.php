@@ -6,7 +6,7 @@
 
     <ul class="list-unstyled">
         @foreach ($item['items'] as $subItem)
-            <li class="{{ $isActive($subItem) ? 'active' : '' }} text-white">
+            <li class="{{ $isActive($subItem) ? 'bg-light-primary  active' : '' }} text-white">
                 <a
                     href="/admin/{{ $item['url'] }}/{{ $subItem['url'] }}"
                     class="d-block px-3 py-2 admin-navigation-item d-flex justify-content-between align-items-center text-white"
