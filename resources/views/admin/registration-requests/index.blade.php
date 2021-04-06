@@ -3,6 +3,35 @@
 
 @section('content')
     <div class="card">
+        <div class="card-header p-0">
+            <ul class="nav nav-tabs card-header-tabs m-0">
+                @component('admin.registration-requests._tab-navigation', ['request' => $request, 'select' => 'open', 'class' => 'border-left-0'])
+                    Open requests
+                    <span class="badge badge-secondary text-white">
+                        {{ $open_requests  }}
+                    </span>
+                @endcomponent
+                @component('admin.registration-requests._tab-navigation', ['request' => $request, 'select' => 'approved-not-signed'])
+                    Approved but not signed
+                    <span class="badge badge-secondary text-white">
+                        {{ $approved_not_signed_requests  }}
+                    </span>
+                @endcomponent
+                @component('admin.registration-requests._tab-navigation', ['request' => $request, 'select' => 'approved'])
+                    Approved requests
+                    <span class="badge badge-secondary text-white">
+                        {{ $approved_requests  }}
+                    </span>
+                @endcomponent
+                @component('admin.registration-requests._tab-navigation', ['request' => $request, 'select' => 'all'])
+                    All
+                    <span class="badge badge-secondary text-white">
+                        {{ $all_requests  }}
+                    </span>
+                @endcomponent
+            </ul>
+        </div>
+
         <table class="table table-hover">
             <caption class="card-body">
                 Open registration requests, you can either inspect a request (and possibly complete the registration), or mark it as spam in which case the request will be deleted.
