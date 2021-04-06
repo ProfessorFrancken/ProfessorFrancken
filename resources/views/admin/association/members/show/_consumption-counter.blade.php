@@ -5,6 +5,10 @@
                 Consumption counter
             </h4>
             <div>
+                <a href="{{ action([\Francken\Association\Members\Http\Controllers\Admin\ConsumptionCounterSettingsController::class, 'edit'], ['member' => $member])  }}" class="mr-1">
+                    <i class="far fa-edit text-muted "></i>
+                </a>
+
                 @if($member->payment_details->deductAdditionalCosts())
                     <i class="far fa-check-circle text-muted"></i>
                 @else
