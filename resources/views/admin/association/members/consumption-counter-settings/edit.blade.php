@@ -19,7 +19,7 @@
                     <img
                         id="consumption-counter-image"
                         alt="Image used by consumption counter"
-                        src="{{ $consumptionCounterExtra->afbeelding }}"
+                        src="{{ $consumptionCounterExtra->photo_url }}"
                         class="mb-3 img-fluid rounded"
                         style="object-fit: cover"
                     />
