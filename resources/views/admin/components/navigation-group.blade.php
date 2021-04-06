@@ -1,3 +1,4 @@
+@if(count($item['items']) > 0)
 <li class="pb-4">
     <span class="d-block font-weight-bold text-white h5 mb-0 p-3 bg-dark-primary">
         {{ $item['name'] }}
@@ -24,3 +25,4 @@
         @endforeach
     </ul>
 </li>
+@endif
