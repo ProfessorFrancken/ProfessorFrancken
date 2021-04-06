@@ -17,6 +17,7 @@ use Francken\Association\Committees\Http\AdminRedirectCommitteesController;
 use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Association\FranckenVrij\Http\AdminSubscriptionsController;
 use Francken\Association\FranckenVrij\Http\AdminSubscriptionsExportController;
+use Francken\Association\Members\Http\Controllers\Admin\ConsumptionCounterSettingsController;
 use Francken\Association\Members\Http\Controllers\Admin\MembersController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
@@ -136,6 +137,8 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::group(['middleware' => 'can:dashboard:members-read'], function () : void {
         Route::resource('members', MembersController::class);
+        Route::get('members/{member}/consumption-counter-settings', [ConsumptionCounterSettingsController::class, 'edit']);
+        Route::put('members/{member}/consumption-counter-settings/', [ConsumptionCounterSettingsController::class, 'update']);
     });
 
     Route::group(['middleware' => 'can:dashboard:registrations-read'], function () : void {

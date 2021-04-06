@@ -96,7 +96,7 @@ final class MemberExtra extends Model
 
     public function getHasSmallButtonAttribute() : bool
     {
-        return $this->button_width !== null && $this->button_height !== null;
+        return $this->button_width !== null && $this->button_width !== 0 && $this->button_height !== null &&  $this->button_height !== 0;
     }
 
     public function member() : BelongsTo

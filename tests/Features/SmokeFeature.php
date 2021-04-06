@@ -71,6 +71,7 @@ final class SmokeFeature extends TestCase
             ["/association/2017-2018/committees", 200],
             ["/association/2017-2018/committees/scriptcie", 200],
             ["/association/francken-vrij", 200],
+            ["/association/almanak", 200],
             ["/career", 200],
             ["/career/companies", 200],
             ["/career/job-openings", 200],
