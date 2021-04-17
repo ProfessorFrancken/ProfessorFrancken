@@ -9,6 +9,7 @@ use Francken\Association\FranckenVrij\Exports\SubscriptionsExport;
 use Francken\Association\FranckenVrij\Http\AdminSubscriptionsController;
 use Francken\Association\FranckenVrij\Http\AdminSubscriptionsExportController;
 use Francken\Association\FranckenVrij\Subscription;
+use Francken\Association\LegacyMember;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Support\Collection;
@@ -104,5 +105,26 @@ class SubscriptionsFeature extends TestCase
         $this->assertNull($subscription->subscription_ends_at);
         $this->assertFalse($subscription->send_expiration_notification);
         $this->assertFalse($member->receive_francken_vrij);
+    }
+
+    /** @test */
+    public function it_allows_a_board_member_to_create_a_subscription() : void
+    {
+        $member = factory(LegacyMember::class)->create(['is_lid' => true]);
+
+        $date = new DateTimeImmutable();
+        $year = $date->format('Y');
+
+        $this->visit(action([AdminSubscriptionsController::class, 'create']))
+            ->type($member->id, 'member_id')
+            ->select("September {$year}", 'subsription_ends_at')
+            ->check('send_expiration_notification')
+            ->press('Save');
+
+        $member->refresh();
+        $subscription = $member->franckenVrijSubscription;
+        $this->assertTrue($member->receive_francken_vrij);
+        $this->assertEquals($subscription->subscription_ends_at->format("Y"), $year);
+        $this->assertTrue($subscription->send_expiration_notification);
     }
 }

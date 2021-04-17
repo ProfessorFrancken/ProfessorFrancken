@@ -7,6 +7,7 @@ namespace Francken\Association\FranckenVrij\Http;
 use DateTimeImmutable;
 use Francken\Association\FranckenVrij\Http\Requests\AdminSearchSubscriptionsRequest;
 use Francken\Association\FranckenVrij\Subscription;
+use Francken\Association\LegacyMember;
 use Francken\Shared\Clock\Clock;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -70,6 +71,65 @@ final class AdminSubscriptionsController
                     ['url' => action([self::class, 'index']), 'text' => 'Subscriptions'],
                 ]
             ]);
+    }
+
+    public function create(Request $request, Clock $clock) : View
+    {
+        $member = $request->input('member_id')
+                ? LegacyMember::findOrFail($request->input('member_id'))
+                : null;
+
+        $subscription = new Subscription();
+
+        $extensionOptions = array_merge(
+                ['CANCEL' => 'Cancel subscription'],
+                $this->subscriptionOptions($clock)
+            );
+
+        $subscriptionEndsAt = $subscription->subscription_ends_at === null
+                            ? 'CANCEL'
+                            : 'September ' . $subscription->subscription_ends_at->format('Y');
+
+        return view('admin.francken-vrij.subscriptions.create')
+            ->with([
+                'subscription' => $subscription,
+                'subscriptionEndsAt' => $subscriptionEndsAt,
+                'member' => optional($member),
+                'extensionOptions' => $extensionOptions,
+                'breadcrumbs' => [
+                    ['url' => '/association', 'text' => 'Association'],
+                    ['url' => action([AdminFranckenVrijController::class, 'index']), 'text' => 'Francken Vrij'],
+                    ['url' => action([self::class, 'index']), 'text' => 'Subscriptions'],
+                    ['url' => action([self::class, 'create']), 'text' => 'Create'],
+                ]
+            ]);
+    }
+
+    public function store(Request $request, Clock $clock) : RedirectResponse
+    {
+        $member = LegacyMember::whereDoesntHave('franckenVrijSubscription')
+                ->where('id', $request->input('member_id'))
+                ->firstOrFail();
+
+        $subscription = $member->franckenVrijSubscription;
+
+        Assert::isInstanceOf($subscription, Subscription::class);
+
+        if ($request->input('subsription_ends_at') === 'CANCEL') {
+            $subscription->subscription_ends_at = null;
+            $member->mailinglist_franckenvrij = false;
+        } else {
+            $date = new \DateTimeImmutable($request->input('subsription_ends_at'));
+            $subscription->subscription_ends_at = $date;
+            $member->mailinglist_franckenvrij = $subscription->subscription_ends_at > $clock->now();
+        }
+        $subscription->send_expiration_notification = (bool)$request->input('send_expiration_notification', false);
+        $subscription->save();
+
+        $member->setConnection('francken-legacy');
+        $member->save();
+
+        return redirect()->action([self::class, 'edit'], ['subscription' => $subscription]);
     }
 
     public function edit(Subscription $subscription, Clock $clock) : View

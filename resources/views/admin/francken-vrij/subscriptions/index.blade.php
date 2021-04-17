@@ -157,6 +157,13 @@
                 <i class="fas fa-cloud-download-alt"></i>
                 Export subscriptions
             </a>
+
+            <a href="{{ action([\Francken\Association\FranckenVrij\Http\AdminSubscriptionsController::class, 'create']) }}"
+               class="btn btn-primary"
+            >
+                <i class="fas fa-plus"></i>
+                Add subscription
+            </a>
         @endcan
     </div>
 @endsection

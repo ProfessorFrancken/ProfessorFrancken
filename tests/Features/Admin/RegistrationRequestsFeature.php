@@ -39,7 +39,11 @@ class RegistrationRequestsFeature extends TestCase
              ->seePageIs(action(
                  [RegistrationRequestsController::class, 'show'],
                  ['registration' => $registration->id]
-             ));
+             ))
+            ->click('Registration requests')
+            ->click('Approved but not signed')
+            ->click('Approved requests')
+            ->click('All');
     }
 
     /** @test */
