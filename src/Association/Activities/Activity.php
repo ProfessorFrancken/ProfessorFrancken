@@ -58,7 +58,7 @@ final class Activity extends Model
             return $this->signUpSettings->deadline_at;
         }
 
-        return $this->start_date;
+        return $this->end_date;
     }
 
     public function scopeAfter(Builder $query, DateTimeImmutable $date) : Builder
@@ -120,6 +120,12 @@ final class Activity extends Model
 
     public function memberCanSignUp(LegacyMember $member) : bool
     {
+        $deadlineAt = $this->registration_deadline;
+
+        if ($deadlineAt->isPast()) {
+            return false;
+        }
+
         if ($this->signUpSettings === null) {
             return false;
         }
