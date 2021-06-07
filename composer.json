@@ -58,7 +58,7 @@
     "phpunit/phpunit": "~9.0",
     "psalm/plugin-laravel": "^1.4.0",
     "psalm/plugin-phpunit": "^0.15.0",
-    "rector/rector": "^0.9.2",
+    "rector/rector": "^0.11.14",
     "roave/security-advisories": "dev-master",
     "vimeo/psalm": "^4.1.1"
   },
