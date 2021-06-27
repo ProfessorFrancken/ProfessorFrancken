@@ -14,7 +14,7 @@
             </h2>
             @guest
                 <div class="d-inline-block border-top mb-4 mb-md-0 mt-4 pt-4 px-5 pr-md-0" style="border-width: 3px !important;">
-                    <a class="btn btn-primary" href="/register">Become a member</a>
+                    <a class="btn btn-primary position-relative" href="/register" style="z-index: 1">Become a member</a>
                 </div>
             @endguest
         </div>
