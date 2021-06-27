@@ -97,7 +97,7 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'auth_password_resets',
-            'expire' => 60,
+            'expire' => 60 * 60,
         ],
     ],
 
