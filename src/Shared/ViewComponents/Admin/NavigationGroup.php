@@ -36,7 +36,8 @@ class NavigationGroup extends Component
                 }
 
                 return $account->can($item['can'] ?? 'can-access-dashboard');
-            });
+            }
+        );
     }
 
     public function isActive(array $item) : bool

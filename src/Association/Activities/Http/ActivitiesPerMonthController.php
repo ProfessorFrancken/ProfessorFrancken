@@ -14,7 +14,8 @@ final class ActivitiesPerMonthController
     public function index(string $year, string $month) : View
     {
         $date = DateTimeImmutable::createFromFormat(
-            'Y-m', $year . '-' . $month
+            'Y-m',
+            $year . '-' . $month
         );
 
         if ($date === false) {

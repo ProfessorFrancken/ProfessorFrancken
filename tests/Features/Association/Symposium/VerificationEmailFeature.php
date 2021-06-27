@@ -36,6 +36,7 @@ class VerificationEmailFeature extends TestCase
 
         Mail::assertSent(
             VerifyRegistrationMail::class,
-            fn ($mail) : bool => $mail->participant == $participant);
+            fn ($mail) : bool => $mail->participant == $participant
+        );
     }
 }

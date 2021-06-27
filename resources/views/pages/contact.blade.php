@@ -11,7 +11,7 @@
             <h2>Address</h2>
 
             <address>
-                <h4>Correspondences adress</h4>
+                <h4>Correspondences address</h4>
                 T.F.V. ‘Professor Francken’<br>
                 Nijenborgh 4<br>
                 9747 AG Groningen

@@ -61,10 +61,14 @@
                 @foreach ($transactions as $transaction)
                     <tr>
                         <td>
+                            <a href={{ action([\Francken\Treasurer\Http\Controllers\AdminTransactionsController::class, 'index'], array_merge($request->except('page'), ['member_id' => $transaction->purchasedBy->id]))  }}>
                             {{ $transaction->purchasedBy->fullname }}
+                            </a>
                         </td>
                         <td>
-                            {{ $transaction->product->name }}
+                            <a href={{ action([\Francken\Treasurer\Http\Controllers\AdminTransactionsController::class, 'index'], array_merge($request->except('page'), ['product_id' => $transaction->product->id]))  }}>
+                                {{ $transaction->product->name }}
+                            </a>
                         </td>
                         <td>
                             €{{ number_format($transaction->totaalprijs, 2, ",", "") }}

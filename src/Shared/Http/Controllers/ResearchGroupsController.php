@@ -177,7 +177,7 @@ We are particularly interested in ferroelectric, piezoelectric, thermoelectric, 
                         'group' => 'van Wees',
                         'title' => 'Magnon Spintronics in Magnetic Insulators',
                         'contact' => 'https://www.rug.nl/staff/b.j.van.wees/',
-                        'link' => 'https://www.rug.nl/research/zernike/physics-of-nanodevices/research/magnonspintronics',
+                        'link' => 'https://www.rug.nl/research/zernike/physics-of-nanodevices/van-wees-group/',
                         'foto' => 'https://www.rug.nl/research/zernike/people/VanWees-1-WEB.jpg'
                     ],
 
@@ -185,7 +185,7 @@ We are particularly interested in ferroelectric, piezoelectric, thermoelectric, 
                         'group' => 'van der Wal',
                         'title' => 'Physics of Quantum Devices',
                         'contact' => 'https://www.rug.nl/staff/c.h.van.der.wal/',
-                        'link' => 'https://www.rug.nl/research/physics-of-nanodevices/research/quantum-devices',
+                        'link' => 'https://www.rug.nl/research/zernike/physics-of-nanodevices/van-der-wal-group/',
                         'foto' => 'https://www.rug.nl/research/zernike/people/VanDerWal-1-WEB.jpg'
                     ],
 
@@ -193,9 +193,16 @@ We are particularly interested in ferroelectric, piezoelectric, thermoelectric, 
                         'group' => 'Banerjee',
                         'title' => 'Spintronics in Functional Materials',
                         'contact' => 'https://www.rug.nl/staff/t.banerjee/',
-                        'link' => 'https://www.rug.nl/research/physics-of-nanodevices/research/spin-transport',
+                        'link' => 'https://www.rug.nl/research/zernike/physics-of-nanodevices/banerjee-group/',
                         'foto' => 'https://www.rug.nl/research/zernike/people/Banjeree-1-WEB.jpg'
-                    ]
+                    ],
+                    [
+                        'group' => 'Marcos Diniz Guimaraes',
+                        'title' => 'Opto-Spintronics of Nanostructures',
+                        'contact' => 'https://www.rug.nl/staff/m.h.guimaraes/',
+                        'link' => 'https://www.rug.nl/research/zernike/physics-of-nanodevices/guimaraes-group/',
+                        'foto' => 'https://professorfrancken.nl/uploads/images/research-groups/marcos.jpg'
+                    ],
                 ]
             ],
             [

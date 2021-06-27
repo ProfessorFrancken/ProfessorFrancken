@@ -216,7 +216,8 @@ final class Registration extends Model
                     'graduation_date' => $study->graduationDate() !== null ? $study->graduationDate()->format('Y-m-d') : null,
                 ],
                 $studyDetails->studies()
-            ), JSON_THROW_ON_ERROR
+            ),
+            JSON_THROW_ON_ERROR
         );
     }
 

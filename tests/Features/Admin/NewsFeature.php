@@ -112,13 +112,16 @@ class NewsFeature extends TestCase
         $news = News::orderBy('id', 'desc')->first();
 
         $this->assertEquals(
-            'Bitterballen dibs machines', $news->title
+            'Bitterballen dibs machines',
+            $news->title
         );
         $this->assertEquals(
-            'Bitterballen are nice', $news->source_contents
+            'Bitterballen are nice',
+            $news->source_contents
         );
         $this->assertEquals(
-            'About bitterballen', $news->exerpt
+            'About bitterballen',
+            $news->exerpt
         );
     }
 

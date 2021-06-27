@@ -74,9 +74,9 @@ class AdminPartnersFeature extends TestCase
             ->type('Francken', 'department')
             ->press('Save')
              ->seePageIs(action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            ))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             ))
             ->see('Scriptcie Inc');
 
         $partner->refresh();

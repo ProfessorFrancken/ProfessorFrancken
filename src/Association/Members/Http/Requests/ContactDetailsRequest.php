@@ -35,11 +35,11 @@ class ContactDetailsRequest extends FormRequest
     public function address() : Address
     {
         return new Address(
-                $this->input('city') ?? '',
-                $this->input('postal_code') ?? '',
-                $this->input('address') ?? '',
-                $this->input('country') ?? ''
-            );
+            $this->input('city') ?? '',
+            $this->input('postal_code') ?? '',
+            $this->input('address') ?? '',
+            $this->input('country') ?? ''
+        );
     }
 
     public function phoneNumber() : string

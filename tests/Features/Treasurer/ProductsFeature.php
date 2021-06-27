@@ -79,11 +79,13 @@ class ProductsFeature extends TestCase
         $this->assertEquals(133, $product->price);
 
         $this->seePageIs(action(
-            [AdminProductsController::class, 'show'], ['product' => $product]
+            [AdminProductsController::class, 'show'],
+            ['product' => $product]
         ))
              ->click('Edit')
              ->seePageIs(action(
-                 [AdminProductsController::class, 'edit'], ['product' => $product]
+                 [AdminProductsController::class, 'edit'],
+                 ['product' => $product]
              ))
              ->type('Dors', 'name')
             ->type(33, 'price')

@@ -32,7 +32,8 @@ final class ApiJobOpeningsController
                             'logo' => $vacancy->partner->logo,
                         ],
                     ];
-                })->values()
+                }
+            )->values()
         ];
     }
 }

@@ -17,7 +17,8 @@ class PersonalDetailsTest extends TestCase
     {
         $details = new PersonalDetails(
             Fullname::fromFirstnameAndSurname(
-                'Mark', 'Redeman'
+                'Mark',
+                'Redeman'
             ),
             'S.R.',
             Gender::male(),
@@ -28,7 +29,8 @@ class PersonalDetailsTest extends TestCase
 
         $this->assertEquals(
             Fullname::fromFirstnameAndSurname(
-                'Mark', 'Redeman'
+                'Mark',
+                'Redeman'
             ),
             $details->fullName()
         );

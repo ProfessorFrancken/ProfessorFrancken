@@ -6,12 +6,23 @@ namespace Francken\Association\Committees\Http;
 
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
-use Illuminate\View\View;
+use Francken\Auth\Http\Controllers\LoginController;
+use Francken\Shared\Clock\Clock;
+use Illuminate\Http\Request;
 
 final class CommitteesController
 {
-    public function index(Board $board) : View
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function index(Request $request, Clock $clock, Board $board)
     {
+        if ( ! $request->user() && $clock->now()->modify('-5 years') > $board->installed_at) {
+            return redirect()->action([
+               LoginController::class, 'showLoginForm'
+            ]);
+        }
+
         $committees = $board->committees()
             ->where('is_public', true)
             ->with(['board', 'logoMedia'])
@@ -29,8 +40,17 @@ final class CommitteesController
             ]);
     }
 
-    public function show(Board $board, Committee $committee) : View
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function show(Request $request, Clock $clock, Board $board, Committee $committee)
     {
+        if ( ! $request->user() && $clock->now()->modify('-5 years') > $board->installed_at) {
+            return redirect()->action([
+               LoginController::class, 'showLoginForm'
+            ]);
+        }
+
         $committees = $board->committees()
             ->where('is_public', true)
             ->with(['board', 'logoMedia'])

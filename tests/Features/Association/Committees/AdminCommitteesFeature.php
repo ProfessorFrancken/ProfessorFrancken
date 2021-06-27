@@ -76,9 +76,9 @@ class AdminCommitteesFeature extends TestCase
             ->type('Scriptcie', 'name')
             ->press('Save')
              ->seePageIs(action(
-                [AdminCommitteesController::class, 'show'],
-                ['committee' => $committee, 'board' => $this->board]
-            ))
+                 [AdminCommitteesController::class, 'show'],
+                 ['committee' => $committee, 'board' => $this->board]
+             ))
             ->see('Scriptcie');
 
         $committee->refresh();

@@ -16,7 +16,8 @@ final class ApiActivitiesController
     public function index(Request $request) : array
     {
         $after = DateTimeImmutable::createFromFormat(
-            'Y-m-d', $request->get('after', (new DateTimeImmutable())->format('Y-m-d'))
+            'Y-m-d',
+            $request->get('after', (new DateTimeImmutable())->format('Y-m-d'))
         );
         Assert::isInstanceOf($after, DateTimeImmutable::class);
 

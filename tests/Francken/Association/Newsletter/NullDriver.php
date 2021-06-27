@@ -93,8 +93,8 @@ class NullDriver extends Newsletter
         string $html = '',
         string $listName = '',
         array $options = [],
-        array $contentOptions = []) : void
-    {
+        array $contentOptions = []
+    ) : void {
     }
 
     public function updateContent(string $campaignId, string $html, array $options = []) : void

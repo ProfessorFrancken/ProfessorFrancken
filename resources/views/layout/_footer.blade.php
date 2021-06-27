@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="footer__contact-background footer__contact row flex-md-nowrap">
             <div class="col-12 col-sm-3 col-md-2 my-3">
-                <h4 class="footer__header h5 mb-2">Adress</h4>
+                <h4 class="footer__header h5 mb-2">Address</h4>
 
                 <address class="footer__body mb-0">
                     <i class="fa fa-map-marker-alt text-primary" aria-hidden="true"></i>

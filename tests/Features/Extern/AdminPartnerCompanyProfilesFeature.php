@@ -40,9 +40,9 @@ class AdminPartnerCompanyProfilesFeature extends TestCase
             ->check('is_enabled')
             ->press('Add company profile')
              ->seePageIs((action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            )))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             )))
             ->dontSee('Enable company profile')
             ->click('Edit company profile')
             ->see('Hoi')

@@ -42,9 +42,9 @@ class AdminPartnerVacanciesFeature extends TestCase
              ->select("Fulltime", 'type')
             ->press('Add vacancy')
              ->seePageIs((action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            )))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             )))
             ->see('Wizard');
 
         $vacancies = $partner->vacancies;
@@ -60,9 +60,9 @@ class AdminPartnerVacanciesFeature extends TestCase
              ->select("Internship", 'type')
             ->press('Save vacancy')
              ->seePageIs((action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            )))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             )))
             ->see('Ninja');
     }
 }

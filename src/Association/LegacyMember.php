@@ -308,7 +308,11 @@ final class LegacyMember extends Model
 
         event(
             new MemberPaymentDetailsWereChanged(
-                $this, $iban, $oldIban, $consumptionCounter, $oldConsumptionCounter
+                $this,
+                $iban,
+                $oldIban,
+                $consumptionCounter,
+                $oldConsumptionCounter
             )
         );
     }

@@ -17,7 +17,8 @@ class FrontPageController extends Controller
     public function index() : View
     {
         $today = new DateTimeImmutable(
-            'now', new DateTimeZone('Europe/Amsterdam')
+            'now',
+            new DateTimeZone('Europe/Amsterdam')
         );
 
         $latestEdition = Edition::query()

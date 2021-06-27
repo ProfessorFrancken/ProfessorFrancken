@@ -63,5 +63,12 @@
           @endforeach
       </div>
   @endforeach
+
+  @guest
+    <div class="container mt-5">
+        <x-login-prompt title="Login to view older editions">
+        </x-login-prompt>
+    </div>
+  @endguest
 </div>
 @endsection

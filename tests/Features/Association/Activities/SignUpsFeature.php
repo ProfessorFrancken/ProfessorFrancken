@@ -55,11 +55,35 @@ class SignUpsFeature extends TestCase
     }
 
     /** @test */
-    public function it_has_a_limit_to_the_amount_of_plus_ones_a_member_can_bring() : void
+    public function it_does_not_allow_a_member_to_sign_up_after_the_signup_deadline() : void
     {
-        $activity = factory(Activity::class)->create();
+        $today = new DateTimeImmutable();
+        $activity = factory(Activity::class)->create([
+            'end_date' => $today->modify("-1 day")->format('Y-m-d')
+        ]);
         factory(SignUpSettings::class)->create([
             'activity_id' => $activity->id,
+            'deadline_at' => $activity->end_date,
+            'max_sign_ups' => 33,
+        ]);
+
+        $account = factory(Account::class)->create();
+
+        $this->actingAs($account)
+             ->visit(action([ActivitiesController::class, 'show'], ['activity' => $activity]))
+             ->dontSee('Sign up for');
+    }
+
+    /** @test */
+    public function it_has_a_limit_to_the_amount_of_plus_ones_a_member_can_bring() : void
+    {
+        $today = new DateTimeImmutable();
+        $activity = factory(Activity::class)->create([
+            'end_date' => $today->modify("+1 day")->format('Y-m-d')
+        ]);
+        factory(SignUpSettings::class)->create([
+            'activity_id' => $activity->id,
+            'deadline_at' => $activity->end_date,
             'max_sign_ups' => 33,
             'max_plus_ones_per_member' => null,
         ]);

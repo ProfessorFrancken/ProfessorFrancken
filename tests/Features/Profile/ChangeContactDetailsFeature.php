@@ -48,7 +48,10 @@ class ChangeContactDetailsFeature extends TestCase
         $this->assertTrue($member->receive_newsletter);
         $this->assertEquals(
             new Address(
-                'Groningen', '9747AG', 'Nijenborgh 4', 'Netherlands'
+                'Groningen',
+                '9747AG',
+                'Nijenborgh 4',
+                'Netherlands'
             ),
             $member->address
         );

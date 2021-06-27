@@ -43,7 +43,8 @@ class BirthdateTest extends TestCase
         );
 
         $this->assertEquals(
-            '2019-01-01T00:00:00', $birthdate->toDateTime()->format('Y-m-d\TH:i:s')
+            '2019-01-01T00:00:00',
+            $birthdate->toDateTime()->format('Y-m-d\TH:i:s')
         );
     }
 

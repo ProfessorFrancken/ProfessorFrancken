@@ -34,9 +34,10 @@ final class AdminTransactionsController
         $transactions = $transactionsSearchQuery
             ->orderBy('tijd', 'desc')
             ->with(['product', 'purchasedBy'])
-            ->paginate(50);
+            ->paginate(50)
+            ->appends($request->except('page'));
 
-        $products = Product::all()
+        $products = Product::orderBy('naam')->get()
             ->mapWithKeys(fn ($product) => [$product->id => $product->name])
             ->prepend("All", null);
 

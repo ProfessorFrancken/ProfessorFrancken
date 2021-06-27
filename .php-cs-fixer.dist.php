@@ -1,16 +1,15 @@
 <?php
 
-$config = PhpCsFixer\Config::create();
+$config = new PhpCsFixer\Config();
 
-$finder = PhpCsFixer\Finder::create();
-$finder->in(__DIR__ . '/src/');
-$finder->in(__DIR__ . '/tests/');
-$finder->in(__DIR__ . '/routes/');
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . '/src/')
+    ->in(__DIR__ . '/tests/')
+    ->in(__DIR__ . '/routes/')
+        ;
 
-$config->setFinder($finder);
-$config->setRiskyAllowed(true);
 $config->setRules([
-    "psr4" => true,
+    "psr_autoloading" => true,
     '@PSR1' => true,
     '@PSR2' => true,
     'array_syntax' => ['syntax' => 'short'],
@@ -27,7 +26,7 @@ $config->setRules([
     'function_declaration' => true,
     'function_typehint_space' => true,
     'lowercase_cast' => true,
-    'lowercase_constants' => true,
+    'constant_case' => true,
     'lowercase_keywords' => true,
     'lowercase_static_reference' => true,
     'magic_constant_casing' => true,
@@ -52,7 +51,6 @@ $config->setRules([
     'php_unit_fqcn_annotation' => true,
     'php_unit_method_casing' => ['case' => 'snake_case'],
     'php_unit_namespaced' => true,
-    'php_unit_test_annotation' => ['style' => 'annotation', 'case' => 'snake'],
     'phpdoc_add_missing_param_annotation' => ['only_untyped' => true],
     'phpdoc_indent' => true,
     'phpdoc_no_access' => true,
@@ -73,10 +71,12 @@ $config->setRules([
     'switch_case_space' => true,
     'trim_array_spaces' => true,
     'unary_operator_spaces' => true,
-    'visibility_required' => ['property', 'method', 'const'],
+    'visibility_required' => true,
     'void_return' => true,
     'whitespace_after_comma_in_array' => true,
     'yoda_style' => false,
-]);
+])
+    ->setFinder($finder)
+    ->setRiskyAllowed(true);
 
 return $config;

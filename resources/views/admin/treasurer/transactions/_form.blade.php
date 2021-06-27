@@ -23,6 +23,7 @@
                 :value="$transaction->prijs"
                 :readonly="$transaction->id === null"
                 help="The transaction price is determined from the product but can be changed manually if needed."
+                step="0.01"
             />
 
             @if ($transaction->prijs !== $transaction->totaalprijs)

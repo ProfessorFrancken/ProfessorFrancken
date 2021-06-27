@@ -82,9 +82,9 @@ final class AdminSubscriptionsController
         $subscription = new Subscription();
 
         $extensionOptions = array_merge(
-                ['CANCEL' => 'Cancel subscription'],
-                $this->subscriptionOptions($clock)
-            );
+            ['CANCEL' => 'Cancel subscription'],
+            $this->subscriptionOptions($clock)
+        );
 
         $subscriptionEndsAt = $subscription->subscription_ends_at === null
                             ? 'CANCEL'
@@ -137,9 +137,9 @@ final class AdminSubscriptionsController
         Assert::notNull($subscription->member);
 
         $extensionOptions = array_merge(
-                ['CANCEL' => 'Cancel subscription'],
-                $this->subscriptionOptions($clock)
-            );
+            ['CANCEL' => 'Cancel subscription'],
+            $this->subscriptionOptions($clock)
+        );
 
         $subscriptionEndsAt = $subscription->subscription_ends_at === null
                             ? 'CANCEL'
