@@ -61,6 +61,13 @@ class AdminSearchTransactionsRequest extends FormRequest
         return $this->toDateTimeImmutable($this->input('until'));
     }
 
+    public function searchQueryKeys(string $select) : array
+    {
+        return [
+            'select' => $select
+        ];
+    }
+
     private function toDateTimeImmutable(?string $input) : ?DateTimeImmutable
     {
         if ($input === null) {
@@ -74,12 +81,5 @@ class AdminSearchTransactionsRequest extends FormRequest
         }
 
         return $dateTime;
-    }
-
-    public function searchQueryKeys(string $select) : array
-    {
-        return [
-            'select' => $select
-        ];
     }
 }

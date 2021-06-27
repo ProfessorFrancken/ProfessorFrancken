@@ -17,7 +17,7 @@ final class CommitteesController
      */
     public function index(Request $request, Clock $clock, Board $board)
     {
-        if (! $request->user() && $clock->now()->modify('-5 years') > $board->installed_at) {
+        if ( ! $request->user() && $clock->now()->modify('-5 years') > $board->installed_at) {
             return redirect()->action([
                LoginController::class, 'showLoginForm'
             ]);
@@ -45,7 +45,7 @@ final class CommitteesController
      */
     public function show(Request $request, Clock $clock, Board $board, Committee $committee)
     {
-        if (! $request->user() && $clock->now()->modify('-5 years') > $board->installed_at) {
+        if ( ! $request->user() && $clock->now()->modify('-5 years') > $board->installed_at) {
             return redirect()->action([
                LoginController::class, 'showLoginForm'
             ]);
