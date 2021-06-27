@@ -75,4 +75,11 @@ class AdminSearchTransactionsRequest extends FormRequest
 
         return $dateTime;
     }
+
+    public function searchQueryKeys(string $select) : array
+    {
+        return [
+            'select' => $select
+        ];
+    }
 }

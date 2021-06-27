@@ -40,15 +40,15 @@ final class AdminTransactionRequest extends FormRequest
         return (int)$this->input('amount');
     }
 
-    public function price() : int
+    public function price() : float
     {
-        return (int)$this->input('price');
+        return (float)$this->input('price');
     }
 
-    public function totalPrice() : int
+    public function totalPrice() : float
     {
         if ($this->amount() !== 1) {
-            return (int)$this->input('totaalprijs');
+            return (float)$this->input('totaalprijs');
         }
         return $this->price();
     }

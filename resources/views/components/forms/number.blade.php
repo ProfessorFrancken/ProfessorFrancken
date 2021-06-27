@@ -7,6 +7,7 @@
     'required' => false,
     'disabled' => false,
     'readonly' => false,
+           'step' => 'any'
 ])
 
 <x-forms.form-group :name="$name" :label="$label" :help="$help">
@@ -21,6 +22,7 @@
                    'required' => $required,
                    'disabled' => $disabled,
                    'readonly' => $readonly,
+                   'step' => $step,
                ]
            )
     !!}
