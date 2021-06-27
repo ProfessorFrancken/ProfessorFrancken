@@ -11,4 +11,10 @@
         @include("association.boards._board", ['board' => $board])
     @endforeach
 
+    @guest
+    <div class="container mt-5">
+        <x-login-prompt title="Login to view older boards">
+        </x-login-prompt>
+    </div>
+    @endguest
 @endsection
