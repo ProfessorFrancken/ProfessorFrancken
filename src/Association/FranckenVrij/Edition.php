@@ -93,10 +93,11 @@ final class Edition extends Model
         return $vrij;
     }
 
-    public static function volumes() : Collection
+    public static function volumes(?int $limit = null) : Collection
     {
         return self::query()
             ->orderBy('volume', 'DESC')
+            ->when($limit, fn ($query) => $query->take(3 * 5))
             ->get()
             ->groupBy('volume')
             ->map(
