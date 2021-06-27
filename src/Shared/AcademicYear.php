@@ -46,11 +46,15 @@ final class AcademicYear
         //
         if ($date < new DateTimeImmutable(sprintf('01-07-%s', $year))) {
             return self::fromString(sprintf(
-                '%d-%d', $year - 1, $year
+                '%d-%d',
+                $year - 1,
+                $year
             ));
         }
         return self::fromString(sprintf(
-            '%d-%d', $year, $year + 1
+            '%d-%d',
+            $year,
+            $year + 1
         ));
     }
 

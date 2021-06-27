@@ -37,9 +37,9 @@ class AdminPartnerAlumniFeature extends TestCase
              ->type('Contact for sponsorsing', 'notes')
             ->press('Add alumnus')
              ->seePageIs((action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            )))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             )))
             ->see($member->fullname)
             ->see('Senior engineer')
             ->click('Edit alumnus')

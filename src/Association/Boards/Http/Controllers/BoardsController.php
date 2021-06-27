@@ -31,6 +31,6 @@ final class BoardsController
                     ['url' => action([static::class, 'index']), 'text' => 'Boards'],
                 ],
             ]
-);
+        );
     }
 }

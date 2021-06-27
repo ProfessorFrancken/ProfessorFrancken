@@ -42,9 +42,9 @@ class AdminPartnerFooterFeature extends TestCase
             ->check('is_enabled')
             ->press('Add footer')
              ->seePageIs((action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            )))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             )))
             ->dontSee('Enable footer')
             ->click('Edit footer')
             ->see('https://scriptcie.nl')

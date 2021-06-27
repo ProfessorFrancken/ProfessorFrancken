@@ -45,9 +45,9 @@ class AdminPartnerContactsFeature extends TestCase
             ->attach(UploadedFile::fake()->image('john.png'), 'photo')
             ->press('Add contact')
              ->seePageIs((action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            )))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             )))
             ->see('John Snow')
             ->click('Edit contact')
             ->see('john@scriptcie.nl')
@@ -80,9 +80,9 @@ class AdminPartnerContactsFeature extends TestCase
              ->type('john@scriptcie.nl', 'email')
             ->press('Add contact')
              ->seePageIs((action(
-                [AdminPartnersController::class, 'show'],
-                ['partner' => $partner]
-            )))
+                 [AdminPartnersController::class, 'show'],
+                 ['partner' => $partner]
+             )))
             ->see('John Snow');
 
 

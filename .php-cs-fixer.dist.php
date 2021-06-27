@@ -2,13 +2,12 @@
 
 $config = new PhpCsFixer\Config();
 
-$finder = PhpCsFixer\Finder::create();
-$finder->in(__DIR__ . '/src/');
-$finder->in(__DIR__ . '/tests/');
-$finder->in(__DIR__ . '/routes/');
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . '/src/')
+    ->in(__DIR__ . '/tests/')
+    ->in(__DIR__ . '/routes/')
+        ;
 
-$config->setFinder($finder);
-$config->setRiskyAllowed(true);
 $config->setRules([
     "psr_autoloading" => true,
     '@PSR1' => true,
@@ -76,6 +75,8 @@ $config->setRules([
     'void_return' => true,
     'whitespace_after_comma_in_array' => true,
     'yoda_style' => false,
-]);
+])
+    ->setFinder($finder)
+    ->setRiskyAllowed(true);
 
 return $config;

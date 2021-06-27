@@ -56,7 +56,9 @@ final class ChangeRolesListener extends EventHandler
 
         /** @var Collection */
         $asBoardMembers = BoardMember::where(
-            'member_id', '=', (int)$account->member_id
+            'member_id',
+            '=',
+            (int)$account->member_id
         )->get();
 
         // Ideally each member should be in only 1 board, and we will assume that

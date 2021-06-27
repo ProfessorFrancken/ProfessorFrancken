@@ -27,7 +27,8 @@ class ActivitiesSidebarComposer
             'selectedYear' => $year,
             'selectedMonth' => $month,
             'selectedDate' => DateTimeImmutable::createFromFormat(
-                'Y-m', $year . '-' . $month
+                'Y-m',
+                $year . '-' . $month
             ),
             'months' => $this->monthNames(),
             'visibleYears' => $this->visibleYears($year)

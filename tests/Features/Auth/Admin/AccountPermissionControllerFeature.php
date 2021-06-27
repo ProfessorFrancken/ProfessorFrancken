@@ -21,7 +21,8 @@ class AccountPermissionControllerFeature extends TestCase
         $permission = Permission::firstOrCreate(['name' => 'custom permission']);
 
         $this->visit(action(
-            [AccountsController::class, 'show'], ['account' => $account]
+            [AccountsController::class, 'show'],
+            ['account' => $account]
         ))
              ->select($permission->id, 'permission_id')
              ->within(
@@ -29,14 +30,16 @@ class AccountPermissionControllerFeature extends TestCase
                  fn () => $this->press('Add')
              )
              ->seePageIs(action(
-            [AccountsController::class, 'show'], ['account' => $account]
-        ));
+                 [AccountsController::class, 'show'],
+                 ['account' => $account]
+             ));
 
         $this->assertTrue($account->hasPermissionTo('custom permission'));
 
         $this->press('Remove')
              ->seePageIs(action(
-                 [AccountsController::class, 'show'], ['account' => $account]
+                 [AccountsController::class, 'show'],
+                 ['account' => $account]
              ));
 
         $account->refresh();

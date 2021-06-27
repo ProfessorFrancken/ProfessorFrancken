@@ -103,11 +103,12 @@ final class MembersController extends Controller
 
         $currentCommittees = $committeeMembers->filter(
             fn (CommitteeMember $member) => $member->committee !== null && $member->committee->board_id === $currentBoard->id
-        )->map(function (CommitteeMember $member) : Committee {
-            Assert::notNull($member->committee);
+        )->map(
+            function (CommitteeMember $member) : Committee {
+                Assert::notNull($member->committee);
 
-            return $member->committee;
-        }
+                return $member->committee;
+            }
         );
 
         $committeesByBoard = $committeeMembers->groupBy(

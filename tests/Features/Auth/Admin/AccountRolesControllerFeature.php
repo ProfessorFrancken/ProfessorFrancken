@@ -22,7 +22,8 @@ class AccountRolesControllerFeature extends TestCase
         $role = Role::firstOrCreate(['name' => 'custom role']);
 
         $this->visit(action(
-            [AccountsController::class, 'show'], ['account' => $account]
+            [AccountsController::class, 'show'],
+            ['account' => $account]
         ))
             ->see('custom role')
             ->post(action(
@@ -43,7 +44,8 @@ class AccountRolesControllerFeature extends TestCase
 
         $this->press('Remove')
              ->seePageIs(action(
-                 [AccountsController::class, 'show'], ['account' => $account]
+                 [AccountsController::class, 'show'],
+                 ['account' => $account]
              ));
 
         $account->refresh();

@@ -31,11 +31,11 @@ final class MemberSelectionComposer
             ]);
         $factory = $view->getFactory();
         $factory->startPush(
-                'css',
-<<<'EOT'
+            'css',
+            <<<'EOT'
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 EOT
-            );
+        );
         $jsonMembers = json_encode($members, JSON_THROW_ON_ERROR);
         $factory->startPush(
             'scripts',
