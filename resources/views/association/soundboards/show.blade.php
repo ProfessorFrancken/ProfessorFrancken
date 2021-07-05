@@ -86,7 +86,6 @@
     </div>
 
 
-    @hasanyrole('Old Board|Candidate Board|Demissioned Board|Decharged Board')
     <div class="bg-light p-4 mt-5 pt-0 border">
         {!!
                Form::model($sound, [
@@ -104,5 +103,4 @@
         <x-forms.submit>Add sound</x-forms.submit>
         {!! Form::close() !!}
     </div>
-    @endhasanyrole
 @endsection
