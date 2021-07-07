@@ -150,14 +150,16 @@
 
 @section('actions')
     <div class="d-flex align-items-start">
-        @can('export-francken-vrij-subscriptions')
+        @can('dashboard:francken-vrij-subscriptions-read')
             <a href="{{ action([\Francken\Association\FranckenVrij\Http\AdminSubscriptionsExportController::class, 'index']) }}"
                class="btn btn-primary mr-3"
             >
                 <i class="fas fa-cloud-download-alt"></i>
                 Export subscriptions
             </a>
+        @endcan
 
+        @can('dashboard:francken-vrij-subscriptions-write')
             <a href="{{ action([\Francken\Association\FranckenVrij\Http\AdminSubscriptionsController::class, 'create']) }}"
                class="btn btn-primary"
             >
