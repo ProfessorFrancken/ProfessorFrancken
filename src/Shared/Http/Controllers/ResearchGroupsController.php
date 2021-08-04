@@ -20,17 +20,17 @@ final class ResearchGroupsController
     {
         $this->groups = [
             [
-                'title' => 'Computational Physics',
-                'description' => 'The mission of the research group Computational Physics is to conduct research in physics through the innovative use of computer and information technology.',
-                'photo' => 'https://www.rug.nl/research/zernike/research/topic_tc-cp.png',
+                'title' => 'Bio-inspired Circuits & Systems',
+                'description' => 'We aim to identify the principles of neural computation and implement them in fully parallel and low-power neuromorphic very-large-scale integration (VLSI) systems that offer the opportunity to overcome the limitations of traditional digital architectures. Hereby we develop silicon implementations of neural networks with learning abilities and biologically inspired sensor systems, which allow us to validate current theories of learning and computation.',
+                'photo' => 'https://www.rug.nl/research/zernike/research/topic_tcm.png',
                 'groups' => [
                     [
-                        'group' => 'De Raedt',
-                        'title' => 'Computational Physics',
-                        'contact' => 'https://www.rug.nl/research/zernike/computational-physics/de-raedt-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/computational-physics/de-raedt-group/',
-                        'foto' => 'https://www.rug.nl/about-us/images_new/topicpage/onderzoek/science-plaatjes/onderzoeker-pc.jpg'
-                    ],
+                        'group' => 'Chicca',
+                        'title' => 'Bio-inspired Circuits & Systems',
+                        'contact' => 'https://www.rug.nl/research/zernike/bio-inspired-circuits-and-systems/chicca-group/contact',
+                        'link' => 'https://www.rug.nl/research/zernike/bio-inspired-circuits-and-systems/chicca-group/',
+                        'foto' => 'https://www.rug.nl/research/zernike/people/chicca-web-vk-150px.jpg'
+                    ]
                 ]
             ],
             [
@@ -79,6 +79,13 @@ final class ResearchGroupsController
                         'contact' => 'https://www.rug.nl/staff/p.r.onck/',
                         'link' => 'https://www.rug.nl/research/zernike/micromechanics/onck-group/',
                         'foto' => 'https://www.rug.nl/research/zernike/people/Onck-1.jpg'
+                    ],
+                    [
+                        'group' => 'Giuntoli',
+                        'title' => 'Giuntoli group',
+                        'contact' => 'https://www.rug.nl/research/zernike/micromechanics/giuntoli-group/contact',
+                        'link' => 'https://www.rug.nl/research/zernike/micromechanics/giuntoli-group/',
+                        'foto' => 'https://www.rug.nl/research/zernike/micromechanics/giuntoli-group/giuntoli-150x150.jpg'
                     ]
                 ]
             ],
@@ -126,27 +133,6 @@ We are particularly interested in ferroelectric, piezoelectric, thermoelectric, 
                 ]
             ],
             [
-                'title' => 'Optical Condensed Matter Physics',
-                'description' => 'Our aim is to identify, understand, and, if possible, control the nature of various physical phenomena and functionalities of condensed matter systems. We approach this problem using a variety of linear and non-linear optical techniques and by developing microscopic models to describe the observed phenomena.',
-                'photo' => 'https://www.rug.nl/research/zernike/research/topic_ocmp.png',
-                'groups' => [
-                    [
-                        'group' => 'Pchenitchnikov',
-                        'title' => 'Pchenitchnikov Group',
-                        'contact' => 'https://www.rug.nl/research/zernike/optical-condensed-matter-physics/pchenitchnikov-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/optical-condensed-matter-physics/pchenitchnikov-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/optical-condensed-matter-physics/ocmp_lab-new.jpg'
-                    ],
-                    [
-                        'group' => 'Tobey',
-                        'title' => 'Tobey Group',
-                        'contact' => 'https://www.rug.nl/research/zernike/optical-condensed-matter-physics/tobey-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/optical-condensed-matter-physics/tobey-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/optical-condensed-matter-physics/tobeylab3-new.jpg'
-                    ]
-                ]
-            ],
-            [
                 'title' => 'Photophysics and Opto-electronics',
                 'description' => 'Our group aims to develop novel materials for solar cell & microelectronics applications. The materials we work on have in common that they are solution processable. This property holds the promise of cheap production methods with a low energy demand. Our research focusses on a number of subjects:<ul><li>The properties of organic semiconductors and organic/organic interfaces and their application in optoelectronic devices</li><li>Physical and optoelectronic properties of carbon nanotubes and hybrids systems</li><li>Fabrication of hybrid optoelectronic devices composed by inorganic nanocrystals and organic molecules</li></ul>',
                 'photo' => 'https://www.rug.nl/research/zernike/photophysics-and-opto-electronics/images/PbS-CdS_Coreshell_quantumdots.png',
@@ -171,7 +157,7 @@ We are particularly interested in ferroelectric, piezoelectric, thermoelectric, 
             [
                 'title' => 'Physics of Nanodevices',
                 'description' => 'We explore new physical phenomena that occur in electronic and opto-electronic device structures with nanoscale dimensions. The dynamics of such devices is often quantum mechanical in nature, but much richer than the dynamics of isolated atoms due to interactions with the solid-state environment. Our research investigates this quantum dynamics, and aims to apply it for new device functionalities.',
-                'photo' => 'https://www.rug.nl/research/zernike/physics-of-nanodevices/nanolab.jpg.jpg',
+                'photo' => 'https://www.rug.nl/research/zernike/images/034_tbjh_0619_800x386px.jpg',
                 'groups' => [
                     [
                         'group' => 'van Wees',
@@ -230,81 +216,7 @@ The research has a strong instrumentation development component. For our experim
                         'foto' => 'https://www.rug.nl/research/zernike/people/schlatholter-1-web-new.jpg'
                     ]
                 ]
-            ],
-            [
-                'title' => 'Solid State Materials for Electronics',
-                'description' => 'We investigate the synthesis, crystal structure, and electronic properties of compounds with interesting physical phenomena. We are in particular interested in electrical conduction and dielectric properties of transition metal oxides, and of molecular organic conductors. Both classes of materials not only display a wealth of exciting properties, such as superconductivity, magnetism and ferroelectricity, but are also of relevance for electronic applications.',
-                'photo' => 'https://www.rug.nl/research/zernike/research/topic_ssme.png',
-                'groups' => [
-
-                    [
-                        'group' => 'Palstra',
-                        'title' => 'Solid State Chemistry',
-                        'contact' => 'https://www.rug.nl/research/zernike/ssme/palstra-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/ssme/palstra-group/',
-                        'foto' => 'https://www.rug.nl/about-us/images_new/topicpage/onderzoek/science-plaatjes/onderzoeker-pc.jpg'
-                    ],
-
-                    [
-                        'group' => 'Blake',
-                        'title' => 'Blake Group',
-                        'contact' => 'https://www.rug.nl/research/zernike/ssme/blake-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/ssme/blake-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/solid-state-materials-for-electronics/hdr_blake.png'
-                    ]
-                ]
-            ],
-            [
-                'title' => 'Surfaces and Thin Films',
-                'description' => 'Our mission is to carry out a competitive research program in the field of Surface and Interface Physics with particular emphasis on the preparation and analysis of crystalline organic thin films, functional molecules as well as molecular motors and switches on surfaces, and nanocomposites, while training young researchers at the master, PhD and postdoctoral level in state-of-the-art surface analysis techniques and research in the field of Surface and Interface Physics.',
-                'photo' => 'https://www.rug.nl/research/zernike/research/topic_stf.png',
-                'groups' => [
-
-                    [
-                        'group' => 'Rudolf',
-                        'title' => 'Surfaces and Thin Films',
-                        'contact' => 'https://www.rug.nl/staff/p.rudolf/',
-                        'link' => 'https://www.rug.nl/research/zernike/surfaces-and-thin-films/rudolf-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/people/rudolf-1-web-new.jpg'
-                    ],
-
-                    [
-                        'group' => 'Stöhr',
-                        'title' => 'Surface Science',
-                        'contact' => 'https://www.rug.nl/staff/m.a.stohr/',
-                        'link' => 'https://www.rug.nl/research/zernike/surfaces-and-thin-films/stohr-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/people/stoehr-1-web-new.jpg'
-                    ]
-                ]
-            ],
-            [
-                'title' => 'Theory of Condensed Matter',
-                'description' => 'The mission of our group is to model and understand fundamental electronic, magnetic, and optical properties of condensed-phase systems.',
-                'photo' => 'https://www.rug.nl/research/zernike/images/topic_theocondmatphys.png',
-                'groups' => [
-                    [
-                        'group' => 'Knoester',
-                        'title' => 'Theory of Condensed Matter 1',
-                        'contact' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/knoester-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/knoester-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/pictures/knoester-1-web_nieuw.jpg'
-                    ],
-                    [
-                        'group' => 'Mostovoy',
-                        'title' => 'Theory of Condensed Matter 2',
-                        'contact' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/mostovoy-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/mostovoy-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/pictures/mostovoy-1-web_nieuw.jpg'
-                    ],
-                    [
-                        'group' => 'Jansen',
-                        'title' => 'Computational Spectroscopy',
-                        'contact' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/jansen-group/contact',
-                        'link' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/jansen-group/',
-                        'foto' => 'https://www.rug.nl/research/zernike/theory-of-condensed-matter/pictures/thomas2015_nieuw.jpeg'
-                    ],
-                ]
-            ],
+            ]
         ];
     }
 
