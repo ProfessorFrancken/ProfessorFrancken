@@ -19,7 +19,7 @@ We look forward to seeing you around Francken!
 
 Kind regards,
 
-The 36th board of T.F.V. ‘Professor Francken’
+The board of T.F.V. ‘Professor Francken’
 
     {{-- Subcopy --}}
     @isset($subcopy)

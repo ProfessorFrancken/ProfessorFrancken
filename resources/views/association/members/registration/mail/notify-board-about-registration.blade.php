@@ -21,7 +21,7 @@ Make sure to answer their comments / questions by sending an email to: <a href="
 
 Kind regards,
 
-The 36th board of T.F.V. ‘Professor Francken’
+The board of T.F.V. ‘Professor Francken’
 
     {{-- Subcopy --}}
     @isset($subcopy)
