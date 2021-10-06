@@ -38,7 +38,7 @@ final class SignUp extends Model
 
     public function member() : BelongsTo
     {
-        return $this->belongsTo(LegacyMember::class);
+        return $this->belongsTo(LegacyMember::class)->withTrashed();
     }
 
     public function activity() : BelongsTo
