@@ -37,9 +37,9 @@ final class Gender
         return new self(self::MALE);
     }
 
-    public static function other(string $gender) : self
+    public static function other(?string $gender) : self
     {
-        return new self($gender);
+        return new self($gender ?? '');
     }
 
     public static function fromString(string $gender) : self
