@@ -18,7 +18,7 @@ class ChangeFranckenVrijSubscriptionFeature extends TestCase
 
         auth()->login($account);
 
-        $date = new DateTimeImmutable();
+        $date = $this->getNextFirstOfSeptember();
         $year = $date->format('Y');
 
         $this->visit(action([FranckenVrijSubscriptionController::class, 'index']))
@@ -39,5 +39,17 @@ class ChangeFranckenVrijSubscriptionFeature extends TestCase
         $this->assertNull($member->franckenVrijSubscription->subscription_ends_at);
         $this->assertFalse($member->franckenVrijSubscription->send_expiration_notification);
         $this->assertFalse($member->franckenVrijSubscription->send_expiration_notification);
+    }
+
+    private function getNextFirstOfSeptember() : DateTimeImmutable
+    {
+        $now = new DateTimeImmutable();
+        $septemberThisYear = new DateTimeImmutable('September');
+
+        if ($now >= $septemberThisYear) {
+            return $septemberThisYear->modify('+1 year');
+        }
+
+        return $septemberThisYear;
     }
 }

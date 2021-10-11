@@ -81,7 +81,7 @@ class SubscriptionsFeature extends TestCase
     {
         $subscription = factory(Subscription::class)->create();
 
-        $date = new DateTimeImmutable();
+        $date = $this->getNextFirstOfSeptember();
         $year = $date->format('Y');
 
         $this->visit(action([AdminSubscriptionsController::class, 'edit'], ['subscription' => $subscription]))
@@ -112,7 +112,7 @@ class SubscriptionsFeature extends TestCase
     {
         $member = factory(LegacyMember::class)->create(['is_lid' => true]);
 
-        $date = new DateTimeImmutable();
+        $date = $this->getNextFirstOfSeptember();
         $year = $date->format('Y');
 
         $this->visit(action([AdminSubscriptionsController::class, 'create']))
@@ -126,5 +126,17 @@ class SubscriptionsFeature extends TestCase
         $this->assertTrue($member->receive_francken_vrij);
         $this->assertEquals($subscription->subscription_ends_at->format("Y"), $year);
         $this->assertTrue($subscription->send_expiration_notification);
+    }
+
+    private function getNextFirstOfSeptember() : DateTimeImmutable
+    {
+        $now = new DateTimeImmutable();
+        $septemberThisYear = new DateTimeImmutable('September');
+
+        if ($now >= $septemberThisYear) {
+            return $septemberThisYear->modify('+1 year');
+        }
+
+        return $septemberThisYear;
     }
 }

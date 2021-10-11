@@ -53,6 +53,6 @@ final class CommitteeMember extends Model
 
     public function member() : BelongsTo
     {
-        return $this->belongsTo(LegacyMember::class, 'member_id');
+        return $this->belongsTo(LegacyMember::class, 'member_id')->withTrashed();
     }
 }
