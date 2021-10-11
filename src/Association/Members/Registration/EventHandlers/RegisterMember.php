@@ -8,7 +8,6 @@ use Francken\Association\LegacyMember;
 use Francken\Association\Members\Gender;
 use Francken\Association\Members\Registration\Events\RegistrationWasApproved;
 use Francken\Association\Members\Registration\Registration;
-use Francken\Association\Members\Study;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 final class RegisterMember implements ShouldQueue
@@ -71,6 +70,8 @@ final class RegisterMember implements ShouldQueue
             // erelid
             // notities
         ]);
+
+        // TODO : FranckenVrij Subscription / make another handler
     }
 
     private function gender(Registration $registration) : string

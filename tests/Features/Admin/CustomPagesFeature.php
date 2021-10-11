@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin;
 
-use Faker\Factory;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Francken\Shared\Http\Controllers\Admin\PagesController;
