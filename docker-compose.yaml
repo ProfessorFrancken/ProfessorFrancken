@@ -11,7 +11,7 @@ services:
     build:
       dockerfile: Dockerfile-base
       context: ./docker/php
-    image: francken/php-base
+    image: francken/php-base:v8
 
   npm:
     image: node:14.5
@@ -22,7 +22,7 @@ services:
     working_dir: /var/www/francken
 
   php:
-    image: francken/v2-php
+    image: francken/php:v8
     build:
       dockerfile: Dockerfile
       context: ./docker/php
@@ -44,7 +44,7 @@ services:
       - ./docker/volumes/config/:/var/www/.config
 
   scheduler:
-    image: francken/v2-scheduler
+    image: francken/scheduler:v8
     build:
       dockerfile: Dockerfile-scheduler
       context: ./docker/php
@@ -64,7 +64,7 @@ services:
     restart: always
 
   queue-worker:
-    image: francken/v2-queue
+    image: francken/queue:v8
     build:
       dockerfile: Dockerfile-queue
       context: ./docker/php
@@ -165,7 +165,7 @@ services:
       - redis:/data
 
   php-coverage:
-    image: francken/v2-php-testing
+    image: francken/php-testing:v8
     build:
       dockerfile: Dockerfile-testing
       context: ./docker/php

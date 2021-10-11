@@ -1,4 +1,4 @@
-FROM francken/php-base
+FROM francken/php-base:v8
 
 COPY scheduler.sh /usr/local/bin/run-scheduler
 RUN chmod u+x /usr/local/bin/run-scheduler

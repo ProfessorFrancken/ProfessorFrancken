@@ -1,14 +1,16 @@
-FROM composer:2.0 AS composer
+FROM composer:2.1.9 AS composer
 
-FROM php:7.4.9-fpm
+FROM php:8.0.11-fpm
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 
-RUN install-php-extensions zip gd redis igbinary apcu imagick \
+RUN install-php-extensions zip gd redis apcu imagick \
     intl zip pdo_mysql pdo_pgsql soap opcache mysqli bcmath pcntl \
     pdo_sqlite mbstring
+
+# RUN install-php-extensions igbinary
 
 ADD imagemagick-policy.xml /etc/ImageMagick-6/policy.xml
 
