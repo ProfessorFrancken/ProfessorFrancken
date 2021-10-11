@@ -7,7 +7,6 @@ namespace Francken\Association\AlumniActivity\Http;
 use Francken\Association\AlumniActivity\Alumnus;
 use Francken\Association\FranckenVrij\Http\Requests\AdminSearchSubscriptionsRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class AdminAlumniActivityController

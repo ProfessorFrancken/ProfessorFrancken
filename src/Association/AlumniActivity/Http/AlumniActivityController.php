@@ -4,17 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\AlumniActivity\Http;
 
-use DateTimeImmutable;
 use Francken\Association\AlumniActivity\Alumnus;
-use Francken\Association\FranckenVrij\Http\Requests\AdminSearchSubscriptionsRequest;
-use Francken\Association\FranckenVrij\Subscription;
-use Francken\Association\LegacyMember;
-use Francken\Shared\Clock\Clock;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Webmozart\Assert\Assert;
 
 final class AlumniActivityController
 {
