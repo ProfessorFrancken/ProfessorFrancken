@@ -57,7 +57,7 @@ final class AdminTransactionsController
 
     public function create() : View
     {
-        $products = Product::all()
+        $products = Product::orderBy('naam')->get()
             ->mapWithKeys(fn ($product) => [$product->id => $product->name]);
 
         return view('admin.treasurer.transactions.create')
