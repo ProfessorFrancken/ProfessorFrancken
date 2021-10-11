@@ -24,7 +24,7 @@ class CategoryStatisticsFeature extends TestCase
                 'startDate' => '2020-01-01',
                 'endDate' => '2020-02-01',
             ],
-            ['Authorization' => 'Bearer ' . (string)$token->token()]
+            ['Authorization' => 'Bearer ' . $token->token()->toString()]
         )
             ->assertResponseStatus(200)
             ->seeJsonStructure([

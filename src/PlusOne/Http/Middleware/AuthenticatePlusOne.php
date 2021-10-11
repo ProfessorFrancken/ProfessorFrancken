@@ -40,7 +40,7 @@ final class AuthenticatePlusOne
         }
 
         try {
-            $token = $configuration->parser()->parse((string)$token);
+            $token = $configuration->parser()->parse($token);
 
             if ( ! $configuration->validator()->validate($token, ...$configuration->validationConstraints())) {
                 $ip = $request->ip();

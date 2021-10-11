@@ -15,7 +15,7 @@ class ProductsFeature extends TestCase
     {
         $token = new JwtToken(config('francken.plus_one.key'));
 
-        $this->json('GET', action([ProductsController::class, 'index']), [], ['Authorization' => 'Bearer ' . (string)$token->token()])
+        $this->json('GET', action([ProductsController::class, 'index']), [], ['Authorization' => 'Bearer ' . $token->token()->toString()])
             ->assertResponseStatus(200)
             ->seeJsonStructure([
                 'products' => [[

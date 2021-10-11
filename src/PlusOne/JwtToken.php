@@ -9,7 +9,7 @@ use DateTimeImmutable;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
-use Lcobucci\JWT\Token;
+use Lcobucci\JWT\Token\Plain;
 
 class JwtToken
 {
@@ -20,7 +20,7 @@ class JwtToken
         $this->key = $key;
     }
 
-    public function token() : Token
+    public function token() : Plain
     {
         $now = new DateTimeImmutable();
 

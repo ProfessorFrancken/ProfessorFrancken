@@ -24,7 +24,7 @@ final class AuthenticationController
         $token = new JwtToken($key);
 
         return [
-            "token" => (string)$token->token()
+            "token" => $token->token()->toString()
         ];
     }
 }
