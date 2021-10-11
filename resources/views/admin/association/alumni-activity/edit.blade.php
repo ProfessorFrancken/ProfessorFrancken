@@ -1,19 +1,19 @@
 @extends('admin.layout')
-@section('page-title', 'Activities / ' . $activity->name . ' / ' . $signUp->member->full_name . '/ Edit sign up')
+@section('page-title', 'Alumni activity 2022 / ' . $alumnus->fullname . '/ Edit alumni')
 
 @section('content')
     <div class="card">
         <div class="card-body">
             {!!
-                   Form::model($signUp, [
+                   Form::model($alumnus, [
                        'url' => action(
-                           [\Francken\Association\Activities\Http\AdminSignUpsController::class, 'update'] ,
-                           ['activity' => $activity, 'sign_up' => $signUp]
+                           [\Francken\Association\AlumniActivity\Http\AdminAlumniActivityController::class, 'update'] ,
+                           ['alumnus' => $alumnus]
                        ),
                        'method' => 'PUT',
                    ])
             !!}
-            @include('admin.association.activities.sign-ups._form', ['alumnus' => $activity])
+            @include('admin.association.alumni-activity._form', ['alumnus' => $alumnus])
 
                 <x-forms.submit>Save sign up</x-forms.submit>
             {!! Form::close() !!}
@@ -22,11 +22,11 @@
 
         {!!
                Form::model(
-                   $activity,
+                   $alumnus,
                    [
                        'url' => action(
-                           [\Francken\Association\Activities\Http\AdminSignUpsController::class, 'destroy'] ,
-                           ['activity' => $activity, 'sign_up' => $signUp]
+                           [\Francken\Association\AlumniActivity\Http\AdminAlumniActivityController::class, 'destroy'] ,
+                           ['alumnus' => $alumnus]
                        ),
                        'method' => 'post'
                    ]

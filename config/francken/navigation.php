@@ -103,6 +103,12 @@ return [
                     "can" => "dashboard:symposia-read",
                 ],
                 [
+                    "name" => "Alumni activity",
+                    "url" => "alumni-activity",
+                    "works" => true,
+                    "can" => "dashboard:alumni-activity",
+                ],
+                [
                     "name" => "Custom pages",
                     "url" => "pages",
                     "works" => true,

@@ -8,6 +8,7 @@ use Francken\Association\Activities\Http\CommentsController;
 use Francken\Association\Activities\Http\IcalController;
 use Francken\Association\Activities\Http\SignUpsController;
 use Francken\Association\Almanak\Http\Controllers\AlmanakController;
+use Francken\Association\AlumniActivity\Http\AlumniActivityController;
 use Francken\Association\Boards\Http\Controllers\BirthdaysController;
 use Francken\Association\Boards\Http\Controllers\BoardsController;
 use Francken\Association\Boards\Http\Controllers\KandiTotoController;
@@ -145,6 +146,8 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::get('photos', [PhotosController::class, 'index']);
         Route::get('photos/{album}', [PhotosController::class, 'show']);
     });
+
+    Route::get('alumni-2022', [AlumniActivityController::class, 'index']);
 });
 
 Route::group(['prefix' => 'career'], function () : void {

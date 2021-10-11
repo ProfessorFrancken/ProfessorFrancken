@@ -19,7 +19,7 @@ class TransactionsFeature extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function it_shwos_transactions() : void
+    public function it_shows_transactions() : void
     {
         $product = factory(Product::class)->create();
         $transaction = factory(Transaction::class)->create([
