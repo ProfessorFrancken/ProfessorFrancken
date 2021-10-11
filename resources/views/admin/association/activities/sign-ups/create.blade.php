@@ -12,7 +12,7 @@
                        ),
                    ])
             !!}
-            @include('admin.association.activities.sign-ups._form', ['committee' => $activity])
+            @include('admin.association.activities.sign-ups._form', ['activity' => $activity])
 
                 <x-forms.submit>Sign up</x-forms.submit>
             {!! Form::close() !!}

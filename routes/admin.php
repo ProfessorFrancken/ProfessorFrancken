@@ -6,6 +6,7 @@ use Francken\Association\Activities\Http\AdminActivitiesController;
 use Francken\Association\Activities\Http\AdminActivitySignUpsExportController;
 use Francken\Association\Activities\Http\AdminSignUpsController;
 use Francken\Association\Activities\Http\AdminSignUpSettingsController;
+use Francken\Association\AlumniActivity\Http\AdminAlumniActivityController;
 use Francken\Association\Boards\Http\Controllers\AdminBoardsController;
 use Francken\Association\Boards\Http\Controllers\AdminExportsController;
 use Francken\Association\Boards\Http\Controllers\AdminImportsController;
@@ -182,6 +183,15 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('activities/{activity}/sign-ups/export', [AdminActivitySignUpsExportController::class, 'index']);
     Route::resource('activities.sign-ups', AdminSignUpsController::class);
     Route::resource('activities', AdminActivitiesController::class);
+
+    Route::group(['middleware' => 'can:dashboard:alumni-activity'], function () : void {
+        Route::get('alumni-activity', [AdminAlumniActivityController::class, 'index']);
+        Route::post('alumni-activity', [AdminAlumniActivityController::class, 'store']);
+        Route::get('alumni-activity/create', [AdminAlumniActivityController::class, 'create']);
+        Route::get('alumni-activity/{alumnus}/edit', [AdminAlumniActivityController::class, 'edit']);
+        Route::put('alumni-activity/{alumnus}', [AdminAlumniActivityController::class, 'update']);
+        Route::delete('alumni-activity/{alumnus}', [AdminAlumniActivityController::class, 'destroy']);
+    });
 
     Route::get('photo-albums', [AdminPhotoAlbumsController::class, 'index']);
     Route::post('photo-albums/refresh', [AdminPhotoAlbumsController::class, 'refresh']);
