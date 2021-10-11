@@ -135,3 +135,16 @@
     </div>
     
 @endsection
+
+@section('actions')
+    <div class="d-flex align-items-start">
+        @can('dashboard:members-read')
+            <a href="{{ action([\Francken\Association\Members\Http\Controllers\RegistrationController::class, 'index']) }}"
+                class="btn btn-primary mr-3"
+            >
+                <i class="fas fa-plus"></i>
+                Add member
+            </a>
+        @endcan
+    </div>
+@endsection
