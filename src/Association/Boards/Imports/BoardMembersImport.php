@@ -20,9 +20,9 @@ final class BoardMembersImport implements ToCollection, WithHeadingRow
         $this->uploader = $uploader;
     }
 
-    public function collection(Collection $rows) : void
+    public function collection(Collection $collection) : void
     {
-        $rows->each(function ($row) : void {
+        $collection->each(function ($row) : void {
             $member = BoardMember::forceCreate([
                 'id' => $row['id'],
                 'board_id' => $row['board_id'],

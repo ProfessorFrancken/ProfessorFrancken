@@ -30,11 +30,11 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
         $this->errors = new Collection();
     }
 
-    public function collection(Collection $rows) : void
+    public function collection(Collection $collection) : void
     {
-        Validator::make($rows->toArray(), $this->rules())->validate();
+        Validator::make($collection->toArray(), $this->rules())->validate();
 
-        foreach ($rows as $deduction) {
+        foreach ($collection as $deduction) {
             // Some old deduction files contain invalid data, so we will skip them
             if ($deduction['machtigingskenmerk'] === null) {
                 continue;

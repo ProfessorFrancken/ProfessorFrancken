@@ -34,24 +34,6 @@ use Illuminate\Support\Str;
  * @property-read int $position
  * @property-read int $price
  * @property-read string|null $splash_url
- * @method static \Illuminate\Database\Eloquent\Builder beer()
- * @method static \Illuminate\Database\Eloquent\Builder food()
- * @method static \Illuminate\Database\Eloquent\Builder newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder query()
- * @method static \Illuminate\Database\Eloquent\Builder search(\Francken\Treasurer\Http\Requests\AdminSearchProductsRequest $request)
- * @method static \Illuminate\Database\Eloquent\Builder soda()
- * @method static \Illuminate\Database\Eloquent\Builder whereAfbeelding($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereBeschikbaar($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereBtw($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereCategorie($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereEenheden($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereNaam($value)
- * @method static \Illuminate\Database\Eloquent\Builder wherePositie($value)
- * @method static \Illuminate\Database\Eloquent\Builder wherePrijs($value)
- * @method static \Illuminate\Database\Eloquent\Builder whereUpdatedAt($value)
  */
 final class Product extends Model
 {

@@ -197,7 +197,7 @@ final class AdminSubscriptionsController
             function (DateTimeImmutable $date) use ($today) : array {
                 $years = $date->diff($today)->y;
 
-                $key = (string)$date->format("F Y");
+                $key = $date->format("F Y");
                 if ($years === 0) {
                     return [$key => $date->format("F Y")];
                 }

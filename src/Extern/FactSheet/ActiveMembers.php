@@ -33,9 +33,10 @@ final class ActiveMembers
             ->map(
                 fn ($students, $study) : StudyStatistic =>
                 new StudentsPerStudy($study, $students->count())
-            );
+            )
+            ->values();
 
-        return (new StudiesStatistic(...$studies->values()))->studies();
+        return (new StudiesStatistic(...$studies))->studies();
     }
 
     public function genders() : Collection

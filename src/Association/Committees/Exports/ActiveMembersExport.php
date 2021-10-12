@@ -46,8 +46,9 @@ class ActiveMembersExport implements FromCollection, WithTitle, WithHeadings, Wi
             ->unique(fn (CommitteeMember $member) => $member->member_id);
     }
 
-    public function map($committeeMember) : array
+    public function map($row) : array
     {
+        $committeeMember = $row;
         Assert::isInstanceOf($committeeMember, CommitteeMember::class);
         Assert::isInstanceOf($committeeMember->member, LegacyMember::class);
 
