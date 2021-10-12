@@ -67,6 +67,9 @@ final class Book extends Model
 
     public function getCoverPathAttribute() : string
     {
+        if ($this->isbn === null) {
+            return '';
+        }
         $isbn = preg_replace("/[^0-9x]/i", '', $this->isbn);
 
         return 'http://images.amazon.com/images/P/' . $isbn . '.jpg';
