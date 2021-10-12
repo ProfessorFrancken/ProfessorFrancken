@@ -50,7 +50,7 @@
     "laravel/legacy-factories": "^1.0",
     "mockery/mockery": "^1.0",
     "nunomaduro/collision": "^5.0",
-    "nunomaduro/larastan": "^0.6.1",
+    "nunomaduro/larastan": "^0.7.12",
     "php-coveralls/php-coveralls": "^2.0",
     "phpspec/prophecy-phpunit": "^2.0",
     "phpstan/extension-installer": "^1.0",
