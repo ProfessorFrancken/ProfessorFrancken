@@ -134,5 +134,12 @@
             <i class="fas fa-eye"></i>
             Show member
         </a>
+        @canImpersonate($guard = null)
+        <a href="{{ route('impersonate', $account->id) }}"
+            class="btn btn-primary btn-sm"
+        >
+            Impersonate this user
+        </a>
+        @endCanImpersonate
     </div>
 @endsection

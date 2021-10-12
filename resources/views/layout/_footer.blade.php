@@ -65,6 +65,13 @@
                         <i class="fa fa-cookie-bite text-primary" aria-hidden="true"></i>
                         Cookies<br>
                     </a>
+
+                    @impersonating($guard = null)
+                    <a href="{{ route('impersonate.leave') }}">
+                        <i class="fas fa-user-secret text-primary" aria-hidden="true"></i>
+                        Leave impersonation
+                    </a>
+                    @endImpersonating
                 </div>
             </div>
 

@@ -41,7 +41,7 @@ final class SetupPermissions extends Command
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Make sure to import all permissions
-        $role = Role::create(['name' => 'Admin']);
+        Role::create(['name' => Role::ADMIN]);
         $this->call('permission:import');
 
         Role::create(['name' => ChangeRolesListener::BOARD_ROLE]);

@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
 use Spatie\Permission\Traits\HasRoles;
 use Webmozart\Assert\Assert;
 
@@ -30,6 +31,7 @@ final class Account extends Model implements
     use CanResetPassword;
     use Notifiable;
     use HasRoles;
+    use Impersonate;
 
     protected string $guard_name = 'web';
 
@@ -85,5 +87,10 @@ final class Account extends Model implements
     public function borrelcieAccount() : HasOne
     {
         return $this->hasOne(BorrelcieAccount::class, 'member_id', 'member_id');
+    }
+
+    public function canImpersonate() : bool
+    {
+        return $this->hasRole(Role::ADMIN);
     }
 }
