@@ -41,4 +41,11 @@
       <code>soda</code>
     </UndefinedMagicMethod>
   </file>
+  <file src="vendor/lab404/laravel-impersonate/src/Models/Impersonate.php">
+    <InvalidDocblock occurrences="3">
+      <code>public function canBeImpersonated()</code>
+      <code>public function isImpersonated()</code>
+      <code>public function leaveImpersonation()</code>
+    </InvalidDocblock>
+  </file>
 </files>

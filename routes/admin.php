@@ -286,4 +286,6 @@ Route::group(['prefix' => 'compucie'], function () : void {
     });
 });
 
+Route::impersonate();
+
 Route::fallback([AdminController::class, 'showPageIsUnavailable']);
