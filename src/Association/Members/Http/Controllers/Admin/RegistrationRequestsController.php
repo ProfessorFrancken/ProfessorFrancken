@@ -118,6 +118,7 @@ final class RegistrationRequestsController extends Controller
         $account = auth()->user();
         Assert::notNull($account);
 
+        /** @var BoardMember|null $boardMember */
         $boardMember = BoardMember::whereMemberId($account->member_id)
             ->whereIn('board_member_status', [
                 BoardMemberStatus::BOARD_MEMBER,

@@ -27,6 +27,7 @@ class KandiTotoRequest extends FormRequest
 
     public function boardMember() : BoardMember
     {
+        /** @var BoardMember */
         return BoardMember::whereMemberId($this->user()->member_id)
             ->whereIn('board_member_status', [
                 BoardMemberStatus::DEMISSIONED_BOARD_MEMBER,

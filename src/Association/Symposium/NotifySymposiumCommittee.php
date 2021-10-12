@@ -25,6 +25,7 @@ class NotifySymposiumCommittee implements ShouldQueue
         ParticipantRegisteredForSymposium $event
     ) : void {
         $board = Board::current()->firstOrFail();
+        /** @var \Francken\Association\Committees\Committee $committee */
         $committee = $board->committees()->where('name', 'Sympcie')->firstOrFail();
         $committeeMembers = $committee->load('members.member')->members;
         $names = $committeeMembers

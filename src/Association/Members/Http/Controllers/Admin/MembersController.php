@@ -63,13 +63,19 @@ final class MembersController extends Controller
         $studies = LegacyMember::distinct()
             ->select('studierichting')
             ->get()
-            ->mapWithKeys(fn ($study) => [$study->studierichting => $study->studierichting])
+            ->mapWithKeys(function ($study) {
+                /** @var LegacyMember $study */
+                return [$study->studierichting => $study->studierichting];
+            })
             ->prepend("All", null);
 
         $memberTypes = LegacyMember::distinct()
             ->select('type_lid')
             ->get()
-            ->mapWithKeys(fn ($study) => [$study->type_lid => $study->type_lid])
+            ->mapWithKeys(function ($study) {
+                /** @var LegacyMember $study */
+                return [$study->type_lid => $study->type_lid];
+            })
             ->prepend("All", null);
 
         return view('admin.association.members.index', [

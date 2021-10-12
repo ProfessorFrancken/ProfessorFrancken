@@ -22,10 +22,15 @@ final class CompaniesController
             ->with(['logoMedia'])
             ->get();
 
+        $keywords = $partners->map(function ($partner): string {
+            /** @var Partner $partner */
+            return $partner->name;
+        })->implode(', ');
+
         return view('career.companies.index')
             ->with([
                 'partners' => $partners,
-                'keywords' => $partners->map(fn (Partner $partner) : string => $partner->name)->implode(', '),
+            'keywords' => $keywords,
                 'breadcrumbs' => [
                     ['url' => '/career', 'text' => 'Career'],
                     ['url' => action([self::class, 'index']), 'text' => 'Company profiles'],
