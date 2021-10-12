@@ -68,6 +68,7 @@ final class BoardMember extends Model
         DateTimeImmutable $installedAt,
         ?Media $photo
     ) : self {
+        /** @var LegacyMember|null $legacyMember */
         $legacyMember = LegacyMember::find($memberId);
         $fullname = $legacyMember !== null
                   ? $legacyMember->fullname
@@ -133,6 +134,7 @@ final class BoardMember extends Model
         ?DateTimeImmutable $dechargedAt,
         ?Media $photo
     ) : void {
+        /** @var LegacyMember|null $legacyMember */
         $legacyMember = LegacyMember::find($memberId);
         $fullname = $legacyMember !== null
                   ? $legacyMember->fullname

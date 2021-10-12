@@ -38,6 +38,7 @@ final class Bet extends Model
         Assert::keyExists($positions, 'extern');
         Assert::keyExists($positions, 'wildcard');
 
+        /** @var Bet */
         return self::create([
             'member_id' => $member->member_id,
             'board_year' => $year->start()->format('Y'),

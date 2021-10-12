@@ -10,6 +10,7 @@ use Francken\Association\Committees\FileUploader;
 use Francken\Association\Committees\Http\Requests\AdminCommitteeRequest;
 use Francken\Shared\Markdown\ContentCompiler;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 final class AdminCommitteesController
@@ -31,15 +32,7 @@ final class AdminCommitteesController
         $boards = Board::orderBy('installed_at', 'desc')->get();
         $boardYears = $boards->mapWithKeys(fn (Board $board) : array => [$board->id => $board->board_name->toString()]);
 
-        $continuableCommittees =  Committee::query()
-            ->with(['board', 'logoMedia'])
-            ->whereDoesntHave('childCommittee')
-            // HACK here we assume boards are always in order so that we don't select
-            // committees from future boards when looking at an older board's committee page
-            ->where('board_id', '<', $board->id)
-            ->orderBy('board_id', 'desc')
-            ->orderBy('name', 'asc')
-            ->get();
+        $continuableCommittees = $this->getContinuableCommittees($board);
 
         return view('admin.association.committees.index')
             ->with([
@@ -73,21 +66,8 @@ final class AdminCommitteesController
 
     public function create(Board $board) : View
     {
-        $continuableCommittees =  Committee::query()
-            ->with(['board', 'logoMedia'])
-            ->whereDoesntHave('childCommittee')
-            // HACK here we assume boards are always in order so that we don't select
-            // committees from future boards when looking at an older board's committee page
-            ->where('board_id', '<', $board->id)
-            ->orderBy('board_id', 'desc')
-            ->orderBy('name', 'asc')
-            ->get();
-
-        $parentCommittees = $continuableCommittees->mapWithKeys(
-            fn ($c) : array => [
-                $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
-            ]
-        );
+        $continuableCommittees = $this->getContinuableCommittees($board);
+        $parentCommittees = $this->getParentCommittees($continuableCommittees);
 
         return view('admin.association.committees.create')
             ->with([
@@ -131,20 +111,8 @@ final class AdminCommitteesController
 
     public function edit(Board $board, Committee $committee) : View
     {
-        $continuableCommittees =  Committee::query()
-            ->with(['board', 'logoMedia'])
-            ->whereDoesntHave('childCommittee')
-            // HACK here we assume boards are always in order so that we don't select
-            // committees from future boards when looking at an older board's committee page
-            ->where('board_id', '<', $board->id)
-            ->orderBy('board_id', 'desc')
-            ->orderBy('name', 'asc')
-            ->get();
-
-        $parentCommittees = $continuableCommittees
-            ->mapWithKeys(fn ($c) : array => [
-                $c->id => $c->name . ' (' . $c->board->board_name->toString() . ')'
-            ]);
+        $continuableCommittees = $this->getContinuableCommittees($board);
+        $parentCommittees = $this->getParentCommittees($continuableCommittees);
 
         $parentCommittee = $committee->parentCommittee;
         if ($parentCommittee && $parentCommittee->board instanceof Board) {
@@ -200,5 +168,34 @@ final class AdminCommitteesController
         $committee->delete();
 
         return redirect()->action([self::class, 'index'], ['board' => $board]);
+    }
+
+    private function getContinuableCommittees(Board $board) : Collection
+    {
+        return  Committee::query()
+            ->with(['board', 'logoMedia'])
+            ->whereDoesntHave('childCommittee')
+            // HACK here we assume boards are always in order so that we don't select
+            // committees from future boards when looking at an older board's committee page
+            ->where('board_id', '<', $board->id)
+            ->orderBy('board_id', 'desc')
+            ->orderBy('name', 'asc')
+            ->get();
+    }
+
+
+    private function getParentCommittees(Collection $continuableCommittees) : Collection
+    {
+        return $continuableCommittees->mapWithKeys(
+            function ($committee) : array {
+                /** @var Committee $committee */
+                /** @var Board $board */
+                $board = $committee->board;
+
+                return [
+                    $committee->id => $committee->name . ' (' . $board->board_name->toString() . ')'
+                ];
+            }
+        );
     }
 }

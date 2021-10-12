@@ -94,6 +94,7 @@ final class News extends Model
             return null;
         }
 
+        /** @var News|null */
         return self::orderBy('published_at', 'desc')
             ->where('id', '<>', $this->id)
             ->whereDate('published_at', '<=', $this->published_at->toDateTimeString())
@@ -109,6 +110,7 @@ final class News extends Model
             return null;
         }
 
+        /** @var News|null */
         return self::orderBy('published_at', 'asc')
             ->where('id', '<>', $this->id)
             ->whereDate('published_at', '>=', $this->published_at->toDateTimeString())

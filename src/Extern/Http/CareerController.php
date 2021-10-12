@@ -24,14 +24,24 @@ final class CareerController
         $partners = Partner::query()
             ->has('vacancies')
             ->orderBy('name', 'asc')
-            ->get();
+            ->get()
+            ->mapWithKeys(function ($partner) : array {
+                /**  @var Partner $partner */
+                return [$partner->getKey() => $partner->name];
+            })->prepend("Any", 0)
+                  ;
+        $sectors = Sector::all()
+            ->mapWithKeys(function ($sector) : array {
+                /** @var Sector $sector */
+                return [$sector->getKey() => $sector->name];
+            })->prepend("Any", 0);
 
         return view('career.job-openings')
             ->with([
                 'request' => $request,
                 'vacancies' => $vacancies,
-                'partners' => $partners->mapWithKeys(fn (Partner $partner) : array => [$partner->getKey() => $partner->name])->prepend("Any", 0),
-                'sectors' => Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])->prepend("Any", 0),
+                'partners' => $partners,
+                'sectors' => $sectors,
                 'types' => JobType::TYPES
             ])
             ->with('breadcrumbs', [

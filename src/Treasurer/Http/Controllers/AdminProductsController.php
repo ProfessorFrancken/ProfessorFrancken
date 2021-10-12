@@ -16,7 +16,7 @@ final class AdminProductsController
 {
     public function index(AdminSearchProductsRequest $request) : View
     {
-        $products = Product::search($request)
+        $products = Product::query()
             ->when(
                 $request->category('beer'),
                 fn (Builder $query) : Builder => $query->beer()
@@ -30,6 +30,7 @@ final class AdminProductsController
                 fn (Builder $query) : Builder => $query->soda()
             )
             ->orderBy('naam', 'ASC')
+            ->search($request)
             ->paginate(40)
             ->appends($request->except('page'));
 

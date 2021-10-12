@@ -19,7 +19,7 @@ class OrdersFeature extends TestCase
         $token = new JwtToken(config('francken.plus_one.key'));
         factory(Transaction::class, 10)->create();
 
-        $this->json('GET', action([OrdersController::class, 'index']), [], ['Authorization' => 'Bearer ' . (string)$token->token()])
+        $this->json('GET', action([OrdersController::class, 'index']), [], ['Authorization' => 'Bearer ' . $token->token()->toString()])
             ->assertResponseStatus(200)
             ->seeJsonStructure([
                 'orders' => [[
@@ -62,7 +62,7 @@ class OrdersFeature extends TestCase
         ];
 
         $token = new JwtToken(config('francken.plus_one.key'));
-        $this->post(action([OrdersController::class, 'store']), $order, ['Authorization' => 'Bearer ' . (string)$token->token()]);
+        $this->post(action([OrdersController::class, 'store']), $order, ['Authorization' => 'Bearer ' . $token->token()->toString()]);
         $this->assertResponseStatus(201);
     }
 }

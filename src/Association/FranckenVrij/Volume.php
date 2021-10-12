@@ -16,7 +16,7 @@ final class Volume
     private array $editions = [];
 
     /**
-     * @var array<Edition>
+     * @param array<Edition> $editions
      */
     public function __construct(int $volume, array $editions)
     {

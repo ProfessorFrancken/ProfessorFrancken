@@ -15,7 +15,7 @@ class PicturesFeature extends TestCase
     {
         $token = new JwtToken(config('francken.plus_one.key'));
 
-        $this->json('GET', action([PicturesController::class, 'show'], ['url' => 'hoi']), [], ['Authorization' => 'Bearer ' . (string)$token->token()])
+        $this->json('GET', action([PicturesController::class, 'show'], ['url' => 'hoi']), [], ['Authorization' => 'Bearer ' . $token->token()->toString()])
              ->assertRedirectedTo('http://old.professorfrancken.nl/database/streep/afbeeldingen/hoi');
     }
 }

@@ -121,6 +121,7 @@ final class AdminBoardsController
         );
 
         $request->members()->each(function (array $memberData) use ($board) : void {
+            /** @var BoardMember|null $member */
             $member = $board->members()->where('id', $memberData['id'])->first();
 
             $photo = $this->uploadPhoto(

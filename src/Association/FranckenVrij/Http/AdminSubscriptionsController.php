@@ -75,6 +75,7 @@ final class AdminSubscriptionsController
 
     public function create(Request $request, Clock $clock) : View
     {
+        /** @var LegacyMember|null $member */
         $member = $request->input('member_id')
                 ? LegacyMember::findOrFail($request->input('member_id'))
                 : null;
@@ -197,7 +198,7 @@ final class AdminSubscriptionsController
             function (DateTimeImmutable $date) use ($today) : array {
                 $years = $date->diff($today)->y;
 
-                $key = (string)$date->format("F Y");
+                $key = $date->format("F Y");
                 if ($years === 0) {
                     return [$key => $date->format("F Y")];
                 }

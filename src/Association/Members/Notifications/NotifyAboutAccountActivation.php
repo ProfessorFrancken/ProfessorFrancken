@@ -44,6 +44,7 @@ class NotifyAboutAccountActivation extends Mailable
      */
     public function build(PasswordBroker $broker) : self
     {
+        /** @var Account $account */
         $account = Account::findOrFail($this->accountId);
         Assert::notNull($account->member);
 

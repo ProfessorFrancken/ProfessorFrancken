@@ -45,6 +45,7 @@ final class ActivateAccount extends EventHandler implements ShouldQueue
 
     public function whenAccountWasActivated(AccountWasActivated $event) : void
     {
+        /** @var Account $account */
         $account = Account::findOrFail($event->accountId());
 
         $this->mail->to($account->email)

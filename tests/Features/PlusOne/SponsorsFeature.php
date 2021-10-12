@@ -15,7 +15,7 @@ class SponsorsFeature extends TestCase
     {
         $token = new JwtToken(config('francken.plus_one.key'));
 
-        $this->json('GET', action([SponsorsController::class, 'index']), [], ['Authorization' => 'Bearer ' . (string) $token->token()])
+        $this->json('GET', action([SponsorsController::class, 'index']), [], ['Authorization' => 'Bearer ' . $token->token()->toString()])
              ->seeJsonStructure([
                  'sponsors' => [[
                     'name',

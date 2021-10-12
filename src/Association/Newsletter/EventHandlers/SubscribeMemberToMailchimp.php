@@ -20,6 +20,7 @@ final class SubscribeMemberToMailchimp implements ShouldQueue
 
     public function handle(MemberWasRegistered $event) : void
     {
+        /**  @var LegacyMember $member */
         $member = LegacyMember::where('id', $event->registration->member_id)->firstOrFail();
 
         $this->newsletter->subscribe(

@@ -13,6 +13,7 @@ final class CommitteesController
 {
     public function index() : Collection
     {
+        /** @var Board $board */
         $board = Board::with(['committees.members.member'])
                ->whereNotNull('installed_at')
                ->orderBy('installed_at', 'desc')

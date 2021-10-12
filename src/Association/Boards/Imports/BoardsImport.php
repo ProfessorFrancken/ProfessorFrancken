@@ -20,9 +20,9 @@ final class BoardsImport implements ToCollection, WithHeadingRow
         $this->uploader = $uploader;
     }
 
-    public function collection(Collection $rows) : void
+    public function collection(Collection $collection) : void
     {
-        $rows->each(function ($row) : void {
+        $collection->each(function ($row) : void {
             $board = Board::forceCreate([
                 'id' => $row['id'],
                 'name' => $row['name'] ?? '',

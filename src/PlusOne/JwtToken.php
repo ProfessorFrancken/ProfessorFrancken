@@ -6,10 +6,10 @@ namespace Francken\PlusOne;
 
 use DateInterval;
 use DateTimeImmutable;
-use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
-use Lcobucci\JWT\Token;
+use Lcobucci\JWT\Token\Plain;
 
 class JwtToken
 {
@@ -20,15 +20,20 @@ class JwtToken
         $this->key = $key;
     }
 
-    public function token() : Token
+    public function token() : Plain
     {
         $now = new DateTimeImmutable();
 
-        return (new Builder())
-               ->setIssuedAt($now)
-               ->setExpiration($this->expiration($now))
-               ->set('plus-one', true)
-               ->getToken(new Sha256(), new InMemory($this->key));
+        $configuration = Configuration::forSymmetricSigner(
+            new Sha256(),
+            InMemory::plainText($this->key)
+        );
+
+        return $configuration->builder()
+               ->issuedAt($now)
+               ->expiresAt($this->expiration($now))
+               ->withClaim('plus-one', true)
+               ->getToken($configuration->signer(), $configuration->signingKey());
     }
 
     private function expiration(DateTimeImmutable $now) : DateTimeImmutable
