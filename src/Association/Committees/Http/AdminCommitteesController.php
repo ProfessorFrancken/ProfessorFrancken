@@ -170,8 +170,8 @@ final class AdminCommitteesController
         return redirect()->action([self::class, 'index'], ['board' => $board]);
     }
 
-    private function getContinuableCommittees(Board $board): Collection
-        {
+    private function getContinuableCommittees(Board $board) : Collection
+    {
         return  Committee::query()
             ->with(['board', 'logoMedia'])
             ->whereDoesntHave('childCommittee')
@@ -181,14 +181,13 @@ final class AdminCommitteesController
             ->orderBy('board_id', 'desc')
             ->orderBy('name', 'asc')
             ->get();
+    }
 
-        }
 
-
-    private function getParentCommittees(Collection $continuableCommittees): Collection
+    private function getParentCommittees(Collection $continuableCommittees) : Collection
     {
         return $continuableCommittees->mapWithKeys(
-            function ($committee): array {
+            function ($committee) : array {
                 /** @var Committee $committee */
                 /** @var Board $board */
                 $board = $committee->board;

@@ -129,7 +129,8 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
         $this->deductions->push($deduction);
     }
 
-    private function getLegacyMember( Collection $deduction): ?LegacyMember {
+    private function getLegacyMember(Collection $deduction) : ?LegacyMember
+    {
         $possibleMemberId=(int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
         try {
             /** @var LegacyMember|null */

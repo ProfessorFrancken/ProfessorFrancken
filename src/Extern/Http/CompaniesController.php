@@ -22,7 +22,7 @@ final class CompaniesController
             ->with(['logoMedia'])
             ->get();
 
-        $keywords = $partners->map(function ($partner): string {
+        $keywords = $partners->map(function ($partner) : string {
             /** @var Partner $partner */
             return $partner->name;
         })->implode(', ');

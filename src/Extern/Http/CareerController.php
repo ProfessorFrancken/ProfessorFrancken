@@ -25,13 +25,13 @@ final class CareerController
             ->has('vacancies')
             ->orderBy('name', 'asc')
             ->get()
-            ->mapWithKeys(function ($partner): array {
+            ->mapWithKeys(function ($partner) : array {
                 /**  @var Partner $partner */
                 return [$partner->getKey() => $partner->name];
             })->prepend("Any", 0)
                   ;
         $sectors = Sector::all()
-            ->mapWithKeys(function ($sector): array {
+            ->mapWithKeys(function ($sector) : array {
                 /** @var Sector $sector */
                 return [$sector->getKey() => $sector->name];
             })->prepend("Any", 0);
