@@ -125,3 +125,14 @@
         </div>
     </div>
 @endsection
+
+@section('actions')
+    <div class="d-flex align-items-start">
+        <a href="{{ action([\Francken\Association\Members\Http\Controllers\Admin\MembersController::class, 'show'], ['member' => $account->member]) }}"
+           class="btn btn-primary btn-sm"
+        >
+            <i class="fas fa-eye"></i>
+            Show member
+        </a>
+    </div>
+@endsection
