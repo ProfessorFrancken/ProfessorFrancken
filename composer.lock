@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8336381a26f7b988bbf259dc8f576497",
+    "content-hash": "4bb250fad096a3b9c5899bde30666be0",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4949,27 +4949,27 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "3.18.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a"
+                "reference": "58d5eb6c7b0eafa8bdf0a93d1ca5c214a05344cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/1c51a5fa12131565fe3860705163e53d7a26258a",
-                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/58d5eb6c7b0eafa8bdf0a93d1ca5c214a05344cb",
+                "reference": "58d5eb6c7b0eafa8bdf0a93d1ca5c214a05344cb",
                 "shasum": ""
             },
             "require": {
-                "illuminate/auth": "^5.8|^6.0|^7.0|^8.0",
-                "illuminate/container": "^5.8|^6.0|^7.0|^8.0",
-                "illuminate/contracts": "^5.8|^6.0|^7.0|^8.0",
-                "illuminate/database": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/auth": "^6.0|^7.0|^8.0",
+                "illuminate/container": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
                 "php": "^7.2.5|^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^3.8|^4.0|^5.0|^6.0",
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
                 "phpunit/phpunit": "^8.0|^9.0",
                 "predis/predis": "^1.1"
             },
@@ -4979,6 +4979,10 @@
                     "providers": [
                         "Spatie\\Permission\\PermissionServiceProvider"
                     ]
+                },
+                "branch-alias": {
+                    "dev-main": "5.x-dev",
+                    "dev-master": "5.x-dev"
                 }
             },
             "autoload": {
@@ -5001,7 +5005,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Permission handling for Laravel 5.8 and up",
+            "description": "Permission handling for Laravel 6.0 and up",
             "homepage": "https://github.com/spatie/laravel-permission",
             "keywords": [
                 "acl",
@@ -5015,7 +5019,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/3.18.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/5.1.1"
             },
             "funding": [
                 {
@@ -5023,7 +5027,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-09T14:08:36+00:00"
+            "time": "2021-09-01T20:02:17+00:00"
         },
         {
             "name": "spatie/valuestore",
@@ -13942,5 +13946,5 @@
         "ext-json": "^7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
