@@ -75,7 +75,21 @@
         </div>
 
         <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Accounts with this role</h3>
 
+                    <ul>
+                        @foreach ($role->users as $account)
+                            <li>
+                                <a href={{ action([\Francken\Auth\Http\Controllers\Admin\AccountsController::class, 'show'], ['account' => $account])  }}>
+                                    {{ $account->member->fullname }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
