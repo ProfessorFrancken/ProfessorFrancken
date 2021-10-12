@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Activities;
 
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
 use Webmozart\Assert\Assert;
 
 final class Activity extends Model

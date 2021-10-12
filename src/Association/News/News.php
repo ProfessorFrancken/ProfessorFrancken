@@ -40,7 +40,7 @@ final class News extends Model
     public function publish(DateTimeImmutable $publicationDate) : void
     {
         $this->published_at = $publicationDate;
-        $this->slug = $this->published_at->format('y-m-d-') . Str::slug($this->title);
+        $this->slug = $publicationDate->format('y-m-d-') . Str::slug($this->title);
     }
 
     public function archive() : void

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Association\Symposium;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 /**
  * Francken\Association\Symposium\AdCount
