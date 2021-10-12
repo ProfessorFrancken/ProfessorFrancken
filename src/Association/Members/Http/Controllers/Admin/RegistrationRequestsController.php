@@ -23,7 +23,7 @@ final class RegistrationRequestsController extends Controller
         $requests = Registration::orderBy('created_at', 'desc')
             ->when(
                 $request->selected('open'),
-                fn (Builder $query) : Builder => $query->whereNull('registration_accepted_at')
+                fn ($query) => $query->whereNull('registration_accepted_at')
             )
             ->when(
                 $request->selected('approved-not-signed'),

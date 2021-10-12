@@ -16,7 +16,6 @@ use Francken\Association\Members\PaymentDetails;
 use Francken\Association\Members\StudyDetails;
 use Francken\Auth\Account;
 use Francken\Shared\Email;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -140,7 +139,7 @@ final class LegacyMember extends Model
         return self::query()
             ->when(
                 $except !== null && $except->isNotEmpty(),
-                fn (Builder $query) : Builder => $query->whereNotIn('id', $except)
+                fn ($query) => $query->whereNotIn('id', $except)
             )
             ->where('is_lid', true)
             ->select(['id',  'voornaam', 'tussenvoegsel', 'achternaam'])

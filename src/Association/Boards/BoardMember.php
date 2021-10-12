@@ -150,7 +150,7 @@ final class BoardMember extends Model
 
         if ($photo !== null) {
             $this->syncMedia($photo, static::BOARD_MEMBER_PHOTO_TAG);
-            $this->photo_media_id = $photo->id;
+            $this->photo_media_id = (int) $photo->id;
         }
 
         $this->save();
