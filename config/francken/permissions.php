@@ -71,7 +71,7 @@ return [
         'dashboard:permissions-read',
         'dashboard:permissions-write',
 
-        'alumni-activity',
+        'dashboard:alumni-activity',
 
         // Given when a member activates their borrelcie account
         'borrelcie',

@@ -16,6 +16,11 @@
             <p class="mb-0">
                 {{ $member->fullname }} has an account with {{ $account->roles_count }} roles and {{ $account->permissions_count }} permissions.
             </p>
+            @can('dashboard:accounts-read')
+            <a href={{ action([\Francken\Auth\Http\Controllers\Admin\AccountsController::class, 'show'], ['account' => $account])  }}>
+                Go to account
+            </a>
+            @endcan
         @else
             <div class="my-3 bg-light py-3 px-2">
                 <p class="mb-0 text-center" style="font-size: 0.8rem">
