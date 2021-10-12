@@ -25,6 +25,7 @@ final class ActiveMembersStatistics
             $this->today
         );
 
+        /** @var Board $board */
         $board = Board::orderBy('installed_at', 'desc')->firstOrFail();
 
         // Select all members that are in at least one committee

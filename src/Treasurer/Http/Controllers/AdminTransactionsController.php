@@ -73,6 +73,7 @@ final class AdminTransactionsController
 
     public function store(AdminTransactionRequest $request) : RedirectResponse
     {
+        /** @var Product $product */
         $product = Product::findOrFail($request->productId());
 
         $transaction = Transaction::create([

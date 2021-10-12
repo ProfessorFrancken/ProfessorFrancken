@@ -16,6 +16,7 @@ final class AdminContinueCommitteesController
     {
         $committeeId = $request->input('committee_id');
 
+        /** @var Committee $committeeToContinue */
         $committeeToContinue = Committee::findOrFail($committeeId);
         Assert::isInstanceOf($committeeToContinue, Committee::class);
 

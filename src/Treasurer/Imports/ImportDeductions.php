@@ -98,11 +98,8 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
     private function addDeduction(Collection $deduction) : void
     {
-        try {
-            $possibleMemberId = (int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
-            $member = LegacyMember::findOrFail($possibleMemberId);
-        } catch (ModelNotFoundException $e) {
-            Log::error("Could not retrieve deduction information", $deduction->toArray());
+        $member = $this->getLegacyMember($deduction);
+        if ($member === null) {
             return;
         }
 
@@ -130,6 +127,17 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
         $this->errors->put($member->id, $errors);
         $this->deductions->push($deduction);
+    }
+
+    private function getLegacyMember( Collection $deduction): ?LegacyMember {
+        $possibleMemberId=(int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
+        try {
+            /** @var LegacyMember|null */
+            return LegacyMember::findOrFail($possibleMemberId);
+        } catch (ModelNotFoundException $e) {
+            Log::error("Could not retrieve deduction information", $deduction->toArray());
+            return null;
+        }
     }
 
 

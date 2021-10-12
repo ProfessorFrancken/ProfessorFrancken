@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
+  <file src="src/Association/FranckenVrij/Http/AdminSubscriptionsController.php">
+    <InvalidArrayOffset occurrences="3">
+      <code>[$key =&gt; $date-&gt;format("F Y")]</code>
+      <code>[$key =&gt; sprintf("%s (1 year)", $date-&gt;format("F Y"))]</code>
+    </InvalidArrayOffset>
+  </file>
+  <file src="src/Association/Members/Http/Controllers/Admin/MembersController.php">
+    <InvalidArrayOffset occurrences="2">
+      <code>[$study-&gt;studierichting =&gt; $study-&gt;studierichting]</code>
+      <code>[$study-&gt;type_lid =&gt; $study-&gt;type_lid]</code>
+    </InvalidArrayOffset>
+  </file>
+  <file src="src/Association/Members/Http/FranckenVrijSubscriptionController.php">
+    <InvalidArrayOffset occurrences="3">
+      <code>[$key =&gt; $date-&gt;format("F Y")]</code>
+      <code>[$key =&gt; sprintf("%s (1 year)", $date-&gt;format("F Y"))]</code>
+    </InvalidArrayOffset>
+  </file>
+  <file src="src/Extern/FactSheet/ActiveMembers.php">
+    <InvalidArgument occurrences="1">
+      <code>$studies</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Extern/FactSheet/FirstYearStudentsPerYear.php">
+    <InvalidArgument occurrences="1">
+      <code>$studies</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php">
+    <InvalidArgument occurrences="1">
+      <code>$this-&gt;studyPhaseStatistics($students)-&gt;values()</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Treasurer/Http/Controllers/AdminProductsController.php">
+    <UndefinedMagicMethod occurrences="4">
+      <code>beer</code>
+      <code>count</code>
+      <code>food</code>
+      <code>soda</code>
+    </UndefinedMagicMethod>
+  </file>
+</files>

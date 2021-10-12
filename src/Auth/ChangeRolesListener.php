@@ -186,6 +186,7 @@ final class ChangeRolesListener extends EventHandler
 
     private function role(string $name) : Role
     {
+        /** @var Role */
         return Role::firstOrCreate(['name' => $name]);
     }
 

@@ -75,6 +75,7 @@ final class AdminSubscriptionsController
 
     public function create(Request $request, Clock $clock) : View
     {
+        /** @var LegacyMember|null $member */
         $member = $request->input('member_id')
                 ? LegacyMember::findOrFail($request->input('member_id'))
                 : null;

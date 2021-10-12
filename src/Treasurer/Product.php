@@ -34,6 +34,13 @@ use Illuminate\Support\Str;
  * @property-read int $position
  * @property-read int $price
  * @property-read string|null $splash_url
+ * @method static \Illuminate\Database\Eloquent\Builder|Product beer()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product food()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product search(\Francken\Treasurer\Http\Requests\AdminSearchProductsRequest $request)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product soda()
  */
 final class Product extends Model
 {

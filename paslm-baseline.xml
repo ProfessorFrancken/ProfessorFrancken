@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
+  <file src="src/Association/Committees/Http/AdminContinueCommitteesController.php">
+    <InvalidTemplateParam occurrences="1">
+      <code>Committee::findOrFail($committeeId)</code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Association/FranckenVrij/Http/AdminSubscriptionsController.php">
+    <InvalidTemplateParam occurrences="1">
+      <code>LegacyMember::findOrFail($request-&gt;input('member_id'))</code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Association/Members/Http/Controllers/Admin/MembersController.php">
+    <InvalidArrayOffset occurrences="2">
+      <code>[$study-&gt;studierichting =&gt; $study-&gt;studierichting]</code>
+      <code>[$study-&gt;type_lid =&gt; $study-&gt;type_lid]</code>
+    </InvalidArrayOffset>
+  </file>
+  <file src="src/Extern/FactSheet/ActiveMembers.php">
+    <InvalidArgument occurrences="1">
+      <code>$studies</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Extern/FactSheet/FirstYearStudentsPerYear.php">
+    <InvalidArgument occurrences="1">
+      <code>$studies</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php">
+    <InvalidArgument occurrences="1">
+      <code>$this-&gt;studyPhaseStatistics($students)-&gt;values()</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/PlusOne/Http/OrdersController.php">
+    <InvalidTemplateParam occurrences="1">
+      <code>Product::findOrFail($product['id'])</code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Treasurer/Http/Controllers/AdminProductsController.php">
+    <UndefinedMagicMethod occurrences="3">
+      <code>beer</code>
+      <code>food</code>
+      <code>soda</code>
+    </UndefinedMagicMethod>
+  </file>
+</files>
