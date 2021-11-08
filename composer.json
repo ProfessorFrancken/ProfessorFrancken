@@ -23,7 +23,7 @@
     "laravelcollective/html": "^6.1",
     "lcobucci/jwt": "^4.1",
     "league/commonmark": "^1.5",
-    "league/html-to-markdown": "^4.9",
+    "league/html-to-markdown": "^5.0",
     "league/period": "^4.10",
     "maatwebsite/excel": "^3.1",
     "plank/laravel-mediable": "^4.4",
