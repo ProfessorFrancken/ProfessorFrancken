@@ -43,7 +43,7 @@
     "barryvdh/laravel-debugbar": "^3.3",
     "barryvdh/laravel-ide-helper": "2.8.*",
     "ergebnis/composer-normalize": "^2.6",
-    "friendsofphp/php-cs-fixer": "^2.19",
+    "friendsofphp/php-cs-fixer": "^3.3",
     "fzaninotto/faker": "~1.4",
     "laravel/browser-kit-testing": "^6.0",
     "laravel/envoy": "^2.1",
