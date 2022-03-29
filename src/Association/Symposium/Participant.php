@@ -59,6 +59,7 @@ final class Participant extends Model
 
         'free_lunch',
         'free_borrelbox',
+        'lunch_option',
     ];
 
     public function getFullnameAttribute() : string

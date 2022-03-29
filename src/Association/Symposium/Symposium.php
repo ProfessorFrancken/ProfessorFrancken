@@ -95,7 +95,8 @@ final class Symposium extends Model
         bool $paysWithIban = false,
         ?string $iban = null,
         bool $freeLunch = false,
-        bool $freeBorrelbox = false
+        bool $freeBorrelbox = false,
+        string $lunchOption = null
     ) : Participant {
         $participant = $this->participants()->create([
             'firstname' => $firstname,
@@ -112,6 +113,7 @@ final class Symposium extends Model
 
             'free_lunch' => $freeLunch,
             'free_borrelbox' => $freeBorrelbox,
+            'lunch_option' => $lunchOption,
         ]);
 
         event(new ParticipantRegisteredForSymposium($participant));
