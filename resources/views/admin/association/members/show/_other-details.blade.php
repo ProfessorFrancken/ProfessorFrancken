@@ -103,7 +103,7 @@
                 <strong>Free membership</strong>
             </li>
             <li>
-                <strong>Iban</strong> {{  $member->payment_details->maskedIban() }}
+                <strong>Iban</strong> {{  $member->payment_details->iban() }}
             </li>
             <li>
                 <strong>Bank</strong> {{  $member->plaats_bank }}

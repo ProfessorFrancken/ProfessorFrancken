@@ -87,4 +87,13 @@ class ParticipantRequest extends FormRequest
     {
         return (bool)$this->input('free_borrelbox', false);
     }
+
+    public function lunchOption() : ?string
+    {
+        if ( ! $this->has('lunch_option')) {
+            return null;
+        }
+
+        return $this->input('lunch_option');
+    }
 }

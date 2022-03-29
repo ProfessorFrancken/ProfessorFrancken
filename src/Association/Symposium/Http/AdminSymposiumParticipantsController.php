@@ -51,7 +51,8 @@ final class AdminSymposiumParticipantsController
             $request->paysWithIban(),
             $request->iban(),
             $request->freeLunch(),
-            $request->freeBorrelbox()
+            $request->freeBorrelbox(),
+            $request->lunchOption()
         );
 
         if ($request->filled('member_id')) {
@@ -78,6 +79,7 @@ final class AdminSymposiumParticipantsController
 
             'free_lunch' => $request->freeLunch(),
             'free_borrelbox' => $request->freeBorrelbox(),
+            'lunch_option' => $request->lunchOption()
         ]);
 
         return redirect()->action([AdminSymposiaController::class, 'show'], $symposium->id);

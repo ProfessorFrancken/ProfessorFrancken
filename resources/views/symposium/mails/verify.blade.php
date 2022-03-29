@@ -19,7 +19,7 @@ Verify registration
 
 ### About the symposium
 
-The symposium will be held on {{ $symposium->start_date->format("l")  }} the <strong>{{ $symposium->start_date->format("j")  }}th of {{ $symposium->start_date->format("F") }}</strong> and will be held online with potential limited live viewing at Zernike campus.
+The symposium will be held on {{ $symposium->start_date->format("l")  }} the <strong>{{ $symposium->start_date->format("j")  }}th of {{ $symposium->start_date->format("F") }}</strong> and will be held at Baxbier (Friesestraatweg 201).
 We will gradually update the website with more information about speakers and the Symposium's schedule.
 
 @include('symposium.mails._footer', ['symposium' => $participant->symposium])

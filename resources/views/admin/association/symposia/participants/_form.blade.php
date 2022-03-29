@@ -14,7 +14,11 @@
         <x-forms.checkbox name="pays_with_iban" label='Pays with iban' />
         <x-forms.text name="iban" label="Iban" :value="$participant->iban ? decrypt($participant->iban) : ''" />
 
-        <x-forms.checkbox name="free_lunch" label='Free lunch' />
-        <x-forms.checkbox name="free_borrelbox" label='Free borrelbox' />
+        <div class='d-none'>
+            <x-forms.checkbox name="free_lunch" label='Free lunch' />
+            <x-forms.checkbox name="free_borrelbox" label='Free borrelbox' />
+        </div>
+
+        <x-forms.text name="lunch_option" label="Lunch option" :value="$participant->lunch_option" />
     </div>
 </div>
