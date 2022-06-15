@@ -58,7 +58,7 @@
     "phpstan/phpstan-webmozart-assert": "^0.12.6",
     "phpunit/phpunit": "~9.0",
     "psalm/plugin-laravel": "^1.4.0",
-    "psalm/plugin-phpunit": "^0.15.0",
+    "psalm/plugin-phpunit": "^0.17.0",
     "roave/security-advisories": "dev-master",
     "vimeo/psalm": "^4.1.1"
   },
