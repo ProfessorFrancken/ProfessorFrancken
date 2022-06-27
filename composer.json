@@ -26,7 +26,7 @@
     "league/html-to-markdown": "^4.9",
     "league/period": "^4.10",
     "maatwebsite/excel": "^3.1",
-    "plank/laravel-mediable": "^4.4",
+    "plank/laravel-mediable": "^5.6",
     "predis/predis": "^1.1",
     "ramsey/uuid": "^4.0",
     "sabre/vobject": "^4.1",
