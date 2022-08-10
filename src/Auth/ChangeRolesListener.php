@@ -138,15 +138,15 @@ final class ChangeRolesListener extends EventHandler
     private function boardMemberRole(BoardMember $member) : string
     {
         switch ($member->board_member_status) {
-                case BoardMemberStatus::CANDIDATE: return static::CANDIDATE_BOARD_ROLE;
-                case BoardMemberStatus::BOARD_MEMBER: return static::BOARD_ROLE;
-                case BoardMemberStatus::DEMISSIONED_BOARD_MEMBER: return static::DEMISSIONED_BOARD_ROLE;
-                case BoardMemberStatus::DECHARGED_BOARD_MEMBER: return static::DECHARGED_BOARD_ROLE;
-                default:
-                    throw new UnexpectedValueException(
-                        "Member has an unkown board member status: [{$member->board_member_status}]"
-                    );
-            }
+            case BoardMemberStatus::CANDIDATE: return static::CANDIDATE_BOARD_ROLE;
+            case BoardMemberStatus::BOARD_MEMBER: return static::BOARD_ROLE;
+            case BoardMemberStatus::DEMISSIONED_BOARD_MEMBER: return static::DEMISSIONED_BOARD_ROLE;
+            case BoardMemberStatus::DECHARGED_BOARD_MEMBER: return static::DECHARGED_BOARD_ROLE;
+            default:
+                throw new UnexpectedValueException(
+                    "Member has an unkown board member status: [{$member->board_member_status}]"
+                );
+        }
     }
 
     private function assignRolesForActiveCommittees(Account $account) : void
