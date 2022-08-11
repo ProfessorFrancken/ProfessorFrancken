@@ -68,7 +68,9 @@ use Francken\Treasurer\Http\Controllers\DeductionsController;
                                         title="There were errors when importing deductions for this member. The following fields contained conflicts: {{ $conflicts[$member->member_id]->implode(', ') }}"
                                     ></i>
                                 @endif
-                                {{ $member->member->fullname }}
+                                <a href="{{ action([\Francken\Association\Members\Http\Controllers\Admin\MembersController::class, 'show'], ['member' => $member->member])  }}">
+                                    {{ $member->member->fullname }}
+                                </a>
                             </td>
                             <td>
                                 {{ $member->description }}
