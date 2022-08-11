@@ -26,7 +26,9 @@ return [
                 ['url' => "/association/honorary-members", 'title' => 'Honorary members', 'description' => 'Francken knows two honnorary members: Francken and De Hosson', 'icon' => 'fas fa-award'],
                 ['url' => "/association/boards", 'title' => 'Boards', 'description' => 'Current and previous board members', 'icon' => 'fas fa-user-tie'],
                 ['url' => "/association/committees", 'title' => 'Committees', 'description' => 'Want to join a committee?', 'icon' => 'fas fa-users'],
-                ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij', 'description' => 'Our popular science magazine', 'icon' => 'fas fa-book-open']
+                ['url' => "/association/francken-vrij", 'title' => 'Francken Vrij', 'description' => 'Our popular science magazine', 'icon' => 'fas fa-book-open'],
+                ['url' => "/association/sustainability ", 'title' => 'Sustainability', 'description' => '', 'icon' => 'fas fa-solar-panel'],
+                ['url' => "/association/mental-health", 'title' => 'Mental health', 'description' => '', 'icon' => 'fas fa-heartbeat'],
             ],
             //    'icon' => 'beer',
             'icon' => 'coffee',
