@@ -1,10 +1,5 @@
 version: '3'
 
-networks:
-  traefik:
-    external:
-      name: traefik_webgateway
-
 volumes:
   mysql:
     driver: "local"
@@ -101,22 +96,17 @@ services:
       - ./docker/nginx/francken.conf:/etc/nginx/conf.d/francken.conf
       - ./:/var/www/francken
     restart: always
-    networks:
-      - default
-      - traefik
+    depends_on:
+      - proxy
     labels:
       - "traefik.enable=true"
       - "traefik.backend=francken-web"
       - "traefik.frontend.rule=Host:francken.nl.localhost"
       - "traefik.port=80"
-      - "traefik.docker.network=traefik_webgateway"
 
   imaginary:
     image: h2non/imaginary
     restart: always
-    networks:
-      - default
-      - traefik
     command: -enable-url-source -mount /mnt/data
     volumes:
       - ./docker/volumes/fly-images/:/mnt/data
@@ -125,19 +115,14 @@ services:
       - "traefik.backend=francken-images-web"
       - "traefik.frontend.rule=Host:francken-images.nl.localhost"
       - "traefik.port=9000"
-      - "traefik.docker.network=traefik_webgateway"
 
   mailhog:
     image: mailhog/mailhog
-    networks:
-      - default
-      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.backend=francken-email-web"
       - "traefik.frontend.rule=Host:francken-mail.nl.localhost"
       - "traefik.port=8025"
-      - "traefik.docker.network=traefik_webgateway"
 
 
   adminer:
@@ -145,15 +130,11 @@ services:
     links:
       - mysql
       - legacy-db
-    networks:
-      - default
-      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.backend=francken-adminer-web"
       - "traefik.frontend.rule=Host:adminer.nl.localhost"
       - "traefik.port=8080"
-      - "traefik.docker.network=traefik_webgateway"
 
   mysql:
     image: mysql:5.7
@@ -204,3 +185,16 @@ services:
     volumes:
       - ./:/var/www/francken
       - ./docker/volumes/config/:/var/www/.config
+
+  proxy:
+    image: traefik:v1.7.24
+    command: --web --docker --docker.domain=docker.localhost --logLevel=DEBUG --docker.exposedbydefault=false
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker/traefik/traefik.toml:/traefik.toml
+      - ./certs/:/certs/
