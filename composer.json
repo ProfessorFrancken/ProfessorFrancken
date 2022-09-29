@@ -7,7 +7,7 @@
     "ext-filter": "^7.4",
     "ext-imagick": "^3.4",
     "ext-json": "^7.4",
-    "blade-ui-kit/blade-icons": "^0.5.1",
+    "blade-ui-kit/blade-icons": "^1.4.0",
     "cmpayments/iban": "^1.1",
     "doctrine/dbal": "^2.10",
     "facade/ignition": "^2.0",
