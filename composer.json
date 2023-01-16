@@ -32,7 +32,7 @@
     "sabre/vobject": "^4.1",
     "simplesoftwareio/simple-qrcode": "^4.0",
     "spatie/laravel-newsletter": "^4.8",
-    "spatie/laravel-permission": "^3.13",
+    "spatie/laravel-permission": "^5.8",
     "spatie/valuestore": "^1.2",
     "webmozart/assert": "^1.9"
   },
