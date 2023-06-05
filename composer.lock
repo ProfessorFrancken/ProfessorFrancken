@@ -5027,20 +5027,20 @@
         },
         {
             "name": "spatie/valuestore",
-            "version": "1.2.5",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/valuestore.git",
-                "reference": "eafde51f0068bcbb605fdf589a952677ada74a33"
+                "reference": "4ab438da9b10ff0ff4ab5a70829272d6ec3d24a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/valuestore/zipball/eafde51f0068bcbb605fdf589a952677ada74a33",
-                "reference": "eafde51f0068bcbb605fdf589a952677ada74a33",
+                "url": "https://api.github.com/repos/spatie/valuestore/zipball/4ab438da9b10ff0ff4ab5a70829272d6ec3d24a8",
+                "reference": "4ab438da9b10ff0ff4ab5a70829272d6ec3d24a8",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3|^8.0"
+                "php": "^7.3|^8.0|^8.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
@@ -5078,7 +5078,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/valuestore/issues",
-                "source": "https://github.com/spatie/valuestore/tree/1.2.5"
+                "source": "https://github.com/spatie/valuestore/tree/1.3.0"
             },
             "funding": [
                 {
@@ -5090,7 +5090,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-30T16:21:03+00:00"
+            "time": "2021-11-18T08:20:54+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -13942,5 +13942,5 @@
         "ext-json": "^7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
