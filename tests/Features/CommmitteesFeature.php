@@ -9,6 +9,8 @@ use Francken\Association\Committees\Committee;
 
 class CommmitteesFeature extends TestCase
 {
+    use LoggedInAsAdmin;
+
     /** @test */
     public function committees_are_listed() : void
     {
@@ -26,11 +28,10 @@ class CommmitteesFeature extends TestCase
         ]);
 
         $this->visit('/association/committees')
-            ->see('Committees')
-            ->see('S[ck]rip(t|t?c)ie');
+             ->see('Committees')
+             ->see('S[ck]rip(t|t?c)ie');
 
-
-        $this->assertResponseOk();
+         $this->assertResponseOk();
     }
 
     /** @test */
