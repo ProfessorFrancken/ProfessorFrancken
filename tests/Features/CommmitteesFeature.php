@@ -31,7 +31,7 @@ class CommmitteesFeature extends TestCase
              ->see('Committees')
              ->see('S[ck]rip(t|t?c)ie');
 
-         $this->assertResponseOk();
+        $this->assertResponseOk();
     }
 
     /** @test */

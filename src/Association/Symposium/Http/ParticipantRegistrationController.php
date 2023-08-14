@@ -51,7 +51,7 @@ final class ParticipantRegistrationController
         return redirect('https://franckensymposium.nl/thanks');
     }
 
-    private function isPotentialSpam(Request $request)
+    private function isPotentialSpam(Request $request) : bool
     {
         if (strlen($request->input('firstname')) > 100 || strlen($request->input('lastname')) > 100) {
             return true;
