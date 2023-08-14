@@ -31,7 +31,11 @@
             </li>
             <li>
                 <strong><i class="fas fa-birthday-cake"></i> Birthdate </strong>
-                {{ $member->birthdate->format('Y-m-d') }}
+                @if ($member->birthdate)
+                    {{ $member->birthdate->format('Y-m-d') }}
+                @else
+                    Unknown
+                @endif
             </li>
             @if ($member->titel)
                 <li>

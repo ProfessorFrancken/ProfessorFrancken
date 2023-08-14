@@ -204,7 +204,12 @@ final class LegacyMember extends Model
             );
         }
 
-        return null;
+        return new Address(
+            $this->plaats ?? 'unknown',
+            $this->postcode ?? 'unknown',
+            $this->adres ?? 'unknown',
+            $this->land ?? 'unknown'
+        );
     }
 
     public function getPhoneNumberAttribute() : string

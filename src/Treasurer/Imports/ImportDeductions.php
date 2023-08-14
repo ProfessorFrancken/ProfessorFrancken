@@ -131,7 +131,12 @@ final class ImportDeductions implements ToCollection, WithHeadingRow, WithCustom
 
     private function getLegacyMember(Collection $deduction) : ?LegacyMember
     {
-        $possibleMemberId=(int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
+        if (preg_match('/\d+/', $deduction['machtigingskenmerk'], $matches)) {
+            $possibleMemberId=(int)$matches[0];
+        } else {
+            $possibleMemberId=(int) Str::after($deduction['machtigingskenmerk'], 'ref.  ');
+        }
+
         try {
             /** @var LegacyMember|null */
             return LegacyMember::findOrFail($possibleMemberId);

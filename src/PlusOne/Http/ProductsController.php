@@ -15,6 +15,17 @@ final class ProductsController
             ->where('beschikbaar', true)
             ->with(['extra'])
             ->get()
+            ->map(function (Product $product) {
+                if ($product->afbeelding !== null && ! str_starts_with($product->afbeelding, 'https://professorfrancken.nl')) {
+                    $product->afbeelding = "https://professorfrancken.nl/database/streep/afbeeldingen/{$product->afbeelding}";
+                }
+
+                if ($product->splash_afbeelding !== null && ! str_starts_with($product->splash_afbeelding, 'https://professorfrancken.nl')) {
+                    $product->splash_afbeelding = "https://professorfrancken.nl/database/streep/afbeeldingen/{$product->splash_afbeelding}";
+                }
+
+                return $product;
+            })
             ->map(fn (Product $product) : array => [
                 'id' => $product->id,
                 'naam' => $product->name,

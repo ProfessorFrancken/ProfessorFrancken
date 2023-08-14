@@ -147,7 +147,8 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::get('photos/{album}', [PhotosController::class, 'show']);
     });
 
-    Route::get('alumni-2022', [AlumniActivityController::class, 'index']);
+    Route::get('alumni-2022', [AlumniActivityController::class, 'index'])
+        ->middleware(['auth']);
 });
 
 Route::group(['prefix' => 'career'], function () : void {
@@ -205,3 +206,5 @@ Route::post('/symposia/{symposium}/participants', [
     ParticipantRegistrationController::class,
     'store'
 ])->middleware(['throttle:6,1', 'symposium-cors']);
+
+Route::impersonate();

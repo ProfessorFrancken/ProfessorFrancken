@@ -20,7 +20,7 @@
                 'title' => $album->title,
                 'amount_of_photos' => $album->amount_of_photos,
                 'views' => $album->views,
-                'photo' => $album->coverPhoto,
+                'photo' => $album->coverPhoto ?? $album->photos()->first(),
                 'classes' => $loop->first ? ['photo-cover'] : [],
                 'href' => $album->url(),
              ])

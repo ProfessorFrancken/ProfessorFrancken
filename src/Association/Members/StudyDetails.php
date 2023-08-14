@@ -39,7 +39,7 @@ final class StudyDetails
     {
         $yearOfRegistration = DateTimeImmutable::createFromFormat(
             'Y-m-d',
-            $member->jaar_van_inschrijving . '-09-01'
+            ($member->jaar_van_inschrijving === '' ? 0 : $member->jaar_van_inschrijving) . '-09-01'
         );
         Assert::isInstanceOf($yearOfRegistration, DateTimeImmutable::class);
 

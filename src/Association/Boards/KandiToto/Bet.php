@@ -6,6 +6,7 @@ namespace Francken\Association\Boards\KandiToto;
 
 use Francken\Association\Boards\BoardMember;
 use Francken\Association\Boards\BoardYear;
+use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -58,6 +59,6 @@ final class Bet extends Model
 
     public function boardMember() : BelongsTo
     {
-        return $this->belongsTo(BoardMember::class);
+        return $this->belongsTo(LegacyMember::class, 'member_id');
     }
 }

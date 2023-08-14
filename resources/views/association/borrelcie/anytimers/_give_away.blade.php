@@ -13,10 +13,10 @@
     !!}
 
     <div class="row">
-        <div class="col-10">
+        <div class="col-md-9 col-12">
             <x-forms-autocomplete-member :members="$accounts" name="owner" nameId="owner_id" />
         </div>
-        <div class="col-md-2 col-12">
+        <div class="col-md-3 col-12">
             <x-forms.number name="amount" label="Amount" :value="1" />
         </div>
     </div>

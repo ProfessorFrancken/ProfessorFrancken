@@ -38,7 +38,7 @@
     {{--
        We always want to give the user the option to add 5 (optional )board members
     --}}
-    @foreach (range(0, 4) as $member_idx)
+    @foreach (range(0, 5) as $member_idx)
         @include('admin.association.boards._member_form', [
             'member_idx' => $member_idx,
             'member' => $board->members[$member_idx] ?? new \Francken\Association\Boards\BoardMember,
