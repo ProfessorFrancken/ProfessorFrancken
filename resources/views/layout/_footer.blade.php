@@ -47,7 +47,7 @@
                         <i class="fab fa-instagram text-primary" aria-hidden="true"></i> Instagram<br>
                     </a>
 
-                    <a href="https://www.linkedin.com/groups/1524067">
+                    <a href="https://www.linkedin.com/company/t.f.v.-professor-francken/?viewAsMember=true">
                         <i class="fab fa-linkedin text-primary" aria-hidden="true"></i> LinkedIn<br>
                     </a>
                     <a href="https://github.com/ProfessorFrancken/ProfessorFrancken">

@@ -39,4 +39,7 @@ $breadcrumbs = [
         pus), please let the board know so that action can be taken right away.
         You can email the board at <a href="mailto:board@professorfrancken.nl">board@professorfrancken.nl</a> or talk to them directly at the event. If you feel uncomfortable talking to a board member then please contact the advisory board (RvA) by emailing them at <a href="mailto:franckenadvisoryboard@gmail.com">franckenadvisoryboard@gmail.com</a>.
     </p>
+    <p>
+    To request the statutes of T.F.V. 'Professor Francken', email the board at <a href="mailto:board@professorfrancken.nl">board@professorfrancken.nl</a>.
+    </p>
 @endsection
