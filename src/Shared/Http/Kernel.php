@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Francken\Shared\Http;
 
-use Fideloper\Proxy\TrustProxies;
 use Francken\Association\Borrelcie\Http\Middleware\HasBorrelcieAccount;
 use Francken\Association\Photos\Http\Middleware\LoginToViewPhotos;
 use Francken\PlusOne\Http\Middleware\AuthenticatePlusOne;
@@ -23,6 +22,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Http\Middleware\SetCacheHeaders;
+use Illuminate\Http\Middleware\TrustProxies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;

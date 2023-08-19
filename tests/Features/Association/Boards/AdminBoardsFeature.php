@@ -87,6 +87,7 @@ class AdminBoardsFeature extends TestCase
      *
      * @param  array  $uploads
      * @param  string  $key
+     * @param mixed $file
      */
     protected function prepareArrayBasedFileInput(&$uploads, $key, $file) : void
     {

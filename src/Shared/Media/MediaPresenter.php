@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Francken\Shared\Media;
 
 use Francken\Shared\Media\Http\Controllers\MediaController;
-use League\Flysystem\FileNotFoundException;
+use League\Flysystem\FilesystemException;
 use Plank\Mediable\Media;
 
 final class MediaPresenter
@@ -43,17 +43,17 @@ final class MediaPresenter
         return $this->media->readableSize(1);
     }
 
-    public function basename() : string
+    public function basename() : string|null
     {
         return $this->media->basename;
     }
 
-    public function directory() : string
+    public function directory() : string|null
     {
         return $this->media->directory;
     }
 
-    public function mimeType() : string
+    public function mimeType() : string|null
     {
         return $this->media->mime_type;
     }
@@ -78,7 +78,7 @@ final class MediaPresenter
     {
         try {
             return $this->media->isPubliclyAccessible();
-        } catch (FileNotFoundException $e) {
+        } catch (FilesystemException $e) {
             return false;
         }
     }

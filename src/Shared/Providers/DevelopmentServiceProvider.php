@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use Barryvdh\Debugbar\ServiceProvider as DebugbarServiceProvider;
-use Facade\Ignition\IgnitionServiceProvider;
 use Francken\Tests\Association\Newsletter\NullDriver;
 use Illuminate\Support\ServiceProvider;
+use Spatie\LaravelIgnition\IgnitionServiceProvider;
 use Spatie\Newsletter\Newsletter;
 
 final class DevelopmentServiceProvider extends ServiceProvider
