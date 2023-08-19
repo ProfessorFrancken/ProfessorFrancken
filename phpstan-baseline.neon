@@ -1,0 +1,3361 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\> does not accept Francken\\\\Association\\\\Activities\\\\CalendarEvent\\.$#"
+			count: 1
+			path: src/Association/Activities/ActivitiesRepository.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\ActivitiesRepository\\:\\:all\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Activities/ActivitiesRepository.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\Activities\\\\ActivitiesRepository\\:\\:\\$activities with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Activities/ActivitiesRepository.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\ActivitiesSidebarComposer\\:\\:monthNames\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Activities/ActivitiesSidebarComposer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:comments\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Activities/Activity.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:getTotalSignUpsAttribute\\(\\) should return int but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Activities/Activity.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:scopeAfter\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Activities/Activity.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:scopeAfter\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Activities/Activity.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:signUpSettings\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Activities/Activity.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:signUps\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Activities/Activity.php
+
+		-
+			message: "#^Cannot call method getDateTime\\(\\) on mixed\\.$#"
+			count: 2
+			path: src/Association/Activities/CalendarEvent.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 6
+			path: src/Association/Activities/CalendarEvent.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\Activities\\\\CalendarEvent\\:\\:\\$notes with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Activities/CalendarEvent.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Comment\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Activities/Comment.php
+
+		-
+			message: "#^Cannot access property \\$achternaam on mixed\\.$#"
+			count: 1
+			path: src/Association/Activities/Exports/SignUpsExport.php
+
+		-
+			message: "#^Parameter \\#2 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Francken\\\\Association\\\\Activities\\\\Activity\\>\\:\\:when\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Francken\\\\Association\\\\Activities\\\\Activity\\>, mixed\\)\\: void\\)\\|null, Closure\\(Illuminate\\\\Database\\\\Eloquent\\\\Builder, string\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/ApiActivitiesController.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/ApiActivitiesController.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/CommentsController.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 3
+			path: src/Association/Activities/Http/Requests/AdminSignUpRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Http\\\\Requests\\\\AdminSignUpRequest\\:\\:dietaryWishes\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/Requests/AdminSignUpRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Http\\\\Requests\\\\AdminSignUpRequest\\:\\:notes\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/Requests/AdminSignUpRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 3
+			path: src/Association/Activities/Http/Requests/AdminSignUpSettingsRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/Requests/AdminSignUpSettingsRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/Requests/SignUpRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\Http\\\\Requests\\\\SignUpRequest\\:\\:dietaryWishes\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/Requests/SignUpRequest.php
+
+		-
+			message: "#^Cannot access property \\$fullname on mixed\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/SignUpsController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/SignUpsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$member of method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:signUp\\(\\) expects Francken\\\\Association\\\\LegacyMember, Francken\\\\Association\\\\LegacyMember\\|null given\\.$#"
+			count: 1
+			path: src/Association/Activities/Http/SignUpsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Activities\\\\CalendarEvent\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Activities/ImportActivitiesFromCalendar.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\SignUp\\:\\:activity\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Activities/SignUp.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Activities\\\\SignUp\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Activities/SignUp.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\AlumniActivity\\\\Alumnus\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/AlumniActivity/Alumnus.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 2
+			path: src/Association/AlumniActivity/Http/AdminAlumnusRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\AlumniActivity\\\\Http\\\\AdminAlumnusRequest\\:\\:fullname\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/AlumniActivity/Http/AdminAlumnusRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\AlumniActivity\\\\Http\\\\AdminAlumnusRequest\\:\\:study\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/AlumniActivity/Http/AdminAlumnusRequest.php
+
+		-
+			message: "#^Cannot access offset 'member_id' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Cannot access offset 'photo' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Cannot access offset 'title' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:committees\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:install\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:members\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeCurrent\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeCurrent\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeWithPhotos\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeWithPhotos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Boards\\\\Board\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(array\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Parameter \\#2 \\$memberId of static method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:install\\(\\) expects int, mixed given\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Parameter \\#3 \\$title of static method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:install\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Parameter \\#5 \\$photo of static method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:install\\(\\) expects Plank\\\\Mediable\\\\Media\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Boards/Board.php
+
+		-
+			message: "#^Cannot access property \\$fullname on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:board\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:scopeWithPhotos\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:scopeWithPhotos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:\\$installed_at \\(Carbon\\\\Carbon\\) does not accept DateTimeImmutable\\.$#"
+			count: 1
+			path: src/Association/Boards/BoardMember.php
+
+		-
+			message: "#^Parameter \\#1 \\$startDate of class League\\\\Period\\\\Period constructor expects DateTimeInterface\\|int\\|string, DateTimeImmutable\\|false given\\.$#"
+			count: 1
+			path: src/Association/Boards/BoardYear.php
+
+		-
+			message: "#^Parameter \\#2 \\$endDate of class League\\\\Period\\\\Period constructor expects DateTimeInterface\\|int\\|string, DateTimeImmutable\\|false given\\.$#"
+			count: 1
+			path: src/Association/Boards/BoardYear.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(array\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Controllers/AdminBoardsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: array\\{member_id\\: int, title\\: mixed, photo\\: Plank\\\\Mediable\\\\Media\\|null\\}, Closure\\(array\\)\\: array\\{member_id\\: int, title\\: mixed, photo\\: Plank\\\\Mediable\\\\Media\\|null\\} given\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Controllers/AdminBoardsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$photo of method Francken\\\\Association\\\\Boards\\\\Http\\\\Controllers\\\\AdminBoardsController\\:\\:uploadPhoto\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Association/Boards/Http/Controllers/AdminBoardsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:map\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: array\\{name\\: string, birthday\\: DateTimeImmutable\\}, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: array\\{name\\: string, birthday\\: DateTimeImmutable\\} given\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Controllers/BirthdaysController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:filter\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: bool\\)\\|null, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: bool given\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Controllers/BirthdaysController.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Controllers/KandiTotoController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Http\\\\Requests\\\\BoardRequest\\:\\:members\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Boards/Http/Requests/BoardRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: array, Closure\\(array\\)\\: array given\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Requests/BoardRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of method Francken\\\\Association\\\\Boards\\\\Http\\\\Requests\\\\BoardRequest\\:\\:toDateTimeImmutable\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 3
+			path: src/Association/Boards/Http/Requests/BoardRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$name of static method Francken\\\\Association\\\\Boards\\\\BoardName\\:\\:fromNameOrYear\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Requests/BoardRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of function collect expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|iterable\\<\\(int\\|string\\), mixed\\>\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Requests/BoardRequest.php
+
+		-
+			message: "#^Unable to resolve the template type TKey in call to function collect$#"
+			count: 1
+			path: src/Association/Boards/Http/Requests/BoardRequest.php
+
+		-
+			message: "#^Unable to resolve the template type TValue in call to function collect$#"
+			count: 1
+			path: src/Association/Boards/Http/Requests/BoardRequest.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Boards/Http/Requests/KandiTotoRequest.php
+
+		-
+			message: "#^Cannot access offset 'board_id' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'board_member_status' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'created_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'decharged_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'demissioned_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'id' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'installed_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'member_id' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'name' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'photo' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'title' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'updated_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardMembersImport\\:\\:collection\\(\\) has parameter \\$collection with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Parameter \\#2 \\$photo of method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardMembersImport\\:\\:uploadPhoto\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardMembersImport.php
+
+		-
+			message: "#^Cannot access offset 'created_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'decharged_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'demissioned_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'id' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'installed_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'name' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'photo' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'photo_position' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Cannot access offset 'updated_at' on mixed\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardsImport\\:\\:collection\\(\\) has parameter \\$collection with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Parameter \\#2 \\$photo of method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardsImport\\:\\:uploadPhoto\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsImport.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:each\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Boards\\\\Board\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsWithMembersImport.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:each\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Boards/Imports/BoardsWithMembersImport.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\KandiToto\\\\Bet\\:\\:boardMember\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Boards/KandiToto/Bet.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\KandiToto\\\\Bet\\:\\:scopeBoardYear\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/KandiToto/Bet.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Boards\\\\KandiToto\\\\Bet\\:\\:scopeBoardYear\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Boards/KandiToto/Bet.php
+
+		-
+			message: "#^PHPDoc tag @var contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Boards/UpdateBoardMemberStatus.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Boards/UpdateBoardMemberStatus.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:drinker\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:owner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveAnytimers\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveAnytimers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveClaimedAnytimers\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveClaimedAnytimers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveGivenAnytimers\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveGivenAnytimers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Borrelcie/Anytimer.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Borrelcie/BorrelcieAccount.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\EventHandlers\\\\HandOutAnytimers\\:\\:boardMemberBorrelcieAccounts\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Borrelcie/EventHandlers/HandOutAnytimers.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\)\\: void given\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/EventHandlers/HandOutAnytimers.php
+
+		-
+			message: "#^Cannot access property \\$borrelcieAccount on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/AnytimersController.php
+
+		-
+			message: "#^Cannot access property \\$fullname on mixed\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/AnytimersController.php
+
+		-
+			message: "#^Cannot access property \\$id on Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\|null\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/AnytimersController.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\|null\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/AnytimersController.php
+
+		-
+			message: "#^Parameter \\#1 \\$account of method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\>\\:\\:activeClaimedAnytimers\\(\\) expects Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount, Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\|null given\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/AnytimersController.php
+
+		-
+			message: "#^Parameter \\#1 \\$account of method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\>\\:\\:activeGivenAnytimers\\(\\) expects Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount, Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\|null given\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/AnytimersController.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/BorrelcieAccountActivationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$account of method Francken\\\\Association\\\\Borrelcie\\\\Http\\\\BorrelcieAccountActivationController\\:\\:giveBorrelciePermission\\(\\) expects Francken\\\\Auth\\\\Account, Francken\\\\Auth\\\\Account\\|null given\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/BorrelcieAccountActivationController.php
+
+		-
+			message: "#^Cannot call method borrelcieAccount\\(\\) on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/Middleware/HasBorrelcieAccount.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 3
+			path: src/Association/Borrelcie/Http/Requests/AnytimerRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Http\\\\Requests\\\\AnytimerRequest\\:\\:context\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/Requests/AnytimerRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Http\\\\Requests\\\\AnytimerRequest\\:\\:reason\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Borrelcie/Http/Requests/AnytimerRequest.php
+
+		-
+			message: "#^Cannot access property \\$fullname on mixed\\.$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:board\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:childCommittee\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:committeeMembers\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:getPermissionsAttribute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:getSuggestedCommitteeMembersAttribute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:members\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:parentCommittee\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Committees/Committee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\CommitteeMember\\:\\:committee\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Committees/CommitteeMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\CommitteeMember\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Committees/CommitteeMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Exports\\\\ActiveMembersExport\\:\\:collection\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Exports/ActiveMembersExport.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Exports\\\\CommitteeMembersExport\\:\\:collection\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Exports/CommitteeMembersExport.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\AdminCommitteesController\\:\\:getContinuableCommittees\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Http/AdminCommitteesController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\AdminCommitteesController\\:\\:getParentCommittees\\(\\) has parameter \\$continuableCommittees with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Http/AdminCommitteesController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\AdminCommitteesController\\:\\:getParentCommittees\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Committees/Http/AdminCommitteesController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: array\\<int, string\\>, Closure\\(Francken\\\\Association\\\\Boards\\\\Board\\)\\: non\\-empty\\-array\\<int, string\\> given\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/AdminCommitteesController.php
+
+		-
+			message: "#^Parameter \\#1 \\$logo of method Francken\\\\Association\\\\Committees\\\\FileUploader\\:\\:uploadLogo\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Association/Committees/Http/AdminCommitteesController.php
+
+		-
+			message: "#^Parameter \\#1 \\$photo of method Francken\\\\Association\\\\Committees\\\\FileUploader\\:\\:uploadPhoto\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Association/Committees/Http/AdminCommitteesController.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\Requests\\\\AdminCommitteeMemberRequest\\:\\:function\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeMemberRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Association/Committees/Http/Requests/AdminCommitteeMemberRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\Requests\\\\AdminCommitteeRequest\\:\\:content\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\Requests\\\\AdminCommitteeRequest\\:\\:email\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\Requests\\\\AdminCommitteeRequest\\:\\:goal\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\Requests\\\\AdminCommitteeRequest\\:\\:name\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of static method Illuminate\\\\Support\\\\Str\\:\\:slug\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Committees/Http/Requests/AdminCommitteeRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Edition\\:\\:scopeLatestEdition\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Edition.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Edition\\:\\:scopeLatestEdition\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Edition.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Edition\\:\\:volumes\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/FranckenVrij/Edition.php
+
+		-
+			message: "#^Parameter \\#2 \\$editions of class Francken\\\\Association\\\\FranckenVrij\\\\Volume constructor expects array\\<Francken\\\\Association\\\\FranckenVrij\\\\Edition\\>, array given\\.$#"
+			count: 1
+			path: src/Association/FranckenVrij/Edition.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Exports\\\\SubscriptionsExport\\:\\:__construct\\(\\) has parameter \\$subscriptions with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/FranckenVrij/Exports/SubscriptionsExport.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\FranckenVrij\\\\Exports\\\\SubscriptionsExport\\:\\:\\$subscriptions with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/FranckenVrij/Exports/SubscriptionsExport.php
+
+		-
+			message: "#^Constant Francken\\\\Association\\\\FranckenVrij\\\\Http\\\\AdminFranckenVrijController\\:\\:ONE_HUNDRED_MB is unused\\.$#"
+			count: 1
+			path: src/Association/FranckenVrij/Http/AdminFranckenVrijController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:reduce\\(\\) expects callable\\(Francken\\\\Association\\\\FranckenVrij\\\\Volume, mixed, int\\|string\\)\\: Francken\\\\Association\\\\FranckenVrij\\\\Volume, Closure\\(Francken\\\\Association\\\\FranckenVrij\\\\Volume, Francken\\\\Association\\\\FranckenVrij\\\\Volume\\)\\: Francken\\\\Association\\\\FranckenVrij\\\\Volume given\\.$#"
+			count: 1
+			path: src/Association/FranckenVrij/Http/AdminFranckenVrijController.php
+
+		-
+			message: "#^Parameter \\#1 \\$datetime of class DateTimeImmutable constructor expects string, mixed given\\.$#"
+			count: 2
+			path: src/Association/FranckenVrij/Http/AdminSubscriptionsController.php
+
+		-
+			message: "#^Cannot call method editions\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Association/FranckenVrij/Http/FranckenVrijController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Http\\\\Requests\\\\AdminSearchSubscriptionsRequest\\:\\:name\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/FranckenVrij/Http/Requests/AdminSearchSubscriptionsRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 2
+			path: src/Association/FranckenVrij/Http/Requests/FranckenVrijRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Http\\\\Requests\\\\FranckenVrijRequest\\:\\:title\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/FranckenVrij/Http/Requests/FranckenVrijRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeCancelled\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeCancelled\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithActiveSubscription\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithActiveSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithExpiredSubscription\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithExpiredSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithRecentlyExpiredSubscription\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithRecentlyExpiredSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithSoonToBeExpried\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithSoonToBeExpried\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/FranckenVrij/Subscription.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\LegacyMember\\:\\:autocomplete\\(\\) has parameter \\$except with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/LegacyMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\LegacyMember\\:\\:autocomplete\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/LegacyMember.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\LegacyMember\\:\\:franckenVrijSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/LegacyMember.php
+
+		-
+			message: "#^PHPDoc type array of property Francken\\\\Association\\\\LegacyMember\\:\\:\\$guarded is not covariant with PHPDoc type array\\<string\\>\\|bool of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$guarded\\.$#"
+			count: 1
+			path: src/Association/LegacyMember.php
+
+		-
+			message: "#^Parameter \\#1 \\$name of method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:setConnection\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/LegacyMember.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 2
+			path: src/Association/Members/Http/ContactDetailsController.php
+
+		-
+			message: "#^Cannot call method changeAddress\\(\\) on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ContactDetailsController.php
+
+		-
+			message: "#^Cannot call method changeEmail\\(\\) on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ContactDetailsController.php
+
+		-
+			message: "#^Cannot call method changePhoneNumber\\(\\) on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ContactDetailsController.php
+
+		-
+			message: "#^Parameter \\#2 \\$photo of method Francken\\\\Association\\\\Members\\\\Http\\\\Controllers\\\\Admin\\\\ConsumptionCounterSettingsController\\:\\:uploadImage\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/ConsumptionCounterSettingsController.php
+
+		-
+			message: "#^Cannot access property \\$committee on Francken\\\\Association\\\\Committees\\\\CommitteeMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Controllers\\\\Admin\\\\MembersController\\:\\:searchMemberQuery\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Controllers\\\\Admin\\\\MembersController\\:\\:searchMemberQuery\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
+
+		-
+			message: "#^Relation 'partner' is not found in Francken\\\\Extern\\\\Alumnus model\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
+
+		-
+			message: "#^Access to an undefined property Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:\\$personal_details\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/RegistrationRequestsController.php
+
+		-
+			message: "#^Cannot call method format\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/RegistrationRequestsController.php
+
+		-
+			message: "#^Cannot call method startDate\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/RegistrationRequestsController.php
+
+		-
+			message: "#^Cannot call method study\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Controllers/Admin/RegistrationRequestsController.php
+
+		-
+			message: "#^Cannot access property \\$aantal on mixed\\.$#"
+			count: 4
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$id on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 2
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 2
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$naam on mixed\\.$#"
+			count: 2
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$price on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$prijs on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$tijd on mixed\\.$#"
+			count: 4
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$totaalprijs on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ExpensesController.php
+
+		-
+			message: "#^Cannot access property \\$franckenVrijSubscription on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 2
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot access property \\$mailinglist_franckenvrij on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 2
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 2
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot access property \\$send_expiration_notification on Illuminate\\\\Database\\\\Eloquent\\\\Model\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot access property \\$subscription_ends_at on Illuminate\\\\Database\\\\Eloquent\\\\Model\\|null\\.$#"
+			count: 3
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot call method isActiveAt\\(\\) on Illuminate\\\\Database\\\\Eloquent\\\\Model\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot call method save\\(\\) on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot call method save\\(\\) on Illuminate\\\\Database\\\\Eloquent\\\\Model\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot call method setConnection\\(\\) on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Parameter \\#1 \\$datetime of class DateTimeImmutable constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/FranckenVrijSubscriptionController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/PasswordController.php
+
+		-
+			message: "#^Cannot access property \\$password on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/PasswordController.php
+
+		-
+			message: "#^Cannot call method save\\(\\) on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/PasswordController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 2
+			path: src/Association/Members/Http/PaymentDetailsController.php
+
+		-
+			message: "#^Cannot call method changePaymentDetails\\(\\) on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/PaymentDetailsController.php
+
+		-
+			message: "#^Cannot access property \\$id on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ProfileActivitiesController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ProfileActivitiesController.php
+
+		-
+			message: "#^Cannot access property \\$id on Francken\\\\Association\\\\LegacyMember\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ProfileController.php
+
+		-
+			message: "#^Cannot access property \\$installed_at on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ProfileController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ProfileController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:sortByDesc\\(\\) expects array\\<array\\{string, string\\}\\|\\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, Illuminate\\\\Database\\\\Eloquent\\\\Model\\)\\: mixed\\)\\|\\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: mixed\\)\\|string\\>\\|\\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: mixed\\)\\|string, Closure\\(Francken\\\\Association\\\\Committees\\\\Committee\\)\\: mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/ProfileController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminConsumptionCounterSettingsRequest\\:\\:color\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminConsumptionCounterSettingsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminConsumptionCounterSettingsRequest\\:\\:nickname\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminConsumptionCounterSettingsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminConsumptionCounterSettingsRequest\\:\\:prominent\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminConsumptionCounterSettingsRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:address\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:bankLocation\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:city\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:consumptionCounterPaymentMethod\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:country\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:empoloyer\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:firstname\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:iban\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:initials\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:insertion\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:memberType\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:nnvNumber\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:notes\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:phoneNumber\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:placeOfGraduation\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:postalCode\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:studentNumber\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:study\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:surname\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:title\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of class Francken\\\\Shared\\\\Email constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$gender of static method Francken\\\\Association\\\\Members\\\\Gender\\:\\:other\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminMemberRequest\\:\\:toDateTimeImmutable\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Association/Members/Http/Requests/AdminMemberRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminSearchMembersRequest\\:\\:email\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminSearchMembersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminSearchMembersRequest\\:\\:firstname\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminSearchMembersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminSearchMembersRequest\\:\\:select\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminSearchMembersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminSearchMembersRequest\\:\\:study\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminSearchMembersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminSearchMembersRequest\\:\\:surname\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminSearchMembersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminSearchMembersRequest\\:\\:type\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminSearchMembersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\AdminSearchRegistrationRequest\\:\\:select\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/AdminSearchRegistrationRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\ContactDetailsRequest\\:\\:phoneNumber\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/ContactDetailsRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$city of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/ContactDetailsRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of class Francken\\\\Shared\\\\Email constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/ContactDetailsRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$postalCode of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/ContactDetailsRequest.php
+
+		-
+			message: "#^Parameter \\#3 \\$address of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/ContactDetailsRequest.php
+
+		-
+			message: "#^Parameter \\#4 \\$country of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/ContactDetailsRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of static method Webmozart\\\\Assert\\\\Assert\\:\\:minLength\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/PasswordRequest.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/PaymentDetailsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\RegistrationRequest\\:\\:nationality\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Requests\\\\RegistrationRequest\\:\\:notes\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$birthday of static method Francken\\\\Association\\\\Members\\\\Birthdate\\:\\:fromString\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(mixed, mixed, mixed\\)\\: mixed\\)\\|null, Closure\\(string, string, string\\|null\\)\\: Francken\\\\Association\\\\Members\\\\Study given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$city of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of class Francken\\\\Shared\\\\Email constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$firstname of static method Francken\\\\Association\\\\Members\\\\Fullname\\:\\:fromFirstnameAndSurname\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$gender of static method Francken\\\\Association\\\\Members\\\\Gender\\:\\:other\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$iban of class Francken\\\\Association\\\\Members\\\\PaymentDetails constructor expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$studentNumber of class Francken\\\\Association\\\\Members\\\\StudyDetails constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$array of function array_map expects array, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$initials of class Francken\\\\Association\\\\Members\\\\PersonalDetails constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$postalCode of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$surname of static method Francken\\\\Association\\\\Members\\\\Fullname\\:\\:fromFirstnameAndSurname\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#3 \\$address of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#3 \\$phoneNumber of class Francken\\\\Association\\\\Members\\\\ContactDetails constructor expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#3 \\.\\.\\.\\$arrays of function array_map expects array, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#4 \\$country of class Francken\\\\Association\\\\Members\\\\Address constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Parameter \\#4 \\.\\.\\.\\$arrays of function array_map expects array, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Http/Requests/RegistrationRequest.php
+
+		-
+			message: "#^Access to an undefined property Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:\\$personal_details\\.$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^Cannot call method format\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:scopeApproved\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:scopeApproved\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(mixed\\)\\: mixed\\)\\|null, Closure\\(array\\)\\: Francken\\\\Association\\\\Members\\\\Study given\\.$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^Parameter \\#2 \\$array of function array_map expects array, mixed given\\.$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:\\$birthdate \\(Carbon\\\\Carbon\\) does not accept DateTimeImmutable\\.$#"
+			count: 1
+			path: src/Association/Members/Registration/Registration.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Fake\\\\FakeNews\\:\\:all\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/News/Fake/FakeNews.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Fake\\\\FakeNews\\:\\:generateNews\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/News/Fake/FakeNews.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\News\\\\Fake\\\\FakeNews\\:\\:\\$news with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/News/Fake/FakeNews.php
+
+		-
+			message: "#^Anonymous function should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Fake/FakeNewsContent.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\AdminNewsController\\:\\:drafts\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Collection does not specify its types\\: TKey, TModel$#"
+			count: 1
+			path: src/Association/News/Http/AdminNewsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$datetime of class DateTimeImmutable constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/News/Http/AdminNewsController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\Requests\\\\AdminNewsRequest\\:\\:authorName\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/AdminNewsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\Requests\\\\AdminNewsRequest\\:\\:authorPhoto\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/AdminNewsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\Requests\\\\AdminNewsRequest\\:\\:content\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/AdminNewsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\Requests\\\\AdminNewsRequest\\:\\:exerpt\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/AdminNewsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\Requests\\\\AdminNewsRequest\\:\\:title\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/AdminNewsRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/AdminNewsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\Requests\\\\SearchNewsRequest\\:\\:author\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/SearchNewsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\Requests\\\\SearchNewsRequest\\:\\:subject\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/News/Http/Requests/SearchNewsRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Association/News/Http/Requests/SearchNewsRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:author\\(\\) is unused\\.$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:contents\\(\\) is unused\\.$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeByLink\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeByLink\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeInPeriod\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeInPeriod\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeRecent\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeRecent\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithAuthorName\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithAuthorName\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithSubject\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithSubject\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\News\\\\News\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Association/News/News.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\Album\\:\\:coverPhoto\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Photos/Album.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\Album\\:\\:photos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Photos/Album.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\AlbumsRepository\\:\\:albums\\(\\) return type with generic interface Illuminate\\\\Contracts\\\\Pagination\\\\Paginator does not specify its types\\: TItem$#"
+			count: 1
+			path: src/Association/Photos/AlbumsRepository.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\AlbumsRepository\\:\\:filterPrivateAlbums\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Photos/AlbumsRepository.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\AlbumsRepository\\:\\:filterPrivateAlbums\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Association/Photos/AlbumsRepository.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\Photos\\\\Flickr\\\\Response\\:\\:\\$contents \\(array\\) does not accept mixed\\.$#"
+			count: 1
+			path: src/Association/Photos/Flickr/Response.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrRepository\\:\\:albums\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrRepository\\:\\:findAlbum\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Parameter \\#1 \\$apiKey of class Francken\\\\Association\\\\Photos\\\\Flickr\\\\Api constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\Photos\\\\FlickrRepository\\:\\:\\$secret \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Property Francken\\\\Association\\\\Photos\\\\FlickrRepository\\:\\:\\$userId \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Unable to resolve the template type TKey in call to function collect$#"
+			count: 2
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Unable to resolve the template type TValue in call to function collect$#"
+			count: 2
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Variable \\$album on left side of \\?\\? is never defined\\.$#"
+			count: 2
+			path: src/Association/Photos/FlickrRepository.php
+
+		-
+			message: "#^Parameter \\#1 \\$password of method Francken\\\\Association\\\\Photos\\\\PhotosAuthentication\\:\\:login\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Photos/Http/Controllers/AuthenticationController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\Photo\\:\\:album\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Photos/Photo.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\PhotosAuthentication\\:\\:isLoggedIn\\(\\) should return bool but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Photos/PhotosAuthentication.php
+
+		-
+			message: "#^Parameter \\#3 \\$passwordHash of class Francken\\\\Association\\\\Photos\\\\PhotosAuthentication constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Photos/PhotosServiceProvider.php
+
+		-
+			message: "#^Cannot access offset 'date_taken' on mixed\\.$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Cannot access offset 'id' on mixed\\.$#"
+			count: 2
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Cannot call method map\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Cannot call method sub\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:missingAlbums\\(\\) has parameter \\$albums with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:missingAlbums\\(\\) has parameter \\$albumsInDb with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:missingAlbums\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:storeAlbum\\(\\) has parameter \\$album with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Parameter \\#1 \\$album of method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:storeAlbum\\(\\) expects Illuminate\\\\Support\\\\Collection, mixed given\\.$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Parameter \\#1 \\$albumId of method Francken\\\\Association\\\\Photos\\\\FlickrRepository\\:\\:findAlbum\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Parameter \\#1 \\$subject of static method Illuminate\\\\Support\\\\Str\\:\\:after\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Part \\$album\\['id'\\] \\(mixed\\) of encapsed string cannot be cast to string\\.$#"
+			count: 2
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Part \\$album\\['title'\\] \\(mixed\\) of encapsed string cannot be cast to string\\.$#"
+			count: 3
+			path: src/Association/Photos/SynchronizeFlickrAlbums.php
+
+		-
+			message: "#^Cannot access offset 'audio' on mixed\\.$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Cannot access offset 'mime_types' on mixed\\.$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Http\\\\Requests\\\\SoundRequest\\:\\:cssBackground\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Http\\\\Requests\\\\SoundRequest\\:\\:cssForeground\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Http\\\\Requests\\\\SoundRequest\\:\\:name\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of function collect expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|iterable\\<\\(int\\|string\\), mixed\\>\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Unable to resolve the template type TKey in call to function collect$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Unable to resolve the template type TValue in call to function collect$#"
+			count: 1
+			path: src/Association/Soundboards/Http/Requests/SoundRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$audio of method Francken\\\\Association\\\\Soundboards\\\\FileUploader\\:\\:uploadAudio\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Association/Soundboards/Http/SoundsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$image of method Francken\\\\Association\\\\Soundboards\\\\FileUploader\\:\\:uploadImage\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Association/Soundboards/Http/SoundsController.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:audioMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Soundboards/Sound.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:imageMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Soundboards/Sound.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Soundboards/Sound.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:soundboard\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Soundboards/Sound.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Soundboard\\:\\:sounds\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Soundboards/Soundboard.php
+
+		-
+			message: "#^Parameter \\#1 \\$logo of method Francken\\\\Association\\\\Symposium\\\\FileUploader\\:\\:uploadLogo\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Association/Symposium/Http/AdminSymposiaController.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of class Francken\\\\Shared\\\\Email constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/ParticipantRegistrationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$firstname of method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:registerParticipant\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/ParticipantRegistrationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, mixed given\\.$#"
+			count: 2
+			path: src/Association/Symposium/Http/ParticipantRegistrationController.php
+
+		-
+			message: "#^Parameter \\#11 \\$lunchOption of method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:registerParticipant\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/ParticipantRegistrationController.php
+
+		-
+			message: "#^Parameter \\#2 \\$lastname of method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:registerParticipant\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/ParticipantRegistrationController.php
+
+		-
+			message: "#^Parameter \\#6 \\$nnvNumber of method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:registerParticipant\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/ParticipantRegistrationController.php
+
+		-
+			message: "#^Parameter \\#8 \\$iban of method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:registerParticipant\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/ParticipantRegistrationController.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/ParticipantRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\ParticipantRequest\\:\\:NNVNumber\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/ParticipantRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\ParticipantRequest\\:\\:firstname\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/ParticipantRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\ParticipantRequest\\:\\:iban\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/ParticipantRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\ParticipantRequest\\:\\:lastname\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/ParticipantRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\ParticipantRequest\\:\\:lunchOption\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/ParticipantRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of class Francken\\\\Shared\\\\Email constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/ParticipantRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\SymposiumRequest\\:\\:location\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/SymposiumRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\SymposiumRequest\\:\\:locationGoogleMapsUrl\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/SymposiumRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\SymposiumRequest\\:\\:name\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/SymposiumRequest.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Http\\\\Requests\\\\SymposiumRequest\\:\\:websiteUrl\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Association/Symposium/Http/Requests/SymposiumRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Association/Symposium/Http/Requests/SymposiumRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$whoNeedsToTakeAnAdt of class Francken\\\\Association\\\\Symposium\\\\Mail\\\\NotifyCommittee constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Association/Symposium/NotifySymposiumCommittee.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Participant\\:\\:adCount\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Symposium/Participant.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Participant\\:\\:symposium\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Symposium/Participant.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Symposium\\\\Participant\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Association/Symposium/Participant.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Association/Symposium/Symposium.php
+
+		-
+			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:participants\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Association/Symposium/Symposium.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Association/Symposium/Symposium.php
+
+		-
+			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:borrelcieAccount\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Auth/Account.php
+
+		-
+			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Auth/Account.php
+
+		-
+			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:scopeOfMember\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Auth/Account.php
+
+		-
+			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:scopeOfMember\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Auth/Account.php
+
+		-
+			message: "#^Method Francken\\\\Auth\\\\ChangeRolesListener\\:\\:activeCommitteesOfMember\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Auth/ChangeRolesListener.php
+
+		-
+			message: "#^PHPDoc tag @var contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Auth/ChangeRolesListener.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: void given\\.$#"
+			count: 1
+			path: src/Auth/ChangeRolesListener.php
+
+		-
+			message: "#^Parameter \\#1 \\$committee of method Francken\\\\Auth\\\\ChangeRolesListener\\:\\:roleForCommittee\\(\\) expects Francken\\\\Association\\\\Committees\\\\Committee, mixed given\\.$#"
+			count: 1
+			path: src/Auth/ChangeRolesListener.php
+
+		-
+			message: "#^Parameter \\#1 \\.\\.\\.\\$permissions of method Francken\\\\Auth\\\\Account\\:\\:givePermissionTo\\(\\) expects array\\|Illuminate\\\\Support\\\\Collection\\|int\\|Spatie\\\\Permission\\\\Contracts\\\\Permission\\|string, mixed given\\.$#"
+			count: 1
+			path: src/Auth/Http/Controllers/Admin/AccountPermissionsController.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Auth/Http/Controllers/Admin/AccountsController.php
+
+		-
+			message: "#^Parameter \\#1 \\.\\.\\.\\$permissions of method Spatie\\\\Permission\\\\Models\\\\Role\\:\\:givePermissionTo\\(\\) expects array\\|Illuminate\\\\Support\\\\Collection\\|int\\|Spatie\\\\Permission\\\\Contracts\\\\Permission\\|string, mixed given\\.$#"
+			count: 1
+			path: src/Auth/Http/Controllers/Admin/RolePermissionsController.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 2
+			path: src/Auth/ImportPermissionsFromConfig.php
+
+		-
+			message: "#^Part \\$guard \\(mixed\\) of encapsed string cannot be cast to string\\.$#"
+			count: 1
+			path: src/Auth/ImportPermissionsFromConfig.php
+
+		-
+			message: "#^PHPDoc type array of property Francken\\\\Auth\\\\ServiceProvider\\:\\:\\$policies is not covariant with PHPDoc type array\\<class\\-string, class\\-string\\> of overridden property Illuminate\\\\Foundation\\\\Support\\\\Providers\\\\AuthServiceProvider\\:\\:\\$policies\\.$#"
+			count: 1
+			path: src/Auth/ServiceProvider.php
+
+		-
+			message: "#^Cannot access property \\$fullname on mixed\\.$#"
+			count: 1
+			path: src/Extern/Alumnus.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Alumnus\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/Alumnus.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Extern\\\\Alumnus\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Extern/Alumnus.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Contact\\:\\:contactDetails\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Contact.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Contact\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/Contact.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:__construct\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/ActiveMembers.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:genders\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/ActiveMembers.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:studies\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/ActiveMembers.php
+
+		-
+			message: "#^Property Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:\\$members with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/ActiveMembers.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:flatMap\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: \\(array\\<int, int\\>\\|Illuminate\\\\Support\\\\Collection\\<int, int\\>\\), Closure\\(Francken\\\\Association\\\\Committees\\\\Committee\\)\\: Illuminate\\\\Support\\\\Collection\\<int, int\\> given\\.$#"
+			count: 1
+			path: src/Extern/FactSheet/ActiveMembersStatistics.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\FirstYearStudentsPerYear\\:\\:__construct\\(\\) has parameter \\$years with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\FirstYearStudentsPerYear\\:\\:handle\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
+
+		-
+			message: "#^Part \\$year \\(mixed\\) of encapsed string cannot be cast to string\\.$#"
+			count: 1
+			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
+
+		-
+			message: "#^Property Francken\\\\Extern\\\\FactSheet\\\\FirstYearStudentsPerYear\\:\\:\\$years with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
+
+		-
+			message: "#^Cannot access property \\$studierichting on mixed\\.$#"
+			count: 1
+			path: src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudentsByStudyAndStudyPhase\\:\\:studyPhaseStatistics\\(\\) has parameter \\$students with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudentsByStudyAndStudyPhase\\:\\:studyPhaseStatistics\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php
+
+		-
+			message: "#^Parameter \\#1 \\.\\.\\.\\$studies of class Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic constructor expects Francken\\\\Extern\\\\FactSheet\\\\StudyStatistic, mixed given\\.$#"
+			count: 1
+			path: src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php
+
+		-
+			message: "#^Cannot call method push\\(\\) on Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\|null\\.$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Cannot call static method fromMultipleStatistics\\(\\) on mixed\\.$#"
+			count: 2
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:filterUnrelatedStudies\\(\\) has parameter \\$studies with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:filterUnrelatedStudies\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:filterUnrelatedStudies\\(\\) should return Illuminate\\\\Support\\\\Collection but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\|null\\.$#"
+			count: 2
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:sort\\(\\) has parameter \\$studies with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:sort\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:studies\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:sortBy\\(\\) expects array\\<array\\{string, string\\}\\|\\(callable\\(mixed, int\\|string\\)\\: mixed\\)\\|string\\>\\|\\(callable\\(mixed, int\\|string\\)\\: mixed\\)\\|string, Closure\\(Francken\\\\Extern\\\\FactSheet\\\\StudyStatistic\\)\\: \\(0\\|1\\|2\\|3\\|4\\|5\\|6\\|false\\) given\\.$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Parameter \\#1 \\$groupBy of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:groupBy\\(\\) expects array\\|\\(callable\\(mixed, int\\|string\\)\\: \\(int\\|string\\)\\)\\|string, Closure\\(Francken\\\\Extern\\\\FactSheet\\\\StudyStatistic\\)\\: bool given\\.$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Property Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:\\$studies with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/FactSheet/StudiesStatistic.php
+
+		-
+			message: "#^Parameter \\#1 \\$logo of method Francken\\\\Extern\\\\LogoUploader\\:\\:uploadFooterLogo\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Extern/Http/AdminFootersController.php
+
+		-
+			message: "#^Parameter \\#1 \\$photo of method Francken\\\\Extern\\\\LogoUploader\\:\\:uploadContactPhoto\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Extern/Http/AdminPartnerContactsController.php
+
+		-
+			message: "#^Property Francken\\\\Extern\\\\ContactDetails\\:\\:\\$partner_id \\(int\\) does not accept mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/AdminPartnerContactsController.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Extern/Http/AdminPartnerNotesController.php
+
+		-
+			message: "#^Parameter \\#1 \\$logo of method Francken\\\\Extern\\\\LogoUploader\\:\\:uploadPrimaryLogo\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Extern/Http/AdminPartnersController.php
+
+		-
+			message: "#^Cannot access property \\$tijd on mixed\\.$#"
+			count: 2
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Cannot call method format\\(\\) on DateTimeInterface\\|null\\.$#"
+			count: 3
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:monthlyStats\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:transactionsDuringMonth\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:transactionsDuringWeek\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:transactionsInPeriod\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:weeklyStats\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Unable to resolve the template type TKey in call to function collect$#"
+			count: 1
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Unable to resolve the template type TValue in call to function collect$#"
+			count: 1
+			path: src/Extern/Http/FactSheetController.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/AdminSearchPartnersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\AdminSearchPartnersRequest\\:\\:name\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/AdminSearchPartnersRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\AdminSearchPartnersRequest\\:\\:status\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/AdminSearchPartnersRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/AlumnusRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\AlumnusRequest\\:\\:notes\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/AlumnusRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\AlumnusRequest\\:\\:position\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/AlumnusRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Extern/Http/Requests/AlumnusRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\CompanyProfileRequest\\:\\:content\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/CompanyProfileRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\CompanyProfileRequest\\:\\:displayName\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/CompanyProfileRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\ContactRequest\\:\\:firstname\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/ContactRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\ContactRequest\\:\\:gender\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/ContactRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\ContactRequest\\:\\:initials\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/ContactRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\ContactRequest\\:\\:notes\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/ContactRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\ContactRequest\\:\\:position\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/ContactRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\ContactRequest\\:\\:surname\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/ContactRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\ContactRequest\\:\\:title\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/ContactRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\FooterRequest\\:\\:referralUrl\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/FooterRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/PartnerRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\PartnerRequest\\:\\:homepageUrl\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/PartnerRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\PartnerRequest\\:\\:name\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/PartnerRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\PartnerRequest\\:\\:referralUrl\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/PartnerRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\PartnerRequest\\:\\:status\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/PartnerRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/PartnerRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 2
+			path: src/Extern/Http/Requests/SearchVacanciesRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\SearchVacanciesRequest\\:\\:jobType\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/SearchVacanciesRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\SearchVacanciesRequest\\:\\:title\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/SearchVacanciesRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/VacancyRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\VacancyRequest\\:\\:description\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/VacancyRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\VacancyRequest\\:\\:title\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/VacancyRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\VacancyRequest\\:\\:type\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/VacancyRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Http\\\\Requests\\\\VacancyRequest\\:\\:vacancyUrl\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Extern/Http/Requests/VacancyRequest.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Note\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/Note.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:alumni\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:companyProfile\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:contactDetails\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:contacts\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:footer\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:notes\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithActiveContract\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithActiveContract\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithAlumni\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithAlumni\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithExpiredContract\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithExpiredContract\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithRecentlyExpiredContract\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithRecentlyExpiredContract\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:sector\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:vacancies\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Extern/Partner.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\CompanyProfile\\:\\:partner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/SponsorOptions/CompanyProfile.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Extern\\\\SponsorOptions\\\\CompanyProfile\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Extern/SponsorOptions/CompanyProfile.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/SponsorOptions/Footer.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\:\\:partner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/SponsorOptions/Footer.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Extern/SponsorOptions/Footer.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:partner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/SponsorOptions/Vacancy.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/SponsorOptions/Vacancy.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Extern/SponsorOptions/Vacancy.php
+
+		-
+			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:sector\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Extern/SponsorOptions/Vacancy.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of class Francken\\\\PlusOne\\\\JwtToken constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/AuthenticationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of static method Illuminate\\\\Support\\\\Facades\\\\Hash\\:\\:check\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/AuthenticationController.php
+
+		-
+			message: "#^Parameter \\#2 \\$hashedValue of static method Illuminate\\\\Support\\\\Facades\\\\Hash\\:\\:check\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/AuthenticationController.php
+
+		-
+			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\BoardsController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/PlusOne/Http/BoardsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:map\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: array\\{lid_id\\: int\\|null, jaar\\: int, functie\\: string\\}, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: array\\{lid_id\\: int\\|null, jaar\\: int, functie\\: string\\} given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/BoardsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:filter\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: bool\\)\\|null, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: bool given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/BoardsController.php
+
+		-
+			message: "#^Cannot access property \\$amount on mixed\\.$#"
+			count: 3
+			path: src/PlusOne/Http/CategoryStatisticsController.php
+
+		-
+			message: "#^Cannot access property \\$categorie on mixed\\.$#"
+			count: 3
+			path: src/PlusOne/Http/CategoryStatisticsController.php
+
+		-
+			message: "#^Cannot access property \\$date on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/CategoryStatisticsController.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/PlusOne/Http/CategoryStatisticsController.php
+
+		-
+			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\CommitteesController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/PlusOne/Http/CommitteesController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:flatMap\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: \\(array\\<int, array\\{commissie_id\\: int, lid_id\\: int, jaar\\: int, functie\\: string\\|null, naam\\: string\\}\\>\\|Illuminate\\\\Support\\\\Collection\\<int, array\\{commissie_id\\: int, lid_id\\: int, jaar\\: int, functie\\: string\\|null, naam\\: string\\}\\>\\), Closure\\(Francken\\\\Association\\\\Committees\\\\Committee\\)\\: Illuminate\\\\Support\\\\Collection\\<int, array\\{commissie_id\\: int, lid_id\\: int, jaar\\: int, functie\\: string\\|null, naam\\: string\\}\\> given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/CommitteesController.php
+
+		-
+			message: "#^Cannot access property \\$afbeelding on mixed\\.$#"
+			count: 4
+			path: src/PlusOne/Http/MembersController.php
+
+		-
+			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\MembersController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/PlusOne/Http/MembersController.php
+
+		-
+			message: "#^Parameter \\#1 \\$contents of static method Lcobucci\\\\JWT\\\\Signer\\\\Key\\\\InMemory\\:\\:plainText\\(\\) expects non\\-empty\\-string, mixed given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/Middleware/AuthenticatePlusOne.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access offset 'id' on mixed\\.$#"
+			count: 3
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access offset 'member' on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access offset 'ordered_at' on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access offset 'products' on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access property \\$aantal on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access property \\$lid_id on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access property \\$product_id on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access property \\$tijd on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Cannot access property \\$totaalprijs on mixed\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\OrdersController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Parameter \\#2 \\$context of static method Illuminate\\\\Log\\\\Logger\\:\\:error\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: src/PlusOne/Http/OrdersController.php
+
+		-
+			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\ProductsController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/PlusOne/Http/ProductsController.php
+
+		-
+			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\SponsorsController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/PlusOne/Http/SponsorsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$contents of static method Lcobucci\\\\JWT\\\\Signer\\\\Key\\\\InMemory\\:\\:plainText\\(\\) expects non\\-empty\\-string, string given\\.$#"
+			count: 1
+			path: src/PlusOne/JwtToken.php
+
+		-
+			message: "#^Call to an undefined static method Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\\:\\:whoopsHandler\\(\\)\\.$#"
+			count: 1
+			path: src/Shared/ExceptionsHandler.php
+
+		-
+			message: "#^PHPDoc type array of property Francken\\\\Shared\\\\ExceptionsHandler\\:\\:\\$dontReport is not covariant with PHPDoc type array\\<int, class\\-string\\<Throwable\\>\\> of overridden property Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\\:\\:\\$dontReport\\.$#"
+			count: 1
+			path: src/Shared/ExceptionsHandler.php
+
+		-
+			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Shared/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:contains\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: bool\\)\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int\\|string, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: bool given\\.$#"
+			count: 1
+			path: src/Shared/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Http\\\\Controllers\\\\JasController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Shared/Http/Controllers/JasController.php
+
+		-
+			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
+			count: 1
+			path: src/Shared/Http/Controllers/MemberDashboardController.php
+
+		-
+			message: "#^Cannot access offset 'title' on mixed\\.$#"
+			count: 1
+			path: src/Shared/Http/Controllers/ResearchGroupsController.php
+
+		-
+			message: "#^PHPDoc type array\\<string, array\\<string\\>\\> of property Francken\\\\Shared\\\\Http\\\\Kernel\\:\\:\\$middlewareGroups is not covariant with PHPDoc type array\\<string, array\\<int, string\\>\\> of overridden property Illuminate\\\\Foundation\\\\Http\\\\Kernel\\:\\:\\$middlewareGroups\\.$#"
+			count: 1
+			path: src/Shared/Http/Kernel.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Shared\\\\Http\\\\Kernel\\:\\:\\$middleware is not covariant with PHPDoc type array\\<int, string\\> of overridden property Illuminate\\\\Foundation\\\\Http\\\\Kernel\\:\\:\\$middleware\\.$#"
+			count: 1
+			path: src/Shared/Http/Kernel.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Shared\\\\Http\\\\Middleware\\\\CheckForMaintenanceMode\\:\\:\\$except is not covariant with PHPDoc type array\\<int, string\\> of overridden property Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\\:\\:\\$except\\.$#"
+			count: 1
+			path: src/Shared/Http/Middleware/CheckForMaintenanceMode.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Shared\\\\Http\\\\Middleware\\\\EncryptCookies\\:\\:\\$except is not covariant with PHPDoc type array\\<int, string\\> of overridden property Illuminate\\\\Cookie\\\\Middleware\\\\EncryptCookies\\:\\:\\$except\\.$#"
+			count: 1
+			path: src/Shared/Http/Middleware/EncryptCookies.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Shared\\\\Http\\\\Middleware\\\\TrimStrings\\:\\:\\$except is not covariant with PHPDoc type array\\<int, string\\> of overridden property Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\\:\\:\\$except\\.$#"
+			count: 1
+			path: src/Shared/Http/Middleware/TrimStrings.php
+
+		-
+			message: "#^Access to undefined constant Illuminate\\\\Http\\\\Request\\:\\:HEADER_X_FORWARDED_ALL\\.$#"
+			count: 1
+			path: src/Shared/Http/Middleware/TrustProxies.php
+
+		-
+			message: "#^PHPDoc type array of property Francken\\\\Shared\\\\Http\\\\Middleware\\\\TrustProxies\\:\\:\\$proxies is not covariant with PHPDoc type array\\<int, string\\>\\|string\\|null of overridden property Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\\:\\:\\$proxies\\.$#"
+			count: 1
+			path: src/Shared/Http/Middleware/TrustProxies.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Shared\\\\Http\\\\Middleware\\\\VerifyCsrfToken\\:\\:\\$except is not covariant with PHPDoc type array\\<int, string\\> of overridden property Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\VerifyCsrfToken\\:\\:\\$except\\.$#"
+			count: 1
+			path: src/Shared/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Http\\\\Requests\\\\AdminPageRequest\\:\\:content\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Shared/Http/Requests/AdminPageRequest.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Http\\\\Requests\\\\AdminPageRequest\\:\\:description\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Shared/Http/Requests/AdminPageRequest.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Http\\\\Requests\\\\AdminPageRequest\\:\\:title\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Shared/Http/Requests/AdminPageRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$string of function explode expects string, mixed given\\.$#"
+			count: 1
+			path: src/Shared/Http/Requests/AdminPageRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:contains\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: bool\\)\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int\\|string, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: bool given\\.$#"
+			count: 1
+			path: src/Shared/Http/Requests/BoardDashboardRequest.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Markdown\\\\ResponsiveImageRenderer\\:\\:render\\(\\) should return League\\\\CommonMark\\\\Util\\\\HtmlElement but returns Stringable\\.$#"
+			count: 1
+			path: src/Shared/Markdown/ResponsiveImageRenderer.php
+
+		-
+			message: "#^Parameter \\#1 \\$url of function image expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Shared/Markdown/ResponsiveImageRenderer.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Media\\\\Directory\\:\\:childDirectories\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Shared/Media/Directory.php
+
+		-
+			message: "#^Property Francken\\\\Shared\\\\Media\\\\Directory\\:\\:\\$name \\(string\\) does not accept Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|string\\|null\\.$#"
+			count: 1
+			path: src/Shared/Media/Directory.php
+
+		-
+			message: "#^Cannot access property \\$mediable_type on mixed\\.$#"
+			count: 2
+			path: src/Shared/Media/Http/Controllers/MediaController.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$media contains generic class Illuminate\\\\Pagination\\\\LengthAwarePaginator but does not specify its types\\: TValue$#"
+			count: 1
+			path: src/Shared/Media/Http/Controllers/MediaController.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<mixed,mixed\\>\\:\\:transform\\(\\) expects callable\\(mixed, mixed\\)\\: mixed, Closure\\(Plank\\\\Mediable\\\\Media\\)\\: Francken\\\\Shared\\\\Media\\\\MediaPresenter given\\.$#"
+			count: 1
+			path: src/Shared/Media/Http/Controllers/MediaController.php
+
+		-
+			message: "#^Parameter \\#1 \\$directory of method Francken\\\\Shared\\\\Media\\\\Http\\\\Controllers\\\\MediaController\\:\\:breadcrumbs\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Shared/Media/Http/Controllers/MediaController.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopeCovid\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Shared/Page.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopeCovid\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Shared/Page.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopePublic\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Shared/Page.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopePublic\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Shared/Page.php
+
+		-
+			message: "#^Interface Francken\\\\Shared\\\\Settings\\\\Settings extends generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Shared/Settings/Settings.php
+
+		-
+			message: "#^Method Francken\\\\Shared\\\\ViewComponents\\\\AutocompleteMemberComponent\\:\\:__construct\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Shared/ViewComponents/AutocompleteMemberComponent.php
+
+		-
+			message: "#^Property Francken\\\\Shared\\\\ViewComponents\\\\AutocompleteMemberComponent\\:\\:\\$members with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Shared/ViewComponents/AutocompleteMemberComponent.php
+
+		-
+			message: "#^Property Francken\\\\Shared\\\\ViewComponents\\\\BorrelcieNotificationsComponent\\:\\:\\$notifications with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Shared/ViewComponents/BorrelcieNotificationsComponent.php
+
+		-
+			message: "#^Cannot access property \\$name on mixed\\.$#"
+			count: 1
+			path: src/Shared/ViewComponents/FooterSponsorsComponent.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:map\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: array\\{footer\\-link\\: string, footer\\-logo\\: string\\|null, name\\: mixed\\}, Closure\\(Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\)\\: array\\{footer\\-link\\: string, footer\\-logo\\: string\\|null, name\\: mixed\\} given\\.$#"
+			count: 1
+			path: src/Shared/ViewComponents/FooterSponsorsComponent.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:buyer\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeAvailable\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeAvailable\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopePaidOff\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopePaidOff\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSold\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSold\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:seller\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Study/BooksSale/Book.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 4
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Http\\\\Requests\\\\AdminBookRequest\\:\\:author\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Http\\\\Requests\\\\AdminBookRequest\\:\\:buyer\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Http\\\\Requests\\\\AdminBookRequest\\:\\:description\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Http\\\\Requests\\\\AdminBookRequest\\:\\:seller\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Http\\\\Requests\\\\AdminBookRequest\\:\\:title\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: src/Study/BooksSale/Http/Requests/AdminBookRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 2
+			path: src/Study/BooksSale/Http/Requests/AdminBookSearchRequest.php
+
+		-
+			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Http\\\\Requests\\\\AdminBookSearchRequest\\:\\:title\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Study/BooksSale/Http/Requests/AdminBookSearchRequest.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 1
+			path: src/Treasurer/DeductionEmail.php
+
+		-
+			message: "#^Cannot call method isNotEmpty\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Treasurer/DeductionEmail.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmail\\:\\:deductionFile\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Treasurer/DeductionEmail.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmail\\:\\:deductionToMembers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Treasurer/DeductionEmail.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Treasurer\\\\DeductionEmail\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Treasurer/DeductionEmail.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: array\\{member_id\\: mixed, description\\: mixed, amount_in_cents\\: mixed, contained_errors\\: mixed\\}, Closure\\(Illuminate\\\\Support\\\\Collection\\)\\: array\\{member_id\\: mixed, description\\: mixed, amount_in_cents\\: mixed, contained_errors\\: mixed\\} given\\.$#"
+			count: 1
+			path: src/Treasurer/DeductionEmail.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmailToMember\\:\\:deduction\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Treasurer/DeductionEmailToMember.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmailToMember\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Treasurer/DeductionEmailToMember.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Treasurer\\\\DeductionEmailToMember\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Treasurer/DeductionEmailToMember.php
+
+		-
+			message: "#^Parameter \\#1 \\$splashPhoto of method Francken\\\\Treasurer\\\\ProductFileUploader\\:\\:uploadSplashPhoto\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Treasurer/Http/Controllers/AdminProductExtrasController.php
+
+		-
+			message: "#^Parameter \\#1 \\$photo of method Francken\\\\Treasurer\\\\ProductFileUploader\\:\\:uploadPhoto\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Treasurer/Http/Controllers/AdminProductsController.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Controllers\\\\DeductionsController\\:\\:findConflicts\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Http/Controllers/DeductionsController.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Controllers\\\\DeductionsController\\:\\:findConflicts\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Http/Controllers/DeductionsController.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminProductExtraRequest\\:\\:color\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Http/Requests/AdminProductExtraRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 2
+			path: src/Treasurer/Http/Requests/AdminProductRequest.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminProductRequest\\:\\:category\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Http/Requests/AdminProductRequest.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminProductRequest\\:\\:name\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Http/Requests/AdminProductRequest.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminSearchProductsRequest\\:\\:name\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Http/Requests/AdminSearchProductsRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 2
+			path: src/Treasurer/Http/Requests/AdminSearchTransactionsRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminSearchTransactionsRequest\\:\\:toDateTimeImmutable\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 2
+			path: src/Treasurer/Http/Requests/AdminSearchTransactionsRequest.php
+
+		-
+			message: "#^Cannot cast mixed to float\\.$#"
+			count: 2
+			path: src/Treasurer/Http/Requests/AdminTransactionRequest.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 3
+			path: src/Treasurer/Http/Requests/AdminTransactionRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminTransactionRequest\\:\\:toDateTimeImmutable\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Treasurer/Http/Requests/AdminTransactionRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\DeductionRequest\\:\\:toDateTimeImmutable\\(\\) expects string, mixed given\\.$#"
+			count: 3
+			path: src/Treasurer/Http/Requests/DeductionRequest.php
+
+		-
+			message: "#^Anonymous function should return Illuminate\\\\Support\\\\Collection but returns mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Anonymous function should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Cannot access offset 'bedrag' on mixed\\.$#"
+			count: 3
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Cannot access offset 'errors' on mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Cannot access offset 'machtigingskenmerk' on mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Cannot access offset 'member' on mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Cannot access offset 'omschrijving_2' on mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 3
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:addDeduction\\(\\) has parameter \\$deduction with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:collection\\(\\) has parameter \\$collection with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:deductions\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:errors\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:getLegacyMember\\(\\) has parameter \\$deduction with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: Illuminate\\\\Support\\\\Collection, Closure\\(Illuminate\\\\Support\\\\Collection\\)\\: Illuminate\\\\Support\\\\Collection given\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: int, Closure\\(Illuminate\\\\Support\\\\Collection\\)\\: int given\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: string, Closure\\(Illuminate\\\\Support\\\\Collection\\)\\: string given\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Parameter \\#1 \\$deduction of method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:addDeduction\\(\\) expects Illuminate\\\\Support\\\\Collection, mixed given\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Parameter \\#1 \\$subject of static method Illuminate\\\\Support\\\\Str\\:\\:after\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Parameter \\#2 \\$deduction of method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:checkIban\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, mixed given\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Property Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:\\$deduction is never read, only written\\.$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Property Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:\\$deductions with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Property Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:\\$errors with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Treasurer/Imports/ImportDeductions.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\MemberExtra\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Treasurer/MemberExtra.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\MemberExtra\\:\\:scopeOfMember\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/MemberExtra.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\MemberExtra\\:\\:scopeOfMember\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/MemberExtra.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:extra\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeBeer\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeBeer\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeFood\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeFood\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSoda\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSoda\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Treasurer/Product.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\ProductExtra\\:\\:product\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Treasurer/ProductExtra.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Transaction\\:\\:product\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Treasurer/Transaction.php
+
+		-
+			message: "#^Method Francken\\\\Treasurer\\\\Transaction\\:\\:purchasedBy\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: src/Treasurer/Transaction.php
+
+		-
+			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Treasurer\\\\Transaction\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
+			count: 1
+			path: src/Treasurer/Transaction.php
