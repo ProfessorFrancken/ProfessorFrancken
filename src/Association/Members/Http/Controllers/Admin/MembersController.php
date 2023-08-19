@@ -97,6 +97,9 @@ final class MembersController extends Controller
         ]);
     }
 
+    /**
+     * @psalm-suppress InvalidTemplateParam
+     */
     public function show(LegacyMember $member, Clock $clock) : view
     {
         $currentBoard = Board::current()->firstOrFail();
