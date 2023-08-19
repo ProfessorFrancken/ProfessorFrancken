@@ -5,28 +5,31 @@ declare(strict_types=1);
 namespace Francken\Association\News;
 
 use Francken\Shared\Markdown\ResponsiveImageRenderer;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
+use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
-use League\CommonMark\Inline\Element\Image;
-use League\CommonMark\Inline\Renderer\ImageRenderer;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
+use League\CommonMark\Extension\CommonMark\Renderer\Inline\ImageRenderer as InlineImageRenderer;
+use League\CommonMark\MarkdownConverter;
 
 final class NewsContentCompiler
 {
-    private CommonMarkConverter $compiler;
+    private MarkdownConverter $compiler;
 
     public function __construct()
     {
-        $env = Environment::createCommonMarkEnvironment();
-        $env->addExtension(new AttributesExtension());
-        $env->addInlineRenderer(Image::class, new ResponsiveImageRenderer(
-            new ImageRenderer()
-        ));
-
-        $this->compiler = new CommonMarkConverter([
+        $config = [
             'html_input' => 'allow',
             'allow_unsafe_links' => false,
-        ], $env);
+        ];
+        $env = new Environment($config);
+        $env->addExtension(new CommonMarkCoreExtension());
+        $env->addExtension(new AttributesExtension());
+        $env->addRenderer(Image::class, new ResponsiveImageRenderer(
+            new InlineImageRenderer()
+        ));
+
+        $this->compiler = new MarkdownConverter($env);
     }
 
     public function content(string $content) : CompiledMarkdown
@@ -39,14 +42,18 @@ final class NewsContentCompiler
 
     public function exerpt(string $content) : CompiledMarkdown
     {
-        $env = Environment::createCommonMarkEnvironment();
-        $env->addInlineRenderer(Image::class, new ResponsiveImageRenderer(
-            new ImageRenderer()
-        ));
-        $toHtml = new CommonMarkConverter([
+        $config = [
             'html_input' => 'strip',
             'allow_unsafe_links' => false,
-        ], $env);
+        ];
+        $env = new Environment($config);
+        $env->addExtension(new CommonMarkCoreExtension());
+        $env->addExtension(new AttributesExtension());
+        $env->addRenderer(Image::class, new ResponsiveImageRenderer(
+            new InlineImageRenderer()
+        ));
+
+        $toHtml = new MarkdownConverter($env);
 
         return CompiledMarkdown::fromSource(
             $toHtml,
