@@ -79,33 +79,4 @@ class AdminBoardsFeature extends TestCase
         Event::assertDispatched(BoardMemberWasDemissioned::class);
         Event::assertDispatched(MemberBecameCandidateBoardMember::class);
     }
-
-    // Fixing Laravel bugs
-
-    /**
-     * Store an array based file upload with the proper nested array structure.
-     *
-     * @param  array  $uploads
-     * @param  string  $key
-     * @param mixed $file
-     */
-    protected function prepareArrayBasedFileInput(&$uploads, $key, $file) : void
-    {
-        preg_match_all('/([^\[\]]+)/', $key, $segments);
-
-        $segments = array_reverse($segments[1]);
-
-        $newKey = array_pop($segments);
-
-        foreach ($segments as $segment) {
-            $file = [$segment => $file];
-        }
-
-        $uploads[$newKey] = isset($uploads[$newKey]) ? array_merge(
-            $uploads[$newKey],
-            $file
-        ) : $file;
-
-        unset($uploads[$key]);
-    }
 }
