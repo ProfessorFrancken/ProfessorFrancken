@@ -34,7 +34,7 @@ final class ActivitiesController
 
     public function show(Request $request, Activity $activity, Session $session) : View
     {
-        $session->put('url.intended', action([BoardsController::class, 'index']));
+        $session->put('url.intended', action([self::class, 'show'], ['activity'=>$activity]));
 
         $activity->load(['signUps.member']);
         $account = $request->user();
