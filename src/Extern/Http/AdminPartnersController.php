@@ -173,7 +173,7 @@ final class AdminPartnersController
 
         if ($logo !== null) {
             $partner->syncMedia($logo, Partner::PARTNER_LOGO_TAG);
-            $partner->logo_media_id = $logo->id;
+            $partner->logo_media_id = (int) $logo->id;
         }
 
         $partner->update([

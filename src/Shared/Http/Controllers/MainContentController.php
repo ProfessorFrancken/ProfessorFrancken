@@ -6,6 +6,7 @@ namespace Francken\Shared\Http\Controllers;
 
 use Exception;
 use Francken\Shared\Page;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
@@ -40,7 +41,10 @@ class MainContentController extends Controller
 
             return view($viewName, [
                 'posts' => [],
-                'editPageUrl' => $this->getEditUrlForThisPage($page)
+                'editPageUrl' => $this->getEditUrlForThisPage($page),
+                'breadcrumbs' => [
+                    ['url' => action([self::class, 'page'], ['fallbackPlaceholder' => $page]), 'text' =>Str::headline($page)],
+                ]
             ]);
         } catch (InvalidArgumentException $e) {
             return response()->view('errors.404', [], 404);

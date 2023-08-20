@@ -45,6 +45,9 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
 
     $options = array_merge(['crop' => '1'], $options);
 
+    // Temporary fix
+    $url = str_replace("https://professorfrancken.nl", "http://nginx", $url);
+
     switch ($proxy) {
         case 'imaginary': {
 
@@ -55,7 +58,7 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
             if (isset($options['resize']) && $options['resize'] === true) {
                 // background, sign, gravity,
                 return sprintf(
-                    '%s/resize?extend=background,background=250,250,250&width=%d&height=%d%s&url=%s',
+                    '%s/resize?extend=background&background=250,250,250&width=%d&height=%d%s&url=%s',
                     $server,
                     $options['width'],
                     $options['height'],
@@ -66,7 +69,7 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
 
             // background, sign, gravity,
             return sprintf(
-                '%s/crop?extend=background,background=250,250,250&width=%d&height=%d%s&url=%s',
+                '%s/crop?extend=background&background=250,250,250&width=%d&height=%d%s&url=%s',
                 $server,
                 $options['width'],
                 $options['height'],

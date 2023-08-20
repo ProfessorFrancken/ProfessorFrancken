@@ -20,6 +20,7 @@ use Illuminate\Support\Str;
  * @property int $positie
  * @property bool $beschikbaar
  * @property string $afbeelding
+ * @property string|null $splash_afbeelding
  * @property string $btw
  * @property int $eenheden
  * @property \Illuminate\Support\Carbon $created_at

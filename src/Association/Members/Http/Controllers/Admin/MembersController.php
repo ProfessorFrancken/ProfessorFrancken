@@ -97,6 +97,9 @@ final class MembersController extends Controller
         ]);
     }
 
+    /**
+     * @psalm-suppress InvalidTemplateParam
+     */
     public function show(LegacyMember $member, Clock $clock) : view
     {
         $currentBoard = Board::current()->firstOrFail();
@@ -185,6 +188,8 @@ final class MembersController extends Controller
                   : ($gender === Gender::FEMALE
                   ? 'V'
                   : $gender);
+
+        $email = $request->email()->toString();
         $member->update([
             "titel" => $request->title(),
             "initialen" => $request->initials(),
@@ -226,6 +231,12 @@ final class MembersController extends Controller
             "erelid" => $request->isMemberOfHonors(),
             "notities" => $request->notes(),
         ]);
+
+        $account = Account::ofMember($member->id)->first();
+
+        if ($account && $account->email !== $email) {
+            $account->update(['email' => $email]);
+        }
 
         return redirect()->action([self::class, 'show'], ['member' => $member]);
     }

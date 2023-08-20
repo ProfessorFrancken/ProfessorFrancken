@@ -1,51 +1,711 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
+<files psalm-version="5.14.1@b9d355e0829c397b9b3b47d0c0ed042a8a70284d">
+  <file src="src/Association/Activities/ActivitiesRepository.php">
+    <InvalidArgument>
+      <code>CalendarEvent::fromEvent($event)</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Association/Boards/Board.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$board->id]]></code>
+    </UndefinedMagicPropertyFetch>
+    <UndefinedThisPropertyAssignment>
+      <code><![CDATA[$this->decharged_at]]></code>
+      <code><![CDATA[$this->demissioned_at]]></code>
+      <code><![CDATA[$this->installed_at]]></code>
+      <code><![CDATA[$this->name]]></code>
+      <code><![CDATA[$this->photo_media_id]]></code>
+      <code><![CDATA[$this->photo_position]]></code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch>
+      <code><![CDATA[$this->installed_at]]></code>
+      <code><![CDATA[$this->name]]></code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/Association/Boards/BoardMember.php">
+    <UndefinedThisPropertyAssignment>
+      <code><![CDATA[$this->board_member_status]]></code>
+      <code><![CDATA[$this->decharged_at]]></code>
+      <code><![CDATA[$this->demissioned_at]]></code>
+      <code><![CDATA[$this->installed_at]]></code>
+      <code><![CDATA[$this->member_id]]></code>
+      <code><![CDATA[$this->name]]></code>
+      <code><![CDATA[$this->photo_media_id]]></code>
+      <code><![CDATA[$this->title]]></code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch>
+      <code><![CDATA[$this->board_id]]></code>
+      <code><![CDATA[$this->board_id]]></code>
+      <code><![CDATA[$this->board_id]]></code>
+      <code><![CDATA[$this->board_id]]></code>
+      <code><![CDATA[$this->board_member_status]]></code>
+      <code><![CDATA[$this->decharged_at]]></code>
+      <code><![CDATA[$this->demissioned_at]]></code>
+      <code><![CDATA[$this->installed_at]]></code>
+      <code><![CDATA[$this->member_id]]></code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/Association/Boards/Http/Controllers/AdminBoardsController.php">
+    <InvalidArgument>
+      <code><![CDATA[$request->members()->map(
+                function (array $member) use ($request) : array {
+                    $photo = $this->uploadPhoto(
+                        $member['photo'] ?? null,
+                        $request->boardYear(),
+                        $member['title']
+                    );
+
+                    return [
+                        'member_id' => (int)$member['member_id'],
+                        'title' => $member['title'],
+                        'photo' => $photo
+                    ];
+                }
+            )]]></code>
+    </InvalidArgument>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$board->id]]></code>
+      <code><![CDATA[$board->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Association/Boards/Http/Controllers/BirthdaysController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[$year->groupBy(fn ($member) => $member['day']->format('F'))]]></code>
+      <code><![CDATA[$year->groupBy(fn ($member) => $member['day']->format('F'))]]></code>
+      <code><![CDATA[BoardMember::with(['member'])
+            ->get()
+            ->filter(
+                fn (BoardMember $member) : bool =>
+                $member->member !== null && $member->member->geboortedatum !== null
+            )
+            ->map(function (BoardMember $member) : array {
+                Assert::notNull($member->member);
+                Assert::notNull($member->member->geboortedatum);
+
+                return [
+                    'name' => $member->member->fullname,
+                    'birthday' => new DateTimeImmutable($member->member->geboortedatum)
+                ];
+            })]]></code>
+      <code><![CDATA[BoardMember::with(['member'])
+            ->get()
+            ->filter(
+                fn (BoardMember $member) : bool =>
+                $member->member !== null && $member->member->geboortedatum !== null
+            )
+            ->map(function (BoardMember $member) : array {
+                Assert::notNull($member->member);
+                Assert::notNull($member->member->geboortedatum);
+
+                return [
+                    'name' => $member->member->fullname,
+                    'birthday' => new DateTimeImmutable($member->member->geboortedatum)
+                ];
+            })
+            ->map(function (array $member) use ($today) : array {
+                $birthdayInSameYearAsNow = $member['birthday']->setDate(
+                    (int) $today->format('Y'),
+                    (int) $member['birthday']->format('m'),
+                    (int) $member['birthday']->format('d')
+                );
+
+                $birthday = $birthdayInSameYearAsNow->setDate(
+                    (int) $birthdayInSameYearAsNow->format('Y') + ($today > $birthdayInSameYearAsNow ? 1 : 0),
+                    (int) $birthdayInSameYearAsNow->format('m'),
+                    (int) $birthdayInSameYearAsNow->format('d')
+                );
+
+                return array_merge($member, ['day' => $birthday]);
+            })]]></code>
+      <code><![CDATA[BoardMember::with(['member'])
+            ->get()
+            ->filter(
+                fn (BoardMember $member) : bool =>
+                $member->member !== null && $member->member->geboortedatum !== null
+            )
+            ->map(function (BoardMember $member) : array {
+                Assert::notNull($member->member);
+                Assert::notNull($member->member->geboortedatum);
+
+                return [
+                    'name' => $member->member->fullname,
+                    'birthday' => new DateTimeImmutable($member->member->geboortedatum)
+                ];
+            })
+            ->map(function (array $member) use ($today) : array {
+                $birthdayInSameYearAsNow = $member['birthday']->setDate(
+                    (int) $today->format('Y'),
+                    (int) $member['birthday']->format('m'),
+                    (int) $member['birthday']->format('d')
+                );
+
+                $birthday = $birthdayInSameYearAsNow->setDate(
+                    (int) $birthdayInSameYearAsNow->format('Y') + ($today > $birthdayInSameYearAsNow ? 1 : 0),
+                    (int) $birthdayInSameYearAsNow->format('m'),
+                    (int) $birthdayInSameYearAsNow->format('d')
+                );
+
+                return array_merge($member, ['day' => $birthday]);
+            })
+            ->sortBy(fn ($member) => $member['day']->getTimestamp() - $today->getTimestamp())
+            ->groupBy(fn ($member) => $member['day']->format('Y'))]]></code>
+      <code><![CDATA[BoardMember::with(['member'])
+            ->get()
+            ->filter(
+                fn (BoardMember $member) : bool =>
+                $member->member !== null && $member->member->geboortedatum !== null
+            )
+            ->map(function (BoardMember $member) : array {
+                Assert::notNull($member->member);
+                Assert::notNull($member->member->geboortedatum);
+
+                return [
+                    'name' => $member->member->fullname,
+                    'birthday' => new DateTimeImmutable($member->member->geboortedatum)
+                ];
+            })
+            ->map(function (array $member) use ($today) : array {
+                $birthdayInSameYearAsNow = $member['birthday']->setDate(
+                    (int) $today->format('Y'),
+                    (int) $member['birthday']->format('m'),
+                    (int) $member['birthday']->format('d')
+                );
+
+                $birthday = $birthdayInSameYearAsNow->setDate(
+                    (int) $birthdayInSameYearAsNow->format('Y') + ($today > $birthdayInSameYearAsNow ? 1 : 0),
+                    (int) $birthdayInSameYearAsNow->format('m'),
+                    (int) $birthdayInSameYearAsNow->format('d')
+                );
+
+                return array_merge($member, ['day' => $birthday]);
+            })
+            ->sortBy(fn ($member) => $member['day']->getTimestamp() - $today->getTimestamp())
+            ->groupBy(fn ($member) => $member['day']->format('Y'))]]></code>
+      <code><![CDATA[BoardMember::with(['member'])
+            ->get()
+            ->filter(
+                fn (BoardMember $member) : bool =>
+                $member->member !== null && $member->member->geboortedatum !== null
+            )
+            ->map(function (BoardMember $member) : array {
+                Assert::notNull($member->member);
+                Assert::notNull($member->member->geboortedatum);
+
+                return [
+                    'name' => $member->member->fullname,
+                    'birthday' => new DateTimeImmutable($member->member->geboortedatum)
+                ];
+            })
+            ->map(function (array $member) use ($today) : array {
+                $birthdayInSameYearAsNow = $member['birthday']->setDate(
+                    (int) $today->format('Y'),
+                    (int) $member['birthday']->format('m'),
+                    (int) $member['birthday']->format('d')
+                );
+
+                $birthday = $birthdayInSameYearAsNow->setDate(
+                    (int) $birthdayInSameYearAsNow->format('Y') + ($today > $birthdayInSameYearAsNow ? 1 : 0),
+                    (int) $birthdayInSameYearAsNow->format('m'),
+                    (int) $birthdayInSameYearAsNow->format('d')
+                );
+
+                return array_merge($member, ['day' => $birthday]);
+            })
+            ->sortBy(fn ($member) => $member['day']->getTimestamp() - $today->getTimestamp())
+            ->groupBy(fn ($member) => $member['day']->format('Y'))
+            ->map(fn ($year) => $year->groupBy(fn ($member) => $member['day']->format('F')))]]></code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Association/Boards/Imports/BoardMembersImport.php">
+    <UndefinedMagicPropertyAssignment>
+      <code><![CDATA[$member->photo_media_id]]></code>
+    </UndefinedMagicPropertyAssignment>
+  </file>
+  <file src="src/Association/Boards/Imports/BoardsImport.php">
+    <UndefinedMagicPropertyAssignment>
+      <code><![CDATA[$board->photo_media_id]]></code>
+    </UndefinedMagicPropertyAssignment>
+  </file>
+  <file src="src/Association/Boards/KandiToto/Bet.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$member->member_id]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Association/Borrelcie/Http/AnytimersController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[BorrelcieAccount::query()
+            ->with(['member'])
+            ->where('member_id', '<>', $borrelcieAccount->member_id)
+            ->get()
+            ->map(fn (BorrelcieAccount $account) => [
+                'label' => optional($account->member)->fullname,
+                'value' => $account->getKey()
+            ])]]></code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Association/Committees/Committee.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$toBoardYear->id]]></code>
+    </UndefinedMagicPropertyFetch>
+    <UndefinedThisPropertyFetch>
+      <code><![CDATA[$this->fallback_page]]></code>
+      <code><![CDATA[$this->parent_committee_id]]></code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/Association/Committees/Exports/CommitteeMembersExport.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Association/Committees/FileUploader.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$committee->name]]></code>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Association/Committees/Http/AdminCommitteeMembersController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$board->name]]></code>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Association/Committees/Http/AdminCommitteesController.php">
+    <InvalidArgument>
+      <code><![CDATA[fn (Board $board) : array => [$board->id => $board->board_name->toString()]]]></code>
+    </InvalidArgument>
+    <InvalidTemplateParam>
+      <code><![CDATA[$boards->mapWithKeys(fn (Board $board) : array => [$board->id => $board->board_name->toString()])]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$board->id]]></code>
+      <code><![CDATA[$board->id]]></code>
+      <code><![CDATA[$board->id]]></code>
+      <code><![CDATA[$board->id]]></code>
+      <code><![CDATA[$board->name]]></code>
+      <code><![CDATA[$board->name]]></code>
+      <code><![CDATA[$board->name]]></code>
+      <code><![CDATA[$board->name]]></code>
+      <code><![CDATA[$committee->name]]></code>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Association/Committees/Http/CommitteesController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$board->installed_at]]></code>
+      <code><![CDATA[$board->installed_at]]></code>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
   <file src="src/Association/FranckenVrij/Http/AdminSubscriptionsController.php">
-    <InvalidArrayOffset occurrences="3">
-      <code>[$key =&gt; $date-&gt;format("F Y")]</code>
-      <code>[$key =&gt; sprintf("%s (1 year)", $date-&gt;format("F Y"))]</code>
-    </InvalidArrayOffset>
+    <InvalidArgument>
+      <code><![CDATA[fn (DateTimeImmutable $date) => $date > $today]]></code>
+      <code><![CDATA[function (DateTimeImmutable $date) use ($today) : array {
+                $years = $date->diff($today)->y;
+
+                $key = $date->format("F Y");
+                if ($years === 0) {
+                    return [$key => $date->format("F Y")];
+                }
+
+                if ($years === 1) {
+                    return [$key => sprintf("%s (1 year)", $date->format("F Y"))];
+                }
+
+                return [
+                    $key => sprintf("%s (%d years)", $date->format("F Y"), $years)
+                ];
+            }]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Association/FranckenVrij/Http/AdminSubscriptionsExportController.php">
+    <InvalidArgument>
+      <code>$subscriptions</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Association/FranckenVrij/Http/FranckenVrijController.php">
+    <InvalidMethodCall>
+      <code>editions</code>
+    </InvalidMethodCall>
   </file>
   <file src="src/Association/Members/Http/Controllers/Admin/MembersController.php">
-    <InvalidArrayOffset occurrences="2">
-      <code>[$study-&gt;studierichting =&gt; $study-&gt;studierichting]</code>
-      <code>[$study-&gt;type_lid =&gt; $study-&gt;type_lid]</code>
+    <InvalidArrayOffset>
+      <code><![CDATA[[$study->studierichting => $study->studierichting]]]></code>
+      <code><![CDATA[[$study->type_lid => $study->type_lid]]]></code>
     </InvalidArrayOffset>
+    <InvalidTemplateParam>
+      <code><![CDATA[LegacyMember::distinct()
+            ->select('studierichting')
+            ->get()
+            ->mapWithKeys(function ($study) {
+                /** @var LegacyMember $study */
+                return [$study->studierichting => $study->studierichting];
+            })]]></code>
+      <code><![CDATA[LegacyMember::distinct()
+            ->select('type_lid')
+            ->get()
+            ->mapWithKeys(function ($study) {
+                /** @var LegacyMember $study */
+                return [$study->type_lid => $study->type_lid];
+            })]]></code>
+    </InvalidTemplateParam>
+    <NullArgument>
+      <code>null</code>
+      <code>null</code>
+      <code>null</code>
+      <code>null</code>
+    </NullArgument>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$member->committee->board_id]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Association/Members/Http/Controllers/Admin/RegistrationRequestsController.php">
+    <NoInterfaceProperties>
+      <code><![CDATA[$account->member_id]]></code>
+      <code><![CDATA[$account->member_id]]></code>
+    </NoInterfaceProperties>
   </file>
   <file src="src/Association/Members/Http/FranckenVrijSubscriptionController.php">
-    <InvalidArrayOffset occurrences="3">
-      <code>[$key =&gt; $date-&gt;format("F Y")]</code>
-      <code>[$key =&gt; sprintf("%s (1 year)", $date-&gt;format("F Y"))]</code>
-    </InvalidArrayOffset>
-  </file>
-  <file src="src/Extern/FactSheet/ActiveMembers.php">
-    <InvalidArgument occurrences="1">
-      <code>$studies</code>
+    <InvalidArgument>
+      <code><![CDATA[fn (DateTimeImmutable $date) => $date > $today]]></code>
+      <code><![CDATA[function (DateTimeImmutable $date) use ($today) : array {
+                $years = $date->diff($today)->y;
+
+                $key = $date->format("F Y");
+                if ($years === 0) {
+                    return [$key => $date->format("F Y")];
+                }
+
+                if ($years === 1) {
+                    return [$key => sprintf("%s (1 year)", $date->format("F Y"))];
+                }
+
+                return [
+                    $key => sprintf("%s (%d years)", $date->format("F Y"), $years)
+                ];
+            }]]></code>
     </InvalidArgument>
   </file>
-  <file src="src/Extern/FactSheet/FirstYearStudentsPerYear.php">
-    <InvalidArgument occurrences="1">
-      <code>$studies</code>
+  <file src="src/Association/News/Fake/FakeNewsContent.php">
+    <RedundantCast>
+      <code><![CDATA[(int)$this->faker->numberBetween(3, 8)]]></code>
+    </RedundantCast>
+  </file>
+  <file src="src/Association/Photos/AlbumsRepository.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Album::where('is_public', true)
+            ->with('coverPhoto')
+            ->orderBy('activity_date', 'desc')]]></code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Association/Soundboards/FileUploader.php">
+    <UndefinedMagicPropertyAssignment>
+      <code><![CDATA[$sound->audio_media_id]]></code>
+      <code><![CDATA[$sound->image_media_id]]></code>
+    </UndefinedMagicPropertyAssignment>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$sound->name]]></code>
+      <code><![CDATA[$sound->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Auth/ChangeRolesListener.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$committee->name]]></code>
+      <code><![CDATA[$member->board_member_status]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Auth/Role.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Contact.php">
+    <UndefinedThisPropertyFetch>
+      <code><![CDATA[$this->firstname]]></code>
+      <code><![CDATA[$this->partner_id]]></code>
+      <code><![CDATA[$this->surname]]></code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/Extern/FactSheet/StudiesStatistic.php">
+    <InvalidArgument>
+      <code>collect($studies)</code>
+      <code><![CDATA[fn (StudyStatistic $study) : bool => in_array($study->study(), $relatedStudies, true)]]></code>
     </InvalidArgument>
   </file>
-  <file src="src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php">
-    <InvalidArgument occurrences="1">
-      <code>$this-&gt;studyPhaseStatistics($students)-&gt;values()</code>
+  <file src="src/Extern/Http/AdminCompanyProfilesController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])]]></code>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/AdminFootersController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/AdminPartnerAlumniController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/AdminPartnerContactsController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/AdminPartnersController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])]]></code>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])]]></code>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyAssignment>
+      <code><![CDATA[$partner->logo_media_id]]></code>
+    </UndefinedMagicPropertyAssignment>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/AdminVacanciesController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])]]></code>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->getKey() => $sector->name])]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/ApiJobOpeningsController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[$vacancies->map(
+                function (Vacancy $vacancy) : array {
+                    Assert::notNull($vacancy->sector);
+                    Assert::notNull($vacancy->partner);
+
+                    return [
+                        'name' => $vacancy->title,
+                        'link' => $vacancy->vacancy_url,
+                        'type' => $vacancy->type,
+                        'sector' => $vacancy->sector->name,
+                        'description' => $vacancy->description,
+                        'company' => [
+                            'name' => $vacancy->partner->name,
+                            'logo' => $vacancy->partner->logo,
+                        ],
+                    ];
+                }
+            )]]></code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Extern/Http/CareerController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Partner::query()
+            ->has('vacancies')
+            ->orderBy('name', 'asc')
+            ->get()
+            ->mapWithKeys(function ($partner) : array {
+                /**  @var Partner $partner */
+                return [$partner->getKey() => $partner->name];
+            })]]></code>
+      <code><![CDATA[Sector::all()
+            ->mapWithKeys(function ($sector) : array {
+                /** @var Sector $sector */
+                return [$sector->getKey() => $sector->name];
+            })]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/CompaniesController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[$partners->map(function ($partner) : string {
+            /** @var Partner $partner */
+            return $partner->name;
+        })]]></code>
+      <code><![CDATA[Sector::all()->mapWithKeys(fn (Sector $sector) : array => [$sector->name => $sector->icon])]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Extern/Http/FactSheetController.php">
+    <InvalidArgument>
+      <code><![CDATA[$transactions->groupBy(function ($transaction) : string {
+                $purchaseDate = new DateTimeImmutable($transaction->tijd);
+
+                // Let transactions between 00:00 and 06:00 count for the previous day
+                return $purchaseDate->sub(new DateInterval('PT6H'))->format('l');
+            })]]></code>
+      <code>collect(range(2013, 2020))</code>
     </InvalidArgument>
+  </file>
+  <file src="src/Extern/LogoUploader.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/PlusOne/Http/BoardsController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[BoardMember::with('member')
+            ->get()
+            ->filter(fn (BoardMember $member) : bool => $member->member_id !== null)
+            ->map(fn (BoardMember $member) : array => [
+                'lid_id' => $member->member_id,
+                'jaar' => (int) $member->installed_at->format('Y'),
+                'functie' => $member->title,
+            ])]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$member->installed_at]]></code>
+      <code><![CDATA[$member->member_id]]></code>
+      <code><![CDATA[$member->member_id]]></code>
+      <code><![CDATA[$member->title]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/PlusOne/Http/CommitteesController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$board->installed_at]]></code>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/PlusOne/Http/ProductsController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Product::query()
+            ->where('beschikbaar', true)
+            ->with(['extra'])
+            ->get()
+            ->map(function (Product $product) {
+                if ($product->afbeelding !== null && ! str_starts_with($product->afbeelding, 'https://professorfrancken.nl')) {
+                    $product->afbeelding = "https://professorfrancken.nl/database/streep/afbeeldingen/{$product->afbeelding}";
+                }
+
+                if ($product->splash_afbeelding !== null && ! str_starts_with($product->splash_afbeelding, 'https://professorfrancken.nl')) {
+                    $product->splash_afbeelding = "https://professorfrancken.nl/database/streep/afbeeldingen/{$product->splash_afbeelding}";
+                }
+
+                return $product;
+            })
+            ->map(fn (Product $product) : array => [
+                'id' => $product->id,
+                'naam' => $product->name,
+                'prijs' => $product->price / 100,
+                'categorie' => $product->categorie,
+                "positie" => $product->position,
+                "beschikbaar" => $product->available,
+                "afbeelding" => $product->photo_url,
+                "btw" => $product->btw,
+                "eenheden" => $product->eenheden,
+                "created_at" => $product->created_at,
+                "updated_at" => $product->updated_at,
+                "product_id" => $product->id,
+                "splash_afbeelding" => $product->splash_url,
+                "kleur" => $product->color,
+            ])]]></code>
+    </InvalidTemplateParam>
+  </file>
+  <file src="src/Shared/ExceptionsHandler.php">
+    <UndefinedMethod>
+      <code>whoopsHandler</code>
+    </UndefinedMethod>
+  </file>
+  <file src="src/Shared/Http/Controllers/DashboardController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$member->member_id]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Shared/Http/Middleware/TrustProxies.php">
+    <UndefinedConstant>
+      <code>Request::HEADER_X_FORWARDED_ALL</code>
+    </UndefinedConstant>
+  </file>
+  <file src="src/Shared/Http/Requests/BoardDashboardRequest.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$member->member_id]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Shared/Settings/Settings.php">
+    <MissingTemplateParam>
+      <code>IteratorAggregate</code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Shared/ViewComponents/FooterSponsorsComponent.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Footer::query()
+            ->where('is_enabled', true)
+            ->with(['partner', 'logoMedia'])
+            ->get()
+            ->map(fn (Footer $footer) => [
+                'footer-link' => $footer->referral_url,
+                'footer-logo' => $footer->logo,
+                'name' => optional($footer->partner)->name ?? '',
+            ])]]></code>
+    </InvalidTemplateParam>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$footer->referral_url]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
+  <file src="src/Study/BooksSale/Http/ApiBooksController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[$legacyBooks->map(
+                fn (Book $book) : array => [
+                    'title' => $book->title,
+                    'author' => $book->author,
+                    'isbn' => $book->isbn,
+                    'cover' => '',
+                    'price_in_cents' => $book->price,
+                ]
+            )]]></code>
+    </InvalidTemplateParam>
   </file>
   <file src="src/Treasurer/Http/Controllers/AdminProductsController.php">
-    <UndefinedMagicMethod occurrences="4">
+    <UndefinedMagicMethod>
       <code>beer</code>
-      <code>count</code>
       <code>food</code>
       <code>soda</code>
     </UndefinedMagicMethod>
   </file>
-  <file src="vendor/lab404/laravel-impersonate/src/Models/Impersonate.php">
-    <InvalidDocblock occurrences="3">
-      <code>public function canBeImpersonated()</code>
-      <code>public function isImpersonated()</code>
-      <code>public function leaveImpersonation()</code>
-    </InvalidDocblock>
+  <file src="src/Treasurer/Http/Controllers/AdminTransactionsController.php">
+    <InvalidTemplateParam>
+      <code><![CDATA[Product::all()
+            ->mapWithKeys(fn ($product) => [$product->id => $product->name])]]></code>
+      <code><![CDATA[Product::orderBy('naam')->get()
+            ->mapWithKeys(fn ($product) => [$product->id => $product->name])]]></code>
+      <code><![CDATA[Product::orderBy('naam')->get()
+            ->mapWithKeys(fn ($product) => [$product->id => $product->name])]]></code>
+    </InvalidTemplateParam>
+    <NullArgument>
+      <code>null</code>
+      <code>null</code>
+    </NullArgument>
+    <UndefinedPropertyFetch>
+      <code><![CDATA[$product->id]]></code>
+      <code><![CDATA[$product->id]]></code>
+      <code><![CDATA[$product->name]]></code>
+      <code><![CDATA[$product->name]]></code>
+    </UndefinedPropertyFetch>
+  </file>
+  <file src="src/Treasurer/Http/Requests/AdminSearchTransactionsRequest.php">
+    <InvalidReturnStatement>
+      <code><![CDATA[$this->memberId() !== null
+            ? LegacyMember::find($this->memberId())
+            : null]]></code>
+    </InvalidReturnStatement>
+  </file>
+  <file src="src/Treasurer/Imports/ImportDeductions.php">
+    <InvalidArgument>
+      <code>$what</code>
+    </InvalidArgument>
   </file>
 </files>

@@ -32,7 +32,7 @@ final class FileUploader
             ->useFilename("audio_{$slug}")
             ->upload();
 
-        $sound->audio_media_id = $audio->id;
+        $sound->audio_media_id = (int) $audio->id;
         $sound->save();
         $sound->attachmedia($audio, Sound::SOUND_AUDIO_TAG);
     }
@@ -52,7 +52,7 @@ final class FileUploader
             ->useFilename("image_{$slug}")
             ->upload();
 
-        $sound->image_media_id = $image->id;
+        $sound->image_media_id = (int) $image->id;
         $sound->save();
         $sound->attachmedia($image, Sound::SOUND_IMAGE_TAG);
     }

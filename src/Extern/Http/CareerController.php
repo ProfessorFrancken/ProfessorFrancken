@@ -15,7 +15,10 @@ final class CareerController
 {
     public function index() : View
     {
-        return view('career.index');
+        return view('career.index')
+            ->with('breadcrumbs', [
+                ['url' => '/career', 'text' => 'Career'],
+            ]);
     }
 
     public function jobs(SearchVacanciesRequest $request) : View

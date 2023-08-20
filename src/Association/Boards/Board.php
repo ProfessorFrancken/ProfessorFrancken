@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Boards;
 
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Francken\Association\Committees\Committee;
 use Illuminate\Database\Eloquent\Builder;
@@ -149,13 +150,13 @@ final class Board extends Model
     ) : void {
         $this->name = $name->toString();
         $this->photo_position = $photoPosition;
-        $this->installed_at = $installedAt;
+        $this->installed_at = Carbon::createFromImmutable($installedAt);
         $this->demissioned_at = $demissionedAt;
         $this->decharged_at = $dechargedAt;
 
         if ($photo !== null) {
             $this->syncMedia($photo, static::BOARD_PHOTO_TAG);
-            $this->photo_media_id = $photo->id;
+            $this->photo_media_id = (int) $photo->id;
         }
 
         $this->save();

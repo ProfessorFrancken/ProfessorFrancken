@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Francken\Shared\Markdown;
 
 use InvalidArgumentException;
-use League\CommonMark\ElementRendererInterface;
-use League\CommonMark\HtmlElement;
-use League\CommonMark\Inline\Element\AbstractInline;
-use League\CommonMark\Inline\Element\Image;
-use League\CommonMark\Inline\Renderer\ImageRenderer;
-use League\CommonMark\Inline\Renderer\InlineRendererInterface;
-use League\CommonMark\Util\ConfigurationAwareInterface;
-use League\CommonMark\Util\ConfigurationInterface;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
+use League\CommonMark\Extension\CommonMark\Renderer\Inline\ImageRenderer;
+use League\CommonMark\Node\Node;
+use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use League\CommonMark\Renderer\NodeRendererInterface;
+use League\CommonMark\Util\HtmlElement;
+use League\Config\ConfigurationAwareInterface;
+use League\Config\ConfigurationInterface;
 
-class ResponsiveImageRenderer implements InlineRendererInterface, ConfigurationAwareInterface
+class ResponsiveImageRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
     private ImageRenderer $imageRenderer;
 
@@ -23,18 +23,17 @@ class ResponsiveImageRenderer implements InlineRendererInterface, ConfigurationA
         $this->imageRenderer = $imageRenderer;
     }
 
-    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer) : HtmlElement
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer) : HtmlElement
     {
-        if ( ! ($inline instanceof Image)) {
-            throw new InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
+        if ( ! ($node instanceof Image)) {
+            throw new InvalidArgumentException('Incompatible node type: ' . \get_class($node));
         }
 
-        $element = $this->imageRenderer->render($inline, $htmlRenderer);
-        $element->setAttribute('class', 'img-fluid');
-        $element->setAttribute(
-            'src',
+        $node->data->append('attributes/class', 'img-fluid');
+        $node->data->set(
+            'attributes/src',
             image(
-                $element->getAttribute('src'),
+                $node->data->get('attributes/src'),
                 [
                     'width' => 600,
                     'height' => 600,
@@ -42,8 +41,7 @@ class ResponsiveImageRenderer implements InlineRendererInterface, ConfigurationA
                 true
             )
         );
-
-        return $element;
+        return $this->imageRenderer->render($node, $childRenderer);
     }
 
     public function setConfiguration(ConfigurationInterface $configuration) : void

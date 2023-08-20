@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\News;
 
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\MarkdownConverter;
 use League\HTMLToMarkdown\HtmlConverter;
 
 final class CompiledMarkdown
 {
     private ?string $contents = null;
 
-    private ?CommonMarkConverter $compiler = null;
+    private ?MarkdownConverter $compiler = null;
 
     private ?string $source = null;
 
@@ -33,7 +33,7 @@ final class CompiledMarkdown
         return $compiled;
     }
 
-    public static function fromSource(CommonMarkConverter $compiler, string $source) : self
+    public static function fromSource(MarkdownConverter $compiler, string $source) : self
     {
         // Instead of storing the compiled markdown we store a markdown compiler and
         // the source code so that we can lazily compile the markdown once it's requested
@@ -60,7 +60,7 @@ final class CompiledMarkdown
     {
         // Lazy compile
         if ($this->contents === null && $this->compiler !== null && $this->source !== null) {
-            $this->contents = $this->compiler->convertToHtml($this->source);
+            $this->contents = $this->compiler->convert($this->source)->getContent();
         }
 
         return $this->contents;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\Association\Members\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 use Webmozart\Assert\Assert;
 
 class PasswordRequest extends FormRequest
@@ -15,8 +16,8 @@ class PasswordRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'current_password' => ['required', 'password'],
-            'password' => ['required', 'min:8'],
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', Password::min(8)],
         ];
     }
 

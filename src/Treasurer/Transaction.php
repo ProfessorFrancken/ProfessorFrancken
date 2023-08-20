@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer;
 
+use Carbon\Carbon;
 use Francken\Association\LegacyMember;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Carbon;
 
 /**
  * Francken\Treasurer\Transaction

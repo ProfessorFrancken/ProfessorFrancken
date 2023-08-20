@@ -164,25 +164,26 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::get('francken-vrij/subscriptions/create', [AdminSubscriptionsController::class, 'create']);
         Route::get('francken-vrij/subscriptions/{subscription}/edit', [AdminSubscriptionsController::class, 'edit']);
         Route::put('francken-vrij/subscriptions/{subscription}', [AdminSubscriptionsController::class, 'update']);
+
+        Route::get('francken-vrij/editions', [AdminFranckenVrijController::class, 'index']);
+        Route::get('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'edit']);
+        Route::put('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'update']);
+        Route::delete('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'destroy']);
+        Route::post('francken-vrij/editions', [AdminFranckenVrijController::class, 'store']);
     });
 
-    Route::get('francken-vrij/editions', [AdminFranckenVrijController::class, 'index']);
-    Route::get('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'edit']);
-    Route::put('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'update']);
-    Route::delete('francken-vrij/editions/{edition}', [AdminFranckenVrijController::class, 'destroy']);
-    Route::post('francken-vrij/editions', [AdminFranckenVrijController::class, 'store']);
 
+    Route::group(['middleware' => 'can:dashboard:activities-read'], function () : void {
+        Route::get('activities/{activity}/sign-up-settings/create', [AdminSignUpSettingsController::class, 'create']);
+        Route::get('activities/{activity}/sign-up-settings/edit', [AdminSignUpSettingsController::class, 'edit']);
+        Route::post('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'store']);
+        Route::put('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'update']);
+        Route::delete('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'destroy']);
 
-
-    Route::get('activities/{activity}/sign-up-settings/create', [AdminSignUpSettingsController::class, 'create']);
-    Route::get('activities/{activity}/sign-up-settings/edit', [AdminSignUpSettingsController::class, 'edit']);
-    Route::post('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'store']);
-    Route::put('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'update']);
-    Route::delete('activities/{activity}/sign-up-settings', [AdminSignUpSettingsController::class, 'destroy']);
-
-    Route::get('activities/{activity}/sign-ups/export', [AdminActivitySignUpsExportController::class, 'index']);
-    Route::resource('activities.sign-ups', AdminSignUpsController::class);
-    Route::resource('activities', AdminActivitiesController::class);
+        Route::get('activities/{activity}/sign-ups/export', [AdminActivitySignUpsExportController::class, 'index']);
+        Route::resource('activities.sign-ups', AdminSignUpsController::class);
+        Route::resource('activities', AdminActivitiesController::class);
+    });
 
     Route::group(['middleware' => 'can:dashboard:alumni-activity'], function () : void {
         Route::get('alumni-activity', [AdminAlumniActivityController::class, 'index']);
@@ -224,10 +225,12 @@ Route::group(['prefix' => 'association'], function () : void {
         });
     });
 
-    Route::get('pages', [PagesController::class, 'index']);
-    Route::get('pages/{page}', [PagesController::class, 'show']);
-    Route::get('pages/{page}/edit', [PagesController::class, 'edit']);
-    Route::put('pages/{page}', [PagesController::class, 'update']);
+    Route::group(['middleware' => 'can:dashboard:settings-read'], function () : void {
+        Route::get('pages', [PagesController::class, 'index']);
+        Route::get('pages/{page}', [PagesController::class, 'show']);
+        Route::get('pages/{page}/edit', [PagesController::class, 'edit']);
+        Route::put('pages/{page}', [PagesController::class, 'update']);
+    });
 });
 
 Route::group(['prefix' => 'treasurer', 'can:board-treasurer'], function () : void {
@@ -285,7 +288,5 @@ Route::group(['prefix' => 'compucie'], function () : void {
         Route::get('media-item/{media}', [MediaController::class, 'show']);
     });
 });
-
-Route::impersonate();
 
 Route::fallback([AdminController::class, 'showPageIsUnavailable']);

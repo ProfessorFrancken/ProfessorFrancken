@@ -17,7 +17,7 @@
 @endif
 
 @if ($activity->signUpSettings->ask_for_dietary_wishes)
-    <x-forms.text name="dietary_wishes" label="Dietary wishes" />
+    <x-forms.text name="dietary_wishes" label="Dietary wishes" placeholder="Flexitarian" />
 @endif
 
 @if ($activity->signUpSettings->ask_for_drivers_license)

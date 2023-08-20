@@ -85,5 +85,6 @@
         <li class="my-3"><strong>2018</strong> &dash; mevr. Zwanenburg </li>
         <li class="my-3"><strong>2019</strong> &dash; dhr. F. Wobben, mej. Kamps, dhr. Redeman, mej. Kenbeek and ir. Boerma</li>
         <li class="my-3"><strong>2020</strong> &dash; dhr. Trustam and ir. Boerma </li>
+        <li class="my-3"><strong>2021</strong> &dash; mevr. Anna Kenbeek <img src="https://upload.wikimedia.org/wikipedia/en/5/52/Kabouter_Wesley.jpg" width="50px"/> </li>
     </ul>
 @endsection

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 use League\Period\Period;
 
 /**
