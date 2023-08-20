@@ -17,7 +17,7 @@
                         name="email"
                         label="Email"
                         help="Don't know your email? Contact the board at secretary@professorfrancken.nl."
-                        placeholder="member@professorfrancken.nl"
+                        placeholder="mail@example.com"
                         value="{{ old('email') }}"
                         required
                         autofocus

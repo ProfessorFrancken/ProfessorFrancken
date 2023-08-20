@@ -21,7 +21,7 @@
                            type="email"
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                            name="email"
-                           placeholder="member@professorfrancken.nl"
+                           placeholder="mail@example.com"
                            value="{{ $email ?? old('email') }}"
                            required
                            autofocus
