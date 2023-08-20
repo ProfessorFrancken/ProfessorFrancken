@@ -29,7 +29,7 @@ final class CareerController
                 /**  @var Partner $partner */
                 return [$partner->getKey() => $partner->name];
             })->prepend("Any", 0)
-                  ;
+        ;
         $sectors = Sector::all()
             ->mapWithKeys(function ($sector) : array {
                 /** @var Sector $sector */

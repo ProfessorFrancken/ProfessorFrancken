@@ -68,7 +68,7 @@ class RegistrationRequestFeature extends TestCase
                 ->type('Netherlands', 'country')
                 ->press('Register');
             // ->seePageIs('/register')
-             // ->assertSessionHasErrors()
+            // ->assertSessionHasErrors()
             // ->dump()
             //  ->assertResponseStatus(402)
             //  ->assertViewHas('errors')
