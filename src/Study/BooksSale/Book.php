@@ -72,7 +72,7 @@ final class Book extends Model
         }
         $isbn = preg_replace("/[^0-9x]/i", '', $this->isbn);
 
-        return 'http://images.amazon.com/images/P/' . $isbn . '.jpg';
+        return 'https://covers.openlibrary.org/b/isbn/' . $isbn . '-L.jpg';
     }
 
     public function scopeSearch(Builder $query, AdminBookSearchRequest $request) : Builder
