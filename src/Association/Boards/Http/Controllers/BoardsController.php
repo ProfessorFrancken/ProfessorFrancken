@@ -6,13 +6,16 @@ namespace Francken\Association\Boards\Http\Controllers;
 
 use Francken\Association\Boards\Board;
 use Francken\Shared\Clock\Clock;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class BoardsController
 {
-    public function index(Request $request, Clock $clock) : View
+    public function index(Request $request, Clock $clock, Session $session) : View
     {
+        $session->put('url.intended', action([self::class, 'index']));
+
         $boards = Board::with(['photoMedia', 'members', 'members.photoMedia'])
             ->orderBy('installed_at', 'desc')
             ->where('installed_at', '<', $clock->now())

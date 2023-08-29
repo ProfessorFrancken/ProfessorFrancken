@@ -6,6 +6,7 @@ namespace Francken\Association\Activities\Http;
 
 use Francken\Association\Activities\Activity;
 use Francken\Shared\Clock\Clock;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -31,8 +32,10 @@ final class ActivitiesController
         ]);
     }
 
-    public function show(Request $request, Activity $activity) : View
+    public function show(Request $request, Activity $activity, Session $session) : View
     {
+        $session->put('url.intended', action([self::class, 'show'], ['activity'=>$activity]));
+
         $activity->load(['signUps.member']);
         $account = $request->user();
         return view('association.activities.show', [
