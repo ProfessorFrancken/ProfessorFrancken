@@ -15,6 +15,17 @@
 
     <hr/>
 
+    @if (! is_null($committee->photo))
+        <div class='d-flex justify-content-center my-3'>
+        <img
+            class="img-fluid"
+            src="{{ image($committee->photo, ['height' => 400, 'width' => 660, 'resize' => true]) }}"
+            alt="{{ $committee->name }}'s logo"
+        >
+        </div>
+        <hr/>
+    @endif
+
     @include('committees._members', ['members' => $committee->members ])
 @endsection
 
