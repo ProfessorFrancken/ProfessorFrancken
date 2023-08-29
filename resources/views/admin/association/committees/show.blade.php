@@ -7,15 +7,29 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-start">
-                        <img
-                            class="rounded m-3 mr-4"
-                            src="{{ $committee->logo }}"
-                            alt="Logo of {{ $committee->name }}"
-                            style="
-                                   max-width: 300px;
-                                   max-height: 160px;
-                                   object-fit: contain;"
-                        />
+                        <div>
+                            <img
+                                class="rounded m-3 mr-4"
+                                src="{{ $committee->logo }}"
+                                alt="Logo of {{ $committee->name }}"
+                                style="
+                                max-width: 300px;
+                                max-height: 160px;
+                                object-fit: contain;"
+                            />
+
+
+                            @if (! is_null($committee->photo))
+                                <div class='d-flex justify-content-center my-3'>
+                                    <img
+                                        class="img-fluid"
+                                        src="{{ image($committee->photo, ['height' => 200, 'width' => 300, 'resize' => true]) }}"
+                                        alt="{{ $committee->name }}'s logo"
+                                    >
+                                </div>
+                                <hr/>
+                            @endif
+                        </div>
                         <div class="">
                             @if ($committee->email)
                                 <p class="mb-1">
@@ -50,8 +64,10 @@
                                     </a>.
                                 @endif
                             </div>
+
                         </div>
                     </div>
+
                     <div class='p-3 bg-light my-3'>
                         <h5 class="h6">
                             Page content
