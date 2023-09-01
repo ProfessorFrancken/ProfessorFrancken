@@ -92,6 +92,6 @@ class MainContentController extends Controller
             $branchname = 'master';
         }
 
-        return "https://github.com/ProfessorFrancken/ProfessorFrancken/edit/${branchname}/resources/views/pages/${page}.blade.php";
+        return "https://github.com/ProfessorFrancken/ProfessorFrancken/edit/{$branchname}/resources/views/pages/{$page}.blade.php";
     }
 }

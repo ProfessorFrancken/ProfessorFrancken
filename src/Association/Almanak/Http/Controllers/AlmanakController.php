@@ -10,7 +10,7 @@ final class AlmanakController
 {
     public function index() : View
     {
-        $pages = collect(range(0, 143))->map(fn (int $idx) => "/images/association/almanak/almanak-page-${idx}.png");
+        $pages = collect(range(0, 143))->map(fn (int $idx) => "/images/association/almanak/almanak-page-{$idx}.png");
         $download  = "/images/association/almanak/almanak.pdf";
 
         return view('association.almanak', [

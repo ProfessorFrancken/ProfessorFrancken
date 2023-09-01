@@ -16,7 +16,7 @@ class RolesFeature extends TestCase
     use LoggedInAsAdmin;
 
     /** @test */
-    public function it_allows_to_givs_a_roles_to_an_account() : void
+    public function it_allows_to_gives_a_roles_to_an_account() : void
     {
         $role = Role::create(['name' => 'Custom role']);
         $permission = Permission::create(['name' => 'Custom permission']);

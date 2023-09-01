@@ -15,7 +15,7 @@ class AccountPermissionControllerFeature extends TestCase
     use LoggedInAsAdmin;
 
     /** @test */
-    public function it_allows_to_givs_a_permission_to_an_account() : void
+    public function it_allows_to_gives_a_permission_to_an_account() : void
     {
         $account = factory(Account::class)->create();
         $permission = Permission::firstOrCreate(['name' => 'custom permission']);

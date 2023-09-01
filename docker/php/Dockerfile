@@ -1,4 +1,4 @@
-FROM francken/php-base:v8
+FROM francken/php-base:v8.2
 
 ADD php.ini /usr/local/etc/php/
 ADD example.pool.conf /etc/php5/fpm/pool.d/

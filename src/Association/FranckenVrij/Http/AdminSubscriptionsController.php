@@ -189,7 +189,7 @@ final class AdminSubscriptionsController
         $september = $today->modify('first day of september');
 
         $options = collect(range(0, 6))
-            ->map(fn (int $idx) => $september->modify("+${idx} Year"))
+            ->map(fn (int $idx) => $september->modify("+{$idx} Year"))
             ->filter(fn (DateTimeImmutable $date) => $date > $today)
             ->take(5);
 
