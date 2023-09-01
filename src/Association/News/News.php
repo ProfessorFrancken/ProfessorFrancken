@@ -127,8 +127,6 @@ final class News extends Model
 
     /**
      * Scope a query to only include news published in a given period
-     *
-     * @param Period $period
      */
     public function scopeInPeriod(Builder $query, Period $period = null) : Builder
     {
@@ -147,8 +145,6 @@ final class News extends Model
 
     /**
      * Scope a query to only include a given author
-     *
-     * @param string $author
      */
     public function scopeWithAuthorName(Builder $query, string $author = null) : Builder
     {
