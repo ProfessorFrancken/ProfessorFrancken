@@ -18,7 +18,7 @@
 
 @push('scripts')
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="https://old.professorfrancken.nl/almanak/turn.min.js"></script>
+<script type="text/javascript" src="https://professorfrancken.nl/almanak/turn.min.js"></script>
 @endpush
 
 @section('main-content')
