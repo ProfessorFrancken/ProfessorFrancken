@@ -17,8 +17,8 @@
             </p>
 
             <p>
-                It has over 900 members and organizes, among other, field trips in the Netherlands, an annual symposium and a foreign excursion.
-                Various activities, including the introductory activities for first-year students and the Beta Business Days (a career event for science students), are organised in partnership with sister associations.
+                It has over 1100 members and organizes, among other, field trips in the Netherlands, an annual symposium and a foreign excursion.
+                Various activities, including the introductory activities for first-year students, Expedition Strategy (a yearly event organised to introduce students to strategy consultancy in the Randstad), and the Beta Business Days (a career event for science students), are organised in partnership with brother associations.
                 Membership is a must for physics students with a technical orientation.
             </p>
 
@@ -93,4 +93,6 @@
             </a>
         </div>
     </div>
+<br>
+   
 </div>
