@@ -16,7 +16,7 @@
     "laravel/helpers": "^1.2",
     "laravel/horizon": "^5.0",
     "laravel/tinker": "^2.4",
-    "laravel/ui": "^3.0",
+    "laravel/ui": "^4.2",
     "laravelcollective/html": "^6.1",
     "lcobucci/jwt": "^4.1",
     "league/commonmark": "^2.0",
