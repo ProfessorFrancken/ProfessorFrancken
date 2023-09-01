@@ -180,7 +180,7 @@ class MembersFeature extends TestCase
             if (in_array($key, ['rekeningnummer', 'updated_at'], true)) {
                 continue;
             }
-            $this->assertEquals($data, $newData[$key], "Did not keep the same value for ${key}");
+            $this->assertEquals($data, $newData[$key], "Did not keep the same value for {$key}");
         }
     }
 }

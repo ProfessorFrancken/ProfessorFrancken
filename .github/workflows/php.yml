@@ -42,7 +42,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, imagick
           coverage: pcov
           tools: composer:v2
@@ -101,7 +101,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, imagick
           coverage: none
           tools: composer:v2, phpstan
@@ -116,8 +116,8 @@ jobs:
         uses: "actions/cache@v2"
         with:
           path: ".build/phpstan"
-          key: "php-8.0-phpstan-${{ github.sha }}"
-          restore-keys: "php-8.0-phpstan-"
+          key: "php-8.2-phpstan-${{ github.sha }}"
+          restore-keys: "php-8.2-phpstan-"
 
       - name: Run phpstan
         run: vendor/bin/phpstan analyse -c phpstan.neon.dist --error-format github
@@ -144,7 +144,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, imagick
           coverage: none
           tools: composer:v2

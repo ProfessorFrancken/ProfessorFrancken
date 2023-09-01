@@ -14,7 +14,7 @@ class AccountsFeature extends TestCase
     use LoggedInAsAdmin;
 
     /** @test */
-    public function it_allows_to_givs_a_roles_to_an_account() : void
+    public function it_allows_to_gives_a_roles_to_an_account() : void
     {
         $member = factory(LegacyMember::class)->create(['is_lid' => true]);
 
