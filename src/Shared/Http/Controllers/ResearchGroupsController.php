@@ -49,7 +49,7 @@ final class ResearchGroupsController
             ],
             [
                 'title' => 'Materials Science',
-                'description' => 'The principal aim of the research programme of the Applied Physics-Materials Science group is to search for the relation between the microstructure of materials and its physical properties. The programme concentrates on experimental and theoretical work of the characterization of line defects (dislocations and disclinations) and homo-/heterophase interfaces so as to draw conclusions about the correlation between atomic structure, electronic charge transfer, and physical properties, both structural and functional.',
+                'description' => 'The principal aim of the research programme of the Applied Physics-Materials Science group is to search for the relation between the microstructure of materials and its physical properties. The programme concentrates on experimental and theoretical work of the characterization of line defects (dislocations and disclinations) and homo-/heterophase interfaces so as to draw conclusions about the correlation between atomic structure, electronic charge transfer, and physical properties, both structural and functional. <br/> The research group for Materials Science is no longer an active research group, but it has been a vital part of the association over the years. ',
                 'photo' => 'https://www.rug.nl/research/zernike/materials-science/2_MK_ZIAMWEB.jpg',
                 'groups' => [
                     [

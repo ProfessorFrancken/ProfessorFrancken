@@ -36,7 +36,7 @@
         <a href="/career/companies">
             <img
                 alt="Companies related to engineering physics"
-                src="{{ image('https://upload.wikimedia.org/wikipedia/en/1/11/Inside_Aryogen.jpg', ['height' => 150, 'width' => 150]) }}"
+                src="{{ image('/images/company_profiles.jpg', ['height' => 150, 'width' => 150]) }}"
                 class="mb-3 rounded-circle"
                 style="height: 150px; width: 150px; object-fit: contain"
             />
@@ -48,7 +48,7 @@
     </div>
 
     <div style="text-align: center" class="col-md-4">
-        <a href="/association/events">
+        <a href="/association/activities">
             <img
                 alt="A typical Sanning Electron Microscope"
                 src="{{ image('https://upload.wikimedia.org/wikipedia/commons/3/3b/SEM_chamber1.JPG', ['height' => 150, 'width' => 150]) }}"
@@ -57,13 +57,13 @@
             />
             <h2>Excursions </h2>
             <p>
-                An overview of excursions to research groups and companies
+                Planned excursions to research groups and to companies related to engineering physics will appear on this page
             </p>
         </a>
     </div>
 
     <div style="text-align: center" class="col-md-4">
-        <a href="https://www.linkedin.com/groups/1524067">
+        <a href="https://www.linkedin.com/company/t.f.v.-professor-francken/?viewAsMember=true">
             <img
                 alt="Stay in touch with our alumni on LinkedIn"
                 src="{{ image('https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Linkedin_circle.svg/2000px-Linkedin_circle.svg.png', ['height' => 150, 'width' => 150]) }}"
