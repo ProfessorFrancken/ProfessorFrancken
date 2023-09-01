@@ -45,6 +45,8 @@ use Francken\Study\BooksSale\Http\BooksController;
 Route::redirect('/blog', '/association/news');
 Route::permanentRedirect('/wordpress', '/');
 Route::redirect('/books', '/study/books');
+Route::redirect('/study/representation/university-council', 'https://www.rug.nl/about-ug/organization/administrative-organization/participation-decision-making/uraad/composition?lang=en');
+Route::redirect('/study/representation/faculty-council', 'https://student.portal.rug.nl/infonet/studenten/regelingen-klacht-inspraak/medezeggenschap/faculteitsraden/faculty-council-fwn');
 Route::redirect('/boeken', '/study/books');
 Route::redirect('/photos', '/association/photos');
 Route::get('/wordpress/{url}', [RedirectController::class, 'wordpress'])->where('url', '.*');
