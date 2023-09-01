@@ -24,7 +24,7 @@
     "league/period": "^4.10",
     "maatwebsite/excel": "^3.1",
     "plank/laravel-mediable": "^5.9",
-    "predis/predis": "^1.1",
+    "predis/predis": "^2.2",
     "ramsey/uuid": "^4.0",
     "sabre/vobject": "^4.1",
     "simplesoftwareio/simple-qrcode": "^4.0",
