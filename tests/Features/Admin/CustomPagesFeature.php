@@ -24,6 +24,19 @@ class CustomPagesFeature extends TestCase
     }
 
     /** @test */
+    public function a_page_can_be_created() : void
+    {
+        $this->visit(action([PagesController::class, 'index']))
+             ->click('Add page')
+             ->type('Learning', 'title')
+             ->type("Active learning", 'description')
+             ->type('# Corona', 'source_content')
+             ->press('Add page')
+             ->assertResponseOk()
+             ->see('Learning');
+    }
+
+    /** @test */
     public function a_page_can_be_changed() : void
     {
         $page = factory(Page::class)->create();

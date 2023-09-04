@@ -34,6 +34,12 @@
 <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
 
+<style>
+.editor-toolbar .table {
+    width: auto;
+}
+</style>
+
 <script>
     var simplemde = new EasyMDE({
         element: document.getElementById("{{ $name }}"),
@@ -57,7 +63,7 @@
             "guide"
         ],
         status: false,
-        maxHeight: "300px"
+        maxHeight: "600px"
     });
 </script>
 @endpush
