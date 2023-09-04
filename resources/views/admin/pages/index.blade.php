@@ -41,3 +41,14 @@
         </table>
     </div>
 @endsection
+
+@section('actions')
+    <div class="d-flex align-items-start">
+        <a href="{{ action([\Francken\Shared\Http\Controllers\Admin\PagesController::class, 'create']) }}"
+            class="btn btn-primary"
+        >
+            <i class="fas fa-plus"></i>
+            Add page
+        </a>
+    </div>
+@endsection

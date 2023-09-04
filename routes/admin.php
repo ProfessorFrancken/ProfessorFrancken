@@ -227,9 +227,12 @@ Route::group(['prefix' => 'association'], function () : void {
 
     Route::group(['middleware' => 'can:dashboard:settings-read'], function () : void {
         Route::get('pages', [PagesController::class, 'index']);
+        Route::post('pages', [PagesController::class, 'store']);
+        Route::get('pages/create', [PagesController::class, 'create']);
         Route::get('pages/{page}', [PagesController::class, 'show']);
         Route::get('pages/{page}/edit', [PagesController::class, 'edit']);
         Route::put('pages/{page}', [PagesController::class, 'update']);
+        Route::delete('pages/{page}', [PagesController::class, 'destroy']);
     });
 });
 

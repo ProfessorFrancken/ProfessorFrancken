@@ -33,6 +33,20 @@ final class PagesController
         ]);
     }
 
+    public function create() : View
+    {
+        $page = new Page();
+
+        return view('admin.pages.create')
+            ->with([
+                'page' => $page,
+                'breadcrumbs' => [
+                    ['url' => action([self::class, 'index']), 'text' => 'Pages'],
+                    ['url' => action([self::class, 'create']), 'text' => 'Create'],
+                ]
+            ]);
+    }
+
     public function edit(Page $page) : View
     {
         return view('admin.pages.edit', [
@@ -43,6 +57,21 @@ final class PagesController
                 ['url' => action([self::class, 'edit'], ['page' => $page]), 'text' => 'Edit'],
             ]
         ]);
+    }
+
+    public function store(AdminPageRequest $request, ContentCompiler $compiler, Page $page) : RedirectResponse
+    {
+        $markdown = $compiler->content($request->content());
+        Page::create([
+            'title' => $request->title(),
+            'slug' => $request->slug(),
+            'description' => $request->description(),
+            'source_content' => $markdown->originalMarkdown(),
+            'compiled_content' => $markdown->compiledContent(),
+            'is_published' => $request->isPublished(),
+        ]);
+
+        return redirect()->action([self::class, 'index']);
     }
 
     public function update(AdminPageRequest $request, ContentCompiler $compiler, Page $page) : RedirectResponse
@@ -58,5 +87,12 @@ final class PagesController
         ]);
 
         return redirect()->action([self::class, 'show'], ['page' => $page]);
+    }
+
+    public function destroy(Page $page) : RedirectResponse
+    {
+        $page->delete();
+
+        return redirect()->action([self::class, 'index']);
     }
 }

@@ -24,6 +24,19 @@ class CustomPagesFeature extends TestCase
     }
 
     /** @test */
+    public function a_page_can_be_created() : void
+    {
+        $this->visit(action([PagesController::class, 'index']))
+             ->click('Add page')
+             ->type('Learning', 'title')
+             ->type("Active learning", 'description')
+             ->type('# Corona', 'source_content')
+             ->press('Add page')
+             ->assertResponseOk()
+             ->see('Learning');
+    }
+
+    /** @test */
     public function a_page_can_be_changed() : void
     {
         $page = factory(Page::class)->create();
@@ -41,5 +54,21 @@ class CustomPagesFeature extends TestCase
             ->press('Save')
             ->see('Covid-19')
             ->see('Corona');
+    }
+
+    /** @test */
+    public function a_page_can_be_removed() : void
+    {
+        $page = factory(Page::class)->create();
+        $this->visit(
+            action([PagesController::class, 'edit'], ['page' => $page])
+        )
+            ->see($page->title)
+            ->assertResponseOk()
+            ->press('here')
+             ->seePageIs(action([PagesController::class, 'index']));
+
+        $this->assertNull(Page::find($page->id));
+        $this->dontSee($page->title);
     }
 }
