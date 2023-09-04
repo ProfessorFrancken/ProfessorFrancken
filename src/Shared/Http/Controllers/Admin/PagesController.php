@@ -88,4 +88,11 @@ final class PagesController
 
         return redirect()->action([self::class, 'show'], ['page' => $page]);
     }
+
+    public function destroy(Page $page) : RedirectResponse
+    {
+        $page->delete();
+
+        return redirect()->action([self::class, 'index']);
+    }
 }

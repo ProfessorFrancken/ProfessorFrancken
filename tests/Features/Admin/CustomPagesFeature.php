@@ -55,4 +55,20 @@ class CustomPagesFeature extends TestCase
             ->see('Covid-19')
             ->see('Corona');
     }
+
+    /** @test */
+    public function a_page_can_be_removed() : void
+    {
+        $page = factory(Page::class)->create();
+        $this->visit(
+            action([PagesController::class, 'edit'], ['page' => $page])
+        )
+            ->see($page->title)
+            ->assertResponseOk()
+            ->press('here')
+             ->seePageIs(action([PagesController::class, 'index']));
+
+        $this->assertNull(Page::find($page->id));
+        $this->dontSee($page->title);
+    }
 }
