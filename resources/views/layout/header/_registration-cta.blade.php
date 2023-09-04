@@ -1,3 +1,5 @@
+@section('header-image-url', $header_image)
+
 @component('layout.header._header_image')
     {{-- registration call to action --}}
     <div class="row align-items-center h-100 my-5 my-md-0">
