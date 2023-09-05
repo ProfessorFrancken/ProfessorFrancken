@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos\Http\Controllers;
 
-use Francken\Association\Photos\Album;
+use Francken\Association\Photos\FlickrAlbum;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
@@ -13,7 +13,7 @@ final class AdminPhotoAlbumsController
 {
     public function index() : View
     {
-        $albums = Album::query()
+        $albums = FlickrAlbum::query()
             ->orderBy('activity_date', 'desc')
             ->paginate(40);
 
