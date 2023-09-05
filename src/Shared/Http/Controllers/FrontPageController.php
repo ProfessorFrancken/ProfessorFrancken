@@ -10,11 +10,12 @@ use Francken\Association\Activities\Activity;
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\News\News;
 use Francken\Shared\Page;
+use Francken\Shared\Settings\Settings;
 use Illuminate\View\View;
 
 class FrontPageController extends Controller
 {
-    public function index() : View
+    public function index(Settings $settings) : View
     {
         $today = new DateTimeImmutable(
             'now',
@@ -38,6 +39,7 @@ class FrontPageController extends Controller
         $covid = Page::covid()->where('is_published', true)->first();
 
         return view('homepage/homepage', [
+            'header_image' => $settings->headerImage(),
             'news' => $news,
             'activities' => $activities,
             'latest_edition' => $latestEdition,
