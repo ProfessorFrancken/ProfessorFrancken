@@ -58,7 +58,7 @@
             <a href="/study/representation/faculty-council">
                 <img
                     alt="Faculty council of the University of Groningen"
-                    src="{{ image('/images/faculty_council.jpg', ['height' => 150, 'width' => 150]) }}"
+                    src="{{ image('/images/faculty_council.jpg', ['height' => 150, 'width' => 150], true) }}"
                     class="mb-3 rounded-circle"
                 />
 
