@@ -69,6 +69,12 @@
 
 @section('actions')
     <div class="d-flex align-items-start gap-3">
+        <a href="{{ $album->nextcloudUrl()  }}"
+            class="btn btn-primary"
+        >
+            <i class="fa-solid fa-cloud"></i>
+            Open in nextcloud
+        </a>
         <a href="{{ action([\Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController::class, 'edit'], ['album' => $album]) }}"
             class="btn btn-primary"
         >

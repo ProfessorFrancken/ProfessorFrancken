@@ -83,6 +83,11 @@ final class Album extends Model
         return action([PhotosController::class, 'show'], $this->slug);
     }
 
+    public function nextcloudUrl() : string
+    {
+        return config('francken.general.nextcloud_host') . "/apps/files/?dir=/images/{$this->path}";
+    }
+
     public function addView() : void
     {
         // Faking this impelementation for now
