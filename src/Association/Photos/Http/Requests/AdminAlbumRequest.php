@@ -51,6 +51,11 @@ final class AdminAlbumRequest extends FormRequest
         return $this->string('visibility', 'members-only')->toString();
     }
 
+    public function updateVisibilityOfAllPhotos() : bool
+    {
+        return $this->input('update_visibility_of_photos') !== null;
+    }
+
     public function slug() : string
     {
         return Str::slug($this->title());

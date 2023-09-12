@@ -15,7 +15,7 @@
                        ])
                 !!}
 
-                <div class="card-body bg-white">
+                <div class="card-body">
                     <x-forms.text name="name" label="Name" />
                     <x-forms.radio-group
                         name='visibility'

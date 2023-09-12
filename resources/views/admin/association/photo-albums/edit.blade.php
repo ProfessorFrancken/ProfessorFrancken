@@ -14,7 +14,7 @@
                            'method' => 'PUT',
                        ])
                 !!}
-                <div class="card-body bg-white">
+                <div class="card-body">
                     @include('admin.association.photo-albums._form', ['album' => $album])
                 </div>
                 <div class="card-footer">

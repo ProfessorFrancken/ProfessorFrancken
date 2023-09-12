@@ -14,6 +14,7 @@ use Illuminate\View\View;
 
 final class AdminPhotoAlbumsController
 {
+    private const ROOT = 'remote.php/dav/files/compucie/';
     private const BASE_PATH = 'remote.php/dav/files/compucie/images';
 
     public function index() : View
@@ -23,6 +24,7 @@ final class AdminPhotoAlbumsController
             ->paginate(10, ['*'], 'flickr');
 
         $albums = Album::query()
+            ->orderBy('published_at', 'desc')
             ->withCount('photos')
             ->paginate(10);
 
@@ -38,10 +40,13 @@ final class AdminPhotoAlbumsController
     public function create() : View
     {
         $album = new Album();
+
         $albumDirectories = collect(\Storage::disk('nextcloud')->directories("images/albums"))
                           ->filter(fn ($album) => $album === str_replace(' ', '', $album))
-                          ->map(fn ($f) => str_replace(self::BASE_PATH, '', $f))
+                          ->map(fn ($f) => str_replace(self::ROOT, '', $f))
+                          ->map(fn ($f) => preg_replace("/^images\//", '', $f))
                           ->mapWithKeys(fn (string $f) => [$f => $f]);
+
 
         return view('admin.association.photo-albums.create', [
             'album' => $album,
@@ -126,6 +131,12 @@ final class AdminPhotoAlbumsController
             'published_at' => $request->publishedAt(),
             'path' => $request->path(),
         ]);
+
+        if ($request->updateVisibilityOfAllPhotos()) {
+            $album->photos()->update([
+                'visibility' => $request->visibility()
+            ]);
+        }
 
         return redirect()->action([self::class, 'show'], ['album' => $album]);
     }

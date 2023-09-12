@@ -8,7 +8,6 @@
             src="{{ $photo->src() }}"
             class="w-100 h-100 rounded photo-img"
         >
-    </a>
     <div class="d-flex justify-content-between rounded text-white p-3 w-100 photo-overlay">
         <div class="d-flex flex-column">
         <div>
@@ -51,4 +50,5 @@
             </span>
             @endif
     </div>
+    </a>
 </li>
