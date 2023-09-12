@@ -50,6 +50,13 @@ return [
             'root'   => storage_path('app'),
         ],
 
+        'nextcloud' => [
+            'driver'     => 'nextcloud',
+            'baseUri'    => env('NEXTCLOUD_URI', ''),
+            'username'   => env('NEXTCLOUD_USERNAME', ''),
+            'password'   => env('NEXTCLOUD_PASSWORD', ''),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => public_path('storage'),
