@@ -46,6 +46,7 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
     $options = array_merge(['crop' => '1'], $options);
 
     // Temporary fix
+    $url = str_replace("http://francken.nl.localhost", "http://nginx", $url);
     $url = str_replace("https://professorfrancken.nl", "http://nginx", $url);
 
     switch ($proxy) {

@@ -59,7 +59,7 @@ final class PagesController
         ]);
     }
 
-    public function store(AdminPageRequest $request, ContentCompiler $compiler, Page $page) : RedirectResponse
+    public function store(AdminPageRequest $request, ContentCompiler $compiler) : RedirectResponse
     {
         $markdown = $compiler->content($request->content());
         Page::create([
