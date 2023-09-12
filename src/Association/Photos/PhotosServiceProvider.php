@@ -14,6 +14,7 @@ final class PhotosServiceProvider extends ServiceProvider
     public function boot(Gate $gate) : void
     {
         $gate->define('view-albums', [PhotosPolicy::class, 'view']);
+        $gate->define('view-members-only-albums', [PhotosPolicy::class, 'viewMembersOnly']);
         $gate->define('view-private-albums', [PhotosPolicy::class, 'viewPrivate']);
     }
 

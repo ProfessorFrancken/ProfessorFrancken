@@ -24,12 +24,17 @@ final class PhotosPolicy
 
     public function view(?Account $account) : bool
     {
-        return $this->areAlbumsPublic || $this->viewPrivate($account);
+        return $this->areAlbumsPublic || $this->viewMembersOnly($account);
+    }
+
+    public function viewMembersOnly(?Account $account) : bool
+    {
+        return $this->allowed($account);
     }
 
     public function viewPrivate(?Account $account) : bool
     {
-        return $this->allowed($account);
+        return $account !== null && $account->hasPermissionTo('dashboard:photos-read');
     }
 
     private function allowed(?Account $account = null) : bool

@@ -56,7 +56,7 @@ final class AlbumsRepository
     {
         // Check whether the user is either authenticated or authenticated by entering
         // the photos password
-        $authenticated = $this->gate->allows('view-private-albums');
+        $authenticated = $this->gate->allows('view-members-only-albums');
 
         if ( ! $authenticated) {
             $oneYearAgo = (new DateTimeImmutable())->sub(new DateInterval('P1Y'));
