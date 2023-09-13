@@ -30,7 +30,7 @@
     {{ $albums->onEachSide(3)->links() }}
 
     @if (! $albums->hasMorePages())
-        @cannot('view-private-albums')
+        @cannot('view-members-only-albums')
         <div class="card bg-light">
             <div class="card-body">
                 <h3 class="h5">Login to view older albums</h3>

@@ -1641,14 +1641,14 @@ parameters:
 			path: src/Association/News/News.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\Album\\:\\:coverPhoto\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrAlbum\\:\\:coverPhoto\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
 			count: 1
-			path: src/Association/Photos/Album.php
+			path: src/Association/Photos/FlickrAlbum.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\Album\\:\\:photos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrAlbum\\:\\:photos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
 			count: 1
-			path: src/Association/Photos/Album.php
+			path: src/Association/Photos/FlickrAlbum.php
 
 		-
 			message: "#^Method Francken\\\\Association\\\\Photos\\\\AlbumsRepository\\:\\:albums\\(\\) return type with generic interface Illuminate\\\\Contracts\\\\Pagination\\\\Paginator does not specify its types\\: TItem$#"
@@ -1716,9 +1716,9 @@ parameters:
 			path: src/Association/Photos/Http/Controllers/AuthenticationController.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\Photo\\:\\:album\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrPhoto\\:\\:album\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
 			count: 1
-			path: src/Association/Photos/Photo.php
+			path: src/Association/Photos/FlickrPhoto.php
 
 		-
 			message: "#^Method Francken\\\\Association\\\\Photos\\\\PhotosAuthentication\\:\\:isLoggedIn\\(\\) should return bool but returns mixed\\.$#"

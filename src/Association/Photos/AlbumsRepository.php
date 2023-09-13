@@ -26,7 +26,7 @@ final class AlbumsRepository
 
     public function albums() : Paginator
     {
-        $query = Album::where('is_public', true)
+        $query = FlickrAlbum::where('is_public', true)
             ->with('coverPhoto')
             ->orderBy('activity_date', 'desc');
 
@@ -35,18 +35,18 @@ final class AlbumsRepository
         return $query->simplePaginate(16);
     }
 
-    public function bySlug(string $albumSlug) : Album
+    public function bySlug(string $albumSlug) : FlickrAlbum
     {
-        $query = Album::where('slug', $albumSlug)
+        $query = FlickrAlbum::where('slug', $albumSlug)
             ->where('is_public', true)
             ->with('photos');
 
         $query = $this->filterPrivateAlbums($query);
 
-        /** @var Album $album */
+        /** @var FlickrAlbum $album */
         $album = $query->firstOrFail();
 
-        Assert::isInstanceOf($album, Album::class);
+        Assert::isInstanceOf($album, FlickrAlbum::class);
 
         return $album;
     }
@@ -56,7 +56,7 @@ final class AlbumsRepository
     {
         // Check whether the user is either authenticated or authenticated by entering
         // the photos password
-        $authenticated = $this->gate->allows('view-private-albums');
+        $authenticated = $this->gate->allows('view-members-only-albums');
 
         if ( ! $authenticated) {
             $oneYearAgo = (new DateTimeImmutable())->sub(new DateInterval('P1Y'));

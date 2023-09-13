@@ -48,7 +48,7 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\Photos\Photo whereViews($value)
  * @mixin \Eloquent
  */
-final class Photo extends Model
+final class FlickrPhoto extends Model
 {
     private const SIZES = [
         75 => "_s",
@@ -59,10 +59,14 @@ final class Photo extends Model
         800 => "_c",
         1024 => "_b",
     ];
+    /**
+     * @var string
+     */
+    protected $table = 'photos';
 
     public function album() : BelongsTo
     {
-        return $this->belongsTo(Album::class);
+        return $this->belongsTo(FlickrAlbum::class);
     }
 
     public function src(int $quality = 1024) : string

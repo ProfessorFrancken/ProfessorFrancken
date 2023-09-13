@@ -9,8 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-final class Album extends Model
+final class FlickrAlbum extends Model
 {
+    /**
+     * @var string
+     */
+    protected $table = 'albums';
+
     /**
      * @var string[]
      */
@@ -23,19 +28,21 @@ final class Album extends Model
 
     public function photos() : HasMany
     {
-        return $this->hasMany(Photo::class)
+        return $this->hasMany(FlickrPhoto::class, 'album_id')
             ->orderBy('taken_at')
             ->where('is_public', true);
     }
 
     public function coverPhoto() : HasOne
     {
-        return $this->hasOne(Photo::class, 'id', 'cover_photo');
+        return $this->hasOne(FlickrPhoto::class, 'id', 'cover_photo')->withDefault(function ($x) {
+            return $this->photos()->first()?->toArray() ?? [];
+        });
     }
 
     public function nextAlbum() : ?self
     {
-        /** @var Album|null $album */
+        /** @var FlickrAlbum|null $album */
         $album = self::orderBy('activity_date', 'asc')
             ->where('is_public', true)
             ->where('activity_date', '>', $this->activity_date)
@@ -48,7 +55,7 @@ final class Album extends Model
 
     public function previousAlbum() : ?self
     {
-        /** @var Album|null $album */
+        /** @var FlickrAlbum|null $album */
         $album = self::orderBy('activity_date', 'asc')
             ->where('is_public', true)
             ->where('activity_date', '<', $this->activity_date)

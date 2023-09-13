@@ -104,9 +104,12 @@ services:
     restart: always
     ports:
       - 82:9000
-    command: -enable-url-source -mount /mnt/data
+    command: -enable-url-source -mount /mnt/data -http-cache-ttl 604800
     volumes:
       - ./docker/volumes/fly-images/:/mnt/data
+    environment:
+      - MALLOC_ARENA_MAX=2
+
 
   redis:
     image: redis:4-alpine

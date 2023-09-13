@@ -36,7 +36,7 @@
         <a href="/career/companies">
             <img
                 alt="Companies related to engineering physics"
-                src="{{ image('/images/company_profiles.jpg', ['height' => 150, 'width' => 150]) }}"
+                src="{{ image('/images/company_profiles.jpg', ['height' => 150, 'width' => 150], true) }}"
                 class="mb-3 rounded-circle"
                 style="height: 150px; width: 150px; object-fit: contain"
             />
