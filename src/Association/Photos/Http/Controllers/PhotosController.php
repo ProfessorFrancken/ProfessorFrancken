@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos\Http\Controllers;
 
+use Francken\Association\Photos\Album;
 use Francken\Association\Photos\AlbumsRepository;
+use Francken\Association\Photos\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Webmozart\Assert\Assert;
 
 final class PhotosController
 {
@@ -48,6 +53,32 @@ final class PhotosController
                 ['url' => '/association/photos', 'text' => 'Photos'],
                 ['text' => $album->title],
             ]
+        ]);
+    }
+
+    public function showImage(string $path) : StreamedResponse
+    {
+        $photo = Photo::where('path', $path)->firstOrFail();
+        Assert::isInstanceOf($photo->album, Album::class);
+
+        $response = $this->streamedResponse($path);
+        $this->applyCache($response, $path);
+
+        return $response;
+    }
+
+    private function streamedResponse(string $path) : StreamedResponse
+    {
+        return Storage::disk('nextcloud')->download("images/{$path}");
+    }
+
+    private function applyCache(StreamedResponse $response, string $path) : void
+    {
+        $etag = Storage::disk('nextcloud')->checksum("images/{$path}");
+        $response->setEtag($path);
+        $response->setCache([
+           'etag' => $etag,
+           'public' => true,
         ]);
     }
 }

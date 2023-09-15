@@ -23,6 +23,7 @@ use Francken\Association\Members\Http\Controllers\Admin\MembersController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
 use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
+use Francken\Association\Photos\Http\Controllers\AdminPhotosController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
 use Francken\Association\Symposium\Http\AdminSymposiaMailPreviewController;
 use Francken\Association\Symposium\Http\AdminSymposiumParticipantsController;
@@ -194,8 +195,22 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::delete('alumni-activity/{alumnus}', [AdminAlumniActivityController::class, 'destroy']);
     });
 
-    Route::get('photo-albums', [AdminPhotoAlbumsController::class, 'index']);
-    Route::post('photo-albums/refresh', [AdminPhotoAlbumsController::class, 'refresh']);
+    Route::group(['middleware' => 'can:dashboard:photos-read'], function () : void {
+        Route::get('photo-albums', [AdminPhotoAlbumsController::class, 'index']);
+        Route::post('photo-albums', [AdminPhotoAlbumsController::class, 'store']);
+        Route::get('photo-albums/create', [AdminPhotoAlbumsController::class, 'create']);
+        Route::get('photo-albums/{album}', [AdminPhotoAlbumsController::class, 'show']);
+        Route::put('photo-albums/{album}', [AdminPhotoAlbumsController::class, 'update']);
+        Route::get('photo-albums/{album}/edit', [AdminPhotoAlbumsController::class, 'edit']);
+        Route::delete('photo-albums/{album}', [AdminPhotoAlbumsController::class, 'destroy']);
+
+        Route::get('photo-albums/{album}/photos/{photo}/edit', [AdminPhotosController::class, 'edit']);
+        Route::put('photo-albums/{album}/photos/{photo}', [AdminPhotosController::class, 'update']);
+        Route::delete('photo-albums/{album}/photos/{photo}', [AdminPhotosController::class, 'destroy']);
+
+        Route::post('photo-albums/refresh', [AdminPhotoAlbumsController::class, 'refresh']);
+    });
+
     Route::group(['prefix' => 'symposia'], function () : void {
         Route::group(['middleware' => 'can:dashboard:symposia-write'], function () : void {
             Route::get('/create', [AdminSymposiaController::class, 'create']);

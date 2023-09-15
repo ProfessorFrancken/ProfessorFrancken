@@ -153,6 +153,12 @@ Route::group(['prefix' => 'association'], function () : void {
         ->middleware(['auth']);
 });
 
+Route::group(['middleware' => ['login-to-view-photos']], function () : void {
+    // TODO: move to ImagesControler
+    Route::get('images/{path}', [PhotosController::class, 'showImage'])
+        ->where('path', '.*');
+});
+
 Route::group(['prefix' => 'career'], function () : void {
     Route::get('/', [CareerController::class, 'index']);
     Route::get('job-openings', [CareerController::class, 'jobs'])->name('job-openings');
