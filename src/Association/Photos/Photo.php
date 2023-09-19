@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Francken\Association\Photos\Http\Controllers\PhotosController;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -44,7 +45,10 @@ final class Photo extends Model
 
     public function src() : string
     {
-        return action([\Francken\Association\Photos\Http\Controllers\PhotosController::class, 'showImage'], ['path' => $this->path]);
+        return action(
+            [PhotosController::class, 'showImage'],
+            ['album' => $this->album_id, 'photo' => $this]
+        );
     }
 
     public function getIsTallAttribute() : bool

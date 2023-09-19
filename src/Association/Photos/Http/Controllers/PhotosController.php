@@ -56,13 +56,10 @@ final class PhotosController
         ]);
     }
 
-    public function showImage(string $path) : StreamedResponse
+    public function showImage(Album $album, Photo $photo) : StreamedResponse
     {
-        $photo = Photo::where('path', $path)->firstOrFail();
-        Assert::isInstanceOf($photo->album, Album::class);
-
-        $response = $this->streamedResponse($path);
-        $this->applyCache($response, $path);
+        $response = $this->streamedResponse($photo->path);
+        $this->applyCache($response, $photo->path);
 
         return $response;
     }

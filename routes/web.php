@@ -147,16 +147,11 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::group(['middleware' => ['login-to-view-photos']], function () : void {
         Route::get('photos', [PhotosController::class, 'index']);
         Route::get('photos/{album}', [PhotosController::class, 'show']);
+        Route::get('photos/{album}/{photo}', [PhotosController::class, 'showImage']);
     });
 
     Route::get('alumni-2022', [AlumniActivityController::class, 'index'])
         ->middleware(['auth']);
-});
-
-Route::group(['middleware' => ['login-to-view-photos']], function () : void {
-    // TODO: move to ImagesControler
-    Route::get('images/{path}', [PhotosController::class, 'showImage'])
-        ->where('path', '.*');
 });
 
 Route::group(['prefix' => 'career'], function () : void {
