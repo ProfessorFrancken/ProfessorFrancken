@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Gate;
 
@@ -101,15 +100,9 @@ final class Album extends Model
      */
     protected static function booted() : void
     {
-        static::addGlobalScope(new class() implements Scope {
-            /**
-             * Apply the scope to a given Eloquent query builder.
-             * @param Builder<Album> $builder
-             */
-            public function apply(
-                Builder $builder,
-                Model $model
-            ) : void {
+        static::addGlobalScope(
+            'view-permission',
+            function (Builder $builder) : void {
                 $visibilities = [];
                 if (Gate::allows('view-private-albums')) {
                     $visibilities[] = 'private';
@@ -124,6 +117,6 @@ final class Album extends Model
 
                 $builder->whereIn('visibility', $visibilities);
             }
-        });
+        );
     }
 }

@@ -7,11 +7,11 @@ namespace Francken\Association\Photos\Http\Controllers;
 use Francken\Association\Photos\Album;
 use Francken\Association\Photos\AlbumsRepository;
 use Francken\Association\Photos\Photo;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use Webmozart\Assert\Assert;
 
 final class PhotosController
 {
@@ -58,20 +58,21 @@ final class PhotosController
 
     public function showImage(Album $album, Photo $photo) : StreamedResponse
     {
-        $response = $this->streamedResponse($photo->path);
-        $this->applyCache($response, $photo->path);
+        $nextcloud = Storage::disk('nextcloud');
+        $response = $this->streamedResponse($nextcloud, $photo->path);
+        $this->applyCache($nextcloud, $response, $photo->path);
 
         return $response;
     }
 
-    private function streamedResponse(string $path) : StreamedResponse
+    private function streamedResponse(FilesystemAdapter $nextcloud, string $path) : StreamedResponse
     {
-        return Storage::disk('nextcloud')->download("images/{$path}");
+        return $nextcloud->download("images/{$path}");
     }
 
-    private function applyCache(StreamedResponse $response, string $path) : void
+    private function applyCache(FilesystemAdapter $nextcloud, StreamedResponse $response, string $path) : void
     {
-        $etag = Storage::disk('nextcloud')->checksum("images/{$path}");
+        $etag = $nextcloud->checksum("images/{$path}");
         $response->setEtag($path);
         $response->setCache([
            'etag' => $etag,

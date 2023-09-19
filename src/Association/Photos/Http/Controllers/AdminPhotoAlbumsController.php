@@ -9,6 +9,7 @@ use Francken\Association\Photos\FlickrAlbum;
 use Francken\Association\Photos\Http\Requests\AdminAlbumRequest;
 use Francken\Association\Photos\Photo;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 
@@ -41,11 +42,7 @@ final class AdminPhotoAlbumsController
     {
         $album = new Album();
 
-        $albumDirectories = collect(\Storage::disk('nextcloud')->directories("images/albums"))
-                          ->filter(fn ($album) => $album === str_replace(' ', '', $album))
-                          ->map(fn ($f) => str_replace(self::ROOT, '', $f))
-                          ->map(fn ($f) => preg_replace("/^images\//", '', $f))
-                          ->mapWithKeys(fn (string $f) => [$f => $f]);
+        $albumDirectories = $this->albumDirectories();
 
 
         return view('admin.association.photo-albums.create', [
@@ -74,10 +71,7 @@ final class AdminPhotoAlbumsController
 
     public function edit(Album $album) : View
     {
-        $albumDirectories = collect(\Storage::disk('nextcloud')->directories("images/albums"))
-                          ->filter(fn ($album) => $album === str_replace(' ', '', $album))
-                          ->map(fn ($f) => str_replace(self::BASE_PATH, '', $f))
-                          ->mapWithKeys(fn (string $f) => [$f => $f]);
+        $albumDirectories = $this->albumDirectories();
 
         return view('admin.association.photo-albums.edit', [
             'album' => $album,
@@ -167,5 +161,15 @@ final class AdminPhotoAlbumsController
         $album->photos()->saveMany($newPhotos);
 
         return redirect()->action([self::class, 'show'], ['album' => $album]);
+    }
+
+    /** @return Collection<string, string> */
+    private function albumDirectories() : Collection
+    {
+        return collect(\Storage::disk('nextcloud')->directories("images/albums"))
+                          ->filter(fn (string $album) => $album === str_replace(' ', '', $album))
+                          ->map(fn (string $f) : string => str_replace(self::ROOT, '', $f))
+                          ->map(fn (string $f) : string => preg_replace("/^images\//", '', $f) ?? '')
+                          ->mapWithKeys(fn (string $f) => [$f => $f]);
     }
 }
