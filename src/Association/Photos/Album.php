@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Gate;
 
 final class Album extends Model
 {
@@ -42,5 +44,27 @@ final class Album extends Model
     public function photos() : HasMany
     {
         return $this->hasMany(Photo::class);
+    }
+
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted() : void
+    {
+        static::addGlobalScope(
+            'view-permission',
+            function (Builder $builder) : void {
+                $visibilities = ['public'];
+
+                if (Gate::allows('view-private-albums')) {
+                    $visibilities[] = 'private';
+                }
+                if (Gate::allows('view-members-only-albums')) {
+                    $visibilities[] = 'members-only';
+                }
+
+                $builder->whereIn('visibility', $visibilities);
+            }
+        );
     }
 }

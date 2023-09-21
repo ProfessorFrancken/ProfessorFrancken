@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace Francken\Association\Photos\Http\Controllers;
 
+use Francken\Association\Photos\Album;
 use Francken\Association\Photos\AlbumsRepository;
+use Francken\Association\Photos\Photo;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 final class PhotosController
 {
@@ -48,6 +53,30 @@ final class PhotosController
                 ['url' => '/association/photos', 'text' => 'Photos'],
                 ['text' => $album->title],
             ]
+        ]);
+    }
+
+    public function showImage(Album $album, Photo $photo) : StreamedResponse
+    {
+        $nextcloud = Storage::disk('nextcloud');
+        $response = $this->streamedResponse($nextcloud, $photo->path);
+        $this->applyCache($nextcloud, $response, $photo->path);
+
+        return $response;
+    }
+
+    private function streamedResponse(FilesystemAdapter $nextcloud, string $path) : StreamedResponse
+    {
+        return $nextcloud->download("images/{$path}");
+    }
+
+    private function applyCache(FilesystemAdapter $nextcloud, StreamedResponse $response, string $path) : void
+    {
+        $etag = $nextcloud->checksum("images/{$path}");
+        $response->setEtag($path);
+        $response->setCache([
+           'etag' => $etag,
+           'public' => true,
         ]);
     }
 }

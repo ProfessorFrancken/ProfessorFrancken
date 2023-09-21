@@ -147,6 +147,8 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::group(['middleware' => ['login-to-view-photos']], function () : void {
         Route::get('photos', [PhotosController::class, 'index']);
         Route::get('photos/{album}', [PhotosController::class, 'show']);
+
+        Route::get('photos/{album}/{photo}', [PhotosController::class, 'showImage'])->scopeBindings();
     });
 
     Route::get('alumni-2022', [AlumniActivityController::class, 'index'])
