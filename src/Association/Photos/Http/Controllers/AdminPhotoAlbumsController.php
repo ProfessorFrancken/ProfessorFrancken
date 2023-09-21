@@ -44,7 +44,6 @@ final class AdminPhotoAlbumsController
 
         $albumDirectories = $this->albumDirectories();
 
-
         return view('admin.association.photo-albums.create', [
             'album' => $album,
             'albumDirectories' => $albumDirectories,
@@ -124,6 +123,12 @@ final class AdminPhotoAlbumsController
             'published_at' => $request->publishedAt(),
             'path' => $request->path(),
         ]);
+
+        if ($request->updateVisibilityOfAllPhotos()) {
+            $album->photos()->update([
+                'visibility' => $request->visibility()
+            ]);
+        }
 
         return redirect()->action([self::class, 'show'], ['album' => $album]);
     }
