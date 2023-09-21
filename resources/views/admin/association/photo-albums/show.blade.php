@@ -41,6 +41,27 @@
             </div>
         </div>
     </div>
+
+    {!!
+           Form::model(
+               $album,
+               [
+                   'url' => action(
+                       [\Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController::class, 'destroy'],
+                       ['album' => $album]
+                   ),
+                   'method' => 'post'
+               ]
+           )
+    !!}
+    @method('DELETE')
+    <p class="mt-2 text-muted d-flex align-items-center justify-content-end">
+        Click <button
+                  class="btn btn-text px-1"
+                  onclick='return confirm("Are you sure you want to remove this album?");'
+              >here</button> to remove this album.
+    </p>
+    {!! Form::close() !!}
 @endsection
 
 @section('actions')

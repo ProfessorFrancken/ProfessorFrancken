@@ -40,6 +40,11 @@ class PhotoAlbumsFeature extends TestCase
         $album->refresh();
         $this->assertEquals('BBQ day', $album->title);
         $this->assertEquals('BBQ day', $album->description);
+
+        // Remove album
+        $this->removeAlbum($album);
+        $album->refresh();
+        $this->assertNull(Album::find($album->id));
     }
 
     private function createBbqAlbum() : void
@@ -67,5 +72,13 @@ class PhotoAlbumsFeature extends TestCase
             ->type('2023-09-10', 'published_at')
             ->select('private', 'visibility')
             ->press('Save');
+    }
+
+    private function removeAlbum(Album $album) : void
+    {
+        $this
+            ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]))
+            ->press('here')
+            ->seePageIs(action([AdminPhotoAlbumsController::class, 'index']));
     }
 }
