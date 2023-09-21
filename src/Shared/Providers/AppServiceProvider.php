@@ -13,10 +13,16 @@ use Francken\Shared\ViewComponents\Admin\NavigationGroup;
 use Francken\Shared\ViewComponents\AutocompleteMemberComponent;
 use Francken\Shared\ViewComponents\BorrelcieNotificationsComponent;
 use Francken\Shared\ViewComponents\FooterSponsorsComponent;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Foundation\Application;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\ServiceProvider;
+use League\Flysystem\Filesystem;
+use League\Flysystem\WebDAV\WebDAVAdapter;
+use Sabre\DAV\Client;
 use Spatie\Valuestore\Valuestore;
 
 final class AppServiceProvider extends ServiceProvider
@@ -39,6 +45,22 @@ final class AppServiceProvider extends ServiceProvider
         if ($this->app instanceof Application && $this->app->isLocal()) {
             $this->app->register(DevelopmentServiceProvider::class);
         }
+
+        Storage::extend(
+            'nextcloud',
+            function ($app, $config) {
+                $client = new Client([
+                    'baseUri' => $config['baseUri'],
+                    'userName' => $config['username'],
+                    'password' => $config['password']
+                ]);
+
+                $adapter = new WebDAVAdapter($client);
+                $filesystem = new Filesystem($adapter);
+
+                return new FilesystemAdapter($filesystem, $adapter);
+            }
+        );
     }
 
     public function boot() : void

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9dc54a2d11fd0ed3960efa460301a8b",
+    "content-hash": "158c737b163c38ee5c657478ec6daf1e",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3030,6 +3030,65 @@
             "time": "2023-05-02T20:02:14+00:00"
         },
         {
+            "name": "league/flysystem-webdav",
+            "version": "3.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-webdav.git",
+                "reference": "9814f4577f8d347092b21603d2ef9f7a61a4d6ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-webdav/zipball/9814f4577f8d347092b21603d2ef9f7a61a4d6ac",
+                "reference": "9814f4577f8d347092b21603d2ef9f7a61a4d6ac",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "^3.6.0",
+                "php": "^8.0.2",
+                "sabre/dav": "^4.3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\WebDAV\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frankdejonge.nl"
+                }
+            ],
+            "description": "WebDAV filesystem adapter for Flysystem.",
+            "keywords": [
+                "Flysystem",
+                "WebDAV",
+                "file",
+                "files",
+                "filesystem"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/flysystem-webdav/issues",
+                "source": "https://github.com/thephpleague/flysystem-webdav/tree/3.15.0"
+            },
+            "funding": [
+                {
+                    "url": "https://ecologi.com/frankdejonge",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/frankdejonge",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-05-02T20:02:14+00:00"
+        },
+        {
             "name": "league/html-to-markdown",
             "version": "4.10.0",
             "source": {
@@ -5062,17 +5121,232 @@
             "time": "2023-04-15T23:01:58+00:00"
         },
         {
-            "name": "sabre/uri",
-            "version": "3.0.1",
+            "name": "sabre/dav",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sabre-io/uri.git",
-                "reference": "1774043c843f1db7654ecc93368a98be29b07544"
+                "url": "https://github.com/sabre-io/dav.git",
+                "reference": "b65362abc926520eda2c57e219f022a6c288069d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabre-io/uri/zipball/1774043c843f1db7654ecc93368a98be29b07544",
-                "reference": "1774043c843f1db7654ecc93368a98be29b07544",
+                "url": "https://api.github.com/repos/sabre-io/dav/zipball/b65362abc926520eda2c57e219f022a6c288069d",
+                "reference": "b65362abc926520eda2c57e219f022a6c288069d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-date": "*",
+                "ext-dom": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-pcre": "*",
+                "ext-simplexml": "*",
+                "ext-spl": "*",
+                "lib-libxml": ">=2.7.0",
+                "php": "^7.1.0 || ^8.0",
+                "psr/log": "^1.0 || ^2.0 || ^3.0",
+                "sabre/event": "^5.0",
+                "sabre/http": "^5.0.5",
+                "sabre/uri": "^2.0",
+                "sabre/vobject": "^4.2.1",
+                "sabre/xml": "^2.0.1"
+            },
+            "require-dev": {
+                "evert/phpdoc-md": "~0.1.0",
+                "friendsofphp/php-cs-fixer": "^2.17.1",
+                "monolog/monolog": "^1.18",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.0"
+            },
+            "suggest": {
+                "ext-curl": "*",
+                "ext-imap": "*",
+                "ext-pdo": "*"
+            },
+            "bin": [
+                "bin/sabredav",
+                "bin/naturalselection"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sabre\\DAV\\": "lib/DAV/",
+                    "Sabre\\CalDAV\\": "lib/CalDAV/",
+                    "Sabre\\DAVACL\\": "lib/DAVACL/",
+                    "Sabre\\CardDAV\\": "lib/CardDAV/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Evert Pot",
+                    "email": "me@evertpot.com",
+                    "homepage": "http://evertpot.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "WebDAV Framework for PHP",
+            "homepage": "http://sabre.io/",
+            "keywords": [
+                "CalDAV",
+                "CardDAV",
+                "WebDAV",
+                "framework",
+                "iCalendar"
+            ],
+            "support": {
+                "forum": "https://groups.google.com/group/sabredav-discuss",
+                "issues": "https://github.com/sabre-io/dav/issues",
+                "source": "https://github.com/fruux/sabre-dav"
+            },
+            "time": "2022-06-27T09:07:55+00:00"
+        },
+        {
+            "name": "sabre/event",
+            "version": "5.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabre-io/event.git",
+                "reference": "d7da22897125d34d7eddf7977758191c06a74497"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabre-io/event/zipball/d7da22897125d34d7eddf7977758191c06a74497",
+                "reference": "d7da22897125d34d7eddf7977758191c06a74497",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.17.1",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/coroutine.php",
+                    "lib/Loop/functions.php",
+                    "lib/Promise/functions.php"
+                ],
+                "psr-4": {
+                    "Sabre\\Event\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Evert Pot",
+                    "email": "me@evertpot.com",
+                    "homepage": "http://evertpot.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "sabre/event is a library for lightweight event-based programming",
+            "homepage": "http://sabre.io/event/",
+            "keywords": [
+                "EventEmitter",
+                "async",
+                "coroutine",
+                "eventloop",
+                "events",
+                "hooks",
+                "plugin",
+                "promise",
+                "reactor",
+                "signal"
+            ],
+            "support": {
+                "forum": "https://groups.google.com/group/sabredav-discuss",
+                "issues": "https://github.com/sabre-io/event/issues",
+                "source": "https://github.com/fruux/sabre-event"
+            },
+            "time": "2021-11-04T06:51:17+00:00"
+        },
+        {
+            "name": "sabre/http",
+            "version": "5.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabre-io/http.git",
+                "reference": "f9f3d1fba8916fa2f4ec25636c4fedc26cb94e02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabre-io/http/zipball/f9f3d1fba8916fa2f4ec25636c4fedc26cb94e02",
+                "reference": "f9f3d1fba8916fa2f4ec25636c4fedc26cb94e02",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-curl": "*",
+                "ext-mbstring": "*",
+                "php": "^7.1 || ^8.0",
+                "sabre/event": ">=4.0 <6.0",
+                "sabre/uri": "^2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.17.1",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.0"
+            },
+            "suggest": {
+                "ext-curl": " to make http requests with the Client class"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/functions.php"
+                ],
+                "psr-4": {
+                    "Sabre\\HTTP\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Evert Pot",
+                    "email": "me@evertpot.com",
+                    "homepage": "http://evertpot.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The sabre/http library provides utilities for dealing with http requests and responses. ",
+            "homepage": "https://github.com/fruux/sabre-http",
+            "keywords": [
+                "http"
+            ],
+            "support": {
+                "forum": "https://groups.google.com/group/sabredav-discuss",
+                "issues": "https://github.com/sabre-io/http/issues",
+                "source": "https://github.com/fruux/sabre-http"
+            },
+            "time": "2023-08-18T01:55:28+00:00"
+        },
+        {
+            "name": "sabre/uri",
+            "version": "2.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabre-io/uri.git",
+                "reference": "7e0e7dfd0b7e14346a27eabd66e843a6e7f1812b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabre-io/uri/zipball/7e0e7dfd0b7e14346a27eabd66e843a6e7f1812b",
+                "reference": "7e0e7dfd0b7e14346a27eabd66e843a6e7f1812b",
                 "shasum": ""
             },
             "require": {
@@ -5119,7 +5393,7 @@
                 "issues": "https://github.com/sabre-io/uri/issues",
                 "source": "https://github.com/fruux/sabre-uri"
             },
-            "time": "2023-06-09T07:04:02+00:00"
+            "time": "2023-06-09T06:54:04+00:00"
         },
         {
             "name": "sabre/vobject",
@@ -5227,16 +5501,16 @@
         },
         {
             "name": "sabre/xml",
-            "version": "4.0.2",
+            "version": "2.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabre-io/xml.git",
-                "reference": "61a44c39f51e386ae495304bfb78f0b0a6ed11fe"
+                "reference": "9cde7cdab1e50893cc83b037b40cd47bfde42a2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabre-io/xml/zipball/61a44c39f51e386ae495304bfb78f0b0a6ed11fe",
-                "reference": "61a44c39f51e386ae495304bfb78f0b0a6ed11fe",
+                "url": "https://api.github.com/repos/sabre-io/xml/zipball/9cde7cdab1e50893cc83b037b40cd47bfde42a2b",
+                "reference": "9cde7cdab1e50893cc83b037b40cd47bfde42a2b",
                 "shasum": ""
             },
             "require": {
@@ -5244,13 +5518,13 @@
                 "ext-xmlreader": "*",
                 "ext-xmlwriter": "*",
                 "lib-libxml": ">=2.6.20",
-                "php": "^7.4 || ^8.0",
-                "sabre/uri": ">=2.0,<4.0.0"
+                "php": "^7.1 || ^8.0",
+                "sabre/uri": ">=1.0,<3.0.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.20",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.6"
+                "friendsofphp/php-cs-fixer": "~2.17.1",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.0"
             },
             "type": "library",
             "autoload": {
@@ -5292,7 +5566,7 @@
                 "issues": "https://github.com/sabre-io/xml/issues",
                 "source": "https://github.com/fruux/sabre-xml"
             },
-            "time": "2023-06-28T14:18:46+00:00"
+            "time": "2023-06-28T12:56:05+00:00"
         },
         {
             "name": "simplesoftwareio/simple-qrcode",
@@ -9435,16 +9709,16 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.35.0",
+            "version": "2.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "fe5fab007825cdb2640e27726c17dbcf513af0d6"
+                "reference": "a8ac2c507de9166652cd76f4c336e9c7c0dd1456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/fe5fab007825cdb2640e27726c17dbcf513af0d6",
-                "reference": "fe5fab007825cdb2640e27726c17dbcf513af0d6",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/a8ac2c507de9166652cd76f4c336e9c7c0dd1456",
+                "reference": "a8ac2c507de9166652cd76f4c336e9c7c0dd1456",
                 "shasum": ""
             },
             "require": {
@@ -9458,17 +9732,17 @@
                 "php": "~8.1.0 || ~8.2.0"
             },
             "require-dev": {
-                "composer/composer": "^2.5.8",
+                "composer/composer": "^2.6.2",
                 "ergebnis/license": "^2.1.0",
-                "ergebnis/php-cs-fixer-config": "^5.12.0",
+                "ergebnis/php-cs-fixer-config": "^5.14.1",
                 "ergebnis/phpunit-slow-test-detector": "^2.3.0",
                 "fakerphp/faker": "^1.23.0",
                 "infection/infection": "~0.27.0",
-                "phpunit/phpunit": "^10.3.1",
+                "phpunit/phpunit": "^10.3.2",
                 "psalm/plugin-phpunit": "~0.18.4",
-                "rector/rector": "~0.17.12",
+                "rector/rector": "~0.18.1",
                 "symfony/filesystem": "^6.0.13",
-                "vimeo/psalm": "^5.14.1"
+                "vimeo/psalm": "^5.15.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -9507,7 +9781,7 @@
                 "security": "https://github.com/ergebnis/composer-normalize/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/composer-normalize"
             },
-            "time": "2023-08-11T09:11:22+00:00"
+            "time": "2023-09-04T10:00:36+00:00"
         },
         {
             "name": "ergebnis/json",
@@ -10130,16 +10404,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.25.0",
+            "version": "v3.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "9025b7d2b6e1d90a63d0ac0905018ce5d03ec88d"
+                "reference": "8e21d69801de6b5ecb0dbe0bcdf967b335b1260b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/9025b7d2b6e1d90a63d0ac0905018ce5d03ec88d",
-                "reference": "9025b7d2b6e1d90a63d0ac0905018ce5d03ec88d",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/8e21d69801de6b5ecb0dbe0bcdf967b335b1260b",
+                "reference": "8e21d69801de6b5ecb0dbe0bcdf967b335b1260b",
                 "shasum": ""
             },
             "require": {
@@ -10213,7 +10487,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.25.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.25.1"
             },
             "funding": [
                 {
@@ -10221,7 +10495,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-31T21:27:18+00:00"
+            "time": "2023-09-04T01:22:52+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -11102,22 +11376,22 @@
         },
         {
             "name": "orchestra/canvas",
-            "version": "v7.7.0",
+            "version": "v7.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/canvas.git",
-                "reference": "a7406173789b45125db9833feafa0888cdc40214"
+                "reference": "70781002107a23c10c9e1febfaeb1fda000515ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/canvas/zipball/a7406173789b45125db9833feafa0888cdc40214",
-                "reference": "a7406173789b45125db9833feafa0888cdc40214",
+                "url": "https://api.github.com/repos/orchestral/canvas/zipball/70781002107a23c10c9e1febfaeb1fda000515ad",
+                "reference": "70781002107a23c10c9e1febfaeb1fda000515ad",
                 "shasum": ""
             },
             "require": {
                 "illuminate/database": "^9.45",
                 "illuminate/support": "^9.45",
-                "orchestra/canvas-core": "^7.4",
+                "orchestra/canvas-core": "^7.5",
                 "php": "^8.0",
                 "symfony/yaml": "^5.4 || ^6.0"
             },
@@ -11166,22 +11440,22 @@
             "description": "Code Generators for Laravel Applications and Packages",
             "support": {
                 "issues": "https://github.com/orchestral/canvas/issues",
-                "source": "https://github.com/orchestral/canvas/tree/v7.7.0"
+                "source": "https://github.com/orchestral/canvas/tree/v7.8.0"
             },
-            "time": "2023-09-01T02:47:28+00:00"
+            "time": "2023-09-01T08:21:30+00:00"
         },
         {
             "name": "orchestra/canvas-core",
-            "version": "v7.4.0",
+            "version": "v7.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/canvas-core.git",
-                "reference": "d60b3790290627b63148052e1ace6934b86bce00"
+                "reference": "4ee85a2ead436cc2910144f16138e5221f0aeb46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/canvas-core/zipball/d60b3790290627b63148052e1ace6934b86bce00",
-                "reference": "d60b3790290627b63148052e1ace6934b86bce00",
+                "url": "https://api.github.com/repos/orchestral/canvas-core/zipball/4ee85a2ead436cc2910144f16138e5221f0aeb46",
+                "reference": "4ee85a2ead436cc2910144f16138e5221f0aeb46",
                 "shasum": ""
             },
             "require": {
@@ -11231,9 +11505,9 @@
             "description": "Code Generators Builder for Laravel Applications and Packages",
             "support": {
                 "issues": "https://github.com/orchestral/canvas/issues",
-                "source": "https://github.com/orchestral/canvas-core/tree/v7.4.0"
+                "source": "https://github.com/orchestral/canvas-core/tree/v7.5.0"
             },
-            "time": "2023-09-01T01:35:33+00:00"
+            "time": "2023-09-01T08:15:17+00:00"
         },
         {
             "name": "orchestra/testbench",
@@ -14514,16 +14788,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.32.6",
+            "version": "1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "8526dd6c6c838b4bac4e0df2ea7896b688b0d43e"
+                "reference": "5028ae44a09451b26eb44490e3471998650788e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/8526dd6c6c838b4bac4e0df2ea7896b688b0d43e",
-                "reference": "8526dd6c6c838b4bac4e0df2ea7896b688b0d43e",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/5028ae44a09451b26eb44490e3471998650788e3",
+                "reference": "5028ae44a09451b26eb44490e3471998650788e3",
                 "shasum": ""
             },
             "require": {
@@ -14583,7 +14857,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.32.6"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.33.0"
             },
             "funding": [
                 {
@@ -14595,7 +14869,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2023-07-19T12:30:16+00:00"
+            "time": "2023-09-04T10:16:53+00:00"
         },
         {
             "name": "spatie/macroable",
@@ -14649,16 +14923,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.37.2",
+            "version": "1.37.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "dea16182d4bc9d9833adec7e39fbb3d7b553425d"
+                "reference": "37d351c57b5183a88754f477d2e5f610c7b355ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/dea16182d4bc9d9833adec7e39fbb3d7b553425d",
-                "reference": "dea16182d4bc9d9833adec7e39fbb3d7b553425d",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/37d351c57b5183a88754f477d2e5f610c7b355ce",
+                "reference": "37d351c57b5183a88754f477d2e5f610c7b355ce",
                 "shasum": ""
             },
             "require": {
@@ -14709,7 +14983,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.37.2"
+                "source": "https://github.com/spatie/ray/tree/1.37.4"
             },
             "funding": [
                 {
@@ -14721,7 +14995,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2023-05-17T06:35:47+00:00"
+            "time": "2023-09-04T07:17:56+00:00"
         },
         {
             "name": "symfony/config",
