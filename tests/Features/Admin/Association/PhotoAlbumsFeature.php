@@ -56,6 +56,13 @@ class PhotoAlbumsFeature extends TestCase
 
         $album->load('photos');
         $this->assertCount(2, $album->photos);
+
+        // Update album visibility
+        $this->editAlbumAndPhotoVisibility($album);
+
+        $album->load('photos');
+        $album->photos->each(fn ($photo) => $this->assertEquals('members-only', $photo->visibility));
+
         // Remove album
         $this->removeAlbum($album);
         $album->refresh();
@@ -104,6 +111,17 @@ class PhotoAlbumsFeature extends TestCase
         $this->click($photo->name)
             ->press('here')
             ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]));
+    }
+
+    private function editAlbumAndPhotoVisibility(Album $album) : void
+    {
+        $this
+            ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]))
+            ->click('Edit album')
+            ->seePageIs(action([AdminPhotoAlbumsController::class, 'edit'], ['album' => $album]))
+            ->select('members-only', 'visibility')
+            ->check('update_visibility_of_photos')
+            ->press('Save');
     }
 
     private function removeAlbum(Album $album) : void
