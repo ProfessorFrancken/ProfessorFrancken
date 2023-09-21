@@ -128,6 +128,13 @@ final class AdminPhotoAlbumsController
         return redirect()->action([self::class, 'show'], ['album' => $album]);
     }
 
+    public function destroy(Album $album) : RedirectResponse
+    {
+        $album->delete();
+
+        return redirect()->action([self::class, 'index']);
+    }
+
     /** @return Collection<string, string> */
     private function albumDirectories() : Collection
     {
