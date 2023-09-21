@@ -26,7 +26,10 @@
                             @include('admin.association.photo-albums._photo', [
                                 'photo' => $photo,
                                 'title' => $photo->name,
-                                'href' => '#',
+                                'href' => action(
+                                    [\Francken\Association\Photos\Http\Controllers\AdminPhotosController::class, 'edit'],
+                                    ['album' => $album, 'photo' => $photo]
+                                ),
                                 'show_visibility' => true,
                             ])
                         @endforeach
