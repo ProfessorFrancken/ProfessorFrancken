@@ -50,6 +50,12 @@ class PhotoAlbumsFeature extends TestCase
         $photo->refresh();
         $this->assertEquals('Photo 1', $photo->name);
         $this->assertEquals('private', $photo->visibility);
+
+        // Remove photo
+        $this->removePhoto($album, $album->photos[1]);
+
+        $album->load('photos');
+        $this->assertCount(2, $album->photos);
         // Remove album
         $this->removeAlbum($album);
         $album->refresh();
@@ -90,6 +96,13 @@ class PhotoAlbumsFeature extends TestCase
             ->type('Photo 1', 'name')
             ->select('private', 'visibility')
             ->press('Update')
+            ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]));
+    }
+
+    private function removePhoto(Album $album, Photo $photo) : void
+    {
+        $this->click($photo->name)
+            ->press('here')
             ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]));
     }
 

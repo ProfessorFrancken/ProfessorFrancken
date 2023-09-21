@@ -206,6 +206,7 @@ Route::group(['prefix' => 'association'], function () : void {
 
         Route::get('photo-albums/{album}/photos/{photo}/edit', [AdminPhotosController::class, 'edit']);
         Route::put('photo-albums/{album}/photos/{photo}', [AdminPhotosController::class, 'update']);
+        Route::delete('photo-albums/{album}/photos/{photo}', [AdminPhotosController::class, 'destroy']);
 
         Route::post('photo-albums/refresh', [AdminPhotoAlbumsController::class, 'refresh']);
     });

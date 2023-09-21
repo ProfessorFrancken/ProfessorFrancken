@@ -35,4 +35,11 @@ final class AdminPhotosController
 
         return redirect()->action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]);
     }
+
+    public function destroy(Album $album, Photo $photo) : RedirectResponse
+    {
+        $photo->delete();
+
+        return redirect()->action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]);
+    }
 }
