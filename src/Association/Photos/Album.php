@@ -46,6 +46,11 @@ final class Album extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function nextcloudUrl() : string
+    {
+        return config('francken.general.nextcloud_host') . "/apps/files/?dir=/images/{$this->path}";
+    }
+
     /**
      * The "booted" method of the model.
      */
