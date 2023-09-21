@@ -10,6 +10,7 @@ use Francken\Association\Photos\Http\Controllers\AdminPhotosController;
 use Francken\Association\Photos\Photo;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,6 +63,11 @@ class PhotoAlbumsFeature extends TestCase
 
         $album->load('photos');
         $album->photos->each(fn ($photo) => $this->assertEquals('members-only', $photo->visibility));
+
+        // Refresh album
+        $this->refreshAlbumPhotos($storage);
+        $album->load('photos');
+        $this->assertCount(4, $album->photos);
 
         // Remove album
         $this->removeAlbum($album);
@@ -122,6 +128,13 @@ class PhotoAlbumsFeature extends TestCase
             ->select('members-only', 'visibility')
             ->check('update_visibility_of_photos')
             ->press('Save');
+    }
+
+    private function refreshAlbumPhotos(Filesystem $storage) : void
+    {
+        $storage->put('images/albums/2023-09-07-bbq/photo_4.png', 'hoi_4');
+
+        $this->press('Refresh');
     }
 
     private function removeAlbum(Album $album) : void

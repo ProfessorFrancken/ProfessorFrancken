@@ -75,5 +75,13 @@
             <i class="fas fa-edit"></i>
             Edit album
         </a>
+        {!! Form::open(['url' => action([\Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController::class, 'refreshAlbum'], ['album' => $album])]) !!}
+        <button
+            class='btn btn-primary'
+        >
+            <i class="fas fa-sync"></i>
+            Refresh
+        </button>
+        {!! Form::close() !!}
     </div>
 @endsection

@@ -140,6 +140,27 @@ final class AdminPhotoAlbumsController
         return redirect()->action([self::class, 'index']);
     }
 
+    public function refreshAlbum(Album $album) : RedirectResponse
+    {
+        $album->load('photos');
+
+        $files = collect(\Storage::disk('nextcloud')->files("images/{$album->path}"));
+        $photos = $files->map(fn ($file) => new Photo([
+            'name' => pathinfo($file, PATHINFO_FILENAME),
+            'path' => str_replace(self::BASE_PATH, '', $file),
+            'visibility' => $album->visibility,
+        ]));
+
+        $newPhotos = $photos->filter(function (Photo $photo) use ($album) {
+            return ! $album->photos->contains(function (Photo $albumPhoto) use ($photo) {
+                return $albumPhoto->path === $photo->path;
+            });
+        });
+        $album->photos()->saveMany($newPhotos);
+
+        return redirect()->action([self::class, 'show'], ['album' => $album]);
+    }
+
     /** @return Collection<string, string> */
     private function albumDirectories() : Collection
     {
