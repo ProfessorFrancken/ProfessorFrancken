@@ -6,6 +6,8 @@ namespace Francken\Features\Admin\Association;
 
 use Francken\Association\Photos\Album;
 use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
+use Francken\Association\Photos\Http\Controllers\AdminPhotosController;
+use Francken\Association\Photos\Photo;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -41,6 +43,13 @@ class PhotoAlbumsFeature extends TestCase
         $this->assertEquals('BBQ day', $album->title);
         $this->assertEquals('BBQ day', $album->description);
 
+        /**  @var Photo $photo */
+        $photo = $album->photos()->firstOrFail();
+        $this->editPhoto($album, $photo);
+
+        $photo->refresh();
+        $this->assertEquals('Photo 1', $photo->name);
+        $this->assertEquals('private', $photo->visibility);
         // Remove album
         $this->removeAlbum($album);
         $album->refresh();
@@ -72,6 +81,16 @@ class PhotoAlbumsFeature extends TestCase
             ->type('2023-09-10', 'published_at')
             ->select('private', 'visibility')
             ->press('Save');
+    }
+
+    private function editPhoto(Album $album, Photo $photo) : void
+    {
+        $this->click($photo->name)
+            ->seePageIs(action([AdminPhotosController::class, 'edit'], ['album' => $album, 'photo' => $photo]))
+            ->type('Photo 1', 'name')
+            ->select('private', 'visibility')
+            ->press('Update')
+            ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]));
     }
 
     private function removeAlbum(Album $album) : void
