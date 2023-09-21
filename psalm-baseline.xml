@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.14.1@b9d355e0829c397b9b3b47d0c0ed042a8a70284d">
+<files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
   <file src="src/Association/Activities/ActivitiesRepository.php">
     <InvalidArgument>
       <code>CalendarEvent::fromEvent($event)</code>
@@ -270,12 +270,6 @@
     </UndefinedMagicPropertyFetch>
   </file>
   <file src="src/Association/Committees/Http/AdminCommitteesController.php">
-    <InvalidArgument>
-      <code><![CDATA[fn (Board $board) : array => [$board->id => $board->board_name->toString()]]]></code>
-    </InvalidArgument>
-    <InvalidTemplateParam>
-      <code><![CDATA[$boards->mapWithKeys(fn (Board $board) : array => [$board->id => $board->board_name->toString()])]]></code>
-    </InvalidTemplateParam>
     <UndefinedMagicPropertyFetch>
       <code><![CDATA[$board->id]]></code>
       <code><![CDATA[$board->id]]></code>
@@ -332,28 +326,6 @@
       <code><![CDATA[[$study->studierichting => $study->studierichting]]]></code>
       <code><![CDATA[[$study->type_lid => $study->type_lid]]]></code>
     </InvalidArrayOffset>
-    <InvalidTemplateParam>
-      <code><![CDATA[LegacyMember::distinct()
-            ->select('studierichting')
-            ->get()
-            ->mapWithKeys(function ($study) {
-                /** @var LegacyMember $study */
-                return [$study->studierichting => $study->studierichting];
-            })]]></code>
-      <code><![CDATA[LegacyMember::distinct()
-            ->select('type_lid')
-            ->get()
-            ->mapWithKeys(function ($study) {
-                /** @var LegacyMember $study */
-                return [$study->type_lid => $study->type_lid];
-            })]]></code>
-    </InvalidTemplateParam>
-    <NullArgument>
-      <code>null</code>
-      <code>null</code>
-      <code>null</code>
-      <code>null</code>
-    </NullArgument>
     <UndefinedMagicPropertyFetch>
       <code><![CDATA[$member->committee->board_id]]></code>
     </UndefinedMagicPropertyFetch>
@@ -390,12 +362,10 @@
       <code><![CDATA[(int)$this->faker->numberBetween(3, 8)]]></code>
     </RedundantCast>
   </file>
-  <file src="src/Association/Photos/AlbumsRepository.php">
-    <InvalidTemplateParam>
-      <code><![CDATA[FlickrAlbum::where('is_public', true)
-            ->with('coverPhoto')
-            ->orderBy('activity_date', 'desc')]]></code>
-    </InvalidTemplateParam>
+  <file src="src/Association/Photos/Photo.php">
+    <TooManyTemplateParams>
+      <code><![CDATA[BelongsTo<Album, Photo>]]></code>
+    </TooManyTemplateParams>
   </file>
   <file src="src/Association/Soundboards/FileUploader.php">
     <UndefinedMagicPropertyAssignment>
@@ -680,28 +650,7 @@
     <InvalidTemplateParam>
       <code><![CDATA[Product::all()
             ->mapWithKeys(fn ($product) => [$product->id => $product->name])]]></code>
-      <code><![CDATA[Product::orderBy('naam')->get()
-            ->mapWithKeys(fn ($product) => [$product->id => $product->name])]]></code>
-      <code><![CDATA[Product::orderBy('naam')->get()
-            ->mapWithKeys(fn ($product) => [$product->id => $product->name])]]></code>
     </InvalidTemplateParam>
-    <NullArgument>
-      <code>null</code>
-      <code>null</code>
-    </NullArgument>
-    <UndefinedPropertyFetch>
-      <code><![CDATA[$product->id]]></code>
-      <code><![CDATA[$product->id]]></code>
-      <code><![CDATA[$product->name]]></code>
-      <code><![CDATA[$product->name]]></code>
-    </UndefinedPropertyFetch>
-  </file>
-  <file src="src/Treasurer/Http/Requests/AdminSearchTransactionsRequest.php">
-    <InvalidReturnStatement>
-      <code><![CDATA[$this->memberId() !== null
-            ? LegacyMember::find($this->memberId())
-            : null]]></code>
-    </InvalidReturnStatement>
   </file>
   <file src="src/Treasurer/Imports/ImportDeductions.php">
     <InvalidArgument>
