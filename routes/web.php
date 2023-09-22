@@ -146,7 +146,7 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::post('photos', [AuthenticationController::class, 'store']);
     Route::group(['middleware' => ['login-to-view-photos']], function () : void {
         Route::get('photos', [PhotosController::class, 'index']);
-        Route::get('photos/{album}', [PhotosController::class, 'show']);
+        Route::get('photos/{album:slug}', [PhotosController::class, 'show']);
 
         Route::get('photos/{album}/{photo}', [PhotosController::class, 'showImage'])->scopeBindings();
     });
