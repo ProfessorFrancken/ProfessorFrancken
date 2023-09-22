@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Francken\Features\Admin\Association;
 
+use DateTimeImmutable;
 use Francken\Association\Photos\Album;
 use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
 use Francken\Association\Photos\Http\Controllers\AdminPhotosController;
 use Francken\Association\Photos\Photo;
 use Francken\Features\LoggedInAsAdmin;
 use Francken\Features\TestCase;
+use Francken\Shared\Clock\Clock;
+use Francken\Shared\Clock\FrozenClock;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Storage;
@@ -22,13 +25,16 @@ class PhotoAlbumsFeature extends TestCase
     /** @test */
     public function it_creates_albums_from_a_nextcloud_filesystem() : void
     {
+        $clock = new FrozenClock(new DateTimeImmutable('2023-09-09'));
+        $this->app->instance(Clock::class, $clock);
+
         // Setup
         $storage = Storage::fake('nextcloud');
         $storage->makeDirectory('images/albums/test-123');
-        $storage->makeDirectory('images/albums/2023-09-07-bbq');
-        $storage->put('images/albums/2023-09-07-bbq/photo_1.png', 'hoi_1');
-        $storage->put('images/albums/2023-09-07-bbq/photo_2.png', 'hoi_2');
-        $storage->put('images/albums/2023-09-07-bbq/photo_3.png', 'hoi_3');
+        $storage->makeDirectory('images/albums/2023/2023-09-07-bbq');
+        $storage->put('images/albums/2023/2023-09-07-bbq/photo_1.png', 'hoi_1');
+        $storage->put('images/albums/2023/2023-09-07-bbq/photo_2.png', 'hoi_2');
+        $storage->put('images/albums/2023/2023-09-07-bbq/photo_3.png', 'hoi_3');
 
 
         // Create new BBQ album
@@ -36,6 +42,7 @@ class PhotoAlbumsFeature extends TestCase
 
         /**  Album $album */
         $album = Album::latest()->firstOrFail();
+        $this->assertEquals('2023-09-09-bbq', $album->slug);
         $this->assertCount(3, $album->photos);
 
         // Edit album and first photo
@@ -43,6 +50,7 @@ class PhotoAlbumsFeature extends TestCase
         $album->refresh();
         $this->assertEquals('BBQ day', $album->title);
         $this->assertEquals('BBQ day', $album->description);
+        $this->assertEquals('2023-09-10-bbq-day', $album->slug);
 
         /**  @var Photo $photo */
         $photo = $album->photos()->firstOrFail();
@@ -81,7 +89,7 @@ class PhotoAlbumsFeature extends TestCase
             ->see('Photo albums')
             ->click('Create album')
             //  TODO
-            ->select('/albums/2023-09-07-bbq', 'path')
+            ->select('/albums/2023/2023-09-07-bbq', 'path')
             ->type('BBQ', 'title')
             ->type('BBQ', 'description')
             ->type('2023-09-09', 'published_at')
@@ -132,7 +140,7 @@ class PhotoAlbumsFeature extends TestCase
 
     private function refreshAlbumPhotos(Filesystem $storage) : void
     {
-        $storage->put('images/albums/2023-09-07-bbq/photo_4.png', 'hoi_4');
+        $storage->put('images/albums/2023/2023-09-07-bbq/photo_4.png', 'hoi_4');
 
         $this->press('Refresh');
     }

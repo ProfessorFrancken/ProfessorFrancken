@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page-title', 'Albums / create')
+@section('page-title', 'Albums / create / ' . $year)
 
 @section('content')
     <div class="row">
@@ -13,8 +13,8 @@
 
                 <div class="card-body">
                     @include('admin.association.photo-albums._form', ['album' => $album])
-
                 </div>
+
                 <div class="card-footer">
                     <x-forms.submit>Add album</x-forms.submit>
                 </div>

@@ -103,6 +103,10 @@ services:
       - "traefik.backend=francken-web"
       - "traefik.frontend.rule=Host:francken.nl.localhost"
       - "traefik.port=80"
+    networks:
+      default:
+        aliases:
+          - francken.nl.localhost
 
   imaginary:
     image: h2non/imaginary

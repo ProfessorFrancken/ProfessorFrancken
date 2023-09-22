@@ -58,7 +58,7 @@ final class AdminAlbumRequest extends FormRequest
 
     public function slug() : string
     {
-        return Str::slug($this->title());
+        return Str::slug($this->publishedAt()->format('Y-m-d') . '-' . $this->title());
     }
 
     public function publishedAt() : DateTimeImmutable

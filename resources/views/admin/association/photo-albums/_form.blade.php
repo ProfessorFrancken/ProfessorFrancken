@@ -12,6 +12,8 @@
             name="published_at"
             label="Published at"
             :value="optional($album->published_at)->format('Y-m-d')"
+            min="{{ $year }}-01-01"
+            max="{{ $year }}-12-31"
         />
 
         <x-forms.radio-group
