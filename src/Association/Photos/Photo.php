@@ -50,9 +50,19 @@ final class Photo extends Model
         );
     }
 
+    public function srcset() : string
+    {
+        return $this->src();
+    }
+
     public function getIsTallAttribute() : bool
     {
         return false;
+    }
+
+    public function getFlickrBaseUrlAttribute() : string
+    {
+        return $this->src();
     }
 
     /**

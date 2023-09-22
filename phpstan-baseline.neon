@@ -1651,21 +1651,6 @@ parameters:
 			path: src/Association/Photos/FlickrAlbum.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\AlbumsRepository\\:\\:albums\\(\\) return type with generic interface Illuminate\\\\Contracts\\\\Pagination\\\\Paginator does not specify its types\\: TItem$#"
-			count: 1
-			path: src/Association/Photos/AlbumsRepository.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\AlbumsRepository\\:\\:filterPrivateAlbums\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Photos/AlbumsRepository.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\AlbumsRepository\\:\\:filterPrivateAlbums\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Photos/AlbumsRepository.php
-
-		-
 			message: "#^Property Francken\\\\Association\\\\Photos\\\\Flickr\\\\Response\\:\\:\\$contents \\(array\\) does not accept mixed\\.$#"
 			count: 1
 			path: src/Association/Photos/Flickr/Response.php
