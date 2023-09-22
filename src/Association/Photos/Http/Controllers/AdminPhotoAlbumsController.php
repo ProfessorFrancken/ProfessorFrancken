@@ -118,6 +118,7 @@ final class AdminPhotoAlbumsController
     {
         $album->update([
             'title' => $request->title(),
+            'slug' => $request->slug(),
             'description' => $request->description(),
             'visibility' => $request->visibility(),
             'published_at' => $request->publishedAt(),

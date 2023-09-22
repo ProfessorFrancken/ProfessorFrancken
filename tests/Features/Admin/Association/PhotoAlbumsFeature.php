@@ -36,6 +36,7 @@ class PhotoAlbumsFeature extends TestCase
 
         /**  Album $album */
         $album = Album::latest()->firstOrFail();
+        $this->assertEquals('2023-09-09-bbq', $album->slug);
         $this->assertCount(3, $album->photos);
 
         // Edit album and first photo
@@ -43,6 +44,7 @@ class PhotoAlbumsFeature extends TestCase
         $album->refresh();
         $this->assertEquals('BBQ day', $album->title);
         $this->assertEquals('BBQ day', $album->description);
+        $this->assertEquals('2023-09-10-bbq-day', $album->slug);
 
         /**  @var Photo $photo */
         $photo = $album->photos()->firstOrFail();
