@@ -6,6 +6,8 @@
     'help' => '',
     'required' => false,
     'disabled' => false,
+    'min' => null,
+    'max' => null,
 ])
 
 <x-forms.form-group :name="$name" :label="$label" :help="$help">
@@ -19,6 +21,8 @@
                    'id' => $name,
                    'required' => $required,
                    'disabled' => $disabled,
+                   'min' => $min,
+                   'max' => $max,
                ]
            )
     !!}

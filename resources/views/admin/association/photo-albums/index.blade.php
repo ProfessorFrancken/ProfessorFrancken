@@ -9,7 +9,7 @@
                     <ul class="agenda-list list-unstyled photo-grid">
                         @foreach ($albums as $album)
                             @include('admin.association.photo-albums._photo', [
-                                'title' => $album->title,
+                                'title' => "{$album->published_at->format('Y-m-d')} - {$album->title}",
                                 'amount_of_photos' => $album->photos_count,
                                 'photo' => $album->coverPhoto ?? $album->photos()->first(),
                                 'classes' =>  ['shadow m-2 border'],
@@ -29,7 +29,7 @@
                     <ul class="agenda-list list-unstyled photo-grid">
                         @foreach ($flickrAlbums as $album)
                             @include('association.photos._photo', [
-                                'title' => $album->title,
+                                'title' => "$album->title",
                                 'amount_of_photos' => $album->amount_of_photos,
                                 'views' => $album->views,
                                 'photo' => $album->coverPhoto ?? $album->photos()->first(),
@@ -52,7 +52,7 @@
 
 @section('actions')
     <div class="d-flex align-items-start gap-3">
-        <a href="{{ action([\Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController::class, 'create']) }}"
+        <a href="{{ action([\Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController::class, 'create'], ['year' => $year]) }}"
             class="btn btn-primary"
         >
             <i class="fas fa-plus"></i>
