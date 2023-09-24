@@ -8,8 +8,8 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 interface AlbumsRepository
 {
-    /** @return Paginator<FlickrAlbum> | Paginator<Album> */
+    /** @return Paginator<Album> */
     public function albums() : Paginator;
 
-    public function bySlug(string $albumSlug) : FlickrAlbum | Album;
+    public function bySlug(string $albumSlug) : Album;
 }
