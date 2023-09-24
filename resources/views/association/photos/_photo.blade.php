@@ -5,7 +5,7 @@
 >
     <a href="{{ $href ?? '#' }}" class="w-100 h-100 photo-link">
         <img
-            src="{{ $photo->flickr_base_url }}"
+            src="{{ $photo->src() }}"
             srcset="{{ $photo->srcset() }}"
             class="w-100 h-100 rounded photo-img"
         >

@@ -24,28 +24,6 @@
                     </div>
                 @endif
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <ul class="agenda-list list-unstyled photo-grid">
-                        @foreach ($flickrAlbums as $album)
-                            @include('association.photos._photo', [
-                                'title' => "$album->title",
-                                'amount_of_photos' => $album->amount_of_photos,
-                                'views' => $album->views,
-                                'photo' => $album->coverPhoto ?? $album->photos()->first(),
-                                'classes' =>  ['shadow m-2 border'],
-                                'href' => $album->url(),
-                            ])
-                        @endforeach
-                    </ul>
-                </div>
-
-                @if($flickrAlbums->hasMorePages())
-                    <div class="card-footer">
-                        {!! $flickrAlbums->links() !!}
-                    </div>
-                @endif
-            </div>
         </div>
     </div>
 @endsection

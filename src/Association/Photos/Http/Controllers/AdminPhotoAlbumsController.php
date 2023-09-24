@@ -6,7 +6,6 @@ namespace Francken\Association\Photos\Http\Controllers;
 
 use Exception;
 use Francken\Association\Photos\Album;
-use Francken\Association\Photos\FlickrAlbum;
 use Francken\Association\Photos\Http\Requests\AdminAlbumRequest;
 use Francken\Association\Photos\Photo;
 use Francken\Shared\Clock\Clock;
@@ -24,10 +23,6 @@ final class AdminPhotoAlbumsController
 
     public function index(Clock $clock) : View
     {
-        $flickrAlbums = FlickrAlbum::query()
-            ->orderBy('activity_date', 'desc')
-            ->paginate(10, ['*'], 'flickr');
-
         $albums = Album::query()
             ->orderBy('published_at', 'desc')
             ->withCount('photos')
@@ -36,7 +31,6 @@ final class AdminPhotoAlbumsController
         return view('admin.association.photo-albums.index', [
             'albums' => $albums,
             'year' => $clock->now()->format('Y'),
-            'flickrAlbums' => $flickrAlbums,
             'breadcrumbs' => [
                 ['url' => action([self::class, 'index']), 'text' => 'Photo albums'],
             ]

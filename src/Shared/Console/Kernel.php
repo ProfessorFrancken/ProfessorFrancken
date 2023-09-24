@@ -7,7 +7,6 @@ namespace Francken\Shared\Console;
 use Francken\Association\Activities\FetchLatestFranckenIcal;
 use Francken\Association\Activities\ImportActivitiesFromCalendar;
 use Francken\Association\Boards\UpdateBoardMemberStatus;
-use Francken\Association\Photos\SynchronizeFlickrAlbums;
 use Francken\Association\Symposium\SendInformationEmail;
 use Francken\Auth\ImportPermissionsFromConfig;
 use Francken\Auth\SetupPermissions;
@@ -27,7 +26,6 @@ class Kernel extends ConsoleKernel
         ImportPermissionsFromConfig::class,
         SendInformationEmail::class,
         SetupPermissions::class,
-        SynchronizeFlickrAlbums::class,
         UpdateBoardMemberStatus::class,
         MigrateLegacyDb::class,
     ];
