@@ -9,7 +9,6 @@
             srcset="{{ $photo->srcset() }}"
             class="w-100 h-100 rounded photo-img"
         >
-    </a>
     <div class="d-flex flex-column rounded text-white p-3 w-100 photo-overlay">
         <div>
             @isset($views)
@@ -35,4 +34,5 @@
         </strong>
         @endisset
     </div>
+    </a>
 </li>

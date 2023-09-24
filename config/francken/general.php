@@ -10,4 +10,6 @@ return [
     'photos_hash' => env('PHOTOS_HASH', 'Bitterballen photo machine'),
 
     'nextcloud_host' => env('NEXTCLOUD_HOST', 'https://nextcloud.francken.nl.localhost'),
+
+    'use_nextcloud' => env('NEXTCLOUD_ENABLED', true),
 ];
