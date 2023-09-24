@@ -70,11 +70,6 @@ final class Photo extends Model
         return false;
     }
 
-    public function getFlickrBaseUrlAttribute() : string
-    {
-        return $this->src();
-    }
-
     /**
      * The "booted" method of the model.
      */
