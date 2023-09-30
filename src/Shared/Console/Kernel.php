@@ -8,6 +8,7 @@ use Francken\Association\Activities\FetchLatestFranckenIcal;
 use Francken\Association\Activities\ImportActivitiesFromCalendar;
 use Francken\Association\Boards\UpdateBoardMemberStatus;
 use Francken\Association\Photos\SynchronizeFlickrAlbums;
+use Francken\Association\Photos\UpdatePhotoMetadata;
 use Francken\Association\Symposium\SendInformationEmail;
 use Francken\Auth\ImportPermissionsFromConfig;
 use Francken\Auth\SetupPermissions;
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
         SetupPermissions::class,
         SynchronizeFlickrAlbums::class,
         UpdateBoardMemberStatus::class,
+        UpdatePhotoMetadata::class,
         MigrateLegacyDb::class,
     ];
 

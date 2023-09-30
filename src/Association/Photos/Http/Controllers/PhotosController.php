@@ -44,7 +44,7 @@ final class PhotosController
 
         return view('association.photos.show', [
             'album' => $album,
-            'photos' => $album->photos()->simplePaginate(self::PHOTOS_PER_PAGE),
+            'photos' => $album->photos()->orderBy('taken_at', 'asc')->simplePaginate(self::PHOTOS_PER_PAGE),
 
             'cover_photo' => $album->coverPhoto,
             'next_album' => $album->nextAlbum(),

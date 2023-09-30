@@ -31,6 +31,7 @@ final class Photo extends Model
      * @var string[]
      */
     protected $dates = [
+        'taken_at',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -57,6 +58,9 @@ final class Photo extends Model
 
     public function getIsTallAttribute() : bool
     {
+        if ($this->width !== null && $this->height !== null) {
+            return $this->height > $this->width;
+        }
         return false;
     }
 
