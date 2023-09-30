@@ -58,6 +58,9 @@ final class Photo extends Model
 
     public function getIsTallAttribute() : bool
     {
+        if ($this->width !== null && $this->height !== null) {
+            return $this->height > $this->width;
+        }
         return false;
     }
 
