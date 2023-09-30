@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8cdaded316020bc3446cefc275064ee",
+    "content-hash": "dff8ec7e20e75d2a04357a8d6ce8607d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3232,42 +3232,43 @@
         },
         {
             "name": "league/period",
-            "version": "4.12.0",
+            "version": "5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/period.git",
-                "reference": "766e9dddabbbef7d9655efd857ce977f8541b596"
+                "reference": "82dcf4a28b7fa97163aa4eee9ce915e565d19553"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/period/zipball/766e9dddabbbef7d9655efd857ce977f8541b596",
-                "reference": "766e9dddabbbef7d9655efd857ce977f8541b596",
+                "url": "https://api.github.com/repos/thephpleague/period/zipball/82dcf4a28b7fa97163aa4eee9ce915e565d19553",
+                "reference": "82dcf4a28b7fa97163aa4eee9ce915e565d19553",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": "^7.2.0 || ^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^v2.19 || ~v3.4.0",
-                "phpstan/phpstan": "^1.0.0",
-                "phpstan/phpstan-phpunit": "^1.0.0",
-                "phpstan/phpstan-strict-rules": "^1.0.0",
-                "phpunit/phpunit": "^8.0 || ^9.0"
+                "friendsofphp/php-cs-fixer": "^v3.13.1",
+                "phpstan/phpstan": "^1.10.2",
+                "phpstan/phpstan-deprecation-rules": "^1.1.2",
+                "phpstan/phpstan-phpunit": "^1.3.7",
+                "phpstan/phpstan-strict-rules": "^1.5.0",
+                "phpunit/phpunit": "^10.0.12"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.x-dev"
+                    "dev-master": "5.x-dev"
                 }
             },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
                     "League\\Period\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "src/**Test.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3313,7 +3314,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-21T08:41:21+00:00"
+            "time": "2023-02-25T09:54:55+00:00"
         },
         {
             "name": "maatwebsite/excel",

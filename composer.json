@@ -23,7 +23,7 @@
     "league/commonmark": "^2.0",
     "league/flysystem-webdav": "^3.15",
     "league/html-to-markdown": "^4.9",
-    "league/period": "^4.10",
+    "league/period": "^5.2",
     "maatwebsite/excel": "^3.1",
     "miljar/php-exif": "^0.6.5",
     "phpexiftool/exiftool": "^10.16",
