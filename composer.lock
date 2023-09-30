@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "158c737b163c38ee5c657478ec6daf1e",
+    "content-hash": "f8cdaded316020bc3446cefc275064ee",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3584,6 +3584,66 @@
             "time": "2022-12-02T22:17:43+00:00"
         },
         {
+            "name": "miljar/php-exif",
+            "version": "v0.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPExif/php-exif.git",
+                "reference": "41f23db39d7b48e4af0e134c2e80e577c1782ac9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPExif/php-exif/zipball/41f23db39d7b48e4af0e134c2e80e577c1782ac9",
+                "reference": "41f23db39d7b48e4af0e134c2e80e577c1782ac9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/phpunit": ">=4.0 <6.0",
+                "satooshi/php-coveralls": "~0.6",
+                "sebastian/phpcpd": "1.4.*@stable",
+                "squizlabs/php_codesniffer": "1.4.*@stable"
+            },
+            "suggest": {
+                "ext-exif": "Use exif PHP extension as adapter",
+                "lib-exiftool": "Use perl lib exiftool as adapter"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExif": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Van Herreweghe",
+                    "homepage": "http://theanalogguy.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Object-Oriented EXIF parsing",
+            "keywords": [
+                "IPTC",
+                "exif",
+                "exiftool",
+                "jpeg",
+                "tiff"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPExif/php-exif/issues",
+                "source": "https://github.com/PHPExif/php-exif/tree/v0.6.5"
+            },
+            "time": "2019-02-11T13:47:52+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "2.9.1",
             "source": {
@@ -4081,6 +4141,43 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "phpexiftool/exiftool",
+            "version": "10.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alchemy-fr/exiftool.git",
+                "reference": "c47639a6e9d8fd9746c8c24725e3c3e1e7eb0cbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alchemy-fr/exiftool/zipball/c47639a6e9d8fd9746c8c24725e3c3e1e7eb0cbb",
+                "reference": "c47639a6e9d8fd9746c8c24725e3c3e1e7eb0cbb",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Perl Licensing"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Harvey",
+                    "email": "phil@owl.phy.queensu.ca",
+                    "homepage": "http://www.sno.phy.queensu.ca/~phil/exiftool/"
+                }
+            ],
+            "description": "Exiftool is a library for reading, writing and editing meta information. This package is not PHP, but required for the main PHP driver : PHP Exiftool",
+            "keywords": [
+                "exiftool",
+                "metadata"
+            ],
+            "support": {
+                "issues": "https://github.com/alchemy-fr/exiftool/issues",
+                "source": "https://github.com/alchemy-fr/exiftool/tree/10.16"
+            },
+            "time": "2016-05-09T09:08:26+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",
