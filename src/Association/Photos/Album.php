@@ -40,6 +40,19 @@ final class Album extends Model
         'slug',
         'disk',
         'path',
+
+        'cover_photo_id'
+    ];
+
+    /**
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'created_at'=> 'datetime',
+        'updated_at'=> 'datetime',
+        'deleted_at'=> 'datetime',
+        'published_at'=> 'datetime',
+        'cover_photo_id' =>  'integer',
     ];
 
     /** @return HasMany<Photo> */
@@ -51,7 +64,9 @@ final class Album extends Model
     /** @return HasOne<Photo> */
     public function coverPhoto() : HasOne
     {
-        return $this->hasOne(Photo::class)->oldestOfMany();
+        return $this->hasOne(Photo::class, 'id', 'cover_photo_id')->withDefault(function ($instance, $parent) {
+            return $parent->photos()->first();
+        });
     }
 
     public function nextAlbum() : ?self

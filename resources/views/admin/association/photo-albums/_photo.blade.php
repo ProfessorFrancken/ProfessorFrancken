@@ -36,15 +36,21 @@
         </div>
             @if(isset($show_visibility) && $show_visibility)
             <span class="float-right">
+                @isset($is_cover)
+                @if($is_cover)
+                    <i class="fas fa-star" title="This photo is used as the cover photo"></i>
+                @endif
+                @endisset
+
                 @switch($photo->visibility)
                     @case('public')
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-eye" title="Public visibility"></i>
                     @break
                     @case('private')
-                        <i class="fas fa-eye-slash"></i>
+                        <i class="fas fa-eye-slash" title="Private visibility"></i>
                     @break
                     @case('members-only')
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-user-friends" title="Members only visibility"></i>
                     @break
                 @endswitch
             </span>
