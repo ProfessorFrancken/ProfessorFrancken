@@ -22,6 +22,7 @@ use Francken\Association\Members\Http\Controllers\Admin\ConsumptionCounterSettin
 use Francken\Association\Members\Http\Controllers\Admin\MembersController;
 use Francken\Association\Members\Http\Controllers\Admin\RegistrationRequestsController;
 use Francken\Association\News\Http\AdminNewsController;
+use Francken\Association\Photos\Http\Controllers\AdminAlbumCoverController;
 use Francken\Association\Photos\Http\Controllers\AdminPhotoAlbumsController;
 use Francken\Association\Photos\Http\Controllers\AdminPhotosController;
 use Francken\Association\Symposium\Http\AdminSymposiaController;
@@ -201,6 +202,7 @@ Route::group(['prefix' => 'association'], function () : void {
         Route::get('photo-albums/create', [AdminPhotoAlbumsController::class, 'create']);
         Route::get('photo-albums/{album}', [AdminPhotoAlbumsController::class, 'show']);
         Route::put('photo-albums/{album}', [AdminPhotoAlbumsController::class, 'update']);
+        Route::put('photo-albums/{album}/cover-photo', [AdminAlbumCoverController::class, 'update']);
         Route::post('photo-albums/{album}/photos/refresh', [AdminPhotoAlbumsController::class, 'refreshAlbum']);
         Route::get('photo-albums/{album}/edit', [AdminPhotoAlbumsController::class, 'edit']);
         Route::delete('photo-albums/{album}', [AdminPhotoAlbumsController::class, 'destroy']);

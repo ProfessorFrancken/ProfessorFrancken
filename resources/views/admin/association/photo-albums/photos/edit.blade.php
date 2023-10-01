@@ -59,3 +59,21 @@
     </p>
     {!! Form::close() !!}
 @endsection
+
+@section('actions')
+    <div class="d-flex align-items-start gap-3">
+        <x-forms.form-button
+            class="btn btn-text btn-sm text-muted"
+            method="PUT"
+            :action="action([\Francken\Association\Photos\Http\Controllers\AdminAlbumCoverController::class, 'update'], ['album' => $photo->album])"
+        >
+            {!! Form::hidden('cover_photo_id', $photo->id) !!}
+            @if($photo->album->cover_photo_id === $photo->id)
+                <i class="fas fa-star text-success"></i>
+            @else
+                <i class="fas fa-star"></i>
+            @endif
+            Set as cover photo
+        </x-forms.form-button>
+    </div>
+@endsection

@@ -31,6 +31,7 @@
                                     ['album' => $album, 'photo' => $photo]
                                 ),
                                 'show_visibility' => true,
+                                'is_cover' => $album->cover_photo_id === $photo->id,
                             ])
                         @endforeach
                     </ul>

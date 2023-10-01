@@ -54,6 +54,7 @@ class PhotoAlbumsFeature extends TestCase
 
         /**  @var Photo $photo */
         $photo = $album->photos()->firstOrFail();
+        $this->setCoverPhoto($album, $photo);
         $this->editPhoto($album, $photo);
 
         $photo->refresh();
@@ -118,6 +119,17 @@ class PhotoAlbumsFeature extends TestCase
             ->select('private', 'visibility')
             ->press('Update')
             ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]));
+    }
+
+    private function setCoverPhoto(Album $album, Photo $photo) : void
+    {
+        $this->click($photo->name)
+            ->seePageIs(action([AdminPhotosController::class, 'edit'], ['album' => $album, 'photo' => $photo]))
+            ->press('Set as cover photo')
+            ->seePageIs(action([AdminPhotoAlbumsController::class, 'show'], ['album' => $album]));
+
+        $album->refresh();
+        $this->assertEquals($album->coverPhoto->id, $photo->id);
     }
 
     private function removePhoto(Album $album, Photo $photo) : void

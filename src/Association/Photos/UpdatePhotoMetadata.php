@@ -53,7 +53,6 @@ final class UpdatePhotoMetadata extends Command
                 ->orWhere('height', '=', null)
                 ->chunk(100, function ($photos) use ($storagePath) : void {
                     $photos->each(function (Photo $photo) use ($storagePath) : void {
-                        dump($photo->toArray());
                         try {
                             $metadata = $this->getImageMetadata->metadata($storagePath . '/images' . $photo->path);
                             $photo->width = $metadata->width;
