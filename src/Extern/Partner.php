@@ -7,6 +7,7 @@ namespace Francken\Extern;
 use DateTimeImmutable;
 use Francken\Extern\Http\Requests\AdminSearchPartnersRequest;
 use Francken\Extern\SponsorOptions\CompanyProfile;
+use Francken\Extern\SponsorOptions\FccFooter;
 use Francken\Extern\SponsorOptions\Footer;
 use Francken\Extern\SponsorOptions\Vacancy;
 use Illuminate\Database\Eloquent\Builder;
@@ -82,6 +83,12 @@ final class Partner extends Model
     public function footer() : HasOne
     {
         return $this->hasOne(Footer::class);
+    }
+
+    /** @return HasOne<FccFooter> */
+    public function fccFooter() : HasOne
+    {
+        return $this->hasOne(FccFooter::class);
     }
 
     public function contactDetails() : HasOne

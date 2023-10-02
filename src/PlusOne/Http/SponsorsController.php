@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Francken\PlusOne\Http;
 
 use Illuminate\Support\Collection;
+use Webmozart\Assert\Assert;
 
 final class SponsorsController
 {

@@ -37,6 +37,7 @@ use Francken\Auth\Http\Controllers\Admin\AccountsController;
 use Francken\Auth\Http\Controllers\Admin\RolePermissionsController;
 use Francken\Auth\Http\Controllers\Admin\RolesController;
 use Francken\Extern\Http\AdminCompanyProfilesController;
+use Francken\Extern\Http\AdminFccFootersController;
 use Francken\Extern\Http\AdminFootersController;
 use Francken\Extern\Http\AdminPartnerAlumniController;
 use Francken\Extern\Http\AdminPartnerContactsController;
@@ -109,6 +110,12 @@ Route::group(['prefix' => 'extern', ], function () : void {
         Route::get('partners/{partner}/footer', [AdminFootersController::class, 'edit']);
         Route::put('partners/{partner}/footer', [AdminFootersController::class, 'update']);
         Route::delete('partners/{partner}/footer', [AdminFootersController::class, 'destroy']);
+
+        Route::get('partners/{partner}/fcc-footer/create', [AdminFccFootersController::class, 'create']);
+        Route::post('partners/{partner}/fcc-footer', [AdminFccFootersController::class, 'store']);
+        Route::get('partners/{partner}/fcc-footer', [AdminFccFootersController::class, 'edit']);
+        Route::put('partners/{partner}/fcc-footer', [AdminFccFootersController::class, 'update']);
+        Route::delete('partners/{partner}/fcc-footer', [AdminFccFootersController::class, 'destroy']);
 
         Route::resource('partners.vacancies', AdminVacanciesController::class);
         Route::resource('partners.contacts', AdminPartnerContactsController::class);

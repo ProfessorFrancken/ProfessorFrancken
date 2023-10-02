@@ -411,6 +411,14 @@
       <code><![CDATA[$partner->name]]></code>
     </UndefinedMagicPropertyFetch>
   </file>
+  <file src="src/Extern/Http/AdminFccFootersController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+      <code><![CDATA[$partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
   <file src="src/Extern/Http/AdminFootersController.php">
     <UndefinedMagicPropertyFetch>
       <code><![CDATA[$partner->name]]></code>
@@ -526,6 +534,12 @@
       <code><![CDATA[$partner->name]]></code>
     </UndefinedMagicPropertyFetch>
   </file>
+  <file src="src/Extern/SponsorOptions/FccFooter.php">
+    <TooManyTemplateParams>
+      <code><![CDATA[BelongsTo<Media, FccFooter>]]></code>
+      <code><![CDATA[BelongsTo<Partner, FccFooter>]]></code>
+    </TooManyTemplateParams>
+  </file>
   <file src="src/PlusOne/Http/BoardsController.php">
     <InvalidTemplateParam>
       <code><![CDATA[BoardMember::with('member')
@@ -584,6 +598,11 @@
                 "kleur" => $product->color,
             ])]]></code>
     </InvalidTemplateParam>
+  </file>
+  <file src="src/PlusOne/Http/SponsorsController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$footer->partner->name]]></code>
+    </UndefinedMagicPropertyFetch>
   </file>
   <file src="src/Shared/ExceptionsHandler.php">
     <UndefinedMethod>
