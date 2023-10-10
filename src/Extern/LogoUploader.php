@@ -46,6 +46,20 @@ final class LogoUploader
             ->upload();
     }
 
+    public function uploadFccFooterLogo(?UploadedFile $logo, string $name) : ?Media
+    {
+        if ($logo === null) {
+            return null;
+        }
+
+        $slug = Str::slug($name);
+
+        return $this->uploader->fromSource($logo)
+            ->toDirectory("images/partners/{$slug}/")
+            ->useFilename("logo_fcc_footer_{$slug}")
+            ->upload();
+    }
+
     public function uploadContactPhoto(?UploadedFile $photo, Partner $partner, Contact $contact) : ?Media
     {
         if ($photo === null) {

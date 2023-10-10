@@ -67,6 +67,9 @@
                     <li class="p-3 pb-4 border-top bg-white">
                         @include('admin.extern.partners._footer', ['partner' => $partner])
                     </li>
+                    <li class="p-3 pb-4 border-top bg-white">
+                        @include('admin.extern.partners._fcc_footer', ['partner' => $partner])
+                    </li>
                     <li class="p-3 pb-4 border-top bg-light">
                         @include('admin.extern.partners._vacancies', ['partner' => $partner])
                     </li>

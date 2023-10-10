@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Francken\Features\Extern;
 
-use Francken\Extern\Http\AdminFootersController;
+use Francken\Extern\Http\AdminFccFootersController;
 use Francken\Extern\Http\AdminPartnersController;
 use Francken\Extern\Partner;
 use Francken\Extern\PartnerStatus;
@@ -13,12 +13,12 @@ use Francken\Features\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
-class AdminPartnerFooterFeature extends TestCase
+class AdminPartnerFccFooterFeature extends TestCase
 {
     use LoggedInAsAdmin;
 
     /** @test */
-    public function a_partners_logo_can_be_listed_in_the_footer() : void
+    public function a_partners_logo_can_be_listed_in_the_fcc_footer() : void
     {
         $partner = Partner::create([
             'name' => 'S[ck]rip(t|t?c)ie In[ck]',
@@ -32,12 +32,11 @@ class AdminPartnerFooterFeature extends TestCase
             [AdminPartnersController::class, 'show'],
             ['partner' => $partner]
         ))
-            ->click('Enable footer')
+            ->click('Enable fcc footer')
             ->seePageIs((action(
-                [AdminFootersController::class, 'create'],
+                [AdminFccFootersController::class, 'create'],
                 ['partner' => $partner]
             )))
-            ->type('https://scriptcie.nl', 'referral_url')
             ->attach(UploadedFile::fake()->image('scriptcie.png'), 'logo')
             ->check('is_enabled')
             ->press('Add footer')
@@ -45,13 +44,12 @@ class AdminPartnerFooterFeature extends TestCase
                  [AdminPartnersController::class, 'show'],
                  ['partner' => $partner]
              )))
-            ->dontSee('Enable footer')
-            ->click('Edit footer')
-            ->see('https://scriptcie.nl')
+            ->dontSee('Enable fcc footer')
+            ->click('Edit fcc footer')
             ->uncheck('is_enabled')
             ->press('Save footer');
 
-        $footer = $partner->footer;
+        $footer = $partner->fccFooter;
         $this->assertFalse($footer->is_enabled);
     }
 }
