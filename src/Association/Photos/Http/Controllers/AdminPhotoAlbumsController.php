@@ -20,7 +20,6 @@ use Illuminate\View\View;
 final class AdminPhotoAlbumsController
 {
     private const ROOT = 'remote.php/dav/files/compucie/';
-    private const BASE_PATH = 'remote.php/dav/files/compucie/images';
 
     public function index(Clock $clock) : View
     {
@@ -106,7 +105,11 @@ final class AdminPhotoAlbumsController
         $files = collect(\Storage::disk('nextcloud')->files("images/{$request->path()}"));
         $photos = $files->map(fn ($file) => new Photo([
             'name' => pathinfo($file, PATHINFO_FILENAME),
-            'path' => str_replace(self::BASE_PATH, '', $file),
+            'path' => preg_replace(
+                "/^images\//",
+                '/',
+                str_replace(self::ROOT, '', $file)
+            ),
             'visibility' => $request->visibility(),
         ]));
 
@@ -166,7 +169,11 @@ final class AdminPhotoAlbumsController
         $files = collect(Storage::disk('nextcloud')->files("images/{$album->path}"));
         $photos = $files->map(fn ($file) => new Photo([
             'name' => pathinfo($file, PATHINFO_FILENAME),
-            'path' => str_replace(self::BASE_PATH, '', $file),
+            'path' => preg_replace(
+                "/^images\//",
+                '/',
+                str_replace(self::ROOT, '', $file)
+            ),
             'visibility' => $album->visibility,
         ]));
 
