@@ -43,7 +43,10 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
     $proxy = config('francken.images.type');
     $server = config('francken.images.url');
 
-    $options = array_merge(['crop' => '1'], $options);
+    $options = array_merge([
+        'crop' => '1',
+        'background' => '250,250,250'
+    ], $options);
 
     // Temporary fix
     $url = str_replace("http://francken.nl.localhost", "http://nginx", $url);
@@ -59,8 +62,9 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
             if (isset($options['resize']) && $options['resize'] === true) {
                 // background, sign, gravity,
                 return sprintf(
-                    '%s/resize?extend=background&background=250,250,250&width=%d&height=%d%s&url=%s',
+                    '%s/resize?extend=background&background=%s&width=%d&height=%d%s&url=%s',
                     $server,
+                    $options['background'],
                     $options['width'],
                     $options['height'],
                     $additional,
@@ -70,8 +74,9 @@ function image(?string $url = '', array $options = [], bool $addAppUrl = false) 
 
             // background, sign, gravity,
             return sprintf(
-                '%s/crop?extend=background&background=250,250,250&width=%d&height=%d%s&url=%s',
+                '%s/crop?extend=background&background=%s&width=%d&height=%d%s&url=%s',
                 $server,
+                $options['background'],
                 $options['width'],
                 $options['height'],
                 $additional,

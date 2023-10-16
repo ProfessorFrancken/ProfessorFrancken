@@ -14,14 +14,14 @@ final class UpdatePhotoMetadata extends Command
      *
      * @var string
      */
-    protected $signature = 'photos:update-metadata';
+    protected $signature = 'photos:update-metadata {album}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = "Updates all photos that don't a taken at date, width or height with values from the file's exif metadata";
+    protected $description = "Updates all photos of the given album that don't a taken at date, width or height with values from the file's exif metadata";
 
     private GetImageMetadata $getImageMetadata;
 
@@ -47,26 +47,29 @@ final class UpdatePhotoMetadata extends Command
     {
         $storagePath  = config('filesystems.disks.nextcloud.root');
 
-        Photo::query()
-                ->where('taken_at', '=', null)
-                ->orWhere('width', '=', null)
-                ->orWhere('height', '=', null)
-                ->chunk(100, function ($photos) use ($storagePath) : void {
-                    $photos->each(function (Photo $photo) use ($storagePath) : void {
-                        try {
-                            $metadata = $this->getImageMetadata->metadata($storagePath . '/images' . $photo->path);
-                            $photo->width = $metadata->width;
-                            $photo->height = $metadata->height;
+        $album = Album::findOrFail($this->argument('album'));
+        $photosQuery = $album->photos()
+            ->withoutGlobalScopes()
+            ->where('taken_at', '=', null)
+            ->orWhere('width', '=', null)
+            ->orWhere('height', '=', null);
+
+        $photosQuery->chunk(100, function ($photos) use ($storagePath) : void {
+            $photos->each(function (Photo $photo) use ($storagePath) : void {
+                try {
+                    $metadata = $this->getImageMetadata->metadata($storagePath . '/images' . $photo->path);
+                    $photo->width = $metadata->width;
+                    $photo->height = $metadata->height;
 
 
-                            if ($metadata->creationDate !== null) {
-                                $photo->taken_at = Carbon::createFromImmutable($metadata->creationDate);
-                            }
-                            $photo->save();
-                        } catch (\Throwable $e) {
-                            // ignore
-                        }
-                    });
-                });
+                    if ($metadata->creationDate !== null) {
+                        $photo->taken_at = Carbon::createFromImmutable($metadata->creationDate);
+                    }
+                    $photo->save();
+                } catch (\Throwable $e) {
+                    // ignore
+                }
+            });
+        });
     }
 }

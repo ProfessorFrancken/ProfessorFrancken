@@ -45,9 +45,15 @@ final class Photo extends Model
 
     public function src() : string
     {
+        // This is a rare edge case where an album is created without any photos
+        // in this case its coverPhoto will be an ampty Photo whose id is null
+        if ($this->id === null) {
+            return '';
+        }
+
         return action(
             [PhotosController::class, 'showImage'],
-            ['album' => $this->album_id, 'photo' => $this]
+            ['album' => $this->album_id, 'photo' => $this->id]
         );
     }
 
@@ -87,7 +93,7 @@ final class Photo extends Model
                     $visibilities[] = 'members-only';
                 }
 
-                $builder->whereIn('visibility', $visibilities);
+                //$builder->whereIn('visibility', $visibilities);
             }
         );
     }

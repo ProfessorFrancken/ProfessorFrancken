@@ -20,7 +20,6 @@ use Illuminate\View\View;
 final class AdminPhotoAlbumsController
 {
     private const ROOT = 'remote.php/dav/files/compucie/';
-    private const BASE_PATH = 'remote.php/dav/files/compucie/images';
 
     public function index(Clock $clock) : View
     {
@@ -106,7 +105,11 @@ final class AdminPhotoAlbumsController
         $files = collect(\Storage::disk('nextcloud')->files("images/{$request->path()}"));
         $photos = $files->map(fn ($file) => new Photo([
             'name' => pathinfo($file, PATHINFO_FILENAME),
-            'path' => str_replace(self::BASE_PATH, '', $file),
+            'path' => preg_replace(
+                "/^images\//",
+                '/',
+                str_replace(self::ROOT, '', $file)
+            ),
             'visibility' => $request->visibility(),
         ]));
 
@@ -121,6 +124,8 @@ final class AdminPhotoAlbumsController
             'path' => $request->path(),
         ]);
         $album->photos()->saveMany($photos);
+
+        Artisan::queue('photos:update-metadata', ['album' => $album->id]);
 
         return redirect()->action([self::class, 'show'], ['album' => $album]);
     }
@@ -166,16 +171,24 @@ final class AdminPhotoAlbumsController
         $files = collect(Storage::disk('nextcloud')->files("images/{$album->path}"));
         $photos = $files->map(fn ($file) => new Photo([
             'name' => pathinfo($file, PATHINFO_FILENAME),
-            'path' => str_replace(self::BASE_PATH, '', $file),
+            'path' => preg_replace(
+                "/^images\//",
+                '/',
+                str_replace(self::ROOT, '', $file)
+            ),
             'visibility' => $album->visibility,
         ]));
 
-        $newPhotos = $photos->filter(function (Photo $photo) use ($album) {
-            return ! $album->photos->contains(function (Photo $albumPhoto) use ($photo) {
+
+        $albumPhotos = $album->photos()->withoutGlobalScopes()->get();
+        $newPhotos = $photos->filter(function (Photo $photo) use ($albumPhotos) {
+            return ! $albumPhotos->contains(function (Photo $albumPhoto) use ($photo) {
                 return $albumPhoto->path === $photo->path;
             });
         });
         $album->photos()->saveMany($newPhotos);
+
+        Artisan::queue('photos:update-metadata', ['album' => $album->id]);
 
         return redirect()->action([self::class, 'show'], ['album' => $album]);
     }
