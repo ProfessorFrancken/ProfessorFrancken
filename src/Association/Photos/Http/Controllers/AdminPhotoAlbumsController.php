@@ -125,6 +125,8 @@ final class AdminPhotoAlbumsController
         ]);
         $album->photos()->saveMany($photos);
 
+        Artisan::queue('photos:update-metadata', ['album' => $album->id]);
+
         return redirect()->action([self::class, 'show'], ['album' => $album]);
     }
 
@@ -185,6 +187,8 @@ final class AdminPhotoAlbumsController
             });
         });
         $album->photos()->saveMany($newPhotos);
+
+        Artisan::queue('photos:update-metadata', ['album' => $album->id]);
 
         return redirect()->action([self::class, 'show'], ['album' => $album]);
     }
