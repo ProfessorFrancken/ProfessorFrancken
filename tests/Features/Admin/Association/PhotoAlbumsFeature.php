@@ -76,7 +76,7 @@ class PhotoAlbumsFeature extends TestCase
         // Refresh album
         $this->refreshAlbumPhotos($storage);
         $album->load('photos');
-        $this->assertCount(4, $album->photos);
+        $this->assertCount(3, $album->photos);
 
         // Remove album
         $this->removeAlbum($album);

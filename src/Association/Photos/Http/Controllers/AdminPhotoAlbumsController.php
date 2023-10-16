@@ -177,8 +177,10 @@ final class AdminPhotoAlbumsController
             'visibility' => $album->visibility,
         ]));
 
-        $newPhotos = $photos->filter(function (Photo $photo) use ($album) {
-            return ! $album->photos->contains(function (Photo $albumPhoto) use ($photo) {
+
+        $albumPhotos = $album->photos()->withoutGlobalScopes()->get();
+        $newPhotos = $photos->filter(function (Photo $photo) use ($albumPhotos) {
+            return ! $albumPhotos->contains(function (Photo $albumPhoto) use ($photo) {
                 return $albumPhoto->path === $photo->path;
             });
         });
