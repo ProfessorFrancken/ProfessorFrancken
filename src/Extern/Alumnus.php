@@ -47,4 +47,10 @@ final class Alumnus extends Model
     {
         return $this->belongsTo(LegacyMember::class, 'member_id');
     }
+
+    /** @return BelongsTo<Partner, Alumnus> */
+    public function partner() : BelongsTo
+    {
+        return $this->belongsTo(Partner::class, 'partner_id');
+    }
 }

@@ -981,11 +981,6 @@ parameters:
 			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
 
 		-
-			message: "#^Relation 'partner' is not found in Francken\\\\Extern\\\\Alumnus model\\.$#"
-			count: 1
-			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
-
-		-
 			message: "#^Access to an undefined property Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:\\$personal_details\\.$#"
 			count: 1
 			path: src/Association/Members/Http/Controllers/Admin/RegistrationRequestsController.php
