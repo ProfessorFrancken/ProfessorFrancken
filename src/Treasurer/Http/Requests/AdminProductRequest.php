@@ -21,6 +21,7 @@ final class AdminProductRequest extends FormRequest
         return [
             'name' => ['required', 'min:1'],
             'price' => ['required', 'integer'],
+            'btw' => ['required', 'numeric'],
             'category' => ['required', 'in:Beer,Food,Soda'],
             'available' => ['nullable', 'boolean'],
             'position' => ['required', 'integer', 'min:1'],
@@ -51,6 +52,11 @@ final class AdminProductRequest extends FormRequest
     public function price() : int
     {
         return (int)$this->input('price');
+    }
+
+    public function btw() : float
+    {
+        return $this->float('btw');
     }
 
     public function position() : int

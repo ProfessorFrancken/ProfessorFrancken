@@ -63,11 +63,12 @@ class ProductsFeature extends TestCase
     public function it_adds_a_new_product() : void
     {
         $this->visit(action([AdminProductsController::class, 'create']))
-             ->type('Hertog Jan', 'name')
-             ->type(133, 'price')
-             ->select('Beer', 'category')
+            ->type('Hertog Jan', 'name')
+            ->type(133, 'price')
+            ->select('Beer', 'category')
             ->check('available')
-             ->type(1, 'position')
+            ->type(1, 'position')
+            ->type(0.21, 'btw')
             ->attach(UploadedFile::fake()->image('hertog.png'), 'photo')
             ->press('Add');
 
@@ -77,6 +78,7 @@ class ProductsFeature extends TestCase
             ->first();
 
         $this->assertEquals(133, $product->price);
+        $this->assertEquals(0.21, $product->btw);
 
         $this->seePageIs(action(
             [AdminProductsController::class, 'show'],

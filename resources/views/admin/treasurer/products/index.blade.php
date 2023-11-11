@@ -101,7 +101,7 @@
                                     </span>
                                 </h4>
 
-                                <p class='mb-0'>
+                                <p class='my-2'>
                                     <span class="font-weight-normal">
                                         &euro;{{ number_format($product->price / 100, 2) }}
                                     </span>
@@ -110,6 +110,11 @@
                                             (Not available)
                                         </small>
                                     @endif
+                                </p>
+                                <p class='mb-0'>
+                                    <span class="font-weight-normal">
+                                        Btw: {{ $product->btw }}
+                                    </span>
                                 </p>
                         </a>
                     </td>

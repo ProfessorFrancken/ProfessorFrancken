@@ -28,6 +28,10 @@
                                 {{ $product->position }}
                             </dd>
                             @endif
+                            <dt>Btw</dt>
+                            <dd>
+                                {{ $product->btw }}
+                            </dd>
                         </dl>
 
                     </div>
