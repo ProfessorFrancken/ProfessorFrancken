@@ -8,6 +8,7 @@
                 </small>
             </x-slot>
         </x-forms.number>
+        <x-forms.number name="btw" label="Btw" />
         <x-forms.select name="category" label="Category" :options="['Beer' => 'Beer', 'Food' => 'Food', 'Soda' => 'Soda']" />
         <x-forms.checkbox name="available" label="Available" />
         <x-forms.text name="position" label="Position" help="Determines the position in the consumption counter" />

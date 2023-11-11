@@ -71,7 +71,7 @@ final class AdminProductsController
             'beschikbaar' => $request->available(),
             'positie' => $request->position(),
             'afbeelding' => '',
-            'btw' => 0.21,
+            'btw' => $request->btw(),
             'eenheden' => 1,
         ]);
 
@@ -116,6 +116,7 @@ final class AdminProductsController
             'categorie' => $request->dutchCategory(),
             'beschikbaar' => $request->available(),
             'positie' => $request->position(),
+            'btw' => $request->btw(),
         ]);
 
         $uploader->uploadPhoto($request->photo, $product);

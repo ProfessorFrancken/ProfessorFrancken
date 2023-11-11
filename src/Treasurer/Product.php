@@ -58,7 +58,8 @@ final class Product extends Model
     protected $casts = [
         'prijs' => 'float',
         'eenheden' => 'integer',
-        'beschikbaar' => 'boolean'
+        'beschikbaar' => 'boolean',
+        'btw' => 'float',
     ];
 
     /**

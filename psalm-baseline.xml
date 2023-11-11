@@ -388,6 +388,11 @@
       <code><![CDATA[$committee->name]]></code>
     </UndefinedMagicPropertyFetch>
   </file>
+  <file src="src/Extern/Alumnus.php">
+    <TooManyTemplateParams>
+      <code><![CDATA[BelongsTo<Partner, Alumnus>]]></code>
+    </TooManyTemplateParams>
+  </file>
   <file src="src/Extern/Contact.php">
     <UndefinedThisPropertyFetch>
       <code><![CDATA[$this->firstname]]></code>
