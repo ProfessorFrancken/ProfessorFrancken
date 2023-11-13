@@ -7,7 +7,7 @@ namespace Francken\Features;
 use Francken\Association\Boards\Board;
 use Francken\Association\Committees\Committee;
 
-class CommmitteesFeature extends TestCase
+class CommitteesFeature extends TestCase
 {
     use LoggedInAsAdmin;
 

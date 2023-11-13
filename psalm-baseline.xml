@@ -569,6 +569,14 @@
       <code><![CDATA[$committee->name]]></code>
     </UndefinedMagicPropertyFetch>
   </file>
+  <file src="src/PlusOne/Http/CommitteesStatisticsController.php">
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$board->demissioned_at]]></code>
+      <code><![CDATA[$board->installed_at]]></code>
+      <code><![CDATA[$committee->id]]></code>
+      <code><![CDATA[$committee->name]]></code>
+    </UndefinedMagicPropertyFetch>
+  </file>
   <file src="src/PlusOne/Http/ProductsController.php">
     <InvalidTemplateParam>
       <code><![CDATA[Product::query()
