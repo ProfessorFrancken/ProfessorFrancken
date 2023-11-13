@@ -247,9 +247,9 @@ class CommitteesStatisticsFeature extends TestCase
 
         $endBoardYear = $boardYear + 1;
         $board = factory(Board::class)->create([
-            'installed_at' => DateTimeImmutable::createFromFormat('!Y-m-d', "{$boardYear}-06-06"),
-            'demissioned_at' => DateTimeImmutable::createFromFormat('!Y-m-d', "{$endBoardYear}-06-06"),
-            'decharged_at' => DateTimeImmutable::createFromFormat('!Y-m-d', "{$endBoardYear}-06-06"),
+            'installed_at' => "{$boardYear}-06-06",
+            'demissioned_at' => "{$endBoardYear}-06-06",
+            'decharged_at' => "{$endBoardYear}-06-06",
         ]);
 
         $compucie = factory(Committee::class)->create(['board_id' => $board->id, 'name' => 'Compucie']);
