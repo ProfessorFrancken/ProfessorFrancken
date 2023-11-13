@@ -15,7 +15,7 @@ use Francken\Association\Boards\Board;
  */
 $factory->define(Board::class, function (Faker $faker, array $board) {
     $installedAt = isset($board['installed_at'])
-        ? DateTimeImmutable::createFromFormat('Y-m-d', $board['installed_at'])
+        ? DateTimeImmutable::createFromFormat('Y-m-d', $board['installed_at']->format('Y-m-d'))
         : $faker->dateTime('2030-01-01');
 
     $boardYear = (int)$installedAt->format('Y');

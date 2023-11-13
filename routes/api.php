@@ -45,7 +45,8 @@ Route::group(['prefix' => '/api'], function () : void {
         Route::get('boards', [PlusOne\BoardsController::class, 'index']);
         Route::get('sponsors', [PlusOne\SponsorsController::class, 'index']);
 
-        Route::get('statistics/categories/', [PlusOne\CategoryStatisticsController::class, 'index']);
+        Route::get('statistics/categories', [PlusOne\CategoryStatisticsController::class, 'index']);
+        Route::get('statistics/committees', [PlusOne\CommitteesStatisticsController::class, 'index']);
         Route::get('statistics/activities', [ApiActivitiesController::class, 'index']);
     });
 });
