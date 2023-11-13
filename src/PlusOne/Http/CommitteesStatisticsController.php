@@ -7,10 +7,11 @@ namespace Francken\PlusOne\Http;
 use DateInterval;
 use DateTimeImmutable;
 use Francken\Association\Boards\Board;
+use Francken\Association\Committees\Committee;
+use Francken\Association\Committees\CommitteeMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Webmozart\Assert\Assert;
-
 
 final class CommitteesStatisticsController
 {
@@ -19,54 +20,96 @@ final class CommitteesStatisticsController
         // By default use the period between today and 6 months ago
         $endDate = DateTimeImmutable::createFromFormat(
             '!Y-m-d',
-            $request->get('endDate', ((new DateTimeImmutable()))->format('Y-m-d'))
-        )->add(new DateInterval('P1D'));
+            $request->string('endDate', ((new DateTimeImmutable()))->format('Y-m-d'))->toString()
+        );
         Assert::isInstanceOf($endDate, DateTimeImmutable::class);
+        // endDate argument is inclusive, we would either need to set the
+        // time to 23:59 or add 1 day and set time to 00:00, we do the latter
+        $endDate = $endDate->add(new DateInterval('P1D'));
 
         $startDate = DateTimeImmutable::createFromFormat(
             '!Y-m-d',
-            $request->get('startDate', $endDate->sub(new DateInterval('P6M'))->format('Y-m-d'))
+            $request->string('startDate', $endDate->sub(new DateInterval('P6M'))->format('Y-m-d'))->toString()
         );
         Assert::isInstanceOf($startDate, DateTimeImmutable::class);
 
+        // Get the total amount of transactions made per member and product category
+        // gives ['amount' => int, 'lid_id' => int, 'categorie' => 'Bier' | 'Eten' | 'Fris']
         $statsPerMember = DB::connection('francken-legacy')
-                        ->table('transacties')
-                        ->orderBy('tijd', 'desc')
-                        ->join('producten', 'transacties.product_id', '=', 'producten.id')
-                        ->select([DB::raw('sum(aantal) as amount'), 'lid_id', 'categorie',])
-                        ->groupBy('lid_id', 'categorie')
-                        ->when($startDate, fn ($builder) => $builder->where('tijd', '>=', $startDate))
-                        ->when($endDate, fn ($builder) => $builder->where('tijd', '<=', $endDate))
-                        ->get();
+            ->table('transacties')
+            ->orderBy('tijd', 'desc')
+            ->join('producten', 'transacties.product_id', '=', 'producten.id')
+            ->select([DB::raw('sum(aantal) as amount'), 'lid_id', 'categorie', ])
+            ->groupBy('lid_id', 'categorie')
+            ->when($startDate, fn ($builder) => $builder->where('tijd', '>=', $startDate))
+            ->when($endDate, fn ($builder) => $builder->where('tijd', '<=', $endDate))
+            ->get();
 
-        // Possibly replace with a query that looks at CommitteeMembers in the given time range?
-        $board = Board::latest()->first();
-        $committees = $board->committees;
-        $committees->load('members');
+        // For each transactions
+        $committeeMembers = CommitteeMember::whereIn(
+            'member_id',
+            $statsPerMember->pluck('lid_id')->unique()
+        )->with(['committee', 'committee.board'])
+         ->get()
+         ->filter(function ($member) use ($endDate, $startDate) {
+             if ( ! $member->committee) {
+                 return false;
+             }
 
-        $statsPerCommittee = collect();
-        $statsPerCommittee = $committees->mapWithKeys(
-            fn ($committee) => [$committee->id => collect(['Bier' => 0, 'Fris' => 0, 'Eten' => 0])]
-        );
+             /**  @var Board $board */
+             $board = $member->committee->board;
 
-        $statsPerMember->each(function ($stat) use ($committees, $statsPerCommittee) {
-            // Add up the member's statistics for each committe they are in
-            $committees->each(function ($committee) use ($statsPerCommittee, $stat) {
-                $members = $committee->members->pluck('member_id');
-                $memberIsPartOfCommittee = $members->contains($stat->lid_id);
+             /**  @var \Illuminate\Support\Carbon $installedAt */
+             $installedAt = $board->installed_at;
 
-                if ($memberIsPartOfCommittee) {
-                    $statsPerCommittee[$committee->id][$stat->categorie] += (int)$stat->amount;
-                }
+             if ( ! $installedAt->isBefore($endDate)) {
+                 return false;
+             }
+
+             /**  @var \Illuminate\Support\Carbon|null $demissionedAt */
+             $demissionedAt = $board->demissioned_at;
+
+             if ($demissionedAt === null) {
+                 return true;
+             }
+
+             return ! $demissionedAt->isBefore($startDate);
+         });
+
+
+        $statsPerCommittee = $committeeMembers
+                        ->map(fn ($member) => $member->committee)
+                        ->unique()
+                        ->mapWithKeys(
+                            fn (Committee $committee) => [
+                                $committee->id => collect([
+                                    'name' => $committee->name,
+                                    'Bier' => 0,
+                                    'Fris' => 0,
+                                    'Eten' => 0,
+                                ])
+                            ]
+                        );
+
+        $statsPerMember->each(function ($stat) use ($statsPerCommittee, $committeeMembers) : void {
+            $committeesForThisMember = $committeeMembers->filter(function ($cm) use ($stat) {
+                return $cm->member_id === $stat->lid_id;
+            });
+
+            $committeesForThisMember->each(function ($committeeMember) use ($stat, $statsPerCommittee) : void {
+                /**  @var \Illuminate\Support\Collection<string, int> $statsFromCommittee */
+                $statsFromCommittee = $statsPerCommittee[(int)$committeeMember->committee_id];
+                $statsFromCommittee[(string)$stat->categorie] += (int)$stat->amount;
             });
         });
 
         return [
             'statistics' => $statsPerCommittee->map(function ($stats, $committeeId) {
-                $committeeName = '';
-
                 return [
-                    'committee' => ['id' => $committeeId, 'name' => $committeeName],
+                    'committee' => [
+                        'id' => $committeeId,
+                        'name' => $stats['name']
+                    ],
                     'beer' => $stats['Bier'],
                     'food' => $stats['Eten'],
                     'soda' => $stats['Fris'],

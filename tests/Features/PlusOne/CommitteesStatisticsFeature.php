@@ -66,17 +66,11 @@ class CommitteesStatisticsFeature extends TestCase
     {
         [$compucieMembers, $scriptcieMembers, $borrelcieMembers] = $this->setupData(2017);
 
-        $members = collect([
-            ...$compucieMembers,
-            ...$scriptcieMembers,
-            ...$borrelcieMembers
-        ])->unique();
-
 
         $beer = factory(Product::class)->create(['categorie' => 'Bier']);
         $soda = factory(Product::class)->create(['categorie' => 'Fris']);
         $food = factory(Product::class)->create(['categorie' => 'Eten']);
-        $compucieMembers->map(function ($member) use($food) {
+        $compucieMembers->map(function ($member) use ($food) {
             return factory(Transaction::class, 10)->create([
                 'tijd' => '2017-07-01 12:00:00',
                 'lid_id' => $member->id,
@@ -90,7 +84,7 @@ class CommitteesStatisticsFeature extends TestCase
                 'product_id' => $beer->id
             ]);
         });
-        $borrelcieMembers->map(function ($member) use ($soda){
+        $borrelcieMembers->map(function ($member) use ($soda) {
             return factory(Transaction::class, 10)->create([
                 'tijd' => '2017-07-01 12:00:00',
                 'lid_id' => $member->id,
@@ -126,17 +120,17 @@ class CommitteesStatisticsFeature extends TestCase
         $this->seeJsonEquals([
             'statistics' => [
                 [
-                    'committee' => ['id' => 1, 'name' => ''],
+                    'committee' => ['id' => 1, 'name' => 'Compucie'],
                     'beer' => 0,
                     'food' => 100,
                     'soda' => 10,
-                ],[
-                    'committee' => ['id' => 2, 'name' => ''],
+                ], [
+                    'committee' => ['id' => 2, 'name' => 'Scriptcie'],
                     'beer' => 100,
                     'food' => 0,
                     'soda' => 10,
-                ],[
-                    'committee' => ['id' => 3, 'name' => ''],
+                ], [
+                    'committee' => ['id' => 3, 'name' => 'Borrelcie'],
                     'beer' => 10,
                     'food' => 10,
                     'soda' => 100,
@@ -145,7 +139,110 @@ class CommitteesStatisticsFeature extends TestCase
         ]);
     }
 
-    private function setupData(int $boardYear) {
+
+    /** @test */
+    public function it_does_not_include_committees_that_are_from_a_demisined_board() : void
+    {
+        [$compucieMembers] = $this->setupData(2017);
+
+        $compucieMembers->map(function ($member) {
+            return factory(Transaction::class, 10)->create([
+                'tijd' => '2019-07-01 12:00:00',
+                'lid_id' => $member->id,
+            ]);
+        });
+
+        $token = new JwtToken(config('francken.plus_one.key'));
+        $this->json(
+            'GET',
+            action([CommitteesStatisticsController::class, 'index']),
+            [
+                'startDate' => '2019-07-01',
+                'endDate' => '2019-07-01',
+            ],
+            ['Authorization' => 'Bearer ' . $token->token()->toString()]
+        );
+
+        $this
+            ->assertResponseStatus(200)
+            ->seeJsonStructure([
+                'statistics' => []
+            ]);
+    }
+
+    /** @test */
+    public function it_does_not_include_committees_that_are_from_a_board_that_hasnt_been_installed_yet() : void
+    {
+        [$compucieMembers] = $this->setupData(2017);
+
+        $compucieMembers->map(function ($member) {
+            return factory(Transaction::class, 10)->create([
+                'tijd' => '2015-07-01 12:00:00',
+                'lid_id' => $member->id,
+            ]);
+        });
+
+        $token = new JwtToken(config('francken.plus_one.key'));
+        $this->json(
+            'GET',
+            action([CommitteesStatisticsController::class, 'index']),
+            [
+                'startDate' => '2015-07-01',
+                'endDate' => '2015-07-01',
+            ],
+            ['Authorization' => 'Bearer ' . $token->token()->toString()]
+        );
+
+        $this
+            ->assertResponseStatus(200)
+            ->seeJsonStructure([
+                'statistics' => []
+            ]);
+    }
+
+    /** @test */
+    public function it_included_committees_from_multiple_boards() : void
+    {
+        [$compucieMembers] = $this->setupData(2017);
+        [$compucieMembersNew] = $this->setupData(2018);
+
+        $beer = factory(Product::class)->create(['categorie' => 'Bier']);
+        $compucieMembers->map(function ($member) use ($beer) {
+            return factory(Transaction::class, 10)->create([
+                'tijd' => '2017-07-01 12:00:00',
+                'lid_id' => $member->id,
+                'product_id' => $beer->id
+            ]);
+        });
+
+        $compucieMembersNew->map(function ($member) use ($beer) {
+            return factory(Transaction::class, 10)->create([
+                'tijd' => '2018-07-01 12:00:00',
+                'lid_id' => $member->id,
+                'product_id' => $beer->id
+            ]);
+        });
+
+        $token = new JwtToken(config('francken.plus_one.key'));
+        $this->json(
+            'GET',
+            action([CommitteesStatisticsController::class, 'index']),
+            [
+                'startDate' => '2015-07-01',
+                'endDate' => '2019-07-01',
+            ],
+            ['Authorization' => 'Bearer ' . $token->token()->toString()]
+        );
+
+        $this
+            ->assertResponseStatus(200)
+            ->seeJsonStructure([
+                'statistics' => []
+            ]);
+    }
+
+    private function setupData(int $boardYear)
+    {
         $members = factory(LegacyMember::class, 33)->create();
 
         $endBoardYear = $boardYear + 1;
