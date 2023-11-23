@@ -137,13 +137,23 @@
 @endsection
 
 @section('actions')
-    <div class="d-flex align-items-start">
+    <div class="d-flex align-items-start gap-3">
         @can('dashboard:members-read')
             <a href="{{ action([\Francken\Association\Members\Http\Controllers\RegistrationController::class, 'index']) }}"
                 class="btn btn-primary mr-3"
             >
                 <i class="fas fa-plus"></i>
                 Add member
+            </a>
+        @endcan
+
+        @can('dashboard:members-read')
+            <a
+                href="{{ action([\Francken\Association\Members\Http\Controllers\Admin\ExportMembersController::class, 'index'], $request->searchQueryKeys($request->select())) }}"
+                class="btn btn-primary mr-3"
+            >
+                <i class="fas fa-cloud-download-alt"></i>
+                Export
             </a>
         @endcan
     </div>
