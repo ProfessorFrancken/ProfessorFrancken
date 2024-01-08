@@ -17,14 +17,14 @@
         <li><p>Email address</p>
             <p>We use your email address to send you bi-weekly newsletters about our association and invitations or informative emails about activities organized by our association. When an email needs to be sent to participants of an activity we will share the email addresses of the participants with the committee members that organize said activity.</p></li>
         <li><p>Home address</p>
-            <p>We use your home address to send our magazine, the <em>Francken Vrij</em>, and promotional material (flyers) for important events.</p></li>
+            <p>We use your home address (if you have a subscription) to send a physical copy of our magazine, the <em>Francken Vrij</em>, and promotional material (flyers) for important events.</p></li>
         <li><p>Phone number</p>
             <p>We sometimes use your phone number to contact you if you've signed up for an event but aren't present yet.</p></li>
     </ol>
     <h3 id="study-information">Study information</h3>
     <p>As a study association we want to know our member's studies. Hence we store your student number and your (current) study. We share the statistics with the university and partner companies so that they can get an idea of what the members of our association are studying.</p>
     <h3 id="photos">Photos</h3>
-    <p>Photos taken at our activities are stored on our own server. After reviewal of the photos they are published on our public Flickr account. Members can contact the board about removal of these photos.</p>
+    <p>Photos taken at our activities are stored on our own server. After reviewal of the photos they are published on our website. Members can contact the board about removal of these photos.</p>
     <h3 id="circumstantial-information">Circumstantial information</h3>
     <p>It may happen that we require additional information when you want to participate at one of our activities.</p>
     <ol>
@@ -73,7 +73,7 @@
         <li>IBAN (optional)</li>
         <li>Canteen transactions (optional)</li>
         <li>Financial transactions (optional)</li>
-        <li>Activity attendence (optional)</li>
+        <li>Activity attendance (optional)</li>
         <li>Photos (optional)</li>
         <li>Any additional information that you've personally allowed us to keep and provided to us</li>
     </ul>
