@@ -17,14 +17,14 @@
         <li><p>Email address</p>
             <p>We use your email address to send you bi-weekly newsletters about our association and invitations or informative emails about activities organized by our association. When an email needs to be sent to participants of an activity we will share the email addresses of the participants with the committee members that organize said activity.</p></li>
         <li><p>Home address</p>
-            <p>We use your home address to send our magazine, the <em>Francken Vrij</em>, and promotional material (flyers) for important events.</p></li>
+            <p>We use your home address (if you have a subscription) to send a physical copy of our magazine, the <em>Francken Vrij</em>, and promotional material (flyers) for important events.</p></li>
         <li><p>Phone number</p>
             <p>We sometimes use your phone number to contact you if you've signed up for an event but aren't present yet.</p></li>
     </ol>
     <h3 id="study-information">Study information</h3>
     <p>As a study association we want to know our member's studies. Hence we store your student number and your (current) study. We share the statistics with the university and partner companies so that they can get an idea of what the members of our association are studying.</p>
     <h3 id="photos">Photos</h3>
-    <p>Photos taken at our activities are stored on our own server. After reviewal of the photos they are published on our public Flickr account. Members can contact the board about removal of these photos.</p>
+    <p>Photos taken at our activities are stored on our own server. After reviewal of the photos they are published on our website. Members can contact <a href="mailto:fotociefrancken@gmail.com">the Fotocie</a> or the board about removal of these photos.</p>
     <h3 id="circumstantial-information">Circumstantial information</h3>
     <p>It may happen that we require additional information when you want to participate at one of our activities.</p>
     <ol>
@@ -38,7 +38,7 @@
     <ol>
         <li><p>Canteen (streepsystem)</p>
             <p>If you'd like to purchase food and drinks in our members room you'll have to opt in into our canteen system (more commonly known as the <em>streepsystem</em>). This system keeps track of the products that you buy so that we can automatically deduct the costs of these products from you bank account.</p>
-            <p>You can opt in share your <em>streep statistics</em> with other members on websites from Francken such as <a href="https://borrelcie.vodka" class="uri">https://borrelcie.vodka</a>.</p></li>
+        </li>
         <li><p>Deductions &amp; Declarations</p>
             <p>We keep a documentation of the costs that you've made at the association. This includes canteen costs (see <em>Canteen</em>), costs for activities, ordering food, buying books and committee clothing. Due to tax law we are required to keep this data for at least 7 years. Additionally the declarations that you've made are documented. Both deductions and declarations are stored in our physical archive.</p></li>
     </ol>
@@ -52,8 +52,6 @@
     <p>We use Mailchimp to send our bi-weekly newsletters and other mass emails. We only share the emailaddress and first and family name of our members with Mailchimp.</p>
     <h3 id="affiliated-organisations">Affiliated organisations</h3>
     <p>We sometimes organize activities with other associations or affiliated organisations such as BEST, Expedition Strategy and the Beta Business Days. We never share you personal information with these organizations unless you've given us permission to do so.</p>
-    <h3 id="flickr">Flickr</h3>
-    <p>Photos that are published are stored on Flickr.</p>
     <h2 id="data-storage">Data Storage</h2>
     <p>All digital data is stored on a server located at the University of Groningen.</p>
     <p>A daily backup is made of all data stored on our servers, one on-site and one off-site (fully encrypted).</p>
@@ -73,7 +71,7 @@
         <li>IBAN (optional)</li>
         <li>Canteen transactions (optional)</li>
         <li>Financial transactions (optional)</li>
-        <li>Activity attendence (optional)</li>
+        <li>Activity attendance (optional)</li>
         <li>Photos (optional)</li>
         <li>Any additional information that you've personally allowed us to keep and provided to us</li>
     </ul>
