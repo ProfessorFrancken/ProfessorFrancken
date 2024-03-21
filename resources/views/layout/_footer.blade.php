@@ -39,9 +39,9 @@
                 <h4 class="footer__header h5 mb-2">Other</h4>
 
                 <div class="footer__body" style="column-count: 2">
-                    <a href="https://www.facebook.com/groups/139490187648/">
+                    {{-- <a href="https://www.facebook.com/groups/139490187648/">
                         <i class="fab fa-facebook text-primary" aria-hidden="true"></i> Facebook<br>
-                    </a>
+                    </a> --}}
 
                     <a href="https://www.instagram.com/tfvprofessorfrancken/">
                         <i class="fab fa-instagram text-primary" aria-hidden="true"></i> Instagram<br>
@@ -57,7 +57,7 @@
                         <i class="fa fa-user-secret text-primary" aria-hidden="true"></i>
                         Privacy policy<br>
                     </a>
-                    <a href="/code-of-conduct">
+                    <a href="/public/pdf/Code_of_Conduct.pdf">
                         <i class="fas fa-gavel text-primary" aria-hidden="true"></i>
                         Code of conduct<br>
                     </a>
