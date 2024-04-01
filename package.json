@@ -21,7 +21,7 @@
     "sass-loader": "^12.6.0"
   },
   "dependencies": {
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^5.3.3",
     "jquery": "^3.5.1"
   }
 }
