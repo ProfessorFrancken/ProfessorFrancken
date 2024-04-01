@@ -18,7 +18,7 @@ class MainContentController extends Controller
      * it comes with the disadvantage that you cannot control the data passed to
      * the views, though you can possibly fix this by using view composers
      *
-     * @return \Illuminate\Http\Response|\Illuminate\View\View
+     * @return \Illuminate\Http\Response|View
      */
     public function page(string $page)
     {

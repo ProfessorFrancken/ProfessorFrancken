@@ -32,7 +32,7 @@ class PhotosFeature extends TestCase
 
         switch ($account) {
             case 'guest': {
-                \Illuminate\Support\Facades\Auth::logout();
+                Auth::logout();
                 break;
             }
             case 'member': {

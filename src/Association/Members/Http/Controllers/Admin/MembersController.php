@@ -100,7 +100,7 @@ final class MembersController extends Controller
     /**
      * @psalm-suppress InvalidTemplateParam
      */
-    public function show(LegacyMember $member, Clock $clock) : view
+    public function show(LegacyMember $member, Clock $clock) : View
     {
         $currentBoard = Board::current()->firstOrFail();
         $boardMembers = BoardMember::where('member_id', $member->id)->with(['board'])->get();
@@ -162,7 +162,7 @@ final class MembersController extends Controller
         ]);
     }
 
-    public function edit(LegacyMember $member) : view
+    public function edit(LegacyMember $member) : View
     {
         $memberTypeOptions = AdminMemberRequest::MEMBER_TYPE_OPTIONS;
         $consumptionCounterOptions = AdminMemberRequest::CONSUMPTION_COUNTER_OPTIONS;

@@ -95,11 +95,11 @@ final class FactSheetController
         // $datePeriod = '1 WEEK';
         // $format = 'W';
 
-        $weeks = collect($period->getDatePeriod(new \DateInterval('P1W')))->mapWithKeys(function ($week) : array {
+        $weeks = collect($period->getDatePeriod(new DateInterval('P1W')))->mapWithKeys(function ($week) : array {
             return [$week->format('W') => null];
         });
 
-        $days = collect($period->getDatePeriod(new \DateInterval('P1D')))->mapWithKeys(function ($day) : array {
+        $days = collect($period->getDatePeriod(new DateInterval('P1D')))->mapWithKeys(function ($day) : array {
             return [$day->format('l') => null];
         });
 
@@ -140,7 +140,7 @@ final class FactSheetController
 
         $transactions = $this->transactionsInPeriod($period);
 
-        $days = collect($period->getDatePeriod(new \DateInterval('P1D')))->mapWithKeys(function ($day) : array {
+        $days = collect($period->getDatePeriod(new DateInterval('P1D')))->mapWithKeys(function ($day) : array {
             return [$day->format('l') => null];
         });
 

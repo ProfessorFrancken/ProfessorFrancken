@@ -120,7 +120,7 @@ final class AdminSubscriptionsController
             $subscription->subscription_ends_at = null;
             $member->mailinglist_franckenvrij = false;
         } else {
-            $date = new \DateTimeImmutable($request->input('subsription_ends_at'));
+            $date = new DateTimeImmutable($request->input('subsription_ends_at'));
             $subscription->subscription_ends_at = $date;
             $member->mailinglist_franckenvrij = $subscription->subscription_ends_at > $clock->now();
         }
@@ -172,7 +172,7 @@ final class AdminSubscriptionsController
             $member->mailinglist_franckenvrij = false;
             $member->save();
         } else {
-            $date = new \DateTimeImmutable($request->input('subsription_ends_at'));
+            $date = new DateTimeImmutable($request->input('subsription_ends_at'));
             $subscription->subscription_ends_at = $date;
             $member->mailinglist_franckenvrij = $subscription->subscription_ends_at > $clock->now();
             $member->save();

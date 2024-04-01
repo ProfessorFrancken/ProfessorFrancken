@@ -25,7 +25,7 @@ use Illuminate\Support\Str;
  * @property int $eenheden
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
- * @property-read \Francken\Treasurer\ProductExtra|null $extra
+ * @property-read ProductExtra|null $extra
  * @property-read bool $available
  * @property-read string $category
  * @property-read string $category_icon
