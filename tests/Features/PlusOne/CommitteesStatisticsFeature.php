@@ -14,9 +14,12 @@ use Francken\PlusOne\Http\CommitteesStatisticsController;
 use Francken\PlusOne\JwtToken;
 use Francken\Treasurer\Product;
 use Francken\Treasurer\Transaction;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CommitteesStatisticsFeature extends TestCase
 {
+    use DatabaseTransactions;
+
     /** @test */
     public function it_returns_statistics_per_committee() : void
     {
