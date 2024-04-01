@@ -67,7 +67,7 @@ class CommitteesStatisticsFeature extends TestCase
     /** @test */
     public function it_returns_statistics_per_committee_for_a_day() : void
     {
-        [$compucieMembers, $scriptcieMembers, $borrelcieMembers] = $this->setupData(2017);
+        [$compucieMembers, $scriptcieMembers, $borrelcieMembers] = $this->setupData(2019);
 
 
         $beer = factory(Product::class)->create(['categorie' => 'Bier']);
@@ -75,21 +75,21 @@ class CommitteesStatisticsFeature extends TestCase
         $food = factory(Product::class)->create(['categorie' => 'Eten']);
         $compucieMembers->map(function ($member) use ($food) {
             return factory(Transaction::class, 10)->create([
-                'tijd' => '2017-07-01 12:00:00',
+                'tijd' => '2019-07-01 12:00:00',
                 'lid_id' => $member->id,
                 'product_id' => $food->id
             ]);
         });
         $scriptcieMembers->map(function ($member) use ($beer) {
             return factory(Transaction::class, 10)->create([
-                'tijd' => '2017-07-01 12:00:00',
+                'tijd' => '2019-07-01 12:00:00',
                 'lid_id' => $member->id,
                 'product_id' => $beer->id
             ]);
         });
         $borrelcieMembers->map(function ($member) use ($soda) {
             return factory(Transaction::class, 10)->create([
-                'tijd' => '2017-07-01 12:00:00',
+                'tijd' => '2019-07-01 12:00:00',
                 'lid_id' => $member->id,
                 'product_id' => $soda->id
             ]);
@@ -100,8 +100,8 @@ class CommitteesStatisticsFeature extends TestCase
             'GET',
             action([CommitteesStatisticsController::class, 'index']),
             [
-                'startDate' => '2017-07-01',
-                'endDate' => '2017-07-01',
+                'startDate' => '2019-07-01',
+                'endDate' => '2019-07-01',
             ],
             ['Authorization' => 'Bearer ' . $token->token()->toString()]
         );
