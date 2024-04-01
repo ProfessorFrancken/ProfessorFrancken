@@ -57,7 +57,7 @@
                         <i class="fa fa-user-secret text-primary" aria-hidden="true"></i>
                         Privacy policy<br>
                     </a>
-                    <a href="/public/pdf/Code_of_Conduct.pdf">
+                    <a href="/pdf/Code_of_Conduct.pdf">
                         <i class="fas fa-gavel text-primary" aria-hidden="true"></i>
                         Code of conduct<br>
                     </a>
