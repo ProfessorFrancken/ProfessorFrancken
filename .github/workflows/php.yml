@@ -60,7 +60,7 @@ jobs:
         run: npm ci
 
       - name: Compile assets
-        run: npm run production
+        run: npx mix build -p
 
       - name: Migrate and seed
         run: php artisan migrate:fresh --seed

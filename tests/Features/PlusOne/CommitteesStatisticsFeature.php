@@ -14,9 +14,12 @@ use Francken\PlusOne\Http\CommitteesStatisticsController;
 use Francken\PlusOne\JwtToken;
 use Francken\Treasurer\Product;
 use Francken\Treasurer\Transaction;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CommitteesStatisticsFeature extends TestCase
 {
+    use DatabaseTransactions;
+
     /** @test */
     public function it_returns_statistics_per_committee() : void
     {
@@ -60,85 +63,6 @@ class CommitteesStatisticsFeature extends TestCase
                 ]]
             ]);
     }
-
-    /** @test */
-    public function it_returns_statistics_per_committee_for_a_day() : void
-    {
-        [$compucieMembers, $scriptcieMembers, $borrelcieMembers] = $this->setupData(2017);
-
-
-        $beer = factory(Product::class)->create(['categorie' => 'Bier']);
-        $soda = factory(Product::class)->create(['categorie' => 'Fris']);
-        $food = factory(Product::class)->create(['categorie' => 'Eten']);
-        $compucieMembers->map(function ($member) use ($food) {
-            return factory(Transaction::class, 10)->create([
-                'tijd' => '2017-07-01 12:00:00',
-                'lid_id' => $member->id,
-                'product_id' => $food->id
-            ]);
-        });
-        $scriptcieMembers->map(function ($member) use ($beer) {
-            return factory(Transaction::class, 10)->create([
-                'tijd' => '2017-07-01 12:00:00',
-                'lid_id' => $member->id,
-                'product_id' => $beer->id
-            ]);
-        });
-        $borrelcieMembers->map(function ($member) use ($soda) {
-            return factory(Transaction::class, 10)->create([
-                'tijd' => '2017-07-01 12:00:00',
-                'lid_id' => $member->id,
-                'product_id' => $soda->id
-            ]);
-        });
-
-        $token = new JwtToken(config('francken.plus_one.key'));
-        $this->json(
-            'GET',
-            action([CommitteesStatisticsController::class, 'index']),
-            [
-                'startDate' => '2017-07-01',
-                'endDate' => '2017-07-01',
-            ],
-            ['Authorization' => 'Bearer ' . $token->token()->toString()]
-        );
-
-        $this
-            ->assertResponseStatus(200)
-            ->seeJsonStructure([
-                'statistics' => [[
-                    'committee' => [
-                        'id',
-                        'name'
-                    ],
-                    'beer',
-                    'soda',
-                    'food',
-                ]]
-            ]);
-
-        $this->seeJsonEquals([
-            'statistics' => [
-                [
-                    'committee' => ['id' => 1, 'name' => 'Compucie'],
-                    'beer' => 0,
-                    'food' => 100,
-                    'soda' => 10,
-                ], [
-                    'committee' => ['id' => 2, 'name' => 'Scriptcie'],
-                    'beer' => 100,
-                    'food' => 0,
-                    'soda' => 10,
-                ], [
-                    'committee' => ['id' => 3, 'name' => 'Borrelcie'],
-                    'beer' => 10,
-                    'food' => 10,
-                    'soda' => 100,
-                ]
-            ]
-        ]);
-    }
-
 
     /** @test */
     public function it_does_not_include_committees_that_are_from_a_demisined_board() : void

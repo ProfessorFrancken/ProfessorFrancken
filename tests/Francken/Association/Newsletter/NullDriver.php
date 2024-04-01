@@ -103,7 +103,7 @@ class NullDriver extends Newsletter
 
     public function getApi() : MailChimp
     {
-        return new Mailchimp();
+        return new MailChimp();
     }
 
     /**

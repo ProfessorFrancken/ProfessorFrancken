@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
  * @property string|null $kleur kleur in hexcode
  * @property-read string|null $color
  * @property-read string|null $splash_url
- * @property-read \Francken\Treasurer\Product $product
+ * @property-read Product $product
  * @method static \Illuminate\Database\Eloquent\Builder|ProductExtra newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProductExtra newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProductExtra query()

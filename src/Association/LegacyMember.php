@@ -70,18 +70,18 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property string|null $deleted_at
- * @property-read \Francken\Association\Members\Address|null $address
- * @property-read \DateTimeImmutable|null $birthdate
- * @property-read \Francken\Association\Members\Email $email
+ * @property-read Address|null $address
+ * @property-read DateTimeImmutable|null $birthdate
+ * @property-read Members\Email $email
  * @property-read string $firstname
  * @property-read string $fullname
  * @property-read string $gender
  * @property-read string $initials
- * @property-read \Francken\Association\Members\PaymentDetails $payment_details
+ * @property-read PaymentDetails $payment_details
  * @property-read string $phone_number
  * @property-read bool $receive_francken_vrij
  * @property-read bool $receive_newsletter
- * @property-read \Francken\Association\Members\Students\Student $student
+ * @property-read Members\Students\Student $student
  * @property-read string $student_number
  * @property-read string $surname
  * @method static \Illuminate\Database\Eloquent\Builder|\Francken\Association\LegacyMember newModelQuery()

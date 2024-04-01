@@ -29,7 +29,7 @@ use Plank\Mediable\Mediable;
  * @property int $file_media_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Plank\Mediable\Media $deductionFile
+ * @property-read Media $deductionFile
  * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Treasurer\DeductionEmailToMember[] $deductionToMembers
  * @property-read int|null $deduction_to_members_count
  * @property-read float $total_amount
