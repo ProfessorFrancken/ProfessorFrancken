@@ -32,6 +32,7 @@ class SettingsController
     {
         $request->validate([
             "number_of_extern" => ['required'],
+            "number_of_chair" => ['required'],
             "header_image" => ['required'],
             "private_albums" => ['required'],
             "navigation_show_login" => ['nullable', 'boolean'],
@@ -39,10 +40,12 @@ class SettingsController
             "navigation_show_symposium" => ['nullable', 'boolean'],
             "navigation_show_pienter" => ['nullable', 'boolean'],
             "navigation_show_expedition" => ['nullable', 'boolean'],
+            "navigation_show_bbd" => ['nullable', 'boolean'],
         ]);
 
         $settings = [
             "number_of_extern" => $request->input("number_of_extern"),
+            "number_of_chair" => $request->input("number_of_chair"),
             "header_image" => $request->input("header_image"),
             "private_albums" => (bool)$request->input("private_albums"),
             "navigation_show_login" => (bool) $request->input("navigation_show_login"),
@@ -50,6 +53,7 @@ class SettingsController
             "navigation_show_symposium" => (bool) $request->input("navigation_show_symposium"),
             "navigation_show_pienter" => (bool) $request->input("navigation_show_pienter"),
             "navigation_show_expedition" => (bool) $request->input("navigation_show_expedition"),
+            "navigation_show_bbd" => (bool) $request->input("navigation_show_bbd"),
         ];
 
         // Make sure that we only pass settings which are expected

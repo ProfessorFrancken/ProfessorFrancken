@@ -12,6 +12,8 @@ interface Settings extends IteratorAggregate
 
     public function contactNumberOfExtern() : string;
 
+    public function contactNumberOfChair() : string;
+
     public function areAlbumsPrivate() : bool;
 
     public function headerImage() : string;
@@ -28,4 +30,6 @@ interface Settings extends IteratorAggregate
     public function isPienterShownInNavigation() : bool;
 
     public function isExpeditionShownInNavigation() : bool;
+
+    public function isBBDShownInNavigation() : bool;
 }

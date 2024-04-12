@@ -28,7 +28,7 @@
 
             <h4>Board</h4>
             <strong>Email</strong>: <a href="mailto:board@professorfrancken.nl">board@professorfrancken.nl</a><br>
-            <strong>Phone</strong>: <a href="tel:+31503634978">+31 (0) 50 363 4978</a>
+            <strong>Phone</strong>: <a href="tel:{{ str_replace(' ', '', $settings->contactNumberOfChair()) }}">{{ $settings->contactNumberOfChair() }}</a>
 
             <h4>External relations</h4>
             <strong>Email</strong>: <a href="mailto:extern@professorfrancken.nl" >extern@professorfrancken.nl</a><br>
