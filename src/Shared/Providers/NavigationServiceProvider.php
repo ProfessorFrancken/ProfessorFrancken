@@ -58,6 +58,14 @@ final class NavigationServiceProvider extends ServiceProvider
                     'icon' => 'building',
                 ];
             }
+            if ($settings->isBBDShownInNavigation()) {
+                $menu[] = [
+                    'url' => 'https://www.betabusinessdays.nl/',
+                    'title' => 'Beta Business Days',
+                    'subItems' => [],
+                    'icon' => 'suitcase',
+                ];
+            }
 
             $account = Auth::user();
             if ($account !== null && $account instanceof Account) {

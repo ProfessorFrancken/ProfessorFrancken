@@ -17,6 +17,10 @@ final class ValueStoreSettings implements Settings
      */
     private const NUMBER_OF_EXTERN = 'number_of_extern';
     /**
+     *  @var string
+     */
+    private const NUMBER_OF_CHAIR = 'number_of_chair';
+     /**
      * @var string
      */
     private const HEADER_IMAGE = 'header_image';
@@ -44,6 +48,10 @@ final class ValueStoreSettings implements Settings
      * @var string
      */
     private const IS_EXPEDITION_SHOWN_IN_NAVIGATION = 'navigation_show_expedition';
+    /**
+     * @var string
+     */
+    private const IS_BBD_SHOWN_IN_NAVIGATION = 'navigation_show_bbd';
 
     private Valuestore $store;
 
@@ -56,6 +64,7 @@ final class ValueStoreSettings implements Settings
     {
         $allowedKeys = [
             static::NUMBER_OF_EXTERN,
+            static::NUMBER_OF_CHAIR,
             static::HEADER_IMAGE,
             static::PRIVATE_ALBUMS,
             static::IS_LOGIN_SHOWN_IN_NAVIGATION,
@@ -63,6 +72,7 @@ final class ValueStoreSettings implements Settings
             static::IS_SYMPOSIUM_SHOWN_IN_NAVIGATION,
             static::IS_PIENTER_SHOWN_IN_NAVIGATION,
             static::IS_EXPEDITION_SHOWN_IN_NAVIGATION,
+            static::IS_BBD_SHOWN_IN_NAVIGATION,
         ];
 
         foreach ($settings as $key => $value) {
@@ -77,6 +87,17 @@ final class ValueStoreSettings implements Settings
     public function contactNumberOfExtern() : string
     {
         $number = $this->store->get(self::NUMBER_OF_EXTERN);
+
+        if ( ! is_string($number)) {
+            return '';
+        }
+
+        return $number;
+    }
+
+    public function contactNumberOfChair() : string
+    {
+        $number = $this->store->get(self::NUMBER_OF_CHAIR);
 
         if ( ! is_string($number)) {
             return '';
@@ -165,11 +186,26 @@ final class ValueStoreSettings implements Settings
         return (bool) $value;
     }
 
+    public function isBBDShownInNavigation() : bool
+    {
+        $value = $this->store->get(self::IS_BBD_SHOWN_IN_NAVIGATION);
+
+        if ($value === null) {
+            return false;
+        }
+
+        return (bool) $value;
+    }
     public function getIterator() : Traversable
     {
         yield static::NUMBER_OF_EXTERN => [
             'text' => 'Telephone number of extern',
             'value' => $this->contactNumberOfExtern(),
+            'type' => 'text'
+        ];
+        yield static::NUMBER_OF_CHAIR => [
+            'text' => 'Telephone number of chair',
+            'value' => $this->contactNumberOfChair(),
             'type' => 'text'
         ];
         yield static::HEADER_IMAGE => [
@@ -205,6 +241,11 @@ final class ValueStoreSettings implements Settings
         yield static::IS_EXPEDITION_SHOWN_IN_NAVIGATION => [
             'text' => 'Add a link to expedition strategy in the navigation menu',
             'value' => $this->isExpeditionShownInNavigation(),
+            'type' => 'toggle'
+        ];
+        yield static::IS_BBD_SHOWN_IN_NAVIGATION => [
+            'text' => 'Add a link to Beta Business Days in the navigation menu',
+            'value' => $this->isBBDShownInNavigation(),
             'type' => 'toggle'
         ];
     }

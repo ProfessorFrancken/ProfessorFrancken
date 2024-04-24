@@ -25,6 +25,7 @@ class SettingsFeature extends TestCase
 
         $this
              ->type('hoi', 'number_of_extern')
+             ->type('hoi', 'number_of_chair')
              ->type('image', 'header_image')
             ->check('private_albums')
             ->check('navigation_show_login')
@@ -32,10 +33,12 @@ class SettingsFeature extends TestCase
             ->uncheck('navigation_show_symposium')
             ->uncheck('navigation_show_pienter')
             ->uncheck('navigation_show_expedition')
+            ->uncheck('navigation_show_bbd')
             ->press('Save');
 
         $settings->updateSettings([
             "number_of_extern" => "hoi",
+            "number_of_chair" => "hoi",
             "header_image" => "image",
             "private_albums" => true,
             "navigation_show_login" => true,
@@ -43,6 +46,7 @@ class SettingsFeature extends TestCase
             "navigation_show_symposium" => false,
             "navigation_show_pienter" => false,
             "navigation_show_expedition" => false,
+            "navigation_show_bbd" => false,
         ])->shouldHaveBeenCalled();
     }
 }

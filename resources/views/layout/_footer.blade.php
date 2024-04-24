@@ -1,3 +1,4 @@
+@inject('settings', "Francken\Shared\Settings\Settings")
 <footer class="mt-md-5">
     @if (isset($editPageUrl))
         <div class="container">
@@ -28,9 +29,8 @@
                 <h4 class="footer__header h5 mb-2">Contact</h4>
 
                 <div class="footer__body">
-                    <i class="far fa-envelope text-primary" aria-hidden="true"></i> <a href="malto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
-                    <i class="fa fa-phone text-primary" aria-hidden="true"></i> <a href="tel:+31503634978">tel: +31 (0) 50 363 4978</a> <br>
-
+                    <i class="far fa-envelope text-primary" aria-hidden="true"></i> <a href="mailto: board@professorfrancken.nl">board@professorfrancken.nl</a> <br>
+                    <i class="fa fa-phone text-primary" aria-hidden="true"></i> <a href="tel:{{ str_replace(' ', '', $settings->contactNumberOfChair()) }}">{{ $settings->contactNumberOfChair() }}</a> <br>
                     <a href="/contact"><u>More contact info</u></a>
                 </div>
             </div>
