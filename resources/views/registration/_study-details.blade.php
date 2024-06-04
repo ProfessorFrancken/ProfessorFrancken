@@ -12,7 +12,7 @@
                     <x-forms.text
                         :name='"study_name[{$number}]"'
                         label="Study"
-                        placeholder="Bsc Applied Physics"
+                        placeholder="Bsc or Msc Applied Physics"
                         required
                     />
                 </div>
