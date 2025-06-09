@@ -1,7 +1,8 @@
 @extends('admin.layout')
-@section('page-title', 'Transactions / Export')
+@section('page-title', 'Transactions / Exports / Create')
 
 @section('content')
+
 <div class="row">
     <div class="col">
         <div class="card">

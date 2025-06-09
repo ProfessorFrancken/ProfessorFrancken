@@ -54,12 +54,12 @@ final class Deduction extends Model
         'id', 'tijd', 'created_at', 'updated_at'
     ];
 
-    public function previousDeduction() : self
+    public function previousDeduction() : self | null
     {
         /** @var Deduction */
         $deduction = self::orderBy('tijd', 'desc')
             ->where('tijd', '<', $this->tijd)
-            ->firstOrFail();
+            ->first();
 
         return $deduction;
     }
