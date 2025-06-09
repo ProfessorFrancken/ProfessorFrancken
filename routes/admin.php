@@ -57,6 +57,7 @@ use Francken\Study\BooksSale\Http\AdminBooksController;
 use Francken\Treasurer\Http\Controllers\AdminProductExtrasController;
 use Francken\Treasurer\Http\Controllers\AdminProductsController;
 use Francken\Treasurer\Http\Controllers\AdminTransactionsController;
+use Francken\Treasurer\Http\Controllers\AdminTransactionsExportsController;
 use Francken\Treasurer\Http\Controllers\DeductionEmailsController;
 use Francken\Treasurer\Http\Controllers\DeductionMembersController;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
@@ -277,6 +278,9 @@ Route::group(['prefix' => 'treasurer', 'can:board-treasurer'], function () : voi
     Route::put('products/{product}/extra', [AdminProductExtrasController::class, 'update']);
 
     Route::resource('transactions', AdminTransactionsController::class)->except(['show']);
+
+    Route::get('transactions/exports/create', [AdminTransactionsExportsController::class, 'create']);
+    Route::post('transactions/exports', [AdminTransactionsExportsController::class, 'store']);
 });
 
 Route::group(['prefix' => 'compucie'], function () : void {
