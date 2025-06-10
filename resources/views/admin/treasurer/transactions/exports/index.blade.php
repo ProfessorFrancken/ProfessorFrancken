@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     @foreach ($deductions as $deduction)
-                    <tr>
+                    <tr aria-label="Deduction">
                         <td class="d-flex gap-3 text-right justify-content-start">
                             <a class='btn btn-sm btn-outline-primary' href={{ action([\Francken\Treasurer\Http\Controllers\AdminTransactionsExportsController::class, 'show'], ['deduction' => $deduction->id])  }}>
                                 Show
