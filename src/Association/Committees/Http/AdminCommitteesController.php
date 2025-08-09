@@ -156,10 +156,10 @@ final class AdminCommitteesController
 
         $this->uploader->uploadLogo($request->logo, $committee);
         if ($request->has('remove_photo')) {
-		    $this->uploader->deletePhoto($committee);
-		} else {
-		    $this->uploader->uploadPhoto($request->photo, $committee);
-		}
+            $this->uploader->deletePhoto($committee);
+        } else {
+            $this->uploader->uploadPhoto($request->photo, $committee);
+        }
 
         return redirect()->action(
             [self::class, 'show'],

@@ -53,7 +53,7 @@ final class FileUploader
     
     public function deletePhoto(Committee $committee) : void
     {
-    	$committee->detachMedia($committee->media()->wherePivot('tag', Committee::COMMITEE_PHOTO_TAG)->get());
-		$committee->update(['photo_media_id' => null]);
-	}
+        $committee->detachMedia($committee->media()->wherePivot('tag', Committee::COMMITEE_PHOTO_TAG)->get());
+        $committee->update(['photo_media_id' => null]);
+    }
 }
