@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Francken\Shared\Providers;
 
 use Francken\Association\Photos\AlbumsRepository;
-use Francken\Association\Photos\FlickrAlbumsRepository;
 use Francken\Association\Photos\NextcloudAlbumsRepository;
 use Francken\Shared\Clock\Clock;
 use Francken\Shared\Clock\SystemClock;
@@ -44,11 +43,7 @@ final class AppServiceProvider extends ServiceProvider
         ));
         $this->app->bind(Settings::class, ValueStoreSettings::class);
         $this->app->bind(Clock::class, SystemClock::class);
-        if (config('francken.general.use_nextcloud')) {
-            $this->app->bind(AlbumsRepository::class, NextcloudAlbumsRepository::class);
-        } else {
-            $this->app->bind(AlbumsRepository::class, FlickrAlbumsRepository::class);
-        }
+        $this->app->bind(AlbumsRepository::class, NextcloudAlbumsRepository::class);
 
 
         if ($this->app instanceof Application && $this->app->isLocal()) {
