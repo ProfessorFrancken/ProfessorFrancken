@@ -33,19 +33,6 @@ final class AdminTransactionsExportsController
             ]);
     }
 
-    public function create(AdminTransactionsExportRequest $request) : View
-    {
-        return view('admin.treasurer.transactions.exports.create')
-            ->with([
-                'request' => $request,
-                'breadcrumbs' => [
-                    ['url' => action([AdminTransactionsController::class, 'index']), 'text' => 'Transactions'],
-                    ['url' => action([self::class, 'index']), 'text' => 'Exports'],
-                    ['url' => action([self::class, 'create']), 'text' => 'Create'],
-                ]
-            ]);
-    }
-
 
     public function show(Deduction $deduction) : View
     {
