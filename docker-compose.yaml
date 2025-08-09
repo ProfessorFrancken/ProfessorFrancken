@@ -34,8 +34,6 @@ services:
       - .docker.env
       - .env
     links:
-      - mysql
-      - legacy-db
       - redis
       - mailhog
     working_dir: /var/www/francken
@@ -56,7 +54,6 @@ services:
       - .docker.env
       - .env
     links:
-      - legacy-db
       - redis
     working_dir: /var/www/francken
     volumes:
@@ -76,7 +73,6 @@ services:
       - .docker.env
       - .env
     links:
-      - legacy-db
       - redis
       - mailhog
     working_dir: /var/www/francken
@@ -129,38 +125,6 @@ services:
       - "traefik.port=8025"
 
 
-  adminer:
-    image: adminer
-    links:
-      - mysql
-      - legacy-db
-    labels:
-      - "traefik.enable=true"
-      - "traefik.backend=francken-adminer-web"
-      - "traefik.frontend.rule=Host:adminer.nl.localhost"
-      - "traefik.port=8080"
-
-  mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: francken
-      MYSQL_PASSWORD: leden
-      MYSQL_DATABASE: francken
-    volumes:
-      - mysql:/var/lib/mysql
-
-  legacy-db:
-    image: mysql:5.7
-    volumes:
-      - ./database/francken-db.sql:/docker-entrypoint-initdb.d/dump.sql
-    environment:
-      - MYSQL_USER=francken
-      - MYSQL_PASSWORD=password
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=francken
-    restart: always
-
   redis:
     image: redis:4-alpine
     ports:
@@ -181,8 +145,6 @@ services:
       - .docker.env
       - .env
     links:
-      - mysql
-      - legacy-db
       - redis
       - mailhog
     working_dir: /var/www/francken

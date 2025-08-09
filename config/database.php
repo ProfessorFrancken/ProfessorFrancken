@@ -56,6 +56,12 @@ return [
             'prefix'   => '',
         ],
 
+        'francken-legacy-sqlite' => [
+            'driver'   => 'sqlite',
+            'database' => database_path('database.legacy.sqlite'),
+            'prefix'   => '',
+        ],
+
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
@@ -74,16 +80,20 @@ return [
          * Note that
          */
         'francken-legacy' => [
-            'driver'    => 'mysql',
-            'host'      => env('DB_LEGACY_HOST', 'localhost'),
-            'port'      => env('DB_PORT', '3306'),
-            'database'  => env('DB_LEGACY_DATABASE', 'forge'),
-            'username'  => env('DB_LEGACY_USERNAME', 'forge'),
-            'password'  => env('DB_LEGACY_PASSWORD', ''),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'strict'    => false,
+            'driver'   => 'sqlite',
+            'database' => database_path('database.legacy.sqlite'),
+            'prefix'   => '',
+
+            // 'driver'    => 'mysql',
+            // 'host'      => env('DB_LEGACY_HOST', 'localhost'),
+            // 'port'      => env('DB_PORT', '3306'),
+            // 'database'  => env('DB_LEGACY_DATABASE', 'forge'),
+            // 'username'  => env('DB_LEGACY_USERNAME', 'forge'),
+            // 'password'  => env('DB_LEGACY_PASSWORD', ''),
+            // 'charset'   => 'utf8',
+            // 'collation' => 'utf8_unicode_ci',
+            // 'prefix'    => '',
+            // 'strict'    => false,
         ],
 
         'testing' => [
