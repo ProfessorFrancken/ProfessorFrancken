@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Http\Controllers;
 
-use Francken\Treasurer\Deduction;
 use Francken\Treasurer\DeductionEmail;
 use Francken\Treasurer\DeductionEmailToMember;
 use Francken\Treasurer\Http\Requests\DeductionRequest;
 use Francken\Treasurer\Imports\ImportDeductions;
-use Francken\Treasurer\MailDeduction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
