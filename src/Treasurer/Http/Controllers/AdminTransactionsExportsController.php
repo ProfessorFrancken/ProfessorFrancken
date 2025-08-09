@@ -4,26 +4,29 @@ declare(strict_types=1);
 
 namespace Francken\Treasurer\Http\Controllers;
 
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Francken\Treasurer\Deduction;
 use Francken\Treasurer\Exports\TransactionsExport;
 use Francken\Treasurer\Http\Requests\AdminTransactionsExportRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Webmozart\Assert\Assert;
 
 final class AdminTransactionsExportsController
 {
-    public function index(AdminTransactionsExportRequest $request) : View
+    public function index() : View
     {
         $deductions = Deduction::orderBy('tijd', 'desc')->paginate(15);
         $lastDeduction = Deduction::orderBy('tijd', 'desc')->first();
 
         return view('admin.treasurer.transactions.exports.index')
             ->with([
-                'request' => $request,
+                'until' => new DateTimeImmutable(),
                 'deductions' => $deductions,
                 'lastDeduction' => $lastDeduction,
                 'breadcrumbs' => [
@@ -36,9 +39,12 @@ final class AdminTransactionsExportsController
 
     public function show(Deduction $deduction) : View
     {
-        $lastDeduction = Deduction::orderBy('tijd', 'desc')->first();
+        $lastDeduction = Deduction::orderBy('tijd', 'desc')->firstOrFail();
 
         $previousDeduction = $deduction->previousDeduction();
+
+        Assert::notNull($previousDeduction);
+
         $transactions = $this->getTransactionReport(
             $previousDeduction->tijd->toDateTimeImmutable(),
             $deduction->tijd->toDateTimeImmutable()
@@ -70,6 +76,7 @@ final class AdminTransactionsExportsController
     public function edit(Deduction $deduction) : View
     {
         $previousDeduction = $deduction->previousDeduction();
+        Assert::notNull($previousDeduction);
 
         return view('admin.treasurer.transactions.exports.edit')
             ->with([
@@ -89,7 +96,7 @@ final class AdminTransactionsExportsController
 
     public function update(Deduction $deduction, AdminTransactionsExportRequest $request) : RedirectResponse
     {
-        $deduction->tijd = $request->until();
+        $deduction->tijd = Carbon::createFromImmutable($request->until());
         $deduction->save();
 
         return redirect()->action([self::class, 'show'], ['deduction' => $deduction]);
@@ -98,6 +105,8 @@ final class AdminTransactionsExportsController
     public function export(Deduction $deduction) : BinaryFileResponse
     {
         $previousDeduction = $deduction->previousDeduction();
+        Assert::notNull($previousDeduction);
+
         $transactions = $this->getTransactionReport(
             $previousDeduction->tijd->toDateTimeImmutable(),
             $deduction->tijd->toDateTimeImmutable()
@@ -116,7 +125,7 @@ final class AdminTransactionsExportsController
         return redirect()->action([self::class, 'index']);
     }
 
-    private function getTransactionReport(DateTimeImmutable $from, DateTimeImmutable $until)
+    private function getTransactionReport(DateTimeImmutable $from, DateTimeImmutable $until) : Collection
     {
         return DB::connection('francken-legacy')
             ->table('transacties')

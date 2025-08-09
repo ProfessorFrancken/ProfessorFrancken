@@ -7,6 +7,7 @@ namespace Francken\Treasurer;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use League\Period\Period;
+use Webmozart\Assert\Assert;
 
 /**
  * Francken\Treasurer\Deduction
@@ -66,8 +67,12 @@ final class Deduction extends Model
 
     public function getPeriodAttribute() : Period
     {
+        $previous = $this->previousDeduction();
+
+        Assert::isInstanceOf($previous, self::class);
+
         return new Period(
-            $this->previousDeduction()->tijd,
+            $previous->tijd,
             $this->tijd
         );
     }

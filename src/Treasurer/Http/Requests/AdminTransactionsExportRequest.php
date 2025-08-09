@@ -16,19 +16,19 @@ final class AdminTransactionsExportRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'from' => ['nullable', 'date_format:Y-m-d H:i:s'],
-            'until' => ['nullable', 'date_format:Y-m-d H:i:s'],
+            'from' => ['required', 'date_format:Y-m-d H:i:s'],
+            'until' => ['required', 'date_format:Y-m-d H:i:s'],
         ];
     }
 
-    public function from() : ?DateTimeImmutable
+    public function from() : DateTimeImmutable
     {
-        return $this->toDateTimeImmutable($this->input('from'));
+        return $this->toDateTimeImmutable($this->string('from')->toString());
     }
 
-    public function until() : ?DateTimeImmutable
+    public function until() : DateTimeImmutable
     {
-        return $this->toDateTimeImmutable($this->input('until'));
+        return $this->toDateTimeImmutable($this->string('until')->toString());
     }
 
     private function toDateTimeImmutable(string $input) : DateTimeImmutable

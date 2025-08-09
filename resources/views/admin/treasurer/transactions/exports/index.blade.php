@@ -66,13 +66,13 @@
                         name="from"
                         label="From"
                         :value="optional($lastDeduction->tijd ?? new \DateTimeImmutable)->format('Y-m-d H:i:s')"
-                        disabled
+                        readonly
                         help="The start date is based on the last deduction made"
                     />
                 </div>
 
                 <div class="mx-2">
-                    <x-forms.datetime name="until" label="Until" :value="optional($request->until ?? new \DateTimeImmutable)->format('Y-m-d H:i:s')" />
+                    <x-forms.datetime name="until" label="Until" :value="optional($until)->format('Y-m-d H:i:s')" />
                 </div>
 
                 <x-forms.submit>Create</x-forms.submit>
