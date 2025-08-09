@@ -13,14 +13,13 @@
             <address>
                 <h4>Correspondences address</h4>
                 T.F.V. ‘Professor Francken’<br>
-                Nijenborgh 4<br>
+                Nijenborgh 3<br>
                 9747 AG Groningen
             </address>
 
             <address>
                 <h4>Visiting address</h4>
-                <strong>Board room</strong>: building 13, room 5113.0006<br>
-                <strong>Members room</strong>: building 13, room 5113.0002<br>
+                <strong>Members room</strong>: Feringa Building, room 5614.0143<br>
             </address>
         </div>
         <div class="col-sm-4">
