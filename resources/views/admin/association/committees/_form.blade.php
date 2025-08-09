@@ -49,30 +49,42 @@
                 </x-forms.select>
             </div>
 
-            <div class='col-12'>
-                <div class="d-flex flex-column justify-content-end h-100">
-                    <div>
-                        <img
-                            id="committee-photo"
-                            alt="Photo of the committee"
-                            src="{{ optional($committee)->photo }}"
-                            class="mb-3 img-fluid rounded"
-                            style="object-fit: cover"
-                        />
-                    </div>
-                    <x-forms.image-upload
-                        name="photo"
-                        label="Committee photo"
-                        output-image-id="committee-photo"
-                    >
-                        <x-slot name="help">
-                            <small  class="form-text text-muted">
-                                We will use this photo when displaying the committee's photo in the company profiles pages.
-                            </small>
-                        </x-slot>
-                    </x-forms.image-upload>
-                </div>
-            </div>
+            <div class="col-12">
+				<div class="d-flex flex-column justify-content-end h-100">
+					<div>
+						<img
+						    id="committee-photo"
+						    alt="Photo of the committee"
+						    src="{{ optional($committee)->photo }}"
+						    class="mb-3 img-fluid rounded"
+						    style="object-fit: cover"
+						/>
+					</div>
+					<div class="d-flex align-items-end gap-3">
+						<div class="flex-grow-1">
+						    <x-forms.image-upload
+						        name="photo"
+						        label="Committee photo"
+						        output-image-id="committee-photo"
+						    >
+						        <x-slot name="help">
+						            <small class="form-text text-muted">
+						                We will use this photo when displaying the committee's photo in the company profiles pages.
+						            </small>
+						        </x-slot>
+						    </x-forms.image-upload>
+						</div>
+
+						@if ($committee->photoMedia)
+						    <div class="mb-3">
+						        <button type="submit" name="remove_photo" value="1" class="btn btn-danger">
+						            Remove photo
+						        </button>
+						    </div>
+						@endif
+					</div>
+				</div>
+			</div>
         </div>
 
         <x-forms.markdown />

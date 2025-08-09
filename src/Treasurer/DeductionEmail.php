@@ -30,10 +30,10 @@ use Plank\Mediable\Mediable;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read Media $deductionFile
- * @property-read \Illuminate\Database\Eloquent\Collection|\Francken\Treasurer\DeductionEmailToMember[] $deductionToMembers
+ * @property-read \Illuminate\Database\Eloquent\Collection|DeductionEmailToMember[] $deductionToMembers
  * @property-read int|null $deduction_to_members_count
  * @property-read float $total_amount
- * @property-read \Illuminate\Database\Eloquent\Collection|\Plank\Mediable\Media[] $media
+ * @property-read \Illuminate\Database\Eloquent\Collection|Media[] $media
  * @property-read int|null $media_count
  * @method static \Plank\Mediable\MediableCollection|static[] all($columns = ['*'])
  * @method static \Plank\Mediable\MediableCollection|static[] get($columns = ['*'])
