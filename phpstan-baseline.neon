@@ -6,47 +6,7 @@ parameters:
 			path: src/Association/Activities/ActivitiesRepository.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\ActivitiesRepository\\:\\:all\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Activities/ActivitiesRepository.php
-
-		-
-			message: "#^Property Francken\\\\Association\\\\Activities\\\\ActivitiesRepository\\:\\:\\$activities with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Activities/ActivitiesRepository.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\ActivitiesSidebarComposer\\:\\:monthNames\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Activities/ActivitiesSidebarComposer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:comments\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Activities/Activity.php
-
-		-
 			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:getTotalSignUpsAttribute\\(\\) should return int but returns mixed\\.$#"
-			count: 1
-			path: src/Association/Activities/Activity.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:scopeAfter\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Activities/Activity.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:scopeAfter\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Activities/Activity.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:signUpSettings\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Activities/Activity.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\Activity\\:\\:signUps\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
 			count: 1
 			path: src/Association/Activities/Activity.php
 
@@ -59,16 +19,6 @@ parameters:
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 6
 			path: src/Association/Activities/CalendarEvent.php
-
-		-
-			message: "#^Property Francken\\\\Association\\\\Activities\\\\CalendarEvent\\:\\:\\$notes with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Activities/CalendarEvent.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\Comment\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Activities/Comment.php
 
 		-
 			message: "#^Cannot access property \\$achternaam on mixed\\.$#"
@@ -146,21 +96,6 @@ parameters:
 			path: src/Association/Activities/ImportActivitiesFromCalendar.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\SignUp\\:\\:activity\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Activities/SignUp.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Activities\\\\SignUp\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Activities/SignUp.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\AlumniActivity\\\\Alumnus\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/AlumniActivity/Alumnus.php
-
-		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
 			path: src/Association/AlumniActivity/Http/AdminAlumnusRequest.php
@@ -191,46 +126,6 @@ parameters:
 			path: src/Association/Boards/Board.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:committees\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:install\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:members\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeCurrent\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeCurrent\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeWithPhotos\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Board\\:\\:scopeWithPhotos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Boards/Board.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Boards\\\\Board\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Association/Boards/Board.php
@@ -257,31 +152,6 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$fullname on mixed\\.$#"
-			count: 1
-			path: src/Association/Boards/BoardMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:board\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Boards/BoardMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Boards/BoardMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Boards/BoardMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:scopeWithPhotos\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Boards/BoardMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\BoardMember\\:\\:scopeWithPhotos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
 			count: 1
 			path: src/Association/Boards/BoardMember.php
 
@@ -334,11 +204,6 @@ parameters:
 			message: "#^Cannot access property \\$member_id on Francken\\\\Auth\\\\Account\\|null\\.$#"
 			count: 1
 			path: src/Association/Boards/Http/Controllers/KandiTotoController.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Http\\\\Requests\\\\BoardRequest\\:\\:members\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Boards/Http/Requests/BoardRequest.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: array, Closure\\(array\\)\\: array given\\.$#"
@@ -436,11 +301,6 @@ parameters:
 			path: src/Association/Boards/Imports/BoardMembersImport.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardMembersImport\\:\\:collection\\(\\) has parameter \\$collection with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Boards/Imports/BoardMembersImport.php
-
-		-
 			message: "#^Parameter \\#2 \\$photo of method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardMembersImport\\:\\:uploadPhoto\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: src/Association/Boards/Imports/BoardMembersImport.php
@@ -491,11 +351,6 @@ parameters:
 			path: src/Association/Boards/Imports/BoardsImport.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardsImport\\:\\:collection\\(\\) has parameter \\$collection with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Boards/Imports/BoardsImport.php
-
-		-
 			message: "#^Parameter \\#2 \\$photo of method Francken\\\\Association\\\\Boards\\\\Imports\\\\BoardsImport\\:\\:uploadPhoto\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: src/Association/Boards/Imports/BoardsImport.php
@@ -511,79 +366,9 @@ parameters:
 			path: src/Association/Boards/Imports/BoardsWithMembersImport.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\KandiToto\\\\Bet\\:\\:boardMember\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Boards/KandiToto/Bet.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\KandiToto\\\\Bet\\:\\:scopeBoardYear\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Boards/KandiToto/Bet.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Boards\\\\KandiToto\\\\Bet\\:\\:scopeBoardYear\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Boards/KandiToto/Bet.php
-
-		-
-			message: "#^PHPDoc tag @var contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Boards/UpdateBoardMemberStatus.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: void given\\.$#"
 			count: 1
 			path: src/Association/Boards/UpdateBoardMemberStatus.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:drinker\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:owner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveAnytimers\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveAnytimers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveClaimedAnytimers\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveClaimedAnytimers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveGivenAnytimers\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\Anytimer\\:\\:scopeActiveGivenAnytimers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Borrelcie/Anytimer.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Borrelcie/BorrelcieAccount.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Borrelcie\\\\EventHandlers\\\\HandOutAnytimers\\:\\:boardMemberBorrelcieAccounts\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Borrelcie/EventHandlers/HandOutAnytimers.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Borrelcie\\\\BorrelcieAccount\\)\\: void given\\.$#"
@@ -656,86 +441,6 @@ parameters:
 			path: src/Association/Committees/Committee.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:board\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:childCommittee\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:committeeMembers\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:getPermissionsAttribute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:getSuggestedCommitteeMembersAttribute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:members\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:parentCommittee\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Committee\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Committees/Committee.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\CommitteeMember\\:\\:committee\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Committees/CommitteeMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\CommitteeMember\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Committees/CommitteeMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Exports\\\\ActiveMembersExport\\:\\:collection\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Exports/ActiveMembersExport.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Exports\\\\CommitteeMembersExport\\:\\:collection\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Exports/CommitteeMembersExport.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\AdminCommitteesController\\:\\:getContinuableCommittees\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Http/AdminCommitteesController.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\AdminCommitteesController\\:\\:getParentCommittees\\(\\) has parameter \\$continuableCommittees with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Http/AdminCommitteesController.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Committees\\\\Http\\\\AdminCommitteesController\\:\\:getParentCommittees\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Committees/Http/AdminCommitteesController.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: array\\<int, string\\>, Closure\\(Francken\\\\Association\\\\Boards\\\\Board\\)\\: non\\-empty\\-array\\<int, string\\> given\\.$#"
 			count: 1
 			path: src/Association/Committees/Http/AdminCommitteesController.php
@@ -796,34 +501,9 @@ parameters:
 			path: src/Association/Committees/Http/Requests/AdminCommitteeRequest.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Edition\\:\\:scopeLatestEdition\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Edition.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Edition\\:\\:scopeLatestEdition\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Edition.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Edition\\:\\:volumes\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/FranckenVrij/Edition.php
-
-		-
 			message: "#^Parameter \\#2 \\$editions of class Francken\\\\Association\\\\FranckenVrij\\\\Volume constructor expects array\\<Francken\\\\Association\\\\FranckenVrij\\\\Edition\\>, array given\\.$#"
 			count: 1
 			path: src/Association/FranckenVrij/Edition.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Exports\\\\SubscriptionsExport\\:\\:__construct\\(\\) has parameter \\$subscriptions with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/FranckenVrij/Exports/SubscriptionsExport.php
-
-		-
-			message: "#^Property Francken\\\\Association\\\\FranckenVrij\\\\Exports\\\\SubscriptionsExport\\:\\:\\$subscriptions with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/FranckenVrij/Exports/SubscriptionsExport.php
 
 		-
 			message: "#^Constant Francken\\\\Association\\\\FranckenVrij\\\\Http\\\\AdminFranckenVrijController\\:\\:ONE_HUNDRED_MB is unused\\.$#"
@@ -859,76 +539,6 @@ parameters:
 			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Http\\\\Requests\\\\FranckenVrijRequest\\:\\:title\\(\\) should return string but returns mixed\\.$#"
 			count: 1
 			path: src/Association/FranckenVrij/Http/Requests/FranckenVrijRequest.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeCancelled\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeCancelled\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithActiveSubscription\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithActiveSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithExpiredSubscription\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithExpiredSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithRecentlyExpiredSubscription\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithRecentlyExpiredSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithSoonToBeExpried\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\FranckenVrij\\\\Subscription\\:\\:scopeWithSoonToBeExpried\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/FranckenVrij/Subscription.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\LegacyMember\\:\\:autocomplete\\(\\) has parameter \\$except with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/LegacyMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\LegacyMember\\:\\:autocomplete\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/LegacyMember.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\LegacyMember\\:\\:franckenVrijSubscription\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/LegacyMember.php
 
 		-
 			message: "#^PHPDoc type array of property Francken\\\\Association\\\\LegacyMember\\:\\:\\$guarded is not covariant with PHPDoc type array\\<string\\>\\|bool of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$guarded\\.$#"
@@ -967,16 +577,6 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$committee on Francken\\\\Association\\\\Committees\\\\CommitteeMember\\|null\\.$#"
-			count: 1
-			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Controllers\\\\Admin\\\\MembersController\\:\\:searchMemberQuery\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Members\\\\Http\\\\Controllers\\\\Admin\\\\MembersController\\:\\:searchMemberQuery\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
 			count: 1
 			path: src/Association/Members/Http/Controllers/Admin/MembersController.php
 
@@ -1466,16 +1066,6 @@ parameters:
 			path: src/Association/Members/Registration/Registration.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:scopeApproved\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Members/Registration/Registration.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:scopeApproved\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/Members/Registration/Registration.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Members\\\\Registration\\\\Registration\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Association/Members/Registration/Registration.php
@@ -1496,29 +1086,9 @@ parameters:
 			path: src/Association/Members/Registration/Registration.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\Fake\\\\FakeNews\\:\\:all\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/News/Fake/FakeNews.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\Fake\\\\FakeNews\\:\\:generateNews\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/News/Fake/FakeNews.php
-
-		-
-			message: "#^Property Francken\\\\Association\\\\News\\\\Fake\\\\FakeNews\\:\\:\\$news with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/News/Fake/FakeNews.php
-
-		-
 			message: "#^Anonymous function should return string but returns mixed\\.$#"
 			count: 1
 			path: src/Association/News/Fake/FakeNewsContent.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\Http\\\\AdminNewsController\\:\\:drafts\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Collection does not specify its types\\: TKey, TModel$#"
-			count: 1
-			path: src/Association/News/Http/AdminNewsController.php
 
 		-
 			message: "#^Parameter \\#1 \\$datetime of class DateTimeImmutable constructor expects string, mixed given\\.$#"
@@ -1581,84 +1151,14 @@ parameters:
 			path: src/Association/News/News.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeByLink\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeByLink\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeInPeriod\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeInPeriod\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeRecent\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeRecent\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithAuthorName\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithAuthorName\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithSubject\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\News\\\\News\\:\\:scopeWithSubject\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Association/News/News.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\News\\\\News\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Association/News/News.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrAlbum\\:\\:coverPhoto\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Photos/FlickrAlbum.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrAlbum\\:\\:photos\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Photos/FlickrAlbum.php
-
-		-
 			message: "#^Property Francken\\\\Association\\\\Photos\\\\Flickr\\\\Response\\:\\:\\$contents \\(array\\) does not accept mixed\\.$#"
 			count: 1
 			path: src/Association/Photos/Flickr/Response.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrRepository\\:\\:albums\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Photos/FlickrRepository.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrRepository\\:\\:findAlbum\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Photos/FlickrRepository.php
 
 		-
 			message: "#^Parameter \\#1 \\$apiKey of class Francken\\\\Association\\\\Photos\\\\Flickr\\\\Api constructor expects string, mixed given\\.$#"
@@ -1696,11 +1196,6 @@ parameters:
 			path: src/Association/Photos/Http/Controllers/AuthenticationController.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\FlickrPhoto\\:\\:album\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Photos/FlickrPhoto.php
-
-		-
 			message: "#^Method Francken\\\\Association\\\\Photos\\\\PhotosAuthentication\\:\\:isLoggedIn\\(\\) should return bool but returns mixed\\.$#"
 			count: 1
 			path: src/Association/Photos/PhotosAuthentication.php
@@ -1727,26 +1222,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method sub\\(\\) on mixed\\.$#"
-			count: 1
-			path: src/Association/Photos/SynchronizeFlickrAlbums.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:missingAlbums\\(\\) has parameter \\$albums with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Photos/SynchronizeFlickrAlbums.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:missingAlbums\\(\\) has parameter \\$albumsInDb with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Photos/SynchronizeFlickrAlbums.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:missingAlbums\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Association/Photos/SynchronizeFlickrAlbums.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Photos\\\\SynchronizeFlickrAlbums\\:\\:storeAlbum\\(\\) has parameter \\$album with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/Association/Photos/SynchronizeFlickrAlbums.php
 
@@ -1829,31 +1304,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$image of method Francken\\\\Association\\\\Soundboards\\\\FileUploader\\:\\:uploadImage\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
 			count: 2
 			path: src/Association/Soundboards/Http/SoundsController.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:audioMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Soundboards/Sound.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:imageMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Soundboards/Sound.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Soundboards/Sound.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Sound\\:\\:soundboard\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Soundboards/Sound.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Soundboards\\\\Soundboard\\:\\:sounds\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Soundboards/Soundboard.php
 
 		-
 			message: "#^Parameter \\#1 \\$logo of method Francken\\\\Association\\\\Symposium\\\\FileUploader\\:\\:uploadLogo\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
@@ -1961,64 +1411,14 @@ parameters:
 			path: src/Association/Symposium/NotifySymposiumCommittee.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Participant\\:\\:adCount\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Symposium/Participant.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Participant\\:\\:symposium\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Symposium/Participant.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Symposium\\\\Participant\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Association/Symposium/Participant.php
 
 		-
-			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Association/Symposium/Symposium.php
-
-		-
-			message: "#^Method Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:participants\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Association/Symposium/Symposium.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Association\\\\Symposium\\\\Symposium\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Association/Symposium/Symposium.php
-
-		-
-			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:borrelcieAccount\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Auth/Account.php
-
-		-
-			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Auth/Account.php
-
-		-
-			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:scopeOfMember\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Auth/Account.php
-
-		-
-			message: "#^Method Francken\\\\Auth\\\\Account\\:\\:scopeOfMember\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Auth/Account.php
-
-		-
-			message: "#^Method Francken\\\\Auth\\\\ChangeRolesListener\\:\\:activeCommitteesOfMember\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Auth/ChangeRolesListener.php
-
-		-
-			message: "#^PHPDoc tag @var contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Auth/ChangeRolesListener.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:each\\(\\) expects callable\\(mixed, int\\|string\\)\\: mixed, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: void given\\.$#"
@@ -2066,44 +1466,9 @@ parameters:
 			path: src/Extern/Alumnus.php
 
 		-
-			message: "#^Method Francken\\\\Extern\\\\Alumnus\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/Alumnus.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Extern\\\\Alumnus\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Extern/Alumnus.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Contact\\:\\:contactDetails\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Contact.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Contact\\:\\:photoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/Contact.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:__construct\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/ActiveMembers.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:genders\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/ActiveMembers.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:studies\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/ActiveMembers.php
-
-		-
-			message: "#^Property Francken\\\\Extern\\\\FactSheet\\\\ActiveMembers\\:\\:\\$members with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/ActiveMembers.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:flatMap\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: \\(array\\<int, int\\>\\|Illuminate\\\\Support\\\\Collection\\<int, int\\>\\), Closure\\(Francken\\\\Association\\\\Committees\\\\Committee\\)\\: Illuminate\\\\Support\\\\Collection\\<int, int\\> given\\.$#"
@@ -2111,37 +1476,12 @@ parameters:
 			path: src/Extern/FactSheet/ActiveMembersStatistics.php
 
 		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\FirstYearStudentsPerYear\\:\\:__construct\\(\\) has parameter \\$years with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\FirstYearStudentsPerYear\\:\\:handle\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
-
-		-
 			message: "#^Part \\$year \\(mixed\\) of encapsed string cannot be cast to string\\.$#"
 			count: 1
 			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
 
 		-
-			message: "#^Property Francken\\\\Extern\\\\FactSheet\\\\FirstYearStudentsPerYear\\:\\:\\$years with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/FirstYearStudentsPerYear.php
-
-		-
 			message: "#^Cannot access property \\$studierichting on mixed\\.$#"
-			count: 1
-			path: src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudentsByStudyAndStudyPhase\\:\\:studyPhaseStatistics\\(\\) has parameter \\$students with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudentsByStudyAndStudyPhase\\:\\:studyPhaseStatistics\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/Extern/FactSheet/StudentsByStudyAndStudyPhase.php
 
@@ -2161,33 +1501,8 @@ parameters:
 			path: src/Extern/FactSheet/StudiesStatistic.php
 
 		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:filterUnrelatedStudies\\(\\) has parameter \\$studies with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/StudiesStatistic.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:filterUnrelatedStudies\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/StudiesStatistic.php
-
-		-
 			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:filterUnrelatedStudies\\(\\) should return Illuminate\\\\Support\\\\Collection but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\|null\\.$#"
 			count: 2
-			path: src/Extern/FactSheet/StudiesStatistic.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:sort\\(\\) has parameter \\$studies with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/StudiesStatistic.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:sort\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/FactSheet/StudiesStatistic.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:studies\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
 			path: src/Extern/FactSheet/StudiesStatistic.php
 
 		-
@@ -2197,11 +1512,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$groupBy of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:groupBy\\(\\) expects array\\|\\(callable\\(mixed, int\\|string\\)\\: \\(int\\|string\\)\\)\\|string, Closure\\(Francken\\\\Extern\\\\FactSheet\\\\StudyStatistic\\)\\: bool given\\.$#"
-			count: 1
-			path: src/Extern/FactSheet/StudiesStatistic.php
-
-		-
-			message: "#^Property Francken\\\\Extern\\\\FactSheet\\\\StudiesStatistic\\:\\:\\$studies with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/Extern/FactSheet/StudiesStatistic.php
 
@@ -2238,31 +1548,6 @@ parameters:
 		-
 			message: "#^Cannot call method format\\(\\) on DateTimeInterface\\|null\\.$#"
 			count: 3
-			path: src/Extern/Http/FactSheetController.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:monthlyStats\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/Http/FactSheetController.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:transactionsDuringMonth\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/Http/FactSheetController.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:transactionsDuringWeek\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/Http/FactSheetController.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:transactionsInPeriod\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Extern/Http/FactSheetController.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Http\\\\FactSheetController\\:\\:weeklyStats\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
 			path: src/Extern/Http/FactSheetController.php
 
 		-
@@ -2431,149 +1716,14 @@ parameters:
 			path: src/Extern/Http/Requests/VacancyRequest.php
 
 		-
-			message: "#^Method Francken\\\\Extern\\\\Note\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/Note.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:alumni\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:companyProfile\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:contactDetails\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:contacts\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:footer\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:notes\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithActiveContract\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithActiveContract\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithAlumni\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithAlumni\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithExpiredContract\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithExpiredContract\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithRecentlyExpiredContract\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:scopeWithRecentlyExpiredContract\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:sector\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\Partner\\:\\:vacancies\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Extern/Partner.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\CompanyProfile\\:\\:partner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/SponsorOptions/CompanyProfile.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Extern\\\\SponsorOptions\\\\CompanyProfile\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Extern/SponsorOptions/CompanyProfile.php
 
 		-
-			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\:\\:logoMedia\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/SponsorOptions/Footer.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\:\\:partner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/SponsorOptions/Footer.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Extern/SponsorOptions/Footer.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:partner\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/SponsorOptions/Vacancy.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/SponsorOptions/Vacancy.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Extern/SponsorOptions/Vacancy.php
-
-		-
-			message: "#^Method Francken\\\\Extern\\\\SponsorOptions\\\\Vacancy\\:\\:sector\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Extern/SponsorOptions/Vacancy.php
 
 		-
 			message: "#^Parameter \\#1 \\$key of class Francken\\\\PlusOne\\\\JwtToken constructor expects string, mixed given\\.$#"
@@ -2589,11 +1739,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$hashedValue of static method Illuminate\\\\Support\\\\Facades\\\\Hash\\:\\:check\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: src/PlusOne/Http/AuthenticationController.php
-
-		-
-			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\BoardsController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/PlusOne/Http/BoardsController.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:map\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: array\\{lid_id\\: int\\|null, jaar\\: int, functie\\: string\\}, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: array\\{lid_id\\: int\\|null, jaar\\: int, functie\\: string\\} given\\.$#"
@@ -2626,11 +1771,6 @@ parameters:
 			path: src/PlusOne/Http/CategoryStatisticsController.php
 
 		-
-			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\CommitteesController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/PlusOne/Http/CommitteesController.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:flatMap\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: \\(array\\<int, array\\{commissie_id\\: int, lid_id\\: int, jaar\\: int, functie\\: string\\|null, naam\\: string\\}\\>\\|Illuminate\\\\Support\\\\Collection\\<int, array\\{commissie_id\\: int, lid_id\\: int, jaar\\: int, functie\\: string\\|null, naam\\: string\\}\\>\\), Closure\\(Francken\\\\Association\\\\Committees\\\\Committee\\)\\: Illuminate\\\\Support\\\\Collection\\<int, array\\{commissie_id\\: int, lid_id\\: int, jaar\\: int, functie\\: string\\|null, naam\\: string\\}\\> given\\.$#"
 			count: 1
 			path: src/PlusOne/Http/CommitteesController.php
@@ -2638,11 +1778,6 @@ parameters:
 		-
 			message: "#^Cannot access property \\$afbeelding on mixed\\.$#"
 			count: 4
-			path: src/PlusOne/Http/MembersController.php
-
-		-
-			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\MembersController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
 			path: src/PlusOne/Http/MembersController.php
 
 		-
@@ -2706,24 +1841,9 @@ parameters:
 			path: src/PlusOne/Http/OrdersController.php
 
 		-
-			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\OrdersController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/PlusOne/Http/OrdersController.php
-
-		-
 			message: "#^Parameter \\#2 \\$context of static method Illuminate\\\\Log\\\\Logger\\:\\:error\\(\\) expects array, mixed given\\.$#"
 			count: 1
 			path: src/PlusOne/Http/OrdersController.php
-
-		-
-			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\ProductsController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/PlusOne/Http/ProductsController.php
-
-		-
-			message: "#^Method Francken\\\\PlusOne\\\\Http\\\\SponsorsController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/PlusOne/Http/SponsorsController.php
 
 		-
 			message: "#^Parameter \\#1 \\$contents of static method Lcobucci\\\\JWT\\\\Signer\\\\Key\\\\InMemory\\:\\:plainText\\(\\) expects non\\-empty\\-string, string given\\.$#"
@@ -2749,11 +1869,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:contains\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: bool\\)\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int\\|string, Closure\\(Francken\\\\Association\\\\Boards\\\\BoardMember\\)\\: bool given\\.$#"
 			count: 1
 			path: src/Shared/Http/Controllers/DashboardController.php
-
-		-
-			message: "#^Method Francken\\\\Shared\\\\Http\\\\Controllers\\\\JasController\\:\\:index\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Shared/Http/Controllers/JasController.php
 
 		-
 			message: "#^Cannot access property \\$member on Francken\\\\Auth\\\\Account\\|null\\.$#"
@@ -2841,11 +1956,6 @@ parameters:
 			path: src/Shared/Markdown/ResponsiveImageRenderer.php
 
 		-
-			message: "#^Method Francken\\\\Shared\\\\Media\\\\Directory\\:\\:childDirectories\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Shared/Media/Directory.php
-
-		-
 			message: "#^Property Francken\\\\Shared\\\\Media\\\\Directory\\:\\:\\$name \\(string\\) does not accept Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|string\\|null\\.$#"
 			count: 1
 			path: src/Shared/Media/Directory.php
@@ -2853,11 +1963,6 @@ parameters:
 		-
 			message: "#^Cannot access property \\$mediable_type on mixed\\.$#"
 			count: 2
-			path: src/Shared/Media/Http/Controllers/MediaController.php
-
-		-
-			message: "#^PHPDoc tag @var for variable \\$media contains generic class Illuminate\\\\Pagination\\\\LengthAwarePaginator but does not specify its types\\: TValue$#"
-			count: 1
 			path: src/Shared/Media/Http/Controllers/MediaController.php
 
 		-
@@ -2871,46 +1976,6 @@ parameters:
 			path: src/Shared/Media/Http/Controllers/MediaController.php
 
 		-
-			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopeCovid\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Shared/Page.php
-
-		-
-			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopeCovid\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Shared/Page.php
-
-		-
-			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopePublic\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Shared/Page.php
-
-		-
-			message: "#^Method Francken\\\\Shared\\\\Page\\:\\:scopePublic\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Shared/Page.php
-
-		-
-			message: "#^Interface Francken\\\\Shared\\\\Settings\\\\Settings extends generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Shared/Settings/Settings.php
-
-		-
-			message: "#^Method Francken\\\\Shared\\\\ViewComponents\\\\AutocompleteMemberComponent\\:\\:__construct\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Shared/ViewComponents/AutocompleteMemberComponent.php
-
-		-
-			message: "#^Property Francken\\\\Shared\\\\ViewComponents\\\\AutocompleteMemberComponent\\:\\:\\$members with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Shared/ViewComponents/AutocompleteMemberComponent.php
-
-		-
-			message: "#^Property Francken\\\\Shared\\\\ViewComponents\\\\BorrelcieNotificationsComponent\\:\\:\\$notifications with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Shared/ViewComponents/BorrelcieNotificationsComponent.php
-
-		-
 			message: "#^Cannot access property \\$name on mixed\\.$#"
 			count: 1
 			path: src/Shared/ViewComponents/FooterSponsorsComponent.php
@@ -2919,56 +1984,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<\\(int\\|string\\),Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:map\\(\\) expects callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Model, int\\|string\\)\\: array\\{footer\\-link\\: string, footer\\-logo\\: string\\|null, name\\: mixed\\}, Closure\\(Francken\\\\Extern\\\\SponsorOptions\\\\Footer\\)\\: array\\{footer\\-link\\: string, footer\\-logo\\: string\\|null, name\\: mixed\\} given\\.$#"
 			count: 1
 			path: src/Shared/ViewComponents/FooterSponsorsComponent.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:buyer\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeAvailable\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeAvailable\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopePaidOff\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopePaidOff\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSold\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:scopeSold\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
-
-		-
-			message: "#^Method Francken\\\\Study\\\\BooksSale\\\\Book\\:\\:seller\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Study/BooksSale/Book.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
@@ -3031,16 +2046,6 @@ parameters:
 			path: src/Treasurer/DeductionEmail.php
 
 		-
-			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmail\\:\\:deductionFile\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Treasurer/DeductionEmail.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmail\\:\\:deductionToMembers\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Treasurer/DeductionEmail.php
-
-		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Treasurer\\\\DeductionEmail\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
 			count: 1
 			path: src/Treasurer/DeductionEmail.php
@@ -3049,16 +2054,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: array\\{member_id\\: mixed, description\\: mixed, amount_in_cents\\: mixed, contained_errors\\: mixed\\}, Closure\\(Illuminate\\\\Support\\\\Collection\\)\\: array\\{member_id\\: mixed, description\\: mixed, amount_in_cents\\: mixed, contained_errors\\: mixed\\} given\\.$#"
 			count: 1
 			path: src/Treasurer/DeductionEmail.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmailToMember\\:\\:deduction\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Treasurer/DeductionEmailToMember.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\DeductionEmailToMember\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Treasurer/DeductionEmailToMember.php
 
 		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Treasurer\\\\DeductionEmailToMember\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
@@ -3074,16 +2069,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$photo of method Francken\\\\Treasurer\\\\ProductFileUploader\\:\\:uploadPhoto\\(\\) expects Illuminate\\\\Http\\\\UploadedFile\\|null, mixed given\\.$#"
 			count: 2
 			path: src/Treasurer/Http/Controllers/AdminProductsController.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Controllers\\\\DeductionsController\\:\\:findConflicts\\(\\) has parameter \\$members with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Http/Controllers/DeductionsController.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Controllers\\\\DeductionsController\\:\\:findConflicts\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Http/Controllers/DeductionsController.php
 
 		-
 			message: "#^Method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminProductExtraRequest\\:\\:color\\(\\) should return string but returns mixed\\.$#"
@@ -3186,31 +2171,6 @@ parameters:
 			path: src/Treasurer/Imports/ImportDeductions.php
 
 		-
-			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:addDeduction\\(\\) has parameter \\$deduction with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:collection\\(\\) has parameter \\$collection with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:deductions\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:errors\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:getLegacyMember\\(\\) has parameter \\$deduction with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: Illuminate\\\\Support\\\\Collection, Closure\\(Illuminate\\\\Support\\\\Collection\\)\\: Illuminate\\\\Support\\\\Collection given\\.$#"
 			count: 1
 			path: src/Treasurer/Imports/ImportDeductions.php
@@ -3249,91 +2209,6 @@ parameters:
 			message: "#^Property Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:\\$deduction is never read, only written\\.$#"
 			count: 1
 			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
-			message: "#^Property Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:\\$deductions with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
-			message: "#^Property Francken\\\\Treasurer\\\\Imports\\\\ImportDeductions\\:\\:\\$errors with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: src/Treasurer/Imports/ImportDeductions.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\MemberExtra\\:\\:member\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Treasurer/MemberExtra.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\MemberExtra\\:\\:scopeOfMember\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/MemberExtra.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\MemberExtra\\:\\:scopeOfMember\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/MemberExtra.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:extra\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne does not specify its types\\: TRelatedModel$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeBeer\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeBeer\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeFood\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeFood\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSearch\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSearch\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSoda\\(\\) has parameter \\$query with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Product\\:\\:scopeSoda\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Treasurer/Product.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\ProductExtra\\:\\:product\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Treasurer/ProductExtra.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Transaction\\:\\:product\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Treasurer/Transaction.php
-
-		-
-			message: "#^Method Francken\\\\Treasurer\\\\Transaction\\:\\:purchasedBy\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
-			count: 1
-			path: src/Treasurer/Transaction.php
 
 		-
 			message: "#^PHPDoc type array\\<string\\> of property Francken\\\\Treasurer\\\\Transaction\\:\\:\\$casts is not covariant with PHPDoc type array\\<string, string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$casts\\.$#"
