@@ -49,7 +49,7 @@ git clone git@github.com:ProfessorFrancken/ProfessorFrancken.git Francken && cd 
 
 cp .env.example .env
 
-docker compose run php composer install`
+docker compose run php composer install
 docker compose run npm npm install
 docker compose run npm npm run dev
 docker compose run php php artisan key:generate
