@@ -103,7 +103,14 @@
 @endsection
 
 @section('actions')
-    <div class="d-flex align-items-end">
+    <div class="d-flex align-items-end gap-3">
+        <a href="{{ action([\Francken\Treasurer\Http\Controllers\AdminTransactionsExportsController::class, 'index']) }}"
+           class="btn btn-primary"
+        >
+            <i class="fas fa-cloud-download-alt"></i>
+            Export transactions
+        </a>
+
         <a href="{{ action([\Francken\Treasurer\Http\Controllers\AdminTransactionsController::class, 'create']) }}"
            class="btn btn-primary"
         >

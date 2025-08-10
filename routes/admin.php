@@ -57,6 +57,7 @@ use Francken\Study\BooksSale\Http\AdminBooksController;
 use Francken\Treasurer\Http\Controllers\AdminProductExtrasController;
 use Francken\Treasurer\Http\Controllers\AdminProductsController;
 use Francken\Treasurer\Http\Controllers\AdminTransactionsController;
+use Francken\Treasurer\Http\Controllers\AdminTransactionsExportsController;
 use Francken\Treasurer\Http\Controllers\DeductionEmailsController;
 use Francken\Treasurer\Http\Controllers\DeductionMembersController;
 use Francken\Treasurer\Http\Controllers\DeductionsController;
@@ -277,6 +278,14 @@ Route::group(['prefix' => 'treasurer', 'can:board-treasurer'], function () : voi
     Route::put('products/{product}/extra', [AdminProductExtrasController::class, 'update']);
 
     Route::resource('transactions', AdminTransactionsController::class)->except(['show']);
+
+    Route::get('transactions/exports', [AdminTransactionsExportsController::class, 'index']);
+    Route::get('transactions/exports/{deduction}', [AdminTransactionsExportsController::class, 'show']);
+    Route::get('transactions/exports/{deduction}/edit', [AdminTransactionsExportsController::class, 'edit']);
+    Route::put('transactions/exports/{deduction}', [AdminTransactionsExportsController::class, 'update']);
+    Route::delete('transactions/exports/{deduction}', [AdminTransactionsExportsController::class, 'destroy']);
+    Route::post('transactions/exports', [AdminTransactionsExportsController::class, 'store']);
+    Route::get('transactions/exports/{deduction}/export', [AdminTransactionsExportsController::class, 'export']);
 });
 
 Route::group(['prefix' => 'compucie'], function () : void {
