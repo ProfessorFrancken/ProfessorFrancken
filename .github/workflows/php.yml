@@ -63,7 +63,7 @@ jobs:
         run: npx mix build -p
 
       - name: Migrate and seed
-        run: php artisan migrate:fresh --seed
+        run: php artisan migrate:refresh --seed
         env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
