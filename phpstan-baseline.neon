@@ -2121,6 +2121,11 @@ parameters:
 			path: src/Treasurer/Http/Requests/AdminTransactionRequest.php
 
 		-
+			message: "#^Parameter \\#1 \\$input of method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\AdminTransactionsExportRequest\\:\\:toDateTimeImmutable\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Treasurer/Http/Requests/AdminTransactionsExportRequest.php
+
+		-
 			message: "#^Parameter \\#1 \\$input of method Francken\\\\Treasurer\\\\Http\\\\Requests\\\\DeductionRequest\\:\\:toDateTimeImmutable\\(\\) expects string, mixed given\\.$#"
 			count: 3
 			path: src/Treasurer/Http/Requests/DeductionRequest.php
