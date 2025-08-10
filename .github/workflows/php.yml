@@ -1,4 +1,4 @@
-name: PHP Actions
+name: PHP
 
 on: [push, pull_request]
 
@@ -8,7 +8,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8.0
         env:
           MYSQL_DATABASE: francken
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
@@ -18,21 +18,21 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
           echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
              ${{ runner.os }}-composer-
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -84,14 +84,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
           echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -113,7 +113,7 @@ jobs:
         run: "mkdir -p .build/phpstan"
 
       - name: "Cache cache directory for phpstan/phpstan"
-        uses: "actions/cache@v2"
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: ".build/phpstan"
           key: "php-8.2-phpstan-${{ github.sha }}"
@@ -127,14 +127,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
           echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}

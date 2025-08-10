@@ -5,6 +5,7 @@ parameters:
     paths:
         - src
     checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
     ignoreErrors:
         - '#Property .* \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeImmutable#'
         - '#Property .* \(Carbon\\Carbon\|null\) does not accept DateTimeImmutable#'

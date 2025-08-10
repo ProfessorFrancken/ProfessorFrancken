@@ -8,12 +8,21 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-            - name: Run PHP CS Fixer
-              uses: docker://oskarstark/php-cs-fixer-ga
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
               with:
-                  args: --config=.php-cs-fixer.dist.php --allow-risky=yes
+                php-version: 8.2
+                extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, imagick
+                coverage: pcov
+                tools: composer:v2
+
+            - name: Install Composer dependencies
+              run: composer install --prefer-dist --no-interaction --no-suggest
+
+            - name: Prepare Laravel Application
+              run: composer run cs:fix
 
             - name: Commit changes
               uses: stefanzweifel/git-auto-commit-action@v4.1.6

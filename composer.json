@@ -115,6 +115,7 @@
       "@php artisan key:generate --ansi"
     ],
     "cs": "vendor/bin/php-cs-fixer fix --dry-run",
+    "cs:fix": "vendor/bin/php-cs-fixer fix",
     "features": "vendor/bin/phpunit --testsuite 'Application Test Suite'",
     "phpstan": "vendor/bin/phpstan analyze src",
     "psalm": "vendor/bin/psalm",
