@@ -279,8 +279,13 @@ Route::group(['prefix' => 'treasurer', 'can:board-treasurer'], function () : voi
 
     Route::resource('transactions', AdminTransactionsController::class)->except(['show']);
 
-    Route::get('transactions/exports/create', [AdminTransactionsExportsController::class, 'create']);
+    Route::get('transactions/exports', [AdminTransactionsExportsController::class, 'index']);
+    Route::get('transactions/exports/{deduction}', [AdminTransactionsExportsController::class, 'show']);
+    Route::get('transactions/exports/{deduction}/edit', [AdminTransactionsExportsController::class, 'edit']);
+    Route::put('transactions/exports/{deduction}', [AdminTransactionsExportsController::class, 'update']);
+    Route::delete('transactions/exports/{deduction}', [AdminTransactionsExportsController::class, 'destroy']);
     Route::post('transactions/exports', [AdminTransactionsExportsController::class, 'store']);
+    Route::get('transactions/exports/{deduction}/export', [AdminTransactionsExportsController::class, 'export']);
 });
 
 Route::group(['prefix' => 'compucie'], function () : void {
