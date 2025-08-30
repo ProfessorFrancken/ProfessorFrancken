@@ -17,7 +17,7 @@
 
                 <address class="footer__body mb-0">
                     <i class="fa fa-map-marker-alt text-primary" aria-hidden="true"></i>
-                    Nijenborgh 4<br>
+                    Nijenborgh 3<br>
                     <i class="fa fa-map-marker-alt invisible" aria-hidden="true"></i>
                     9747AG, Groningen<br>
                     <i class="fa fa-globe-africa invisible" aria-hidden="true"></i>
