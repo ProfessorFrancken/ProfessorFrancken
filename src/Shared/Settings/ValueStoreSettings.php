@@ -20,7 +20,7 @@ final class ValueStoreSettings implements Settings
      *  @var string
      */
     private const NUMBER_OF_CHAIR = 'number_of_chair';
-     /**
+    /**
      * @var string
      */
     private const HEADER_IMAGE = 'header_image';
