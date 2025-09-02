@@ -7,7 +7,7 @@
     <div class="jumbotron py-5">
         <h1 class="section-header">Second hand books</h1>
         <p>
-            On this page you will find all second hand books that are for sale at Francken. If you’re intersted in buying a book you can just come to the boardroom and pick up your books. The fee will be taken from your bankaccount with the next depreciation.
+            On this page you will find all second hand books that are for sale at Francken. If you’re intersted in buying a book you can just come to the Franckenroom (Feringa Building, room 5614.0143) and pick up your books. The fee will be taken from your bankaccount with the next depreciation.
         </p>
 
         <p>
