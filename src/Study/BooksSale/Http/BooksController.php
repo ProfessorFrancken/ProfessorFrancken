@@ -28,6 +28,10 @@ class BooksController extends Controller
 
     public function show(Book $book) : View
     {
+        if ($book->has_been_sold) {
+            abort(404);
+        }
+
         return view('book.show')
             ->with(['book' => $book])
             ->with('breadcrumbs', [
