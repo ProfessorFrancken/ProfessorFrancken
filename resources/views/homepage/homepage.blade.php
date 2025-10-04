@@ -8,7 +8,7 @@
 
     @include("homepage._about-francken")
 
-    @include("homepage._news")
+    {{-- @include("homepage._news") --}}
 
     @include("homepage._pillars")
 @endsection
