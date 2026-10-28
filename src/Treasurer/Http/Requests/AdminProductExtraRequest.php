@@ -20,7 +20,8 @@ final class AdminProductExtraRequest extends FormRequest
     {
         return [
             'color' => ['nullable'],
-            'splash_photo' => ['image', 'max:' . self::MAX_FILE_SIZE],
+            // Only allow image types that our media uploader supports
+            'splash_photo' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:' . self::MAX_FILE_SIZE],
         ];
     }
 

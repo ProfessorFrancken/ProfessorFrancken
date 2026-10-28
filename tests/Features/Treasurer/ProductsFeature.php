@@ -132,4 +132,52 @@ class ProductsFeature extends TestCase
         $product->extra->refresh();
         $this->assertEquals('#ffff00', $product->extra->color);
     }
+
+    /**
+     * @test
+     * @dataProvider unsupportedPhotos
+     */
+    public function it_rejects_unsupported_photos_when_adding_a_product(string $filename) : void
+    {
+        $this->visit(action([AdminProductsController::class, 'create']))
+            ->type('Hertog Jan', 'name')
+            ->type(133, 'price')
+            ->select('Beer', 'category')
+            ->type(1, 'position')
+            ->type(0.21, 'btw')
+            ->attach($this->unsupportedPhoto($filename), 'photo')
+            ->press('Add')
+            ->seePageIs(action([AdminProductsController::class, 'create']))
+            ->see('The photo must be a file of type: jpg, jpeg, png, gif.');
+    }
+
+    /**
+     * @test
+     * @dataProvider unsupportedPhotos
+     */
+    public function it_rejects_unsupported_splash_photos(string $filename) : void
+    {
+        $product = factory(Product::class)->create();
+
+        $this->visit(action([AdminProductExtrasController::class, 'create'], ['product' => $product]))
+            ->type('#ff0000', 'color')
+            ->attach($this->unsupportedPhoto($filename), 'splash_photo')
+            ->press('Add')
+            ->seePageIs(action([AdminProductExtrasController::class, 'create'], ['product' => $product]))
+            ->see('The splash photo must be a file of type: jpg, jpeg, png, gif.');
+    }
+
+    public function unsupportedPhotos() : array
+    {
+        return [
+            ['photo.webp'],
+            ['photo.bmp'],
+            ['photo.svg'],
+        ];
+    }
+
+    private function unsupportedPhoto(string $filename) : string
+    {
+        return __DIR__ . '/../stubs/' . $filename;
+    }
 }

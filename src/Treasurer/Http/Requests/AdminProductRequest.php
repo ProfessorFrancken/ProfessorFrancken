@@ -25,7 +25,8 @@ final class AdminProductRequest extends FormRequest
             'category' => ['required', 'in:Beer,Food,Soda'],
             'available' => ['nullable', 'boolean'],
             'position' => ['required', 'integer', 'min:1'],
-            'photo' => ['image', 'max:' . self::MAX_FILE_SIZE],
+            // Only allow image types that our media uploader supports
+            'photo' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:' . self::MAX_FILE_SIZE],
         ];
     }
 
