@@ -125,9 +125,15 @@ final class Edition extends Model
         return (int)$this->attributes['edition'];
     }
 
-    public function pdf() : Url
+    /**
+     * Older editions store the url of the pdf, newer editions only store the
+     * filename of the pdf on the francken-vrij disk
+     */
+    public function pdfFilename() : string
     {
-        return new Url($this->attributes['pdf']);
+        $path = parse_url($this->attributes['pdf'], PHP_URL_PATH);
+
+        return basename(is_string($path) ? $path : $this->attributes['pdf']);
     }
 
     public function cover() : Url

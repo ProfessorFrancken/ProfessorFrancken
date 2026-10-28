@@ -18,6 +18,7 @@ use Francken\Association\Borrelcie\Http\BorrelcieController;
 use Francken\Association\Committees\Http\CommitteesController;
 use Francken\Association\Committees\Http\RedirectToBoardCommitteesController;
 use Francken\Association\FranckenVrij\Http\FranckenVrijController;
+use Francken\Association\FranckenVrij\Http\FranckenVrijPdfController;
 use Francken\Association\Members\Http\ContactDetailsController;
 use Francken\Association\Members\Http\Controllers\RegistrationController;
 use Francken\Association\Members\Http\ExpensesController;
@@ -123,6 +124,8 @@ Route::group(['prefix' => 'association'], function () : void {
     Route::get('{board:board_year_slug}/committees/{committee:slug}', [CommitteesController::class, 'show']);
 
     Route::get('francken-vrij', [FranckenVrijController::class, 'index']);
+    Route::get('francken-vrij/{edition}/pdf', [FranckenVrijPdfController::class, 'show'])
+        ->middleware(['auth']);
 
     Route::get('boards', [BoardsController::class, 'index']);
     Route::get('boards/birthdays', [BirthdaysController::class, 'index'])

@@ -84,7 +84,7 @@
             </p>
 
             @isset($latest_edition)
-            <a class="btn btn-primary" href="{{ $latest_edition->pdf() }}">
+            <a class="btn btn-primary" href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $latest_edition]) }}">
                 Download latest edition
             </a>
             @endisset
