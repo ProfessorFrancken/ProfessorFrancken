@@ -66,7 +66,7 @@
         <a href="https://www.linkedin.com/company/t.f.v.-professor-francken/?viewAsMember=true">
             <img
                 alt="Stay in touch with our alumni on LinkedIn"
-                src="{{ image('https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Linkedin_circle.svg/2000px-Linkedin_circle.svg.png', ['height' => 150, 'width' => 150]) }}"
+                src="{{ image('https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Linkedin_circle.svg/500px-Linkedin_circle.svg.png', ['height' => 150, 'width' => 150]) }}"
                 class="mb-3 rounded-circle"
                 style="height: 150px; width: 150px; object-fit: contain"
             />
