@@ -6,14 +6,17 @@ namespace Francken\Association\FranckenVrij\Http;
 
 use Francken\Association\FranckenVrij\Edition;
 use Francken\Shared\Http\Controllers\Controller;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Webmozart\Assert\Assert;
 
 final class FranckenVrijPdfController extends Controller
 {
     public function show(Edition $edition) : StreamedResponse
     {
         $disk = Storage::disk('francken-vrij');
+        Assert::isInstanceOf($disk, FilesystemAdapter::class);
         $filename = $edition->pdfFilename();
 
         abort_unless($disk->exists($filename), 404);
