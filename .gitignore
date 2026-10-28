@@ -18,3 +18,4 @@ Homestead.json
 .php-cs-fixer.cache
 .cache/
 /storage/debugbar/
+.phpunit.result.cache
