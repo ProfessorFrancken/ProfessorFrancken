@@ -71,6 +71,14 @@ return [
             'visibility' => 'public',
         ],
 
+        // Francken Vrij pdfs are only available to members, so they are not
+        // stored in the public directory
+        'francken-vrij' => [
+            'driver' => 'local',
+            'root' => storage_path('app/francken-vrij'),
+            'visibility' => 'private',
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',

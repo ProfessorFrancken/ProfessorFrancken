@@ -19,7 +19,7 @@
                                 <div class="col-sm-4">
                                     <div class="d-flex p-3 bg-light my-2 d-flex">
                                         <div class="mr-3">
-                                            <a href="{{ $edition->pdf() }}">
+                                            <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}">
                                                 <img
                                                     src="{{ $edition->cover() }}"
                                                     class="img-responsive center-block"
@@ -39,7 +39,7 @@
                                             </h5>
                                             <div class='d-flex justify-content-between'>
                                                 <a
-                                                    href="{{ $edition->pdf() }}"
+                                                    href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}"
                                                     class="text-"
                                                 >
                                                     <i class="fa fa-download text-muted mr-1" aria-hidden="true"></i> Download

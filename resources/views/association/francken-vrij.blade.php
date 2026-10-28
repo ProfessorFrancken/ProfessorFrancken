@@ -20,6 +20,17 @@
     </div>
 </div>
 
+@guest
+<div class="container my-5">
+    <x-login-prompt title="Login to view the Francken Vrij" :redirect-to="request()->getRequestUri()">
+        <p>
+            The Francken Vrij archive is only available to members. Please login to read and download our magazines.
+        </p>
+    </x-login-prompt>
+</div>
+@endguest
+
+@auth
 <div class="ribbon ribbon--light my-5">
     <div class="container">
         <h2 class="ribbon__header">
@@ -34,13 +45,13 @@
                       {{ $edition->title() }}
                   </h4>
                   <div class="text-center">
-                      <a href="{{ $edition->pdf() }}">
+                      <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}">
                           <img src="{{ $edition->cover() }}" class="img-responsive center-block">
                       </a>
                   </div>
 
                   <div class="text-center my-3">
-                      <a href="{{ $edition->pdf() }}" class="btn btn-inverse">Download</a>
+                      <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}" class="btn btn-inverse">Download</a>
                   </div>
               </article>
           @endforeach
@@ -55,7 +66,7 @@
       <div class="row">
           @foreach($volume->editions() as $edition)
               <div class="col-sm-4 text-center">
-                  <a href="{{ $edition->pdf() }}">
+                  <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}">
                       <img src="{{ $edition->cover() }}" class="img-responsive center-block">
                       <h5>{{ $edition->title() }}</h5>
                   </a>
@@ -63,12 +74,6 @@
           @endforeach
       </div>
   @endforeach
-
-  @guest
-    <div class="container mt-5">
-        <x-login-prompt title="Login to view older editions">
-        </x-login-prompt>
-    </div>
-  @endguest
 </div>
+@endauth
 @endsection
