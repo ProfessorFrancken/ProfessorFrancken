@@ -13,9 +13,7 @@
     padding: 2em 0 2em;
     padding-left: 5em;
   }
-}
 
-@include media-breakpoint-up(md) {
   .footer__logo svg {
     height: 60px;
   }

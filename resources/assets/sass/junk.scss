@@ -3,27 +3,6 @@
 // they belong. This file should be cleaned periodically.
 //
 
-.skew--top-right {
-  transform: skewX(-30deg);
-  border-radius: 0px 0px 10px 0px;
-  transform-origin: top right;
-}
-
-.skew--top-right > * {
-  transform: skewX(30deg);
-}
-
-// Currently not used as we only skew the footer for medium devices
-.skew--bottom-right {
-  transform: skewX(30deg);
-  border-radius: 0px 10px 0px 0px;
-  transform-origin: bottom right;
-}
-
-.skew--bottom-right > * {
-  transform: skewX(-30deg);
-}
-
 // Used for the footer
 @include media-breakpoint-up(md) {
   .skew-md--top-right {
@@ -84,6 +63,7 @@ footer .header__title {
 
 .login-modal__body {
   padding: 0;
+  background: $primary-color;
   transform: scale(0.4);
   transition: transform 0.3s ease-in-out;
 
@@ -100,9 +80,6 @@ footer .header__title {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-.login-modal__body {
-  background: $primary-color;
-}
 .login-modal__content {
   padding: 2em 5em 3em;
   color: white;
@@ -118,14 +95,6 @@ footer .header__title {
   border-radius: 0 0 0 0.25rem;
 }
 
-.login-modal__header {
-  color: white;
-}
-
-.login-modal__icon {
-  margin-left: 1em;
-  color: $secondary-color;
-}
 .board-container {
   height: 350px;
   position: relative;
@@ -189,93 +158,6 @@ footer .header__title {
   border-radius: 50%;
 }
 
-.academic-year-list {
-  display: flex;
-  justify-content: space-around;
-
-  padding: 1em 0;
-  margin-bottom: 2em;
-  border-top: thin solid $gray-200;
-  border-bottom: thin solid $gray-200;
-}
-
-.academic-year-list__item {
-  &--active {
-    font-weight: bold;
-    font-size: 1.1em;
-    text-decoration: underline;
-  }
-
-  &--disabled {
-    color: $gray-200;
-
-    &:hover,
-    &:focus,
-    &:active {
-      cursor: not-allowed;
-      color: $gray-200;
-      text-decoration: none;
-    }
-  }
-}
-
-.excursion-container {
-  height: 200px;
-  position: relative;
-  background-color: #173249;
-
-  border-radius: 0.5rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &.excursion-container--with-image:hover {
-    .excursion-image {
-      filter: brightness(90%);
-    }
-    .excursion-header {
-      opacity: 0;
-    }
-  }
-}
-
-.excursion-header {
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  right: 0;
-  text-align: center;
-  opacity: 1;
-  transition: opacity 0.25s ease-in-out;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.excursion-image {
-  object-fit: cover;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  filter: brightness(70%);
-  transition: filter 0.5s ease-in-out;
-  border-radius: 0.5rem;
-}
-
-.excursion-list-item {
-  border-bottom: thin solid $gray-200;
-  margin-bottom: 2em;
-  margin-top: 2em;
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
 .news-item__content img {
   max-width: 100%;
 }
@@ -296,8 +178,6 @@ footer .header__title {
 
 .register-section {
   margin: 2em 0;
-  /* padding: 1em; */
-  /* border: thin solid #fefefe; */
   background: #fefefe;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 
@@ -309,14 +189,6 @@ footer .header__title {
 
 .register-section .progress-bar {
   height: 3em;
-}
-
-.register-button {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  background: white;
-  color: black;
 }
 
 .grow {
@@ -331,10 +203,8 @@ footer .header__title {
 }
 
 .scaleUp--hover {
-  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition-timing-function: ease-in-out;
   transition-duration: 0.15s;
-  transform-property: all;
 
   &:hover {
     transform: scale(1.1);
@@ -352,9 +222,6 @@ footer .header__title {
 }
 
 .news-comment__title {
-  // border-bottom: thin solid lighten($primary-color, 40%);
-  // padding-bottom: 0.25em;
-  // margin-bottom: 0.5em;
   position: relative;
   padding-bottom: 0.25em;
 
@@ -371,21 +238,6 @@ footer .header__title {
 
 .justified-paragraphs p {
   text-align: justify;
-}
-
-.profile-container {
-  border-color: #cfd7d6 !important;
-}
-
-.profile-section {
-  border-top: thin solid;
-  border-color: #cfd7d6 !important;
-}
-
-.profile-section__icon {
-  background: $secondary-color;
-}
-.profile-section__body {
 }
 
 .tall {

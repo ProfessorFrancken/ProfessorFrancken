@@ -1,39 +1,6 @@
-//
-//
-//
-
-$news-background: $primary-color;
-$news-color: $secondary-color;
-$news-title-color: white;
-
 .news {
     padding: 4em 0;
     background-color: $news-background;
-}
-
-.news__items {
-    margin-bottom: 1em;
-}
-
-.news__title {
-    font-weight: bold;
-    text-align: center;
-    color: $news-title-color;
-    padding-bottom: 0.25em;
-    position: relative;
-    z-index: 1;
-    padding-bottom: .5em;
-    margin-bottom: 1.5em;
-}
-
-.news__title:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    width: 10%;
-    left: 50% - 10% / 2;
-    border-bottom: solid 3px white;
 }
 
 .news-item {
@@ -67,10 +34,6 @@ $news-title-color: white;
     margin-bottom: 1.5em;
 }
 
-
-$ribbon-background-color: $primary-color;
-$ribbon-light-background-color: white;
-
 .ribbon {
     padding: 4em 0;
     background-color: $news-background;
@@ -89,15 +52,10 @@ $ribbon-light-background-color: white;
     }
 }
 
-.ribbon__item {
-    margin-bottom: 1em;
-}
-
 .ribbon__header {
     font-weight: bold;
     text-align: center;
     color: $news-title-color;
-    padding-bottom: 0.25em;
     position: relative;
     padding-bottom: .5em;
     margin-bottom: 1.5em;

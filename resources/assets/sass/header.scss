@@ -94,8 +94,6 @@ $top-stroke-width: 6px;
     color: $secondary-color;
 
     background-color: $gray-100;
-    // color: white;
-    // background-color: $primary-color;
   }
   .navigation__sub-menu-item {
     display: flex;
@@ -110,14 +108,8 @@ $top-stroke-width: 6px;
 }
 
 .navigation__sub-menu-item:hover {
-  // color: white;
   background-color: $gray-100;
-  // background-color: $primary-color;
 }
-
-// .navigation__sub-menu-item--active {
-//     display: block;
-// }
 
 .navigation__sub-menu-item:after {
   content: "";
@@ -149,7 +141,6 @@ $top-stroke-width: 6px;
   padding-top: 76px;
 
   list-style-type: none;
-  z-index: 200;
   transition: transform 0.3s cubic-bezier(0.62, 0.28, 0.23, 0.99);
 
   position: absolute;
@@ -161,7 +152,6 @@ $top-stroke-width: 6px;
 }
 
 .navigation-list__item {
-  float: left;
   position: relative; /* couples with navigation-sub-list */
   float: none;
   display: block;
@@ -188,11 +178,9 @@ $top-stroke-width: 6px;
   a:visited {
     color: #fff;
   }
-}
 
-/* When the associated page is visited we want the background color
+  /* When the associated page is visited we want the background color
      of a selected caret to be somewhat lighter than the item's background */
-.navigation-list__item--active {
   &.navigation-list__item--active-sub-list .navigation-sub-list__toggle {
     background: $primary-color;
   }
@@ -374,9 +362,6 @@ a.navigation-sub-list__link:visited {
 
 @include media-breakpoint-up(lg) {
   .header__logo {
-    padding: 2em 1em;
-    padding-right: 5em;
-
     svg {
       max-height: 80px;
     }
@@ -416,10 +401,6 @@ a.navigation-sub-list__link:visited {
   }
 }
 @include media-breakpoint-up(lg) {
-  .navigation__menu-item {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
   .header__logo {
     width: 300px;
     padding-right: 5em;

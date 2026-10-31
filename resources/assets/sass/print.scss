@@ -1,8 +1,6 @@
 @import "app";
-@import "variables";
 
 .styled-header {
-  --skew-degrees: 30deg;
   --negative-skew-degrees: -30deg;
   --bg-color: #173249;
 
@@ -110,10 +108,6 @@
     .francken-navigation {
       grid-area: nav;
     }
-  }
-
-  // Large devices (desktops, 992px and up)
-  @media (min-width: 992px) {
   }
 
   // Extra large devices (large desktops, 1300px and up)

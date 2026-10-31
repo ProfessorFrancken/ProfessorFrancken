@@ -26,10 +26,6 @@
   transform: rotate(-45deg);
 }
 
-.link-to-all:hover:before {
-  border-color: currentcolor;
-}
-
 .link-to-all-dark {
   @extend .link-to-all;
   color: $secondary-color-dark;
@@ -53,8 +49,6 @@
 }
 
 .btn.btn-inverse:hover {
-  font-family: $font-family-sans-serif;
-  font-size: 18px;
   background-color: darken($secondary-color, 15%);
   color: white;
 }
