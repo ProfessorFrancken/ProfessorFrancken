@@ -28,7 +28,7 @@ final class FileUploader
     {
         /** @var Media */
         $franckenVrijMedia = $this->uploader->fromSource($request->file('pdf'))
-            ->toDirectory('francken-vrij')
+            ->toDisk('francken-vrij')
             ->useFilename($edition->volume . '-' . $edition->edition)
             ->setMaximumSize(self::ONE_HUNDRED_MB)
             ->upload();
@@ -40,7 +40,7 @@ final class FileUploader
         );
 
         $edition->cover = $coverMedia->getUrl();
-        $edition->pdf = $franckenVrijMedia->getUrl();
+        $edition->pdf = $franckenVrijMedia->getDiskPath();
     }
 
     private function generateCoverMedia(
@@ -55,7 +55,10 @@ final class FileUploader
                 $franckenVrijMedia->getAbsolutePath()
             );
 
+        // The uploader is shared with the pdf upload, so explicitly store the
+        // cover on the public disk instead of the private francken-vrij disk
         return $this->uploader->fromSource($coverFile)
+            ->toDisk('uploads')
             ->toDirectory('francken-vrij/covers/')
             ->useFilename($edition->volume . '-' . $edition->edition . '-cover')
             ->setMaximumSize(self::ONE_HUNDRED_MB)

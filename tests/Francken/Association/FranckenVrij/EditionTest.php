@@ -30,7 +30,7 @@ class EditionTest extends TestCase
         $this->assertEquals('Francken Vrij', $edition->title());
         $this->assertEquals(20, $edition->volume());
         $this->assertEquals(1, $edition->edition());
-        $this->assertEquals(new Url('http://www.professorfrancken.nl/franckenvrij/20.1.pdf'), $edition->pdf());
+        $this->assertEquals('20.1.pdf', $edition->pdfFilename());
         $this->assertEquals(new Url('http://www.professorfrancken.nl/franckenvrij/webplaatjes/20.1.jpg'), $edition->cover());
     }
 

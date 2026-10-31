@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <x-forms.form-group name="pdf" label="Fancken Vrij Pdf">
+        <x-forms.form-group name="pdf" label="Francken Vrij pdf">
             {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
 
             <x-slot name="help">

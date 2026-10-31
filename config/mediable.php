@@ -28,6 +28,7 @@ return [
     'allowed_disks' => [
         'local',
         'uploads',
+        'francken-vrij',
     ],
 
     /*

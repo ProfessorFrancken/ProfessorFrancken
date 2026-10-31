@@ -15,11 +15,12 @@
         </div>
     </div>
 
-    <x-forms.form-group name="pdf" label="Fancken Vrij Pdf">
+    <x-forms.form-group name="pdf" label="Francken Vrij pdf">
         {!! Form::file('pdf', ['class' => 'form-control-file']) !!}
 
         <x-slot name="help">
             Upload the pdf of the new Francken Vrij. Note we currently only support uploading files which are less than 40MB.
+            The pdf can only be downloaded by members who are logged in.
         </x-slot>
     </x-forms.form-group>
 

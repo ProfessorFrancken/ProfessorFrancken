@@ -10,16 +10,27 @@
     <div class="row">
         <div class="col-md-12">
             <p>
-                Francken Vrij is the popular science magazine of the Technisch Fysische Vereniging ‘Professor Francken’ and is distributed to its members, sponsors and other interested parties. The complete Francken Vrij archive can be found on this page.
+                Francken Vrij is the popular science magazine of the Technisch Fysische Vereniging ‘Professor Francken’ and is distributed to its members, sponsors and other interested parties. The complete Francken Vrij archive can be found on this page and is available to members only.
             </p>
             <p>
-                The theme of each edition is different but relates to (Applied) Physics. The contents of the magazine changes slightly from edition to edition but generaly one might expect an article by one of the applied physics research groups, an article by a student about his or her internship or a graduate about her or his new job.
+                The theme of each edition is different but relates to (Applied) Physics. The contents of the magazine changes slightly from edition to edition but generally one might expect an article by one of the applied physics research groups, an article by a student about their internship or a graduate about their new job.
                 Most editions come with a challenging puzzle and a fun comic as well.
             </p>
         </div>
     </div>
 </div>
 
+@guest
+<div class="container my-5">
+    <x-login-prompt title="Login to view the Francken Vrij" :redirect-to="request()->getRequestUri()">
+        <p>
+            The Francken Vrij archive is only available to members. Please login to read and download our magazines.
+        </p>
+    </x-login-prompt>
+</div>
+@endguest
+
+@auth
 <div class="ribbon ribbon--light my-5">
     <div class="container">
         <h2 class="ribbon__header">
@@ -34,13 +45,13 @@
                       {{ $edition->title() }}
                   </h4>
                   <div class="text-center">
-                      <a href="{{ $edition->pdf() }}">
+                      <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}">
                           <img src="{{ $edition->cover() }}" class="img-responsive center-block">
                       </a>
                   </div>
 
                   <div class="text-center my-3">
-                      <a href="{{ $edition->pdf() }}" class="btn btn-inverse">Download</a>
+                      <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}" class="btn btn-inverse">Download</a>
                   </div>
               </article>
           @endforeach
@@ -55,7 +66,7 @@
       <div class="row">
           @foreach($volume->editions() as $edition)
               <div class="col-sm-4 text-center">
-                  <a href="{{ $edition->pdf() }}">
+                  <a href="{{ action([\Francken\Association\FranckenVrij\Http\FranckenVrijPdfController::class, 'show'], ['edition' => $edition]) }}">
                       <img src="{{ $edition->cover() }}" class="img-responsive center-block">
                       <h5>{{ $edition->title() }}</h5>
                   </a>
@@ -63,12 +74,6 @@
           @endforeach
       </div>
   @endforeach
-
-  @guest
-    <div class="container mt-5">
-        <x-login-prompt title="Login to view older editions">
-        </x-login-prompt>
-    </div>
-  @endguest
 </div>
+@endauth
 @endsection

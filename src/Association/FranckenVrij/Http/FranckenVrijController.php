@@ -13,9 +13,10 @@ final class FranckenVrijController extends Controller
 {
     public function index(Request $request) : View
     {
-        $volumes = Edition::volumes(
-            $request->user() ? null : 5
-        );
+        // Francken Vrij editions are only available to members
+        $volumes = $request->user() !== null
+            ? Edition::volumes()
+            : collect();
 
         $latestEditions = $volumes->isNotEmpty()
             ? $volumes->first()->editions()

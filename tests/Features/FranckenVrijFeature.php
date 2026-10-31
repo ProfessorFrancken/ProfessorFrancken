@@ -8,6 +8,8 @@ use Francken\Association\FranckenVrij\Edition;
 use Francken\Association\FranckenVrij\EditionId;
 use Francken\Association\FranckenVrij\Http\AdminFranckenVrijController;
 use Francken\Shared\Url;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class FranckenVrijFeature extends TestCase
 {
@@ -42,6 +44,25 @@ class FranckenVrijFeature extends TestCase
 
         $this->seePageIs(action([AdminFranckenVrijController::class, 'index']))
             ->see('Clinical');
+    }
+
+    /** @test */
+    public function the_pdf_is_stored_privately_while_the_cover_is_public() : void
+    {
+        Storage::fake('francken-vrij');
+        Storage::fake('uploads', ['url' => config('filesystems.disks.uploads.url')]);
+
+        $this->visit(action([AdminFranckenVrijController::class, 'index']))
+            ->type('Clinical', 'title')
+            ->type(20, 'volume')
+            ->type(1, 'edition')
+            ->attach(__DIR__ . '/stubs/20-1.pdf', 'pdf')
+            ->attach(UploadedFile::fake()->image('cover.png'), 'cover')
+            ->press('Publish');
+
+        Storage::disk('francken-vrij')->assertExists('20-1.pdf');
+        Storage::disk('uploads')->assertExists('francken-vrij/covers/20-1-cover.png');
+        Storage::disk('francken-vrij')->assertMissing('francken-vrij/covers/20-1-cover.png');
     }
 
     /** @test */
