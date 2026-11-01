@@ -1,31 +1,31 @@
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow|Signika);
 
-    // Variables
-    @import "variables";
-    // Bootstrap
-    @import "node_modules/bootstrap/scss/bootstrap.scss";
+// Variables
+@import "variables";
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap.scss";
 
-    @import "components/typography";
-    @import "components/buttons";
-    @import "components/aside";
-    @import "components/news";
-    @import "components/ribbon";
-    @import "components/preview-item";
-    @import "components/logo-card";
+@import "components/typography";
+@import "components/buttons";
+@import "components/aside";
+@import "components/news";
+@import "components/ribbon";
+@import "components/preview-item";
+@import "components/logo-card";
 
-    @import "homepage";
-    @import "header";
-    @import "navigation";
-    @import "components/header-image";
-    @import "footer";
+@import "homepage";
+@import "header";
+@import "navigation";
+@import "components/header-image";
+@import "footer";
 
-    @import "admin";
+@import "admin";
 
-    @import "components/login-modal";
-    @import "components/boards";
-    @import "components/job-openings";
-    @import "components/registration";
-    @import "components/photos";
+@import "components/login-modal";
+@import "components/boards";
+@import "components/job-openings";
+@import "components/registration";
+@import "components/photos";
 
-    @import "utilities";
+@import "utilities";
