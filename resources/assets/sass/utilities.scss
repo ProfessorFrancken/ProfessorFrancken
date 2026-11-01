@@ -1,0 +1,68 @@
+// Skewed corners of the header and footer
+@include media-breakpoint-up(md) {
+    .skew-md--top-right {
+        transform: skewX(-30deg);
+        border-radius: 0px 0px 10px 0px;
+        transform-origin: top right;
+    }
+
+    .skew-md--top-right > * {
+        transform: skewX(30deg);
+    }
+
+    .skew-md--bottom-right {
+        transform: skewX(-30deg);
+        border-radius: 10px 0px 0px 0px;
+        transform-origin: top left;
+    }
+
+    .skew-md--bottom-right > * {
+        transform: skewX(30deg);
+    }
+}
+
+// Bootstrap overrides
+.bg-secondary {
+    background-color: $secondary-color;
+}
+
+.custom-control {
+    font-size: 150%;
+}
+
+.scaleUp--hover {
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.15s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.text-app-secondary {
+    color: $secondary-color;
+}
+.text-app-secondary-dark {
+    color: $secondary-color-dark;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.gap-1 {
+    gap: 0.25rem !important;
+}
+.gap-2 {
+    gap: 0.5rem !important;
+}
+.gap-3 {
+    gap: 1rem !important;
+}
+.gap-4 {
+    gap: 1.5rem !important;
+}
+.gap-5 {
+    gap: 3rem !important;
+}

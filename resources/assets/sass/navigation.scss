@@ -1,0 +1,317 @@
+.navigation__menu {
+    font-family: $menu-navigation-font;
+    color: $primary-color;
+
+    // This is to set the position of the sub menu
+    position: relative;
+}
+
+.navigation__hoverable {
+    position: relative;
+}
+
+.navigation__menu-item {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: $primary-color;
+
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+        color: $secondary-color;
+    }
+}
+
+.navigation__sub-menu {
+    position: absolute;
+    left: 0;
+    margin-top: 0.5em;
+    margin-left: 2em;
+
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.navigation__sub-menu-item {
+    background-color: white;
+    display: none;
+    color: $gray-600;
+    font-size: 0.95rem;
+    position: relative;
+
+    transition: all 0.15s ease-in-out;
+    i {
+        transition: all 0.15s ease-in-out;
+    }
+}
+
+.navigation__hoverable:hover {
+    .navigation__sub-menu {
+        opacity: 1;
+    }
+    .navigation__menu-item {
+        color: $secondary-color;
+
+        background-color: $gray-100;
+    }
+    .navigation__sub-menu-item {
+        display: flex;
+    }
+}
+
+.navigation__sub-menu-item i {
+    color: $gray-500;
+}
+.navigation__sub-menu-item:hover i {
+    color: $primary-color;
+}
+
+.navigation__sub-menu-item:hover {
+    background-color: $gray-100;
+}
+
+.navigation__sub-menu-item:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    border-right: thin solid #aaa;
+}
+
+.navigation__sub-menu-item:last-child:after {
+    border-right: none;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.navigation-list {
+    margin: 0;
+    padding: 0;
+    padding-top: 76px;
+
+    list-style-type: none;
+    transition: transform 0.3s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: $primary-color;
+    z-index: 100;
+}
+
+.navigation-list__item {
+    position: relative; /* couples with navigation-sub-list */
+    float: none;
+    display: block;
+    height: auto;
+
+    &:focus,
+    &:hover,
+    &:active {
+        background: darken($primary-color, 5%);
+    }
+}
+
+/* Color the active menu item */
+.navigation-list__item--active {
+    background: $primary-color;
+    color: #fff;
+
+    /* Removes the caret below the active item */
+    &:after {
+        display: none;
+    }
+
+    a:link,
+    a:visited {
+        color: #fff;
+    }
+
+    /* When the associated page is visited we want the background color
+       of a selected caret to be somewhat lighter than the item's background */
+    &.navigation-list__item--active-sub-list .navigation-sub-list__toggle {
+        background: $primary-color;
+    }
+}
+
+/* Color the caret when it is selected */
+.navigation-list__item--active-sub-list {
+    .navigation-sub-list__toggle {
+        background: #ccc; /*$grey;*/
+    }
+
+    .navigation-sub-list {
+        height: auto;
+        min-width: 200px;
+        width: auto;
+        display: block;
+    }
+}
+
+.navigation-list__item,
+.navigation-sub-list li a {
+    transition: background-color 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+}
+
+.navigation-list__link {
+    color: #31255e;
+    text-decoration: none;
+    padding: 0 0.8em;
+    display: inline-block;
+    line-height: 90px;
+
+    &:hover {
+        color: #6c5ea2;
+        text-decoration: none;
+    }
+
+    &:link,
+    &:visited {
+        color: #fff;
+        border: 0;
+        display: block;
+        float: left;
+        padding: 0 0 0 4%;
+        width: 82%;
+    }
+}
+
+/* This class is used for the mobile menu */
+.navigation-list--active {
+    transform: translateY(100%);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.navigation-sub-list__toggle {
+    text-align: center;
+    cursor: pointer;
+    line-height: 90px;
+    height: 90px;
+    display: inline-block;
+    vertical-align: top; /* lost 1px bug in chrome op */
+
+    /* Move a bit closer to the associated list item */
+    margin-left: -5px;
+
+    /* dunno */
+    user-select: none;
+}
+
+/** Top Sub menu **/
+.navigation-sub-list {
+    display: none;
+    padding: 0;
+    background: #fff;
+    z-index: 201;
+    height: 0;
+    overflow: hidden;
+
+    width: 100%;
+    position: static;
+}
+
+.navigation-sub-list__link,
+a.navigation-sub-list__link:link,
+a.navigation-sub-list__link:visited {
+    display: block;
+    padding: 0 0.8em;
+    line-height: 3;
+    border: 1px solid #ccc;
+    border-top: 0;
+    color: #444;
+}
+
+.navigation-sub-list li a:focus {
+    background: darken(white, 5%);
+}
+
+/** Responsive **/
+.navigation-sub-list__toggle {
+    float: right;
+    width: 14%;
+    color: white;
+}
+
+/* Wrapper around the Hambuger menu */
+.navigation__hamburger-menu {
+    float: right;
+    position: relative;
+    z-index: 202;
+    display: block;
+}
+
+.hamburger-menu {
+    display: block;
+    background: $primary-color;
+    padding: 1em;
+    border: 0;
+    float: right;
+
+    &:hover {
+        background: $primary-color;
+    }
+
+    .hamburger-menu__line {
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        display: block;
+    }
+
+    .hamburger-menu__line + .hamburger-menu__line {
+        margin-top: 4px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .login-link {
+        background: $primary-color;
+        color: white;
+        border-radius: 0px;
+
+        &:hover {
+            color: $primary-color;
+            background: white;
+        }
+    }
+
+    .navigation__hamburger-menu,
+    .navigation-list {
+        display: none;
+    }
+}
+
+@include media-breakpoint-between(md, lg) {
+    .navigation__menu-item {
+        font-size: 1rem;
+    }
+}
+
+.navigation-container__wrapper {
+    z-index: 1;
+}
+.navigation__menu-item {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+@include media-breakpoint-up(md) {
+    .navigation-container__wrapper {
+        margin-left: -200px;
+    }
+}
+@include media-breakpoint-up(lg) {
+    .navigation-container__wrapper {
+        margin-left: -300px;
+    }
+}
